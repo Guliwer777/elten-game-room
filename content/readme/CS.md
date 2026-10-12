@@ -39,10 +39,10 @@ Jde o dokument pouze ke čtení s nadpisem pro každou verzi. H přejde na dalš
 
 ## Co si můžete zahrát
 
-Power Games v současnosti obsahuje 33 her:
+Power Games v současnosti obsahuje 34 her:
 
 - Karetní hry: 3-5-8, 99, 1000 mil, Biblios, Makao, Piky, Poker, Rummy, Tisíc, UNO, War a Scientific War.
-- Deskové a strategické hry: Člověče, nezlob se, Čtyři v řadě, Piškvorky, Mankala, Monopoly, Reversi, Lodě, Šachy a Dáma.
+- Deskové a strategické hry: Člověče, nezlob se, Čtyři v řadě, Piškvorky, Mankala, Monopoly, Reversi, Lodě, Šachy, Dáma a Závody kachen.
 - Kostky a domino: Cat, head, tail, Domino, Farkle, Mexican Train a Yahtzee.
 - Slova a vědomosti: Krowa, Kategorie, Quiz Party, Scrabble a Taboo.
 - Zvukové akční hry: Axel Pong a Audio Ball.
@@ -92,6 +92,7 @@ U stolu otevře Ctrl+I pozvání uživatelů, kteří jsou online, a Ctrl+Shift+
 
 Ve hrách podporujících diváky můžete sledovat partii, aniž byste zabrali místo hráče. Hodí se to k fandění i k učení pravidel. V Axel Pongu si divák může vybrat také poslechovou perspektivu.
 Ctrl+Shift+O umožní přihlásit se do další partie jako hráč nebo divák, pokud hra takovou volbu nabízí.
+Tato zkratka mění vaši vlastní roli. Hostitel může změnit roli jiného účastníka v kontextovém menu seznamu uživatelů; příslušná položka obsahuje jméno vybrané osoby.
 
 Enter v seznamu uživatelů otevře běžné uživatelské menu ELTENu. Odtud můžete například poslat zprávu, přidat člověka do kontaktů nebo mu zavolat.
 
@@ -129,6 +130,7 @@ Všechny zkratky se nemusíte učit najednou:
 - Ctrl+F4 přečte odezvu spojení a rozliší HTTP od dostupného spojení Communications nebo P2P.
 
 Pravidla si můžete přečíst ještě před vytvořením stolu. Mají kapitoly a obsah s odkazy na jednotlivé části. Herní zkratky jsou v samostatném seznamu, každá na vlastní položce.
+Seznam her v knihovně pravidel obsahuje i krátký popis každé hry.
 V textu pravidel přecházejí H a Shift+H mezi nadpisy, K a Shift+K mezi odkazy a Enter na odkazu v obsahu přesune kurzor do kapitoly.
 
 Některé hry mají i osobní nastavení pod Ctrl+P, dostupné z menu stolu. Patří mezi ně Axel Pong, Audio Ball a Krowa. Tato nastavení se týkají vašeho způsobu používání hry a jsou oddělena od společné varianty zvolené hostitelem.
@@ -189,7 +191,7 @@ Power Games má vlastní výběr jazyka rozhraní v Nastavení → General. K di
 
 Volitelný seznam „Jazyky, kterým rozumíte“ slouží k doplnění chybějících překladů. Pokud text není v hlavním jazyce, program může použít některý ze zaškrtnutých jazyků a nakonec angličtinu.
 
-Jazyk rozhraní a jazyk obsahu hry jsou dvě odlišné věci. Jazyk otázek, karet nebo slovníku zvolíte v nastavení her, které to umožňují.
+Jazyk otázek, karet nebo slovníku můžete zvolit v nastavení her, které to umožňují. Při vytváření nového stolu se předvolí jazyk rozhraní jeho zakladatele. Pokud v něm není potřebný obsah, použije se angličtina. Vaše uložená nastavení mají přednost. Připojení ke stolu ani obnovení uložené hry její jazyk nezmění.
 
 ## Uložené hry a historie
 

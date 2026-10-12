@@ -1,6 +1,7 @@
 require_relative "../../tools/translations"
 require_relative "../../lib/game_rules"
 require_relative "../support/mille_bornes"
+require_relative "../support/authored_rulebooks"
 
 missing_lookups = []
 catalog_probe = Module.new do
@@ -243,11 +244,12 @@ names.each do |language, name|
   replay = fixture.start
   raise "#{language}: runtime game name" unless game.name == name
   runtime_rules = game.rule_book(options: game.default_options)
-  book.fetch("sections").each do |section|
+  current_book = GameRoomTest::Rulebooks.read('mille_bornes', language.downcase)
+  current_book.fetch("sections").each do |section|
     actual = runtime_rules.sections.find { |candidate| candidate.id.to_s == section.fetch("id") }
     raise "#{language}: missing runtime rule section: #{section.fetch('id')}" unless actual
-    expected_title = catalog[nil, section.fetch("title").fetch("en")].msgstr
-    expected_paragraphs = section.fetch("paragraphs").map { |pair| catalog[nil, pair.fetch("en")].msgstr }
+    expected_title = section.fetch("title").fetch(language.downcase)
+    expected_paragraphs = section.fetch("paragraphs").map { |pair| pair.fetch(language.downcase) }
     unless actual.title == expected_title && actual.paragraphs == expected_paragraphs
       raise "#{language}: untranslated runtime rules or shortcut help: #{actual.id}"
     end
@@ -303,8 +305,8 @@ names.each do |language, name|
   expected_summary = catalog[nil, summary_source].msgstr % { attacks: 2, remedies: 3 }
   raise "#{language}: untranslated counterflow summary" unless game.options_summary(custom_options).include?(expected_summary)
   variant_rules = game.rule_book(options: custom_options).sections.find { |section| section.id == :variants }
-  expected_rules = book.fetch("sections").find { |section| section.fetch("id") == "variants" }
-    .fetch("paragraphs").map { |pair| catalog[nil, pair.fetch("en")].msgstr }
+  expected_rules = current_book.fetch("sections").find { |section| section.fetch("id") == "variants" }
+    .fetch("paragraphs").map { |pair| pair.fetch(language.downcase) }
   raise "#{language}: stale counterflow rules" unless variant_rules.paragraphs == expected_rules
   game.surface_spec(replay, fixture.players.first)
   game.game_shortcuts(replay, fixture.players.first)

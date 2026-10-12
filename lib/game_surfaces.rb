@@ -574,12 +574,13 @@ module GameSurfaces
           cursors = state["hand_cursors"] || {}
           same_epoch = cursors.fetch(zone_id, {}).fetch("epoch", nil) == zone.hand_epoch.to_s
           cards, index, changed = CardHandCursor.resolve(cards, zone.hand_order, zone.hand_epoch,
-            cursors[zone_id], index, sorted: sorted_hand?)
+            cursors[zone_id], index, sorted: sorted_hand?, select_drawn: zone.select_drawn != false)
           @cards[zone_id] = cards
-          @cursor_announcements[zone_id] = card_label(cards[index]) if changed
         end
+        index, changed = restore_command_cursor(zone, cards, state, index, changed)
+        @cursor_announcements[zone_id] = card_label(cards[index]) if changed
         pending = changed || !same_epoch ? nil : remembered_choice(remembered_choices, zone_id, cards)
-        labels = cards.map { |card| card_label(card) }
+        labels = card_list_labels(zone, cards)
         header = zone.header.to_s
         if pending != nil
           @pending_choices[zone_id] = pending
@@ -616,6 +617,11 @@ module GameSurfaces
             next
           end
 
+          if selected_index >= cards.length
+            command = zone_commands(zone)[selected_index - cards.length]
+            emit_action("command", command.id, command.payload.nil? ? {} : command.payload.to_h) if command
+            next
+          end
           card = cards[selected_index]
           next if card == nil
 
@@ -682,11 +688,16 @@ module GameSurfaces
       indices = {}
       choices = {}
       cursors = {}
+      selected_commands = {}
       @zones.each_with_index do |zone, index|
         zone_id = zone.id.to_s
         pending = @pending_choices[zone_id]
         if pending == nil
           indices[zone_id] = @controls[index].index.to_i
+          if indices[zone_id] >= @cards.fetch(zone_id).length
+            command = zone_commands(zone)[indices[zone_id] - @cards.fetch(zone_id).length]
+            selected_commands[zone_id] = command.id.to_s if command
+          end
         else
           indices[zone_id] = pending[:card_index]
           choices[zone_id] = {
@@ -701,6 +712,7 @@ module GameSurfaces
         end
       end
       result = { "zones" => indices }
+      result["selected_commands"] = selected_commands unless selected_commands.empty?
       result["hand_cursors"] = cursors unless cursors.empty?
       result["card_choices"] = choices if !choices.empty?
       result["card_sort_mode"] = @card_sort_mode if !@card_sort_mode.empty?
@@ -723,14 +735,15 @@ module GameSurfaces
         next_cards = sorted_cards(zone.cards.to_a, @card_sort_mode)
         validate_card_choices!(next_cards)
         next_cards, index, changed = CardHandCursor.resolve(next_cards, zone.hand_order, zone.hand_epoch,
-          remembered.fetch("hand_cursors", {})[zone_id], remembered["zones"][zone_id], sorted: sorted_hand?)
+          remembered.fetch("hand_cursors", {})[zone_id], remembered["zones"][zone_id], sorted: sorted_hand?, select_drawn: zone.select_drawn != false)
         @cards[zone_id] = next_cards
+        index, changed = restore_command_cursor(zone, next_cards, remembered, index, changed)
         same_epoch = remembered.fetch("hand_cursors", {}).fetch(zone_id, {})["epoch"] == zone.hand_epoch.to_s
         pending = changed || !same_epoch ? nil : remembered_choice(remembered["card_choices"] || {}, zone_id, next_cards)
         @pending_choices.delete(zone_id)
         @pending_choices[zone_id] = pending if pending
         control = @controls[field_index]
-        labels = pending ? card_choices(pending[:card]).map { |choice| choice_label(choice) } : next_cards.map { |card| card_label(card) }
+        labels = pending ? card_choices(pending[:card]).map { |choice| choice_label(choice) } : card_list_labels(zone, next_cards)
         control.options = labels if control.options != labels
         control.header = pending ? choice_header(pending[:card]) : zone.header.to_s
         control.empty_label = zone.empty_label.to_s if control.respond_to?(:empty_label=)
@@ -767,10 +780,11 @@ module GameSurfaces
 
         control = @controls[index]
         selected = cards[control.index.to_i]
+        selected_command = zone_commands(zone)[control.index.to_i - cards.length] if control.index.to_i >= cards.length
         cards.replace(sorted_cards(cards, mode, direction))
-        control.options = cards.map { |card| card_label(card) }
+        control.options = card_list_labels(zone, cards)
         selected_index = cards.index { |card| card_id(card) == card_id(selected) }
-        control.index = selected_index || 0
+        control.index = selected_command ? cards.length + zone_commands(zone).index(selected_command) : selected_index || 0
         sorted_any = true
       end
       return false if !sorted_any
@@ -796,6 +810,32 @@ module GameSurfaces
     end
 
     private
+
+    # Commands share the list, not the hand: they never receive card IDs,
+    # participate in sorting/draw order, or count as playable cards.
+    def zone_commands(zone)
+      commands = zone.commands.to_a.select { |command| command.enabled != false }
+      ids = commands.map { |command| command.id.to_s }
+      raise ArgumentError, "command ids must be nonempty and unique" if ids.any?(&:empty?) || ids.uniq != ids
+      raise ArgumentError, "command payloads must be hashes" if commands.any? { |command| !command.payload.nil? && !command.payload.respond_to?(:to_h) }
+      commands
+    end
+
+    def card_list_labels(zone, cards)
+      cards.map { |card| card_label(card) } + zone_commands(zone).map { |command| command.label.to_s }
+    end
+
+    def restore_command_cursor(zone, cards, remembered, index, changed)
+      id = remembered.fetch("selected_commands", {})[zone.id.to_s]
+      return [index, changed] unless id
+      cursor = remembered.fetch("hand_cursors", {})[zone.id.to_s]
+      if zone.hand_order != nil
+        return [index, changed] unless cursor && cursor["epoch"] == zone.hand_epoch.to_s
+        return [index, changed] if zone.select_drawn != false && !(zone.hand_order.map(&:to_s) - cursor.fetch("raw_ids")).empty?
+      end
+      command_index = zone_commands(zone).index { |command| command.id.to_s == id }
+      command_index ? [cards.length + command_index, false] : [index, changed]
+    end
 
     def card_list_control_class
       RefreshAwareListBox
@@ -879,7 +919,7 @@ module GameSurfaces
       pending = @pending_choices.delete(zone_id)
       return false if pending == nil
 
-      control.options = @cards.fetch(zone_id).map { |card| card_label(card) }
+      control.options = card_list_labels(zone, @cards.fetch(zone_id))
       control.header = zone.header.to_s
       control.index = pending[:card_index]
       control.focus(control.index) if speak
@@ -993,6 +1033,7 @@ module GameSurfaces
   require_relative "game_surfaces/command_panel"
   require_relative "game_surfaces/pong_surface"
   require_relative "game_surfaces/audio_ball_surface"
+  require_relative "game_surfaces/duck_challenge_surface"
   require_relative "game_surfaces/pawn_track"
   require_relative "game_surfaces/piece_board"
   require_relative "game_surfaces/dice_tray"
@@ -1233,6 +1274,8 @@ module GameSurfaces
       PongSurface.new(spec, state: state)
     when AudioBallSpec
       AudioBallSurface.new(spec, state: state)
+    when DuckChallengeSpec
+      DuckChallengeSurface.new(spec, state: state)
     when PawnTrackSpec
       PawnTrackSurface.new(spec, state: state)
     when PieceBoardSpec

@@ -72,7 +72,7 @@
           "en": "Once you have distributed them, each other player takes one from the pool, starting with the player after you. When it is your turn to choose, browse with the arrows and take a card with Enter. P reads what remains."
         },
         {
-          "en": "The next player then distributes. When the deck is exhausted, shuffle the auction pile and begin the auctions."
+          "en": "The next player then distributes the cards. Once the deck runs out, the auction pile is shuffled and the auctions begin."
         }
       ]
     },
@@ -202,7 +202,7 @@
       },
       "paragraphs": [
         {
-          "en": "The normal Medieval bluff penalty loses one random card for failing to pay a winning bid. The host can change this before play."
+          "en": "With the normal Medieval bluff penalty, you lose one random card if you cannot pay a winning bid. The host can change this before play."
         },
         {
           "en": "With the full penalty, you give one random card to every other player, starting with the next seat. Stop when everyone has received a card or your hand is empty. The auction then restarts without you, as with the normal penalty."

@@ -31,7 +31,7 @@
           "cs": "Podání provedeš šipkou nahoru nebo mezerníkem. Míč vyletí z místa, kde máš pálku. Pokud chceš podat šikmo, drž při podání šipku vlevo či vpravo."
         },
         {
-          "cs": "Po soupeřově úderu postav pálku do cesty míči. Až se přiblíží na její dosah, odraz ho šipkou nahoru nebo mezerníkem. Samotné správné postavení nestačí, úder musí přijít v dosahu míče."
+          "cs": "Po soupeřově úderu postav pálku do cesty míči. Až bude míč v dosahu pálky, odraz ho šipkou nahoru nebo mezerníkem. Samotné správné postavení nestačí: úder musíš také správně načasovat."
         },
         {
           "cs": "Směr odrazu závisí na zasažené části pálky:"
@@ -118,7 +118,7 @@
           "cs": "- Štít chrání celou tvou hranu po deset sekund hry. Když míč pustíš, vrátí ho přímo a ochrana pokračuje. Další štít obnoví dobu ochrany. Ve čtyřhře kryje oba partnery. Při čekání na podání čas štítu neubývá a zbývající ochrana přejde do dalšího bodu."
         },
         {
-          "cs": "- Neviditelný míč není slyšet. Jeho dráhu musíš odhadnout a zkusit pálku včas postavit. Odraz pálkou zvuk obnoví, odraz štítem ne. Neviditelnost skončí také koncem bodu."
+          "cs": "- Neviditelný míč není slyšet. Jeho dráhu musíš odhadnout a zkusit mu včas postavit pálku do cesty. Odraz pálkou zvuk obnoví, odraz štítem ne. Neviditelnost skončí také koncem bodu."
         },
         {
           "cs": "Aktivní efekty přečte E."
@@ -155,7 +155,7 @@
           "cs": "Osobní nastavení otevřeš pomocí Ctrl+P:"
         },
         {
-          "cs": "- Automatické odrážení udeří samo, když je míč v dosahu pálky. Pohyb a podání zůstávají na tobě. Ve výchozím nastavení je tato pomoc vypnutá."
+          "cs": "- Při automatickém odrážení pálka udeří sama, když je míč v jejím dosahu. Pohyb a podání zůstávají na tobě. Ve výchozím nastavení je tato pomoc vypnutá."
         },
         {
           "cs": "- Hlasitost vlastní pálky zesílí nebo ztiší zvuk tvého pohybu."

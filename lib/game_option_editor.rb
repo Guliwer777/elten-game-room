@@ -14,10 +14,14 @@ class GameRoomOptionEditor
   def edit(game, initial_options: nil, submit_label: nil, creating_table: false, initial_private_table: false)
     return creating_table ? nil : {} if game == nil
 
-    selected = initial_options == nil ? {} : game.normalize_options(initial_options)
+    selected = if initial_options == nil
+      @defaults.call(game, game.effective_option_definitions)
+    else
+      game.normalize_options(initial_options)
+    end
     definitions = game.effective_option_definitions(selected).to_a
-    return game.default_options if definitions.empty? && !creating_table
-    built_language = selected.fetch(GameRoomContent::LANGUAGE_OPTION_KEY, game.default_options[GameRoomContent::LANGUAGE_OPTION_KEY]).to_s
+    return selected if definitions.empty? && !creating_table
+    built_language = selected[GameRoomContent::LANGUAGE_OPTION_KEY].to_s
     private_table = initial_private_table == true
 
     loop do
@@ -28,7 +32,7 @@ class GameRoomOptionEditor
         controls << privacy_control
       end
       bindings = []
-      defaults = @defaults.call(game, definitions).merge(selected)
+      defaults = selected
       definitions.each do |definition|
         key = definition.key.to_s
         case definition.kind.to_s
@@ -52,7 +56,10 @@ class GameRoomOptionEditor
           )
           controls << control
           bindings << [definition, control]
-        when "multiple_choice"
+        when "multiple_choice", "multiple_values"
+          if definition.kind.to_s == "multiple_values"
+            definition = multiple_values_definition(definition, defaults.fetch(key, definition.default))
+          end
           choices = definition.choices.to_a
           control = ListBox.new(
             choices.map { |choice| choice.label.to_s },
@@ -61,10 +68,14 @@ class GameRoomOptionEditor
             flags: ListBox::Flags::MultiSelection,
             quiet: true
           )
-          mask = defaults[key].to_i
-          control.select_multiselection_indices(
+          selected_indices = if definition.kind.to_s == "multiple_values"
+            selected_values = defaults.fetch(key, definition.default)
+            choices.each_index.select { |index| selected_values.is_a?(Array) && selected_values.include?(choices[index].value) }
+          else
+            mask = defaults[key].to_i
             choices.each_index.select { |index| (mask & (1 << index)) != 0 }
-          )
+          end
+          control.select_multiselection_indices(selected_indices)
           controls << control
           bindings << [definition, control]
         when "integer"
@@ -90,20 +101,7 @@ class GameRoomOptionEditor
       form.cancel_button = cancel_button
       previous_options = game.normalize_options(game_option_values(bindings))
       refresh_visibility = lambda do
-        values = game.normalize_options(game_option_values(bindings))
-        game.option_editor_changes(previous_options, values).each do |key, value|
-          binding = bindings.find { |definition, _control| definition.key.to_s == key.to_s }
-          binding[1].set_text(value.to_s) if binding && binding[0].kind.to_s == "integer"
-        end
-        values = game.normalize_options(game_option_values(bindings))
-        previous_options = values
-        bindings.each do |definition, control|
-          if game.option_visible?(definition, values)
-            form.show(control)
-          else
-            form.hide(control)
-          end
-        end
+        previous_options = refresh_option_controls(game, bindings, previous_options, form)
       end
       bindings.each do |definition, control|
         event = definition.kind.to_s == "boolean" ? :change : :move
@@ -169,6 +167,66 @@ class GameRoomOptionEditor
 
   private
 
+  def refresh_option_controls(game, bindings, previous_options, form)
+    raw_values = game_option_values(bindings)
+    values = game.normalize_options(raw_values)
+    changes = game.option_editor_changes(previous_options, values)
+    changes.each do |key, value|
+      binding = bindings.find { |definition, _control| definition.key.to_s == key.to_s }
+      binding[1].set_text(value.to_s) if binding && binding[0].kind.to_s == "integer"
+    end
+    # Only ID-based checklists opt in to changing catalogue choices. Keep
+    # their native control and selected IDs; old bit-mask lists are fixed.
+    if bindings.any? { |definition, _control| definition.kind.to_s == "multiple_values" }
+      current_definitions = game.effective_option_definitions(values)
+      bindings.each do |binding|
+        definition, control = binding
+        next unless definition.kind.to_s == "multiple_values"
+
+        key = definition.key.to_s
+        replacement = current_definitions.find { |entry| entry.key.to_s == key } || definition
+        selected_values = changes.fetch(key, changes.fetch(key.to_sym, raw_values[key]))
+        replacement = multiple_values_definition(replacement, selected_values)
+        old_choices = definition.choices.to_a
+        choices = replacement.choices.to_a
+        selected_indices = choices.each_index.select { |index| selected_values.is_a?(Array) && selected_values.include?(choices[index].value) }
+        if choices != old_choices || selected_indices != control.multiselections
+          focused_value = old_choices[control.index]&.value
+          control.deselect_multiselection_indices(control.multiselections)
+          control.options = choices.map { |choice| choice.label.to_s }
+          control.select_multiselection_indices(selected_indices)
+          control.index = choices.index { |choice| choice.value == focused_value }.to_i
+        end
+        binding[0] = replacement
+      end
+    end
+    values = game.normalize_options(game_option_values(bindings))
+    bindings.each do |definition, control|
+      if game.option_visible?(definition, values)
+        form.show(control)
+      else
+        form.hide(control)
+      end
+    end
+    values
+  end
+
+  def multiple_values_definition(definition, selected)
+    return definition unless selected.is_a?(Array)
+
+    choices = definition.choices.to_a
+    missing = selected.grep(String).uniq - choices.map(&:value)
+    return definition if missing.empty?
+
+    # A removed pack remains visibly selected until explicitly cleared. Do
+    # not silently turn an unavailable saved selection into a different pool.
+    copy = definition.dup
+    copy.choices = choices + missing.map do |value|
+      GameRoomGames::OptionChoice.new(value: value, label: _("Unavailable choice: %{id}") % { id: value })
+    end
+    copy
+  end
+
   def game_option_values(bindings)
     bindings.each_with_object({}) do |(definition, control), raw|
       key = definition.key.to_s
@@ -176,7 +234,7 @@ class GameRoomOptionEditor
         control.checked == true
       elsif definition.kind.to_s == "integer"
         control.text.to_s
-      elsif definition.kind.to_s == "multiple_choice"
+      elsif ["multiple_choice", "multiple_values"].include?(definition.kind.to_s)
         choices = definition.choices.to_a
         control.multiselections.filter_map { |index| choices[index]&.value }
       else

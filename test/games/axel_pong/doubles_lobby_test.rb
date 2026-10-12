@@ -145,10 +145,9 @@ end
       assert(result == nil, "#{mode} accepted #{count} players")
       assert_no_game(app, row)
       assert(app.notices.length == 1, "Wrong player count did not produce one validation message")
-      if count.between?(2, 4)
-        expected = mode == "Doubles" ? "Doubles requires exactly four players." : "Single requires exactly two players."
-        assert(app.notices.first == expected, "Wrong player count lost its match-specific explanation")
-      end
+      expected = mode == "Doubles" ? "Doubles requires exactly four players." : "Single requires exactly two players."
+      names = %w[Alice Bob Carol Dave Eve].first(count).join(", ")
+      assert(app.notices.first == "#{expected}\nPlayers: #{names}.", "Wrong player count lost its match-specific explanation or roster")
       assert(app.broker.cores.values.map(&:last_seq) == before, "Wrong player count wrote to the native stack")
     end
   end
@@ -162,7 +161,7 @@ test("an observer cannot fill the fourth Doubles seat") do
   room = app.lobby.snapshot_for(row, force: true)
   assert(room.members.length == 4 && room.game_participants == %w[Alice Bob Carol], "Observer setup did not leave three actual players")
   result = with_forms { app.send(:start_new_game, row) }
-  assert(result == nil && app.notices == ["Doubles requires exactly four players."], "An observer satisfied the Doubles player count")
+  assert(result == nil && app.notices == ["Doubles requires exactly four players.\nPlayers: Alice, Bob, Carol."], "An observer satisfied the Doubles player count or entered the reported roster")
   assert_no_game(app, row)
 end
 

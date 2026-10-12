@@ -51,7 +51,7 @@
           "cs": "Na začátku šipkami zvol náhodné nebo ruční rozmístění a potvrď Enterem. Při náhodném rozmístění postaví flotilu hra; jakmile bude připraven i soupeř, můžete střílet."
         },
         {
-          "cs": "Při ručním rozmístění najdi šipkami jeden konec lodě a označ ho Enterem. Přejdi na druhý konec a znovu stiskni Enter. Jednopolovou loď umístíš dvojím potvrzením stejného pole. Pořadí lodí je na tobě, dokud máš danou délku ještě k dispozici."
+          "cs": "Při ručním rozmístění najdi šipkami jeden konec lodě a označ ho Enterem. Přejdi na druhý konec a znovu stiskni Enter. Jednopolovou loď umístíš dvojím potvrzením stejného pole. Pořadí lodí je na tobě, pokud máš loď zvolené délky ještě k dispozici."
         },
         {
           "cs": "Chybně označený první konec zruší Backspace. Není-li žádný konec označený, Backspace vezme zpět poslední umístěnou loď."

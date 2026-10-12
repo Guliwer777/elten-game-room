@@ -8,7 +8,7 @@
       },
       "paragraphs": [
         {
-          "es": "En Rummy reúnes cartas para formar combinaciones y bajarlas a la mesa. También puedes añadir cartas a las combinaciones ya jugadas. Cada carta que juegas da puntos; quedarte sin cartas gana la ronda. Los resultados se acumulan y, cuando alguien llega a 1000, gana la partida quien tenga más puntos."
+          "es": "En Rummy reúnes cartas para formar combinaciones y bajarlas a la mesa. También puedes añadir cartas a las combinaciones ya jugadas. Cada carta que juegas da puntos; ganas la ronda cuando te quedas sin cartas. Los resultados se acumulan. Al terminar una ronda, si alguien tiene al menos 1000 puntos, gana la partida quien tenga más."
         },
         {
           "es": "Juegan de dos a ocho personas. Cada ronda empieza con catorce cartas por jugador."
@@ -80,7 +80,7 @@
           "es": "Pulsa F para bajarlas juntas. Si falta algo o una combinación no es válida, oirás el motivo y podrás corregirla. Shift+P abre la lista de combinaciones preparadas; Enter sobre una permite editarla o quitarla. Escape durante la preparación cancela toda la bajada."
         },
         {
-          "es": "Una vez abierta tu mano con esa primera bajada, ya no hay mínimo de puntos para las siguientes. Se preparan con las mismas teclas. También puedes empezar a añadir cartas a la mesa en ese mismo turno."
+          "es": "Tras completar esa primera bajada, ya no hay mínimo de puntos para las siguientes. Se preparan con las mismas teclas. También puedes empezar a añadir cartas a la mesa en ese mismo turno."
         }
       ]
     },
@@ -114,7 +114,7 @@
           "es": "Después de tu primera bajada puedes sustituir un comodín de la mesa por la carta exacta que representa. En comodín, 3 de picas, 4 de picas necesitas el 2 de picas. Selecciónalo en tu mano, pulsa Enter y confirma la sustitución del comodín en esa combinación. El dos queda en la mesa y recibes el comodín."
         },
         {
-          "es": "En 7 de corazones, 7 de diamantes y comodín aún no se sabe si falta picas o tréboles. Para recuperarlo debes añadir primero una de esas cartas. Si añades el 7 de picas, el comodín solo puede representar el 7 de tréboles, y esa será la carta necesaria para sustituirlo."
+          "es": "En 7 de corazones, 7 de diamantes y comodín, el comodín puede representar la carta de picas o la de tréboles. Para recuperarlo debes añadir primero una de esas cartas. Si añades el 7 de picas, el comodín solo puede representar el 7 de tréboles, y esa será la carta necesaria para sustituirlo."
         },
         {
           "es": "Debes usar el comodín recuperado en una combinación nueva antes de terminar el turno. Si no lo haces, pierdes 300 puntos, incluso si lo descartas. La penalización se aplica una sola vez; en los turnos siguientes el comodín se trata como cualquier otra carta de tu mano."
@@ -140,7 +140,7 @@
           "es": "- As: 15, salvo si inicia una escalera antes del dos, donde vale 5."
         },
         {
-          "es": "Un comodín jugado vale lo que representa. En 3, 4, comodín, representa un cinco y la escalera vale 15 en total. Al contar las cartas que quedan en la mano, el comodín vale 20 y el as 15."
+          "es": "Un comodín jugado vale los mismos puntos que la carta que representa. En 3, 4, comodín, representa un cinco y la escalera vale 15 en total. Al contar las cartas que quedan en la mano, el comodín vale 20 y el as 15."
         }
       ]
     },
@@ -329,7 +329,7 @@
           "es": "Si la ronda se bloquea, todos añaden el valor de las cartas de sus manos."
         },
         {
-          "es": "Tras el recuento se elimina a quienes hayan alcanzado el límite, de 500 por defecto. Gana el último jugador. Si todos alcanzan el límite en la misma ronda, gana el menor resultado; varios mínimos iguales comparten la victoria."
+          "es": "Tras el recuento se elimina a quienes hayan alcanzado el límite, de 500 por defecto. Gana el último jugador que siga en la partida. Si todos alcanzan el límite en la misma ronda, gana quien tenga menos puntos; si varias personas comparten esa puntuación, comparten la victoria."
         }
       ]
     },

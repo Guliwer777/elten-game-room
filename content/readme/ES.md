@@ -39,10 +39,10 @@ Es un documento de solo lectura con un encabezado para cada versión. H pasa al 
 
 ## A qué puedes jugar
 
-Power Games incluye actualmente 33 juegos:
+Power Games incluye actualmente 34 juegos:
 
 - Cartas: 3-5-8, 99, 1000 millas, Biblios, Makao, Picas, Póker, Rummy, Mil, UNO, War y Scientific War.
-- Tablero y estrategia: Ludo, Cuatro en raya, Tres en raya, Mancala, Monopoly, Reversi, Batalla naval, Ajedrez y Damas.
+- Tablero y estrategia: Ludo, Cuatro en raya, Tres en raya, Mancala, Monopoly, Reversi, Batalla naval, Ajedrez, Damas y Carrera de patos.
 - Dados y dominó: Cat, head, tail, Dominó, Farkle, Mexican Train y Yahtzee.
 - Palabras y conocimientos: Krowa, Categorías, Quiz Party, Scrabble y Taboo.
 - Acción con audio: Axel Pong y Audio Ball.
@@ -92,6 +92,7 @@ En una mesa, Ctrl+I abre la selección de usuarios conectados a los que invitar,
 
 En los juegos que admiten espectadores puedes seguir una partida sin ocupar una plaza de jugador. Sirve tanto para animar como para aprender las reglas. En Axel Pong, los espectadores también pueden elegir la perspectiva de escucha.
 Ctrl+Shift+O permite solicitar el papel de jugador o espectador para la siguiente partida, si el juego ofrece esa posibilidad.
+Este atajo cambia tu propio papel. Para cambiar el de otra persona, el anfitrión utiliza el menú contextual de la lista de usuarios; la opción indica el nombre de la persona seleccionada.
 
 En la lista de usuarios, Enter abre el menú habitual de usuarios de ELTEN. Desde allí puedes, entre otras cosas, enviar un mensaje, añadir a alguien a tus contactos o llamarle.
 
@@ -129,6 +130,7 @@ No necesitas aprender todos los atajos a la vez:
 - Ctrl+F4 lee la latencia de conexión, distinguiendo HTTP de la conexión Communications o P2P disponible.
 
 Puedes consultar las reglas antes de crear una mesa. Tienen capítulos y un índice con enlaces a cada sección. Los atajos del juego aparecen en una lista independiente, con una entrada por atajo.
+La lista de juegos de la biblioteca de reglas también incluye una breve descripción de cada juego.
 En el texto de las reglas, H y Shift+H recorren los encabezados, K y Shift+K los enlaces, y Enter sobre un enlace del índice lleva al capítulo.
 
 Algunos juegos también tienen ajustes personales bajo Ctrl+P, accesibles desde el menú de la mesa. Entre ellos están Axel Pong, Audio Ball y Krowa. Afectan a tu forma de usar el juego y son independientes de la variante común elegida por el anfitrión.
@@ -189,7 +191,7 @@ Power Games tiene su propia selección de idioma de interfaz en Ajustes → Gene
 
 La lista opcional «Idiomas conocidos» sirve para completar traducciones que falten. Si un texto no está en el idioma principal, el programa puede recurrir a uno de los idiomas marcados y, en último término, al inglés.
 
-El idioma de la interfaz y el del contenido del juego son opciones distintas. El idioma de las preguntas, las cartas o el diccionario se elige en los ajustes de los juegos que ofrecen esa posibilidad.
+Puedes elegir el idioma de las preguntas, las cartas o el diccionario en los juegos que ofrecen esa opción. Al crear una mesa, se propone el idioma de la interfaz de quien la crea, o el inglés si no hay contenido disponible en ese idioma. Tus ajustes guardados tienen prioridad. Unirse a una mesa o reanudar una partida guardada no cambia su idioma.
 
 ## Partidas guardadas e historial
 

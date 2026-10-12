@@ -8,7 +8,7 @@
       },
       "paragraphs": [
         {
-          "pl": "W Audio Ballu posyłasz piłkę do przeciwnika, a gdy wraca, rozpoznajesz jej dźwięk i wybierasz obronę. Po udanej obronie piłka zatrzymuje się u ciebie i możesz przygotować następne uderzenie. Gdy przepuścisz piłkę, przeciwnik zdobywa punkt. Gracie we dwoje; zamiast drugiej osoby może grać bot."
+          "pl": "W Audio Ballu twoim zadaniem jest rozpoznawać nadlatującą piłkę po dźwięku i wybierać odpowiednią obronę. Po udanej obronie piłka zatrzymuje się u ciebie i możesz przygotować następne uderzenie. Gdy przepuścisz piłkę, przeciwnik zdobywa punkt. Gracie we dwoje; zamiast drugiej osoby może grać bot."
         },
         {
           "pl": "Do gry przydadzą się słuchawki. Przy zwykłym ustawieniu twoja strona znajduje się po prawej: piłkę przeciwnika słyszysz coraz bardziej z prawej, a po swoim uderzeniu słyszysz, jak oddala się w lewo."
@@ -37,7 +37,7 @@
           "pl": "Tych samych klawiszy używasz do obrony. Jeśli na przykład przeciwnik wykona uderzenie przypisane do W, zatrzymasz je klawiszem W lub strzałką w górę. Musisz rozpoznać rodzaj piłki po jej dźwięku."
         },
         {
-          "pl": "Przed pierwszym meczem warto poznać te dźwięki. Otwórz zasady przez Ctrl+F1 i wybierz „Audiotutorial”. Strzałkami wybierzesz nagranie, a Enterem lub Spacją je odtworzysz. Samouczek podaje klawisze i pozwala też usłyszeć przygotowanie uderzenia oraz zatrzymanie piłki."
+          "pl": "Przed pierwszym meczem warto poznać te dźwięki. Otwórz zasady skrótem Ctrl+F1 i wybierz „Audiotutorial”. Strzałkami wybierzesz nagranie, a Enterem lub Spacją je odtworzysz. Samouczek podaje klawisze i pozwala też usłyszeć przygotowanie uderzenia oraz zatrzymanie piłki."
         }
       ]
     },
@@ -51,7 +51,7 @@
           "pl": "Serwis to pierwsze uderzenie rozpoczynające wymianę. Gdy masz serwować, naciśnij strzałkę w prawo, żeby przygotować piłkę. Po dźwięku przygotowania naciśnij osobno jeden z klawiszy ataku: strzałkę w górę, w lewo albo w dół. Wtedy uderzysz piłkę i poślesz ją do przeciwnika. Zamiast strzałki w prawo możesz używać A."
         },
         {
-          "pl": "Kiedy przeciwnik uderzy, posłuchaj piłki i naciśnij albo przytrzymaj pasujący klawisz obrony. Możesz to zrobić od razu, nie czekając, aż piłka do ciebie doleci. Gra zapamięta wybraną obronę. Jeśli się pomylisz, możesz ją zmienić innym klawiszem, dopóki piłka cię nie minie."
+          "pl": "Kiedy przeciwnik uderzy, posłuchaj piłki i naciśnij albo przytrzymaj właściwy klawisz obrony. Możesz to zrobić od razu, nie czekając, aż piłka do ciebie doleci. Gra zapamięta wybraną obronę. Jeśli się pomylisz, możesz ją zmienić innym klawiszem, dopóki piłka cię nie minie."
         },
         {
           "pl": "Po dźwięku zatrzymania piłka jest u ciebie. Naciśnij strzałkę w prawo, a potem wybrany klawisz ataku, tak samo jak przy serwisie. Możesz odpowiedzieć innym rodzajem uderzenia niż ten, przed którym się broniłeś. Każde kolejne uderzenie w wymianie trochę przyspiesza piłkę."
@@ -60,7 +60,7 @@
           "pl": "Przy następnej piłce wybierz obronę nowym naciśnięciem, już po uderzeniu przeciwnika. Jeśli nadal trzymasz klawisz po poprzedniej piłce, najpierw go puść."
         },
         {
-          "pl": "Przed serwisem i po obronie nie ma od razu odliczania. Jeżeli jednak przeciwnik zbyt długo trzyma piłkę, możesz go ponaglić przez Ctrl+W. Ma wtedy dziesięć sekund na uderzenie, inaczej dostaniesz punkt. Przygotowanie piłki nie wystarcza: przed końcem czasu trzeba ją wysłać."
+          "pl": "Przed serwisem i po obronie nie ma od razu odliczania. Jeżeli jednak przeciwnik zbyt długo trzyma piłkę, możesz go ponaglić skrótem Ctrl+W. Ma wtedy dziesięć sekund na uderzenie, inaczej dostaniesz punkt. Przygotowanie piłki nie wystarcza: przed końcem czasu trzeba ją wysłać."
         }
       ]
     },
@@ -131,7 +131,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Ctrl+P otwiera ustawienia Audio Balla. Możesz tam zmienić stronę odsłuchu: po wybraniu lewej piłka będzie nadlatywała z prawej do lewej, a twoje uderzenia polecą w przeciwnym kierunku."
+          "pl": "Ctrl+P otwiera ustawienia Audio Balla. Możesz tam zmienić stronę odsłuchu: po wybraniu lewej piłka przeciwnika będzie nadlatywała z prawej do lewej, a po twoim uderzeniu poleci w przeciwnym kierunku."
         },
         {
           "pl": "W tym samym oknie wybierzesz zwykły pakiet dźwięków albo dźwięki z Audiodisca. Zmieniają się między innymi trzy rodzaje lotu, przygotowanie i zatrzymanie piłki. Audiotutorial korzysta z wybranego pakietu, więc możesz w nim poznać nowe brzmienie."

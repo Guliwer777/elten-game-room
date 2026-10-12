@@ -221,13 +221,13 @@
           "cs": "Volba Proti směru přidává karty tohoto útoku i jeho ukončení. V běžném složení jsou čtyři karty Proti směru a šest karet Konec jízdy proti směru."
         },
         {
-          "cs": "Zasažené auto se při hraní karet vzdálenosti vrací: míle se odečítají, nejníže však k nule. Auto musí mít povolenou jízdu a dál pro něj platí omezení rychlosti. Takto použitých 200 mil se počítá do obvyklého limitu dvou těchto karet."
+          "cs": "Zasažené auto se při hraní karet vzdálenosti vrací: míle se odečítají, ale jejich počet neklesne pod nulu. Auto musí mít povolenou jízdu a dál pro něj platí omezení rychlosti. Takto použitých 200 mil se počítá do obvyklého limitu dvou těchto karet."
         },
         {
           "cs": "Útok lze zahrát i na stojící auto nebo vedle jiné překážky, ne však na auto, které už proti směru jede. Správný směr obnovíš kartou Konec jízdy proti směru. Ostatní závady ani omezení rychlosti tím nezmizí."
         },
         {
-          "cs": "Před tímto útokem chrání také Řidičské eso. Běžným vyložením probíhající jízdu proti směru odstraní; při okamžité obraně útok zruší a přinese i prémii."
+          "cs": "Před tímto útokem chrání také Řidičské eso. Běžným vyložením probíhající jízdu proti směru ukončí; při okamžité obraně útok zruší a přinese i prémii."
         }
       ]
     },
@@ -247,7 +247,7 @@
           "cs": "- Odstranění červené dovolí rozjezd, pokud autu nebrání jiná překážka. Karta zastoupí zelenou i tehdy, když auto na svůj první rozjezd teprve čeká."
         },
         {
-          "cs": "- Po opravě paliva, pneumatiky či nehody je stále potřeba zelená, nemáš-li Přednost v jízdě."
+          "cs": "- Po odstranění nedostatku paliva, defektu či následků nehody je stále potřeba zelená, nemáš-li Přednost v jízdě."
         },
         {
           "cs": "- Zrušení omezení rychlosti nebo jízdy proti směru odstraní jen vybranou překážku. Ostatní zůstávají."

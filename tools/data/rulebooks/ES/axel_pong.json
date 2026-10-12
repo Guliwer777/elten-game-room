@@ -31,7 +31,7 @@
           "es": "Cuando debas sacar, pulsa flecha arriba o Espacio. La pelota sale desde la posición de tu paleta. Si mantienes flecha izquierda o derecha al sacar, la enviarás en diagonal."
         },
         {
-          "es": "Para devolver un golpe, lleva la paleta a la trayectoria de la pelota. Cuando esté cerca y a su alcance, pulsa flecha arriba o Espacio. Estar en el lugar correcto no basta: también hay que golpear en el momento adecuado."
+          "es": "Para devolver un golpe, lleva la paleta a la trayectoria de la pelota. Cuando la pelota esté cerca y al alcance de la paleta, pulsa flecha arriba o Espacio. Estar en el lugar correcto no basta: también hay que golpear en el momento adecuado."
         },
         {
           "es": "La parte de la paleta que toca la pelota determina la dirección de la devolución:"
@@ -149,7 +149,7 @@
       },
       "paragraphs": [
         {
-          "es": "También puedes jugar con ratón o panel táctil. Desplázalo a izquierda y derecha para mover la paleta y usa el botón izquierdo para sacar y golpear. Este control está disponible directamente en el campo de juego."
+          "es": "También puedes jugar con ratón o panel táctil. Mueve el ratón a izquierda y derecha o desliza el dedo por el panel táctil para mover la paleta. Usa el botón izquierdo para sacar y golpear. Este control está disponible directamente en el campo de juego."
         },
         {
           "es": "Con Ctrl+P abres tus ajustes de Pong:"

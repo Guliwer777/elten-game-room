@@ -13,6 +13,10 @@ module GameRoomSounds
     buzzer
     buzzer2
     quiz_wrong_answer
+    duck_challenge
+    duck_question
+    duck_correct
+    duck_frozen
     war_open
     ding
     shuffle
@@ -82,7 +86,7 @@ module GameRoomSounds
   # Balance the loud Battleship recordings before the user's volume controls.
   # Keep the audio files and playback handles intact for serial presentation.
   ASSET_VOLUME_GAINS = (BATTLESHIP_HITS + BATTLESHIP_LAUNCHES + ["rocket_miss"]).to_h { |name| [name, 0.2] }
-    .merge("war_open" => 0.6, "mille_accident" => 0.7,
+    .merge("war_open" => 0.6, "duck_challenge" => 0.544, "duck_question" => 0.7, "mille_accident" => 0.7,
       "mille_right_of_way" => 0.8, "mille_driving_ace" => 0.75,
       "mille_distance_50" => 0.35, "mille_distance_75" => 0.35, "mille_distance_100" => 0.5,
       "mille_wheel_change" => 0.5, "mille_instant_repair" => 0.65,
@@ -169,8 +173,8 @@ module GameRoomSounds
   # One persisted event may carry several independent cues. SoundPool starts
   # them without waiting, so a move, its special effect and its result remain
   # audible even when they belong to the same atomic action.
-  def event_cue(game:, event:, before_replay:, after_replay:, repository:, viewer:)
-    history = history_for_event(after_replay, event, repository)
+  def event_cue(game:, event:, before_replay:, after_replay:, repository:, viewer:, history: nil, include_result: true)
+    history ||= history_for_event(after_replay, event, repository)
     cues = Array(action_cue(
       game: game,
       event: event,
@@ -183,7 +187,7 @@ module GameRoomSounds
     if history.any? { |entry| entry.kind == :reshuffle }
       cues.unshift("card-shuffle")
     end
-    cues.concat(Array(result_cue(game, before_replay, after_replay, viewer)))
+    cues.concat(Array(result_cue(game, before_replay, after_replay, viewer))) if include_result
     cues = cues.compact.map(&:to_s).reject(&:empty?).uniq
     return nil if cues.empty?
     return cues.first if cues.length == 1

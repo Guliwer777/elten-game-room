@@ -8,13 +8,13 @@
       },
       "paragraphs": [
         {
-          "pl": "W Remiku zbierasz pasujące do siebie karty i wykładasz je na stół. Możesz też dokładać karty do układów, które już tam leżą. Za zagrane karty zdobywasz punkty, a gdy pozbędziesz się całej ręki, wygrywasz rundę. Wyniki kolejnych rund się sumują. Całą partię wygrywa osoba z największą liczbą punktów, gdy ktoś osiągnie 1000."
+          "pl": "W Remiku zbierasz pasujące do siebie karty i wykładasz je na stół. Możesz też dokładać karty do układów, które już tam leżą. Za zagrane karty zdobywasz punkty, a gdy pozbędziesz się całej ręki, wygrywasz rundę. Wyniki kolejnych rund się sumują. Całą partię wygrywa osoba z największą liczbą punktów po zakończeniu rundy, w której ktoś osiągnie 1000."
         },
         {
-          "pl": "Gra jest przeznaczona dla dwóch do ośmiu osób. Na początku każdej rundy dostajesz czternaście kart."
+          "pl": "W remika może grać od dwóch do ośmiu osób. Na początku każdej rundy dostajesz czternaście kart."
         },
         {
-          "pl": "W ręce poruszasz się strzałkami. Shift+C układa karty według kolorów, a Shift+H według wartości. Ponowne użycie tych skrótów odwraca kolejność. Jeśli wolisz kolejność, w której dostawałeś karty, przywrócisz ją przez Shift+M."
+          "pl": "Karty w ręce przeglądasz strzałkami. Shift+C układa karty według kolorów, a Shift+H według wartości. Ponowne użycie tych skrótów odwraca kolejność. Jeśli wolisz kolejność, w której dostawałeś karty, przywrócisz ją skrótem Shift+M."
         }
       ]
     },
@@ -77,7 +77,7 @@
           "pl": "Jeśli potrzebujesz kilku układów do osiągnięcia progu, po zaznaczeniu pierwszego naciśnij ponownie N i wybierz karty następnego. Niczego jeszcze nie wykładasz. P odczytuje przygotowane układy i ich wartość, więc możesz sprawdzić, czy masz już wystarczająco dużo punktów."
         },
         {
-          "pl": "Gotowe układy wykładasz razem klawiszem F. Gdy czegoś brakuje lub któryś układ jest niepoprawny, usłyszysz przyczynę i możesz zmienić wybór. Shift+P otwiera listę przygotowanych układów; Enter przy wybranym pozwala go poprawić albo usunąć. Escape podczas przygotowywania rezygnuje z całego wyłożenia."
+          "pl": "Gotowe układy wykładasz razem klawiszem F. Gdy czegoś brakuje lub któryś układ jest niepoprawny, usłyszysz przyczynę i możesz zmienić wybór. Shift+P otwiera listę przygotowanych układów; Enter przy wybranym pozwala go poprawić albo usunąć. Naciśnij Escape, żeby anulować całe przygotowywane wyłożenie."
         },
         {
           "pl": "Po pierwszym wyłożeniu nie obowiązuje już minimalna liczba punktów. Kolejne układy tworzysz tymi samymi klawiszami. Możesz też od razu dokładać do kart na stole, jeszcze w tej samej turze."
@@ -94,13 +94,13 @@
           "pl": "C otwiera listę układów na stole. Przeglądaj ją strzałkami; Enter odczytuje wybrany układ, a Escape wraca do ręki."
         },
         {
-          "pl": "Żeby dołożyć kartę, wybierz ją w ręce i naciśnij Enter, nie rozpoczynając nowego układu przez N. Zobaczysz miejsca, do których karta pasuje. Wybierz jedno z nich i zatwierdź Enterem."
+          "pl": "Żeby dołożyć kartę, wybierz ją w ręce i naciśnij Enter, nie rozpoczynając nowego układu klawiszem N. Zobaczysz miejsca, do których karta pasuje. Wybierz jedno z nich i zatwierdź Enterem."
         },
         {
           "pl": "Z wyszukuje następną kartę, którą można dołożyć, a Shift+Z poprzednią. Przy jednej pasującej karcie skrót może też od razu ją dołożyć."
         },
         {
-          "pl": "Serie można przedłużać na obu końcach. Do trzech kart tej samej wartości można dołożyć czwarty, brakujący kolor. Sam joker nie służy do przedłużania układu: trzeba wyłożyć go w nowym układzie z co najmniej dwiema zwykłymi kartami."
+          "pl": "Serie można przedłużać na obu końcach. Do trzech kart tej samej wartości możesz dołożyć czwartą kartę w brakującym kolorze. Sam joker nie służy do przedłużania układu: trzeba wyłożyć go w nowym układzie z co najmniej dwiema zwykłymi kartami."
         }
       ]
     },
@@ -169,7 +169,7 @@
           "pl": "Po rundzie, w której ktoś osiągnie 1000 punktów, wygrywa osoba z największą liczbą punktów. Przy remisie na pierwszym miejscu rozgrywacie następną rundę."
         },
         {
-          "pl": "S odczytuje punktację. Pod E sprawdzisz liczbę kart w rękach graczy i liczbę kart do dobrania, a pod T — czyja jest tura."
+          "pl": "S odczytuje punktację. Klawiszem E sprawdzisz liczbę kart w rękach graczy i liczbę kart do dobrania, a klawiszem T — czyja jest tura."
         }
       ]
     },
@@ -180,7 +180,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Po wyczerpaniu talii wcześniej odrzucone karty są tasowane i ponownie służą do dobierania. Ostatnia odrzucona karta nadal pozostaje dostępna pod Shift+D. Jeśli nie ma już skąd dobrać karty, możesz wykładać i dokładać bez dobierania."
+          "pl": "Po wyczerpaniu talii wcześniej odrzucone karty są tasowane i ponownie służą do dobierania. Ostatnią odrzuconą kartę nadal możesz dobrać skrótem Shift+D. Jeśli nie ma już skąd dobrać karty, możesz wykładać i dokładać bez dobierania."
         },
         {
           "pl": "Jeśli nie ma skąd dobrać kart i przez dwie pełne kolejki nikt nie wyłoży ani nie dołoży karty z ręki, runda się kończy. Każdy zachowuje punkty zdobyte za wyłożenia, lecz nie ma zwycięzcy rundy ani premii za jej zakończenie."
@@ -225,7 +225,7 @@
           "pl": "- Dobieranie także wcześniejszych odrzutów. D odczytuje wszystkie dostępne karty, a Shift+D otwiera ich listę. Najnowsza karta jest pierwsza. Wybierz kartę strzałkami i naciśnij Enter: dostaniesz ją razem ze wszystkimi odrzuconymi później. Wybór trzeciej karty oznacza więc dobranie trzeciej, drugiej i pierwszej. Jeśli dostępna jest tylko jedna karta, Shift+D bierze ją od razu."
         },
         {
-          "pl": "- Bez dobierania odrzutów. Dobierasz Spacją, a na koniec tury nadal odrzucasz kartę przez Delete."
+          "pl": "- Bez dobierania odrzutów. Dobierasz Spacją, a na koniec tury nadal odrzucasz kartę klawiszem Delete."
         },
         {
           "pl": "- Bez odrzucania kart. Po dobraniu i swoich zagraniach kończysz turę skrótem Shift+F. Wszystkie niewyłożone karty zostają w ręce."
@@ -340,7 +340,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Po włączeniu limitu czasu trzeba zdążyć zakończyć turę. Po jego przekroczeniu dostajesz 50 punktów kary, a kolej przechodzi do następnej osoby. Jeśli jeszcze nie dobierałeś, dostajesz także jedną kartę z talii, o ile jest dostępna. Gdy karta była już dobrana, nie dobierasz drugiej. Nie odrzucasz karty za przekroczony czas."
+          "pl": "Po włączeniu limitu czasu trzeba zdążyć zakończyć turę. Po jego przekroczeniu dostajesz 50 punktów kary, a turę rozpoczyna następna osoba. Jeśli jeszcze nie dobierałeś, dostajesz także jedną kartę z talii, o ile jest dostępna. Gdy karta była już dobrana, nie dobierasz drugiej. Nie odrzucasz karty za przekroczony czas."
         },
         {
           "pl": "Kary się sumują. Przekroczenie czasu z jednym niewykorzystanym jokerem zabranym ze stołu oznacza łącznie 350 punktów kary. W zwykłej grze odejmuje się je od wyniku, a w eliminacyjnej dodaje."

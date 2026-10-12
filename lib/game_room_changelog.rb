@@ -421,6 +421,22 @@ module GameRoomChangelog
         "A saved game is removed from your account once it has been successfully resumed. Save it again with Ctrl+S if you want to continue it later.",
         "Changed the sound played when banking points in Farkle."
       ].freeze
+    ).freeze,
+    Entry.new(
+      version: "2.0.4.9",
+      build: 248,
+      changes: [
+        "Added Duck Racing, a game for two to eight players, with bots. Race around Peaceful Pond, play cards and win feathers in 18 different challenges. These include memory, sound, card and number games, as well as a single point in Audio Ball or Axel Pong. The host can choose the number of laps, available challenges and question sets.",
+        "Polished the Polish game rules: clarified confusing sentences, removed unnecessary explanations and reorganized descriptions. Huge thanks to Lwica for her patient reading, for spotting so many unclear passages and for all her thoughtful language corrections!",
+        "Improved the wording and clarity of the English, Czech, Spanish and Russian rules as well.",
+        "Added 174 questions to The Witcher - Books set, based on suggestions from balteam. After editing and checking them against the books, the set now contains 1449 questions.",
+        "Changed century numbers in the Polish general-knowledge set from Roman to Arabic numerals so speech synthesizers read them more clearly.",
+        "When creating a table, the default language of questions, words or cards now follows the Power Games interface language. If that language is unavailable, English is selected. Your saved settings still take precedence.",
+        "Short game descriptions are now also available when choosing a game in Game rules.",
+        "Clarified the options for switching between playing and observing: the menu now makes clear whether you are changing your own role or the selected person's. If the current participants cannot start a game, the message lists the selected variant's requirements and the people signed up to play.",
+        "Fixed word explanations in Krowa. If the dictionary has no definition, the program reports this instead of displaying unrelated text from the page, such as the add link.",
+        "Reduced unnecessary waiting for the game to refresh after moves. When the updated game state has already arrived, it can be displayed immediately without an additional Please wait step."
+      ].freeze
     ).freeze
   ].freeze
 

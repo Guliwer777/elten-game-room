@@ -229,11 +229,41 @@ between subjects often become apparent only during a continuous read-through.
 
 ### Check what the words actually mean
 
-Grammatically correct wording can still name the wrong thing or obscure the
-rule. Cards are shuffled, not earlier plays: in Polish, use “wcześniej zagrane
-karty”, not “wcześniejsze zagrania”. Say when someone is eliminated and who
-wins, rather than describing “the last person who does not drop out for
-points”. Read the action and its subject literally before accepting a phrase.
+Check meaning at sentence level in every language, not only grammar. Apply
+the following checks to new prose and to complete existing passages under
+review. They are editorial decisions, not a list of words to replace globally.
+
+- Match the action to its subject and object. Name the actual thing being
+  moved, played, drawn, counted or announced. Players answer questions;
+  cards, not earlier plays, return to a draw pile. Use the target language's
+  ordinary game expressions: an expression that works in English may be an
+  awkward image in Polish, Czech, Spanish or Russian. Do not reject an
+  established idiom merely because a word also has another literal meaning.
+- Check implied conditions and history. Words meaning “still”, “again”,
+  “remaining”, “another” or “already” must reflect a real earlier action or
+  state. “With three players” and “when three players remain” are different
+  rules. Describe a supported player-count range as a possibility, not a
+  requirement to fill every seat. Preserve a genuine exact-player requirement.
+- Make references unambiguous. The reader should know who acts, what changes
+  and what each pronoun refers to. Check number, gender, case and agreement
+  where the language uses them. Restore a noun or subject when it prevents
+  confusion, not mechanically in every sentence; natural omitted subjects
+  are appropriate in languages that use them.
+- Keep the narrative viewpoint and terminology consistent. Address the
+  reader in the chosen local register; do not drift between “you”, an
+  unnamed participant and impersonal instructions without a reason. A
+  change from individual to team play may require a genuine change of
+  address. Do not rename the same game object simply to vary the wording.
+- Remove distracting repetition by changing the sentence structure or
+  omitting words that add nothing. Do not substitute a less familiar synonym
+  or an abstract noun phrase for a simple verb just to sound more formal.
+  Repetition is useful when it keeps a rule or a pronoun's reference clear.
+- Finish the thought. A sentence or explanatory bullet needs an identifiable
+  action and consequence, not a setting name followed by a detached condition.
+  Keep comparable list entries grammatically parallel where natural. Short
+  labels and shortcut reminders may remain fragments if their meaning is
+  complete in context. Avoid summaries such as “the last person who does not
+  drop out for points”; state who is eliminated and who wins.
 
 Explain the effect that matters to the player. A distance card “brings you
 closer to the finish”, rather than “adding distance to your route”. Check
@@ -554,14 +584,32 @@ use different sentence boundaries and phrasing. Keep section structure and
 cross-references coherent. Use the established names from the local interface
 so the player can find the option being described.
 
-In Polish, check inflection, agreement and repeated verbal nouns. Keep a
-consistent way of addressing the player without starting every sentence
-with “musisz” or “możesz”. In English, prefer direct verbs and natural use of
-“you” rather than repeatedly calling the reader “the participant”. Czech,
-Spanish, Russian and future translations need the same editorial attention
-to their own syntax and conventions, not Polish or English constructions
-with substituted words. Preserve meaningful distinctions in tense and aspect
-and use the project's agreed terminology and variety of the language.
+Apply the sentence-level checks above independently in every supported and
+future language. A Polish correction establishes the intended meaning and
+the kind of problem to look for, not the wording of all other editions.
+Keep a natural expression that already conveys the right rule; do not
+rewrite it merely to resemble a revised Polish sentence.
+
+- In Polish, check inflection, agreement, clear references and natural
+  verb–noun combinations. Avoid repeated verbal nouns and do not begin every
+  instruction with “musisz” or “możesz”.
+- In English, check articles, number, pronoun references and the difference
+  between a requirement and an available action. Prefer direct verbs and
+  ordinary “you” instructions to repeated references to “the participant”.
+- In Czech, check case after verbs and prepositions, agreement and the
+  choice of verbal aspect. Do not copy Polish word order or assume that
+  similar-looking words have the same use.
+- In Spanish, keep the form of address and commands consistent, check
+  agreement and pronoun references, and use established local game terms.
+  Do not make omitted subjects explicit merely to copy an English sentence.
+- In Russian, check case, aspect, agreement and natural word order. Prefer
+  direct instructions to bureaucratic noun phrases, and distinguish a
+  completed action from an ongoing or repeatable one.
+
+These are areas to check, not mechanical language rules or grounds for
+discarding natural alternatives. Use the project's agreed terminology and
+variety of each language. For a new language, identify its corresponding
+risks instead of assuming that the Polish or English checklist is sufficient.
 
 Read each complete changed language version. Back-translation can help check
 meaning, but cannot establish natural phrasing. If a language cannot be
@@ -581,6 +629,20 @@ After checking the facts, set the implementation aside and read the changed
 rulebook from beginning to end as a player. Perform this language review
 separately from the mechanical checks. For a larger rewrite, assess how the
 chapters fit together, not only the paragraphs that were individually edited.
+
+During that review, check each sentence's actor, action, object, condition
+and consequence where applicable. Read it again in its paragraph to check
+references, viewpoint, repeated wording and the order of ideas. These are
+review questions, not five fields to force into every sentence. Recheck the
+meaning after editing: a smoother sentence must not introduce a prerequisite,
+change a player count or alter who receives a penalty.
+
+When feedback reveals a recurring problem, look for the same kind of error
+elsewhere in the authorised material and in its other language editions.
+Do not stop at the quoted phrase, but do not perform blind replacements or
+rewrite sound passages to create uniformity. Keep creator-supplied texts
+protected as described above; report issues there separately. A full reading,
+not a search pattern or sample, is needed to claim a complete language review.
 
 Read the main explanation with the shortcut reference and the code set
 aside. Walk through an ordinary turn or rally and one common difficulty

@@ -11,7 +11,7 @@
           "pl": "W Monopoly kupujesz nieruchomości i pobierasz czynsz od graczy, którzy na nich staną. Musisz jednocześnie zachować pieniądze na własne opłaty. Wygrywa ostatnia osoba, która nie zbankrutuje."
         },
         {
-          "pl": "Gra jest dla dwóch do ośmiu osób. Przy zwykłych ustawieniach używa się planszy Atlantic City z czterdziestoma polami. Wszyscy zaczynają na Starcie i mają po 1500 dolarów."
+          "pl": "W grze może uczestniczyć od dwóch do ośmiu osób. Przy zwykłych ustawieniach używa się planszy Atlantic City z czterdziestoma polami. Wszyscy zaczynają na polu startowym i mają po 1500 dolarów."
         }
       ]
     },
@@ -57,7 +57,7 @@
           "pl": "- Zakłady, takie jak elektrownia i wodociągi, naliczają czynsz według wyniku rzutu kośćmi. Mnożnik zależy od tego, ile zakładów ma właściciel."
         },
         {
-          "pl": "Klawisz F odczytuje kartę nieruchomości, na której stoisz. Znajdziesz tam cenę, czynsz i koszty związane z zabudową lub zastawem. Swoje nieruchomości przeglądasz klawiszem V, a cudze przez Shift+V. Na liście wybierz pozycję strzałkami i naciśnij Enter, by poznać szczegóły."
+          "pl": "Klawisz F odczytuje kartę nieruchomości, na której stoisz. Znajdziesz tam cenę, czynsz i koszty związane z zabudową lub zastawem. Swoje nieruchomości przeglądasz klawiszem V, a cudze skrótem Shift+V. Na liście wybierz pozycję strzałkami i naciśnij Enter, by poznać szczegóły."
         }
       ]
     },
@@ -94,7 +94,7 @@
           "pl": "- Bezpłatny parking wypłaca całą zgromadzoną pulę. Trafiają do niej podatki i opłaty dla banku z kart lub za wyjście z więzienia. Po wypłacie pula zaczyna zbierać się od zera."
         },
         {
-          "pl": "- Szansa i Kasa Społeczna uruchamiają kartę zdarzenia. Gra odczytuje jej działanie i od razu je wykonuje."
+          "pl": "- Gdy zatrzymasz się na polu Szansa lub Kasa Społeczna, gra odczyta kartę zdarzenia i od razu wykona zapisane na niej polecenie."
         },
         {
           "pl": "Działanie kart zależy od tego, która zostanie dobrana:"
@@ -150,10 +150,10 @@
           "pl": "- Musisz mieć pieniądze na opłacenie budowy."
         },
         {
-          "pl": "Naciśnij H, żeby otworzyć listę możliwych budów. Wybierz ulicę strzałkami i zatwierdź Enterem. Każde zatwierdzenie dodaje jeden budynek za cenę podaną na liście."
+          "pl": "Naciśnij H, żeby sprawdzić, co możesz zbudować. Wybierz ulicę strzałkami i zatwierdź Enterem. Każde zatwierdzenie dodaje jeden budynek za cenę podaną na liście."
         },
         {
-          "pl": "Domy buduje się równomiernie w całej grupie. Najpierw postaw po jednym na każdej ulicy, zanim zaczniesz dodawać drugie. W ten sam sposób dochodzisz do czterech domów na ulicy. Następna budowa zamienia te cztery domy w hotel."
+          "pl": "Domy buduje się równomiernie w całej grupie. Najpierw postaw po jednym na każdej ulicy, zanim zaczniesz stawiać kolejne domy. Na jednej ulicy możesz postawić do czterech domów, a następnie zastąpić je hotelem."
         },
         {
           "pl": "Bank ma trzydzieści dwa domy i dwanaście hoteli. Gdy zabraknie potrzebnych budynków, trzeba poczekać, aż wrócą do banku. Przy stawianiu hotelu cztery zastąpione domy wracają do zapasu."
@@ -201,13 +201,13 @@
       },
       "paragraphs": [
         {
-          "pl": "Nieruchomości możesz też zdobywać przez wymianę. We własnej turze przed rzutem naciśnij E, wybierz drugiego gracza strzałkami i zatwierdź Enterem."
+          "pl": "Nieruchomości możesz też zdobywać przez wymianę. We własnej turze przed rzutem naciśnij E, wybierz gracza strzałkami i zatwierdź Enterem."
         },
         {
           "pl": "W propozycji wpisujesz, ile pieniędzy dajesz i ile chcesz otrzymać. Tabem przechodzisz do list nieruchomości obu stron. Na każdej liście wybierasz pozycje strzałkami, a Spacją zaznaczasz te, które mają wejść do wymiany. Możesz połączyć kilka nieruchomości z dopłatą."
         },
         {
-          "pl": "Gdy oferta jest gotowa, przejdź Tabem do „Wyślij propozycję” i naciśnij Enter. Druga osoba przyjmuje ją klawiszem A albo odrzuca klawiszem R. Dopiero przyjęcie oferty przenosi pieniądze i nieruchomości."
+          "pl": "Gdy oferta jest gotowa, przejdź Tabem do „Wyślij propozycję” i naciśnij Enter. Druga osoba przyjmuje ją klawiszem A albo odrzuca klawiszem R. Wymiana następuje dopiero po przyjęciu oferty."
         },
         {
           "pl": "Wymiana ma następujące ograniczenia:"

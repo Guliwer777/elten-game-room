@@ -57,7 +57,7 @@
           "cs": "- Karta „Dobrat dvě“, zkráceně plus dva, ukládá dalšímu hráči dobrat dvě karty. Může odpovědět vlastním plus dva, zvýšit trest na čtyři a poslat ho dál. Další odpovědi trest dál sčítají."
         },
         {
-          "cs": "- Karta „Změna barvy a dobrat čtyři“, zkráceně divoká plus čtyři, mění barvu a ukládá čtyři karty. Odpovědět lze další divokou plus čtyři. Tresty plus dva a plus čtyři se mezi sebou nemíchají."
+          "cs": "- Karta „Změna barvy a dobrat čtyři“, zkráceně divoká plus čtyři, mění barvu a nutí dalšího hráče dobrat čtyři karty. Odpovědět lze další divokou plus čtyři. Tresty plus dva a plus čtyři se mezi sebou nemíchají."
         },
         {
           "cs": "Trest přijmeš mezerníkem a vezmeš celý počet karet; jeho výši přečte G. Pak ještě smíš zahrát vhodnou kartu. Nemáš-li žádnou, tah skončí."
@@ -74,7 +74,7 @@
           "cs": "S jedinou kartou stiskni U a ohlas „uno“. Zapomene-li někdo, soupeř ho chytí stejnou klávesou, dokud nenastane další zahrání nebo dobrání. Přistižený dostane dvě karty."
         },
         {
-          "cs": "Poslední vyložená karta vyhraje kolo. Je-li trestná, nejdřív se vyřeší dobírání. Vítěz má nula bodů, ostatní zapíší zbylé karty:"
+          "cs": "Zahráním poslední karty vyhraješ kolo. Je-li trestná, nejdřív se vyřeší dobírání. Vítěz má nula bodů, ostatní si zapíší trestné body za karty, které jim zůstaly:"
         },
         {
           "cs": "- Číselná karta dává tolik trestných bodů, kolik je na ní uvedeno."
@@ -106,7 +106,7 @@
           "cs": "- Zakázat dobrovolné dobírání s vhodnou kartou nebo změnit nejvyšší počet běžných dobrání za tah."
         },
         {
-          "cs": "- Dobírat do hratelné karty: jednou stiskneš mezerník a bereš, dokud lze hrát nebo dojdou dostupné karty. Výše trestů se tím nemění."
+          "cs": "- Dobírat do hratelné karty: jednou stiskneš mezerník a postupně dobíráš, až můžeš zahrát kartu nebo dojdou dostupné karty. Výše trestů se tím nemění."
         },
         {
           "cs": "- Zakázat odpovědi na trestné karty. Napadený pak musí dobrat, nemůže poslat trest dál."
@@ -140,7 +140,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Před hrou lze vybrat tři balíčky:"
+          "cs": "Před hrou si můžeš vybrat ze tří balíčků:"
         },
         {
           "cs": "- Klasický odpovídá základním pravidlům výše."
@@ -163,10 +163,10 @@
           "cs": "No Mercy zachovává přikládání i bodování klasického UNO a přidává další karty:"
         },
         {
-          "cs": "- Barevná karta „Dobrat čtyři“, tedy plus čtyři, ukládá následujícímu hráči čtyři karty."
+          "cs": "- Barevná karta „Dobrat čtyři“, tedy plus čtyři, nutí následujícího hráče dobrat čtyři karty."
         },
         {
-          "cs": "- „Změna barvy a dobrat šest“ a „Změna barvy a dobrání deseti karet“ jsou divoké plus šest a plus deset: dovolují změnit barvu a ukládají příslušný počet karet."
+          "cs": "- „Změna barvy a dobrat šest“ a „Změna barvy a dobrání deseti karet“ jsou divoké plus šest a plus deset: dovolují změnit barvu a nutí dalšího hráče dobrat příslušný počet karet."
         },
         {
           "cs": "- „Divoká karta: změna směru a dobrání čtyř“ obrátí hru a napadne nově následujícího hráče. Ve dvou se trest vrátí na toho, kdo ji zahrál."
@@ -227,7 +227,7 @@
           "cs": "Před hrou lze zapnout také tyto možnosti:"
         },
         {
-          "cs": "- Přebírání tahu dovolí mimo vlastní pořadí zahrát totožnou nedivokou kartu s vrchní kartou na stole. Vyber ji a stiskni Enter. Převezmeš tah a účinek míří na následujícího hráče. Neplatný pokus stojí tři trestné body. Při zapnutém superpřebírání tahu podle hodnoty stačí shodné číslo či symbol bez shodné barvy. Tato volba vyžaduje zapnuté běžné přebírání tahu."
+          "cs": "- Přebírání tahu dovolí mimo vlastní tah zahrát nedivokou kartu, která je totožná s vrchní kartou na stole. Vyber ji a stiskni Enter. Převezmeš tah a účinek míří na následujícího hráče. Neplatný pokus stojí tři trestné body. Při zapnutém superpřebírání tahu podle hodnoty stačí shodné číslo či symbol bez shodné barvy. Tato volba vyžaduje zapnuté běžné přebírání tahu."
         },
         {
           "cs": "- Postupky dovolí po vlastním zahrání rychle přidávat sousední čísla stejné barvy jedním směrem. Po zelené pětce tak můžeš přidat šestku a sedmičku. Každou vyber a zahraj Enterem zvlášť, dodrž rostoucí či klesající směr a stihni to před cizím zahráním."

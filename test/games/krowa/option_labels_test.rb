@@ -1,11 +1,11 @@
 require_relative "../../support/binary_rule_dictionary"
+require_relative "../../support/authored_rulebooks"
 
 def assert(value, message)
   raise message unless value
 end
 
 game = GameRoomGames::Krowa.new
-authoring = JSON.parse(File.read(File.join(BinaryRulesLoad::ROOT, "tools/data/rulebooks/krowa.json"), encoding: "UTF-8"))
 %w[pl en fallback].each do |language|
   $rules_english = language != "pl"
   GameRoomTestLocalization.use_language(language)
@@ -21,7 +21,7 @@ authoring = JSON.parse(File.read(File.join(BinaryRulesLoad::ROOT, "tools/data/ru
   # The supplied rules explain options in natural prose rather than repeating
   # their exact UI labels. Check the complete replacement through binary loading.
   text_language = language == "pl" ? "pl" : "en"
-  authoring.fetch("sections").reject { |section| section.fetch("id") == "controls" }.each do |section|
+  GameRoomTest::Rulebooks.sections('krowa', language).reject { |section| section.fetch("id") == "controls" }.each do |section|
     ([section.fetch("title")] + section.fetch("paragraphs")).each do |pair|
       text = pair.fetch(text_language)
       assert(rules.include?(text), "Krowa rules omit or mistranslate #{section.fetch('id')} in #{language}: #{text}")

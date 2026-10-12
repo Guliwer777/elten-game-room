@@ -49,10 +49,30 @@ Top-level content registration calls the translator explicitly. The AST coverage
 test detects unscoped translation helper calls in production files.
 
 Host-provided controls can still announce their roles in ELTEN's language.
-Recorded announcer audio is unchanged. Language choices do not change a table's
-question/card/dictionary language, game options, content identity or other players'
-interfaces. New computer names follow the local UI language where a matching
+Recorded announcer audio is unchanged. Interface language changes do not change
+an existing table's question/card/dictionary language, game options, content
+identity or other players' interfaces. New computer names follow the local UI language where a matching
 name pool exists; existing saved name tokens are not rewritten.
+
+## New-table content defaults
+
+The creation form and a new widget preset use `table_creation_options`, not
+locale-sensitive replay defaults. For games declaring `content_language_option_key`,
+the initial content language matches the creator's Power Games interface language
+(regional IDs such as `pl-PL` match `pl`). If no matching content is offered,
+English is selected. Known languages and the host's separate interface language
+do not influence this choice. Quiz, Scrabble and Taboo use the shared content-pack
+selector; Categories and Duck Racing declare their own language option keys.
+
+Build dependent set choices from these initial options before opening the form.
+Explicit options, existing presets and remembered selections take precedence;
+Duck Racing remembers its question language together with its set checklist.
+For a checklist stored without a language, its installed set IDs identify the
+language when the match is unique. Unknown IDs remain visible for correction.
+Do not use this creation helper in normalization, replay, rematches or archive
+restoration. `default_options` remains deterministic, and recorded content IDs,
+versions and checksums retain their validation. Selection uses metadata only,
+without loading dictionaries or question packs.
 
 ## Adding another interface translation
 

@@ -85,7 +85,8 @@ assert(game.minimum_players == 2 && game.maximum_players == 8, "Quiz Party expos
 assert(game.supports_bots?, "Quiz Party does not offer computer players")
 assert(!game.perfect_information?, "hidden answers were exposed to tree search")
 assert(game.rule_book.documents.map(&:id) == [:rules, :controls], "the rule book must expose rules and keyboard help")
-assert(game.rule_book.sections.any? { |section| section.id == :bot_pacing }, "the shared bot timing rule is missing")
+assert(game.effective_option_definitions.any? { |option| option.key == 'bot_delay' }, "the shared bot timing setting is missing")
+assert(game.rule_book.sections.none? { |section| section.id == :bot_pacing }, "generic bot help was appended to the authored rules")
 
 defaults = game.default_options
 assert(defaults["answer_time"] == 20, "the default answer time is wrong")

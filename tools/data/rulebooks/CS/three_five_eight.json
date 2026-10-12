@@ -8,7 +8,7 @@
       },
       "paragraphs": [
         {
-          "cs": "3-5-8 hrají tři hráči. Každý přiloží jednu kartu a nejvyšší získá všechny tři; tomu se říká zdvih. Většinou chceš brát co nejvíce zdvihů, každý ale má jiný cíl: tři, pět nebo osm. Za překročení cíle dostáváš body, za chybějící zdvihy je ztrácíš."
+          "cs": "3-5-8 hrají tři hráči. Každý přiloží jednu kartu a hráč s nejsilnější kartou získá všechny tři; tomu se říká zdvih. Většinou chceš brát co nejvíce zdvihů, každý ale má jiný cíl: tři, pět nebo osm. Za překročení cíle dostáváš body, za chybějící zdvihy je ztrácíš."
         },
         {
           "cs": "Hrajete osmnáct rozdání a při každém další hráč vybírá jeho pravidla. Po posledním vítězí nejvyšší celkový součet."
@@ -48,7 +48,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Po volbě se dorozdá do šestnácti karet každému. Volící hráč navíc dostane čtyřkaretní talón. Jeho obsah se dozvědí všichni."
+          "cs": "Po volbě se každému dorozdá do šestnácti karet. Volící hráč navíc dostane čtyřkaretní talón. Jeho obsah se dozvědí všichni."
         },
         {
           "cs": "S talónem máš dvacet karet a čtyři musíš odložit. Vždy jednu vyber šipkami a potvrď Enterem, celkem čtyřikrát. Odložené karty se už nehrají a ostatní tvou volbu neuvidí."
@@ -123,7 +123,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Od druhého rozdání s trumfy vzniká právo na výměnu podle předchozího výsledku. Za každý kladný bod z minulého rozdání smíš odevzdat jednu kartu hráčům se záporným výsledkem. Každý z nich přijme nejvýš tolik výměn, kolik bodů ztratil. Celkové skóre nerozhoduje."
+          "cs": "Od druhého rozdání vzniká právo na výměnu podle předchozího výsledku, pokud se v nynějším rozdání hraje s trumfy. Za každý kladný bod z minulého rozdání smíš odevzdat jednu kartu hráčům se záporným výsledkem. Každý z nich přijme nejvýš tolik výměn, kolik bodů ztratil. Celkové skóre nerozhoduje."
         },
         {
           "cs": "Vyměňuje se po volbě trumfu a rozdání šestnácti karet, ještě před talónem. Mají-li právo dva hráči, začíná ten s vyšším cílem v nynějším rozdání. Vyber kartu a potvrď Enterem, pak vyber příjemce a potvrď znovu."

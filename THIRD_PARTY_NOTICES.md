@@ -223,6 +223,122 @@ full recording. No dynamic compression or limiter was used; the original
 remained unchanged. This sound is for new tables; invitations still use
 `notice.opus`.
 
+### Duck Racing
+
+`Audio/duck_note_c.opus` — [C4.wav](https://freesound.org/people/joesh2/sounds/577691/)
+by **joesh2**, dedicated to the public domain under
+[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+The public high-quality MP3 preview was downloaded on 12 October 2026.
+`tools/prepare-duck-marimba.rb` takes the first 150 ms, with a 2 ms fade-in
+and a 40 ms fade-out, to retain the challenge's existing short-note timing.
+Stereo and the source level are preserved. `tools/encode_audio.rb` encodes
+the prepared recording as Ogg Opus 144 kb/s VBR, 48 kHz, 20 ms frames.
+Simon and sound ordering transpose this marimba C4 to other notes.
+It replaces the earlier synthetic tone; the downloaded source remains
+outside the application. The local license text is `LICENSES/CC0-1.0.txt`.
+
+The rhythm challenge uses two snare recordings by **TheEndOfACycle**:
+
+- F: `Audio/duck_rhythm_f.opus` — [Smacky Snare Drum](https://freesound.org/s/673494/).
+- J: `Audio/duck_rhythm_j.opus` — [Clicky Snare Drum Hit](https://freesound.org/s/669855/).
+
+Both are dedicated to the public domain under
+[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+The user supplied the high-quality Ogg previews and their license notices,
+downloaded on 12 October 2026. `tools/encode_audio.rb` converted the complete
+recordings to Ogg Opus 144 kb/s VBR, 48 kHz, 20 ms frames, audio mode and
+complexity 10. Stereo, levels and available metadata were preserved; no
+trimming, normalization or pitch shift was applied. The originals remain
+outside the application. The local license text is `LICENSES/CC0-1.0.txt`.
+
+Sound Memory uses five distinct recordings, without pitch shifting:
+
+- `Audio/duck_memory_bark.opus` — [Single Dog Bark](https://freesound.org/people/kwahmah_02/sounds/277058/), by **kwahmah_02** (0.389 s, stereo).
+- `Audio/duck_memory_bell.opus` — [SingleDing](https://freesound.org/people/NoisyRedFox/sounds/759839/), by **NoisyRedFox** (0.601 s, mono).
+- `Audio/duck_memory_drop.opus` — [Single Water Drop](https://freesound.org/people/paespedro/sounds/174718/), by **paespedro** (0.472 s, stereo).
+- `Audio/duck_memory_clap.opus` — [Clap 1.wav](https://freesound.org/people/Sorinious_Genious/sounds/561089/), by **Sorinious_Genious** (0.396 s, stereo).
+- `Audio/duck_memory_zip.opus` — [zipper short.wav](https://freesound.org/people/ref57/sounds/361382/), by **ref57** (0.650 s, stereo).
+
+All five are dedicated to the public domain under CC0 1.0. The public HQ
+MP3 previews were downloaded on 12 October 2026. The complete recordings
+and channels were retained, without trimming.
+Attribution was added to the audio metadata, then `tools/encode_audio.rb`
+converted them to Ogg Opus 144 kb/s VBR, 48 kHz, 20 ms frames, audio mode
+and complexity 10. Sources remain outside the application; the local
+license text is `LICENSES/CC0-1.0.txt`. Their playback loudness was subsequently
+matched to approximately -24 LUFS using the Opus output-gain header. The
+encoded audio packets, lengths, channels and attribution remain unchanged.
+
+`Audio/duck_quack.opus` — [Cartoon - Duck Quack](https://freesound.org/people/Breviceps/sounds/445960/)
+by **Breviceps**, dedicated to the public domain under
+[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+The source page explicitly permits copying, modification and distribution.
+The publicly available high-quality MP3 preview was downloaded on 11 October
+2026, downmixed to mono and transcoded to Ogg Opus 144 kb/s VBR, 48 kHz,
+20 ms frames. The complete 0.383-second recording was retained, without
+volume changes. The original download is a development input, not a second
+copy in the installed application. The local CC0 text is in
+`LICENSES/CC0-1.0.txt`.
+
+`Audio/duck_countdown.opus` — [3 2 1 drop](https://freesound.org/s/802499/)
+by **Sadiquecat**, dedicated to the public domain under
+[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+The user supplied the Freesound high-quality Ogg preview and its license
+notice, downloaded on 11 October 2026. The quiet tail was trimmed to 2.132
+seconds, with a 5 ms fade at the cut to avoid a click. The recording was
+converted with `tools/encode_audio.rb` to Ogg Opus, 144 kb/s VBR,
+48 kHz, 20 ms frames, audio mode and complexity 10. Mono, the original
+level and available metadata were preserved, without pitch changes.
+The source recording remains unchanged outside the application.
+The local license text is in `LICENSES/CC0-1.0.txt`.
+
+`Audio/duck_challenge.opus` — [XQCMinous - A2](https://freesound.org/s/639454/)
+by **JWPH_2017**, licensed under
+[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/), for noncommercial use.
+The user supplied the Freesound low-quality MP3 preview and its license
+notice, downloaded on 11 October 2026. The full mono recording was converted
+with `tools/encode_audio.rb` to Ogg Opus, 144 kb/s VBR, 48 kHz, 20 ms frames,
+audio mode and complexity 10, preserving available metadata. Playback in
+the game uses gain 0.64 (two successive 20% reductions), before the user's volume setting.
+The original recording remains unchanged outside the application. This
+sound's license is separate from the game code's license.
+
+`Audio/duck_question.opus` — [Magical Hit](https://freesound.org/s/430769/)
+by **SailorErick**, dedicated to the public domain under
+[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+The user supplied the Freesound high-quality Ogg preview and its license
+notice. On 12 October 2026, the complete stereo recording was converted
+with `tools/encode_audio.rb` to Ogg Opus, 144 kb/s VBR, 48 kHz, 20 ms frames,
+audio mode and complexity 10, preserving its level and available metadata.
+It is played at gain 0.7 (30% quieter), before the user's volume setting,
+when a square or card opens a question for everyone. No trimming or
+normalization was applied; the original remains outside the application.
+The local license text is in `LICENSES/CC0-1.0.txt`.
+
+`Audio/duck_correct.opus` — [Training Program, Correct1.aif](https://freesound.org/s/181860/)
+by **timgormly**, dedicated to the public domain under
+[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+The user supplied the Freesound high-quality Ogg preview and its license
+notice. On 12 October 2026, the full stereo recording was converted with
+`tools/encode_audio.rb` to Ogg Opus, 144 kb/s VBR, 48 kHz, 20 ms frames,
+audio mode and complexity 10. Its level and available metadata were
+preserved, without trimming or normalization. The original remains
+unchanged outside the application. This personal confirmation is used for
+the selected Duck Racing number challenges and a solved sound order, not
+for Quiz. The local license text is in `LICENSES/CC0-1.0.txt`.
+
+`Audio/duck_frozen.opus` — [SFX_Spell_IceShoot_02](https://freesound.org/s/790466/)
+by **Omiranda14**, licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The user supplied the Freesound low-quality MP3 preview and its license
+notice, downloaded on 11 October 2026. On 12 October, the full stereo
+recording was converted with `tools/encode_audio.rb` to Ogg Opus, 144 kb/s
+VBR, 48 kHz, 20 ms frames, audio mode and complexity 10. Its level and
+available metadata were preserved, without trimming or normalization.
+It accompanies freezing and turns skipped while frozen. The source
+remains unchanged outside the application. The local license text is in
+`LICENSES/CC-BY-4.0.txt`.
+
 ### Wrong quiz answer
 
 `Audio/quiz_wrong_answer.opus` — [Dat's Wrong!](https://freesound.org/s/587253/)

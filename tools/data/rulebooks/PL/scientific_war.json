@@ -11,7 +11,7 @@
           "pl": "W wojnie naukowej wygrywa ten, kto odbierze przeciwnikom wszystkie karty. Sam wybierasz kartę do każdego starcia, a niektóre karty pozwalają zmienić jego wynik lub ułatwić sobie następne zagranie."
         },
         {
-          "pl": "Gra od dwóch do ośmiu osób. Na początek każdy ma taki sam zestaw wartości: karty od dwójki do asa i jednego jokera. Kolor karty nie decyduje o jej sile."
+          "pl": "W grze może uczestniczyć od dwóch do ośmiu osób. Na początek każdy ma taki sam zestaw wartości: karty od dwójki do asa i jednego jokera. Kolor karty nie decyduje o jej sile."
         }
       ]
     },
@@ -25,10 +25,10 @@
           "pl": "Każdy wybiera kartę, nie widząc wyborów przeciwników. Przejrzyj rękę strzałkami i zatwierdź kartę Enterem. Klawiszem T sprawdzisz, kto już wybrał. Gdy wszyscy będą gotowi, poznacie zagrane karty."
         },
         {
-          "pl": "Takie starcie nazywa się lewą. Gracz, który zagrał najwyższą kartę, zabiera wszystkie karty z lewy. Od najsłabszej do najsilniejszej są to dwójka, kolejne karty z numerami, walet, dama, król i as. Wynik ostatniej lewy sprawdzisz klawiszem V."
+          "pl": "Takie starcie nazywa się lewą. Gracz, który zagrał najsilniejszą kartę, zabiera wszystkie karty z lewy. Zwykła kolejność od najsłabszej do najsilniejszej to dwójka, kolejne karty z numerami, walet, dama, król i as. Wynik ostatniej lewy sprawdzisz klawiszem V."
         },
         {
-          "pl": "Zdobyte karty czekają oddzielnie od ręki. Dopiero kiedy zagrasz wszystkie dotychczasowe karty, dostaniesz do ręki swoje zdobycze i będziesz wybierać z nich. Jeżeli nie masz już ani kart w ręce, ani zdobyczy, odpadasz."
+          "pl": "Zdobyte karty nie trafiają od razu do ręki. Po zagraniu wszystkich kart z ręki otrzymasz te zdobyte wcześniej. Jeżeli nie masz już ani kart w ręce, ani zdobyczy, odpadasz."
         }
       ]
     },
@@ -39,7 +39,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Jeśli najwyższą wartość zagra kilka osób, zaczyna się wojna: nikt nie zabiera kart, lecz wszyscy nadal grający wybierają następną kartę. Zwycięzca kolejnej lewy dostanie także karty pozostałe po remisie."
+          "pl": "Jeśli kilka osób zagra równie silne karty i nikt ich nie przebije, zaczyna się wojna: nikt nie zabiera kart, lecz wszyscy nadal grający wybierają następną kartę. Zwycięzca kolejnej lewy dostanie także karty pozostałe po remisie."
         },
         {
           "pl": "Wojna może trwać przez kilka lew. Każdy kolejny remis powiększa zdobycz, aż ktoś wygra samodzielnie."
@@ -82,7 +82,7 @@
           "pl": "Joker zmienia rozstrzygnięcie lewy zależnie od kart przeciwników:"
         },
         {
-          "pl": "- Jeśli pozostałe karty dałyby remis na najwyższej wartości, jeden joker przerywa wojnę. Wszystkie karty zbiera gracz, który go wybrał."
+          "pl": "- Jeśli bez jokera lewa zakończyłaby się remisem, jeden joker przerywa wojnę. Wszystkie karty zbiera gracz, który go wybrał."
         },
         {
           "pl": "- Jeżeli pozostałe karty wskazują jednego zwycięzcę, jeden joker odbiera mu wygraną i wywołuje wojnę. Karty pozostają do następnej lewy."
@@ -102,7 +102,7 @@
           "pl": "Wygrywasz, gdy jako jedyny masz jeszcze karty. Gdy wojna wyczerpie karty wszystkich graczy, nikt nie może jej dokończyć i jest remis."
         },
         {
-          "pl": "Gra kończy się również po 50 lewach. Wtedy porównuje się wszystkie posiadane karty, zarówno w rękach, jak i wśród zdobyczy. Wygrywa osoba z największą liczbą kart; przy równych najwyższych wynikach jest remis."
+          "pl": "Gra kończy się również po 50 lewach. Wtedy liczy się wszystkie posiadane karty, zarówno w rękach, jak i wśród zdobyczy. Wygrywa osoba z największą liczbą kart; przy równych najwyższych wynikach jest remis."
         }
       ]
     },

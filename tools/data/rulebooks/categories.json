@@ -1,27 +1,135 @@
 {
- "source":"games/categories.rb",
- "sections":[
-  {"id":"sheet","title":{"en":"One letter, several kinds of answer","pl":"Jedna litera, kilka rodzajów odpowiedzi"},"paragraphs":[
-   {"en":"Countries and cities is played by two to eight people. Each round draws a letter and several categories. Write a word or name beginning with that letter for each category. For example, with B and the categories country, city and animal, you might write Brazil, Berlin and bear. The entries must fit their categories, not merely start with the right letter.","pl":"W Państwa-miasta gra od dwóch do ośmiu osób. W każdej rundzie losuje się literę i kilka kategorii. Wpisz dla każdej słowo lub nazwę zaczynającą się od tej litery. Przy B oraz kategoriach państwo, miasto i zwierzę możesz na przykład podać Brazylię, Berlin i bobra. Odpowiedzi muszą pasować do kategorii, nie tylko zaczynać się właściwą literą."},
-   {"en":"One participant is the judge for that round and does not write answers or earn points. The others fill in their own sheets. Each field accepts up to 48 characters. You may leave a field empty rather than invent an answer. Submit the sheet when finished; it cannot be changed once submitted. Answers stay hidden while anyone is still writing.","pl":"Jedna osoba jest sędzią rundy: nie wpisuje odpowiedzi i nie zdobywa punktów. Pozostali wypełniają własne arkusze. Każde pole przyjmuje do 48 znaków. Możesz zostawić puste pole zamiast wymyślać odpowiedź na siłę. Gdy skończysz, wyślij arkusz; wysłanego nie można już zmienić. Odpowiedzi pozostają ukryte, dopóki ktoś jeszcze pisze."}
-  ]},
-  {"id":"judging","title":{"en":"A person judges the answers","pl":"Odpowiedzi ocenia człowiek"},"paragraphs":[
-   {"en":"When all sheets are submitted or the answer time ends, writing closes and the answers are revealed. The judge sees identical answers grouped within each category and decides whether they fit the letter, category and meaning. This is not automatic dictionary scoring: discuss doubtful entries with the judge.","pl":"Gdy wszystkie arkusze zostaną wysłane lub skończy się czas, pisanie zostaje zamknięte i odpowiedzi są ujawniane. Sędzia widzi identyczne odpowiedzi połączone w obrębie kategorii i ocenia ich zgodność z literą, kategorią oraz sensem. Nie jest to automatyczna ocena słownikowa: wątpliwe odpowiedzi warto omówić z sędzią."},
-   {"en":"A unique correct answer is worth 2 points. An accepted repeated answer gives each author 1 point, as does an answer judged partially correct. An incorrect or empty answer gives zero. Everyone can see the grades and authors. Once every answer group has been assessed, the judge finishes the review and the round's points are added to the scores.","pl":"Unikalna poprawna odpowiedź daje 2 punkty. Uznana powtarzająca się odpowiedź daje po 1 każdemu autorowi; 1 daje też odpowiedź oceniona jako częściowo poprawna. Błędna lub pusta daje zero. Wszyscy widzą oceny i autorów. Po ocenieniu każdej grupy odpowiedzi sędzia kończy przegląd, a punkty rundy są dopisywane do wyników."}
-  ]},
-  {"id":"pools","title":{"en":"Choose a pool, then draw categories from it","pl":"Wybierz pulę, z której będą losowane kategorie"},"paragraphs":[
-   {"en":"Answer language is Polish by default; English is also available. It chooses the alphabet for letter draws and the language you agree to answer in, not the interface language. Category labels follow your interface. Letters do not repeat until the selected alphabet has been used up.","pl":"Język odpowiedzi jest domyślnie polski; dostępny jest również angielski. Wyznacza alfabet losowanych liter oraz język, w którym odpowiadacie, nie zmienia natomiast interfejsu. Nazwy kategorii są w języku interfejsu. Litery nie powtarzają się do wyczerpania wybranego alfabetu."},
-   {"en":"The Easy pool contains country, city, first name, animal, plant, thing, profession, food and colour. Medium adds surname, famous person, sport, vehicle, clothing, body part, building, musical instrument and book. Hard adds film, song, music group, river, mountain, island, language, invention and chemical element. These names describe the pool, not a different scoring system.","pl":"Łatwa pula zawiera państwo, miasto, imię, zwierzę, roślinę, rzecz, zawód, jedzenie i kolor. Średnia dodaje nazwisko, znaną osobę, sport, pojazd, ubranie, część ciała, budynek, instrument muzyczny i książkę. Trudna dodaje film, piosenkę, zespół muzyczny, rzekę, górę, wyspę, język, wynalazek i pierwiastek chemiczny. Są to nazwy pul, a nie odmiennych systemów punktowania."},
-   {"en":"Custom lets you select your own pool from those 27 categories, and remembers the last custom choice locally. Categories shown in each round chooses how many are drawn from the pool: one to nine, default six. It cannot exceed the size of your pool. For example, choosing all nine Easy categories with six per round still draws only six, and the selection may differ next round.","pl":"Własna pula pozwala zaznaczyć dowolny zestaw spośród tych 27 kategorii i zapamiętuje ostatni wybór lokalnie. Liczba kategorii w rundzie określa, ile wylosuje się z puli: od jednej do dziewięciu, domyślnie sześć. Nie może przekraczać rozmiaru puli. Wybranie dziewięciu łatwych kategorii przy sześciu na rundę oznacza więc losowanie tylko sześciu; następna runda może zawierać inne."}
-  ]},
-  {"id":"judge","title":{"en":"Who judges and how long you write","pl":"Kto sędziuje i ile trwa pisanie"},"paragraphs":[
-   {"en":"Rotating judge is the default: the role moves around the seating order, so everyone sometimes judges instead of scoring. Table master judges every round makes the creator the permanent judge and removes that person from the scoring competition. With two participants, that setting leaves one answering player and one permanent judge.","pl":"Domyślnie sędzia się zmienia według kolejności miejsc: każdy czasem ocenia zamiast punktować. Ustawienie stałego sędziowania przez właściciela stołu pozostawia twórcę sędzią każdej rundy i wyłącza go z rywalizacji punktowej. Przy dwóch uczestnikach oznacza to jedną osobę odpowiadającą i jednego stałego sędziego."},
-   {"en":"Answer time defaults to 90 seconds. Set zero for unlimited time, or 10–3600 seconds. Only writing is timed, not judging. Near the deadline the game warns you; at the deadline it submits the text still in your fields rather than clearing it first. A participant whose answers do not arrive during closing is treated as having empty entries. Without a time limit, all answering players must submit to move on.","pl":"Czas odpowiedzi wynosi domyślnie 90 sekund. Zero wyłącza limit, a dodatni zakres to 10–3600 sekund. Zegar dotyczy pisania, nie oceniania. Przed końcem gra ostrzega; po upływie czasu wysyła tekst pozostały w polach, zamiast najpierw go czyścić. Uczestnik, którego odpowiedzi nie dotrą podczas zamykania, jest traktowany jak autor pustych wpisów. Bez limitu trzeba poczekać na wysłanie arkusza przez wszystkich odpowiadających."}
-  ]},
-  {"id":"finish","title":{"en":"Equal rounds and tied scores","pl":"Równa liczba rund i rozstrzyganie remisów"},"paragraphs":[
-   {"en":"Target score defaults to 100 and can be 10–1000. With a rotating judge, reaching it does not stop play at once: finish the current full judge cycle, so everyone has judged equally often. With a permanent judge, the completed scoring round can decide the result. The highest eligible total wins, not necessarily the first person who touched the target.","pl":"Wynik docelowy wynosi domyślnie 100, z zakresem 10–1000. Przy zmiennym sędziowaniu osiągnięcie go nie zatrzymuje gry od razu: kończy się pełny cykl sędziów, aby każdy oceniał tyle samo razy. Przy stałym sędzim wynik może rozstrzygnąć zakończona runda punktowana. Wygrywa najwyższa uprawniona suma, niekoniecznie osoba, która pierwsza dotknęła progu."},
-   {"en":"A tied lead can give a shared victory or require extra play, the default. In extra play only the tied leaders remain in contention. An outside participant judges if possible; if everyone is tied, judging continues over complete cycles. A permanent judge keeps that role. Further play continues until the tied lead is resolved. This game does not support saving a partly completed match.","pl":"Remis na prowadzeniu może dać wspólne zwycięstwo albo dodatkową grę, domyślnie włączoną. W dogrywce rywalizują już tylko remisujący liderzy. Jeśli to możliwe, sędziuje osoba spoza tej grupy; jeśli remisują wszyscy, sędziowanie trwa pełnymi cyklami. Stały sędzia zachowuje rolę. Gracie dalej aż do rozstrzygnięcia prowadzenia. Ta gra nie obsługuje zapisu rozpoczętej partii."}
-  ]},
-  {"id":"controls","title":{"en":"Game keyboard shortcuts","pl":"Skróty klawiszowe gry"},"paragraphs":[{"en":"Tab: next answer field, submission control or review group.","pl":"Tab: następne pole odpowiedzi, zatwierdzenie lub grupa oceniania."},{"en":"Shift+Tab: previous answer field or review group.","pl":"Shift+Tab: poprzednie pole odpowiedzi lub grupa oceniania."},{"en":"Arrows: during review, select a grade.","pl":"Strzałki: podczas oceniania wybierz ocenę."},{"en":"Enter: confirm the selected grade or submission action.","pl":"Enter: potwierdź wybraną ocenę lub wysłanie odpowiedzi."},{"en":"Ctrl+T: read the remaining answer time, also while typing.","pl":"Ctrl+T: odczytaj pozostały czas na odpowiedź, także podczas wpisywania."},{"en":"T: outside answer entry, read the letter and judge.","pl":"T: poza wpisywaniem odpowiedzi odczytaj literę i sędziego."},{"en":"S: outside answer entry, read the scores.","pl":"S: poza wpisywaniem odpowiedzi odczytaj wyniki."},{"en":"V: outside answer entry, read round information.","pl":"V: poza wpisywaniem odpowiedzi odczytaj informacje o rundzie."}]}
- ]
+  "source": "games/categories.rb",
+  "sections": [
+    {
+      "id": "sheet",
+      "title": {
+        "en": "One letter, several kinds of answer",
+        "pl": "Jedna litera, kilka rodzajów odpowiedzi"
+      },
+      "paragraphs": [
+        {
+          "en": "Countries and cities is played by two to eight people. Each round draws a letter and several categories. Write a word or name beginning with that letter for each category. For example, with B and the categories country, city and animal, you might write Brazil, Berlin and bear. The entries must fit their categories, not merely start with the right letter.",
+          "pl": "W Państwa-miasta gra od dwóch do ośmiu osób. W każdej rundzie losuje się literę i kilka kategorii. Wpisz dla każdej słowo lub nazwę zaczynającą się od tej litery. Przy B oraz kategoriach państwo, miasto i zwierzę możesz na przykład podać Brazylię, Berlin i bobra. Odpowiedzi muszą pasować do kategorii, nie tylko zaczynać się właściwą literą."
+        },
+        {
+          "en": "One participant is the judge for that round and does not write answers or earn points. The others fill in their own sheets. Each field accepts up to 48 characters. You may leave a field empty rather than invent an answer. Submit the sheet when finished; it cannot be changed once submitted. Answers stay hidden while anyone is still writing.",
+          "pl": "Jedna osoba jest sędzią rundy: nie wpisuje odpowiedzi i nie zdobywa punktów. Pozostali wypełniają własne arkusze. Każde pole przyjmuje do 48 znaków. Możesz zostawić puste pole zamiast wymyślać odpowiedź na siłę. Gdy skończysz, wyślij arkusz; wysłanego nie można już zmienić. Odpowiedzi pozostają ukryte, dopóki ktoś jeszcze pisze."
+        }
+      ]
+    },
+    {
+      "id": "judging",
+      "title": {
+        "en": "A person judges the answers",
+        "pl": "Odpowiedzi ocenia człowiek"
+      },
+      "paragraphs": [
+        {
+          "en": "When all sheets are submitted or the answer time ends, writing closes and the answers are revealed. The judge sees identical answers grouped within each category and decides whether they fit the letter, category and meaning. This is not automatic dictionary scoring: discuss doubtful entries with the judge.",
+          "pl": "Gdy wszystkie arkusze zostaną wysłane lub skończy się czas, pisanie zostaje zamknięte i odpowiedzi są ujawniane. Sędzia widzi identyczne odpowiedzi połączone w obrębie kategorii i ocenia ich zgodność z literą, kategorią oraz sensem. Nie jest to automatyczna ocena słownikowa: wątpliwe odpowiedzi warto omówić z sędzią."
+        },
+        {
+          "en": "A unique correct answer is worth 2 points. An accepted repeated answer gives each author 1 point, as does an answer judged partially correct. An incorrect or empty answer gives zero. Everyone can see the grades and authors. Once every answer group has been assessed, the judge finishes the review and the round's points are added to the scores.",
+          "pl": "Unikalna poprawna odpowiedź daje 2 punkty. Uznana powtarzająca się odpowiedź daje po 1 każdemu autorowi; 1 daje też odpowiedź oceniona jako częściowo poprawna. Błędna lub pusta daje zero. Wszyscy widzą oceny i autorów. Po ocenieniu każdej grupy odpowiedzi sędzia kończy przegląd, a punkty rundy są dopisywane do wyników."
+        }
+      ]
+    },
+    {
+      "id": "pools",
+      "title": {
+        "en": "Choose a pool, then draw categories from it",
+        "pl": "Wybierz pulę, z której będą losowane kategorie"
+      },
+      "paragraphs": [
+        {
+          "en": "Choose Polish or English as the answer language. It also determines the alphabet for letter draws. Category labels follow your interface. Letters do not repeat until the selected alphabet has been used up.",
+          "pl": ""
+        },
+        {
+          "en": "The Easy pool contains country, city, first name, animal, plant, thing, profession, food and colour. Medium adds surname, famous person, sport, vehicle, clothing, body part, building, musical instrument and book. Hard adds film, song, music group, river, mountain, island, language, invention and chemical element. These names describe the pool, not a different scoring system.",
+          "pl": "Łatwa pula zawiera państwo, miasto, imię, zwierzę, roślinę, rzecz, zawód, jedzenie i kolor. Średnia dodaje nazwisko, znaną osobę, sport, pojazd, ubranie, część ciała, budynek, instrument muzyczny i książkę. Trudna dodaje film, piosenkę, zespół muzyczny, rzekę, górę, wyspę, język, wynalazek i pierwiastek chemiczny. Są to nazwy pul, a nie odmiennych systemów punktowania."
+        },
+        {
+          "en": "Custom lets you select your own pool from those 27 categories, and remembers the last custom choice locally. Categories shown in each round chooses how many are drawn from the pool: one to nine, default six. It cannot exceed the size of your pool. For example, choosing all nine Easy categories with six per round still draws only six, and the selection may differ next round.",
+          "pl": "Własna pula pozwala zaznaczyć dowolny zestaw spośród tych 27 kategorii i zapamiętuje ostatni wybór lokalnie. Liczba kategorii w rundzie określa, ile wylosuje się z puli: od jednej do dziewięciu, domyślnie sześć. Nie może przekraczać rozmiaru puli. Wybranie dziewięciu łatwych kategorii przy sześciu na rundę oznacza więc losowanie tylko sześciu; następna runda może zawierać inne."
+        }
+      ]
+    },
+    {
+      "id": "judge",
+      "title": {
+        "en": "Who judges and how long you write",
+        "pl": "Kto sędziuje i ile trwa pisanie"
+      },
+      "paragraphs": [
+        {
+          "en": "Rotating judge is the default: the role moves around the seating order, so everyone sometimes judges instead of scoring. Table master judges every round makes the creator the permanent judge and removes that person from the scoring competition. With two participants, that setting leaves one answering player and one permanent judge.",
+          "pl": "Domyślnie sędzia się zmienia według kolejności miejsc: każdy czasem ocenia zamiast punktować. Ustawienie stałego sędziowania przez właściciela stołu pozostawia twórcę sędzią każdej rundy i wyłącza go z rywalizacji punktowej. Przy dwóch uczestnikach oznacza to jedną osobę odpowiadającą i jednego stałego sędziego."
+        },
+        {
+          "en": "Answer time defaults to 90 seconds. Set zero for unlimited time, or 10–3600 seconds. Only writing is timed, not judging. Near the deadline the game warns you; at the deadline it submits the text still in your fields rather than clearing it first. A participant whose answers do not arrive during closing is treated as having empty entries. Without a time limit, all answering players must submit to move on.",
+          "pl": "Czas odpowiedzi wynosi domyślnie 90 sekund. Zero wyłącza limit, a dodatni zakres to 10–3600 sekund. Zegar dotyczy pisania, nie oceniania. Przed końcem gra ostrzega; po upływie czasu wysyła tekst pozostały w polach, zamiast najpierw go czyścić. Uczestnik, którego odpowiedzi nie dotrą podczas zamykania, jest traktowany jak autor pustych wpisów. Bez limitu trzeba poczekać na wysłanie arkusza przez wszystkich odpowiadających."
+        }
+      ]
+    },
+    {
+      "id": "finish",
+      "title": {
+        "en": "Equal rounds and tied scores",
+        "pl": "Równa liczba rund i rozstrzyganie remisów"
+      },
+      "paragraphs": [
+        {
+          "en": "Target score defaults to 100 and can be 10–1000. With a rotating judge, reaching it does not stop play at once: finish the current full judge cycle, so everyone has judged equally often. With a permanent judge, the completed scoring round can decide the result. The highest eligible total wins, not necessarily the first person who touched the target.",
+          "pl": "Wynik docelowy wynosi domyślnie 100, z zakresem 10–1000. Przy zmiennym sędziowaniu osiągnięcie go nie zatrzymuje gry od razu: kończy się pełny cykl sędziów, aby każdy oceniał tyle samo razy. Przy stałym sędzim wynik może rozstrzygnąć zakończona runda punktowana. Wygrywa najwyższa uprawniona suma, niekoniecznie osoba, która pierwsza dotknęła progu."
+        },
+        {
+          "en": "A tied lead can give a shared victory or require extra play, the default. In extra play only the tied leaders remain in contention. An outside participant judges if possible; if everyone is tied, judging continues over complete cycles. A permanent judge keeps that role. Further play continues until the tied lead is resolved. This game does not support saving a partly completed match.",
+          "pl": "Remis na prowadzeniu może dać wspólne zwycięstwo albo dodatkową grę, domyślnie włączoną. W dogrywce rywalizują już tylko remisujący liderzy. Jeśli to możliwe, sędziuje osoba spoza tej grupy; jeśli remisują wszyscy, sędziowanie trwa pełnymi cyklami. Stały sędzia zachowuje rolę. Gracie dalej aż do rozstrzygnięcia prowadzenia. Ta gra nie obsługuje zapisu rozpoczętej partii."
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "en": "Game keyboard shortcuts",
+        "pl": "Skróty klawiszowe gry"
+      },
+      "paragraphs": [
+        {
+          "en": "Tab: next answer field, submission control or review group.",
+          "pl": "Tab: następne pole odpowiedzi, zatwierdzenie lub grupa oceniania."
+        },
+        {
+          "en": "Shift+Tab: previous answer field or review group.",
+          "pl": "Shift+Tab: poprzednie pole odpowiedzi lub grupa oceniania."
+        },
+        {
+          "en": "Arrows: during review, select a grade.",
+          "pl": "Strzałki: podczas oceniania wybierz ocenę."
+        },
+        {
+          "en": "Enter: confirm the selected grade or submission action.",
+          "pl": "Enter: potwierdź wybraną ocenę lub wysłanie odpowiedzi."
+        },
+        {
+          "en": "Ctrl+T: read the remaining answer time, also while typing.",
+          "pl": "Ctrl+T: odczytaj pozostały czas na odpowiedź, także podczas wpisywania."
+        },
+        {
+          "en": "T: outside answer entry, read the letter and judge.",
+          "pl": "T: poza wpisywaniem odpowiedzi odczytaj literę i sędziego."
+        },
+        {
+          "en": "S: outside answer entry, read the scores.",
+          "pl": "S: poza wpisywaniem odpowiedzi odczytaj wyniki."
+        },
+        {
+          "en": "V: outside answer entry, read round information.",
+          "pl": "V: poza wpisywaniem odpowiedzi odczytaj informacje o rundzie."
+        }
+      ]
+    }
+  ]
 }

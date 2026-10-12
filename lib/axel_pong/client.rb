@@ -41,11 +41,24 @@ module GameRoomPong
       @closed = false
     end
 
-    def bind_screen(session_id:, table_id:, owner:, viewer:, members:)
+    def bind_screen(session_id:, table_id:, owner:, viewer:, members:, match_scope: nil, first_server: nil, single_point: false)
+      unless match_scope.nil? || (match_scope.is_a?(String) && !match_scope.empty?)
+        raise ArgumentError, 'Invalid Pong match scope'
+      end
+      unless first_server.nil? || (first_server.is_a?(Integer) && first_server.between?(0, 1))
+        raise ArgumentError, 'Invalid Pong first server'
+      end
+      raise ArgumentError, 'Invalid Pong single-point mode' unless single_point == true || single_point == false
       @activity_table, @activity_session = table_id, session_id
       @owner, @viewer = owner.to_s, viewer.to_s
+      @configured_first_server = first_server
+      @single_point = single_point
       connection_state.connection_started_at = @clock.call
-      @match = Digest::SHA256.hexdigest("GameRoom:axel_pong:#{table_id}:#{session_id}")[0, 24]
+      # A nested point needs its own channel, not a fictional LiveSession ID.
+      # Keep the legacy identity byte-for-byte when no scope is requested.
+      match_key = "GameRoom:axel_pong:#{table_id}:#{session_id}"
+      match_key = match_key.b + "\0scope\0".b + match_scope.b unless match_scope.nil?
+      @match = Digest::SHA256.hexdigest(match_key)[0, 24]
       @base_match, @members_provider = @match, members
       @channel = @channel_factory.call(program: @program, match: @match, owner: @owner,
         viewer: @viewer, clock: @clock, members: members)
@@ -71,6 +84,30 @@ module GameRoomPong
     def action(_selection, _replay, _viewer); false; end
     def error(_status); end
     def automatic_error(_status); end
+
+    # Only the enclosing game's accepted result can finish this projection.
+    # Keep Progress alive for the goal recordings, but close input and relay.
+    def finish_single_point(winner:)
+      return false unless @single_point && !@closed && @replay && !@replay.finished?
+      return false unless winner.is_a?(Integer) && winner.between?(0, 1)
+      preview = point_state.goal_preview
+      unless preview && preview[:rally] == @replay.state[:rally] && preview[:winner] == winner
+        @audio.goal(viewer: @side || observer_side, winner: winner)
+      end
+      @replay = @replay.dup
+      @replay.winner = @players[winner]
+      point_state.pending_point = point_state.goal_preview = nil
+      rally_state.paused = true
+      detach_view
+      unregister_ping_channel
+      @channel.close
+      true
+    end
+
+    def presentation_pending?
+      @audio.respond_to?(:announcement_pending?) && @audio.announcement_pending?
+    end
+
     def event(event, before, after, viewer, _repository)
       return unless event['action'] == 'pong_point' && before && after
       rally = after.state[:rally]
@@ -336,6 +373,7 @@ module GameRoomPong
     end
 
     def first_server
+      return @configured_first_server unless @configured_first_server.nil?
       initial = @initial_players || @players
       human = initial.index { |p| !GameRoomParticipants.bot?(p) }
       return human || 0 if @teams.length == 2 && initial.any? { |p| GameRoomParticipants.bot?(p) }
@@ -454,7 +492,7 @@ module GameRoomPong
 
     def announce_ready(now)
       return if @server_announced || now < rally_state.serve_announce_at || !rally_state.snapshot
-      if @initial_rally && @players.none? { |p| GameRoomParticipants.bot?(p) } && !@initial_settings_announced
+      if !@single_point && @initial_rally && @players.none? { |p| GameRoomParticipants.bot?(p) } && !@initial_settings_announced
         @initial_settings_announced = true
         options = @replay.state[:options]
         difficulty = @game.option_definitions.find { |item| item.key == 'difficulty' }.choices[options['difficulty'] - 1].label

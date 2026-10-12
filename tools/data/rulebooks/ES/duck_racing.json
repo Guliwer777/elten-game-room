@@ -1,0 +1,542 @@
+{
+  "source": "games/duck_racing.rb",
+  "sections": [
+    {
+      "id": "aim",
+      "title": {
+        "es": "Objetivo"
+      },
+      "paragraphs": [
+        {
+          "es": "En Carrera de patos pueden participar de dos a ocho personas. Da la vuelta al Estanque tranquilo, ayúdate con las cartas y compite por plumas en los desafíos. Gana el primer pato que complete las vueltas acordadas."
+        },
+        {
+          "es": "El circuito tiene 30 casillas. Cada jugador empieza en la casilla 1 con tres cartas y seis plumas por cada vuelta prevista. La carrera predeterminada es de tres vueltas, así que recibes 18 plumas al empezar."
+        },
+        {
+          "es": "En la última vuelta basta con cruzar la meta, también si llegas gracias a una carta."
+        }
+      ]
+    },
+    {
+      "id": "turn",
+      "title": {
+        "es": "Tu turno"
+      },
+      "paragraphs": [
+        {
+          "es": "En tu turno puedes jugar una carta antes de tirar. Elígela con las flechas y pulsa D para escuchar su efecto y su coste en plumas. Enter juega la carta. Si requiere elegir a un jugador, selecciónalo con las flechas y confirma con Enter."
+        },
+        {
+          "es": "Pulsa Espacio para tirar el dado y avanzar tantas casillas como indique. También puedes seleccionar la tirada al final de la lista, debajo de tus cartas, y pulsar Enter. El dado normal da resultados del uno al seis."
+        },
+        {
+          "es": "Al llegar se resuelven los efectos de la casilla; después juega la siguiente persona. Si una carta o un movimiento provoca un desafío, primero lo termináis."
+        },
+        {
+          "es": "- C permite consultar tu posición, tus plumas y los efectos activos."
+        },
+        {
+          "es": "- S lee la situación de todos los jugadores."
+        },
+        {
+          "es": "- T recuerda a quién le toca jugar."
+        }
+      ]
+    },
+    {
+      "id": "track",
+      "title": {
+        "es": "Casillas y encuentros"
+      },
+      "paragraphs": [
+        {
+          "es": "Las casillas pueden dar cartas y plumas, moverte a otro lugar, hacerte perder turnos o plantear preguntas. Con V puedes recorrer el circuito y consultar la descripción de cada casilla, los patos que están allí y la carta que pueda haber."
+        },
+        {
+          "es": "Al detenerte, actúa primero la casilla, después la carta y, por último, el encuentro con otro pato. Si la casilla o la carta te desplaza de nuevo, los siguientes efectos se resuelven en el nuevo lugar."
+        },
+        {
+          "es": "Encontrarte con otro pato inicia un duelo al azar. Si hay varios, te enfrentas al último que haya llegado y no esté congelado. Podéis estar en vueltas distintas."
+        },
+        {
+          "es": "Retroceder puede llevarte a una vuelta anterior, como máximo hasta el inicio de la carrera. Por ejemplo, un paso atrás desde la casilla 1 de la segunda vuelta te deja en la 30 de la primera."
+        }
+      ]
+    },
+    {
+      "id": "cards",
+      "title": {
+        "es": "Cómo usar las cartas"
+      },
+      "paragraphs": [
+        {
+          "es": "Las cartas te ayudan a avanzar o ponen obstáculos a tus rivales. Algunas cuestan plumas: necesitas tener el importe completo antes de jugarlas. Puedes guardar tantas cartas como consigas."
+        },
+        {
+          "es": "- Las cartas jugadas sobre un pato actúan al momento. Pueden desplazarlo, darle o quitarle plumas, hacerle perder turnos o cambiar su dado."
+        },
+        {
+          "es": "- Las cartas colocadas en una casilla esperan al siguiente pato y desaparecen después de actuar. También puedes caer en una carta tuya. Las que roban plumas son la excepción: no afectan a su dueño y siguen esperando. Cada casilla admite una carta."
+        },
+        {
+          "es": "- Otras cartas permiten quitar cartas a los rivales o intercambiar manos completas."
+        },
+        {
+          "es": "- Desafío inicia un duelo con el rival elegido. Superdesafío reúne a todos los patos no congelados. Curiosidad plantea una pregunta de Quiz a todos."
+        },
+        {
+          "es": "Un cambio de dado sustituye al anterior y también se aplica en los desafíos con dados. Solo las tiradas de la carrera consumen los usos que le quedan."
+        }
+      ]
+    },
+    {
+      "id": "feathers",
+      "title": {
+        "es": "Plumas y congelación"
+      },
+      "paragraphs": [
+        {
+          "es": "Con las plumas pagas cartas y compites en los desafíos. Si te quedas sin ellas, tu pato se congela. Conservas las cartas, pero pierdes entre uno y cuatro turnos propios."
+        },
+        {
+          "es": "Cuanto mayor sea tu ventaja sobre el último pato, más dura la congelación. Se cuenta toda la distancia, incluidas las vueltas completas:"
+        },
+        {
+          "es": "- Hasta 9 casillas de ventaja: un turno."
+        },
+        {
+          "es": "- De 10 a 19 casillas: dos turnos."
+        },
+        {
+          "es": "- De 20 a 29 casillas: tres turnos."
+        },
+        {
+          "es": "- A partir de 30 casillas: cuatro turnos."
+        },
+        {
+          "es": "Al descongelarte recibes cinco plumas. Si también pierdes turnos por otro efecto, ambos periodos se descuentan a la vez."
+        },
+        {
+          "es": "Si el efecto comienza antes de tu tirada, el turno actual ya cuenta como perdido. Si comienza después, se cuenta desde tu próximo turno."
+        }
+      ]
+    },
+    {
+      "id": "challenge_rules",
+      "title": {
+        "es": "Los desafíos"
+      },
+      "paragraphs": [
+        {
+          "es": "La carrera se detiene mientras disputáis un desafío. Algunos son para dos personas y otros también permiten jugar en grupo. En los desafíos por turnos se sortea quién empieza."
+        },
+        {
+          "es": "En las pruebas de rapidez, espera a que termine la cuenta atrás para responder. P repite las instrucciones y también funciona mientras escribes un número."
+        },
+        {
+          "es": "El ganador recibe plumas de cada perdedor según las reglas del desafío. Si hay empate en el primer puesto, nadie paga. Si debes entregar más plumas de las que tienes, entregas todas las que te quedan."
+        }
+      ]
+    },
+    {
+      "id": "rock_paper_scissors",
+      "title": {
+        "es": "Piedra, papel o tijera"
+      },
+      "paragraphs": [
+        {
+          "es": "En este duelo para dos, elige piedra, papel o tijera con las flechas y confirma con Enter. Tienes 15 segundos."
+        },
+        {
+          "es": "La piedra vence a la tijera, la tijera al papel y el papel a la piedra. El ganador se lleva tres plumas. Las elecciones iguales empatan. Si solo responde una persona, gana esa persona."
+        }
+      ]
+    },
+    {
+      "id": "dice_duel",
+      "title": {
+        "es": "Duelo de dados"
+      },
+      "paragraphs": [
+        {
+          "es": "Tiráis por turnos, una vez cada uno. Pulsa Enter cuando te toque. Tienes diez segundos; después, el juego tira por ti."
+        },
+        {
+          "es": "Usas tu dado de la carrera, con la carta que lo esté modificando. Gana la tirada más alta. Cada rival entrega al ganador tantas plumas como la diferencia entre sus resultados."
+        }
+      ]
+    },
+    {
+      "id": "blackjack",
+      "title": {
+        "es": "Veintiuno"
+      },
+      "paragraphs": [
+        {
+          "es": "Empiezas con dos cartas y buscas acercarte a 21 sin pasarte. Cada jugador utiliza su propia baraja de 52 cartas."
+        },
+        {
+          "es": "- Las cartas del 2 al 10 valen lo que indica su número."
+        },
+        {
+          "es": "- Jota, reina y rey valen diez."
+        },
+        {
+          "es": "- El as vale once si no hace que superes 21; de lo contrario, vale uno. Ese valor se mantiene hasta el final."
+        },
+        {
+          "es": "En tu turno, pide carta con Espacio o plántate con Enter. Llegar a 21 o pasarte también termina tu turno y da paso al siguiente jugador. Tienes 30 segundos para cada decisión; si se agotan, te quedas con tu suma actual."
+        },
+        {
+          "es": "Gana la suma más alta que no supere 21. Cada perdedor paga al ganador la diferencia entre sus resultados en plumas. Además, pasarse de 21 cuesta una pluma por cada punto de exceso. Estas plumas no las recibe el ganador."
+        },
+        {
+          "es": "Por ejemplo, con resultados de 20 y 24, quien pierde entrega cuatro plumas al ganador y pierde otras tres por haberse pasado. Si todos superan 21, solo se aplican estas penalizaciones."
+        }
+      ]
+    },
+    {
+      "id": "risky_dice",
+      "title": {
+        "es": "Dados arriesgados"
+      },
+      "paragraphs": [
+        {
+          "es": "Tira dos dados y suma los resultados de tus tiradas. Gana la suma más alta que no supere 25."
+        },
+        {
+          "es": "Pulsa Enter para tirar y repite cuando quieras otro lanzamiento. Para plantarte, selecciona «Guardar resultado» con Flecha abajo y confirma con Enter. Entonces juega la siguiente persona. Una suma de 25 o más termina tu intento automáticamente."
+        },
+        {
+          "es": "Tienes 30 segundos para cada decisión. Después se guarda el resultado; si aún no has tirado, el juego hace una tirada primero. La carta que modifica tu dado de la carrera afecta aquí a los dos dados."
+        },
+        {
+          "es": "Cada perdedor paga al ganador la diferencia entre sus resultados en plumas. Por cada punto por encima de 25 pierde otra pluma, que no recibe nadie. Con 24 frente a 28 son cuatro plumas para el ganador y tres de penalización. Si todos se pasan, solo se aplican las penalizaciones."
+        }
+      ]
+    },
+    {
+      "id": "guess_number",
+      "title": {
+        "es": "Adivina el número"
+      },
+      "paragraphs": [
+        {
+          "es": "Adivina un número del 1 al 100. Sabrás cuántas cifras tiene. Escribe tus propuestas y recibirás una pista después de cada una: el número buscado es mayor o menor. Tienes diez intentos y dos minutos."
+        },
+        {
+          "es": "Cuenta la respuesta más cercana de cada jugador. El ganador recibe tres plumas de cada rival; las respuestas a la misma distancia empatan."
+        }
+      ]
+    },
+    {
+      "id": "copy_number",
+      "title": {
+        "es": "Copia el número"
+      },
+      "paragraphs": [
+        {
+          "es": "Copia el número de tres cifras lo más rápido que puedas. Tienes tres intentos y 15 segundos. La primera respuesta correcta gana cuatro plumas de cada rival."
+        }
+      ]
+    },
+    {
+      "id": "arithmetic",
+      "title": {
+        "es": "Cálculo mental"
+      },
+      "paragraphs": [
+        {
+          "es": "Calcula y escribe el resultado de una suma, resta, multiplicación o división. Tienes tres intentos y 20 segundos. La primera respuesta correcta gana cuatro plumas de cada rival."
+        }
+      ]
+    },
+    {
+      "id": "race_question",
+      "title": {
+        "es": "Pregunta sobre la carrera"
+      },
+      "paragraphs": [
+        {
+          "es": "Escribe la respuesta a una pregunta sobre la carrera: la casilla o vuelta de un jugador, sus plumas o sus cartas. Puedes consultar estos datos con C y S."
+        },
+        {
+          "es": "Tienes dos intentos y 20 segundos. La primera respuesta correcta gana cuatro plumas de cada rival."
+        }
+      ]
+    },
+    {
+      "id": "numbered_balls",
+      "title": {
+        "es": "Bolas numeradas"
+      },
+      "paragraphs": [
+        {
+          "es": "Dos jugadores recogen por turnos las bolas de una fila. Hay doce, con valores positivos y negativos. Intenta terminar con una suma mayor que la de tu rival."
+        },
+        {
+          "es": "Recorre la fila con las flechas. Las teclas 1, 2 y 3 recogen una, dos o tres bolas desde el principio. Tienes un minuto para decidir; después recoges una bola."
+        },
+        {
+          "es": "Cuando se acaba la fila, gana la suma más alta. El ganador recibe la diferencia en plumas, hasta un máximo de diez."
+        }
+      ]
+    },
+    {
+      "id": "count_ducks",
+      "title": {
+        "es": "Cuenta los patos"
+      },
+      "paragraphs": [
+        {
+          "es": "Cuenta los graznidos y escribe cuántos has oído cuando termine la cuenta atrás. Habrá entre cinco y quince. Puedes volver a escucharlos con F5."
+        },
+        {
+          "es": "Tienes dos intentos y 20 segundos para responder. La primera respuesta correcta gana cuatro plumas de cada rival."
+        }
+      ]
+    },
+    {
+      "id": "rhythm",
+      "title": {
+        "es": "Repite el ritmo"
+      },
+      "paragraphs": [
+        {
+          "es": "Repite un ritmo con F y J. Antes de empezar puedes probar ambos sonidos. Pulsa Enter o Espacio cuando estés listo; cuando todos confirméis, sonará un ritmo de seis a diez golpes."
+        },
+        {
+          "es": "Después de escuchar, pulsa Enter y toca el ritmo. Tienes 15 segundos para empezar y puedes oír el modelo una vez más con F5 antes de hacerlo. Hay un solo intento; tres segundos sin tocar lo terminan."
+        },
+        {
+          "es": "La mitad de la puntuación depende del orden de los sonidos y la otra mitad de las pausas entre ellos. Gana la interpretación más precisa. Por cada diez puntos porcentuales de ventaja, o fracción, el ganador recibe una pluma de ese rival."
+        }
+      ]
+    },
+    {
+      "id": "sound_order",
+      "title": {
+        "es": "Ordena los sonidos"
+      },
+      "paragraphs": [
+        {
+          "es": "Ordena las notas para formar una escala de la más grave a la más aguda. Empieza tras la cuenta atrás. Las teclas del 1 al 8 permiten escuchar cada posición."
+        },
+        {
+          "es": "Para intercambiar dos notas, pulsa Shift con la cifra de la primera posición y después Shift con la de la segunda. Oirás ambas notas después del cambio."
+        },
+        {
+          "es": "Tienes 45 segundos. Gana quien complete primero la escala. Cada rival le entrega una pluma por nota mal colocada, hasta cinco. Si nadie termina, no hay ganador."
+        }
+      ]
+    },
+    {
+      "id": "simon",
+      "title": {
+        "es": "Simón"
+      },
+      "paragraphs": [
+        {
+          "es": "Memoriza una melodía cada vez más larga y repítela con las teclas del 1 al 5. El 1 corresponde al tono más grave y el 5 al más agudo. Puedes probarlos antes de empezar y confirmar que estás listo con Enter o Espacio."
+        },
+        {
+          "es": "Cuando todos estéis listos, sonará una sola nota. Cada respuesta correcta añade una nota y acelera un poco la melodía. Espera al final de la reproducción para repetirla."
+        },
+        {
+          "es": "Continúas hasta que te equivocas o pasas cinco segundos sin pulsar una tecla al responder. Cada jugador termina su propio intento. Cuenta la melodía más larga repetida entera; el ganador recibe de cada rival una pluma por cada nota de ventaja."
+        }
+      ]
+    },
+    {
+      "id": "sound_memory",
+      "title": {
+        "es": "Parejas de sonidos"
+      },
+      "paragraphs": [
+        {
+          "es": "Encuentra más parejas que tu rival. Bajo las teclas del 1 al 0 se esconden diez sonidos que forman cinco parejas. Los dos pulsáis Enter cuando estéis listos."
+        },
+        {
+          "es": "Por turnos, destapáis dos posiciones pulsando sus cifras. Escucha también las elecciones del rival y recuerda dónde está cada sonido. Una pareja desaparece y da un punto; si los sonidos no coinciden, vuelven a ocultarse."
+        },
+        {
+          "es": "Tienes 15 segundos por turno. El desafío termina al descubrir todas las parejas o después de 90 segundos. El ganador recibe tantas plumas como parejas de ventaja tenga."
+        }
+      ]
+    },
+    {
+      "id": "hit_duck",
+      "title": {
+        "es": "Acierta al pato"
+      },
+      "paragraphs": [
+        {
+          "es": "Identifica de dónde viene el graznido y pulsa la cifra correspondiente del 1 al 9. El 1 es el extremo izquierdo, el 5 el centro y el 9 el extremo derecho."
+        },
+        {
+          "es": "Antes de empezar puedes escuchar todas las posiciones. Pulsa Enter o Espacio cuando estés listo. Tras la confirmación de todos, aparecen cinco objetivos por turnos; tienes tres segundos para cada uno."
+        },
+        {
+          "es": "La puntuación depende de cuánto te acerques:"
+        },
+        {
+          "es": "- Acierto exacto: 100 %."
+        },
+        {
+          "es": "- Error de una posición: 75 %."
+        },
+        {
+          "es": "- De dos posiciones: 50 %."
+        },
+        {
+          "es": "- De tres posiciones: 25 %."
+        },
+        {
+          "es": "- Los demás disparos: cero."
+        },
+        {
+          "es": "Gana la media más alta de los cinco disparos. Cada diez puntos porcentuales de ventaja, o fracción, dan al ganador una pluma de ese rival."
+        }
+      ]
+    },
+    {
+      "id": "quiz",
+      "title": {
+        "es": "Pregunta de Quiz"
+      },
+      "paragraphs": [
+        {
+          "es": "Responde a una pregunta eligiendo una de sus cuatro opciones con las teclas del 1 al 4. También puedes usar las flechas y Enter. Tienes 20 segundos."
+        },
+        {
+          "es": "Cada persona que acierte recibe cuatro plumas del juego. Los resultados se anuncian cuando todos responden o se acaba el tiempo."
+        },
+        {
+          "es": "En un duelo responden sus participantes. Una pregunta de casilla o de la carta Curiosidad es para todos, incluidos los patos congelados."
+        }
+      ]
+    },
+    {
+      "id": "audio_ball",
+      "title": {
+        "es": "Un punto en Audio Ball"
+      },
+      "paragraphs": [
+        {
+          "es": "Jugáis un punto en dificultad Normal. El primer saque se sortea y el ganador recibe cinco plumas de su rival."
+        },
+        {
+          "es": "Antes de empezar, escucha los tres tipos de pelota:"
+        },
+        {
+          "es": "- W o Flecha arriba: primer tipo."
+        },
+        {
+          "es": "- D o Flecha izquierda: segundo tipo."
+        },
+        {
+          "es": "- S o Flecha abajo: tercer tipo."
+        },
+        {
+          "es": "Los dos confirmáis que estáis listos con Enter o Espacio. Cuando tengas la pelota, prepara el golpe con A o Flecha derecha y lánzala con una de las tres teclas."
+        },
+        {
+          "es": "Después de cada golpe rival, reconoce el sonido de la pelota y pulsa la defensa correspondiente. Si la paras, prepara tu siguiente golpe. Cada devolución acelera la pelota."
+        }
+      ]
+    },
+    {
+      "id": "axel_pong",
+      "title": {
+        "es": "Un punto en Axel Pong"
+      },
+      "paragraphs": [
+        {
+          "es": "Jugáis un punto individual en modo Classic y a velocidad Normal. El primer saque se sortea. El ganador recibe cinco plumas de su rival."
+        },
+        {
+          "es": "Mueve la raqueta con Flecha izquierda y Flecha derecha. Saca con Flecha arriba o Espacio. Cuando vuelva la pelota, colócate en su trayectoria y pulsa la misma tecla al tenerla al alcance."
+        },
+        {
+          "es": "Si tienes activada la devolución automática, para defender basta con colocar la raqueta. El saque lo haces tú."
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "title": {
+        "es": "Ajustes de la carrera"
+      },
+      "paragraphs": [
+        {
+          "es": "Antes de la carrera, el anfitrión elige los ajustes:"
+        },
+        {
+          "es": "- Vueltas: de una a diez; tres de forma predeterminada."
+        },
+        {
+          "es": "- Desafíos: marca los que queráis jugar. Todos están activados al principio. Deja al menos uno para duelos y otro para grupos."
+        },
+        {
+          "es": "- Preguntas: elige el idioma y los conjuntos. El conjunto general viene marcado de inicio. Todos los seleccionados tienen las mismas probabilidades de salir y se usan para cualquier pregunta de la carrera."
+        }
+      ]
+    },
+    {
+      "id": "interruptions",
+      "title": {
+        "es": "Guardar y cancelar desafíos"
+      },
+      "paragraphs": [
+        {
+          "es": "Puedes guardar la carrera entre turnos, una vez terminados el desafío y los demás efectos del movimiento."
+        },
+        {
+          "es": "Si un participante del desafío abandona la mesa o es sustituido, el desafío se cancela sin pérdida de plumas."
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "es": "Atajos de la carrera"
+      },
+      "paragraphs": [
+        {
+          "es": "Flechas: elegir una carta o la tirada al final de la lista."
+        },
+        {
+          "es": "Enter: jugar la carta seleccionada o tirar."
+        },
+        {
+          "es": "Espacio: tirar el dado."
+        },
+        {
+          "es": "D: descripción de la carta seleccionada."
+        },
+        {
+          "es": "C: tu posición, plumas y efectos activos."
+        },
+        {
+          "es": "S: situación de todos los jugadores."
+        },
+        {
+          "es": "T: turno o desafío actual."
+        },
+        {
+          "es": "V: recorrer el circuito."
+        },
+        {
+          "es": "P: repetir las instrucciones del desafío."
+        }
+      ]
+    }
+  ],
+  "option_chapters": {
+    "laps": "aim",
+    "question_language": "settings",
+    "question_sets": "settings",
+    "challenges": "settings"
+  }
+}

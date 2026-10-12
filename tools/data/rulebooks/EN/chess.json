@@ -11,7 +11,7 @@
           "en": "Chess is a game for two players. Win by checkmating the opponent's king: attack it in a position where no defence is possible."
         },
         {
-          "en": "White moves first, then players alternate. On your turn, move one of your pieces."
+          "en": "The player with the white pieces moves first, then players take turns. On your turn, move one of your pieces."
         }
       ]
     },
@@ -108,7 +108,7 @@
       },
       "paragraphs": [
         {
-          "en": "If an enemy pawn advances two squares from its starting position and lands beside your pawn, you may capture it as though it had advanced only one. You must do so on your very next move."
+          "en": "If an enemy pawn advances two squares from its starting position and lands beside your pawn, you may capture it as though it had advanced only one. If you choose this capture, it must be your very next move."
         },
         {
           "en": "Select your pawn, then the empty diagonal square the enemy pawn crossed. Your pawn moves there and the enemy pawn beside it is removed. Make any other move and this opportunity is lost."

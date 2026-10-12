@@ -2,6 +2,8 @@
 module GameSurfaces
   MovementCommandResult = Struct.new(:action, :message, keyword_init: true)
 
+  DuckChallengeSpec = Struct.new(:challenge_id, :kind, :viewer, :view, keyword_init: true)
+
   Action = Struct.new(:kind, :name, :payload, :source, keyword_init: true) do
     def self.from_h(value, source: nil)
       raise ArgumentError, "surface action must be a hash" if !value.respond_to?(:to_h)
@@ -95,7 +97,7 @@ module GameSurfaces
 
   Card = Struct.new(:id, :label, :value, :choices, :shift_choice, :choice_header, :sort_keys, :confirmation, keyword_init: true)
 
-  CardZoneSpec = Struct.new(:id, :header, :cards, :empty_label, :hand_order, :hand_epoch, keyword_init: true)
+  CardZoneSpec = Struct.new(:id, :header, :cards, :empty_label, :hand_order, :hand_epoch, :commands, :select_drawn, keyword_init: true)
 
   CardTableSpec = Struct.new(:zones, keyword_init: true)
 
@@ -239,7 +241,7 @@ module GameSurfaces
 
   TileChoice = Struct.new(:id, :label, :value, keyword_init: true)
 
-  TileZoneSpec = Struct.new(:id, :header, :cards, :empty_label, :hand_order, :hand_epoch, keyword_init: true)
+  TileZoneSpec = Struct.new(:id, :header, :cards, :empty_label, :hand_order, :hand_epoch, :commands, :select_drawn, keyword_init: true)
 
   TileHandSpec = Struct.new(:zones, :table_header, :table, :table_epoch, :default_target, :selection_error, keyword_init: true)
 

@@ -94,7 +94,7 @@
       },
       "paragraphs": [
         {
-          "es": "Antes de jugar puedes cambiar el idioma de las respuestas de polaco a inglés en los ajustes de la mesa. El idioma también determina el alfabeto del que se sortean las letras."
+          "es": "En los ajustes de la mesa puedes elegir si responder en polaco o en inglés. El idioma también determina el alfabeto del que se sortean las letras."
         },
         {
           "es": "Puedes elegir el grupo de categorías:"
@@ -129,7 +129,7 @@
           "es": "- El plazo de respuesta puede ser mayor o menor que 90 segundos. Un valor de 0 elimina el límite: habrá que esperar a que todos envíen su hoja."
         },
         {
-          "es": "- El anfitrión puede ser juez fijo en vez de rotar el cargo. Evalúa todas las rondas y no compite por puntos. En ese caso, alcanzar la meta se resuelve al acabar la ronda, sin esperar un ciclo de jueces."
+          "es": "- El anfitrión puede ser juez fijo en vez de rotar el cargo. Evalúa todas las rondas y no compite por puntos. En ese caso, basta con terminar la ronda en la que se alcance la meta, sin esperar un ciclo de jueces."
         },
         {
           "es": "- La meta puede ser distinta de 100 puntos. Si el juez va rotando, sigue siendo necesario completar el ciclo."

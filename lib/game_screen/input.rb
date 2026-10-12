@@ -416,6 +416,12 @@ class GameScreen
     end
 
     def handle_signal_wait(wait, layout)
+      if (payload = prepared_runner_payload(wait.revision))
+        @pending_runner_payload = payload
+        wait.action = :refresh
+        return true
+      end
+
       remote_action, remote_session_id = synchronized_network_task(
         _("Checking for game updates"),
         ui: refresh_input_ui, complete: false

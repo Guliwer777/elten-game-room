@@ -19,10 +19,10 @@
       },
       "paragraphs": [
         {
-          "pl": "Gra od dwóch do ośmiu osób. Dostajesz trzy karty, a suma na początku rundy wynosi zero. W swojej turze odczytaj ją klawiszem C, przejrzyj karty strzałkami i zagraj jedną Enterem."
+          "pl": "W grze może uczestniczyć od dwóch do ośmiu osób. Dostajesz trzy karty, a suma na początku rundy wynosi zero. W swojej turze odczytaj ją klawiszem C, przejrzyj karty strzałkami i zagraj jedną Enterem."
         },
         {
-          "pl": "Po zagraniu suma zmienia się zgodnie z działaniem karty. Jeśli runda trwa dalej, dostajesz kartę na jej miejsce i kolejka przechodzi do następnej osoby."
+          "pl": "Po zagraniu suma zmienia się zgodnie z działaniem karty. Jeśli runda trwa dalej, dostajesz kartę na jej miejsce, a następny ruch wykonuje kolejny gracz."
         }
       ]
     },
@@ -36,7 +36,7 @@
           "pl": "Karty zmieniają sumę w następujący sposób:"
         },
         {
-          "pl": "- Karty od trójki do ósemki dodają tyle, ile wynosi ich numer. Siódemka zagrana przy sumie 20 podnosi ją więc do 27. Czwórka oprócz dodania czterech odwraca kolejność gry, gdy zostały przynajmniej trzy osoby."
+          "pl": "- Karty od trójki do ósemki dodają tyle, ile wynosi ich numer. Siódemka zagrana przy sumie 20 podnosi ją więc do 27. Czwórka oprócz dodania czterech odwraca kolejność gry, gdy grają co najmniej trzy osoby."
         },
         {
           "pl": "- Dama i król dodają po 10."
@@ -83,7 +83,7 @@
           "pl": "- Jeśli przekroczysz 99, tracisz dwa żetony. Jeśli przy tym przekroczysz też 66, tracisz łącznie trzy żetony."
         },
         {
-          "pl": "Następna runda zaczyna się od zera, z nowymi kartami. Liczbę żetonów sprawdzisz przez S. Możesz grać dalej nawet bez żetonów — odpadasz dopiero wtedy, gdy nie wystarczy ci ich na kolejną karę. Na przykład mając jeden żeton, możesz go stracić i pozostać w grze, ale kara dwóch żetonów już cię eliminuje."
+          "pl": "W następnej rundzie suma znów wynosi zero, a gracze dostają nowe karty. Liczbę żetonów sprawdzisz klawiszem S. Możesz grać dalej nawet bez żetonów — odpadasz dopiero wtedy, gdy nie wystarczy ci ich na kolejną karę. Na przykład mając jeden żeton, możesz go stracić i pozostać w grze, ale kara dwóch żetonów już cię eliminuje."
         }
       ]
     },

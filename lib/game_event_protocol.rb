@@ -1,9 +1,12 @@
+require 'json'
+
 # The legacy action dialect measures characters, not bytes. Keep its limits
 # distinct from native stack byte limits and private payload codecs.
 module GameRoomEventProtocol
   MAX_EVENTS = 50
   MAX_ACTION_LENGTH = 32
   MAX_VALUE_LENGTH = 64
+  NATIVE_PACKET_VERSION = 2
   module_function
 
   def command_value(command, key)
@@ -16,6 +19,21 @@ module GameRoomEventProtocol
 
   def normalized(command)
     { 'action' => command_value(command, 'action').to_s, 'value' => command_value(command, 'value').to_s }
+  end
+
+  # The native stack limit applies to this entire JSON object, including the
+  # authenticated-action metadata and per-command UUIDs, not just its values.
+  # This pure builder is shared by Writer and preflight; it performs no I/O.
+  def record_packet(kind:, actor:, data:)
+    {'version' => NATIVE_PACKET_VERSION, 'kind' => kind.to_s, 'actor' => actor.to_s,
+      'data' => JSON.parse(JSON.generate(data))}
+  end
+
+  def game_action_packet(session_id:, sequence:, control_epoch:, events:, actor:, controller: false)
+    record_packet(kind: 'game_action', actor: actor, data: {
+      'session_id' => session_id, 'sequence' => sequence.to_i,
+      'controller' => controller == true, 'control_epoch' => control_epoch, 'events' => events
+    })
   end
 
   def validate_commands!(commands)

@@ -2,6 +2,7 @@ require_relative "../../tools/translations"
 require_relative "../../lib/game_room_localization"
 require_relative "../../games/base"
 require_relative "../../games/chess"
+require_relative "../../tools/compile-rulebooks"
 
 root = File.expand_path("../..", __dir__)
 catalog_tools = GameRoomTranslationCatalog
@@ -19,15 +20,27 @@ po.each do |entry|
   next if entry.obsolete? || entry.header?
   raise "Reviewed translation is fuzzy: #{entry.msgid}" if entry.fuzzy?
   raise "Obsolete review marker: #{entry.msgid}" if entry.extracted_comment.to_s.include?('Требует проверки.')
-  raise "Missing translation: #{entry.msgid}" if entry.msgstr.to_s.delete("\0").empty?
-  raise "Russian translation omits ё: #{entry.msgid}" if entry.msgstr.match?(forbidden_yo_spellings)
+  raise "Russian translation omits ё: #{entry.msgid}" if entry.msgstr.to_s.match?(forbidden_yo_spellings)
 end
+
+# The complete Russian rulebooks replace the old bilingual paragraphs.
+# They are embedded directly, not looked up through the PO. Validate those
+# authored/compiled editions; do not require unused drafts in the catalogue.
+raise 'Stale authored rulebooks' unless GameRoomRulebookCompiler.run(root: root, check: true).empty?
+localized_books = Dir.glob('*.json', base: File.join(root, 'tools/data/rulebooks/RU')).map { |name| File.basename(name, '.json') }
 
 # Use the same AST extractor and context-aware PO parser as the compiler.
 # Comparing plain msgid strings would mix the regular and cat_head_tail texts.
 GameRoomTranslationExtractor.extract(root).each do |message|
   entry = po[message[:msgctxt], message.fetch(:msgid)]
   raise "Missing Russian source message: #{message.inspect}" unless entry && !entry.obsolete? && !entry.fuzzy?
+  if entry.msgstr.to_s.delete("\0").empty?
+    replaced_rule = !message[:references].empty? && message[:references].all? do |reference|
+      match = %r{\Agames/generated/rulebooks/([a-z0-9_]+)\.rb:\d+\z}.match(reference)
+      match && localized_books.include?(match[1])
+    end
+    raise "Missing translation: #{entry.msgid}" unless replaced_rule
+  end
   if message[:msgid_plural]
     raise "Lost plural: #{message.inspect}" unless entry.msgid_plural == message[:msgid_plural]
   end

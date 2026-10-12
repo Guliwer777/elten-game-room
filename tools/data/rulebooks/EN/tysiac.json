@@ -258,7 +258,7 @@
           "en": "Enter: confirm your choice; play a card or choose to announce a marriage."
         },
         {
-          "en": "Shift+Enter: announce an available marriage immediately; do not play if none is available."
+          "en": "Shift+Enter: play a card and announce an available marriage; does nothing if no marriage can be announced."
         },
         {
           "en": "B: after exchanging cards and before the opening lead, change your contract; otherwise, read the bids."

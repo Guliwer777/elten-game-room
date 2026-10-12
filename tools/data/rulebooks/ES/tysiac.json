@@ -94,7 +94,7 @@
       },
       "paragraphs": [
         {
-          "es": "Selecciona tu carta con las flechas y pulsa Enter. Debes seguir el palo de la primera carta si tienes alguno. Si se salió con diamantes, juegas diamantes. No estás obligado a superar una carta más alta del rival."
+          "es": "Selecciona tu carta con las flechas y pulsa Enter. Debes seguir el palo de la primera carta si tienes cartas de ese palo. Si se salió con diamantes, juegas diamantes. No estás obligado a superar una carta más alta del rival."
         },
         {
           "es": "Si no tienes el palo de salida, debes jugar triunfo si tienes. El triunfo vence a los otros palos; al empezar no hay ninguno y se establece al anunciar un matrimonio. Si tampoco tienes triunfo, puedes jugar cualquier carta."
@@ -143,7 +143,7 @@
       },
       "paragraphs": [
         {
-          "es": "Al terminar se suman cartas capturadas y matrimonios anunciados. La puntuación de la partida cambia así:"
+          "es": "Al terminar se suman los puntos de las cartas capturadas y de los matrimonios anunciados. La puntuación de la partida cambia así:"
         },
         {
           "es": "- Si el ganador de la subasta cumple, añade el contrato, no los puntos sobrantes. Con contrato de 150 y 170 reunidos, suma 150."
@@ -238,7 +238,7 @@
           "es": "Cada uno recibe cinco cartas y la reserva tiene cuatro. El ganador la recoge y entrega una carta a cada una de las otras tres personas, incluido su compañero."
         },
         {
-          "es": "Se suman las cartas capturadas y los matrimonios de ambos. Sigues jugando tu propia mano y respetando el palo de salida o, si no lo tienes, el triunfo cuando sea posible. Esto también se exige cuando tu compañero ya está ganando la baza."
+          "es": "Se suman los puntos de las cartas capturadas y de los matrimonios de ambos. Sigues jugando tu propia mano y respetando el palo de salida o, si no lo tienes, el triunfo cuando sea posible. Esto también se exige cuando tu compañero ya está ganando la baza."
         },
         {
           "es": "La pareja comparte resultado, barril, oportunidades y contadores de ceros y abandonos. El recuento es el mismo que en individual, aplicado a toda la pareja."

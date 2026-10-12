@@ -1,5 +1,6 @@
 # encoding: UTF-8
 # Generated metadata for the editorial Russian question pack.
+require_relative "../lib/game_room_localization"
 require_relative "../lib/game_content"
 GameRoomContent.registry.register_pack(GameRoomContent::Pack.new(
   id: "quiz.general.ru",
@@ -7,7 +8,7 @@ GameRoomContent.registry.register_pack(GameRoomContent::Pack.new(
   kind: :quiz,
   language_id: "ru-RU",
   version: 1,
-  title: "Общие знания",
+  title: GameRoomLocalization.translate("General knowledge"),
   game_ids: ["quiz"],
   license: "CC0-1.0",
   author: "ELTEN Game Room editorial",

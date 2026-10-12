@@ -11,7 +11,7 @@
           "pl": "W Yahtzee rzucasz pięcioma kośćmi i zapisujesz wyniki na karcie punktacji. Każde jej pole ma inny sposób liczenia punktów za rzut. W każdej turze wybierasz jedno wolne pole i zapisujesz w nim wynik. Tego pola nie wykorzystasz już ponownie, więc warto zostawić sobie szansę na lepsze wyniki w kolejnych turach."
         },
         {
-          "pl": "Gra od dwóch do ośmiu osób. Gdy wszyscy wypełnią swoje karty, wygrywa osoba z największą sumą punktów."
+          "pl": "W grze może uczestniczyć od dwóch do ośmiu osób. Gdy wszyscy wypełnią swoje karty, wygrywa osoba z największą sumą punktów."
         }
       ]
     },
@@ -22,13 +22,13 @@
       },
       "paragraphs": [
         {
-          "pl": "Swoją turę zacznij Enterem: rzucisz wszystkimi pięcioma kośćmi. Możesz od razu zapisać wynik albo wykonać jeszcze jeden lub dwa rzuty. Do kolejnego rzutu wybierasz tylko te kości, które chcesz zmienić; pozostałe zachowują swoje wartości."
+          "pl": "Swoją turę zacznij Enterem: rzucisz wszystkimi pięcioma kośćmi. Możesz od razu zapisać wynik albo wykonać jeszcze jeden lub dwa rzuty. Wybierz kości, którymi chcesz rzucić ponownie. Wynik na pozostałych kościach się nie zmienia."
         },
         {
-          "pl": "Kości do przerzucenia wybierasz cyframi od 1 do 6. Cyfra oznacza liczbę oczek, a nie miejsce kości. Jeżeli wypadły dwie dwójki i chcesz przerzucić obie, naciśnij 2 dwa razy. Shift z tą samą cyfrą wycofuje jedną kość z wyboru. Spacja przypomina, które kości zostawiasz, a którymi rzucisz ponownie."
+          "pl": "Cyframi od 1 do 6 wybierasz kości, którymi chcesz rzucić ponownie. Cyfra oznacza liczbę oczek, a nie miejsce kości. Jeżeli wypadły dwie dwójki i chcesz ponownie rzucić obiema, naciśnij 2 dwa razy. Shift z tą samą cyfrą wycofuje jedną kość z wyboru. Spacja przypomina, które kości zostawiasz, a którymi rzucisz ponownie."
         },
         {
-          "pl": "Kiedy zaznaczysz kości, naciśnij Enter, żeby nimi rzucić. Przed każdym kolejnym rzutem ponownie wybierz kości, które chcesz przerzucić."
+          "pl": "Kiedy zaznaczysz kości, naciśnij Enter, żeby nimi rzucić. Przed każdym kolejnym rzutem wybierasz kości od nowa."
         },
         {
           "pl": "Żeby zakończyć rzucanie, naciśnij Enter bez zaznaczonych kości. Otworzysz listę wolnych kategorii wraz z punktami, jakie otrzymasz za obecny wynik. Strzałkami wybierz kategorię i zatwierdź ją Enterem. Wpis kończy twoją turę; teraz gra następna osoba."
@@ -37,7 +37,7 @@
           "pl": "Po trzecim rzucie lista kategorii otwiera się od razu. Jeśli żaden wynik ci nie odpowiada, nadal musisz wybrać pole — czasem oznacza to wpisanie zera i utratę tej kategorii do końca gry. Przed wykorzystaniem trzech rzutów Escape zamyka listę kategorii i pozwala wrócić do kości."
         },
         {
-          "pl": "Swoją kartę przejrzysz pod V, a karty pozostałych osób pod Shift+V. Przydaje się to, gdy decydujesz, które pole zachować na później."
+          "pl": "Swoją kartę punktacji przejrzysz klawiszem V, a karty pozostałych graczy skrótem Shift+V. Przydaje się to, gdy decydujesz, które pole zachować na później."
         }
       ]
     },
@@ -83,7 +83,7 @@
           "pl": "- Yahtzee, czyli pięć jednakowych kości, daje 50 punktów."
         },
         {
-          "pl": "- Szansa przyjmuje dowolny rzut i daje sumę oczek wszystkich pięciu kości."
+          "pl": "- W Szansie zapisujesz sumę oczek wszystkich pięciu kości, niezależnie od ich układu."
         },
         {
           "pl": "- Jedna para wymaga co najmniej dwóch jednakowych kości. Dostajesz sumę oczek wszystkich pięciu kości, nie tylko pary."
@@ -92,10 +92,10 @@
           "pl": "- Dwie pary to na przykład dwie trójki i dwie piątki. Dostajesz sumę oczek wszystkich pięciu kości. Full też spełnia ten warunek, ale cztery jednakowe kości nie liczą się jako dwie różne pary."
         },
         {
-          "pl": "- Nędza nagradza małą liczbę oczek. Od 36 odejmujesz sumę wszystkich pięciu kości. Przy sumie 12 zapiszesz więc 24 punkty."
+          "pl": "- Nędza nagradza małą liczbę oczek. Od 36 odejmujesz sumę oczek wszystkich pięciu kości. Przy sumie 12 zapiszesz więc 24 punkty."
         },
         {
-          "pl": "Jeśli rzut nie spełnia warunku wybranego układu, zapisujesz w nim zero. Możesz w ten sposób poświęcić trudne do zdobycia pole."
+          "pl": "Jeśli rzut nie spełnia warunku wybranego układu, zapisujesz w nim zero. Możesz tak poświęcić kategorię, w której trudno ci zdobyć punkty."
         }
       ]
     },
@@ -132,7 +132,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Gracie po kolei, aż wszyscy wykorzystają wszystkie 16 pól. Do wyniku każdej osoby dodaje się zapisane punkty oraz zdobyte premie. Wygrywa osoba z najwyższą sumą punktów, a równe najwyższe wyniki oznaczają remis. Klawisz S pozwala porównać bieżące sumy."
+          "pl": "Gracie po kolei, aż wszyscy wykorzystają wszystkie 16 pól. Wynik każdej osoby to suma punktów zapisanych na karcie i zdobytych premii. Wygrywa osoba z najwyższą sumą punktów, a równe najwyższe wyniki oznaczają remis. Klawisz S pozwala porównać bieżące sumy."
         }
       ]
     },

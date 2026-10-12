@@ -128,7 +128,8 @@ begin
     end
     %w[yahtzee makao krowa ludo mexican_train axel_pong].each do |id|
       game = EltenGameRoom::GAME_REGISTRY.build(id)
-      authored = JSON.parse(File.read(File.join(BinaryRulesLoad::ROOT, "tools/data/rulebooks/#{id}.json"), encoding: "UTF-8"))
+      edition = language == :pl ? "PL" : "EN"
+      authored = JSON.parse(File.read(File.join(BinaryRulesLoad::ROOT, "tools/data/rulebooks/#{edition}/#{id}.json"), encoding: "UTF-8"))
       text = game.rule_book.documents.take(2).map(&:text).join("\n")
       authored["sections"].each do |section|
         section["paragraphs"].each do |pair|
@@ -142,7 +143,8 @@ begin
     assert(introduction != nil, "Pong introduction changelog missing")
     credit = introduction.changes.first
     assert(credit.include?("Dragon-Pong") && credit.include?("Axel and balteam"), "Pong attribution is not first")
-    assert(GameRoomGames::AxelPong.new.rule_book.documents.first.text.include?(GameRoomRules.translate(credit)), "Pong rules and changelog attribution differ")
+    pong_rules = GameRoomGames::AxelPong.new.rule_book.documents.first.text
+    assert(%w[Dragon-Pong Axel balteam].all? { |name| pong_rules.include?(name) }, "Pong rules lost the original authors")
     # Krowa's command carries a round identity through the normal surface.
     game = GameRoomGames::Krowa.new
     repo = GameRoomSavedGameArchive::ReplayRepository.new

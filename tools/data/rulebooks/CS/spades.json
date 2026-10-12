@@ -51,7 +51,7 @@
           "cs": "Zvláštní výjimku má pikové eso. Vynese-li někdo piky a eso je tvůj jediný pik, smíš si ho nechat a zahrát jinou kartu. S dalším nižším pikem už musíš barvu normálně přiznat."
         },
         {
-          "cs": "Rozdání skončí po zahrání všech karet. Klávesa I připomene tvůj postup, V porovná ohlášené a získané zdvihy všech hráčů."
+          "cs": "Rozdání skončí po zahrání všech karet. Klávesa I připomene tvůj závazek a počet získaných zdvihů, V porovná ohlášené a získané zdvihy všech hráčů."
         }
       ]
     },
@@ -141,7 +141,7 @@
           "cs": "Ohlásíš-li čtyři a partner tři, potřebujete společně sedm. Můžeš tedy získat pět a partner dvě. Skóre i pytle patří celému týmu."
         },
         {
-          "cs": "Nil se posuzuje zvlášť. Jeho hráč musí vynechat všechny zdvihy, i kdyby partner potřeboval pomoc. Zdvihy hráče s nilem se do společného závazku nepočítají. Neúspěšný nil stojí tým 100 bodů a každý při něm získaný zdvih přidá bod a pytel."
+          "cs": "Nil se posuzuje zvlášť. Hráč, který ho ohlásil, ho splní jen tehdy, když nezíská žádný zdvih, i kdyby partner potřeboval pomoc. Zdvihy hráče s nilem se do společného závazku nepočítají. Neúspěšný nil stojí tým 100 bodů a každý při něm získaný zdvih přidá bod a pytel."
         },
         {
           "cs": "Týmy se volí před hrou v nastavení stolu. Ve dvojicích mohou hrát čtyři nebo šest hráčů; v šesti lze zvolit také dvě trojice."
@@ -199,7 +199,7 @@
           "cs": "F: přečíst vynesenou barvu."
         },
         {
-          "cs": "I: přečíst vlastní postup v rozdání."
+          "cs": "I: přečíst vlastní závazek, získané zdvihy a číslo právě hraného zdvihu."
         },
         {
           "cs": "V: přečíst získané zdvihy a závazky všech hráčů."

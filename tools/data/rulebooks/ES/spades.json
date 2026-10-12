@@ -48,7 +48,7 @@
           "es": "Al principio no se puede salir con picas. Quedan habilitadas cuando alguien juega la primera pica sobre otro palo. Si solo te quedan picas, puedes salir con una antes de que eso ocurra."
         },
         {
-          "es": "Hay una excepción para el as de picas: si se sale con picas y el as es la única que tienes, puedes conservarlo y jugar otra carta. Si también tienes una pica menor, debes seguir el palo normalmente."
+          "es": "Hay una excepción para el as de picas: si se sale con picas y el as es tu única pica, puedes conservarlo y jugar otra carta. Si también tienes una pica menor, debes seguir el palo normalmente."
         },
         {
           "es": "La mano termina cuando se juegan todas las cartas. I consulta tu progreso; V compara las declaraciones y bazas ganadas de todos."

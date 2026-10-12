@@ -25,7 +25,7 @@
           "en": "Mexican Train uses a double-twelve set, with numbers from zero to twelve. Every train begins at the same central tile, the station. The first round uses 12–12, which is placed for you and belongs to nobody's hand."
         },
         {
-          "en": "The deal depends on how many players remain in the game:"
+          "en": "The number of tiles dealt depends on the number of players:"
         },
         {
           "en": "- Two to five players receive fifteen tiles each."
@@ -148,7 +148,7 @@
           "en": "Playing your last tile ends the round immediately, even if it is a double. You do not take an extra play or cover any remaining doubles."
         },
         {
-          "en": "A round also ends when play is blocked: the pile is empty, everyone has failed to play in turn, and nobody has a legal move. Opening a train can create a move for someone else, so a sequence of passes alone does not always establish a block."
+          "en": "A round also ends when play is blocked: the pile is empty, each player has had a turn without being able to play, and nobody has a legal move. Opening a train can give someone a new move, so a series of passes does not always end the round."
         },
         {
           "en": "Score the round as follows:"

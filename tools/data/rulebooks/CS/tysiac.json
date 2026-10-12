@@ -8,7 +8,7 @@
       },
       "paragraphs": [
         {
-          "cs": "V Tisíci získáváš body za sebrané karty a ohlášené dvojice krále s dámou. Po rozdání licitujete, kdo se zaváže získat nejvíce bodů. Vítěz licitace musí slib splnit, ostatní se mu v tom snaží zabránit a sami bodovat. Vyhrává dosažení 1000 bodů."
+          "cs": "V Tisíci získáváš body za sebrané karty a ohlášené dvojice krále s dámou. Po rozdání licitujete, kdo se zaváže získat nejvíce bodů. Vítěz licitace musí slib splnit, ostatní se mu v tom snaží zabránit a sami bodovat. Cílem je dosáhnout 1000 bodů."
         },
         {
           "cs": "Základní hra je pro tři hráče. Každý dostane sedm karet a vítěz licitace přibere tři z talónu. Hraje se kartami od devítky po eso."
@@ -192,7 +192,7 @@
           "cs": "Na sudu nesmíš rozdání vzdát. Za cizí vzdání také nedostaneš body, ale takové rozdání ti ani nespotřebuje pokus."
         },
         {
-          "cs": "Hra končí dosažením alespoň 1000 bodů. Silným závazkem lze vyhrát i bez předchozího sudu. Pokud hranici v jednom vyhodnocení překročí více hráčů, rozhoduje nejvyšší skóre."
+          "cs": "Hra končí dosažením alespoň 1000 bodů. Silným závazkem lze vyhrát i bez předchozího sudu. Pokud hranice v jednom vyhodnocení dosáhne více hráčů, rozhoduje nejvyšší skóre."
         }
       ]
     },

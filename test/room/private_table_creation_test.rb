@@ -66,8 +66,8 @@ ids.each do |id|
       form.accept_button.trigger(:press)
     end
     result = app.send(:configure_game_options, game, creating_table: true)
-    assert(result == { game_options: game.default_options, private_table: private_table }, "#{id}: inconsistent creation result")
-    assert(app.remembered.last[2] == game.default_options, "#{id}: privacy entered remembered game rules")
+    assert(result == { game_options: game.table_creation_options, private_table: private_table }, "#{id}: inconsistent creation result")
+    assert(app.remembered.last[2] == game.table_creation_options, "#{id}: privacy entered remembered game rules")
   end
   Form.driver = lambda do |form|
     assert(form.fields.none? { |field| field.is_a?(CheckBox) && field.header == "Private table" }, "#{id}: Ctrl+X offered privacy changes")

@@ -134,6 +134,63 @@ remain next to the current participants until the next game starts.
 The game describes the surface and actions. It should not create its own form,
 intercept system keys or manually drive the UI loop unnecessarily.
 
+Games can declare `paced_event_presentation?` and return plain-data stages
+from `event_presentation_stages`. The existing presentation queue separates
+speech/sounds with monotonic, non-blocking delays; accepted events stay atomic.
+Duck Racing uses one second between a race roll or an effect's displacement
+announcement and its destination, including each move in a chained effect.
+Destination rewards stay together. It uses two seconds between announcing a
+challenge winner and the feather settlement,
+and two seconds before a new turn or resuming after a challenge. Draws and
+results without a feather change or freezing do not add the winner pause.
+Its client defers new
+challenge prompts/input until the queue finishes. The same runner view gate
+applies in the foreground and behind another window; chat, network delivery
+and local navigation continue. Other games keep their existing behavior,
+including Battleship's sequencing by actual sound completion.
+
+Duck Racing's sound-pair choices use a transient client playback handle.
+An opt-in stage waits for its completion before presenting totals or the next
+player; the same queue's watchdog and close handling apply. Digits and match
+feedback are spoken with their sounds, never added to game history. The
+client continues audio on its existing UI step while the shared queue is busy;
+it must not independently announce the next turn from a refreshed snapshot.
+
+Sound ordering starts after a shared two-second preparation and countdown.
+The model rejects earlier swaps and starts its timeout at that boundary;
+the client also waits for actual cue completion before accepting fresh keys.
+It uses the existing progress loop, not an additional timer or speech wait.
+
+Duck challenge bots add the configured bot pause to each planned decision,
+including private trace inputs. Listening durations and rhythm intervals are
+unchanged; private decisions keep the ordinary one-second deadline margin.
+The delay belongs to the planning-cache identity. The existing session runner
+still revalidates and writes every action; no separate bot executor is used.
+
+Private Duck attempts retain their original canonical inputs, timestamps and
+salted commitments. The wire codec delta-encodes times and press identities,
+stores repeated input fields by a fixed mask, then compresses the envelope.
+Pages retain session, round, seat, codec and byte-range metadata. The native
+writer rechecks their complete packet size against the current grant and
+controller epoch; it may split only an unsent range. Accepted page boundaries
+and durably cached compressed bytes survive recovery unchanged. Pending
+`zlib-json-1` uploads can finish after a code reload; new attempts use
+`zlib-trace-1`. Neither codec truncates attempts or changes their scoring.
+
+Selected question resources are validated once and shared between fresh Duck
+game objects in a bounded cache of eight immutable selections. Cache identity
+includes actual pack and language-profile objects, so a registry replacement
+cannot reuse old content under the same ID. Label/discovery formatting does not
+prepare question data. Disabled word challenges have no runtime dictionary.
+
+After a verified replay, the session worker calls `cleanup_session_answers`,
+including for a finished game with no next turn. Duck cleanup uses closure
+receipts derived from accepted events, not a game object's transient memory.
+Only this account's matching, confirmed or cancelled attempts are removed;
+uncertain writes and other scopes remain. Failed local cleanup is retried on
+a subsequent refresh. This does not compact server history: the existing
+4096-record limit remains a known limitation of sufficiently long races.
+
 ### Tables, participants and the game lifecycle
 
 `game_room_screens.rb`, `game_lifecycle.rb`, `game_participants.rb` and the

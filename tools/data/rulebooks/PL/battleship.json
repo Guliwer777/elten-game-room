@@ -8,7 +8,7 @@
       },
       "paragraphs": [
         {
-          "pl": "W Statkach grają dwie osoby. Każda rozmieszcza własną flotę, nie pokazując jej przeciwnikowi. Potem na zmianę wybieracie pola, w które chcecie strzelić. Wygrywa gracz, który pierwszy zatopi wszystkie statki drugiej osoby."
+          "pl": "Statki to gra dla dwóch osób. Każda rozmieszcza własną flotę, nie pokazując jej przeciwnikowi. Potem na zmianę wybieracie pola, w które chcecie strzelić. Wygrywa gracz, który pierwszy zatopi wszystkie statki drugiej osoby."
         }
       ]
     },
@@ -83,7 +83,7 @@
           "pl": "- Zatopienie oznacza, że zostały trafione wszystkie pola tego statku."
         },
         {
-          "pl": "Po każdym strzale kolej przechodzi na przeciwnika, także po trafieniu lub zatopieniu statku."
+          "pl": "Po każdym strzale ruch wykonuje przeciwnik, także po trafieniu lub zatopieniu statku."
         },
         {
           "pl": "Tabem przejdziesz na własną planszę, żeby sprawdzić trafienia przeciwnika i stan swojej floty. Skrótem Shift+Tab wrócisz do planszy, na której oddajesz strzały."
@@ -97,7 +97,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Gra kończy się po zatopieniu ostatniego statku jednej ze stron. Wygrywa gracz, który go zatopił. Podczas partii klawisz F odczytuje liczbę jeszcze nietrafionych pól Twojej floty, a Shift+F taką samą liczbę u przeciwnika."
+          "pl": "Gra kończy się po zatopieniu ostatniego statku jednej ze stron. Wygrywa gracz, który go zatopił. Podczas partii klawisz F odczytuje liczbę jeszcze nietrafionych pól twojej floty, a Shift+F taką samą liczbę u przeciwnika."
         }
       ]
     },

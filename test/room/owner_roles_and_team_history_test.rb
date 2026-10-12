@@ -92,7 +92,7 @@ h.as('Alice') do
   layout.users.index = snapshot.members.index('Bob')
   menu = FakeMenu.new
   layout.users.context(menu)
-  menu.options.find { |item| item.first == 'Make a player for the next game' }.last.call
+  menu.options.find { |item| item.first == 'Make Bob a player for the next game' }.last.call
   assert(actions == [[:make_player, 'Bob']], 'Owner menu targeted another row or wrong role')
   layout.users.index = snapshot.members.index('Alice')
   menu = FakeMenu.new

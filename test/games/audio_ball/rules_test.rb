@@ -316,19 +316,19 @@ audio_ball_test('authored rules explain fixed scoring, sound, timing and every a
   book = game.rule_book(options: game.default_options)
   assert(book.documents.map(&:id) == [:rules, :controls, :current_options], 'Audio Ball rules bypass the standard three-document help')
   rules = book.documents.first.text
-  ['one against one', 'bot', 'Classic', '25 steps', 'on the right', 'on the left', 'two steps',
-    'press the matching defence key once', 'then release it', 'last active defence', 'most recently pressed key still held', 'Every new ball needs a new press',
-    'even if the shot type is the same', 'Preparing', 'ten seconds', 'as long as you like', 'random',
-    'every two completed points', 'Players take turns starting each new set',
-    'the player who starts the first also starts the third', 'the opponent starts the second and fourth',
-    '7 points', 'lead by at least two', '1, 2 or 3', 'five-second',
-    'set number', 'who is serving'].each do |text|
+  ['two-player', 'bot', 'on the right', 'on the left',
+    'pressing or holding the matching key', 'For each incoming ball, press your defence key',
+    'after the opponent\'s shot', 'release it first', 'ten seconds', 'no immediate countdown', 'random',
+    'every two points', 'with the other player serving first',
+    'Whoever opens the first set also opens the third', 'their opponent opens the second and fourth',
+    '7 points', 'two-point lead', 'two or three sets', 'five seconds',
+    'Shift+S', 'T to check who serves'].each do |text|
     assert(rules.include?(text), "Audio Ball rules do not explain #{text}")
   end
   assert(!rules.match?(/Axel Pong|0 to 21|5\.7-second/), 'player rules contain another game or implementation details')
-  assert(rules.include?('At every level, each later hit in the rally increases the current speed by 5%.'), 'rules omit the shared acceleration')
+  assert(rules.include?('On every difficulty, each return increases speed by 5%.'), 'rules omit the shared acceleration')
   [['Very easy', '4'], ['Easy', '2.2'], ['Normal', '1.5'], ['Hard', '0.9'], ['Very hard', '0.6']].each do |name, seconds|
-    paragraph = game.rule_sections.flat_map(&:paragraphs).find { |text| text.start_with?(name) }
+    paragraph = book.sections.flat_map(&:paragraphs).find { |text| text.start_with?("- #{name}:") }
     assert(paragraph && paragraph.include?("#{seconds} seconds"), "rules contain the wrong #{name} speed")
   end
   controls = book.documents[1].text
@@ -336,16 +336,16 @@ audio_ball_test('authored rules explain fixed scoring, sound, timing and every a
     assert(controls.lines.any? { |line| line.start_with?(text) }, "Audio Ball help omits #{text}")
   end
   assert(!controls.match?(/(?:\A|\n)S:.*scores/), 'help steals the S shot key for scores')
-  authored_path = File.expand_path("../../../tools/data/rulebooks/audio_ball.json", __dir__)
+  authored_path = File.expand_path("../../../tools/data/rulebooks/EN/audio_ball.json", __dir__)
   assert(File.file?(authored_path), 'Audio Ball has no authored rulebook')
   authored = JSON.parse(File.read(authored_path, encoding: 'UTF-8'))
   assert(authored['source'] == 'games/audio_ball.rb', 'rulebook points to another source')
-  sections = game.rule_sections
+  sections = game.rule_book.sections
   assert(sections.map { |section| section.id.to_s } == authored['sections'].map { |section| section['id'] }, 'authored and runtime rule sections differ')
   authored['sections'].zip(sections).each do |document, section|
     assert(document['title']['en'] == section.title && document['paragraphs'].map { |pair| pair['en'] } == section.paragraphs, 'authored English rules differ from runtime text')
     ([document['title']] + document['paragraphs']).each do |pair|
-      assert(%w[en pl].all? { |language| pair[language].is_a?(String) && !pair[language].strip.empty? && pair[language].valid_encoding? }, 'authored rule text is incomplete')
+      assert(pair['en'].is_a?(String) && !pair['en'].strip.empty? && pair['en'].valid_encoding?, 'authored rule text is incomplete')
     end
   end
 end

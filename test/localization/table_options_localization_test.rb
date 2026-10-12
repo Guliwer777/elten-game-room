@@ -27,7 +27,6 @@ puts "PASS compact table options: all 11 Domino sets translated in creation and 
 [GameRoomGames::NinetyNine.new, GameRoomGames::Poker.new].each do |game|
   [false, true].each do |english|
     $rules_english = english
-  GameRoomTestLocalization.use_language(english ? :en : :pl)
     GameRoomTestLocalization.use_language(english ? :en : :pl)
     text = game.table_options_announcement(game.default_options.merge("thinking_time"=>20))
     expected = english ? "Thinking time: 20 seconds" : "Czas na ruch: 20 sekund"
@@ -35,7 +34,12 @@ puts "PASS compact table options: all 11 Domino sets translated in creation and 
     text = game.table_options_announcement(game.default_options)
     raise "Disabled new timer announced" if text.match?(/Thinking time|Czas na ruch/)
     document = game.rule_book(options:game.default_options).documents.first.text
-    expected = english ? "Thinking time is off by default." : "Czas na ruch jest domyślnie wyłączony."
+    expected = if game.id == 'ninety_nine'
+      english ? 'A turn timer penalises timeout with the loss of one token and the turn.' : 'Włączenie limitu czasu dodaje karę za brak ruchu.'
+    else
+      english ? 'There is no decision time limit by default.' : 'Domyślnie nie ma limitu czasu na decyzję.'
+    end
+    raise "Timer unexpectedly enabled by default" unless game.default_options.fetch('thinking_time').zero?
     raise "Missing timer rules: #{game.id}" unless document.include?(expected)
     raise "Bad timer rule encoding" unless (document + " — поле").valid_encoding?
     next unless game.id == "ninety_nine"

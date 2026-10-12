@@ -2,8 +2,8 @@
   "packs": {
     "quiz.wikidata.pl": {
       "count": 14887,
-      "version": 8,
-      "checksum": "8a5d0db5bfea754a21940892cab235752582e7f1bb66bc1886df38a743ea1406"
+      "version": 9,
+      "checksum": "c62d695aff37acbbfc938af22542803861aaac46a72f8576307eaf974b1ce1b8"
     },
     "quiz.general.en": {
       "count": 13903,
@@ -11,9 +11,9 @@
       "checksum": "4f1cf5d680f8387506bf0b65e456404aa4a102591f1617540dc61c1ec1b09634"
     },
     "quiz.witcher.books.pl": {
-      "count": 1275,
-      "version": 1,
-      "checksum": "f44884edfb481a051cdf6f818d5dd702f1a6788a3ca4821ad26f792153db8a6a"
+      "count": 1449,
+      "version": 2,
+      "checksum": "becfa1e5d6db8a104a8b478ab6e73be8ec9f0e4dea84d5580ae4dae2bcc80ed7"
     }
   },
   "excluded_ids": {
@@ -23,6 +23,16 @@
       "a92f2dd83f15",
       "69843c5d9805",
       "09559cfc46fe"
+    ],
+    "quiz.witcher.books.pl": [
+      "36884a770c73",
+      "a02bb9ada713",
+      "a97a97f30aa1",
+      "11b703799b8f",
+      "eaf3adacfc41",
+      "ec022cc4b58f",
+      "7cea22da0131",
+      "c5f3b10f98a0"
     ]
   }
 }

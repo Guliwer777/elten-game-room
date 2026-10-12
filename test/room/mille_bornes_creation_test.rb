@@ -141,7 +141,7 @@ replay = game.replay(snapshot.session, snapshot.events, app.games)
 assert(replay.accepted_events.length == saved["events"].length, "Actual resumed game rejected saved events")
 assert(replay.state[:hands].values.all? { |hand| hand.length == 6 }, "Actual resume truncated a physical hand")
 assert(game.deck_counts_for(replay.state[:options]) == game.deck_counts_for(options), "Actual resume changed the custom deck")
-assert(app.send(:saved_games).fetch(saved["id"]) == saved, "Actual resume damaged the recovery archive")
+assert(app.send(:saved_games).fetch(saved["id"]).nil?, "Successful resume left a reusable archive on the account")
 assert_equal([], app.errors, "Application creation/save/resume swallowed a network error")
 app.lobby.close_table(restored_table)
 puts "PASS application creation, eight-place lobby with seven bots, account save, saved-room creation and resume"
@@ -177,7 +177,7 @@ puts "PASS eight saved players plus absent owner need nine seats, with translate
   boundary_replay = game.replay(boundary_snapshot.session, boundary_snapshot.events, boundary_app.games)
   assert_equal(boundary_saved.fetch("events").length, boundary_replay.accepted_events.length, "Boundary resume rejected saved events")
   assert_equal(saved_players.length, boundary_replay.state.fetch(:hands).length, "Boundary resume lost a physical hand")
-  assert_equal(boundary_saved, boundary_app.send(:saved_games).fetch(boundary_saved.fetch("id")), "Boundary resume modified the archive")
+  assert_equal(nil, boundary_app.send(:saved_games).fetch(boundary_saved.fetch("id")), "Boundary resume did not consume the archive")
   assert_equal([], boundary_app.errors, "Boundary restoration swallowed a network error")
   boundary_app.lobby.close_table(boundary_table)
 end

@@ -24,13 +24,9 @@ class GameRoomLiveSessionStore
       commands = GameRoomEventProtocol.validate_commands!(events.to_a).map do |event|
         GameRoomEventProtocol.normalized(event).merge("move_id" => SecureRandom.uuid)
       end
-      record = append_record(table_id, "game_action", {
-        "session_id" => session_id,
-        "sequence" => sequence.to_i,
-        "controller" => controller == true,
-        "control_epoch" => ledger.epoch,
-        "events" => commands
-      }, actor: actor)
+      packet = GameRoomEventProtocol.game_action_packet(session_id: session_id, sequence: sequence,
+        control_epoch: ledger.epoch, events: commands, actor: actor, controller: controller)
+      record = append_packet(table_id, packet)
       expand_game_action(record)
     end
 
@@ -76,21 +72,20 @@ class GameRoomLiveSessionStore
     private
 
     def append_record(table_id, kind, data, actor:, message_id: nil)
+      packet = GameRoomEventProtocol.record_packet(kind: kind, actor: actor, data: data)
+      append_packet(table_id, packet, message_id: message_id)
+    end
+
+    def append_packet(table_id, packet, message_id: nil)
       session = active_session(table_id)
       raise ArgumentError, "The room is no longer active" if session == nil
 
       message_id ||= SecureRandom.uuid
-      packet = {
-        "version" => PROTOCOL,
-        "kind" => kind.to_s,
-        "actor" => actor.to_s,
-        "data" => JSON.parse(JSON.generate(data))
-      }
       pending = GameRoomSessionContracts::PendingWrite.new(message_id: message_id, packet: packet, sender: endpoint.user.to_s, writing: false)
       @mutex.synchronize do
         raise GameRoomNetworkErrors::PendingMove, "An earlier game move is awaiting confirmation" if @rooms[table_id]&.pending_move
 
-        room_state(table_id).pending_move = pending if kind.to_s == "game_action"
+        room_state(table_id).pending_move = pending if packet['kind'] == "game_action"
       end
       write_record(table_id, pending)
     end

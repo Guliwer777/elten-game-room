@@ -80,7 +80,7 @@
           "pl": "Zwycięzca licytacji otrzymuje musik, którego zawartość poznają wszyscy. Następnie oddaje po jednej karcie każdemu przeciwnikowi. Jeśli to ty wygrałeś, wybierz strzałkami kartę dla wskazanej osoby i naciśnij Enter. Powtórz to dla drugiej osoby. Po wymianie każdy ma osiem kart."
         },
         {
-          "pl": "Teraz możesz zostawić dotychczasowy kontrakt albo go podnieść. Naciśnij B, wybierz strzałkami wartość i zatwierdź Enterem. Nowy pułap zależy od mariaży, które zostały ci w ręce, ale wcześniejszej obietnicy nie wolno już obniżyć."
+          "pl": "Teraz możesz zostawić dotychczasowy kontrakt albo go podnieść. Naciśnij B, wybierz strzałkami wartość i zatwierdź Enterem. To, o ile możesz podnieść kontrakt, zależy od mariaży w twojej ręce. Nie możesz go obniżyć."
         },
         {
           "pl": "Pierwszą kartę zagrywa zwycięzca licytacji. Jeśli nie zmieniasz kontraktu, wystarczy wybrać kartę strzałkami i nacisnąć Enter. Zagranie pierwszej karty ostatecznie zamyka możliwość podnoszenia kontraktu."
@@ -186,7 +186,7 @@
           "pl": "Żeby wygrać na beczce, musisz wykonać własny kontrakt wart co najmniej 120 punktów. Mniejszy kontrakt ani punkty z rozdania, w którym licytację wygrał ktoś inny, nie zwiększą twojego wyniku. Bezpunktowe rozdania na beczce nie wliczają się do kary za trzy zera."
         },
         {
-          "pl": "Jeśli nie wykonasz własnego kontraktu, tracisz jego wartość i spadasz z beczki od razu. Jeśli przez trzy rozegrane rozdania nie uda ci się wygrać, tracisz 120 punktów i również schodzisz z beczki. Pod Shift+S sprawdzisz, ile szans zostało."
+          "pl": "Jeśli nie wykonasz własnego kontraktu, tracisz jego wartość i spadasz z beczki od razu. Jeśli przez trzy rozegrane rozdania nie uda ci się wygrać, tracisz 120 punktów i również schodzisz z beczki. Skrótem Shift+S sprawdzisz, ile szans zostało."
         },
         {
           "pl": "Osoba na beczce nie może poddać rozdania. Nie dostaje też punktów za cudze poddanie, a takie rozdanie nie zużywa jej szansy na wygraną."
@@ -258,7 +258,7 @@
           "pl": "Enter: potwierdź wybór; na karcie zagraj ją lub wybierz zgłoszenie mariażu."
         },
         {
-          "pl": "Shift+Enter: zgłoś dostępny mariaż od razu; jeśli nie ma mariażu, nie zagrywaj karty."
+          "pl": "Shift+Enter: zagraj kartę ze zgłoszeniem mariażu; jeśli nie można go zgłosić, skrót niczego nie zagrywa."
         },
         {
           "pl": "B: po wymianie, przed pierwszą kartą, zmień kontrakt; poza tym odczytaj oferty."

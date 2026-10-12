@@ -8,10 +8,10 @@
       },
       "paragraphs": [
         {
-          "pl": "W Farkle rzucasz sześcioma kośćmi i odkładasz te, które dają punkty. Potem decydujesz: zapisać zdobyty wynik czy rzucać dalej, próbując go powiększyć. Nieudany rzut zabiera wszystko, co uzbierałeś w tej turze, ale nie rusza punktów z wcześniejszych tur."
+          "pl": "Grając w Farkle, rzucasz sześcioma kośćmi i odkładasz te, które dają punkty. Potem decydujesz: zapisać zdobyty wynik czy rzucać dalej, próbując go powiększyć. Nieudany rzut zabiera wszystko, co uzbierałeś w tej turze, ale nie rusza punktów z wcześniejszych tur."
         },
         {
-          "pl": "Gra od dwóch do ośmiu osób. Zwykle dążycie do 1000 punktów. O zwycięstwie rozstrzyga najwyższy zapisany wynik po dokończeniu ostatniej kolejki."
+          "pl": "W grze może uczestniczyć od dwóch do ośmiu osób. Zwykle dążycie do 1000 punktów. O zwycięstwie rozstrzyga najwyższy zapisany wynik po dokończeniu ostatniej kolejki."
         }
       ]
     },
@@ -31,7 +31,7 @@
           "pl": "Po odłożeniu kości zdecyduj, czy rzucasz dalej, czy zapisujesz punkty. Strzałkami wybierz ponowny rzut i naciśnij Enter, żeby rzucić pozostałymi kośćmi. Jeżeli uzbierałeś wymagane minimum, możesz zamiast tego wybrać zapisanie punktów. Dodasz je do swojego wyniku i zakończysz turę."
         },
         {
-          "pl": "Nowe kości muszą utworzyć własny punktujący układ. Nie łączysz ich z kośćmi odłożonymi wcześniej. Jeżeli rzut nie daje żadnych punktów, następuje Farkle: tracisz wynik całej bieżącej tury i od razu gra następna osoba."
+          "pl": "W kolejnym rzucie musisz uzyskać nowy punktujący układ. Nie dołączasz do niego kości odłożonych wcześniej. Jeżeli rzut nie daje żadnych punktów, następuje Farkle: tracisz wynik całej bieżącej tury i od razu gra następna osoba."
         },
         {
           "pl": "Na przykład z rzutu 1, 2, 4, 5, 5, 5 możesz odłożyć jedynkę i trzy piątki za 60 punktów. Zostają dwie kości. Możesz zapisać 60 albo zaryzykować rzut tymi dwiema. Jeśli wypadną 2 i 6, nie dadzą punktów, a całe 60 przepadnie."
@@ -74,13 +74,13 @@
           "pl": "- Trzy jednakowe kości o innej wartości dają dziesięć razy tyle punktów, ile oczek ma jedna z nich. Trzy dwójki są więc warte 20, a trzy szóstki 60 punktów."
         },
         {
-          "pl": "- Cztery jednakowe kości dają 100 punktów oraz dziesięć razy ich wartość. Cztery czwórki dają zatem 140 punktów."
+          "pl": "- Cztery jednakowe kości dają 100 punktów oraz dziesięć razy tyle, ile oczek ma jedna z nich. Cztery czwórki dają zatem 140 punktów."
         },
         {
-          "pl": "- Pięć jednakowych kości daje 300 punktów oraz dwadzieścia razy ich wartość. Pięć czwórek daje 380 punktów."
+          "pl": "- Pięć jednakowych kości daje 300 punktów oraz dwadzieścia razy tyle, ile oczek ma jedna z nich. Pięć czwórek daje 380 punktów."
         },
         {
-          "pl": "- Sześć jednakowych kości daje 600 punktów oraz dwadzieścia pięć razy ich wartość. Sześć czwórek daje 700 punktów."
+          "pl": "- Sześć jednakowych kości daje 600 punktów oraz dwadzieścia pięć razy tyle, ile oczek ma jedna z nich. Sześć czwórek daje 700 punktów."
         },
         {
           "pl": "- Pięć kolejnych wartości, od 1 do 5 albo od 2 do 6, daje 100 punktów."
@@ -143,13 +143,13 @@
           "pl": "- Limit punktów domyślnie wynosi 1000. Gdy ktoś go osiągnie, dokańczacie bieżącą kolejkę i porównujecie wyniki."
         },
         {
-          "pl": "- Minimum pierwszego zapisu zastępuje próg 50 punktów. Obowiązuje każdego gracza tak długo, jak jego zapisany wynik wynosi zero."
+          "pl": "- Minimum pierwszego zapisu określa, ile punktów musisz zebrać w jednej turze, żeby po raz pierwszy zapisać wynik. Domyślnie jest to 50 punktów."
         },
         {
           "pl": "- Minimum zapisu tury zastępuje próg 30 punktów. Obowiązuje od następnej tury po pierwszym zapisaniu punktów."
         },
         {
-          "pl": "Oba minima ustala się osobno. Wartość zero znosi dany próg, ale przed zapisem nadal trzeba zdobyć w turze jakieś punkty."
+          "pl": "Każde minimum ustala się osobno. Wartość zero znosi dany próg, ale przed zapisem nadal trzeba zdobyć w turze jakieś punkty."
         }
       ]
     },

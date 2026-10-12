@@ -94,7 +94,7 @@
           "cs": "- Bezplatné parkování vyplatí celý naspořený bank. Přitékají do něj daně a poplatky bance z karet nebo za opuštění vězení. Po vyplacení začíná znovu od nuly."
         },
         {
-          "cs": "- Šance a Pokladna spustí kartu události. Hra její účinek přečte a hned provede."
+          "cs": "- Na polích Šance a Pokladna se použije karta události. Hra její účinek přečte a hned provede."
         },
         {
           "cs": "Karty mohou mít tyto účinky:"
@@ -190,7 +190,7 @@
           "cs": "Před zastavením ulice musíš prodat všechny budovy celé její barevné skupiny."
         },
         {
-          "cs": "Zástavu vyplatíš pomocí Shift+K: vyber nemovitost a potvrď Enterem. Zaplatíš zástavní hodnotu plus deset procent, zaokrouhleno nahoru na celou jednotku. Zástava 100 tedy stojí 110. Potom nemovitost znovu vynáší nájemné."
+          "cs": "Zástavu vyplatíš pomocí Shift+K: vyber nemovitost a potvrď Enterem. Zaplatíš zástavní hodnotu plus deset procent, zaokrouhleno nahoru na celou jednotku. Vyplacení zástavy v hodnotě 100 tedy stojí 110. Potom nemovitost znovu vynáší nájemné."
         }
       ]
     },
@@ -230,7 +230,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Běžné zastavení na vězení je jen návštěva. Trest nastane až odesláním z pole, kartou nebo třetí dvojicí za sebou. Odeslání ukončí tah a nepřinese výplatu za Start."
+          "cs": "Na poli Vězení jsi při běžném zastavení jen na návštěvě. Do vězení tě pošle příslušné pole, karta nebo třetí dvojice za sebou. Odeslání ukončí tah a nepřinese výplatu za Start."
         },
         {
           "cs": "Na začátku tahu ve vězení máš tři možnosti:"
@@ -322,7 +322,7 @@
           "cs": "Běžně nekoupená nemovitost zůstává volná. Před hrou můžeš zapnout její dražbu. Přihazovat postupně smějí všichni dosud hrající, včetně hráče, který nákup odmítl."
         },
         {
-          "cs": "Na řadě můžeš zvýšit nebo odstoupit. G podá navrženou vyšší nabídku. Vlastní částku zadáš přes B a potvrdíš Enterem. Zadáváš celkovou cenu, nikoli rozdíl oproti předchozí nabídce."
+          "cs": "Když jsi na řadě, můžeš zvýšit nabídku nebo odstoupit. G podá navrženou vyšší nabídku. Vlastní částku zadáš přes B a potvrdíš Enterem. Zadáváš celkovou cenu, nikoli rozdíl oproti předchozí nabídce."
         },
         {
           "cs": "Nabídka musí přesáhnout současnou a vejít se do hotovosti. Odstoupení vyber šipkami ze seznamu akcí a potvrď Enterem. Do stejné dražby se pak už nevrátíš."

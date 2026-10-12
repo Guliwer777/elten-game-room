@@ -8,7 +8,7 @@ module GameSurfaces
         "epoch" => epoch.to_s, "selected_id" => ids[index.to_i] }
     end
 
-    def self.resolve(cards, raw_order, epoch, previous, index, sorted: false)
+    def self.resolve(cards, raw_order, epoch, previous, index, sorted: false, select_drawn: true)
       previous = {} unless previous.is_a?(Hash)
       ids = cards.map { |card| card.id.to_s }
       raw = raw_order.to_a.map(&:to_s)
@@ -27,7 +27,7 @@ module GameSurfaces
         ids = cards.map { |card| card.id.to_s }
       end
       selected = previous["selected_id"]
-      target = added.reverse.find { |id| ids.include?(id) }
+      target = added.reverse.find { |id| ids.include?(id) } if select_drawn
       target ||= selected if ids.include?(selected)
       if target == nil
         position = old.index(selected) || index.to_i

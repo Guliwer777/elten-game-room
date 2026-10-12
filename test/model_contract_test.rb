@@ -17,8 +17,9 @@ end
 assert_equal(without_replay_hashes.call(previous_tysiac), without_replay_hashes.call(tysiac), 'Tysiac roster fields must not replace the reference actions or RNG')
 cases = corpus.fetch('cases').reject { |item| item.fetch('game') == 'tysiac' } + [tysiac,
   JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v1/mille_bornes.json'), encoding: 'UTF-8'))]
+duck = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v1/duck_racing.json'), encoding: 'UTF-8'))
 expected_ids = GameRoomGames::CATALOG.ids.reject { |id| %w[axel_pong audio_ball].include?(id) }.sort
-assert_equal(expected_ids, cases.map { |item| item.fetch('game') }.sort, 'corpus must explicitly cover every turn-based game')
+assert_equal(expected_ids, (cases.map { |item| item.fetch('game') } + [duck.fetch('game')]).sort, 'corpus must explicitly cover every turn-based game')
 assert((ARGV - expected_ids).empty?, 'unknown game requested for contract verification')
 cases = cases.select { |item| ARGV.include?(item.fetch('game')) } unless ARGV.empty?
 cases.each do |item|
@@ -34,4 +35,10 @@ cases.each do |item|
   assert_equal(item.fetch('final'), GameRoomTest::ModelContract.checkpoint(env), "#{game.id}: final checkpoint changed")
   assert_equal(item.fetch('events'), env.events, "#{game.id}: serialized history changed")
   puts "#{game.id}: #{item.fetch('steps').length} transitions, full/incremental replay, input ownership, action order and RNG OK"
+end
+
+if ARGV.empty? || ARGV.include?('duck_racing')
+  require_relative 'support/duck_model_contract'
+  assert_equal(duck, GameRoomTest::DuckModelContract.capture, 'Duck public protocol contract changed')
+  puts 'duck_racing: host startup, ready/begin, three rolls, settlement, race continuation, full/incremental replay and RNG OK'
 end

@@ -42,7 +42,7 @@
           "cs": "Hráči postupně rozhodují, zda v rozdání pokračují a kolik vsadí:"
         },
         {
-          "cs": "- C bez částky k dorovnání znamená check: ponecháš si karty a předáš řadu bez vkladu."
+          "cs": "- C bez částky k dorovnání znamená check: ponecháš si karty, nevsadíš a na řadu přijde další hráč."
         },
         {
           "cs": "- C proti sázce znamená dorovnání: doplatíš rozdíl. Máš-li málo žetonů, vložíš všechny a zůstaneš ve hře o pokrytou část banku."
@@ -137,7 +137,7 @@
     {
       "id": "comparing_hands",
       "title": {
-        "cs": "Porovnání stejného typu"
+        "cs": "Porovnání kombinací stejného typu"
       },
       "paragraphs": [
         {
@@ -164,10 +164,10 @@
           "cs": "Po all-inu už o sázkách nerozhoduješ, čekáš na výsledek. Od každého soupeře můžeš vyhrát nejvýše tolik, kolik jsi sám vložil. Jejich další vklady tvoří vedlejší bank, o který už nehraješ."
         },
         {
-          "cs": "Například vložíš posledních 40 a dva soupeři po 100. Hlavní bank je 120, tedy po 40 od každého, a mohou ho vyhrát všichni tři. Dalších 120, po 60 od soupeřů, patří jen jejich souboji; může ho získat jeden nebo si ho při shodě rozdělí."
+          "cs": "Například vložíš posledních 40 a dva soupeři po 100. Hlavní bank je 120, tedy po 40 od každého, a mohou ho vyhrát všichni tři. Dalších 120, po 60 od soupeřů, tvoří vedlejší bank, o který hrají jen oni dva. Může ho získat jeden z nich, nebo si ho při shodě rozdělí."
         },
         {
-          "cs": "Každý bank se řeší samostatně. Remizující si ho rozdělí rovným dílem. Nedělitelné žetony dostávají postupně od prvního remizujícího za rozdávajícím."
+          "cs": "Každý bank se řeší samostatně. Remizující si ho rozdělí rovným dílem. Zbylé žetony se rozdělí po jednom, počínaje prvním remizujícím za rozdávajícím."
         }
       ]
     },
@@ -207,7 +207,7 @@
           "cs": "- Výměnu až pěti karet místo tří."
         },
         {
-          "cs": "- Kluky nebo lepší: první sázku před výměnou smí otevřít pouze ruka alespoň s párem kluků. Po otevření mohou ostatní dorovnávat a zvyšovat i s horší rukou. Pokud všichni dají check, následuje výměna a po ní podmínka neplatí."
+          "cs": "- Kluky nebo lepší: první sázku před výměnou smí otevřít pouze hráč, který má alespoň pár kluků. Po otevření mohou ostatní dorovnávat a zvyšovat i s horší rukou. Pokud všichni dají check, následuje výměna a po ní podmínka neplatí."
         },
         {
           "cs": "- Blindy místo ante, stejně jako v Hold'emu. Blindy už jsou otevřená sázka, takže podmínka páru kluků pak sázení neomezuje."

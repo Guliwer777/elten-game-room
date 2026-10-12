@@ -189,6 +189,10 @@ class GameRoomTransport
     @live_store.append_game_action(**arguments)
   end
 
+  def game_action_limits(table_or_id)
+    @live_store.game_action_limits(table_or_id)
+  end
+
   def game_events(session, force: false)
     @live_store.game_events(session, force: force)
   end

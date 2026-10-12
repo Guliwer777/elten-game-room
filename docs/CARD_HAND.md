@@ -11,6 +11,11 @@ dice, action lists and other lists retain their own navigation.
 - After playing a packet, skip all removed cards.
 - Drawing takes precedence over playing in the same update; select the last
   card actually received, not the last card in the sort order.
+- A `CardZoneSpec` may explicitly set `select_drawn: false` to preserve the
+  selected physical card or command when drawing. Duck Racing uses this so
+  its permanent bottom-row Roll command remains selected between turns.
+  Removing a selected card still selects its nearest surviving neighbour;
+  a new hand epoch still resets the selection. Other hands retain the default.
 - Without an explicitly selected sort order, preserve the order of the remaining
   hand and append new cards at the bottom. UNO sorting remains active.
 - Announcements follow the identity of the new card under the cursor. They do

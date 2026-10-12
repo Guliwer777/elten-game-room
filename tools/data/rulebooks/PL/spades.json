@@ -11,7 +11,7 @@
           "pl": "W Pikach starasz się przewidzieć, ile razy zbierzesz karty ze stołu. Po rozdaniu każdy zapowiada swój wynik, a potem rozgrywacie karty, po jednej od osoby. Taką grupę kart nazywa się lewą. Jeśli weźmiesz co najmniej tyle lew, ile obiecałeś, zdobywasz punkty. Jeśli zabraknie choć jednej, tracisz punkty za całą deklarację."
         },
         {
-          "pl": "Grają od trzech do sześciu osób. W zwykłej grze każdy zbiera punkty dla siebie. Wygrywa gracz, który po zakończeniu rozdania ma co najmniej 300 punktów i sam zajmuje pierwsze miejsce."
+          "pl": "W piki może grać od trzech do sześciu osób. W zwykłej grze każdy zbiera punkty dla siebie. Wygrywa gracz, który po zakończeniu rozdania ma co najmniej 300 punktów i sam zajmuje pierwsze miejsce."
         }
       ]
     },
@@ -39,7 +39,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Pierwsza karta w lewie wyznacza kolor, którego pozostali muszą się trzymać. Jeśli ktoś wyjdzie w kiery i masz kiera, wybierz jednego strzałkami i naciśnij Enter. Gdy nie masz tego koloru, możesz zagrać dowolną kartę. Klawiszem C odczytasz karty już zagrane w bieżącej lewie."
+          "pl": "Pierwsza karta w lewie wyznacza kolor, którego pozostali muszą się trzymać. Jeśli ktoś wyjdzie w kiery i masz kiera, wybierz kartę tego koloru strzałkami i naciśnij Enter. Gdy nie masz tego koloru, możesz zagrać dowolną kartę. Klawiszem C odczytasz karty już zagrane w bieżącej lewie."
         },
         {
           "pl": "Najwyższa karta w kolorze pierwszego zagrania wygrywa lewę, chyba że ktoś dołoży pika. Piki są atutami: przebijają pozostałe kolory, a gdy zagrano ich kilka, wygrywa najwyższy pik. W każdym kolorze najmocniejszy jest as, potem król, dama, walet i karty od dziesiątki do dwójki. Zwycięzca zbiera lewę i zaczyna następną."
@@ -138,7 +138,7 @@
           "pl": "W grze drużynowej wspólnie pracujecie na wynik. Każdy deklaruje za siebie i gra swoimi kartami, ale możecie sobie pomóc w zdobyciu zapowiedzianej liczby lew."
         },
         {
-          "pl": "Jeśli zapowiesz cztery lewy, a twój partner trzy, potrzebujecie razem siedmiu. Możesz wziąć pięć, a partner dwie — drużyna wykona wtedy deklarację. Punkty i worki zapisuje się wam wspólnie."
+          "pl": "Jeśli zapowiesz cztery lewy, a twój partner trzy, potrzebujecie razem siedmiu. Możesz wziąć pięć, a partner dwie — drużyna wykona wtedy deklarację. Punkty i worki liczą się wam wspólnie."
         },
         {
           "pl": "Wyjątkiem jest nil. Osoba, która go wybrała, musi unikać wszystkich lew, nawet jeśli partner potrzebuje pomocy. Jej lewy nie liczą się do wspólnej deklaracji. Za nieudany nil drużyna traci 100 punktów, a każda wzięta w nim lewa daje jej punkt i worek."

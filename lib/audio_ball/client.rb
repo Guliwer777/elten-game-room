@@ -37,11 +37,20 @@ module GameRoomAudioBall
       @defense_input = DefenseInput.new
     end
 
-    def bind_screen(session_id:, table_id:, owner:, viewer:, members:)
+    def bind_screen(session_id:, table_id:, owner:, viewer:, members:, match_scope: nil, single_point: false)
+      unless match_scope.nil? || (match_scope.is_a?(String) && !match_scope.empty?)
+        raise ArgumentError, 'Invalid Audio Ball match scope'
+      end
+      raise ArgumentError, 'Invalid Audio Ball single-point mode' unless single_point == true || single_point == false
       @activity_table, @activity_session = table_id, session_id
+      @single_point = single_point
       @owner, @viewer = owner.to_s, viewer.to_s
       connection_state.connection_started = @clock.call
-      @match = Digest::SHA256.hexdigest("GameRoom:audio_ball:#{table_id}:#{session_id}")[0, 24]
+      # Scope only the realtime channel; activity still belongs to the real
+      # table and LiveSession. Ordinary games retain their existing identity.
+      match_key = "GameRoom:audio_ball:#{table_id}:#{session_id}"
+      match_key = match_key.b + "\0scope\0".b + match_scope.b unless match_scope.nil?
+      @match = Digest::SHA256.hexdigest(match_key)[0, 24]
       @base_match, @members_provider = @match, members
       @channel = @channel_factory.call(program: @program, match: @match, owner: @owner,
         viewer: @viewer, clock: @clock, members: members)
@@ -61,6 +70,28 @@ module GameRoomAudioBall
     def action(_selection, _replay, _viewer); false; end
     def error(_status); end
     def automatic_error(_status); end
+
+    def finish_single_point(winner:)
+      return false unless @single_point && !@closed && @replay && !@replay.finished?
+      return false unless winner.is_a?(Integer) && winner.between?(0, 1)
+      preview = point_state.goal_preview
+      unless preview && preview[:rally] == @replay.state[:rally] && preview[:winner] == winner
+        @audio.goal(viewer: @side, winner: winner)
+      end
+      @replay = @replay.dup
+      @replay.winner = @players[winner]
+      point_state.pending_point = point_state.goal_preview = nil
+      rally_state.paused = true
+      detach_view
+      unregister_ping_channel
+      @channel.close
+      true
+    end
+
+    def presentation_pending?
+      @audio.respond_to?(:announcement_pending?) && @audio.announcement_pending?
+    end
+
     def after_events(replay, viewer, context:); before_wait(replay, viewer); end
 
     def before_wait(replay, viewer)
@@ -564,7 +595,7 @@ module GameRoomAudioBall
       number = @replay.state[:set_number]
       if presentation_state.announced_set != number
         presentation_state.announced_set = number
-        @audio.announce_set(number)
+        @audio.announce_set(number) unless @single_point
       end
       service = [number, @replay.state[:scores].sum / 2]
       return if @announced_service == service

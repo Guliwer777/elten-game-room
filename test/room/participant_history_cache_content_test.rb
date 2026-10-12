@@ -54,7 +54,14 @@ assert(replay.call.accepted_events.length == events.length, 'fixture history con
 session.merge!('__players' => %w[Carol Bob], '__initial_players' => %w[Alice Bob],
   '__seat_changes' => [{ 'id' => events.last.fetch('id') + 1, 'players' => %w[Carol Bob] }])
 original = Marshal.load(Marshal.dump(events))
-game.replay(session, events, repository)
+first_view = game.replay(session, events, repository)
+expected_history = Marshal.load(Marshal.dump(first_view.history))
+historical_entry = first_view.history.find { |entry| entry.event_id.to_i < session['__seat_changes'][0]['id'] }
+assert(historical_entry && historical_entry.text.is_a?(String), 'fixture needs an earlier participant history entry')
+historical_entry.text.replace('Caller changed the returned historical message')
+assert(game.replay(session, events, repository).history == expected_history,
+  'caller mutation leaked into the cached historical participant segment')
+assert(events == original, 'presentation mutation changed the source history')
 mutations = [
   -> { events.find { |e| e['id'] == first_commit }['created_at'] += 1 },
   -> { events.replace(Marshal.load(Marshal.dump(original))); events[2]['actor'] = 'Unknown' },
@@ -69,4 +76,4 @@ mutations.each_with_index do |change, index|
   assert(cached.to_h == fresh.to_h, "cached Quiz differs from full replay after mutation #{index}")
   assert(game.instance_variable_get(:@participant_history_cache)[:segments].size == 1, 'old prefix variants accumulate')
 end
-puts 'PASS participant history cache: real Quiz, earlier timestamp/author/value and mutable settings/roster'
+puts 'PASS participant history cache: real Quiz, caller-owned historical messages, earlier timestamp/author/value and mutable settings/roster'

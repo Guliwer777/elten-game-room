@@ -137,7 +137,7 @@ module PongDoublesLobbyTest
       lambda do |form|
         games = form.fields.first
         assert(games.header == "Create a new table", "Creation bypassed real game selection")
-        games.index = games.options.index("Axel Pong")
+        games.index = games.options.index(app.send(:game_lobby_label, "axel_pong"))
         assert(games.index != nil, "Axel Pong is missing from the real game selector")
         form.accept_button.trigger(:press)
       end,

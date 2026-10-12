@@ -1,0 +1,542 @@
+{
+  "source": "games/duck_racing.rb",
+  "sections": [
+    {
+      "id": "aim",
+      "title": {
+        "pl": "Cel gry"
+      },
+      "paragraphs": [
+        {
+          "pl": "W Wyścigach kaczek może uczestniczyć od dwóch do ośmiu osób. Okrążasz Spokojny staw, pomagasz sobie kartami i rywalizujesz z innymi w wyzwaniach. Wygrywa pierwsza kaczka, która pokona ustaloną liczbę okrążeń."
+        },
+        {
+          "pl": "Plansza ma 30 pól. Zaczynacie na polu 1, każdy z trzema kartami i sześcioma piórami za każde zaplanowane okrążenie. Domyślnie gracie trzy okrążenia, więc na start dostajesz 18 piór."
+        },
+        {
+          "pl": "Na ostatnim okrążeniu wystarczy przekroczyć metę, również dzięki karcie przesuwającej kaczkę."
+        }
+      ]
+    },
+    {
+      "id": "turn",
+      "title": {
+        "pl": "Przebieg tury"
+      },
+      "paragraphs": [
+        {
+          "pl": "W swojej turze możesz zagrać jedną kartę przed rzutem kością. Wybierz ją strzałkami; klawisz D odczyta jej działanie i koszt w piórach. Enterem zagrywasz kartę. Jeśli wymaga wskazania gracza, wybierz go strzałkami i zatwierdź Enterem."
+        },
+        {
+          "pl": "Naciśnij Spację, żeby rzucić kością i przesunąć się o wyrzuconą liczbę pól. Rzut możesz też wybrać Enterem na końcu listy, pod kartami. Zwykła kość ma od jednego do sześciu oczek."
+        },
+        {
+          "pl": "Po ruchu rozgrywacie zdarzenia z pola, na którym się zatrzymasz. Dopiero potem zaczyna następny gracz. Jeśli karta lub ruch wywoła wyzwanie, najpierw je kończycie."
+        },
+        {
+          "pl": "- C przypomina twoją pozycję, liczbę piór i działające na ciebie efekty."
+        },
+        {
+          "pl": "- S podaje sytuację wszystkich graczy."
+        },
+        {
+          "pl": "- T przypomina, kto ma teraz wykonać ruch."
+        }
+      ]
+    },
+    {
+      "id": "track",
+      "title": {
+        "pl": "Pola i spotkania"
+      },
+      "paragraphs": [
+        {
+          "pl": "Pola mogą dawać karty i pióra, przesuwać kaczkę, zatrzymywać ją na kilka tur albo zadawać pytania. Planszę przejrzysz pod literą V. Przy każdym polu znajdziesz jego opis, stojące na nim kaczki i pozostawioną kartę."
+        },
+        {
+          "pl": "Po zatrzymaniu najpierw działa pole, potem leżąca na nim karta, a na końcu spotykasz inną kaczkę. Jeżeli pole lub karta przeniesie cię dalej, dalsze zdarzenia rozgrywacie już w nowym miejscu."
+        },
+        {
+          "pl": "Spotkanie z inną kaczką rozpoczyna losowy pojedynek. Gdy na polu jest ich kilka, zmierzysz się z ostatnią przybyłą, która nie jest zamrożona. Numer okrążenia nie ma znaczenia."
+        },
+        {
+          "pl": "Cofnięcie może przenieść cię na poprzednie okrążenie, najwyżej do początku wyścigu. Na przykład jedno pole wstecz z pola 1 drugiego okrążenia prowadzi na pole 30 pierwszego."
+        }
+      ]
+    },
+    {
+      "id": "cards",
+      "title": {
+        "pl": "Zagrywanie kart"
+      },
+      "paragraphs": [
+        {
+          "pl": "Karty pomagają w wyścigu lub przeszkadzają rywalom. Niektóre kosztują pióra — aby je zagrać, musisz mieć pełną wymaganą liczbę. W ręce możesz mieć dowolnie wiele kart."
+        },
+        {
+          "pl": "- Karty zagrane na kaczkę działają od razu. Mogą ją przesunąć, dać lub zabrać pióra, zatrzymać na kilka tur albo zmienić jej kość."
+        },
+        {
+          "pl": "- Karty pozostawione na polu czekają na następną kaczkę i po zadziałaniu znikają. Możesz trafić także na własną kartę. Wyjątkiem są karty kradnące pióra: omijają właściciela i czekają dalej. Na polu może leżeć jedna karta."
+        },
+        {
+          "pl": "- Inne karty pozwalają zabierać karty przeciwnikom lub wymieniać się wszystkimi kartami."
+        },
+        {
+          "pl": "- „Wyzwanie” rozpoczyna pojedynek z wybraną osobą, a „Superwyzwanie” obejmuje wszystkie niezamrożone kaczki. „Ciekawość” zadaje pytanie z quizu wszystkim."
+        },
+        {
+          "pl": "Zmiana kości zastępuje poprzednią i obowiązuje również w wyzwaniach z kośćmi. Jej działanie skracają tylko rzuty wykonywane podczas wyścigu."
+        }
+      ]
+    },
+    {
+      "id": "feathers",
+      "title": {
+        "pl": "Pióra i zamrożenie"
+      },
+      "paragraphs": [
+        {
+          "pl": "Piórami płacisz za karty i rozliczasz wyniki wyzwań. Gdy zostaniesz bez piór, twoja kaczka zamarza. Zachowujesz karty, ale pomijasz od jednej do czterech swoich tur."
+        },
+        {
+          "pl": "Czas zamrożenia zależy od odległości od ostatniej kaczki, z uwzględnieniem pełnych okrążeń:"
+        },
+        {
+          "pl": "- Przewaga do 9 pól: jedna tura."
+        },
+        {
+          "pl": "- Od 10 do 19 pól: dwie tury."
+        },
+        {
+          "pl": "- Od 20 do 29 pól: trzy tury."
+        },
+        {
+          "pl": "- Co najmniej 30 pól: cztery tury."
+        },
+        {
+          "pl": "Po odmrożeniu dostajesz pięć piór. Jeśli musisz pomijać tury także z innego powodu, obie przerwy odliczają się równocześnie."
+        },
+        {
+          "pl": "Przerwa rozpoczęta przed rzutem obejmuje już bieżącą turę. Jeśli powstanie po rzucie, zacznie się od twojej następnej tury."
+        }
+      ]
+    },
+    {
+      "id": "challenge_rules",
+      "title": {
+        "pl": "Wyzwania"
+      },
+      "paragraphs": [
+        {
+          "pl": "Na czas wyzwania przerywacie wyścig. Niektóre zadania są przeznaczone dla dwóch osób, inne także dla większej grupy. W wyzwaniach turowych losujecie, kto zaczyna."
+        },
+        {
+          "pl": "Przed zadaniem na szybkość usłyszysz odliczanie. Odpowiadaj po jego zakończeniu. Klawisz P przypomina treść zadania; działa również podczas wpisywania liczb."
+        },
+        {
+          "pl": "Zwycięzca zabiera pióra każdemu przegranemu według zasad danego wyzwania. Jeśli kilka osób uzyska najlepszy wynik, nikt nie przekazuje piór. Kto ma ich mniej, niż powinien oddać, traci cały swój zapas."
+        }
+      ]
+    },
+    {
+      "id": "rock_paper_scissors",
+      "title": {
+        "pl": "Kamień, papier, nożyce"
+      },
+      "paragraphs": [
+        {
+          "pl": "W pojedynku dla dwóch osób wybierz strzałkami kamień, papier albo nożyce i zatwierdź Enterem. Masz 15 sekund."
+        },
+        {
+          "pl": "Kamień pokonuje nożyce, nożyce papier, a papier kamień. Zwycięzca zabiera trzy pióra. Jednakowe wybory oznaczają remis. Jeśli odpowie tylko jedna osoba, to ona wygrywa."
+        }
+      ]
+    },
+    {
+      "id": "dice_duel",
+      "title": {
+        "pl": "Pojedynek na kości"
+      },
+      "paragraphs": [
+        {
+          "pl": "Rzucacie po kolei, każdy raz. W swojej turze naciśnij Enter. Masz dziesięć sekund; po tym czasie gra rzuci za ciebie."
+        },
+        {
+          "pl": "Używasz swojej kości z wyścigu, z uwzględnieniem działającej na nią karty. Najwyższy wynik wygrywa. Zwycięzca zabiera każdemu przeciwnikowi tyle piór, ile wynosi różnica ich wyników."
+        }
+      ]
+    },
+    {
+      "id": "blackjack",
+      "title": {
+        "pl": "Oczko"
+      },
+      "paragraphs": [
+        {
+          "pl": "Dostajesz dwie karty i starasz się zbliżyć ich sumę do 21, nie przekraczając tej liczby. Każdy gra własną talią 52 kart."
+        },
+        {
+          "pl": "- Karty od 2 do 10 są warte tyle punktów, ile wynosi ich numer."
+        },
+        {
+          "pl": "- Walet, dama i król są warte po dziesięć."
+        },
+        {
+          "pl": "- As otrzymuje wartość jedenaście, jeśli nie spowoduje przekroczenia 21, a w przeciwnym razie jeden. Ta wartość pozostaje do końca wyzwania."
+        },
+        {
+          "pl": "W swojej turze dobieraj Spacją albo zakończ dobieranie Enterem. Twoja tura kończy się również przy sumie 21 lub wyższej. Wtedy zaczyna następny gracz. Na każdą decyzję masz 30 sekund; po ich upływie zostajesz z obecną sumą."
+        },
+        {
+          "pl": "Wygrywa najwyższa suma do 21. Każdy przegrany oddaje zwycięzcy tyle piór, ile wynosi różnica ich wyników. Przekroczenie 21 kosztuje dodatkowo jedno pióro za każdy punkt ponad limit. Te pióra nie trafiają do zwycięzcy."
+        },
+        {
+          "pl": "Na przykład przy wynikach 20 i 24 przegrany oddaje zwycięzcy cztery pióra i traci jeszcze trzy za przekroczenie 21. Jeśli wszyscy przekroczą limit, płacą tylko za przekroczenie."
+        }
+      ]
+    },
+    {
+      "id": "risky_dice",
+      "title": {
+        "pl": "Ryzykowne kości"
+      },
+      "paragraphs": [
+        {
+          "pl": "Rzucaj dwiema kośćmi i dodawaj wyniki kolejnych rzutów. Wygrywa najwyższa suma nieprzekraczająca 25."
+        },
+        {
+          "pl": "Enterem wykonujesz pierwszy rzut i każdy następny. Żeby skończyć, strzałką w dół wybierz „Zapisz wynik” i zatwierdź Enterem. Dopiero wtedy zaczyna następna osoba. Suma 25 lub wyższa kończy twoją próbę automatycznie."
+        },
+        {
+          "pl": "Na decyzję masz 30 sekund. Po ich upływie zapisujesz wynik; jeśli jeszcze nie rzuciłeś, gra najpierw wykona jeden rzut. Karta zmieniająca twoją kość działa tu na obie kości."
+        },
+        {
+          "pl": "Przegrany oddaje zwycięzcy różnicę wyników w piórach. Za każdy punkt ponad 25 traci jeszcze jedno pióro na rzecz gry. Przy wynikach 24 i 28 są to cztery pióra dla zwycięzcy i trzy dodatkowej kary. Jeśli wszyscy przekroczą limit, pozostają tylko te kary."
+        }
+      ]
+    },
+    {
+      "id": "guess_number",
+      "title": {
+        "pl": "Zgadnij liczbę"
+      },
+      "paragraphs": [
+        {
+          "pl": "Odgadnij liczbę od 1 do 100. Usłyszysz, ile ma cyfr. Wpisuj swoje propozycje, a po każdej otrzymasz wskazówkę: szukana liczba jest większa albo mniejsza. Masz dziesięć prób i dwie minuty."
+        },
+        {
+          "pl": "Liczy się najbliższa odpowiedź każdego gracza. Zwycięzca zabiera każdemu przeciwnikowi trzy pióra; odpowiedzi równie bliskie oznaczają remis."
+        }
+      ]
+    },
+    {
+      "id": "copy_number",
+      "title": {
+        "pl": "Przepisz liczbę"
+      },
+      "paragraphs": [
+        {
+          "pl": "Jak najszybciej przepisz podaną trzycyfrową liczbę. Masz trzy próby i 15 sekund. Pierwsza poprawna odpowiedź wygrywa cztery pióra od każdego przeciwnika."
+        }
+      ]
+    },
+    {
+      "id": "arithmetic",
+      "title": {
+        "pl": "Rachunek w pamięci"
+      },
+      "paragraphs": [
+        {
+          "pl": "Oblicz i wpisz wynik dodawania, odejmowania, mnożenia albo dzielenia. Masz trzy próby i 20 sekund. Pierwsza poprawna odpowiedź wygrywa cztery pióra od każdego przeciwnika."
+        }
+      ]
+    },
+    {
+      "id": "race_question",
+      "title": {
+        "pl": "Pytanie o wyścig"
+      },
+      "paragraphs": [
+        {
+          "pl": "Wpisz odpowiedź na pytanie o sytuację w wyścigu: pozycję gracza, jego okrążenie, liczbę piór lub kart. Możesz sprawdzić te informacje klawiszami C i S."
+        },
+        {
+          "pl": "Masz dwie próby i 20 sekund. Pierwsza poprawna odpowiedź wygrywa cztery pióra od każdego przeciwnika."
+        }
+      ]
+    },
+    {
+      "id": "numbered_balls",
+      "title": {
+        "pl": "Kule z liczbami"
+      },
+      "paragraphs": [
+        {
+          "pl": "Dwie osoby na zmianę zabierają kule z rzędu. Jest ich dwanaście, z dodatnimi i ujemnymi wartościami. Postaraj się zebrać wyższą sumę niż przeciwnik."
+        },
+        {
+          "pl": "Przejrzyj rząd strzałkami. Cyfry 1, 2 i 3 zabierają odpowiednio jedną, dwie lub trzy kule z jego początku. Na decyzję masz minutę; po jej upływie bierzesz jedną kulę."
+        },
+        {
+          "pl": "Po zabraniu wszystkich kul wygrywa wyższa suma. Zwycięzca odbiera przeciwnikowi różnicę wyników w piórach, najwyżej dziesięć."
+        }
+      ]
+    },
+    {
+      "id": "count_ducks",
+      "title": {
+        "pl": "Policz kaczki"
+      },
+      "paragraphs": [
+        {
+          "pl": "Policz kwakania, a po odliczaniu wpisz ich liczbę. Usłyszysz od pięciu do piętnastu odgłosów. Klawiszem F5 możesz posłuchać ich ponownie."
+        },
+        {
+          "pl": "Masz dwie próby i 20 sekund na odpowiedź. Pierwsza poprawna wygrywa cztery pióra od każdego przeciwnika."
+        }
+      ]
+    },
+    {
+      "id": "rhythm",
+      "title": {
+        "pl": "Powtórz rytm"
+      },
+      "paragraphs": [
+        {
+          "pl": "Powtórz usłyszany rytm klawiszami F i J. Przed rozpoczęciem możesz wypróbować oba dźwięki. Enterem lub Spacją potwierdź gotowość; gdy wszyscy będą gotowi, usłyszysz od sześciu do dziesięciu uderzeń."
+        },
+        {
+          "pl": "Po odsłuchu naciśnij Enter i zagraj rytm. Masz 15 sekund na rozpoczęcie, a wcześniej możesz jeszcze raz posłuchać wzoru klawiszem F5. Próba jest jedna; trzy sekundy bez uderzenia ją kończą."
+        },
+        {
+          "pl": "Połowa oceny zależy od kolejności dźwięków, a połowa od odstępów między nimi. Wygrywa najdokładniejsze powtórzenie. Za każde rozpoczęte dziesięć punktów procentowych przewagi zwycięzca zabiera przeciwnikowi jedno pióro."
+        }
+      ]
+    },
+    {
+      "id": "sound_order",
+      "title": {
+        "pl": "Uporządkuj dźwięki"
+      },
+      "paragraphs": [
+        {
+          "pl": "Ułóż gamę od najniższego dźwięku do najwyższego. Zacznij po odliczaniu. Cyfry od 1 do 8 pozwalają odsłuchać kolejne miejsca."
+        },
+        {
+          "pl": "Żeby zamienić dwa dźwięki, naciśnij Shift z cyfrą pierwszego miejsca, a potem Shift z cyfrą drugiego. Po zamianie usłyszysz oba dźwięki."
+        },
+        {
+          "pl": "Masz 45 sekund. Pierwsza osoba, która ułoży całą gamę, wygrywa. Każdy przeciwnik oddaje jej po jednym piórze za dźwięk na złym miejscu, najwyżej pięć. Jeśli nikt nie ukończy zadania, nie ma zwycięzcy."
+        }
+      ]
+    },
+    {
+      "id": "simon",
+      "title": {
+        "pl": "Simon"
+      },
+      "paragraphs": [
+        {
+          "pl": "Zapamiętuj coraz dłuższą melodię i powtarzaj ją cyframi od 1 do 5. Pod 1 jest najniższy ton, pod 5 najwyższy. Przed rozpoczęciem możesz je wypróbować, a potem potwierdzić gotowość Enterem lub Spacją."
+        },
+        {
+          "pl": "Gdy wszyscy będą gotowi, usłyszysz jeden dźwięk. Po każdej poprawnej odpowiedzi melodia wydłuża się o kolejny i nieco przyspiesza. Wpisuj odpowiedź po zakończeniu odsłuchu."
+        },
+        {
+          "pl": "Grasz do pierwszej pomyłki lub pięciu sekund bez naciśnięcia klawisza podczas odpowiadania. Każdy kończy własną próbę. Liczy się najdłuższa melodia powtórzona w całości; zwycięzca zabiera każdemu przeciwnikowi po jednym piórze za dźwięk przewagi."
+        }
+      ]
+    },
+    {
+      "id": "sound_memory",
+      "title": {
+        "pl": "Pary dźwięków"
+      },
+      "paragraphs": [
+        {
+          "pl": "Znajdź więcej par niż przeciwnik. Pod cyframi od 1 do 0 ukryto dziesięć dźwięków tworzących pięć par. Oboje naciskacie Enter, gdy jesteście gotowi."
+        },
+        {
+          "pl": "Na zmianę odkrywacie po dwa miejsca, naciskając ich cyfry. Słuchaj również wyborów przeciwnika i zapamiętuj położenie dźwięków. Trafiona para znika i daje punkt, a nietrafione dźwięki ponownie się chowają."
+        },
+        {
+          "pl": "Na turę masz 15 sekund. Wyzwanie kończy się po odkryciu wszystkich par albo po 90 sekundach. Zwycięzca zabiera tyle piór, o ile więcej par znalazł."
+        }
+      ]
+    },
+    {
+      "id": "hit_duck",
+      "title": {
+        "pl": "Traf kaczkę"
+      },
+      "paragraphs": [
+        {
+          "pl": "Rozpoznaj, skąd dochodzi kwakanie, i naciśnij odpowiednią cyfrę od 1 do 9. Jedynka oznacza skrajną lewą stronę, piątka środek, a dziewiątka skrajną prawą."
+        },
+        {
+          "pl": "Przed rozpoczęciem możesz odsłuchać wszystkie pozycje. Naciśnij Enter lub Spację, gdy będziesz gotowy. Po potwierdzeniu przez wszystkich pojawi się kolejno pięć celów; na każdy masz trzy sekundy."
+        },
+        {
+          "pl": "Punkty zależą od tego, jak blisko trafisz:"
+        },
+        {
+          "pl": "- Dokładne trafienie: 100%."
+        },
+        {
+          "pl": "- Pomyłka o jedno miejsce: 75%."
+        },
+        {
+          "pl": "- O dwa miejsca: 50%."
+        },
+        {
+          "pl": "- O trzy miejsca: 25%."
+        },
+        {
+          "pl": "- Pozostałe strzały: zero."
+        },
+        {
+          "pl": "Wygrywa najwyższa średnia z pięciu strzałów. Za każde rozpoczęte dziesięć punktów procentowych przewagi zwycięzca zabiera przeciwnikowi jedno pióro."
+        }
+      ]
+    },
+    {
+      "id": "quiz",
+      "title": {
+        "pl": "Pytanie z quizu"
+      },
+      "paragraphs": [
+        {
+          "pl": "Odpowiedz na pytanie, wybierając jedną z czterech odpowiedzi cyfrą od 1 do 4. Możesz też użyć strzałek i Entera. Masz 20 sekund."
+        },
+        {
+          "pl": "Każda osoba, która odpowie poprawnie, dostaje od gry cztery pióra. Wynik poznajecie, gdy wszyscy odpowiedzą lub skończy się czas."
+        },
+        {
+          "pl": "Pytanie w pojedynku dotyczy jego uczestników. Na pytanie z pola lub karty „Ciekawość” odpowiadają wszyscy, także zamrożone kaczki."
+        }
+      ]
+    },
+    {
+      "id": "audio_ball",
+      "title": {
+        "pl": "Punkt w Audio Ballu"
+      },
+      "paragraphs": [
+        {
+          "pl": "Rozegrajcie jeden punkt na poziomie Normalnym. Pierwszy serwujący jest losowany, a zwycięzca zabiera przeciwnikowi pięć piór."
+        },
+        {
+          "pl": "Przed rozpoczęciem posłuchaj trzech rodzajów piłki:"
+        },
+        {
+          "pl": "- W lub strzałka w górę: pierwszy rodzaj."
+        },
+        {
+          "pl": "- D lub strzałka w lewo: drugi rodzaj."
+        },
+        {
+          "pl": "- S lub strzałka w dół: trzeci rodzaj."
+        },
+        {
+          "pl": "Oboje potwierdzacie gotowość Enterem lub Spacją. Gdy masz piłkę, przygotuj uderzenie klawiszem A lub strzałką w prawo, a następnie wybierz jego rodzaj jednym z trzech klawiszy."
+        },
+        {
+          "pl": "Po każdym uderzeniu przeciwnika rozpoznaj dźwięk piłki i naciśnij odpowiadający mu klawisz obrony. Po udanej obronie przygotowujesz własne uderzenie. Z każdym odbiciem piłka przyspiesza."
+        }
+      ]
+    },
+    {
+      "id": "axel_pong",
+      "title": {
+        "pl": "Punkt w Axel Pongu"
+      },
+      "paragraphs": [
+        {
+          "pl": "Rozegrajcie jeden punkt singla w trybie Classic z prędkością Normalną. Pierwszy serwujący jest losowany. Zwycięzca zabiera przeciwnikowi pięć piór."
+        },
+        {
+          "pl": "Strzałkami w lewo i w prawo przesuwasz rakietkę. Strzałką w górę lub Spacją serwujesz. Gdy piłka wraca, ustaw rakietkę na jej drodze i naciśnij ten sam klawisz, kiedy znajdzie się w zasięgu odbicia."
+        },
+        {
+          "pl": "Jeśli masz włączone automatyczne odbijanie, podczas obrony wystarczy ustawić rakietkę. Serwis wykonujesz sam."
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "title": {
+        "pl": "Ustawienia wyścigu"
+      },
+      "paragraphs": [
+        {
+          "pl": "Przed grą gospodarz wybiera ustawienia wyścigu:"
+        },
+        {
+          "pl": "- Liczba okrążeń: od jednego do dziesięciu, domyślnie trzy."
+        },
+        {
+          "pl": "- Wyzwania: zaznacz te, które mają się pojawiać. Domyślnie włączone są wszystkie. Pozostaw co najmniej jedno dla pojedynku i jedno dla grupy."
+        },
+        {
+          "pl": "- Pytania: wybierz język i zestawy. Domyślnie zaznaczony jest zestaw ogólny. Zaznaczone zestawy mają równe szanse losowania i dotyczą wszystkich pytań w wyścigu."
+        }
+      ]
+    },
+    {
+      "id": "interruptions",
+      "title": {
+        "pl": "Zapisywanie i przerwane wyzwania"
+      },
+      "paragraphs": [
+        {
+          "pl": "Wyścig możesz zapisać pomiędzy turami, gdy zakończą się wyzwanie i pozostałe zdarzenia z ruchu."
+        },
+        {
+          "pl": "Jeśli uczestnik wyzwania opuści stół lub zostanie zastąpiony, wyzwanie zostaje anulowane bez utraty piór."
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "pl": "Skróty wyścigu"
+      },
+      "paragraphs": [
+        {
+          "pl": "Strzałki: wybór karty lub rzutu na końcu listy."
+        },
+        {
+          "pl": "Enter: zagranie wybranej karty lub rzut."
+        },
+        {
+          "pl": "Spacja: rzut kością."
+        },
+        {
+          "pl": "D: opis wybranej karty."
+        },
+        {
+          "pl": "C: twoja pozycja, pióra i działające efekty."
+        },
+        {
+          "pl": "S: sytuacja wszystkich graczy."
+        },
+        {
+          "pl": "T: bieżąca tura lub wyzwanie."
+        },
+        {
+          "pl": "V: przegląd planszy."
+        },
+        {
+          "pl": "P: przypomnienie treści wyzwania."
+        }
+      ]
+    }
+  ],
+  "option_chapters": {
+    "laps": "aim",
+    "question_language": "settings",
+    "question_sets": "settings",
+    "challenges": "settings"
+  }
+}

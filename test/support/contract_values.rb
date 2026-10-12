@@ -10,6 +10,8 @@ module GameRoomTest
     def canonical(value)
       case value
       when Hash then ['hash', value.map { |key, item| [canonical(key), canonical(item)] }]
+      when Random then ['Random', Marshal.dump(value).unpack1('H*')]
+      when Data then [value.class.name, canonical(value.to_h)]
       when Struct
         fields = value.each_pair.map do |key, item|
           # These two legacy presenters use Ruby's process-randomized String

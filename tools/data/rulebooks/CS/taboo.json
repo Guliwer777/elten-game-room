@@ -11,7 +11,7 @@
           "cs": "Při Taboo spolu potřebujete mluvit. Použijte konferenci v ELTENu, jiný komunikační program nebo hrajte společně naživo."
         },
         {
-          "cs": "Čtyři, šest nebo osm hráčů se rozdělí na dva stejně velké týmy. Jeden hráč napovídá a spoluhráči hádají slovo. Za správné odpovědi tým získává body. Týmy se střídají a také role napovídajícího postupuje mezi jejich členy."
+          "cs": "Čtyři, šest nebo osm hráčů se rozdělí na dva stejně velké týmy. Jeden hráč napovídá a spoluhráči hádají slovo. Za správné odpovědi tým získává body. Týmy se střídají a v roli napovídajícího se střídají jejich členové."
         },
         {
           "cs": "Napovídající dostane kartu s hledaným slovem a pěti zakázanými slovy. Kartu vidí i soupeři, kteří hlídají pravidla. Spoluhráči ji neznají a hádají nahlas podle nápověd. Zajisti, aby neslyšeli, jak ti počítač čte tajnou kartu."
@@ -80,7 +80,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Po tahu si všichni mohou prohlédnout použité karty a jejich výsledky. Sporné rozhodnutí proberte, než začnete pokračovat."
+          "cs": "Po tahu si všichni mohou prohlédnout použité karty a jejich výsledky. Sporné rozhodnutí proberte, než budete pokračovat."
         },
         {
           "cs": "Hostitel může výsledek opravit: šipkami vybere kartu, stiskne Enter, zvolí správný výsledek a znovu potvrdí Enterem. Kartu lze označit i jako nerozhodnutou, bez bodu pro oba týmy."

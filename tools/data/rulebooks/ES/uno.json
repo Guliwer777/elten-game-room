@@ -22,7 +22,7 @@
       },
       "paragraphs": [
         {
-          "es": "Consulta la carta de la mesa con C. Debes coincidir con su color, número o símbolo. Sobre un seis azul puedes jugar otra azul o un seis de otro color. Recorre tu mano con las flechas y pulsa Enter para jugar."
+          "es": "Consulta la carta de la mesa con C. La carta que juegues debe coincidir con su color, número o símbolo. Sobre un seis azul puedes jugar otra azul o un seis de otro color. Recorre tu mano con las flechas y pulsa Enter para jugar."
         },
         {
           "es": "Una jugada normal pasa el turno. Si no puedes jugar, roba con Espacio. Después puedes usar cualquier carta válida de tu mano, incluso una que ya tuvieras. Si tras robar ninguna carta encaja, tu turno termina automáticamente."
@@ -31,7 +31,7 @@
           "es": "También puedes robar en lugar de jugar una carta válida, hasta tres veces en un turno. Tras el tercer robo debes jugar si puedes."
         },
         {
-          "es": "Si se agotan las cartas para robar, se barajan las jugadas anteriormente y vuelven a usarse."
+          "es": "Si se agotan las cartas para robar, se barajan las cartas jugadas anteriormente y vuelven a usarse."
         }
       ]
     },

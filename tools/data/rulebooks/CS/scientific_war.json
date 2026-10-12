@@ -25,7 +25,7 @@
           "cs": "Kartu vybírá každý tajně. Projdi ruku šipkami a potvrď Enterem. Klávesa T řekne, kdo už vybral. Karty se ukážou teprve po volbě všech hráčů."
         },
         {
-          "cs": "Takové kolo vyložených karet je zdvih. Nejvyšší karta získá celý zdvih. Běžné pořadí od nejnižší je dvojka, další číselné karty, kluk, dáma, král a eso. Minulý výsledek přečte V."
+          "cs": "Takové kolo vyložených karet je zdvih. Získá ho hráč s nejsilnější kartou. Běžné pořadí od nejslabší je dvojka, další číselné karty, kluk, dáma, král a eso. Minulý výsledek přečte V."
         },
         {
           "cs": "Získané karty se odkládají mimo ruku. Do ruky je dostaneš až poté, co zahraješ všechny dosavadní karty. Když nemáš ani karty v ruce, ani získanou zásobu, vypadáváš."
@@ -39,7 +39,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Shoduje-li se nejvyšší hodnota, začíná válka. Nikdo karty nezíská a všichni dosud hrající vyberou další kartu. Vítěz následujícího zdvihu získá i odložené karty z remízy."
+          "cs": "Mají-li nejsilnější kartu dva nebo více hráčů, začíná válka. Nikdo karty nezíská a všichni dosud hrající vyberou další kartu. Vítěz následujícího zdvihu získá i odložené karty z remízy."
         },
         {
           "cs": "Další shody mohou válku prodlužovat přes více zdvihů. Kořist se hromadí, dokud nevyhraje jediný hráč."
@@ -82,7 +82,7 @@
           "cs": "Účinek žolíka závisí na ostatních vyložených kartách:"
         },
         {
-          "cs": "- Kdyby ostatní karty vedly ke shodě na nejvyšší hodnotě, jediný žolík válku přeruší a jeho hráč získá všechny karty."
+          "cs": "- Kdyby měli nejsilnější kartu dva nebo více ostatních hráčů, jediný žolík válku přeruší a hráč, který ho zahrál, získá všechny karty."
         },
         {
           "cs": "- Kdyby ostatní karty určily jediného vítěze, jediný žolík mu vítězství vezme a vyvolá válku. Karty zůstanou do dalšího zdvihu."

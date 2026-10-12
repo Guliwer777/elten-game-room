@@ -73,7 +73,7 @@
       },
       "paragraphs": [
         {
-          "en": "A counter needs an exact roll to finish. If you roll too many, move another counter if possible. Finished counters take no further moves."
+          "en": "A counter needs an exact roll to finish. If you roll too many, move another counter if possible. Once a counter reaches the finish, it stays there."
         },
         {
           "en": "The game ends when one player has all four counters home. S reads how many each player has finished."
@@ -90,10 +90,10 @@
           "en": "Before play, the host can change these rules:"
         },
         {
-          "en": "- Disable leaving on a 1 to require a 6 instead."
+          "en": "- If leaving the base on a 1 is disabled, you need a 6."
         },
         {
-          "en": "- Disable the option that requires a 6 to leave the base to allow leaving on any roll."
+          "en": "- Turning off the rule that requires a 6 allows you to leave the base on any roll."
         },
         {
           "en": "- Turn off the extra roll for a 6."

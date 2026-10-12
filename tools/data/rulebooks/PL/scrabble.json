@@ -11,7 +11,7 @@
           "pl": "W Scrabble zdobywasz punkty, układając słowa z płytek z literami. Wspólnie z pozostałymi graczami rozbudowujesz jedną krzyżówkę, ale każdy zbiera punkty za własne słowa. Wygrywa osoba, która na koniec gry ma najwięcej punktów."
         },
         {
-          "pl": "Gra jest przeznaczona dla dwóch do czterech osób. Każdy dostaje siedem płytek na stojak. C odczytuje twoje litery razem z ich wartościami. Po przyjętym ruchu dobierasz płytki do siedmiu, dopóki są jeszcze w worku."
+          "pl": "W grze może uczestniczyć od dwóch do czterech osób. Każdy dostaje siedem płytek na stojak. C odczytuje twoje litery razem z ich wartościami. Po przyjętym ruchu dobierasz płytki do siedmiu, dopóki są jeszcze w worku."
         },
         {
           "pl": "Plansza ma piętnaście kolumn, od A do O, i piętnaście rzędów, od 1 do 15. Poruszasz się po niej strzałkami. Usłyszysz najpierw literę albo informację, że pole jest puste, a potem jego współrzędne. Niektóre puste pola mają też premię zwiększającą wynik ruchu."
@@ -100,7 +100,7 @@
           "pl": "Blank na polu z premią literową nadal jest wart zero. Jeśli jednak położysz go na premii słownej, podwoi lub potroi wartość całego wyrazu. Przy późniejszym przedłużaniu słowa nie liczysz ponownie premii z zajętych już pól."
         },
         {
-          "pl": "Za wyłożenie wszystkich siedmiu płytek w jednym ruchu dostajesz dodatkowe 50 punktów. Ta premia dochodzi po policzeniu słów i nie jest już mnożona. S pozwala sprawdzić wyniki."
+          "pl": "Za wyłożenie wszystkich siedmiu płytek w jednym ruchu dostajesz dodatkowe 50 punktów. Premię dodaje się po podliczeniu punktów za słowa. Nie zwiększają jej mnożniki z planszy. S pozwala sprawdzić wyniki."
         }
       ]
     },
@@ -114,7 +114,7 @@
           "pl": "Jeżeli nie chcesz układać słowa, możesz poświęcić turę na wymianę płytek. Naciśnij G, wybierz na liście niepotrzebne płytki strzałkami i zaznaczaj je Spacją. Enter zatwierdza wymianę, a Escape z niej rezygnuje."
         },
         {
-          "pl": "Wymienić można od jednej do siedmiu płytek, o ile w worku zostało przynajmniej osiem. Oddane płytki wracają do worka przed dobraniem, więc któraś może do ciebie wrócić. Liczbę płytek w worku i na stojakach sprawdzisz przez E."
+          "pl": "Wymienić można od jednej do siedmiu płytek, o ile w worku zostało przynajmniej osiem. Oddane płytki wracają do worka przed dobraniem, więc któraś może do ciebie wrócić. Liczbę płytek w worku i na stojakach sprawdzisz klawiszem E."
         },
         {
           "pl": "Klawiszem P możesz spasować, czyli zakończyć turę bez układania słowa i bez wymiany płytek. Jeśli zacząłeś już układać słowo, przed pasem lub wymianą gra poprosi o zgodę na zdjęcie tych liter z planszy."
@@ -188,7 +188,7 @@
           "pl": "Zwykle nie ma limitu czasu na ruch. Można go włączyć w ustawieniach stołu przed grą. Limit obejmuje całą turę, łącznie z wybieraniem litery blanku i ewentualnym poprawianiem odrzuconego słowa."
         },
         {
-          "pl": "Po jego upływie przygotowane płytki wracają na stojak, a tura kończy się pasem. Nie dostajesz za sam upływ czasu dodatkowej kary punktowej."
+          "pl": "Po jego upływie przygotowane płytki wracają na stojak, a tura kończy się pasem. Za sam upływ czasu nie dostajesz dodatkowej kary punktowej."
         }
       ]
     },
@@ -202,7 +202,7 @@
           "pl": "Gdy nie masz żadnych przygotowanych płytek, klawisz I zmienia kolejność liter na stojaku. Możesz przeglądać je w kolejności otrzymania, alfabetycznie albo z samogłoskami na początku. Klawisze od 1 do 7 odczytują kolejne pozycje. Shift z daną cyfrą od razu kładzie tę płytkę na polu pod kursorem."
         },
         {
-          "pl": "Na planszy możesz śledzić litery układane przez drugą osobę jeszcze przed zatwierdzeniem jej słowa. Jeśli chcesz słyszeć komunikaty o dokładaniu i zdejmowaniu tych liter, włącz je przez Ctrl+P. Ponowne użycie skrótu je wyłącza."
+          "pl": "Możesz śledzić na planszy, jak inni gracze układają słowa, zanim je zatwierdzą. Jeśli chcesz słyszeć komunikaty o dokładaniu i zdejmowaniu tych liter, włącz je skrótem Ctrl+P. Ponowne użycie skrótu je wyłącza."
         }
       ]
     },

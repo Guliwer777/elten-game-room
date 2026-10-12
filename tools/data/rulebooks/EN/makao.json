@@ -68,7 +68,7 @@
           "en": "Press Space to accept a drawing penalty, taking all required cards and ending your turn. With no legal response, you accept it automatically. G reads the pending amount."
         },
         {
-          "en": "To accept a penalty from 4s, Tab to the button for accepting the missed turns and press Enter. Your current turn counts as the first missed turn. If a drawing penalty reaches you while you are stopped, you must draw without defending; drawing uses one of those missed turns."
+          "en": "To accept a penalty from 4s, Tab to the button for accepting the missed turns and press Enter. Your current turn counts as the first missed turn. If a drawing penalty reaches you while you are missing turns, you must draw without defending; drawing uses one of those missed turns."
         }
       ]
     },

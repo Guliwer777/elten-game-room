@@ -31,7 +31,7 @@
           "cs": "Tah začneš Enterem na své figuře či pěšci. Pak šipkami přejdi na cílové pole a znovu stiskni Enter. Chceš-li zjistit přípustné tahy z prohlíženého pole, stiskni V."
         },
         {
-          "cs": "Přesunem na soupeřovu figuru nebo pěšce je bereš a obsadíš jejich místo. Na vlastním kameni skončit nesmíš. Ostatní kameny cestou nepřeskakuješ; výjimkou je jezdec."
+          "cs": "Přesunem na pole obsazené soupeřovou figurou či pěšcem tento kámen vezmeš a obsadíš jeho místo. Na pole obsazené vlastním kamenem táhnout nesmíš. Ostatní kameny cestou nepřeskakuješ; výjimkou je jezdec."
         }
       ]
     },
@@ -85,7 +85,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Při rošádě se v jediném tahu přesunou král i věž. Vyber krále Enterem a jako cíl potvrď pole vzdálené o dvě směrem k vybrané věži. Věž se přesune na pole, přes které král přešel. Směrem ke sloupci H je rošáda malá, směrem k A velká."
+          "cs": "Při rošádě se v jediném tahu přesunou král i věž. Vyber krále Enterem a jako cíl potvrď pole vzdálené dvě políčka směrem k vybrané věži. Věž se přesune na pole, přes které král přešel. Směrem ke sloupci H je rošáda malá, směrem k A velká."
         },
         {
           "cs": "Rošádu lze provést jen při splnění všech podmínek:"

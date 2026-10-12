@@ -8,7 +8,7 @@
       },
       "paragraphs": [
         {
-          "pl": "W 3-5-8 grają trzy osoby. Każda zagrywa po jednej karcie, a gracz z najwyższą zbiera wszystkie trzy. Taka grupa kart to lewa. W większości rozdań chcesz wziąć jak najwięcej lew, ale każda osoba ma inny cel: trzy, pięć albo osiem. Punkty dostajesz za przekroczenie swojego celu, a tracisz za brakujące lewy."
+          "pl": "W 3-5-8 grają trzy osoby. Każda zagrywa po jednej karcie, a zwycięzca zbiera wszystkie trzy. Taka grupa kart to lewa. W większości rozdań chcesz wziąć jak najwięcej lew, ale każda osoba ma inny cel: trzy, pięć albo osiem. Punkty dostajesz za przekroczenie swojego celu, a tracisz za brakujące lewy."
         },
         {
           "pl": "Rozgrywacie osiemnaście rozdań. W każdym kolejna osoba wybiera, na jakich zasadach będziecie grać. Po ostatnim rozdaniu wygrywa osoba z największą sumą punktów."
@@ -123,7 +123,7 @@
       },
       "paragraphs": [
         {
-          "pl": "W rozdaniach z atutem, począwszy od drugiego, wynik poprzedniego rozdania daje prawo do wymiany. Jeśli zdobyłeś w nim dodatnie punkty, możesz oddać tyle kart, ile punktów zyskałeś, osobom z wynikiem ujemnym. Każda z tych osób przyjmuje najwyżej tyle wymian, ile punktów straciła. Bierze się pod uwagę tylko ostatnie rozdanie, nie cały wynik."
+          "pl": "Od drugiego rozdania, jeśli gracie z atutem, wynik poprzedniego rozdania daje prawo do wymiany. Jeśli zdobyłeś w nim dodatnie punkty, możesz oddać tyle kart, ile punktów zyskałeś, osobom z wynikiem ujemnym. Każda z tych osób przyjmuje najwyżej tyle wymian, ile punktów straciła. Bierze się pod uwagę tylko ostatnie rozdanie, nie cały wynik."
         },
         {
           "pl": "Wymiana odbywa się po wybraniu atutu i rozdaniu szesnastu kart, ale przed zabraniem musiku. Jeśli uprawnione są dwie osoby, najpierw wymienia ta, która ma większy cel w bieżącym rozdaniu. Aby oddać kartę, wybierz ją strzałkami i naciśnij Enter, potem wybierz odbiorcę i ponownie Enter."

@@ -51,7 +51,7 @@ reference = JSON.parse(File.read(File.expand_path("../../fixtures/quiz/questions
 expected_count = lambda { |id| reference.fetch('packs').fetch(id).fetch('count') }
 polish_reference = reference.fetch('packs').fetch(polish_pack.id)
 assert(polish_pack.set_id == "quiz.wikidata" && polish_pack.language_id == "pl-PL", "the Polish general set changed its identity")
-assert(polish_pack.title == "Wiedza ogólna", "the Polish general set has an outdated title")
+assert(polish_pack.title == "General knowledge", "the Polish content set must use the English interface title in this test")
 assert(polish_pack.version == polish_reference.fetch('version'), "the Polish general set has an unexpected data version")
 polish_questions = polish_pack.data["questions"]
 assert(polish_questions.length == expected_count.call(polish_pack.id), "the reviewed Polish general set has an unexpected question count")

@@ -1,7 +1,7 @@
 # Local presentation only: persisted events and network recovery never wait here.
 # The screen advances this queue from its existing form timer, without sleeping.
 class GameRoomEventPresentation
-  Step = Struct.new(:replay, :start, :finish, :defer_replay, keyword_init: true)
+  Step = Struct.new(:replay, :start, :finish, :defer_replay, :delay, :wait_for_sounds, keyword_init: true)
   attr_reader :visible_replay, :revision
 
   def initialize(clock: -> { Process.clock_gettime(Process::CLOCK_MONOTONIC) }, initial_replay: nil)
@@ -13,8 +13,10 @@ class GameRoomEventPresentation
     @revision = 0
   end
 
-  def enqueue(replay:, start:, finish: nil, defer_replay: false)
-    @queue << Step.new(replay: replay, start: start, finish: finish, defer_replay: defer_replay)
+  def enqueue(replay:, start:, finish: nil, defer_replay: false, delay: 0.0, wait_for_sounds: true)
+    raise ArgumentError, 'Invalid presentation delay' unless delay.is_a?(Numeric) && delay.finite? && delay >= 0
+    @queue << Step.new(replay: replay, start: start, finish: finish, defer_replay: defer_replay,
+      delay: delay, wait_for_sounds: wait_for_sounds)
   end
 
   def busy?
@@ -25,7 +27,7 @@ class GameRoomEventPresentation
     previous = @revision
     loop do
       if @current != nil
-        return @revision != previous if sounds_playing?
+        return @revision != previous if @clock.call < @ready_at || @current.wait_for_sounds && sounds_playing?
 
         step = @current
         @current = nil
@@ -40,6 +42,7 @@ class GameRoomEventPresentation
       @visible_replay = @current.replay unless @current.defer_replay
       @revision += 1
       @sounds = Array(@current.start.call).select { |sound| sound.respond_to?(:finished?) }
+      @ready_at = @clock.call + @current.delay
       # Only an emergency limit for a broken device/handle. Normal sequencing
       # follows finished?, not a guessed duration or a wall-clock timestamp.
       lengths = @sounds.map do |sound|

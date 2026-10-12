@@ -20,7 +20,7 @@ require_relative "game_session_contracts"
 # values.  App tables are deliberately not involved in room or game state.
 class GameRoomLiveSessionStore
   KIND = "elten_game_room_table".freeze
-  PROTOCOL = 2
+  PROTOCOL = GameRoomEventProtocol::NATIVE_PACKET_VERSION
   FEATURE_DISCOVERY_PROTOCOL = 3
   LIFECYCLE_DISCOVERY_PROTOCOL = 4
   NAMED_SEATS_DISCOVERY_PROTOCOL = 5
@@ -536,6 +536,14 @@ class GameRoomLiveSessionStore
   def active_membership?(table_or_id)
     table_id = table_identifier(table_or_id)
     table_id != nil && active_session(table_id) != nil
+  end
+
+  # Cached native capabilities only. The requested capacity at create time is
+  # not necessarily the server's grant; this never opens or refreshes a room.
+  def game_action_limits(table_or_id)
+    table_id = table_identifier(table_or_id)
+    session = table_id && @mutex.synchronize { @sessions[table_id] }
+    session && !session.closed? ? session.limits.slice('max_stack_entry_bytes', 'max_stack_entries').dup : {}
   end
 
   def append_activity(table:, kind:, actor:, message: "", subject: nil, invitation_id: nil)

@@ -40,4 +40,15 @@ begin
 ensure
   BinaryRulesLoad.instance_variable_set(:@entries, original_entries)
 end
-puts "PASS release binary boundary: all game/data loading, external test harness, no production or catalog fallback"
+raise "Challenge lab must not be loaded in a public build" if defined?(GameRoomDuckRacingLab)
+duck = EltenGameRoom::GAME_REGISTRY.build('duck_racing')
+raise "Duck Racing is missing from the public build" unless duck
+raise "Challenge lab option leaked into the public build" if duck.effective_option_definitions.any? { |option| option.key == 'duck_challenge_lab' }
+if original_entries
+  lab_markers = ['GameRoomDuckRacingLab', 'duck_challenge_lab', 'lab_challenge']
+  original_entries.each do |path, content|
+    next unless path.end_with?('.rb')
+    raise "Challenge lab code leaked into #{path}" if lab_markers.any? { |marker| content.include?(marker.b) }
+  end
+end
+puts "PASS release binary boundary: all game/data loading, external test harness, no production or catalog fallback, no Duck Racing lab"

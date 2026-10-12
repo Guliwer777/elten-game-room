@@ -25,7 +25,7 @@
           "cs": "Na začátku kola se vylosuje písmeno a šest kategorií. Na odpovědi máš 90 sekund. Tabem přecházíš mezi poli, Shift+Tabem se vracíš. U každého pole uslyšíš kategorii i písmeno."
         },
         {
-          "cs": "Nemusíš vyplnit všechno. Neznámou odpověď nech prázdnou a případně se k ní vrať později. Před odesláním lze všechny zápisy opravovat."
+          "cs": "Nemusíš vyplnit všechno. Pokud tě odpověď nenapadne, nech pole prázdné a případně se k němu vrať později. Před odesláním lze všechny zápisy opravovat."
         },
         {
           "cs": "Až skončíš, přejdi Tabem na tlačítko „Ukončit odpovídání“ a potvrď Enterem. Odeslané odpovědi už nezměníš; ostatním se ukážou až ve chvíli, kdy dopíší všichni."
@@ -34,7 +34,7 @@
           "cs": "Zbývající čas zjistíš pomocí Ctrl+T. Po jeho vypršení se odešle to, co je právě v polích, i neúplný arch. Když všichni odevzdají dřív, přejdete rovnou k hodnocení."
         },
         {
-          "cs": "Další kola losují další písmena. Jednou použité se nevrátí, dokud se nevyčerpá abeceda."
+          "cs": "V dalších kolech se losují nová písmena. Jednou použité se nevrátí, dokud se nevyčerpá abeceda."
         }
       ]
     },
@@ -80,7 +80,7 @@
           "cs": "Bodový cíl je 100. Jakmile ho někdo dosáhne, dohrajete současný cyklus kol, aby každý rozhodoval stejně často. Potom vítězí nejvyšší součet bodů."
         },
         {
-          "cs": "O dělené první místo se hraje rozstřel. Odpovídají jen hráči s nejvyšším skóre a rozhoduje někdo z ostatních. Remizují-li všichni, dál se v rozhodování střídají všichni. Po dokončených cyklech porovnáváte skóre, dokud nezůstane jediný vítěz."
+          "cs": "Při shodě na prvním místě se hraje rozstřel. Odpovídají jen hráči s nejvyšším skóre a rozhoduje někdo z ostatních. Remizují-li všichni, dál se v rozhodování střídají všichni. Po dokončených cyklech porovnáváte skóre, dokud nezůstane jediný vítěz."
         },
         {
           "cs": "Výsledky přečte S, údaje o kole V. Tyto klávesy používej mimo pole, do kterých píšeš odpovědi."
@@ -94,7 +94,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Před hrou lze v nastavení stolu změnit jazyk odpovědí z polštiny na angličtinu. Jazyk určuje i abecedu pro losování písmen."
+          "cs": "V nastavení stolu si můžete pro odpovědi vybrat polštinu nebo angličtinu. Zvolený jazyk určuje i abecedu pro losování písmen."
         },
         {
           "cs": "Vybrat lze také okruh kategorií:"

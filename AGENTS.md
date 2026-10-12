@@ -462,6 +462,14 @@ Use natural headings that name their subject, not slogans or metaphors;
 familiar titles may recur across games. Check the contents without the body.
 Keep shared application help separate. Do not rewrite unrelated rulebooks.
 
+Apply the guide's sentence-level checks in each language: natural action–object
+combinations, accurate implied conditions/history, clear references and
+agreement, consistent address/terms, purposeful repetition and complete
+instructions. A correction identifies a type of problem, not a phrase to
+replace globally or a Polish sentence to copy into every edition. Review
+whole authorised texts separately from mechanics and format validation;
+do not make fluent wording more formal or uniform merely for variety.
+
 All newly written rules, including AI-written rules created with a new game,
 must follow the editorial guide regardless of who is credited as author.
 A byline or approval of a working draft does not exempt them from the guide.
@@ -494,6 +502,12 @@ incidentally. For a new language, apply the shared rules and add verified
 language-specific guidance to that document.
 
 ## Readable quiz question copies
+
+In Polish quiz questions and answers, write centuries with Arabic ordinal
+numerals and a period: "w 17. wieku", "19. i 20.", "w 5. wieku p.n.e.".
+Expand "w." to "wieku". Adjectives take no period: "19-wieczny".
+Preserve Roman numerals in names, regnal numbers and established titles,
+such as Henryk VIII, Jan Paweł II, II wojna światowa and Balet XX Wieku.
 
 - After any change to questions, answers or divisions, or adding a set,
   run `ruby tools/export-quiz-text.rb` and include the updated

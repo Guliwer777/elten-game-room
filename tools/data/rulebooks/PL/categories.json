@@ -11,7 +11,7 @@
           "pl": "W grze Państwa-miasta szukasz odpowiedzi zaczynających się od wylosowanej litery. Każda musi pasować do swojej kategorii. Dla litery B możesz więc wpisać Brazylię jako państwo, Berlin jako miasto i bobra jako zwierzę. Zdobywasz punkty za uznane odpowiedzi, a więcej dostajesz za taką, której nie podał nikt inny."
         },
         {
-          "pl": "Przy stole gra od dwóch do ośmiu osób. W każdej rundzie jedna z nich jest sędzią, a pozostali odpowiadają. Sędzia nie wypełnia wtedy arkusza i nie zdobywa punktów. Rola przechodzi co rundę do następnej osoby."
+          "pl": "W grze może uczestniczyć od dwóch do ośmiu osób. W każdej rundzie jedna z nich jest sędzią, a pozostali odpowiadają. Sędzia nie wypełnia wtedy arkusza i nie zdobywa punktów. Rola przechodzi co rundę do następnej osoby."
         }
       ]
     },
@@ -94,7 +94,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Przed grą w ustawieniach stołu możecie zmienić język odpowiedzi z polskiego na angielski. Wybrany język określa też alfabet do losowania liter."
+          "pl": "W ustawieniach stołu możecie wybrać polski lub angielski jako język odpowiedzi. Wybrany język określa też alfabet do losowania liter."
         },
         {
           "pl": "Możecie również wybrać pulę kategorii:"
@@ -126,7 +126,7 @@
           "pl": "W ustawieniach stołu można zmienić poniższe zasady:"
         },
         {
-          "pl": "- Czas odpowiedzi może być dłuższy albo krótszy niż 90 sekund. Wartość 0 wyłącza limit; wtedy runda czeka na wysłanie arkuszy przez wszystkich."
+          "pl": "- Czas odpowiedzi może być dłuższy albo krótszy niż 90 sekund. Ustawienie 0 wyłącza limit czasu. Odpowiadanie kończy się wtedy, gdy wszyscy wyślą swoje arkusze."
         },
         {
           "pl": "- Zamiast zmiennego sędziego można wybrać stałe sędziowanie przez gospodarza. Gospodarz ocenia każdą rundę i nie bierze udziału w rywalizacji punktowej. Osiągnięcie celu rozstrzyga się wtedy po rundzie, bez czekania na cykl sędziów."

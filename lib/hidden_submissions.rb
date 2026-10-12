@@ -244,6 +244,18 @@ module HiddenSubmissions
       false
     end
 
+    # A worker may reconcile durable answers after its game object was
+    # recreated. Return only this account/session's current envelopes; older
+    # versions and other games/accounts are not a cleanup authority.
+    def envelopes(session_id:, user:, round_prefix:)
+      @storage.read.fetch("entries", {}).values.filter_map do |data|
+        next unless data["session_id"] == session_id.to_i &&
+          data["user"].to_s.downcase == user.to_s.downcase &&
+          data["round_id"].to_s.start_with?(round_prefix)
+        deserialize(data)
+      end
+    end
+
     def verify(envelope)
       Commitment.valid?(
         payload: envelope.payload,

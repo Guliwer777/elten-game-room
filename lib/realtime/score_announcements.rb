@@ -15,6 +15,12 @@ module GameRoomRealtime
     attr_reader :presents_point
     attr_accessor :background_provider
 
+    # The owner may release a nested game's audio after its final goal, not
+    # after an estimated sleep. tick retires recordings and speech deadlines.
+    def announcement_pending?
+      !@score_queue.empty? || !@announcing.empty? || @speech_pending == true
+    end
+
     def start_match
       return if @started
       @started = true

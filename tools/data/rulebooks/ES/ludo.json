@@ -56,7 +56,7 @@
       },
       "paragraphs": [
         {
-          "es": "Si terminas el movimiento en una casilla normal ocupada por una sola ficha rival, la capturas. Vuelve a su base y tendrá que salir de nuevo."
+          "es": "Si terminas el movimiento en una casilla normal ocupada por una sola ficha rival, la capturas. La ficha capturada vuelve a su base y tendrá que salir de nuevo."
         },
         {
           "es": "Las cuatro casillas de salida son seguras: no se captura en ellas. Dos o más fichas del mismo jugador en una casilla forman un bloqueo. Los rivales no pueden atravesarlo ni detenerse en él, aunque esté en una casilla segura."

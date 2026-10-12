@@ -953,7 +953,7 @@ module MilleBornesUIVerification
       screen = GameRoomScreens::GameRules.new(book)
       rules_form = screen.send(:section_form, rules)
       rules_field = rules_form.fields.first
-      title = GameRoomLocalization.primary_language == "pl" ? "Nieczyste zagrywki" : "Dirty tricks"
+      title = rules.sections.find { |section| section.id == :counterattack }.title
       check(rules_form.is_a?(GameRoomUI::Form), "Rules bypassed the shared native form")
       check(rules_field.is_a?(GameRoomRules::View), "Rules bypassed the accessible document view")
       check((rules_field.flags & EditBox::Flags::ReadOnly) != 0, "Rules are editable")
@@ -967,7 +967,7 @@ module MilleBornesUIVerification
         position = controls_field.options.index { |row| row.start_with?("#{key}: ") }
         check(position, "Shortcut reference omitted #{key}")
         controls_field.index = position
-        expected = GameRoomLocalization.primary_language == "pl" ? "poza czasem na nieczystą zagrywkę." : "outside the dirty-trick window."
+        expected = GameRoomLocalization.primary_language == "pl" ? "niedostępne, gdy możesz natychmiast odeprzeć atak." : "unavailable while you can make an immediate counter."
         check(controls_field.options[position].end_with?(expected), "Shortcut help uses the wrong case for the reaction name")
         controls_field.focus
         check(SpeechOutput.calls.last.first.include?(expected), "Native shortcut focus did not speak the localized reaction window")

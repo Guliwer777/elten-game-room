@@ -1,0 +1,542 @@
+{
+  "source": "games/duck_racing.rb",
+  "sections": [
+    {
+      "id": "aim",
+      "title": {
+        "cs": "Cíl hry"
+      },
+      "paragraphs": [
+        {
+          "cs": "Závody kachen jsou pro dva až osm hráčů. Obíhej se svou kachnou Klidný rybník, pomáhej si kartami a soupeř s ostatními o peří ve výzvách. Vyhraje ten, kdo jako první dokončí určený počet kol."
+        },
+        {
+          "cs": "Okruh má 30 polí. Každý začíná na poli 1 se třemi kartami a šesti pírky za každé plánované kolo. Ve výchozím závodě na tři kola tedy dostaneš 18 pírek."
+        },
+        {
+          "cs": "V posledním kole stačí překročit cílovou čáru. Vyhrát můžeš i posunem pomocí karty."
+        }
+      ]
+    },
+    {
+      "id": "turn",
+      "title": {
+        "cs": "Průběh tahu"
+      },
+      "paragraphs": [
+        {
+          "cs": "Před hodem můžeš ve svém tahu zahrát jednu kartu. Vyber ji šipkami; klávesou D si přečteš její účinek a cenu v pírkách. Enterem ji zahraješ. Pokud máš určit hráče, vyber ho šipkami a potvrď Enterem."
+        },
+        {
+          "cs": "Mezerníkem hodíš kostkou a posuneš se o hozený počet polí. Hod můžeš vybrat také Enterem na konci seznamu pod kartami. Běžná kostka dává výsledky od jedné do šesti."
+        },
+        {
+          "cs": "Po pohybu se vyhodnotí události na poli, kde jsi zastavil. Potom hraje další hráč. Vyvolá-li karta nebo pohyb výzvu, nejprve ji dokončíte."
+        },
+        {
+          "cs": "- C připomene tvoji pozici, peří a účinky, které na tebe působí."
+        },
+        {
+          "cs": "- S přečte stav všech hráčů."
+        },
+        {
+          "cs": "- T oznámí, kdo je na tahu."
+        }
+      ]
+    },
+    {
+      "id": "track",
+      "title": {
+        "cs": "Pole a setkání"
+      },
+      "paragraphs": [
+        {
+          "cs": "Na polích můžeš získat karty a peří, posunout se jinam, vynechat tahy nebo dostat otázku. Přehled okruhu otevřeš klávesou V. U každého pole najdeš popis, přítomné kachny a případnou odloženou kartu."
+        },
+        {
+          "cs": "Po zastavení nejprve působí pole, pak karta a nakonec setkání s jinou kachnou. Pokud tě pole nebo karta přesune jinam, další události se odehrají na novém místě."
+        },
+        {
+          "cs": "Setkání s jinou kachnou vyvolá náhodný souboj. Je-li jich na poli víc, utkáš se s poslední příchozí kachnou, která není zmrzlá. Nezáleží na tom, ve kterém kole závodu právě jste."
+        },
+        {
+          "cs": "Pohyb zpět tě může vrátit do dřívějšího kola, nejdál však na začátek závodu. Například z pole 1 druhého kola vede jeden krok zpět na pole 30 prvního kola."
+        }
+      ]
+    },
+    {
+      "id": "cards",
+      "title": {
+        "cs": "Karty"
+      },
+      "paragraphs": [
+        {
+          "cs": "Karty ti pomáhají v závodě nebo ztěžují cestu soupeřům. Některé stojí peří; před zahráním musíš mít dost na celou cenu. Počet karet v ruce není omezen."
+        },
+        {
+          "cs": "- Karty zahrané na kachnu působí hned. Mohou ji posunout, přidat či ubrat peří, zastavit na několik tahů nebo změnit její kostku."
+        },
+        {
+          "cs": "- Karta odložená na poli čeká na příští kachnu a po použití zmizí. Můžeš narazit i na vlastní kartu. Výjimkou jsou karty kradoucí peří: majiteli neublíží a čekají dál. Na jednom poli může ležet jedna karta."
+        },
+        {
+          "cs": "- Další karty umožňují vzít kartu soupeři nebo si s hráči vyměnit všechny karty."
+        },
+        {
+          "cs": "- Výzva zahájí souboj s vybraným hráčem. Supervýzva zapojí všechny nezmrzlé kachny. Zvědavost položí kvízovou otázku všem."
+        },
+        {
+          "cs": "Nová změna kostky nahradí předchozí a platí také ve výzvách s kostkami. Počet zbývajících hodů se snižuje jen při hodech v závodě."
+        }
+      ]
+    },
+    {
+      "id": "feathers",
+      "title": {
+        "cs": "Peří a zmrznutí"
+      },
+      "paragraphs": [
+        {
+          "cs": "Peřím platíš za karty a vyhráváš či prohráváš ho ve výzvách. Bez peří kachna zmrzne. Karty ti zůstanou, ale vynecháš jeden až čtyři vlastní tahy."
+        },
+        {
+          "cs": "Čím dál jsi před poslední kachnou, tím déle zmrznutí trvá. Do vzdálenosti se počítají i celá kola:"
+        },
+        {
+          "cs": "- Náskok do 9 polí: jeden tah."
+        },
+        {
+          "cs": "- Náskok 10–19 polí: dva tahy."
+        },
+        {
+          "cs": "- Náskok 20–29 polí: tři tahy."
+        },
+        {
+          "cs": "- Náskok alespoň 30 polí: čtyři tahy."
+        },
+        {
+          "cs": "Po rozmrznutí dostaneš pět pírek. Pokud vynecháváš tahy také z jiného důvodu, obě přestávky se odpočítávají současně."
+        },
+        {
+          "cs": "Začne-li přestávka před tvým hodem, počítá se už současný tah. Po hodu začne až tvým příštím tahem."
+        }
+      ]
+    },
+    {
+      "id": "challenge_rules",
+      "title": {
+        "cs": "Výzvy"
+      },
+      "paragraphs": [
+        {
+          "cs": "Po dobu výzvy se závod přeruší. Některé úkoly jsou pro dva hráče, jiné i pro větší skupinu. Ve výzvách na tahy se losuje, kdo začne."
+        },
+        {
+          "cs": "V rychlostních úkolech počkej s odpovědí na konec odpočítávání. Klávesa P zopakuje zadání a funguje i při psaní čísla."
+        },
+        {
+          "cs": "Vítěz bere peří od každého poraženého podle pravidel dané výzvy. Při shodě na prvním místě si peří nikdo nepředává. Nemáš-li dost na zaplacení, odevzdáš všechno, co ti zbývá."
+        }
+      ]
+    },
+    {
+      "id": "rock_paper_scissors",
+      "title": {
+        "cs": "Kámen, nůžky, papír"
+      },
+      "paragraphs": [
+        {
+          "cs": "V souboji pro dva vyber šipkami kámen, papír nebo nůžky a potvrď Enterem. Máš 15 sekund."
+        },
+        {
+          "cs": "Kámen poráží nůžky, nůžky papír a papír kámen. Vítěz bere tři pírka. Stejné volby znamenají remízu. Pokud odpoví jen jeden hráč, vyhrává."
+        }
+      ]
+    },
+    {
+      "id": "dice_duel",
+      "title": {
+        "cs": "Souboj v hodu kostkou"
+      },
+      "paragraphs": [
+        {
+          "cs": "Házíte po řadě, každý jednou. Ve svém tahu stiskni Enter. Máš deset sekund; potom hodí hra za tebe."
+        },
+        {
+          "cs": "Používáš svou kostku ze závodu i s účinkem karty, která ji změnila. Nejvyšší hod vyhrává. Každý soupeř odevzdá vítězi tolik pírek, kolik činí rozdíl jejich hodů."
+        }
+      ]
+    },
+    {
+      "id": "blackjack",
+      "title": {
+        "cs": "Jednadvacet"
+      },
+      "paragraphs": [
+        {
+          "cs": "Dostaneš dvě karty a snažíš se jejich součtem přiblížit k 21, ale nepřekročit ho. Každý hraje s vlastním balíčkem 52 karet."
+        },
+        {
+          "cs": "- Karty od 2 do 10 mají hodnotu uvedeného čísla."
+        },
+        {
+          "cs": "- Kluk, dáma a král mají hodnotu deset."
+        },
+        {
+          "cs": "- Eso dostane hodnotu jedenáct, pokud tím součet nepřekročí 21; jinak má hodnotu jedna. Ta už zůstává stejná."
+        },
+        {
+          "cs": "Ve svém tahu dobírej mezerníkem, nebo dobírání ukonči Enterem. Tah končí také při součtu 21 nebo vyšším. Pak začne další hráč. Na každé rozhodnutí máš 30 sekund; po jejich uplynutí si ponecháš současný součet."
+        },
+        {
+          "cs": "Vyhrává nejvyšší součet do 21. Každý poražený zaplatí vítězi rozdíl výsledků v pírkách. Za každý bod nad 21 navíc ztratí jedno pírko, které vítěz nedostane."
+        },
+        {
+          "cs": "Například při výsledcích 20 a 24 poražený odevzdá vítězi čtyři pírka a další tři ztratí za překročení 21. Pokud přebere každý, platí se jen tyto dodatečné tresty."
+        }
+      ]
+    },
+    {
+      "id": "risky_dice",
+      "title": {
+        "cs": "Riskantní kostky"
+      },
+      "paragraphs": [
+        {
+          "cs": "Házej dvěma kostkami a sčítej výsledky hodů. Vyhrává nejvyšší součet, který nepřekročí 25."
+        },
+        {
+          "cs": "Enterem provedeš první i další hody. Chceš-li skončit, šipkou dolů vyber „Uložit výsledek“ a potvrď Enterem. Potom začne další hráč. Při součtu 25 nebo vyšším tvůj pokus skončí automaticky."
+        },
+        {
+          "cs": "Na rozhodnutí máš 30 sekund. Potom se výsledek uloží; pokud jsi ještě neházel, hra nejprve provede jeden hod. Karta měnící tvou závodní kostku zde působí na obě kostky."
+        },
+        {
+          "cs": "Poražený odevzdá vítězi rozdíl výsledků v pírkách. Za každý bod nad 25 navíc ztratí jedno pírko ve prospěch hry. Při výsledcích 24 a 28 jsou to čtyři pírka vítězi a tři za překročení. Přehodí-li všichni, zůstávají jen tyto tresty."
+        }
+      ]
+    },
+    {
+      "id": "guess_number",
+      "title": {
+        "cs": "Hádej číslo"
+      },
+      "paragraphs": [
+        {
+          "cs": "Uhodni číslo od 1 do 100. Dozvíš se, kolik má číslic. Piš své odhady; po každém dostaneš nápovědu, zda je hledané číslo vyšší, nebo nižší. Máš deset pokusů a dvě minuty."
+        },
+        {
+          "cs": "Každému se počítá nejbližší odhad. Vítěz bere tři pírka od každého soupeře. Stejně blízké odpovědi znamenají remízu."
+        }
+      ]
+    },
+    {
+      "id": "copy_number",
+      "title": {
+        "cs": "Opiš číslo"
+      },
+      "paragraphs": [
+        {
+          "cs": "Co nejrychleji opiš zadané trojciferné číslo. Máš tři pokusy a 15 sekund. První správná odpověď vyhrává čtyři pírka od každého soupeře."
+        }
+      ]
+    },
+    {
+      "id": "arithmetic",
+      "title": {
+        "cs": "Počítání zpaměti"
+      },
+      "paragraphs": [
+        {
+          "cs": "Spočítej a napiš výsledek sčítání, odčítání, násobení nebo dělení. Máš tři pokusy a 20 sekund. První správná odpověď vyhrává čtyři pírka od každého soupeře."
+        }
+      ]
+    },
+    {
+      "id": "race_question",
+      "title": {
+        "cs": "Otázka o závodu"
+      },
+      "paragraphs": [
+        {
+          "cs": "Napiš odpověď na otázku o závodu: na kterém poli či v jakém kole je hráč nebo kolik má peří či karet. Tyto údaje si můžeš zjistit klávesami C a S."
+        },
+        {
+          "cs": "Máš dva pokusy a 20 sekund. První správná odpověď vyhrává čtyři pírka od každého soupeře."
+        }
+      ]
+    },
+    {
+      "id": "numbered_balls",
+      "title": {
+        "cs": "Číslované koule"
+      },
+      "paragraphs": [
+        {
+          "cs": "Dva hráči střídavě odebírají koule z řady. Je jich dvanáct, s kladnými i zápornými hodnotami. Snaž se získat vyšší součet než soupeř."
+        },
+        {
+          "cs": "Řadu prohlížej šipkami. Číslice 1, 2 a 3 berou jednu, dvě nebo tři koule ze začátku řady. Na rozhodnutí máš minutu; potom vezmeš jednu kouli."
+        },
+        {
+          "cs": "Po rozebrání všech koulí vyhrává vyšší součet. Vítěz bere rozdíl výsledků v pírkách, nejvýše deset."
+        }
+      ]
+    },
+    {
+      "id": "count_ducks",
+      "title": {
+        "cs": "Spočítej kachny"
+      },
+      "paragraphs": [
+        {
+          "cs": "Spočítej kváknutí a po odpočítávání napiš jejich počet. Uslyšíš jich pět až patnáct. Klávesou F5 si je můžeš přehrát znovu."
+        },
+        {
+          "cs": "Na odpověď máš dva pokusy a 20 sekund. První správná odpověď vyhrává čtyři pírka od každého soupeře."
+        }
+      ]
+    },
+    {
+      "id": "rhythm",
+      "title": {
+        "cs": "Zopakuj rytmus"
+      },
+      "paragraphs": [
+        {
+          "cs": "Zopakuj rytmus klávesami F a J. Před začátkem si můžeš oba zvuky vyzkoušet. Enterem nebo mezerníkem potvrď připravenost; až budou připraveni všichni, zazní šest až deset úderů."
+        },
+        {
+          "cs": "Po poslechu stiskni Enter a zahraj rytmus. Na zahájení máš 15 sekund a před ním si můžeš vzor ještě jednou poslechnout pomocí F5. Pokus je jeden; tři sekundy bez úderu ho ukončí."
+        },
+        {
+          "cs": "Polovinu hodnocení tvoří pořadí zvuků, druhou jejich rozestupy. Vyhrává nejpřesnější zopakování. Za každých započatých deset procentních bodů náskoku bere vítěz od daného soupeře jedno pírko."
+        }
+      ]
+    },
+    {
+      "id": "sound_order",
+      "title": {
+        "cs": "Seřaď zvuky"
+      },
+      "paragraphs": [
+        {
+          "cs": "Sestav stupnici od nejnižšího tónu k nejvyššímu. Začni po odpočítávání. Číslicemi 1 až 8 si poslechneš tóny na jednotlivých místech."
+        },
+        {
+          "cs": "Pro výměnu dvou tónů stiskni Shift s číslicí prvního místa a pak Shift s číslicí druhého. Po výměně zazní oba tóny."
+        },
+        {
+          "cs": "Máš 45 sekund. Vyhraje první hráč, který sestaví celou stupnici. Každý soupeř mu odevzdá pírko za tón na nesprávném místě, nejvýše pět. Pokud úkol nikdo nedokončí, vítěz není."
+        }
+      ]
+    },
+    {
+      "id": "simon",
+      "title": {
+        "cs": "Simon"
+      },
+      "paragraphs": [
+        {
+          "cs": "Zapamatuj si stále delší melodii a opakuj ji číslicemi 1 až 5. Pod jedničkou je nejnižší tón, pod pětkou nejvyšší. Před začátkem si tóny vyzkoušej a potom potvrď připravenost Enterem nebo mezerníkem."
+        },
+        {
+          "cs": "Až budou všichni připraveni, zazní jeden tón. Po každé správné odpovědi přibude další a melodie se trochu zrychlí. Odpovídej vždy až po skončení poslechu."
+        },
+        {
+          "cs": "Hraješ do první chyby nebo pěti sekund bez stisku při odpovídání. Každý dokončí vlastní pokus. Počítá se nejdelší celá zopakovaná melodie; vítěz bere od každého soupeře jedno pírko za každý tón náskoku."
+        }
+      ]
+    },
+    {
+      "id": "sound_memory",
+      "title": {
+        "cs": "Zvukové dvojice"
+      },
+      "paragraphs": [
+        {
+          "cs": "Najdi více párů než soupeř. Pod číslicemi od 1 po 0 je deset zvuků tvořících pět párů. Až budete připraveni, oba stiskněte Enter."
+        },
+        {
+          "cs": "Střídavě odkrývejte po dvou místech stiskem jejich číslic. Poslouchej i soupeřovy volby a pamatuj si, kde zvuky jsou. Shodný pár zmizí a přinese bod, neshodné zvuky se znovu skryjí."
+        },
+        {
+          "cs": "Na tah máš 15 sekund. Výzva skončí nalezením všech párů nebo po 90 sekundách. Vítěz bere tolik pírek, o kolik párů našel více."
+        }
+      ]
+    },
+    {
+      "id": "hit_duck",
+      "title": {
+        "cs": "Tref kachnu"
+      },
+      "paragraphs": [
+        {
+          "cs": "Poznej, odkud se ozývá kváknutí, a stiskni odpovídající číslici od 1 do 9. Jednička je úplně vlevo, pětka uprostřed a devítka úplně vpravo."
+        },
+        {
+          "cs": "Před začátkem si můžeš poslechnout všechny pozice. Připravenost potvrď Enterem nebo mezerníkem. Až potvrdí všichni, objeví se postupně pět cílů; na každý máš tři sekundy."
+        },
+        {
+          "cs": "Hodnocení záleží na tom, jak blízko se trefíš:"
+        },
+        {
+          "cs": "- Přesný zásah: 100 %."
+        },
+        {
+          "cs": "- Odchylka o jedno místo: 75 %."
+        },
+        {
+          "cs": "- O dvě místa: 50 %."
+        },
+        {
+          "cs": "- O tři místa: 25 %."
+        },
+        {
+          "cs": "- Ostatní střely: nula."
+        },
+        {
+          "cs": "Vyhrává nejvyšší průměr z pěti střel. Za každých započatých deset procentních bodů náskoku bere vítěz od daného soupeře jedno pírko."
+        }
+      ]
+    },
+    {
+      "id": "quiz",
+      "title": {
+        "cs": "Kvízová otázka"
+      },
+      "paragraphs": [
+        {
+          "cs": "Odpověz na otázku výběrem jedné ze čtyř možností číslicí od 1 do 4. Můžeš také použít šipky a Enter. Máš 20 sekund."
+        },
+        {
+          "cs": "Každý, kdo odpoví správně, dostane od hry čtyři pírka. Výsledky uslyšíte, až odpovědí všichni nebo vyprší čas."
+        },
+        {
+          "cs": "Na otázku v souboji odpovídají jeho účastníci. Otázka z pole nebo karty Zvědavost je pro všechny, včetně zmrzlých kachen."
+        }
+      ]
+    },
+    {
+      "id": "audio_ball",
+      "title": {
+        "cs": "Jeden bod v Audio Ballu"
+      },
+      "paragraphs": [
+        {
+          "cs": "Zahrajte si o jeden bod na normální obtížnost. První podávající se losuje a vítěz bere soupeři pět pírek."
+        },
+        {
+          "cs": "Před začátkem si poslechni tři druhy míčů:"
+        },
+        {
+          "cs": "- W nebo šipka nahoru: první druh."
+        },
+        {
+          "cs": "- D nebo šipka vlevo: druhý druh."
+        },
+        {
+          "cs": "- S nebo šipka dolů: třetí druh."
+        },
+        {
+          "cs": "Oba potvrďte připravenost Enterem nebo mezerníkem. Když máš míč, připrav úder klávesou A nebo šipkou vpravo a potom ho odpal jednou ze tří kláves."
+        },
+        {
+          "cs": "Po každém soupeřově odpalu poznej zvuk míče a stiskni odpovídající obranu. Po úspěšném zachycení připravíš vlastní úder. Každé odpálení míč zrychlí."
+        }
+      ]
+    },
+    {
+      "id": "axel_pong",
+      "title": {
+        "cs": "Jeden bod v Axel Pongu"
+      },
+      "paragraphs": [
+        {
+          "cs": "Zahrajte jeden bod ve dvouhře, v režimu Classic s normální rychlostí. První podávající se losuje. Vítěz bere soupeři pět pírek."
+        },
+        {
+          "cs": "Pálku posouvej šipkami vlevo a vpravo. Šipkou nahoru nebo mezerníkem podáš. Když se míč vrací, postav mu pálku do cesty a stiskni stejnou klávesu, až bude v dosahu."
+        },
+        {
+          "cs": "Pokud máš zapnuté automatické odrážení, při obraně stačí postavit pálku na správné místo. Podání provádíš sám."
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "title": {
+        "cs": "Nastavení závodu"
+      },
+      "paragraphs": [
+        {
+          "cs": "Před závodem hostitel zvolí nastavení:"
+        },
+        {
+          "cs": "- Počet kol: jedno až deset, výchozí jsou tři."
+        },
+        {
+          "cs": "- Výzvy: zaškrtni ty, které chcete hrát. Zpočátku jsou povoleny všechny. Nech alespoň jednu pro souboj a jednu pro skupinu."
+        },
+        {
+          "cs": "- Otázky: vyber jazyk a sady. Výchozí je obecná sada. Vybrané sady mají stejnou šanci při losování a platí pro všechny otázky v závodě."
+        }
+      ]
+    },
+    {
+      "id": "interruptions",
+      "title": {
+        "cs": "Uložení a přerušené výzvy"
+      },
+      "paragraphs": [
+        {
+          "cs": "Závod lze uložit mezi tahy, až skončí výzva a ostatní události spojené s pohybem."
+        },
+        {
+          "cs": "Pokud účastník výzvy opustí stůl nebo je nahrazen, výzva se zruší bez ztráty peří."
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "cs": "Zkratky závodu"
+      },
+      "paragraphs": [
+        {
+          "cs": "Šipky: výběr karty nebo hodu na konci seznamu."
+        },
+        {
+          "cs": "Enter: zahrání vybrané karty nebo hod."
+        },
+        {
+          "cs": "Mezerník: hod kostkou."
+        },
+        {
+          "cs": "D: popis vybrané karty."
+        },
+        {
+          "cs": "C: tvoje pozice, peří a aktivní účinky."
+        },
+        {
+          "cs": "S: stav všech hráčů."
+        },
+        {
+          "cs": "T: aktuální tah nebo výzva."
+        },
+        {
+          "cs": "V: přehled okruhu."
+        },
+        {
+          "cs": "P: zopakování zadání výzvy."
+        }
+      ]
+    }
+  ],
+  "option_chapters": {
+    "laps": "aim",
+    "question_language": "settings",
+    "question_sets": "settings",
+    "challenges": "settings"
+  }
+}

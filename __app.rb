@@ -3,8 +3,8 @@
   "id": "c24d98cc-9ccd-4d50-b801-459da324ff60",
   "name": "Power Games",
   "description": "Accessible multiplayer games for ELTEN users.",
-  "version": "2.0.4.8",
-  "build_id": "247",
+  "version": "2.0.4.9",
+  "build_id": "248",
   "EltenAPIVersion": "3.0.4",
   "main_language": "en",
   "supported_languages": ["en", "pl", "cs", "es", "ru"],
@@ -23,7 +23,9 @@
   },
   "required_assets": {
     "sounds": [
-      "connect", "disconnect", "chatmsg", "notice", "table_notice", "invitation_rejected", "buzzer", "buzzer2", "quiz_wrong_answer", "war_open", "ding", "shuffle", "draw", "draw2",
+      "connect", "disconnect", "chatmsg", "notice", "table_notice", "invitation_rejected", "buzzer", "buzzer2", "quiz_wrong_answer", "duck_challenge", "duck_question", "duck_correct", "duck_frozen",
+      "duck_note_c", "duck_memory_bark", "duck_memory_bell", "duck_memory_drop", "duck_memory_clap", "duck_memory_zip",
+      "duck_rhythm_f", "duck_rhythm_j", "war_open", "ding", "shuffle", "draw", "draw2",
       "farkle", "cht-roll-dice", "cht-bank", "cht-lost-points", "cht-cat-minus-8", "cht-cat-plus-8",
       "hit1", "hit_ship1", "hit_ship2", "rocket_launch1", "rocket_launch2", "rocket_launch3", "rocket_miss",
       "interception", "lose1", "lose3", "play", "play2", "replay",
@@ -184,8 +186,8 @@ class EltenGameRoom < Program
   extend GameRoomTableWatchRuntime
   extend GameRoomContactFiltersRuntime
   extend GameRoomAnalyticsRuntime
-  GAME_ROOM_VERSION = "2.0.4.8".freeze
-  GAME_ROOM_BUILD_ID = 247
+  GAME_ROOM_VERSION = "2.0.4.9".freeze
+  GAME_ROOM_BUILD_ID = 248
   GAME_ROOM_CAPABILITIES = ["invitations", "live_sessions", "live_session_stack"].freeze
   LOBBY_ACTIVITY_POLL_INTERVAL = 5.0
 
@@ -881,7 +883,7 @@ class EltenGameRoom < Program
   end
 
   def show_rules_library
-    game_id = select_game(_("Game rules"), GAME_REGISTRY.ids)
+    game_id = select_game(_("Game rules"), GAME_REGISTRY.ids, descriptions: true)
     return if game_id == nil
 
     show_game_rules(game_definition(game_id))
@@ -1351,19 +1353,22 @@ class EltenGameRoom < Program
   end
 
   def remembered_game_option_defaults(game, definitions)
-    defaults = game.default_options.dup
+    defaults = {}
     preferences = read_json("game_option_preferences.json", default: {})
     stored = preferences.is_a?(Hash) ? preferences[game.id.to_s] : nil
-    return defaults if !stored.is_a?(Hash)
+    return game.table_creation_options if !stored.is_a?(Hash)
 
     game.remembered_option_definitions(definitions).each do |definition|
       key = definition.key.to_s
       defaults[key] = stored[key] if stored.key?(key)
     end
-    defaults
+    # Keep remembered fields of a currently hidden profile (e.g. custom
+    # Makao). Normalising the simple profile would erase them before its
+    # controls can be shown. The submitted form is still fully validated.
+    game.table_creation_options(defaults).merge(defaults)
   rescue StandardError => error
     Log.warning("ELTEN Game Room could not read option preferences: #{error.class}: #{error.message}") if defined?(Log)
-    game.default_options
+    game.table_creation_options
   end
 
   def remember_multiple_choice_options(game, definitions, options)
@@ -2454,7 +2459,7 @@ class EltenGameRoom < Program
     game = game_definition(game_id)
     previous = entry.is_a?(Hash) && entry["game"] == game_id ? entry : {}
     configuration = configure_game_options(game,
-      initial_options: previous["options"] || game.default_options,
+      initial_options: previous["options"] || game.table_creation_options,
       initial_private_table: previous["private_table"],
       submit_label: _("Save preset"), creating_table: true)
     return unless configuration
@@ -2766,16 +2771,16 @@ class EltenGameRoom < Program
     end
 
     participants = state.room.game_participants
-    if !valid_player_count?(game, participants.length)
-      alert(invalid_player_count_message(game, participants.length))
-      return
-    end
-
     options = game.new_game_options(game.options_from_json(row["game_options"]))
     options = game.options_for_team_roster(options, players: participants)
     options_error = game.validation_error(options, player_count: participants.length)
+    # A variant can require a narrower roster than the game's general limits.
+    # Keep its explanation and show who is actually signed up to play.
+    if !valid_player_count?(game, participants.length)
+      options_error ||= invalid_player_count_message(game, participants.length)
+    end
     if options_error != nil
-      alert(options_error)
+      alert_start_error(options_error, participants)
       return
     end
 
@@ -2835,6 +2840,12 @@ class EltenGameRoom < Program
       return nil
     end
     result
+  end
+
+  def alert_start_error(error, participants)
+    players = participants.map { |person| GameRoomParticipants.display_name(person) }.join(", ")
+    players = _("None") if players.empty?
+    alert("#{error}\n#{_("Players: %{players}.") % {players: players}}")
   end
 
   def table_start_label(state)

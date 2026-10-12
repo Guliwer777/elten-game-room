@@ -28,7 +28,7 @@
           "en": "Each group of played cards is a trick. The highest card normally wins them all. Ranks rise from 2 through the number cards, then jack, queen, king and ace. V reads the last trick's result."
         },
         {
-          "en": "Your winnings wait separately from your hand. Only after playing every card in your current hand do you pick up the captured cards to use again. Having neither a hand nor captured cards eliminates you."
+          "en": "The cards you win go into a separate pile. Once your hand is empty, those cards become your new hand. If both your hand and your captured pile are empty, you are eliminated."
         }
       ]
     },
@@ -102,7 +102,7 @@
           "en": "You win when nobody else has cards. If a war exhausts everyone's cards and nobody can finish it, the game is a draw."
         },
         {
-          "en": "Play also ends after 50 tricks. Count both hands and captured piles; the largest combined count wins, with equal largest counts drawing."
+          "en": "Play also ends after 50 tricks. The player with the most cards in their hand and captured pile combined wins. Equal highest totals mean a draw."
         }
       ]
     },

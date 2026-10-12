@@ -41,6 +41,10 @@ of dependent choices are adjusted where necessary. No question is added or
 removed: all 14,887 IDs, categories, source records and their order remain.
 This is a focused wording review, not a new factual audit of the entire set.
 
+Data version 9 integrates PR #32: centuries use Arabic numerals, while Roman
+numerals in rulers' names and proper names remain. The 14,887 questions and
+their identifiers are retained.
+
 ## Current Polish Witcher books set
 
 From Power Games 2.0.4.5 (build 244), `quiz.witcher.books.pl` replaces all
@@ -61,6 +65,14 @@ the books and the private verification excerpts are not distributed in the
 application. Each question identifies its literary source. The set includes
 spoilers throughout the books. Difficulty labels are editorial estimates,
 not measurements from player testing.
+
+Data version 2 adds 174 questions based on balteam's contribution in PR #33
+(revision `91eb6a09715581cb35da3cac1231f15d60c4f8b8`). All 182 proposed additions
+were reviewed against the supplied books and the existing set. Eight proposals
+were excluded because of repetition or editorial/evidence problems. The retained
+questions and answer choices were edited individually, including corrections
+to factual premises, ambiguous wording and synonymous answer choices. The
+previous 1,275 questions are unchanged; the combined set contains 1,449.
 
 The literary works remain the works of Andrzej Sapkowski. No public-domain
 or CC0 status is claimed for them, and the former Fandom pack's license

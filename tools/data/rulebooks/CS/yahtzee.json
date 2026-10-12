@@ -25,7 +25,7 @@
           "cs": "Enterem na začátku tahu hoď všemi pěti kostkami. Výsledek můžeš hned zapsat, nebo ještě jednou či dvakrát házet. Před opakováním vybereš jen kostky, které chceš přehodit; ostatní zůstanou."
         },
         {
-          "cs": "K výběru slouží čísla 1 až 6 podle hozené hodnoty, nikoli podle pořadí kostek. Chceš-li přehodit obě dvojky, stiskni 2 dvakrát. Shift se stejným číslem jednu vybranou kostku zase ponechá. Mezerník přečte, co zůstává a co se bude přehazovat."
+          "cs": "K výběru slouží čísla 1 až 6 podle hozené hodnoty, nikoli podle pořadí kostek. Chceš-li přehodit obě dvojky, stiskni 2 dvakrát. Shift se stejným číslem zruší výběr jedné kostky. Mezerník přečte, co zůstává a co se bude přehazovat."
         },
         {
           "cs": "Vybranými kostkami hodíš Enterem. Před každým dalším hodem je nutné znovu označit, které přehodíš."
@@ -95,7 +95,7 @@
           "cs": "- Bída odměňuje nízká čísla. Od 36 se odečte součet všech pěti kostek, takže za součet 12 zapíšeš 24 bodů."
         },
         {
-          "cs": "Pokud hod podmínku vybrané kategorie nesplňuje, zapíšeš do ní nulu. Tak lze obětovat políčko, které se ti těžko získává."
+          "cs": "Pokud hod podmínku vybrané kategorie nesplňuje, zapíšeš do ní nulu. Tak lze obětovat políčko, ve kterém bys těžko získal body."
         }
       ]
     },
@@ -161,7 +161,7 @@
           "cs": "Žolíka a prémii za další Yahtzee lze vypínat zvlášť. Necháš-li prémii zapnutou, můžeš 100 bodů získat i bez žolíka."
         },
         {
-          "cs": "Standardně se vyplňuje jedna tabulka. Při více hrách po každé vyplněné začneš novou, prázdnou, ale body z předchozích zůstanou. Celkově vyhraje nejvyšší součet ze všech her."
+          "cs": "Standardně se vyplňuje jedna tabulka. Při více hrách začneš po každé vyplněné tabulce novou, prázdnou, ale body z předchozích zůstanou. Celkově vyhraje nejvyšší součet ze všech her."
         }
       ]
     },

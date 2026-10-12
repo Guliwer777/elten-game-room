@@ -1,4 +1,5 @@
 require_relative "../../support/binary_rule_dictionary"
+require_relative "../../support/authored_rulebooks"
 
 game = GameRoomGames::Taboo.new
 authoring = JSON.parse(File.read(File.join(BinaryRulesLoad::ROOT, "tools/data/rulebooks/taboo.json"), encoding: "UTF-8"))
@@ -24,8 +25,7 @@ raise "Taboo sources lack declared encoding" unless original_source.start_with?(
     raise "Bad rule encoding" unless document.text.encoding == Encoding::UTF_8 && document.text.valid_encoding?
   end
   combined = documents_by_language.first.map(&:text).join("\n")
-  english_sources.each do |source|
-    expected = english ? source : RULES_CATALOG.fetch(source)
+  GameRoomTest::Rulebooks.paragraphs('taboo', english ? :en : :pl).each do |expected|
     raise "Mixed-language Taboo document" unless combined.include?(expected)
   end
 end

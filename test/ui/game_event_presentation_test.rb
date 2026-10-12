@@ -78,4 +78,32 @@ queue.advance
 queue.close
 queue.advance
 assert(!queue.busy? && queue.visible_replay == nil && owned.closed && !foreign.closed, "leaving did not isolate owned sounds")
-puts "PASS serial presentation: actual completion, later arrivals, muted audio, final view, watchdog, close; no sleeps"
+# Explicit pauses do not depend on audio or speech completion. A late frame
+# gives the following stage its own delay rather than releasing both at once.
+now = 0.0
+queue = GameRoomEventPresentation.new(clock: -> { now }, initial_replay: :before)
+log = []
+queue.enqueue(replay: :after, defer_replay: true, delay: 1.0, wait_for_sounds: false,
+  start: -> { log << :roll; nil })
+queue.enqueue(replay: :after, delay: 2.0, wait_for_sounds: false,
+  start: -> { log << :field; nil }, finish: -> { log << :turn })
+queue.advance
+assert(log == [:roll] && queue.visible_replay == :before, 'Roll pause exposed the destination')
+now = 0.999
+assert(!queue.advance && log == [:roll], 'Roll pause ended early')
+now = 5.0
+queue.advance
+assert(log == [:roll, :field] && queue.busy?, 'Late frame collapsed both pauses')
+now = 6.999
+queue.advance
+assert(log == [:roll, :field], 'Next turn was announced early')
+now = 7.0
+queue.advance
+assert(log == [:roll, :field, :turn] && !queue.busy?, 'Next turn did not resume')
+queue.enqueue(replay: :cancelled, delay: 2.0, start: -> { nil }, finish: -> { raise 'Late turn after close' })
+queue.advance
+queue.close
+now = 20.0
+queue.advance
+assert(!queue.busy?, 'Closing retained a scheduled pause')
+puts "PASS serial presentation: sounds, muted audio, explicit pauses, late frames, final view, watchdog, close; no sleeps"

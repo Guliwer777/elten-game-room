@@ -56,7 +56,7 @@
           "en": "If you cannot play, press Space to draw one tile. If you now have a legal play, choose a tile and press Enter. You may play a tile you already held, not only the new one."
         },
         {
-          "en": "By default, you may also draw one tile when you already have a playable tile. Drawing is not a prerequisite for an ordinary play."
+          "en": "By default, you may also draw one tile when you already have a playable tile. You do not have to draw before playing a tile."
         },
         {
           "en": "If you still cannot play after drawing, your turn ends. With an empty draw pile and no legal move, you pass automatically."
@@ -70,7 +70,7 @@
       },
       "paragraphs": [
         {
-          "en": "A round ends when someone plays their last tile. It can also end blocked: the draw pile is empty and everyone has had a turn without being able to play."
+          "en": "A round ends when someone plays their last tile. It also ends when play is blocked: the draw pile is empty and everyone has had a turn without being able to play."
         },
         {
           "en": "Score the round as follows:"

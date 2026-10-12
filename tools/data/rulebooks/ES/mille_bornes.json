@@ -36,7 +36,7 @@
       },
       "paragraphs": [
         {
-          "es": "Tu coche empieza detenido. Juega «Semáforo verde» para arrancar; a partir del turno siguiente podrás jugar cartas de distancia. Cada una te acerca a la meta las millas que indica."
+          "es": "Tu coche empieza detenido. Juega «Semáforo verde» para arrancar; a partir del turno siguiente podrás jugar cartas de distancia. Con cada carta avanzas las millas que indica."
         },
         {
           "es": "Hay cartas de 25, 50, 75, 100 y 200 millas. Debes llegar exactamente a 1000: con 950 no puedes jugar 75. En una misma ronda puedes usar como máximo dos cartas de 200."
@@ -65,10 +65,10 @@
           "es": "- Tras un «Accidente», juega «Reparaciones»."
         },
         {
-          "es": "Resolver el problema no pone el coche en marcha. En un turno posterior necesitas jugar verde antes de volver a usar distancia. Tras un pinchazo, por ejemplo, primero juegas la rueda de repuesto y después el semáforo verde."
+          "es": "Resolver el problema no pone el coche en marcha. En un turno posterior necesitas jugar un semáforo verde antes de volver a jugar cartas de distancia. Tras un pinchazo, por ejemplo, primero juegas la rueda de repuesto y después el semáforo verde."
         },
         {
-          "es": "Esos ataques solo se lanzan contra coches en marcha. «Límite de velocidad» es distinto: también puede afectar a uno detenido. No obliga a parar, pero solo deja jugar distancias de 25 y 50. Juega «Fin del límite de velocidad» para volver a usar las mayores."
+          "es": "Esos ataques solo se lanzan contra coches en marcha. «Límite de velocidad» es distinto: también puede afectar a uno detenido. No obliga a parar, pero solo deja jugar cartas de 25 y 50 millas. Juega «Fin del límite de velocidad» para volver a jugar cartas de mayor distancia."
         }
       ]
     },
@@ -117,7 +117,7 @@
           "es": "El ataque queda anulado. Si ibas en marcha, sigues circulando sin reparar ni volver a jugar verde. Además de los 100 puntos de la protección, ganas una bonificación de 300."
         },
         {
-          "es": "Recibes una carta para reponer la protección jugada, si aún queda mazo. Después tomas el turno: roba normalmente con Espacio y juega o descarta. El orden continúa desde ti, saltándose a quienes estuvieran entre el atacante y tú."
+          "es": "Recibes una carta para reponer la protección jugada, si aún quedan cartas en el mazo. Después tomas el turno: roba normalmente con Espacio y juega o descarta. El orden continúa desde ti, saltándose a quienes estuvieran entre el atacante y tú."
         },
         {
           "es": "Si no respondes a tiempo, puedes usar la protección en tu turno, pero ya no obtienes los 300 puntos de bonificación."
@@ -267,7 +267,7 @@
           "es": "Puedes activar un mazo personalizado y elegir cuántas cartas habrá de cada tipo. Las protecciones, el sentido contrario y las reparaciones instantáneas se activan por separado: introducir su cantidad no basta para incluirlas."
         },
         {
-          "es": "Deja suficientes cartas para repartir seis a cada persona y continuar la carrera. No bastan las distancias: hacen falta cartas para arrancar y resolver peligros. Las cantidades de sentido contrario y de su final también se pueden ajustar sin personalizar todo el mazo."
+          "es": "Deja suficientes cartas para repartir seis a cada persona y continuar la carrera. No bastan las cartas de distancia: hacen falta cartas para arrancar y resolver peligros. Las cantidades de sentido contrario y de su final también se pueden ajustar sin personalizar todo el mazo."
         }
       ]
     },

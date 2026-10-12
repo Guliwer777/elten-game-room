@@ -25,7 +25,7 @@
           "es": "Cada uno elige sin ver las decisiones ajenas. Recorre tu mano con las flechas y confirma una carta con Enter. T indica quién ha elegido ya. Cuando todos estén listos, se revelan las cartas."
         },
         {
-          "es": "Este enfrentamiento se llama baza. La carta más alta gana todas las cartas jugadas. De menor a mayor van el dos, los demás números, la jota, la reina, el rey y el as. V consulta el resultado de la última baza."
+          "es": "Este enfrentamiento se llama baza. La carta más fuerte gana todas las cartas jugadas. Normalmente, de menor a mayor fuerza, van el dos, los demás números, la jota, la reina, el rey y el as. V consulta el resultado de la última baza."
         },
         {
           "es": "Las cartas ganadas se guardan aparte. Cuando agotas las de tu mano, recibes las capturadas y empiezas a elegir entre ellas. Si no te quedan ni cartas en la mano ni capturas, quedas eliminado."
@@ -82,10 +82,10 @@
           "es": "El efecto del comodín depende de las otras cartas:"
         },
         {
-          "es": "- Si las demás empatarían en el valor ganador, un solo comodín rompe la guerra y su dueño se lleva todas las cartas."
+          "es": "- Si entre las demás cartas hay un empate en el valor ganador, un solo comodín rompe la guerra y su dueño se lleva todas las cartas."
         },
         {
-          "es": "- Si las demás darían un único ganador, un solo comodín le quita la victoria y provoca una guerra. Las cartas quedan para la siguiente baza."
+          "es": "- Si entre las demás cartas hay una sola ganadora, un solo comodín le quita la victoria al dueño de esa carta y provoca una guerra. Las cartas quedan para la siguiente baza."
         },
         {
           "es": "- Dos o más comodines anulan sus efectos. Deciden las otras cartas."

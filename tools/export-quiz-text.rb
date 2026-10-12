@@ -34,7 +34,7 @@ module QuizTextExport
     else
       'Poprawna odpowiedź'
     end
-    lines = [pack.title, '']
+    lines = [content_language_title(pack), '']
     pack.data.fetch('questions').each_with_index do |question, question_index|
       values = answers(question)
       lines << (question_index + 1).to_s
@@ -45,6 +45,17 @@ module QuizTextExport
       lines << ''
     end
     lines.join("\n") + "\n"
+  end
+
+  # Review files follow the question language, independently of the UI title.
+  def content_language_title(pack)
+    code = pack.language_id.split('-').first.upcase
+    @catalogs ||= {}
+    unless @catalogs.key?(code)
+      path = File.expand_path("../locale/#{code}.mo", __dir__)
+      @catalogs[code] = File.file?(path) ? GameRoomLocalization::Catalog.new(File.binread(path)) : nil
+    end
+    @catalogs[code]&.translate(pack.title) || pack.title
   end
 
   def files

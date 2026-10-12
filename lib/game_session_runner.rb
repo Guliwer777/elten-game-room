@@ -132,7 +132,8 @@ class GameRoomSessionRunner
 
   # Called exclusively by the UI thread. Plain data is copied, never controls.
   # A visible screen acknowledges presentation before another automatic move;
-  # a covered screen need not acknowledge every intermediate position.
+  # a covered screen need not acknowledge every intermediate position unless
+  # the game explicitly paces its turns through the same presentation queue.
   def publish_view(session:, replay:, busy:, context:, surface: nil)
     captured = @view_revision
     unless captured && captured.matches?(session, replay)
@@ -188,6 +189,15 @@ class GameRoomSessionRunner
     @state_lock.synchronize { @presentation_snapshot }
   end
 
+  # Foreground may adopt a complete read already prepared by the worker, not
+  # an old presentation retained during an outage or an unconfirmed write.
+  # This never takes the operation lock or acknowledges a visible game state.
+  def ready_presentation_snapshot
+    @state_lock.synchronize do
+      @presentation_snapshot unless @closed || @internal_error || @dirty || @sync.recovery_pending?
+    end
+  end
+
   def take_error
     # A covered screen may return after the worker has already recovered.
     # Do not turn that historical failure into a fresh UI outage.
@@ -233,7 +243,7 @@ class GameRoomSessionRunner
       return if @replay.finished? || @sync.recovery_pending?
       view = @state_lock.synchronize { @view }
       covered = covered?
-      return unless covered || (view && view[:session_id] == @repository.session_id(@session) &&
+      return unless covered && !@game.paced_event_presentation? || (view && view[:session_id] == @repository.session_id(@session) &&
         view[:revision] == revision(@replay) && !view[:busy])
       bot_work = prepare_bot unless perform_automatic(view)
     end
@@ -316,10 +326,12 @@ class GameRoomSessionRunner
       @statistics_observer&.call(@session, @replay)
       @turn.observe(session_id: @repository.session_id(@session), events: snapshot.events,
         confirmed_event_ids: @repository.confirmed_event_ids(@session), verified: force)
+      @game.cleanup_session_answers(@replay, session_id: @repository.session_id(@session),
+        actors: [@viewer, *controlled_actors].uniq, hidden_submissions: @context_template.hidden_submissions)
       presentation = copy(GameRoomSessionContracts::PresentationSnapshot.new(session: @session, table: @table, replay: @replay, members: room.members,
-        activity: @activity_repository ? @activity_repository.entries_for(@table, viewer: @viewer) : []))
-      @state_lock.synchronize { @presentation_snapshot = presentation }
-      @dirty = false
+        activity: @activity_repository ? @activity_repository.entries_for(@table, viewer: @viewer) : [],
+        snapshot: snapshot, room: room))
+      @state_lock.synchronize { @presentation_snapshot = presentation; @dirty = false }
     end
     @errors.clear unless @sync.recovery_pending?
   end

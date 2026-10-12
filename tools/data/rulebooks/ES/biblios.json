@@ -173,7 +173,7 @@
           "es": "Suma los puntos de todas las categorías que hayas ganado. La mayor puntuación gana la partida; si se empata, gana quien conserve más valor en oro."
         },
         {
-          "es": "Si también hay empate en oro, se comparan las categorías en este orden. En cada una se mira primero la suma de cartas y, si sigue igualada, la mejor letra. La primera diferencia decide el ganador:"
+          "es": "Si también hay empate en oro, se comparan las categorías en este orden. En cada una se mira primero la suma de los valores de las cartas y, si sigue igualada, la mejor letra. La primera diferencia decide el ganador:"
         },
         {
           "es": "- Monjes."

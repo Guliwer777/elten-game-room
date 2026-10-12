@@ -66,7 +66,7 @@ begin
     assert(rummy.id == 'rummy', 'localized name changed game/save ID')
     assert(rummy.name == (language == :pl ? 'Remik' : 'Rummy'), "#{language}: game list name")
     text = rummy.rule_book(options: rummy.default_options).documents.first.text
-    assert(text.include?(language == :pl ? 'W remika gra' : 'Rummy is'), "#{language}: rule book name")
+    assert(text.include?(language == :pl ? 'W Remiku' : 'In Rummy'), "#{language}: rule book name")
   end
 ensure
   $rules_dictionary, $rules_english = dictionary, english

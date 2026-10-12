@@ -148,7 +148,7 @@
           "es": "La ronda termina inmediatamente cuando alguien juega su última ficha, aunque sea un doble. No hace falta realizar otra jugada ni cerrar los dobles pendientes."
         },
         {
-          "es": "También termina por bloqueo si no quedan fichas para robar, todos han pasado consecutivamente y nadie dispone aún de una jugada legal. Abrir un tren puede dar una jugada a otro jugador, por lo que una serie de pases no siempre significa bloqueo."
+          "es": "También termina por bloqueo si no quedan fichas para robar, todos han pasado consecutivamente y nadie dispone de una jugada legal. Abrir un tren puede dar una jugada a otro jugador, por lo que una serie de pases no siempre significa bloqueo."
         },
         {
           "es": "Se anotan estas penalizaciones:"
@@ -163,7 +163,7 @@
           "es": "- El 0–0 vale siempre diez puntos."
         },
         {
-          "es": "Tras el recuento quedan eliminados quienes tengan al menos cien puntos. Gana el último jugador que permanezca. Si todos los restantes alcanzan el límite a la vez, gana quien tenga menos puntos; varios mínimos iguales comparten la victoria. S consulta los resultados."
+          "es": "Tras el recuento quedan eliminados quienes tengan al menos cien puntos. Gana el último jugador que permanezca. Si todos los restantes alcanzan el límite a la vez, gana quien tenga menos puntos; si varias personas comparten esa puntuación, comparten la victoria. S consulta los resultados."
         }
       ]
     },

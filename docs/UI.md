@@ -92,8 +92,8 @@ through the actual menu path.
 
 ## History and options
 
-The create-table game selector and the game list under Join a table append
-the game's localized `short_description` after its name. Other selectors and
+The create-table game selector, the game list under Join a table and the
+rules library append the game's localized `short_description` after its name. Other selectors and
 individual table rows keep their existing labels. The widget reads that same
 local description only on Ctrl+O or its Game description context action;
 this action neither joins a table nor fetches network data.

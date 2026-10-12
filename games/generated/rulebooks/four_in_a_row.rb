@@ -68,7 +68,7 @@ module GameRoomGames
         when "pl"
           [
             rule_section(:aim, "Cel gry",
-              "W Czw\u00F3rkach graj\u0105 dwie osoby. Ka\u017Cda ma sw\u00F3j kolor pionk\u00F3w i pr\u00F3buje u\u0142o\u017Cy\u0107 przynajmniej cztery obok siebie: poziomo, pionowo lub po przek\u0105tnej."),
+              "Czw\u00F3rki to gra przeznaczona dla dw\u00F3ch os\u00F3b. Ka\u017Cda ma sw\u00F3j kolor pionk\u00F3w i pr\u00F3buje u\u0142o\u017Cy\u0107 przynajmniej cztery obok siebie: poziomo, pionowo lub po przek\u0105tnej."),
             rule_section(:play, "Wrzucanie pionk\u00F3w",
               "Plansza ma siedem kolumn i sze\u015B\u0107 rz\u0119d\u00F3w. Jest ustawiona pionowo, dlatego pionki opadaj\u0105 na d\u00F3\u0142 kolumny. Nowy pionek zatrzymuje si\u0119 na dnie albo na pionku, kt\u00F3ry ju\u017C tam stoi.",
               "Gracze na zmian\u0119 wrzucaj\u0105 po jednym pionku; zaczyna pierwszy gracz. Strza\u0142kami w lewo i w prawo wybierz kolumn\u0119, a potem naci\u015Bnij Enter. Nie wybierasz wysoko\u015Bci: pionek sam zajmie najni\u017Csze wolne pole.",

@@ -8,7 +8,7 @@
       },
       "paragraphs": [
         {
-          "pl": "W Biblios zbierasz karty do swojej biblioteki i starasz się wyprzedzić pozostałych graczy w wybranych kategoriach. Nie wystarczy jednak mieć dużo kart: na koniec punkty dostaje tylko zwycięzca danej kategorii. W grze uczestniczą od dwóch do czterech osób."
+          "pl": "W Biblios zbierasz karty do swojej biblioteki i starasz się wyprzedzić pozostałych graczy w wybranych kategoriach. Nie chodzi jednak tylko o to, by mieć dużo kart: na koniec punkty dostaje tylko zwycięzca danej kategorii. W grze może uczestniczyć od dwóch do czterech osób."
         },
         {
           "pl": "Najpierw kolejno rozdzielacie dobierane karty między siebie, pozostałych graczy i przyszłe aukcje. Później licytujecie odłożone karty. W ten sposób możecie uzupełniać bibliotekę, zdobywać złoto albo zmieniać liczbę punktów, o które rywalizujecie."
@@ -40,7 +40,7 @@
           "pl": "Wartość kart pomaga więc wygrać kategorię, a kość mówi, ile jest warta ta wygrana. Załóżmy, że na koniec wygrywasz kategorię Mnisi z kartami o łącznej wartości 12. Jeśli kość Mnichów pokazuje 5, dostajesz za tę kategorię 5 punktów zwycięstwa."
         },
         {
-          "pl": "Swoją bibliotekę odczytasz przez L, a przez Ctrl+L przejrzysz poszczególne kategorie. G podaje, ile masz złota. Karty, które przeciwnicy zachowali dla siebie podczas rozdzielania, są tajne. Shift+C porównuje więc tylko widoczną część bibliotek."
+          "pl": "Swoją bibliotekę odczytasz klawiszem L, a skrótem Ctrl+L przejrzysz poszczególne kategorie. G podaje, ile masz złota. Karty, które przeciwnicy zachowali dla siebie podczas rozdzielania, są tajne. Shift+C porównuje więc tylko widoczną część bibliotek."
         }
       ]
     },
@@ -54,7 +54,7 @@
           "pl": "Gdy rozdzielasz, poznajesz karty po jednej. Zanim zobaczysz następną, musisz zdecydować, co zrobić z obecną. Strzałkami wybierz jej przeznaczenie i zatwierdź Enterem."
         },
         {
-          "pl": "W swojej turze rozdzielasz o jedną kartę więcej, niż jest graczy. Przy trzech osobach będą to cztery karty. Obowiązuje następujący podział:"
+          "pl": "W swojej turze rozdzielasz tyle kart, ilu jest graczy, i jedną dodatkową. Przy trzech osobach będą to cztery karty. Obowiązuje następujący podział:"
         },
         {
           "pl": "- Dokładnie jedną kartę zachowujesz dla siebie, wybierając „Zachowaj dla siebie”."
@@ -107,7 +107,7 @@
           "pl": "Strzałkami przejrzyj dostępne zmiany i zatwierdź wybraną Enterem. Przy karcie dotyczącej dwóch kości wybierasz od razu parę kategorii. Nie można zamiast tego zmienić jednej kości o dwa ani wykonać tylko połowy działania."
         },
         {
-          "pl": "Kość nie może spaść poniżej 1 ani wzrosnąć ponad 6. Jeśli nie chcesz zmieniać wartości albo karta nie ma możliwego działania, wybierz „Nie używaj karty”."
+          "pl": "Wartość na kości nie może spaść poniżej 1 ani wzrosnąć ponad 6. Jeśli nie chcesz jej zmieniać albo karta nie ma możliwego działania, wybierz „Nie używaj karty”."
         }
       ]
     },

@@ -39,10 +39,10 @@ This is a read-only document with a heading for each version. H moves to the nex
 
 ## What you can play
 
-Power Games currently includes 33 games:
+Power Games currently includes 34 games:
 
 - Card games: 3-5-8, 99, 1000 miles, Biblios, Makao, Spades, Poker, Rummy, Thousand, UNO, War and Scientific War.
-- Board and strategy games: Ludo, Four in a Row, Tic Tac Toe, Mancala, Monopoly, Reversi, Battleships, Chess and Checkers.
+- Board and strategy games: Ludo, Four in a Row, Tic Tac Toe, Mancala, Monopoly, Reversi, Battleships, Chess, Checkers and Duck Racing.
 - Dice and dominoes: Cat, head, tail, Dominos, Farkle, Mexican Train and Yahtzee.
 - Words and knowledge: Krowa, Categories, Quiz Party, Scrabble and Taboo.
 - Audio action games: Axel Pong and Audio Ball.
@@ -92,6 +92,7 @@ At a table, Ctrl+I opens invitations to online users, while Ctrl+Shift+I lets yo
 
 In games that allow spectators, you can follow a game without taking a player's seat. This is useful both for cheering people on and for learning the rules. Axel Pong spectators can also choose their listening perspective.
 Ctrl+Shift+O lets you ask to play or spectate in the next game, where that choice is available.
+This shortcut changes your own role. To change someone else's role, the host uses the Users list's context menu; the action names the selected person.
 
 On the user list, Enter opens ELTEN's usual user menu. From there you can, for example, send a message, add someone to your contacts or call them.
 
@@ -129,6 +130,7 @@ You do not need to learn every shortcut at once:
 - Ctrl+F4 reads connection latency, distinguishing HTTP from an available Communications or P2P connection.
 
 You can read the rules before creating a table. They have chapters and a table of contents linking to each section. Game shortcuts appear in a separate list, with one item per shortcut.
+The game list in the rules library includes a short description of each game.
 In the rules text, H and Shift+H move between headings, K and Shift+K between links, and Enter on a contents link takes you to the chapter.
 
 Some games also have personal settings under Ctrl+P, available in the table menu. These include Axel Pong, Audio Ball and Krowa. They control your own experience and are separate from the shared variant chosen by the host.
@@ -189,7 +191,7 @@ Power Games has its own interface language selection in Settings → General. En
 
 The optional “Known languages” list provides fallback translations. If text is missing in the main language, the program can use one of the selected languages and ultimately English.
 
-The interface language and a game's content language are separate choices. The language of questions, cards or a dictionary is selected in the settings of games that offer that option.
+You can choose the language of questions, cards or a dictionary in games that offer this setting. A new table defaults to its creator's interface language, or English if matching content is unavailable. Your saved settings take precedence. Joining a table or resuming a saved game does not change its language.
 
 ## Saved games and history
 

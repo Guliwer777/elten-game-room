@@ -39,7 +39,7 @@
           "es": "Una ficha encaja si una de sus mitades coincide con el número del extremo elegido. Su otra mitad se convierte en el nuevo extremo. Por ejemplo, al añadir 3–5 a un extremo de 3, ese extremo pasa a ser 5."
         },
         {
-          "es": "C lee los dos extremos. Selecciona una ficha que encaje con las flechas y juégala con Enter; entonces pasa el turno."
+          "es": "C lee los dos extremos. Con las flechas, selecciona una ficha que encaje y juégala con Enter; entonces pasa el turno."
         },
         {
           "es": "Si la ficha encaja en ambos extremos, se usa el lado que hayas elegido: G selecciona el izquierdo y D el derecho. La elección se conserva para las siguientes jugadas con dos destinos posibles. Al empezar está seleccionado el derecho."
@@ -171,10 +171,10 @@
           "es": "- Ocho personas: dos equipos de cuatro o cuatro parejas."
         },
         {
-          "es": "Normalmente basta con que un miembro del equipo se quede sin fichas para ganar la ronda. Su equipo recibe cero puntos. Cada equipo rival suma sus fichas restantes y, además, las que les queden a los compañeros del ganador."
+          "es": "Normalmente basta con que un miembro del equipo se quede sin fichas para ganar la ronda. Su equipo recibe cero puntos. Cada equipo rival suma los puntos de sus fichas restantes y también los de las fichas que les queden a los compañeros del ganador."
         },
         {
-          "es": "Por ejemplo, el ganador ha vaciado su mano, pero su compañero conserva ocho puntos. Si tu equipo conserva once, recibe diecinueve puntos por la ronda. En una ronda bloqueada, cada equipo solo cuenta sus propias fichas."
+          "es": "Por ejemplo, el ganador ha vaciado su mano, pero su compañero conserva ocho puntos. Si tu equipo conserva once, recibe diecinueve puntos por la ronda. En una ronda bloqueada, cada equipo solo suma los puntos de sus propias fichas."
         },
         {
           "es": "La opción de terminar todo el equipo exige que todos sus miembros se queden sin fichas para cerrar la ronda. Se saltan los turnos de quienes ya no tienen ninguna."

@@ -15,7 +15,7 @@ native_dictionary = $rules_dictionary
   replay.history.each { |entry| assert(entry.text.valid_encoding?, 'binary history encoding') }
   documents = rules.rule_book(options: rules.default_options).documents
   assert(documents.all? { |d| d.text.encoding == Encoding::UTF_8 && d.text.valid_encoding? }, 'rule encoding')
-  expected = language == :pl ? 'Śledź piłkę po dźwięku' : 'Follow the ball by sound'
+  expected = language == :pl ? 'W Axel Pongu odbijasz piłkę rakietką' : 'In Axel Pong, move your paddle'
   assert(documents.first.text.include?(expected), "wrong #{language} rule language")
   spec = rules.surface_spec(replay, 'Żaneta'.b)
   surface = GameSurfaces.build(spec)

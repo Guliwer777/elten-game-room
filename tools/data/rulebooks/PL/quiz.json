@@ -11,7 +11,7 @@
           "pl": "W Quizie odpowiadacie na pytania z wybranej dziedziny. Każde ma cztery odpowiedzi i tylko jedna jest poprawna. Za trafny wybór dostajesz punkt. Błędna odpowiedź niczego nie odejmuje, więc warto spróbować, nawet gdy nie jesteś pewien."
         },
         {
-          "pl": "Może grać od dwóch do ośmiu osób, również z botami. Wszyscy dostają to samo pytanie i odpowiadają niezależnie. Wynik nie zależy od tego, kto pierwszy naciśnie Enter."
+          "pl": "W tej grze może uczestniczyć od dwóch do ośmiu osób, również z botami. Wszyscy dostają to samo pytanie i odpowiadają niezależnie. Wynik nie zależy od tego, kto pierwszy naciśnie Enter."
         }
       ]
     },
@@ -22,7 +22,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Na początku rundy jedna osoba wybiera kategorię spośród trzech wylosowanych propozycji. Jeśli to twój wybór, wskaż kategorię strzałkami i zatwierdź Enterem. Przez całą rundę będziecie odpowiadać na trzy pytania z tej kategorii. W następnej rundzie wybiera kolejna osoba."
+          "pl": "Na początku rundy jedna osoba wybiera kategorię spośród trzech wylosowanych propozycji. Gdy wybór kategorii należy do ciebie, wskaż ją strzałkami i zatwierdź Enterem. W tej rundzie odpowiecie na trzy pytania z wybranej kategorii. W następnej rundzie wybiera kolejna osoba."
         },
         {
           "pl": "Przy każdym pytaniu masz 20 sekund na decyzję. Strzałkami przejrzyj cztery odpowiedzi i zatwierdź wybraną Enterem. Od tej chwili nie możesz jej zmienić. Twoja decyzja pozostaje ukryta, dopóki wszyscy nie odpowiedzą albo nie skończy się czas."
@@ -42,7 +42,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Celem jest zdobycie co najmniej 15 punktów. Nawet jeśli ktoś osiągnie ten wynik po pierwszym pytaniu rundy, gracie jeszcze jej pozostałe pytania. Potem zwycięża osoba z najwyższą sumą."
+          "pl": "Celem jest zdobycie co najmniej 15 punktów. Nawet jeśli ktoś osiągnie ten wynik po pierwszym pytaniu rundy, i tak odpowiadacie na pozostałe pytania. Potem zwycięża osoba z najwyższą sumą."
         },
         {
           "pl": "Przy remisie na pierwszym miejscu rozgrywacie kolejną rundę trzech pytań. Gracie dalej, aż po zakończeniu rundy jedna osoba będzie miała więcej punktów niż pozostali."

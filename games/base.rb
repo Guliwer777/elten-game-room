@@ -80,13 +80,19 @@ module GameRoomGames
     # No options means loading defaults. Saving may depend on the selected
     # profile; the model selects definitions, the application owns persistence.
     def remembered_option_definitions(definitions, options: nil)
-      definitions.select { |definition| definition.kind.to_s == "multiple_choice" }
+      definitions.select { |definition| ["multiple_choice", "multiple_values"].include?(definition.kind.to_s) }
     end
     def build_session_game; self.class.new; end
+    # Most games can share their UI model. A cached reducer may keep an
+    # independent instance for the presenter's ordered historical prefixes.
+    def build_presentation_game; self; end
     def build_start_guard(_program, user:, **_services); nil; end
     def supports_leaderboards?; false; end
     def build_leaderboard_client(_program, **_services); nil; end
     def precise_action_clock?; false; end
+    # Opt in only when a game can deterministically cancel its own pending
+    # private/minigame phase at the accepted seat-change boundary.
+    def replay_participant_transitions?; false; end
     def private_table_required?(_options); false; end
     def table_join_error(_options, viewer:, owner:); nil; end
     def join_as_observer?(_options, viewer:, owner:); false; end
@@ -198,6 +204,10 @@ module GameRoomGames
     def automatic_action(_replay, _actor, context: nil)
       nil
     end
+
+    # Worker-only lifecycle boundary, including a final replay with no next
+    # turn. Cleanup must use accepted evidence and preserve uncertain writes.
+    def cleanup_session_answers(_replay, session_id:, actors:, hidden_submissions:); end
 
     # Automatic actions are normally authoritative table-master actions. A
     # game may opt individual participants in when the action can only expose
@@ -383,7 +393,17 @@ module GameRoomGames
     # Load local, viewer-specific presentation data independently of automatic
     # moves. Never publish it or alter the authoritative replay here.
     def serial_event_presentation?
+      paced_event_presentation?
+    end
+
+    # Explicit pauses also hold automatic moves while the game is covered.
+    # Other games retain their existing foreground/background behavior.
+    def paced_event_presentation?
       false
+    end
+
+    def event_presentation_stages(_event, _repository, _before, _after, _viewer)
+      nil
     end
 
     def prepare_view(_replay, _viewer, context: nil)

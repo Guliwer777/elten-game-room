@@ -99,7 +99,7 @@
           "cs": "Po kole vypadnou všichni se sto nebo více body. Ostatní pokračují, dokud nezůstane jediný vítěz."
         },
         {
-          "cs": "Překročí-li limit ve stejném kole všichni zbývající, vyhraje nejnižší skóre. O stejný nejnižší výsledek se lze dělit a zvítězit společně."
+          "cs": "Dosáhnou-li limitu ve stejném kole všichni zbývající hráči, vyhraje ten s nejnižším skóre. Při shodě na nejnižším skóre vyhrají tito hráči společně."
         }
       ]
     },
@@ -142,7 +142,7 @@
           "cs": "- Zákaz dobírání znamená, že celé kolo vystačíš s rozdanými kameny. Bez tahu automaticky vynecháš. Ostatní volby dobírání pak nemají účinek."
         },
         {
-          "cs": "- Zákaz dobírání při možném tahu nutí přiložit, pokud máš vhodný kámen. Mezerník lze použít jen při hledání chybějícího."
+          "cs": "- Zákaz dobírání při možném tahu nutí přiložit, pokud máš vhodný kámen. Mezerníkem dobereš jen tehdy, když žádný vhodný kámen nemáš."
         },
         {
           "cs": "- Dobírání do vhodného kamene vezme jedním mezerníkem tolik kamenů, až nově dobraný pasuje nebo dojde zásoba. Potom šipkami vyber kámen a potvrď zahrání Enterem."

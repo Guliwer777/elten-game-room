@@ -22,7 +22,7 @@
       },
       "paragraphs": [
         {
-          "en": "A round draws a letter and six categories. You have 90 seconds to answer. Tab moves to the next field and Shift+Tab back to the previous one; each field announces its category and the letter."
+          "en": "At the start of each round, the game draws a letter and six categories. You have 90 seconds to answer. Tab moves to the next field and Shift+Tab back to the previous one; each field announces its category and the letter."
         },
         {
           "en": "You may leave answers blank and return to them later. Everything remains editable until you submit."
@@ -94,7 +94,7 @@
       },
       "paragraphs": [
         {
-          "en": "Table settings let you choose English answers instead of the default Polish. This also changes the alphabet used for drawing letters."
+          "en": "In the table settings, choose whether to answer in English or Polish. This also determines the alphabet used for drawing letters."
         },
         {
           "en": "Choose a category pool:"

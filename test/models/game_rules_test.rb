@@ -149,7 +149,7 @@ assert(settings(makao, "profile" => "joker").include?("Cards dealt to each playe
 assert(!settings(makao, "profile" => "joker").include?("Queen is universal"), "disabled preset rule leaked")
 assert(settings(makao, "profile" => "polish").include?("Jack requests a rank"), "Polish profile's enabled jack rule missing")
 
-profiles = GameRoomGames::Monopoly.new.rule_book.sections.find { |section| section.id == :board_profiles }
+profiles = GameRoomGames::Monopoly.new.board_profile_rules
 assert(profiles.paragraphs.length == 19, "Monopoly must describe all 19 boards")
 GameRoomContent::MonopolyBoards.choices.each_with_index do |choice, index|
   id = choice.value

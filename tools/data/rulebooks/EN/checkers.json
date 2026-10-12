@@ -8,7 +8,7 @@
       },
       "paragraphs": [
         {
-          "en": "Capture all your opponent's pieces, or block them so they cannot move. Checkers is played by two people, with White moving first."
+          "en": "Capture all your opponent's pieces, or block them so they cannot move. Checkers is played by two people. The player with the white pieces moves first."
         },
         {
           "en": "The default board has eight rows and eight columns. Each player starts with twelve ordinary pieces, called men. Only the dark squares are used."
@@ -88,7 +88,7 @@
           "en": "- 12 by 12: thirty men per player."
         },
         {
-          "en": "On every size, two empty rows separate the opposing pieces at the start."
+          "en": "On all three board sizes, two empty rows separate the opposing pieces at the start."
         }
       ]
     },
@@ -143,7 +143,7 @@
           "en": "Enter: select a piece and its destination; confirm each jump separately during a capture sequence."
         },
         {
-          "en": "V: read the selected piece's legal moves."
+          "en": "V: read legal moves for the piece at the cursor."
         },
         {
           "en": "K: move to your next king."

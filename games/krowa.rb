@@ -62,7 +62,7 @@ module GameRoomGames
 
     def build_client(program, **services)
       require_relative "krowa_support/client"
-      KrowaClient.new(program, self, **services)
+      KrowaClient.new(program, self, server_tables: services[:server_tables], transport: services[:transport])
     end
 
     def build_start_guard(program, user:, **services)

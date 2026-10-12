@@ -101,7 +101,7 @@
           "cs": "Před hrou lze vybrat ze tří variant:"
         },
         {
-          "cs": "- Oware je právě popsaná hra: získáváš sousedící soupeřovy jamky se dvěma či třemi kamínky."
+          "cs": "- Oware je právě popsaná hra: získáváš kamínky ze sousedících soupeřových jamek, pokud jsou v každé dva či tři."
         },
         {
           "cs": "- Ayoayo pokračuje v rozsévání z jamky, kde předchozí rozsévání skončilo. Podrobnosti najdeš v další kapitole."
@@ -138,7 +138,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Jamku volíš a potvrzuješ stejně jako dřív. Kamínky ale procházejí i tvou zásobárnou za koncem vlastní řady a každý v ní zůstane jako bod. Soupeřova zásobárna se přeskočí. Při celém okruhu se naopak nepřeskakuje výchozí jamka."
+          "cs": "Jamku volíš a potvrzuješ stejně jako dřív. Při rozsévání svou zásobárnu za koncem vlastní řady nevynecháváš. Každý kamínek, který do ní vložíš, v ní zůstane a počítá se jako bod. Soupeřova zásobárna se přeskočí. Při celém okruhu se naopak nepřeskakuje výchozí jamka."
         },
         {
           "cs": "Poslední kamínek ve vlastní zásobárně přinese další tah. Šipkami zvol další svou jamku a potvrď Enterem."

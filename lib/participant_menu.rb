@@ -17,8 +17,8 @@ module GameRoomParticipantMenu
       Entry.new(action: :invite_online, label: _("Invite an online Elten user"), menu_key: "i", help_key: "Ctrl+I"),
       Entry.new(action: :invite_contacts, label: _("Invite someone from your contacts"), menu_key: "I", help_key: "Ctrl+Shift+I"),
       Entry.new(action: :add_bot, label: _("Add a computer"), menu_key: "o", help_key: "Ctrl+O"),
-      Entry.new(action: :observe_next_game, label: _("Observe the next game"), menu_key: "O", help_key: "Ctrl+Shift+O"),
-      Entry.new(action: :play_next_game, label: _("Play in the next game"), menu_key: "O", help_key: "Ctrl+Shift+O"),
+      Entry.new(action: :observe_next_game, label: _("I want to observe the next game"), menu_key: "O", help_key: "Ctrl+Shift+O"),
+      Entry.new(action: :play_next_game, label: _("I want to play in the next game"), menu_key: "O", help_key: "Ctrl+Shift+O"),
       Entry.new(action: :rules, label: _("Game rules"), menu_key: :ctrl_f1, help_key: "Ctrl+F1"),
       Entry.new(action: :table_options, label: _("Read the table variant and settings"), menu_key: "r", help_key: "Ctrl+R"),
       personal_settings_entry(game),
@@ -196,12 +196,18 @@ module GameRoomParticipantMenu
       if actions.include?(:manage_roles) && snapshot && GameRoomParticipants.human?(participant) &&
           GameRoomParticipants.includes?(snapshot.members, participant) && !GameRoomParticipants.same?(participant, Session.name)
         observing = snapshot.observer?(participant)
-        label = observing ? _("Make a player for the next game") : _("Make an observer for the next game")
+        label = participant_role_label(participant, observing)
         menu.option(label) do
           dispatch.call(observing ? :make_player : :make_observer, participant) if available.call.include?(:manage_roles)
         end
       end
     end
+  end
+
+  def participant_role_label(participant, observing)
+    (observing ? _("Make %{player} a player for the next game") : _("Make %{player} an observer for the next game")) % {
+      player: GameRoomParticipants.display_name(participant)
+    }
   end
 
   def add_context_help(layout, actions, game: nil)

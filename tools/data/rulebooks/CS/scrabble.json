@@ -91,7 +91,7 @@
           "cs": "Prémiové pole se uplatní pouze při prvním položení kamene:"
         },
         {
-          "cs": "- Písmenná prémie zdvojnásobí či ztrojnásobí tento kámen, potom se přičtou ostatní písmena."
+          "cs": "- Písmenná prémie zdvojnásobí či ztrojnásobí bodovou hodnotu tohoto kamene, potom se přičtou hodnoty ostatních písmen."
         },
         {
           "cs": "- Slovní prémie násobí celý výsledek slova dvěma či třemi. Více násobičů se násobí navzájem: dvě dvojnásobné prémie znamenají čtyřnásobek."
@@ -137,7 +137,7 @@
           "cs": "- Výměna už není možná a tři celá kola tahů nikdo nezahraje slovo. Každé přijaté slovo toto počítání přeruší, i kdyby bylo za nula bodů."
         },
         {
-          "cs": "Na konci se každému odečte hodnota zbylých kamenů. Hráč, který vyprázdnil zásobník, si navíc přičte součet zbytků ostatních. Při zablokování tento bonus není. Prázdný kámen má i v ruce nulu."
+          "cs": "Na konci se každému odečte hodnota zbylých kamenů. Hráč, který vyprázdnil zásobník, si navíc přičte součet hodnot kamenů, které zůstaly ostatním. Při zablokování tento bonus není. Prázdný kámen má i v ruce nulu."
         },
         {
           "cs": "Po těchto úpravách vyhraje nejvyšší skóre. Při shodě se o vítězství dělíte."

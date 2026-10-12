@@ -132,7 +132,7 @@
       },
       "paragraphs": [
         {
-          "es": "Se alternan los turnos hasta que todos han usado las 16 casillas. Se suman sus puntos y bonificaciones. Gana el total mayor; varios máximos iguales empatan. S compara las sumas actuales."
+          "es": "Se alternan los turnos hasta que todos han usado las 16 casillas. Se suman sus puntos y bonificaciones. Gana quien tenga el total más alto; si varias personas comparten ese total, hay empate. S compara las sumas actuales."
         }
       ]
     },

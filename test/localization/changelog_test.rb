@@ -349,4 +349,27 @@ assert(GameRoomChangelog.pending_entries(246, 247).map(&:build) == [247], 'build
 assert(GameRoomChangelog.pending_entries(nil, 247).map(&:build) == [247], 'first build 247 launch repeats history')
 assert(GameRoomChangelog.pending_entries(247, 247).empty?, 'build 247 reopens after being read')
 assert(GameRoomChangelog.list_items([entry_247]).first == 'Version 2.0.4.8, build 247', 'build 247 heading differs')
-puts "Changelog tests passed: first launch, updates, downgrade, Enter, storage, old notes preserved and bilingual build 247 notes"
+entry_248 = entries.find { |entry| entry.build == 248 }
+assert(entry_248.version == '2.0.4.9' && entry_248.changes.length == 10, 'build 248 has incorrect release metadata')
+assert(entry_248.changes.uniq.length == 10, 'build 248 contains duplicate notes')
+assert(catalog.fetch(entry_248.changes[1]) == "Dopracowano polskie zasady gier: poprawiono niezrozumiałe zdania, usunięto zbędne dopowiedzenia i uporządkowano opisy. Ogromne podziękowania dla Lwicy za cierpliwe czytanie, wyłapanie wielu niejasności i mnóstwo trafnych poprawek językowych.",
+  'build 248 must preserve the approved thanks to Lwica without the removed closing sentence')
+assert(catalog.fetch(entry_248.changes[3]).include?('174') && catalog.fetch(entry_248.changes[3]).include?('1449'),
+  'build 248 has incorrect Witcher question counts')
+assert(GameRoomChangelog.pending_entries(247, 248).map(&:build) == [248], 'build 248 repeats older notes')
+assert(GameRoomChangelog.pending_entries(nil, 248).map(&:build) == [248], 'first build 248 launch repeats history')
+assert(GameRoomChangelog.pending_entries(248, 248).empty?, 'build 248 reopens after being read')
+assert(GameRoomChangelog.list_items([entry_248]).first == 'Version 2.0.4.9, build 248', 'build 248 heading differs')
+%w[PL CS ES RU].each do |language|
+  bytes = File.binread(File.expand_path("../../locale/#{language}.mo", __dir__))
+  total, source_table, target_table = bytes.byteslice(8, 12).unpack('V3')
+  release_catalog = total.times.to_h do |index|
+    source_length, source_offset = bytes.byteslice(source_table + index * 8, 8).unpack('V2')
+    target_length, target_offset = bytes.byteslice(target_table + index * 8, 8).unpack('V2')
+    [bytes.byteslice(source_offset, source_length).force_encoding('UTF-8'),
+     bytes.byteslice(target_offset, target_length).force_encoding('UTF-8')]
+  end
+  assert(entry_248.changes.all? { |source| !release_catalog.fetch(source, '').empty? },
+    "build 248 has untranslated #{language} notes")
+end
+puts "Changelog tests passed: first launch, updates, downgrade, Enter, storage, old notes preserved and multilingual build 248 notes"

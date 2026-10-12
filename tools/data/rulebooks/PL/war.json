@@ -8,7 +8,7 @@
       },
       "paragraphs": [
         {
-          "pl": "W wojnie próbujesz zdobyć karty pozostałych graczy. Grają od dwóch do ośmiu osób, a każdy dostaje część talii 24 kart, od dziewiątki do asa. Grasz kartami w otrzymanej kolejności: przy każdym ruchu zagrasz następną."
+          "pl": "W wojnie próbujesz zdobyć karty pozostałych graczy. W grze może uczestniczyć od dwóch do ośmiu osób, a każdy dostaje część talii 24 kart, od dziewiątki do asa. Grasz kartami w otrzymanej kolejności."
         }
       ]
     },
@@ -22,7 +22,7 @@
           "pl": "W swojej turze naciśnij Enter. Gdy wszyscy zagrają po jednej karcie, osoba z najwyższą bierze wszystkie karty z tego starcia. Od najniższej są to dziewiątka, dziesiątka, walet, dama, król i as. Kolory nie wpływają na wynik."
         },
         {
-          "pl": "Zdobyte karty trafiają w losowej kolejności pod spód twoich pozostałych kart. Następnie rozgrywacie kolejne starcie. Klawiszem C sprawdzisz karty obecnie wyłożone na stole, a klawiszem V wynik poprzedniego starcia."
+          "pl": "Zdobyte karty trafiają w losowej kolejności na spód twojego stosu. Następnie rozgrywacie kolejne starcie. Klawiszem C sprawdzisz karty obecnie wyłożone na stole, a klawiszem V wynik poprzedniego starcia."
         }
       ]
     },
@@ -33,7 +33,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Remis na najwyższej karcie rozpoczyna wojnę. Uczestniczą w niej tylko osoby, które zagrały tę wartość, ale walczą o wszystkie karty z dotychczasowego starcia."
+          "pl": "Gdy kilka osób zagra karty o tej samej, najwyższej wartości, rozpoczyna się wojna. Uczestniczą w niej tylko osoby, które zagrały tę wartość, ale walczą o wszystkie karty z dotychczasowego starcia."
         },
         {
           "pl": "Gdy podczas wojny przyjdzie twoja kolej, ponownie naciśnij Enter. Dołożysz jedną kartę zakrytą i jedną odkrytą. Gracz z najwyższą odkrytą kartą zabiera wszystkie karty z tego starcia, także zakryte. Kolejny remis oznacza następną wojnę."

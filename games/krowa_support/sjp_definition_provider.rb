@@ -10,7 +10,7 @@ module GameRoomKrowa
     READ_TIMEOUT = 10
     MAX_REDIRECTS = 3
     DEFINITION_PATTERN = %r{
-      <p\b[^>]*>\s*<b>\s*znaczenie:\s*</b>.*?</p>\s*</div>\s*
+      <p\b[^>]*>\s*<b>\s*znaczenie:\s*</b>(?:(?!</p>).)*</p>\s*</div>\s*
       <p\b[^>]*>(.*?)</p>
     }imx.freeze
 

@@ -16,7 +16,9 @@ ids = ["reversi"] + (EltenGameRoom::GAME_REGISTRY.ids - ["reversi"])
   ids.each do |id|
     game = EltenGameRoom::GAME_REGISTRY.build(id)
     actual = app.send(:configure_game_options, game)
-    raise "Encoding fix changed defaults for #{id}" unless actual == game.default_options
+    # New tables use the interface language; replay defaults stay language-neutral.
+    # content_language_defaults_test independently checks the expected languages.
+    raise "Encoding fix changed creation defaults for #{id}" unless actual == game.table_creation_options
     if %w[axel_pong audio_ball].include?(id)
       changed = game.normalize_options('p2p_enabled' => true, 'p2p_participants_limit' => 8)
       actual = app.send(:configure_game_options, game, initial_options: changed, submit_label: "Save changes")

@@ -22,7 +22,7 @@
       },
       "paragraphs": [
         {
-          "es": "Al comenzar tu turno, elige lanzar los dados y pulsa Enter. Se lanzan dos dados y tu ficha avanza su suma. La casilla de llegada determina lo que ocurre después: por ejemplo, comprar una propiedad o pagar alquiler."
+          "es": "Al comenzar tu turno, elige lanzar los dados y pulsa Enter. Se lanzan dos dados y tu ficha avanza tantas casillas como indique su suma. La casilla de llegada determina lo que ocurre después: por ejemplo, comprar una propiedad o pagar alquiler."
         },
         {
           "es": "Elige las acciones disponibles con las flechas y confírmalas con Enter. Cuando hayas resuelto la casilla y terminado tus acciones, juega la siguiente persona."
@@ -94,7 +94,7 @@
           "es": "- Aparcamiento gratuito entrega el fondo acumulado. Lo alimentan los impuestos y los pagos al banco por cartas o por salir de la cárcel. Tras cobrarlo, vuelve a empezar desde cero."
         },
         {
-          "es": "- Suerte y Caja de Comunidad sacan una carta de evento. Se anuncia y se aplica inmediatamente."
+          "es": "- Al caer en Suerte o Caja de Comunidad, recibes una carta de evento. El juego la anuncia y aplica inmediatamente."
         },
         {
           "es": "Según la carta, puede ocurrir lo siguiente:"
@@ -207,7 +207,7 @@
           "es": "Escribe cuánto dinero ofreces y cuánto pides. Con Tab pasa a las listas de propiedades de ambos: recórrelas con las flechas y marca con Espacio las incluidas en el acuerdo. Puedes combinar varias propiedades y dinero."
         },
         {
-          "es": "Cuando esté listo, ve con Tab al botón para enviar la propuesta y pulsa Enter. El destinatario la acepta con A o la rechaza con R. El dinero y las propiedades solo cambian de manos si la acepta."
+          "es": "Cuando la propuesta esté lista, ve con Tab al botón para enviarla y pulsa Enter. El destinatario la acepta con A o la rechaza con R. El dinero y las propiedades solo cambian de manos si la acepta."
         },
         {
           "es": "Se aplican estas restricciones:"
@@ -245,7 +245,7 @@
           "es": "- Pulsa Enter para intentar sacar dobles. Tienes tres turnos consecutivos para conseguirlo."
         },
         {
-          "es": "Un doble te libera y avanzas su suma, pero no te da otra tirada. Si el tercer intento tampoco da dobles, pagas 50 dólares y avanzas el resultado de esa última tirada."
+          "es": "Un doble te libera y avanzas tantas casillas como sumen los dos dados, pero no te da otra tirada. Si el tercer intento tampoco da dobles, pagas 50 dólares y avanzas tantas casillas como indique esa última tirada."
         },
         {
           "es": "En la cárcel sigues cobrando alquileres y puedes administrar tus bienes antes de tirar."

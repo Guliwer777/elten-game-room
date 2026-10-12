@@ -36,13 +36,13 @@
       },
       "paragraphs": [
         {
-          "cs": "Stojí-li šikmo vedle tebe soupeřův kámen či dáma a hned za ním je volno, přeskočením ho vezmeš. Obyčejný kámen smí brát dopředu i dozadu. Enterem vyber svůj kámen a dalším Enterem potvrď pole za přeskakovaným soupeřovým kamenem."
+          "cs": "Stojí-li šikmo vedle tvého kamene soupeřův kámen či dáma a hned za ním je volno, přeskočením ho vezmeš. Obyčejný kámen smí brát dopředu i dozadu. Enterem vyber svůj kámen a dalším Enterem potvrď pole za přeskakovaným soupeřovým kamenem."
         },
         {
           "cs": "Braní je povinné. Máš-li na výběr, musíš zvolit takovou sérii skoků, která vezme nejvíce kamenů. Mezi stejně dlouhými sériemi si můžeš vybrat."
         },
         {
-          "cs": "Po každém skoku pokračuj stejným kamenem nebo dámou, pokud s nimi lze znovu brát. Znovu je označ Enterem a potvrď další pole dopadu. Takto provedeš jednotlivé skoky až do konce série."
+          "cs": "Pokud po skoku můžeš stejným kamenem nebo dámou brát znovu, musíš pokračovat. Enterem opět vyber pole, na němž stojí, a potvrď další pole dopadu. Takto provedeš jednotlivé skoky až do konce série."
         },
         {
           "cs": "Dáma dosáhne po volné úhlopříčce i ke vzdálenému soupeřovu kameni a přeskočí ho. Za ním smí dopadnout na kterékoli volné pole až po další kámen. Jedním skokem bere vždy jen jeden."
@@ -105,7 +105,7 @@
           "cs": "- Vypnutím braní dozadu smějí obyčejné kameny brát jen vpřed."
         },
         {
-          "cs": "- Krátká dáma místo dlouhé se běžně posune jen o jedno šikmé pole a bere pouze přeskokem bezprostředně sousedícího kamene."
+          "cs": "- Krátká dáma se na rozdíl od dlouhé při běžném tahu posune jen o jedno šikmé pole a bere pouze přeskokem bezprostředně sousedícího kamene."
         },
         {
           "cs": "- Bez povinného braní smíš zahrát běžný tah, i když bys mohl brát."

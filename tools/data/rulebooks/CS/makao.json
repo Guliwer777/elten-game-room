@@ -59,13 +59,13 @@
           "cs": "- Eso mění barvu. V běžném tahu ho smíš zahrát na libovolnou kartu; potom zvol barvu šipkami a potvrď Enterem. Trestné dobírání ani vynechání tahu ale změna barvy nezruší."
         },
         {
-          "cs": "- Dvojka ukládá dalšímu hráči dvě karty, trojka tři. Místo dobrání může odpovědět dvojkou, trojkou nebo sadou dvojek či trojek. Trest se přičte a přejde dál. Po dvojce a následné trojce tak další hráč dluží pět karet."
+          "cs": "- Dvojka nutí dalšího hráče dobrat dvě karty, trojka tři. Místo dobrání může odpovědět dvojkou, trojkou nebo sadou dvojek či trojek. Trest se přičte a přejde dál. Po dvojce a následné trojce tak další hráč dluží pět karet."
         },
         {
           "cs": "- Čtyřka ukládá vynechání jednoho tahu. Vlastní čtyřkou je můžeš předat dál; dvě čtyřky znamenají dvě vynechání. Stejně funguje sada čtyřek."
         },
         {
-          "cs": "Dobírací trest přijmeš mezerníkem: vezmeš celý počet a tah skončí. Bez přípustné obrany se trest přijme automaticky. Čekající počet karet připomene G."
+          "cs": "Dobírací trest přijmeš mezerníkem: vezmeš celý počet a tah skončí. Bez přípustné obrany se trest přijme automaticky. Počet karet k dobrání připomene G."
         },
         {
           "cs": "Vynechání po čtyřkách přijmeš tlačítkem, na které přejdeš Tabem a potvrdíš Enterem. Současný tah je prvním vynechaným. Dostaneš-li během čekání dobírací trest, musíš ho přijmout bez obrany; dobrání spotřebuje jeden z vynechávaných tahů."
@@ -119,13 +119,13 @@
           "cs": "Doplňkové účinky jsou následující:"
         },
         {
-          "cs": "- Při zapnutých požadavcích klukem po jeho zahrání vybereš šipkami hodnotu od pětky po desítku a potvrdíš Enterem. Další hráč musí tuto hodnotu zahrát. Zapnuté eso se změnou barvy mu dovolí požadavek obejít."
+          "cs": "- Při zapnutých požadavcích klukem po jeho zahrání vybereš šipkami hodnotu od pětky po desítku a potvrdíš Enterem. Další hráč musí zahrát kartu této hodnoty. Pokud je povolená změna barvy esem, může pomocí esa požadavek obejít."
         },
         {
           "cs": "- Univerzální dáma také obchází požadavek. V běžném tahu pasuje na cokoli, nebrání však dobírání ani vynechání."
         },
         {
-          "cs": "- Útočný pikový král ukládá další osobě pět karet. Odpovědět může srdcovým králem, přidat pět a předat trest dál. Tento útok se nespojuje s dvojkami a trojkami."
+          "cs": "- Útočný pikový král nutí dalšího hráče dobrat pět karet. Místo dobrání může tento hráč odpovědět srdcovým králem, přidat k trestu pět karet a předat ho dál. Útok se nespojuje s dvojkami a trojkami."
         },
         {
           "cs": "- Žolík zastoupí vybranou kartu. Zahraj ho Enterem, zvol zastupovanou kartu a potvrď. Její zvláštní schopnost má jen tehdy, pokud je zapnutá. Může obejít požadavek klukem. Ve společné sadě musí mít stejnou hodnotu jako ostatní karty. Proti trestu ho použiješ jako přípustnou obranu, například jako dvojku proti dobírání."

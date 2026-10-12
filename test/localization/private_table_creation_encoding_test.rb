@@ -35,7 +35,7 @@ end
   EltenGameRoom::GAME_REGISTRY.ids.each do |id|
     game = EltenGameRoom::GAME_REGISTRY.build(id)
     result = app.send(:configure_game_options, game, creating_table: true)
-    raise "Creation changed #{id} rules/privacy" unless result == { game_options: game.default_options, private_table: true }
+    raise "Creation changed #{id} rules/privacy" unless result == { game_options: game.table_creation_options, private_table: true }
   end
 end
 puts "PASS binary privacy creation: #{forms} forms, #{native_states} native checkbox states; EN/PL and untranslated EN beside RU host"

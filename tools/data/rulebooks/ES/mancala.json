@@ -56,7 +56,7 @@
           "es": "Después se examina el hoyo rival anterior, en sentido contrario a la siembra. Si también tiene dos o tres piedras, capturas esas piedras. Se continúa hacia atrás por la fila rival hasta encontrar otra cantidad o alcanzar su extremo."
         },
         {
-          "es": "No está permitido vaciar así toda la fila rival. Si el conjunto de capturas dejaría al contrario sin piedras, no capturas ninguna en ese movimiento: las piedras sembradas se quedan donde están."
+          "es": "No está permitido vaciar así toda la fila rival. Si esas capturas fueran a dejar al contrario sin piedras, no capturas ninguna en ese movimiento: las piedras sembradas se quedan donde están."
         }
       ]
     },

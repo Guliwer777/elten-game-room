@@ -87,7 +87,7 @@
           "en": "If play ends because there is no move, each player collects the stones remaining on their own side. The same happens after 120 consecutive moves without a capture."
         },
         {
-          "en": "The larger store wins, or equal stores draw. Press S to read both scores during play."
+          "en": "The player with more stones in their store wins. Equal totals mean a draw. Press S to read both scores during play."
         }
       ]
     },
@@ -127,7 +127,7 @@
           "en": "If that final pit is on your side and the opposite pit contains enemy stones, collect those stones and your final stone into your store. Ending on the enemy side, or opposite an empty pit, captures nothing."
         },
         {
-          "en": "You must still feed an empty enemy row when possible. If you have no legal move on your turn, the game ends and the opponent takes all stones left on the board. The larger store wins; equal scores draw. Unlike Oware, collecting more than half does not end play early."
+          "en": "You must still feed an empty enemy row when possible. If you have no legal move on your turn, the game ends and the opponent takes all stones left on the board. The player with more stones in their store wins; equal totals mean a draw. Unlike Oware, collecting more than half does not end play early."
         }
       ]
     },
@@ -147,7 +147,7 @@
           "en": "If the last stone lands in a previously empty pit on your side, capture it and the stones opposite, provided the opposite pit is not empty. This capture rule can be disabled in Kalah settings without changing the other ways of scoring."
         },
         {
-          "en": "The game ends when either row is empty after a move, even if that move would have earned another turn. The owner of the non-empty row collects its remaining stones. The larger store wins, with equal scores drawing."
+          "en": "The game ends when either row is empty after a move, even if that move would have earned another turn. The owner of the non-empty row collects its remaining stones. The player with more stones in their store wins; equal totals mean a draw."
         }
       ]
     },

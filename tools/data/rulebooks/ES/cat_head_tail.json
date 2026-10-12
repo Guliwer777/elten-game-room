@@ -54,7 +54,7 @@
           "es": "- El 8 es la cola del gato. Al azar, suma 8 puntos al turno o resta 8. Después puedes seguir jugando."
         },
         {
-          "es": "La cola puede dejar el turno por debajo de cero. Si guardas ese resultado, restarás puntos del banco. Puedes intentar recuperarlos con más tiradas; un 1 también elimina por completo el resultado negativo de ese turno."
+          "es": "La cola puede dejar los puntos del turno por debajo de cero. Puedes seguir tirando para intentar compensar la pérdida; un 1 también elimina por completo ese resultado negativo. Si guardas ese resultado negativo, restarás puntos del banco."
         }
       ]
     },

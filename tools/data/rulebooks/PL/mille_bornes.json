@@ -11,7 +11,7 @@
           "pl": "W 1000 mil każdy prowadzi samochód za pomocą kart. Karty dystansu pozwalają jechać dalej, a karty przeszkód zatrzymują lub spowalniają przeciwników. W rundzie starasz się dojechać dokładnie do 1000 mil."
         },
         {
-          "pl": "Przejechane mile i premie dają punkty, które sumują się przez kolejne rundy. Całą grę wygrywa osoba, która po zakończeniu rundy ma co najmniej 5000 punktów i więcej niż pozostali. Grają od dwóch do ośmiu osób."
+          "pl": "Przejechane mile i premie dają punkty, które sumują się przez kolejne rundy. Całą grę wygrywa osoba, która po zakończeniu rundy ma co najmniej 5000 punktów i więcej niż pozostali. W grze może uczestniczyć od dwóch do ośmiu osób."
         }
       ]
     },
@@ -68,7 +68,7 @@
           "pl": "Usunięcie takiej przeszkody jeszcze nie rozpoczyna jazdy. W następnej turze zagraj zielone światło, a dopiero później znów karty dystansu. Na przykład po przedziurawieniu opon najpierw używasz koła zapasowego, potem zielonego światła."
         },
         {
-          "pl": "Te ataki można zagrać na jadący samochód. Inaczej działa ograniczenie prędkości: można je nałożyć także na kogoś, kto już stoi. Nie zatrzymuje samochodu, ale pozwala mu zagrywać tylko karty 25 i 50 mil. Żeby znów korzystać z większych dystansów, zagraj „Koniec ograniczenia prędkości”."
+          "pl": "Te ataki można zagrać na jadący samochód. Inaczej działa ograniczenie prędkości: można je nałożyć także na kogoś, kto już stoi. Nie zatrzymuje samochodu, ale pozwala ci zagrywać tylko karty 25 i 50 mil. Żeby znów korzystać z większych dystansów, zagraj „Koniec ograniczenia prędkości”."
         }
       ]
     },
@@ -117,7 +117,7 @@
           "pl": "Atak zostaje cofnięty. Jeśli przed nim jechałeś, nadal możesz jechać bez naprawy i ponownego zielonego światła. Oprócz zwykłych 100 punktów za zabezpieczenie dostajesz 300 punktów premii."
         },
         {
-          "pl": "Po odparciu ataku otrzymujesz kartę w miejsce zagranego zabezpieczenia, jeśli są jeszcze karty do dobrania. Następnie przejmujesz turę: zaczynasz ją zwykłym dobraniem Spacją i grasz lub odrzucasz kartę. Kolejka pójdzie dalej od ciebie, więc osoby pomiędzy atakującym a tobą zostaną pominięte."
+          "pl": "Po odparciu ataku otrzymujesz kartę w miejsce zagranego zabezpieczenia, jeśli są jeszcze karty do dobrania. Następnie przejmujesz turę: zaczynasz ją zwykłym dobraniem Spacją i grasz lub odrzucasz kartę. Po twojej turze gra następna osoba na liście, więc osoby pomiędzy atakującym a tobą zostają pominięte."
         },
         {
           "pl": "Jeśli nie zdążysz odeprzeć ataku, możesz zagrać zabezpieczenie w swojej turze, ale bez premii 300 punktów."
@@ -172,7 +172,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Przed rozpoczęciem gry w ustawieniach stołu można wybrać drużyny zamiast gry każdy na każdego. Dostępne są równe składy:"
+          "pl": "Przed rozpoczęciem gry w ustawieniach stołu można wybrać drużyny zamiast gry każdy na każdego. Dostępne są następujące składy:"
         },
         {
           "pl": "- Cztery osoby mogą grać w dwóch parach."
@@ -247,7 +247,7 @@
           "pl": "- Usunięcie czerwonego światła pozwala ruszyć, jeśli nie zatrzymuje cię inna przeszkoda. Karta może też zastąpić zielone światło, gdy samochód dopiero czeka na ruszenie."
         },
         {
-          "pl": "- Naprawienie problemu z paliwem, oponą lub wypadkiem nadal wymaga potem zielonego światła, chyba że masz pierwszeństwo przejazdu."
+          "pl": "- Po zatankowaniu, wymianie opony lub naprawie po wypadku potrzebujesz jeszcze zielonego światła, żeby ruszyć, chyba że masz pierwszeństwo przejazdu."
         },
         {
           "pl": "- Usunięcie ograniczenia prędkości lub jazdy pod prąd kończy tylko wybrane utrudnienie. Pozostałe przeszkody zostają."

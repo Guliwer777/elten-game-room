@@ -44,7 +44,15 @@ selected = nil
 app.send(:show_create_table)
 assert(selected.nil?, 'Cancelled creation opened game settings')
 
-# Other callers keep their simple names; choosing rules is not table creation.
+# The rules library announces the same descriptions as creation and joining.
+Form.driver = lambda do |form|
+  list = form.fields.first
+  assert(list.options == registry.ids.map { |id| app.send(:game_lobby_label, id) }, 'Rules list does not announce descriptions')
+  form.cancel_button.trigger(:press)
+end
+assert(app.send(:show_rules_library).nil?, 'Cancelled rules library returned a game')
+
+# Remaining direct callers keep their simple names.
 Form.driver = lambda do |form|
   assert(form.fields.first.options == registry.ids.map { |id| registry.name(id) }, 'Descriptions leaked into another selector')
   form.cancel_button.trigger(:press)
@@ -73,4 +81,4 @@ end
 app.send(:show_join_table)
 assert(selected == 'farkle' && queries == 1, 'Description changed joining or added a network request')
 Form.driver = nil
-puts "PASS descriptions: #{registry.ids.length} games / #{languages.length} languages, exact Polish text, create/join/cancel and unchanged other selectors"
+puts "PASS descriptions: #{registry.ids.length} games / #{languages.length} languages, exact Polish text, create/join/rules/cancel and unchanged other selectors"

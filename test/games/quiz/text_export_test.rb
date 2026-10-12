@@ -12,6 +12,11 @@ assert(!GameRoomReleaseFiles.allowed?('tools/export-quiz-text.rb'), 'Exporter mu
 files.each_key { |name| assert(!GameRoomReleaseFiles.allowed?("docs/quiz-questions/#{name}"), 'Review TXT must not enter the installer') }
 packs.each do |pack|
   text = files.fetch(QuizTextExport::NAMES.fetch(pack.id))
+  expected_title = {
+    'quiz.general.en' => 'General knowledge', 'quiz.general.ru' => 'Общие знания',
+    'quiz.wikidata.pl' => 'Wiedza ogólna', 'quiz.witcher.books.pl' => 'Wiedźmin — książki'
+  }.fetch(pack.id)
+  assert(text.lines.first.chomp == expected_title, 'The review title must follow the question language')
   assert(text.encoding == Encoding::UTF_8 && text.valid_encoding?, 'Invalid TXT encoding')
   blocks = text.split("\n\n").drop(1)
   questions = pack.data.fetch('questions')

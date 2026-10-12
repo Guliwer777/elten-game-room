@@ -31,7 +31,7 @@
           "es": "Después elige entre seguir tirando y guardar. Para lanzar los dados restantes, selecciona esa opción con las flechas y pulsa Enter. Si has alcanzado el mínimo necesario, también puedes guardar los puntos: se suman a tu marcador y termina el turno."
         },
         {
-          "es": "Los dados de la nueva tirada deben puntuar por sí mismos; no se juntan con los apartados antes. Si ninguno puntúa, haces Farkle: pierdes todos los puntos de ese turno y juega la siguiente persona."
+          "es": "Los dados de la nueva tirada se puntúan sin juntarlos con los apartados antes. Si la tirada no da puntos, haces Farkle: pierdes todos los puntos de ese turno y juega la siguiente persona."
         },
         {
           "es": "Con 1, 2, 4, 5, 5, 5 puedes apartar el uno y los tres cincos por 60 puntos. Quedan dos dados. Puedes guardar esos 60 o arriesgarlos al lanzar los dos dados restantes. Si salen 2 y 6, no puntúan y pierdes los 60."
@@ -98,7 +98,7 @@
           "es": "- Cuatro iguales y una pareja de otro valor valen 250 en conjunto."
         },
         {
-          "es": "Si los dados apartados admiten varios cálculos, recibes el que más puntos dé. La lista de elecciones ya muestra esa puntuación."
+          "es": "Si los dados apartados admiten varios cálculos, se usa el que dé más puntos. La lista de elecciones ya muestra esa puntuación."
         }
       ]
     },
@@ -126,7 +126,7 @@
           "es": "Cuando alguien guarda puntos y alcanza o supera 1000 en total, se completa la ronda de turnos actual. Juegan los que van después de esa persona en el orden establecido, hasta el último. Quienes ya habían jugado no reciben otro turno."
         },
         {
-          "es": "Por ejemplo, si el segundo de cuatro jugadores alcanza 1000, aún juegan el tercero y el cuarto. Después gana quien tenga el mayor total guardado, aunque no fuera quien llegó primero a la meta. Los máximos iguales dan un empate."
+          "es": "Por ejemplo, si el segundo de cuatro jugadores alcanza 1000, aún juegan el tercero y el cuarto. Después gana quien tenga el mayor total guardado, aunque no fuera quien llegó primero a la meta. Si varias personas comparten ese máximo, hay empate."
         }
       ]
     },

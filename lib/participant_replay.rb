@@ -1,5 +1,6 @@
 require_relative 'game_participants'
 require_relative 'participant_decision_events'
+require_relative 'game_snapshot'
 require 'digest'
 
 # A place in the match keeps its cards/score/team when its occupant changes.
@@ -32,6 +33,15 @@ module GameRoomParticipantReplay
 
     participants = repository.players_for(session)
     plain = session.reject { |key, _| %w[__seat_changes __initial_players].include?(key) }
+    if replay_participant_transitions?
+      previous = session.fetch('__initial_players')
+      plain['__replay_participant_transitions'] = changes.map do |change|
+        following = change.fetch('players')
+        seats = previous.each_index.select { |seat| !GameRoomParticipants.same?(previous[seat], following[seat]) }
+        previous = following
+        {'id' => change.fetch('id'), 'seats' => seats}
+      end
+    end
     originals = events.to_h { |event| [repository.event_id(event), event] }
     build = lambda do |roster, prefix|
       adapted = prefix.map do |event|
@@ -67,7 +77,7 @@ module GameRoomParticipantReplay
         end.freeze
         segment = cache[:segments][segment_key] = {signature: signature, entries: entries}
       end
-      history.concat(segment[:entries])
+      history.concat(GameRoomSnapshot.copy(segment[:entries]))
       lower, roster = upper, change.fetch('players')
     end
     history.concat(result.history.select { |entry| entry.event_id.to_i > lower })

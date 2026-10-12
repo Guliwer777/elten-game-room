@@ -51,7 +51,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Jako rozdělující odhaluješ karty po jedné. Než uvidíš další, musíš rozhodnout o současné: šipkami vyber její určení a potvrď Enterem."
+          "cs": "Když rozděluješ karty, odhaluješ je po jedné. Než uvidíš další, musíš rozhodnout o současné: šipkami vyber, kam ji dáš, a potvrď Enterem."
         },
         {
           "cs": "Rozděluješ o jednu kartu více, než je hráčů, tedy například čtyři při hře ve třech. Rozdělení musí být následující:"
@@ -83,7 +83,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Církevní kartu použiješ ihned, ať sis ji nechal, vzal ze společné nabídky nebo vydražil. Než hra pokračuje, rozhodneš o jejím účinku. Odložením do dražby se ještě nespouští."
+          "cs": "Církevní kartu použiješ ihned, ať sis ji nechal, vzal ze společné nabídky nebo vydražil. Než hra pokračuje, rozhodneš o jejím účinku. Když ji odložíš do dražby, její účinek se ještě neprojeví."
         },
         {
           "cs": "Druh karty dovoluje jednu z těchto změn:"
@@ -164,7 +164,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Po zaplacení poslední dražby se porovnají knihovny. V každé kategorii vítězí nejvyšší součet hodnot. Shodu rozhodne nejlepší písmeno držené v kategorii: A před B, B před C a tak dál."
+          "cs": "Po skončení poslední dražby se porovnají knihovny. V každé kategorii vítězí nejvyšší součet hodnot. Shodu rozhodne nejlepší písmeno na kartách dané kategorie: A před B, B před C a tak dál."
         },
         {
           "cs": "Vítěz kategorie dostane počet vítězných bodů z její kostky. Za kategorii, v níž nikdo nemá kartu, body nejsou."
@@ -237,7 +237,7 @@
           "cs": "L: přečíst vlastní knihovnu."
         },
         {
-          "cs": "Ctrl+L: prohlédnout její kategorie."
+          "cs": "Ctrl+L: prohlédnout kategorie vlastní knihovny."
         },
         {
           "cs": "C: přečíst kostky s hodnotami kategorií."

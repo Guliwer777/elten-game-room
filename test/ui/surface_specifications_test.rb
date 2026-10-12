@@ -10,4 +10,10 @@ spec = GameSurfaces::CardTableSpec.new(zones: [GameSurfaces::CardZoneSpec.new(id
 view = GameRoomLayout::ViewSpec.new(surface: spec)
 assert(view.surface.equal?(spec), 'layout copied or replaced the declared surface')
 assert_equal(:users, view.sections.last)
+
+# Tile hands share CardTable's cursor and command-list contract, without
+# enabling extra commands or changing the normal selection of drawn tiles.
+tile_zone = GameSurfaces::TileZoneSpec.new(id: 'tiles', cards: [])
+assert_equal(nil, tile_zone.commands)
+assert_equal(nil, tile_zone.select_drawn)
 puts 'PASS pure action, surface and layout specifications'

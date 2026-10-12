@@ -87,8 +87,7 @@ class GameScreen
     @send_chat = send_chat
     @room_snapshot = nil
     @surface_state = {}
-    @board_preferences = GameRoomBoardPreferences.new(program, game)
-    @game.board_presentation_preferences = @board_preferences.values
+    prepare_board_preferences
     @selected_surface_action = nil
     @history_index = 0
     @users_index = 0
@@ -106,6 +105,7 @@ class GameScreen
     @rules_shortcut_snapshot = nil
     @activity_entries = nil
     @last_game_payload = nil
+    @pending_runner_payload = nil
     @chat_text = ""
     @chat_index = 0
     @chat_check = 0
@@ -119,6 +119,12 @@ class GameScreen
     )
     @random_source = GameRoomRandom::LocalSecureSource.new
   end
+
+  def prepare_board_preferences
+    @board_preferences = GameRoomBoardPreferences.new(@program, @game)
+    @game.board_presentation_preferences = @board_preferences.values
+  end
+  private :prepare_board_preferences
 
   def attach_table_layout(layout)
     @layout = layout
@@ -221,7 +227,7 @@ class GameScreen
       next if !departed_players.empty? && replace_departed_players(departed_players)
       @statistics_observer&.call(@session, replay) unless using_cached_payload
       @game_client.update_table_control(@session) if @game_client&.respond_to?(:update_table_control)
-      @game_client&.before_wait(replay, Session.name)
+      @game_client&.before_wait(replay, Session.name) unless @game.paced_event_presentation?
       synchronize_table_status(replay) if !using_cached_payload && !@session_runner
       log_signal_timing(
         "replay_finished",
@@ -411,12 +417,13 @@ class GameScreen
       if @game.background_client? && !data[:session]["__aborted"]
         start_game_client(session: data[:session], owner: data[:session]["__table_owner"] || @table_owner)
         @game_client.update_table_control(data[:session]) if @game_client&.respond_to?(:update_table_control)
-        @game_client&.before_wait(data[:replay], Session.name)
+        @game_client&.before_wait(data[:replay], Session.name) unless @game.paced_event_presentation?
       end
       process_new_table_activity(data[:replay], entries: data[:activity], background: true)
       if !data[:session]["__aborted"] && prepare_presentation_session(data[:session], background: true)
         @background_timer_data = data
         process_new_events(data[:replay], session: data[:session], background: true)
+        @game_client&.before_wait(data[:replay], Session.name) if @game.background_client? && @game.paced_event_presentation?
       elsif data[:session]["__aborted"] && @game.background_client?
         @game_client&.close
       end
@@ -890,7 +897,7 @@ class GameScreen
     id = @repository.session_id(session)
     return true if @game_client && @client_session_id == id
     @game_client&.close
-    @game_client = @game.build_client(@program, **@game_services)
+    @game_client = @game.build_client(@program, **@game_services, presentation_busy: -> { event_presentation_busy? })
     @client_session_id = id
     if @game_client.respond_to?(:bind_screen)
       @game_client.bind_screen(session_id: id, table_id: table_id,
@@ -941,6 +948,7 @@ class GameScreen
     @latest_wait_replay = nil
     @rules_shortcut_snapshot = nil
     @last_game_payload = nil
+    @pending_runner_payload = nil
     @clear_chat_after_action = false
     @history_navigator = GameRoomHistory::Navigator.new
     start_game_client
@@ -957,6 +965,12 @@ class GameScreen
   end
 
   def fetch_game_payload
+    prepared, @pending_runner_payload = @pending_runner_payload, nil
+    if prepared && runner_payload_allowed?(prepared.first.session)
+      current = @session_runner.ready_presentation_snapshot
+      return prepared if current && current.session == prepared.first.session
+    end
+
     network_task(_("Updating game"), ui: refresh_input_ui,
       silent: @automatic_recovery_pending || @new_session_id != nil) do
       @synchronizer.synchronize(complete: @new_session_id == nil) do
@@ -968,6 +982,33 @@ class GameScreen
         [snapshot, room, @activity_entries || activity_entries_for(room)]
       end
     end
+  end
+
+  # A confirmed game-change notification need not queue two more Tasks reads
+  # when the session worker has already read and validated that newer log.
+  # Keep the FULL event log: accepted_events alone drops rejected/partial input
+  # and is not the revision used by the notification/snapshot boundary.
+  def prepared_runner_payload(after_revision)
+    return nil unless @session_runner&.respond_to?(:ready_presentation_snapshot)
+    packet = @session_runner.ready_presentation_snapshot
+    return nil unless packet&.snapshot && packet.room && packet.replay
+    return nil unless runner_payload_allowed?(packet.snapshot.session)
+    return nil unless packet.session == packet.snapshot.session
+    revision = @repository.events_revision(packet.snapshot.events)
+    return nil unless revision != after_revision &&
+      revision[0].to_i >= after_revision[0].to_i && revision[1].to_i >= after_revision[1].to_i
+
+    GameRoomSnapshot.copy([packet.snapshot, packet.room, packet.activity])
+  end
+
+  def runner_payload_allowed?(session)
+    # Metadata changes (including clock corrections, a new controller, a saved
+    # game or a rematch) retain their established reconciliation path. A cheap
+    # equality check is intentionally stricter than merely matching the ID.
+    @session_runner && !@session_runner.closed? && session == @session &&
+      !session["__frozen"] && !session["__aborted"] && session["__control_ready"] != false &&
+      !connection_recovery_pending? && @new_session_id == nil && @pending_event_ids.empty? &&
+      !@layout&.form&.game_room_pending_operation
   end
 
   def replace_departed_players(players)

@@ -1,0 +1,542 @@
+{
+  "source": "games/duck_racing.rb",
+  "sections": [
+    {
+      "id": "aim",
+      "title": {
+        "en": "The aim of the game"
+      },
+      "paragraphs": [
+        {
+          "en": "Duck Racing is a game for two to eight players. Race around Peaceful Pond, use cards to help your duck or hold up your rivals, and compete for feathers in challenges. The first duck to complete the agreed number of laps wins."
+        },
+        {
+          "en": "The track has 30 squares. Each player starts on square 1 with three cards and six feathers per planned lap. The default race lasts three laps, so you start with 18 feathers."
+        },
+        {
+          "en": "On your final lap, crossing the finish line is enough to win, including when a card moves you across it."
+        }
+      ]
+    },
+    {
+      "id": "turn",
+      "title": {
+        "en": "Your turn"
+      },
+      "paragraphs": [
+        {
+          "en": "You may play one card before rolling on your turn. Browse your hand with the arrow keys and press D to hear a card's effect and feather cost. Press Enter to play it. If you need to choose a player, use the arrows and confirm with Enter."
+        },
+        {
+          "en": "Press Space to roll, then move forward by the number shown. You can also select the roll at the bottom of your card list and press Enter. An ordinary die has results from one to six."
+        },
+        {
+          "en": "Resolve what happens on your landing square before the next player takes a turn. If a card or move starts a challenge, finish it before continuing."
+        },
+        {
+          "en": "- C checks your position, feathers and active effects."
+        },
+        {
+          "en": "- S reads everyone's race status."
+        },
+        {
+          "en": "- T tells you whose turn it is."
+        }
+      ]
+    },
+    {
+      "id": "track",
+      "title": {
+        "en": "Squares and encounters"
+      },
+      "paragraphs": [
+        {
+          "en": "Squares can give you cards or feathers, move your duck, make you miss turns or ask a question. Press V to explore the track and hear each square's description, the ducks there and any card left on it."
+        },
+        {
+          "en": "When you land, the square acts first, then its card, then an encounter with another duck. If the square or card moves you again, continue resolving events at the new square."
+        },
+        {
+          "en": "Landing with another duck starts a random duel. If several are there, you face the most recent arrival who is not frozen. You can meet even when you are on different laps."
+        },
+        {
+          "en": "Moving backwards can take you into an earlier lap, but only as far as the start of the race. For example, one step back from square 1 of lap 2 takes you to square 30 of lap 1."
+        }
+      ]
+    },
+    {
+      "id": "cards",
+      "title": {
+        "en": "Playing cards"
+      },
+      "paragraphs": [
+        {
+          "en": "Cards help you race or hinder your opponents. Some cost feathers, and you need enough to pay the full cost before playing them. You can hold as many cards as you collect."
+        },
+        {
+          "en": "- Cards played on a duck act immediately. They can move it, give or take feathers, make it miss turns or change its die."
+        },
+        {
+          "en": "- Cards left on a square wait for the next duck to land there, then disappear after taking effect. Your own duck can trigger them too. Feather-stealing cards are the exception: they leave their owner alone and keep waiting. Each square holds one card."
+        },
+        {
+          "en": "- Other cards let you take cards from opponents or exchange whole hands."
+        },
+        {
+          "en": "- Challenge starts a duel with a chosen opponent. Super challenge involves all unfrozen ducks. Curiosity asks everyone a quiz question."
+        },
+        {
+          "en": "A die-changing card replaces the previous change and also applies in dice challenges. Only rolls made in the race use up its remaining rolls."
+        }
+      ]
+    },
+    {
+      "id": "feathers",
+      "title": {
+        "en": "Feathers and freezing"
+      },
+      "paragraphs": [
+        {
+          "en": "You spend feathers on cards and win or lose them in challenges. When you run out, your duck freezes. You keep your cards but miss between one and four of your turns."
+        },
+        {
+          "en": "The further ahead of the last duck you are, the longer you stay frozen. The distance includes whole laps:"
+        },
+        {
+          "en": "- Up to 9 squares ahead: one turn."
+        },
+        {
+          "en": "- 10–19 squares ahead: two turns."
+        },
+        {
+          "en": "- 20–29 squares ahead: three turns."
+        },
+        {
+          "en": "- At least 30 squares ahead: four turns."
+        },
+        {
+          "en": "You receive five feathers when you thaw. If another effect also makes you miss turns, both waits count down together."
+        },
+        {
+          "en": "If a missed-turn effect starts before you roll, the current turn counts. If it starts after your roll, count from your next turn."
+        }
+      ]
+    },
+    {
+      "id": "challenge_rules",
+      "title": {
+        "en": "Challenges"
+      },
+      "paragraphs": [
+        {
+          "en": "The race pauses while you play a challenge. Some challenges are for two players; others can involve a group. In turn-based challenges, the starting player is chosen at random."
+        },
+        {
+          "en": "For speed challenges, wait for the countdown to finish before answering. Press P to hear the task again, including while typing a number."
+        },
+        {
+          "en": "The winner takes feathers from each loser at the challenge's stated rate. If players tie for first place, no feathers change hands. If you owe more than you have, you give up your remaining feathers."
+        }
+      ]
+    },
+    {
+      "id": "rock_paper_scissors",
+      "title": {
+        "en": "Rock, paper, scissors"
+      },
+      "paragraphs": [
+        {
+          "en": "Two players choose rock, paper or scissors with the arrow keys and confirm with Enter. You have 15 seconds."
+        },
+        {
+          "en": "Rock beats scissors, scissors beat paper, and paper beats rock. The winner takes three feathers. Matching choices tie. If only one player answers, that player wins."
+        }
+      ]
+    },
+    {
+      "id": "dice_duel",
+      "title": {
+        "en": "Dice duel"
+      },
+      "paragraphs": [
+        {
+          "en": "Take turns rolling once each. Press Enter on your turn; if ten seconds pass, the game rolls for you."
+        },
+        {
+          "en": "You use your current race die, including any card affecting it. The highest roll wins. Each opponent pays the winner the difference between their rolls in feathers."
+        }
+      ]
+    },
+    {
+      "id": "blackjack",
+      "title": {
+        "en": "Twenty-one"
+      },
+      "paragraphs": [
+        {
+          "en": "Start with two cards and try to get as close to 21 as possible without going over. Each player has a separate 52-card deck."
+        },
+        {
+          "en": "- Cards from 2 to 10 are worth their numbers."
+        },
+        {
+          "en": "- Jacks, queens and kings are worth ten."
+        },
+        {
+          "en": "- An ace is worth eleven unless that would take you over 21, in which case it is worth one. Its value then stays fixed."
+        },
+        {
+          "en": "On your turn, press Space to draw or Enter to stand. Reaching or exceeding 21 also ends your turn, and the next player begins. You have 30 seconds for each decision; running out of time leaves you with your current total."
+        },
+        {
+          "en": "The highest total of 21 or less wins. Each loser pays the difference between their total and the winner's in feathers. Going over 21 also costs one extra feather for each point over, paid to the game."
+        },
+        {
+          "en": "For example, with totals of 20 and 24, the loser gives the winner four feathers and loses three more for going over 21. If everyone goes over, only the extra penalties apply."
+        }
+      ]
+    },
+    {
+      "id": "risky_dice",
+      "title": {
+        "en": "Risky dice"
+      },
+      "paragraphs": [
+        {
+          "en": "Roll two dice and keep adding the results. The highest total of 25 or less wins."
+        },
+        {
+          "en": "Press Enter to roll, then Enter again whenever you want another roll. To stop, select Save result with Down arrow and confirm with Enter. The next player then begins. A total of 25 or more ends your attempt automatically."
+        },
+        {
+          "en": "You have 30 seconds for each decision. When time runs out, your total is saved; if you have not rolled yet, the game rolls once first. A card changing your race die applies to both dice."
+        },
+        {
+          "en": "Each loser pays the winner the difference between their totals in feathers. Every point over 25 costs another feather, paid to the game. With 24 against 28, that means four feathers to the winner and three extra lost. If everyone goes over, only these penalties apply."
+        }
+      ]
+    },
+    {
+      "id": "guess_number",
+      "title": {
+        "en": "Guess the number"
+      },
+      "paragraphs": [
+        {
+          "en": "Find the hidden number from 1 to 100. You are told how many digits it has. Type your guesses; after each one, you learn whether the answer is higher or lower. You have ten guesses and two minutes."
+        },
+        {
+          "en": "Each player's closest guess counts. The winner takes three feathers from each opponent; equally close guesses tie."
+        }
+      ]
+    },
+    {
+      "id": "copy_number",
+      "title": {
+        "en": "Copy the number"
+      },
+      "paragraphs": [
+        {
+          "en": "Copy the three-digit number as quickly as you can. You have three attempts and 15 seconds. The first correct answer wins four feathers from each opponent."
+        }
+      ]
+    },
+    {
+      "id": "arithmetic",
+      "title": {
+        "en": "Mental arithmetic"
+      },
+      "paragraphs": [
+        {
+          "en": "Work out and type the answer to an addition, subtraction, multiplication or division. You have three attempts and 20 seconds. The first correct answer wins four feathers from each opponent."
+        }
+      ]
+    },
+    {
+      "id": "race_question",
+      "title": {
+        "en": "Question about the race"
+      },
+      "paragraphs": [
+        {
+          "en": "Type the answer to a question about the race: a player's square, lap, feathers or number of cards. You can check these details with C and S."
+        },
+        {
+          "en": "You have two attempts and 20 seconds. The first correct answer wins four feathers from each opponent."
+        }
+      ]
+    },
+    {
+      "id": "numbered_balls",
+      "title": {
+        "en": "Numbered balls"
+      },
+      "paragraphs": [
+        {
+          "en": "Two players take turns collecting balls from a row of twelve. The values can be positive or negative. Aim to finish with a higher total than your opponent."
+        },
+        {
+          "en": "Browse the row with the arrow keys. Press 1, 2 or 3 to take that many balls from the front. You have one minute to decide; when it runs out, you take one ball."
+        },
+        {
+          "en": "Once the row is empty, the higher total wins. The winner takes feathers equal to the difference, up to ten."
+        }
+      ]
+    },
+    {
+      "id": "count_ducks",
+      "title": {
+        "en": "Count the ducks"
+      },
+      "paragraphs": [
+        {
+          "en": "Count the quacks, then type your answer after the countdown. There are between five and fifteen. Press F5 if you want to hear them again."
+        },
+        {
+          "en": "You have two attempts and 20 seconds to answer. The first correct answer wins four feathers from each opponent."
+        }
+      ]
+    },
+    {
+      "id": "rhythm",
+      "title": {
+        "en": "Repeat the rhythm"
+      },
+      "paragraphs": [
+        {
+          "en": "Repeat a drum pattern with F and J. Before starting, try both sounds, then press Enter or Space when ready. Once everyone is ready, you hear a pattern of six to ten beats."
+        },
+        {
+          "en": "After listening, press Enter and play the pattern. You have 15 seconds to begin, and can hear it once more with F5 before starting. You get one attempt; a three-second gap between key presses ends it."
+        },
+        {
+          "en": "Half your score comes from the order of the sounds, and half from the gaps between them. The most accurate performance wins. Each ten percentage points of advantage, rounded up, earns one feather from that opponent."
+        }
+      ]
+    },
+    {
+      "id": "sound_order",
+      "title": {
+        "en": "Order the sounds"
+      },
+      "paragraphs": [
+        {
+          "en": "Arrange a scale from the lowest note to the highest. Begin after the countdown. Keys 1 to 8 play the notes at those positions."
+        },
+        {
+          "en": "To swap two notes, press Shift with the first position's digit, then Shift with the second. You hear both notes after the swap."
+        },
+        {
+          "en": "You have 45 seconds. The first complete scale wins. Each opponent pays one feather per note still out of place, up to five. If nobody finishes, there is no winner."
+        }
+      ]
+    },
+    {
+      "id": "simon",
+      "title": {
+        "en": "Simon"
+      },
+      "paragraphs": [
+        {
+          "en": "Remember a growing tune and repeat it with keys 1 to 5. Key 1 plays the lowest tone and 5 the highest. Try the tones before starting, then press Enter or Space when ready."
+        },
+        {
+          "en": "Once everyone is ready, you hear a single note. Each correct repetition adds one note to the tune and makes it a little faster. Wait until playback ends before repeating it."
+        },
+        {
+          "en": "Keep going until you make a mistake or go five seconds without a key press while answering. Everyone finishes their own attempt. Your longest complete tune is your score; the winner takes one feather from each opponent for every note of advantage."
+        }
+      ]
+    },
+    {
+      "id": "sound_memory",
+      "title": {
+        "en": "Sound pairs"
+      },
+      "paragraphs": [
+        {
+          "en": "Find more pairs than your opponent. Ten sounds, arranged in five pairs, are hidden under the number keys from 1 through 0. Both players press Enter when ready."
+        },
+        {
+          "en": "Take turns uncovering two positions by pressing their digits. Listen to your opponent's choices too and remember where the sounds are. A matching pair is removed and scores a point; a mismatch is hidden again."
+        },
+        {
+          "en": "You have 15 seconds per turn. The challenge ends when all pairs are found or after 90 seconds. The winner takes feathers equal to the difference in pairs found."
+        }
+      ]
+    },
+    {
+      "id": "hit_duck",
+      "title": {
+        "en": "Hit the duck"
+      },
+      "paragraphs": [
+        {
+          "en": "Listen for the quack and press its position on keys 1 to 9. Key 1 is far left, 5 is the centre and 9 is far right."
+        },
+        {
+          "en": "Try all the positions before starting, then press Enter or Space when ready. Once everyone has confirmed, five targets appear in turn, with three seconds to answer each."
+        },
+        {
+          "en": "Your score depends on how close you get:"
+        },
+        {
+          "en": "- Exact hit: 100%."
+        },
+        {
+          "en": "- One position away: 75%."
+        },
+        {
+          "en": "- Two positions away: 50%."
+        },
+        {
+          "en": "- Three positions away: 25%."
+        },
+        {
+          "en": "- Other shots: zero."
+        },
+        {
+          "en": "The highest average across the five shots wins. Each ten percentage points of advantage, rounded up, earns one feather from that opponent."
+        }
+      ]
+    },
+    {
+      "id": "quiz",
+      "title": {
+        "en": "Quiz question"
+      },
+      "paragraphs": [
+        {
+          "en": "Answer a question by pressing 1 to 4 for one of the four choices. You can also select with the arrows and confirm with Enter. You have 20 seconds."
+        },
+        {
+          "en": "Everyone who answers correctly receives four feathers from the game. Results are revealed once everyone has answered or time runs out."
+        },
+        {
+          "en": "A duel question is for its participants. A question from a square or Curiosity is for everyone, including frozen ducks."
+        }
+      ]
+    },
+    {
+      "id": "audio_ball",
+      "title": {
+        "en": "One point in Audio Ball"
+      },
+      "paragraphs": [
+        {
+          "en": "Play one point at Normal difficulty. The first server is chosen at random, and the winner takes five feathers from the opponent."
+        },
+        {
+          "en": "Before starting, try the three ball sounds:"
+        },
+        {
+          "en": "- W or Up arrow: the first type."
+        },
+        {
+          "en": "- D or Left arrow: the second type."
+        },
+        {
+          "en": "- S or Down arrow: the third type."
+        },
+        {
+          "en": "Both players press Enter or Space when ready. When you have the ball, press A or Right arrow to prepare, then one of the three shot keys to send it."
+        },
+        {
+          "en": "After each opponent's shot, recognise the ball sound and press the matching defence key. A successful defence lets you prepare your next shot. Each return makes the ball faster."
+        }
+      ]
+    },
+    {
+      "id": "axel_pong",
+      "title": {
+        "en": "One point in Axel Pong"
+      },
+      "paragraphs": [
+        {
+          "en": "Play one singles point in Classic mode at Normal speed. The first server is chosen at random. The winner takes five feathers from the opponent."
+        },
+        {
+          "en": "Move your paddle with Left and Right arrow. Serve with Up arrow or Space. When the ball returns, move into its path and press the same key when it comes within reach."
+        },
+        {
+          "en": "If automatic hitting is enabled in your settings, positioning the paddle is enough to defend. You still serve manually."
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "title": {
+        "en": "Choosing race settings"
+      },
+      "paragraphs": [
+        {
+          "en": "The host chooses these settings before the race:"
+        },
+        {
+          "en": "- Laps: one to ten, with three as the default."
+        },
+        {
+          "en": "- Challenges: tick the ones you want to include. All are enabled by default. Keep at least one for duels and one for groups."
+        },
+        {
+          "en": "- Questions: choose the language and question sets. The general set is selected by default. Each selected set has an equal chance of being drawn, for all questions in the race."
+        }
+      ]
+    },
+    {
+      "id": "interruptions",
+      "title": {
+        "en": "Saving and interrupted challenges"
+      },
+      "paragraphs": [
+        {
+          "en": "You can save the race between turns, once the challenge and any other events from the move have finished."
+        },
+        {
+          "en": "If a challenge participant leaves the table or is replaced, the challenge is cancelled without anyone losing feathers."
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "en": "Race shortcuts"
+      },
+      "paragraphs": [
+        {
+          "en": "Arrow keys: choose a card or the roll at the end of the list."
+        },
+        {
+          "en": "Enter: play the selected card or roll."
+        },
+        {
+          "en": "Space: roll the die."
+        },
+        {
+          "en": "D: describe the selected card."
+        },
+        {
+          "en": "C: your position, feathers and active effects."
+        },
+        {
+          "en": "S: everyone's race status."
+        },
+        {
+          "en": "T: current turn or challenge."
+        },
+        {
+          "en": "V: explore the track."
+        },
+        {
+          "en": "P: repeat the challenge instructions."
+        }
+      ]
+    }
+  ],
+  "option_chapters": {
+    "laps": "aim",
+    "question_language": "settings",
+    "question_sets": "settings",
+    "challenges": "settings"
+  }
+}

@@ -8,7 +8,7 @@
       },
       "paragraphs": [
         {
-          "pl": "W warcabach chcesz zbić wszystkie piony i damki przeciwnika albo zablokować je tak, żeby nie mógł wykonać ruchu. Grają dwie osoby, a zaczynają białe."
+          "pl": "W warcabach chcesz zbić wszystkie piony i damki przeciwnika albo zablokować je tak, żeby nie mógł wykonać ruchu. To gra dla dwóch osób. Pierwszy ruch wykonuje gracz, który ma białe piony."
         },
         {
           "pl": "Przy zwykłych ustawieniach plansza ma osiem rzędów i osiem kolumn. Każdy gracz zaczyna z dwunastoma pionami. Gra toczy się wyłącznie po ciemnych polach."
@@ -143,7 +143,7 @@
           "pl": "Enter: wybierz pion lub damkę, a następnie cel ruchu; w serii bić zatwierdzaj każdy skok osobno."
         },
         {
-          "pl": "V: odczytaj możliwe ruchy oglądanej figury."
+          "pl": "V: odczytaj możliwe ruchy piona lub damki na wskazanym polu."
         },
         {
           "pl": "K: przejdź do kolejnej swojej damki."

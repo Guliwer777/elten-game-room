@@ -8,7 +8,7 @@
       },
       "paragraphs": [
         {
-          "pl": "W makao zwycięża osoba, która pierwsza zagra wszystkie swoje karty. Gra od dwóch do ośmiu osób. Każdy dostaje pięć kart, a zaczyna gracz po rozdającym."
+          "pl": "W makao zwycięża osoba, która pierwsza zagra wszystkie swoje karty. W grze może uczestniczyć od dwóch do ośmiu osób. Każdy dostaje pięć kart, a zaczyna gracz po rozdającym."
         }
       ]
     },
@@ -22,7 +22,7 @@
           "pl": "Klawiszem C sprawdzisz ostatnią zagraną kartę. Możesz zagrać na nią kartę tego samego koloru lub tej samej wartości: do dziewiątki pik pasuje dowolny pik albo inna dziewiątka. Wybierz kartę strzałkami i naciśnij Enter. Po zagraniu zwykłej karty gra następna osoba."
         },
         {
-          "pl": "Jeśli nie chcesz lub nie możesz zagrać, naciśnij Spację, żeby dobrać kartę. Gdy nowa karta pasuje, możesz od razu zagrać ją Enterem. Jeśli wolisz ją zachować, ponowna Spacja kończy turę. Po dobraniu niepasującej karty kończy się ona automatycznie."
+          "pl": "Jeśli nie chcesz lub nie możesz zagrać, naciśnij Spację, żeby dobrać kartę. Gdy nowa karta pasuje, możesz od razu zagrać ją Enterem. Jeśli wolisz ją zachować, ponowna Spacja kończy turę. Po dobraniu niepasującej karty tura kończy się automatycznie."
         },
         {
           "pl": "Po dobraniu możesz zagrać tylko nową kartę, samą albo razem z innymi kartami w paczce opisanej poniżej."
@@ -42,7 +42,7 @@
           "pl": "Kilka kart tej samej wartości możesz zagrać razem. Taką paczką mogą być na przykład trzy dziewiątki. Pierwsza musi pasować do karty na stole, a ostatnia wyznaczy, do czego będzie dopasowywał się następny gracz."
         },
         {
-          "pl": "Przejdź strzałkami do pierwszej karty i zaznacz ją przez Shift+Enter. Tak samo zaznacz kolejne w kolejności, w jakiej chcesz je zagrać. Po zaznaczeniu ostatniej naciśnij Enter, żeby zagrać całą paczkę. P odczytuje zaznaczone karty, a Shift+P usuwa zaznaczenia, jeśli chcesz przygotować paczkę od nowa."
+          "pl": "Przejdź strzałkami do pierwszej karty i zaznacz ją skrótem Shift+Enter. Tak samo zaznacz następne karty w kolejności, w jakiej chcesz je zagrać. Po zaznaczeniu ostatniej naciśnij Enter, żeby zagrać całą paczkę. P odczytuje zaznaczone karty, a Shift+P usuwa zaznaczenia, jeśli chcesz przygotować paczkę od nowa."
         }
       ]
     },

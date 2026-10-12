@@ -8,10 +8,10 @@
       },
       "paragraphs": [
         {
-          "pl": "W pokerze walczysz o żetony wpłacone przez graczy do wspólnej puli. Możesz ją wygrać na dwa sposoby: mieć najlepsze karty przy porównaniu albo postawić tyle, że wszyscy przeciwnicy zrezygnują z dalszej gry. Dlatego nie zawsze wygrywa ten, kto rzeczywiście ma najmocniejszą rękę."
+          "pl": "W pokerze walczysz o żetony wpłacone przez graczy do wspólnej puli. Wygrywasz pulę, jeśli masz najlepszy układ kart przy porównaniu albo wszyscy przeciwnicy wycofają się z rozdania. Dlatego nie zawsze wygrywa ten, kto rzeczywiście ma najmocniejszą rękę."
         },
         {
-          "pl": "Gra od dwóch do ośmiu osób. Każdy zaczyna z 1000 żetonów, a całą grę wygrywa ostatnia osoba, której pozostaną żetony. Podstawowy wariant to Texas Hold'em."
+          "pl": "W grze może uczestniczyć od dwóch do ośmiu osób. Każdy zaczyna z 1000 żetonów, a całą grę wygrywa ostatnia osoba, której pozostaną żetony. Podstawowy wariant to Texas Hold'em."
         }
       ]
     },
@@ -42,7 +42,7 @@
           "pl": "W licytacji gracze kolejno decydują, czy zostają w rozdaniu i jaką stawkę chcą zapłacić. Masz następujące możliwości:"
         },
         {
-          "pl": "- Klawiszem C czekasz, jeśli nie ma nic do dopłacenia. Zachowujesz karty i przekazujesz kolejkę bez wpłaty."
+          "pl": "- Klawiszem C czekasz, jeśli nie ma nic do dopłacenia. Zachowujesz karty bez wpłaty, a decyzję podejmuje następny gracz."
         },
         {
           "pl": "- Jeśli jest stawka do wyrównania, C ją sprawdza: dopłacasz brakujące żetony i pozostajesz w rozdaniu. Gdy masz za mało żetonów, wpłacasz wszystkie i grasz dalej o tę część puli, którą pokryłeś."
@@ -147,7 +147,7 @@
           "pl": "Przy dwóch parach najpierw porównujesz wyższe pary, a jeśli są równe — niższe. Przy fulu najpierw liczy się trójka, a dopiero potem para."
         },
         {
-          "pl": "Jeśli sam układ nie rozstrzyga, porównuje się pozostałe karty, zaczynając od najwyższej. Na przykład przy jednakowych parach dam as wygrywa z królem. Przy kolorze i wysokiej karcie porównuje się kolejno wszystkie pięć kart."
+          "pl": "Jeśli sam układ nie rozstrzyga, porównuje się pozostałe karty, zaczynając od najwyższej. Na przykład przy jednakowych parach dam as wygrywa z królem. Przy kolorze i wysokiej karcie porównuje się kolejno wartości wszystkich pięciu kart."
         },
         {
           "pl": "Jeżeli porównywane układy mają te same wartości wszystkich pięciu kart, gracze dzielą pulę. Żaden kolor nie jest silniejszy od innego."
@@ -181,7 +181,7 @@
           "pl": "Po wypłaceniu puli gracze bez żetonów odpadają. Pozostali dostają nowe karty i rozgrywają następne rozdanie."
         },
         {
-          "pl": "Co pięć rozdań mała i duża ciemna podwajają się. Po początkowych stawkach 5 i 10 przyjdą więc 10 i 20, potem 20 i 40. Aktualne ciemne odczytasz klawiszem L. Gra kończy się, kiedy tylko jedna osoba ma jeszcze żetony."
+          "pl": "Co pięć rozdań mała i duża ciemna podwajają się. Po początkowych stawkach 5 i 10 przyjdą więc 10 i 20, potem 20 i 40. Aktualne ciemne odczytasz klawiszem L. Gra kończy się, gdy już tylko jedna osoba posiada żetony."
         }
       ]
     },

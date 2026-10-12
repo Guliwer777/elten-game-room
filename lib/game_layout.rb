@@ -36,6 +36,8 @@ module GameRoomLayout
       end
       if @game_shortcut_keys.to_a.include?(normalized)
         if editable_text_field?
+          field = fields[index.to_i]
+          return false if field.respond_to?(:game_shortcut_in_text?) && field.game_shortcut_in_text?(normalized, modifiers)
           return true if !modifiers.include?(:control) && !modifiers.include?(:alt)
           return false if @game_shortcut_signatures.to_a.include?([normalized, modifiers])
 

@@ -101,15 +101,25 @@ class GameRoomEventPresenter
       before_replay, after_replay = event_replays.fetch(event_id, [nil, replay])
       turn_entry = remember_turn_transition(before_replay, after_replay, event_id)
       if @event_presentation != nil
-        @event_presentation.enqueue(
-          replay: after_replay, defer_replay: after_replay.finished?,
-          start: -> { present_game_event(event, before_replay, after_replay, after_replay, signal_received_at) },
-          finish: -> do
-            present_decision.call if event_id == newest_id
-            present_turn_transition(turn_entry, after_replay)
-            present_game_result(after_replay, signal_received_at) if event_id == newest_id
+        finish = -> do
+          present_decision.call if event_id == newest_id
+          present_turn_transition(turn_entry, after_replay)
+          present_game_result(after_replay, signal_received_at) if event_id == newest_id
+        end
+        stages = @game.call.event_presentation_stages(event, @repository.call, before_replay, after_replay, @viewer.call)
+        if stages
+          stages.each_with_index do |stage, index|
+            last = index == stages.length - 1
+            @event_presentation.enqueue(replay: after_replay,
+              defer_replay: after_replay.finished? || stage[:defer_replay], delay: stage.fetch(:delay, 0.0),
+              wait_for_sounds: stage.fetch(:wait_for_sounds, false),
+              start: -> { present_game_event(event, before_replay, after_replay, after_replay, signal_received_at,
+                stage: stage, notify_client: index.zero?, include_result: last) }, finish: last ? finish : nil)
           end
-        )
+        else
+          @event_presentation.enqueue(replay: after_replay, defer_replay: after_replay.finished?,
+            start: -> { present_game_event(event, before_replay, after_replay, after_replay, signal_received_at) }, finish: finish)
+        end
       else
         present_game_event(event, before_replay, after_replay, replay, signal_received_at)
         present_turn_transition(turn_entry, after_replay)
@@ -125,12 +135,13 @@ class GameRoomEventPresenter
     @event_presentation&.advance
   end
 
-  def present_game_event(event, before_replay, after_replay, description_replay, signal_received_at)
-    @client.call&.event(event, before_replay, after_replay, @viewer.call, @repository.call)
+  def present_game_event(event, before_replay, after_replay, description_replay, signal_received_at,
+    stage: nil, notify_client: true, include_result: true)
+    client_playback = @client.call&.event(event, before_replay, after_replay, @viewer.call, @repository.call) if notify_client
     sounds = begin
       cues = GameRoomSounds.event_cue(
         game: @game.call, event: event, before_replay: before_replay, after_replay: after_replay,
-        repository: @repository.call, viewer: @viewer.call
+        repository: @repository.call, viewer: @viewer.call, history: stage&.[](:history), include_result: include_result
       )
       Array(cues).map { |cue| GameRoomSounds.play(@program.call, cue) }
     rescue StandardError => error
@@ -138,7 +149,7 @@ class GameRoomEventPresenter
       []
     end
     descriptions = normalize_event_descriptions(
-      @game.call.describe_event_for_display(event, @repository.call, description_replay, @viewer.call, surface_state: @surface_state.call)
+      stage ? stage.fetch(:descriptions) : @game.call.describe_event_for_display(event, @repository.call, description_replay, @viewer.call, surface_state: @surface_state.call)
     )
     descriptions = [] if @client.call&.respond_to?(:presents_game_event?) && @client.call.presents_game_event?(event)
     # The result remains in canonical history, but the common result presenter
@@ -150,6 +161,9 @@ class GameRoomEventPresenter
         details: "event_id=#{@repository.call.event_id(event)} item=#{index + 1}/#{descriptions.length}")
       @speech.call(description)
     end
+    # Opt-in stages may put a client's transient audio ahead of ordinary
+    # history/turn speech. The same bounded UI queue owns their completion.
+    sounds << client_playback if stage&.[](:wait_for_client) && client_playback.respond_to?(:finished?)
     sounds
   end
 
@@ -193,7 +207,7 @@ class GameRoomEventPresenter
   end
 
   def presentation_replay
-    @presentation_replay ||= GameRoomPresentationReplay.new(@game.call, @repository.call)
+    @presentation_replay ||= GameRoomPresentationReplay.new(@game.call.build_presentation_game, @repository.call)
   end
 
   def remember_turn_transition(before_replay, after_replay, event_id)

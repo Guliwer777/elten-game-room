@@ -8,7 +8,7 @@
       },
       "paragraphs": [
         {
-          "pl": "W Chińczyka gra od dwóch do czterech osób. Każdy ma cztery pionki w swojej bazie. Trzeba wyprowadzić je na wspólny tor, okrążyć nim planszę, a potem doprowadzić wszystkie cztery do mety w swoim domu. Kto zrobi to pierwszy, wygrywa."
+          "pl": "W Chińczyka gra od dwóch do czterech osób. Każdy ma cztery pionki w swojej bazie. Trzeba wyprowadzić je na wspólny tor, okrążyć nimi planszę, a potem doprowadzić wszystkie cztery do mety w swoim domu. Kto zrobi to pierwszy, wygrywa."
         }
       ]
     },
@@ -56,13 +56,13 @@
       },
       "paragraphs": [
         {
-          "pl": "Jeżeli zakończysz ruch na zwykłym polu zajętym przez pojedynczy pionek przeciwnika, zbijesz go. Wraca do swojej bazy i musi ponownie wyjść na tor."
+          "pl": "Jeżeli zakończysz ruch na zwykłym polu zajętym przez pojedynczy pionek przeciwnika, zbijesz go. Wraca on do swojej bazy i musi ponownie wyjść na tor."
         },
         {
           "pl": "Cztery pola wejściowe są bezpieczne: stojących na nich pionków nie można zbić. Dwa lub więcej pionków jednego gracza na tym samym polu tworzy blokadę. Przeciwnicy nie mogą jej przekroczyć ani na niej stanąć, również na bezpiecznym polu."
         },
         {
-          "pl": "Własne pionki nie blokują Ci drogi. Jest też wyjątek przy wychodzeniu z bazy: możesz postawić pionek na swoim polu wejściowym, nawet jeśli stoi tam blokada przeciwnika."
+          "pl": "Twoje pionki nie blokują Ci drogi. Jest też wyjątek przy wychodzeniu z bazy: możesz postawić pionek na swoim polu wejściowym, nawet jeśli stoi tam blokada przeciwnika."
         }
       ]
     },
@@ -90,10 +90,10 @@
           "pl": "W ustawieniach przed grą można zmienić następujące zasady:"
         },
         {
-          "pl": "- Można wyłączyć wychodzenie po jedynce. Wtedy do wyjścia z bazy potrzebujesz szóstki."
+          "pl": "- Można wyłączyć wychodzenie z bazy po wyrzuceniu jedynki. Wtedy do wyjścia z bazy potrzebujesz szóstki."
         },
         {
-          "pl": "- Wyłączenie opcji „Szóstka pozwala wyjść z bazy” usuwa ograniczenie wyniku: z bazy wolno wyjść po dowolnym rzucie."
+          "pl": "- Jeśli wyłączysz opcję „Szóstka pozwala wyjść z bazy”, możesz wyprowadzić pionek po dowolnym rzucie."
         },
         {
           "pl": "- Można zrezygnować z dodatkowego rzutu po szóstce."

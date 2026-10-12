@@ -1,4 +1,5 @@
 require_relative "../../support/binary_rule_dictionary"
+require_relative "../../support/authored_rulebooks"
 require_relative "../../../lib/audio_ball/audio"
 
 class TranslatedPointSound
@@ -73,13 +74,13 @@ game = GameRoomGames::AudioBall.new
   labels = game.option_definitions.find { |definition| definition.key == 'difficulty' }.choices.map(&:label)
   expected = language == :pl ? ['Bardzo łatwy', 'Łatwy', 'Normalny', 'Trudny', 'Bardzo trudny'] : ['Very easy', 'Easy', 'Normal', 'Hard', 'Very hard']
   raise "Missing #{language} difficulty labels" unless labels == expected
-  expected = language == :pl ? 'Cel gry' : 'The aim of the game'
+  expected = language == :pl ? 'Na czym polega gra' : 'The game'
   raise "Missing #{language} Audio Ball rulebook" unless game.rule_book.documents.first.text.include?(expected)
   book = game.rule_book.documents.map(&:text).join("\n")
-  expected = language == :pl ? 'Każda nowa piłka wymaga nowego naciśnięcia po uderzeniu przeciwnika' : "Every new ball needs a new press after the opponent's hit"
+  expected = language == :pl ? 'Przy następnej piłce wybierz obronę nowym naciśnięciem' : "For each incoming ball, press your defence key after the opponent's shot."
   raise "Missing #{language} per-flight defence rules" unless book.include?(expected)
   raise "Unexpected game references in #{language} rules" if book.include?('Axel Pong')
-  authored = JSON.parse(File.read(File.expand_path("../../../tools/data/rulebooks/audio_ball.json", __dir__), encoding: 'UTF-8'))
+  authored = GameRoomTest::Rulebooks.read('audio_ball', language)
   authored.fetch('sections').each do |section|
     pairs = section.fetch('paragraphs')
     pairs = [section.fetch('title')] + pairs unless section.fetch('id') == 'controls'
@@ -87,7 +88,7 @@ game = GameRoomGames::AudioBall.new
       raise "Stale #{language} Audio Ball rules" unless book.include?(pair.fetch(language == :pl ? 'pl' : 'en'))
     end
   end
-  expected = language == :pl ? 'Strona odsłuchu i pakiety dźwięków' : 'Listening side and sound packs'
+  expected = language == :pl ? 'Ustawienia odsłuchu' : 'Listening preferences'
   raise "Missing #{language} personal-settings rules" unless book.include?(expected)
   {
     'Audio Ball settings' => 'Ustawienia Audio Ball',

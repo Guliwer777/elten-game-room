@@ -85,13 +85,13 @@
       },
       "paragraphs": [
         {
-          "es": "Puntúas cada palabra formada en tu jugada. Suma todas sus letras, incluidas las que ya estaban en la mesa. Si una letra nueva pertenece a una palabra horizontal y a otra vertical, cuenta en ambas."
+          "es": "Puntúas cada palabra formada en tu jugada. Suma los valores de todas sus letras, incluidas las que ya estaban en la mesa. Si una letra nueva pertenece a una palabra horizontal y a otra vertical, cuenta en ambas."
         },
         {
           "es": "Las bonificaciones de una casilla solo se usan cuando se ocupa por primera vez:"
         },
         {
-          "es": "- Doble o triple letra multiplica el valor de la ficha colocada allí. Después se añaden las otras letras de la palabra."
+          "es": "- Doble o triple letra multiplica el valor de la ficha colocada allí. Después se suman los valores de las demás letras de la palabra."
         },
         {
           "es": "- Doble o triple palabra multiplica el total de la palabra. Varias bonificaciones de palabra se multiplican entre sí: dos dobles dan cuatro veces el total."
@@ -137,7 +137,7 @@
           "es": "- Ya no es posible cambiar fichas y pasan tres rondas completas de turnos sin ninguna palabra jugada. La partida queda bloqueada. Una palabra interrumpe este recuento incluso si vale cero puntos."
         },
         {
-          "es": "Cada jugador resta el valor de las fichas que conserve. Quien haya vaciado el atril recibe además la suma de las fichas ajenas. Si la partida se bloqueó, no hay esa bonificación. Un comodín sin usar vale cero."
+          "es": "Cada jugador resta el valor de las fichas que conserve. Quien haya vaciado el atril recibe además la suma de los valores de las fichas ajenas. Si la partida se bloqueó, no hay esa bonificación. Un comodín sin usar vale cero."
         },
         {
           "es": "Después del ajuste gana quien tenga más puntos. Si varios comparten el máximo, comparten la victoria."

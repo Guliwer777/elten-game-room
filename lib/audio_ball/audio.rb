@@ -139,6 +139,10 @@ module GameRoomAudioBall
       @point_audio.tick
     end
 
+    def announcement_pending?
+      @point_audio.announcement_pending?
+    end
+
     def announce(text)
       return if @closed
       if @point_audio.presentation_enabled?

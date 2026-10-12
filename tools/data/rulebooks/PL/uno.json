@@ -11,7 +11,7 @@
           "pl": "W UNO starasz się jako pierwszy pozbyć wszystkich kart. Za karty, które zostaną ci na koniec rundy, dostajesz punkty karne. Po osiągnięciu limitu punktów odpadasz. Jeśli w grze zostanie już tylko jedna osoba, wygrywa całą partię."
         },
         {
-          "pl": "Gra od dwóch do ośmiu osób. Każdy zaczyna z siedmioma kartami, a pierwsza tura należy do osoby po rozdającym."
+          "pl": "W grze może uczestniczyć od dwóch do ośmiu osób. Każdy zaczyna z siedmioma kartami, a pierwsza tura należy do osoby po rozdającym."
         }
       ]
     },
@@ -22,13 +22,13 @@
       },
       "paragraphs": [
         {
-          "pl": "Na początku sprawdź przez C ostatnią zagraną kartę. Musisz dopasować do niej kolor, numer albo symbol. Jeżeli leży niebieska szóstka, możesz zagrać niebieską kartę lub szóstkę innego koloru. Przejrzyj rękę strzałkami i naciśnij Enter na wybranej karcie."
+          "pl": "Na początku sprawdź klawiszem C ostatnią zagraną kartę. Musisz dopasować do niej kolor, numer albo symbol. Jeżeli leży niebieska szóstka, możesz zagrać niebieską kartę lub szóstkę innego koloru. Przejrzyj rękę strzałkami i naciśnij Enter na wybranej karcie."
         },
         {
-          "pl": "Po zwykłym zagraniu ruch przechodzi dalej. Jeżeli nie masz czym zagrać, dobierz kartę Spacją. Potem możesz wykorzystać dowolną pasującą kartę z ręki, także taką, którą miałeś wcześniej. Jeśli po dobraniu w całej ręce nadal nie ma legalnego zagrania, tura kończy się od razu."
+          "pl": "Po zwykłym zagraniu ruch przechodzi dalej. Jeżeli nie masz czym zagrać, dobierz kartę Spacją. Potem możesz wykorzystać dowolną pasującą kartę z ręki, także taką, którą miałeś wcześniej. Jeśli po dobraniu nadal nie masz karty, którą możesz zagrać, tura kończy się od razu."
         },
         {
-          "pl": "Możesz też dobierać zamiast zagrywać pasującą kartę, ale najwyżej trzy razy w jednej turze. Po trzecim dobraniu musisz zagrać, jeśli masz czym."
+          "pl": "Możesz też dobierać zamiast zagrywać pasującą kartę, ale maksymalnie trzy razy w jednej turze. Po trzecim dobraniu musisz zagrać, jeśli masz czym."
         },
         {
           "pl": "Gdy skończą się karty do dobierania, wcześniej zagrane karty zostają przetasowane i można je dobierać ponownie."
@@ -48,10 +48,10 @@
           "pl": "- „Pomiń” odbiera ruch następnej osobie."
         },
         {
-          "pl": "- „Zmiana kierunku” sprawia, że gracie dalej w przeciwną stronę. Przy dwóch osobach działa jak pominięcie: zagrywający dostaje następną turę."
+          "pl": "- „Zmiana kierunku” sprawia, że gracie w przeciwną stronę. Przy dwóch osobach działa jak pominięcie: zagrywający dostaje następną turę."
         },
         {
-          "pl": "- Dzika karta pozwala wybrać nowy kolor. Po jej zagraniu wybierz go strzałkami i zatwierdź Enterem. Nie musisz dopasowywać dzikiej karty do poprzedniego koloru. Wybrany kolor przypomina klawisz V."
+          "pl": "- Dzika karta pozwala wybrać nowy kolor. Po jej zagraniu wybierz go strzałkami i zatwierdź Enterem. Nie musisz dopasowywać dzikiej karty do poprzedniego koloru. Wybrany kolor sprawdzisz klawiszem V."
         },
         {
           "pl": "- „Dobierz dwie”, czyli plus dwa, atakuje następną osobę. Musi ona dobrać dwie karty albo odpowiedzieć własnym plus dwa. Po odpowiedzi kara rośnie do czterech i przechodzi na kolejnego gracza. Następne odpowiedzi zwiększają ją w ten sam sposób."
@@ -60,7 +60,7 @@
           "pl": "- Dzika plus cztery łączy wybór koloru z karą czterech kart. Na nią można odpowiedzieć kolejną dziką plus cztery. Plus dwa i plus cztery nie łączą się ze sobą."
         },
         {
-          "pl": "Żeby przyjąć karę, naciśnij Spację. Dobierzesz wszystkie wymagane karty; ich liczbę możesz wcześniej sprawdzić klawiszem G. Potem możesz jeszcze zagrać pasującą kartę. Jeśli żadnej nie masz, twoja tura się kończy."
+          "pl": "Żeby przyjąć karę, naciśnij Spację. Dobierzesz wszystkie wymagane karty; ich liczbę możesz wcześniej sprawdzić klawiszem G. Potem możesz zagrać pasującą kartę. Jeśli żadnej nie masz, twoja tura się kończy."
         }
       ]
     },
@@ -126,7 +126,7 @@
       },
       "paragraphs": [
         {
-          "pl": "W klasycznym UNO możecie włączyć sprawdzanie blefu. Dziką plus cztery wolno wtedy zagrać bez konsekwencji tylko wtedy, gdy nie masz innej karty w dotychczasowym kolorze."
+          "pl": "W klasycznym UNO możecie włączyć sprawdzanie blefu. Dziką plus cztery wolno zagrać bez konsekwencji tylko wtedy, gdy nie masz innej karty w dotychczasowym kolorze."
         },
         {
           "pl": "Jeśli ktoś zaatakuje cię taką kartą, możesz nacisnąć F, żeby sprawdzić jego rękę. Gdy miał pasujący kolor, sam dobiera cztery. Gdy go nie miał, ty dobierasz sześć i tracisz turę."
@@ -198,7 +198,7 @@
       },
       "paragraphs": [
         {
-          "pl": "W UNO Flip karty mają dwie strony: jasną i ciemną. Gra zaczyna się po jasnej. Karta Flip odwraca wszystkie ręce i obie talie; dotychczasowe spody stosów stają się ich wierzchami. Od tej chwili dopasowujecie karty według nowej strony."
+          "pl": "W UNO Flip karty mają dwie strony: jasną i ciemną. Na początku używacie jasnej strony kart. Zagranie karty Flip odwraca karty w rękach oraz oba stosy. To, co leżało na spodzie stosu, trafia na wierzch. Od tej chwili dopasowujecie karty według nowej strony."
         },
         {
           "pl": "Obie strony mają inne karty specjalne:"

@@ -57,12 +57,13 @@ następnego nagłówka, a Shift+H — do poprzedniego. Escape zamyka dokument.
 
 ## W co można zagrać
 
-Obecnie Power Games zawiera 33 gry:
+Obecnie Power Games zawiera 34 gry:
 
 - Karcianki: 3-5-8, 99, 1000 mil, Biblios, Makao, Piki, Poker, Remik, Tysiąc,
   UNO, Wojna i Wojna naukowa.
 - Gry planszowe i strategiczne: Chińczyk, Cztery w rzędzie,
-  Kółko i krzyżyk, Mankala, Monopoly, Reversi, Statki, Szachy i Warcaby.
+  Kółko i krzyżyk, Mankala, Monopoly, Reversi, Statki, Szachy, Warcaby
+  i Wyścigi kaczek.
 - Kości i domino: Cat, head, tail, Domino, Farkle, Mexican Train i Yahtzee.
 - Słowa i wiedza: Krowa, Państwa-miasta, Quiz, Scrabble i Taboo.
 - Gry zręcznościowe audio: Axel Pong i Audio Ball.
@@ -161,7 +162,9 @@ W grach dopuszczających obserwatorów można śledzić partię bez zajmowania
 miejsca gracza. To przydatne zarówno do kibicowania, jak i poznawania zasad.
 W Axel Pongu obserwator może także wybrać perspektywę słuchania.
 Ctrl+Shift+O pozwala zgłosić się do gry lub obserwowania następnej partii,
-o ile dana gra udostępnia taki wybór. 
+o ile dana gra udostępnia taki wybór. Ten skrót zmienia Twoją rolę.
+Gospodarz może zmienić rolę innej osoby w menu kontekstowym listy użytkowników;
+odpowiednia opcja zawiera nick wybranej osoby.
 
 Na liście użytkowników Enter otwiera zwykłe menu użytkownika ELTEN-a.
 Stamtąd możesz między innymi wysłać wiadomość, dodać osobę do kontaktów
@@ -225,6 +228,7 @@ Nie trzeba uczyć się wszystkich skrótów naraz:
 Zasady można czytać przed utworzeniem stołu. Mają rozdziały i spis treści,
 po którym można przejść do wybranego fragmentu. Opis skrótów gry jest
 osobną listą — po jednej pozycji na skrót.
+Lista gier w bibliotece zasad zawiera również krótki opis każdej gry.
 W tekście zasad H i Shift+H przechodzą między nagłówkami, K i Shift+K
 między odnośnikami, a Enter na odnośniku spisu treści przenosi do rozdziału.
 
@@ -321,9 +325,11 @@ Opcjonalna lista „Znane języki” służy do uzupełniania brakujących tłum
 Jeśli tekstu nie ma w głównym języku, program może sięgnąć po jeden
 z zaznaczonych języków, a ostatecznie po angielski. aby korzystać z programu.
 
-Język interfejsu i język treści gry to dwie różne rzeczy. Język pytań,
-kart lub słownika wybiera się w ustawieniach tych gier, które udostępniają
-taką możliwość. .
+Język pytań, kart i słownika możesz wybrać w ustawieniach gier, które
+udostępniają taką możliwość. Przy tworzeniu nowego stołu program proponuje
+język interfejsu gospodarza, a jeśli nie ma odpowiedniego zestawu — angielski.
+Własne zapisane ustawienia mają pierwszeństwo. Dołączenie do stołu ani
+wznowienie zapisanej partii nie zmienia jej języka.
 
 ## Zapis partii i historia
 

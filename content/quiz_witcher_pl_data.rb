@@ -3,7 +3,7 @@ require 'json'
 module GameRoomContent
   module Packb2f3aa32decbfd64667e7738
     def self.load
-      JSON.parse(<<'QUIZ_DATA_f44884edfb481a051cdf6f818d5dd702f1a6788a3ca4821ad26f792153db8a6a')
+      JSON.parse(<<'QUIZ_DATA_becfa1e5d6db8a104a8b478ab6e73be8ec9f0e4dea84d5580ae4dae2bcc80ed7')
 {
   "questions": [
     {
@@ -16580,11 +16580,2273 @@ module GameRoomContent
         "Z języka nilfgaardzkiego"
       ],
       "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "c40074bb72b4",
+      "category": "Bohaterowie",
+      "level": "easy",
+      "prompt": "Czyje miecze Geralt odbiera od Voronoffa w „Rozdrożu kruków”?",
+      "correct": "Prestona Holta",
+      "wrong": [
+        "Eskela",
+        "Vesemira",
+        "Brehena"
+      ],
+      "source": "Andrzej Sapkowski: Rozdroże kruków"
+    },
+    {
+      "id": "7df376bdf807",
+      "category": "Bohaterowie",
+      "level": "easy",
+      "prompt": "Dlaczego Yennefer robi Geraltowi wyrzuty o zaproszenie Triss na ślub w „Coś się kończy, coś się zaczyna”?",
+      "correct": "Ponieważ Geralt miał z nią romans",
+      "wrong": [
+        "Ponieważ Triss obraziła Nenneke",
+        "Ponieważ Triss sprzeciwiała się temu małżeństwu",
+        "Ponieważ Triss zdradziła ich plany Filippie"
+      ],
+      "source": "Andrzej Sapkowski: Coś się kończy, coś się zaczyna — opowiadanie alternatywne"
+    },
+    {
+      "id": "e375ff2b4255",
+      "category": "Bohaterowie",
+      "level": "easy",
+      "prompt": "Co Cahir wyznaje Geraltowi o swoich uczuciach do Ciri w „Wieży Jaskółki”?",
+      "correct": "Że ją kocha",
+      "wrong": [
+        "Że pragnie się na niej zemścić",
+        "Że boi się jej mocy",
+        "Że jest mu obojętna"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "f04effd289ec",
+      "category": "Bohaterowie",
+      "level": "easy",
+      "prompt": "Jak Angouleme nazywa Milvę, czym wyprowadza ją z równowagi?",
+      "correct": "Ciotką",
+      "wrong": [
+        "Siostrzyczką",
+        "Babką",
+        "Mamuśką"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "28dc3e74f7b2",
+      "category": "Bohaterowie",
+      "level": "easy",
+      "prompt": "Jak Geralt zwraca się do Yennefer pod koniec opowiadania „Ostatnie życzenie”, czym wyraźnie ją porusza?",
+      "correct": "Yen",
+      "wrong": [
+        "Królewna",
+        "Złotko",
+        "Czarnulka"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "46aecc1767a7",
+      "category": "Bohaterowie",
+      "level": "easy",
+      "prompt": "Jakiego koloru oczy ma Ciri?",
+      "correct": "Zielone",
+      "wrong": [
+        "Piwne",
+        "Niebieskie",
+        "Fiołkowe"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "dbcdea22e265",
+      "category": "Bohaterowie",
+      "level": "easy",
+      "prompt": "Jakiego koloru włosy ma Ciri?",
+      "correct": "Popielate",
+      "wrong": [
+        "Kruczoczarne",
+        "Kasztanowe",
+        "Rude"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "933dd94d0c7c",
+      "category": "Bohaterowie",
+      "level": "easy",
+      "prompt": "Kim jest Dainty Biberveldt, kupiec okradziony przez dopplera w opowiadaniu „Wieczny ogień”?",
+      "correct": "Niziołkiem",
+      "wrong": [
+        "Krasnoludem",
+        "Gnomem",
+        "Elfem"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "6031e01840f8",
+      "category": "Bohaterowie",
+      "level": "easy",
+      "prompt": "Kogo Visenna całuje na końcu opowiadania „Droga, z której się nie wraca”?",
+      "correct": "Korina",
+      "wrong": [
+        "Mikułę",
+        "Fregenala",
+        "Kehla"
+      ],
+      "source": "Andrzej Sapkowski: Droga, z której się nie wraca"
+    },
+    {
+      "id": "56afecf2ec88",
+      "category": "Bohaterowie",
+      "level": "easy",
+      "prompt": "Kto wyrzuca Falwicka i Taillesa ze świątyni w opowiadaniu „Głos rozsądku”?",
+      "correct": "Nenneke",
+      "wrong": [
+        "Geralt",
+        "Yennefer",
+        "Iola"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "6d54f650a164",
+      "category": "Bohaterowie",
+      "level": "easy",
+      "prompt": "Kto śpiewa balladę o Geralcie pod dębem Bleobheris na początku „Krwi elfów”?",
+      "correct": "Jaskier",
+      "wrong": [
+        "Essi Daven",
+        "Valdo Marx",
+        "Draig Bon-Dhu"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "d85277ce6c09",
+      "category": "Bohaterowie",
+      "level": "easy",
+      "prompt": "W jakiej sprawie Yennefer szuka pomocy Nenneke w „Głosie rozsądku”?",
+      "correct": "Chce odzyskać płodność",
+      "wrong": [
+        "Chce odzyskać wzrok",
+        "Chce odzyskać utraconą pamięć",
+        "Chce odzyskać zdolność czarowania"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "3294f76b61e5",
+      "category": "Bohaterowie",
+      "level": "easy",
+      "prompt": "Z kim Ciri sypia z dala od reszty Szczurów w książce „Chrzest ognia”?",
+      "correct": "Z Mistle",
+      "wrong": [
+        "Z Iskrą",
+        "Z Kayleighem",
+        "Z Giselherem"
+      ],
+      "source": "Andrzej Sapkowski: Chrzest ognia"
+    },
+    {
+      "id": "86cebf617df6",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Co Visenna rozpoznaje wśród zapisków Fregenala w „Drodze, z której się nie wraca”?",
+      "correct": "Zaginione strony z Zakazanych Ksiąg",
+      "wrong": [
+        "Listy z rozkazami od króla",
+        "Notatki pozostawione przez Korina",
+        "Skradzioną mapę Klucza"
+      ],
+      "source": "Andrzej Sapkowski: Droga, z której się nie wraca"
+    },
+    {
+      "id": "9261656f1892",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Czyja przepowiednia, przywołana przez Nenneke, zapowiada Czas Miecza i Topora?",
+      "correct": "Ithlinne aep Aevenien",
+      "wrong": [
+        "Nenneke",
+        "Lary Dorren",
+        "Calanthe"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "aa11b311e09c",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Dlaczego Cahir waha się przed walką z Nilfgaardczykami w bitwie na moście w książce „Chrzest ognia”?",
+      "correct": "Musiałby zabijać swoich rodaków",
+      "wrong": [
+        "Chce wydać Geralta za ułaskawienie",
+        "Złożył przysięgę, że nie użyje miecza",
+        "Wśród wrogów jest jego ojciec"
+      ],
+      "source": "Andrzej Sapkowski: Chrzest ognia"
+    },
+    {
+      "id": "73c60a0364f8",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Pod czyją opieką Geralt planuje zostawić Ciri, posyłając ją do szkoły świątynnej w Ellander?",
+      "correct": "Nenneke",
+      "wrong": [
+        "Tissai de Vries",
+        "Triss Merigold",
+        "Margarity Laux-Antille"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "629c5a652cd9",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Ile lat ma Ciri, gdy jedzie z konwojem Yarpena w książce „Krew elfów”?",
+      "correct": "Prawie trzynaście",
+      "wrong": [
+        "Prawie szesnaście",
+        "Prawie osiemnaście",
+        "Prawie dziesięć"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "3ccd7a76fb20",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Jak brzmi pełne imię dopplera Dudu z opowiadania „Wieczny ogień”?",
+      "correct": "Tellico Lunngrevink Letorte",
+      "wrong": [
+        "Geralt Roger Eryk du Haute-Bellegarde",
+        "Julian Alfred Pankratz",
+        "Emiel Regis Rohellec Terzieff-Godefroy"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "89469160efbf",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Jak nazywają się dwaj pomocnicy Degerlunda, hybrydy ogrów i trolli z „Sezonu burz”?",
+      "correct": "Bue i Bang",
+      "wrong": [
+        "Mikita i Pasztor",
+        "Rience i Schirru",
+        "Richter i Tverdoruk"
+      ],
+      "source": "Andrzej Sapkowski: Sezon burz"
+    },
+    {
+      "id": "effe11dc0afa",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Jaki przydomek nosi Ivo Mirce, który prowokuje Geralta do walki w opowiadaniu „Okruch lodu”?",
+      "correct": "Cykada",
+      "wrong": [
+        "Puszczyk",
+        "Słowik",
+        "Profesor"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "98bb5637da8f",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "O jakim wspólnym życiu z Yennefer marzy Geralt podczas pobytu na Thanedd?",
+      "correct": "O zamieszkaniu z nią we własnym domu z gospodarstwem",
+      "wrong": [
+        "O wspólnym prowadzeniu szkoły magii",
+        "O życiu u boku Foltesta na jego dworze",
+        "O zamieszkaniu w zamku w Cintrze"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "f562e9749482",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Co robi Regis po wtargnięciu do laboratorium Vilgefortza w Stygdze?",
+      "correct": "Pije krew jednego z pomocników czarodzieja",
+      "wrong": [
+        "Podaje Ciri eliksir usypiający",
+        "Niszczy portal prowadzący do sali",
+        "Chwyta Bonharta i wyrzuca go przez okno"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "063586631b2b",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Czyim imieniem Geralt zwraca się do Fringilli, spędzając z nią noce w Toussaint?",
+      "correct": "Yennefer",
+      "wrong": [
+        "Ciri",
+        "Triss",
+        "Koral"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "c88e0cefabd1",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Kim był Vilgefortz, zanim został magiem?",
+      "correct": "Najemnym żołnierzem",
+      "wrong": [
+        "Wędrownym bardem",
+        "Kupcem morskim",
+        "Medykiem"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "831ae2c8fed2",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Kim jest Rusty, chirurg polowy ratujący rannych w bitwie pod Brenną?",
+      "correct": "Niziołkiem",
+      "wrong": [
+        "Elfem",
+        "Krasnoludem",
+        "Gnomem"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "3d53728ffdf3",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Czym zajmował się Vysogota, zanim został pustelnikiem na mokradłach?",
+      "correct": "Chirurgią i filozofią",
+      "wrong": [
+        "Alchemią i astrologią",
+        "Kartografią i żeglarstwem",
+        "Dyplomacją i kronikarstwem"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "f0ee2b2b81be",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Kto mówi Geraltowi, że tylko zło nie ma wątpliwości, w opowiadaniu „Coś więcej”?",
+      "correct": "Kupiec Yurga",
+      "wrong": [
+        "Jaskier",
+        "Myszowór",
+        "Vesemir"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "4a82666f5d0a",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Kto napada na konwój Yarpena Zigrina w książce „Krew elfów”?",
+      "correct": "Komando Scoia'tael",
+      "wrong": [
+        "Żołnierze Nilfgaardu",
+        "Temerska straż",
+        "Rience i jego ludzie"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "a230f3fe2c3b",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Kto przesłuchuje Jaskra w Oxenfurcie w książce „Krew elfów”?",
+      "correct": "Dijkstra",
+      "wrong": [
+        "Vilgefortz",
+        "Ori Reuven",
+        "Vattier de Rideaux"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "49e4d9e2f4c9",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Kto upija się na weselu z zazdrości o Ciri w opowiadaniu „Coś się kończy, coś się zaczyna”?",
+      "correct": "Jednoręki Jarre",
+      "wrong": [
+        "Jaskier",
+        "Galahad",
+        "Loki"
+      ],
+      "source": "Andrzej Sapkowski: Coś się kończy, coś się zaczyna — opowiadanie alternatywne"
+    },
+    {
+      "id": "56332a4bd279",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Kto w Oxenfurcie mówi Geraltowi, że wie, gdzie ukrywa się Rience?",
+      "correct": "Shani",
+      "wrong": [
+        "Dijkstra",
+        "Filippa Eilhart",
+        "Jaskier"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "9a31455fcdcd",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Kto zaopiekował się młodą Yennefer po próbie samobójczej, wspominanej przez nią w „Pani Jeziora”?",
+      "correct": "Tissaia de Vries",
+      "wrong": [
+        "Nenneke",
+        "Margarita Laux-Antille",
+        "Filippa Eilhart"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "6f17a37eba2b",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Kto zostaje heroldem pojedynków ze złotym smokiem w opowiadaniu „Granica możliwości”?",
+      "correct": "Yarpen Zigrin",
+      "wrong": [
+        "Gyllenstiern",
+        "Jaskier",
+        "Boholt"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "3d5beed3cdbe",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Któremu czarodziejowi służy Schirru, który zastawia pułapkę na Geralta w książce „Wieża Jaskółki”?",
+      "correct": "Vilgefortzowi",
+      "wrong": [
+        "Stregoborowi",
+        "Artaudowi Terranovie",
+        "Dorregarayowi"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "007aaa7bc025",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Który krasnolud z kompanii Yarpena ginie podczas napadu Wiewiórek na konwój?",
+      "correct": "Paulie Dahlberg",
+      "wrong": [
+        "Yarpen Zigrin",
+        "Xavier Moran",
+        "Regan Dahlberg"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "10c6e6a0eaa8",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Z kim według Stregobora Renfri łupi kupców w Mahakamie w opowiadaniu „Mniejsze zło”?",
+      "correct": "Z siedmioma gnomami",
+      "wrong": [
+        "Z siedmioma krasnoludami",
+        "Z niziołkami",
+        "Z bandą elfów"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "a2eb7489e86f",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Który krasnolud dowodzi konwojem, do którego dołączają Geralt, Ciri i Triss po wyjeździe z Kaer Morhen?",
+      "correct": "Yarpen Zigrin",
+      "wrong": [
+        "Barclay Els",
+        "Sheldon Skaggs",
+        "Zoltan Chivay"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "cdd006118cf8",
+      "category": "Bohaterowie",
+      "level": "medium",
+      "prompt": "Z którym wiedźminem Triss romansuje na weselu w opowiadaniu „Coś się kończy, coś się zaczyna”?",
+      "correct": "Z Eskelem",
+      "wrong": [
+        "Z Geraltem",
+        "Z Lambertem",
+        "Z Vesemirem"
+      ],
+      "source": "Andrzej Sapkowski: Coś się kończy, coś się zaczyna — opowiadanie alternatywne"
+    },
+    {
+      "id": "b07bc64ee1a1",
+      "category": "Bohaterowie",
+      "level": "hard",
+      "prompt": "Jak nazywa się bandyta zwany Słowikiem, na którego Geralt poluje w „Wieży Jaskółki”?",
+      "correct": "Homer Straggen",
+      "wrong": [
+        "Boreas Mun",
+        "Neratin Ceka",
+        "Dacre Silifant"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "75c5f792dab6",
+      "category": "Bohaterowie",
+      "level": "hard",
+      "prompt": "Którego elfa jednorożce nazywają Lisem w książce „Pani Jeziora”?",
+      "correct": "Avallac'ha",
+      "wrong": [
+        "Eredina",
+        "Isengrima",
+        "Auberona"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "90c9e1b95e55",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Co Geralt odpowiada Ciri na pytanie, czy jest jego przeznaczeniem, na końcu opowiadania „Coś więcej”?",
+      "correct": "„Jesteś czymś więcej”",
+      "wrong": [
+        "„Sama wybierzesz swój los”",
+        "„Jesteś moją córką”",
+        "„Nie ma czegoś takiego jak przeznaczenie”"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "f1e04343fdca",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Co Emhyr rozpoznaje podczas spotkania z dziewczyną przywiezioną mu jako Ciri w „Czasie pogardy”?",
+      "correct": "Że to inna dziewczyna",
+      "wrong": [
+        "Że Ciri ukrywa broń",
+        "Że Ciri jest już zamężna",
+        "Że Ciri straciła pamięć"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "4f1f6d84ec40",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Co według rycerza Galahada daruje Pani Jeziora, wychodząc z wód?",
+      "correct": "Miecz",
+      "wrong": [
+        "Kielich",
+        "Włócznię",
+        "Pierścień"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "3e9b46dff4e8",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Jakiej zapłaty Geralt żąda od Duny’ego za uratowanie mu życia w „Kwestii ceny”?",
+      "correct": "Tego, co Duny już posiada, a o czym nie wie",
+      "wrong": [
+        "Połowy królewskiego skarbca",
+        "Ręki Pavetty",
+        "Korony Cintry"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "c771d9a4d58e",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Czym młody Geralt zabija czarodzieja Artamona w książce „Rozdroże kruków”?",
+      "correct": "Kluczem",
+      "wrong": [
+        "Głowicą miecza",
+        "Sztyletem",
+        "Kastetem"
+      ],
+      "source": "Andrzej Sapkowski: Rozdroże kruków"
+    },
+    {
+      "id": "67571a79177f",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Gdzie chce się uczyć Nimue, wędrująca przez Sójczy Las w „Sezonie burz”?",
+      "correct": "W Aretuzie",
+      "wrong": [
+        "W Ban Ard",
+        "W świątyni w Ellander",
+        "Na uniwersytecie w Oxenfurcie"
+      ],
+      "source": "Andrzej Sapkowski: Sezon burz"
+    },
+    {
+      "id": "962d4f2ddb47",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Jak Ciri kończy opowieść dla Galahada o dalszych losach Geralta i Yennefer?",
+      "correct": "Mieli własny dom i żyli szczęśliwie",
+      "wrong": [
+        "Zamieszkali na dworze Emhyra",
+        "Wrócili do Kaer Morhen",
+        "Rozstali się na zawsze"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "691ee4bd5ef7",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Jak Ciri zabiera Geralta i Yennefer z Rivii po pogromie?",
+      "correct": "Łodzią",
+      "wrong": [
+        "Karetą",
+        "Wozem",
+        "Konno"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "0c34230f8d5e",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Jak Geralt zabija czarodzieja Sorela Degerlunda w książce „Sezon burz”?",
+      "correct": "Dusi go, łamiąc mu kark",
+      "wrong": [
+        "Pali go Znakiem Igni",
+        "Spycha go w przepaść",
+        "Przebija go mieczem"
+      ],
+      "source": "Andrzej Sapkowski: Sezon burz"
+    },
+    {
+      "id": "82e5dadd7337",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Jak mieszkańcy Blaviken reagują na Geralta po jego walce z bandą Renfri?",
+      "correct": "Obrzucają go kamieniami",
+      "wrong": [
+        "Klękają przed nim",
+        "Wręczają mu nagrodę",
+        "Wiwatują na jego cześć"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "25a265127607",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "W jaki sposób zostaje stracony Preston Holt w „Rozdrożu kruków”?",
+      "correct": "Przez uduszenie garotą",
+      "wrong": [
+        "Przez ścięcie mieczem",
+        "Przez spalenie na stosie",
+        "Przez powieszenie na szubienicy"
+      ],
+      "source": "Andrzej Sapkowski: Rozdroże kruków"
+    },
+    {
+      "id": "ef8710f069f7",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Kogo Geralt broni mieczem podczas pogromu w Rivii?",
+      "correct": "Nieludzi atakowanych przez tłum",
+      "wrong": [
+        "Kapłanów Wiecznego Ognia",
+        "Nilfgaardzki garnizon",
+        "Urzędników królowej Meve"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "11671e6410d2",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Kogo Geralt zastaje zakrwawionego po masakrze w Sośnicy w książce „Sezon burz”?",
+      "correct": "Sorela Degerlunda",
+      "wrong": [
+        "Pinetego",
+        "Harlana Tzarę",
+        "Ortolana"
+      ],
+      "source": "Andrzej Sapkowski: Sezon burz"
+    },
+    {
+      "id": "f137e0ef48db",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Jaki los spotyka Kozojeda pod koniec „Granicy możliwości”?",
+      "correct": "Zostaje pożarty przez złotego smoka",
+      "wrong": [
+        "Ginie od szabli Zerrikanki",
+        "Zostaje spalony zaklęciem Yennefer",
+        "Ginie stratowany przez konie"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "9e37df3391a0",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Kto przebija Vereenę żerdzią w „Ziarnie prawdy”?",
+      "correct": "Nivellen",
+      "wrong": [
+        "Geralt",
+        "Jaskier",
+        "Stregobor"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "e965524451c9",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Kto przeniósł rannego Geralta z Thanedd do Brokilonu, jak mówi Francesca w książce „Chrzest ognia”?",
+      "correct": "Triss Merigold",
+      "wrong": [
+        "Keira Metz",
+        "Yennefer",
+        "Tissaia de Vries"
+      ],
+      "source": "Andrzej Sapkowski: Chrzest ognia"
+    },
+    {
+      "id": "0cb1554d41f7",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Kto w „Chrzcie ognia” ratuje Geralta i Jaskra przed Nilfgaardczykami, gdy wiedźmin nie może uciekać z powodu chorej nogi?",
+      "correct": "Milva",
+      "wrong": [
+        "Zoltan Chivay",
+        "Regis",
+        "Cahir"
+      ],
+      "source": "Andrzej Sapkowski: Chrzest ognia"
+    },
+    {
+      "id": "bab1154768ec",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Kto wpłaca kaucję za Geralta aresztowanego w Kerack w książce „Sezon burz”?",
+      "correct": "Lytta Neyd zwana Koral",
+      "wrong": [
+        "Jaskier",
+        "Yennefer",
+        "Triss Merigold"
+      ],
+      "source": "Andrzej Sapkowski: Sezon burz"
+    },
+    {
+      "id": "4b3903213b53",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Kto zasłania Geralta i Jaskra przed łucznikami elfów w opowiadaniu „Kraniec świata”?",
+      "correct": "Diabeł Torque",
+      "wrong": [
+        "Toruviel",
+        "Królowa Pól",
+        "Filavandrel"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "24d03e3ff2f8",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Kogo złoty smok pokonuje w pojedynku opisanym w „Granicy możliwości”?",
+      "correct": "Eycka z Denesle",
+      "wrong": [
+        "Yarpena Zigrina",
+        "Boholta",
+        "Niedamira"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "d0adc12a97e1",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Który rycerz pomaga Ciri pokonać żyrytwę w opowiadaniu „Coś się kończy, coś się zaczyna”?",
+      "correct": "Galahad",
+      "wrong": [
+        "Yves",
+        "Devereux",
+        "Matholm"
+      ],
+      "source": "Andrzej Sapkowski: Coś się kończy, coś się zaczyna — opowiadanie alternatywne"
+    },
+    {
+      "id": "496bc5b88164",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Z kim Geralt umawia się na pojedynek o Yennefer w opowiadaniu „Okruch lodu”?",
+      "correct": "Z Istreddem",
+      "wrong": [
+        "Z Cykadą",
+        "Z Vilgefortzem",
+        "Z Dorregarayem"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "7e8130ab3ec0",
+      "category": "Fabuła",
+      "level": "easy",
+      "prompt": "Za czyje życie Ciri dobrowolnie oddaje się Vilgefortzowi w Stygdze?",
+      "correct": "Yennefer",
+      "wrong": [
+        "Cahira",
+        "Geralta",
+        "Jaskra"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "798a2950350d",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Co Anna Henrietta każe zrobić Jaskrowi, gdy ułaskawia go na szafocie?",
+      "correct": "Opuścić Toussaint i nigdy nie wracać",
+      "wrong": [
+        "Wstąpić do zakonu",
+        "Zostać jej nadwornym poetą",
+        "Poślubić wskazaną damę"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "387084a08c05",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Co Bonhart robi z ciałami zabitych Szczurów na oczach Ciri?",
+      "correct": "Odcina im głowy",
+      "wrong": [
+        "Wrzuca je do studni",
+        "Pali je na stosie",
+        "Wiesza je przy drodze"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "4c421d43ae0b",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Co Geralt robi z bełtem wystrzelonym do niego na rynku w Blaviken?",
+      "correct": "Odbija go mieczem",
+      "wrong": [
+        "Łapie go w dłoń",
+        "Chowa się za straganem",
+        "Zatrzymuje go Znakiem Aard"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "0709566b2b5f",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Co Rience obiecuje Ciri w zamian za ratunek, gdy tonie pod lodem jeziora Tarn Mira?",
+      "correct": "Że powie, gdzie jest Yennefer",
+      "wrong": [
+        "Że powie, gdzie jest Geralt",
+        "Że zdradzi tajemnicę Emhyra",
+        "Że powie, kto zabił Calanthe"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "aa141a789c6d",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Co Yennefer niszczy piorunem kulistym podczas kłótni o suknię ślubną w opowiadaniu „Coś się kończy, coś się zaczyna”?",
+      "correct": "Dach baszty",
+      "wrong": [
+        "Salę balową",
+        "Zamkową kaplicę",
+        "Most zwodzony"
+      ],
+      "source": "Andrzej Sapkowski: Coś się kończy, coś się zaczyna — opowiadanie alternatywne"
+    },
+    {
+      "id": "be280780755e",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Co dzieje się z Wieżą Mewy po ucieczce Ciri przez jej portal?",
+      "correct": "Zawala się wraz z portalem",
+      "wrong": [
+        "Zostaje odcięta od reszty wyspy",
+        "Znosi ją do morza fala",
+        "Zostaje zamknięta magiczną barierą"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "06bd0654e1e0",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Co umierająca Renfri ukrywa przy sobie, prosząc Geralta, by się nad nią pochylił?",
+      "correct": "Sztylet",
+      "wrong": [
+        "Fiolkę trucizny",
+        "Zaklęty pierścień",
+        "Drut do duszenia"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "1d1d18fe290e",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Do czego Geralt miałby się zobowiązać, przyjmując od Pyrala Pratta połówkę monety?",
+      "correct": "Do spełnienia w przyszłości dowolnego życzenia",
+      "wrong": [
+        "Do oddania połowy kolejnej nagrody",
+        "Do odnalezienia drugiej połówki monety",
+        "Do pojedynku z wybranym przez Pratta przeciwnikiem"
+      ],
+      "source": "Andrzej Sapkowski: Sezon burz"
+    },
+    {
+      "id": "41686a7d8068",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Czym Geralt oplątuje strzygę podczas walki w opuszczonym pałacu w opowiadaniu „Wiedźmin”?",
+      "correct": "Srebrnym łańcuchem",
+      "wrong": [
+        "Siecią",
+        "Arkanem",
+        "Skórzanym pasem"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "636613c52782",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Do czego Vilgefortz przyznaje się Geraltowi przed walką na Thanedd?",
+      "correct": "Że nasyłał na niego morderców",
+      "wrong": [
+        "Że zabił króla Vizimira",
+        "Że podpalił Cintrę",
+        "Że porwał Yennefer z Vengerbergu"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "8f08a3a173ba",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Dokąd wraca uprowadzona Płotka, gdy młody Geralt dochodzi do siebie w książce „Rozdroże kruków”?",
+      "correct": "Pod furtę świątyni w Elsborgu",
+      "wrong": [
+        "Do Kaer Morhen",
+        "Pod bramę Rocamory",
+        "Do więzienia w Sturefors"
+      ],
+      "source": "Andrzej Sapkowski: Rozdroże kruków"
+    },
+    {
+      "id": "8d6a6cc2dc18",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Jak Cahir prosi Geralta o litość, gdy staje przed nim na Thanedd?",
+      "correct": "Przypomina, że wywiózł Ciri z płonącej Cintry",
+      "wrong": [
+        "Powołuje się na przyjaźń z Jaskrem",
+        "Obiecuje wydać Rience'a",
+        "Mówi, że uwolnił Yennefer"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "1e6e8222b0a6",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Jak Geralt obezwładnia odczarowaną królewnę, gdy rani mu szyję w opowiadaniu „Wiedźmin”?",
+      "correct": "Gryzie ją w szyję",
+      "wrong": [
+        "Pali ją Znakiem Igni",
+        "Usypia ją eliksirem",
+        "Uderza ją głowicą miecza"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "11e5be809d65",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Jak według zakończenia opowiadania „Trochę poświęcenia” potoczyły się dalsze losy Geralta i Essi Daven?",
+      "correct": "Nigdy więcej się nie spotkali",
+      "wrong": [
+        "Spotykali się co roku nad morzem",
+        "Razem szukali Yennefer",
+        "Zamieszkali razem w Cidaris"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "14b9f5714786",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Jaką fałszywą wiadomość o Geralcie Vilgefortz przekazuje uwięzionej Yennefer w Stygdze?",
+      "correct": "Że Geralt nie żyje",
+      "wrong": [
+        "Że Geralt sprzedał Ciri Loży",
+        "Że Geralt poślubił Fringillę",
+        "Że Geralt służy Emhyrowi"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "aeb4c4fb96d0",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Za kogo podaje się napastniczka, która atakuje Korina na rozstaju w „Drodze, z której się nie wraca”?",
+      "correct": "Za staruszkę",
+      "wrong": [
+        "Za kapłankę",
+        "Za zagubioną dziewczynkę",
+        "Za ranną wojowniczkę"
+      ],
+      "source": "Andrzej Sapkowski: Droga, z której się nie wraca"
+    },
+    {
+      "id": "d1410c85633f",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Jak Calanthe chce sprawdzić Geralta, gdy przybywa on po dziecko Pavetty w „Coś więcej”?",
+      "correct": "Każe mu wskazać obiecane dziecko wśród bawiących się dzieci",
+      "wrong": [
+        "Każe mu odnaleźć dziecko przy użyciu medalionu",
+        "Każe mu rozpoznać dziecko na portrecie",
+        "Każe mu pokonać w pojedynku opiekuna dziecka"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "0f64da09e4c0",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Jaką śmierć zamiast egzekucji Emhyr pozwala wybrać Geraltowi i Yennefer w Stygdze?",
+      "correct": "Otwarcie żył w gorącej kąpieli",
+      "wrong": [
+        "Skok z murów",
+        "Wypicie trucizny",
+        "Przebicie się własnym mieczem"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "795832ca4f4a",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Czyim zamordowaniem Schirrú chwali się przed Geraltem w „Wieży Jaskółki”?",
+      "correct": "Codringhera i Fenna",
+      "wrong": [
+        "Codringhera i Dijkstry",
+        "Fenna i Rience’a",
+        "Istredda i Stregobora"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "9e72c68d2659",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Kto daje Ciri miecz do walki w karczmie w Glyswen, gdzie poznaje ona Szczurów?",
+      "correct": "Iskra",
+      "wrong": [
+        "Giselher",
+        "Mistle",
+        "Kayleigh"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "75a856e73e01",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Kto kupuje na aukcji u Borsodych skradzione miecze Geralta w książce „Sezon burz”?",
+      "correct": "Molnar Giancardi",
+      "wrong": [
+        "Vimme Vivaldi",
+        "Pyral Pratt",
+        "Nino Cianfanelli"
+      ],
+      "source": "Andrzej Sapkowski: Sezon burz"
+    },
+    {
+      "id": "2b1b1075d4cb",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Kto ogłusza Yennefer rzutem stalowej kuli w opowiadaniu „Granica możliwości”?",
+      "correct": "Yarpen Zigrin",
+      "wrong": [
+        "Niszczuka",
+        "Geralt",
+        "Boholt"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "13fc2de897d3",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Kto podsunął Emhyrowi plan upozorowania śmierci Duny'ego, Pavetty i ich dziecka na morzu?",
+      "correct": "Vilgefortz",
+      "wrong": [
+        "Rience",
+        "Stefan Skellen",
+        "Vattier de Rideaux"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "937bb9f47d53",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Kto przynosi Geraltowi miecze podczas zamieszek na Thanedd?",
+      "correct": "Jaskier",
+      "wrong": [
+        "Triss Merigold",
+        "Cahir",
+        "Dijkstra"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "341f37947a39",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Kto próbuje przekupić Geralta, by zostawił strzygę w spokoju, w opowiadaniu „Wiedźmin”?",
+      "correct": "Ostrit",
+      "wrong": [
+        "Foltest",
+        "Segelin",
+        "Velerad"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "18d2e03667e7",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Kto w przebraniu żołnierza odwiedza Geralta przed odczarowaniem królewny Addy?",
+      "correct": "Foltest",
+      "wrong": [
+        "Ostrit",
+        "Velerad",
+        "Segelin"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "c6d166777753",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Kto zabija Profesora i jego dwóch kompanów w drodze na Thanedd w książce „Czas pogardy”?",
+      "correct": "Geralt",
+      "wrong": [
+        "Dijkstra",
+        "Rience",
+        "Cahir"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "43faba35f85a",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Kto zasłania Calanthe własnym ciałem, gdy Pavetta uwalnia magiczną moc podczas uczty?",
+      "correct": "Eist Tuirseach",
+      "wrong": [
+        "Crach an Craite",
+        "Geralt",
+        "Myszowór"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "bbbac6e25071",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Która driada ratuje Geralta przed skolopendromorfem w opowiadaniu „Miecz przeznaczenia”?",
+      "correct": "Braenn",
+      "wrong": [
+        "Eithne",
+        "Morenn",
+        "Aglaïs"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "0dc23e72da11",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Jakie warunki pojedynku złoty smok proponuje łowcom w „Granicy możliwości”?",
+      "correct": "Walka jeden na jednego, bez czarów i ognia",
+      "wrong": [
+        "Walka ze wszystkimi łowcami naraz",
+        "Pojedynek na zaklęcia, bez użycia broni",
+        "Walka tylko z łowcą, który pokona Yennefer"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "19d21f5a016f",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "O co Vissegerd oskarża Geralta w związku z losem Ciri w „Chrzcie ognia”?",
+      "correct": "Że sprzedał Ciri cesarzowi Emhyrowi",
+      "wrong": [
+        "Że zabił jej rodziców",
+        "Że rzucił na nią klątwę",
+        "Że podmienił ją sobowtórem"
+      ],
+      "source": "Andrzej Sapkowski: Chrzest ognia"
+    },
+    {
+      "id": "cb4b985c0315",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Po co Calanthe sadza Geralta przy sobie na uczcie zaręczynowej w opowiadaniu „Kwestia ceny”?",
+      "correct": "Żeby pozbył się niechcianego kandydata do ręki Pavetty",
+      "wrong": [
+        "Żeby pilnował Myszowora",
+        "Żeby odnalazł zaginionego Roegnera",
+        "Żeby zdjął klątwę z Pavetty"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "c998f53ef2c4",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Pod jakimi drzewami Geralt budzi się po odpłynięciu z Rivii na końcu sagi?",
+      "correct": "Pod jabłoniami",
+      "wrong": [
+        "Pod dębami",
+        "Pod wierzbami",
+        "Pod lipami"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "041aa9fd1395",
+      "category": "Fabuła",
+      "level": "medium",
+      "prompt": "Przed jakim losem Holt chce ocalić Geralta, jak wyjaśnia w pożegnalnym liście?",
+      "correct": "Przed zostaniem zabójcą",
+      "wrong": [
+        "Przed Próbą Traw",
+        "Przed utratą mocy",
+        "Przed służbą w wojsku"
+      ],
+      "source": "Andrzej Sapkowski: Rozdroże kruków"
+    },
+    {
+      "id": "ff6ece09d0ad",
+      "category": "Fabuła",
+      "level": "hard",
+      "prompt": "Dlaczego Filippa Eilhart głosuje za zgodą na spotkanie Ciri z Geraltem w „Pani Jeziora”?",
+      "correct": "Zaczęła wierzyć w przeznaczenie",
+      "wrong": [
+        "Wcześniej obiecała to Geraltowi",
+        "Uważa, że Ciri straciła magiczną moc",
+        "Wykonuje rozkaz króla Foltesta"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "b98afcdf729f",
+      "category": "Geografia",
+      "level": "medium",
+      "prompt": "Dokąd Yennefer udaje się po pomoc po ucieczce z Montecalvo w „Chrzcie ognia”?",
+      "correct": "Na Skellige",
+      "wrong": [
+        "Do Koviru",
+        "Do Temerii",
+        "Do Aedirn"
+      ],
+      "source": "Andrzej Sapkowski: Chrzest ognia"
+    },
+    {
+      "id": "fd602863876e",
+      "category": "Geografia",
+      "level": "medium",
+      "prompt": "Dokąd Geralt wyruszył szukać Ciri po upadku Cintry, jak wspomina Yennefer w „Krwi elfów”?",
+      "correct": "Na Zarzecze",
+      "wrong": [
+        "Do Mahakamu",
+        "Do Skellige",
+        "Do Brokilonu"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "d355bed5505f",
+      "category": "Geografia",
+      "level": "medium",
+      "prompt": "Dokąd według legendy znanej Nimue odszedł Geralt w epilogu książki „Sezon burz”?",
+      "correct": "Do Krainy Jabłoni",
+      "wrong": [
+        "Do Tir ná Lia",
+        "Do Krainy Wiecznego Lodu",
+        "Do Dol Blathanna"
+      ],
+      "source": "Andrzej Sapkowski: Sezon burz"
+    },
+    {
+      "id": "dbbdf86982cd",
+      "category": "Geografia",
+      "level": "medium",
+      "prompt": "Jakie zwycięstwo nad Nilfgaardem Foltest przywołuje podczas narady w Hagge w „Krwi elfów”?",
+      "correct": "Bitwę pod Sodden",
+      "wrong": [
+        "Bitwę pod Brenną",
+        "Bitwę w dolinie Marnadal",
+        "Bitwę na moście na Jarudze"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "849c6fb496a8",
+      "category": "Geografia",
+      "level": "medium",
+      "prompt": "Gdzie zaginął statek z Pavettą i Dunym, jak ustala Yennefer w książce „Wieża Jaskółki”?",
+      "correct": "Na Głębi Sedny",
+      "wrong": [
+        "W ujściu Jarugi",
+        "Pod Thanedd",
+        "U wybrzeży Ebbing"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "a546f61ac01e",
+      "category": "Geografia",
+      "level": "medium",
+      "prompt": "Jak nazywają się elfie ruiny, które Geralt pokazuje Ciri w drodze z konwojem Yarpena?",
+      "correct": "Shaerrawedd",
+      "wrong": [
+        "Dol Blathanna",
+        "Tir ná Lia",
+        "Loc Muinne"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "33279ef96c99",
+      "category": "Geografia",
+      "level": "medium",
+      "prompt": "Na fundamentach czyich miast, według Geralta, zbudowano Novigrad, Oxenfurt i Wyzimę?",
+      "correct": "Elfów",
+      "wrong": [
+        "Gnomów",
+        "Krasnoludów",
+        "Niziołków"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "4ba73dddd4cd",
+      "category": "Geografia",
+      "level": "medium",
+      "prompt": "W której krainie Geralt poleca towarzyszom szukać druidów z Caed Dhu w „Wieży Jaskółki”?",
+      "correct": "W Toussaint",
+      "wrong": [
+        "W Sodden",
+        "W Verden",
+        "W Temerii"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "1336afef9219",
+      "category": "Geografia",
+      "level": "medium",
+      "prompt": "W którym mieście Bonhart zmusza Ciri do walk na arenie?",
+      "correct": "W Claremont",
+      "wrong": [
+        "W Novigradzie",
+        "W Belhaven",
+        "W Riedbrune"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "c736611f9b70",
+      "category": "Magia i wiedźmini",
+      "level": "easy",
+      "prompt": "Dlaczego Geralt nie chce zabić „diabła” z Dolnej Posady w opowiadaniu „Kraniec świata”?",
+      "correct": "Bo to rozumna istota",
+      "wrong": [
+        "Bo najpierw musi zdjąć z niego klątwę",
+        "Bo nie przebije jego skóry",
+        "Bo boi się gniewu Filavandrela"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "5809230663c7",
+      "category": "Magia i wiedźmini",
+      "level": "easy",
+      "prompt": "Dlaczego Filippa nie zaprosiła do Loży Istredda ani Carduina?",
+      "correct": "Bo dopuszcza do niej wyłącznie kobiety",
+      "wrong": [
+        "Bo obaj odmówili współpracy",
+        "Bo uważa ich za zwolenników Emhyra",
+        "Bo obaj należą do nowej Kapituły"
+      ],
+      "source": "Andrzej Sapkowski: Chrzest ognia"
+    },
+    {
+      "id": "3c570e7b58d5",
+      "category": "Magia i wiedźmini",
+      "level": "easy",
+      "prompt": "Gdzie Ciri spędza zimę pod opieką wiedźminów w „Krwi elfów”?",
+      "correct": "W Kaer Morhen",
+      "wrong": [
+        "W Montecalvo",
+        "W Stygdze",
+        "W Hagge"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "b11f3013a2c9",
+      "category": "Magia i wiedźmini",
+      "level": "easy",
+      "prompt": "Jak młody Geralt zdejmuje klątwę z rodziny burmistrza Szklanej Góry w książce „Rozdroże kruków”?",
+      "correct": "Zabija farbiarkę, która rzuciła urok",
+      "wrong": [
+        "Pali dom burmistrza",
+        "Zamyka demona w kręgu",
+        "Niszczy zaklęte krosno"
+      ],
+      "source": "Andrzej Sapkowski: Rozdroże kruków"
+    },
+    {
+      "id": "2f6c1299c546",
+      "category": "Magia i wiedźmini",
+      "level": "easy",
+      "prompt": "Jaką bronią Vilgefortz pokonuje Geralta na Thanedd?",
+      "correct": "Magicznym żelaznym drągiem",
+      "wrong": [
+        "Toporem",
+        "Szablą",
+        "Srebrnym mieczem"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "55836e0a58e5",
+      "category": "Magia i wiedźmini",
+      "level": "easy",
+      "prompt": "Jak Ciri określa samą siebie, gdy Triss przy pierwszym spotkaniu nazywa ją małą?",
+      "correct": "Wiedźminką",
+      "wrong": [
+        "Czarodziejką",
+        "Księżniczką",
+        "Kapłanką"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "181863b97bed",
+      "category": "Magia i wiedźmini",
+      "level": "easy",
+      "prompt": "Kto uczy Ciri magii w świątyni Melitele w książce „Krew elfów”?",
+      "correct": "Yennefer",
+      "wrong": [
+        "Triss Merigold",
+        "Filippa Eilhart",
+        "Nenneke"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "146c80ada982",
+      "category": "Magia i wiedźmini",
+      "level": "easy",
+      "prompt": "Które miejsce Ciri porównuje do więzienia, oglądając Thanedd z Gors Velen?",
+      "correct": "Aretuzę",
+      "wrong": [
+        "Pałac Garstang",
+        "Wieżę Mewy",
+        "Pałac Loxia"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "c599141d719e",
+      "category": "Magia i wiedźmini",
+      "level": "easy",
+      "prompt": "Nad czym według Vysogoty daje władzę Starsza Krew?",
+      "correct": "Nad czasem i przestrzenią",
+      "wrong": [
+        "Nad słońcem i księżycem",
+        "Nad ludzkimi uczuciami",
+        "Nad życiem i śmiercią"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "8a2f411e842d",
+      "category": "Magia i wiedźmini",
+      "level": "easy",
+      "prompt": "Z kim Ciri wyjeżdża ze świątyni Melitele na końcu książki „Krew elfów”?",
+      "correct": "Z Yennefer",
+      "wrong": [
+        "Z Geraltem",
+        "Z Triss Merigold",
+        "Z Jarrem"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "066a8c3f5a80",
+      "category": "Magia i wiedźmini",
+      "level": "easy",
+      "prompt": "Za kogo Triss początkowo bierze Ciri, widząc ją na szlaku pod Kaer Morhen?",
+      "correct": "Za chłopca",
+      "wrong": [
+        "Za elfkę",
+        "Za driadę",
+        "Za niziołkę"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "5b50b87b06c6",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Jaką dolegliwość Geralta Fringilla łagodzi magią w Toussaint?",
+      "correct": "Ból kolana",
+      "wrong": [
+        "Ból nadgarstka",
+        "Ból kręgosłupa",
+        "Ból głowy"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "79fecd82f336",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Co dzieje się z wilczym medalionem Geralta podczas egzekucji Schirru w Myrkvid?",
+      "correct": "Topi się w ogniu",
+      "wrong": [
+        "Ginie w rzece",
+        "Zabierają go druidki",
+        "Pęka pod młotem"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "097a06cd2d8f",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Co głosi runiczny napis na srebrnym mieczu Geralta odzyskanym w książce „Sezon burz”?",
+      "correct": "„Mój błysk przebije ciemności, moja jasność mroki rozproszy”",
+      "wrong": [
+        "„Moje ostrze służy królom”",
+        "„Niech moja stal pomści poległych”",
+        "„Nie dobywaj bez przyczyny, nie chowaj bez honoru”"
+      ],
+      "source": "Andrzej Sapkowski: Sezon burz"
+    },
+    {
+      "id": "c7db88556065",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Co ukrywało okaleczoną twarz Lydii van Bredevoort aż do jej śmierci na Thanedd?",
+      "correct": "Iluzja",
+      "wrong": [
+        "Gęsty welon",
+        "Nałożona na twarz sztuczna skóra",
+        "Złota maska"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "0234a18a2a7c",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Co Vilgefortz zamierza zabrać Ciri, jak mówi podczas rozmowy przez ksenogloz w „Wieży Jaskółki”?",
+      "correct": "Łożysko",
+      "wrong": [
+        "Szpik",
+        "Serce",
+        "Nerki"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "596b989b9770",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Czyja postać ukazuje się Ciri w ogniu na pustyni Korath, zachęcając ją do zemsty?",
+      "correct": "Falki",
+      "wrong": [
+        "Lary Dorren",
+        "Pavetty",
+        "Calanthe"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "9e3f45856a74",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Jak Ciri radzi sobie z wiedźmińskimi Znakami podczas nauki w Kaer Morhen?",
+      "correct": "Nie potrafi złożyć żadnego",
+      "wrong": [
+        "Potrafi złożyć tylko Igni",
+        "Potrafi złożyć tylko Aard",
+        "Potrafi złożyć wszystkie, których się uczy"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "1f0d1b3139a2",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Jak Ciri wspomina swoje pierwsze wrażenie po poznaniu Yennefer w świątyni Melitele?",
+      "correct": "Nie lubiła jej",
+      "wrong": [
+        "Od razu poczuła do niej zaufanie",
+        "Była przekonana, że zna ją z Cintry",
+        "Uznała ją za łagodną i nieśmiałą"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "2e735a590f91",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Jakim mianem Eskel i Vesemir witają Geralta, gdy przybywa do Kaer Morhen?",
+      "correct": "Wilku",
+      "wrong": [
+        "Rzeźniku",
+        "Lisie",
+        "Białowłosy"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "9cd942de1570",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Jak Loża chce ukryć bliznę na twarzy Ciri w książce „Pani Jeziora”?",
+      "correct": "Iluzją",
+      "wrong": [
+        "Grubą warstwą makijażu",
+        "Maską zasłaniającą część twarzy",
+        "Zabiegiem chirurgicznym"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "0e9956d3e1c8",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Jak Myszowór potajemnie ostrzega Geralta podczas uczty w opowiadaniu „Kwestia ceny”?",
+      "correct": "Układa okruszki chleba w napis",
+      "wrong": [
+        "Podaje list ukryty w pucharze",
+        "Pisze ostrzeżenie winem na obrusie",
+        "Szepcze przez zaczarowany pierścień"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "a85f352566b4",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Jak Yennefer czule nazywa Ciri, gdy ta krwawi z nosa po zaczerpnięciu mocy?",
+      "correct": "Córeczką",
+      "wrong": [
+        "Siostrzyczką",
+        "Uczennicą",
+        "Księżniczką"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "1199a2746314",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Jak Yennefer nazywa porozumiewanie się z Ciri bez użycia głosu?",
+      "correct": "Telepatią",
+      "wrong": [
+        "Teleportacją",
+        "Hipnozą",
+        "Psychokinezą"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "8f0231723744",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Jak obcy głos przemawiający przez Ciri w „Krwi elfów” nazywa dziewczynę?",
+      "correct": "Dziecko Starszej Krwi",
+      "wrong": [
+        "Biała Królowa",
+        "Córka Nilfgaardu",
+        "Pani Jeziora"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "d04f8159451d",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Jakie zjawisko Geralt rozpoznaje w elfiej legendzie o Królowej Zimy w opowiadaniu „Okruch lodu”?",
+      "correct": "Dziki Gon",
+      "wrong": [
+        "Białe Zimno",
+        "Czarne Słońce",
+        "Koniunkcję Sfer"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "d44e761bf670",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Jakimi słowami Geralt przedstawia Ciri wiedźminom pierwszego wieczoru w Kaer Morhen?",
+      "correct": "„Ona jest naszym przeznaczeniem”",
+      "wrong": [
+        "„To księżniczka Cintry”",
+        "„To moja córka”",
+        "„To nasza nowa uczennica”"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "09792def86f7",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Kim według ballady Jaskra jest Ciri dla Geralta?",
+      "correct": "Dzieckiem Niespodzianką",
+      "wrong": [
+        "Jego siostrzenicą",
+        "Jego rodzoną córką",
+        "Uczennicą przysłaną przez Nenneke"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "bbc333fb1ed7",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Czym Radcliffe tłumaczy niezwykły refleks wiedźminów w rozmowie po balladzie Jaskra?",
+      "correct": "Mutacjami",
+      "wrong": [
+        "Elfimi przodkami",
+        "Używaniem zaklęć w czasie walki",
+        "Ukrytą zdolnością przemiany w wilka"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "426817bfffdc",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Kto przepędza upiora szczypiącego gości na weselu w Rozrogu w opowiadaniu „Coś się kończy, coś się zaczyna”?",
+      "correct": "Nenneke",
+      "wrong": [
+        "Myszowór",
+        "Triss Merigold",
+        "Yennefer"
+      ],
+      "source": "Andrzej Sapkowski: Coś się kończy, coś się zaczyna — opowiadanie alternatywne"
+    },
+    {
+      "id": "de4f553014d2",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Kto zaklęciem obezwładnia Geralta, gdy ten broni Dorregaraya w opowiadaniu „Granica możliwości”?",
+      "correct": "Yennefer",
+      "wrong": [
+        "Villentretenmerth",
+        "Dorregaray",
+        "Stregobor"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "0e0dc580d9ac",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Który dorosły wiedźmin w Kaer Morhen jest przedstawiony w „Krwi elfów” jako najmłodszy?",
+      "correct": "Lambert",
+      "wrong": [
+        "Vesemir",
+        "Eskel",
+        "Geralt"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "e2ce163175b2",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Który wiedźmin jest najstarszy spośród zimujących w Kaer Morhen w „Krwi elfów”?",
+      "correct": "Vesemir",
+      "wrong": [
+        "Eskel",
+        "Lambert",
+        "Coen"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "7907afa1bc1f",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Który wiedźmin spędza w Kaer Morhen swoją pierwszą zimę w „Krwi elfów”?",
+      "correct": "Coen",
+      "wrong": [
+        "Vesemir",
+        "Lambert",
+        "Eskel"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "31581fd91084",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Którym Znakiem Geralt przepala więzy po pojmaniu przez kompanię Shevlova?",
+      "correct": "Igni",
+      "wrong": [
+        "Quen",
+        "Yrden",
+        "Aard"
+      ],
+      "source": "Andrzej Sapkowski: Sezon burz"
+    },
+    {
+      "id": "6df2aee4b053",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Którą czarodziejkę wiedźmini proszą o pomoc w opiece nad Ciri w Kaer Morhen?",
+      "correct": "Triss Merigold",
+      "wrong": [
+        "Yennefer z Vengerbergu",
+        "Keirę Metz",
+        "Filippę Eilhart"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "b7041eff0620",
+      "category": "Magia i wiedźmini",
+      "level": "medium",
+      "prompt": "Na co reaguje drganiem wiedźmiński medalion?",
+      "correct": "Na magię",
+      "wrong": [
+        "Na kłamstwo",
+        "Na srebro",
+        "Na zimno"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "580b10fb8672",
+      "category": "Magia i wiedźmini",
+      "level": "hard",
+      "prompt": "Jakie miejsce widzi w transie dziewczyna uratowana przed stosem w książce „Chrzest ognia”?",
+      "correct": "Wieżę Jaskółki na skutym lodem jeziorze",
+      "wrong": [
+        "Kaer Morhen pod śniegiem",
+        "Thanedd w płomieniach",
+        "Zamek Stygga"
+      ],
+      "source": "Andrzej Sapkowski: Chrzest ognia"
+    },
+    {
+      "id": "ca9dfd87b535",
+      "category": "Polityka i wojny",
+      "level": "easy",
+      "prompt": "Którą władczynię nazywano Lwicą z Cintry?",
+      "correct": "Calanthe",
+      "wrong": [
+        "Meve",
+        "Hedwig",
+        "Adalię"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "abf179cb0cae",
+      "category": "Polityka i wojny",
+      "level": "easy",
+      "prompt": "Kto opowiada Geraltowi o upadku Cintry w opowiadaniu „Coś więcej”?",
+      "correct": "Jaskier",
+      "wrong": [
+        "Yurga",
+        "Freixenet",
+        "Myszowór"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "9b6000fefb76",
+      "category": "Polityka i wojny",
+      "level": "easy",
+      "prompt": "Która czarodziejka organizuje na Thanedd aresztowania czarodziejów sprzyjających Nilfgaardowi?",
+      "correct": "Filippa Eilhart",
+      "wrong": [
+        "Tissaia de Vries",
+        "Margarita Laux-Antille",
+        "Yennefer"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "8769cb200823",
+      "category": "Polityka i wojny",
+      "level": "easy",
+      "prompt": "O śmierci którego króla Ciri mówi w transie przed czarodziejami na Thanedd?",
+      "correct": "Vizimira",
+      "wrong": [
+        "Demawenda",
+        "Henselta",
+        "Foltesta"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "969f0d893530",
+      "category": "Polityka i wojny",
+      "level": "easy",
+      "prompt": "Skąd ludzie wypędzili elfy Filavandrela według opowiadania „Kraniec świata”?",
+      "correct": "Z Doliny Kwiatów",
+      "wrong": [
+        "Z Brokilonu",
+        "Z Mahakamu",
+        "Z Tir ná Lia"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "c92b3d1d64d7",
+      "category": "Polityka i wojny",
+      "level": "easy",
+      "prompt": "Wnuczką której królowej jest Ciri?",
+      "correct": "Calanthe z Cintry",
+      "wrong": [
+        "Adalii z Cintry",
+        "Meve z Lyrii",
+        "Hedwig z Redanii"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "46ce90cd0a9c",
+      "category": "Polityka i wojny",
+      "level": "medium",
+      "prompt": "Co oprócz podboju Cintry Emhyr chciał osiągnąć przez najazd na to królestwo?",
+      "correct": "Zdobyć Ciri",
+      "wrong": [
+        "Zagarnąć flotę Skellige",
+        "Pojmać Foltesta",
+        "Uwięzić Vilgefortza"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "54779b6a50d1",
+      "category": "Polityka i wojny",
+      "level": "medium",
+      "prompt": "Co król Foltest proponuje odbić Nilfgaardowi podczas narady w Hagge?",
+      "correct": "Cintrę",
+      "wrong": [
+        "Brugge",
+        "Sodden",
+        "Verden"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "4dd396e41ec7",
+      "category": "Polityka i wojny",
+      "level": "medium",
+      "prompt": "Kto pod koniec „Czasu pogardy” poleca prefektowi Gellibolu powiesić Szczury, włącznie z ich nową towarzyszką?",
+      "correct": "Stefan Skellen",
+      "wrong": [
+        "Vattier de Rideaux",
+        "Menno Coehoorn",
+        "Leo Bonhart"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "2bd126d2a1d7",
+      "category": "Polityka i wojny",
+      "level": "medium",
+      "prompt": "Komu według relacji Jaskra formalnie przypadają rządy w Redanii po śmierci Vizimira?",
+      "correct": "Królowej Hedwig",
+      "wrong": [
+        "Filippie Eilhart",
+        "Dijkstrze",
+        "Radowidowi"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "3c38fb9b759e",
+      "category": "Polityka i wojny",
+      "level": "medium",
+      "prompt": "Która królowa bierze udział w tajnej naradzie królów Północy w zamku Hagge?",
+      "correct": "Meve z Lyrii",
+      "wrong": [
+        "Hedwig z Redanii",
+        "Zuleyka z Koviru",
+        "Francesca Findabair"
+      ],
+      "source": "Andrzej Sapkowski: Krew elfów"
+    },
+    {
+      "id": "1a92d9319285",
+      "category": "Polityka i wojny",
+      "level": "medium",
+      "prompt": "Od kogo król Belohun dostaje medalion, który go zabija, w książce „Sezon burz”?",
+      "correct": "Od narzeczonej",
+      "wrong": [
+        "Od instygatora",
+        "Od syna",
+        "Od Koral"
+      ],
+      "source": "Andrzej Sapkowski: Sezon burz"
+    },
+    {
+      "id": "c5a9978db52f",
+      "category": "Stworzenia i przyroda",
+      "level": "easy",
+      "prompt": "Jakiego zabitego potwora Geralt przywozi do Blaviken na początku opowiadania „Mniejsze zło”?",
+      "correct": "Kikimorę",
+      "wrong": [
+        "Wiwernę",
+        "Strzygę",
+        "Mantikorę"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "dd372be64414",
+      "category": "Stworzenia i przyroda",
+      "level": "easy",
+      "prompt": "Kto okazuje się sprawcą ataków na poławiaczy pereł w opowiadaniu „Trochę poświęcenia”?",
+      "correct": "Ryboludy",
+      "wrong": [
+        "Syreny",
+        "Rusałki",
+        "Utopce"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "7ccbe8c86a70",
+      "category": "Stworzenia i przyroda",
+      "level": "easy",
+      "prompt": "W jakie zwierzę przeobraża się Vereena podczas walki z Geraltem w opowiadaniu „Ziarno prawdy”?",
+      "correct": "W nietoperza",
+      "wrong": [
+        "W kruka",
+        "W wilka",
+        "W żmiję"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "334ff16266a7",
+      "category": "Stworzenia i przyroda",
+      "level": "medium",
+      "prompt": "Co Ciri zaczyna jeść na pustyni Korath, naśladując jednorożca?",
+      "correct": "Mrówki",
+      "wrong": [
+        "Pająki",
+        "Żuki",
+        "Skorpiony"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
+    },
+    {
+      "id": "87ac07986859",
+      "category": "Stworzenia i przyroda",
+      "level": "medium",
+      "prompt": "Jakie stworzenie Geralt ma złowić w jeziorze w Thornhall w książce „Rozdroże kruków”?",
+      "correct": "Hippokampa",
+      "wrong": [
+        "Żyrytwę",
+        "Kikimorę",
+        "Utopca"
+      ],
+      "source": "Andrzej Sapkowski: Rozdroże kruków"
+    },
+    {
+      "id": "bf9835598e00",
+      "category": "Stworzenia i przyroda",
+      "level": "medium",
+      "prompt": "Jakie stworzenie staje między Bonhartem a Ciri na lodzie jeziora Tarn Mira?",
+      "correct": "Jednorożec",
+      "wrong": [
+        "Wilkołak",
+        "Biały smok",
+        "Gryf"
+      ],
+      "source": "Andrzej Sapkowski: Wieża Jaskółki"
+    },
+    {
+      "id": "2614f13175fc",
+      "category": "Stworzenia i przyroda",
+      "level": "medium",
+      "prompt": "Jakie zwierzęta rozszarpują Javila Fysha uciekającego łódką w książce „Sezon burz”?",
+      "correct": "Żółw i krokodyl",
+      "wrong": [
+        "Krokodyl i rekin",
+        "Wąż i żółw",
+        "Rekin i wąż"
+      ],
+      "source": "Andrzej Sapkowski: Sezon burz"
+    },
+    {
+      "id": "a64000801b38",
+      "category": "Stworzenia i przyroda",
+      "level": "medium",
+      "prompt": "Z jakim jaszczurem Geralt walczy bez miecza na arenie Pyrala Pratta w książce „Sezon burz”?",
+      "correct": "Z wigilozaurem",
+      "wrong": [
+        "Z wiwerną",
+        "Z kuroliszkiem",
+        "Z bazyliszkiem"
+      ],
+      "source": "Andrzej Sapkowski: Sezon burz"
+    },
+    {
+      "id": "4ca936cb1b9f",
+      "category": "Stworzenia i przyroda",
+      "level": "medium",
+      "prompt": "Jakiemu potworowi Geralt zastępuje drogę, broniąc dzieci na końcu „Rozdroża kruków”?",
+      "correct": "Skolopendromorfowi",
+      "wrong": [
+        "Kikimorze",
+        "Meganeurze",
+        "Strzydze"
+      ],
+      "source": "Andrzej Sapkowski: Rozdroże kruków"
+    },
+    {
+      "id": "7d394e70dfff",
+      "category": "Stworzenia i przyroda",
+      "level": "medium",
+      "prompt": "Z kim romansuje wampir Regis podczas pobytu w Toussaint?",
+      "correct": "Z sukkubem",
+      "wrong": [
+        "Z bruxą",
+        "Z driadą",
+        "Z rusałką"
+      ],
+      "source": "Andrzej Sapkowski: Pani Jeziora"
+    },
+    {
+      "id": "7b0f72cdc54d",
+      "category": "Życie i kultura",
+      "level": "easy",
+      "prompt": "Co Geralt odpowiada Stregoborowi, gdy ten nakłania go do wybrania mniejszego zła?",
+      "correct": "Że woli nie wybierać wcale",
+      "wrong": [
+        "Że zawsze popiera legalną władzę",
+        "Że zdaje się na los",
+        "Że wybiera dobro większości"
+      ],
+      "source": "Andrzej Sapkowski: Ostatnie życzenie"
+    },
+    {
+      "id": "af26d107e18c",
+      "category": "Życie i kultura",
+      "level": "medium",
+      "prompt": "Co Jaskier robi z balladą o miłości wiedźmina i Essi na końcu opowiadania „Trochę poświęcenia”?",
+      "correct": "Nigdy nikomu jej nie śpiewa",
+      "wrong": [
+        "Śpiewa ją tylko Geraltowi",
+        "Oddaje ją Essi",
+        "Śpiewa ją na dworze Aglovala"
+      ],
+      "source": "Andrzej Sapkowski: Miecz przeznaczenia"
+    },
+    {
+      "id": "14ec933a4e8f",
+      "category": "Życie i kultura",
+      "level": "medium",
+      "prompt": "Do czego Jaskier porównuje wojnę w książce „Chrzest ognia”?",
+      "correct": "Do burdelu ogarniętego pożarem",
+      "wrong": [
+        "Do kotła z wrzącą smołą",
+        "Do polowania na ślepego wilka",
+        "Do szachownicy przewróconej przez dziecko"
+      ],
+      "source": "Andrzej Sapkowski: Chrzest ognia"
+    },
+    {
+      "id": "b027a3c26b16",
+      "category": "Życie i kultura",
+      "level": "medium",
+      "prompt": "Jaki napis wyryto na krasnoludzkim mieczu Zoltana w książce „Chrzest ognia”?",
+      "correct": "„Na pohybel skurwysynom!”",
+      "wrong": [
+        "„Za cesarza i ojczyznę!”",
+        "„Śmierć zdrajcom!”",
+        "„Za wolność Mahakamu!”"
+      ],
+      "source": "Andrzej Sapkowski: Chrzest ognia"
+    },
+    {
+      "id": "b6d74da64217",
+      "category": "Życie i kultura",
+      "level": "medium",
+      "prompt": "Kto pełni rolę drużbów na ślubie Geralta i Yennefer w „Coś się kończy, coś się zaczyna”?",
+      "correct": "Triss Merigold i Eskel",
+      "wrong": [
+        "Ciri i Galahad",
+        "Jaskier i Dainty Biberveldt",
+        "Nenneke i Vesemir"
+      ],
+      "source": "Andrzej Sapkowski: Coś się kończy, coś się zaczyna — opowiadanie alternatywne"
+    },
+    {
+      "id": "b348a18e35ca",
+      "category": "Życie i kultura",
+      "level": "medium",
+      "prompt": "Z czym, jak mówi Vilgefortz po pojedynku na Thanedd, Geralt pomylił niebo?",
+      "correct": "Z gwiazdami odbitymi nocą w stawie",
+      "wrong": [
+        "Ze światłami statków na morzu",
+        "Z błyskami zaklęć",
+        "Z ogniem nad wieżą"
+      ],
+      "source": "Andrzej Sapkowski: Czas pogardy"
     }
   ],
   "source": "Andrzej Sapkowski: opowiadania i powieści; autorska redakcja pytań i odpowiedzi"
 }
-QUIZ_DATA_f44884edfb481a051cdf6f818d5dd702f1a6788a3ca4821ad26f792153db8a6a
+QUIZ_DATA_becfa1e5d6db8a104a8b478ab6e73be8ec9f0e4dea84d5580ae4dae2bcc80ed7
     end
   end
 end

@@ -34,6 +34,7 @@ require_relative "axel_pong"
 require_relative "audio_ball"
 require_relative "war"
 require_relative "scientific_war"
+require_relative "duck_racing"
 require_relative "registry"
 
 module GameRoomGames
@@ -70,6 +71,7 @@ module GameRoomGames
     GameRoomGames::AxelPong,
     GameRoomGames::AudioBall,
     GameRoomGames::War,
-    GameRoomGames::ScientificWar
+    GameRoomGames::ScientificWar,
+    GameRoomGames::DuckRacing
   ])
 end

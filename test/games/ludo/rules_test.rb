@@ -98,6 +98,6 @@ assert(
 
 ludo_rules = ludo.rule_book.sections.flat_map(&:paragraphs).join(" ")
 assert(ludo_rules.include?("1, 14, 27 and 40"), "Ludo rules do not explain the different shared-track starting fields")
-assert(ludo_rules.include?("wraps from 52 back to 1"), "Ludo rules do not explain shared-track wrapping")
+assert(ludo_rules.include?("passing from 52 back to 1"), "Ludo rules do not explain shared-track wrapping")
 
 puts 'PASS ludo: model rules and presentation'

@@ -78,6 +78,27 @@ module GameRoomGames
         normalize_options({})
       end
 
+      # Only the creator's option form uses these defaults. Replay and saved
+      # tables keep their recorded language, regardless of the viewer's UI.
+      def table_creation_options(values = {})
+        source = values.dup
+        key = content_language_option_key
+        if key && option_source_value(source, key).to_s.empty?
+          ids = effective_option_definitions.find { |definition| definition.key.to_s == key }.choices.map(&:value)
+          code = ->(value) { value.to_s.downcase.split(/[-_]/).first }
+          language = ids.find { |id| code.call(id) == code.call(GameRoomLocalization.primary_language) } ||
+            ids.find { |id| code.call(id) == "en" }
+          raise ArgumentError, "#{id} has no content in the interface language or English" unless language
+
+          source[key] = language
+        end
+        normalize_options(source)
+      end
+
+      def content_language_option_key
+        GameRoomContent::LANGUAGE_OPTION_KEY unless content_pack_kind.to_s.empty?
+      end
+
       def new_game_options(values)
         normalize_options(values)
       end
@@ -141,7 +162,31 @@ module GameRoomGames
       end
 
       def validation_error(options, player_count: nil)
-        content_options_error(options) || thinking_time_options_error(options) || bot_delay_options_error(options) || options_error(options, player_count: player_count)
+        content_options_error(options) || multiple_values_options_error(options) || thinking_time_options_error(options) || bot_delay_options_error(options) || options_error(options, player_count: player_count)
+      end
+
+      # ID-based checklists are opt-in. Keep unavailable IDs until validation
+      # so a changed catalogue cannot silently select a different resource.
+      # Existing multiple_choice options retain their historical bit masks.
+      def multiple_values_options_error(options)
+        effective_option_definitions(options).each do |definition|
+          next unless definition.kind.to_s == "multiple_values"
+
+          key = definition.key.to_s
+          value = if options.respond_to?(:key?) && (options.key?(key) || options.key?(key.to_sym))
+            option_source_value(options, key)
+          else
+            definition.default
+          end
+          choices = definition.choices.to_a.map(&:value)
+          unless choices.all? { |choice| choice.is_a?(String) && !choice.empty? && choice.valid_encoding? } && choices.uniq.length == choices.length
+            raise ArgumentError, "ID-based option choices must be unique strings"
+          end
+          unless value.is_a?(Array) && value.all? { |item| item.is_a?(String) && choices.include?(item) }
+            return _("The selection for %{option} contains an unavailable choice.") % { option: definition.label }
+          end
+        end
+        nil
       end
 
       # Opt in only when the engine implements an authoritative timeout. A
@@ -207,6 +252,11 @@ module GameRoomGames
           when :multiple_choice
             selected = definition.choices.to_a.each_with_index.filter_map do |choice, index|
               choice.label if (value.to_i & (1 << index)) != 0
+            end
+            "#{label}: #{selected.join(', ')}" if !selected.empty?
+          when :multiple_values
+            selected = definition.choices.to_a.filter_map do |choice|
+              choice.label if value.is_a?(Array) && value.include?(choice.value)
             end
             "#{label}: #{selected.join(', ')}" if !selected.empty?
           else
@@ -426,6 +476,13 @@ module GameRoomGames
           else
             value.to_i & valid_mask
           end
+        when "multiple_values"
+          # Do not interpret numbers as a mask or discard unknown identifiers.
+          # Validation reports incompatible data instead of picking a fallback.
+          return value unless value.is_a?(Array)
+          return value.dup unless value.all? { |item| item.is_a?(String) && item.valid_encoding? }
+
+          value.map(&:dup).uniq.sort
         else
           value
         end

@@ -117,7 +117,7 @@
           "es": "- Sin la obligación de capturar el máximo, puedes elegir cualquier secuencia legal. La captura máxima solo puede exigirse si también son obligatorias la captura y su continuación."
         },
         {
-          "es": "- Puedes permitir que las fichas se muevan una casilla vacía en diagonal hacia atrás. Normalmente solo retroceden al capturar."
+          "es": "- Puedes permitir que las fichas retrocedan una casilla en diagonal, siempre que esté vacía. Normalmente solo retroceden al capturar."
         },
         {
           "es": "- La prioridad de la dama obliga a usar una dama si puede realizar una de las secuencias empatadas en longitud máxima. Requiere activar la captura máxima y está desactivada por defecto."

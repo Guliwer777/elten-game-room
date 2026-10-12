@@ -11,7 +11,7 @@
           "pl": "W Domino dokładasz kostki do wspólnego łańcucha i starasz się jako pierwszy opróżnić rękę. Kostki, z którymi zostaniesz na koniec rundy, przynoszą punkty karne. Po osiągnięciu limitu punktów odpadasz. Wygrywasz, gdy wszyscy przeciwnicy odpadną."
         },
         {
-          "pl": "Zwykła gra jest dla dwóch do czterech osób. Używa się dwudziestu ośmiu kostek, na których każda połówka ma od zera do sześciu oczek. Każdy dostaje siedem kostek, a pozostałe można później dobierać."
+          "pl": "Przy zwykłych ustawieniach może grać od dwóch do czterech osób. Używa się dwudziestu ośmiu kostek, na których każda połówka ma od zera do sześciu oczek. Każdy dostaje siedem kostek, a pozostałe można później dobierać."
         }
       ]
     },
@@ -59,7 +59,7 @@
           "pl": "Przy zwykłych ustawieniach wolno dobrać jedną kostkę również wtedy, gdy masz czym zagrać. Nie musisz jednak dobierać przed zwykłym wyłożeniem kostki."
         },
         {
-          "pl": "Jeśli po dobraniu nadal nie masz ruchu, kolej przechodzi dalej. Kiedy stos jest pusty i nie masz pasującej kostki, gra od razu pomija Twoją turę."
+          "pl": "Jeśli po dobraniu nadal nie możesz wykonać ruchu, turę rozpoczyna następny gracz. Kiedy stos jest pusty i nie masz pasującej kostki, gra od razu pomija Twoją turę."
         }
       ]
     },
@@ -70,7 +70,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Runda kończy się, gdy ktoś wyłoży swoją ostatnią kostkę. Może też zostać zablokowana: stos jest pusty, każdy miał już okazję ruszyć i nikt nie potrafi nic dołożyć."
+          "pl": "Runda kończy się, gdy ktoś wyłoży swoją ostatnią kostkę. Może też zostać zablokowana: stos jest pusty, każdy miał już okazję wykonać ruch i nikt nie może nic dołożyć."
         },
         {
           "pl": "Punkty za rundę liczy się następująco:"
@@ -205,7 +205,7 @@
           "pl": "Zwykle nie ma ograniczenia czasu. W ustawieniach przed grą można określić, ile sekund gracz ma na całą turę. Dobranie kostki nie uruchamia czasu od nowa."
         },
         {
-          "pl": "Po przekroczeniu czasu gra dobiera za Ciebie jedną kostkę, jeśli jeszcze nie dobierałeś w tej turze, stos nie jest pusty i dobieranie nie jest zabronione. Następnie oddaje kolej bez zagrania kostki. Ta kara działa również wtedy, gdy miałeś czym zagrać; zasada dobierania aż do pasującej kostki nie zwiększa jej do kilku kostek."
+          "pl": "Po przekroczeniu czasu gra dobiera za Ciebie jedną kostkę, jeśli jeszcze nie dobierałeś w tej turze, stos nie jest pusty i dobieranie nie jest zabronione. Twoja tura kończy się bez dokładania kostki, a następny ruch wykonuje kolejny gracz. Ta kara działa również wtedy, gdy miałeś czym zagrać; zasada dobierania aż do pasującej kostki nie zwiększa jej do kilku kostek."
         }
       ]
     },

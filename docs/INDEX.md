@@ -15,6 +15,9 @@ translations must be kept up to date together.
 
 - [New Game Room fixes plan](NEXT_FIXES_PLAN.md):
   implementation scope and explicitly marked questions still to be settled.
+- [Duck Racing implementation plan](DUCK_RACING_PLAN.md):
+  implementation in progress, starting with Peaceful Pond; agreed rules and
+  required local and live-game verification.
 
 ## Maintenance
 

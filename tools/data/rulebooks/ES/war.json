@@ -19,7 +19,7 @@
       },
       "paragraphs": [
         {
-          "es": "Pulsa Enter cuando te toque. Una vez que todos han puesto una carta, la más alta se lleva todas las de ese enfrentamiento. De menor a mayor van nueve, diez, jota, reina, rey y as. Los palos no influyen."
+          "es": "Pulsa Enter cuando te toque. Una vez que todos han puesto una carta, quien haya jugado la más alta se lleva todas las de ese enfrentamiento. De menor a mayor van nueve, diez, jota, reina, rey y as. Los palos no influyen."
         },
         {
           "es": "Las cartas capturadas se colocan en orden aleatorio debajo de las que aún tenías. Después empieza otro enfrentamiento. C consulta las cartas actuales de la mesa y V el resultado del anterior."
@@ -53,7 +53,7 @@
           "es": "Al resolverse un enfrentamiento se elimina a quienes no tienen cartas. Si solo queda una persona, gana. Si todos se quedan sin cartas, hay empate."
         },
         {
-          "es": "La partida dura como máximo 20 enfrentamientos. Si no se ha decidido antes, gana quien tenga más cartas; varios máximos iguales empatan. E cuenta las cartas y Ctrl+T consulta el número de enfrentamiento y el límite."
+          "es": "La partida dura como máximo 20 enfrentamientos. Si no se ha decidido antes, gana quien tenga más cartas; si varias personas tienen esa misma cantidad, hay empate. E cuenta las cartas y Ctrl+T consulta el número de enfrentamiento y el límite."
         }
       ]
     },

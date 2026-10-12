@@ -53,6 +53,12 @@
     "source": "games/domino.rb",
     "output": "games/generated/rulebooks/domino.rb"
   },
+  "duck_racing.json": {
+    "class": "DuckRacing",
+    "kind": "class",
+    "source": "games/duck_racing.rb",
+    "output": "games/generated/rulebooks/duck_racing.rb"
+  },
   "farkle.json": {
     "class": "Farkle",
     "kind": "class",

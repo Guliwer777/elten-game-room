@@ -22,7 +22,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Na začátku tahu vyber šipkami hod kostkou a potvrď Enterem. Čísla od 3 do 6 přidají právě tolik bodů do tohoto tahu. Pak se rozhodni, jestli hodíš znovu, nebo vybereš uložení bodů. Uložení potvrzené Enterem přičte výsledek tahu do banku a předá řadu dalšímu hráči."
+          "cs": "Na začátku tahu vyber šipkami hod kostkou a potvrď Enterem. Čísla od 3 do 6 přidají právě tolik bodů do tohoto tahu. Pak se rozhodni, jestli hodíš znovu, nebo vybereš uložení bodů. Uložení potvrď Enterem: výsledek tahu se přičte do banku a na řadu přijde další hráč."
         },
         {
           "cs": "Když padne 4 a potom 5, máš připravených 9 bodů. Zastavíš-li se, uložíš je. Pokud místo toho hodíš jedničku, těchto 9 ztratíš; dříve uložených bodů se ztráta netýká."

@@ -21,8 +21,8 @@ end
 def assert(condition, message); raise message unless condition; end
 pack = GameRoomContent.registry.pack("quiz.witcher.books.pl")
 assert(pack && !pack.verified?, "Registration must not load the database")
-assert(pack.title == "Wiedźmin — książki", "Wrong set title")
-assert(pack.set_id == "quiz.witcher.books" && pack.version == 1, "New set must have its own identity")
+assert(pack.title == "Witcher — books", "The set title must follow the English interface, not its Polish content")
+assert(pack.set_id == "quiz.witcher.books" && pack.version == 2, "Reviewed books set must retain its identity and current data version")
 %w[quiz.witcher.pl quiz.witcher.g.pl quiz.witcher.b.pl].each do |id|
   assert(GameRoomContent.registry.pack(id).nil?, "Retired Witcher set remains available: #{id}")
 end

@@ -1,4 +1,5 @@
 require_relative "../support/binary_rule_dictionary"
+require_relative "../support/authored_rulebooks"
 
 class Form
   class << self
@@ -18,8 +19,8 @@ windows = 0
   EltenGameRoom::GAME_REGISTRY.ids.each do |id|
     game = EltenGameRoom::GAME_REGISTRY.build(id)
     book = game.rule_book(options: game.default_options)
-    authored = JSON.parse(File.read(File.join(BinaryRulesLoad::ROOT, "tools/data/rulebooks/#{id}.json"), encoding: "UTF-8"))
-    sections = game.rule_sections.to_h { |section| [section.id.to_s, section] }
+    authored = GameRoomTest::Rulebooks.read(id, language, root: BinaryRulesLoad::ROOT)
+    sections = book.sections.to_h { |section| [section.id.to_s, section] }
     authored.fetch("sections").each do |section|
       key = language == "pl" ? "pl" : "en"
       actual = sections.fetch(section.fetch("id"))

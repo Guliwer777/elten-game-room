@@ -8,7 +8,7 @@
       },
       "paragraphs": [
         {
-          "es": "En 3-5-8 juegan tres personas. Cada una pone una carta y la más alta recoge las tres: ese conjunto es una baza. En la mayoría de las manos interesa ganar muchas, pero cada jugador tiene una meta distinta: tres, cinco u ocho. Superarla da puntos; no alcanzarla los resta."
+          "es": "En 3-5-8 juegan tres personas. Cada una pone una carta y el ganador recoge las tres: ese conjunto es una baza. En la mayoría de las manos interesa ganar muchas, pero cada jugador tiene una meta distinta: tres, cinco u ocho. Superarla da puntos; no alcanzarla los resta."
         },
         {
           "es": "La partida consta de dieciocho manos. En cada una, una persona distinta elige sus reglas. Al terminar gana quien haya sumado más puntos."
@@ -123,7 +123,7 @@
       },
       "paragraphs": [
         {
-          "es": "A partir de la segunda mano, si la actual tiene triunfo, los puntos de la anterior dan derecho a intercambiar. Puedes entregar tantas cartas como puntos positivos hayas ganado a quienes terminaron en negativo. Cada receptor admite como máximo tantas entregas como puntos perdió. Solo cuenta la mano anterior, no la puntuación acumulada."
+          "es": "A partir de la segunda mano, si la actual tiene triunfo, los puntos de la anterior dan derecho a intercambiar. Si obtuviste puntos positivos, puedes entregar ese mismo número de cartas a los jugadores que acabaron la mano en negativo. Nadie puede recibir más cartas que puntos haya perdido. Solo cuenta la mano anterior, no la puntuación acumulada."
         },
         {
           "es": "Se intercambia después de elegir triunfo y repartir las dieciséis cartas, pero antes de tomar la reserva. Si dos jugadores tienen derecho, empieza quien tenga la meta mayor en la mano actual. Selecciona una carta con las flechas y Enter; después elige al destinatario y confirma con Enter."

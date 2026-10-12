@@ -105,7 +105,7 @@
           "cs": "- Bez požadavku přesného hodu figurka dojde do cíle i tehdy, když padne více, než jí zbývá."
         },
         {
-          "cs": "- Bez blokád skupina figurek soupeře nezastavuje. Na běžném poli lze potom jediným tahem vyhodit celou soupeřovu skupinu. Vstupní pole zůstávají bezpečná."
+          "cs": "- Bez blokád skupiny figurek neblokují soupeřům cestu. Na běžném poli lze potom jediným tahem vyhodit celou soupeřovu skupinu. Vstupní pole zůstávají bezpečná."
         }
       ]
     },
