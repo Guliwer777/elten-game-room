@@ -21,6 +21,7 @@ assert_equal(expected, suites.values.flatten.sort, 'missing or multiply counted 
 assert(suites.values.all? { |items| !items.empty? }, 'empty suite')
 assert_equal('native', GameRoomTestSuites.classify('test/realtime/realtime_native_receive_test.rb'))
 assert_equal('models', GameRoomTestSuites.classify('test/model_contract_test.rb'))
+assert_equal('integration', GameRoomTestSuites.classify('test/quiz_contributions/model_repository_test.rb'))
 assert_raises(ArgumentError) { GameRoomTestSuites.select('typo') }
 assert_equal(GameRoomTestSuites::ROOT_TESTS.sort, Dir.glob('test/*_test.rb', base: root).map { |entry| File.basename(entry) }.sort,
   'specific scenarios leaked into the test root')

@@ -144,8 +144,20 @@ module DuckGameAdapterTest
       result
     end
 
-    def start(seed: 17)
-      accept({'action' => 'start'}, author: owner, seed: seed)
+    def start(seed: 17, legacy: false)
+      if legacy
+        # Recorded pre-250 starts have no challenge_flow marker. Exercise their
+        # replay and pending uploads without making new production games use it.
+        @now_ms += 10
+        data = {'action' => 'start', 'revision' => 0, 'session' => @session.fetch('__id'),
+          'at' => @now_ms, 'seed' => seed, 'fingerprint' => @resources.fetch(:fingerprint)}
+        plan = GameRoomGames::ActionPlan.new(events: GameRoomActionPayload.commands(@game.id, data))
+        append(plan, actor: players.first, author: owner)
+        assert_equal(@events, replay.accepted_events, 'Historical start was rejected')
+        assert_equal(nil, replay.state[:challenge_flow])
+      else
+        accept({'action' => 'start'}, author: owner, seed: seed)
+      end
       replay
     end
 

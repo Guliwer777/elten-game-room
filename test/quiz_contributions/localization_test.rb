@@ -1,7 +1,8 @@
 require_relative '../support/quiz_creator_native'
 
 root = File.expand_path('../..', __dir__)
-ids = Dir[File.join(root, 'lib/quiz_contributions/*.rb')].flat_map do |path|
+sources = Dir[File.join(root, 'lib/quiz_contributions/*.rb')] + [File.join(root, 'lib/quiz_reports.rb')]
+ids = sources.flat_map do |path|
   File.read(path, encoding: 'UTF-8').scan(/_\(['"]([^'"\n]+)['"]\)/).flatten
 end.uniq
 program = EltenGameRoom.allocate

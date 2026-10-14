@@ -15,6 +15,8 @@ class DuckClientPromptNativeTest
   QUESTION_KINDS = %w[quiz copy_number arithmetic race_question].freeze
   AUDIO_KINDS = GameRoomDuckRacing::AudioChallenges::TYPES.values.freeze
   AUTOPLAY_KINDS = %w[count_ducks rhythm simon hit_duck].freeze
+  LOCAL_PRACTICE = GameRoomDuckRacing::ChallengeEngine::LOCAL_SCORES
+  INDEPENDENT = GameRoomDuckRacing::ChallengeEngine::INDEPENDENT
 
   class Driver < DuckChallengeNativeDriver
     attr_accessor :program
@@ -42,6 +44,7 @@ class DuckClientPromptNativeTest
     def initialize
       super
       @data = {}
+      @durations[GameRoomDuckRacing::ChallengeAudio::QUACK_ASSET] = 400
     end
 
     def read_json(path, default:)
@@ -62,7 +65,10 @@ class DuckClientPromptNativeTest
       scenario("quiz full lifecycle from #{from}, focus #{focus}") { quiz_transition(from, focus) }
     end
     KINDS.each do |kind|
-      [:race, :preparing].product([:game, :chat]).each do |from, role|
+      # Independent attempts have no shared preparing phase in protocol 2.
+      # Test their local practice entry and an already-open challenge instead.
+      entries = INDEPENDENT.include?(kind) ? [:race] : [:race, :preparing]
+      entries.product([:game, :chat]).each do |from, role|
         scenario("#{kind} from #{from}, focus #{role}") { challenge_transition(kind, from, role) }
       end
       scenario("#{kind}, cold entry") { cold_challenge_entry(kind) }
@@ -114,9 +120,11 @@ class DuckClientPromptNativeTest
     @h.open_round if [:preparing, :playing].include?(from)
     @h.begin_round if from == :playing
     @program = Program.new
+    @session_origin = from == :playing ? @h.replay.state[:round][:started_at] : @h.now_ms
     @driver.program = @program
     build_client = @h.game.method(:build_client)
-    fixture_time = ->(_state) { @h.now_ms + @program.now_ms }
+    # Network records must not advance the local audio clock a second time.
+    fixture_time = ->(_state) { @session_origin + @program.now_ms }
     @h.game.define_singleton_method(:build_client) do |program, **services|
       build_client.call(program, **services).tap do |client|
         client.instance_variable_set(:@clock, -> { program.now_ms / 1000.0 })
@@ -191,7 +199,8 @@ class DuckClientPromptNativeTest
   def begin_challenge(from)
     if from == :race
       @h.open_round
-      render
+      observed = render
+      return observed if INDEPENDENT.include?(@h.replay.state[:round][:challenge][:kind])
       assert_equal(nil, @client.instance_variable_get(:@trace), 'Preparation already exposed a private local attempt')
       if GameRoomDuckRacing::ChallengeEngine::PRACTICE_TYPES.include?(@h.replay.state[:round][:challenge][:kind])
         assert(@client.local_view[:practice], 'Preparation did not expose its unscored preview')
@@ -202,6 +211,7 @@ class DuckClientPromptNativeTest
       end
     end
     @h.begin_round
+    @session_origin = @h.replay.state[:round][:started_at] - @program.now_ms
     render
   end
 
@@ -314,13 +324,14 @@ class DuckClientPromptNativeTest
     observed = begin_challenge(from)
     initial = assert_initial_challenge(kind, observed, role: role)
     3.times { render }
-    assert_equal(AUTOPLAY_KINDS.include?(kind) || kind == 'sound_memory' ? 0 : 1, initial_calls(kind).length,
+    silent_entry = kind == 'count_ducks' || kind == 'sound_memory'
+    assert_equal(silent_entry ? 0 : 1, initial_calls(kind).length,
       'A duplicate replay repeated the initial instruction')
     assert(@layout.chat.equal?(chat))
     assert_equal(role, @layout.focus_location.first)
     assert_equal(original, [chat.text, chat.index, chat.check])
     manual_challenge_focus(kind)
-    assert(initial.length.positive?) unless AUTOPLAY_KINDS.include?(kind) || kind == 'sound_memory'
+    assert(initial.length.positive?) unless silent_entry
   end
 
   def cold_challenge_entry(kind)
@@ -335,6 +346,7 @@ class DuckClientPromptNativeTest
 
   def initial_token(kind)
     return 'You are watching.' unless @viewer == 'Alice'
+    return @surface.presentation[:instruction] if @client.local_view&.[](:practice)
     QUESTION_KINDS.include?(kind) ? prompt : GameRoomDuckRacing::ChallengePresentation.description(kind)[1]
   end
 
@@ -355,7 +367,7 @@ class DuckClientPromptNativeTest
       assert_equal([1, true], calls.first.drop(1)) if cold
       return cold ? calls.first.first : ''
     end
-    if AUTOPLAY_KINDS.include?(kind) && !observer
+    if kind == 'count_ducks' && !observer
       assert_equal([], SpeechOutput.calls, "#{kind}: automatic entry speaks over the listening task")
       return ''
     end
@@ -372,6 +384,11 @@ class DuckClientPromptNativeTest
       else
         assert(!text.include?(instruction), "#{kind}: the observer was told to play")
       end
+    elsif @client.local_view[:practice]
+      assert(LOCAL_PRACTICE.include?(kind))
+      assert_equal(nil, @client.instance_variable_get(:@trace), 'Practice started a scored attempt')
+      assert(text.include?(@surface.presentation[:instruction]), 'The local start instruction is missing')
+      assert(@surface.presentation[:enabled], 'Local practice cannot be started')
     elsif kind == 'quiz'
       assert_equal(prompt, text, 'Quiz entry should read its selected question row, not an unselected answer')
     elsif !QUESTION_KINDS.include?(kind)
@@ -480,6 +497,7 @@ class DuckClientPromptNativeTest
 
   def native_answer(kind)
     setup_screen(kind, from: :playing)
+    start_local_practice if LOCAL_PRACTICE.include?(kind)
     make_sequential_turn_local(kind) if GameRoomDuckRacing::ChallengeEngine::SEQUENTIAL.include?(kind)
     wait_for_phase(kind == 'rhythm' ? :ready : :responding) if AUTOPLAY_KINDS.include?(kind)
     400.times do
@@ -528,6 +546,12 @@ class DuckClientPromptNativeTest
 
   def autoplay_stimulus(kind)
     setup_screen(kind, from: :playing)
+    if LOCAL_PRACTICE.include?(kind)
+      assert(@client.local_view[:practice], 'Local attempt skipped practice')
+      assert_equal([], @program.events, 'A stimulus played before local confirmation')
+      start_local_practice
+      SpeechOutput.reset
+    end
     assert_equal([], SpeechOutput.calls, 'Cold native focus covered the automatic stimulus')
     trace = @client.instance_variable_get(:@trace)
     stimulus = GameRoomDuckRacing::ChallengeEngine.stimulus(trace.state, seat: 0)
@@ -555,13 +579,22 @@ class DuckClientPromptNativeTest
     assert_equal(spoken, SpeechOutput.calls, 'An unchanged playback phase repeated its instruction')
   end
 
+  def start_local_practice
+    assert_equal(nil, @client.instance_variable_get(:@trace))
+    key(0x0D)
+    render
+    assert(@client.instance_variable_get(:@trace), 'Enter did not start the local attempt')
+    assert_equal({}, @h.replay.state[:round][:ready], 'Local start wrote shared readiness')
+    assert(@client.context_data.dig('duck_action', 'action') != 'ready', 'Local start queued a shared ready action')
+  end
+
   def finish_private_with_peer(kind, input)
     challenge = @h.replay.state[:round][:challenge]
     @h.accept(@client.context_data.fetch('duck_action'), actor: 'Alice')
-    peer = GameRoomDuckRacing::ChallengeTrace.new(challenge, seat: 1, resources: @h.resources)
+    peer = GameRoomDuckRacing::ChallengeTrace.new(challenge, seat: 1, resources: @h.resources, compact: true)
     assert(peer.submit(input.merge(press_id: 1), at: 250), 'The peer fixture action was rejected')
     @h.accept({'action' => 'submit_trace', 'challenge' => challenge[:id], 'trace' => peer.snapshot}, actor: 'Bob')
-    @h.accept({'action' => 'advance', 'challenge' => challenge[:id]}, author: @h.owner)
+    assert_equal(:revealing, @h.replay.state[:round][:private][:phase], 'The final commitment did not open reveal')
     challenge[:participants].each do |seat|
       user = @h.players.fetch(seat)
       prepared = GameRoomDuckRacing::PrivateRound.recover(@h.replay.state[:round][:private],

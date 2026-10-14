@@ -160,7 +160,7 @@ class DuckQuizSoundsTest
   def submit_answers(outputs, choices)
     challenge = @h.replay.state[:round][:challenge]
     challenge[:participants].each do |seat|
-      trace = GameRoomDuckRacing::ChallengeTrace.new(challenge, seat: seat, resources: @h.resources)
+      trace = GameRoomDuckRacing::ChallengeTrace.new(challenge, seat: seat, resources: @h.resources, compact: true)
       if choices.fetch(seat).nil?
         trace.tick(at: GameRoomDuckRacing::QuizChallenge::DURATION_MS)
       else
@@ -173,7 +173,7 @@ class DuckQuizSoundsTest
       emit(outputs)
       outputs.each_value { |_service, program| assert_equal([], names(program), 'A commitment leaked personal answer feedback') }
     end
-    @h.accept({'action' => 'advance', 'challenge' => challenge[:id]}, author: @h.owner)
+    assert_equal(:revealing, @h.replay.state[:round][:private][:phase])
     emit(outputs)
     outputs.each_value { |_service, program| assert_equal([], names(program), 'Entering reveal played answer feedback early') }
     challenge

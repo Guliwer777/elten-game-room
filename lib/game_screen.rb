@@ -87,6 +87,18 @@ class GameScreen
     @activity_repository = activity_repository
     @game_name = game_name || ->(id) { id.to_s }
     @send_chat = send_chat
+    initialize_view_state
+    attach_table_layout(@layout) if @layout != nil
+    @pending_chat_message = nil
+    @clear_chat_after_action = false
+    @history_navigator = GameRoomHistory::Navigator.new
+    @hidden_submissions = HiddenSubmissions::Vault.new(
+      HiddenSubmissions::ProgramStorage.new(@program)
+    )
+    @random_source = GameRoomRandom::LocalSecureSource.new
+  end
+
+  def initialize_view_state
     @room_snapshot = nil
     @surface_state = {}
     prepare_board_preferences
@@ -112,15 +124,8 @@ class GameScreen
     @chat_index = 0
     @chat_check = 0
     @chat_control = nil
-    attach_table_layout(@layout) if @layout != nil
-    @pending_chat_message = nil
-    @clear_chat_after_action = false
-    @history_navigator = GameRoomHistory::Navigator.new
-    @hidden_submissions = HiddenSubmissions::Vault.new(
-      HiddenSubmissions::ProgramStorage.new(@program)
-    )
-    @random_source = GameRoomRandom::LocalSecureSource.new
   end
+  private :initialize_view_state
 
   def prepare_board_preferences
     @board_preferences = GameRoomBoardPreferences.new(@program, @game)

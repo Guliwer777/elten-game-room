@@ -35,10 +35,11 @@ jobs:
           if (-not (Get-Command ffmpeg -ErrorAction SilentlyContinue) -or -not (Get-Command ffprobe -ErrorAction SilentlyContinue)) {
             choco install ffmpeg --no-progress -y
           }
+      - name: Install shared runtime test dependencies
+        run: gem install rubyzip --version 3.2.2 --no-document
       - name: Install native package test dependencies
         if: matrix.suite == 'native'
         run: |
-          gem install rubyzip --version 3.2.2 --no-document
           gem install zstd-ruby --version 2.0.6 --no-document
       - name: Check compiled translations and translated documents
         run: ruby tools/translations.rb check

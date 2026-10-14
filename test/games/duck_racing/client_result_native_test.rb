@@ -442,12 +442,12 @@ class DuckClientResultNativeTest
 
   def finish_quiz(harness, challenge)
     harness.players.each_with_index do |actor, seat|
-      trace = GameRoomDuckRacing::ChallengeTrace.new(challenge, seat: seat, resources: harness.resources)
+      trace = GameRoomDuckRacing::ChallengeTrace.new(challenge, seat: seat, resources: harness.resources, compact: true)
       correct = trace.state[:model][:question][:correct_index]
       assert(trace.submit({kind: :answer, value: seat.zero? ? correct : (correct + 1) % 4, press_id: 1}, at: 100))
       harness.accept({'action' => 'submit_trace', 'challenge' => challenge[:id], 'trace' => trace.snapshot}, actor: actor)
     end
-    harness.accept({'action' => 'advance', 'challenge' => challenge[:id]}, author: harness.owner)
+    assert_equal(:revealing, harness.replay.state[:round][:private][:phase])
     harness.players.each_with_index do |actor, seat|
       prepared = GameRoomDuckRacing::PrivateRound.recover(harness.replay.state[:round][:private],
         seat: seat, user: actor, vault: harness.vault(actor))

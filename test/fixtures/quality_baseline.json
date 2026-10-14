@@ -1,6 +1,6 @@
 {
   "__app.rb|long_method|accept_pending_invitation:134": 1,
-  "__app.rb|long_method|show_table_screen:222": 1,
+  "__app.rb|long_method|run_table_screen:219": 1,
   "__app.rb|long_method|show_tables_for_game:84": 1,
   "__app.rb|long_method|start_new_game:98": 1,
   "games/categories.rb|long_method|replay:224": 1,

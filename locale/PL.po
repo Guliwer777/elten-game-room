@@ -15910,7 +15910,7 @@ msgstr "Sprzedaż odwraca ten proces: zdejmujesz budynki z najbardziej zabudowan
 
 #: lib/quiz_reports.rb:136
 msgid "Send"
-msgstr ""
+msgstr "Wyślij"
 
 #: lib/game_screen.rb:685
 msgid "Send proposal"

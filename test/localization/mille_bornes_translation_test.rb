@@ -116,14 +116,13 @@ polish_dirty_trick_phrases = {
 }
 polish_rules = rule_pairs.map { |pair| pair.fetch("pl") }.join(" ")
 polish_readme = File.read(File.join(root, "README.md"), encoding: "UTF-8")
-[polish_rules, polish_readme].each do |text|
-  raise "Outdated Polish driving-ace name in documentation" if text.downcase.include?("as kierownicy")
-  raise "Polish driving-ace name missing from documentation" unless text.downcase.include?("as drogi")
-  raise "Outdated Polish dirty-trick name in documentation" if text.match?(/kontratak|brudn/i)
-  raise "Polish dirty-trick name missing from documentation" unless text.include?("Nieczyst")
-end
-raise "README does not identify the original dirty-trick term" unless polish_readme.include?("Dirty trick / Coup Fourré")
-raise "README confuses a dirty trick with an attack" unless polish_readme.split.join(" ").include?("dozwolona obrona anulująca atak, nie atak zwrotny")
+# Game-specific terms belong in the rules, not the general application README.
+# The maintainer explicitly removed the duplicated driving instructions there.
+raise "Outdated Polish driving-ace name in documentation" if polish_rules.downcase.include?("as kierownicy")
+raise "Polish driving-ace name missing from documentation" unless polish_rules.downcase.include?("as drogi")
+raise "Outdated Polish dirty-trick name in documentation" if polish_rules.match?(/kontratak|brudn/i)
+raise "Polish dirty-trick name missing from documentation" unless polish_rules.include?("Nieczyst")
+raise "README restored the removed driving guide" if polish_readme.include?("Dirty trick / Coup Fourré")
 dirty_paragraphs = book.fetch("sections").find { |section| section.fetch("id") == "dirty_tricks" }
   .fetch("paragraphs").map { |pair| pair.fetch("en") }
 dirty_rules = dirty_paragraphs.join(" ")
@@ -222,22 +221,9 @@ names.each do |language, name|
   raise "#{language}: duplicate shortcut keys" unless keys == keys.uniq
   raise "#{language}: wrong game name" unless GameRoomRules.translate("1000 miles".b) == name
   readme = File.read(File.join(root, language == "PL" ? "README.md" : "content/readme/#{language}.md"), encoding: "UTF-8")
-  overview = readme.split(/\n\s*\n/).find { |paragraph| paragraph.include?(name) && paragraph.include?("QuentinC") }
-  raise "#{language}: missing game overview" unless overview
-  raise "#{language}: missing game controls" unless %w[Shift+I Shift+Z Delete Ctrl+F1 Escape].all? { |key| readme.include?(key) } && readme.match?(/\bJ\b/)
-  raise "#{language}: missing safety deck counts" unless %w[106 102].all? { |count| readme.include?(count) }
-  readable = readme.split.join(" ")
-  sidecar_rules.each do |pair|
-    unless readable.include?(catalog[nil, pair.fetch("en")].msgstr)
-      raise "#{language}: README and rules disagree on custom deck or instant repair: #{pair.fetch('en')}"
-    end
-  end
-  unless readable.include?(catalog[nil, bot_delay_advice].msgstr)
-    raise "#{language}: README and rules disagree on bot-delay advice"
-  end
-  [*boolean_labels.values, counterflow_labels.fetch("counterflow")].each do |source|
-    raise "#{language}: missing option in README: #{source}" unless readable.include?(catalog[nil, source].msgstr)
-  end
+  # README lists the game; the complete, localized instructions belong to
+  # its rulebook, checked below. Do not require the removed duplicate guide.
+  raise "#{language}: game missing from README" unless readme.include?(name)
 
   fixture = MilleBornesTest::Fixture.new(players: ["Żaneta", "Игрок"])
   game = fixture.game
@@ -425,11 +411,5 @@ rule_pairs.each do |pair|
   raise "English source rules changed" unless GameRoomRules.translate(pair.fetch("en").b) == pair.fetch("en")
 end
 english_readme = File.read(File.join(root, "content/readme/EN.md"), encoding: "UTF-8")
-sidecar_rules.each do |pair|
-  raise "English README and rules disagree: #{pair.fetch('en')}" unless english_readme.include?(pair.fetch("en"))
-end
-raise "English README missing bot-delay advice" unless english_readme.split.join(" ").include?(bot_delay_advice)
-[*boolean_labels.values, counterflow_labels.fetch("counterflow"), "106", "102", "replacement card", "No or Escape"].each do |text|
-  raise "English README missing feedback: #{text}" unless english_readme.include?(text)
-end
+raise "English README missing the game" unless english_readme.include?('1000 miles')
 puts "PASS 1000 miles: #{records.length} messages and #{rule_pairs.length} rule texts in PL/CS/ES/RU; compiled MO, binary lookup, placeholders, real game presentation/history/errors, all 22 custom card counts and bounds, seven instant-repair choices and history, native confirmations, optional deck switches, dirty-trick rules, English source and all five guides"

@@ -39,6 +39,8 @@ end
 
 if ARGV.empty? || ARGV.include?('duck_racing')
   require_relative 'support/duck_model_contract'
-  assert_equal(duck, GameRoomTest::DuckModelContract.capture, 'Duck public protocol contract changed')
-  puts 'duck_racing: host startup, ready/begin, three rolls, settlement, race continuation, full/incremental replay and RNG OK'
+  assert_equal(duck, GameRoomTest::DuckModelContract.capture(legacy: true), 'Historical Duck public protocol contract changed')
+  current_duck = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v2/duck_racing.json'), encoding: 'UTF-8'))
+  assert_equal(current_duck, GameRoomTest::DuckModelContract.capture, 'Current Duck public protocol contract changed')
+  puts 'duck_racing: historical ready/begin and current last-ready startup, three rolls, settlement, race continuation, full/incremental replay and RNG OK'
 end

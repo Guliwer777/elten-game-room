@@ -2,6 +2,7 @@ require_relative '../../support/duck_game_adapter'
 include DuckGameAdapterTest
 
 h = Harness.new(kind: 'simon')
+h.start(seed: h.seed_for('super_challenge'), legacy: true)
 h.open_round
 h.begin_round
 challenge = h.replay.state[:round][:challenge]
@@ -67,4 +68,4 @@ resolution = h.replay.state[:last_resolution]
 assert(resolution && resolution[:settlement], 'Send-boundary repartitioning did not complete the verified attempts')
 assert_equal(9, resolution[:results][0][:score])
 assert_equal(10, resolution[:results][1][:score])
-puts 'PASS Duck write-boundary revalidation: smaller grant and new epoch after planning, unchanged queued page/hash, exact Simon scores'
+puts 'PASS historical Duck upload: smaller grant and new epoch after planning, unchanged queued page/hash, exact Simon scores'

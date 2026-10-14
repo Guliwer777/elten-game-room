@@ -124,11 +124,7 @@ module GameRoomDuckRacing
         end
       when "commit"
         if participant && round[:phase] == :playing && round[:private]
-          committed = PrivateRound.accept_commit(round[:private], seat: seat, value: data["value"], now_ms: now_ms)
-          if committed && streamlined?(state) && seats.all? { |member| round[:private][:commitments].key?(member) }
-            PrivateRound.close_commits(round[:private], now_ms: now_ms)
-          end
-          committed
+          accept_commit(state, seat, data["value"], now_ms)
         end
       when "reveal"
         if participant && round[:phase] == :playing && round[:private]
@@ -184,6 +180,16 @@ module GameRoomDuckRacing
       true
     end
     private_class_method :apply_challenge
+
+    def accept_commit(state, seat, value, now_ms)
+      round = state.fetch(:round)
+      committed = PrivateRound.accept_commit(round[:private], seat: seat, value: value, now_ms: now_ms)
+      if committed && streamlined?(state) && round[:challenge][:participants].all? { |member| round[:private][:commitments].key?(member) }
+        PrivateRound.close_commits(round[:private], now_ms: now_ms)
+      end
+      committed
+    end
+    private_class_method :accept_commit
 
     def begin_challenge(state, data, now_ms, resources)
       round = state.fetch(:round)

@@ -7,7 +7,8 @@ module GameRoomTestSuites
     'session' => 'transport', 'ui' => 'ui', 'host' => 'native',
     'tooling' => 'tooling', 'localization' => 'tooling',
     'room' => 'integration', 'persistence' => 'integration',
-    'statistics' => 'integration', 'integration' => 'integration'
+    'statistics' => 'integration', 'integration' => 'integration',
+    'quiz_contributions' => 'integration'
   }.freeze
 
   def self.paths(root: ROOT)

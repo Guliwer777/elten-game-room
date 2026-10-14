@@ -18,14 +18,14 @@ question = engine[:model][:question]
 correct = question[:choices].fetch(question[:correct_index])
 id = challenge[:id]
 h.players.each_with_index do |actor, seat|
-  trace = logic::ChallengeTrace.new(challenge, seat: seat, resources: h.resources)
+  trace = logic::ChallengeTrace.new(challenge, seat: seat, resources: h.resources, compact: true)
   value = seat.zero? ? question[:correct_index] : (question[:correct_index] + 1) % 4
   assert(trace.submit({kind: :answer, value: value, press_id: 1}, at: 100 + seat * 100))
   h.accept({'action' => 'submit_trace', 'challenge' => id, 'trace' => trace.snapshot}, actor: actor)
 end
 assert_equal(nil, h.replay.state[:last_resolution])
 assert(h.replay.history.none? { |entry| entry.kind == :challenge_details })
-h.accept({'action' => 'advance', 'challenge' => id}, author: h.owner)
+assert_equal(:revealing, h.replay.state[:round][:private][:phase], 'Last commitment must start reveal without a host advance')
 h.players.each_with_index do |actor, seat|
   private_state = h.replay.state[:round][:private]
   prepared = logic::PrivateRound.recover(private_state, seat: seat, user: actor, vault: h.vault(actor))

@@ -2,11 +2,13 @@
 
 ## Tests without ELTEN
 
-Game-logic tests are standalone Ruby scripts. Translation-tool tests
-also require the standard GetText gem:
+Game-logic tests are standalone Ruby scripts. Application and interface tests
+also need Rubyzip, which ELTEN provides at runtime for quiz exports.
+Translation-tool tests require GetText:
 
 ```console
 bundle install --gemfile tools/Gemfile.i18n
+gem install rubyzip --version 3.2.2 --no-document
 ```
 
 Ruby 4.0 is recommended, matching the current ELTEN environment.
