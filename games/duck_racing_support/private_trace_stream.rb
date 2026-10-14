@@ -35,10 +35,11 @@ module GameRoomDuckRacing
       # Preserve every input and its exact time. Repeated field names and
       # ever-growing absolute timestamps/press IDs need not travel on the wire.
       # The salted commitment still covers the original, unmodified payload.
-      json = JSON.generate(compact(envelope))
+      codec = envelope.payload['version'] == 2 ? LEGACY_CODEC : CODEC
+      json = JSON.generate(compact(envelope)) if codec == CODEC
       bytes = Zlib::Deflate.deflate(json)
       check_size!(bytes.bytesize, json.bytesize)
-      Stream.new(bytes: bytes.freeze, unpacked_bytes: json.bytesize, codec: CODEC).freeze
+      Stream.new(bytes: bytes.freeze, unpacked_bytes: json.bytesize, codec: codec).freeze
     end
 
     def cache_payload(stream, commitment)

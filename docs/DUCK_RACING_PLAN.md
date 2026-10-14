@@ -50,6 +50,16 @@ Power Games reproduces every rule of the source game.
 
 ## Core game
 
+The short table and invitation summary includes the lap count and question
+language. Older metadata without a language does not invent one.
+
+Entering the final lap announces the player's name and plays
+`duck_final_lap`, including forward movement caused by cards. This uses the
+ordinary accepted-event presentation, so refreshing a snapshot does not
+repeat the sound. Moving backwards, continuing within the final lap and
+crossing the finish line do not trigger it. A one-lap race already begins
+on its final lap and has no extra lap-entry announcement.
+
 Players race around a track for a configured number of laps. Before rolling,
 a player may play one card. Cards spend or grant feathers, change movement
 or affect other players. Some are placed on the current square; an occupied
@@ -362,15 +372,15 @@ in the agreed freeze rules above.
   rounding.
 - Copy the number, Mental arithmetic, Question about the race and
   Order the sounds play the recorded “3, 2, 1, drop” countdown after presenting
-  the task and a fixed 2.5-second preparation pause. Never wait for the
+  the task and a fixed 5-second preparation pause. Never wait for the
   synthesizer or its completion index. Only after the recording ends may input
   open and both measured response time and the existing answer allowance begin.
   Use actual playback completion, not an assumed fixed recording length; trim
   the quiet tail and do not discard the first fresh input in the completion
-  frame. Count the ducks first plays the full quack sequence, then the same
-  pause and countdown, then opens its 20-second response allowance.
+  frame. Count the ducks first plays the full quack sequence, then a
+  3-second pause and countdown, then opens its 20-second response allowance.
   F5 does not replay the countdown or restart the timer.
-  Guess the number retains its fixed stake and existing timing; Simon and
+  Guess the number keeps its two-minute limit and uses distance-based stakes; Simon and
   the other score/accuracy challenges do not gain this preparation pause.
 - Selected accuracy reward: normalize rhythm and target accuracy to 0–100%,
   then transfer 1 feather per started 10 percentage points of advantage.
@@ -498,12 +508,26 @@ Agreed: each player has up to **10 attempts**. If nobody finds the exact
 number, the closest submitted answer wins instead of ending the challenge
 with no winner.
 
-One shared secret integer from 1 to 100, private attempts with higher/lower
+One shared secret integer from 1 to 999, private attempts with higher/lower
 feedback and a 120-second deadline. Compare only each player's closest
 attempt, not their last one, number of attempts or elapsed time. Equal best
 distances, including two exact answers, tie. A missing answer cannot win.
-The maintainer has explicitly chosen a fixed transfer of 3 feathers from each loser. This
-is an exception to difference-based scoring, like rock paper scissors.
+The winner takes feathers according to the advantage over each opponent:
+`d = opponent_best_distance - winner_best_distance`. The number of digits
+in the hidden target selects the scale, not the submitted guesses:
+
+- Targets 1–9: `min(5, ceil(5 * d / 8))`. Gaps of 1, 4, 6 and 8 cost
+  1, 3, 4 and 5 feathers respectively.
+- Targets 10–99: `min(5, ceil(d / 10))`.
+- Targets 100–999: `min(5, ceil(d / 100))`.
+
+A missing answer or forfeited private trace cannot win and pays 5 feathers
+to the unique winner. Actual transfers cannot exceed the loser's balance;
+no winner or a tied closest distance means no transfers. A non-exact winner
+uses the same scale, so target 47 with best guesses 46 and 35 costs 2 feathers,
+whereas guesses 46 and 48 tie. Bot guesses also cover 1–999. The private
+verifier derives the target from the agreed seed after checking the traces;
+no client-supplied target or claimed score selects the reward band.
 
 ### Challenge 7 Copy the number
 
@@ -585,7 +609,7 @@ Agreed: two to eight players hear the same sequence of 5–15 non-overlapping
 quacks. Draw one steady pace for the whole challenge: 400–900 ms from the
 start of one sound to the next, using the current approximately 385 ms clip.
 Do not vary the gaps within that sequence; F5 repeats the same pace.
-After the full first playback and a fixed 2.5-second pause, play the recorded countdown. Only after that
+After the full first playback and a fixed 3-second pause, play the recorded countdown. Only after that
 recording finishes, open input and start the 20-second answer allowance.
 Do not wait for speech completion or repeat this pause on F5. Typing the required
 digits submits the count. Allow two submissions; the first correct answer
@@ -650,6 +674,9 @@ The preview starts neither a challenge clock nor a scored attempt:
 - Repeat the rhythm: F/J play the low/high tone.
 - Audio Ball: W/Up, D/Left and S/Down play the respective ball for two seconds,
   using the player's chosen sound pack.
+- Axel Pong also waits for both players to confirm readiness, after a short
+  instruction explaining the goal, Left/Right movement and Up/Space hitting.
+  It does not create a second practice physics model.
 
 No speech-completion check determines readiness. Keep chat/help inputs separate
 and do not reuse the readiness key as the first game action. Keep participant
@@ -728,6 +755,13 @@ scores zero. Normalize the sum of five targets by dividing it by 5, giving
 feathers: totals of 450 and 300 mean 90% and 60%, transferring 3 feathers.
 Compare accuracy, not reaction time. Check stereo accessibility and provide
 a way to learn the sound positions before competitive use.
+
+Accepted human shots play `duck_shot` at the chosen digit's stereo position,
+not the target's position. Once the recording finishes, speak one word for
+the existing score (100/75/50/25/0), then wait two seconds before playing the
+next target. Its response clock starts at actual playback onset. The last
+shot's feedback finishes before its trace is submitted. These cues are local;
+they neither disclose another person's target nor alter accuracy scoring.
 
 ### Quiz challenges and questions from squares or cards
 
@@ -1049,7 +1083,8 @@ then allow the next ordinary turn without rerolling anything.
 5. Eligible selected challenges have equal weights. In rock–paper–scissors,
    a sole timely answer wins and takes 3 feathers; two missing answers
    transfer none.
-   Guess the number has an explicitly agreed fixed 3-feather transfer.
+   Guess the number uses the target's digit count and the difference between
+   the best distances, capped at 5 feathers per opponent (see challenge 6).
    The four first-answer challenges take 4 feathers per loser immediately.
    Only Order the sounds retains the elapsed-time comparison and 5-feather cap: a slower correct
    result pays the rounded-up seconds difference, while an incorrect or missing
@@ -1144,7 +1179,7 @@ times. Confirm that the cap does not affect score or accuracy settlement, and
 distinguish local completion from network arrival.
 Verify the full countdown playback in all six speed challenges: reject early
 input, begin response timing only after the recording ends and retain the full
-answer allowance. Verify the fixed 2.5-second pause regardless of synthesizer
+answer allowance. Verify the fixed 5-second pause (3 seconds for Count the ducks) regardless of synthesizer
 state, and the first native digit/key in the playback-completion frame.
 For Count the ducks, the pause and countdown follow the complete quack sequence; F5 must preserve both the
 deadline and the original steady pace without another countdown.
@@ -1272,7 +1307,7 @@ removes the tool; any resumed laboratory table requires it to be loaded on
 all participating clients again. Source-only loading is not a test-package
 build or an installation change.
 
-## Known limitation: long private challenges
+## Historical limitation: long private challenges
 
 Long private sound challenges remain a responsiveness concern. Earlier live
 Simon trials reaching 31 and 35 sounds produced the correct result and
@@ -1287,7 +1322,59 @@ measurement of any one optimization. The remaining wait is still too long;
 do not present this path as ready for release or attribute all of it to the
 server without separating preparation, scheduling, replay and network time.
 Detailed evidence is kept in the ignored diagnostic reports, not in the
-player instructions. No Simon length or time cap was introduced.
+player instructions. No Simon length or time cap was introduced. These
+measurements describe the legacy full-trace protocol, not the compact flow
+below, which supersedes it for newly started races.
+
+## Compact challenge flow (14 October 2026)
+
+New race starts carry `challenge_flow: 2`. Previously accepted histories
+without that marker retain their original begin, advance and trace semantics;
+do not reinterpret their recorded events using the new protocol.
+
+- Simon, Repeat the rhythm and Hit the duck start individually with Enter or
+  Space after practice. One participant can finish before another starts.
+  Local game rules calculate the result and submit only a bounded score,
+  not a keyboard or playback trace. The race waits for every participant's
+  score before settling feathers. This trusts the client; it is not anti-cheat.
+- Guess the number starts independently and retains its ten-guess/two-minute
+  limits. Its compact private submission contains at most ten guesses, from
+  which the shared rules calculate the result; it contains no timing trace.
+- Rock paper scissors and Quiz submit just their private choice. These and
+  Guess the number keep salted commitments and reveal only after all commits.
+  The final commit opens revealing in that same accepted event.
+- Copy the number, Mental arithmetic, Race question and Count the ducks keep
+  the first-correct-answer rule and use one future response boundary on the
+  existing synchronized clock. Receiving a view later must not restart the
+  countdown or allow a response before that boundary.
+- Dice duel, Twenty-one, Risky dice and Numbered balls retain their public
+  turns. Sound memory retains manual readiness and public reveals. Sound
+  order retains the common countdown and shared swaps, needed for partial
+  scoring. Native Audio Ball and Axel Pong retain readiness and their existing
+  connection/point protocol. No local score replaces a real native point.
+
+The last readiness acknowledgement starts a shared challenge directly, with
+no separate begin write. Waiting text identifies the missing participants.
+Finished participants neither repeat submission nor keep emitting activity
+records. The existing 30-second activity pulse and 90-second inactivity rule
+remain for unfinished non-realtime participants, including practice; completed
+scores do not time out while others continue. There is no new polling loop,
+worker or timer framework.
+
+A final local score is persisted in the existing hidden-submission vault
+before sending. An uncertain write recovers the same session/challenge/seat
+result, rather than starting a new attempt. Only accepted results or a recorded
+closure authorize cleanup. Existing participant-change cancellation, epoch,
+stale-action, archive and native realtime guards remain in force.
+Historical answers keep their original session scope after archive import.
+An independent challenge opened by a new race move uses that move's physical
+session, not the archived race-start session; chained challenges retain it.
+
+Compact audio results are constant-sized in the number of sounds or keystrokes.
+They still use the normal action codec, so one logical result can occupy more
+than one physical LiveSessions record. Targeted tests and live handler-driven
+checks are recorded in ignored diagnostics; they do not establish timing
+fairness across separate computers or physical-keyboard/audio behaviour.
 
 ## Known limitation: history capacity
 
@@ -1300,9 +1387,12 @@ table-management records share that allowance with game actions.
 An eight-player, ten-lap local model trial finished after 4556 game actions,
 before counting those other records. This establishes neither that the same
 race fits on the server nor a guarantee that every eight-player, ten-lap
-race can finish. Simon deliberately has no total-time or sequence-length
-cap, so an arbitrarily long valid attempt cannot be guaranteed to fit in
-any fixed history capacity. Faster local replay does not enlarge that capacity.
+race can finish. Simon deliberately has no gameplay length cap. New compact
+attempts no longer upload a growing key trace, but ongoing activity pulses
+and other table records still consume history. Legacy full-trace attempts
+also retain their old cost. An arbitrarily long race therefore cannot be
+guaranteed to fit in any fixed history capacity. Faster local replay does not
+enlarge that capacity.
 
 The maintainer chose to document this limitation for now, without rebuilding
 the storage protocol, changing limits, trimming an active game or imposing

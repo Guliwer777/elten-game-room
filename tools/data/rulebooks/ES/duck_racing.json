@@ -223,10 +223,25 @@
       },
       "paragraphs": [
         {
-          "es": "Adivina un número del 1 al 100. Sabrás cuántas cifras tiene. Escribe tus propuestas y recibirás una pista después de cada una: el número buscado es mayor o menor. Tienes diez intentos y dos minutos."
+          "es": "Adivina un número del 1 al 999. Sabrás cuántas cifras tiene. Escribe tus propuestas y recibirás una pista después de cada una: el número buscado es mayor o menor. Tienes diez intentos y dos minutos."
         },
         {
-          "es": "Cuenta la respuesta más cercana de cada jugador. El ganador recibe tres plumas de cada rival; las respuestas a la misma distancia empatan."
+          "es": "Cuenta tu respuesta más cercana. Gana quien más se acerque al número; si dos jugadores quedan igual de cerca, el reto termina en empate."
+        },
+        {
+          "es": "El ganador recibe hasta cinco plumas de cada rival, según cuánto más se haya acercado. Por ejemplo, si se busca el 47, las respuestas 46 y 35 dan una ventaja de 11."
+        },
+        {
+          "es": "- Número de una cifra: una ventaja de 1 cuesta una pluma; de 2–3, dos; de 4, tres; de 5–6, cuatro; y de 7 o más, cinco."
+        },
+        {
+          "es": "- Número de dos cifras: una pluma por cada 10 de ventaja o fracción, hasta un máximo de cinco."
+        },
+        {
+          "es": "- Número de tres cifras: una pluma por cada 100 de ventaja o fracción, hasta un máximo de cinco."
+        },
+        {
+          "es": "Si no respondes, entregas cinco plumas al ganador. Solo puedes perder las plumas que tengas."
         }
       ]
     },
@@ -304,7 +319,7 @@
       },
       "paragraphs": [
         {
-          "es": "Repite un ritmo con F y J. Antes de empezar puedes probar ambos sonidos. Pulsa Enter o Espacio cuando estés listo; cuando todos confirméis, sonará un ritmo de seis a diez golpes."
+          "es": "Repite un ritmo con F y J. Antes de empezar puedes probar ambos sonidos. Pulsa Enter o Espacio para iniciar tu intento. Sonará un ritmo de seis a diez golpes."
         },
         {
           "es": "Después de escuchar, pulsa Enter y toca el ritmo. Tienes 15 segundos para empezar y puedes oír el modelo una vez más con F5 antes de hacerlo. Hay un solo intento; tres segundos sin tocar lo terminan."
@@ -341,7 +356,7 @@
           "es": "Memoriza una melodía cada vez más larga y repítela con las teclas del 1 al 5. El 1 corresponde al tono más grave y el 5 al más agudo. Puedes probarlos antes de empezar y confirmar que estás listo con Enter o Espacio."
         },
         {
-          "es": "Cuando todos estéis listos, sonará una sola nota. Cada respuesta correcta añade una nota y acelera un poco la melodía. Espera al final de la reproducción para repetirla."
+          "es": "Tu intento empieza con una sola nota, sin esperar a los demás. Cada respuesta correcta añade una nota y acelera un poco la melodía. Espera al final de la reproducción para repetirla."
         },
         {
           "es": "Continúas hasta que te equivocas o pasas cinco segundos sin pulsar una tecla al responder. Cada jugador termina su propio intento. Cuenta la melodía más larga repetida entera; el ganador recibe de cada rival una pluma por cada nota de ventaja."
@@ -375,7 +390,10 @@
           "es": "Identifica de dónde viene el graznido y pulsa la cifra correspondiente del 1 al 9. El 1 es el extremo izquierdo, el 5 el centro y el 9 el extremo derecho."
         },
         {
-          "es": "Antes de empezar puedes escuchar todas las posiciones. Pulsa Enter o Espacio cuando estés listo. Tras la confirmación de todos, aparecen cinco objetivos por turnos; tienes tres segundos para cada uno."
+          "es": "Antes de empezar puedes escuchar todas las posiciones. Pulsa Enter o Espacio para iniciar tu intento. Aparecerán cinco objetivos seguidos; tienes tres segundos para cada uno."
+        },
+        {
+          "es": "Después de cada disparo oirás una breve valoración. El siguiente pato aparecerá tras una pausa."
         },
         {
           "es": "La puntuación depende de cuánto te acerques:"
@@ -456,6 +474,9 @@
           "es": "Jugáis un punto individual en modo Classic y a velocidad Normal. El primer saque se sortea. El ganador recibe cinco plumas de su rival."
         },
         {
+          "es": "Pulsa Enter cuando estés listo. El punto empieza cuando los dos jugadores hayan confirmado."
+        },
+        {
           "es": "Mueve la raqueta con Flecha izquierda y Flecha derecha. Saca con Flecha arriba o Espacio. Cuando vuelva la pelota, colócate en su trayectoria y pulsa la misma tecla al tenerla al alcance."
         },
         {
@@ -525,7 +546,7 @@
           "es": "T: turno o desafío actual."
         },
         {
-          "es": "V: recorrer el circuito."
+          "es": "V: recorrer el circuito desde tu casilla actual."
         },
         {
           "es": "P: repetir las instrucciones del desafío."

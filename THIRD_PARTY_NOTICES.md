@@ -299,7 +299,7 @@ The user supplied the Freesound low-quality MP3 preview and its license
 notice, downloaded on 11 October 2026. The full mono recording was converted
 with `tools/encode_audio.rb` to Ogg Opus, 144 kb/s VBR, 48 kHz, 20 ms frames,
 audio mode and complexity 10, preserving available metadata. Playback in
-the game uses gain 0.64 (two successive 20% reductions), before the user's volume setting.
+the game uses gain 0.21811668, before the user's volume setting.
 The original recording remains unchanged outside the application. This
 sound's license is separate from the game code's license.
 
@@ -338,6 +338,32 @@ available metadata were preserved, without trimming or normalization.
 It accompanies freezing and turns skipped while frozen. The source
 remains unchanged outside the application. The local license text is in
 `LICENSES/CC-BY-4.0.txt`.
+
+`Audio/duck_shot.opus` — [[SEMI-RAW] P38 AC42 Shot (7)](https://freesound.org/s/710311/)
+by **smill.and.welson**, licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The author's source credit is [Great Northwest Weaponry](https://www.youtube.com/@GreatNorthwestWeaponry),
+with [the source recording](https://www.youtube.com/watch?v=voXPXBbwffg) and
+[the permission reference](https://www.youtube.com/watch?v=zWGpr2Ku_H0&lc=UgyjzPhBkrJCWs8R-zt4AaABAg)
+included in the supplied license notice. The user supplied the high-quality
+Ogg preview and its license on 12 October 2026. The complete 0.9935-second
+stereo clip was converted with `tools/encode_audio.rb` to Ogg Opus, 144 kb/s
+VBR, 48 kHz, 20 ms frames, audio mode and complexity 10. Its level and
+channels were preserved; no trimming or normalization was applied. In Hit
+the duck, playback is panned to the position chosen by the player.
+The original remains outside the application. The local license text is
+in `LICENSES/CC-BY-4.0.txt`.
+
+`Audio/duck_final_lap.opus` — [Flamenco Finale 7.wav](https://freesound.org/s/41750/)
+by **digifishmusic**, licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The user supplied the high-quality Ogg preview and its license on
+12 October 2026. The full stereo clip was converted with
+`tools/encode_audio.rb` to Ogg Opus, 144 kb/s VBR, 48 kHz, 20 ms frames,
+audio mode and complexity 10, preserving its level and channels without
+trimming or normalization. It announces entry into the final lap.
+The original remains outside the application. The local license text is
+in `LICENSES/CC-BY-4.0.txt`.
 
 ### Wrong quiz answer
 

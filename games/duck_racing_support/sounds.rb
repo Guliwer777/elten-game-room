@@ -9,7 +9,7 @@ module GameRoomGames
       started: 'shuffle', rolled: 'roll', played: 'play', placed: 'play',
       drew_cards: 'draw', stole_card: 'draw', swapped_hands: 'card-shuffle',
       passed_hands: 'card-shuffle', skipped: 'skip', frozen: 'duck_frozen',
-      challenge: 'duck_challenge', quiz_question: 'duck_question',
+      challenge: 'duck_challenge', quiz_question: 'duck_question', final_lap: 'duck_final_lap',
       challenge_roll: 'roll', challenge_draw: 'draw', challenge_hand: 'draw'
     }.freeze
 

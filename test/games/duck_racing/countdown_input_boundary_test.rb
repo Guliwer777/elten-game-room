@@ -48,10 +48,10 @@ class DuckCountdownBoundaryTest
   def fixed_pause
     setup
     frame(0)
-    frame(2_499)
-    assert_equal([], cues, 'The recording overlaps the initial instruction instead of waiting 2.5 seconds')
-    frame(2_500)
-    assert_equal([2_500], cues.map { |cue| cue[:at] })
+    frame(4_999)
+    assert_equal([], cues, 'The recording did not wait five seconds after the instruction')
+    frame(5_000)
+    assert_equal([5_000], cues.map { |cue| cue[:at] })
     3.times { replace; @client.tick }
     assert_equal(1, cues.length, 'A refresh replayed the countdown')
   end
@@ -59,7 +59,7 @@ class DuckCountdownBoundaryTest
   def before_end(kind = 'copy_number', held: false)
     setup(kind)
     frame(0)
-    frame(2_500) if cues.empty?
+    frame(5_000) if cues.empty?
     cue = cues.fetch(0)
     boundary = cue[:at] + (cue[:sound].length * 1000).round
     if held

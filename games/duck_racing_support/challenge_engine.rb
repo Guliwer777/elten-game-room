@@ -13,15 +13,20 @@ module GameRoomDuckRacing
     REALTIME = %w[audio_ball axel_pong].freeze
     SEQUENTIAL = (NumericChallenges::TURN_TYPES + %w[sound_memory]).freeze
     SHARED = (SEQUENTIAL + %w[sound_order]).freeze
-    PRACTICE_TYPES = %w[simon hit_duck rhythm audio_ball sound_memory].freeze
+    PRACTICE_TYPES = %w[simon hit_duck rhythm audio_ball axel_pong sound_memory].freeze
     FIRST_ANSWER = (NumericChallenges::ANSWER_TYPES + %w[count_ducks]).freeze
     SPEED_TYPES = FIRST_ANSWER
-    PREPARATION_DELAY_MS = 2_500
+    LOCAL_SCORES = %w[simon rhythm hit_duck].freeze
+    INDEPENDENT = (LOCAL_SCORES + %w[guess_number]).freeze
+    COMPACT_PRIVATE = %w[guess_number rock_paper_scissors quiz].freeze
+    PREPARATION_DELAY_MS = 5_000
+    COUNT_DUCKS_PREPARATION_DELAY_MS = 3_000
     # Trimmed duck_countdown.opus duration; bots have no audio device.
     # Human input opens on actual playback completion, never on speech status.
     COUNTDOWN_MS = 2_132
     PREPARATION_MS = PREPARATION_DELAY_MS + COUNTDOWN_MS
-    ORDER_PREPARATION_DELAY_MS = 2_000
+    COUNT_DUCKS_PREPARATION_MS = COUNT_DUCKS_PREPARATION_DELAY_MS + COUNTDOWN_MS
+    ORDER_PREPARATION_DELAY_MS = PREPARATION_DELAY_MS
     ORDER_PREPARATION_MS = ORDER_PREPARATION_DELAY_MS + COUNTDOWN_MS
     INPUT_KEYS = %w[kind value other press_id repeat playback_id onsets_ms].freeze
     INPUT_KINDS = %w[choose roll hit stand save answer take replay begin tone preview swap reveal target playback_started playback_finished]
@@ -145,7 +150,7 @@ module GameRoomDuckRacing
       Marshal.load(Marshal.dump(result))
     end
 
-    def settlement(kind, balances:, results:, excluded: [])
+    def settlement(kind, balances:, results:, excluded: [], target: nil)
       unless results.is_a?(Hash) && results.keys.sort == balances.keys.sort &&
           excluded.is_a?(Array) && (excluded - balances.keys).empty?
         raise ArgumentError, "Incomplete challenge results"
@@ -164,11 +169,8 @@ module GameRoomDuckRacing
         end
         Settlement.fixed(balances: balances, winner: winner, amount: 3, draw: valid.length == 2 && winner.nil?)
       when "guess_number"
-        valid = results.select { |seat, result| result[:best] && eligible.include?(seat) }
-        ranks = valid.transform_values { |result| result[:best][:distance] }
-        best = ranks.values.min
-        winners = ranks.select { |_seat, rank| rank == best }.keys
-        Settlement.fixed(balances: balances, winner: winners.length == 1 ? winners.first : nil, amount: 3, draw: winners.length > 1)
+        Settlement.guess_number(balances: balances, target: target,
+          distances: results.transform_values { |result| result.dig(:best, :distance) }, eligible: eligible)
       when "blackjack", "risky_dice"
         Settlement.difference(balances: balances, scores: scores, ceiling: kind == "blackjack" ? 21 : 25, eligible: eligible)
       when *FIRST_ANSWER

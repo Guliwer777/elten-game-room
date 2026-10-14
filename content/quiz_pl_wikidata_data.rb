@@ -3,7 +3,7 @@ require 'json'
 module GameRoomContent
   module Packa0830f585cc4689a1e2a6335
     def self.load
-      JSON.parse(<<'QUIZ_DATA_c62d695aff37acbbfc938af22542803861aaac46a72f8576307eaf974b1ce1b8')
+      JSON.parse(<<'QUIZ_DATA_1c53cf88e2e5a87dda0e106de14c8b24e92abff5ba725a2a6f4e8f42be965fe4')
 {
   "questions": [
     {
@@ -98474,7 +98474,7 @@ module GameRoomContent
       "id": "1z10_9c1ef9355dd49ef6",
       "category": "Kultura",
       "level": "medium",
-      "prompt": "Z repertuaru którego zespołu pochodzi ten utwór, który znamy z płyty „The Wall”?",
+      "prompt": "Który zespół nagrał album „The Wall”?",
       "correct": "Pink Floyd",
       "wrong": [
         "The Who",
@@ -238201,7 +238201,7 @@ module GameRoomContent
   ],
   "source": "content/QUIZ_PL_GENERAL_SOURCES.txt"
 }
-QUIZ_DATA_c62d695aff37acbbfc938af22542803861aaac46a72f8576307eaf974b1ce1b8
+QUIZ_DATA_1c53cf88e2e5a87dda0e106de14c8b24e92abff5ba725a2a6f4e8f42be965fe4
     end
   end
 end

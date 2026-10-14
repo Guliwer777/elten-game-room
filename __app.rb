@@ -3,8 +3,8 @@
   "id": "c24d98cc-9ccd-4d50-b801-459da324ff60",
   "name": "Power Games",
   "description": "Accessible multiplayer games for ELTEN users.",
-  "version": "2.0.4.9",
-  "build_id": "248",
+  "version": "2.0.4.11",
+  "build_id": "250",
   "EltenAPIVersion": "3.0.4",
   "main_language": "en",
   "supported_languages": ["en", "pl", "cs", "es", "ru"],
@@ -24,7 +24,7 @@
   "required_assets": {
     "sounds": [
       "connect", "disconnect", "chatmsg", "notice", "table_notice", "invitation_rejected", "buzzer", "buzzer2", "quiz_wrong_answer", "duck_challenge", "duck_question", "duck_correct", "duck_frozen",
-      "duck_note_c", "duck_memory_bark", "duck_memory_bell", "duck_memory_drop", "duck_memory_clap", "duck_memory_zip",
+      "duck_final_lap", "duck_shot", "duck_note_c", "duck_memory_bark", "duck_memory_bell", "duck_memory_drop", "duck_memory_clap", "duck_memory_zip",
       "duck_rhythm_f", "duck_rhythm_j", "war_open", "ding", "shuffle", "draw", "draw2",
       "farkle", "cht-roll-dice", "cht-bank", "cht-lost-points", "cht-cat-minus-8", "cht-cat-plus-8",
       "hit1", "hit_ship1", "hit_ship2", "rocket_launch1", "rocket_launch2", "rocket_launch3", "rocket_miss",
@@ -140,6 +140,8 @@ require_relative "lib/table_history_exporter"
 require_relative "lib/game_rules"
 require_relative "lib/game_room_changelog"
 require_relative "lib/game_room_screens"
+require_relative "lib/quiz_contributions/controller"
+require_relative "lib/quiz_reports"
 require_relative "lib/game_option_editor"
 require_relative "lib/audio_ball/settings"
 require_relative "lib/invitation_repository"
@@ -186,8 +188,8 @@ class EltenGameRoom < Program
   extend GameRoomTableWatchRuntime
   extend GameRoomContactFiltersRuntime
   extend GameRoomAnalyticsRuntime
-  GAME_ROOM_VERSION = "2.0.4.9".freeze
-  GAME_ROOM_BUILD_ID = 248
+  GAME_ROOM_VERSION = "2.0.4.11".freeze
+  GAME_ROOM_BUILD_ID = 250
   GAME_ROOM_CAPABILITIES = ["invitations", "live_sessions", "live_session_stack"].freeze
   LOBBY_ACTIVITY_POLL_INTERVAL = 5.0
 
@@ -227,6 +229,7 @@ class EltenGameRoom < Program
     _("Create a new table"),
     _("Join a table"),
     _("Saved games"),
+    _("Create your own question sets"),
     _("Leaderboards"),
     _("Statistics"),
     _("Settings"),
@@ -243,7 +246,9 @@ class EltenGameRoom < Program
     uuid: "468f59c5-c9d7-47cd-80f1-1a6fbfd1aa80",
     tables: SERVER_TABLES,
     protected: true,
-    notifications: true
+    notifications: true,
+    max_public_resources_bytes: 16 * 1024 * 1024,
+    max_private_resources_bytes_per_user: 16 * 1024 * 1024
   )
 
   def self.activate
@@ -716,22 +721,28 @@ class EltenGameRoom < Program
     when 2
       show_saved_games
     when 3
-      show_leaderboards
+      show_question_creator
     when 4
-      show_statistics
+      show_leaderboards
     when 5
-      show_settings
+      show_statistics
     when 6
-      show_rules_library
+      show_settings
     when 7
-      show_readme
+      show_rules_library
     when 8
+      show_readme
+    when 9
       show_changelog
     end
   end
 
   def game_local_services
     {server_tables: @server_tables, transport: @transport}
+  end
+
+  def show_question_creator
+    GameRoomQuizContributions::Controller.new(self).creator
   end
 
   def show_leaderboards
@@ -1400,6 +1411,22 @@ class EltenGameRoom < Program
   end
 
   def show_table_screen(row)
+    previous_reports = @question_reports
+    return if row == nil
+
+    @question_reports = if game_definition(row["game"])&.respond_to?(:reportable_question)
+      GameRoomQuizReports::Tracker.new(user: Session.name, current_user: -> { Session.name })
+    end
+    result = run_table_screen(row)
+    # Only after the entire table screen has closed and its monitors stopped.
+    # Finishing a round, a rematch or cancelling Leave does not open a report.
+    GameRoomQuizReports::Review.new(self, @question_reports).run if @question_reports && !@question_reports.empty?
+    result
+  ensure
+    @question_reports = previous_reports
+  end
+
+  def run_table_screen(row)
     previous_network_view = @table_network_view
     return if row == nil
 
@@ -3066,6 +3093,7 @@ class EltenGameRoom < Program
     GameScreen.new(
       program: self,
       game_services: game_local_services,
+      question_reports: @question_reports,
       repository: @games,
       game: game,
       session: session,

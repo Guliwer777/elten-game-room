@@ -24,7 +24,7 @@ cases = [
 ]
 cases.each do |kind, results, outcome|
   before = Marshal.dump([balances, results])
-  result = LOGIC::ChallengeEngine.settlement(kind, balances: balances, results: results)
+  result = LOGIC::ChallengeEngine.settlement(kind, balances: balances, results: results, target: kind == 'guess_number' ? 47 : nil)
   assert_equal(outcome, result.outcome, kind)
   text = game.send(:settlement_text, result, players)
   assert(!text.match?(/\n\n|\A\n|\n\z/), kind)

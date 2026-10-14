@@ -7,9 +7,12 @@ module GameRoomGames
 
   # Untranslated text from a packaged app can retain ASCII-8BIT even when
   # its bytes are UTF-8. Host controls append their own translated labels.
-  OptionChoice = Struct.new(:value, :label, keyword_init: true) do
+  OptionChoice = Struct.new(:value, :label, :description, keyword_init: true) do
     def initialize(**attributes)
-      super(**attributes.merge(label: GameRoomContent.utf8(attributes[:label])))
+      super(**attributes.merge(
+        label: GameRoomContent.utf8(attributes[:label]),
+        description: attributes[:description] == nil ? nil : GameRoomContent.utf8(attributes[:description])
+      ))
     end
   end
   ShortcutChoice = Struct.new(:value, :label, keyword_init: true)

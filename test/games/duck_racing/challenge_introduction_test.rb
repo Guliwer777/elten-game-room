@@ -34,7 +34,7 @@ class DuckChallengeIntroductionTest
     assert_equal(manifest['required_assets'], embedded['required_assets'])
     assert_equal(1, manifest['required_assets']['sounds'].count('duck_challenge'))
     assert_equal(1, GameRoomSounds::ASSET_NAMES.count('duck_challenge'))
-    assert_equal(0.544, GameRoomSounds::ASSET_VOLUME_GAINS.fetch('duck_challenge'))
+    assert_equal(0.21811668, GameRoomSounds::ASSET_VOLUME_GAINS.fetch('duck_challenge'))
     files = Dir.glob(File.join(root, 'Audio', 'duck_challenge.*'))
     assert_equal([File.join(root, 'Audio', 'duck_challenge.opus')], files)
     bytes = File.binread(files.first)
@@ -85,7 +85,7 @@ class DuckChallengeIntroductionTest
     after = h.replay
     emit(p, h, after)
     assert_equal(1, encounters.length, "#{kind}: missing or duplicate encounter cue")
-    assert_equal(@program.gain * 0.544, encounters.first[:volume])
+    assert_equal(@program.gain * 0.21811668, encounters.first[:volume])
     entry = after.history.find { |value| value.kind == :challenge }
     assert_equal("Alice starts a challenge with Bob.\n#{h.game.challenge_name(kind)}.", entry.text)
     immediate_countdown = kind == 'sound_order' || ENGINE::SPEED_TYPES.include?(kind) && kind != 'count_ducks'
@@ -186,7 +186,7 @@ class DuckChallengeIntroductionTest
       emit(p, h)
       cues = @program.events.select { |event| event[:asset] == (question ? 'duck_question' : 'duck_challenge') }
       assert_equal(mode == :disabled ? 0 : 1, cues.length)
-      assert_equal(mode == :covered ? 0.0 : 0.25 * (question ? 0.7 : 0.544), cues.first[:volume]) unless mode == :disabled
+      assert_equal(mode == :covered ? 0.0 : 0.25 * (question ? 0.7 : 0.21811668), cues.first[:volume]) unless mode == :disabled
       @covered = false
       @output.tick
       assert_equal(0.0, cues.first[:sound].volume) if mode == :covered
@@ -210,7 +210,10 @@ class DuckChallengeIntroductionTest
 
   def client_preparation(kind, delay:, question: nil)
     pending, p = true, nil
-    setup_client(kind, phase: :preparing, presentation_busy: -> { pending || p.event_presentation_busy? })
+    session_epoch = 100_000
+    setup_client(kind, phase: :preparing, presentation_busy: -> { pending || p.event_presentation_busy? },
+      session_time: ->(_state) { session_epoch + @program.now_ms })
+    @program.durations[GameRoomDuckRacing::ChallengeAudio::QUACK_ASSET] = 400
     h = HARNESS.new(kind: kind)
     @game.resources = h.resources
     h.start(seed: question == :square ? square_seed : h.seed_for(question ? 'curiosity' : 'challenge'))
@@ -248,10 +251,17 @@ class DuckChallengeIntroductionTest
     h.begin_round
     emit(p, h)
     @replay = h.replay
+    # The adapter and client fixtures use different epochs. Deliver the start
+    # at the current local time, then advance the shared clock with that time.
+    # Response/countdown boundaries must still come from the accepted state.
+    round = @replay.state.fetch(:round)
+    session_epoch = round.fetch(:started_at) - delay
     control
     @client.before_wait(@replay, @viewer)
     attach
-    assert_equal(delay, @client.instance_variable_get(:@origin_ms), 'Attempt time included the encounter pause')
+    response_at = round[:response_at] && round[:response_at] - session_epoch
+    origin = kind == 'count_ducks' ? delay : response_at || delay
+    assert_equal(origin, @client.instance_variable_get(:@origin_ms), 'Attempt time included the encounter pause')
     if question
       assert_equal('quiz', @client.local_view[:type])
       assert_equal(20_000, @client.local_view[:deadline_ms], 'The introduction consumed question answer time')
@@ -270,22 +280,29 @@ class DuckChallengeIntroductionTest
       assert(@client.local_view[:preparing], 'The completed ducks did not prepare the answer phase')
       assert(@program.sounds.none?(&:playing?), 'The answer pause overlapped the final duck')
       playback_end = @program.now_ms
+      stimulus = ENGINE.stimulus(@client.instance_variable_get(:@trace).state, seat: 0)
+      scheduled_end = delay + stimulus[:events].map { |event| event[:offset_ms] + event[:duration_ms] }.max
+      # Ten-millisecond test frames can delay individual sounds slightly.
+      # The countdown now follows the shared start, not the last local frame.
+      assert((playback_end - scheduled_end).abs <= quacks.call.length * 10)
+      cue_at = scheduled_end + ENGINE::COUNT_DUCKS_PREPARATION_DELAY_MS
+      assert_equal(cue_at + ENGINE::COUNTDOWN_MS, response_at)
       cues = -> { @program.events.select { |event| event[:asset] == 'duck_countdown' } }
       assert_equal([], cues.call)
-      advance(playback_end + 2_499)
+      advance(cue_at - 1)
       assert_equal([], cues.call, 'Introduction shortened the pause before answering')
-      advance(playback_end + 2_500)
-      assert_equal([playback_end + 2_500], cues.call.map { |event| event[:at] })
-      advance(playback_end + ENGINE::PREPARATION_MS)
+      advance(cue_at)
+      assert_equal([cue_at], cues.call.map { |event| event[:at] })
+      advance(response_at)
       assert_equal(:responding, @client.local_view.dig(:own, :phase))
-      assert_equal(playback_end - delay + ENGINE::PREPARATION_MS + 20_000,
+      assert_equal(response_at - delay + 20_000,
         @client.local_view.dig(:own, :deadline_ms), 'Introduction consumed the answer deadline')
     elsif ENGINE::SPEED_TYPES.include?(kind)
-      advance(2_499)
+      advance(4_999)
       assert(@program.events.none? { |event| event[:asset] == 'duck_countdown' })
-      advance(2_500)
-      assert_equal([2_500], @program.events.select { |event| event[:asset] == 'duck_countdown' }.map { |event| event[:at] })
-      advance(2_500 + ENGINE::COUNTDOWN_MS)
+      advance(5_000)
+      assert_equal([5_000], @program.events.select { |event| event[:asset] == 'duck_countdown' }.map { |event| event[:at] })
+      advance(5_000 + ENGINE::COUNTDOWN_MS)
       assert(!@client.local_view[:preparing], 'Speed challenge added another two seconds')
     end
     close

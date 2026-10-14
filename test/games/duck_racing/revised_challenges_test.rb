@@ -43,7 +43,7 @@ check.call('guess number: two minutes and equal distance is a draw regardless of
   assert(LOGIC::NumericChallenges.submit(model, seat: 1, action: {kind: :answer, value: answer, press_id: 1}, now_ms: 119_999))
   assert_equal(nil, model[:outcome][:winner])
   results_by_seat = model[:players].transform_values { |p| {best: p[:best], attempts: p[:attempts].length} }
-  assert_equal(nil, LOGIC::ChallengeEngine.settlement('guess_number', balances: {0 => 10, 1 => 10}, results: results_by_seat).winner)
+  assert_equal(nil, LOGIC::ChallengeEngine.settlement('guess_number', balances: {0 => 10, 1 => 10}, results: results_by_seat, target: answer).winner)
 end
 
 check.call('numbered balls: one minute each, public values and next turn') do

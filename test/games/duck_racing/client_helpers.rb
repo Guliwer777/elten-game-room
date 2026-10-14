@@ -139,7 +139,7 @@ module DuckClientTest
       accepted_events: [], history: [], state: state)
   end
 
-  def setup_client(kind, viewer: 'Alice', phase: :playing, id: 1, transport: nil, presentation_busy: nil, **options)
+  def setup_client(kind, viewer: 'Alice', phase: :playing, id: 1, transport: nil, presentation_busy: nil, session_time: nil, **options)
     @replay = make_replay(kind, phase: phase, id: id, **options)
     @program = DuckChallengeAudioTest::Program.new
     @game = Game.new(resources)
@@ -147,7 +147,7 @@ module DuckClientTest
     @viewer = viewer
     @client = CLIENT.new(@program, @game, transport: transport, clock: -> { @program.now_ms / 1000.0 },
       presentation_busy: presentation_busy,
-      session_time: ->(_state) { 100_000 + @program.now_ms },
+      session_time: session_time || ->(_state) { 100_000 + @program.now_ms },
       audio_factory: ->(**keywords) { GameRoomDuckRacing::ChallengeAudio.new(@program, **keywords).tap { |value| @audios << value } },
       realtime_factory: -> { Realtime.new(@program).tap { |value| @wrappers << value } },
       progress_factory: ->(**keywords, &block) {

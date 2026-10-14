@@ -5,6 +5,26 @@ require_relative 'game_room_localization'
 class GameRoomOptionEditor
   using GameRoomLocalization::Translations
 
+  # Only lists with described choices opt in. Let the native list announce
+  # its name and checked state first, then append to that same utterance.
+  # Labels stay unchanged for type-ahead, Braille and saved option summaries.
+  module ChoiceDescriptions
+    attr_writer :choice_descriptions
+
+    def speak_item_option(id = index, ...)
+      @announced_choice_description = @choice_descriptions.to_a[id] if id && id >= 0
+      super
+    ensure
+      @announced_choice_description = nil
+    end
+
+    def lspeak(text)
+      description = @announced_choice_description.to_s
+      text = speech_value_append(text, "\n" + description) unless description.empty?
+      super(text)
+    end
+  end
+
   def initialize(program:, defaults:, remember:, alert:)
     @program, @defaults, @remember, @alert = program, defaults, remember, alert
   end
@@ -48,12 +68,7 @@ class GameRoomOptionEditor
           default_index = choices.index do |choice|
             choice.value.to_s == defaults[key].to_s
           end.to_i
-          control = ListBox.new(
-            choices.map { |choice| choice.label.to_s },
-            header: definition.label.to_s,
-            index: default_index,
-            quiet: true
-          )
+          control = choice_control(definition, index: default_index)
           controls << control
           bindings << [definition, control]
         when "multiple_choice", "multiple_values"
@@ -61,13 +76,7 @@ class GameRoomOptionEditor
             definition = multiple_values_definition(definition, defaults.fetch(key, definition.default))
           end
           choices = definition.choices.to_a
-          control = ListBox.new(
-            choices.map { |choice| choice.label.to_s },
-            header: definition.label.to_s,
-            index: 0,
-            flags: ListBox::Flags::MultiSelection,
-            quiet: true
-          )
+          control = choice_control(definition, multiple: true)
           selected_indices = if definition.kind.to_s == "multiple_values"
             selected_values = defaults.fetch(key, definition.default)
             choices.each_index.select { |index| selected_values.is_a?(Array) && selected_values.include?(choices[index].value) }
@@ -131,6 +140,7 @@ class GameRoomOptionEditor
             control = set_binding[1]
             set_binding[0] = set_definition
             control.options = set_definition.choices.map { |choice| choice.label.to_s }
+            describe_choices(control, set_definition.choices)
             control.index = set_definition.choices.index { |choice| choice.value.to_s == options[GameRoomContent::SET_OPTION_KEY].to_s }.to_i
           end
           built_language = options[GameRoomContent::LANGUAGE_OPTION_KEY].to_s
@@ -167,6 +177,21 @@ class GameRoomOptionEditor
 
   private
 
+  def choice_control(definition, index: 0, multiple: false)
+    choices = definition.choices.to_a
+    control = ListBox.new(choices.map { |choice| choice.label.to_s },
+      header: definition.label.to_s, index: index,
+      flags: multiple ? ListBox::Flags::MultiSelection : 0, quiet: true)
+    describe_choices(control, choices)
+    control
+  end
+
+  def describe_choices(control, choices)
+    descriptions = choices.map(&:description)
+    control.extend(ChoiceDescriptions) if descriptions.any? { |text| !text.to_s.empty? } && !control.is_a?(ChoiceDescriptions)
+    control.choice_descriptions = descriptions if control.is_a?(ChoiceDescriptions)
+  end
+
   def refresh_option_controls(game, bindings, previous_options, form)
     raw_values = game_option_values(bindings)
     values = game.normalize_options(raw_values)
@@ -194,6 +219,7 @@ class GameRoomOptionEditor
           focused_value = old_choices[control.index]&.value
           control.deselect_multiselection_indices(control.multiselections)
           control.options = choices.map { |choice| choice.label.to_s }
+          describe_choices(control, choices)
           control.select_multiselection_indices(selected_indices)
           control.index = choices.index { |choice| choice.value == focused_value }.to_i
         end

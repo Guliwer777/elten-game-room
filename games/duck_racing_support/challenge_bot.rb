@@ -17,13 +17,13 @@ module GameRoomDuckRacing
     # seed is the bot's decision seed, not the challenge's secret seed.
     # Prepared word resources contain small candidate pools; no full lexicon
     # scan or dictionary construction takes place while planning an answer.
-    def plan(challenge, seat:, seed:, resources: {}, delay_ms: 0)
+    def plan(challenge, seat:, seed:, resources: {}, delay_ms: 0, compact: false)
       unless challenge.is_a?(Hash) && PRIVATE_TYPES.include?(challenge[:kind]) &&
           seat.is_a?(Integer) && challenge.fetch(:participants).include?(seat) && seed.is_a?(Integer)
         raise ArgumentError, "Invalid private challenge bot setup"
       end
       validate_delay(delay_ms)
-      Planner.new(challenge, seat: seat, seed: seed, resources: resources, delay_ms: delay_ms).run
+      Planner.new(challenge, seat: seat, seed: seed, resources: resources, delay_ms: delay_ms, compact: compact).run
     end
 
     # Start with {} for each new challenge. Feed every accepted public view,
@@ -118,10 +118,11 @@ module GameRoomDuckRacing
       # A guard against a broken planner, never a limit on a human's Simon.
       MAX_INPUTS = 512
 
-      def initialize(challenge, seat:, seed:, resources:, delay_ms:)
+      def initialize(challenge, seat:, seed:, resources:, delay_ms:, compact: false)
         @challenge, @seat, @resources = challenge, seat, resources
         @delay_ms = delay_ms
-        @trace = ChallengeTrace.new(challenge, seat: seat, resources: resources)
+        @compact = compact
+        @trace = ChallengeTrace.new(challenge, seat: seat, resources: resources, compact: compact)
         @random = Random.new(seed ^ ((seat + 1) * 1_000_003))
         @now, @press_id, @input_count = 0, 0, 0
       end
@@ -140,7 +141,7 @@ module GameRoomDuckRacing
           end
         end
         raise PlanningError, "The planned private attempt did not finish" unless @trace.finished?
-        @trace.snapshot
+        @compact ? [@trace.snapshot, @now] : @trace.snapshot
       end
 
       private

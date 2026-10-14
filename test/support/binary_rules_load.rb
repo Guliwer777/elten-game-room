@@ -18,6 +18,12 @@ module BinaryRulesLoad
     @entries && !development_source ? @entries.fetch(relative.downcase).b : File.binread(path)
   end
 
+  def self.metadata
+    # A signed package carries its manifest in the container header, not as
+    # a source record. Only checkout-only tests read the source manifest.
+    @entries ? @metadata : JSON.parse(File.binread(File.join(ROOT, "manifest.json")))
+  end
+
   def self.package=(path)
     require "zip"
     require "zstd-ruby"

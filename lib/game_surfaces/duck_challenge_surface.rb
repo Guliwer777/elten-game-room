@@ -249,7 +249,7 @@ module GameSurfaces
         when 'hit_duck' then (0x31..0x39).to_a
         when 'rhythm' then [0x46, 0x4A]
         when 'audio_ball' then [0x26, 0x57, 0x25, 0x44, 0x28, 0x53]
-        when 'sound_memory' then []
+        when 'sound_memory', 'axel_pong' then []
         end
       end
       case @spec.kind

@@ -134,5 +134,24 @@ names.each do |code, expected_name|
     assert(!text.include?('%{'), "#{code}: unexpanded placeholder: #{text}")
   end
 end
+GameRoomTestLocalization.use_language('pl')
+{'long_absence' => 2, 'golden_sleep' => 2, 'soporific_pill' => 3}.each do |card_type, turns|
+  h = Harness.new
+  h.start(seed: h.seed_for(card_type))
+  card = h.replay.state[:race][:racers][0][:hand].find { |copy| copy.type == card_type }
+  h.accept({'action' => 'race', 'input' => {'kind' => 'play', 'card' => card.id, 'target' => 1}}, actor: 'Alice')
+  current = h.replay
+  assert_equal(turns, current.state[:race][:racers][1][:skip_turns])
+  %w[Alice Bob].each do |viewer|
+    speech = h.game.describe_event(h.events.last, h.repository, current, viewer)
+    assert_equal(1, speech.count("Bob stoi #{turns} tury."), 'Card must announce the target and duration once')
+    assert(speech.none? { |text| text.include?('pominie') })
+  end
+end
+{1 => 'turę', 2 => 'tury', 5 => 'tur', 12 => 'tur', 22 => 'tury'}.each do |turns, noun|
+  history = []
+  game.send(:append_notices, history, [[:skip_added, 1, turns]], 201, %w[Alice Bob])
+  assert_equal("Bob stoi #{turns} #{noun}.", history.first.text)
+end
 GameRoomTestLocalization.use_language('en')
 puts "PASS Duck UI in five languages: #{records.length} messages, 37 cards, 30 squares, 20 challenge names and plural counts #{counts.join('/')}"

@@ -173,6 +173,7 @@ module DuckGameAdapterTest
     def begin_round
       before = replay
       id = before.state[:round][:challenge][:id]
+      return id if before.state[:round][:phase] == :playing
       # Each player plans from the same revision, before any ready record.
       plans = before.state[:round][:challenge][:participants].reverse.map do |seat|
         actor = players.fetch(seat)
@@ -183,15 +184,17 @@ module DuckGameAdapterTest
       end
       plans.each { |actor, ready| append(ready, actor: actor) }
       assert_equal(plans.length, replay.state[:round][:ready].length, 'Concurrent ready actions were lost')
-      accept({'action' => 'begin', 'challenge' => id}, author: owner)
+      accept({'action' => 'begin', 'challenge' => id}, author: owner) if replay.state[:round][:phase] == :preparing
       assert_equal(:playing, replay.state[:round][:phase])
+      @now_ms = [@now_ms, replay.state[:round][:response_at].to_i].max
       id
     end
 
     def private_traces
       challenge = replay.state[:round][:challenge]
       challenge[:participants].to_h do |seat|
-        trace = LOGIC::ChallengeTrace.new(challenge, seat: seat, resources: @resources)
+        trace = LOGIC::ChallengeTrace.new(challenge, seat: seat, resources: @resources,
+          compact: replay.state.dig(:round, :private, :compact) == true)
         state = trace.state
         action = case challenge[:kind]
         when 'guess_number'
@@ -222,7 +225,7 @@ module DuckGameAdapterTest
         assert(!data.key?('trace') && !data.key?('page') && !data.key?('score'), 'Commit exposed a private attempt')
       end
       assert_equal(nil, replay.state[:last_resolution])
-      accept({'action' => 'advance', 'challenge' => id}, author: owner)
+      accept({'action' => 'advance', 'challenge' => id}, author: owner) unless replay.state[:round][:private][:phase] == :revealing
       round[:challenge][:participants].each do |seat|
         actor = players.fetch(seat)
         protocol = replay.state[:round][:private]

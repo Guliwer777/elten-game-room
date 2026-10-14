@@ -17,6 +17,7 @@ module GameRoomSounds
     duck_question
     duck_correct
     duck_frozen
+    duck_final_lap
     war_open
     ding
     shuffle
@@ -86,7 +87,7 @@ module GameRoomSounds
   # Balance the loud Battleship recordings before the user's volume controls.
   # Keep the audio files and playback handles intact for serial presentation.
   ASSET_VOLUME_GAINS = (BATTLESHIP_HITS + BATTLESHIP_LAUNCHES + ["rocket_miss"]).to_h { |name| [name, 0.2] }
-    .merge("war_open" => 0.6, "duck_challenge" => 0.544, "duck_question" => 0.7, "mille_accident" => 0.7,
+    .merge("war_open" => 0.6, "duck_challenge" => 0.21811668, "duck_question" => 0.7, "mille_accident" => 0.7,
       "mille_right_of_way" => 0.8, "mille_driving_ace" => 0.75,
       "mille_distance_50" => 0.35, "mille_distance_75" => 0.35, "mille_distance_100" => 0.5,
       "mille_wheel_change" => 0.5, "mille_instant_repair" => 0.65,

@@ -4,6 +4,7 @@ expected = {
   "Create a new table" => :show_create_table,
   "Join a table" => :show_join_table,
   "Saved games" => :show_saved_games,
+  "Create your own question sets" => :show_question_creator,
   "Leaderboards" => :show_leaderboards,
   "Statistics" => :show_statistics,
   "Settings" => :show_settings,
@@ -20,4 +21,4 @@ expected.each_with_index do |(label, method), index|
   app.send(:open_main_option, index)
   assert(opened.last == method && opened.length == index + 1, "#{label} opens a different screen")
 end
-puts "PASS main menu: nine ordered entries, matching actions, no separate invitations entry"
+puts "PASS main menu: ordered entries including question creator, matching actions, no separate invitations entry"

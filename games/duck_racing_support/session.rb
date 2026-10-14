@@ -11,8 +11,8 @@ module GameRoomDuckRacing
   module Session
     IDLE_MS = 90_000
     PULSE_MS = 30_000
-    CONCURRENT = %w[ready alive commit reveal attempt].freeze
-    INPUTS = %w[start race ready begin alive commit reveal attempt input advance point cancel].freeze
+    CONCURRENT = %w[ready alive commit reveal attempt result].freeze
+    INPUTS = %w[start race ready begin alive commit reveal attempt result input advance point cancel].freeze
     module_function
 
     def initial(session_id:, player_count:, laps:, enabled_challenges:, fingerprint:)
@@ -31,7 +31,7 @@ module GameRoomDuckRacing
       {session_id: session_id, player_count: player_count, laps: laps,
         enabled_challenges: enabled_challenges.dup, fingerprint: fingerprint.dup,
         revision: 0, race: nil, round: nil, last_resolution: nil,
-        point_receipt: nil, private_closures: [], notices: []}
+        point_receipt: nil, private_closures: [], result_closures: [], notices: []}
     end
 
     # Caller applies to an isolated candidate and publishes it only on success.
@@ -48,6 +48,11 @@ module GameRoomDuckRacing
       state[:notices] = []
       if action == "start"
         return false unless moderator && state[:race].nil? && data["seed"].is_a?(Integer) && data["seed"] >= 0
+        return false unless [nil, 2].include?(data['challenge_flow'])
+        # Only new starts opt in. Accepted older begin/advance records must
+        # retain their meaning when replaying saved or already running games.
+        state[:challenge_flow] = data['challenge_flow']
+        state[:protocol_session] = data.fetch('session', state[:session_id])
         state[:race] = Race.start(player_count: state[:player_count], laps: state[:laps],
           enabled_challenges: state[:enabled_challenges], seed: data["seed"])
         state[:notices] << [:started]
@@ -65,6 +70,10 @@ module GameRoomDuckRacing
           action: {kind: kind, card: input["card"], target: input["target"]})
         return false unless accepted
         state[:notices].concat(state[:race][:notices])
+        # A restored race retains historical scopes, but the next accepted
+        # race move opens independent challenges in its new physical session.
+        # Chained challenges inherit the same scope until the next race move.
+        state[:protocol_session] = data.fetch('session', state[:session_id])
         open_challenge(state, now_ms)
       else
         round = state[:round]
@@ -81,9 +90,12 @@ module GameRoomDuckRacing
       state[:round] = {
         challenge: copy(challenge), phase: :preparing, ready: {},
         last_seen: challenge[:participants].to_h { |seat| [seat, now_ms] },
-        created_at: now_ms, started_at: nil, private: nil, engine: nil, attempts: nil,
+        created_at: now_ms, started_at: nil, private: nil, engine: nil, attempts: nil, results: nil,
         balances: challenge[:participants].to_h { |seat| [seat, state[:race][:racers].fetch(seat)[:feathers]] }
       }
+      if streamlined?(state) && ChallengeEngine::INDEPENDENT.include?(challenge[:kind])
+        begin_challenge(state, {'session' => state[:protocol_session]}, now_ms, {})
+      end
     end
     private_class_method :open_challenge
 
@@ -98,6 +110,8 @@ module GameRoomDuckRacing
       when "ready"
         if participant && round[:phase] == :preparing && !round[:ready].key?(seat) && data["fingerprint"] == state[:fingerprint]
           round[:ready][seat] = true
+          begin_challenge(state, data, now_ms, resources) if streamlined?(state) && seats.all? { |member| round[:ready][member] }
+          true
         end
       when "begin"
         if moderator && round[:phase] == :preparing && seats.all? { |member| round[:ready][member] }
@@ -110,17 +124,31 @@ module GameRoomDuckRacing
         end
       when "commit"
         if participant && round[:phase] == :playing && round[:private]
-          PrivateRound.accept_commit(round[:private], seat: seat, value: data["value"], now_ms: now_ms)
+          committed = PrivateRound.accept_commit(round[:private], seat: seat, value: data["value"], now_ms: now_ms)
+          if committed && streamlined?(state) && seats.all? { |member| round[:private][:commitments].key?(member) }
+            PrivateRound.close_commits(round[:private], now_ms: now_ms)
+          end
+          committed
         end
       when "reveal"
         if participant && round[:phase] == :playing && round[:private]
           PrivateRound.accept_reveal_page(round[:private], seat: seat, page: data["page"], now_ms: now_ms)
         end
       when "attempt"
-        if participant && round[:phase] == :playing && round[:attempts] && !round[:attempts].key?(seat)
+        if participant && round[:phase] == :playing && round[:attempts] && !round[:attempts].key?(seat) &&
+            (!round[:response_at] || now_ms >= round[:response_at])
           begin
             verifier = TraceVerifier.new(challenge: challenge, balances: round[:balances], resources: resources)
             round[:attempts][seat] = verifier.verify_attempt(seat, data["trace"])
+          rescue TraceVerifier::InvalidTrace
+            return false
+          end
+          true
+        end
+      when 'result'
+        if participant && round[:phase] == :playing && round[:results] && !round[:results].key?(seat)
+          begin
+            round[:results][seat] = CompactAttempt.verify(challenge, data['answer'], seat: seat)
           rescue TraceVerifier::InvalidTrace
             return false
           end
@@ -167,12 +195,24 @@ module GameRoomDuckRacing
         round[:engine] = ChallengeEngine.start(challenge, resources: resources)
       elsif ChallengeEngine::FIRST_ANSWER.include?(kind)
         round[:attempts] = {}
+        if streamlined?(state)
+          preparation = ChallengeEngine::PREPARATION_MS
+          if kind == 'count_ducks'
+            model = ChallengeEngine.start(challenge, resources: resources)
+            events = ChallengeEngine.stimulus(model, seat: seats.first).fetch(:events)
+            preparation = events.map { |event| event[:offset_ms] + event[:duration_ms] }.max +
+              ChallengeEngine::COUNT_DUCKS_PREPARATION_MS
+          end
+          round[:response_at] = now_ms + preparation
+        end
+      elsif streamlined?(state) && ChallengeEngine::LOCAL_SCORES.include?(kind)
+        round[:results] = {}
       elsif !ChallengeEngine::REALTIME.include?(kind)
         # Local models enforce the actual game limits. In particular no
         # overall commit deadline is allowed to cap an ongoing Simon.
         round[:private] = PrivateRound.start(session_id: data.fetch("session", state[:session_id]),
           round_id: challenge[:id].to_s, seats: seats, started_at_ms: now_ms,
-          reveal_timeout_ms: IDLE_MS)
+          reveal_timeout_ms: IDLE_MS, compact: streamlined?(state))
       end
       state[:notices] << [:challenge_started, challenge[:id], kind, seats.dup]
       if round[:engine]
@@ -225,7 +265,7 @@ module GameRoomDuckRacing
         return true if round[:private][:reveal_deadlines].values.any? { |deadline| now_ms >= deadline }
       end
       round[:last_seen].any? do |seat, time|
-        done = round[:attempts]&.key?(seat) || round[:private] && round[:private][:reveals].key?(seat)
+        done = round[:results]&.key?(seat) || round[:attempts]&.key?(seat) || round[:private] && round[:private][:reveals].key?(seat)
         !done && now_ms - time >= IDLE_MS
       end
     end
@@ -233,7 +273,11 @@ module GameRoomDuckRacing
     def resolve_ready(state, resources, now_ms)
       round = state[:round]
       return unless round
-      if round[:attempts] && (round[:attempts].values.any? { |result| result[:correct] } ||
+      if round[:results] && round[:results].length == round[:challenge][:participants].length
+        results = round[:results]
+        result = ChallengeEngine.settlement(round[:challenge][:kind], balances: round[:balances], results: results)
+        complete(state, result, results, now_ms)
+      elsif round[:attempts] && (round[:attempts].values.any? { |result| result[:correct] } ||
           round[:attempts].length == round[:challenge][:participants].length)
         kind = round[:challenge][:kind]
         results = round[:challenge][:participants].to_h do |seat|
@@ -246,7 +290,8 @@ module GameRoomDuckRacing
         result = ChallengeEngine.settlement(round[:challenge][:kind], balances: round[:balances], results: results)
         complete(state, result, results, now_ms)
       elsif round[:private]&.fetch(:phase) == :finished
-        verifier = TraceVerifier.new(challenge: round[:challenge], balances: round[:balances], resources: resources)
+        verifier_class = round[:private][:compact] ? CompactAttempt::Verifier : TraceVerifier
+        verifier = verifier_class.new(challenge: round[:challenge], balances: round[:balances], resources: resources)
         resolved = PrivateRound.replay(round[:private], adapter: verifier)
         answer = ChallengeEngine.solution(round[:challenge], resources: resources)
         complete(state, resolved.settlement, resolved.results, now_ms, answer: answer)
@@ -306,10 +351,13 @@ module GameRoomDuckRacing
     # records or copied input traces. They let a recreated worker remove its
     # confirmed local answers even after later challenges have finished.
     def remember_private_closure(state, cancelled:)
+      if state.dig(:round, :results)
+        state[:result_closures] << {id: state[:round][:challenge][:id], seats: state[:round][:challenge][:participants].dup}
+      end
       protocol = state.dig(:round, :private)
       return unless protocol
       state[:private_closures] << {session_id: protocol[:session_id], round_id: protocol[:round_id],
-        seats: protocol[:seats].dup, commitments: protocol[:commitments].dup, cancelled: cancelled}
+        seats: protocol[:seats].dup, commitments: protocol[:commitments].dup, cancelled: cancelled, compact: protocol[:compact]}
     end
     private_class_method :remember_private_closure
 
@@ -327,6 +375,8 @@ module GameRoomDuckRacing
     def copy(value)
       Marshal.load(Marshal.dump(value))
     end
+
+    def streamlined?(state); state[:challenge_flow] == 2; end
 
     def valid_time?(time)
       time.is_a?(Integer) && time >= 0

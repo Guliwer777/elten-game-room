@@ -26,6 +26,8 @@ będzie już znajomych.
 - [Funkcje, które łatwo przeoczyć](#funkcje-które-łatwo-przeoczyć)
 - [Ściągawka ze skrótów](#ściągawka-ze-skrótów)
 - [Pomoc w rozwoju programu](#pomoc-w-rozwoju-programu)
+  - [Zgłaszanie pytań w Quizie](#zgłaszanie-pytań-w-quizie)
+  - [Własne zestawy pytań](#własne-zestawy-pytań)
 - [Autorzy i licencja](#autorzy-i-licencja)
 
 ## Pierwsze kroki
@@ -46,6 +48,8 @@ i przejrzeć istniejące stoły. Możesz też skorzystać z zaproszenia lub widg
 na ekranie głównym ELTEN-a.
 Na listach wyboru gry przy tworzeniu i dołączaniu do stołu po nazwie
 usłyszysz krótki opis tego, na czym polega gra.
+Na liście wyzwań w ustawieniach Wyścigów kaczek po nazwie i stanie
+zaznaczenia usłyszysz też krótkie wyjaśnienie, na czym polega dane wyzwanie.
 Ponowne uruchomienie Power Games w tej samej kopii ELTEN-a wraca do już
 otwartego okna programu, zamiast tworzyć drugą niezależną instancję.
 
@@ -71,69 +75,6 @@ Obecnie Power Games zawiera 34 gry:
 Wiele gier ma kilka wariantów. Ich wybór, liczba uczestników, dostępność botów
 i dodatkowe ustawienia zależą od konkretnego tytułu. Szczegółowe reguły,
 punktację i sterowanie opisuje dostępna w programie sekcja „Zasady gry”.
-
-1000 mil to karciany wyścig według zasad QuentinC: dojedź dokładnie do
-1000 mil, atakuj przeciwników i usuwaj przeszkody odpowiednimi kartami.
-Karty uniewrażliwiające chronią do końca rundy. Pasującą kartę można zagrać tuż
-po ataku, także poza własną turą, jeśli następny gracz nie dobrał ani nie zagrał
-jeszcze karty. W programie używamy nazwy Nieczysta zagrywka
-(Dirty trick / Coup Fourré). To dozwolona obrona anulująca atak, nie atak zwrotny.
-Daje to 300 punktów premii oprócz 100 za kartę uniewrażliwiającą,
-dobór karty w jej miejsce (jeśli jest dostępna)
-i dodatkową turę ze zwykłym doborem. W drużynie dystans, przeszkody, ochrona i punkty są wspólne,
-ale każdy ma własne karty i turę. Możesz ustawić docelowy wynik (domyślnie
-5000 punktów), drużyny, „Kumulowanie problemów” i „Użyj odrzuconych kart jako
-nowej talii, gdy obecna się skończy”.
-
-Gdy opóźnienie ruchów botów wynosi 0, następny bot może dobrać od razu po
-prezentacji ataku, zanim zdążysz zareagować. Aby łatwiej wykonywać nieczyste
-zagrywki, ustaw niezerowe opóźnienie ruchów botów. Gra nie gwarantuje czasu
-na reakcję: możliwość wykonania nieczystej zagrywki nadal kończy się,
-gdy następny gracz dobierze lub zagra kartę. W 1000 mil domyślne opóźnienie ruchów botów wynosi 1 sekundę.
-
-Opcja Dodaj karty uniewrażliwiające jest domyślnie włączona: standardowa
-talia ma 106 kart. Wyłączenie usuwa cztery karty — Dodatkowy zbiornik, Opony
-odporne na przebicie, Pierwszeństwo przejazdu i As drogi — pozostawiając
-102 karty, bez stałej ochrony i nieczystych zagrywek. Dotychczasowe partie
-bez tej opcji nadal zawierają karty uniewrażliwiające. Karty jazdy pod prąd dodaje się osobno.
-Ataki „Spuszczenie paliwa” i „Przedziurawienie opon” usuwa się odpowiednio
-kartami „Zatankowanie” i „Koło zapasowe”.
-
-Jazda pod prąd jest opcjonalna i domyślnie wyłączona. Opcja Dodaj kartę jazdy pod prąd standardowo dodaje 4 karty ataku i 6 kart końca jazdy pod prąd, tak jak liczby kart ograniczenia prędkości i jego końca w standardowej talii. Są to zatwierdzone lokalne wartości domyślne, nie potwierdzone liczby kart w QuentinC Playroom. Dotychczasowe partie zachowują jawnie zapisane liczby. Tryb dowolny pozwala zmienić obie liczby osobno.
-Atak działa także na stojący samochód, niezależnie od ograniczenia prędkości,
-usterek i ustawienia kumulowania problemów. Pod jego wpływem dozwolone karty
-25, 50, 75, 100 i 200 mil odejmują dystans, ale nie poniżej zera; zagranie
-przy zerze pozostawia zero. Nadal obowiązują wymogi zielonego światła,
-usunięcia przeszkód, ograniczenie prędkości i limit dwóch kart 200 mil
-w rundzie, także przy cofaniu. As drogi chroni przed jazdą pod prąd,
-usuwa ją i może posłużyć do wykonania nieczystej zagrywki. Koniec jazdy pod prąd usuwa tylko
-ten efekt i nie wymaga dodatkowego zielonego światła; pozostałe przeszkody
-i wynikające z nich wymagania nadal obowiązują.
-
-Błyskawiczna naprawa
-
-Opcja Dodaj karty błyskawicznej naprawy jest opcjonalna i domyślnie wyłączona. Po włączeniu dodaje dwie karty błyskawicznej naprawy do standardowej talii. Tryb dowolny pozwala zmienić ich liczbę; o ich obecności w talii nadal decyduje przełącznik.
-
-Po dobraniu karty w swojej zwykłej turze zagraj błyskawiczną naprawę na własny samochód lub drużynę i wybierz dokładnie jeden problem do usunięcia: czerwone światło, początkowy brak zielonego światła, spuszczenie paliwa, przedziurawienie opon, wypadek, ograniczenie prędkości lub jazdę pod prąd. Jedna karta usuwa tylko wybrany problem, nawet gdy skumulowało się ich kilka.
-
-Usunięcie czerwonego światła lub początkowego braku zielonego światła pozwala ruszyć tylko wtedy, gdy nie blokuje tego inny problem. Usunięcie problemu z paliwem, oponą lub wypadkiem nadal wymaga zielonego światła, chyba że masz Pierwszeństwo przejazdu. Pozostałe problemy nie zmieniają się. Błyskawiczna naprawa nie jest kartą uniewrażliwiającą ani natychmiastową reakcją na atak: nie daje odporności, dodatkowej tury ani premii 100 lub 300 punktów.
-
-Tryb dowolny
-
-Tryb dowolny pozwala osobno ustawić liczbę kart każdego typu: wszystkich pięciu dystansów, każdej naprawy i ataku, każdej karty uniewrażliwiającej, jazdy pod prąd, jej końca oraz błyskawicznej naprawy. Dla każdego typu wybierz liczbę całkowitą od 0 do 100. Opcje Dodaj karty uniewrażliwiające, Dodaj kartę jazdy pod prąd i Dodaj karty błyskawicznej naprawy nadal decydują o obecności tych kart: wyłączona grupa nie trafia do talii nawet przy dodatnich zapisanych liczbach. Limit dwóch kart 200 mil na gracza lub drużynę w rundzie nie zmienia się.
-
-Włączone karty muszą wystarczyć na początkowe rozdanie po sześć kart każdemu graczowi i umożliwiać zdobywanie punktów: dodaj kartę uniewrażliwiającą albo karty dystansu wraz z zielonym światłem, Pierwszeństwem przejazdu lub błyskawiczną naprawą. Nie gwarantuje to możliwości osiągnięcia 1000 mil. Nieprawidłowa talia w trybie dowolnym uniemożliwia rozpoczęcie gry. Zmiana ustawień stołu nie przepisuje talii ani odtwarzania dotychczasowej partii. Tryb dowolny jest domyślnie wyłączony; jego wyłączenie przywraca standardowe liczby kart dla nowych partii.
-
-W 1000 mil strzałki przeglądają rękę, Enter zagrywa kartę i w razie potrzeby
-pyta o cel, a Spacja dobiera. Po dobraniu Enter na karcie niemożliwej do
-zagrania pyta, czy ją odrzucić. „Nie” lub Escape zamyka to pytanie bez
-odrzucenia karty i bez zapisu ruchu. J odrzuca aktualnie wybraną kartę
-z ręki od razu, bez pytania, nawet jeśli można ją zagrać.
-Delete nadal otwiera wybór karty do odrzucenia.
-Z i Shift+Z wyszukują karty możliwe do zagrania.
-I odczytuje twój samochód, Shift+I — wszystkie
-samochody, S — wyniki, a T — czyja jest tura. F1 otwiera pomoc kontekstową,
-a Ctrl+F1 — pełne zasady.
 
 W grze taboo potrzebujesz komunikacji z innymi graczami. Możesz użyć do tego
 konferencji w eltenie, innego komunikatora lub grać na żywo.
@@ -499,6 +440,49 @@ Przy błędzie najbardziej pomagają:
 - odpowiedni fragment logu, jeśli pojawił się wyjątek lub błąd połączenia.
 
 Przed opublikowaniem logu usuń z niego dane prywatne.
+
+### Zgłaszanie pytań w Quizie
+
+W Quizie Ctrl+B oznacza bieżące pytanie, a Ctrl+Shift+B poprzednie.
+Skróty nie otwierają formularza, więc możesz grać dalej. Dopiero po opuszczeniu
+stołu program zapyta, czy chcesz wysłać zgłoszenia. Wybierz „Tak”, opisz problem
+i naciśnij „Wyślij”. Treść pytania i odpowiedzi zostaną dołączone automatycznie.
+Wybór „Nie” usuwa oznaczenia; nie ma szkiców zgłoszeń na później.
+
+### Własne zestawy pytań
+
+W głównym oknie, po „Zapisanych grach”, znajdziesz „Tworzenie własnych zestawów
+pytań”. Otwiera się lista Twoich zestawów. Ctrl+N pozwala stworzyć własny
+zestaw albo przygotować pytania do jednego z zestawów dostępnych w grze.
+Dla własnego zestawu podaj nazwę, język i ewentualny opis, a następnie wybierz
+„Zapisz”. Jeśli dodajesz pytania do istniejącego zestawu, wybierz go z listy.
+
+Enter na zestawie otwiera menu:
+
+- „Dodaj pytanie” — wpisz pytanie i cztery odpowiedzi, wskaż poprawną odpowiedź
+  i wybierz kategorię z listy. Źródło i uwagi dla redaktora są opcjonalne.
+- „Przeglądaj pytania” — otwórz listę zapisanych pytań; Enter pozwala
+  edytować wybrane pytanie, a Ctrl+N dodać nowe.
+- „Dodaj kategorię” — nadaj nazwę kategorii, którą będzie można wybierać
+  w pytaniach.
+- „Usuń szkic” — usuń cały zestaw po potwierdzeniu.
+- „Wyślij do autora” — wyślij cały zestaw do użytkownika papierek.
+
+Przed dodaniem pierwszego pytania utwórz przynajmniej jedną kategorię.
+Kolejne możesz dodawać także podczas pisania pytania: na końcu listy kategorii
+wybierz „Dodaj nową kategorię” i naciśnij Enter. Wpisana treść pozostaje
+w formularzu, a nowa kategoria jest od razu zaznaczona.
+
+Przycisk „Zapisz” zachowuje Twoją pracę jako szkic. Możesz do niego wrócić
+później, także na innym komputerze po zalogowaniu na to samo konto.
+Możesz zachować także nieukończone pytania. Menu kontekstowe pozwala usunąć
+pytanie lub zestaw oraz zmienić szczegóły własnego zestawu.
+
+Gdy pytania będą gotowe, wybierz „Wyślij do autora”. Jeśli czegoś brakuje,
+program wskaże numer pytania i pola do uzupełnienia. Pytania trafiają do autora
+do sprawdzenia, nie od razu do gry. Po udanej wysyłce szkic znika z listy;
+jeśli wysyłka się nie uda, możesz do niego wrócić i spróbować ponownie.
+
 ### Dla twórców gier, tłumaczeń i poprawek
 
 Jeśli chcesz zajrzeć do kodu lub dodać własną grę, zacznij od

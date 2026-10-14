@@ -31,6 +31,15 @@ Regression test: `test/ui/game_option_editor_native_test.rb` (binary sources
 or an `.eltsetup` path as an argument; EN/PL forms, creation, saving,
 cancellation, custom mode and dependent Rummy settings).
 
+An `OptionChoice` can include a localized `description`, normalized to UTF-8
+like its label. The editor opts only described lists into `ChoiceDescriptions`:
+it appends the description to the native item utterance after the checked state.
+The host still owns navigation, selection and input; labels, saved values and
+table-option summaries remain unchanged. Refreshing choices also refreshes or
+clears their descriptions. Duck Racing uses this for its challenge checklist.
+Regression: `test/games/duck_racing/challenge_descriptions_native_test.rb`
+(binary-loaded sources, all five catalogs, native navigation and selection).
+
 ## F1 and extending the interface
 
 Use `GameRoomUI::Form` or `GameSurfaces::RefreshAwareForm` and pass
@@ -119,6 +128,12 @@ Ctrl+R reads `table_options_announcement`, based on the same definitions as
 the settings document. The board game's S counter uses
 `remaining_piece_counts(replay)` and the actual board, in player order.
 Letter-based game shortcuts do not apply in editable chat.
+
+A browse shortcut may set `default_value` to select the matching choice on
+opening. This does not reorder the choices: arrows, Home and End keep their
+native behaviour. An absent or unavailable value selects the first row.
+Duck Racing uses this for V to open at the viewer's current square; observers
+start at square 1.
 
 Regression tests: `test/ui/volume_and_help_test.rb`, `test/ui/background_help_test.rb`,
 `test/ui/background_help_native_test.rb`, `test/ui/background_help_game_screen_test.rb`

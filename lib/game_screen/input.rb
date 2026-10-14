@@ -127,7 +127,18 @@ class GameScreen
       form = layout.form
       history = layout.history
       shortcuts = normalized_game_shortcuts(@game.game_shortcuts(wait.replay, Session.name))
+      reports = @question_reports if @game.respond_to?(:reportable_question)
+      if reports
+        reports.observe(@repository.session_id(@session), @game.reportable_question(wait.replay))
+        shortcuts += reports.shortcuts
+      end
       handle_shortcut = lambda do |shortcut|
+        # A bookmark is local and instantaneous, even during a pending answer.
+        # It must not resume the form, move focus or enter the move pipeline.
+        if reports && shortcut.action_kind == "question_report"
+          speak(reports.mark(shortcut.action_name))
+          next
+        end
         pending = form.game_room_pending_operation
         if pending
           next pending.reject_action unless pending.safe_shortcut?(shortcut)

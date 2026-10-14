@@ -65,6 +65,30 @@ module GameRoomGames
       end
     end
 
+    def challenge_description(kind)
+      case kind
+      when "rock_paper_scissors" then _("Choose a sign to beat your opponent: rock beats scissors, scissors beat paper, and paper beats rock.")
+      when "dice_duel" then _("Each player rolls once. The highest roll wins.")
+      when "blackjack" then _("Draw cards to get as close to 21 as you can without going over.")
+      when "risky_dice" then _("Keep rolling two dice to build your total, but stop before you go over 25.")
+      when "guess_number" then _("Guess the hidden number in up to ten attempts, using higher-or-lower hints. The closest guess wins.")
+      when "copy_number" then _("Be the first to type the displayed number correctly.")
+      when "arithmetic" then _("Work out the calculation in your head and be the first to enter the correct answer.")
+      when "race_question" then _("Be the first to answer a question about the current race, such as where a duck is or how many feathers it has.")
+      when "numbered_balls" then _("Take turns choosing one, two or three balls from the front of the row. Collect the highest total, watching out for negative numbers.")
+      when "count_ducks" then _("Count the quacks and be the first to enter the correct number.")
+      when "rhythm" then _("Listen to a drum rhythm, then repeat it with F and J as accurately as you can.")
+      when "sound_order" then _("Be the first to arrange eight notes from lowest to highest by swapping them in pairs.")
+      when "simon" then _("Repeat a melody that gets longer each round. The player who remembers the longest sequence wins.")
+      when "sound_memory" then _("Find matching sounds hidden under the digit keys. Remember what you hear and collect more pairs than your opponent.")
+      when "hit_duck" then _("Listen for the duck's position and press the matching digit from 1 on the left to 9 on the right.")
+      when "quiz" then _("Choose the correct answer from four options. Everyone who answers correctly earns feathers.")
+      when "audio_ball" then _("Play for one point: recognize the ball by its sound, choose the right defense and send it back.")
+      when "axel_pong" then _("Play for one point: move your racket left and right, defend your goal and get the ball past your opponent.")
+      else raise ArgumentError, "Unknown race challenge"
+      end
+    end
+
     def card_name(type)
       case type
       when "mine" then _("Mine")
@@ -201,6 +225,7 @@ module GameRoomGames
       keys = [announcement_shortcut(key: "t", label: _("read the turn or challenge"), message: turn_text(replay)),
         announcement_shortcut(key: "s", label: _("read the race standings"), message: standings_text(replay)),
         browse_shortcut(key: "v", label: _("browse the track"), prompt: _("Peaceful Pond"),
+          default_value: seat && Logic::Board.square(replay.state[:race][:racers].fetch(seat)[:progress]),
           choices: (1..30).map { |square| ShortcutChoice.new(value: square, label: square_text(replay, square)) })]
       keys << announcement_shortcut(key: "c", label: _("read your position and feathers"),
         message: racer_text(replay, seat)) if seat
@@ -506,7 +531,8 @@ module GameRoomGames
             history << HistoryEntry.new(event_id: event_id, actor: "", kind: :displacement,
               text: GameRoomContent.utf8(direction % {player: name.call(args[0]), count: distance.abs}))
           end
-          movement_notice(history, args[0], args[1], name.call(args[0]))
+          movement_notice(history, args[0], args[1], name.call(args[0]), final_lap: args[3])
+        when :final_lap then _("%{player} begins the final lap.") % {player: name.call(args[0])}
         when :stayed then _("%{player} remains at the start.") % {player: name.call(args[0])}
         when :feathers
           args[1].positive? ? n_("%{player} receives %{count} feather.", "%{player} receives %{count} feathers.", args[1]) % {player: name.call(args[0]), count: args[1]} :
@@ -583,7 +609,7 @@ module GameRoomGames
       end
     end
 
-    def movement_notice(history, seat, movement, player)
+    def movement_notice(history, seat, movement, player, final_lap: false)
       return _("%{player} reaches the finish.") % {player: player} if movement.finished
 
       # Compare stable places, not translated text or names that can change
@@ -596,7 +622,7 @@ module GameRoomGames
       landing = _("%{player} lands on square %{square}. %{name}.") % {
         player: player, square: movement.square, name: square_name(movement.square)}
       text = landing
-      if movement.lap != previous_lap
+      if movement.lap != previous_lap && !final_lap
         transition = movement.lap > previous_lap ? _("Begins lap %{lap}.") : _("Returns to lap %{lap}.")
         text += " " + (transition % {lap: movement.lap})
       end

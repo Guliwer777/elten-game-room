@@ -75,6 +75,20 @@
       ]
     },
     {
+      "id": "reports",
+      "title": {
+        "es": "Avisar de un error en una pregunta"
+      },
+      "paragraphs": [
+        {
+          "es": "Si encuentras un error, pulsa Ctrl+B para marcar la pregunta actual o Ctrl+Shift+B para marcar la anterior. Puedes seguir jugando sin detenerte."
+        },
+        {
+          "es": "Al salir de la mesa, el programa te preguntará si quieres enviar las preguntas marcadas al autor. Elige «Sí», describe el problema de cada una y pulsa «Enviar». La pregunta y sus respuestas se incluyen automáticamente. Si eliges «No», se descartan las marcas; no se guardan para más tarde."
+        }
+      ]
+    },
+    {
       "id": "controls",
       "title": {
         "es": "Teclas de referencia"
@@ -97,6 +111,12 @@
         },
         {
           "es": "S: consultar los resultados."
+        },
+        {
+          "es": "Ctrl+B: marcar la pregunta actual para avisar de un error."
+        },
+        {
+          "es": "Ctrl+Shift+B: marcar la pregunta anterior para avisar de un error."
         }
       ]
     }

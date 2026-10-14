@@ -53,7 +53,7 @@ module GameRoomDuckRacing
     end
 
     def guess_number(own, random)
-      low, high = 1, 100
+      low, high = 1, 999
       own.fetch(:attempts).each do |attempt|
         case attempt[:feedback]
         when :higher then low = [low, attempt.fetch(:value) + 1].max

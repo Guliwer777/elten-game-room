@@ -72,7 +72,7 @@ module GameRoomDuckRacing
           finish_total_if_needed!(player, 21)
         end
       when "guess_number"
-        state[:answer] = random.rand(100) + 1
+        state[:answer] = random.rand(999) + 1
         state[:players].each_value { |player| player.merge!(attempts: [], best: nil) }
       when *ANSWER_TYPES
         state[:players].each_value { |player| player[:attempts] = [] }
@@ -286,7 +286,7 @@ module GameRoomDuckRacing
       when "guess_number", *ANSWER_TYPES
         return false unless kind == :answer
         value = integer_answer(input[:value])
-        return false if value.nil? || (state[:type] == "guess_number" && !value.between?(1, 100))
+        return false if value.nil? || (state[:type] == "guess_number" && !value.between?(1, 999))
         input[:value] = value
         true
       when "numbered_balls"
@@ -544,8 +544,7 @@ module GameRoomDuckRacing
       state[:scores] = state[:players].transform_values { |player| player[:best] && player[:best][:distance] }
       ranks = state[:scores].compact
       best = lowest(ranks)
-      state[:outcome] = outcome(:fixed, best)
-      state[:outcome][:amount] = 3
+      state[:outcome] = outcome(:guess_number, best)
     end
     private_class_method :finish_guesses!
 

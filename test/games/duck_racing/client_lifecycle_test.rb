@@ -239,12 +239,8 @@ class DuckClientLifecycleTest
     wrapper = @wrappers.last
     assert_equal(false, !!wrapper.active?)
     assert_equal(nil, wrapper.projection)
-    if kind == 'audio_ball'
-      assert(@client.surface_spec(@replay, @viewer).view[:practice])
-      assert_equal(false, @surface.presentation[:enabled], 'Spectator can confirm another player readiness')
-    else
-      assert_equal(nil, @client.surface_spec(@replay, @viewer))
-    end
+    assert(@client.surface_spec(@replay, @viewer).view[:practice])
+    assert_equal(false, @surface.presentation[:enabled], 'Spectator can confirm another player readiness')
     replace { |replay| replay.state[:round][:phase] = :playing; replay.state[:round][:started_at] = 100_000 }
     attach
     assert(wrapper.active?)

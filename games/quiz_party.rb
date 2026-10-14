@@ -66,6 +66,24 @@ module GameRoomGames
       _("Choose the correct answers to questions on a topic of your choice.")
     end
 
+    # A copy of the question actually presented by this replay, not a lookup
+    # in a later version of the set. No player answers or private envelopes.
+    def reportable_question(replay)
+      state = replay.state
+      # Between rounds the old question ID remains while round/position and
+      # answer order already change. Keep the last actually shown snapshot.
+      return nil unless [:answering, :revealing].include?(state[:phase])
+      question = current_question(state)
+      return nil unless question
+
+      {"id" => question["id"].to_s, "prompt" => question["prompt"].to_s,
+        "category" => question["category"].to_s, "answers" => shuffled_options(state),
+        "correct" => question["correct"].to_s,
+        "language" => state[:options]["content_language_id"].to_s,
+        "set" => state[:options]["content_set_id"].to_s,
+        "round" => state[:round], "position" => state[:position]}
+    end
+
     def minimum_players
       2
     end

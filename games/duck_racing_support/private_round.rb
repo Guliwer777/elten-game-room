@@ -42,7 +42,7 @@ module GameRoomDuckRacing
 
     module_function
 
-    def start(session_id:, round_id:, seats:, started_at_ms:, commit_deadline_ms: nil, reveal_timeout_ms:)
+    def start(session_id:, round_id:, seats:, started_at_ms:, commit_deadline_ms: nil, reveal_timeout_ms:, compact: false)
       unless session_id.is_a?(Integer) && session_id.positive? && round_id.is_a?(String) &&
           !round_id.empty? && round_id.valid_encoding? && round_id.bytesize <= 128 &&
           seats.is_a?(Array) && seats.length.between?(2, 8) && seats.uniq.length == seats.length &&
@@ -56,7 +56,7 @@ module GameRoomDuckRacing
         tag: Digest::SHA256.hexdigest(JSON.generate([session_id, round_id]))[0, 16],
         started_at_ms: started_at_ms, commit_deadline_ms: commit_deadline_ms,
         reveal_timeout_ms: reveal_timeout_ms, phase: :collecting,
-        commitments: {}, pages: {}, reveals: {}, forfeits: {}, reveal_deadlines: {}
+        commitments: {}, pages: {}, reveals: {}, forfeits: {}, reveal_deadlines: {}, compact: compact
       }
     end
 
@@ -73,8 +73,12 @@ module GameRoomDuckRacing
         raise InvalidSubmission, "Invalid private answer nonce"
       end
 
-      inputs, elapsed_ms = compact_trace(trace)
-      payload = submission_payload(state, seat, inputs, elapsed_ms)
+      if state[:compact]
+        payload = answer_payload(state, seat, trace)
+      else
+        inputs, elapsed_ms = compact_trace(trace)
+        payload = submission_payload(state, seat, inputs, elapsed_ms)
+      end
       previous = vault.reveal(session_id: state[:session_id], round_id: vault_round_id(state), user: user)
       if previous && (!vault.verify(previous) || previous.payload != payload)
         # A previous commit might already be accepted with its acknowledgement
@@ -157,7 +161,7 @@ module GameRoomDuckRacing
       return nil unless envelope && envelope.payload.is_a?(Hash) && vault.verify(envelope)
       return nil if state[:commitments].key?(seat) && state[:commitments][seat] != envelope.commitment
 
-      expected = submission_payload(state, seat, envelope.payload.fetch("trace"), envelope.payload.fetch("elapsed_ms"))
+      expected = canonical_payload(state, seat, envelope.payload)
       return nil unless expected == envelope.payload
 
       validate_envelope!(envelope)
@@ -316,6 +320,11 @@ module GameRoomDuckRacing
       raise Cancelled, state[:cancellation] if state[:phase] == :cancelled
       raise NotResolved, "Private challenge has not finished revealing" unless state[:phase] == :finished
 
+      if state[:compact]
+        return adapter.replay(answers: state[:reveals].transform_values { |payload| copy(payload['answer']) },
+          forfeits: copy(state[:forfeits]))
+      end
+
       traces = state[:reveals].to_h do |seat, payload|
         actions = payload["trace"].map { |at, input| {"at" => at, "input" => copy(input)} }
         [seat, {"actions" => actions, "finished_at" => payload["elapsed_ms"]}]
@@ -385,7 +394,7 @@ module GameRoomDuckRacing
         begin
           # A cancellation may have no accepted commit. Its local envelope
           # still has to be a valid attempt in this exact closed scope.
-          next unless payload == submission_payload(proof, payload["seat"], payload["trace"], payload["elapsed_ms"])
+          next unless payload == canonical_payload(proof, payload['seat'], payload)
         rescue InvalidSubmission
           next
         end
@@ -404,6 +413,26 @@ module GameRoomDuckRacing
         "seat" => seat, "elapsed_ms" => elapsed_ms, "trace" => normalize_trace(trace, elapsed_ms) }
     end
     private_class_method :submission_payload
+
+    def answer_payload(state, seat, answer)
+      valid = answer.is_a?(Hash) && answer.size == 1 && case answer.keys.first
+      when 'guesses' then answer['guesses'].is_a?(Array) && answer['guesses'].length <= 10 &&
+        answer['guesses'].all? { |value| value.is_a?(Integer) && value.between?(1, 999) }
+      when 'choice' then [nil, 'rock', 'paper', 'scissors'].include?(answer['choice'])
+      when 'answer' then answer['answer'].nil? || answer['answer'].is_a?(Integer) && answer['answer'].between?(0, 3)
+      else false
+      end
+      raise InvalidSubmission, 'Invalid compact private answer' unless valid
+      {'version' => 2, 'session' => state[:session_id], 'round' => state[:round_id].dup,
+        'seat' => seat, 'answer' => copy(answer)}
+    end
+    private_class_method :answer_payload
+
+    def canonical_payload(state, seat, payload)
+      state[:compact] ? answer_payload(state, seat, payload['answer']) :
+        submission_payload(state, seat, payload['trace'], payload['elapsed_ms'])
+    end
+    private_class_method :canonical_payload
 
     def compact_trace(trace)
       unless trace.is_a?(Hash) && trace.keys.all? { |key| key.is_a?(String) } &&
@@ -577,7 +606,7 @@ module GameRoomDuckRacing
     private_class_method :pending_reveal?
 
     def payload_scope?(state, payload, seat)
-      payload.is_a?(Hash) && payload["version"] == 1 && payload["session"] == state[:session_id] &&
+      payload.is_a?(Hash) && payload["version"] == (state[:compact] ? 2 : 1) && payload["session"] == state[:session_id] &&
         payload["round"] == state[:round_id] && payload["seat"] == seat && state[:seats].include?(seat)
     end
     private_class_method :payload_scope?
@@ -607,7 +636,7 @@ module GameRoomDuckRacing
       disclosed = PrivateTraceStream.decode(stream)
       payload = disclosed.fetch("payload")
       unless payload_scope?(state, payload, seat) &&
-          payload == submission_payload(state, seat, payload["trace"], payload["elapsed_ms"])
+          payload == canonical_payload(state, seat, payload)
         raise InvalidSubmission, "The disclosed private answer has the wrong scope or shape"
       end
       disclosed

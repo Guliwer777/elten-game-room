@@ -3,6 +3,7 @@ require_relative '../../support/ui'
 require_relative '../../../lib/game_surfaces'
 require_relative '../../support/duck_game_adapter'
 require_relative '../../support/session_runner'
+require_relative '../../support/duck_legacy_flow'
 
 # Real game/repository/codec/executor; only the native network and clock are
 # local fixtures. The two human accounts have separate answer vaults.
@@ -20,7 +21,8 @@ module DuckPrivateRunnerTest
     def initialize(kind: 'rhythm', covered: true, spectator_host: false, stack_entry_bytes: 16_384, simon_levels: 12)
       @simon_levels = simon_levels
       seed_fixture = DuckGameAdapterTest::Harness.new(kind: kind)
-      @resources, @game = seed_fixture.resources, seed_fixture.game
+      @resources = seed_fixture.resources
+      @game = DuckLegacyFlowGame.new(resources: @resources)
       @players, @owner = %w[Alice Bob], spectator_host ? 'Watcher' : 'Alice'
       users = spectator_host ? [owner] + players : players
       options = game.default_options.merge('challenges' => [kind], 'bot_delay' => 0)

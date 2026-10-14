@@ -138,6 +138,7 @@ module GameRoomDuckRacing
           output[:own][key] = player[key] if player.key?(key)
         end
         output[:own][:result] = copy(state[:results][seat]) if state[:results].key?(seat)
+        output[:own][:last_target_score] = player[:target_scores].last if state[:type] == 'hit_duck'
         output[:own][:arrangement] = player[:arrangement].dup if state[:type] == 'sound_order'
       end
       output

@@ -56,10 +56,6 @@ class DuckMemoryStartTest
     assert_equal(nil, selection.call(first))
     second = (h.players - [first]).first
     assert_equal(false, @copies[second][:client].context_data['duck_ready'])
-    press(second, 0x0D)
-    h.accept(selection.call(second), actor: second)
-    refresh(h)
-    assert_equal('begin', selection.call('Alice')&.[]('action'))
     messages = []
     presenter = GameRoomEventPresenter.new(game: -> { h.game }, repository: -> { h.repository },
       program: -> { @program }, viewer: -> { 'Alice' }, client: -> { @copies['Alice'][:client] },
@@ -67,7 +63,9 @@ class DuckMemoryStartTest
       speech: ->(text) { messages << text }, trace: ->(*_args, **_options) {},
       history_changed: ->(*_args) {}, session_changed: -> {})
     presenter.process_new_events(h.replay, session: h.session)
-    h.accept(selection.call('Alice'), actor: 'Alice')
+    messages.clear
+    press(second, 0x0D)
+    h.accept(selection.call(second), actor: second)
     SpeechOutput.reset
     presenter.process_new_events(h.replay, session: h.session)
     refresh(h)

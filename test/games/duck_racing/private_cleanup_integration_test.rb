@@ -32,7 +32,7 @@ def submit_cleanup_traces(fixture)
     fixture.accept({'action' => 'submit_trace', 'challenge' => id, 'trace' => trace},
       actor: fixture.players[seat])
   end
-  fixture.accept({'action' => 'advance', 'challenge' => id})
+  assert_equal(:revealing, fixture.replay.state[:round][:private][:phase])
   id
 end
 
@@ -67,7 +67,7 @@ assert_equal(pending, Marshal.dump(storage['Alice'].read), 'Accepted commit alon
 # state or page being queued, is the boundary for deleting the durable copy.
 fixture.accept({'action' => 'submit_trace', 'challenge' => id, 'trace' => fixture.private_traces.fetch(1)},
   actor: 'Bob')
-fixture.accept({'action' => 'advance', 'challenge' => id})
+assert_equal(:revealing, fixture.replay.state[:round][:private][:phase])
 selection = fixture.game.automatic_action(fixture.replay, 'Alice', context: fixture.context('Alice'))
 assert_equal('reveal', selection['action'])
 assert_equal(pending, Marshal.dump(storage['Alice'].read))

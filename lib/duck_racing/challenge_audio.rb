@@ -10,6 +10,8 @@ module GameRoomDuckRacing
   class ChallengeAudio
     TONE_ASSET = 'duck_note_c'
     QUACK_ASSET = 'duck_quack'
+    SHOT_ASSET = 'duck_shot'
+    SHOT_FEEDBACK_PAUSE_MS = 2_000
     COUNTDOWN_ASSET = 'duck_countdown'
     PITCH_STEPS = [0, 2, 4, 5, 7, 9, 11, 12].freeze
     # The source is middle C (C4); digits 1–5 play C, D, E, F and G.
@@ -110,8 +112,24 @@ module GameRoomDuckRacing
       fail_playback(error)
     end
 
+    # Finish the accepted shot before speaking its quality. The next target
+    # waits for this feedback and a fixed pause, never for speech completion.
+    def shot(pan:, announcement:)
+      return false if @closed || @error
+      cue = normalize_cue(sound: :shot, pan: pan, offset_ms: 0, duration_ms: 200)
+        .merge(completion_announcement: announcement, gap_after_ms: SHOT_FEEDBACK_PAUSE_MS)
+      now_ms = @clock_ms.call
+      validate_time(now_ms)
+      stop_voice(:sequence)
+      @sequence = nil
+      start_voice(:feedback, cue, now_ms)
+      true
+    rescue PlaybackError => error
+      fail_playback(error)
+    end
+
     def busy?
-      !@closed && !@error && (!@sequence.nil? || !@playing.empty? || !@feedback.empty?)
+      !@closed && !@error && (!@sequence.nil? || !@playing.empty? || !@feedback.empty? || !@feedback_until.nil?)
     end
 
     # Lets the shared presentation queue wait for transient feedback without
@@ -124,10 +142,11 @@ module GameRoomDuckRacing
       @last_ms = now_ms
       @stepping = true
       begin
+        @feedback_until = nil if @feedback_until && now_ms >= @feedback_until
         advance_voice(:sequence, now_ms)
         advance_voice(:feedback, now_ms)
         advance_sequence(now_ms)
-        start_voice(:feedback, @feedback.shift, now_ms) if !@playing[:feedback] && !@feedback.empty?
+        start_voice(:feedback, @feedback.shift, now_ms) if !@playing[:feedback] && !@feedback_until && !@feedback.empty?
         true
       rescue PlaybackError => error
         fail_playback(error)
@@ -167,7 +186,7 @@ module GameRoomDuckRacing
       tone, pan, semitones = value[:tone], 0.0, 0
       case value[:sound]
       when :quack, :countdown, :correct, :wrong
-      when :target
+      when :target, :shot
         pan = value[:pan]
         raise ArgumentError, 'Invalid challenge stereo position' unless pan.is_a?(Numeric) && pan.finite? && pan.between?(-1, 1)
       when :rhythm
@@ -186,6 +205,7 @@ module GameRoomDuckRacing
       end
       asset = case value[:sound]
       when :quack, :target then QUACK_ASSET
+      when :shot then SHOT_ASSET
       when :countdown then COUNTDOWN_ASSET
       when :rhythm then RHYTHM_ASSETS.fetch(tone)
       when :memory then MEMORY_ASSETS.fetch(tone - 1)
@@ -227,7 +247,7 @@ module GameRoomDuckRacing
         return
       end
       return if @playing[:sequence]
-      return if index.zero? && (@playing[:feedback] || !@feedback.empty?)
+      return if index.zero? && (@playing[:feedback] || !@feedback.empty? || @feedback_until)
       # A delayed UI frame must not compress the remaining sounds together.
       # Rhythm scoring receives these actual onsets rather than a made-up
       # nominal rhythm. Other tasks keep the full audible sequence as well.
@@ -278,7 +298,8 @@ module GameRoomDuckRacing
       # stream still plays at volume zero and finishes normally on the device.
       duration = (entry[:length] / cue[:ratio] * 1000).ceil
       @playing[role] = {sound: sound, asset: entry[:asset], started_ms: started, duration_ms: duration,
-        length: entry[:length], deadline_ms: started + duration + 2_000, limit_ms: cue[:limit_ms]}
+        length: entry[:length], deadline_ms: started + duration + 2_000, limit_ms: cue[:limit_ms],
+        completion_announcement: cue[:completion_announcement], gap_after_ms: cue[:gap_after_ms]}
       @on_announcement&.call(cue[:announcement]) unless cue[:announcement].to_s.empty?
       started
     end
@@ -311,6 +332,10 @@ module GameRoomDuckRacing
             return
           end
           @playing.delete(role)
+          unless voice[:completion_announcement].to_s.empty?
+            @on_announcement&.call(voice[:completion_announcement])
+          end
+          @feedback_until = actual_time(now_ms) + voice[:gap_after_ms] if voice[:gap_after_ms]
         elsif now_ms >= voice[:deadline_ms]
           raise PlaybackError.new(:playback_stalled, 'Challenge sound did not finish')
         elsif !sound.playing? && !sound.finished?
@@ -346,6 +371,7 @@ module GameRoomDuckRacing
 
     def clear_playback
       @sequence = nil
+      @feedback_until = nil
       @feedback.clear
       @playing.keys.each do |role|
         stop_voice(role)

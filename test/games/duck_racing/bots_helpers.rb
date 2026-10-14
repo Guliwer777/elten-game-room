@@ -49,7 +49,7 @@ module DuckBotFixture
     include DuckBotFixture
     attr_reader :state, :game, :players, :vault, :events
 
-    def initialize(kind: "copy_number", count: 2, seed: 1, game: nil, laps: 3)
+    def initialize(kind: "copy_number", count: 2, seed: 1, game: nil, laps: 3, flow: nil)
       @game = game || DuckBotFixture.game
       @players = Array.new(count) { |seat| GameRoomParticipants.bot_id(777, seat + 1) }
       @vault = HiddenSubmissions::Vault.new(HiddenSubmissions::MemoryStorage.new)
@@ -57,6 +57,7 @@ module DuckBotFixture
       @state = LOGIC::Session.initial(session_id: 777, player_count: count, laps: laps,
         enabled_challenges: [kind], fingerprint: FINGERPRINT)
       initial = {"action" => "start", "seed" => seed, "revision" => 0}
+      initial['challenge_flow'] = flow if flow
       assert(LOGIC::Session.apply(@state, initial, seat: 0, moderator: true, now_ms: 1_000, resources: DuckBotFixture.resources))
       @state.merge!(players: @players, options: @game.default_options.merge("bot_delay" => 0, "laps" => laps,
         "word_language" => "en", "question_language" => "en", "challenges" => [kind]),
@@ -74,7 +75,7 @@ module DuckBotFixture
     def context(now)
       GameRoomGames::ActionContext.new(session_id: 777, table_id: 777, options: @state[:options],
         hidden_submissions: @vault, now: now / 1000.0, table_owner: @players.first,
-        local_data: {"duck_host" => true}, random_source: GameRoomRandom::LocalSecureSource.new)
+        local_data: {"duck_host" => true, 'duck_stack_entry_bytes' => 1536}, random_source: GameRoomRandom::LocalSecureSource.new)
     end
 
     def apply(selection, seat: 0, at:)
@@ -117,11 +118,12 @@ module DuckBotFixture
     def challenge
       card = card("super_challenge")
       apply({"kind" => "duck", "action" => "race", "input" => {"kind" => "play", "card" => card.id}}, at: 1_100)
+      return if @state[:round][:phase] == :playing
       @players.each_index do |seat|
         apply({"kind" => "duck", "action" => "ready", "challenge" => @state[:round][:challenge][:id],
           "fingerprint" => FINGERPRINT}, seat: seat, at: 1_199)
       end
-      apply({"kind" => "duck", "action" => "begin", "challenge" => @state[:round][:challenge][:id]}, at: 1_200)
+      apply({"kind" => "duck", "action" => "begin", "challenge" => @state[:round][:challenge][:id]}, at: 1_200) if @state[:round][:phase] == :preparing
     end
 
     def choose(seat:, at:, game: @game)

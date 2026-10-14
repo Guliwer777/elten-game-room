@@ -151,8 +151,8 @@ module GameRoomScreens
           end
         end
       end
-      help_tips = context_entries.map do |_requested, label, _key, help_key|
-        GameRoomContextHelp.shortcut_tip(help_key, label)
+      help_tips = context_entries.filter_map do |_requested, label, _key, help_key|
+        GameRoomContextHelp.shortcut_tip(help_key, label) if help_key
       end
       GameRoomContextHelp.replace([options], help_tips)
       if @refresh != nil

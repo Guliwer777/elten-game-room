@@ -19,6 +19,8 @@ ELTEN předčítá karty, herní desky, výsledky i události a zvuky pomáhají
 - [Funkce které snadno přehlédnete](#funkce-které-snadno-přehlédnete)
 - [Přehled klávesových zkratek](#přehled-klávesových-zkratek)
 - [Pomoc s vývojem programu](#pomoc-s-vývojem-programu)
+  - [Hlášení chyb v kvízu](#hlášení-chyb-v-kvízu)
+  - [Vlastní sady otázek](#vlastní-sady-otázek)
 - [Autoři a licence](#autoři-a-licence)
 
 ## První kroky
@@ -32,6 +34,7 @@ Pro zvukové hry doporučujeme stereofonní sluchátka — směr zvuku je v nich
 
 Vlastní stůl zakládat nemusíte. Položka „Připojte se ke stolu“ umožňuje vybrat hru a procházet existující stoly. Můžete také přijmout pozvánku nebo použít widget na hlavní obrazovce ELTENu.
 Při výběru hry pro vytvoření stolu nebo připojení uslyšíte za jejím názvem krátký popis.
+V nastavení výzev Závodů kachen uslyšíte po názvu a stavu zaškrtnutí také krátké vysvětlení dané výzvy.
 Opětovné spuštění Power Games ve stejné kopii ELTENu vás vrátí do již otevřeného okna místo vytvoření další nezávislé instance.
 
 Při spuštění může program nabídnout stažení novější verze. Odmítnutí vám nebrání pokračovat, ale před společným hraním je dobré ověřit, že všichni mají aktuální verzi. Popis změn najdete v „Co je nového“.
@@ -48,30 +51,6 @@ Power Games v současnosti obsahuje 34 her:
 - Zvukové akční hry: Axel Pong a Audio Ball.
 
 Mnoho her nabízí několik variant. Jejich výběr, počet účastníků, dostupnost botů a další nastavení závisejí na konkrétní hře. Podrobná pravidla, bodování a ovládání popisuje část „Pravidla hry“ v programu.
-
-1000 mil je karetní závod podle pravidel QuentinC: dojeďte přesně na 1000 mil, útočte na soupeře a odstraňujte překážky odpovídajícími kartami. Ochrany působí až do konce kola. Odpovídající ochrana zahraná bezprostředně po útoku, i mimo vlastní tah, je protiútokem, pokud další hráč ještě nelízl ani nezahrál kartu. Přináší bonus 300 bodů navíc ke 100 bodům za ochranu, náhradní kartu, je-li dostupná, a další tah s běžným líznutím. Spoluhráči sdílejí vzdálenost, překážky, ochranu a body, ale každý má vlastní karty v ruce a vlastní tah. Můžete nastavit cílové skóre (výchozí hodnota je 5000 bodů), týmy, „Hromadění problémů“ a „Po vyčerpání balíčku použít odhozené karty jako nový balíček“.
-
-Při prodlevě tahů botů nastavené na 0 si další bot může líznout ihned po oznámení útoku, dříve než stihnete zareagovat. Pro pohodlnější protiútoky nastavte nenulovou prodlevu tahů botů. Čas na reakci není zaručen: možnost protiútoku stále končí, jakmile další hráč lízne nebo zahraje kartu. Výchozí prodleva tahů botů ve hře 1000 mil je 1 sekunda.
-
-Přidat ochranné karty je ve výchozím nastavení zapnuto: standardní balíček má 106 karet. Vypnutí odebere Přídavnou nádrž, Pneumatiky odolné proti propíchnutí, Přednost v jízdě a Řidičské eso a ponechá 102 karet bez trvalé ochrany a protiútoků. Dosavadní partie bez tohoto nastavení nadále obsahují ochrany. Karty jízdy proti směru se přidávají zvlášť. Nedostatek paliva a Defekt odstraníte odpovídajícími kartami paliva a náhradního kola.
-
-Jízda proti směru je volitelná a ve výchozím nastavení vypnutá. Volba Přidat karty jízdy proti směru běžně přidá 4 útočné karty a 6 karet konce jízdy proti směru, stejně jako počty omezení rychlosti a jeho konce ve standardním balíčku. Jde o schválené místní výchozí hodnoty, nikoli o ověřené počty karet v QuentinC Playroom. Dosavadní partie zachovávají své výslovně uložené počty. Vlastní balíček umožňuje změnit oba počty zvlášť. Útok působí i na stojící auto, nezávisle na omezení rychlosti, mechanických závadách a nastavení hromadění problémů. Pod jeho vlivem povolené karty 25, 50, 75, 100 a 200 mil vzdálenost odečítají, nikdy však pod nulu; zahrání při nule ponechá nulu. Stále platí požadavky na zelenou, odstranění překážek, omezení rychlosti a nejvýše dvě karty 200 mil za kolo, a to i při couvání. Řidičské eso před jízdou proti směru chrání, odstraní ji a lze je použít k protiútoku. Konec jízdy proti směru odstraní pouze tento účinek a nevyžaduje další zelenou; ostatní překážky a jejich požadavky zůstávají v platnosti.
-
-Okamžitá oprava
-
-Volba Přidat karty okamžité opravy je volitelná a ve výchozím nastavení vypnutá. Po zapnutí přidá do standardního balíčku dvě karty okamžité opravy. Vlastní balíček umožňuje změnit jejich počet; o jejich zařazení stále rozhoduje přepínač.
-
-Po líznutí ve svém běžném tahu zahrajte okamžitou opravu na vlastní auto či tým a vyberte právě jeden problém k odstranění: červenou, chybějící počáteční zelenou, nedostatek paliva, defekt, nehodu, omezení rychlosti nebo jízdu proti směru. Jedna karta odstraní pouze vybraný problém, i když se jich nahromadilo více.
-
-Odstranění červené nebo chybějící počáteční zelené umožní jízdu pouze tehdy, nebrání-li jí jiný problém. Po odstranění problému s palivem, pneumatikou nebo nehodou je stále nutná zelená, pokud nemáte Přednost v jízdě. Ostatní problémy zůstávají beze změny. Okamžitá oprava není ochranná karta ani okamžitá reakce na útok: nedává imunitu, další tah ani bonus 100 či 300 bodů.
-
-Vlastní balíček
-
-Vlastní balíček umožňuje samostatně nastavit počet každého typu karet: všech pěti vzdáleností, každé nápravy a útoku, každé ochrany, jízdy proti směru, jejího konce a okamžité opravy. Pro každý typ zvolte celé číslo od 0 do 100. Volby Přidat ochranné karty, Přidat karty jízdy proti směru a Přidat karty okamžité opravy stále rozhodují o zařazení: vypnutá skupina se do balíčku nedostane, i když má uložené kladné počty. Limit dvou karet 200 mil na hráče či tým za kolo se nemění.
-
-Zařazené karty musí stačit na počáteční rozdání šesti karet každému hráči a umožňovat získání bodů: přidejte ochranu, nebo karty vzdálenosti spolu se zelenou, Předností v jízdě či okamžitou opravou. To nezaručuje, že půjde dosáhnout 1000 mil. S neplatným vlastním balíčkem nelze začít hru. Změna nastavení stolu nepřepisuje balíček ani přehrání dosavadní partie. Vlastní balíček je ve výchozím nastavení vypnutý; jeho vypnutí obnoví standardní počty karet pro nové partie.
-
-V 1000 mil šipky procházejí karty v ruce, Enter zahraje kartu a v případě potřeby se zeptá na cíl a mezerník lízne kartu. Po líznutí se Enter na nehratelné kartě zeptá na její odhození. Ne nebo Escape zavře toto potvrzení bez odhození karty a bez zápisu tahu. J odhodí právě vybranou kartu z ruky ihned, bez potvrzení, i když ji lze zahrát. Delete nadále otevře výběr karty k odhození. Z a Shift+Z hledají hratelné karty. I přečte stav vašeho auta, Shift+I všech aut, S skóre a T hráče na tahu. F1 otevře kontextovou nápovědu a Ctrl+F1 úplná pravidla.
 
 Ve hře Taboo potřebujete komunikovat s ostatními hráči. Můžete k tomu využít konferenci v ELTENu, jiný komunikační program nebo hrát osobně.
 
@@ -315,6 +294,28 @@ Připomínky můžete posílat do skupiny programu v ELTENu nebo přes [hlášen
 - příslušný úsek logu, pokud nastala výjimka nebo chyba spojení.
 
 Před zveřejněním logu z něj odstraňte soukromé údaje.
+
+### Hlášení chyb v kvízu
+
+V kvízu označíte aktuální otázku pomocí Ctrl+B, předchozí pomocí Ctrl+Shift+B. Zkratky neotevírají formulář, takže můžete hrát dál. Po odchodu od stolu se program zeptá, zda chcete označené otázky nahlásit. Vyberte „Ano“, popište problém a stiskněte „Odeslat“. Otázka i odpovědi se připojí automaticky. Volba „Ne“ označení zruší; hlášení se neukládají jako koncepty.
+
+### Vlastní sady otázek
+
+V hlavním okně za položkou „Uložené hry“ najdete „Tvorbu vlastních sad otázek“. Otevře se seznam vašich sad. Stiskem Ctrl+N můžete vytvořit novou sadu nebo připravit otázky pro některou ze sad ve hře. U vlastní sady zadejte název, jazyk a případně popis a zvolte „Uložit“. Pokud přidáváte otázky do existující sady, vyberte ji ze seznamu.
+
+Enterem otevřete nabídku vybrané sady:
+
+- „Přidat otázku“: zadejte otázku a čtyři odpovědi, označte správnou odpověď a vyberte kategorii ze seznamu. Zdroj i poznámka pro redaktora jsou nepovinné.
+- „Procházet otázky“: otevřete seznam uložených otázek. Enterem můžete vybranou otázku upravit, Ctrl+N přidat novou.
+- „Přidat kategorii“: pojmenujte kategorii, kterou budete moci vybírat u otázek.
+- „Smazat koncept“: po potvrzení odstraníte celou sadu.
+- „Odeslat autorovi“: odešlete celou sadu uživateli papierek.
+
+Před přidáním první otázky vytvořte alespoň jednu kategorii. Další můžete přidat i při psaní otázky: na konci seznamu kategorií vyberte „Přidat novou kategorii“ a stiskněte Enter. Rozepsaná otázka zůstane ve formuláři a nová kategorie se rovnou vybere.
+
+Tlačítkem „Uložit“ si práci uložíte jako koncept. Můžete se k němu vrátit později, i na jiném počítači po přihlášení ke stejnému účtu. Ukládat lze i nedokončené otázky. Kontextová nabídka umožňuje odstranit otázku či sadu nebo upravit podrobnosti vlastní sady.
+
+Až budete mít otázky hotové, zvolte „Odeslat autorovi“. Pokud něco chybí, program uvede čísla otázek a pole, která je potřeba doplnit. Otázky dostane autor ke kontrole; do hry se nepřidají automaticky. Po úspěšném odeslání koncept zmizí ze seznamu. Pokud se odeslání nezdaří, můžete se ke konceptu vrátit a zkusit to znovu.
 
 ### Pro vývojáře a překladatele
 

@@ -156,6 +156,7 @@ LOGIC::ChallengeBot::PRIVATE_TYPES.each do |kind|
     started_at = h.state[:round][:started_at]
     speed = LOGIC::ChallengeEngine::SPEED_TYPES.include?(kind)
     preparation = speed ? LOGIC::ChallengeEngine::PREPARATION_MS : 0
+    preparation = LOGIC::ChallengeEngine::COUNT_DUCKS_PREPARATION_MS if kind == 'count_ducks'
     assert(preparation.positive?) if speed
     delays, selections = {}, {}
     h.players.each_index do |seat|

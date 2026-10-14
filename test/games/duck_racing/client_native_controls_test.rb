@@ -41,7 +41,7 @@ class DuckClientNativeControlsTest
     setup_client('copy_number')
     native_attach
     field = @surface.fields.first
-    400.times do
+    (ENGINE::PREPARATION_MS.div(16) + 3).times do
       key_frame
       break unless @client.local_view[:preparing]
     end
@@ -98,7 +98,7 @@ class DuckClientNativeControlsTest
     assert(chat.text != before, 'Countdown blocked unrelated chat typing')
     draft = chat.text.dup
     key_frame(@driver.tap(0x09, modifiers: [0x10]))
-    400.times do
+    (ENGINE::PREPARATION_MS.div(16) + 3).times do
       key_frame(@driver.tap(answer.getbyte(0)), characters: answer)
       break unless @client.local_view[:preparing]
     end

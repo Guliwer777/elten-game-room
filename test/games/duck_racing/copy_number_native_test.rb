@@ -267,7 +267,6 @@ class DuckCopyNumberNativeTest
         @surface.present(ENGINE.view(@model, seat: 0))
       end
       wrong = @number == '1' * @number.length ? '2' * @number.length : '1' * @number.length
-      wrong = '099' if kind == 'guess_number' && @number.length == 3
       frame(wrong)
       apply(take.fetch(0))
       assert_equal([], enter)

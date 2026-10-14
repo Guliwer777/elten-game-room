@@ -93,7 +93,7 @@ module GameRoomGames
             OptionChoice.new(value: lang, label: content_registry.language(lang).label) }),
         OptionDefinition.new(key: "challenges", label: _("Challenges"), kind: :multiple_values,
           default: Logic::Challenges::BY_ID.keys, choices: Logic::Challenges::TYPES.map { |type|
-            OptionChoice.new(value: type.id, label: challenge_name(type.id)) })]
+            OptionChoice.new(value: type.id, label: challenge_name(type.id), description: challenge_description(type.id)) })]
     end
 
     def effective_option_definitions(selected = {})
@@ -134,9 +134,12 @@ module GameRoomGames
       _("The selected questions are unavailable. Choose an installed set.")
     end
 
-    def notification_option_keys(_options); %w[laps]; end
+    def notification_option_keys(_options); %w[laps question_language]; end
     def notification_variant(options); options_summary(options); end
-    def options_summary(options); n_("%{laps} lap", "%{laps} laps", options["laps"]) % {laps: options["laps"]}; end
+    def options_summary(options)
+      laps = n_("%{laps} lap", "%{laps} laps", options["laps"]) % {laps: options["laps"]} if options["laps"].is_a?(Integer)
+      [laps, notification_choice(options, "question_language")].compact.join(", ")
+    end
 
     def resources_for(options)
       return @prepared_resources if @prepared_resources
@@ -239,7 +242,7 @@ module GameRoomGames
       return [:not_your_turn, nil] unless seat
       raw = selection.to_h.transform_keys(&:to_s)
       raw = normalize_surface_action(raw)
-      data = raw.slice("action", "input", "challenge", "fingerprint", "value", "page", "receipt", "reason", "trace")
+      data = raw.slice("action", "input", "challenge", "fingerprint", "value", "page", "receipt", "reason", "trace", "answer")
       if raw["action"] == "submit_trace"
         return prepare_trace(raw, replay, actor, seat, context)
       end
@@ -253,10 +256,11 @@ module GameRoomGames
         values = context.random_source.roll(count: 16, sides: 256).values
         data["seed"] = values.reduce(0) { |seed, value| seed * 256 + value - 1 }
         data["fingerprint"] = resources_for(replay.state[:options]).fetch(:fingerprint)
+        data['challenge_flow'] = 2
       elsif data["action"] == "point"
         return [:invalid, nil] unless data["receipt"] && data["receipt"] == context.local_data.to_h["duck_realtime_point"]
       end
-      private_plan = duck_private_plan(data, replay, actor, context) if %w[commit reveal cancel attempt].include?(data["action"])
+      private_plan = duck_private_plan(data, replay, actor, context) if %w[commit reveal cancel attempt result].include?(data["action"])
       candidate = Logic::Session.copy(replay.state)
       return [:invalid, nil] unless Logic::Session.apply(candidate, data, seat: seat, moderator: moderator,
         now_ms: data["at"], resources: resources_for(replay.state[:options]))
@@ -270,12 +274,21 @@ module GameRoomGames
     def prepare_trace(raw, replay, actor, seat, context)
       round = replay.state[:round]
       return [:invalid, nil] unless round && raw["challenge"] == round[:challenge][:id]
+      if round[:results]
+        return [:local_storage_unavailable, nil] unless context.hidden_submissions
+        answer = Logic::LocalResult.prepare(replay.state, seat: seat, user: actor,
+          answer: raw['trace'], vault: context.hidden_submissions)
+        return action_for({'action' => 'result', 'challenge' => raw['challenge'], 'answer' => answer}, replay, actor, context: context)
+      end
       if round[:attempts]
         return action_for({"action" => "attempt", "challenge" => raw["challenge"], "trace" => raw["trace"]},
           replay, actor, context: context)
       end
       return [:invalid, nil] unless round[:private] && context.hidden_submissions
       duck_cleanup_private(replay, actor, context)
+      if round[:private][:compact]
+        Logic::CompactAttempt.verify(round[:challenge], raw['trace'], seat: seat, resources: resources_for(replay.state[:options]))
+      end
       prepared = Logic::PrivateRound.prepare(round[:private], seat: seat, user: actor,
         trace: raw["trace"], vault: context.hidden_submissions,
         page_builder: duck_page_builder(replay, actor, context))
@@ -288,7 +301,7 @@ module GameRoomGames
     rescue Logic::PrivateRound::CapacityError
       action_for({"kind" => "duck", "action" => "cancel", "reason" => "technical",
         "challenge" => raw["challenge"]}, replay, actor, context: context)
-    rescue Logic::PrivateRound::InvalidSubmission
+    rescue Logic::PrivateRound::InvalidSubmission, Logic::TraceVerifier::InvalidTrace
       [:invalid, nil]
     end
 
@@ -333,7 +346,7 @@ module GameRoomGames
           bots.find { |seat| !round[:private][:reveals].key?(seat) }
         elsif round[:phase] == :playing && !Logic::ChallengeEngine::REALTIME.include?(round[:challenge][:kind])
           now = duck_automatic_now_ms(replay)
-          bots.reject { |seat| round[:attempts]&.key?(seat) || round[:private]&.fetch(:reveals)&.key?(seat) }
+          bots.reject { |seat| round[:results]&.key?(seat) || round[:attempts]&.key?(seat) || round[:private]&.fetch(:reveals)&.key?(seat) }
             .select { |seat| now >= round[:last_seen].fetch(seat) + Logic::Session::PULSE_MS }
             .min_by { |seat| round[:last_seen].fetch(seat) }
         end
@@ -367,6 +380,20 @@ module GameRoomGames
         end
         if host && (receipt = local["duck_realtime_point"]) && receipt["id"] == base["challenge"]
           return base.merge("action" => "point", "receipt" => receipt)
+        end
+        if participant && round[:results] && !round[:results].key?(seat) && context.hidden_submissions &&
+            (local['duck_seat'] == seat || host && duck_bot_controlled?(state, actor))
+          recovery = duck_result_recovery(state)
+          key = actor.to_s.downcase
+          if recovery[key] != :empty
+            begin
+              answer = Logic::LocalResult.recover(state, seat: seat, user: actor, vault: context.hidden_submissions)
+              return base.merge('action' => 'result', 'answer' => answer) if answer
+              recovery[key] = :empty
+            rescue HiddenSubmissions::StorageError, Logic::TraceVerifier::InvalidTrace
+              return base.merge('action' => 'cancel', 'reason' => 'technical')
+            end
+          end
         end
         if participant && (request = local["duck_action"]) && request["challenge"] == base["challenge"] &&
             local["duck_seat"] == seat
@@ -416,6 +443,9 @@ module GameRoomGames
       participant = round[:challenge][:participants].include?(seat)
       if participant
         bot = local["duck_host"] == true && duck_bot_controlled?(state, actor)
+        if round[:results] && !round[:results].key?(seat) && (local['duck_seat'] == seat || bot) && context.hidden_submissions
+          return true unless duck_result_recovery(state)[actor.to_s.downcase] == :empty
+        end
         # Readiness is independent of a local key request. Keep scheduling
         # pending pages after the UI acknowledges and clears submit_trace;
         # recovering the envelope itself belongs to the executor, not here.
@@ -433,7 +463,7 @@ module GameRoomGames
 
     def concurrent_session_input?(before, after, selection)
       action = selection["action"]
-      concurrent = %w[ready alive submit_trace commit reveal attempt].include?(action) ||
+      concurrent = %w[ready alive submit_trace commit reveal attempt result].include?(action) ||
         action == 'input' && before.state.dig(:round, :challenge, :kind) == 'sound_order'
       concurrent &&
         before.state[:session_id] == after.state[:session_id] &&
@@ -451,6 +481,7 @@ module GameRoomGames
       (round[:phase] == :preparing || round[:phase] == :playing && !Logic::ChallengeEngine::REALTIME.include?(round[:challenge][:kind])) &&
         !round[:private]&.fetch(:reveals)&.key?(seat) &&
         !round[:attempts]&.key?(seat) &&
+        !round[:results]&.key?(seat) &&
         (context.now.to_f * 1000).round >= round[:last_seen].fetch(seat) + Logic::Session::PULSE_MS
     end
 
@@ -458,6 +489,14 @@ module GameRoomGames
       protocol = round[:private]
       protocol && protocol[:phase] == :revealing && protocol[:commitments].key?(seat) &&
         !protocol[:reveals].key?(seat) && !protocol[:forfeits].key?(seat)
+    end
+
+    def duck_result_recovery(state)
+      scope = [state[:session_id], state.dig(:round, :challenge, :id)]
+      if @duck_result_recovery_scope != scope
+        @duck_result_recovery_scope, @duck_result_recovery = scope, {}
+      end
+      @duck_result_recovery
     end
 
     def duck_cleanup_private(replay, actor, context)
@@ -471,16 +510,24 @@ module GameRoomGames
       receipts = replay.state.fetch(:private_closures, []).dup
       if (protocol = replay.state.dig(:round, :private)) && !protocol[:reveals].empty?
         receipts << {session_id: protocol[:session_id], round_id: protocol[:round_id],
-          seats: protocol[:reveals].keys, commitments: protocol[:commitments], cancelled: false}
+          seats: protocol[:reveals].keys, commitments: protocol[:commitments], cancelled: false, compact: protocol[:compact]}
       end
-      return if receipts.empty?
+      result_receipts = [replay.state.fetch(:result_closures, []),
+        replay.state.dig(:round, :results)&.keys, replay.state.dig(:round, :challenge, :id)]
+      return if receipts.empty? && result_receipts[0].empty? && result_receipts[1].to_a.empty?
+      signature = [receipts, result_receipts]
       actors.each do |actor|
         key = [session_id, actor.to_s.downcase]
         checked = (@duck_cleanup_checked ||= {})[key]
-        next if checked && checked[0].equal?(hidden_submissions) && checked[1] == receipts
+        next if checked && checked[0].equal?(hidden_submissions) && checked[1] == signature
+        begin
+          Logic::LocalResult.cleanup(replay.state, user: actor, vault: hidden_submissions)
+        rescue HiddenSubmissions::StorageError
+          next
+        end
         if Logic::PrivateRound.cleanup_confirmed(session_id: session_id, user: actor,
             receipts: receipts, vault: hidden_submissions)
-          @duck_cleanup_checked[key] = [hidden_submissions, Logic::Session.copy(receipts)]
+          @duck_cleanup_checked[key] = [hidden_submissions, Logic::Session.copy(signature)]
         end
       end
     end
@@ -506,6 +553,7 @@ module GameRoomGames
       return unless round[:phase] == :playing && round[:challenge][:participants].include?(seat)
       return if round[:private] && round[:private][:commitments].key?(seat)
       return if round[:attempts]&.key?(seat)
+      return if round[:results]&.key?(seat)
       if Logic::ChallengeEngine::SEQUENTIAL.include?(round[:challenge][:kind])
         engine = round[:engine]
         return unless engine && !Logic::ChallengeEngine.finished?(engine)

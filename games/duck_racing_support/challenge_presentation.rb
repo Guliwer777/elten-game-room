@@ -57,7 +57,7 @@ module GameRoomDuckRacing
       when "risky_dice"
         [_('Risky dice.'), _('Reach at most 25. Enter rolls the dice. Down, then Enter saves your result.'), :list]
       when "guess_number"
-        [_('Guess the number.'), _('Number from 1 to 100.'), :text]
+        [_('Guess the number.'), _('Number from 1 to 999.'), :text]
       when "copy_number"
         [_('Copy the number.'), '', :text]
       when "arithmetic"
@@ -74,6 +74,8 @@ module GameRoomDuckRacing
         [_('Order the sounds.'), _('Order the sounds from low to high. Keys 1 to 8 play them; Shift+digit selects two to swap.'), :button]
       when "audio_ball"
         [_('Audio Ball') + '.', '', :button]
+      when "axel_pong"
+        [_('Axel Pong') + '.', _('Win one point. Move your racket with Left and Right; press Up or Space to serve or return the ball. Press Enter when you are ready.'), :button]
       when "simon"
         [_('Simon.'), _('Listen, then repeat the sounds with 1 to 5. Press each key separately.'), :button]
       when "sound_memory"
@@ -95,12 +97,18 @@ module GameRoomDuckRacing
       when 'hit_duck' then _('Try the duck positions with keys 1 to 9, from left to right. Enter or Space starts the challenge.')
       when 'rhythm' then _('Try the two drum sounds with F and J. Enter or Space starts the challenge.')
       when 'audio_ball' then _('Try the ball sounds: W or Up for high, D or Left for middle, S or Down for low. Enter or Space confirms you are ready.')
+      when 'axel_pong' then description(kind)[1]
       when 'sound_memory' then memory_instruction(view)
       else raise ArgumentError, 'Unknown practice challenge'
       end
       instruction = _('Waiting for others.') if ready
+      if ready && view[:waiting]&.any? && view[:player_names]
+        names = view[:waiting].map { |seat| text(view[:player_names].fetch(seat)) }.join(', ')
+        instruction = _('Ready. Waiting for: %{players}.') % {players: names}
+      end
       instruction = _('You are watching.') unless participating
-      message = !previous&.[](:practice) || previous.dig(:own, :ready) != ready ? instruction : ''
+      message = !previous&.[](:practice) || previous.dig(:own, :ready) != ready ||
+        ready && previous[:waiting] != view[:waiting] ? instruction : ''
       {name: text(description(kind).first), instruction: text(instruction), mode: :button,
         header: text(instruction), status: '', announcement: text(message), options: [], option_keys: [],
         enabled: participating && !ready, boundary: [kind, :practice, participating, !!ready],
@@ -174,7 +182,7 @@ module GameRoomDuckRacing
 
       if kind == 'guess_number'
         own = view[:own] || {}
-        [_('Number from 1 to 100.'), digit_hint(kind, view),
+        [_('Number from 1 to 999.'), digit_hint(kind, view),
           status(kind, view, own, true, false, nil, nil)].reject(&:empty?).join(' ')
       else
         description(kind).first(2).reject(&:empty?).join(' ')
@@ -274,6 +282,7 @@ module GameRoomDuckRacing
       end
       turn_notice = turn_announcement(kind, view, viewer, previous)
       return '' if %w[numbered_balls sound_memory].include?(kind) # the shared presenter names the next player
+      return '' if kind == 'hit_duck' # shot quality is spoken after the recording, not over it
       # Public card/dice actions are spoken once through accepted history,
       # for everyone. The local field keeps the hand/total for inspection.
       # Memory choices have transient speech synchronized with each sound,
@@ -295,6 +304,11 @@ module GameRoomDuckRacing
         position: event.fetch(:position)}}
       result[:result_announcement] = event[:matched] ? _('Correct!') : _('Wrong!') if event.key?(:matched)
       result
+    end
+
+    def shot_quality(score)
+      {100 => _('Perfect!'), 75 => _('Good!'), 50 => _('Fair!'),
+        25 => _('Poor!'), 0 => _('Miss!')}.fetch(score)
     end
 
     def initial_announcement(kind, view, viewer)

@@ -223,10 +223,25 @@
       },
       "paragraphs": [
         {
-          "cs": "Uhodni číslo od 1 do 100. Dozvíš se, kolik má číslic. Piš své odhady; po každém dostaneš nápovědu, zda je hledané číslo vyšší, nebo nižší. Máš deset pokusů a dvě minuty."
+          "cs": "Uhodni číslo od 1 do 999. Dozvíš se, kolik má číslic. Piš své odhady; po každém dostaneš nápovědu, zda je hledané číslo vyšší, nebo nižší. Máš deset pokusů a dvě minuty."
         },
         {
-          "cs": "Každému se počítá nejbližší odhad. Vítěz bere tři pírka od každého soupeře. Stejně blízké odpovědi znamenají remízu."
+          "cs": "Počítá se tvůj nejbližší odhad. Vyhrává ten, kdo se přiblíží nejvíc. Pokud jsou dva hráči stejně blízko hledanému číslu, výzva končí remízou."
+        },
+        {
+          "cs": "Vítěz bere od každého soupeře nejvýše pět pírek podle toho, o kolik byl blíž. Například u hledaného čísla 47 dávají odhady 46 a 35 rozdíl vzdáleností 11."
+        },
+        {
+          "cs": "- Jednociferné číslo: rozdíl 1 stojí jedno pírko, 2–3 dvě, 4 tři, 5–6 čtyři a 7 nebo více pět."
+        },
+        {
+          "cs": "- Dvouciferné číslo: jedno pírko za každých započatých 10 rozdílu, nejvýše pět pírek."
+        },
+        {
+          "cs": "- Trojciferné číslo: jedno pírko za každých započatých 100 rozdílu, nejvýše pět pírek."
+        },
+        {
+          "cs": "Bez odpovědi odevzdáš vítězi pět pírek. Nemůžeš ztratit víc pírek, než máš."
         }
       ]
     },
@@ -304,7 +319,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Zopakuj rytmus klávesami F a J. Před začátkem si můžeš oba zvuky vyzkoušet. Enterem nebo mezerníkem potvrď připravenost; až budou připraveni všichni, zazní šest až deset úderů."
+          "cs": "Zopakuj rytmus klávesami F a J. Před začátkem si můžeš oba zvuky vyzkoušet. Enterem nebo mezerníkem zahájíš vlastní pokus. Zazní šest až deset úderů."
         },
         {
           "cs": "Po poslechu stiskni Enter a zahraj rytmus. Na zahájení máš 15 sekund a před ním si můžeš vzor ještě jednou poslechnout pomocí F5. Pokus je jeden; tři sekundy bez úderu ho ukončí."
@@ -341,7 +356,7 @@
           "cs": "Zapamatuj si stále delší melodii a opakuj ji číslicemi 1 až 5. Pod jedničkou je nejnižší tón, pod pětkou nejvyšší. Před začátkem si tóny vyzkoušej a potom potvrď připravenost Enterem nebo mezerníkem."
         },
         {
-          "cs": "Až budou všichni připraveni, zazní jeden tón. Po každé správné odpovědi přibude další a melodie se trochu zrychlí. Odpovídej vždy až po skončení poslechu."
+          "cs": "Tvůj pokus začne jedním tónem, bez čekání na ostatní. Po každé správné odpovědi přibude další a melodie se trochu zrychlí. Odpovídej vždy až po skončení poslechu."
         },
         {
           "cs": "Hraješ do první chyby nebo pěti sekund bez stisku při odpovídání. Každý dokončí vlastní pokus. Počítá se nejdelší celá zopakovaná melodie; vítěz bere od každého soupeře jedno pírko za každý tón náskoku."
@@ -375,7 +390,10 @@
           "cs": "Poznej, odkud se ozývá kváknutí, a stiskni odpovídající číslici od 1 do 9. Jednička je úplně vlevo, pětka uprostřed a devítka úplně vpravo."
         },
         {
-          "cs": "Před začátkem si můžeš poslechnout všechny pozice. Připravenost potvrď Enterem nebo mezerníkem. Až potvrdí všichni, objeví se postupně pět cílů; na každý máš tři sekundy."
+          "cs": "Před začátkem si můžeš poslechnout všechny pozice. Enterem nebo mezerníkem zahájíš vlastní pokus. Postupně se objeví pět cílů; na každý máš tři sekundy."
+        },
+        {
+          "cs": "Po každém výstřelu uslyšíš krátké hodnocení zásahu. Další kachna se ozve po chvíli."
         },
         {
           "cs": "Hodnocení záleží na tom, jak blízko se trefíš:"
@@ -456,6 +474,9 @@
           "cs": "Zahrajte jeden bod ve dvouhře, v režimu Classic s normální rychlostí. První podávající se losuje. Vítěz bere soupeři pět pírek."
         },
         {
+          "cs": "Až budeš připraven, stiskni Enter. Hra začne, jakmile připravenost potvrdí oba hráči."
+        },
+        {
           "cs": "Pálku posouvej šipkami vlevo a vpravo. Šipkou nahoru nebo mezerníkem podáš. Když se míč vrací, postav mu pálku do cesty a stiskni stejnou klávesu, až bude v dosahu."
         },
         {
@@ -525,7 +546,7 @@
           "cs": "T: aktuální tah nebo výzva."
         },
         {
-          "cs": "V: přehled okruhu."
+          "cs": "V: přehled okruhu od pole, na kterém stojíš."
         },
         {
           "cs": "P: zopakování zadání výzvy."

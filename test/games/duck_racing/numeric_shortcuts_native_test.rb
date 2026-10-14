@@ -66,6 +66,6 @@ end
 end
 view = ENGINE.view(challenge_state('guess_number'), seat: 0)
 assert(!view.key?(:answer), 'Hidden target leaked in the public view')
-assert(GameRoomDuckRacing::ChallengePresentation.reminder('guess_number', view).start_with?('Number from 1 to 100.'), 'Missing guessing reminder')
+assert(GameRoomDuckRacing::ChallengePresentation.reminder('guess_number', view).start_with?('Number from 1 to 999.'), 'Missing guessing reminder')
 $activecontrols = []
 puts 'PASS numeric fields: T/S/C/V/P, unchanged draft, native editing and chat isolation; task reminder uses the public view'

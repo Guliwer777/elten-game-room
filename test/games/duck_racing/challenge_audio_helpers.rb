@@ -56,7 +56,7 @@ module DuckChallengeAudioTest
     end
     def create_sound_from_asset(name, sample:, loop:)
       ball = GameRoomAudioBall::SoundPack::PACKS.values.any? { |pack| pack.values_at('up', 'left', 'down').include?(name) }
-      assets = [PLAYER::TONE_ASSET, PLAYER::QUACK_ASSET, PLAYER::COUNTDOWN_ASSET] +
+      assets = [PLAYER::TONE_ASSET, PLAYER::QUACK_ASSET, PLAYER::COUNTDOWN_ASSET, PLAYER::SHOT_ASSET] +
         PLAYER::MEMORY_ASSETS + PLAYER::RHYTHM_ASSETS.values + %w[replay buzzer]
       raise 'Wrong sound-loading contract' unless (ball || assets.include?(name)) && sample == false && loop == ball
       @requested_assets << name

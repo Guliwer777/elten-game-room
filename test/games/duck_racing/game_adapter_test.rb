@@ -253,7 +253,8 @@ check.call('archive validates without a live session ID then restores completed 
     'The test bypassed the native archive import authentication path')
   assert_equal(DuckGameAdapterTest.semantic(previous.state[:race]), DuckGameAdapterTest.semantic(after.state[:race]))
   assert_equal(DuckGameAdapterTest.semantic(previous.state[:last_resolution]), DuckGameAdapterTest.semantic(after.state[:last_resolution]))
-  assert(h.decode.any? { |data, _actor, _events| data['action'] == 'begin' && data['session'] == 91 })
+  assert(h.decode.any? { |data, _actor, _events| data['action'] == 'start' && data['session'] == 91 && data['challenge_flow'] == 2 })
+  assert_equal(91, after.state[:private_closures].last[:session_id], 'Archive changed the historical answer scope')
   actor = after.current_player
   context = h.context(actor)
   context.session_id = new_session['__id']
@@ -298,7 +299,14 @@ check.call('new private challenge after native restore uses its NEW physical ses
   now = h.now_ms + 1_000
   160.times do
     current = native.replay(h.owner)
-    break if current.state[:round]
+    if (challenge = current.state.dig(:round, :challenge))
+      break if challenge[:kind] == 'guess_number'
+      # A question square may open Quiz even with only Guess the number
+      # enabled. Exercise the new independent start, not Quiz's ready action.
+      native.submit_at({'action' => 'cancel', 'challenge' => challenge[:id], 'reason' => 'technical'},
+        actor: current.players.fetch(challenge[:participants].first), at: now += 100)
+      next
+    end
     assert(!current.finished?, 'The fixture finished before opening the next challenge')
     racer = current.state[:race][:racers].fetch(current.state[:race][:turn])
     if racer[:frozen_turns].positive? || racer[:skip_turns].positive?
@@ -316,13 +324,15 @@ check.call('new private challenge after native restore uses its NEW physical ses
   end
   round = native.replay(h.owner).state[:round]
   assert(round, 'No deterministic challenge opened after restore')
+  assert_equal('guess_number', round[:challenge][:kind])
   id = round[:challenge][:id]
-  round[:challenge][:participants].each do |seat|
-    actor = native.replay(h.owner).players.fetch(seat)
-    native.submit_at({'action' => 'ready', 'challenge' => id, 'fingerprint' => h.resources[:fingerprint]},
-      actor: actor, at: now += 100)
+  if round[:phase] == :preparing
+    round[:challenge][:participants].each do |seat|
+      actor = native.replay(h.owner).players.fetch(seat)
+      native.submit_at({'action' => 'ready', 'challenge' => id, 'fingerprint' => h.resources[:fingerprint]},
+        actor: actor, at: now += 100)
+    end
   end
-  native.submit_at({'action' => 'begin', 'challenge' => id}, actor: h.owner, at: now += 100)
   protocol = native.replay(h.owner).state[:round][:private]
   assert(protocol, 'The restored fixture opened a non-private challenge')
   assert_equal(native.session.fetch('__id'), protocol[:session_id])

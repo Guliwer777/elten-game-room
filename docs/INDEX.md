@@ -40,6 +40,8 @@ translations must be kept up to date together.
 - [Teams, roles and focus](TEAMS_ROLES_AND_FOCUS.md).
 - [Interface languages](INTERFACE_LANGUAGES.md).
 - [Statistics](STATISTICS.md) and their [schema fragment](STATISTICS_TABLES.json).
+- [Question creator](QUIZ_CONTRIBUTIONS.md): private account drafts and
+  proposals delivered through messages with a TXT/JSON attachment.
 - [Monopoly board sources and limitations](MONOPOLY_REGIONAL_BOARDS.md).
 
 ## Maintained content

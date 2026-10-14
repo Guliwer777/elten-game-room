@@ -185,14 +185,15 @@ module GameRoomGames
         )
       end
 
-      def browse_shortcut(key:, label:, prompt:, choices:, modifiers: nil)
+      def browse_shortcut(key:, label:, prompt:, choices:, modifiers: nil, default_value: nil)
         GameShortcut.new(
           key: key,
           modifiers: modifiers,
           label: label,
           kind: :browse,
           prompt: prompt,
-          choices: choices
+          choices: choices,
+          default_value: default_value
         )
       end
 

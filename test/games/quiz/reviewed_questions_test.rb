@@ -51,6 +51,13 @@ reviewed_general = {
     'correct' => 'Na skrzypcach',
     'wrong' => ['Na klarnecie', 'Na trąbce', 'Na flecie']
   },
+  # This question must work without the original programme's audio clip.
+  '1z10_9c1ef9355dd49ef6' => {
+    'source_dataset' => '1z10/MAUPQA', 'category' => 'Kultura',
+    'prompt' => 'Który zespół nagrał album „The Wall”?',
+    'correct' => 'Pink Floyd',
+    'wrong' => ['The Who', 'Genesis', 'Yes']
+  },
   '1z10_dad26f6ca36159da' => {
     'source_dataset' => '1z10/MAUPQA', 'category' => 'Geografia',
     'prompt' => 'Ile gwiazd widnieje na fladze Panamy?',

@@ -48,13 +48,18 @@ module GameRoomGames
               "Sady o knih\u00E1ch a jin\u00FDch p\u0159\u00EDb\u011Bz\u00EDch mohou prozrazovat d\u011Bj v\u010Detn\u011B konce."),
             rule_section(:options, "\u010Cas a bodov\u00FD c\u00EDl",
               "P\u0159ed hrou lze v nastaven\u00ED stolu zm\u011Bnit \u010Das na odpov\u011B\u010F i c\u00EDlov\u00FD po\u010Det bod\u016F. St\u00E1le se dohr\u00E1v\u00E1 cel\u00E9 rozehran\u00E9 kolo, i kdy\u017E n\u011Bkdo c\u00EDle dos\u00E1hne d\u0159\u00EDv."),
+            rule_section(:reports, "Hl\u00E1\u0161en\u00ED chyb v ot\u00E1zk\u00E1ch",
+              "Kdy\u017E si v\u0161imne\u0161 chyby, stiskni Ctrl+B pro ozna\u010Den\u00ED aktu\u00E1ln\u00ED ot\u00E1zky nebo Ctrl+Shift+B pro ozna\u010Den\u00ED p\u0159edchoz\u00ED. M\u016F\u017Ee\u0161 hned pokra\u010Dovat ve h\u0159e.",
+              "Po odchodu od stolu se program zept\u00E1, zda chce\u0161 ozna\u010Den\u00E9 ot\u00E1zky nahl\u00E1sit. Vyber \u201EAno\u201C, u ka\u017Ed\u00E9 popi\u0161 probl\u00E9m a stiskni \u201EOdeslat\u201C. Ot\u00E1zka i odpov\u011Bdi se p\u0159ipoj\u00ED automaticky. Volba \u201ENe\u201C ozna\u010Den\u00ED zru\u0161\u00ED; na pozd\u011Bji se neukl\u00E1daj\u00ED."),
             rule_section(:controls, "Kl\u00E1vesov\u00E9 zkratky",
               "\u0160ipky: vybrat kategorii nebo odpov\u011B\u010F.",
               "Enter: potvrdit volbu.",
               "T: p\u0159e\u010D\u00EDst ot\u00E1zku a odpov\u011Bdi.",
               "Ctrl+T: p\u0159e\u010D\u00EDst zb\u00FDvaj\u00EDc\u00ED \u010Das.",
               "V: p\u0159e\u010D\u00EDst souhrn kola.",
-              "S: p\u0159e\u010D\u00EDst sk\u00F3re.")
+              "S: p\u0159e\u010D\u00EDst sk\u00F3re.",
+              "Ctrl+B: ozna\u010Dit aktu\u00E1ln\u00ED ot\u00E1zku k nahl\u00E1\u0161en\u00ED.",
+              "Ctrl+Shift+B: ozna\u010Dit p\u0159edchoz\u00ED ot\u00E1zku k nahl\u00E1\u0161en\u00ED.")
           ]
         when "en"
           [
@@ -74,13 +79,18 @@ module GameRoomGames
               "Packs about books and other stories may contain spoilers, including endings."),
             rule_section(:options, "Time and target",
               "The host can change answer time and the target score before play. The current round is still completed even if someone reaches the target sooner."),
+            rule_section(:reports, "Reporting a question",
+              "If you spot a mistake, press Ctrl+B to mark the current question or Ctrl+Shift+B to mark the previous one. You can keep playing straight away.",
+              "When you leave the table, you will be asked whether you want to report the marked questions. Choose Yes, describe the problem with each question and press Send. The question and its answers are included automatically. Choosing No discards the marks; they are not saved for later."),
             rule_section(:controls, "Keyboard shortcuts",
               "Arrows: choose a category or answer.",
               "Enter: confirm your choice.",
               "T: read the question and choices.",
               "Ctrl+T: read answer time remaining.",
               "V: read the round summary.",
-              "S: read scores.")
+              "S: read scores.",
+              "Ctrl+B: mark the current question for reporting.",
+              "Ctrl+Shift+B: mark the previous question for reporting.")
           ]
         when "es"
           [
@@ -100,13 +110,18 @@ module GameRoomGames
               "Los conjuntos sobre libros y otras historias pueden revelar detalles de la trama, incluidos sus finales."),
             rule_section(:options, "Tiempo y meta de puntos",
               "Puedes cambiar el tiempo de respuesta y la meta de puntos en los ajustes de la mesa. Siempre se completa la ronda empezada, aunque alguien alcance antes la meta."),
+            rule_section(:reports, "Avisar de un error en una pregunta",
+              "Si encuentras un error, pulsa Ctrl+B para marcar la pregunta actual o Ctrl+Shift+B para marcar la anterior. Puedes seguir jugando sin detenerte.",
+              "Al salir de la mesa, el programa te preguntar\u00E1 si quieres enviar las preguntas marcadas al autor. Elige \u00ABS\u00ED\u00BB, describe el problema de cada una y pulsa \u00ABEnviar\u00BB. La pregunta y sus respuestas se incluyen autom\u00E1ticamente. Si eliges \u00ABNo\u00BB, se descartan las marcas; no se guardan para m\u00E1s tarde."),
             rule_section(:controls, "Teclas de referencia",
               "Flechas: elegir categor\u00EDa o respuesta.",
               "Enter: confirmar la elecci\u00F3n.",
               "T: leer la pregunta y las respuestas.",
               "Ctrl+T: consultar el tiempo restante.",
               "V: consultar el resumen de la ronda.",
-              "S: consultar los resultados.")
+              "S: consultar los resultados.",
+              "Ctrl+B: marcar la pregunta actual para avisar de un error.",
+              "Ctrl+Shift+B: marcar la pregunta anterior para avisar de un error.")
           ]
         when "pl"
           [
@@ -126,13 +141,18 @@ module GameRoomGames
               "Zestawy dotycz\u0105ce ksi\u0105\u017Cek i innych historii mog\u0105 zawiera\u0107 pytania zdradzaj\u0105ce fabu\u0142\u0119, tak\u017Ce zako\u0144czenia."),
             rule_section(:options, "Czas odpowiedzi i cel punktowy",
               "W ustawieniach sto\u0142u mo\u017Cecie zmieni\u0107 czas na odpowied\u017A oraz liczb\u0119 punkt\u00F3w potrzebn\u0105 do wygranej. Nadal trzeba doko\u0144czy\u0107 rozpocz\u0119t\u0105 rund\u0119, nawet je\u015Bli kto\u015B wcze\u015Bniej zdob\u0119dzie wymagan\u0105 liczb\u0119 punkt\u00F3w."),
+            rule_section(:reports, "Zg\u0142aszanie b\u0142\u0119d\u00F3w w pytaniach",
+              "Je\u015Bli zauwa\u017Cysz b\u0142\u0105d, naci\u015Bnij Ctrl+B, aby oznaczy\u0107 bie\u017C\u0105ce pytanie, albo Ctrl+Shift+B, aby oznaczy\u0107 poprzednie. Mo\u017Cesz od razu gra\u0107 dalej.",
+              "Po opuszczeniu sto\u0142u program zapyta, czy chcesz zg\u0142osi\u0107 oznaczone pytania. Wybierz \u201ETak\u201D, opisz problem przy ka\u017Cdym z nich i naci\u015Bnij \u201EWy\u015Blij\u201D. Pytanie i odpowiedzi zostan\u0105 do\u0142\u0105czone automatycznie. Wyb\u00F3r \u201ENie\u201D usuwa oznaczenia; nie s\u0105 zachowywane na p\u00F3\u017Aniej."),
             rule_section(:controls, "Skr\u00F3ty klawiszowe",
               "Strza\u0142ki: wybierz kategori\u0119 lub odpowied\u017A.",
               "Enter: zatwierd\u017A wyb\u00F3r.",
               "T: odczytaj pytanie i odpowiedzi.",
               "Ctrl+T: odczytaj pozosta\u0142y czas na odpowied\u017A.",
               "V: odczytaj podsumowanie rundy.",
-              "S: odczytaj wyniki.")
+              "S: odczytaj wyniki.",
+              "Ctrl+B: oznacz bie\u017C\u0105ce pytanie do zg\u0142oszenia.",
+              "Ctrl+Shift+B: oznacz poprzednie pytanie do zg\u0142oszenia.")
           ]
         when "ru"
           [
@@ -152,13 +172,18 @@ module GameRoomGames
               "\u0412\u043E\u043F\u0440\u043E\u0441\u044B \u043E \u043A\u043D\u0438\u0433\u0430\u0445 \u0438 \u0434\u0440\u0443\u0433\u0438\u0445 \u0438\u0441\u0442\u043E\u0440\u0438\u044F\u0445 \u043C\u043E\u0433\u0443\u0442 \u0440\u0430\u0441\u043A\u0440\u044B\u0432\u0430\u0442\u044C \u0441\u044E\u0436\u0435\u0442, \u0432 \u0442\u043E\u043C \u0447\u0438\u0441\u043B\u0435 \u043A\u043E\u043D\u0446\u043E\u0432\u043A\u0443."),
             rule_section(:options, "\u0412\u0440\u0435\u043C\u044F \u0438 \u0446\u0435\u043B\u044C \u043F\u043E \u043E\u0447\u043A\u0430\u043C",
               "\u0412 \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0430\u0445 \u0441\u0442\u043E\u043B\u0430 \u043C\u043E\u0436\u043D\u043E \u0438\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u0432\u0440\u0435\u043C\u044F \u043D\u0430 \u043E\u0442\u0432\u0435\u0442 \u0438 \u0447\u0438\u0441\u043B\u043E \u043E\u0447\u043A\u043E\u0432 \u0434\u043B\u044F \u043F\u043E\u0431\u0435\u0434\u044B. \u041F\u0440\u0438 \u043B\u044E\u0431\u043E\u0439 \u0446\u0435\u043B\u0438 \u043D\u0430\u0447\u0430\u0442\u044B\u0439 \u0440\u0430\u0443\u043D\u0434 \u0434\u043E\u0438\u0433\u0440\u044B\u0432\u0430\u0435\u0442\u0441\u044F \u043F\u043E\u043B\u043D\u043E\u0441\u0442\u044C\u044E, \u0434\u0430\u0436\u0435 \u0435\u0441\u043B\u0438 \u043D\u0443\u0436\u043D\u044B\u0435 \u043E\u0447\u043A\u0438 \u0443\u0436\u0435 \u043D\u0430\u0431\u0440\u0430\u043D\u044B."),
+            rule_section(:reports, "\u0421\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043E\u0431 \u043E\u0448\u0438\u0431\u043A\u0430\u0445 \u0432 \u0432\u043E\u043F\u0440\u043E\u0441\u0430\u0445",
+              "\u0415\u0441\u043B\u0438 \u0432\u044B \u0437\u0430\u043C\u0435\u0442\u0438\u043B\u0438 \u043E\u0448\u0438\u0431\u043A\u0443, \u043D\u0430\u0436\u043C\u0438\u0442\u0435 Ctrl+B, \u0447\u0442\u043E\u0431\u044B \u043E\u0442\u043C\u0435\u0442\u0438\u0442\u044C \u0442\u0435\u043A\u0443\u0449\u0438\u0439 \u0432\u043E\u043F\u0440\u043E\u0441, \u0438\u043B\u0438 Ctrl+Shift+B, \u0447\u0442\u043E\u0431\u044B \u043E\u0442\u043C\u0435\u0442\u0438\u0442\u044C \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439. \u041F\u043E\u0441\u043B\u0435 \u044D\u0442\u043E\u0433\u043E \u043C\u043E\u0436\u043D\u043E \u0441\u0440\u0430\u0437\u0443 \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0430\u0442\u044C \u0438\u0433\u0440\u0443.",
+              "\u041F\u0440\u0438 \u0432\u044B\u0445\u043E\u0434\u0435 \u0438\u0437-\u0437\u0430 \u0441\u0442\u043E\u043B\u0430 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430 \u043F\u0440\u0435\u0434\u043B\u043E\u0436\u0438\u0442 \u0441\u043E\u043E\u0431\u0449\u0438\u0442\u044C \u043E\u0431 \u043E\u0442\u043C\u0435\u0447\u0435\u043D\u043D\u044B\u0445 \u0432\u043E\u043F\u0440\u043E\u0441\u0430\u0445. \u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u00AB\u0414\u0430\u00BB, \u043E\u043F\u0438\u0448\u0438\u0442\u0435 \u043F\u0440\u043E\u0431\u043B\u0435\u043C\u0443 \u0441 \u043A\u0430\u0436\u0434\u044B\u043C \u0432\u043E\u043F\u0440\u043E\u0441\u043E\u043C \u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435 \u00AB\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C\u00BB. \u0412\u043E\u043F\u0440\u043E\u0441 \u0438 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u044B \u043E\u0442\u0432\u0435\u0442\u0430 \u0431\u0443\u0434\u0443\u0442 \u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u044B \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0438. \u0415\u0441\u043B\u0438 \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u00AB\u041D\u0435\u0442\u00BB, \u043E\u0442\u043C\u0435\u0442\u043A\u0438 \u0431\u0443\u0434\u0443\u0442 \u0443\u0434\u0430\u043B\u0435\u043D\u044B: \u043D\u0430 \u043F\u043E\u0442\u043E\u043C \u043E\u043D\u0438 \u043D\u0435 \u0441\u043E\u0445\u0440\u0430\u043D\u044F\u044E\u0442\u0441\u044F."),
             rule_section(:controls, "\u041A\u043B\u0430\u0432\u0438\u0448\u0438 \u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F",
               "\u0421\u0442\u0440\u0435\u043B\u043A\u0438: \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0442\u0435\u043C\u0443 \u0438\u043B\u0438 \u043E\u0442\u0432\u0435\u0442.",
               "Enter: \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C \u0432\u044B\u0431\u043E\u0440.",
               "T: \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u044C \u0432\u043E\u043F\u0440\u043E\u0441 \u0438 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u044B \u043E\u0442\u0432\u0435\u0442\u0430.",
               "Ctrl+T: \u0443\u0437\u043D\u0430\u0442\u044C \u043E\u0441\u0442\u0430\u0432\u0448\u0435\u0435\u0441\u044F \u0432\u0440\u0435\u043C\u044F \u043D\u0430 \u043E\u0442\u0432\u0435\u0442.",
               "V: \u0443\u0437\u043D\u0430\u0442\u044C \u0438\u0442\u043E\u0433\u0438 \u0440\u0430\u0443\u043D\u0434\u0430.",
-              "S: \u0443\u0437\u043D\u0430\u0442\u044C \u0441\u0447\u0451\u0442.")
+              "S: \u0443\u0437\u043D\u0430\u0442\u044C \u0441\u0447\u0451\u0442.",
+              "Ctrl+B: \u043E\u0442\u043C\u0435\u0442\u0438\u0442\u044C \u0442\u0435\u043A\u0443\u0449\u0438\u0439 \u0432\u043E\u043F\u0440\u043E\u0441 \u0434\u043B\u044F \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043E\u0431 \u043E\u0448\u0438\u0431\u043A\u0435.",
+              "Ctrl+Shift+B: \u043E\u0442\u043C\u0435\u0442\u0438\u0442\u044C \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043E\u043F\u0440\u043E\u0441 \u0434\u043B\u044F \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043E\u0431 \u043E\u0448\u0438\u0431\u043A\u0435.")
           ]
         end
       end

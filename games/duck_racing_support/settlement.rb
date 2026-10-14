@@ -65,6 +65,31 @@ module GameRoomDuckRacing
       settle(balances, winner, draw: draw) { |_loser| amount }
     end
 
+    # Only the best distances matter, including when nobody guessed exactly.
+    # The target's digit count selects the scale; equal distances are a draw.
+    def guess_number(balances:, target:, distances:, eligible: balances.keys)
+      unless target.is_a?(Integer) && target.between?(1, 999)
+        raise ArgumentError, 'Invalid guessing target'
+      end
+      validate_scores!(balances, distances) { |distance| distance.nil? || distance.is_a?(Integer) && distance.between?(0, 998) }
+      validate_eligible!(balances, eligible)
+      valid = distances.select { |seat, distance| eligible.include?(seat) && !distance.nil? }
+      winner = unique_best(valid, higher: false)
+      settle(balances, winner, draw: winner.nil? && valid.length > 1) do |loser|
+        distance = eligible.include?(loser) ? distances.fetch(loser) : nil
+        next 5 if distance.nil?
+
+        advantage = distance - distances.fetch(winner)
+        amount = if target < 10
+          (advantage * 5 + 7) / 8
+        else
+          step = target < 100 ? 10 : 100
+          (advantage + step - 1) / step
+        end
+        [amount, 5].min
+      end
+    end
+
     def quiz(balances:, answers:)
       validate_scores!(balances, answers) { |correct| correct == true || correct == false }
       grants = answers.select { |_seat, correct| correct }.transform_values { 4 }

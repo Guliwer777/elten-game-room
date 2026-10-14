@@ -76,7 +76,8 @@ module GameRoomShortcuts
       GameRoomGames::GameShortcut.new(
         **common,
         prompt: value(data, :prompt),
-        choices: value(data, :choices)
+        choices: value(data, :choices),
+        default_value: value(data, :default_value)
       )
     when :number_input
       GameRoomGames::GameShortcut.new(

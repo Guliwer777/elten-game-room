@@ -49,7 +49,7 @@ def finish_again(h)
   h.private_traces.each do |seat, trace|
     h.accept({'action' => 'submit_trace', 'challenge' => id, 'trace' => trace}, actor: h.players.fetch(seat))
   end
-  h.accept({'action' => 'advance', 'challenge' => id})
+  assert_equal(:revealing, h.replay.state[:round][:private][:phase])
   h.replay.state[:round][:challenge][:participants].each do |seat|
     actor = h.players.fetch(seat)
     protocol = h.replay.state[:round][:private]
@@ -104,6 +104,9 @@ end
         assert_equal(type.id, state[:engine][:kind])
       elsif LOGIC::ChallengeEngine::FIRST_ANSWER.include?(type.id)
         assert_equal({}, state[:attempts])
+        assert_equal(nil, state[:private])
+      elsif LOGIC::ChallengeEngine::LOCAL_SCORES.include?(type.id)
+        assert_equal({}, state[:results])
         assert_equal(nil, state[:private])
       else
         assert_equal(:collecting, state[:private][:phase])
@@ -270,7 +273,7 @@ check.call('real coordinator keeps an idle bot stopped and completes its quiz wi
       actor: actor, author: actor == bot ? h.owner : actor)
   end
   assert_equal([0, 1, 2], h.replay.state[:round][:ready].keys.sort)
-  h.accept({'action' => 'begin', 'challenge' => id}, actor: h.owner)
+  assert_equal(:playing, h.replay.state[:round][:phase])
   replay = h.replay
   started_at = replay.state[:round][:started_at]
   context = h.context(h.owner, at: started_at)
@@ -293,12 +296,12 @@ check.call('real coordinator keeps an idle bot stopped and completes its quiz wi
 
   challenge = h.replay.state[:round][:challenge]
   [0, 1].each do |seat|
-    trace = LOGIC::ChallengeTrace.new(challenge, seat: seat, resources: h.resources)
+    trace = LOGIC::ChallengeTrace.new(challenge, seat: seat, resources: h.resources, compact: true)
     assert(trace.submit({kind: :answer, value: 0, press_id: 1}, at: 100 + seat * 100))
     h.accept({'action' => 'submit_trace', 'challenge' => id, 'trace' => trace.snapshot},
       actor: h.players.fetch(seat))
   end
-  h.accept({'action' => 'advance', 'challenge' => id}, actor: h.owner)
+  assert_equal(:revealing, h.replay.state[:round][:private][:phase])
   challenge[:participants].each do |seat|
     actor = h.players.fetch(seat)
     prepared = LOGIC::PrivateRound.recover(h.replay.state[:round][:private], seat: seat,

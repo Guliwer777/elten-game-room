@@ -8,7 +8,7 @@ class DuckPracticeStartTest
     @driver = DuckChallengeNativeDriver.new
     @real_controls = true
     {simon: (0x31..0x35).to_a, hit_duck: (0x31..0x39).to_a,
-      rhythm: [0x46, 0x4A], audio_ball: [0x57, 0x44, 0x53, 0x26, 0x25, 0x28]}.each do |kind, keys|
+      rhythm: [0x46, 0x4A], audio_ball: [0x57, 0x44, 0x53, 0x26, 0x25, 0x28], axel_pong: []}.each do |kind, keys|
       [0x0D, 0x20].each { |start| practice(kind.to_s, keys, start) }
     end
     ball_duration_and_pack
@@ -36,6 +36,14 @@ class DuckPracticeStartTest
     assert(@surface.fields.first.is_a?(Button))
     assert(@client.local_view[:practice])
     assert_equal(false, @client.context_data['duck_ready'])
+    if kind == 'axel_pong'
+      assert(!@wrappers.last.active?, 'The rally started before either player was ready')
+      assert(@surface.presentation[:instruction].include?('Left and Right'))
+      assert(@surface.presentation[:instruction].include?('Up or Space'))
+      assert(@surface.presentation[:instruction].include?('Press Enter'))
+      [0x25, 0x27, 0x26].each { |code| key(code) }
+      assert_equal(false, @client.context_data['duck_ready'], 'A movement key confirmed readiness')
+    end
     keys.each do |code|
       key(code)
       key
@@ -83,7 +91,7 @@ class DuckPracticeStartTest
       seat: 0, moderator: true, now_ms: at, resources: resources))
     @client.before_wait(@replay, @viewer)
     assert(!@client.local_view&.[](:practice))
-    if kind == 'audio_ball'
+    if ENGINE::REALTIME.include?(kind)
       assert(@wrappers.last.active?)
     else
       attach_native

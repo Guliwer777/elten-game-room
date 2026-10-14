@@ -480,11 +480,11 @@ end
 T.test("guess number bounds, strict parsing, tenth attempt and best-not-last ranking") do
   state = T.start("guess_number")
   secret = state[:answer]
-  [0, 101, 1.5, "12x", " 12", "1e1", "", "1\n", true, "99999999999"].each do |input|
+  [0, 1_000, 1.5, "12x", " 12", "1e1", "", "1\n", true, "99999999999"].each do |input|
     T.rejected_unchanged(state) { T.submit(state, 0, :answer, input) }
   end
-  closest = secret < 100 ? secret + 1 : secret - 1
-  distant = secret > 50 ? 1 : 100
+  closest = secret < 999 ? secret + 1 : secret - 1
+  distant = secret > 500 ? 1 : 999
   T.assert(T.submit(state, 0, :answer, closest, now: 10))
   9.times { |index| T.assert(T.submit(state, 0, :answer, distant, now: 11 + index)) }
   T.assert_equal(10, state[:players][0][:attempts].length)
@@ -494,8 +494,8 @@ T.test("guess number bounds, strict parsing, tenth attempt and best-not-last ran
   T.finish_by_timeout(state)
   T.assert_equal(0, state[:outcome][:winner])
   T.assert(state[:outcome][:settlement_ready])
-  T.assert_equal(:fixed, state[:outcome][:kind])
-  T.assert_equal(3, state[:outcome][:amount])
+  T.assert_equal(:guess_number, state[:outcome][:kind])
+  T.assert(!state[:outcome].key?(:amount), 'Guessing still has a flat stake')
   T.assert_equal([], state[:outcome][:unresolved])
 end
 
@@ -524,7 +524,7 @@ end
 T.test("closest-distance ties ignore speed, absent guesses cannot win and feedback stays private") do
   state = T.start("guess_number")
   secret = state[:answer]
-  guess = secret == 100 ? 99 : secret + 1
+  guess = secret == 999 ? 998 : secret + 1
   T.assert(T.submit(state, 0, :answer, guess, now: 1))
   T.assert(T.submit(state, 1, :answer, guess, now: 29_999))
   own = E.public_view(state, viewer: 0)[:own]

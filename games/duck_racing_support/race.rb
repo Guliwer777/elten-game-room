@@ -194,9 +194,12 @@ module GameRoomDuckRacing
       end
 
       travelled = movement.progress - racer[:progress]
+      final_lap = !movement.finished && movement.lap == @state[:laps] &&
+        racer[:progress] / Board::LENGTH + 1 < movement.lap
       racer[:progress] = movement.progress
       racer[:arrival] += 1
-      notice(:moved, seat, movement, effect ? travelled : nil)
+      notice(:moved, seat, movement, effect ? travelled : nil, final_lap)
+      notice(:final_lap, seat) if final_lap
       if movement.finished
         @state[:phase] = :finished
         @state[:winner] = seat

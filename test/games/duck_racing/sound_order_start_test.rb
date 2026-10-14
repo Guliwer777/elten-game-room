@@ -8,7 +8,7 @@ class DuckSoundOrderStartTest
     model_start
     native_start
     cleanup_and_observer
-    report('Duck sound ordering start: shared boundary, 2s silence, actual cue completion, refresh and cleanup')
+    report('Duck sound ordering start: shared boundary, 5s silence, actual cue completion, refresh and cleanup')
   end
 
   def model_start
@@ -38,14 +38,14 @@ class DuckSoundOrderStartTest
     assert(@surface.presentation[:instruction].include?('1 to 8'))
     assert(@client.local_view[:preparing])
     frame(1, @driver.tap(0x31))
-    frame(1_999, @driver.tap(0x32, modifiers: [0x10]))
+    frame(4_999, @driver.tap(0x32, modifiers: [0x10]))
     assert_equal([], @program.events)
     assert_equal(nil, request)
-    frame(2_000)
+    frame(5_000)
     assert_equal(['duck_countdown'], @program.events.map { |entry| entry[:asset] })
-    assert_equal(2_000, @program.events.first[:at])
+    assert_equal(5_000, @program.events.first[:at])
     replace { |replay| replay.state[:round][:last_seen][1] += 10 }
-    frame(3_000)
+    frame(6_000)
     frame(ENGINE::ORDER_PREPARATION_MS - 1, @driver.tap(0x31))
     assert_equal(1, @program.events.length)
     frame(ENGINE::ORDER_PREPARATION_MS, @driver.tap(0x31))
@@ -73,14 +73,14 @@ class DuckSoundOrderStartTest
 
   def cleanup_and_observer
     setup_client('sound_order')
-    advance(2_000)
+    advance(5_000)
     sound = @program.events.first[:sound]
     close
     assert(sound.closed?)
     assert_equal([], @program.managed)
 
     setup_client('sound_order', viewer: 'Charlie')
-    advance(2_000)
+    advance(5_000)
     advance(ENGINE::ORDER_PREPARATION_MS)
     assert_equal([], @program.events, 'An observer received an extra start countdown')
     assert_equal(nil, request)
@@ -89,7 +89,7 @@ class DuckSoundOrderStartTest
     setup_client('sound_order')
     # A device completing late must not enable input at the nominal deadline.
     @program.durations['duck_countdown'] += 300
-    advance(2_000)
+    advance(5_000)
     @surface.push(:preview, value: 1)
     advance(ENGINE::ORDER_PREPARATION_MS)
     assert(@client.local_view[:preparing])

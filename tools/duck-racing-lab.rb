@@ -154,6 +154,7 @@ unless defined?(GameRoomDuckRacingLab::VERSION)
           seats == seats.uniq.sort && seats.length.between?(type.minimum_players, type.maximum_players)
         return false unless type.maximum_players == 2 || seats == (0...state[:player_count]).to_a
 
+        state[:protocol_session] = data['session']
         lab.open_challenge(state, type.id, seats, now_ms)
       end
     end

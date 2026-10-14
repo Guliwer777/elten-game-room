@@ -75,6 +75,20 @@
       ]
     },
     {
+      "id": "reports",
+      "title": {
+        "pl": "Zgłaszanie błędów w pytaniach"
+      },
+      "paragraphs": [
+        {
+          "pl": "Jeśli zauważysz błąd, naciśnij Ctrl+B, aby oznaczyć bieżące pytanie, albo Ctrl+Shift+B, aby oznaczyć poprzednie. Możesz od razu grać dalej."
+        },
+        {
+          "pl": "Po opuszczeniu stołu program zapyta, czy chcesz zgłosić oznaczone pytania. Wybierz „Tak”, opisz problem przy każdym z nich i naciśnij „Wyślij”. Pytanie i odpowiedzi zostaną dołączone automatycznie. Wybór „Nie” usuwa oznaczenia; nie są zachowywane na później."
+        }
+      ]
+    },
+    {
       "id": "controls",
       "title": {
         "pl": "Skróty klawiszowe"
@@ -97,6 +111,12 @@
         },
         {
           "pl": "S: odczytaj wyniki."
+        },
+        {
+          "pl": "Ctrl+B: oznacz bieżące pytanie do zgłoszenia."
+        },
+        {
+          "pl": "Ctrl+Shift+B: oznacz poprzednie pytanie do zgłoszenia."
         }
       ]
     }

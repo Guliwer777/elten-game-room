@@ -8,13 +8,13 @@ GameRoomContent.registry.register_pack(GameRoomContent::Pack.new(
   set_id: "quiz.wikidata",
   kind: :quiz,
   language_id: "pl-PL",
-  version: 9,
+  version: 10,
   title: GameRoomLocalization.translate("General knowledge"),
   game_ids: ["quiz"],
   author: "PolQA/MAUPQA (IPI PAN), Polsat; adaptation for Power Games",
   license: "Mixed: CC-BY-SA-4.0 (PolQA/MAUPQA); Milionerzy by permission. See QUIZ_PL_GENERAL_SOURCES.txt",
   entry_count: 14887,
-  checksum: "c62d695aff37acbbfc938af22542803861aaac46a72f8576307eaf974b1ce1b8",
+  checksum: "1c53cf88e2e5a87dda0e106de14c8b24e92abff5ba725a2a6f4e8f42be965fe4",
   loader: lambda {
     require_relative "quiz_pl_wikidata_data"
     GameRoomContent::Packa0830f585cc4689a1e2a6335.load

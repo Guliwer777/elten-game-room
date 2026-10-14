@@ -5,16 +5,16 @@ include DuckChallengeTest
 
 presentation = GameRoomDuckRacing::ChallengePresentation
 languages = {
-  'en' => ['Number from 1 to 100.', 'F5 repeats the sounds.', ['Answer: 1 digit.', 'Answer: 2 digits.', 'Answer: 5 digits.']],
-  'pl' => ['Liczba od 1 do 100.', 'F5 powtarza dźwięki.', ['Odpowiedź: 1 cyfra.', 'Odpowiedź: 2 cyfry.', 'Odpowiedź: 5 cyfr.']],
-  'cs' => ['Číslo od 1 do 100.', 'F5 zopakuje zvuky.', ['Odpověď: 1 číslice.', 'Odpověď: 2 číslice.', 'Odpověď: 5 číslic.']],
-  'es' => ['Número del 1 al 100.', 'F5 repite los sonidos.', ['Respuesta: 1 cifra.', 'Respuesta: 2 cifras.', 'Respuesta: 5 cifras.']],
-  'ru' => ['Число от 1 до 100.', 'F5 повторяет звуки.', ['Ответ: 1 цифра.', 'Ответ: 2 цифры.', 'Ответ: 5 цифр.']]
+  'en' => ['Number from 1 to 999.', 'F5 repeats the sounds.', ['Answer: 1 digit.', 'Answer: 2 digits.', 'Answer: 3 digits.', 'Answer: 5 digits.']],
+  'pl' => ['Liczba od 1 do 999.', 'F5 powtarza dźwięki.', ['Odpowiedź: 1 cyfra.', 'Odpowiedź: 2 cyfry.', 'Odpowiedź: 3 cyfry.', 'Odpowiedź: 5 cyfr.']],
+  'cs' => ['Číslo od 1 do 999.', 'F5 zopakuje zvuky.', ['Odpověď: 1 číslice.', 'Odpověď: 2 číslice.', 'Odpověď: 3 číslice.', 'Odpověď: 5 číslic.']],
+  'es' => ['Número del 1 al 999.', 'F5 repite los sonidos.', ['Respuesta: 1 cifra.', 'Respuesta: 2 cifras.', 'Respuesta: 3 cifras.', 'Respuesta: 5 cifras.']],
+  'ru' => ['Число от 1 до 999.', 'F5 повторяет звуки.', ['Ответ: 1 цифра.', 'Ответ: 2 цифры.', 'Ответ: 3 цифры.', 'Ответ: 5 цифр.']]
 }
 
 languages.each do |language, (range, repeat, hints)|
   GameRoomTestLocalization.use_language(language)
-  [1, 2, 5].each_with_index do |digits, index|
+  [1, 2, 3, 5].each_with_index do |digits, index|
     assert_equal(hints[index], presentation.digit_hint('guess_number', {answer_digits: digits}), language)
   end
   %w[copy_number guess_number arithmetic race_question count_ducks].each do |kind|

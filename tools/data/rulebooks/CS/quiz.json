@@ -75,6 +75,20 @@
       ]
     },
     {
+      "id": "reports",
+      "title": {
+        "cs": "Hlášení chyb v otázkách"
+      },
+      "paragraphs": [
+        {
+          "cs": "Když si všimneš chyby, stiskni Ctrl+B pro označení aktuální otázky nebo Ctrl+Shift+B pro označení předchozí. Můžeš hned pokračovat ve hře."
+        },
+        {
+          "cs": "Po odchodu od stolu se program zeptá, zda chceš označené otázky nahlásit. Vyber „Ano“, u každé popiš problém a stiskni „Odeslat“. Otázka i odpovědi se připojí automaticky. Volba „Ne“ označení zruší; na později se neukládají."
+        }
+      ]
+    },
+    {
       "id": "controls",
       "title": {
         "cs": "Klávesové zkratky"
@@ -97,6 +111,12 @@
         },
         {
           "cs": "S: přečíst skóre."
+        },
+        {
+          "cs": "Ctrl+B: označit aktuální otázku k nahlášení."
+        },
+        {
+          "cs": "Ctrl+Shift+B: označit předchozí otázku k nahlášení."
         }
       ]
     }

@@ -223,10 +223,25 @@
       },
       "paragraphs": [
         {
-          "pl": "Odgadnij liczbę od 1 do 100. Usłyszysz, ile ma cyfr. Wpisuj swoje propozycje, a po każdej otrzymasz wskazówkę: szukana liczba jest większa albo mniejsza. Masz dziesięć prób i dwie minuty."
+          "pl": "Odgadnij liczbę od 1 do 999. Usłyszysz, ile ma cyfr. Wpisuj swoje propozycje, a po każdej otrzymasz wskazówkę: szukana liczba jest większa albo mniejsza. Masz dziesięć prób i dwie minuty."
         },
         {
-          "pl": "Liczy się najbliższa odpowiedź każdego gracza. Zwycięzca zabiera każdemu przeciwnikowi trzy pióra; odpowiedzi równie bliskie oznaczają remis."
+          "pl": "Liczy się twoja najbliższa odpowiedź. Wygrywa osoba, która była najbliżej szukanej liczby. Jeśli dwie osoby są równie blisko, wyzwanie kończy się remisem."
+        },
+        {
+          "pl": "Zwycięzca zabiera każdemu przeciwnikowi do pięciu piór. Ich liczba zależy od tego, o ile bliżej był zwycięzca. Na przykład przy szukanej liczbie 47 odpowiedzi 46 i 35 dają przewagę 11."
+        },
+        {
+          "pl": "- Liczba jednocyfrowa: przewaga 1 oznacza jedno pióro, 2–3 — dwa, 4 — trzy, 5–6 — cztery, a od 7 wzwyż — pięć."
+        },
+        {
+          "pl": "- Liczba dwucyfrowa: jedno pióro za każde rozpoczęte 10 przewagi, najwyżej pięć piór."
+        },
+        {
+          "pl": "- Liczba trzycyfrowa: jedno pióro za każde rozpoczęte 100 przewagi, najwyżej pięć piór."
+        },
+        {
+          "pl": "Brak odpowiedzi oznacza oddanie zwycięzcy pięciu piór. Możesz stracić tylko tyle piór, ile masz."
         }
       ]
     },
@@ -304,7 +319,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Powtórz usłyszany rytm klawiszami F i J. Przed rozpoczęciem możesz wypróbować oba dźwięki. Enterem lub Spacją potwierdź gotowość; gdy wszyscy będą gotowi, usłyszysz od sześciu do dziesięciu uderzeń."
+          "pl": "Powtórz usłyszany rytm klawiszami F i J. Przed rozpoczęciem możesz wypróbować oba dźwięki. Enterem lub Spacją rozpocznij własną próbę. Usłyszysz od sześciu do dziesięciu uderzeń."
         },
         {
           "pl": "Po odsłuchu naciśnij Enter i zagraj rytm. Masz 15 sekund na rozpoczęcie, a wcześniej możesz jeszcze raz posłuchać wzoru klawiszem F5. Próba jest jedna; trzy sekundy bez uderzenia ją kończą."
@@ -338,10 +353,10 @@
       },
       "paragraphs": [
         {
-          "pl": "Zapamiętuj coraz dłuższą melodię i powtarzaj ją cyframi od 1 do 5. Pod 1 jest najniższy ton, pod 5 najwyższy. Przed rozpoczęciem możesz je wypróbować, a potem potwierdzić gotowość Enterem lub Spacją."
+          "pl": "Zapamiętuj coraz dłuższą melodię i powtarzaj ją cyframi od 1 do 5. Pod 1 jest najniższy ton, pod 5 najwyższy. Przed rozpoczęciem możesz je wypróbować, a potem rozpocząć własną próbę Enterem lub Spacją."
         },
         {
-          "pl": "Gdy wszyscy będą gotowi, usłyszysz jeden dźwięk. Po każdej poprawnej odpowiedzi melodia wydłuża się o kolejny i nieco przyspiesza. Wpisuj odpowiedź po zakończeniu odsłuchu."
+          "pl": "Zaczynasz od jednego dźwięku, nie czekając na pozostałych. Po każdej poprawnej odpowiedzi melodia wydłuża się o kolejny i nieco przyspiesza. Wpisuj odpowiedź po zakończeniu odsłuchu."
         },
         {
           "pl": "Grasz do pierwszej pomyłki lub pięciu sekund bez naciśnięcia klawisza podczas odpowiadania. Każdy kończy własną próbę. Liczy się najdłuższa melodia powtórzona w całości; zwycięzca zabiera każdemu przeciwnikowi po jednym piórze za dźwięk przewagi."
@@ -375,7 +390,10 @@
           "pl": "Rozpoznaj, skąd dochodzi kwakanie, i naciśnij odpowiednią cyfrę od 1 do 9. Jedynka oznacza skrajną lewą stronę, piątka środek, a dziewiątka skrajną prawą."
         },
         {
-          "pl": "Przed rozpoczęciem możesz odsłuchać wszystkie pozycje. Naciśnij Enter lub Spację, gdy będziesz gotowy. Po potwierdzeniu przez wszystkich pojawi się kolejno pięć celów; na każdy masz trzy sekundy."
+          "pl": "Przed rozpoczęciem możesz odsłuchać wszystkie pozycje. Enterem lub Spacją rozpocznij własną próbę. Pojawi się kolejno pięć celów; na każdy masz trzy sekundy."
+        },
+        {
+          "pl": "Po każdym strzale usłyszysz krótką ocenę trafienia, a następna kaczka pojawi się po chwili przerwy."
         },
         {
           "pl": "Punkty zależą od tego, jak blisko trafisz:"
@@ -456,6 +474,9 @@
           "pl": "Rozegrajcie jeden punkt singla w trybie Classic z prędkością Normalną. Pierwszy serwujący jest losowany. Zwycięzca zabiera przeciwnikowi pięć piór."
         },
         {
+          "pl": "Naciśnij Enter, gdy będziesz gotowy. Gra rozpocznie się po potwierdzeniu przez obu graczy."
+        },
+        {
           "pl": "Strzałkami w lewo i w prawo przesuwasz rakietkę. Strzałką w górę lub Spacją serwujesz. Gdy piłka wraca, ustaw rakietkę na jej drodze i naciśnij ten sam klawisz, kiedy znajdzie się w zasięgu odbicia."
         },
         {
@@ -525,7 +546,7 @@
           "pl": "T: bieżąca tura lub wyzwanie."
         },
         {
-          "pl": "V: przegląd planszy."
+          "pl": "V: przegląd planszy od pola, na którym stoisz."
         },
         {
           "pl": "P: przypomnienie treści wyzwania."

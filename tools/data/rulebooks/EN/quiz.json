@@ -75,6 +75,20 @@
       ]
     },
     {
+      "id": "reports",
+      "title": {
+        "en": "Reporting a question"
+      },
+      "paragraphs": [
+        {
+          "en": "If you spot a mistake, press Ctrl+B to mark the current question or Ctrl+Shift+B to mark the previous one. You can keep playing straight away."
+        },
+        {
+          "en": "When you leave the table, you will be asked whether you want to report the marked questions. Choose Yes, describe the problem with each question and press Send. The question and its answers are included automatically. Choosing No discards the marks; they are not saved for later."
+        }
+      ]
+    },
+    {
       "id": "controls",
       "title": {
         "en": "Keyboard shortcuts"
@@ -97,6 +111,12 @@
         },
         {
           "en": "S: read scores."
+        },
+        {
+          "en": "Ctrl+B: mark the current question for reporting."
+        },
+        {
+          "en": "Ctrl+Shift+B: mark the previous question for reporting."
         }
       ]
     }

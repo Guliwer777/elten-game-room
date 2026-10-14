@@ -186,9 +186,12 @@ end
       commits = messages.select { |data| data["action"] == "commit" }
       reveals = messages.select { |data| data["action"] == "reveal" }
       if kind == "simon"
-        assert_equal(2, commits.length)
-        assert_equal(2, reveals.map { |data| data["actor"] }.uniq.length)
-        submissions = commits
+        assert_equal([], commits)
+        assert_equal([], reveals)
+        submissions = messages.select { |data| data['action'] == 'result' }
+        assert_equal(2, submissions.length)
+        assert_equal(2, submissions.map { |data| data['actor'] }.uniq.length)
+        assert(submissions.all? { |data| data['answer'].keys == ['score'] })
       else
         assert_equal([], commits)
         assert_equal([], reveals)
@@ -203,10 +206,13 @@ end
         assert(data["at"] >= plan[:ready_ms], "A bot submitted before its simulated completion")
         preparation = GameRoomDuckRacing::ChallengeEngine::SPEED_TYPES.include?(kind) ?
           GameRoomDuckRacing::ChallengeEngine::PREPARATION_MS : 0
-        assert_equal(plan[:ready_ms] - plan[:started_at] - preparation, plan[:trace]["finished_at"])
+        preparation = GameRoomDuckRacing::ChallengeEngine::COUNT_DUCKS_PREPARATION_MS if kind == 'count_ducks'
+        unless kind == 'simon'
+          assert_equal(plan[:ready_ms] - plan[:started_at] - preparation, plan[:trace]["finished_at"])
+        end
       end
       if kind == "simon"
-        assert(h.plans.any? { |entry| entry[:trace]["finished_at"] > 90_000 }, "Fixture did not cross the idle boundary")
+        assert(h.plans.any? { |entry| entry[:ready_ms] - entry[:started_at] > 90_000 }, "Fixture did not cross the idle boundary")
         alive = messages.select { |data| data["action"] == "alive" }
         assert_equal(2, alive.map { |data| data["actor"] }.uniq.length)
         assert(alive.length >= 6)
@@ -311,10 +317,10 @@ end
     begin
       start = h.replay.state[:round][:started_at]
       10.times { h.tick(0.25) }
-      assert(h.wire.none? { |data| %w[input attempt commit].include?(data['action']) },
+      assert(h.wire.none? { |data| %w[input attempt commit result].include?(data['action']) },
         "#{kind}: bot moved before its configured pause")
       h.finish
-      messages = h.wire.select { |data| %w[input attempt commit].include?(data['action']) }
+      messages = h.wire.select { |data| %w[input attempt commit result].include?(data['action']) }
       assert(!messages.empty?, "#{kind}: no bot decisions were submitted")
       messages.each do |data|
         plan = h.plans.find { |entry| entry[:actor] == data['actor'] &&

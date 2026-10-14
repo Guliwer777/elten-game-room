@@ -109,7 +109,7 @@ module GameRoomDuckRacing
       end
 
       acknowledge_requests
-      if playing? && !@technical_error
+      if playing? && !practicing? && !@technical_error
         close_practice
         if realtime?
           ensure_realtime
@@ -252,7 +252,8 @@ module GameRoomDuckRacing
           consume_input unless background || covered?
           update_view if @view_dirty
         end
-        if playing? && !@technical_error && roster_matches?(@replay)
+        if playing? && !practicing? && !@technical_error && roster_matches?(@replay)
+          close_practice
           if realtime?
             ensure_realtime
           else
@@ -367,7 +368,13 @@ module GameRoomDuckRacing
         @watch_view[:own] = (@watch_view[:own] || {}).merge(done: true) if committed?
       else
         @origin_ms = milliseconds
-        @trace = ChallengeTrace.new(@challenge, seat: @seat, resources: @resources)
+        if (response_at = @replay.state.dig(:round, :response_at))
+          origin = @challenge[:kind] == 'count_ducks' ? @replay.state[:round][:started_at] : response_at
+          @origin_ms += origin - @session_time.call(@replay.state)
+        end
+        compact = Session.streamlined?(@replay.state) &&
+          (ChallengeEngine::INDEPENDENT + ChallengeEngine::COMPACT_PRIVATE).include?(@challenge[:kind])
+        @trace = ChallengeTrace.new(@challenge, seat: @seat, resources: @resources, compact: compact)
         @trace.tick(at: 0)
         if ChallengeEngine::SPEED_TYPES.include?(@challenge[:kind]) && @challenge[:kind] != 'count_ducks'
           begin_preparation
@@ -445,7 +452,7 @@ module GameRoomDuckRacing
               # Keep the initial playback unacknowledged until the start cue.
               # The existing model then starts its response clock after the cue,
               # not at the end of the recording. F5 replays keep their clock.
-              begin_preparation(acknowledgement: action)
+              begin_preparation(acknowledgement: action, delay_ms: ChallengeEngine::COUNT_DUCKS_PREPARATION_DELAY_MS)
             elsif @trace.submit(action, at: at)
               @view_dirty = true
             end
@@ -463,7 +470,19 @@ module GameRoomDuckRacing
     end
 
     def begin_preparation(acknowledgement: nil, delay_ms: ChallengeEngine::PREPARATION_DELAY_MS)
-      @preparation = {acknowledgement: acknowledgement, finished: false}
+      boundary = @replay.state.dig(:round, :response_at)
+      if Session.streamlined?(@replay.state) && @challenge[:kind] == 'sound_order'
+        boundary = @replay.state[:round][:started_at] + ChallengeEngine::ORDER_PREPARATION_MS
+      end
+      finish_at = boundary && milliseconds + boundary - @session_time.call(@replay.state)
+      cue_at = finish_at ? finish_at - ChallengeEngine::COUNTDOWN_MS : milliseconds + delay_ms
+      if finish_at && milliseconds >= finish_at
+        if acknowledgement
+          technical_failure(_('The challenge sounds could not be played. The challenge will be cancelled.'))
+        end
+        return
+      end
+      @preparation = {acknowledgement: acknowledgement, finished: false, finish_at: finish_at}
       @preparation_audio = @audio_factory.call(clock_ms: -> { milliseconds },
         on_action: ->(action, _at) {
           @preparation[:finished] = true if @preparation && action[:kind] == :playback_finished
@@ -471,7 +490,7 @@ module GameRoomDuckRacing
         on_error: ->(error) {
           technical_failure(_('The challenge sounds could not be played. The challenge will be cancelled.'), error)
         })
-      @preparation_audio.play(id: 1, requested_ms: milliseconds + delay_ms,
+      @preparation_audio.play(id: 1, requested_ms: cue_at,
         events: [{sound: :countdown, offset_ms: 0, duration_ms: ChallengeEngine::COUNTDOWN_MS}])
       @view_dirty = true
     end
@@ -480,13 +499,15 @@ module GameRoomDuckRacing
       return true unless @preparation
       @preparation_audio.step(milliseconds)
       return false if @technical_error || !@preparation[:finished]
+      return false if @preparation[:finish_at] && milliseconds < @preparation[:finish_at]
 
       preparation, @preparation = @preparation, nil
       @preparation_audio.close
       @preparation_audio = nil
       if preparation[:acknowledgement]
-        @trace.submit(preparation[:acknowledgement], at: elapsed_ms)
-      elsif !shared?
+        at = preparation[:finish_at] ? preparation[:finish_at] - @origin_ms : elapsed_ms
+        @trace.submit(preparation[:acknowledgement], at: at)
+      elsif !shared? && !preparation[:finish_at]
         # Measure from the actual local cue, including after a delayed frame.
         # Different clients never subtract each other's clock readings.
         @origin_ms = milliseconds
@@ -549,6 +570,9 @@ module GameRoomDuckRacing
           GameRoomSounds.play(@program, AnswerSounds.local_cue(@trace))
           if input[:kind].to_s == 'tone' && %w[rhythm simon].include?(@challenge[:kind])
             @audio.feedback(sound: @challenge[:kind].to_sym, tone: input[:value])
+          elsif input[:kind].to_s == 'target' && @challenge[:kind] == 'hit_duck'
+            score = ChallengeEngine.view(@trace.state, seat: @seat).fetch(:own).fetch(:last_target_score)
+            @audio.shot(pan: (input[:value] - 5) / 4.0, announcement: ChallengePresentation.shot_quality(score))
           end
           @audio&.play(ChallengeEngine.stimulus(@trace.state, seat: @seat))
         elsif shared? && @inputs.length < INPUT_LIMIT
@@ -572,6 +596,7 @@ module GameRoomDuckRacing
 
     def queue_finished_trace
       return if !@trace&.finished? || committed? || @technical_error
+      return if @challenge[:kind] == 'hit_duck' && @audio&.busy?
       @trace_request ||= request('submit_trace').merge('trace' => @trace.snapshot)
     end
 
@@ -595,6 +620,7 @@ module GameRoomDuckRacing
       round = @replay.state[:round]
       return if round[:private]&.dig(:reveals, @seat)
       return if round[:attempts]&.key?(@seat)
+      return if round[:results]&.key?(@seat)
       return if round[:private]&.fetch(:phase) == :revealing
       last = round[:last_seen].fetch(@seat)
       return if @session_time.call(@replay.state) < last + Session::PULSE_MS
@@ -611,7 +637,8 @@ module GameRoomDuckRacing
       return if @technical_error
       return unless practicing? || playing? && !realtime?
       view = if practicing?
-        {type: @challenge[:kind], seats: @challenge[:participants], practice: true, own: {ready: !!practice_ready?}}
+        {type: @challenge[:kind], seats: @challenge[:participants], practice: true, own: {ready: !!practice_ready?},
+          waiting: @challenge[:participants].reject { |seat| @replay.state.dig(:round, :ready, seat) || seat == @seat && practice_ready? }}
       elsif @trace
         ChallengeEngine.view(@trace.state, seat: @seat)
       elsif shared?
@@ -629,7 +656,7 @@ module GameRoomDuckRacing
           next unless view[key]
           view[key] = @challenge[:participants].to_h do |seat|
             [seat, seat == @seat && @trace&.finished? || @replay.state.dig(:round, :private, :commitments)&.key?(seat) ||
-              @replay.state.dig(:round, :attempts)&.key?(seat) || false]
+              @replay.state.dig(:round, :attempts)&.key?(seat) || @replay.state.dig(:round, :results)&.key?(seat) || false]
           end
         end
       end
@@ -737,11 +764,15 @@ module GameRoomDuckRacing
     def realtime?; @challenge && ChallengeEngine::REALTIME.include?(@challenge[:kind]); end
     def shared?; @challenge && ChallengeEngine::SHARED.include?(@challenge[:kind]); end
     def practicing?
-      @challenge && @replay.state.dig(:round, :phase) == :preparing && ChallengeEngine::PRACTICE_TYPES.include?(@challenge[:kind])
+      return false unless @challenge && ChallengeEngine::PRACTICE_TYPES.include?(@challenge[:kind])
+      @replay.state.dig(:round, :phase) == :preparing ||
+        playing? && Session.streamlined?(@replay.state) && ChallengeEngine::INDEPENDENT.include?(@challenge[:kind]) &&
+          participant? && !practice_ready? && !committed?
     end
     def participant?; @challenge && @challenge[:participants].include?(@seat); end
     def committed?
-      @replay.state.dig(:round, :private, :commitments)&.key?(@seat) || @replay.state.dig(:round, :attempts)&.key?(@seat)
+      @replay.state.dig(:round, :private, :commitments)&.key?(@seat) || @replay.state.dig(:round, :attempts)&.key?(@seat) ||
+        @replay.state.dig(:round, :results)&.key?(@seat)
     end
 
     def identity_for(replay)

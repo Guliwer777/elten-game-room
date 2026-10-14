@@ -19,6 +19,8 @@ ELTEN lee las cartas, los tableros, las puntuaciones y los sucesos, mientras que
 - [Funciones que conviene conocer](#funciones-que-conviene-conocer)
 - [Resumen de atajos](#resumen-de-atajos)
 - [Colaborar en el programa](#colaborar-en-el-programa)
+  - [Avisar de errores en Quiz](#avisar-de-errores-en-quiz)
+  - [Tus propios conjuntos de preguntas](#tus-propios-conjuntos-de-preguntas)
 - [Autores y licencia](#autores-y-licencia)
 
 ## Primeros pasos
@@ -32,6 +34,7 @@ Para los juegos de audio conviene usar auriculares estéreo: la dirección del s
 
 No hace falta crear tu propia mesa. «Unirse a una mesa» permite elegir un juego y consultar las mesas existentes. También puedes usar una invitación o el widget de la pantalla principal de ELTEN.
 Al elegir un juego para crear una mesa o unirte a una, escucharás una breve descripción después de su nombre.
+En la lista de desafíos de Carrera de patos, después del nombre y del estado de la casilla escucharás una breve explicación del desafío.
 Si vuelves a abrir Power Games en la misma copia de ELTEN, regresarás a la ventana que ya está abierta, en lugar de iniciar otra instancia independiente.
 
 Al iniciarse, el programa puede ofrecerte descargar una versión más reciente. Rechazarla no impide entrar, pero conviene que todos los participantes tengan una versión actualizada antes de jugar juntos. Encontrarás la descripción de los cambios en «Novedades».
@@ -48,30 +51,6 @@ Power Games incluye actualmente 34 juegos:
 - Acción con audio: Axel Pong y Audio Ball.
 
 Muchos juegos tienen varias variantes. Las opciones, el número de participantes, la disponibilidad de bots y otros ajustes dependen del título. La sección «Reglas del juego» explica las reglas, la puntuación y los controles en detalle.
-
-1000 millas es una carrera de cartas según las reglas de QuentinC: llega exactamente a las 1000 millas, ataca a tus rivales y elimina los obstáculos con las cartas correspondientes. Las protecciones duran hasta el final de la ronda. Jugar la protección correspondiente inmediatamente después de un ataque, incluso fuera de tu turno, es un contraataque si el siguiente jugador aún no ha robado ni jugado una carta. Otorga 300 puntos de bonificación además de los 100 de la protección, una carta de reemplazo si está disponible y un turno adicional con su robo normal. Los compañeros de equipo comparten distancia, obstáculos, protección y puntos, pero cada uno tiene su propia mano y turno. Puedes ajustar la puntuación objetivo (5000 puntos de forma predeterminada), los equipos, «Acumulación de problemas» y «Usar las cartas descartadas como un nuevo mazo cuando se agote el actual».
-
-Con la demora de los movimientos de los bots en 0, el siguiente bot puede robar inmediatamente después de anunciarse el ataque, antes de que puedas reaccionar. Establece una demora de los bots distinta de cero para poder realizar contraataques con más comodidad. No se garantiza un tiempo de reacción: la oportunidad sigue terminando cuando el siguiente jugador roba o juega una carta. La demora predeterminada de los bots en 1000 millas es de 1 segundo.
-
-Añadir cartas de protección está activado de forma predeterminada: el mazo estándar tiene 106 cartas. Al desactivarlo se eliminan Depósito adicional, Neumáticos antipinchazos, Prioridad de paso y As del volante y quedan 102 cartas, sin protección permanente ni contraataques. Las partidas anteriores sin este ajuste siguen incluyendo protecciones. Las cartas de sentido contrario se añaden por separado. Sin combustible y Pinchazo se solucionan con Combustible y Rueda de repuesto, respectivamente.
-
-El sentido contrario es opcional y está desactivado de forma predeterminada. Añadir cartas de sentido contrario normalmente añade 4 cartas de ataque y 6 de fin de sentido contrario, igual que las cantidades estándar de límite de velocidad y fin de límite de velocidad. Son valores predeterminados locales aprobados, no cantidades verificadas del mazo de QuentinC Playroom. Las partidas anteriores conservan sus cantidades guardadas explícitamente. Mazo personalizado permite cambiar ambas cantidades por separado. El ataque afecta incluso a un coche detenido, independientemente de los límites de velocidad, las averías y el ajuste de acumulación de problemas. Mientras dure, las cartas legales de 25, 50, 75, 100 y 200 millas restan distancia, sin bajar de cero; jugar una en cero deja la distancia en cero. Siguen vigentes los requisitos del semáforo verde, la eliminación de obstáculos, los límites de velocidad y el máximo de dos cartas de 200 millas por ronda, incluso al retroceder. El as del volante protege contra el sentido contrario, lo elimina y permite realizar un contraataque. El fin de sentido contrario elimina únicamente este efecto y no exige otro semáforo verde; los demás obstáculos y sus requisitos siguen vigentes.
-
-Reparación instantánea
-
-Añadir cartas de reparación instantánea es opcional y está desactivado de forma predeterminada. Al activarlo, añade dos cartas de reparación instantánea al mazo estándar. Mazo personalizado permite cambiar su cantidad; el interruptor sigue decidiendo si se incluyen.
-
-Después de robar en tu turno normal, juega una reparación instantánea sobre tu coche o equipo y elige exactamente un problema que eliminar: semáforo rojo, falta del semáforo verde inicial, falta de combustible, pinchazo, accidente, límite de velocidad o sentido contrario. Una carta resuelve únicamente el problema elegido, aunque se hayan acumulado varios.
-
-Eliminar el semáforo rojo o la falta del semáforo verde inicial permite avanzar solo si no lo impide otro problema. Reparar un problema de combustible, neumáticos o accidente sigue requiriendo un semáforo verde, salvo que tengas Prioridad de paso. Los demás problemas no cambian. La reparación instantánea no es una protección ni una respuesta inmediata a un ataque: no concede inmunidad, turno extra ni bonificación de 100 o 300 puntos.
-
-Mazo personalizado
-
-Mazo personalizado permite establecer una cantidad para cada tipo de carta: las cinco distancias, cada remedio y ataque, cada protección, sentido contrario, fin de sentido contrario y reparación instantánea. Elige un número entero de 0 a 100 para cada tipo. Añadir cartas de protección, Añadir cartas de sentido contrario y Añadir cartas de reparación instantánea siguen controlando su inclusión: un grupo desactivado queda fuera del mazo aunque sus cantidades guardadas sean positivas. El límite de dos cartas de 200 millas por jugador o equipo y ronda no cambia.
-
-Las cartas incluidas deben bastar para repartir seis a cada jugador al inicio y permitir sumar puntos: incluye una protección, o cartas de distancia junto con un semáforo verde, Prioridad de paso o reparación instantánea. Esto no garantiza que se puedan alcanzar las 1000 millas. No se puede empezar con un mazo personalizado no válido. Cambiar los ajustes de la mesa no reescribe el mazo ni la reproducción de una partida existente. Mazo personalizado está desactivado de forma predeterminada; al desactivarlo se restauran las cantidades estándar para las nuevas partidas.
-
-En 1000 millas, las flechas recorren tu mano, Enter juega una carta y pide un objetivo cuando es necesario y Espacio roba. Después de robar, Enter sobre una carta que no se pueda jugar pregunta si quieres descartarla. No o Escape cierra esa confirmación sin descartar la carta ni registrar una jugada. J descarta la carta seleccionada de tu mano inmediatamente, sin pedir confirmación, aunque se pueda jugar. Delete sigue abriendo la selección de una carta para descartar. Z y Shift+Z buscan cartas que se puedan jugar. I lee el estado de tu coche, Shift+I el de todos los coches, S las puntuaciones y T el turno actual. F1 abre la ayuda contextual y Ctrl+F1 las reglas completas.
 
 En Taboo necesitas comunicarte con los demás jugadores. Puedes usar una conferencia de ELTEN, otra aplicación de mensajería o jugar en persona.
 
@@ -315,6 +294,28 @@ Puedes enviar comentarios en el grupo del programa en ELTEN o mediante [incidenc
 - el fragmento correspondiente del registro si hubo una excepción o un error de conexión.
 
 Elimina los datos privados del registro antes de publicarlo.
+
+### Avisar de errores en Quiz
+
+En Quiz, Ctrl+B marca la pregunta actual y Ctrl+Shift+B la anterior. Estos atajos no abren formularios, así que puedes seguir jugando. Al salir de la mesa, elige «Sí» cuando el programa te pregunte si quieres enviar los avisos, describe cada problema y pulsa «Enviar». La pregunta y sus respuestas se incluyen automáticamente. Si eliges «No», se descartan las marcas; los avisos no se guardan como borradores.
+
+### Tus propios conjuntos de preguntas
+
+En la ventana principal, después de «Partidas guardadas», abre «Crear tus propios conjuntos de preguntas». Verás la lista de tus conjuntos. Pulsa Ctrl+N para crear uno nuevo o preparar preguntas para uno de los conjuntos del juego. Para un conjunto propio, indica el título, el idioma y, si quieres, una descripción; después elige «Guardar». Si vas a añadir preguntas a un conjunto existente, selecciónalo de la lista.
+
+Pulsa Enter sobre un conjunto para abrir su menú:
+
+- «Añadir pregunta»: escribe la pregunta y cuatro respuestas, señala la correcta y elige una categoría de la lista. La fuente y la nota para la revisión son opcionales.
+- «Ver preguntas»: abre la lista de preguntas guardadas. Pulsa Enter para editar la seleccionada o Ctrl+N para añadir una nueva.
+- «Añadir categoría»: pon nombre a una categoría que puedas elegir en las preguntas.
+- «Eliminar borrador»: elimina todo el conjunto tras pedir confirmación.
+- «Enviar al autor»: envía todo el conjunto a papierek.
+
+Crea al menos una categoría antes de añadir la primera pregunta. También puedes añadir más mientras escribes: elige «Añadir una nueva categoría» al final de la lista de categorías y pulsa Enter. El texto de la pregunta se conserva en el formulario y la nueva categoría queda seleccionada.
+
+«Guardar» conserva tu trabajo como borrador. Puedes retomarlo más tarde, incluso desde otro equipo con la misma cuenta. También puedes guardar preguntas sin terminar. El menú contextual permite eliminar una pregunta o un conjunto y cambiar los datos de un conjunto propio.
+
+Cuando las preguntas estén listas, elige «Enviar al autor». Si falta algo, el programa indica los números de pregunta y los campos que debes completar. El autor revisa las preguntas antes de incorporarlas al juego; el envío no las añade automáticamente. Tras un envío correcto, el borrador desaparece de la lista. Si el envío falla, puedes volver al borrador e intentarlo de nuevo.
 
 ### Para desarrolladores y traductores
 

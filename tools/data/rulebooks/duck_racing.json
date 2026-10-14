@@ -279,11 +279,31 @@
       },
       "paragraphs": [
         {
-          "en": "Find the hidden number from 1 to 100. You are told how many digits it has. Type your guesses; after each one, you learn whether the answer is higher or lower. You have ten guesses and two minutes.",
+          "en": "Find the hidden number from 1 to 999. You are told how many digits it has. Type your guesses; after each one, you learn whether the answer is higher or lower. You have ten guesses and two minutes.",
           "pl": ""
         },
         {
-          "en": "Each player's closest guess counts. The winner takes three feathers from each opponent; equally close guesses tie.",
+          "en": "Your closest guess counts. Whoever gets closest wins; if two players are equally close to the target, the challenge is a draw.",
+          "pl": ""
+        },
+        {
+          "en": "The winner takes up to five feathers from each opponent. The amount depends on how much closer the winner was. For example, if the target is 47, guesses of 46 and 35 give an advantage of 11.",
+          "pl": ""
+        },
+        {
+          "en": "- One-digit target: an advantage of 1 costs one feather; 2–3 costs two; 4 costs three; 5–6 costs four; 7 or more costs five.",
+          "pl": ""
+        },
+        {
+          "en": "- Two-digit target: one feather for each started group of 10 in the advantage, up to five feathers.",
+          "pl": ""
+        },
+        {
+          "en": "- Three-digit target: one feather for each started group of 100 in the advantage, up to five feathers.",
+          "pl": ""
+        },
+        {
+          "en": "If you do not submit a guess, you give the winner five feathers. You can only lose feathers you have.",
           "pl": ""
         }
       ]
@@ -377,7 +397,7 @@
       },
       "paragraphs": [
         {
-          "en": "Repeat a drum pattern with F and J. Before starting, try both sounds, then press Enter or Space when ready. Once everyone is ready, you hear a pattern of six to ten beats.",
+          "en": "Repeat a drum pattern with F and J. Try both sounds, then press Enter or Space to start your own attempt. You hear a pattern of six to ten beats.",
           "pl": ""
         },
         {
@@ -423,7 +443,7 @@
           "pl": ""
         },
         {
-          "en": "Once everyone is ready, you hear a single note. Each correct repetition adds one note to the tune and makes it a little faster. Wait until playback ends before repeating it.",
+          "en": "Your attempt starts with a single note, without waiting for the other players. Each correct repetition adds one note to the tune and makes it a little faster. Wait until playback ends before repeating it.",
           "pl": ""
         },
         {
@@ -465,7 +485,11 @@
           "pl": ""
         },
         {
-          "en": "Try all the positions before starting, then press Enter or Space when ready. Once everyone has confirmed, five targets appear in turn, with three seconds to answer each.",
+          "en": "Try all the positions, then press Enter or Space to start your own attempt. Five targets appear in turn, with three seconds to answer each.",
+          "pl": ""
+        },
+        {
+          "en": "After each shot, you hear a short rating before the next duck appears.",
           "pl": ""
         },
         {
@@ -568,6 +592,10 @@
           "pl": ""
         },
         {
+          "en": "Press Enter when you are ready. The point starts once both players have confirmed.",
+          "pl": ""
+        },
+        {
           "en": "Move your paddle with Left and Right arrow. Serve with Up arrow or Space. When the ball returns, move into its path and press the same key when it comes within reach.",
           "pl": ""
         },
@@ -655,8 +683,8 @@
           "pl": ""
         },
         {
-          "en": "V: explore the track.",
-          "pl": ""
+          "en": "V: explore the track, starting at your current square.",
+          "pl": "V: przegląd planszy od pola, na którym stoisz."
         },
         {
           "en": "P: repeat the challenge instructions.",

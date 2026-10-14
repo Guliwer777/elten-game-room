@@ -25,7 +25,7 @@ expected.each do |language, text|
     raise 'Invalid release encoding' unless (translated + ' — słowo').valid_encoding?
   end
 end
-manifest = JSON.parse(BinaryRulesLoad.read(File.join(BinaryRulesLoad::ROOT, 'manifest.json')))
+manifest = BinaryRulesLoad.metadata
 raise 'Wrong runtime version' unless EltenGameRoom::GAME_ROOM_VERSION == manifest.fetch('version') &&
   EltenGameRoom::GAME_ROOM_BUILD_ID == manifest.fetch('build_id').to_i
 sound = BinaryRulesLoad.read(File.join(BinaryRulesLoad::ROOT, 'Audio/quiz_wrong_answer.opus'))

@@ -59,6 +59,8 @@ engine::TYPES.each_key do |type|
         settlement.fixed(balances: balances, winner: outcome[:winner], amount: outcome[:amount])
       when :speed
         settlement.speed(balances: balances, times: state[:scores], time_limit: outcome[:time_limit])
+      when :guess_number
+        settlement.guess_number(balances: balances, target: state[:answer], distances: state[:scores])
       else
         settlement.difference(balances: balances, scores: state[:scores], ceiling: outcome[:ceiling])
       end

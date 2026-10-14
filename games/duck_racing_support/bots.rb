@@ -80,8 +80,9 @@ module GameRoomDuckRacing
         return [replay.players.fetch(race[:turn])]
       end
       return [] unless round[:phase] == :playing
-      if round[:attempts]
-        return round[:challenge][:participants].reject { |seat| round[:attempts].key?(seat) }
+      if round[:attempts] || round[:results]
+        completed = round[:attempts] || round[:results]
+        return round[:challenge][:participants].reject { |seat| completed.key?(seat) }
           .map { |seat| replay.players.fetch(seat) }
       end
       if (protocol = round[:private])
@@ -126,7 +127,7 @@ module GameRoomDuckRacing
       base = {"kind" => "duck", "challenge" => round[:challenge][:id]}
       # This is a bot planning intent, not a forged finished result. Strategy
       # supplies a validated trace only once its actual elapsed time has passed.
-      return [base.merge("action" => "submit_trace")] if round[:private] || round[:attempts]
+      return [base.merge("action" => "submit_trace")] if round[:private] || round[:attempts] || round[:results]
       engine = round.fetch(:engine)
       press = engine[:last_press].fetch(seat) + 1
       view = ChallengeEngine.view(engine, seat: seat)
@@ -201,6 +202,8 @@ module GameRoomDuckRacing
           observation[:submitted] = round[:private][:commitments].keys
         elsif round[:attempts]
           observation[:submitted] = round[:attempts].keys
+        elsif round[:results]
+          observation[:submitted] = round[:results].keys
         end
       end
       Session.copy(observation)
@@ -219,11 +222,14 @@ module GameRoomDuckRacing
       return cached if cached
       seed = duck_bot_hash([replay.state[:session_id], round[:challenge][:id], seat, actor.to_s.downcase])
       delay_ms = (normalize_options(replay.state[:options])["bot_delay"] * 1_000).round
-      if round[:private] || round[:attempts]
-        trace = ChallengeBot.plan(round[:challenge], seat: seat, seed: seed,
-          resources: resources_for(replay.state[:options]), delay_ms: delay_ms)
+      if round[:private] || round[:attempts] || round[:results]
+        compact = !!(round[:results] || round.dig(:private, :compact))
+        planned = ChallengeBot.plan(round[:challenge], seat: seat, seed: seed,
+          resources: resources_for(replay.state[:options]), delay_ms: delay_ms, compact: compact)
+        trace, elapsed = compact ? planned : [planned, planned.fetch('finished_at')]
         preparation = ChallengeEngine::SPEED_TYPES.include?(round[:challenge][:kind]) ? ChallengeEngine::PREPARATION_MS : 0
-        value = {ready_ms: round[:started_at] + preparation + trace.fetch("finished_at"), trace: trace}
+        preparation = ChallengeEngine::COUNT_DUCKS_PREPARATION_MS if round[:challenge][:kind] == 'count_ducks'
+        value = {ready_ms: round[:started_at] + preparation + elapsed, trace: trace}
       else
         view = ChallengeEngine.view(round[:engine], seat: seat)
         memory = duck_memory_from_history(replay, seat)

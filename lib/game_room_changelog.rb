@@ -437,6 +437,36 @@ module GameRoomChangelog
         "Fixed word explanations in Krowa. If the dictionary has no definition, the program reports this instead of displaying unrelated text from the page, such as the add link.",
         "Reduced unnecessary waiting for the game to refresh after moves. When the updated game state has already arrived, it can be displayed immediately without an additional Please wait step."
       ].freeze
+    ).freeze,
+    Entry.new(
+      version: "2.0.4.10",
+      build: 249,
+      changes: [
+        "Fixed an error that could prevent Krowa from opening after Duck Racing was added.",
+        "The challenge list in Duck Racing settings now reads a short explanation after each challenge's name and checked state.",
+        "Duck Racing table descriptions and notifications now include the language of the question sets.",
+        "Challenges with a countdown now give you five seconds to prepare before it plays. Count the ducks uses a three-second pause after the quacks, before the countdown.",
+        "The Axel Pong challenge now explains the controls and waits for both players to confirm they are ready with Enter.",
+        "Guess the number now draws numbers from 1 to 999. The winner takes one to five feathers according to how much closer their best guess was, using a separate scale for one-, two- and three-digit targets. Equal distances remain a draw.",
+        "Shooting a duck now plays a shot at the stereo position you chose, followed by a one-word rating. A pause separates the rating from the next duck.",
+        "In Duck Racing, V opens the track at your duck's current square instead of the start of the list.",
+        "A message and a new sound announce when a duck begins the final lap.",
+        "Lowered the challenge announcement sound and clarified the Polish messages about cards that make a duck wait for several turns."
+      ].freeze
+    ).freeze,
+    Entry.new(
+      version: "2.0.4.11",
+      build: 250,
+      changes: [
+        "Added Create your own question sets to the main menu. You can suggest questions for an existing set or create your own, with categories, four answers per question and an optional source. Send your work to the author for review; sending does not add it to the game automatically.",
+        "Question drafts can be saved and continued later, including on another computer using the same account. You can save unfinished questions; before sending, the creator tells you exactly which fields are missing. An unsuccessful send leaves the draft available.",
+        "In the question creator, Ctrl+N creates a set from the set list or adds a question from the question list. Enter opens a set or edits a question. Short selection lists accept both horizontal and vertical arrows. README now explains how to use the creator.",
+        "In Duck Racing, each player now starts Simon, Repeat the rhythm and Hit the duck independently, without waiting for everyone to confirm readiness. You can try the sounds before starting. Results are compared after everyone finishes.",
+        "Reduced waiting during Duck Racing challenges, especially longer sound challenges. Games with shared turns still follow their normal turn order.",
+        "Duck Racing now names the players still being waited for when confirming readiness or finishing a challenge.",
+        "Fixed continuing Duck Racing challenges after resuming a saved game.",
+        "In Quiz, Ctrl+B marks the current question for reporting and Ctrl+Shift+B marks the previous one without interrupting play. After leaving the table, you can describe the problem and send it to the author."
+      ].freeze
     ).freeze
   ].freeze
 

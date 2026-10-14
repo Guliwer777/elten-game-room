@@ -55,6 +55,7 @@ class GameScreen
     edit_options: nil,
     abort_game: nil,
     leave_table: nil,
+    question_reports: nil,
     game_services: {}
   )
     @layout = layout
@@ -66,6 +67,7 @@ class GameScreen
     @edit_options = edit_options
     @abort_game = abort_game
     @leave_table = leave_table
+    @question_reports = question_reports
     @program = program
     @presentation_ui_thread = Thread.current
     @layout.form.game_room_program = program if @layout != nil
@@ -721,10 +723,11 @@ class GameScreen
 
   def browse_shortcut_choices(shortcut)
     choices = shortcut.choices.to_a
+    index = choices.index { |choice| shortcut.default_value != nil && choice.value == shortcut.default_value } || 0
     list = ListBox.new(
       choices.map(&:label),
       header: shortcut.prompt,
-      index: 0,
+      index: index,
       quiet: true
     )
     back_button = Button.new(_("Back"))
