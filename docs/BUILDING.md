@@ -11,6 +11,10 @@ bundle install --gemfile tools/Gemfile.i18n
 gem install rubyzip --version 3.2.2 --no-document
 ```
 
+Audio asset checks also require working `ffmpeg` and `ffprobe` executables on
+`PATH`. CI verifies both tools and retries a failed installation at most three
+times before stopping, rather than running tests without their dependencies.
+
 Ruby 4.0 is recommended, matching the current ELTEN environment.
 Host-contract tests also require matching host sources (currently ELTEN
 3.0.4). Set `ELTEN_HOST_SOURCE` to the directory containing `src/` and `locale/`.

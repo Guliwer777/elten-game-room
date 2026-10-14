@@ -32,8 +32,23 @@ jobs:
       - name: Install audio validation tools
         if: matrix.suite == 'tooling'
         run: |
-          if (-not (Get-Command ffmpeg -ErrorAction SilentlyContinue) -or -not (Get-Command ffprobe -ErrorAction SilentlyContinue)) {
-            choco install ffmpeg --no-progress -y
+          function Test-AudioTools {
+            return (Get-Command ffmpeg -CommandType Application -ErrorAction SilentlyContinue) -and
+              (Get-Command ffprobe -CommandType Application -ErrorAction SilentlyContinue)
+          }
+          for ($attempt = 1; -not (Test-AudioTools) -and $attempt -le 3; $attempt++) {
+            try {
+              choco install ffmpeg --no-progress -y
+            } catch {
+              Write-Warning "Audio tool installation failed: $_"
+            }
+            if (Test-AudioTools) { break }
+            if ($attempt -eq 3) { throw 'FFmpeg and FFprobe are unavailable after three installation attempts.' }
+            Start-Sleep -Seconds (10 * $attempt)
+          }
+          foreach ($tool in @('ffmpeg', 'ffprobe')) {
+            & $tool -version
+            if ($LASTEXITCODE -ne 0) { throw "$tool cannot run." }
           }
       - name: Install shared runtime test dependencies
         run: gem install rubyzip --version 3.2.2 --no-document
