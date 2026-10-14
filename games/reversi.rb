@@ -100,6 +100,10 @@ module GameRoomGames
       disc_counts(replay.board).map(&:to_s)
     end
 
+    def tournament_scores(replay, options:)
+      replay.players.zip(disc_counts(replay.board)).to_h
+    end
+
     def legal_actions(replay, actor, context: nil)
       return [] if replay.finished? || !same_user?(replay.current_player, actor)
 

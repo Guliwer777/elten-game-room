@@ -1,5 +1,3 @@
-# Power Games
-
 Power Games to zestaw gier dla
 użytkowników ELTEN-a. Możesz spotkać się przy stole ze znajomymi, dołączyć
 do otwartej rozgrywki, kibicować innym albo zmierzyć się z botami w grach,
@@ -13,6 +11,7 @@ będzie już znajomych.
 
 ## Spis treści
 
+- [Turnieje](#turnieje)
 - [Pierwsze kroki](#pierwsze-kroki)
 - [W co można zagrać](#w-co-można-zagrać)
 - [Stoły i wspólna gra](#stoły-i-wspólna-gra)
@@ -533,3 +532,19 @@ Dźwięki, pytania i inne materiały mogą mieć odrębne warunki wykorzystania;
 ich pochodzenie i informacje licencyjne opisuje
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
+
+## Turnieje
+
+Menu Turnieje zawiera Listę turniejów i Utwórz turniej. Nie ma trybów testowych ani dodawania sztucznych uczestników. W menu kontekstowym dostępne są Operacje: pozwalają sprawdzić niepotwierdzony zapis bez ponownego wysyłania.
+
+Przy tworzeniu wybierz grę, ustaw jej opcje i naciśnij Dalej. Następnie podaj nazwę, format, rewanże, limit uczestników i terminy. Domyślnie każdy gra z każdym bez rewanżu; limit wynosi 128 i można ustawić od 2 do 128. Liczba osób przy stole wynika z gry. Jeden dzień ma jedną datę i zakres godzin; kilka dni ma zakres dat i te same godziny każdego dnia. Daty są wyświetlane w lokalnym czasie gracza. Lewo/prawo wybiera rok, miesiąc, dzień, godzinę lub minutę, góra/dół zmienia wartość, a Tab przechodzi do następnego pola. Po publikacji organizator zostaje zapisany automatycznie.
+
+Z listy otwórz turniej i dołącz do zapisów. Przed rozpoczęciem możesz się wypisać; organizator zarządza uczestnikami i parami oraz edytuje lub usuwa turniej. Po rozpoczęciu niedostępne akcje znikają z menu. Listy obejmują turnieje trwające, zapisy i zakończone, od najnowszych. Rozstrzygnięcie wszystkich wymaganych meczów kończy turniej przed planowaną godziną; grupy z fazą pucharową wymagają zakończenia finału.
+
+Każdy z każdym obejmuje wszystkie zaplanowane spotkania i ewentualne rewanże. W turniejach grupowych powstają grupy po 3–4 zawodników, preferujące cztery. Przy 9 zawodnikach są trzy grupy po trzech; awansują zwycięzcy i najlepszy drugi. Porównanie między grupami może pomijać mecze z ostatnim zawodnikiem większej grupy, bez zmiany pełnej tabeli grupowej. Nierozstrzygnięty awans wymaga dodatkowych spotkań. Rewanże lub serie do wskazanej liczby wygranych w fazie pucharowej i finale ustawia się osobno. Remis grupowy jest dozwolony; remis wymagający rozstrzygnięcia w fazie pucharowej prowadzi do dodatkowej gry.
+
+Widok Mecze, grupy i tabela wyników pokazuje najpierw punktację, pod nią spotkania, zwycięzców i wyniki gry. Wygrana daje 2 punkty, remis 1, przegrana 0. Przy równej liczbie punktów decydują bezpośrednie pojedynki, potem małe punkty. Rewanż odwraca kolejność graczy. Organizator może przyznać walkower przed startem albo osobno anulować rozpoczęty niedokończony mecz w turnieju i wskazać zwycięzcę: 2/0 bez małych punktów. Późniejszy wynik anulowanej partii nie zmienia tabeli; historia pozostaje. Decyzja turniejowa nie zamyka stołu innego gospodarza.
+
+Obsługiwane gry można zapisać Ctrl+S i wznowić z Zapisanych gier. Powiązanie z meczem i rewanżem pozostaje; po kontynuacji na nowym stole wynik trafia do tego samego turnieju. Gracze i ustawienia muszą się zgadzać. Rozstrzygniętego lub anulowanego meczu nie można wznowić ze starej kopii.
+
+Ta paczka jest przygotowana do wdrożenia w oficjalnym Power Games. Wymaga wdrożonych tabel i uprawnień aplikacji. Niezależny automat zaproszeń, powiadomień, rezerwacji oraz serwerowego zatwierdzania wyników wymaga koordynatora serwerowego; nie uruchamia się przez samo zainstalowanie klienta. Do czasu jego wdrożenia pierwszy gracz meczu tworzy stół przez Utwórz lub dołącz do stołu tego meczu, a drugi dołącza przez tę samą pozycję. Przy problemie z zapisem sprawdź Operacje. Klient nie przełącza się na lokalny magazyn.

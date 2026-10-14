@@ -1,11 +1,10 @@
-# Power Games
-
 Power Games je sada her pro uživatele ELTENu. U stolu se můžete sejít s přáteli, připojit se k otevřené hře, sledovat ostatní nebo se utkat s boty ve hrách, které je podporují.
 
 ELTEN předčítá karty, herní desky, výsledky i události a zvuky pomáhají sledovat průběh hry. Všechny hry využívají společné stoly, chat, historii a nápovědu, takže při zkoušení další hry už budete řadu věcí znát.
 
 ## Obsah
 
+- [Turnaje](#turnaje)
 - [První kroky](#první-kroky)
 - [Co si můžete zahrát](#co-si-můžete-zahrát)
 - [Stoly a společné hraní](#stoly-a-společné-hraní)
@@ -336,3 +335,19 @@ Axel Pong není původní projekt papierka. Hra se původně jmenovala Dragon-Po
 
 Kód Power Games je dostupný pod licencí GNU General Public License version 3. Úplné znění je v souboru [LICENSE](https://github.com/papierek1997/elten-game-room/blob/main/LICENSE). Zvuky, otázky a další materiály mohou mít vlastní podmínky užití; jejich původ a licenční informace najdete v [THIRD_PARTY_NOTICES.md](https://github.com/papierek1997/elten-game-room/blob/main/THIRD_PARTY_NOTICES.md).
 
+
+## Turnaje
+
+Turnaje obsahují Seznam turnajů a Vytvořit turnaj, bez testovacích režimů a umělých účastníků. Operace v kontextové nabídce ověřují nepotvrzené zápisy bez opakovaného odeslání.
+
+Vyberte hru, nastavte její volby a zvolte Další. Zadejte název, formát, odvety, limit a termíny. Výchozí je každý s každým bez odvet a limit 128, nastavitelný od 2 do 128. Velikost zápasu vychází z pravidel hry. Jeden den má jedno datum a rozsah hodin, více dnů rozsah dat a stejné hodiny denně. Časy jsou místní. Vlevo/vpravo vybírá rok, měsíc, den, hodinu nebo minutu, nahoru/dolů mění hodnotu, Tab přejde dál. Po zveřejnění je pořadatel automaticky přihlášen.
+
+Otevřete turnaj pro přihlášení. Před začátkem se lze odhlásit; pořadatel spravuje hráče a dvojice, upravuje či maže turnaj. Po začátku nedostupné akce zmizí. Tab přepíná probíhající turnaje, přihlašování a dokončené, nejnovější první. Rozhodnutí všech zápasů ukončí turnaj dříve; skupiny s vyřazováním vyžadují dokončené finále.
+
+Každý s každým zahrnuje všechny zápasy i plánované odvety. Skupiny mají 3–4 hráče, přednostně čtyři. Devět hráčů tvoří tři skupiny po třech; postupují vítězové a nejlepší druhý. Mezi skupinami lze vynechat zápasy proti poslednímu větší skupiny, bez změny úplné tabulky. Remízy o postup řeší další hry. Odvety a série do počtu výher ve vyřazovací části a finále jsou samostatné. Skupiny dovolují remízu; vyřazovací remíza potřebující vítěze vede k další hře.
+
+Přehled ukazuje nejprve turnajové body, potom zápasy, vítěze a skóre. Výhra/remíza/prohra znamená 2/1/0; shoda se řeší vzájemnými zápasy, pak malými body. Odveta obrací pořadí hráčů. Pořadatel může přiznat kontumaci před začátkem nebo výslovně zrušit rozehraný nedokončený zápas v turnaji a určit vítěze: 2/0 bez malých bodů. Pozdější výsledek rozhodnutí nenahradí, historie zůstává. Neuzavře se cizí stůl.
+
+Podporované hry lze uložit Ctrl+S a obnovit z Uložených her. Přesný zápas a odveta zůstávají propojeny i po novém stole a výsledek patří do stejného turnaje. Hráči a volby musí souhlasit. Rozhodnutý či zrušený zápas nelze obnovit ze staré kopie.
+
+Klient je připraven pro oficiální Power Games a vyžaduje nasazené tabulky a oprávnění. Nezávislé pozvánky, oznámení začátku, rezervace a závazné výsledky vyžadují serverový koordinátor; samotná instalace je nezapne. Do nasazení první hráč vytvoří stůl přes Vytvořit nebo připojit stůl pro tento zápas a druhý se tam připojí. Nepotvrzený zápis ověřte v Operacích. Místní náhrada úložiště se nepoužívá.

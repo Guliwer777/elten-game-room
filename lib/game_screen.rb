@@ -43,6 +43,7 @@ class GameScreen
     membership_tracker: nil,
     game_status_changed: nil,
     statistics_observer: nil,
+    completion_observer: nil,
     activity_repository: nil,
     game_name: nil,
     send_chat: nil,
@@ -82,6 +83,7 @@ class GameScreen
     @membership_tracker = membership_tracker
     @game_status_changed = game_status_changed
     @statistics_observer = statistics_observer
+    @completion_observer = completion_observer
     @activity_repository = activity_repository
     @game_name = game_name || ->(id) { id.to_s }
     @send_chat = send_chat
@@ -226,6 +228,7 @@ class GameScreen
       departed_players = using_cached_payload ? [] : departed_players_for_replacement(replay, next_room_snapshot)
       next if !departed_players.empty? && replace_departed_players(departed_players)
       @statistics_observer&.call(@session, replay) unless using_cached_payload
+      @completion_observer&.call(@session,replay,snapshot.events) if replay.finished? && !using_cached_payload
       @game_client.update_table_control(@session) if @game_client&.respond_to?(:update_table_control)
       @game_client&.before_wait(replay, Session.name) unless @game.paced_event_presentation?
       synchronize_table_status(replay) if !using_cached_payload && !@session_runner
@@ -383,6 +386,7 @@ class GameScreen
       repository: @repository, game: @game, session: @session, table: @table,
       owner: @table_owner, viewer: Session.name, room_snapshot_provider: @room_snapshot_provider,
       context: action_context, game_status_changed: @game_status_changed, statistics_observer: @statistics_observer,
+      completion_observer: @completion_observer,
       activity_repository: @activity_repository, covered: @runner_covered || -> {
         GameRoomBackgroundPolicy.covered?(@presentation_ui_thread, program: @program, form: -> { @layout&.form })
       }).start

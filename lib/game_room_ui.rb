@@ -119,6 +119,7 @@ module GameRoomUI
       super
       return if submenu && !contextinglobal_enabled?
       return unless game_room_invitation_context?
+      return if respond_to?(:game_room_invitation_in_field_context?) && game_room_invitation_in_field_context?
 
       menu.option(GameRoomContent.utf8(_("Accept invitation")), nil, "j") do
         accept_game_room_invitation
@@ -279,7 +280,7 @@ module GameRoomUI
         type: EditBox::Flags::ReadOnly | EditBox::Flags::MultiLine,
         text: items.map { |item| GameRoomContent.utf8(item) }.join("\n"), quiet: true)
       close = Button.new(_("Close"))
-      dialog = GameRoomUI::Form.new([list, close], program: @game_room_program, quiet: true)
+      dialog = build_game_room_help_form([list, close])
       dialog.instance_variable_set(:@game_room_help_open, true)
       dialog.game_room_volume_reader = game_room_volume_reader
       dialog.game_room_volume_writer = game_room_volume_writer
@@ -296,12 +297,23 @@ module GameRoomUI
       dialog.wait
       clear_game_room_key
       # A modal help view does not replace controls or modify the parent wait.
-      field.focus if field.respond_to?(:focus)
+      restore_game_room_help_focus(field)
     ensure
       @game_room_help_open = false if opened_here
     end
 
     private
+
+    # Lokalny ekran może przekazać lease, bez zmiany zwykłej pomocy.
+    def build_game_room_help_form(fields)
+      GameRoomUI::Form.new(fields, program: @game_room_program, quiet: true)
+    end
+
+    # Końcowy powrót wyłącznie z pomocy modalnej. Domyślnie zachowuje
+    # dotychczasowy field.focus; lokalny guard może przejąć go w swoim ensure.
+    def restore_game_room_help_focus(field)
+      field.focus if field.respond_to?(:focus)
+    end
 
     def maintain_game_room_scene
       # ELTEN 3.0.4 dispatches main and parallel scene endpoints in loop_update.

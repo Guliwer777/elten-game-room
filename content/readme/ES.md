@@ -1,11 +1,10 @@
-# Power Games
-
 Power Games es una colección de juegos para usuarios de ELTEN. Puedes reunirte con amigos en una mesa, unirte a una partida abierta, observar a otras personas o enfrentarte a bots en los juegos que los admiten.
 
 ELTEN lee las cartas, los tableros, las puntuaciones y los sucesos, mientras que los sonidos ayudan a seguir la acción. Todos los juegos comparten mesas, chat, historial y ayuda, así que muchas cosas ya te resultarán familiares cuando pruebes otro título.
 
 ## Índice
 
+- [Torneos](#torneos)
 - [Primeros pasos](#primeros-pasos)
 - [A qué puedes jugar](#a-qué-puedes-jugar)
 - [Mesas y juego en compañía](#mesas-y-juego-en-compañía)
@@ -336,3 +335,19 @@ Axel Pong no es un proyecto original de papierek. El juego se llamó originalmen
 
 El código de Power Games se distribuye bajo la GNU General Public License version 3. El texto completo está en [LICENSE](https://github.com/papierek1997/elten-game-room/blob/main/LICENSE). Los sonidos, las preguntas y otros materiales pueden tener condiciones de uso diferentes; sus fuentes y licencias se describen en [THIRD_PARTY_NOTICES.md](https://github.com/papierek1997/elten-game-room/blob/main/THIRD_PARTY_NOTICES.md).
 
+
+## Torneos
+
+Torneos contiene Lista de torneos y Crear torneo, sin modos de prueba ni participantes artificiales. Operaciones permanece en el menú contextual para comprobar escrituras inciertas sin repetirlas.
+
+Elige juego, ajusta sus opciones y pulsa Siguiente. Configura nombre, formato, revanchas, límite y fechas. Por defecto se juega todos contra todos sin revanchas, con límite 128, ajustable de 2 a 128. Los jugadores por partida dependen del juego. Un día usa una fecha y horas; Varios días usa fechas inclusivas y las mismas horas diarias. Se muestra la hora local. Izquierda/Derecha elige año, mes, día, hora o minuto, Arriba/Abajo cambia el valor y Tab avanza. Publicar inscribe al organizador automáticamente.
+
+Abre un torneo para inscribirte. Antes del inicio puedes retirarte; el organizador gestiona jugadores y parejas, edita o borra. Las acciones no disponibles desaparecen tras comenzar. Tab recorre torneos en curso, inscripciones y finalizados, con los recientes primero. Resolver todas las partidas termina antes del plazo; grupos con eliminatorias exige resolver la final.
+
+Todos contra todos incluye todas las partidas y vueltas previstas. Los grupos usan 3–4 jugadores, prefiriendo cuatro. Nueve forman tres grupos de tres: pasan los ganadores y el mejor segundo. La comparación entre grupos puede omitir encuentros contra el último del grupo mayor, conservando su tabla completa. Empates de clasificación requieren partidas adicionales. Las vueltas y series hasta un número de victorias en eliminatorias y final se configuran aparte. Los grupos admiten empate; en eliminatorias se juega otra partida si hace falta ganador.
+
+El resumen muestra primero puntos del torneo, después partidas, ganadores y puntuación del juego. Victoria/empate/derrota concede 2/1/0; los empates usan enfrentamientos directos y luego puntos del juego. La vuelta invierte jugadores. El organizador concede incomparecencia antes de empezar o anula explícitamente una partida iniciada sin terminar y elige ganador: 2/0 sin puntos pequeños. Un resultado posterior no sustituye la decisión; el historial permanece. No se cierra una mesa de otro propietario.
+
+Los juegos compatibles se guardan con Ctrl+S y se reanudan desde Partidas guardadas. Se conserva la partida exacta y su vuelta aunque cambie la mesa, y el resultado entra en el mismo torneo. Jugadores y ajustes deben coincidir. Una partida resuelta o anulada bloquea copias antiguas.
+
+El cliente está preparado para Power Games oficial y requiere tablas y permisos desplegados. Invitaciones independientes, avisos de inicio, reservas y resultados autorizados necesitan un coordinador del servidor; instalar el cliente no los activa. Hasta desplegarlo, el primer jugador crea la mesa con Crear o unirse a la mesa de esta partida y el otro se une allí. Consulta Operaciones tras una escritura incierta. No hay sustitución por almacenamiento local.

@@ -11,7 +11,7 @@ class GameRoomOptionEditor
 
   # Creation returns table privacy separately from game rules; ordinary
   # editing (Ctrl+X) keeps its existing options-only result and controls.
-  def edit(game, initial_options: nil, submit_label: nil, creating_table: false, initial_private_table: false)
+  def edit(game, initial_options: nil, submit_label: nil, creating_table: false, initial_private_table: false, require_confirmation: false)
     return creating_table ? nil : {} if game == nil
 
     selected = if initial_options == nil
@@ -20,7 +20,7 @@ class GameRoomOptionEditor
       game.normalize_options(initial_options)
     end
     definitions = game.effective_option_definitions(selected).to_a
-    return selected if definitions.empty? && !creating_table
+    return selected if definitions.empty? && !creating_table && !require_confirmation
     built_language = selected[GameRoomContent::LANGUAGE_OPTION_KEY].to_s
     private_table = initial_private_table == true
 

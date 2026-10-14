@@ -11,9 +11,10 @@ class GameRoomLiveSessionStore
       if session.key?("__control_epoch") && session["__control_epoch"] != ledger.epoch
         raise GameRoomNetworkErrors::GamePaused, "The game controller changed"
       end
+      writer = local_actor || Session.name
       if controller || GameRoomParticipants.bot?(actor)
-        raise ArgumentError, "Only the current table master may control this action" unless same_user?(Session.name, owner_for(table_id))
-      elsif !same_user?(actor, Session.name)
+        raise ArgumentError, "Only the current table master may control this action" unless same_user?(writer, owner_for(table_id))
+      elsif !same_user?(actor, writer)
         raise ArgumentError, "You no longer control this seat"
       end
       raise ArgumentError, 'The player is not in this game' unless GameRoomParticipants.includes?(

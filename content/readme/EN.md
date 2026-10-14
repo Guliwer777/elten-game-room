@@ -1,11 +1,10 @@
-# Power Games
-
 Power Games is a collection of games for ELTEN users. You can meet friends at a table, join an open game, watch others play or take on bots in games that support them.
 
 ELTEN reads out cards, boards, scores and events, while sounds help you follow the action. All games share the same tables, chat, history and help, so much of the interface will already feel familiar when you try another title.
 
 ## Contents
 
+- [Tournaments](#tournaments)
 - [Getting started](#getting-started)
 - [What you can play](#what-you-can-play)
 - [Tables and playing together](#tables-and-playing-together)
@@ -336,3 +335,19 @@ Axel Pong is not an original project by papierek. It was originally called Drago
 
 Power Games code is released under the GNU General Public License version 3. The full text is in [LICENSE](https://github.com/papierek1997/elten-game-room/blob/main/LICENSE). Sounds, questions and other material may have separate terms of use; their origins and licence information are documented in [THIRD_PARTY_NOTICES.md](https://github.com/papierek1997/elten-game-room/blob/main/THIRD_PARTY_NOTICES.md).
 
+
+## Tournaments
+
+Tournaments has Tournament list and Create tournament. There are no trial modes or artificial participants. Operations remains in the context menu to reconcile uncertain writes without resending them.
+
+Choose a game, edit its settings and press Next. Then set the name, format, returns, participant limit and dates. The default is round robin without returns and a limit of 128, editable from 2 to 128. Match sizes follow game rules. One day uses one date and a time range; Several days uses inclusive dates and the same hours daily. Dates appear in the player's local time. Left/Right selects year, month, day, hour or minute; Up/Down changes it, and Tab moves to the next field. Publication enrolls the organizer automatically.
+
+Open a tournament to register. Before it starts, participants can withdraw and the organizer can manage players/pairs, edit or delete it. Unavailable menu actions disappear after start. Tab switches between ongoing, registration and ended lists; ended entries are newest first. Resolving every required match ends the tournament early; groups with knockout require a resolved final.
+
+Round robin covers all scheduled games and returns. Groups use 3–4 competitors, preferring four. Nine competitors form three groups of three, with the winners and best second qualifying. Cross-group comparisons may omit matches against the last competitor in a larger group without changing its full standings. Qualification ties need additional games. Knockout and final returns or first-to-wins series are configured separately. Groups allow draws; a knockout tie requiring a winner needs another game.
+
+Matches, groups and standings shows tournament points first, then matches, winners and game scores. Win/draw/loss awards 2/1/0; ties use direct encounters followed by game scores. Returns reverse player order. The organizer can award a pre-start forfeit or explicitly cancel an unfinished started fixture in the tournament and name a winner: 2/0 without game scores. Later results cannot replace the cancellation; history remains. Sporting cancellation does not close another owner's table.
+
+Supported games can be saved with Ctrl+S and resumed from Saved games. The exact fixture and return-leg reference is retained across a new native table, and its result enters the same tournament. Players/options must match. Resolved or cancelled fixtures cannot restore old copies.
+
+This client is prepared for official Power Games deployment and requires deployed tournament tables and permissions. Independent invitations, start notices, reservations and authoritative results require a server coordinator; installing the client alone does not enable them. Until deployment, the first listed player creates the fixture's table through Create or join table for this match, and the other joins there. Check Operations after an uncertain write. There is no local-storage fallback.

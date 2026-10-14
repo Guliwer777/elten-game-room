@@ -76,9 +76,9 @@ def verify_real_ui(runtime, language)
   assert_equal([Encoding::ASCII_8BIT], runtime.source_encodings.uniq, "Sources bypassed the binary runtime boundary")
   assert_equal(["settings.json"], runtime.settings_reads, "Saved language was not read once before constants were built")
   expected_menu = if language == "pl"
-    ["Utwórz nowy stół", "Dołącz do stołu", "Zapisane gry", "Rankingi", "Statystyki", "Ustawienia", "Zasady gry", "README", "Co nowego"]
+    ["Utwórz nowy stół", "Dołącz do stołu", "Zapisane gry", "Rankingi", "Statystyki", "Ustawienia", "Zasady gry", "README", "Turnieje", "Co nowego"]
   else
-    ["Create a new table", "Join a table", "Saved games", "Leaderboards", "Statistics", "Settings", "Game rules", "README", "What's new"]
+    ["Create a new table", "Join a table", "Saved games", "Leaderboards", "Statistics", "Settings", "Game rules", "README", "Tournaments", "What's new"]
   end
   assert_equal(expected_menu, app::MAIN_OPTIONS, "Host locale overrode the actual MAIN_OPTIONS constant")
   chess = app::GAME_REGISTRY.build("chess")

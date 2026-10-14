@@ -27,8 +27,8 @@ module GameRoomTestRunner
   def self.glob(pattern)
     return [pattern] if File.file?(pattern)
     if File.directory?(pattern)
-      return Dir.glob('**/*_test.rb', base: pattern).sort.reject do |path|
-        path.split('/')[0...-1].any? { |part| %w[support fixtures].include?(part) }
+      return Dir.glob('**/*_test.rb', base: pattern).sort.select do |path|
+        GameRoomTestSuites.automatic_path?(File.join(pattern, path))
       end.map { |path| File.join(pattern, path) }
     end
     return Dir.glob(pattern) unless pattern.match?(%r{\A(?:[A-Za-z]:/|/)})
@@ -124,7 +124,10 @@ module GameRoomTestRunner
       entries = args.empty? ? GameRoomTestSuites.paths : args
     end
     if options[:list]
-      expand(entries).each { |entry| puts entry.fetch(:script) }
+      expand(entries).each do |entry|
+        args_str = entry[:args] && !entry[:args].empty? ? " [#{entry[:args].join(' ')}]" : ""
+        puts "#{entry.fetch(:script)}#{args_str}"
+      end
       return 0
     end
     results = run(entries, timeout: options[:timeout], report: options[:report])

@@ -13,10 +13,10 @@ widget.context(menu, false)
 rows = menu.options.map { |label, _, key, _| [label, key] }
 assert(rows == [
   ['Read the table variant and settings', 'r'], ['Read the table participants', 'w'],
-  ['Accept invitation', 'j'], ['Create a new table', 'n'],
-  ['Makao prywatne', '1'], ['UNO szybkie', :alt_1], ['1000 mil', :shift_0]
+  ['Create a new table', 'n'],
+  ['Makao prywatne', '1'], ['UNO szybkie', :alt_1], ['1000 mil', :shift_0], ['Accept invitation', 'j']
 ], "wrong menu labels/shortcuts: #{rows.inspect}")
-menu.options.last(3).each { |item| item.last.call }
+menu.options[-4,3].each { |item| item.last.call }
 assert(created == [0, 10, 29], 'menu lost preset indices')
 saved[0] = nil
 saved[5] = {'game'=>'chess', 'name'=>'Szachy'}

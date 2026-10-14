@@ -11,6 +11,14 @@ module GameRoomGames
   class Chess < TurnBasedBoardGame
     include GameRoomColourBoardPresentation
     SIZE = 8
+    def tournament_roles(player_count:, options: {})
+      super
+      %w[w b].freeze
+    end
+
+    def tournament_role_policy(player_count:, options: {})
+      'local-test-chess-explicit-reverse-v1'
+    end
     PIECE_NAMES = {
       "P" => "pawn", "N" => "knight", "B" => "bishop",
       "R" => "rook", "Q" => "queen", "K" => "king"

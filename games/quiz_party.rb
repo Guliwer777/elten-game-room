@@ -12,6 +12,7 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class QuizParty < Base
+    def tournament_private_protocol?; true; end
     QUESTIONS_PER_ROUND = 3
     ROUND_CATEGORY_CHOICES = 3
     OPTION_COUNT = 4
@@ -305,6 +306,10 @@ module GameRoomGames
 
     def participant_scores(replay)
       replay.state[:scores].dup
+    end
+
+    def tournament_export_scores(replay, options:)
+      participant_scores(replay)
     end
 
     def active_actors(replay)

@@ -10,6 +10,7 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Battleship < Base
+    def tournament_private_protocol?; true; end
     SIZE = 10
     ROUND_ID = "fleet".freeze
     FLEETS = {

@@ -5,10 +5,10 @@ require_relative "game_session_feed"
 class GameRoomTransport
   attr_writer :presence_listener
 
-  def initialize(program)
+  def initialize(program, clock: GameRoomClock, local_view: false)
     @program = program
     @live_store = GameRoomLiveSessionStore.new(program, changed: method(:live_store_changed),
-      presence_changed: -> { @presence_listener&.changed })
+      presence_changed: -> { @presence_listener&.changed }, clock: clock, local_view: local_view)
     @pending_table_changes = {}
     @pending_game_changes = {}
     @game_change_tables = {}
@@ -19,8 +19,17 @@ class GameRoomTransport
     @mutex = Mutex.new
   end
 
+  # Zwalnia wyłącznie własny, jawnie lokalny widok transakcji.
+  def close_local_view
+    @live_store.close_local_view
+  end
+
   def start
     @live_store.start
+  end
+
+  def local_actor
+    @live_store.local_actor
   end
 
   # Also used by the shared table-activity repository to choose its transport.

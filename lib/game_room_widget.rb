@@ -173,7 +173,6 @@ module GameRoomWidget
         menu.option(GameRoomContent.utf8(_("Game description")), nil, "o") { read_game_description } if @description
         menu.option(GameRoomContent.utf8(_("Read the table variant and settings")), nil, "r") { @options_reader.request } if @options_reader
         menu.option(GameRoomContent.utf8(_("Read the table participants")), nil, "w") { @roster_reader.request } if @roster_reader
-        menu.option(GameRoomContent.utf8(_("Accept invitation")), nil, "j") { accept_invitation } if @invitations
         saved = GameRoomTablePresets.slots(@presets.call) if @creator
         (@creator ? creation_actions : []).each do |key, slot, label, modifier|
           next if slot != nil && saved[slot] == nil
@@ -181,6 +180,7 @@ module GameRoomWidget
           shortcut = modifier == :control ? key : GameRoomTablePresets.shortcut(slot).downcase.tr("+", "_").to_sym
           menu.option(GameRoomContent.utf8(label), nil, shortcut) { create_table(slot) }
         end
+        menu.option(GameRoomContent.utf8(_("Accept invitation")), nil, "j") { accept_invitation } if @invitations
       end
       tips = (@creator ? creation_actions : []).map { |_key, slot, label| GameRoomContextHelp.shortcut_tip(slot == nil ? 'Ctrl+N' : GameRoomTablePresets.shortcut(slot), label) }
       tips.unshift(GameRoomContextHelp.shortcut_tip('Ctrl+O', _("Game description"))) if @description

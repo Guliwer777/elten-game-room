@@ -1,5 +1,5 @@
 module GameRoomTestSuites
-  NAMES = %w[models transport ui native tooling integration].freeze
+  NAMES = %w[models transport ui native tooling integration tournaments].freeze
   ROOT = File.expand_path('../..', __dir__)
   ROOT_TESTS = %w[code_quality_test.rb game_imports_test.rb model_contract_test.rb].freeze
   FOLDER_SUITES = {
@@ -7,13 +7,26 @@ module GameRoomTestSuites
     'session' => 'transport', 'ui' => 'ui', 'host' => 'native',
     'tooling' => 'tooling', 'localization' => 'tooling',
     'room' => 'integration', 'persistence' => 'integration',
-    'statistics' => 'integration', 'integration' => 'integration'
+    'statistics' => 'integration', 'integration' => 'integration',
+    'tournaments' => 'tournaments'
   }.freeze
 
+  # These families are executed by maintained execution_*_suite entry points.
+  # Historical versions remain available only by explicit file path.
+  PARAMETERIZED_PATTERNS = %w[
+    ft2b1_
+    ft2_runtime_cold_
+    ft2_compatibility_boundary_
+  ].freeze
+
+  def self.automatic_path?(path)
+    parts = path.tr('\\', '/').split('/')
+    !parts[0...-1].any? { |part| %w[support fixtures].include?(part) } &&
+      !PARAMETERIZED_PATTERNS.any? { |pattern| File.basename(path).start_with?(pattern) }
+  end
+
   def self.paths(root: ROOT)
-    Dir.glob('test/**/*_test.rb', base: root).sort.reject do |path|
-      path.split('/')[1...-1].any? { |part| %w[support fixtures].include?(part) }
-    end
+    Dir.glob('test/**/*_test.rb', base: root).sort.select { |path| automatic_path?(path) }
   end
 
   # The filesystem records ownership; CI suites record the execution layer.

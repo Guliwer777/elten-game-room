@@ -15,7 +15,10 @@ bullets = source.lines.count { |line| line.start_with?("- ") }
 menu = EltenGameRoom::MAIN_OPTIONS
 settings_index = menu.index(GameRoomLocalization.translate("Settings"))
 assert(settings_index, "Settings is missing from the initial menu language")
-assert(menu[-2] == "README", "README is not immediately before What's new")
+readme_index = menu.index('README')
+changelog_index = menu.index(GameRoomLocalization.translate("What's new"))
+assert(readme_index && changelog_index && settings_index < readme_index && readme_index < changelog_index,
+  "README is not between Settings and What's new")
 
 app = EltenGameRoom.allocate
 requested = []
@@ -51,7 +54,7 @@ paths.each do |language, path|
     assert(headings.map { |h| field.text_range(h.from, h.to) } == expected_titles, "#{language}: native headings or Unicode offsets changed")
     links = elements(field, EditBox::Element::Link)
     contents = links.select { |link| link.param[1].start_with?("#") }
-    assert(contents.length == 16, "#{language}: lost a contents or chapter link")
+    assert(contents.length == 17, "#{language}: lost a contents or chapter link, including tournaments")
     contents.each do |link|
       target = field.instance_variable_get(:@contents_targets)[link]
       assert(target, "#{language}: broken internal link #{link.param[1]}")
@@ -78,7 +81,7 @@ paths.each do |language, path|
     end
     form.cancel_button.trigger(:press)
   end
-  app.send(:open_main_option, menu.length - 2)
+  app.send(:open_main_option, readme_index)
   assert(visited && requested.last == path, "#{language}: menu did not read its packaged asset")
 end
 Form.driver = nil

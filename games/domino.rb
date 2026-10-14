@@ -25,6 +25,13 @@ module GameRoomGames
       [set, notification_flag(options, "teams", _("Team play"), _("Individual play"))].compact.join(", ")
     end
     def name; _("Domino"); end
+    def tournament_export_result(replay, options:)
+      tournament_result_from_public_winners(replay, options: options, winners: replay.state[:winners])
+    end
+
+    def tournament_export_small_scores(replay, options:)
+      {scores: tournament_public_unit_scores(replay, options: options), order: 'lower'}
+    end
 
     def short_description
       _("Match the numbers on dominoes and play all your tiles before anyone else to avoid penalty points.")

@@ -1,5 +1,6 @@
 require "zlib"
 require_relative "saved_game_archive"
+require_relative "tournaments/strict_json"
 
 # One complete private resource per archive; the list contains only its small
 # manifest. All calls belong in Tasks.run. No local copy/fallback is written.
@@ -50,6 +51,91 @@ class AccountSavedGames < GameRoomSavedGameArchive
     row
   end
 
+  # The journal contains metadata only. Claim is durable BEFORE the only upload;
+  # a failed/uncertain claim never grants permission to send or to retry.
+  def persist_intent(row, intent:, table:, session:, boundary:, attempt: nil)
+    attempt ||= {}
+    intent.check_context!(owner: @owner)
+    json = JSON.generate(row)
+    raise IOError, "The saved game is too large" if json.bytesize > MAX_BYTES
+    data = Zlib::Deflate.deflate(json)
+    raise IOError, "The saved game is too large" if data.bytesize > MAX_BYTES
+    encoded = JSON.generate(row.slice('id', 'owner', 'game', 'saved_at', 'players').merge(
+      'format' => 1, 'bytes' => json.bytesize, 'sha256' => Digest::SHA256.hexdigest(json)))
+    raise IOError, "The saved game manifest is too large" if encoded.bytesize > 1024
+    operation = intent.prepare_archive(row: row, manifest: encoded,
+      source: {'table_id' => table.fetch('__id'), 'session_id' => session.fetch('__id'),
+        'native_room' => table.fetch('__live_session_id'), 'game' => row.fetch('game')},
+      boundary: {'sequence' => boundary.sequence, 'message_id' => boundary.message_id,
+        'sender' => boundary.sender, 'created_at' => boundary.created_at})
+    id = operation.fetch('id')
+    begin
+      intent.guard(owner: @owner) { resources }
+      limit, used = intent.guard(owner: @owner) do
+        [@resources.max_private_resources_bytes_per_user.to_i, @resources.used_size.to_i]
+      end
+      raise IOError, "There is not enough private storage for this game" if limit <= 0 || used + data.bytesize > limit
+    rescue StandardError => error
+      begin
+        intent.reject_before_upload(id)
+      rescue GameRoomSavedGameSaveIntent::Error, GameRoomSavedGameSaveIntent::ContextChanged
+        # Nie było uploadu; uszkodzenie dziennika/konta nie zasłania przyczyny.
+      end
+      raise error, cause: error.cause
+    end
+    intent.check_context!(owner: @owner)
+    attempt[:hold_freeze] = true
+    intent.claim(id)
+    begin
+      intent.guard(owner: @owner) do
+        @resources.upload("#{PREFIX}#{id}.json.deflate", data, meta: encoded, timeout: 15)
+      end
+    rescue StandardError => error
+      begin
+        intent.uncertain(id)
+      rescue GameRoomSavedGameSaveIntent::Error, GameRoomSavedGameSaveIntent::ContextChanged, GameRoomSavedGameSaveIntent::Pending
+        # Drugi czytnik mógł już potwierdzić rekord. Odmowa best-effort nie
+        # zastępuje dokładnego błędu upload ani jego bezpośredniej przyczyny.
+        raise error, cause: error.cause
+      end
+      raise unless error.is_a?(IOError) || error.is_a?(SystemCallError) || GameRoomNetworkErrors.expected?(error)
+      begin
+        return reconcile(intent: intent, id: id)
+      rescue StandardError => read_error
+        raise unless read_error.is_a?(IOError) || read_error.is_a?(SystemCallError) || GameRoomNetworkErrors.expected?(read_error)
+        raise GameRoomSavedGameSaveIntent::Uncertain.new(id, read_error), cause: error
+      end
+    end
+    reconcile(intent: intent, id: id)
+  end
+
+  # Explicit, read-only remote reconciliation. Absence is never a resend grant.
+  def reconcile(intent:, id:, game: nil)
+    intent.check_context!(owner: @owner)
+    operation = intent.fetch(id)
+    unless operation && %w[attempted uncertain readback_confirmed].include?(operation['status'])
+      raise GameRoomSavedGameSaveIntent::Pending, 'No attempted archive to reconcile'
+    end
+    values = operation.fetch('values')
+    name = "#{PREFIX}#{id}.json.deflate"
+    matches = intent.guard(owner: @owner) { resources }.select { |item| item.resource == name }
+    stored = matches.first
+    unless matches.length == 1 && stored.meta == values['manifest']
+      raise GameRoomSavedGameSaveIntent::Uncertain.new(id)
+    end
+    meta = manifest(stored)
+    raise GameRoomSavedGameSaveIntent::Uncertain.new(id) unless meta && meta['sha256'] == values['sha256']
+    row = read_archive(meta, intent: intent)
+    unless row['id'] == id && row['checksum'] == values['checksum'] &&
+        GameRoomSavedGameSaveIntent.prefix(row.fetch('events')) == values['prefix']
+      raise GameRoomSavedGameSaveIntent::Uncertain.new(id)
+    end
+    validate(row, game: game) if game
+    intent.check_context!(owner: @owner)
+    intent.confirm(id)
+    row
+  end
+
   def delete(id)
     row = list.find { |item| item["id"] == id.to_s }
     return false unless row
@@ -88,8 +174,9 @@ class AccountSavedGames < GameRoomSavedGameArchive
     nil
   end
 
-  def read_archive(manifest)
-    compressed = @resources.download(manifest.fetch("__resource_id"), timeout: 15)
+  def read_archive(manifest, intent: nil)
+    download = -> { @resources.download(manifest.fetch("__resource_id"), timeout: 15) }
+    compressed = intent ? intent.guard(owner: @owner, &download) : download.call
     raise IOError, "Invalid saved game download" unless compressed.is_a?(String) && compressed.bytesize <= MAX_BYTES
     inflater, json = Zlib::Inflate.new, String.new(encoding: Encoding::BINARY)
     begin
@@ -102,7 +189,11 @@ class AccountSavedGames < GameRoomSavedGameArchive
       inflater.close
     end
     raise IOError, "Saved game checksum mismatch" unless Digest::SHA256.hexdigest(json) == manifest["sha256"]
-    row = JSON.parse(json.force_encoding(Encoding::UTF_8))
+    text = json.force_encoding(Encoding::UTF_8)
+    raise IOError, "Invalid saved game encoding" if intent && !text.valid_encoding?
+    # Intencja trwała wymaga jednoznacznego dokumentu także przy zgodnym hashu.
+    # Zwykły odczyt zachowuje dotychczasowy kontrakt archiwum.
+    row = intent ? GameRoomTournaments::StrictJson.parse(text, max_nesting: 100) : JSON.parse(text)
     raise IOError, "Saved game manifest mismatch" unless row.is_a?(Hash) &&
       row.slice("id", "owner", "game", "saved_at", "players") == manifest.slice("id", "owner", "game", "saved_at", "players") &&
       row["checksum"] == checksum(row)

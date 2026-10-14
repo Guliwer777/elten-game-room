@@ -350,6 +350,10 @@ module GameRoomGames
       replay.state[:scores].dup
     end
 
+    def tournament_scores(replay, options:)
+      participant_scores(replay)
+    end
+
     def shortcut_features
       super + [:scores, :current_total, :last_roll]
     end

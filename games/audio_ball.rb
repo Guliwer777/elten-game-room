@@ -33,6 +33,8 @@ module GameRoomGames
     def supports_bot_move_delay?; false; end
     # The session runner persists agreed points, never advances ball physics.
     def background_client?; true; end
+    def tournament_execution_kind; :realtime; end
+    def tournament_realtime_point_action; 'audio_ball_point'; end
     def controller_change_phase_error(_replay); nil; end
     def personal_settings_label; _('Audio Ball settings'); end
     def personal_settings_action; :show_audio_ball_settings; end
@@ -45,7 +47,8 @@ module GameRoomGames
     def build_client(program, **services)
       require_relative '../lib/audio_ball/audio'
       require_relative '../lib/audio_ball/client'
-      GameRoomAudioBall::Client.new(program, self, transport: services[:transport])
+      GameRoomAudioBall::Client.new(program, self, transport: services[:transport],
+        **services.slice(:clock, :channel_factory, :audio))
     end
 
     def audio_tutorial_entries
@@ -177,6 +180,20 @@ module GameRoomGames
     def participant_scores(replay)
       scores = replay.state[replay.state[:options]['sets_to_win'] > 1 ? :sets : :scores]
       replay.players.each_with_index.to_h { |player, index| [player, scores[index]] }
+    end
+
+    # Public accepted rallies survive the per-set score reset. Export all
+    # points in the match, while the game's normal display retains its sets.
+    # Earlier result policies keep the original, absent small-score export.
+    def tournament_export_small_scores(replay, options:)
+      scores = [0, 0]
+      replay.accepted_events.each do |event|
+        next unless event['action'] == 'audio_ball_point'
+        side = /\A\d{1,8}:([01])(:timeout)?\z/.match(event['value'].to_s)
+        raise Base::Tournaments::InvalidResult, 'Invalid accepted rally' unless side
+        scores[side[1].to_i] += 1
+      end
+      {scores: replay.players.each_with_index.to_h { |player, index| [player, scores[index]] }, order: 'higher'}
     end
 
     def surface_spec(replay, viewer)

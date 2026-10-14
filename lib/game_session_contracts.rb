@@ -1,6 +1,11 @@
 require_relative 'game_snapshot'
 
 module GameRoomSessionContracts
+  # Only detached local adapters implement this identity. Native network SDK
+  # endpoints continue to use the authenticated host Session.
+  module LocalActor
+    def local_session_actor; user; end
+  end
   GameSnapshot = Struct.new(:session, :events, keyword_init: true)
   RoomSnapshot = Struct.new(:table, :members, :bots, :observers, keyword_init: true)
   PresentationSnapshot = Struct.new(:session, :table, :replay, :members, :activity, :snapshot, :room, keyword_init: true)

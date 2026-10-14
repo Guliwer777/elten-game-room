@@ -16,7 +16,7 @@ app.send(:open_main_option, statistics)
 app.send(:open_main_option, statistics + 1)
 app.send(:open_main_option, statistics + 2)
 app.send(:open_main_option, statistics + 3)
-app.send(:open_main_option, statistics + 4)
+app.send(:open_main_option, EltenGameRoom::MAIN_OPTIONS.index("What's new"))
 assert(opened == [:statistics, :settings, :rules, :readme, :changelog], "Adding statistics shifted another menu action")
 GameRoomStatistics::Schema::TABLES.each do |name, schema|
   assert(EltenGameRoom::SERVER_TABLES[name] == schema, "Statistics schema missing from application declaration")

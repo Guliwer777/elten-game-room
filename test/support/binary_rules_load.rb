@@ -105,4 +105,5 @@ module Programs
     Thread.current[:game_room_test_runtime] || (@binary_localization_runtime ||= BinaryRulesLoad.localization_runtime(:pl))
   end
 end
+require_relative 'audio_tutorial_native' if ENV['ELTEN_TEST_NATIVE_CONTROLS'] == '1'
 BinaryRulesLoad.load(File.join(BinaryRulesLoad::ROOT, "__app.rb"))

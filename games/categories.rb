@@ -6,6 +6,7 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Categories < Base
+    def tournament_private_protocol?; true; end
     EASY_CATEGORY_IDS = %w[
       country city name animal plant thing profession food color
     ].freeze
@@ -403,6 +404,14 @@ module GameRoomGames
       else
         _("waiting for the next round")
       end
+    end
+
+    def tournament_export_scores(replay, options:)
+      participant_scores(replay)
+    end
+
+    def tournament_competitive_roster?(player_count:, options: {})
+      normalize_options(options)['judge_mode'] != JUDGE_MASTER
     end
 
     def participant_scores(replay)

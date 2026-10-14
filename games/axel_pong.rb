@@ -116,6 +116,10 @@ module GameRoomGames
       end
     end
 
+    def tournament_export_small_scores(replay, options:)
+      {scores: tournament_public_unit_scores(replay, options: options), order: 'higher'}
+    end
+
     def bot_reward(replay, actor)
       return 0.0 if !replay.finished? || !GameRoomParticipants.includes?(replay.players, actor)
       assignment = team_assignment(replay.state[:options], players: replay.players)
@@ -139,12 +143,15 @@ module GameRoomGames
 
     def build_client(program, **services)
       require_relative '../lib/axel_pong/client'
-      GameRoomPong::Client.new(program, self, transport: services[:transport])
+      GameRoomPong::Client.new(program, self, transport: services[:transport],
+        **services.slice(:clock, :channel_factory, :audio, :mouse))
     end
 
     # LiveSessions persists agreed points through the ordinary managed runner.
     # Ball physics and realtime bots retain their separate Progress timer.
     def background_client?; true; end
+    def tournament_execution_kind; :realtime; end
+    def tournament_realtime_point_action; 'pong_point'; end
     def controller_change_phase_error(_replay); nil; end
     def personal_settings_label; _('Pong settings'); end
     def personal_settings_action; :show_pong_settings; end

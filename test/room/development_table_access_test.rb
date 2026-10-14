@@ -132,6 +132,7 @@ client = EltenLink::Client.new
 app = EltenGameRoom.new
 tables = GameRoomServerTables.new(app, client: client)
 app.instance_variable_set(:@server_tables, tables)
+GameRoomStartupUpdate.define_singleton_method(:check) { |_program| nil } # This test covers table access, not catalogue updates.
 endpoint = EmptyLiveEndpoint.new
 app.define_singleton_method(:live_sessions) { endpoint }
 entries = []
@@ -149,7 +150,7 @@ client.error = EltenLink::Error.new("apps.tables.stamp_required")
 app.program_main
 assert(entries.length == 1, "Protected tables prevented reaching the interface")
 assert(client.calls == [["game_room_users", :select, { where: { "username" => "papierek" }, limit: 1 }]], "Startup made more than the probe request")
-assert(alerts.length == 1 && alerts.last.start_with?("Development mode"), "The restriction was not announced once")
+assert(alerts.length == 1 && alerts.last.start_with?("The server requires an official launcher stamp"), "The restriction was not announced once")
 
 menu_options = []
 menu_actions = [:exit]
@@ -171,10 +172,10 @@ assert(client.calls.length == 1, "A disabled optional feature queried a table")
 assert(alerts.length == 1, "Maintenance repeated the development notice")
 
 [:contacts, :online].each { |source| app.send(:show_invite_users, Object.new, source: source) }
-assert(alerts.last(2).all? { |message| message.start_with?("Sending invitations is unavailable in development mode") }, "Invitation sending did not explain the restriction")
+assert(alerts.last(2).all? { |message| message.start_with?("Sending invitations is unavailable because the server requires an official launcher stamp") }, "Invitation sending did not explain the restriction")
 menu_actions.replace([:invite_contacts, :exit])
 app.send(:show_main_menu)
-assert(alerts.last.start_with?("Sending invitations is unavailable in development mode"), "The main menu did not explain the invitation restriction")
+assert(alerts.last.start_with?("Sending invitations is unavailable because the server requires an official launcher stamp"), "The main menu did not explain the invitation restriction")
 assert(client.calls.length == 1, "An invitation shortcut queried a protected table")
 
 # Reusing the same instance must probe again and recover cached repository handles.

@@ -598,3 +598,4 @@ require_relative "base/teams"
 require_relative "base/bots"
 
 require_relative "base/shortcuts"
+require_relative "base/tournaments"

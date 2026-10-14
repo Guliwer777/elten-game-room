@@ -6,6 +6,10 @@ module GameRoomGames
   using GameRoomLocalization::Translations
 
   class MilleBornes < Base
+    def tournament_export_scores(replay, options:)
+      tournament_public_unit_scores(replay, options: options)
+    end
+
     DECK_COUNTS = {
       "25" => 10, "50" => 10, "75" => 10, "100" => 12, "200" => 4,
       "stop" => 5, "speed_limit" => 4, "out_of_gas" => 3,
