@@ -35,7 +35,7 @@ general = data.fetch('quiz.wikidata.pl')
 expected_categories = ['Geografia', 'Historia', 'Kultura', 'Literatura', 'Nauka',
   'Przyroda', 'Religia', 'Sport', 'Język', 'Społeczeństwo', 'Życie codzienne']
 assert(general.values.map { |q| q.fetch('category') }.uniq.sort == expected_categories.sort, 'Polish general categories differ from the reviewed set')
-source_prefixes = {'PolQA' => 'polqa_', '1z10/MAUPQA' => '1z10_', 'Milionerzy/Polsat' => 'milionerzy_'}
+source_prefixes = {'PolQA' => 'polqa_', '1z10/MAUPQA' => '1z10_', 'Milionerzy/Polsat' => 'milionerzy_', 'Power Games community' => 'community_'}
 assert(general.values.map { |q| q.fetch('source_dataset') }.uniq.sort == source_prefixes.keys.sort, 'Polish general source datasets are incomplete')
 general.each do |id, question|
   prefix = source_prefixes.fetch(question.fetch('source_dataset'))

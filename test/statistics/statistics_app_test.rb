@@ -16,7 +16,7 @@ app.send(:open_main_option, statistics)
 app.send(:open_main_option, statistics + 1)
 app.send(:open_main_option, statistics + 2)
 app.send(:open_main_option, statistics + 3)
-app.send(:open_main_option, statistics + 4)
+app.send(:open_main_option, EltenGameRoom::MAIN_OPTIONS.index("What's new"))
 assert(opened == [:statistics, :settings, :rules, :readme, :changelog], "Adding statistics shifted another menu action")
 GameRoomStatistics::Schema::TABLES.each do |name, schema|
   assert(EltenGameRoom::SERVER_TABLES[name] == schema, "Statistics schema missing from application declaration")
@@ -195,8 +195,9 @@ scheduled_app.define_singleton_method(:room_presence_collector) { presence_colle
 presence_schedule.callback.call(Struct.new(:token).new(token))
 assert(heartbeats == [token], "The room heartbeat did not receive cancellation")
 lifecycle_callbacks = []
-%i[table_watch_start contacts_tick table_watch_tick table_watch_stop contacts_stop analytics_tick stop_analytics].each do |name|
-  scheduled_app.define_singleton_method(name) { lifecycle_callbacks << name }
+%i[table_watch_start start_tournament_coordination contacts_tick table_watch_tick tournament_coordination_tick
+  tournament_starts_tick table_watch_stop contacts_stop stop_tournament_coordination analytics_tick stop_analytics].each do |name|
+  scheduled_app.define_singleton_method(name) { |*_arguments| lifecycle_callbacks << name }
 end
 original_outbox_tick = InvitationResponseOutbox.method(:tick_default)
 InvitationResponseOutbox.define_singleton_method(:tick_default) { lifecycle_callbacks << :outbox }
@@ -204,7 +205,9 @@ begin
   definitions.first.start_callback.call
   definitions.first.tick_callback.call
   definitions.first.stop_callback.call
-  assert(lifecycle_callbacks == %i[table_watch_start contacts_tick table_watch_tick outbox analytics_tick table_watch_stop contacts_stop stop_analytics],
+  assert(lifecycle_callbacks == %i[table_watch_start start_tournament_coordination contacts_tick table_watch_tick
+    tournament_coordination_tick tournament_starts_tick outbox analytics_tick table_watch_stop contacts_stop
+    stop_tournament_coordination stop_analytics],
     "Statistics changed the existing extension lifecycle")
 ensure
   InvitationResponseOutbox.define_singleton_method(:tick_default, original_outbox_tick)

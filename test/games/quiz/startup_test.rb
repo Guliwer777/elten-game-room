@@ -56,7 +56,7 @@ assert(polish_pack.version == polish_reference.fetch('version'), "the Polish gen
 polish_questions = polish_pack.data["questions"]
 assert(polish_questions.length == expected_count.call(polish_pack.id), "the reviewed Polish general set has an unexpected question count")
 polish_sources = polish_questions.map { |question| question.fetch("source_dataset") }.uniq.sort
-assert(polish_sources == ["1z10/MAUPQA", "Milionerzy/Polsat", "PolQA"], "the Polish general set lost a source or includes the retired pack")
+assert(polish_sources == ["1z10/MAUPQA", "Milionerzy/Polsat", "PolQA", "Power Games community"], "the Polish general set lost a source or includes the retired pack")
 polish_options = game.normalize_options("content_set_id" => "quiz.wikidata", "content_language_id" => "pl-PL")
 assert(game.selected_content_pack(polish_options).equal?(polish_pack), "the Polish options resolve to another pack")
 assert(game.validation_error(polish_options, player_count: 2) == nil, "the reviewed Polish general set cannot start a match")

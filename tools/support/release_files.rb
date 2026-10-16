@@ -27,6 +27,22 @@ module GameRoomReleaseFiles
     selected = Dir.chdir(source) do
       Dir.glob("**/*", File::FNM_DOTMATCH).select { |path| File.file?(path) && allowed?(path) }.sort
     end
+    if File.file?(File.join(source,'lib/tournaments/shared_hub.rb'))
+      ruby=selected.grep(/\.rb\z/)
+      retained=ruby.reject{|path|path.start_with?('lib/tournaments/')}.to_h{|path|[path,true]}
+      pending=retained.keys.dup
+      until pending.empty?
+        relative=pending.pop
+        File.read(File.join(source,relative),encoding:'UTF-8').scan(/\brequire_relative\s*(?:\(\s*)?["']([^"']+)["']/).flatten.each do |dependency|
+          dependency += '.rb' if File.extname(dependency).empty?
+          resolved=Pathname.new(File.join(File.dirname(relative),dependency)).cleanpath.to_s.tr('\\','/')
+          next unless ruby.include?(resolved) && !retained[resolved]
+          retained[resolved]=true
+          pending << resolved
+        end
+      end
+      selected=selected.reject{|path|path.start_with?('lib/tournaments/') && path.end_with?('.rb') && !retained[path]}
+    end
     missing = REQUIRED_FILES - selected
     raise "Missing release files: #{missing.join(', ')}" unless missing.empty?
     folded = selected.map(&:downcase)

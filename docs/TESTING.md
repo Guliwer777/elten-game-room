@@ -21,6 +21,7 @@ Tests of a game's rules, bots, interface, translations and tools are kept togeth
 | `host/` | Native application lifecycle, scenes and host-extension reloads |
 | `tooling/` | Runner, generators, compilers, training and packaging boundaries |
 | `integration/` | Shared contracts and scenarios spanning several games |
+| `tournaments/` | Tournament publication, participation, matches, results and recovery |
 | `support/`, `fixtures/` | Stub definitions, helpers and data; no automatic execution |
 
 The `test/` root contains only `run.rb`, `code_quality_test.rb`,
@@ -34,6 +35,7 @@ ruby test/run.rb test/games/spades --report tmp/spades-results.json
 ruby test/run.rb test/games/monopoly/staged_trade_screen_test.rb
 ruby test/run.rb test/transport test/session --list
 ruby test/run.rb --suite tooling --list
+ruby test/run.rb --suite tournaments --shard 1/4 --report tmp/tournaments-1.json
 ```
 
 The runner accepts directories, file paths and patterns. It searches directories
@@ -50,11 +52,19 @@ relabel them as successes. Missing host sources or dependencies are not a succes
 Host tests use a single `ELTEN_HOST_SOURCE`; the pin and gem installation
 are described in [BUILDING.md](BUILDING.md).
 
-The six disjoint CI suites (`models`, `transport`, `ui`, `native`,
-`tooling`, `integration`) describe the execution layer. A game's directory
+The seven disjoint CI suites (`models`, `transport`, `ui`, `native`,
+`tooling`, `integration`, `tournaments`) describe the execution layer. A game's directory
 describes ownership, so one game can have tests in several CI suites.
 Do not combine `--suite` with a list of paths. `tooling/runner_selection_test.rb`
 checks suite completeness and disjointness, as well as default discovery.
+
+CI runs the tournament suite in four disjoint parts. `--shard INDEX/TOTAL`
+assigns every selected scenario to exactly one part, balancing the declared
+timeout budgets with a stable filename tie-break. It keeps each scenario's
+arguments, environment and preloads. Run all parts to cover the whole selection;
+`--list` can inspect a part without executing it. Ordinary invocations without
+`--shard` still run the complete selection. Full historical tournament simulations
+have longer bounded timeouts in `test/support/suites.rb`; `--timeout` overrides them.
 
 ## Adding and maintaining tests
 

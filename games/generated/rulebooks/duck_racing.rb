@@ -135,6 +135,8 @@ module GameRoomGames
           rule_section(:interruptions, GameRoomRules.translate("Saving and interrupted challenges"),
             GameRoomRules.translate("You can save the race between turns, once the challenge and any other events from the move have finished."),
             GameRoomRules.translate("If a challenge participant leaves the table or is replaced, the challenge is cancelled without anyone losing feathers.")),
+          rule_section(:question_reports, GameRoomRules.translate("Reporting questions"),
+            GameRoomRules.translate("Ctrl+B marks the current question for reporting, and Ctrl+Shift+B marks the previous one. This works for questions from squares, cards and challenges. After leaving the table, choose Yes when asked whether you want to report them. Describe the problem and press Send. The form shows the question, its choices and the answer marked as correct in the set.")),
           rule_section(:controls, GameRoomRules.translate("Race shortcuts"),
             GameRoomRules.translate("Arrow keys: choose a card or the roll at the end of the list."),
             GameRoomRules.translate("Enter: play the selected card or roll."),
@@ -144,7 +146,9 @@ module GameRoomGames
             GameRoomRules.translate("S: everyone's race status."),
             GameRoomRules.translate("T: current turn or challenge."),
             GameRoomRules.translate("V: explore the track, starting at your current square."),
-            GameRoomRules.translate("P: repeat the challenge instructions."))
+            GameRoomRules.translate("P: repeat the challenge instructions."),
+            GameRoomRules.translate("Ctrl+B: mark the current question for reporting."),
+            GameRoomRules.translate("Ctrl+Shift+B: mark the previous question for reporting."))
         ]
       end
 
@@ -281,6 +285,8 @@ module GameRoomGames
             rule_section(:interruptions, "Ulo\u017Een\u00ED a p\u0159eru\u0161en\u00E9 v\u00FDzvy",
               "Z\u00E1vod lze ulo\u017Eit mezi tahy, a\u017E skon\u010D\u00ED v\u00FDzva a ostatn\u00ED ud\u00E1losti spojen\u00E9 s pohybem.",
               "Pokud \u00FA\u010Dastn\u00EDk v\u00FDzvy opust\u00ED st\u016Fl nebo je nahrazen, v\u00FDzva se zru\u0161\u00ED bez ztr\u00E1ty pe\u0159\u00ED."),
+            rule_section(:question_reports, "Hl\u00E1\u0161en\u00ED chyb v ot\u00E1zk\u00E1ch",
+              "Ctrl+B ozna\u010D\u00ED aktu\u00E1ln\u00ED ot\u00E1zku k nahl\u00E1\u0161en\u00ED, Ctrl+Shift+B tu p\u0159edchoz\u00ED. Plat\u00ED to pro ot\u00E1zky z pol\u00ED, karet i v\u00FDzev. Po odchodu od stolu vyberte \u201EAno\u201C, a\u017E se program zept\u00E1 na hl\u00E1\u0161en\u00ED, popi\u0161te probl\u00E9m a stiskn\u011Bte \u201EOdeslat\u201C. Formul\u00E1\u0159 ukazuje ot\u00E1zku, mo\u017Enosti i odpov\u011B\u010F ozna\u010Denou v sad\u011B jako spr\u00E1vnou."),
             rule_section(:controls, "Zkratky z\u00E1vodu",
               "\u0160ipky: v\u00FDb\u011Br karty nebo hodu na konci seznamu.",
               "Enter: zahr\u00E1n\u00ED vybran\u00E9 karty nebo hod.",
@@ -290,7 +296,9 @@ module GameRoomGames
               "S: stav v\u0161ech hr\u00E1\u010D\u016F.",
               "T: aktu\u00E1ln\u00ED tah nebo v\u00FDzva.",
               "V: p\u0159ehled okruhu od pole, na kter\u00E9m stoj\u00ED\u0161.",
-              "P: zopakov\u00E1n\u00ED zad\u00E1n\u00ED v\u00FDzvy.")
+              "P: zopakov\u00E1n\u00ED zad\u00E1n\u00ED v\u00FDzvy.",
+              "Ctrl+B: ozna\u010Dit aktu\u00E1ln\u00ED ot\u00E1zku k nahl\u00E1\u0161en\u00ED.",
+              "Ctrl+Shift+B: ozna\u010Dit p\u0159edchoz\u00ED ot\u00E1zku k nahl\u00E1\u0161en\u00ED.")
           ]
         when "en"
           [
@@ -423,6 +431,8 @@ module GameRoomGames
             rule_section(:interruptions, "Saving and interrupted challenges",
               "You can save the race between turns, once the challenge and any other events from the move have finished.",
               "If a challenge participant leaves the table or is replaced, the challenge is cancelled without anyone losing feathers."),
+            rule_section(:question_reports, "Reporting questions",
+              "Ctrl+B marks the current question for reporting, and Ctrl+Shift+B marks the previous one. This works for questions from squares, cards and challenges. After leaving the table, choose Yes when asked whether you want to report them. Describe the problem and press Send. The form shows the question, its choices and the answer marked as correct in the set."),
             rule_section(:controls, "Race shortcuts",
               "Arrow keys: choose a card or the roll at the end of the list.",
               "Enter: play the selected card or roll.",
@@ -432,7 +442,9 @@ module GameRoomGames
               "S: everyone's race status.",
               "T: current turn or challenge.",
               "V: explore the track, starting at your current square.",
-              "P: repeat the challenge instructions.")
+              "P: repeat the challenge instructions.",
+              "Ctrl+B: mark the current question for reporting.",
+              "Ctrl+Shift+B: mark the previous question for reporting.")
           ]
         when "es"
           [
@@ -565,6 +577,8 @@ module GameRoomGames
             rule_section(:interruptions, "Guardar y cancelar desaf\u00EDos",
               "Puedes guardar la carrera entre turnos, una vez terminados el desaf\u00EDo y los dem\u00E1s efectos del movimiento.",
               "Si un participante del desaf\u00EDo abandona la mesa o es sustituido, el desaf\u00EDo se cancela sin p\u00E9rdida de plumas."),
+            rule_section(:question_reports, "Avisar de errores en las preguntas",
+              "Ctrl+B marca la pregunta actual y Ctrl+Shift+B la anterior. Sirve para las preguntas de casillas, cartas y desaf\u00EDos. Al salir de la mesa, elige \u00ABS\u00ED\u00BB cuando se te pregunte si quieres enviar los avisos. Describe el problema y pulsa \u00ABEnviar\u00BB. El formulario muestra la pregunta, las opciones y la respuesta que el conjunto considera correcta."),
             rule_section(:controls, "Atajos de la carrera",
               "Flechas: elegir una carta o la tirada al final de la lista.",
               "Enter: jugar la carta seleccionada o tirar.",
@@ -574,7 +588,9 @@ module GameRoomGames
               "S: situaci\u00F3n de todos los jugadores.",
               "T: turno o desaf\u00EDo actual.",
               "V: recorrer el circuito desde tu casilla actual.",
-              "P: repetir las instrucciones del desaf\u00EDo.")
+              "P: repetir las instrucciones del desaf\u00EDo.",
+              "Ctrl+B: marcar la pregunta actual para avisar de un error.",
+              "Ctrl+Shift+B: marcar la pregunta anterior para avisar de un error.")
           ]
         when "pl"
           [
@@ -707,6 +723,8 @@ module GameRoomGames
             rule_section(:interruptions, "Zapisywanie i przerwane wyzwania",
               "Wy\u015Bcig mo\u017Cesz zapisa\u0107 pomi\u0119dzy turami, gdy zako\u0144cz\u0105 si\u0119 wyzwanie i pozosta\u0142e zdarzenia z ruchu.",
               "Je\u015Bli uczestnik wyzwania opu\u015Bci st\u00F3\u0142 lub zostanie zast\u0105piony, wyzwanie zostaje anulowane bez utraty pi\u00F3r."),
+            rule_section(:question_reports, "Zg\u0142aszanie pyta\u0144",
+              "Ctrl+B oznacza bie\u017C\u0105ce pytanie do zg\u0142oszenia, a Ctrl+Shift+B poprzednie. Dzia\u0142a to przy pytaniach z p\u00F3l, kart i wyzwa\u0144. Po opuszczeniu sto\u0142u wybierz \u201ETak\u201D, gdy program zapyta o zg\u0142oszenia, opisz problem i naci\u015Bnij \u201EWy\u015Blij\u201D. Formularz pokazuje pytanie, odpowiedzi i wskazan\u0105 w zestawie poprawn\u0105 odpowied\u017A."),
             rule_section(:controls, "Skr\u00F3ty wy\u015Bcigu",
               "Strza\u0142ki: wyb\u00F3r karty lub rzutu na ko\u0144cu listy.",
               "Enter: zagranie wybranej karty lub rzut.",
@@ -716,7 +734,9 @@ module GameRoomGames
               "S: sytuacja wszystkich graczy.",
               "T: bie\u017C\u0105ca tura lub wyzwanie.",
               "V: przegl\u0105d planszy od pola, na kt\u00F3rym stoisz.",
-              "P: przypomnienie tre\u015Bci wyzwania.")
+              "P: przypomnienie tre\u015Bci wyzwania.",
+              "Ctrl+B \u2014 oznacz bie\u017C\u0105ce pytanie do zg\u0142oszenia.",
+              "Ctrl+Shift+B \u2014 oznacz poprzednie pytanie do zg\u0142oszenia.")
           ]
         when "ru"
           [
@@ -849,6 +869,8 @@ module GameRoomGames
             rule_section(:interruptions, "\u0421\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u0435 \u0438 \u043F\u0440\u0435\u0440\u0432\u0430\u043D\u043D\u044B\u0435 \u0438\u0441\u043F\u044B\u0442\u0430\u043D\u0438\u044F",
               "\u0413\u043E\u043D\u043A\u0443 \u043C\u043E\u0436\u043D\u043E \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u043C\u0435\u0436\u0434\u0443 \u0445\u043E\u0434\u0430\u043C\u0438, \u043A\u043E\u0433\u0434\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u043B\u0438\u0441\u044C \u0438\u0441\u043F\u044B\u0442\u0430\u043D\u0438\u0435 \u0438 \u043E\u0441\u0442\u0430\u043B\u044C\u043D\u044B\u0435 \u0441\u043E\u0431\u044B\u0442\u0438\u044F, \u0432\u044B\u0437\u0432\u0430\u043D\u043D\u044B\u0435 \u043F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u0435\u043C.",
               "\u0415\u0441\u043B\u0438 \u0443\u0447\u0430\u0441\u0442\u043D\u0438\u043A \u0438\u0441\u043F\u044B\u0442\u0430\u043D\u0438\u044F \u043F\u043E\u043A\u0438\u0434\u0430\u0435\u0442 \u0441\u0442\u043E\u043B \u0438\u043B\u0438 \u0435\u0433\u043E \u0437\u0430\u043C\u0435\u043D\u044F\u044E\u0442, \u0438\u0441\u043F\u044B\u0442\u0430\u043D\u0438\u0435 \u043E\u0442\u043C\u0435\u043D\u044F\u0435\u0442\u0441\u044F \u0431\u0435\u0437 \u043F\u043E\u0442\u0435\u0440\u0438 \u043F\u0435\u0440\u044C\u0435\u0432."),
+            rule_section(:question_reports, "\u041E\u0448\u0438\u0431\u043A\u0438 \u0432 \u0432\u043E\u043F\u0440\u043E\u0441\u0430\u0445",
+              "Ctrl+B \u043E\u0442\u043C\u0435\u0447\u0430\u0435\u0442 \u0442\u0435\u043A\u0443\u0449\u0438\u0439 \u0432\u043E\u043F\u0440\u043E\u0441 \u0434\u043B\u044F \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043E\u0431 \u043E\u0448\u0438\u0431\u043A\u0435, \u0430 Ctrl+Shift+B \u2014 \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439. \u042D\u0442\u043E \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442 \u0441 \u0432\u043E\u043F\u0440\u043E\u0441\u0430\u043C\u0438 \u0438\u0437 \u043A\u043B\u0435\u0442\u043E\u043A, \u043A\u0430\u0440\u0442 \u0438 \u0438\u0441\u043F\u044B\u0442\u0430\u043D\u0438\u0439. \u041F\u0440\u0438 \u0432\u044B\u0445\u043E\u0434\u0435 \u0438\u0437-\u0437\u0430 \u0441\u0442\u043E\u043B\u0430 \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u00AB\u0414\u0430\u00BB, \u043A\u043E\u0433\u0434\u0430 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430 \u043F\u0440\u0435\u0434\u043B\u043E\u0436\u0438\u0442 \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F, \u043E\u043F\u0438\u0448\u0438\u0442\u0435 \u043F\u0440\u043E\u0431\u043B\u0435\u043C\u0443 \u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435 \u00AB\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C\u00BB. \u0412 \u0444\u043E\u0440\u043C\u0435 \u043F\u043E\u043A\u0430\u0437\u0430\u043D\u044B \u0432\u043E\u043F\u0440\u043E\u0441, \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u044B \u0438 \u043E\u0442\u0432\u0435\u0442, \u043E\u0442\u043C\u0435\u0447\u0435\u043D\u043D\u044B\u0439 \u0432 \u043D\u0430\u0431\u043E\u0440\u0435 \u043A\u0430\u043A \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u044B\u0439."),
             rule_section(:controls, "\u041A\u043B\u0430\u0432\u0438\u0448\u0438 \u0433\u043E\u043D\u043A\u0438",
               "\u0421\u0442\u0440\u0435\u043B\u043A\u0438: \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u043A\u0430\u0440\u0442\u0443 \u0438\u043B\u0438 \u0431\u0440\u043E\u0441\u043E\u043A \u0432 \u043A\u043E\u043D\u0446\u0435 \u0441\u043F\u0438\u0441\u043A\u0430.",
               "Enter: \u0441\u044B\u0433\u0440\u0430\u0442\u044C \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u0443\u044E \u043A\u0430\u0440\u0442\u0443 \u0438\u043B\u0438 \u0431\u0440\u043E\u0441\u0438\u0442\u044C \u043A\u0443\u0431\u0438\u043A.",
@@ -858,7 +880,9 @@ module GameRoomGames
               "S: \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0432\u0441\u0435\u0445 \u0438\u0433\u0440\u043E\u043A\u043E\u0432.",
               "T: \u0442\u0435\u043A\u0443\u0449\u0438\u0439 \u0445\u043E\u0434 \u0438\u043B\u0438 \u0438\u0441\u043F\u044B\u0442\u0430\u043D\u0438\u0435.",
               "V: \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440 \u0442\u0440\u0430\u0441\u0441\u044B, \u043D\u0430\u0447\u0438\u043D\u0430\u044F \u0441 \u0432\u0430\u0448\u0435\u0439 \u043A\u043B\u0435\u0442\u043A\u0438.",
-              "P: \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u044C \u0437\u0430\u0434\u0430\u043D\u0438\u0435 \u0438\u0441\u043F\u044B\u0442\u0430\u043D\u0438\u044F.")
+              "P: \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u044C \u0437\u0430\u0434\u0430\u043D\u0438\u0435 \u0438\u0441\u043F\u044B\u0442\u0430\u043D\u0438\u044F.",
+              "Ctrl+B: \u043E\u0442\u043C\u0435\u0442\u0438\u0442\u044C \u0442\u0435\u043A\u0443\u0449\u0438\u0439 \u0432\u043E\u043F\u0440\u043E\u0441 \u0434\u043B\u044F \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043E\u0431 \u043E\u0448\u0438\u0431\u043A\u0435.",
+              "Ctrl+Shift+B: \u043E\u0442\u043C\u0435\u0442\u0438\u0442\u044C \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043E\u043F\u0440\u043E\u0441 \u0434\u043B\u044F \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u043E\u0431 \u043E\u0448\u0438\u0431\u043A\u0435.")
           ]
         end
       end

@@ -97,6 +97,7 @@ module GameRoomUI
     attr_accessor :game_room_background_help_enabled
     attr_accessor :game_room_entry_boundary
     attr_accessor :game_room_pending_operation
+    attr_accessor :game_room_tournament_shortcut_enabled, :game_room_invitation_context_field
 
     def initialize(fields, program: nil, **options)
       @game_room_program = program
@@ -119,6 +120,14 @@ module GameRoomUI
       super
       return if submenu && !contextinglobal_enabled?
       return unless game_room_invitation_context?
+      menu.option(GameRoomContent.utf8(_("My tournaments")),nil,"T"){open_my_tournaments} if game_room_tournament_shortcut?
+      return if game_room_invitation_context_field && fields[index.to_i].equal?(game_room_invitation_context_field)
+
+      append_game_room_invitation(menu)
+    end
+
+    def append_game_room_invitation(menu)
+      return unless game_room_invitation_context?
 
       menu.option(GameRoomContent.utf8(_("Accept invitation")), nil, "j") do
         accept_game_room_invitation
@@ -138,6 +147,20 @@ module GameRoomUI
       end
     end
 
+    def game_room_tournament_shortcut?
+      game_room_tournament_shortcut_enabled == true && @game_room_program&.respond_to?(:show_my_tournaments, true)
+    end
+
+    def open_my_tournaments
+      return unless game_room_tournament_shortcut?
+      operation=game_room_pending_operation || @game_room_help_owner&.game_room_pending_operation
+      return operation.reject_action if operation
+      clear_game_room_key
+      @game_room_program.__send__(:show_my_tournaments)
+    ensure
+      clear_game_room_key
+    end
+
     def wait
       GameRoomUI.install_hotkeys
       @game_room_waiting = true
@@ -148,6 +171,10 @@ module GameRoomUI
 
     def update
       @game_room_program.send(:announce_volume_save_error) if @game_room_program&.respond_to?(:announce_volume_save_error, true)
+      if game_room_tournament_shortcut? && game_room_hotkeys_active? && !game_room_background_help? &&
+          keyboard_binding_pressed?([0x54,:control,:shift],first:true)
+        open_my_tournaments
+      end
       if game_room_hotkeys_active? && @game_room_program&.respond_to?(:switch_to_invited_table, true) &&
           main_shortcut_pressed?('j', first: true)
         # Handle this before the focused field, including chat and modal forms.
@@ -270,6 +297,7 @@ module GameRoomUI
       if @game_room_program&.respond_to?(:switch_to_invited_table, true)
         global_tips.unshift(GameRoomContextHelp.shortcut_tip('Ctrl+J', _("Accept invitation")))
       end
+      global_tips.unshift(GameRoomContextHelp.shortcut_tip('Ctrl+Shift+T',_("My tournaments"))) if game_room_tournament_shortcut?
       items = GameRoomContextHelp.clean_tips(tips + form_tips + history_tips + global_tips)
       items = [_("No shortcuts are available on this screen.")] if items.empty?
       @game_room_help_open = true
@@ -279,7 +307,7 @@ module GameRoomUI
         type: EditBox::Flags::ReadOnly | EditBox::Flags::MultiLine,
         text: items.map { |item| GameRoomContent.utf8(item) }.join("\n"), quiet: true)
       close = Button.new(_("Close"))
-      dialog = GameRoomUI::Form.new([list, close], program: @game_room_program, quiet: true)
+      dialog = build_game_room_help_form([list, close])
       dialog.instance_variable_set(:@game_room_help_open, true)
       dialog.game_room_volume_reader = game_room_volume_reader
       dialog.game_room_volume_writer = game_room_volume_writer
@@ -296,12 +324,23 @@ module GameRoomUI
       dialog.wait
       clear_game_room_key
       # A modal help view does not replace controls or modify the parent wait.
-      field.focus if field.respond_to?(:focus)
+      restore_game_room_help_focus(field)
     ensure
       @game_room_help_open = false if opened_here
     end
 
     private
+
+    # Lokalny ekran może przekazać lease, bez zmiany zwykłej pomocy.
+    def build_game_room_help_form(fields)
+      GameRoomUI::Form.new(fields, program: @game_room_program, quiet: true)
+    end
+
+    # Końcowy powrót wyłącznie z pomocy modalnej. Domyślnie zachowuje
+    # dotychczasowy field.focus; lokalny guard może przejąć go w swoim ensure.
+    def restore_game_room_help_focus(field)
+      field.focus if field.respond_to?(:focus)
+    end
 
     def maintain_game_room_scene
       # ELTEN 3.0.4 dispatches main and parallel scene endpoints in loop_update.

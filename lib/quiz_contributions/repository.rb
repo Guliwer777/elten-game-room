@@ -48,15 +48,24 @@ module GameRoomQuizContributions
       rows = resources(token).list(timeout: 15, cancellation_token: token)
       check(token)
       rows.select do |resource|
-        resource.resource.to_s.start_with?(PREFIX)
+        resource.resource.to_s.start_with?(PREFIX) && resource.uploader.to_s.casecmp?(@user)
       end.map do |resource|
-        meta = metadata(resource)
-        {'resource_id' => resource.id, 'resource_name' => resource.resource, 'id' => meta['id'],
-          'title' => meta['title'], 'kind' => meta['kind'], 'language' => meta['language'], 'count' => meta['count']}
+        begin
+          meta = metadata(resource)
+          {'resource_id' => resource.id, 'resource_name' => resource.resource, 'id' => meta['id'],
+            'title' => meta['title'], 'kind' => meta['kind'], 'language' => meta['language'], 'count' => meta['count']}
+        rescue Invalid
+          # Keep the bad entry visible and deletable only by explicit choice.
+          # Its untrusted metadata must not hide the other account drafts.
+          {'resource_id'=>resource.id, 'resource_name'=>resource.resource, 'damaged'=>true,
+            'fingerprint'=>fingerprint(resource)}
+        end
       end
     end
 
     def read(ref, token: nil)
+      check(token)
+      raise Invalid, _('The saved draft is damaged.') if ref['damaged']
       store = resources(token)
       resource = store.list(timeout: 15, cancellation_token: token).find { |r| r.id == ref.fetch('resource_id') }
       check(token)
@@ -102,7 +111,19 @@ module GameRoomQuizContributions
       found = store.list(timeout: 15, cancellation_token: token).find { |r| r.id == ref['resource_id'] }
       check(token)
       return true unless found
-      raise Invalid, _('Invalid proposal.') unless found.resource == ref['resource_name'] && metadata(found)['id'] == ref['id']
+      raise Invalid, _('Invalid proposal.') unless found.resource == ref['resource_name'] && found.uploader.to_s.casecmp?(@user)
+      if ref['damaged']
+        raise Invalid, _('Invalid proposal.') unless found.resource.to_s.start_with?(PREFIX) && fingerprint(found)==ref['fingerprint']
+        damaged=false
+        begin
+          metadata(found)
+        rescue Invalid
+          damaged=true
+        end
+        raise Invalid, _('Invalid proposal.') unless damaged
+      else
+        raise Invalid, _('Invalid proposal.') unless metadata(found)['id'] == ref['id']
+      end
       store.delete(found, timeout: 15, cancellation_token: token)
       check(token)
       true
@@ -155,10 +176,23 @@ module GameRoomQuizContributions
       raise Invalid, _('The saved draft is damaged.') unless resource.resource.to_s.start_with?(PREFIX) &&
         resource.uploader.to_s.casecmp?(@user) && resource.filesize.to_i.between?(1, Model::MAX_BYTES) &&
         meta.is_a?(Hash) && meta['format'] == 1 && Model::UUID.match?(meta['id'].to_s) &&
+        meta['title'].is_a?(String) && meta['title'].valid_encoding? && meta['language'].is_a?(String) &&
+        %w[set question].include?(meta['kind']) && meta['count'].is_a?(Integer) && meta['count'].between?(0,Model::MAX_ITEMS) &&
         resource.resource.start_with?(PREFIX + meta['id'] + '-') && /\A[0-9a-f]{64}\z/.match?(meta['sha256'].to_s)
       meta
     rescue JSON::ParserError
       raise Invalid, _('The saved draft is damaged.')
+    end
+
+    def fingerprint(resource)
+      # Damaged metadata need not be valid UTF-8. Hash exact length-prefixed
+      # bytes, without serializing it back to JSON or losing invalid bytes.
+      digest=Digest::SHA256.new
+      [resource.id,resource.resource,resource.meta,resource.uploader,resource.filesize].each do |value|
+        bytes=value.to_s.b
+        digest << bytes.bytesize.to_s << ':' << bytes
+      end
+      digest.hexdigest
     end
 
     def inflate(bytes)

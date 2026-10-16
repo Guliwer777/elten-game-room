@@ -70,7 +70,8 @@ class GameRoomSessionRunner
 
   def initialize(program:, transport:, repository:, game:, session:, table:,
     owner:, viewer:, room_snapshot_provider:, context:, game_status_changed: nil,
-    covered: nil, activity_repository: nil, statistics_observer: nil)
+    covered: nil, activity_repository: nil, statistics_observer: nil, action_context_observer: nil, completion_observer: nil)
+    @action_context_observer = action_context_observer
     @program, @transport, @repository = program, transport, repository
     @game = game.build_session_game
     @session, @table = copy(session), copy(table)
@@ -79,6 +80,7 @@ class GameRoomSessionRunner
     @room_snapshot_provider, @game_status_changed = room_snapshot_provider, game_status_changed
     @activity_repository = activity_repository
     @statistics_observer = statistics_observer
+    @completion_observer = completion_observer
     @context_template = context
     @clock = GameRoomSessionClock.new
     @coordinator = GameRoomBots::Coordinator.new
@@ -324,6 +326,7 @@ class GameRoomSessionRunner
         @room, @table = room, copy(room.table)
       end
       @statistics_observer&.call(@session, @replay)
+      @completion_observer&.call(@session,@replay,snapshot.events) if @replay.finished?
       @turn.observe(session_id: @repository.session_id(@session), events: snapshot.events,
         confirmed_event_ids: @repository.confirmed_event_ids(@session), verified: force)
       @game.cleanup_session_answers(@replay, session_id: @repository.session_id(@session),
@@ -454,7 +457,9 @@ class GameRoomSessionRunner
 
   def commit(selection, actor, controller: false, lease: nil)
     return [:closed, nil] if closed?
-    status, plan = @game.action_for(selection, @replay, actor, context: context)
+    action_context = context
+    @action_context_observer&.call(action_context)
+    status, plan = @game.action_for(selection, @replay, actor, context: action_context)
     return [status, nil] unless status == :ok
     unless plan.is_a?(GameRoomGames::ActionPlan) && !plan.events.to_a.empty?
       raise ArgumentError, "a successful game action must return an ActionPlan"

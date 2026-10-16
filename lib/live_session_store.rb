@@ -18,6 +18,8 @@ require_relative "game_session_contracts"
 # discoverable LiveSession.  Every mutation is appended to the session stack;
 # repositories only project that ordered log into their familiar row-shaped
 # values.  App tables are deliberately not involved in room or game state.
+require_relative 'tournament_marker'
+
 class GameRoomLiveSessionStore
   KIND = "elten_game_room_table".freeze
   PROTOCOL = GameRoomEventProtocol::NATIVE_PACKET_VERSION
@@ -49,8 +51,9 @@ class GameRoomLiveSessionStore
     keyword_init: true
   )
 
-  def initialize(program, changed: nil, endpoint_provider: nil, presence_changed: nil)
+  def initialize(program, changed: nil, endpoint_provider: nil, presence_changed: nil, clock: GameRoomClock, local_view: false)
     @program = program
+    @clock, @local_view = clock, local_view
     @changed = changed
     @presence_changed = presence_changed
     @endpoint_provider = endpoint_provider || -> { @program.live_sessions }
@@ -70,15 +73,75 @@ class GameRoomLiveSessionStore
     @discovery_due, @activity_publish_at, @realtime_activity = {}, {}, {}
     @discovery_work_lock = Mutex.new
     runtime = Programs.current_runtime if defined?(Programs) && Programs.respond_to?(:current_runtime)
-    @discovery_work = GameRoomBackground::Work.new(runtime: runtime)
-    @program.class.manage(@discovery_work) if @program.class.respond_to?(:manage)
+    if @local_view
+      initialize_local_work(runtime)
+    else
+      @discovery_work = GameRoomBackground::Work.new(runtime: runtime)
+      @program.class.manage(@discovery_work) if @program.class.respond_to?(:manage)
+    end
+  end
+
+  # Własność zaczyna się przed initialize: runtime może przejąć Work i rzucić.
+  def initialize_local_work(runtime)
+    @discovery_work = GameRoomBackground::Work.allocate
+    complete = false
+    primary = nil
+    begin
+      @discovery_work.send(:initialize, runtime: runtime)
+      @program.class.manage(@discovery_work) if @program.class.respond_to?(:manage)
+      complete = true
+    rescue Exception => error
+      primary = error
+      raise error, cause: error.cause
+    ensure
+      unless complete
+        begin
+          close_local_view
+        ensure
+          raise primary, cause: primary.cause if primary
+        end
+      end
+    end
+  end
+  private :initialize_local_work
+
+  # Jawny lifecycle odłączonego widoku. Nie wywołuje close pokoju/native SDK.
+  def close_local_view
+    raise ArgumentError, 'Nie jest to lokalny widok transakcji' unless @local_view
+    @mutex.synchronize { @local_view_closed = true }
+    primary = nil
+    begin
+      @discovery_work.close
+    rescue Exception => error
+      primary = error
+      raise error, cause: error.cause
+    ensure
+      begin
+        @program.class.release(@discovery_work) if @program.class.respond_to?(:release)
+      ensure
+        @mutex.synchronize do
+          @endpoint = @invitation_endpoint = nil
+          @sessions.clear
+          @discovery_due.clear
+          @changed = @presence_changed = nil
+        end
+        raise primary, cause: primary.cause if primary
+      end
+    end
+    nil
   end
 
   def start
-    GameRoomClock.synchronize
+    @clock.synchronize
     current = endpoint
     current.sessions.to_a.each { |session| attach_supported_session(session) } if current.respond_to?(:sessions)
     true
+  end
+
+  def local_actor
+    return nil unless @local_view
+    current = endpoint
+    current.local_session_actor if current.is_a?(GameRoomSessionContracts::LocalActor)
   end
 
   # Workers must observe queued moves even while the app scene is covered,
@@ -143,7 +206,7 @@ class GameRoomLiveSessionStore
     end
   end
 
-  def create_room(name:, game:, owner:, game_options:, capacity: MAX_CAPACITY, private_table: false, resume_save_id: nil, bot_count: 0, bot_names: nil)
+  def create_room(name:, game:, owner:, game_options:, capacity: MAX_CAPACITY, private_table: false, resume_save_id: nil, bot_count: 0, bot_names: nil, tournament_match: nil)
     start
     table_id = unused_identifier
     maximum = bounded_capacity(capacity)
@@ -160,8 +223,9 @@ class GameRoomLiveSessionStore
       "game_options" => game_options.to_s,
       "private" => private_table == true,
       "resume_save_id" => resume_save_id.to_s,
-      "created_at" => GameRoomClock.now.to_i
+      "created_at" => @clock.now.to_i
     }
+    metadata['tournament_match'] = GameRoomTournamentMarker.copy(tournament_match) if tournament_match
     discovery = metadata.dup
     discovery.merge!("status" => "waiting", "bot_count" => [[bot_count.to_i, 0].max, maximum - 1].min,
       "player_count" => 1 + [[bot_count.to_i, 0].max, maximum - 1].min, "max_players" => maximum)
@@ -187,13 +251,17 @@ class GameRoomLiveSessionStore
       "bot_names" => Array.new([[bot_count.to_i, 0].max, maximum - 1].min) { |index| bot_names.to_a[index] },
       "game_options" => game_options.to_s,
       "created_at" => metadata["created_at"]
-    }, actor: owner)
+    }.merge(tournament_match ? {'tournament_match'=>metadata['tournament_match']} : {}), actor: owner)
     table_for(table_id)
-  rescue StandardError
+  rescue Exception => error
+    raise unless @local_view || error.is_a?(StandardError)
     begin
       session&.close
     rescue StandardError
       nil
+    ensure
+      # Lokalny cleanup nie zastępuje własnego primary, również przez throw.
+      raise error, cause: error.cause if @local_view
     end
     raise
   end
@@ -324,7 +392,7 @@ class GameRoomLiveSessionStore
       name = key.to_s
       result[name] = value if allowed.include?(name)
     end
-    values["updated_at"] = GameRoomClock.now.to_i
+    values["updated_at"] = @clock.now.to_i
     append_record(table_id, "room_state", values, actor: actor)
     publish_discovery(table_id)
     table_for(table_id)
@@ -586,7 +654,7 @@ class GameRoomLiveSessionStore
     record = append_record(table_id, "room_state", {
       "game_options" => options.to_s, "options_changed" => true,
       "expected_options" => expected_options.to_s, "expected_session_id" => expected_session_id.to_i,
-      "updated_at" => GameRoomClock.now.to_i
+      "updated_at" => @clock.now.to_i
     }, actor: endpoint.user)
     _projection, applied = project_room_records(table_id, {})
     record != nil && applied.include?(record.sequence)
@@ -611,7 +679,7 @@ class GameRoomLiveSessionStore
     true
   end
 
-  def start_game(table:, game:, players:, options:, actor:, restore: nil)
+  def start_game(table:, game:, players:, options:, actor:, restore: nil, requested_session_id: nil)
     table_id = table_identifier(table)
     raise ArgumentError, "Invalid room" if table_id == nil
     if restore && restore.key?(:statistics)
@@ -624,7 +692,10 @@ class GameRoomLiveSessionStore
     if archive && archive.length > MAX_ARCHIVE_EVENTS
       raise ArgumentError, "The saved game is too large to restore safely"
     end
-    archive_id = restore ? SecureRandom.uuid : nil
+    archive_id = restore ? restore.fetch(:archive_id) { SecureRandom.uuid } : nil
+    if restore && (!archive_id.is_a?(String) || archive_id.empty? || archive_id.length>64)
+      raise ArgumentError, 'Invalid restored archive identity'
+    end
     ensure_current(table_id, force: true)
     # Requested capacities are not a grant: use this session's server limits.
     # Preflight the entire import before writing its checkpoint or chunks.
@@ -636,24 +707,16 @@ class GameRoomLiveSessionStore
       []
     end
     state = table_for(table_id)
-    members = connected_users(table_id)
-    observers = observer_users(table_id, members: members)
     requested_players = unique_users(players.to_a)
-    bots = room_bots(table_id, state)
     restored_controllers = restore ? restore.fetch(:controllers, {}) : {}
-    invalid_player = requested_players.any? do |player|
-      if GameRoomParticipants.bot?(player)
-        !bots.any? { |bot| same_user?(bot, player) }
-      else
-        restored_controllers[player] != 'bot' && (observers.any? { |observer| same_user?(observer, player) } ||
-          !members.any? { |member| same_user?(member, player) })
+    validate_start_roster!(table_id, state, requested_players, restored_controllers)
+
+    if requested_session_id
+      unless requested_session_id.is_a?(Integer) && requested_session_id.between?(1,2_000_000_000) && game_sessions(table_id).empty?
+        raise ArgumentError, 'A pre-bound game must be the first game on a new table'
       end
     end
-    if invalid_player
-      raise ArgumentError, "The table roles changed before the game started"
-    end
-
-    game_session_id = unused_game_identifier(table_id)
+    game_session_id = requested_session_id || unused_game_identifier(table_id)
     # Persist and verify any local secrets before uploading an archive or
     # making the restored game visible to other clients.
     restore[:before_publish]&.call(game_session_id) if restore != nil
@@ -676,7 +739,7 @@ class GameRoomLiveSessionStore
       "game" => game.to_s,
       "players" => players.to_a.map(&:to_s),
       "options" => options.to_s,
-      "created_at" => GameRoomClock.now.to_i
+      "created_at" => @clock.now.to_i
     }
     payload['statistics'] = GameRoomStatistics::Identity.create(players: requested_players) unless restore
     if restore != nil
@@ -685,11 +748,28 @@ class GameRoomLiveSessionStore
       payload['initial_players'] = restore.fetch(:initial_players, requested_players)
       payload.merge!("archive_id" => archive_id, "archive_events" => archive.length,
         "event_id_base" => archive.map { |event| event["id"] }.max.to_i,
-        "clock_offset" => restore[:game_time] == nil ? restore.fetch(:clock_offset).to_i : GameRoomClock.now.to_i - restore[:game_time].to_i)
+        "clock_offset" => restore[:game_time] == nil ? restore.fetch(:clock_offset).to_i : @clock.now.to_i - restore[:game_time].to_i)
     end
     record = append_record(table_id, "game_started", payload, actor: actor)
     trim_previous_games(table_id, checkpoint.sequence - 1) if record != nil && checkpoint != nil
     game_session_from(record)
+  end
+
+  private def validate_start_roster!(table_id, state, requested_players, restored_controllers)
+    members = connected_users(table_id)
+    observers = observer_users(table_id, members: members)
+    bots = room_bots(table_id, state)
+    invalid_player = requested_players.any? do |player|
+      if GameRoomParticipants.bot?(player)
+        !bots.any? { |bot| same_user?(bot, player) }
+      else
+        restored_controllers[player] != 'bot' && (observers.any? { |observer| same_user?(observer, player) } ||
+          !members.any? { |member| same_user?(member, player) })
+      end
+    end
+    if invalid_player
+      raise ArgumentError, "The table roles changed before the game started"
+    end
   end
 
   def freeze_game(session, frozen: true, expected_boundary: nil)
@@ -771,8 +851,10 @@ class GameRoomLiveSessionStore
   end
 
   def endpoint
+    @mutex.synchronize { raise IOError, 'Local transaction view is closed' if @local_view_closed }
     current = @endpoint_provider.call
     changed = @mutex.synchronize do
+      raise IOError, 'Local transaction view is closed' if @local_view_closed
       different = !@endpoint.equal?(current)
       @endpoint = current
       @discovered.clear if different
@@ -1064,6 +1146,9 @@ class GameRoomLiveSessionStore
   # defaults just to fit the public description.
   def compact_discovery(metadata)
     result = metadata.dup
+    if result.key?('tournament_match')
+      result['match_ref']=GameRoomTournamentMarker.pack(result.delete('tournament_match'))
+    end
     result.delete('statistics_room_id')
     # Optional roster information must never evict settings or control anchors.
     result.delete('roster') if JSON.generate(result).bytesize > DISCOVERY_BYTES && !result.key?('game_options')
@@ -1141,7 +1226,7 @@ class GameRoomLiveSessionStore
   def normalize_time(value)
     return value.to_i if value.respond_to?(:to_i) && value.to_i.positive?
 
-    GameRoomClock.now.to_i
+    @clock.now.to_i
   end
 
   def unique_users(users)

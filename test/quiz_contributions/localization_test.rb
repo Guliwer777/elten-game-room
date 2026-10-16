@@ -40,6 +40,20 @@ program = EltenGameRoom.allocate
   assert(views.questions(draft.merge('items' => [])).first == :back, 'Empty question browser did not cancel')
   views.notice(GameRoomQuizContributions::Model.completion_errors(draft).join("\r\n"))
   assert(views.draft_label(draft).valid_encoding?, 'Draft label encoding')
+  pack_type = Struct.new(:id, :title, :language_id)
+  packs = [pack_type.new('one', draft['title'], language)]
+  visited_headers = []
+  Form.driver = lambda do |form|
+    field = form.fields.first
+    visited_headers << field.header
+    assert(form.fields.size == 3 && form.game_room_program.equal?(program), 'Picker bypassed the shared one-list form')
+    field.focus
+    assert(field.header.valid_encoding? && field.options.all?(&:valid_encoding?), 'Picker labels have invalid encoding')
+    form.accept_button.trigger(:press)
+  end
+  assert(views.choose_pack(packs).equal?(packs.first), 'Translated picker returned another set')
+  assert(visited_headers == ['Language', 'Question set'].map { |label| GameRoomLocalization.translate(label) },
+    'Translated picker did not open language and set as separate windows')
 end
 Form.driver = nil
 puts "PASS question contributions in all five languages: #{$assertions} checks"

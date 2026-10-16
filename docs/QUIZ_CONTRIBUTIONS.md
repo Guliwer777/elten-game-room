@@ -1,6 +1,6 @@
 # Question creator
 
-The main lobby has a **Create your own question sets** entry after **Saved games**. Anyone
+The main lobby has a **Create your own quiz question sets** entry. Anyone
 can propose questions for an installed set or create a new set. Proposals are
 sent to `papierek` by ordinary ELTEN private message, not published into the
 playable question database. Sources are optional.
@@ -17,19 +17,25 @@ questions**, **Add a category**, **Delete draft**, **Send to the author**.
 Browsing opens a separate numbered list; Enter edits the selected question.
 Ctrl+N adds a question from either an empty or a populated question list; the
 empty-list message explains the shortcut. The set menu keeps its existing
-**Add a question** action. Yes/No and other short selectors, including the
-correct-answer selector, accept both horizontal and vertical arrow keys.
+**Add a question** action. Yes/No and other short selectors accept both horizontal
+and vertical arrow keys.
 Adding a question to a set with no categories shows a notice asking the user
 to create at least one category first. It does not open an empty question.
+Delete on the library uses the same deletion action as the menu.
+Existing-set proposals choose a language first, then press Enter to open a
+separate window of matching sets. Escape returns to the language choice;
+set labels contain titles only. This reads metadata, not entire packs.
 Deleting a draft requires confirmation and returns to the set library only
 after success; cancelling or failing leaves the draft available.
 
-The question editor has four answer fields, a correct-answer selector, a category
+The question editor has four answer fields (A is always correct), a category
 list, optional source/note and **Save**. The last category item is **Add a new
 category**: Enter opens a nested editor without rebuilding the question form.
 Saving selects the new category; cancelling keeps the previous selection and
 all typed fields. The category is saved independently of the pending question.
 When saving the question afterwards, retain that new draft snapshot reference.
+Older questions are reordered in the editor's copy only; saving keeps the
+correct answer but moves it to A. Cancelling does not alter delivery digests.
 Incomplete questions can be saved. Each save
 stages local recovery and then saves a private account file. Escape on a changed
 question offers Save, Continue editing or Discard unsaved changes.
@@ -107,7 +113,7 @@ SDK has no attachment-deletion operation.
   cancellation and account checks apply at operation boundaries. There is no
   periodic polling, game-time network reporting or custom HTTP transport.
 
-## Ephemeral reports from Quiz
+## Ephemeral reports from Quiz and Duck Racing
 
 Ctrl+B marks the displayed question; Ctrl+Shift+B marks the previous one.
 `GameRoomQuizReports::Tracker` keeps only the current/previous snapshots and
@@ -117,8 +123,14 @@ must not replace the snapshot: they can retain an old question ID with a new
 round number and answer order. No shortcut sends a move, opens a form or performs
 network work. Marks survive rematches at the same table, not an account change.
 
+Duck Racing captures the local client's displayed quiz question for both
+field/card questions and challenge questions, without exporting player answers.
+Other challenges do not replace the last question. A closed or mismatched client
+cannot contribute a snapshot.
+
 After the table screen returns and releases its layout, Yes opens a simple issue
-description for each marked question; No discards all marks. Cancelling Leave
+description for each marked question; No discards all marks. The form shows
+the correct answer as stored in the set, not during play. Cancelling Leave
 does not open this prompt. There are no report drafts, receipts or saved history.
 Sending uses a finite managed task and the creator's bounded, account-checked
 SDK client, but none of its file-storage operations.

@@ -84,6 +84,11 @@ def exercise_generations
       payload: {"type" => "game_room.invitation_resolved", "metadata" => {}, "sender" => "Guest"}, alert: "")
     assert(Object.new.extend(NotificationGroups).build_notification_groups([row]).empty?, "technical receipt became visible")
     assert(current[2].receipts == [301 + index], "receipt did not reach current program")
+    wake = row.dup
+    wake.payload = row.payload.merge("type" => "game_room.tournament_changed")
+    assert(Object.new.extend(NotificationGroups).build_notification_groups([wake]).empty?,
+      "reload exposed a blank tournament wake")
+    assert(current[2].receipts == [301 + index], "tournament wake was mistaken for an invitation receipt")
     assert([EltenAPI::QuickActions.singleton_class.ancestors.length, NotificationGroups.ancestors.length] == depth,
       "reload grew a bridge chain")
     previous = current
@@ -98,6 +103,6 @@ refs = exercise_generations
 assert(refs.none?(&:weakref_alive?), "host bridge retained an unloaded namespace/program/runtime")
 assert(EltenAPI::QuickActions.singleton_class.instance_variable_get(:@game_room_dispatch_bridge_version) == 3,
   "hotkey bridge was not upgraded")
-assert(NotificationGroups.instance_variable_get(:@game_room_receipt_bridge_version) == 2,
+assert(NotificationGroups.instance_variable_get(:@game_room_receipt_bridge_version) == 3,
   "receipt bridge was not upgraded")
 puts "PASS actual host lifecycle: legacy upgrade, 20 namespaces, managed receipt cleanup, stale disposal, current delivery, WeakRef GC and stable ancestors"

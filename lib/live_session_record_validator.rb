@@ -2,6 +2,7 @@ require 'json'
 require_relative 'table_control'
 require_relative 'game_statistics_identity'
 require_relative 'game_event_protocol'
+require_relative 'tournament_marker'
 
 # Pure stack validation. Only earlier accepted starts enter the index; neither
 # future starts nor rejected authors can grant permission to a game action.
@@ -163,6 +164,13 @@ class GameRoomLiveSessionStore
     end
 
     def room_fields_valid?(data)
+      if data.key?('tournament_match')
+        begin
+          GameRoomTournamentMarker.copy(data['tournament_match'])
+        rescue GameRoomTournamentMarker::Invalid
+          return false
+        end
+      end
       if data.key?('bot_players')
         bots = data['bot_players']
         return false unless bots.is_a?(Array) && bots.length == data['bot_count'] &&

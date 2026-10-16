@@ -103,9 +103,10 @@ end
 class PongHarness
   attr_reader :clients, :surfaces, :network, :replay, :players, :rules, :repository, :session, :programs
   attr_accessor :now
-  def initialize(players: %w[Alice Bob], viewers: nil, options: {}, preferences: {})
+  def initialize(players: %w[Alice Bob], viewers: nil, options: {}, preferences: {}, session: nil, session_id: 300, table_id: 20, owner: 'Alice', initial_events: nil)
+    @owner = owner
     @players = players
-    @viewers = viewers || (['Alice'] + players + ['Watcher']).uniq
+    @viewers = viewers || ([owner] + players + ['Watcher']).uniq
     @now, @network, @clients, @surfaces = 0.0, {}, {}, {}
     @programs = {}
     @rules = GameRoomGames::AxelPong.new
@@ -113,18 +114,18 @@ class PongHarness
     def @repository.players_for(s); s['__players']; end
     def @repository.actor_of(e, _s); e['actor']; end
     def @repository.event_id(e); e['__id']; end
-    @session = {'__players' => players, '__insertion_user' => 'Alice', 'player_one' => 'Alice',
+    @session = session || {'__players' => players, '__insertion_user' => owner, 'player_one' => owner,
       'options' => JSON.generate(@rules.default_options.merge(options))}
-    @events = []
-    @replay = @rules.replay(@session, [], @repository)
+    @events = initial_events ? initial_events.dup : []
+    @replay = @rules.replay(@session, @events, @repository)
     @viewers.each do |name|
       program = Program.new
       program.instance_variable_set(:@pong_preferences, GameRoomPong::Preferences.normalize(preferences[name]))
       program.define_singleton_method(:pong_preferences) { @pong_preferences }
       @programs[name] = program
-      client = GameRoomPong::Client.new(program, @rules, clock: -> { @now }, audio: PongTestAudio.new,
+      client = @rules.build_client(program, clock: -> { @now }, audio: PongTestAudio.new,
         channel_factory: ->(**args) { PongTestChannel.new(@network, **args) })
-      client.bind_screen(session_id: 300, table_id: 20, owner: 'Alice', viewer: name, members: -> { @viewers })
+      client.bind_screen(session_id: session_id, table_id: table_id, owner: owner, viewer: name, members: -> { @viewers })
       client.start
       client.before_wait(@replay, name)
       @surfaces[name] = PongTestSurface.new
@@ -141,7 +142,7 @@ class PongHarness
     @surfaces[name].controls['press'] += 1
   end
   def accept_point(value)
-    @events << {'__id' => @events.length + 1, 'actor' => 'Alice', 'action' => 'pong_point', 'value' => value}
+    @events << {'__id' => @events.length + 1, 'actor' => @owner, 'action' => 'pong_point', 'value' => value}
     @replay = @rules.replay(@session, @events, @repository)
     @clients.each { |name, client| client.before_wait(@replay, name) }
   end

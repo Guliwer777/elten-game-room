@@ -2,6 +2,15 @@ require_relative '../support/quiz_contributions'
 include QuestionContributionTest
 Q = GameRoomQuizContributions
 
+4.times do |index|
+  original = Q::Model.new_question('Example').merge('choices' => %w[One Two Three Four], 'correct_index' => index)
+  frozen_copy = Q::Model.copy(original)
+  reordered = Q::Model.correct_first(original)
+  assert(reordered['correct_index'] == 0 && reordered['choices'].first == original['choices'][index], 'Editor lost the correct answer')
+  assert(reordered['choices'].drop(1) == original['choices'].each_with_index.reject { |_, i| i == index }.map(&:first), 'Other answers changed')
+  assert(original == frozen_copy, 'Opening editor mutated persisted content')
+end
+
 Dir.mktmpdir('question-creator-') do |directory|
   user = 'guest'
   storage = QuestionContributionTest::Storage.new(directory)

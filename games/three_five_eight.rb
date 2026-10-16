@@ -402,6 +402,16 @@ module GameRoomGames
       replay.state[:scores].dup
     end
 
+    def tournament_ranking_scores(replay, options:)
+      {scores: participant_scores(replay), order: 'higher'}
+    end
+
+    def tournament_ranking_result(replay, options:)
+      outcome=tournament_result(replay,options:options)
+      # A tie for first place does not make the third player a co-winner.
+      outcome.merge(winners:replay.state.fetch(:winners).dup,draw:false)
+    end
+
     def result_text(replay)
       winners = replay.state[:winners].to_a
       return nil if winners.empty?

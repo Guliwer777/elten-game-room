@@ -27,6 +27,16 @@ module GameRoomQuizContributions
         'category' => category, 'source' => '', 'note' => ''}
     end
 
+    # Reorder only the editor's copy. Old drafts and delivery digests remain
+    # unchanged until the user saves the edited question.
+    def correct_first(value)
+      result = copy(value)
+      answer = result['choices'].delete_at(result['correct_index'])
+      result['choices'].unshift(answer)
+      result['correct_index'] = 0
+      result
+    end
+
     def new_draft(kind, target: {})
       {'id' => SecureRandom.uuid, 'kind' => kind, 'target' => copy(target),
         'title' => '', 'language' => '', 'description' => '', 'categories' => [],

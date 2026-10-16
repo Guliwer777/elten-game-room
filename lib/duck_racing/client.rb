@@ -189,6 +189,22 @@ module GameRoomDuckRacing
       copy(@view)
     end
 
+    # Capture the displayed question, not another draw or a participant's
+    # private answer. The shared report UI only opens after leaving the table.
+    def reportable_question(replay)
+      return unless view_matches?(replay, @viewer) && @challenge[:kind] == 'quiz' &&
+        @view && @view[:question] && !@view[:preparing]
+      @report_question ||= begin
+        question = @trace&.state&.dig(:model, :question) || @resources.fetch(:questions).draw(seed: @challenge[:seed])
+        shown = @view[:question]
+        {'id' => shown[:question_id].to_s, 'prompt' => shown[:prompt], 'category' => shown[:category],
+          'answers' => shown[:choices].dup, 'correct' => question[:choices].fetch(question[:correct_index]),
+          'language' => shown[:language_id], 'set' => shown[:set_id],
+          'round' => @challenge[:seed], 'position' => @challenge[:id]}
+      end
+      copy(@report_question)
+    end
+
     def surface_spec(replay, viewer)
       return unless view_matches?(replay, viewer)
       if realtime? && !practicing?
@@ -733,6 +749,7 @@ module GameRoomDuckRacing
       @preparation_audio&.close
       @preparation_audio = nil
       @audio = @trace = @watch_view = @view = @origin_ms = nil
+      @report_question = nil
       @preparation = nil
       @presented_surface = @presented_view = nil
       @unfocused_prompt = false

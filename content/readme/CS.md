@@ -1,5 +1,3 @@
-# Power Games
-
 Power Games je sada her pro uživatele ELTENu. U stolu se můžete sejít s přáteli, připojit se k otevřené hře, sledovat ostatní nebo se utkat s boty ve hrách, které je podporují.
 
 ELTEN předčítá karty, herní desky, výsledky i události a zvuky pomáhají sledovat průběh hry. Všechny hry využívají společné stoly, chat, historii a nápovědu, takže při zkoušení další hry už budete řadu věcí znát.
@@ -18,6 +16,7 @@ ELTEN předčítá karty, herní desky, výsledky i události a zvuky pomáhají
 - [Žebříčky a statistiky](#žebříčky-a-statistiky)
 - [Funkce které snadno přehlédnete](#funkce-které-snadno-přehlédnete)
 - [Přehled klávesových zkratek](#přehled-klávesových-zkratek)
+- [Turnaje](#turnaje)
 - [Pomoc s vývojem programu](#pomoc-s-vývojem-programu)
   - [Hlášení chyb v kvízu](#hlášení-chyb-v-kvízu)
   - [Vlastní sady otázek](#vlastní-sady-otázek)
@@ -242,6 +241,7 @@ Následující přehled se týká společného ovládání programu. Příkazy k
 - F1 — nápověda k aktivnímu místu.
 - Ctrl+F1 — pravidla hry u stolu.
 - Ctrl+J — přijímání pozvánek v Power Games i ve widgetu.
+- Ctrl+Shift+T — rychlý přístup ke svým turnajům z hlavní nabídky nebo widgetu.
 - F2 — snížení hlasitosti vybrané skupiny zvuků.
 - F3 — zvýšení hlasitosti vybrané skupiny zvuků.
 - Shift+F2 — předchozí skupina zvuků.
@@ -281,6 +281,193 @@ Následující přehled se týká společného ovládání programu. Příkazy k
 Procházení položek a kategorií popisuje [kapitola o historii](#návrat-k-rozhovoru-nebo-dřívějšímu-tahu).
 Přiřazení vlastních zkratek popisuje [kapitola o widgetu](#vlastní-zkratky-pro-vytváření-stolů).
 
+## Turnaje
+
+Turnaj spojuje několik partií do jedné soutěže. Program sestaví zápasy, zapíše výsledky a určí další soupeře. Můžete se přihlásit do cizího turnaje nebo uspořádat vlastní, pro jednotlivce či stálé dvojice.
+
+### Seznam turnajů a rychlý přístup
+
+V hlavní nabídce zvolte „Turnaje“. Šipkami vyberte turnaj a Enterem otevřete seznam jeho akcí. Tab přepíná mezi seznamem, filtrem a dalšími ovládacími prvky. Filtrem zobrazíte:
+
+- aktuální turnaje, včetně těch, do kterých se ještě můžete přihlásit;
+- své aktuální turnaje, tedy ty, kterých se účastníte nebo je pořádáte;
+- dokončené turnaje, když se chcete vrátit k jejich výsledkům.
+
+V aktuálních turnajích jsou nejprve ty, kterých se účastníte, potom ty, do kterých se můžete přihlásit, a nakonec ostatní.
+
+Opuštěný turnaj zmizí po 14 dnech nečinnosti před zahájením nebo po 30 dnech bez postupu po zahájení. Před startem se tato lhůta obnovuje přihláškami a změnami pořadatele, po startu výsledky zápasů. Samotné prohlížení ji neprodlužuje. Pokud mají přihlášky nebo turnaj začít až později, turnaj před tímto datem nezmizí. Výsledky dokončených turnajů zůstávají dostupné.
+
+U názvu najdete hru, počet účastníků a stav turnaje. K dispozici jsou také tyto zkratky:
+
+- Ctrl+N — vytvořit turnaj.
+- Ctrl+R — obnovit seznam turnajů.
+- Ctrl+Shift+T — otevřít své aktuální turnaje z hlavní nabídky nebo widgetu. Pokud máte jen jeden, rovnou se otevře seznam jeho akcí.
+- Ctrl+J — otevřít běžný seznam pozvánek, který obsahuje i pozvánky k turnajovým zápasům.
+
+F1 připomene ovládání aktuálního okna, Escape se vrátí zpět. Zavřením okna se z turnaje neodhlásíte.
+
+### Akce v turnaji
+
+Po otevření turnaje se rovnou zobrazí seznam akcí. Šipkami vyberte položku a potvrďte Enterem. Záhlaví uvádí název a stav turnaje.
+
+- „Zápasy“ — zde vyberete utkání k odehrání nebo si prohlédnete výsledek dokončeného zápasu.
+- „Výsledky“ — pořadí v turnaji, včetně předchozích fází.
+- „Účastníci“ — seznam přihlášených hráčů.
+- „Pravidla turnaje“ — popis pořadatele, nastavení hry, formát soutěže, pravidla postupu a termíny.
+- „Spravovat turnaj“ — možnosti pořadatele. Ostatním účastníkům se tato položka nezobrazuje.
+
+Přihlášení, odhlášení a výběr spoluhráče se nabízejí tehdy, když je lze použít.
+
+### Přihlášení a výběr spoluhráče
+
+Přihlaste se volbou „Přihlásit se do turnaje“. Pokud není dostupná, podívejte se na stav v záhlaví: přihlášky ještě nemusejí být otevřené, mohou být uzavřené nebo je turnaj plný. Jste-li již přihlášeni, nemusíte to dělat znovu. Před zahájením můžete zvolit „Odhlásit se z turnaje“.
+
+V turnaji stálých dvojic se nejprve přihlásí každý hráč sám. Potom:
+
+1. Otevřete „Můj spoluhráč“ a vyberte jiného účastníka.
+2. Požádejte ho, aby si na stejné obrazovce vybral vás.
+3. Jakmile se vyberete navzájem, je dvojice potvrzená. Na obrazovce spoluhráče také zjistíte, zda ještě čekáte na souhlas.
+
+Před začátkem můžete svůj výběr změnit nebo zrušit. Dvojice může sestavit i pořadatel. Týmové zápasy nelze připravit, dokud některým účastníkům chybí spoluhráč. Po celý turnaj zůstáváte ve stejné dvojici a výsledek se vám počítá společně.
+
+O zahájení turnaje dostanete oznámení, i když právě prohlížíte turnaje. Jeho zvuk se řídí běžným nastavením oznámení.
+
+### Jak zahájit zápas
+
+Nemusíte vytvářet zvláštní stůl ani ho hledat mezi veřejnými partiemi.
+
+1. Otevřete svůj turnaj — v hlavní nabídce nebo ve widgetu můžete použít Ctrl+Shift+T — a zvolte „Zápasy“.
+2. Vyberte svůj neodehraný zápas a stiskněte Enter nebo Ctrl+G, případně zvolte „Hrát“ z kontextové nabídky. Po potvrzení se otevře stůl s nastavením turnaje a ostatní účastníci dostanou pozvánku.
+3. Ostatní přijmou běžnou pozvánku ke stolu z oznámení ELTENu nebo přes Ctrl+J a rovnou se připojí.
+4. Jakmile jsou všichni u stolu, hostitel zvolí „Zahájit hru“. Dále používáte běžné ovládání vybrané hry.
+
+Stůl může otevřít kterýkoli účastník daného zápasu. Pořadatel nemusí být přítomen. V seznamu uživatelů u stolu zjistíte, kdo už se připojil.
+
+Kdo není zařazen do tohoto zápasu, připojí se automaticky jako divák, a to i před zahájením hry. Platí to také pro účastníky turnaje, kteří mají hrát jiný zápas.
+
+Pozvánka platí pět minut. Její odmítnutí, vypršení ani odchod od stolu neznamená prohru nebo odhlášení z turnaje. Opětovnou volbou „Hrát“ se vrátíte ke stávajícímu stolu a pozvete chybějící hráče.
+
+Před vstupem do zápasu opusťte jinou partii. Nemůžete mít hráčské místo u dvou stolů současně. Pokud byl prázdný stůl zavřen ještě před zahájením hry, můžete zápas otevřít znovu. Rozehranou partii program automaticky nenahradí novou; pokračovat v ní můžete přes „Uložené hry“.
+
+### Zápasy, výsledky a přerušená partie
+
+„Zápasy“ se otevřou v aktuální fázi turnaje. První položka seznamu uvádí její název, například „Čtvrtfinále“, a počet dokončených zápasů. Následují vaše neodehrané zápasy, potom neodehrané zápasy ostatních a nakonec všechny dokončené. Každý vidí celý seznam.
+
+Tabem přejdete k výběru fáze. Můžete si prohlédnout i dřívější fáze. Pokud sledujete aktuální fázi, seznam po zahájení další přejde na ni automaticky. Obnovení zachová vybraný zápas, pokud je stále viditelný.
+
+Enter na dokončeném zápase oznámí, že už byl odehrán. Výsledek otevřete pomocí Ctrl+W nebo položky „Výsledek zápasu“ v kontextové nabídce. Nabídka ukazuje dostupné akce i jejich zkratky: Ctrl+G pro hraní, Ctrl+F pro přiznání kontumace a Ctrl+Shift+F pro zrušení zahájeného zápasu a přiznání kontumace. Poslední dvě akce jsou určeny pořadateli a vyžadují výběr vítěze a potvrzení.
+
+„Výsledky“ rovnou zobrazí seznam s umístěním, jménem účastníka, turnajovými body a počtem odehraných zápasů. Tabem přejdete k výběru fáze. Výsledky dokončených partií se zapisují automaticky; nemusíte je opisovat z historie hry.
+
+Pokud hra podporuje ukládání, hostitel stolu může použít Ctrl+S. Partii obnovíte z „Uložených her“ a její pokračování stále patří ke stejnému turnajovému zápasu. Samotný odchod hráče nebo ztráta spojení neznamená remízu ani kontumaci. Nerozhodnutý zápas čeká na dohrání nebo rozhodnutí pořadatele.
+
+### Vytvoření turnaje
+
+Na seznamu turnajů stiskněte Ctrl+N. Vyberte hru, poté variantu a obvyklá nastavení stolu. Po jejich potvrzení se otevře formulář turnaje. Mezi poli přecházejte Tabem, na seznamech vybírejte šipkami a zaškrtávací políčka přepínejte mezerníkem.
+
+- Název turnaje — jméno soutěže, které uvidí ostatní hráči.
+- Formát — „Každý s každým“ nebo „Skupiny a vyřazovací část“, popsané níže.
+- Limit účastníků — nejvyšší počet přihlášených osob, standardně 16, nejvýše 128. I v turnaji dvojic se počítají lidé, nikoli týmy. K zahájení není nutné všechna místa obsadit.
+- Hráčů v zápase — počet osob u jednoho stolu, ne v celém turnaji. Volba se zobrazí, pokud hra umožňuje různé počty hráčů.
+- Odvety — další zápas ve stejném složení, se změněným pořadím míst. Tato volba platí pro systém každý s každým a skupiny; vyřazovací kola a finále mají vlastní nastavení.
+- Nastavení hry — návrat k variantě a pravidlům, podle kterých se budou zápasy hrát.
+- „Termíny a herní časy“ — nepovinné termíny přihlášek, zahájení a povolené doby pro zápasy.
+
+Další pole závisejí na hře a formátu. Odvety jsou ve výchozím stavu vypnuté. Až budete hotovi, turnaj zveřejněte; samotným vyplňováním formuláře ho ostatním nezpřístupníte.
+
+Zveřejněním se přihlásíte i jako účastník. Chcete-li pouze pořádat, před zahájením se odhlaste. Pořadatelem zůstanete.
+
+### Každý s každým
+
+Při zápasech ve dvou hraje každý s každým soupeřem. Čtyři účastníci tedy odehrají šest zápasů, s odvetami dvanáct. V turnaji stálých dvojic místo jednotlivců soutěží celé dvojice. Vyhrává hráč nebo dvojice na prvním místě konečného pořadí.
+
+U větších stolů můžete zvolit, jak se sestaví zápasy:
+
+- „Všechny možné sestavy“ — program připraví zápas pro každou kombinaci zvoleného počtu účastníků. Ze čtyř osob hrajících po třech vzniknou čtyři různé sestavy.
+- „Střídání sestav; stejný počet zápasů“ — hráči se v sestavách střídají a každý odehraje stejný počet utkání, aniž by se musely vystřídat všechny možné kombinace.
+
+Všechny kombinace mohou při větším počtu účastníků znamenat velmi mnoho partií. Pokud plán překročí limit zápasů, snižte počet účastníků, vypněte odvety nebo zvolte střídání sestav.
+
+### Skupiny a vyřazovací část
+
+Tento formát je určen pro zápasy jeden proti jednomu nebo pro dvě stálé dvojice. Nejprve sbíráte body ve skupině. Po postupu do vyřazovací části musíte porážet další soupeře, abyste v turnaji zůstali.
+
+#### Skupiny
+
+Program rozdělí účastníky do co nejvyrovnanějších skupin, obvykle po třech či čtyřech hráčích nebo dvojicích. Ze čtyř účastníků vzniknou dvě skupiny po dvou. Ve skupině hrajete s každým, včetně odvety, pokud ji pořadatel zapnul.
+
+Počet postupujících závisí na počtu účastníků a přizpůsobuje se vyřazovacímu pavouku. Ve skupinách nemusí vždy někdo vypadnout: při osmi účastnících postupují všichni a pořadí určí jejich soupeře. Při devíti vzniknou tři skupiny po třech; postoupí vítězové skupin a nejlepší hráč z druhých míst.
+
+Při porovnávání kandidátů na dodatečná postupová místa z různě velkých skupin se nezapočítá výsledek proti poslednímu účastníkovi větší skupiny. Srovnává se tak stejný počet zápasů. Pokud shoda výsledků stále brání rozhodnutí o postupu nebo sestavení vyřazovacích dvojic, program připraví dodatečné rozhodující zápasy.
+
+#### Vyřazovací kola a finále
+
+Lepší umístění ve skupině znamená soupeře z nižšího místa, přednostně z jiné skupiny. Například při dvou skupinách po čtyřech vzniknou tyto dvojice:
+
+- první ze skupiny A proti čtvrtému ze skupiny B;
+- druhý ze skupiny A proti třetímu ze skupiny B;
+- třetí ze skupiny A proti druhému ze skupiny B;
+- čtvrtý ze skupiny A proti prvnímu ze skupiny B.
+
+Jde o čtyři různé dvojice, nikoli opakování stejných zápasů. Vítězové postupují podle pavouku, poražení vypadávají. Další kolo vznikne po rozhodnutí všech utkání předchozího kola. Při pouhých dvou hráčích nebo dvou dvojicích se rovnou hraje finále.
+
+Pro vyřazovací kola a zvlášť pro finále pořadatel vybírá:
+
+- „Ne“ u odvety — o postupu rozhodne jedna partie. Při remíze se hraje další.
+- „Ano“ — dvě partie se změněným pořadím míst. Sčítají se turnajové body z obou zápasů. Při shodě program porovná skóre samotné hry, je-li dostupné; pokud ani to nerozhodne, následuje dodatečný zápas.
+- „Do stanoveného počtu výher“ — hrajete, dokud jedna strana nezíská určený počet vítězství, například dvě. Nejde tedy o dvě partie: při stavu 1:1 je potřeba třetí a remíza se za výhru nepočítá.
+
+### Body a shodné výsledky
+
+Turnajové body jsou oddělené od skóre samotné hry. Za každý zápas získáte:
+
+- 2 body za každého soupeře, kterého předstihnete;
+- 1 bod za každého soupeře, se kterým sdílíte místo;
+- 0 bodů za každého soupeře, který skončí před vámi.
+
+Ve dvou zůstává rozdělení 2–0 za výhru nebo 1–1 za remízu. Bez shody výsledků získají tři hráči 4–2–0 a čtyři hráči 6–4–2–0. Pokud se ve třech o první místo dělí dva, dostane každý 3 body a třetí 0. Při remíze všech tří získá každý 2 body.
+
+Jeden tým se počítá jako jeden účastník. Zápas dvou týmů tedy přináší 2–0 nebo 1–1 bez ohledu na počet spoluhráčů. Body se nepřidělují každému členovi zvlášť.
+
+Pořadí v zápase vychází z výsledku hry a jejího skóre. Pokud hra neumožňuje určit další místa, ostatní účastníci sdílejí místo za vítězem. V systému každý s každým a ve skupinách se odveta boduje jako samostatný zápas.
+
+Při shodě bodů program postupně porovná vzájemné zápasy účastníků na stejném místě, rozdíl získaných a ztracených bodů ve hře a poté získané body. Zohledňuje, zda v dané hře vyhrává vyšší, nebo nižší skóre. Neúplné porovnání vzájemných zápasů se přeskočí a chybějící skóre se nenahrazuje nulou. Pokud dostupná kritéria nerozhodnou, účastníci sdílejí místo; je-li nutné určit postupující, rozhodnou další zápasy. Při sdíleném místě se další čísla přeskočí: po dvou prvních místech následuje třetí, nikoli druhé.
+
+### Termíny a herní časy
+
+Ve formuláři turnaje otevřete „Termíny a herní časy“. Nemusíte nastavovat žádné termíny: přihlášky můžete otevřít ihned a později je ručně uzavřít a turnaj zahájit.
+
+- Otevření přihlášek — ihned po zveřejnění, ve zvoleném termínu nebo až na váš pokyn.
+- Uzavření přihlášek — nepovinný čas, po kterém už se nikdo další nepřihlásí. Samotné uzavření turnaj nezahájí.
+- Zahájení turnaje — nepovinný čas automatického startu. Zahájením se také uzavřou přihlášky.
+- Konečný termín — informace pro hráče, do kdy by měli odehrát zápasy. Nerozhodne nedohraná utkání ani nepřidělí kontumace.
+- Herní časy — po zapnutí omezení přidejte intervaly, ve kterých lze domlouvat zápasy. Každý má datum a čas začátku i konce. Uložené intervaly lze upravovat a odstraňovat.
+
+Tabem přejděte na pole data. Šipky vlevo a vpravo vybírají rok, měsíc, den, hodinu či minutu; šipky nahoru a dolů mění vybranou hodnotu. Čas se zobrazuje podle místního časového pásma počítače.
+
+Termíny potvrďte a vraťte se do formuláře turnaje. Vše se uloží až zveřejněním turnaje nebo uložením změn. Naplánované termíny lze kombinovat s ručním ovládáním: například otevřít přihlášky hned a naplánovat jen start. Turnaj končí rozhodnutím potřebných zápasů, nikoli samotným dosažením konečného termínu.
+
+### Možnosti pořadatele
+
+Otevřete svůj turnaj a zvolte „Spravovat turnaj“. Před zahájením můžete:
+
+- upravit název, nastavení soutěže a termíny;
+- přes „Spravovat účastníky“ někoho odebrat nebo přiřadit spoluhráče v turnaji dvojic;
+- otevřít či uzavřít přihlášky;
+- zvolit „Zahájit turnaj“ místo čekání na naplánovaný start.
+
+Během turnaje přidělujete kontumace v „Zápasech“. Vyberte utkání, otevřete kontextovou nabídku a zvolte „Přiznat kontumační výhru“. Určete vítěze a rozhodnutí potvrďte. Pro už zahájený, ale nerozhodnutý zápas slouží samostatná možnost zrušit turnajový zápas a přiznat kontumaci. Vybraný vítěz skončí před všemi ostatními, kteří sdílejí poslední místo. Body se přidělí podle běžného vzorce; skóre samotné hry se nevymýšlí.
+
+Můžete také zrušit nedokončený turnaj. Tím odvoláte celou soutěž, nikoli jen jednu pozvánku. Překročení termínu ani nepřítomnost hráče neudělí automatickou kontumaci — rozhoduje o ní pořadatel.
+
+### Když se změna nepotvrdí
+
+Turnaje potřebují přístup k serveru. Pokud se přihlášení, zveřejnění nebo jiná akce nepotvrdí, nepředpokládejte hned, že selhala. Nejprve obnovte zobrazení.
+
+Na seznamu turnajů otevřete kontextovou nabídku a zvolte „Zkontrolovat nevyřízené změny“. Šipkami vyberte akci, Enterem přejděte na její podrobnosti a tlačítkem kontroly zjistěte, zda byla přijata. Tím se ověří původní akce, neodešle se znovu. Jakmile znáte výsledek, vraťte se do turnaje a před dalším pokusem zkontrolujte jeho aktuální stav.
+
+Děkujeme guliwerovi za nápad a realizaci turnajů!
+
 ## Pomoc s vývojem programu
 
 ### Hlášení chyb a návrhů
@@ -297,15 +484,15 @@ Před zveřejněním logu z něj odstraňte soukromé údaje.
 
 ### Hlášení chyb v kvízu
 
-V kvízu označíte aktuální otázku pomocí Ctrl+B, předchozí pomocí Ctrl+Shift+B. Zkratky neotevírají formulář, takže můžete hrát dál. Po odchodu od stolu se program zeptá, zda chcete označené otázky nahlásit. Vyberte „Ano“, popište problém a stiskněte „Odeslat“. Otázka i odpovědi se připojí automaticky. Volba „Ne“ označení zruší; hlášení se neukládají jako koncepty.
+V kvízu i u otázek v Kachních závodech označíte aktuální otázku pomocí Ctrl+B, předchozí pomocí Ctrl+Shift+B. Zkratky neotevírají formulář, takže můžete hrát dál. Po odchodu od stolu se program zeptá, zda chcete označené otázky nahlásit. Vyberte „Ano“, popište problém a stiskněte „Odeslat“. Formulář ukazuje i správnou odpověď podle sady. Otázka i odpovědi se připojí automaticky. Volba „Ne“ označení zruší; hlášení se neukládají jako koncepty.
 
 ### Vlastní sady otázek
 
-V hlavním okně za položkou „Uložené hry“ najdete „Tvorbu vlastních sad otázek“. Otevře se seznam vašich sad. Stiskem Ctrl+N můžete vytvořit novou sadu nebo připravit otázky pro některou ze sad ve hře. U vlastní sady zadejte název, jazyk a případně popis a zvolte „Uložit“. Pokud přidáváte otázky do existující sady, vyberte ji ze seznamu.
+V hlavním okně najdete „Tvorbu vlastních sad kvízových otázek“. Otevře se seznam vašich sad. Stiskem Ctrl+N můžete vytvořit novou sadu nebo připravit otázky pro některou ze sad ve hře. U vlastní sady zadejte název, jazyk a případně popis a zvolte „Uložit“. Pokud přidáváte otázky do existující sady, nejprve vyberte jazyk. Potvrďte Enterem a v dalším okně vyberte sadu v tomto jazyce.
 
 Enterem otevřete nabídku vybrané sady:
 
-- „Přidat otázku“: zadejte otázku a čtyři odpovědi, označte správnou odpověď a vyberte kategorii ze seznamu. Zdroj i poznámka pro redaktora jsou nepovinné.
+- „Přidat otázku“: zadejte otázku, do prvního pole (A) správnou odpověď a do polí B, C a D tři nesprávné odpovědi. Ze seznamu vyberte kategorii. Zdroj i poznámka pro redaktora jsou nepovinné.
 - „Procházet otázky“: otevřete seznam uložených otázek. Enterem můžete vybranou otázku upravit, Ctrl+N přidat novou.
 - „Přidat kategorii“: pojmenujte kategorii, kterou budete moci vybírat u otázek.
 - „Smazat koncept“: po potvrzení odstraníte celou sadu.
@@ -313,7 +500,9 @@ Enterem otevřete nabídku vybrané sady:
 
 Před přidáním první otázky vytvořte alespoň jednu kategorii. Další můžete přidat i při psaní otázky: na konci seznamu kategorií vyberte „Přidat novou kategorii“ a stiskněte Enter. Rozepsaná otázka zůstane ve formuláři a nová kategorie se rovnou vybere.
 
-Tlačítkem „Uložit“ si práci uložíte jako koncept. Můžete se k němu vrátit později, i na jiném počítači po přihlášení ke stejnému účtu. Ukládat lze i nedokončené otázky. Kontextová nabídka umožňuje odstranit otázku či sadu nebo upravit podrobnosti vlastní sady.
+Tlačítkem „Uložit“ si práci uložíte jako koncept. Můžete se k němu vrátit později, i na jiném počítači po přihlášení ke stejnému účtu. Ukládat lze i nedokončené otázky. Kontextová nabídka umožňuje odstranit otázku či sadu nebo upravit podrobnosti vlastní sady. Klávesou Delete na seznamu sad smažete vybraný koncept po potvrzení.
+
+Poškozený koncept je v seznamu označen a nebrání práci s ostatními sadami. Pokud si ho nechcete ponechat, můžete ho smazat klávesou Delete.
 
 Až budete mít otázky hotové, zvolte „Odeslat autorovi“. Pokud něco chybí, program uvede čísla otázek a pole, která je potřeba doplnit. Otázky dostane autor ke kontrole; do hry se nepřidají automaticky. Po úspěšném odeslání koncept zmizí ze seznamu. Pokud se odeslání nezdaří, můžete se ke konceptu vrátit a zkusit to znovu.
 
@@ -336,4 +525,3 @@ Projekt vede papierek za přispění autorů her, překladů a oprav i lidí tes
 Axel Pong není původní projekt papierka. Hra se původně jmenovala Dragon-Pong, poté ji vylepšili Axel a balteam a nakonec byla s jejich souhlasem převedena do ELTENu.
 
 Kód Power Games je dostupný pod licencí GNU General Public License version 3. Úplné znění je v souboru [LICENSE](https://github.com/papierek1997/elten-game-room/blob/main/LICENSE). Zvuky, otázky a další materiály mohou mít vlastní podmínky užití; jejich původ a licenční informace najdete v [THIRD_PARTY_NOTICES.md](https://github.com/papierek1997/elten-game-room/blob/main/THIRD_PARTY_NOTICES.md).
-

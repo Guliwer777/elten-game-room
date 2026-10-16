@@ -31,7 +31,7 @@
           "en": "T repeats the question; Ctrl+T reads the remaining time. A warning sounds with five seconds left. Missing the deadline scores zero."
         },
         {
-          "en": "When everyone has answered or the timer expires, the correct answer and point winners are announced. The third question ends the round. V reads its summary and S reads scores."
+          "en": "When everyone has answered or the timer expires, the correct answer and point winners are announced. The third question ends the round, followed by a five-second break before the next one. V reads the round summary and S reads scores."
         }
       ]
     },
@@ -85,6 +85,9 @@
         },
         {
           "en": "When you leave the table, you will be asked whether you want to report the marked questions. Choose Yes, describe the problem with each question and press Send. The question and its answers are included automatically. Choosing No discards the marks; they are not saved for later."
+        },
+        {
+          "en": "The report form also shows the answer marked as correct in the set."
         }
       ]
     },

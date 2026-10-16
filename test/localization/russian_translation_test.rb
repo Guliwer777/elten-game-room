@@ -3,6 +3,7 @@ require_relative "../../lib/game_room_localization"
 require_relative "../../games/base"
 require_relative "../../games/chess"
 require_relative "../../tools/compile-rulebooks"
+require_relative "../../tools/support/release_files"
 
 root = File.expand_path("../..", __dir__)
 catalog_tools = GameRoomTranslationCatalog
@@ -31,7 +32,13 @@ localized_books = Dir.glob('*.json', base: File.join(root, 'tools/data/rulebooks
 
 # Use the same AST extractor and context-aware PO parser as the compiler.
 # Comparing plain msgid strings would mix the regular and cat_head_tail texts.
+release_sources = GameRoomReleaseFiles.files(root).grep(/\.rb\z/).to_h { |path| [path, true] }
+raise 'Release source list is incomplete' unless release_sources['__app.rb'] && release_sources['lib/tournaments/shared_hub.rb']
 GameRoomTranslationExtractor.extract(root).each do |message|
+  # Local tournament laboratories are intentionally absent from the installer.
+  # Every message used by any shipped source remains mandatory, including those
+  # shared with the laboratories. The allowlist comes from the actual packager.
+  next unless message[:references].any? { |reference| release_sources[reference.sub(/:\d+\z/, '')] }
   entry = po[message[:msgctxt], message.fetch(:msgid)]
   raise "Missing Russian source message: #{message.inspect}" unless entry && !entry.obsolete? && !entry.fuzzy?
   if entry.msgstr.to_s.delete("\0").empty?

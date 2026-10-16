@@ -1,22 +1,135 @@
 {
- "source":"games/quiz_party.rb",
- "sections":[
-  {"id":"question","title":{"en":"Everyone answers the same question","pl":"Wszyscy odpowiadają na to samo pytanie"},"paragraphs":[
-   {"en":"Quiz Party is for two to eight participants, with bots available. Each question has four proposed answers and one is marked correct in the question set. Everyone answers independently. Use the arrows to choose an answer and Enter to submit it. Your submission is final for that question and stays hidden until the answering period closes.","pl":"Quiz Party jest dla dwóch do ośmiu uczestników; można dodać boty. Każde pytanie ma cztery proponowane odpowiedzi, z których jedna jest oznaczona w zestawie jako poprawna. Wszyscy odpowiadają niezależnie. Strzałkami wybierz odpowiedź i wyślij ją Enterem. Wysłana decyzja jest ostateczna dla tego pytania i pozostaje ukryta do zamknięcia odpowiadania."},
-   {"en":"A correct answer gives one point. A wrong answer or no answer gives zero; there are no negative points. Answering first earns no extra points, provided everyone answers within the time allowed. You can therefore use the available time to think instead of racing to press Enter.","pl":"Poprawna odpowiedź daje jeden punkt. Błędna lub brak odpowiedzi daje zero; nie ma punktów ujemnych. Pierwszeństwo odpowiedzi nie daje premii, jeśli każdy mieści się w limicie. Możesz więc wykorzystać dostępny czas na zastanowienie zamiast ścigać się z naciskaniem Entera."}
-  ]},
-  {"id":"round","title":{"en":"One category lasts for three questions","pl":"Jedna kategoria obowiązuje przez trzy pytania"},"paragraphs":[
-   {"en":"A round consists of three questions. At its start, the game draws three available categories and one participant chooses which will be used for all three questions. The right to choose moves between players in successive rounds. Category choices include their question counts so you can see how much material they contain.","pl":"Runda składa się z trzech pytań. Na początku gra losuje trzy dostępne kategorie, a jeden uczestnik wybiera tę, która będzie obowiązywać przez całą trójkę pytań. Prawo wyboru przechodzi między graczami w kolejnych rundach. Przy kategoriach podawana jest liczba pytań, dzięki czemu widać, ile materiału zawierają."},
-   {"en":"After everyone answers or time expires, the game reveals the answers and awards points, then prepares the next question. Preparing a question is not another answer choice: wait for the new question to appear. Once all three have been settled, the round summary is available and the next category selection begins unless the match has ended.","pl":"Gdy wszyscy odpowiedzą lub czas się skończy, gra ujawnia odpowiedzi, przyznaje punkty i przygotowuje następne pytanie. Przygotowywanie nie jest kolejnym wyborem odpowiedzi: poczekaj na nowe pytanie. Po rozstrzygnięciu całej trójki dostępne jest podsumowanie rundy i zaczyna się następny wybór kategorii, chyba że partia się zakończyła."}
-  ]},
-  {"id":"sets","title":{"en":"Choose the content, not the interface language","pl":"Wybierz treść, nie język interfejsu"},"paragraphs":[
-   {"en":"When creating or configuring the table, first choose a question language and then a set offered in that language. The set label gives the number of questions supplied. This choice does not change anyone's interface: a Polish interface can still display questions from an English or Italian set. The language and set are shared by the whole table.","pl":"Przy tworzeniu lub ustawianiu stołu najpierw wybierz język pytań, a potem zestaw dostępny w tym języku. Etykieta zestawu podaje liczbę dołączonych pytań. Wybór nie zmienia niczyjego interfejsu: polski interfejs może nadal wyświetlać pytania angielskie lub włoskie. Język i zestaw są wspólne dla całego stołu."},
-   {"en":"The Polish Witcher — books set contains questions about Andrzej Sapkowski's stories and novels, not games or screen adaptations. It covers the whole plot, including endings. Questions from Droga, z której się nie wraca and the alternative Coś się kończy, coś się zaczyna always name the story.","pl":"Polski zestaw Wiedźmin — książki dotyczy opowiadań i powieści Andrzeja Sapkowskiego, bez gier i ekranizacji. Obejmuje całą fabułę, również zakończenia. Pytania z Drogi, z której się nie wraca oraz alternatywnego opowiadania Coś się kończy, coś się zaczyna zawsze podają tytuł utworu."}
-  ]},
-  {"id":"time","title":{"en":"Answer time and the finishing line","pl":"Czas odpowiedzi i zakończenie partii"},"paragraphs":[
-   {"en":"Time for one answer defaults to 20 seconds. The offered choices are 5–10 seconds one second apart, then 15–60 in steps of five. This limit applies separately to each question. The target defaults to 15 points; the list also offers 20, 25, 30, 40 and 50.","pl":"Czas na jedną odpowiedź wynosi domyślnie 20 sekund. Dostępne są wartości od 5 do 10 co sekundę, a następnie od 15 do 60 co pięć. Limit dotyczy osobno każdego pytania. Cel wynosi domyślnie 15 punktów; lista proponuje też 20, 25, 30, 40 i 50."},
-   {"en":"Reaching the target does not cut short a round. Finish all three questions, then the highest score wins. If the highest scores are equal, play another complete round and check again, continuing until one player leads. Bots sometimes know an answer and otherwise guess; adding one does not make every answer perfect. Saving a partly played Quiz Party match is not supported.","pl":"Osiągnięcie celu nie urywa rundy. Kończycie wszystkie trzy pytania i wtedy wygrywa najwyższy wynik. Przy remisie najwyższych wyników rozgrywa się kolejną pełną rundę i sprawdza ponownie, aż ktoś samodzielnie prowadzi. Bot czasem zna odpowiedź, a w pozostałych przypadkach zgaduje, więc nie odpowiada zawsze poprawnie. Zapisywanie rozpoczętej partii Quiz Party nie jest obsługiwane."}
-  ]},
-  {"id":"controls","title":{"en":"Game keyboard shortcuts","pl":"Skróty klawiszowe gry"},"paragraphs":[{"en":"Arrows: choose a category or answer.","pl":"Strzałki: wybierz kategorię lub odpowiedź."},{"en":"Enter: submit the highlighted choice.","pl":"Enter: zatwierdź wskazany wybór."},{"en":"T: read the question.","pl":"T: odczytaj pytanie."},{"en":"Ctrl+T: read the remaining answer time.","pl":"Ctrl+T: odczytaj pozostały czas na odpowiedź."},{"en":"V: read the round summary.","pl":"V: odczytaj podsumowanie rundy."},{"en":"S: read scores.","pl":"S: odczytaj wyniki."}]}
- ]
+  "source": "games/quiz_party.rb",
+  "sections": [
+    {
+      "id": "question",
+      "title": {
+        "en": "Everyone answers the same question",
+        "pl": "Wszyscy odpowiadają na to samo pytanie"
+      },
+      "paragraphs": [
+        {
+          "en": "Quiz Party is for two to eight participants, with bots available. Each question has four proposed answers and one is marked correct in the question set. Everyone answers independently. Use the arrows to choose an answer and Enter to submit it. Your submission is final for that question and stays hidden until the answering period closes.",
+          "pl": "Quiz Party jest dla dwóch do ośmiu uczestników; można dodać boty. Każde pytanie ma cztery proponowane odpowiedzi, z których jedna jest oznaczona w zestawie jako poprawna. Wszyscy odpowiadają niezależnie. Strzałkami wybierz odpowiedź i wyślij ją Enterem. Wysłana decyzja jest ostateczna dla tego pytania i pozostaje ukryta do zamknięcia odpowiadania."
+        },
+        {
+          "en": "A correct answer gives one point. A wrong answer or no answer gives zero; there are no negative points. Answering first earns no extra points, provided everyone answers within the time allowed. You can therefore use the available time to think instead of racing to press Enter.",
+          "pl": "Poprawna odpowiedź daje jeden punkt. Błędna lub brak odpowiedzi daje zero; nie ma punktów ujemnych. Pierwszeństwo odpowiedzi nie daje premii, jeśli każdy mieści się w limicie. Możesz więc wykorzystać dostępny czas na zastanowienie zamiast ścigać się z naciskaniem Entera."
+        }
+      ]
+    },
+    {
+      "id": "round",
+      "title": {
+        "en": "One category lasts for three questions",
+        "pl": "Jedna kategoria obowiązuje przez trzy pytania"
+      },
+      "paragraphs": [
+        {
+          "en": "A round consists of three questions. At its start, the game draws three available categories and one participant chooses which will be used for all three questions. The right to choose moves between players in successive rounds.",
+          "pl": "Runda składa się z trzech pytań. Na początku gra losuje trzy dostępne kategorie, a jeden uczestnik wybiera tę, która będzie obowiązywać przez całą trójkę pytań. Prawo wyboru przechodzi między graczami w kolejnych rundach."
+        },
+        {
+          "en": "After everyone answers or time expires, the game reveals the answers and awards points, then prepares the next question. Preparing a question is not another answer choice: wait for the new question to appear. Once all three have been settled, the round summary is available and the next category selection begins unless the match has ended.",
+          "pl": "Gdy wszyscy odpowiedzą lub czas się skończy, gra ujawnia odpowiedzi, przyznaje punkty i przygotowuje następne pytanie. Przygotowywanie nie jest kolejnym wyborem odpowiedzi: poczekaj na nowe pytanie. Po rozstrzygnięciu całej trójki dostępne jest podsumowanie rundy i zaczyna się następny wybór kategorii, chyba że partia się zakończyła."
+        }
+      ]
+    },
+    {
+      "id": "sets",
+      "title": {
+        "en": "Choose the content, not the interface language",
+        "pl": "Wybierz treść, nie język interfejsu"
+      },
+      "paragraphs": [
+        {
+          "en": "When creating or configuring the table, first choose a question language and then a set offered in that language. The set label gives the number of questions supplied. This choice does not change anyone's interface: a Polish interface can still display questions from an English or Italian set. The language and set are shared by the whole table.",
+          "pl": "Przy tworzeniu lub ustawianiu stołu najpierw wybierz język pytań, a potem zestaw dostępny w tym języku. Etykieta zestawu podaje liczbę dołączonych pytań. Wybór nie zmienia niczyjego interfejsu: polski interfejs może nadal wyświetlać pytania angielskie lub włoskie. Język i zestaw są wspólne dla całego stołu."
+        },
+        {
+          "en": "The Polish Witcher — books set contains questions about Andrzej Sapkowski's stories and novels, not games or screen adaptations. It covers the whole plot, including endings. Questions from Droga, z której się nie wraca and the alternative Coś się kończy, coś się zaczyna always name the story.",
+          "pl": "Polski zestaw Wiedźmin — książki dotyczy opowiadań i powieści Andrzeja Sapkowskiego, bez gier i ekranizacji. Obejmuje całą fabułę, również zakończenia. Pytania z Drogi, z której się nie wraca oraz alternatywnego opowiadania Coś się kończy, coś się zaczyna zawsze podają tytuł utworu."
+        }
+      ]
+    },
+    {
+      "id": "time",
+      "title": {
+        "en": "Answer time and the finishing line",
+        "pl": "Czas odpowiedzi i zakończenie partii"
+      },
+      "paragraphs": [
+        {
+          "en": "Time for one answer defaults to 20 seconds. The offered choices are 5–10 seconds one second apart, then 15–60 in steps of five. This limit applies separately to each question. The target defaults to 15 points; the list also offers 20, 25, 30, 40 and 50.",
+          "pl": "Czas na jedną odpowiedź wynosi domyślnie 20 sekund. Dostępne są wartości od 5 do 10 co sekundę, a następnie od 15 do 60 co pięć. Limit dotyczy osobno każdego pytania. Cel wynosi domyślnie 15 punktów; lista proponuje też 20, 25, 30, 40 i 50."
+        },
+        {
+          "en": "Reaching the target does not cut short a round. Finish all three questions, then the highest score wins. If the highest scores are equal, play another complete round and check again, continuing until one player leads. Bots sometimes know an answer and otherwise guess; adding one does not make every answer perfect. Saving a partly played Quiz Party match is not supported.",
+          "pl": "Osiągnięcie celu nie urywa rundy. Kończycie wszystkie trzy pytania i wtedy wygrywa najwyższy wynik. Przy remisie najwyższych wyników rozgrywa się kolejną pełną rundę i sprawdza ponownie, aż ktoś samodzielnie prowadzi. Bot czasem zna odpowiedź, a w pozostałych przypadkach zgaduje, więc nie odpowiada zawsze poprawnie. Zapisywanie rozpoczętej partii Quiz Party nie jest obsługiwane."
+        }
+      ]
+    },
+    {
+      "id": "reports",
+      "title": {
+        "en": "Reporting a question",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "If you spot a mistake, press Ctrl+B to mark the current question or Ctrl+Shift+B to mark the previous one. You can keep playing straight away.",
+          "pl": ""
+        },
+        {
+          "en": "When you leave the table, you will be asked whether you want to report the marked questions. Choose Yes, describe the problem with each question and press Send. The question and its answers are included automatically. Choosing No discards the marks; they are not saved for later.",
+          "pl": ""
+        },
+        {
+          "en": "The report form also shows the answer marked as correct in the set.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "en": "Game keyboard shortcuts",
+        "pl": "Skróty klawiszowe gry"
+      },
+      "paragraphs": [
+        {
+          "en": "Arrows: choose a category or answer.",
+          "pl": "Strzałki: wybierz kategorię lub odpowiedź."
+        },
+        {
+          "en": "Enter: submit the highlighted choice.",
+          "pl": "Enter: zatwierdź wskazany wybór."
+        },
+        {
+          "en": "T: read the question.",
+          "pl": "T: odczytaj pytanie."
+        },
+        {
+          "en": "Ctrl+T: read the remaining answer time.",
+          "pl": "Ctrl+T: odczytaj pozostały czas na odpowiedź."
+        },
+        {
+          "en": "V: read the round summary.",
+          "pl": "V: odczytaj podsumowanie rundy."
+        },
+        {
+          "en": "S: read scores.",
+          "pl": "S: odczytaj wyniki."
+        },
+        {
+          "en": "Ctrl+B: mark the current question for reporting.",
+          "pl": ""
+        },
+        {
+          "en": "Ctrl+Shift+B: mark the previous question for reporting.",
+          "pl": ""
+        }
+      ]
+    }
+  ]
 }

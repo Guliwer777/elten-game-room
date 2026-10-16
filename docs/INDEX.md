@@ -1,5 +1,8 @@
 # Documentation
 
+The [tournament administrator handoff](TOURNAMENT_ADMIN_HANDOFF.md) describes
+the clean official client, package contents and server deployment boundaries.
+
 Technical and contributor documentation is maintained in English, in the
 existing files. Player guides and game rules remain multilingual; their
 translations must be kept up to date together.
@@ -93,3 +96,16 @@ date without writing files.
 Keep test reports, audits, measurements and one-off experiment reports in the
 ignored `tmp/` directory or outside the repository. Git preserves the change
 history; update current contracts in the documents listed above.
+
+The [ordinary tournament team trial](TOURNAMENT_ORDINARY_TEAM_TRIAL.md) documents
+native team bindings and shared result validation in the owned developer app,
+including the boundaries that still require server support.
+
+The [sporting phase trial and daily dates](TOURNAMENT_PHASE_TRIAL.md) describes
+immutable shared round progression and local civil-day schedule editing.
+
+The [manual forfeit trial](TOURNAMENT_FORFEIT_TRIAL.md) documents organizer
+decisions for unstarted matches and the boundary for abandoned native games.
+
+The [saved tournament match trial](TOURNAMENT_SAVED_MATCH_TRIAL.md) describes
+authenticated continuations across saved-game restoration into a new table.

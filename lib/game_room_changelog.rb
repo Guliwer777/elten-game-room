@@ -467,6 +467,23 @@ module GameRoomChangelog
         "Fixed continuing Duck Racing challenges after resuming a saved game.",
         "In Quiz, Ctrl+B marks the current question for reporting and Ctrl+Shift+B marks the previous one without interrupting play. After leaving the table, you can describe the problem and send it to the author."
       ].freeze
+    ).freeze,
+    Entry.new(
+      version: "2.0.5",
+      build: 251,
+      changes: [
+        "Added Tournaments to the main menu, directly after Saved games. You can organize a tournament or join one, playing individually or in fixed pairs.",
+        "Choose round-robin play or a group stage followed by a knockout stage. Tournaments support rematches and knockout matches played to a chosen number of wins. The program arranges matches, records game results and determines who advances.",
+        "Choose Play on your match to invite the other players. They can accept from an ELTEN notification or with Ctrl+J; the program opens the table with the tournament settings. Ctrl+Shift+T gives quick access to your tournaments, also from the widget.",
+        "Tournament dates are optional. The organizer can manage registration and start the tournament manually or schedule these steps. Unfinished matches are not decided automatically when a deadline passes; the organizer can award a forfeit.",
+        "The match list shows the current phase, your unfinished matches first, then the other unfinished matches and completed results.",
+        "README now includes a detailed tournament guide in all interface languages, covering controls, formats, scoring, partners and organizer options. Thank you to guliwer for the idea and implementation of tournaments!",
+        "In the quiz question creator, the first answer is now always the correct one, followed by the three incorrect answers. When editing an older draft, its correct answer moves to the first field.",
+        "When adding questions to an existing set, choose the language first, then press Enter to choose a set in a separate window. Set names no longer repeat the language code. Delete removes a selected draft after confirmation. The main-menu entry is now called Create your own quiz question sets.",
+        "Question reporting with Ctrl+B and Ctrl+Shift+B now also works in Duck Racing. After leaving the table, the report form shows the question, its answers and the answer marked as correct in the set.",
+        "Added seven questions to the Polish general-knowledge set, based on suggestions from bratczyk96.",
+        "Thank you to Zuzler for reporting problems with quiz questions!"
+      ].freeze
     ).freeze
   ].freeze
 

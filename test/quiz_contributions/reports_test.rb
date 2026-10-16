@@ -116,15 +116,15 @@ native_form.trigger(:key_b, true, true, false)
 assert(native_tracker.questions.map { |q| q['id'] } == %w[q2 q1], 'Native current/previous shortcut failed')
 assert(consumed == %w[b b b] && native_field.text == 'Unsent chat', 'Shortcut damaged chat input')
 
-# Native form: no default Enter submission from a text field, no correct
-# answer exposed to someone who left while the other players were answering.
+# Native form: no default Enter submission; the report includes the set's
+# designated answer, as requested, only after leaving the table.
 steps = []
 Form.driver = ->(form) { (steps.shift or raise 'Unexpected form').call(form) }
 views = R::Views.new(program)
 steps << ->(form) {
   assert(form.accept_button.nil?, 'Enter in description would send the form')
-  assert(form.fields[0].text.lines.size == 5, 'Question and four answers missing')
-  assert(!form.fields[0].text.include?('Answer in the set'), 'Correct answer revealed to player')
+  assert(form.fields[0].text.lines.size == 6, 'Question, choices or correct answer missing')
+  assert(form.fields[0].text.include?("Correct answer: #{second['correct']}"), 'Report hides the answer from the set')
   assert(form.fields[1].text == 'Initial note', 'Description lost')
   form.fields[1].set_text('Updated note')
   form.fields[2].trigger(:press)
@@ -146,7 +146,9 @@ program.define_singleton_method(:run_table_screen) do |_row|
   assert(steps.size == 1, 'Prompt opened before table returned')
   :left
 end
-steps << ->(form) { form.fields.first.index = 0; form.accept_button.trigger(:press) }
-assert(program.show_table_screen({'game' => 'quiz'}) == :left, 'Wrapper changed return value')
-assert(program.instance_variable_get(:@question_reports).nil? && steps.empty?, 'Reports not released on exit')
+%w[quiz duck_racing].each do |game_id|
+  steps << ->(form) { form.fields.first.index = 0; form.accept_button.trigger(:press) }
+  assert(program.show_table_screen({'game' => game_id}) == :left, 'Wrapper changed return value')
+  assert(program.instance_variable_get(:@question_reports).nil? && steps.empty?, 'Reports not released on exit')
+end
 puts "PASS ephemeral Quiz reports, native form and message retry/cleanup: #{$assertions} checks"

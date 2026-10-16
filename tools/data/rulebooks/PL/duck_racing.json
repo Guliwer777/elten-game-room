@@ -519,6 +519,17 @@
       ]
     },
     {
+      "id": "question_reports",
+      "title": {
+        "pl": "Zgłaszanie pytań"
+      },
+      "paragraphs": [
+        {
+          "pl": "Ctrl+B oznacza bieżące pytanie do zgłoszenia, a Ctrl+Shift+B poprzednie. Działa to przy pytaniach z pól, kart i wyzwań. Po opuszczeniu stołu wybierz „Tak”, gdy program zapyta o zgłoszenia, opisz problem i naciśnij „Wyślij”. Formularz pokazuje pytanie, odpowiedzi i wskazaną w zestawie poprawną odpowiedź."
+        }
+      ]
+    },
+    {
       "id": "controls",
       "title": {
         "pl": "Skróty wyścigu"
@@ -550,6 +561,12 @@
         },
         {
           "pl": "P: przypomnienie treści wyzwania."
+        },
+        {
+          "pl": "Ctrl+B — oznacz bieżące pytanie do zgłoszenia."
+        },
+        {
+          "pl": "Ctrl+Shift+B — oznacz poprzednie pytanie do zgłoszenia."
         }
       ]
     }

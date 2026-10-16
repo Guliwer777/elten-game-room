@@ -1,5 +1,3 @@
-# Power Games
-
 Power Games es una colección de juegos para usuarios de ELTEN. Puedes reunirte con amigos en una mesa, unirte a una partida abierta, observar a otras personas o enfrentarte a bots en los juegos que los admiten.
 
 ELTEN lee las cartas, los tableros, las puntuaciones y los sucesos, mientras que los sonidos ayudan a seguir la acción. Todos los juegos comparten mesas, chat, historial y ayuda, así que muchas cosas ya te resultarán familiares cuando pruebes otro título.
@@ -18,6 +16,7 @@ ELTEN lee las cartas, los tableros, las puntuaciones y los sucesos, mientras que
 - [Clasificaciones y estadísticas](#clasificaciones-y-estadísticas)
 - [Funciones que conviene conocer](#funciones-que-conviene-conocer)
 - [Resumen de atajos](#resumen-de-atajos)
+- [Torneos](#torneos)
 - [Colaborar en el programa](#colaborar-en-el-programa)
   - [Avisar de errores en Quiz](#avisar-de-errores-en-quiz)
   - [Tus propios conjuntos de preguntas](#tus-propios-conjuntos-de-preguntas)
@@ -242,6 +241,7 @@ Esta lista cubre los controles comunes del programa. Para las órdenes de un jue
 - F1 — ayuda del lugar activo.
 - Ctrl+F1 — reglas del juego de la mesa.
 - Ctrl+J — aceptar invitaciones en Power Games y en el widget.
+- Ctrl+Shift+T — acceso rápido a tus torneos desde el menú principal o el widget.
 - F2 — bajar el volumen del grupo de sonidos seleccionado.
 - F3 — subir el volumen del grupo de sonidos seleccionado.
 - Shift+F2 — seleccionar el grupo de sonidos anterior.
@@ -281,6 +281,193 @@ Esta lista cubre los controles comunes del programa. Para las órdenes de un jue
 La consulta de entradas y categorías se explica en [el capítulo del historial](#volver-a-una-conversación-o-jugada-anterior).
 La asignación de atajos propios se explica en [el capítulo del widget](#tus-propios-atajos-para-crear-mesas).
 
+## Torneos
+
+Un torneo reúne varias partidas en una competición. Power Games organiza los encuentros, registra los resultados y determina los siguientes rivales. Puedes participar en un torneo ajeno u organizar uno, para jugadores individuales o parejas fijas.
+
+### Buscar torneos y volver a los tuyos
+
+Elige «Torneos» en el vestíbulo. Selecciona uno con las flechas y pulsa Intro para abrir su lista de acciones. Tab recorre la lista, el filtro y los demás controles. El filtro permite mostrar:
+
+- torneos actuales, incluidos los que aún admiten inscripciones;
+- tus torneos actuales: aquellos en los que participas o que organizas;
+- torneos terminados, para consultar sus resultados.
+
+En los torneos actuales aparecen primero aquellos en los que participas, después los que admiten tu inscripción y, por último, los demás.
+
+Un torneo abandonado desaparece tras 14 días sin actividad antes de empezar, o tras 30 días sin avances una vez iniciado. Las inscripciones y los cambios del organizador renuevan ese plazo antes del inicio; después lo renuevan los resultados de los encuentros. Consultar el torneo no lo prolonga. Si la apertura de inscripciones o el inicio están previstos para más adelante, el torneo no desaparecerá antes de esa fecha. Los resultados de los torneos terminados siguen disponibles.
+
+Cada entrada indica el juego, el número de participantes y el estado del torneo. También dispones de estos atajos:
+
+- Ctrl+N — crear un torneo.
+- Ctrl+R — actualizar la lista de torneos.
+- Ctrl+Shift+T — abrir tus torneos actuales desde el menú principal o el widget. Si solo tienes uno, se abre directamente su lista de acciones.
+- Ctrl+J — abrir la lista habitual de invitaciones, que incluye las de encuentros de torneo.
+
+F1 recuerda los controles de la ventana actual y Escape vuelve atrás. Cerrar la ventana no te da de baja del torneo.
+
+### Acciones del torneo
+
+Al abrir un torneo accedes directamente a sus acciones. Elige una con las flechas y confirma con Intro. El encabezado indica el nombre y el estado del torneo.
+
+- «Encuentros» — elige una partida pendiente o consulta el resultado de una terminada.
+- «Resultados» — la clasificación del torneo, también de fases anteriores.
+- «Participantes» — la lista de personas inscritas.
+- «Reglas del torneo» — descripción del organizador, ajustes del juego, formato, criterios de clasificación y fechas.
+- «Administrar torneo» — las acciones del organizador. Los demás participantes no tienen esta opción.
+
+Las opciones para inscribirse, retirarse o elegir compañero aparecen cuando se pueden utilizar.
+
+### Inscribirse y elegir compañero
+
+Elige «Inscribirse en el torneo» para participar. Si la opción no está disponible, consulta el estado del encabezado: las inscripciones pueden no haber comenzado, haber terminado o no quedar plazas. Si ya estás inscrito, no necesitas repetirlo. Antes del comienzo puedes retirarte mediante «Darse de baja del torneo».
+
+En un torneo de parejas fijas, cada persona se inscribe por separado. Después:
+
+1. Abre «Mi compañero» y elige a otro participante.
+2. Pídele que te elija en esa misma pantalla.
+3. La pareja queda confirmada cuando os habéis elegido mutuamente. En la pantalla del compañero también verás si aún esperas su aceptación.
+
+Antes del inicio puedes cambiar o quitar tu elección. El organizador también puede asignar parejas. Los encuentros por equipos no se pueden preparar mientras haya participantes sin compañero. Mantienes la misma pareja durante todo el torneo y compartís el resultado.
+
+Recibirás una notificación cuando empiece el torneo, aunque estés consultando los torneos. Su sonido respeta tus ajustes habituales de notificaciones.
+
+### Iniciar un encuentro
+
+No hace falta crear otra mesa ni buscarla entre las partidas públicas.
+
+1. Abre tu torneo — puedes usar Ctrl+Shift+T desde el menú principal o el widget — y elige «Encuentros».
+2. Selecciona uno de tus encuentros pendientes y pulsa Intro o Ctrl+G, o elige «Jugar» en su menú contextual. Al confirmar, se abre una mesa con los ajustes del torneo y se invita a los demás participantes.
+3. Los demás aceptan la invitación habitual a la mesa desde una notificación de ELTEN o con Ctrl+J y entran directamente.
+4. Cuando todos estén en la mesa, el anfitrión elige «Iniciar partida». A partir de ahí se usan los controles habituales del juego.
+
+Cualquier participante de ese encuentro puede abrir la mesa; el organizador no necesita estar presente. La lista de usuarios de la mesa muestra quién se ha unido.
+
+Quien no esté asignado a ese encuentro entra automáticamente como espectador, incluso antes de que empiece la partida. Esto también se aplica a los participantes del torneo que tengan que jugar otro encuentro.
+
+La invitación dura cinco minutos. Rechazarla, dejarla caducar o salir de la mesa no cuenta como derrota ni te da de baja del torneo. Vuelve a elegir «Jugar» para regresar a la mesa existente e invitar a quienes falten.
+
+Sal de cualquier otra partida antes de entrar. No puedes ocupar una plaza en dos mesas a la vez. Si una mesa vacía se cerró antes de empezar a jugar, puedes abrir el encuentro de nuevo. Una partida ya iniciada no se sustituye automáticamente por otra; se reanuda desde «Partidas guardadas».
+
+### Encuentros, resultados y partidas interrumpidas
+
+«Encuentros» se abre en la fase actual del torneo. La primera entrada indica su nombre, por ejemplo «Cuartos de final», y el número de encuentros terminados. A continuación aparecen tus encuentros pendientes, luego los pendientes de los demás y, al final, todos los terminados. Todo el mundo ve la lista completa.
+
+Con Tab puedes seleccionar la fase, incluidas las anteriores. Si estás viendo la fase actual, la lista pasa automáticamente a la siguiente cuando comienza. La actualización conserva el encuentro seleccionado mientras siga visible.
+
+Intro sobre un encuentro terminado indica que ya se ha jugado. Abre su resultado con Ctrl+W o con «Resultado del encuentro» en el menú contextual. Este menú muestra las acciones disponibles y sus atajos: Ctrl+G para jugar, Ctrl+F para conceder una victoria por incomparecencia y Ctrl+Mayús+F para cancelar un encuentro iniciado y conceder esa victoria. Las dos últimas acciones son del organizador y requieren elegir al ganador y confirmar la decisión.
+
+«Resultados» abre directamente una lista con el puesto, el participante, los puntos de torneo y las partidas jugadas. Con Tab pasas al selector de fase. Los resultados se registran automáticamente; no tienes que copiarlos del historial del juego.
+
+Si el juego permite guardar, el anfitrión de la mesa puede usar Ctrl+S. Se continúa desde «Partidas guardadas» y la partida sigue perteneciendo al mismo encuentro del torneo. Que alguien salga o pierda la conexión no produce por sí solo un empate ni una victoria por incomparecencia. El encuentro queda pendiente de terminar o de una decisión del organizador.
+
+### Crear un torneo
+
+Pulsa Ctrl+N en la lista de torneos. Elige el juego, después la variante y los ajustes habituales de la mesa. Al confirmarlos llegarás al formulario del torneo. Recorre los campos con Tab, cambia las selecciones con las flechas y marca o desmarca casillas con Espacio.
+
+- Nombre del torneo — el nombre que verán los demás jugadores.
+- Formato — «Todos contra todos» o «Grupos y eliminatorias», explicados más abajo.
+- Límite de participantes — el máximo de personas inscritas, inicialmente 16 y nunca más de 128. También en los torneos por parejas se cuentan personas, no equipos. No hace falta llenar todas las plazas para empezar.
+- Jugadores por encuentro — cuántas personas juegan en una mesa, no en todo el torneo. Esta opción aparece si el juego admite distintos tamaños de encuentro.
+- Revanchas — otro encuentro con los mismos jugadores y un orden de asientos diferente. Esta opción se aplica a la liga y a los grupos; las eliminatorias y la final tienen ajustes propios.
+- Ajustes del juego — volver a la variante y las reglas que se usarán en los encuentros.
+- «Fechas y horarios de juego» — fechas opcionales de inscripción y comienzo, y periodos permitidos para jugar.
+
+Los demás campos dependen del juego y el formato. Las revanchas están desactivadas inicialmente. Publica el torneo cuando esté listo; rellenar el formulario no lo hace visible a los demás.
+
+Al publicarlo también quedas inscrito. Si solo quieres organizarlo, date de baja antes del comienzo: seguirás siendo el organizador.
+
+### Todos contra todos
+
+En los encuentros de dos jugadores, cada participante se enfrenta a todos los rivales. Cuatro personas producen seis encuentros, o doce con revanchas. En un torneo de parejas fijas compiten las parejas en lugar de jugadores individuales. Gana quien ocupa el primer puesto de la clasificación final.
+
+Para mesas de más jugadores puedes elegir cómo formar los grupos de cada encuentro:
+
+- «Todas las combinaciones posibles» — se prepara un encuentro para cada combinación del tamaño elegido. Cuatro participantes que juegan de tres en tres dan lugar a cuatro combinaciones.
+- «Combinaciones rotativas; igual número de encuentros» — los jugadores se van alternando y todos juegan el mismo número de veces, sin tener que cubrir todas las combinaciones posibles.
+
+Con muchos participantes, todas las combinaciones pueden producir una cantidad enorme de partidas. Si el plan supera el límite de encuentros, reduce los participantes, desactiva las revanchas o elige combinaciones rotativas.
+
+### Grupos y eliminatorias
+
+Este formato admite encuentros de uno contra uno o entre dos parejas fijas. Primero se suman puntos en un grupo. Tras clasificarse para las eliminatorias, hay que vencer a los siguientes rivales para continuar en el torneo.
+
+#### Fase de grupos
+
+El programa reparte a los participantes en grupos lo más equilibrados posible, normalmente de tres o cuatro jugadores o parejas. Cuatro participantes forman dos grupos de dos. Juegas contra todos los de tu grupo, con revancha si el organizador la ha activado.
+
+El número de clasificados depende de los participantes y se ajusta al cuadro de eliminatorias. No siempre se elimina a alguien en los grupos: con ocho participantes pasan todos y la posición decide sus siguientes rivales. Con nueve se forman tres grupos de tres; pasan los ganadores de grupo y el mejor segundo.
+
+Para comparar candidatos a plazas adicionales entre grupos de distinto tamaño, se excluye de esa comparación el resultado contra el último del grupo más grande. Así se compara el mismo número de encuentros. Si persiste un empate que impide decidir la clasificación o los cruces, el programa prepara encuentros de desempate.
+
+#### Eliminatorias y final
+
+Una mejor posición de grupo se cruza con una peor, preferentemente de otro grupo. Por ejemplo, con dos grupos de cuatro, los cruces son:
+
+- primero del grupo A contra cuarto del grupo B;
+- segundo del grupo A contra tercero del grupo B;
+- tercero del grupo A contra segundo del grupo B;
+- cuarto del grupo A contra primero del grupo B.
+
+Son cuatro cruces distintos, no repeticiones de los mismos encuentros. Los ganadores avanzan por el cuadro y los perdedores quedan eliminados. La siguiente ronda se prepara cuando se resuelven todos los encuentros de la anterior. Con solo dos jugadores o dos parejas se pasa directamente a la final.
+
+El organizador elige una modalidad para las eliminatorias y, por separado, para la final:
+
+- «No» a la revancha — una sola partida decide quién pasa. Si termina en empate, se juega otra.
+- «Sí» — dos partidas con distinto orden de asientos. Se suman los puntos de torneo de ambas. Si hay empate, se comparan los marcadores del propio juego, cuando están disponibles; si tampoco resuelven el empate, se añade otro encuentro.
+- «Hasta un número de victorias» — se juega hasta que un lado alcanza las victorias indicadas, por ejemplo, dos. No significa jugar dos partidas: con 1–1 hace falta una tercera y los empates no cuentan como victorias.
+
+### Puntos y empates
+
+Los puntos del torneo son distintos del marcador del juego. En cada encuentro recibes:
+
+- 2 puntos por cada rival al que superes;
+- 1 punto por cada rival con quien empates;
+- 0 puntos por cada rival que te supere.
+
+Con dos jugadores se mantiene el reparto 2–0 por una victoria o 1–1 por un empate. Sin empates, tres jugadores reciben 4–2–0 y cuatro reciben 6–4–2–0. Si dos comparten el primer puesto en una partida de tres, reciben 3 puntos cada uno y el tercero, 0. Si empatan los tres, reciben 2 puntos cada uno.
+
+Un equipo cuenta como un solo participante. Un encuentro entre dos equipos da 2–0 o 1–1, independientemente de cuántas personas los formen. No se reparten puntos por separado a cada integrante.
+
+Los puestos dependen del resultado y del marcador del juego. Si no hay información suficiente para ordenar a los demás participantes, comparten el puesto siguiente al ganador. En la liga y los grupos, la revancha puntúa como un encuentro independiente.
+
+Si hay igualdad de puntos, se comparan primero los enfrentamientos directos entre los empatados, después la diferencia entre los puntos a favor y en contra del propio juego y, por último, los puntos a favor. Se tiene en cuenta si el juego premia un marcador mayor o menor. No se usa una comparación incompleta de enfrentamientos directos ni se sustituyen marcadores ausentes por ceros. Si los criterios disponibles no deshacen el empate, se comparte puesto; cuando hay que decidir quién se clasifica, se disputan encuentros adicionales. Los puestos compartidos dejan números sin ocupar: después de dos primeros puestos viene el tercero, no el segundo.
+
+### Fechas y horarios
+
+Abre «Fechas y horarios de juego» en el formulario del torneo. No tienes que programar nada: puedes abrir las inscripciones de inmediato, cerrarlas más tarde e iniciar el torneo manualmente.
+
+- Apertura de inscripciones — al publicar, en una fecha elegida o cuando decidas abrirlas.
+- Cierre de inscripciones — una fecha opcional a partir de la cual nadie más puede apuntarse. Cerrar las inscripciones no inicia por sí solo el torneo.
+- Inicio del torneo — una fecha opcional de comienzo automático. El inicio también cierra las inscripciones.
+- Fecha límite final — indica a los participantes cuándo deberían haber terminado sus encuentros. No resuelve partidas pendientes ni concede victorias por incomparecencia.
+- Horarios de juego — activa la restricción y añade los periodos en los que se pueden concertar encuentros. Cada uno tiene fecha y hora de inicio y fin; puedes editarlo o eliminarlo.
+
+Llega al campo de fecha con Tab. Izquierda y Derecha eligen año, mes, día, hora o minuto; Arriba y Abajo cambian el valor de esa parte. Los horarios se muestran en la zona horaria local del ordenador.
+
+Confirma las fechas para volver al formulario y publica el torneo o guarda los cambios para aplicarlas. Puedes combinar fechas programadas y control manual: por ejemplo, abrir las inscripciones inmediatamente y programar solo el inicio. El torneo acaba al resolverse los encuentros necesarios, no simplemente al llegar la fecha límite.
+
+### Opciones del organizador
+
+Abre tu torneo y elige «Administrar torneo». Antes del comienzo puedes:
+
+- editar el nombre, los ajustes de competición y las fechas;
+- usar «Gestionar participantes» para retirar a alguien o asignar compañeros en un torneo de parejas;
+- abrir o cerrar las inscripciones;
+- elegir «Iniciar torneo» en lugar de esperar al comienzo programado.
+
+Durante el torneo, las victorias por incomparecencia se conceden en «Encuentros». Selecciona una partida, abre su menú contextual y elige «Conceder victoria por incomparecencia». Elige al ganador y confirma. Hay una opción aparte para cancelar un encuentro ya iniciado, pero aún sin resolver, y conceder esa victoria. El ganador queda por delante de los demás, que comparten el último puesto. Se aplica la fórmula habitual de puntos; no se inventa un marcador del propio juego.
+
+También puedes cancelar un torneo que no haya terminado. Hazlo para anular toda la competición, no una invitación concreta. Superar una fecha o la ausencia de un jugador no concede automáticamente una victoria por incomparecencia: es una decisión del organizador.
+
+### Si un cambio no se confirma
+
+Los torneos necesitan acceso al servidor. Si una inscripción, publicación u otra acción no se confirma, no des por hecho que ha fallado. Actualiza primero la vista.
+
+En la lista de torneos, abre el menú contextual y elige «Comprobar cambios pendientes». Selecciona una acción con las flechas, pulsa Intro para ver los detalles y usa el botón de comprobación para saber si fue aceptada. Esto consulta la acción original sin enviarla de nuevo. Cuando sepas el resultado, vuelve al torneo y comprueba su estado antes de intentarlo otra vez.
+
+¡Gracias a guliwer por la idea y la implementación de los torneos!
+
 ## Colaborar en el programa
 
 ### Comunicar errores y sugerencias
@@ -297,15 +484,15 @@ Elimina los datos privados del registro antes de publicarlo.
 
 ### Avisar de errores en Quiz
 
-En Quiz, Ctrl+B marca la pregunta actual y Ctrl+Shift+B la anterior. Estos atajos no abren formularios, así que puedes seguir jugando. Al salir de la mesa, elige «Sí» cuando el programa te pregunte si quieres enviar los avisos, describe cada problema y pulsa «Enviar». La pregunta y sus respuestas se incluyen automáticamente. Si eliges «No», se descartan las marcas; los avisos no se guardan como borradores.
+En Quiz y en las preguntas de Carrera de patos, Ctrl+B marca la pregunta actual y Ctrl+Shift+B la anterior. Estos atajos no abren formularios, así que puedes seguir jugando. Al salir de la mesa, elige «Sí» cuando el programa te pregunte si quieres enviar los avisos, describe cada problema y pulsa «Enviar». El formulario también muestra la respuesta que el conjunto considera correcta. La pregunta y sus respuestas se incluyen automáticamente. Si eliges «No», se descartan las marcas; los avisos no se guardan como borradores.
 
 ### Tus propios conjuntos de preguntas
 
-En la ventana principal, después de «Partidas guardadas», abre «Crear tus propios conjuntos de preguntas». Verás la lista de tus conjuntos. Pulsa Ctrl+N para crear uno nuevo o preparar preguntas para uno de los conjuntos del juego. Para un conjunto propio, indica el título, el idioma y, si quieres, una descripción; después elige «Guardar». Si vas a añadir preguntas a un conjunto existente, selecciónalo de la lista.
+En la ventana principal, abre «Crear tus propios conjuntos de preguntas de Quiz». Verás la lista de tus conjuntos. Pulsa Ctrl+N para crear uno nuevo o preparar preguntas para uno de los conjuntos del juego. Para un conjunto propio, indica el título, el idioma y, si quieres, una descripción; después elige «Guardar». Si vas a añadir preguntas a un conjunto existente, elige primero el idioma y pulsa Intro. En la siguiente ventana, elige un conjunto de ese idioma.
 
 Pulsa Enter sobre un conjunto para abrir su menú:
 
-- «Añadir pregunta»: escribe la pregunta y cuatro respuestas, señala la correcta y elige una categoría de la lista. La fuente y la nota para la revisión son opcionales.
+- «Añadir pregunta»: escribe la pregunta, la respuesta correcta en el primer campo (A) y tres respuestas incorrectas en B, C y D. Elige una categoría de la lista. La fuente y la nota para la revisión son opcionales.
 - «Ver preguntas»: abre la lista de preguntas guardadas. Pulsa Enter para editar la seleccionada o Ctrl+N para añadir una nueva.
 - «Añadir categoría»: pon nombre a una categoría que puedas elegir en las preguntas.
 - «Eliminar borrador»: elimina todo el conjunto tras pedir confirmación.
@@ -313,7 +500,9 @@ Pulsa Enter sobre un conjunto para abrir su menú:
 
 Crea al menos una categoría antes de añadir la primera pregunta. También puedes añadir más mientras escribes: elige «Añadir una nueva categoría» al final de la lista de categorías y pulsa Enter. El texto de la pregunta se conserva en el formulario y la nueva categoría queda seleccionada.
 
-«Guardar» conserva tu trabajo como borrador. Puedes retomarlo más tarde, incluso desde otro equipo con la misma cuenta. También puedes guardar preguntas sin terminar. El menú contextual permite eliminar una pregunta o un conjunto y cambiar los datos de un conjunto propio.
+«Guardar» conserva tu trabajo como borrador. Puedes retomarlo más tarde, incluso desde otro equipo con la misma cuenta. También puedes guardar preguntas sin terminar. El menú contextual permite eliminar una pregunta o un conjunto y cambiar los datos de un conjunto propio. En la lista de conjuntos, Supr elimina el borrador seleccionado tras pedir confirmación.
+
+Los borradores dañados aparecen marcados en la lista y no impiden usar los demás conjuntos. Si no quieres conservar uno, puedes eliminarlo con Supr.
 
 Cuando las preguntas estén listas, elige «Enviar al autor». Si falta algo, el programa indica los números de pregunta y los campos que debes completar. El autor revisa las preguntas antes de incorporarlas al juego; el envío no las añade automáticamente. Tras un envío correcto, el borrador desaparece de la lista. Si el envío falla, puedes volver al borrador e intentarlo de nuevo.
 
@@ -336,4 +525,3 @@ papierek dirige el proyecto, con aportaciones de autores de juegos, traducciones
 Axel Pong no es un proyecto original de papierek. El juego se llamó originalmente Dragon-Pong, después fue mejorado por Axel y balteam y finalmente se adaptó a ELTEN con su autorización.
 
 El código de Power Games se distribuye bajo la GNU General Public License version 3. El texto completo está en [LICENSE](https://github.com/papierek1997/elten-game-room/blob/main/LICENSE). Los sonidos, las preguntas y otros materiales pueden tener condiciones de uso diferentes; sus fuentes y licencias se describen en [THIRD_PARTY_NOTICES.md](https://github.com/papierek1997/elten-game-room/blob/main/THIRD_PARTY_NOTICES.md).
-

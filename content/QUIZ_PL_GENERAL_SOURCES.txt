@@ -1,4 +1,4 @@
-Polish general knowledge — sources and rights (data version 9)
+Polish general knowledge — sources and rights (data version 13)
 
 This set replaces the earlier Wikidata-based Polish general set. Its legacy
 pack and set identifiers remain unchanged so that the existing Polish general
@@ -35,6 +35,28 @@ Unclear transcriptions and inherently two-choice questions are excluded.
 
 The adapted PolQA and MAUPQA portions remain under CC BY-SA 4.0.
 
+Data version 12 incorporates two wording reports from Zuzler: the food question
+no longer repeats its answer choices in the prompt, and the Geminids question
+uses a single complete sentence. Their IDs, answers and categories are unchanged.
+The reported answer Marek (Jandołowicz) was confirmed and remains unchanged.
+Fact checks: NASA, Geminids Meteor Shower (mid-December maximum), and
+Przystanek Historia / IPN, "Z Boga ordynansu Konfederacja Barska (1768-1772)",
+section "Ksiądz Marek" (Marek Jandołowicz and Słowacki's drama).
+https://science.nasa.gov/solar-system/meteors-meteorites/geminids/
+https://przystanekhistoria.pl/pa2/tematy/polityka-historyczna/53830,Z-Boga-ordynansu-Konfederacja-Barska-1768-1772.html
+
+Data version 13 incorporates four further wording reports from Zuzler: past
+tense for Pope Francis, a complete question about the Tripartite Pact, removal
+of the place-name clue from the Venice Charter question and a repaired roofer
+question. All question IDs, answer choices, categories and ordering remain
+unchanged. Facts and distractors were checked against the Vatican biography,
+the US Holocaust Memorial Museum, ICOMOS and the Polish Academy of Sciences'
+Wielki slownik jezyka polskiego. These sources verify facts, not copied prose.
+https://www.vatican.va/content/francesco/en/biography/documents/papa-francesco-biografia-bergoglio.html
+https://encyclopedia.ushmm.org/content/en/article/axis-powers-in-world-war-ii
+https://www.icomos.org/charters-and-doctrinal-texts/
+https://wsjp.pl/haslo/podglad/62965/dekarz
+
 Milionerzy
 Source: the public question archive at https://www.polsat.pl/.
 Each retained question stores its individual source page URL. Original answer
@@ -54,3 +76,17 @@ without deleting factual clues; some answer forms are adjusted for grammar or
 to keep the meaning of a comparison after removing the three-choice restriction.
 The readable review lists are generated from the runtime data with
 tools/export-quiz-text.rb and are not duplicated inside the installer.
+
+Community contributions
+Data version 11 adds seven questions submitted by bratczyk96 through the
+Power Games question creator. They were fact-checked, edited for clarity and
+compared with the existing set. Entertainment and culinary questions use the
+existing Kultura and Życie codzienne categories, respectively.
+Each added question records the contributor and a public fact-checking source.
+Those sources verify facts; their articles were not copied into the questions.
+The contribution was submitted for inclusion in Power Games. No separate
+re-use licence was specified, so these questions are not labelled CC0 or
+automatically covered by the PolQA/MAUPQA licence.
+The previous 14,887 questions and their identifiers remain unchanged; the set
+now contains 14,894 questions. Private correspondence and editorial notes
+are not included in the installer.

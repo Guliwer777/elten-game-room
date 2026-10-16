@@ -95,25 +95,25 @@ driver = CreatorKeyDriver.new { views.edit_question(draft, index: 0) { views.new
 driver.tap([65], 'a')
 driver.tap([13])
 NativeOptionTest.assert(driver.waiting?, 'Enter in question submitted instead of editing')
-6.times { driver.tap([9]) }
+5.times { driver.tap([9]) }
 NativeOptionTest.assert(driver.form.fields[driver.form.index].header == 'Category', 'Tab did not reach category')
 driver.tap([40])
-NativeOptionTest.assert(driver.form.fields[6].index == 1, 'Native arrow did not change category')
+NativeOptionTest.assert(driver.form.fields[5].index == 1, 'Native arrow did not change category')
 outer_form = driver.form
 driver.tap([35])
-NativeOptionTest.assert(driver.form.fields[6].options.last == 'Add a new category', 'Last category item is not the creation action')
+NativeOptionTest.assert(driver.form.fields[5].options.last == 'Add a new category', 'Last category item is not the creation action')
 driver.tap([13])
 NativeOptionTest.assert(driver.form.fields.first.header == 'Category name', 'Enter did not open inline category editor')
 'Three'.each_char { |character| driver.tap([character.upcase.ord], character) }
 driver.tap([9])
 driver.tap([13])
 NativeOptionTest.assert(driver.form.equal?(outer_form), 'Inline category replaced question form')
-NativeOptionTest.assert(driver.form.fields[6].options[driver.form.fields[6].index] == 'Three', 'Native category creation did not select it')
+NativeOptionTest.assert(driver.form.fields[5].options[driver.form.fields[5].index] == 'Three', 'Native category creation did not select it')
 NativeOptionTest.assert(driver.form.fields[0].text.include?('a'), 'Native category creation lost typed question')
 driver.tap([35])
 driver.tap([13])
 driver.tap([27])
-NativeOptionTest.assert(driver.form.equal?(outer_form) && driver.form.fields[6].options[driver.form.fields[6].index] == 'Three', 'Cancelling inline category lost focus or selection')
+NativeOptionTest.assert(driver.form.equal?(outer_form) && driver.form.fields[5].options[driver.form.fields[5].index] == 'Three', 'Cancelling inline category lost focus or selection')
 3.times { driver.tap([9]) }
 NativeOptionTest.assert(driver.form.fields[driver.form.index].label == 'Save', 'Tab did not reach Save')
 driver.tap([13])
@@ -125,3 +125,58 @@ NativeOptionTest.assert(driver.waiting?, 'Missing fields dialog did not wait')
 driver.tap([27])
 NativeOptionTest.assert(!driver.waiting?, 'Escape did not close missing fields dialog')
 puts "PASS creator native keyboard: #{NativeOptionTest.checks} checks"
+
+driver = CreatorKeyDriver.new { views.library([]) }
+driver.tap([46])
+NativeOptionTest.assert(driver.waiting?, 'Delete acted on an empty library')
+driver.tap([27])
+driver = CreatorKeyDriver.new { views.library([draft]) }
+driver.tap([17, 46])
+NativeOptionTest.assert(driver.waiting?, 'Ctrl+Delete deleted a draft')
+driver.tap([46])
+NativeOptionTest.assert(!driver.waiting? && driver.result == [:delete, 0], 'Delete did not use the selected draft action')
+
+pack_type = Struct.new(:id, :title, :language_id)
+packs = [pack_type.new('english', 'English set', 'en'), pack_type.new('polish1', 'Polski zestaw', 'pl-PL'),
+  pack_type.new('polish2', 'Drugi zestaw', 'pl-PL'), pack_type.new('russian', 'Русский набор', 'ru-RU')]
+driver = CreatorKeyDriver.new { views.choose_pack(packs) }
+language_form = driver.form
+NativeOptionTest.assert(language_form.fields.size == 3 && language_form.fields.first.header == 'Language', 'Language must have its own form')
+NativeOptionTest.assert(language_form.fields.first.index == 0, 'Picker did not default to the interface language')
+driver.tap([40])
+NativeOptionTest.assert(driver.form.equal?(language_form), 'Moving through languages opened a set prematurely')
+driver.tap([13])
+NativeOptionTest.assert(!driver.form.equal?(language_form) && driver.form.fields.first.header == 'Question set', 'Enter did not open a separate set window')
+NativeOptionTest.assert(driver.form.fields.size == 3 && driver.form.fields.first.options == ['Polski zestaw', 'Drugi zestaw'], 'Set window includes another language or duplicate language codes')
+driver.tap([40])
+driver.tap([13])
+NativeOptionTest.assert(driver.result.equal?(packs[2]), 'Picker returned another language or set')
+driver = CreatorKeyDriver.new { views.choose_pack(packs) }
+driver.tap([40])
+driver.tap([13])
+driver.tap([27])
+NativeOptionTest.assert(driver.waiting? && driver.form.fields.first.header == 'Language' && driver.form.fields.first.index == 1, 'Escape from sets did not return to the selected language')
+driver.tap([40])
+driver.tap([13])
+NativeOptionTest.assert(driver.form.fields.first.options == ['Русский набор'], 'Changing language after going back kept the old sets')
+driver.tap([13])
+NativeOptionTest.assert(driver.result.equal?(packs[3]), 'Back then language change returned the wrong set')
+
+driver = CreatorKeyDriver.new { views.choose_pack(packs) }
+driver.tap([27])
+NativeOptionTest.assert(driver.result.nil?, 'Cancelled picker selected a pack')
+NativeOptionTest.assert(views.choose_pack([]).nil?, 'An empty pack list opened a picker')
+
+NativeOptionTest.language = 'pl'
+driver = CreatorKeyDriver.new { views.choose_pack(packs) }
+NativeOptionTest.assert(driver.form.fields.first.index == 1, 'Polish interface did not select the regional Polish pack language')
+driver.tap([27])
+NativeOptionTest.language = 'es'
+driver = CreatorKeyDriver.new { views.choose_pack(packs) }
+NativeOptionTest.assert(driver.form.fields.first.index == 0, 'Unsupported interface language did not fall back to English')
+driver.tap([27])
+driver = CreatorKeyDriver.new { views.choose_pack(packs.drop(1)) }
+NativeOptionTest.assert(driver.form.fields.first.index == 0, 'Picker without English did not default to the first language')
+driver.tap([27])
+NativeOptionTest.language = 'en'
+puts "PASS creator Delete and language picker: #{NativeOptionTest.checks} checks"

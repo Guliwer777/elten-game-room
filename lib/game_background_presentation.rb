@@ -1,7 +1,9 @@
 require_relative 'host_bridge'
 # Presentation belongs to the ACTIVE UI thread, even if it is displaying a
 # native Messages/forum scene above Game Room. The model worker only publishes
-# copied data. This bridge never ticks extensions, the network or a game form.
+# copied data. This bridge never ticks host extensions, performs network I/O
+# inline or updates a game form. Tournament coordination drains its own finite
+# worker here too: the host suspends extension ticks under a parallel scene.
 class GameRoomBackgroundPresentation
   def self.attach(screen, program:, runner:, key:)
     new(screen, program: program, runner: runner, key: key).tap(&:register)
@@ -75,6 +77,7 @@ class GameRoomBackgroundPresentation
         close
       else
         @screen.send(:present_background_session, @runner)
+        @program.class.tournament_coordination_tick if @program.class.respond_to?(:tournament_coordination_tick)
       end
     }
     if @runtime && defined?(Programs) && Programs.respond_to?(:with_runtime)

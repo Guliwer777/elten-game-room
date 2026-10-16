@@ -138,3 +138,17 @@ start at square 1.
 Regression tests: `test/ui/volume_and_help_test.rb`, `test/ui/background_help_test.rb`,
 `test/ui/background_help_native_test.rb`, `test/ui/background_help_game_screen_test.rb`
 and the tests for the relevant surface and game.
+
+## Tournament shortcuts and context menus
+
+Only the main lobby opts into `game_room_tournament_shortcut_enabled`.
+Ctrl+Shift+T and its menu/help entry must not appear in game, tournament or
+settings forms. The widget keeps its own single-instance launch callback.
+The form handles the key before updating the focused control; at this point
+ELTEN has already cleared `$activecontrols` for the new frame, so that list
+cannot be used to decide whether to dispatch this shortcut.
+
+Tournament and match lists set `game_room_invitation_context_field` and append
+the shared invitation action after their own context actions. Other fields
+keep the form's ordinary invitation action. This changes menu order only:
+Ctrl+J still uses the same invitation picker and admission checks.

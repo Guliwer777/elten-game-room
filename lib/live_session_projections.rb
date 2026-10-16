@@ -256,7 +256,7 @@ class GameRoomLiveSessionStore
     def table_from_metadata(metadata, table_id)
       return nil if !supported_metadata?(metadata)
 
-      {
+      row = {
         "__id" => table_id,
         "id" => table_id,
         "__insertion_user" => metadata["owner"].to_s,
@@ -275,6 +275,9 @@ class GameRoomLiveSessionStore
         "updated_at" => metadata["created_at"].to_i,
         "last_activity_at" => metadata['last_activity_at'].is_a?(Integer) && metadata['last_activity_at'].positive? ? metadata['last_activity_at'] : nil
       }
+      row['tournament_match']=GameRoomTournamentMarker.copy(metadata['tournament_match']) if metadata.key?('tournament_match')
+      row['tournament_match']=GameRoomTournamentMarker.unpack(metadata['match_ref']) if metadata.key?('match_ref')
+      row
     end
 
     def table_from_discovered(item, metadata)

@@ -519,6 +519,17 @@
       ]
     },
     {
+      "id": "question_reports",
+      "title": {
+        "en": "Reporting questions"
+      },
+      "paragraphs": [
+        {
+          "en": "Ctrl+B marks the current question for reporting, and Ctrl+Shift+B marks the previous one. This works for questions from squares, cards and challenges. After leaving the table, choose Yes when asked whether you want to report them. Describe the problem and press Send. The form shows the question, its choices and the answer marked as correct in the set."
+        }
+      ]
+    },
+    {
       "id": "controls",
       "title": {
         "en": "Race shortcuts"
@@ -550,6 +561,12 @@
         },
         {
           "en": "P: repeat the challenge instructions."
+        },
+        {
+          "en": "Ctrl+B: mark the current question for reporting."
+        },
+        {
+          "en": "Ctrl+Shift+B: mark the previous question for reporting."
         }
       ]
     }

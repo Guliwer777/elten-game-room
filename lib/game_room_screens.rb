@@ -111,6 +111,7 @@ module GameRoomScreens
       open_button = Button.new(_("Open"))
       exit_button = Button.new(_("Exit"))
       form = GameRoomUI::Form.new([options, history, open_button, exit_button], program: @program, quiet: true)
+      form.game_room_tournament_shortcut_enabled = true
       form.game_room_entry_boundary = true
       form.extend(GameRoomLayout::ShortcutFormBehavior)
       navigator = GameRoomHistory::Navigator.new

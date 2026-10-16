@@ -519,6 +519,17 @@
       ]
     },
     {
+      "id": "question_reports",
+      "title": {
+        "cs": "Hlášení chyb v otázkách"
+      },
+      "paragraphs": [
+        {
+          "cs": "Ctrl+B označí aktuální otázku k nahlášení, Ctrl+Shift+B tu předchozí. Platí to pro otázky z polí, karet i výzev. Po odchodu od stolu vyberte „Ano“, až se program zeptá na hlášení, popište problém a stiskněte „Odeslat“. Formulář ukazuje otázku, možnosti i odpověď označenou v sadě jako správnou."
+        }
+      ]
+    },
+    {
       "id": "controls",
       "title": {
         "cs": "Zkratky závodu"
@@ -550,6 +561,12 @@
         },
         {
           "cs": "P: zopakování zadání výzvy."
+        },
+        {
+          "cs": "Ctrl+B: označit aktuální otázku k nahlášení."
+        },
+        {
+          "cs": "Ctrl+Shift+B: označit předchozí otázku k nahlášení."
         }
       ]
     }

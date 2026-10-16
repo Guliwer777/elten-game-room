@@ -48,7 +48,8 @@ class GameRepository
     @start_session_mutex.synchronize do
       existing = session_for_table(table, force: true)
       next existing if existing != nil
-      @transport.start_game(table: table, game: game, players: players, options: options, actor: Session.name, restore: restore)
+      @transport.start_game(table: table, game: game, players: players, options: options, actor: Session.name,
+        restore: restore, requested_session_id: restore[:requested_session_id])
     end
   end
 
@@ -80,7 +81,7 @@ class GameRepository
     return valid_session_for_table?(row, table, players: players_for(row)) ? row : nil
   end
 
-  def start_session(table:, game:, players:, options: "{}", recipients: players, expected_previous_session_id: nil)
+  def start_session(table:, game:, players:, options: "{}", recipients: players, expected_previous_session_id: nil, requested_session_id: nil)
     @start_session_mutex ||= Mutex.new
     @start_session_mutex.synchronize do
       start_session_once(
@@ -89,7 +90,8 @@ class GameRepository
         players: players,
         options: options,
         recipients: recipients,
-        expected_previous_session_id: expected_previous_session_id
+        expected_previous_session_id: expected_previous_session_id,
+        requested_session_id: requested_session_id
       )
     end
   end
@@ -181,18 +183,19 @@ class GameRepository
     players = players_for(session)
     raise ArgumentError, "The game participant list is incomplete" if players.empty?
     event_actor = actor.to_s
+    writer = (@transport.local_actor if @transport.is_a?(GameRoomTransport)) || Session.name
     raise ArgumentError, "A game event requires an actor" if event_actor.empty?
     if GameRoomParticipants.bot?(event_actor)
       owner = session["__table_owner"] || insertion_user(session, "player_one")
-      raise ArgumentError, "Only the table owner may move a computer" if owner.casecmp(Session.name.to_s) != 0
+      raise ArgumentError, "Only the table owner may move a computer" if owner.casecmp(writer.to_s) != 0
       raise ArgumentError, "The computer is not a player in this game" if !includes_user?(players, event_actor)
     elsif controller
       owner = session["__table_owner"] || insertion_user(session, "player_one")
-      raise ArgumentError, "Only the table owner may submit an automatic player action" if owner.casecmp(Session.name.to_s) != 0
+      raise ArgumentError, "Only the table owner may submit an automatic player action" if owner.casecmp(writer.to_s) != 0
       raise ArgumentError, "The automatic action actor is not a player in this game" if !includes_user?(players, event_actor)
     else
-      raise ArgumentError, "A user may only submit their own move" if event_actor.casecmp(Session.name.to_s) != 0
-      raise ArgumentError, "You are not a player in this game" if !includes_user?(players, Session.name)
+      raise ArgumentError, "A user may only submit their own move" if event_actor.casecmp(writer.to_s) != 0
+      raise ArgumentError, "You are not a player in this game" if !includes_user?(players, writer)
     end
     current = with_players(session, players)
     commands = events.to_a
@@ -249,7 +252,7 @@ class GameRepository
     GameRoomParticipantReplay.roster_at(session, event_id(event))
   end
 
-  def start_session_once(table:, game:, players:, options:, recipients:, expected_previous_session_id:)
+  def start_session_once(table:, game:, players:, options:, recipients:, expected_previous_session_id:, requested_session_id:)
     current = session_for_table(table)
     if expected_previous_session_id != nil && session_id(current) != expected_previous_session_id.to_i
       return current
@@ -267,7 +270,8 @@ class GameRepository
       game: game,
       players: participants,
       options: options,
-      actor: Session.name
+      actor: Session.name,
+      **(requested_session_id ? {requested_session_id:requested_session_id} : {})
     )
     return inserted
   end

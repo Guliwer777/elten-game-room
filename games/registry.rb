@@ -39,5 +39,14 @@ module GameRoomGames
       game = build(id)
       game == nil ? nil : game.name
     end
+
+    def tournament_capabilities(id, options: {})
+      game = build(id)
+      game && game.tournament_capabilities(options: options)
+    end
+
+    def tournament_ids
+      ids.select { |id| !tournament_capabilities(id)[:player_counts].empty? }
+    end
   end
 end

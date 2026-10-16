@@ -350,6 +350,18 @@ module GameRoomGames
       replay.state[:scores].dup
     end
 
+    def tournament_scores(replay, options:)
+      participant_scores(replay)
+    end
+
+    def tournament_ranking_result(replay, options:)
+      outcome = tournament_export_result(replay, options: options)
+      return outcome unless outcome[:draw]
+
+      scores = participant_scores(replay)
+      outcome.merge(winners: scores.select { |_, score| score == scores.values.max }.keys, draw: false)
+    end
+
     def shortcut_features
       super + [:scores, :current_total, :last_roll]
     end

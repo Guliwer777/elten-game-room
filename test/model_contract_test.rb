@@ -15,7 +15,13 @@ without_replay_hashes = lambda do |item|
     'final' => item.fetch('final').reject { |key, _| key == 'replay' })
 end
 assert_equal(without_replay_hashes.call(previous_tysiac), without_replay_hashes.call(tysiac), 'Tysiac roster fields must not replace the reference actions or RNG')
-cases = corpus.fetch('cases').reject { |item| item.fetch('game') == 'tysiac' } + [tysiac,
+# Build 251 removed question counts from the Quiz category announcement.
+# Comparing the reference source and current full replay showed only this
+# history text and its derived key changing; actions, events and RNG agree.
+quiz = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v2/quiz.json'), encoding: 'UTF-8'))
+previous_quiz = corpus.fetch('cases').find { |item| item.fetch('game') == 'quiz' }
+assert_equal(without_replay_hashes.call(previous_quiz), without_replay_hashes.call(quiz), 'Quiz wording must not replace the reference actions or RNG')
+cases = corpus.fetch('cases').reject { |item| %w[tysiac quiz].include?(item.fetch('game')) } + [tysiac, quiz,
   JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v1/mille_bornes.json'), encoding: 'UTF-8'))]
 duck = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v1/duck_racing.json'), encoding: 'UTF-8'))
 expected_ids = GameRoomGames::CATALOG.ids.reject { |id| %w[axel_pong audio_ball].include?(id) }.sort

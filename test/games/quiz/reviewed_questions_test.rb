@@ -64,6 +64,36 @@ reviewed_general = {
     'correct' => 'Dwie',
     'wrong' => ['Jedna', 'Więcej niż dwie', 'Żadna']
   },
+  # Player reports reviewed on 2026-10-16: two wording fixes, one correct key.
+  '1z10_66fe39b19778f94e' => {
+    'prompt' => 'Która z tych rzeczy nie nadaje się do jedzenia?',
+    'correct' => 'Tablet', 'wrong' => ['Suflet', 'Omlet', 'Kotlet']
+  },
+  '1z10_c081732881fc3741' => {
+    'prompt' => 'Na który miesiąc przypada maksimum aktywności roju Geminidów?',
+    'correct' => 'Na grudzień', 'wrong' => ['Na sierpień', 'Na październik', 'Na listopad']
+  },
+  '1z10_313528395bdfcd68' => {
+    'prompt' => 'Jak miał na imię ksiądz Jandołowicz, jeden z przywódców konfederacji barskiej, tytułowy bohater dramatu Słowackiego?',
+    'correct' => 'Marek', 'wrong' => ['Piotr', 'Józef', 'Jan']
+  },
+  # Further player reports: past tense, a missing question, a clue and a typo.
+  'polqa_01133' => {
+    'prompt' => 'Z którego państwa pochodził papież Franciszek?',
+    'correct' => 'z Argentyny', 'wrong' => ['z Brazylii', 'z Chile', 'z Urugwaju']
+  },
+  '1z10_47bcb3b74ed92e61' => {
+    'prompt' => 'Jak nazywał się pakt zawarty przez Niemcy, Włochy i Japonię w 1940 roku?',
+    'correct' => 'Pakt trzech', 'wrong' => ['Pakt stalowy', 'Pakt antykominternowski', 'Pakt czterech']
+  },
+  '1z10_569a7a907e4db13e' => {
+    'prompt' => 'Jak nazywa się dokument uchwalony w 1964 roku, określający podstawowe zasady ochrony i konserwacji zabytków architektury?',
+    'correct' => 'Karta Wenecka', 'wrong' => ['Karta Ateńska', 'Karta Florencka', 'Karta Waszyngtońska']
+  },
+  'polqa_02012' => {
+    'prompt' => 'Jak nazywa się rzemieślnik zajmujący się naprawą i pokrywaniem dachów?',
+    'correct' => 'dekarz', 'wrong' => ['cieśla', 'zdun', 'murarz']
+  },
   'milionerzy_c894a05703b826b0' => {
     'source_dataset' => 'Milionerzy/Polsat', 'category' => 'Geografia',
     'prompt' => 'Nie można powiedzieć o Morzu Martwym, że jest:',

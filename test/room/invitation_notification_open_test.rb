@@ -172,3 +172,13 @@ rescue RuntimeError
   assert_context_cleared(scenario[:app])
 end
 puts "Opened/read notifications: fresh public/private acceptance, rejection, cancellation, TTL, identity, authorization and network recovery passed"
+
+# A native table notification must ignore tournament entries in the shared
+# Ctrl+J list, including when its own table has already disappeared.
+scenario = opening_scenario
+app = scenario[:app]
+app.define_singleton_method(:load_pending_invitations) { [{tournament_invitation: {'token' => 'unrelated'}}] }
+app.notification_action(:open_invitation, scenario[:captured])
+assert(app.alerts.last == 'This table is no longer available.', 'Mixed invitations did not handle the stale native table')
+assert_context_cleared(app)
+puts 'PASS native notification ignores unrelated tournament invitations in the common picker'

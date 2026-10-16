@@ -105,8 +105,10 @@ module GameRoomQuizContributions
       return false unless @views.confirm(_('Delete this draft?'))
       task(_('Deleting draft')) do |token|
         @repository.delete(draft, token: token)
-        @drafts.remove(draft['id'])
-        @unsaved.delete(draft['id'])
+        unless draft['damaged']
+          @drafts.remove(draft['id'])
+          @unsaved.delete(draft['id'])
+        end
         true
       end
     end
@@ -120,10 +122,10 @@ module GameRoomQuizContributions
         value = details(value)
       else
         packs = GameRoomContent.registry.packs_for(game_id: 'quiz', kind: 'quiz')
-        index = @views.choose(_('Question set'), packs.map { |pack| "#{pack.title}; #{pack.language_id}" })
-        return if index.nil?
-        value = Model.new_draft('question', target: Model.pack_target(packs[index]))
-        categories = task(_('Loading question categories')) { packs[index].data.fetch('questions').map { |q| q['category'] }.uniq }
+        pack = @views.choose_pack(packs)
+        return unless pack
+        value = Model.new_draft('question', target: Model.pack_target(pack))
+        categories = task(_('Loading question categories')) { pack.data.fetch('questions').map { |q| q['category'] }.uniq }
         return unless categories
         value['categories'] = categories
       end
@@ -169,7 +171,7 @@ module GameRoomQuizContributions
 
     def edit_question(draft, index)
       existing = index < draft['items'].size
-      original = draft['items'][index] || Model.new_question(Model.categories(draft).first.to_s)
+      original = Model.correct_first(draft['items'][index] || Model.new_question(Model.categories(draft).first.to_s))
       working = Model.copy(draft)
       working['items'][index] = Model.copy(original)
       loop do

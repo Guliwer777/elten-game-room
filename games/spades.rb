@@ -325,6 +325,12 @@ module GameRoomGames
       normalize_options(options)["team_size"].to_i
     end
 
+    def tournament_scores(replay, options:)
+      replay.state.fetch(:scores)
+    end
+
+    def tournament_fixed_team_protocol; 'card-bids-and-tricks-v1'; end
+
     def options_error(options, player_count: nil)
       values = normalize_options(options)
       return _("The score limit must be greater than zero.") if values["score_limit"].to_i <= 0

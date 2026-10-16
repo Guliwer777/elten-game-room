@@ -15,6 +15,13 @@ jobs:
       fail-fast: false
       matrix:
         suite: [models, transport, ui, native, tooling, integration]
+        part: [1]
+        parts: [1]
+        include:
+          - {suite: tournaments, part: 1, parts: 4}
+          - {suite: tournaments, part: 2, parts: 4}
+          - {suite: tournaments, part: 3, parts: 4}
+          - {suite: tournaments, part: 4, parts: 4}
     steps:
       - uses: actions/checkout@v7
       - name: Checkout pinned Elten test host
@@ -65,12 +72,12 @@ jobs:
       - name: Run tests
         env:
           ELTEN_HOST_SOURCE: ${{ github.workspace }}/.ci/elten3
-        run: ruby test/run.rb --suite ${{ matrix.suite }} --report test-results.json
+        run: ruby test/run.rb --suite ${{ matrix.suite }} --shard ${{ matrix.part }}/${{ matrix.parts }} --report test-results.json
       - name: Preserve scenario results
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: test-results-${{ matrix.suite }}
+          name: test-results-${{ matrix.suite }}-${{ matrix.part }}
           path: test-results.json
           if-no-files-found: error
           retention-days: 14

@@ -2,6 +2,7 @@ require_relative "../support/native_room_harness"
 require_relative "../support/log"
 
 h = NativeRoomHarness.new(users: %w[Alice Bob Carol Dave])
+created = h.core.entries.find { |entry| entry["packet"]["kind"] == "room_created" }["packet"]
 h.start
 h.write("Alice", [GameRoomGames::EventCommand.new(action: "tick", value: "before")])
 h.broker.automatic_delivery = false
@@ -33,6 +34,11 @@ mutate.call(action, ["data", "events", 0, "move_id"], [nil, [], {}, ""])
 mutate.call(state, ["data", "bot_count"], [nil, [], {}, "3", -1, 9])
 mutate.call(state, ["data", "status"], [nil, [], {}, "bogus"])
 mutate.call(state, ["data", "updated_at"], [nil, [], {}, "now"])
+marker = {"publication_ref" => {"author" => "Alice", "publication_key" => "fixture"},
+  "schedule_id" => "a" * 64, "match_id" => "b" * 64, "leg" => 1}
+mutate.call(created, ["data", "tournament_match"], [nil, [], {},
+  marker.merge("leg" => 0), marker.merge("match_id" => "not-a-digest"),
+  marker.merge("publication_ref" => {"author" => [], "publication_key" => "fixture"})])
 packets << state.merge("data" => { "owner" => "Bob" })
 
 # A participant cannot spoof the owner even with an otherwise well-formed

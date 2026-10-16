@@ -12,6 +12,8 @@ require_relative "../../../lib/game_content"
 require_relative "../../../content/languages"
 require_relative "../../../content/quiz_pl_wikidata"
 require_relative "../../../games/quiz_party"
+require_relative "../../support/localization"
+GameRoomTestLocalization.use_language('en')
 
 class QuizRepository
   def initialize(players)
@@ -122,8 +124,6 @@ assert(choice_surface.mode == :single_choice, "the chooser did not receive a cat
 assert(choice_surface.submit_on_select == true, "choosing a category needs a second keystroke")
 pack_categories = GameRoomContent.registry.pack("quiz.wikidata.pl")
   .data["questions"].map { |question| question["category"] }.uniq.sort
-pack_category_counts = GameRoomContent.registry.pack("quiz.wikidata.pl")
-  .data["questions"].group_by { |question| question["category"] }.transform_values(&:length)
 offered_categories = choice_surface.options.map(&:id)
 assert(offered_categories.length == replay.state[:choices].length, "the round offered a different number of categories than it drew")
 assert((offered_categories - pack_categories).empty?, "the offered categories do not come from the pack")
@@ -139,12 +139,7 @@ assert(
 )
 
 choice_surface.options.each do |option|
-  expected = pack_category_counts.fetch(option.id)
-  assert(
-    option.label.include?(option.id) && option.label.include?(expected.to_s),
-    "the category #{option.id} was offered without its question count: #{option.label}"
-  )
-  assert(option.label.include?("question"), "the category #{option.id} did not name what is being counted")
+  assert(option.label == option.id, "Category selection should announce only its name: #{option.label}")
 end
 assert(
   replay.history.any? { |entry| entry.kind == :round_draw && entry.text.include?(offered_categories.first) },
@@ -556,19 +551,21 @@ assert(replay.state[:choices].empty?, "the finished round kept its drawn categor
 assert(replay.state[:used_questions].uniq.length == 3, "a question repeated inside a round")
 
 round_scored_at = events.last["created_at"].to_i
+assert(GameRoomGames::QuizParty::NEXT_ROUND_PAUSE == 5, "the round pause must be five seconds")
+assert(GameRoomGames::QuizParty::NEXT_QUESTION_PAUSE == 4, "the question pause changed incidentally")
 assert(
-  replay.state[:resume_at].to_i == round_scored_at + GameRoomGames::QuizParty::NEXT_QUESTION_PAUSE,
+  replay.state[:resume_at].to_i == round_scored_at + GameRoomGames::QuizParty::NEXT_ROUND_PAUSE,
   "the end of a round did not schedule the reading pause before the next draw"
 )
 round_pause_context = context.dup
-round_pause_context.now = round_scored_at + GameRoomGames::QuizParty::NEXT_QUESTION_PAUSE - 1
+round_pause_context.now = round_scored_at + GameRoomGames::QuizParty::NEXT_ROUND_PAUSE - 1
 assert(
   game.automatic_action(replay, "Alice", context: round_pause_context) == nil,
   "the next round was drawn before the pause had elapsed"
 )
 
 round_ready_context = context.dup
-round_ready_context.now = round_scored_at + GameRoomGames::QuizParty::NEXT_QUESTION_PAUSE
+round_ready_context.now = round_scored_at + GameRoomGames::QuizParty::NEXT_ROUND_PAUSE
 round_ready_action = game.automatic_action(replay, "Alice", context: round_ready_context)
 status, round_ready_plan = game.action_for(round_ready_action, replay, "Alice", context: round_ready_context)
 assert(status == :ok, "the next round draw was rejected after the owner's pause")
@@ -587,7 +584,7 @@ assert(
 
 replay = draw_round(
   game, session, events, repository, context, "Alice",
-  now: round_scored_at + GameRoomGames::QuizParty::NEXT_QUESTION_PAUSE
+  now: round_scored_at + GameRoomGames::QuizParty::NEXT_ROUND_PAUSE
 )
 assert(replay.state[:phase] == :choosing, "the second round did not open a category choice")
 second_round_choices = replay.state[:choices]
@@ -599,8 +596,8 @@ assert(replay.current_player == "Bob", "the category choice did not rotate to th
 second_surface = game.surface_spec(replay, "Bob")
 assert(second_surface.options.map(&:id) == second_round_choices, "the second round offered categories it had not drawn")
 assert(
-  second_surface.options.all? { |option| option.label.include?("question") },
-  "the second round dropped the question counts from the category list"
+  second_surface.options.all? { |option| option.label == option.id },
+  "the second round added extra text to the category names"
 )
 
 assert(

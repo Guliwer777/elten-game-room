@@ -45,6 +45,22 @@ examples.each_with_index do |(id, (options, expected)), index|
     assert([fields[:title],fields[:body]].join(' ').include?(expected), "Notification variant differs: #{fields}")
   end
 end
+technical_name = 'Alice — Bob / 1 [c9ae9b6f4805]'
+invitation_metadata = {
+  'game'=>'uno', 'sender'=>'Żaneta', 'table_name'=>technical_name,
+  'variant'=>GameRoomTableVariant.payload(EltenGameRoom::GAME_REGISTRY.build('uno'), {'score_limit'=>500})
+}
+[
+  [{}, "Żaneta zaprasza cię do stołu #{technical_name} (UNO, 500 punktów)."],
+  [{'tournament_match'=>true}, 'Żaneta zaprasza cię na mecz turniejowy (UNO, 500 punktów).'],
+  [{'tournament_match'=>true, 'continuation'=>true}, 'Żaneta zaprasza cię do wznowienia meczu turniejowego (UNO, 500 punktów).']
+].each do |flags, expected|
+  notice = Notice2.new(id: 900, app_uuid: uuid, sender: 'Żaneta', type: 'game_room.invitation',
+    metadata: invitation_metadata.merge(flags))
+  fields = EltenGameRoom.map_notification(notice).instance_variable_get(:@options)
+  assert(fields[:body] == expected, "Invitation wording differs: #{fields}")
+  assert(fields[:action] == :open_invitation && fields[:sound] == 'notice', 'Invitation action or sound changed')
+end
 %w[{} broken].each do |options|
   row = {'owner'=>'Bob','game'=>'uno','game_options'=>options}
   label = app.send(:table_join_label, WidgetSnapshot.new(table: row, members: ['Bob']))

@@ -20,10 +20,10 @@ class GameRoomSavedGameArchive
   end
 
   def initialize(program, owner:)
-    @program, @owner = program, owner.to_s
+    @program, @owner = program, owner.to_s.dup.freeze
   end
 
-  def put(game:, table:, snapshot:, repository:, now: GameRoomClock.now.to_i)
+  def put(game:, table:, snapshot:, repository:, now: GameRoomClock.now.to_i, intent: nil, boundary: nil, attempt: nil, tournament:nil)
     raise ArgumentError, "Unsupported saved game" unless game.supports_saved_games?
     raise ArgumentError, "Only the founder may save the game" unless GameRoomParticipants.same?(table["owner"], @owner)
     replay = game.replay(snapshot.session, snapshot.events, repository)
@@ -54,9 +54,14 @@ class GameRoomSavedGameArchive
       game.saved_private_data(replay, context: private_context(repository.session_id(snapshot.session)))
     end
     row["private_data"] = private_data unless private_data == nil
+    row['tournament']=JSON.parse(JSON.generate(tournament)) if tournament
     row["checksum"] = checksum(row)
     validate(row, game: game)
-    persist(row)
+    if intent
+      persist_intent(row, intent: intent, table: table, session: snapshot.session, boundary: boundary, attempt: attempt)
+    else
+      persist(row)
+    end
     row
   end
 
@@ -65,6 +70,14 @@ class GameRoomSavedGameArchive
     raise ArgumentError, "Incompatible saved game" unless row.is_a?(Hash) && row["format"] == FORMAT &&
       row["game"] == game.id && row["game_schema"] == game.saved_game_schema_version &&
       GameRoomParticipants.same?(row["owner"], @owner) && row["checksum"] == checksum(row)
+    if row.key?('tournament')
+      marker=row['tournament']
+      raise ArgumentError,'Invalid tournament save reference' unless marker.is_a?(Hash) &&
+        marker.keys.sort==%w[binding_digest leg match_id publication_ref schedule_id] && marker['publication_ref'].is_a?(Hash) &&
+        marker['publication_ref'].keys.sort==%w[author publication_key] && marker['publication_ref'].values.all?{|value|value.is_a?(String) && value.bytesize.between?(1,256)} &&
+        %w[binding_digest schedule_id match_id].all?{|key|marker[key].is_a?(String) && /\A[0-9a-f]{64}\z/.match?(marker[key])} &&
+        marker['leg'].is_a?(Integer) && marker['leg'].positive?
+    end
     if row.key?('statistics') && !GameRoomStatistics::Identity.valid?(row['statistics'], require_started_at: true)
       raise ArgumentError, 'Invalid saved statistics identity'
     end

@@ -24,11 +24,27 @@ module GameRoomQuizContributions
       choose(message, [_('No'), _('Yes')]) == 1
     end
 
+    def choose_pack(packs)
+      return nil if packs.empty?
+      languages = packs.map(&:language_id).uniq
+      primary = GameRoomLocalization.primary_language
+      language_index = languages.index { |id| id.split('-').first == primary } ||
+        languages.index { |id| id.split('-').first == 'en' } || 0
+      language_labels = languages.map { |id| GameRoomContent.registry.language(id)&.label || id }
+      loop do
+        language_index = choose(_('Language'), language_labels, index: language_index)
+        return nil unless language_index
+        selected = packs.select { |pack| pack.language_id == languages[language_index] }
+        pack_index = choose(_('Question set'), selected.map(&:title))
+        return selected[pack_index] if pack_index
+      end
+    end
+
     def library(rows, index: 0)
       actions = [[:new, _('New set'), 'n']]
-      actions << [:delete, _('Delete draft'), nil] unless rows.empty?
+      actions << [:delete, _('Delete draft'), :del] unless rows.empty?
       actions << [:refresh, _('Refresh'), 'r']
-      selection(_('Create your own question sets'), rows.map { |row| draft_label(row) },
+      selection(_('Create your own quiz question sets'), rows.map { |row| draft_label(row) },
         index: index, empty: _('Press Ctrl+N to create a new set or add questions to an existing one.'), actions: actions)
     end
 
@@ -47,13 +63,11 @@ module GameRoomQuizContributions
     end
 
     def edit_question(draft, index:, remove: index < draft['items'].size, &create_category)
-      value = index < draft['items'].size ? draft['items'][index] : Model.new_question(draft['categories'].first.to_s)
+      value = Model.correct_first(index < draft['items'].size ? draft['items'][index] : Model.new_question(draft['categories'].first.to_s))
       fields = [edit_box(_('Question'), value['prompt'])]
-      [_('Answer A'), _('Answer B'), _('Answer C'), _('Answer D')].each_with_index do |label, i|
+      [_('Correct answer (A)'), _('Answer B'), _('Answer C'), _('Answer D')].each_with_index do |label, i|
         fields << edit_box(label, value['choices'][i])
       end
-      fields << ListBox.new(%w[A B C D], header: text(_('Correct answer')), index: value['correct_index'],
-        flags: ListBox::Flags::AnyDir, quiet: true)
       categories = Model.categories(draft)
       selected_category = categories.include?(value['category']) ? value['category'] : categories.first.to_s
       category_labels = -> { categories.map { |s| text(s) } + [text(_('Add a new category'))] }
@@ -77,8 +91,8 @@ module GameRoomQuizContributions
       action = edit_form(fields, remove: remove)
       selected_category = categories[category.index] if category.index < categories.size
       updated = {'prompt' => fields[0].text, 'choices' => fields[1, 4].map(&:text),
-        'correct_index' => fields[5].index.to_i, 'category' => selected_category,
-        'source' => fields[7].text, 'note' => fields[8].text}
+        'correct_index' => 0, 'category' => selected_category,
+        'source' => fields[6].text, 'note' => fields[7].text}
       [action, updated]
     end
 
@@ -110,6 +124,7 @@ module GameRoomQuizContributions
     end
 
     def draft_label(draft)
+      return "#{text(_('The saved draft is damaged.'))} (#{draft['resource_id']})" if draft['damaged']
       title = draft.key?('items') ? Model.title(draft) : draft['title']
       count = draft.key?('items') ? draft['items'].size : draft['count']
       label = text(_('%{title}; questions: %{count}')) % {title: title.to_s.empty? ? text(_('Untitled set')) : title, count: count}
@@ -136,7 +151,9 @@ module GameRoomQuizContributions
       list.bind_context do |menu|
         actions.each { |action, label, key| menu.option(text(label), nil, key || '') { finish.call(action) } }
       end unless actions.empty?
-      GameRoomContextHelp.replace([list], actions.filter_map { |_, label, key| GameRoomContextHelp.shortcut_tip("Ctrl+#{key.upcase}", text(label)) if key })
+      GameRoomContextHelp.replace([list], actions.filter_map do |_, label, key|
+        GameRoomContextHelp.shortcut_tip(key == :del ? 'Delete' : "Ctrl+#{key.upcase}", text(label)) if key
+      end)
       form.wait
       [result, list.index.to_i]
     end

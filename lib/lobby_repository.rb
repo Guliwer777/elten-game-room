@@ -91,7 +91,7 @@ class LobbyRepository
     return snapshot == nil ? nil : native_snapshot(snapshot)
   end
 
-  def create_table(name:, game:, owner:, game_options: "{}", private_table: false, resume_save_id: nil, bot_count: 0, bot_names: nil)
+  def create_table(name:, game:, owner:, game_options: "{}", private_table: false, resume_save_id: nil, bot_count: 0, bot_names: nil, tournament_match: nil)
     clean_name = normalized_name(name)
     raise ArgumentError, "Invalid table name" if !valid_table_name?(clean_name)
 
@@ -104,7 +104,8 @@ class LobbyRepository
       owner: owner,
       game_options: game_options,
       capacity: DEFAULT_ROOM_CAPACITY,
-      private_table: private_table, resume_save_id: resume_save_id, bot_count: bot_count, bot_names: bot_names
+      private_table: private_table, resume_save_id: resume_save_id, bot_count: bot_count, bot_names: bot_names,
+      **(tournament_match ? {tournament_match: tournament_match} : {})
     )
     append_activity(table, "created", actor: owner, table_users: [owner])
     return CreateResult.new(table: table, created: true)

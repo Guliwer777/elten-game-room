@@ -76,9 +76,9 @@ def verify_real_ui(runtime, language)
   assert_equal([Encoding::ASCII_8BIT], runtime.source_encodings.uniq, "Sources bypassed the binary runtime boundary")
   assert_equal(["settings.json"], runtime.settings_reads, "Saved language was not read once before constants were built")
   expected_menu = if language == "pl"
-    ["Utwórz nowy stół", "Dołącz do stołu", "Zapisane gry", "Tworzenie własnych zestawów pytań", "Rankingi", "Statystyki", "Ustawienia", "Zasady gry", "README", "Co nowego"]
+    ["Utwórz nowy stół", "Dołącz do stołu", "Zapisane gry", "Turnieje", "Tworzenie własnych zestawów pytań do quizu", "Rankingi", "Statystyki", "Ustawienia", "Zasady gry", "README", "Co nowego"]
   else
-    ["Create a new table", "Join a table", "Saved games", "Create your own question sets", "Leaderboards", "Statistics", "Settings", "Game rules", "README", "What's new"]
+    ["Create a new table", "Join a table", "Saved games", "Tournaments", "Create your own quiz question sets", "Leaderboards", "Statistics", "Settings", "Game rules", "README", "What's new"]
   end
   assert_equal(expected_menu, app::MAIN_OPTIONS, "Host locale overrode the actual MAIN_OPTIONS constant")
   chess = app::GAME_REGISTRY.build("chess")
@@ -168,8 +168,8 @@ test("future Czech MO is independent of host resources and falls back only to kn
     assert(EltenAPI::Dictionary::Languages.none? { |language| language.realcode.downcase.start_with?("cs") }, "Czech fixture leaked into the host languages")
     assert(ns::GameRoomLocalization.available_languages.include?({ id: "cs", label: "Čeština" }), "New catalog needs a host language registration")
     assert_equal("Vytvořit stůl", app::MAIN_OPTIONS.first, "Primary Czech catalog was not used for a real constant")
-    assert_equal("Nastavení", app::MAIN_OPTIONS[6], "Primary translation was replaced by fallback")
-    assert_equal("Zasady gry", app::MAIN_OPTIONS[7], "Missing primary label ignored known Polish or used an unknown language")
+    assert_equal("Nastavení", app::MAIN_OPTIONS[7], "Primary translation was replaced by fallback")
+    assert_equal("Zasady gry", app::MAIN_OPTIONS[8], "Missing primary label ignored known Polish or used an unknown language")
     assert_equal("Szachy", app::GAME_REGISTRY.build("chess").name, "Missing primary game name did not use known Polish")
     quiz = app::GAME_REGISTRY.build("quiz")
     assert_equal(["1 otázka", "2 otázky", "5 otázek", "22 otázek"], [1, 2, 5, 22].map { |count| quiz.send(:question_count_text, count) }, "Actual game used host rather than Czech plurals")
@@ -199,7 +199,7 @@ test("missing Czech labels stay English when Polish is not known") do
     runtime = start_app("cs", known: ["cs"], catalogs: { "cs" => czech_fixture, "zz" => unknown_fixture })
     app = runtime.namespace::EltenGameRoom
     assert_equal("Vytvořit stůl", app::MAIN_OPTIONS.first, "Czech catalog did not load")
-    assert_equal("Game rules", app::MAIN_OPTIONS[7], "Fallback used an unknown catalog or host Polish")
+    assert_equal("Game rules", app::MAIN_OPTIONS[8], "Fallback used an unknown catalog or host Polish")
     assert_equal("Chess", app::GAME_REGISTRY.build("chess").name, "Fallback inherited host Polish")
   end
 end

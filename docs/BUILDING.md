@@ -35,7 +35,7 @@ the scope to selected checks, for example `test/games/spades` or
 `test/transport/game_sync_test.rb test/transport/transport_test.rb`.
 Directories are searched recursively, excluding helpers and fixtures.
 The layout of games and shared layers is described in [docs/TESTING.md](TESTING.md).
-`--suite models|transport|ui|native|tooling|integration` selects one layer;
+`--suite models|transport|ui|native|tooling|integration|tournaments` selects one layer;
 `--list` shows the scope. Do not combine `--suite` with a manual file list. CI retains
 the report even on failure. During the current cleanup, the restriction in
 `AGENTS.md` to tests affected by the change remains in force.

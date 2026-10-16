@@ -1,4 +1,5 @@
 require_relative '../../lib/game_room_localization'
+require_relative '../../lib/game_option_values'
 
 module GameRoomGames
   using GameRoomLocalization::Translations
@@ -240,28 +241,18 @@ module GameRoomGames
       def rules_options_text(options)
         lines = effective_option_definitions(options).filter_map do |definition|
           next if !rules_option_visible?(definition, options)
-          value = options[definition.key.to_s]
+          value = GameRoomOptionValues.read(definition, options)
           next if definition.omit_zero && value.to_i == 0
           label = GameRoomContent.utf8(definition.summary_label || definition.label).sub(/[.\s]+\z/, "")
           case definition.kind.to_sym
           when :boolean
             label if value == true
-          when :choice
-            choice = definition.choices.to_a.find { |item| item.value.to_s == value.to_s }
-            "#{label}: #{choice ? choice.label : value}"
-          when :multiple_choice
-            selected = definition.choices.to_a.each_with_index.filter_map do |choice, index|
-              choice.label if (value.to_i & (1 << index)) != 0
+          when :multiple_choice, :multiple_values
+            if !GameRoomOptionValues.selected_choices(definition, value).empty?
+              "#{label}: #{GameRoomOptionValues.format(definition, value)}"
             end
-            "#{label}: #{selected.join(', ')}" if !selected.empty?
-          when :multiple_values
-            selected = definition.choices.to_a.filter_map do |choice|
-              choice.label if value.is_a?(Array) && value.include?(choice.value)
-            end
-            "#{label}: #{selected.join(', ')}" if !selected.empty?
           else
-            formatted = definition.summary_unit == :seconds ? (_("%{seconds} seconds") % { seconds: value }) : value
-            "#{label}: #{formatted}"
+            "#{label}: #{GameRoomOptionValues.format(definition, value)}"
           end
         end
         seats = options[GameRoomTeams::OPTION_KEY]

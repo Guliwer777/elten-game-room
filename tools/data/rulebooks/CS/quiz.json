@@ -31,7 +31,7 @@
           "cs": "Otázku zopakuje T, zbývající čas přečte Ctrl+T. Pět sekund před koncem zazní varování. Bez včasné odpovědi dostaneš nulu."
         },
         {
-          "cs": "Po vypršení času nebo odeslání všech odpovědí se dozvíte řešení a kdo získal bod. Třetí otázkou kolo končí. Jeho souhrn připomene V, celkové výsledky přečte S."
+          "cs": "Po vypršení času nebo odeslání všech odpovědí se dozvíte řešení a kdo získal bod. Třetí otázkou kolo končí. Před dalším kolem je pětisekundová přestávka. Souhrn kola připomene V, celkové výsledky přečte S."
         }
       ]
     },
@@ -85,6 +85,9 @@
         },
         {
           "cs": "Po odchodu od stolu se program zeptá, zda chceš označené otázky nahlásit. Vyber „Ano“, u každé popiš problém a stiskni „Odeslat“. Otázka i odpovědi se připojí automaticky. Volba „Ne“ označení zruší; na později se neukládají."
+        },
+        {
+          "cs": "Formulář hlášení ukazuje také odpověď označenou v sadě jako správnou."
         }
       ]
     },

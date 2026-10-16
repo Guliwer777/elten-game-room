@@ -8,6 +8,12 @@ module GameRoomSingleInstance
   @active = nil
 
   class << self
+    # Read-only ownership snapshot for worker-side busy checks. This does not
+    # focus a window, take input or transfer ownership to the widget instance.
+    def active_program
+      @lock.synchronize{@active && @active[:thread].alive? ? @active[:program] : nil}
+    end
+
     def enter(program, method, arguments, launch: false)
       owner = @lock.synchronize do
         @active = nil if @active && !@active[:thread].alive?
@@ -117,7 +123,7 @@ module GameRoomSingleInstance
       GameRoomSingleInstance.enter(self, :program_main, []) { super }
     end
 
-    [:notification_action, :open_widget_table, :create_table_from_widget, :accept_invitation_from_widget].each do |entry|
+    [:notification_action, :open_widget_table, :create_table_from_widget, :accept_invitation_from_widget, :open_tournaments_from_widget].each do |entry|
       define_method(entry) do |*arguments|
         GameRoomSingleInstance.enter(self, entry, arguments) { super(*arguments) }
       end

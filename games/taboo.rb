@@ -25,8 +25,12 @@ module GameRoomGames
     def notification_option_keys(_options); %w[content_language_id content_set_id]; end
     def name; _("Taboo"); end
 
-    def short_description
-      _("Help your team guess as many words as possible by describing them aloud without using the forbidden words.")
+def short_description
+  _("Help your team guess as many words as possible by describing them aloud without using the forbidden words.")
+end
+def tournament_table_creator_seat(options:, player_count:); 0; end
+def tournament_export_scores(replay, options:)
+  tournament_public_unit_scores(replay, options: options)
     end
     def minimum_players; 4; end
     def maximum_players; 8; end

@@ -48,6 +48,10 @@ module GameRoomGames
       local_client&.shortcuts(replay, viewer) || []
     end
 
+    def reportable_question(replay)
+      local_client&.reportable_question(replay)
+    end
+
     def local_client
       @local_client&.__getobj__
     rescue WeakRef::RefError

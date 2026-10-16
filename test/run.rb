@@ -27,8 +27,8 @@ module GameRoomTestRunner
   def self.glob(pattern)
     return [pattern] if File.file?(pattern)
     if File.directory?(pattern)
-      return Dir.glob('**/*_test.rb', base: pattern).sort.reject do |path|
-        path.split('/')[0...-1].any? { |part| %w[support fixtures].include?(part) }
+      return Dir.glob('**/*_test.rb', base: pattern).sort.select do |path|
+        GameRoomTestSuites.automatic_path?(File.join(pattern, path))
       end.map { |path| File.join(pattern, path) }
     end
     return Dir.glob(pattern) unless pattern.match?(%r{\A(?:[A-Za-z]:/|/)})
@@ -41,12 +41,13 @@ module GameRoomTestRunner
     Dir.glob(pattern[(slash + 1)..], base: directory).map { |path| File.join(directory, path) }
   end
 
-  def self.run(entries, timeout: DEFAULT_TIMEOUT, report: nil, root: ROOT, output: $stdout)
-    raise ArgumentError, "Timeout must be positive" unless timeout.positive?
+  def self.run(entries, timeout: nil, report: nil, root: ROOT, output: $stdout)
+    raise ArgumentError, "Timeout must be positive" if timeout && !timeout.positive?
     scripts = expand(entries, root: root)
     raise ArgumentError, "No tests found" if scripts.empty?
     results = []
     scripts.each_with_index do |entry, index|
+      scenario_timeout = timeout || GameRoomTestSuites.timeout_for(entry.fetch(:script), fallback: DEFAULT_TIMEOUT)
       started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
       captured, timed_out, status = +"".b, false, nil
       command = [entry.fetch(:env, {}), RbConfig.ruby, *entry.fetch(:ruby_args, []),
@@ -60,7 +61,7 @@ module GameRoomTestRunner
             nil
           end
         end
-        unless waiter.join(timeout)
+        unless waiter.join(scenario_timeout)
           timed_out = true
           # Only the owned test process, never ELTEN or another Ruby instance.
           Process.kill("KILL", waiter.pid) rescue Errno::ESRCH
@@ -101,6 +102,25 @@ module GameRoomTestRunner
     results.all? { |item| item[:outcome] == "passed" || (allow_skip && item[:outcome] == "skipped") }
   end
 
+  def self.shard(entries, selection, root: ROOT, timeout: nil)
+    match = /\A([1-9]\d*)\/([1-9]\d*)\z/.match(selection.to_s)
+    raise ArgumentError, 'Use --shard INDEX/TOTAL, for example 1/4' unless match
+    index, total = match.captures.map(&:to_i)
+    jobs = expand(entries, root: root)
+    unless index <= total && total <= jobs.length
+      raise ArgumentError, 'Shard index must be within TOTAL, with at least one selected test per shard'
+    end
+    parts = Array.new(total) { [] }
+    weights = Array.new(total, 0)
+    budget = ->(job) { timeout || GameRoomTestSuites.timeout_for(job.fetch(:script), fallback: DEFAULT_TIMEOUT) }
+    jobs.sort_by { |job| [-budget.call(job), job.fetch(:script)] }.each do |job|
+      part = weights.each_with_index.min.last
+      parts[part] << job
+      weights[part] += budget.call(job)
+    end
+    parts.fetch(index - 1)
+  end
+
   def self.summary(results, output: $stdout)
     counts = results.group_by { |item| item[:outcome] }.transform_values(&:length)
     output.puts counts.map { |outcome, count| "#{outcome}: #{count}" }.join(", ")
@@ -108,7 +128,7 @@ module GameRoomTestRunner
 
   def self.cli(argv = ARGV)
     args = argv.dup
-    options = {timeout: DEFAULT_TIMEOUT, report: nil, allow_skip: false, list: false}
+    options = {timeout: nil, report: nil, allow_skip: false, list: false}
     OptionParser.new do |parser|
       parser.banner = "Usage: ruby test/run.rb [options] [test/games/spades | test/path_test.rb ...]"
       parser.on("--timeout SECONDS", Float) { |value| options[:timeout] = value }
@@ -116,6 +136,7 @@ module GameRoomTestRunner
       parser.on("--allow-skip", "Report missing optional dependencies without failing") { options[:allow_skip] = true }
       parser.on("--list", "List the selected scripts without executing them") { options[:list] = true }
       parser.on("--suite NAME", "Select a layer: #{GameRoomTestSuites::NAMES.join(', ')}") { |value| options[:suite] = value }
+      parser.on("--shard INDEX/TOTAL", "Run one deterministic, disjoint part of the selected tests") { |value| options[:shard] = value }
     end.parse!(args)
     if options[:suite]
       raise ArgumentError, '--suite cannot be combined with script paths' unless args.empty?
@@ -123,8 +144,12 @@ module GameRoomTestRunner
     else
       entries = args.empty? ? GameRoomTestSuites.paths : args
     end
+    entries = shard(entries, options[:shard], timeout: options[:timeout]) if options[:shard]
     if options[:list]
-      expand(entries).each { |entry| puts entry.fetch(:script) }
+      expand(entries).each do |entry|
+        args_str = entry[:args] && !entry[:args].empty? ? " [#{entry[:args].join(' ')}]" : ""
+        puts "#{entry.fetch(:script)}#{args_str}"
+      end
       return 0
     end
     results = run(entries, timeout: options[:timeout], report: options[:report])

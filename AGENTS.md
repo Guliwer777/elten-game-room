@@ -60,6 +60,11 @@
   Do not add move writes or a second session executor to them. Games declare
   phase rules, local options and sound effects instead of adding another
   list of game IDs to the framework.
+- Option definitions, not `default_options` keys, describe the settings schema.
+  Games may omit default values from their canonical storage. Use
+  `GameRoomOptionValues` to read, validate and display declared values; preserve
+  explicit false/zero and language-dependent choices. Do not expand stored
+  tournament settings or change match hashes to repair a settings document.
 - Realtime clients reset their own fields; shared code manages channel
   lifetime, ping and announcement sequencing, not shared physics. Test player
   replacement, a spectator acting as host, stale-channel closure and ping re-registration.
@@ -78,6 +83,51 @@
   again as independent additional coverage. Preserve initial failures separately.
 
 ## Working practices
+
+- Tournaments use the official `ServerWorkspace`; local trial adapters and
+  diagnostic UUIDs must not enter the player UI. Do not silently fall back to
+  local storage after server refusal. Keep complete bounded keyset reads,
+  operation-scoped caches and write invalidation; a short page is not EOF.
+  Own append acknowledgements preserve only provably unrelated immutable ID
+  partitions when the server ID is contiguous; gaps and uncertain writes
+  invalidate the affected table. Nested freshness checks may be shared only
+  within one verification with no intervening SDK I/O. Coordinator snapshots
+  are for display, never consent or mutation authority; manual refresh stays fresh.
+  Viewing matches/results must not persist another observed schedule. Reuse
+  a retained table head and complete operation-key batches only inside that
+  worker scope; subsets/unions must not turn a short or failed read into
+  complete evidence. Batch independent binding chains and directory lookups,
+  preserving their individual author, lineage and result validation. Keep
+  the read-budget regressions for large lists as well as failure tests.
+  Availability or opening a notice is not participant consent. Retain a copied
+  canonical result intent before network reads; saved continuations and result
+  hashes must use the same canonical binding. Preserve uncertain operation keys.
+  Ordered append-only creator claims are not atomic transactions or anti-cheat.
+  Play creates/reuses one ordinary table and sends normal five-minute table
+  invitations, accepted through the existing picker, notifications and Ctrl+J.
+  Any planned participant may be elected creator; preserve planned seats/teams.
+  Do not restore tournament readiness, consent records, a second invitation
+  screen or periodic player-reservation renewal. Decline/expiry/departure is
+  not a sporting result. Only a confirmed closed, never-started table may be
+  replaced. Preserve creator election, binding lineage and immutable start
+  intents; uncertain creation/start/result requires recovery, not a new game.
+  A native tournament pointer is not authority; validate the server binding.
+  Reuse an already checked attachment only for presentation, never to authorize
+  entry/start/results. Keep optional discovery metadata within the host limit.
+  Registration, start dates and play hours are independently optional; an
+  organizational deadline must never award a forfeit automatically. Preserve
+  event-driven view refresh, stable focus and the active-table guard.
+  See [TOURNAMENT_SERVER_INTEGRATION.md](docs/TOURNAMENT_SERVER_INTEGRATION.md).
+
+- Legacy participant-lease recovery checkpoints summarize an authenticated observed prefix,
+  not a CAS. Replay every row after their boundary; preserve original server
+  timestamps, release markers and expiry of incomplete uploads. Do not use
+  expired lease recovery to discard uncertain game/result writes. Notice
+  retries are finite reads only; they must never repeat consent or sends.
+  A covered native scene can suspend extension ticks: the existing table
+  presenter pumps the same coordinator, with a shared non-reentrant cadence
+  and no inline network I/O. Preserve phase IDs and knockout bracket metadata
+  in compact history used by native lists; do not repair missing IDs by index.
 
 - A multi-stage form that writes an auxiliary action first must pass the new
   replay and revision to the rest of that same form's handling. Do not
@@ -342,8 +392,12 @@ and `docs/PRIVATE_STATE.md`:
   `test/transport/game_sync_test.rb` and a multi-client scenario.
 - Shared-surface changes require a test of the surface itself and at least
   one affected game.
-- Do not change the release number or sign a package without the maintainer's
-  explicit instruction.
+- Do not change the release number without the maintainer's explicit instruction.
+- The maintainer's standing instruction is to sign every requested Power Games
+  package with their author certificate, including requested test packages,
+  unless they explicitly ask for an unsigned package. A build request includes
+  permission to sign locally; do not ask for signing confirmation again.
+  Installation, publication and GitHub uploads still need a separate instruction.
 
 ## Data that must not be committed
 
@@ -500,6 +554,13 @@ Do not add unresolved items to an active set. Preserve explicit user
 restrictions on sources and text changes; do not rewrite other sets
 incidentally. For a new language, apply the shared rules and add verified
 language-specific guidance to that document.
+
+After a submitted quiz proposal has been integrated and the targeted checks
+have passed, delete that proposal's message from the maintainer's ELTEN
+account. Verify the exact message ID, sender and submission identifier before
+deleting; never delete the whole conversation or unrelated messages. Retain
+the editorial decisions and necessary provenance locally before deletion.
+Do not delete a proposal while its integration is unfinished or blocked.
 
 ## Readable quiz question copies
 

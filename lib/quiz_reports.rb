@@ -128,7 +128,8 @@ module GameRoomQuizReports
     using GameRoomLocalization::Translations
 
     def report(question, problem, locked: false)
-      description = [question['prompt'], *question['answers'].each_with_index.map { |answer, i| "#{('A'.ord + i).chr}. #{answer}" }].join("\r\n")
+      description = [question['prompt'], *question['answers'].each_with_index.map { |answer, i| "#{('A'.ord + i).chr}. #{answer}" },
+        text(_('Correct answer: %{answer}')) % {answer: question['correct']}].join("\r\n")
       question_field = GameRoomUI::HelpText.new(text(_('Question')), text: text(description),
         type: EditBox::Flags::MultiLine | EditBox::Flags::ReadOnly, quiet: true)
       problem_field = EditBox.new(text(_('What is wrong with this question?')), text: text(problem),

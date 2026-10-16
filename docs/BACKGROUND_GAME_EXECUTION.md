@@ -23,6 +23,12 @@ not a second `GameScreen#run`, a global extension tick or a manual update of
 the game form. The bridge does not read the keyboard or change the active
 window, focus, draft, selection or history position.
 
+For tournament tables, this bridge also pumps the existing finite coordination
+worker, because native parallel windows suspend the host's extension tick.
+The foreground extension and covered presenter share a one-second cadence.
+This keeps the participant reservation alive without another model loop or
+network I/O on the UI thread. The bridge does not tick other host extensions.
+
 It uses the same event descriptions, turn transitions, score, sound selector,
 volume settings and shared deduplication cursors. Speech uses `stop: false`
 and `break_sequence: false`. Battleship's sound sequence continues even without

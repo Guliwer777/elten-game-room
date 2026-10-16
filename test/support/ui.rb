@@ -110,6 +110,7 @@ class ListBox < FakeControl
 
   module Flags
     MultiSelection = 1
+    AnyDir = 8
   end
 
   def initialize(options, header:, index: 0, flags: 0, quiet: true, empty_label: nil)
@@ -194,6 +195,12 @@ class Button < FakeControl
 end
 
 class Form < FakeControl
+  def register_timer(_interval,repeat:false,&callback)
+    @test_timers ||= []
+    @test_timers << callback
+    FakeControl::Registration.new(->{@test_timers.delete(callback)})
+  end
+  private :register_timer
   attr_accessor :index, :cancel_button, :accept_button, :held_modifiers
   attr_reader :fields, :hidden_controls, :wait_entry_state, :wait_announced
 

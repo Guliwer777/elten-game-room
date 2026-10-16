@@ -42,7 +42,7 @@ module GameRoomGames
             event_id,
             _("Round %{round}. The drawn categories are: %{categories}.") % {
               round: state[:completed_rounds] + 1,
-              categories: drawn.map { |category| category_choice_label(state, category) }.join("; ")
+              categories: drawn.map { |category| category_label(category) }.join("; ")
             },
             actor,
             :round_draw
@@ -212,7 +212,7 @@ module GameRoomGames
             )
             frame.winner, frame.draw = update_match_ending(state, history, event_id)
             state[:phase] = :finished if frame.winner != nil || frame.draw
-            state[:resume_at] = timestamp.to_i + NEXT_QUESTION_PAUSE if state[:phase] == :drawing
+            state[:resume_at] = timestamp.to_i + NEXT_ROUND_PAUSE if state[:phase] == :drawing
           else
             state[:phase] = :starting
             state[:resume_at] = timestamp.to_i + NEXT_QUESTION_PAUSE

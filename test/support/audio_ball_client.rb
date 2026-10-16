@@ -52,7 +52,9 @@ end
 class AudioBallHarness
   attr_reader :clients, :surfaces, :network, :audios, :replay, :players, :game, :repository, :session, :events, :forms
   attr_accessor :now
-  def initialize(players: %w[Alice Bob], owner: 'Alice', viewers: nil, options: {}, server: 0, connected: true, started: true, audio_factory: nil)
+  def initialize(players: %w[Alice Bob], owner: 'Alice', viewers: nil, options: {}, server: 0, connected: true, started: true, audio_factory: nil,
+    session: nil, session_id: 300, table_id: 20, initial_events: nil)
+    @session_id, @table_id = session_id, table_id
     @owner, @players = owner, players
     @audio_factory = audio_factory
     @viewers = viewers || ([owner] + players.reject { |player| GameRoomParticipants.bot?(player) } + ['Watcher']).uniq
@@ -62,9 +64,9 @@ class AudioBallHarness
     def @repository.players_for(session); session['__players']; end
     def @repository.actor_of(event, _session); event['actor']; end
     def @repository.event_id(event); event['__id']; end
-    @session = {'__players' => players, '__insertion_user' => owner, 'player_one' => players.first,
+    @session = session || {'__players' => players, '__insertion_user' => owner, 'player_one' => players.first,
       'options' => JSON.generate(@game.default_options.merge(options))}
-    @events = []
+    @events = initial_events || []
     @replay = @game.replay(@session, @events, @repository)
     if started
       context = GameRoomGames::ActionContext.new(table_owner: owner, random_source: GameRoomRandom::SequenceSource.new([server + 1]), local_data: {})
@@ -78,9 +80,9 @@ class AudioBallHarness
   def points_to_win; GameRoomGames::AudioBall::POINTS_TO_WIN; end
   def add_client(name, connected: true)
     @audios[name] = @audio_factory ? @audio_factory.call(clock: -> { @now }) : AudioBallTestAudio.new
-    client = GameRoomAudioBall::Client.new(Program.new, @game, clock: -> { @now }, audio: @audios[name],
+    client = @game.build_client(Program.new, clock: -> { @now }, audio: @audios[name],
       channel_factory: ->(**args) { AudioBallTestChannel.new(@network, **args) })
-    client.bind_screen(session_id: 300, table_id: 20, owner: @owner, viewer: name, members: -> { @viewers })
+    client.bind_screen(session_id: @session_id, table_id: @table_id, owner: @owner, viewer: name, members: -> { @viewers })
     @network[name.downcase].connected = connected
     @network[name.downcase].epoch = nil unless connected
     client.start
@@ -123,7 +125,7 @@ class AudioBallHarness
       client.event(@events.last, before, @replay, name, @repository)
     end
   end
-  def win_point(name)
+  def win_point(name, persist: true)
     side = @players.index(name)
     server = @players[@replay.state[:server]]
     press(@players[1 - side], 'left')
@@ -144,7 +146,7 @@ class AudioBallHarness
       break if @clients[@owner].context_data['audio_ball_point']
     end
     raise 'human point did not reach agreement' unless @clients[@owner].context_data['audio_ball_point'] == "#{@replay.state[:rally]}:#{side}"
-    commit
+    commit if persist
   end
   def inject(target, sender, body, epoch: nil, match: nil, sequence: 1)
     channel = @network.fetch(target.downcase)

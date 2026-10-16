@@ -6,6 +6,10 @@ module GameRoomGames
   using GameRoomLocalization::Translations
 
   class MilleBornes < Base
+    def tournament_export_scores(replay, options:)
+      tournament_public_unit_scores(replay, options: options)
+    end
+
     DECK_COUNTS = {
       "25" => 10, "50" => 10, "75" => 10, "100" => 12, "200" => 4,
       "stop" => 5, "speed_limit" => 4, "out_of_gas" => 3,
@@ -121,14 +125,6 @@ module GameRoomGames
       keys = %w[target_score team_count accumulate_hazards recycle_discard counterflow counterflow_cards end_counterflow_cards include_safeties custom_deck include_instant_repairs]
       keys += CARD_ORDER.map { |type| "#{type}_cards" } if normalize_options(options)["custom_deck"]
       keys.uniq
-    end
-
-    def rules_options_text(options)
-      values = { "include_safeties" => true }.merge(normalize_options(options))
-      if values["include_instant_repairs"] && !values["custom_deck"]
-        values["instant_repair_cards"] = DEFAULT_DECK_COUNTS.fetch("instant_repair")
-      end
-      super(values)
     end
 
     def options_summary(options)

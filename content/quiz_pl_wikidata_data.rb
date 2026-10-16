@@ -3,7 +3,7 @@ require 'json'
 module GameRoomContent
   module Packa0830f585cc4689a1e2a6335
     def self.load
-      JSON.parse(<<'QUIZ_DATA_1c53cf88e2e5a87dda0e106de14c8b24e92abff5ba725a2a6f4e8f42be965fe4')
+      JSON.parse(<<'QUIZ_DATA_82f2b359e00d7f0e0f15553730a858d042df74c2ce999c427192bf5b421c494a')
 {
   "questions": [
     {
@@ -63002,7 +63002,7 @@ module GameRoomContent
       "id": "1z10_47bcb3b74ed92e61",
       "category": "Historia",
       "level": "medium",
-      "prompt": "Nazywało się porozumienie Niemiec, Włoch i Japonii podpisane w 1940 roku, które przewidywało podział świata między sygnatariuszy aktu.",
+      "prompt": "Jak nazywał się pakt zawarty przez Niemcy, Włochy i Japonię w 1940 roku?",
       "correct": "Pakt trzech",
       "wrong": [
         "Pakt stalowy",
@@ -89338,7 +89338,7 @@ module GameRoomContent
       "id": "1z10_569a7a907e4db13e",
       "category": "Kultura",
       "level": "medium",
-      "prompt": "Jak nazywa się dokument uchwalony w Wenecji w 1964 roku, określający podstawowe zasady ochrony i konserwacji zabytków architektury?",
+      "prompt": "Jak nazywa się dokument uchwalony w 1964 roku, określający podstawowe zasady ochrony i konserwacji zabytków architektury?",
       "correct": "Karta Wenecka",
       "wrong": [
         "Karta Ateńska",
@@ -157402,7 +157402,7 @@ module GameRoomContent
       "id": "1z10_c081732881fc3741",
       "category": "Nauka",
       "level": "medium",
-      "prompt": "Na który miesiąc przypada maksimum obfitości geminidów? Takiego roju meteorów.",
+      "prompt": "Na który miesiąc przypada maksimum aktywności roju Geminidów?",
       "correct": "Na grudzień",
       "wrong": [
         "Na sierpień",
@@ -171642,7 +171642,7 @@ module GameRoomContent
       "id": "polqa_01133",
       "category": "Religia",
       "level": "medium",
-      "prompt": "Z którego państwa pochodzi papież Franciszek?",
+      "prompt": "Z którego państwa pochodził papież Franciszek?",
       "correct": "z Argentyny",
       "wrong": [
         "z Brazylii",
@@ -227466,7 +227466,7 @@ module GameRoomContent
       "id": "polqa_02012",
       "category": "Życie codzienne",
       "level": "medium",
-      "prompt": "Jak z niemieckiego nakrywa się rzemieślnik zajmujący się naprawą i pokrywaniem dachów?",
+      "prompt": "Jak nazywa się rzemieślnik zajmujący się naprawą i pokrywaniem dachów?",
       "correct": "dekarz",
       "wrong": [
         "cieśla",
@@ -236298,7 +236298,7 @@ module GameRoomContent
       "id": "1z10_66fe39b19778f94e",
       "category": "Życie codzienne",
       "level": "medium",
-      "prompt": "Która z tych rzeczy nie nadaje się do jedzenia? (suflet, tablet, omlet, kotlet)",
+      "prompt": "Która z tych rzeczy nie nadaje się do jedzenia?",
       "correct": "Tablet",
       "wrong": [
         "Suflet",
@@ -238197,11 +238197,130 @@ module GameRoomContent
       "source_dataset": "Milionerzy/Polsat",
       "source_license": "reuse_permission_confirmed_by_user",
       "review_required": false
+    },
+    {
+      "id": "community_b96_20261014_01",
+      "category": "Kultura",
+      "level": "medium",
+      "prompt": "W którym podlaskim mieście kręcono sceny do filmu „Znachor” Jerzego Hoffmana?",
+      "correct": "W Bielsku Podlaskim",
+      "wrong": [
+        "W Siemiatyczach",
+        "W Hajnówce",
+        "W Kleszczelach"
+      ],
+      "source": "https://umbielskpodlaski.pl/pdf/?id=306",
+      "source_dataset": "Power Games community",
+      "source_license": "Submitted by the contributor for inclusion in Power Games; no separate reuse license specified",
+      "author": "bratczyk96",
+      "review_required": false
+    },
+    {
+      "id": "community_b96_20261014_02",
+      "category": "Geografia",
+      "level": "medium",
+      "prompt": "Które z tych rosyjskich miast leży na wschodnich stokach Uralu?",
+      "correct": "Jekaterynburg",
+      "wrong": [
+        "Nowosybirsk",
+        "Kazań",
+        "Smoleńsk"
+      ],
+      "source": "https://nanocenter.urfu.ru/ru/msn2026/ekaterinburg",
+      "source_dataset": "Power Games community",
+      "source_license": "Submitted by the contributor for inclusion in Power Games; no separate reuse license specified",
+      "author": "bratczyk96",
+      "review_required": false
+    },
+    {
+      "id": "community_b96_20261014_03",
+      "category": "Religia",
+      "level": "medium",
+      "prompt": "W którym roku polski Kościół prawosławny uzyskał od Konstantynopola autokefalię, czyli niezależność?",
+      "correct": "1924",
+      "wrong": [
+        "1948",
+        "1992",
+        "1986"
+      ],
+      "source": "https://ekumenia.pl/aktualnosc/100-lecie-autokefalii-polskiego-kosciola-prawoslawnego/",
+      "source_dataset": "Power Games community",
+      "source_license": "Submitted by the contributor for inclusion in Power Games; no separate reuse license specified",
+      "author": "bratczyk96",
+      "review_required": false
+    },
+    {
+      "id": "community_b96_20261014_04",
+      "category": "Kultura",
+      "level": "medium",
+      "prompt": "Ile złotych pobierano z konta każdej drużyny na początku licytacji w „Awanturze o kasę” w latach 2002–2005?",
+      "correct": "200 zł",
+      "wrong": [
+        "300 zł",
+        "100 zł",
+        "400 zł"
+      ],
+      "source": "https://www.atmgrupa.pl/dla-mediow/wraca-awantura-o-kase-zglos-sie-programu/",
+      "source_dataset": "Power Games community",
+      "source_license": "Submitted by the contributor for inclusion in Power Games; no separate reuse license specified",
+      "author": "bratczyk96",
+      "review_required": false
+    },
+    {
+      "id": "community_b96_20261014_05",
+      "category": "Życie codzienne",
+      "level": "medium",
+      "prompt": "Z którym podlaskim miastem wiąże się tradycja pieczenia marcinka?",
+      "correct": "Z Hajnówką",
+      "wrong": [
+        "Z Sejnami",
+        "Z Sokółką",
+        "Z Szepietowem"
+      ],
+      "source": "https://www.gov.pl/web/rolnictwo/hajnowski-marcinek",
+      "source_dataset": "Power Games community",
+      "source_license": "Submitted by the contributor for inclusion in Power Games; no separate reuse license specified",
+      "author": "bratczyk96",
+      "review_required": false
+    },
+    {
+      "id": "community_b96_20261014_06",
+      "category": "Życie codzienne",
+      "level": "easy",
+      "prompt": "Która zupa jest szczególnie kojarzona z polską kuchnią wojskową?",
+      "correct": "Grochówka",
+      "wrong": [
+        "Pomidorowa",
+        "Flaki",
+        "Rosół"
+      ],
+      "source": "https://mwb.com.pl/garnizon/kuchnia-polowa/",
+      "source_dataset": "Power Games community",
+      "source_license": "Submitted by the contributor for inclusion in Power Games; no separate reuse license specified",
+      "author": "bratczyk96",
+      "review_required": false
+    },
+    {
+      "id": "community_b96_20261014_07",
+      "category": "Kultura",
+      "level": "medium",
+      "prompt": "Kto prowadził pierwszą polską edycję „Tańca z gwiazdami”?",
+      "correct": "Magda Mołek i Hubert Urbański",
+      "wrong": [
+        "Natasza Urbańska i Piotr Gąsowski",
+        "Katarzyna Skrzynecka i Hubert Urbański",
+        "Katarzyna Skrzynecka i Piotr Gąsowski"
+      ],
+      "source": "https://www.polsat.pl/news/2025-09-16/taniec-z-gwiazdami-goscie-i-gwiazdy-w-odcinku-specjalnym/",
+      "source_dataset": "Power Games community",
+      "source_license": "Submitted by the contributor for inclusion in Power Games; no separate reuse license specified",
+      "author": "bratczyk96",
+      "review_required": false
     }
   ],
   "source": "content/QUIZ_PL_GENERAL_SOURCES.txt"
 }
-QUIZ_DATA_1c53cf88e2e5a87dda0e106de14c8b24e92abff5ba725a2a6f4e8f42be965fe4
+QUIZ_DATA_82f2b359e00d7f0e0f15553730a858d042df74c2ce999c427192bf5b421c494a
     end
   end
 end

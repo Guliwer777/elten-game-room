@@ -40,15 +40,15 @@ fill = lambda do |values|
       field.is_a?(ListBox) ? field.index = value : field.set_text(value)
     end
     if form.fields.first.header == 'Question'
-      assert(form.fields[6].is_a?(ListBox), 'Category is not a selector')
+      assert(form.fields[5].is_a?(ListBox), 'Category is not a selector')
     end
     visible = form.fields.each_with_index.select { |f, i| f.is_a?(Button) && !form.instance_variable_get(:@hidden)[i] }.map { |f, _| f.label }
     assert(visible == ['Save'], 'Editor has unexpected buttons')
     form.fields.find { |field| field.is_a?(Button) && field.label == 'Save' }.trigger(:press)
   end
 end
-question = {'Question' => 'Które z tych drzew ma igły?', 'Answer A' => 'Dąb', 'Answer B' => 'Buk',
-  'Answer C' => 'Sosna', 'Answer D' => 'Klon', 'Correct answer' => 2, 'Category' => 0}
+question = {'Question' => 'Które z tych drzew ma igły?', 'Correct answer (A)' => 'Sosna', 'Answer B' => 'Dąb',
+  'Answer C' => 'Buk', 'Answer D' => 'Klon', 'Category' => 0}
 
 Dir.mktmpdir('question-ui-') do |dir|
   storage = QuestionContributionTest::Storage.new(dir)
@@ -81,7 +81,13 @@ Dir.mktmpdir('question-ui-') do |dir|
   assert(JSON.parse(mailbox.rows.first.payload['questions.json'])['proposal']['items'].size == 1, 'One-question send count wrong')
 
   # Existing-set proposal; incomplete fields are saved, each missing answer is named.
-  steps.concat([new_set, pick.call(1), pick.call(0), pick.call(0),
+  steps.concat([new_set, pick.call(1), ->(form) {
+    assert(form.fields.size == 3 && form.fields.first.header == 'Language', 'Language must open in its own window')
+    form.accept_button.trigger(:press)
+  }, ->(form) {
+    assert(form.fields.size == 3 && form.fields.first.header == 'Question set', 'Set must open after language in a separate window')
+    form.accept_button.trigger(:press)
+  }, pick.call(0),
     pick.call(0), fill.call({'Question' => 'Nieukończone pytanie'}),
     pick.call(4), notice.call(*%w[A B C D].map { |letter| "Question 1: Enter answer #{letter}." }),
     pick.call(1), pick.call(0), fill.call(question), cancel,
@@ -137,10 +143,9 @@ Dir.mktmpdir('question-ui-') do |dir|
       fields = form.fields.dup
       fields[0].set_text('Question kept while adding a category')
       fields[1, 4].each_with_index { |field, i| field.set_text("Answer #{i}") }
-      fields[5].index = 2
-      fields[7].set_text('Optional source kept')
-      fields[8].set_text('Optional note kept')
-      category = fields[6]
+      fields[6].set_text('Optional source kept')
+      fields[7].set_text('Optional note kept')
+      category = fields[5]
       assert(category.options.last == 'Add a new category', 'Missing inline category action')
       category.index = category.options.size - 1
       category.trigger(:select)
@@ -161,22 +166,42 @@ Dir.mktmpdir('question-ui-') do |dir|
     pick.call(1), pick.call(1),
     ->(form) {
       assert(form.fields[0].text == 'Question kept while adding a category', 'Question missing from separate browser')
-      assert(form.fields[6].options[form.fields[6].index] == 'Inline category', 'Question category not persisted')
-      assert(form.fields[7].text == 'Optional source kept' && form.fields[8].text == 'Optional note kept', 'Inline category lost optional fields')
+      assert(form.fields[5].options[form.fields[5].index] == 'Inline category', 'Question category not persisted')
+      assert(form.fields[6].text == 'Optional source kept' && form.fields[7].text == 'Optional note kept', 'Inline category lost optional fields')
       cancel.call(form)
     }, cancel, cancel])
   controller.edit(draft)
   assert(steps.empty? && repo.list.size == 1, 'Inline category/question left stale server snapshot')
   updated = repo.read(repo.list.first)
-  assert(updated['items'].size == 2 && updated['items'][1]['correct_index'] == 2, 'Question content or correct answer changed')
+  assert(updated['items'].size == 2 && updated['items'][1]['correct_index'] == 0, 'Question content or correct answer changed')
 
   # The action row is not itself a category, even if Tab moves away from it.
   steps << ->(form) {
-    form.fields[6].index = form.fields[6].options.size - 1
+    form.fields[5].index = form.fields[5].options.size - 1
     fill.call({}).call(form)
   }
   action, value = Q::Views.new(program).edit_question(updated, index: 1)
   assert(action == :save && value['category'] == 'Inline category', 'Action label became question category')
+
+  # Legacy drafts may mark B, C or D as correct. Merely opening and cancelling
+  # the editor must not alter storage or prompt to save a cosmetic reorder.
+  legacy = Q::Model.copy(updated)
+  legacy['items'][0]['correct_index'] = 3
+  updated = controller.send(:persist, legacy)
+  original = Q::Model.copy(repo.read(repo.list.first))
+  correct = original['items'][0]['choices'][3]
+  steps.concat([pick.call(1), pick.call(0), ->(form) {
+    assert(form.fields[1].header == 'Correct answer (A)' && form.fields[1].text == correct, 'Legacy correct answer was not moved to A')
+    assert(!form.fields.any? { |f| f.is_a?(ListBox) && f.header == 'Correct answer' }, 'Old correct-answer selector remains')
+    cancel.call(form)
+  }, cancel, cancel])
+  controller.edit(updated)
+  assert(steps.empty? && repo.read(repo.list.first) == original, 'Cancelling changed a legacy draft')
+  steps.concat([pick.call(1), pick.call(0), fill.call({}), cancel, cancel])
+  controller.edit(updated)
+  updated = repo.read(repo.list.first)
+  assert(steps.empty? && updated['items'][0]['correct_index'] == 0, 'Saving a legacy draft did not normalize the index')
+  assert(updated['items'][0]['choices'][0] == correct, 'Saving changed which answer is correct')
 
   # Declining or failing deletion keeps the menu and draft; success removes only it.
   other = controller.send(:persist, Q::Model.new_draft('set').merge('title' => 'Unrelated', 'language' => 'en'))

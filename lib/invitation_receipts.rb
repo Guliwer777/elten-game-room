@@ -3,7 +3,8 @@ require "thread"
 
 # A durable reply is still needed when the invited person has no room connection.
 # It is an application receipt, not a user notification. Only our two receipt
-# types are filtered; ordinary invitations and all other applications are intact.
+# types and internal tournament wakes are filtered; ordinary invitations and
+# all other applications are intact.
 module GameRoomInvitationReceipts
   TYPES = %w[game_room.invitation_resolved game_room.invitation_rejected].freeze
   LOCK = Mutex.new
@@ -50,7 +51,7 @@ module GameRoomInvitationReceipts
         program.manage(registration)
       end
     end
-    return if host.instance_variable_get(:@game_room_receipt_bridge_version) == 2
+    return if host.instance_variable_get(:@game_room_receipt_bridge_version) == 3
 
     GameRoomHostBridge.prepare(host, marker: :@game_room_receipt_bridge,
       method_name: :build_notification_groups, source: '/lib/invitation_receipts.rb')
@@ -71,6 +72,11 @@ module GameRoomInvitationReceipts
             if hidden && row.revoked != true
               program.receive_invitation_receipt(::Programs.app_notification_from(row))
             end
+            # suppress_default! silences delivery, not the host's list. A wake
+            # has no user action/text, including in read history. Its ordinary
+            # receipt callback still updates tournaments; a list redraw must
+            # not replay that callback or start another server read.
+            hidden ||= program != nil && type == "game_room.tournament_changed"
             if program != nil && type == "game_room.table_created" && program.respond_to?(:table_notice_visible?)
               hidden ||= !program.table_notice_visible?(::Programs.app_notification_from(row))
             end
@@ -83,7 +89,7 @@ module GameRoomInvitationReceipts
         end
       end
     RUBY
-    host.instance_variable_set(:@game_room_receipt_bridge_version, 2)
+    host.instance_variable_set(:@game_room_receipt_bridge_version, 3)
   end
 
   def enqueue(program, notification)

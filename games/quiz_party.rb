@@ -12,6 +12,7 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class QuizParty < Base
+    def tournament_private_protocol?; true; end
     QUESTIONS_PER_ROUND = 3
     ROUND_CATEGORY_CHOICES = 3
     OPTION_COUNT = 4
@@ -22,6 +23,7 @@ module GameRoomGames
     DEADLINE_SUBMISSION_GRACE = 3
     REVEAL_TIMEOUT = 10
     NEXT_QUESTION_PAUSE = 4
+    NEXT_ROUND_PAUSE = 5
     BOT_KNOWLEDGE_PERCENT = 40
     ROLL_LIMIT = 1_000
 
@@ -325,6 +327,15 @@ module GameRoomGames
       replay.state[:scores].dup
     end
 
+    def tournament_export_scores(replay, options:)
+      participant_scores(replay)
+    end
+
+    def tournament_ranking_result(replay, options:)
+      outcome = tournament_export_result(replay, options: options)
+      outcome.merge(winners: replay.state.fetch(:winners).dup, draw: false)
+    end
+
     def active_actors(replay)
       state = replay.state
       case state[:phase]
@@ -519,7 +530,7 @@ module GameRoomGames
           prompt: _("Choose the category for round %{round}") % { round: state[:completed_rounds] + 1 },
           mode: :single_choice,
           options: categories.map do |category|
-            GameSurfaces::QuestionOption.new(id: category, label: category_choice_label(state, category))
+            GameSurfaces::QuestionOption.new(id: category, label: category_label(category))
           end,
           required: true,
           submit_on_select: true
@@ -890,13 +901,6 @@ module GameRoomGames
 
     def category_label(category)
       category.to_s
-    end
-
-    def category_choice_label(state, category)
-      _("%{category}, %{questions}") % {
-        category: category_label(category),
-        questions: question_count_text(questions_by_category(state)[category.to_s].to_a.length)
-      }
     end
 
     def question_count_text(count)

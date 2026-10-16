@@ -1,7 +1,7 @@
 require_relative "../support/widget_presets"
 
 active, first, modifiers = true, true, [:control]
-accepted, created, alerts, consumed = [], [], [], 0
+accepted, created, alerts, consumed, tournaments = [], [], [], 0, 0
 key = 'j'
 widget = GameRoomWidget::TableList.new(
   loader: -> { raise 'Ctrl+J unnecessarily refreshed discovery' },
@@ -9,6 +9,7 @@ widget = GameRoomWidget::TableList.new(
   labeler: ->(*) {}, id_for: ->(*) {}, active: -> { active },
   worker: WidgetManualWorker.new, clock: -> { 0 },
   creator: ->(slot) { created << slot },
+  tournaments: -> { tournaments += 1; widget.send(:open_my_tournaments) },
   invitations: lambda {
     accepted << :accepted
     widget.update
@@ -49,6 +50,22 @@ widget.context(local, false)
 local.options.find { |item| item.first == 'Accept invitation' }.last.call
 assert(accepted.length == 2, 'Context action does not use the same callback')
 assert(widget.get_tips.count { |tip| tip.start_with?('Ctrl+J') } == 1, 'Ctrl+J help missing or duplicated')
+key, modifiers = 't', [:control, :shift]
+widget.update
+assert(tournaments == 1, 'Ctrl+Shift+T did not open tournaments exactly once')
+first = false
+widget.update
+assert(tournaments == 1, 'Held Ctrl+Shift+T reopened tournaments')
+first = true
+active = false
+widget.update
+assert(tournaments == 1, 'Off-widget Ctrl+Shift+T is active')
+active = true
+tournament_action = local.options.find { |item| item.first == 'My tournaments' }
+assert(tournament_action[2] == 'T', 'Widget menu does not expose native Ctrl+Shift+T')
+tournament_action.last.call
+assert(tournaments == 2, 'Tournament menu callback differs from the shortcut')
+key, modifiers = 'j', [:control]
 widget.instance_variable_set(:@invitations, -> { raise IOError, 'simulated invitation failure' })
 widget.update
 assert(alerts.last == 'The operation could not be completed. Please try again.', 'Failure was silent or called a creation error')
@@ -78,6 +95,8 @@ app.define_singleton_method(:launch_game_room_entry) { |*request| calls << reque
 built = app.send(:build_widget_control)
 built.send(:accept_invitation)
 assert(calls.last == [:accept_invitation_from_widget], 'Real widget factory did not connect Ctrl+J to the shared scene launch')
+built.send(:open_my_tournaments)
+assert(calls.last == [:open_tournaments_from_widget], 'Tournament quick access bypasses the single-instance scene launch')
 built.send(:create_table, nil)
 assert(calls.last == [:create_table_from_widget, nil], 'Ctrl+N bypasses the shared scene launch')
 built.send(:create_table, 29)

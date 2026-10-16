@@ -31,7 +31,7 @@
           "pl": "Jeżeli chcesz usłyszeć pytanie ponownie, naciśnij T. Ctrl+T przypomina pozostały czas. Na pięć sekund przed końcem usłyszysz sygnał ostrzegawczy. Nieudzielenie odpowiedzi w terminie daje zero punktów."
         },
         {
-          "pl": "Gdy wszyscy odpowiedzą albo upłynie czas, poznacie poprawną odpowiedź i dowiecie się, kto zdobył punkt. Po trzecim pytaniu kończy się runda. Jej podsumowanie sprawdzisz klawiszem V, a wyniki graczy klawiszem S."
+          "pl": "Gdy wszyscy odpowiedzą albo upłynie czas, poznacie poprawną odpowiedź i dowiecie się, kto zdobył punkt. Po trzecim pytaniu kończy się runda. Przed kolejną jest pięć sekund przerwy. Podsumowanie rundy sprawdzisz klawiszem V, a wyniki graczy klawiszem S."
         }
       ]
     },
@@ -85,6 +85,9 @@
         },
         {
           "pl": "Po opuszczeniu stołu program zapyta, czy chcesz zgłosić oznaczone pytania. Wybierz „Tak”, opisz problem przy każdym z nich i naciśnij „Wyślij”. Pytanie i odpowiedzi zostaną dołączone automatycznie. Wybór „Nie” usuwa oznaczenia; nie są zachowywane na później."
+        },
+        {
+          "pl": "Formularz zgłoszenia pokazuje też poprawną odpowiedź według zestawu."
         }
       ]
     },

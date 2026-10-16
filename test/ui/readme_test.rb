@@ -4,6 +4,13 @@ require_relative "../../tools/support/release_files"
 root = File.expand_path("../..", __dir__)
 manifest = JSON.parse(File.read(File.join(root, "manifest.json"), encoding: "UTF-8"))
 paths = GameRoomReadmeView::FILES
+section_titles = {
+  'pl' => ['Turnieje', 'Pomoc w rozwoju programu'],
+  'en' => ['Tournaments', 'Helping improve the program'],
+  'cs' => ['Turnaje', 'Pomoc s vývojem programu'],
+  'es' => ['Torneos', 'Colaborar en el programa'],
+  'ru' => ['Турниры', 'Помощь в развитии программы']
+}.freeze
 assert(paths.keys.sort == manifest.fetch("supported_languages").sort, "Every interface language needs a complete README")
 assert(paths.values.sort == (["README.md"] + GameRoomReleaseFiles::README_TRANSLATIONS).sort, "README runtime and installer lists differ")
 assert(GameRoomReadmeView.path("future") == paths.fetch("en"), "Future unknown language has no English fallback")
@@ -15,7 +22,10 @@ bullets = source.lines.count { |line| line.start_with?("- ") }
 menu = EltenGameRoom::MAIN_OPTIONS
 settings_index = menu.index(GameRoomLocalization.translate("Settings"))
 assert(settings_index, "Settings is missing from the initial menu language")
-assert(menu[-2] == "README", "README is not immediately before What's new")
+readme_index = menu.index('README')
+changelog_index = menu.index(GameRoomLocalization.translate("What's new"))
+assert(readme_index && changelog_index && settings_index < readme_index && readme_index < changelog_index,
+  "README is not between Settings and What's new")
 
 app = EltenGameRoom.allocate
 requested = []
@@ -30,10 +40,27 @@ paths.each do |language, path|
   bytes = File.binread(File.join(root, path))
   markdown = bytes.dup.force_encoding(Encoding::UTF_8)
   assert(markdown.valid_encoding?, "#{language}: invalid UTF-8")
+  tournament_title, help_title = section_titles.fetch(language)
+  chapters = markdown.scan(/^## (.+)$/).flatten.map(&:strip)
+  tournament_index = chapters.index(tournament_title)
+  assert(tournament_index && chapters[tournament_index + 1] == help_title,
+    "#{language}: tournaments must immediately precede the contribution section")
+  tournament_section = markdown[/^## #{Regexp.escape(tournament_title)}\r?\n(.*?)(?=^## |\z)/m, 1]
+  assert(tournament_section && tournament_section.include?('guliwer'),
+    "#{language}: tournament section is missing the contributor credit")
+  contents_titles = markdown.lines.filter_map { |line| line[/\A- \[([^\]]+)\]\(#/, 1] }
+  contents_index = contents_titles.index(tournament_title)
+  assert(contents_index && contents_titles[contents_index + 1] == help_title,
+    "#{language}: contents order differs from the tournament chapter order")
   assert(!markdown.include?("*"), "#{language}: README contains unwanted asterisks")
+  %w[Ctrl+G Ctrl+W Ctrl+F].each do |key|
+    assert(markdown.include?(key), "#{language}: missing tournament action shortcut #{key}")
+  end
+  cancel_forfeit_key=language=='es' ? 'Ctrl+Mayús+F' : 'Ctrl+Shift+F'
+  assert(markdown.include?(cancel_forfeit_key), "#{language}: missing started-match forfeit shortcut")
   assert(markdown.lines.filter_map { |line| line[/\A(#+) /, 1]&.length } == levels, "#{language}: section structure differs from the user's README")
   assert(markdown.lines.count { |line| line.start_with?("- ") } == bullets, "#{language}: missing list entries")
-  %w[Ctrl+R Ctrl+W Ctrl+I Ctrl+Shift+I Ctrl+J Ctrl+O Ctrl+M Ctrl+Shift+R Ctrl+Q Ctrl+X Ctrl+F1 Ctrl+F4 Ctrl+P Ctrl+N Ctrl+S Ctrl+Shift+S Ctrl+Home Ctrl+End Shift+C Shift+H Shift+M Ctrl+C Ctrl+Shift+H Ctrl+H].each do |key|
+  %w[Ctrl+R Ctrl+W Ctrl+I Ctrl+Shift+I Ctrl+J Ctrl+Shift+T Ctrl+O Ctrl+M Ctrl+Shift+R Ctrl+Q Ctrl+X Ctrl+F1 Ctrl+F4 Ctrl+P Ctrl+N Ctrl+S Ctrl+Shift+S Ctrl+Home Ctrl+End Shift+C Shift+H Shift+M Ctrl+C Ctrl+Shift+H Ctrl+H].each do |key|
     assert(markdown.include?(key), "#{language}: missing shortcut #{key}")
   end
   visited = false
@@ -51,7 +78,7 @@ paths.each do |language, path|
     assert(headings.map { |h| field.text_range(h.from, h.to) } == expected_titles, "#{language}: native headings or Unicode offsets changed")
     links = elements(field, EditBox::Element::Link)
     contents = links.select { |link| link.param[1].start_with?("#") }
-    assert(contents.length == 18, "#{language}: lost a contents or chapter link")
+    assert(contents.length == 19, "#{language}: lost a contents or chapter link, including tournaments")
     contents.each do |link|
       target = field.instance_variable_get(:@contents_targets)[link]
       assert(target, "#{language}: broken internal link #{link.param[1]}")
@@ -78,7 +105,7 @@ paths.each do |language, path|
     end
     form.cancel_button.trigger(:press)
   end
-  app.send(:open_main_option, menu.length - 2)
+  app.send(:open_main_option, readme_index)
   assert(visited && requested.last == path, "#{language}: menu did not read its packaged asset")
 end
 Form.driver = nil

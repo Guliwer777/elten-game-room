@@ -1,0 +1,125 @@
+require_relative '../support/binary_rules_load' if ARGV.first
+require_relative '../support/settings_widget'
+require_relative '../support/app_notification_models'
+require_relative '../support/tournament_public_ui'
+require File.join(EltenTestHost.root,'src/eapi/notificationgroups')
+T=GameRoomTournaments
+runtime=TestTaskRuntime.new('start-notice-runtime')
+EltenGameRoom.define_singleton_method(:app_runtime){runtime}
+module Programs
+  class << self
+    attr_accessor :notice_runtime
+    def notification_program(_uuid);EltenGameRoom;end
+    def runtime_for(_program);notice_runtime;end
+  end
+end
+Programs.notice_runtime=runtime
+module EltenAPI::NotificationService
+  class << self
+    attr_accessor :rows
+    def active_notifications;rows || [];end
+  end
+end
+GameRoomLocalization.boot(settings:{'interface_language'=>'pl','known_languages'=>['pl']})
+scope={'account'=>'alice','account_epoch'=>'epoch-one','backend_identity'=>'trial'}
+now=Time.utc(2026,10,15,18).to_i
+publications=[11,12,13,14].map{|id|TournamentPublicUI.publication(id).merge('__insertion_user'=>'Alice','timezone'=>'UTC')}
+reads=[]
+source=->(reference){reads<<[Thread.current,Programs.current_runtime];
+  {'complete'=>true,'participants'=>%w[alice bob],'publication'=>publications.find{|row|row['publication_key']==reference['publication_key']}}}
+notices=publications.map do |publication|
+  reference={'author'=>'alice','publication_key'=>publication['publication_key']}
+  T::TournamentStartNotice.metadata({'version'=>2,'backend_identity'=>'trial','publication_ref'=>reference,'recipient'=>'alice',
+    'title'=>publication['title'],'game'=>publication['game'],
+    'event_id'=>Digest::SHA256.hexdigest(JSON.generate(['tournament-start-v1','trial',reference]))})
+end
+uuid=EltenGameRoom.server_app_uuid
+make_row=->(id,notice){Struct.new(:id,:cat,:app_uuid,:date,:revoked,:payload,:alert,keyword_init:true).new(id:id,cat:'app',app_uuid:uuid,
+  date:now,revoked:false,alert:'',payload:{'sender'=>'Alice','type'=>T::TournamentStartNotice::TYPE,'metadata'=>notice})}
+rows=notices.each_with_index.map{|notice,index|make_row.call(index+1,notice)}
+EltenAPI::NotificationService.rows=rows
+settings=EltenGameRoom::DEFAULT_SETTINGS.merge('invitation_notifications'=>'nobody','invitation_sounds'=>true)
+EltenGameRoom.define_singleton_method(:normalized_settings){settings}
+sounds=[]
+EltenGameRoom.define_singleton_method(:play_sound_from_asset){|name,**options|sounds<<[name,options]}
+events=[]
+previous_dnd=$donotdisturb
+$notifications_callback=->(event){events<<event}
+begin
+  assert(Programs.receive_app_notification(rows[0]).last.default_suppressed?,'Disconnected start reader exposed metadata')
+  EltenGameRoom.configure_tournament_starts(source:source,context:-> {scope},clock:-> {now},registry:GameRoomGames::CATALOG)
+  assert(!EltenGameRoom.respond_to?(:with_tournament_area),'Obsolete tournament-only mute wrapper remained')
+  assert(Programs.receive_app_notification(rows[0]).last.default_suppressed?,'Unverified start was announced')
+  EltenGameRoom.tournament_starts_tick
+  worker=EltenGameRoom.instance_variable_get(:@tournament_start_inbox).instance_variable_get(:@worker)
+  wait_background_work(worker) or raise 'Start verification did not finish'
+  EltenGameRoom.tournament_starts_tick
+  assert_equal(1,events.size,'Verified start was not presented')
+  assert_equal([['notice',{volume:1.0}]],sounds,'Start sound did not use the notification volume')
+  duplicate=make_row.call(99,notices[0])
+  assert(Programs.receive_app_notification(duplicate).last.default_suppressed?,'Duplicate start bypassed verification')
+  EltenGameRoom.tournament_starts_tick
+  assert_equal(1,reads.size,'Duplicate start caused another read')
+  assert_equal(1,events.size,'Duplicate start caused another announcement')
+  settings['invitation_sounds']=false
+  Programs.receive_app_notification(rows[1])
+  EltenGameRoom.tournament_starts_tick
+  wait_background_work(worker) or raise 'Start verification did not finish'
+  EltenGameRoom.tournament_starts_tick
+  assert(events.size==2 && events[1]['type']==T::TournamentStartNotice::TYPE,'Second start not presented')
+  assert(events[1]['alert'].include?(publications[1]['title']),'Real tournament title missing')
+  assert(events[1]['sound'].nil? && sounds.size==1,'Sound preference ignored')
+  assert(reads.first[0]!=Thread.current && reads.first[1]==runtime,'Verification ran on UI or wrong runtime')
+  Programs.receive_app_notification(rows[2])
+  EltenGameRoom.tournament_starts_tick
+  wait_background_work(worker) or raise 'Raced verification did not finish'
+  settings['invitation_sounds']=true
+  EltenGameRoom.tournament_starts_tick
+  assert(!Programs.map_app_notification(rows[2]).last.default_suppressed?,'Verified notice unexpectedly muted')
+  10.times{EltenGameRoom.tournament_starts_tick}
+  assert_equal(3,events.size)
+  assert_equal(3,reads.size)
+  assert_equal(2,sounds.size,'Idle ticks repeated the notification sound')
+  $donotdisturb=true
+  Programs.receive_app_notification(rows[3])
+  EltenGameRoom.tournament_starts_tick
+  wait_background_work(worker) or raise 'Do-not-disturb verification did not finish'
+  EltenGameRoom.tournament_starts_tick
+  $donotdisturb=false
+  EltenGameRoom.tournament_starts_tick
+  assert_equal(3,events.size,'Do not disturb was ignored')
+  assert_equal(2,sounds.size,'Do not disturb played or postponed the sound')
+  original_text=events[1]['alert']
+  reader=Object.new.extend(NotificationGroups)
+  label=->(row) do
+    presentation=Programs.map_app_notification(row).last
+    group=NotificationGroups::NotificationGroup.new(cat:'app',category:'Power Games',presentation:presentation)
+    [presentation,reader.group_label(group)]
+  end
+  before_reads=reads.size
+  presentation,listed=label.call(rows[1])
+  assert_equal('Power Games: '+original_text,listed,'List description differs from the delivered text')
+  assert_equal(2,sounds.size,'List rendering replayed a notification sound')
+  now+=T::TournamentStartNotice::READING_GRACE
+  assert_equal('Power Games: '+original_text,label.call(rows[1]).last,'Expired event lost its description')
+  EltenGameRoom.configure_tournament_starts(source:source,context:-> {scope},clock:-> {now},registry:GameRoomGames::CATALOG)
+  assert_equal('Power Games: '+original_text,label.call(rows[1]).last,'Cold runtime lost the recorded event description')
+  assert(label.call(rows[1]).first.default_suppressed?,'Description alone authorized a new announcement')
+  assert_equal(before_reads,reads.size,'List rendering performed a server read')
+  %w[en pl cs es ru].each do |language|
+    GameRoomLocalization.boot(settings:{'interface_language'=>language,'known_languages'=>[language]})
+    text=label.call(rows[1]).last
+    assert(text.include?(publications[1]['title']),'Localized history lost the original tournament title')
+  end
+  forged=make_row.call(90,notices[1])
+  forged.payload=forged.payload.merge('sender'=>'Mallory')
+  assert(!label.call(forged).last.include?(publications[1]['title']),'Foreign sender supplied a start description')
+  scope['account_epoch']='new-epoch'
+  assert(Programs.map_app_notification(rows[1]).last.default_suppressed?,'Old account epoch stayed visible')
+ensure
+  $donotdisturb=previous_dnd
+  EltenGameRoom.stop_tournament_starts
+  $notifications_callback=nil
+  runtime.close
+end
+puts 'PASS native start-notice runtime: no tournament-area muting, one delivery per event, actual title/game, finite owning-runtime read, enabled/disabled sound, unchanged list text, epoch/cleanup guards and no polling'

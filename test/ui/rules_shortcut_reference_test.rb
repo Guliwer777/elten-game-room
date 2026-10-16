@@ -19,7 +19,7 @@ languages.each do |language|
     assert(doc.paragraphs == authored.map { |p| p.fetch(language) }, "#{language}/#{id}: unrelated help added")
     keys = authored.map do |row|
       text = row.fetch(language)
-      key, body = text.split(": ", 2)
+      key, body = text.split(/: | — /, 2)
       assert(body && !key.match?(/,| and | or | i | lub /), "#{language}/#{id}: condensed row: #{text}")
       # Match whole words, not e.g. Czech "poslouchat" (listen).
       global_key = key.match?(/\A(?:Ctrl\+(?:F1|R|Q)|F[23])\z/i)

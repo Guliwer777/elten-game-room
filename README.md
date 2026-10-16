@@ -1,5 +1,3 @@
-# Power Games
-
 Power Games to zestaw gier dla
 użytkowników ELTEN-a. Możesz spotkać się przy stole ze znajomymi, dołączyć
 do otwartej rozgrywki, kibicować innym albo zmierzyć się z botami w grach,
@@ -25,6 +23,7 @@ będzie już znajomych.
 - [Rankingi i statystyki](#rankingi-i-statystyki)
 - [Funkcje, które łatwo przeoczyć](#funkcje-które-łatwo-przeoczyć)
 - [Ściągawka ze skrótów](#ściągawka-ze-skrótów)
+- [Turnieje](#turnieje)
 - [Pomoc w rozwoju programu](#pomoc-w-rozwoju-programu)
   - [Zgłaszanie pytań w Quizie](#zgłaszanie-pytań-w-quizie)
   - [Własne zestawy pytań](#własne-zestawy-pytań)
@@ -386,6 +385,7 @@ do wskazanej listy lub pola gry, nie do wpisywania wiadomości.
 - F1 — pomoc dla aktywnego miejsca.
 - Ctrl+F1 — zasady gry przy stole.
 - Ctrl+J — przyjmowanie zaproszeń w Power Games i w widgecie.
+- Ctrl+Shift+T — szybki dostęp do własnych turniejów z lobby i widgetu.
 - F2 — zmniejszenie głośności wybranej grupy dźwięków.
 - F3 — zwiększenie głośności wybranej grupy dźwięków.
 - Shift+F2 — wybór poprzedniej grupy dźwięków.
@@ -425,6 +425,193 @@ do wskazanej listy lub pola gry, nie do wpisywania wiadomości.
 Przeglądanie wpisów i kategorii opisuje [rozdział o historii](#wróć-do-rozmowy-lub-wcześniejszego-ruchu).
 Przypisywanie własnych skrótów opisuje [rozdział o widgecie](#własne-skróty-tworzenia-stołów).
 
+## Turnieje
+
+Turniej łączy kilka partii w jedne rozgrywki: program układa spotkania, zbiera wyniki i ustala dalszych przeciwników. Możesz wziąć udział w cudzym turnieju albo zorganizować własny, indywidualny lub dla stałych par.
+
+### Lista turniejów i szybki dostęp
+
+W lobby wybierz „Turnieje”. Strzałkami wybierz turniej, a Enterem otwórz listę jego działań. Tab przenosi między listą, filtrem i pozostałymi polami. Filtr pozwala wyświetlić:
+
+- bieżące turnieje, w tym te, do których można się jeszcze zapisać;
+- „Moje turnieje”, czyli bieżące turnieje, w których uczestniczysz lub które organizujesz;
+- zakończone turnieje, żeby wrócić do ich wyników.
+
+W bieżących turniejach najpierw zobaczysz te, w których uczestniczysz, potem te, do których możesz się zapisać, a na końcu pozostałe.
+
+Porzucony turniej znika po 14 dniach bez aktywności przed rozpoczęciem lub po 30 dniach bez postępu po rozpoczęciu. Zapisy i zmiany organizatora przedłużają ważność przed startem, a wyniki meczów — po starcie. Samo przeglądanie jej nie przedłuża. Jeśli zapisy lub start zaplanowano na przyszłość, turniej nie zniknie przed tym terminem. Wyniki ukończonych turniejów pozostają dostępne.
+
+Przy nazwie turnieju znajdziesz grę, liczbę uczestników i stan rozgrywek. Na liście dostępne są też skróty:
+
+- Ctrl+N — utwórz turniej.
+- Ctrl+R — odśwież listę turniejów.
+- Ctrl+Shift+T — otwórz swoje bieżące turnieje z lobby lub widgetu. Jeśli masz tylko jeden taki turniej, od razu otworzy się lista jego działań.
+- Ctrl+J — otwórz zwykłą listę zaproszeń, również tych do meczów turniejowych.
+
+F1 przypomina obsługę bieżącego okna, a Escape wraca do poprzedniego. Samo zamknięcie okna nie wypisuje Cię z turnieju.
+
+### Działania w turnieju
+
+Po otwarciu turnieju od razu trafiasz na listę działań. Wybierz pozycję strzałkami i naciśnij Enter. Nagłówek podaje nazwę turnieju i jego stan.
+
+- „Spotkania” — lista meczów. Tutaj wybierasz spotkanie do rozegrania lub sprawdzasz wynik zakończonego meczu.
+- „Wyniki” — klasyfikacja turnieju, również z wcześniejszych faz.
+- „Uczestnicy” — lista osób zapisanych do turnieju.
+- „Zasady turnieju” — opis organizatora, ustawienia gry, sposób rozgrywania turnieju, zasady awansu oraz terminy.
+- „Zarządzaj turniejem” — działania organizatora. Inni uczestnicy nie mają tej pozycji.
+
+Opcje dołączenia, wypisania się i wyboru partnera pojawiają się wtedy, kiedy można z nich skorzystać.
+
+### Zapisy i wybór partnera
+
+Aby się zapisać, wybierz „Dołącz do turnieju”. Jeśli ta opcja nie jest dostępna, sprawdź stan w nagłówku: zapisy mogą jeszcze się nie rozpocząć, być już zamknięte albo może brakować miejsc. Jeśli jesteś już uczestnikiem, nie musisz zapisywać się ponownie. Przed rozpoczęciem możesz zrezygnować przez „Wypisz się z turnieju”.
+
+W turnieju dla stałych par obie osoby najpierw zapisują się osobno. Następnie:
+
+1. Otwórz „Mój partner” i wybierz drugiego uczestnika.
+2. Poproś tę osobę, żeby w tym samym miejscu wybrała Ciebie.
+3. Po wzajemnym wyborze para jest potwierdzona. Na ekranie partnera sprawdzisz też, czy nadal czekasz na akceptację.
+
+Przed startem możesz zmienić wybór lub zrezygnować z partnera. Organizator także może ustawić pary. Nie da się przygotować spotkań drużynowych, dopóki część uczestników nie ma kompletnych par. Przez cały turniej grasz z tym samym partnerem, a wynik liczy się dla Was wspólnie.
+
+O rozpoczęciu turnieju otrzymasz powiadomienie, również gdy przeglądasz turnieje. Jego dźwięk podlega zwykłym ustawieniom powiadomień.
+
+### Jak rozpocząć mecz
+
+Nie trzeba tworzyć osobnego stołu ani szukać go na liście publicznych partii.
+
+1. Otwórz swój turniej — z lobby lub widgetu możesz użyć Ctrl+Shift+T — i wybierz „Spotkania”.
+2. Zaznacz swój nierozegrany mecz i naciśnij Enter lub Ctrl+G. Możesz też wybrać „Zagraj” z menu kontekstowego. Po potwierdzeniu program otworzy stół z ustawieniami turnieju i zaprosi pozostałych uczestników.
+3. Pozostali przyjmują zwykłe zaproszenie z powiadomienia ELTEN-a lub z listy pod Ctrl+J i od razu trafiają do stołu.
+4. Gdy wszyscy są przy stole, gospodarz wybiera „Rozpocznij grę”. Dalej korzystacie ze zwykłej obsługi wybranej gry.
+
+Stół może otworzyć dowolny uczestnik danego meczu. Organizator nie musi być obecny. Na liście użytkowników przy stole sprawdzisz, kto już dołączył.
+
+Osoby spoza składu tego meczu dołączają automatycznie jako obserwatorzy, także przed rozpoczęciem gry. Dotyczy to również uczestników turnieju, którzy mają rozegrać inne spotkanie.
+
+Zaproszenie jest ważne przez pięć minut. Odrzucenie go, jego wygaśnięcie ani wyjście ze stołu nie oznacza przegranej i nie wypisuje z turnieju. Wybierając ponownie „Zagraj”, wrócisz do istniejącego stołu i zaprosisz brakujące osoby.
+
+Zanim wejdziesz do meczu, opuść inną partię. Nie możesz jednocześnie zająć miejsca przy dwóch stołach. Jeśli pusty stół zamknięto przed rozpoczęciem gry, możesz otworzyć mecz ponownie. Rozpoczętej partii nie zastępujemy automatycznie nową; do jej wznowienia służą „Zapisane gry”.
+
+### Spotkania, wyniki i przerwana partia
+
+„Spotkania” otwierają się na bieżącej fazie turnieju. Pierwsza pozycja listy podaje jej nazwę, np. „Ćwierćfinały”, oraz liczbę zakończonych meczów. Pod nią są najpierw Twoje nierozegrane mecze, potem nierozegrane mecze pozostałych uczestników, a na końcu wszystkie zakończone spotkania. Każdy widzi pełną listę.
+
+Tabem przechodzisz do listy faz. Możesz tam przejrzeć wcześniejsze etapy. Gdy oglądasz bieżącą fazę, lista automatycznie przejdzie do następnej po jej rozpoczęciu. Odświeżenie zachowuje wybrany mecz, jeśli nadal jest widoczny.
+
+Enter na zakończonym meczu informuje, że został już rozegrany. Jego wynik otworzysz przez Ctrl+W lub opcję „Wynik meczu” w menu kontekstowym. To samo menu pokazuje dostępne działania i ich skróty: Ctrl+G — zagraj, Ctrl+F — przyznaj walkower, Ctrl+Shift+F — anuluj rozpoczęty mecz i przyznaj walkower. Dwie ostatnie opcje są dostępne dla organizatora i wymagają wskazania zwycięzcy oraz potwierdzenia.
+
+„Wyniki” od razu pokazują listę uczestników: miejsce, nazwę, punkty turniejowe i liczbę rozegranych meczów. Tabem przejdziesz do wyboru fazy. Wyniki zakończonych partii zapisują się automatycznie; nie trzeba przepisywać ich z historii gry.
+
+Jeżeli gra obsługuje zapis, gospodarz może użyć Ctrl+S. Partię wznawia się z „Zapisanych gier”, a jej kontynuacja nadal należy do tego samego meczu turniejowego. Samo wyjście gracza lub zerwanie połączenia nie oznacza remisu ani walkowera. Nierozstrzygnięty mecz pozostaje do dokończenia lub decyzji organizatora.
+
+### Tworzenie turnieju
+
+Na liście turniejów naciśnij Ctrl+N. Najpierw wybierz grę, potem jej wariant i zwykłe ustawienia stołu. Po ich zatwierdzeniu przejdziesz do formularza turnieju. Pola zmieniasz Tabem, wartości na listach strzałkami, a pola wyboru zaznaczasz Spacją.
+
+- Nazwa turnieju — nazwa widoczna dla pozostałych graczy.
+- Format — „Każdy z każdym” albo „Grupy i faza pucharowa”; różnice opisano poniżej.
+- Limit uczestników — maksymalna liczba zapisanych osób, domyślnie 16, nie więcej niż 128. W turnieju par liczy się osoby, nie drużyny. Nie trzeba wypełnić limitu, żeby rozpocząć.
+- Liczba graczy przy stole — ile osób bierze udział w jednym meczu, a nie w całym turnieju. Wybór pojawia się, jeśli gra pozwala na różne liczby graczy.
+- Mecze rewanżowe — dodatkowe spotkanie w tym samym składzie, ze zmienioną kolejnością miejsc. Ta opcja dotyczy rozgrywek każdy z każdym i grup; puchar oraz finał mają osobne ustawienia.
+- Ustawienia gry — powrót do wariantu i reguł, które będą obowiązywać w meczach.
+- „Daty i godziny gry” — opcjonalne terminy zapisów, rozpoczęcia i rozgrywania spotkań.
+
+Dodatkowe pola zależą od formatu i gry. Rewanże są domyślnie wyłączone. Na końcu wybierz publikację turnieju; samo wypełnianie formularza nie udostępnia go innym.
+
+Publikacja zapisuje także Ciebie jako uczestnika. Jeśli chcesz tylko organizować, wypisz się przed rozpoczęciem — nadal pozostaniesz organizatorem.
+
+### Każdy z każdym
+
+W meczach dwuosobowych każdy spotyka się z każdym przeciwnikiem. Dla czterech osób oznacza to sześć meczów, a z rewanżami dwanaście. W turnieju stałych par zamiast osób rywalizują całe pary. Zwycięża osoba lub para z najlepszym wynikiem w klasyfikacji.
+
+Przy większej liczbie graczy przy stole możesz wybrać sposób układania składów:
+
+- „Wszystkie możliwe składy” — program przygotowuje każdą kombinację uczestników o wybranej wielkości. Przy czterech osobach i trzech miejscach przy stole będą cztery różne składy.
+- „Składy rotacyjne; równa liczba występów” — uczestnicy grają w zmieniających się składach, każdy tyle samo razy, ale bez obowiązku rozegrania wszystkich możliwych kombinacji.
+
+Wszystkie kombinacje przy licznej grupie mogą oznaczać bardzo dużo partii. Jeżeli plan przekracza dostępny limit spotkań, trzeba zmniejszyć liczbę uczestników, wyłączyć rewanże lub wybrać składy rotacyjne.
+
+### Grupy i faza pucharowa
+
+Ten format jest dostępny dla meczów jeden na jednego oraz dwóch stałych par. W grupach zbierasz punkty, a po awansie do pucharu musisz pokonywać kolejnych przeciwników, żeby pozostać w turnieju.
+
+#### Faza grupowa
+
+Program dzieli uczestników na możliwie równe grupy, zwykle po trzy lub cztery osoby albo pary. Przy czterech uczestnikach będą dwie grupy po dwie osoby. W swojej grupie grasz z każdym, także rewanż, jeśli organizator go włączył.
+
+Liczba awansujących zależy od liczby uczestników i jest dopasowana do drabinki pucharowej. Nie zawsze ktoś odpada już w grupach: przy ośmiu uczestnikach wszyscy przechodzą dalej, a miejsce w grupie ustala przeciwnika w pucharze. Przy dziewięciu powstają trzy grupy po trzy osoby, a awansują zwycięzcy grup i najlepsza osoba z drugiego miejsca.
+
+Gdy trzeba porównać osoby z grup różnej wielkości, przy wyborze dodatkowych awansujących pomija się wynik z ostatnim uczestnikiem większej grupy. Dzięki temu porównanie obejmuje tę samą liczbę spotkań. Jeżeli remis nadal uniemożliwia ustalenie awansu lub par pucharowych, program przygotuje dodatkowe mecze rozstrzygające.
+
+#### Puchar i finał
+
+Wyższe miejsce w grupie daje przeciwnika z niższego miejsca, w pierwszej kolejności z innej grupy. Na przykład przy dwóch grupach po cztery osoby pary wyglądają tak:
+
+- pierwsza osoba z grupy A z czwartą z grupy B;
+- druga z grupy A z trzecią z grupy B;
+- trzecia z grupy A z drugą z grupy B;
+- czwarta z grupy A z pierwszą z grupy B.
+
+To cztery różne pary, nie powtórzenia tych samych meczów. Zwycięzcy przechodzą dalej według drabinki, przegrani odpadają. Kolejna runda powstaje po rozstrzygnięciu wszystkich spotkań poprzedniej. Przy zaledwie dwóch uczestnikach lub dwóch parach turniej zaczyna się od razu od finału.
+
+Dla rund pucharowych i osobno dla finału organizator wybiera:
+
+- „Nie” przy rewanżach — jedno spotkanie rozstrzyga awans. Jeśli kończy się remisem, potrzebne jest kolejne.
+- „Tak” — dwa spotkania ze zmienioną kolejnością miejsc. Liczy się łączna punktacja obu spotkań. Przy remisie program porównuje wyniki samej gry, o ile są dostępne; jeżeli nadal nie ma rozstrzygnięcia, dochodzi dodatkowy mecz.
+- „Do określonej liczby wygranych” — gracie, aż jedna strona osiągnie ustaloną liczbę zwycięstw, np. dwa. To nie oznacza dwóch partii: przy wyniku 1:1 trzeba rozegrać trzecią, a remisy nie zwiększają liczby wygranych.
+
+### Punkty i remisy
+
+Punkty turniejowe są oddzielone od wyniku samej gry. Za każdy mecz otrzymujesz:
+
+- 2 punkty za każdego przeciwnika, którego wyprzedzisz;
+- 1 punkt za każdego przeciwnika, z którym podzielisz miejsce;
+- 0 punktów za każdego przeciwnika, który Cię wyprzedzi.
+
+We dwójkę nadal jest to 2–0 za wygraną albo 1–1 za remis. Przy trzech osobach bez remisu podział wynosi 4–2–0, a przy czterech 6–4–2–0. Jeśli we trójkę dwie osoby wygrają wspólnie, dostają po 3 punkty, a trzecia 0. Gdy remisują wszyscy trzej, każdy otrzymuje 2 punkty.
+
+Jedna drużyna liczy się jak jeden uczestnik. Mecz dwóch drużyn daje więc 2–0 albo 1–1, bez względu na liczbę osób w składach. Punkty nie są przyznawane osobno każdemu członkowi drużyny.
+
+Kolejność w meczu wynika z rozstrzygnięcia gry i jej wyników. Jeśli gra nie pozwala ustalić dalszych miejsc, pozostali uczestnicy dzielą miejsce za zwycięzcą. W lidze i grupach rewanż jest osobnym punktowanym spotkaniem.
+
+Przy równej liczbie punktów program porównuje kolejno bezpośrednie spotkania remisujących, różnicę punktów zdobytych i straconych w grze, a potem punkty zdobyte. Bierze pod uwagę, czy w danej grze lepszy jest wynik wyższy, czy niższy. Nie korzysta z niepełnego porównania bezpośrednich spotkań ani nie zastępuje brakującego wyniku zerem. Jeśli dostępne kryteria nie rozstrzygają remisu, uczestnicy dzielą miejsce; gdy potrzebne jest rozstrzygnięcie awansu, odbywają się dodatkowe mecze. Przy wspólnym miejscu następny numer uwzględnia wszystkie poprzedzające osoby: po dwóch pierwszych miejscach jest trzecie, nie drugie.
+
+### Daty i godziny gry
+
+W formularzu turnieju otwórz „Daty i godziny gry”. Nie musisz planować żadnych terminów: możesz otworzyć zapisy od razu, a zamknąć je i rozpocząć turniej ręcznie.
+
+- Otwarcie zapisów — od razu po publikacji, o wybranym terminie albo dopiero na Twoje polecenie.
+- Zamknięcie zapisów — opcjonalna data, po której nowe osoby już się nie zapiszą. Samo zamknięcie nie uruchamia turnieju.
+- Rozpoczęcie turnieju — opcjonalna data automatycznego startu. Rozpoczęcie kończy również zapisy.
+- Termin końcowy — informacja dla uczestników, do kiedy powinni rozegrać mecze. Nie rozstrzyga zaległych spotkań i nie przyznaje walkowerów.
+- Godziny gry — po włączeniu ograniczenia dodaj przedziały, w których można umawiać mecze. Każdy ma datę i godzinę początku oraz końca; zapisane przedziały możesz edytować lub usuwać.
+
+Aby ustawić datę, Tabem przejdź do jej pola. Strzałki w lewo i w prawo wybierają rok, miesiąc, dzień, godzinę lub minutę; góra i dół zmieniają wartość wybranej części. Program pokazuje czas lokalny Twojego komputera.
+
+Po ustawieniu terminów zatwierdź je i wróć do formularza turnieju. Całość zapiszesz dopiero przez publikację lub zapis zmian. Terminy można łączyć z ręcznym sterowaniem, np. otworzyć zapisy od razu i zaplanować tylko start. Turniej kończy się po rozstrzygnięciu wymaganych spotkań, nie przez samo osiągnięcie daty końcowej.
+
+### Działania organizatora
+
+Otwórz swój turniej i wybierz „Zarządzaj turniejem”. Przed rozpoczęciem możesz:
+
+- edytować nazwę, ustawienia rozgrywek i terminy;
+- przez „Zarządzaj uczestnikami” usunąć wybraną osobę lub ustawić partnerów w turnieju par;
+- otworzyć albo zamknąć zapisy;
+- wybrać „Rozpocznij turniej”, jeśli nie chcesz korzystać z zaplanowanego startu.
+
+W trakcie rozgrywek walkower przyznaje się na liście „Spotkania”. Wybierz mecz, otwórz menu kontekstowe i wybierz „Przyznaj walkower”. Wskaż zwycięzcę i potwierdź decyzję. Dla już rozpoczętego, ale nierozstrzygniętego spotkania służy osobna opcja anulowania meczu turniejowego i przyznania walkowera. Wybrany zwycięzca wyprzedza wszystkich pozostałych, którzy dzielą ostatnie miejsce. Punkty liczą się według zwykłego wzoru; nie dopisuje się wyniku samej gry.
+
+Organizator może też anulować niezakończony turniej. Zrób to tylko wtedy, gdy chcesz odwołać całe rozgrywki, a nie pojedyncze zaproszenie. Przekroczenie terminu ani nieobecność gracza nie przyznają automatycznego walkowera — to decyzja organizatora.
+
+### Gdy zmiana nie została potwierdzona
+
+Turnieje wymagają dostępu do serwera. Jeśli zapis, publikacja lub inna czynność nie otrzyma potwierdzenia, nie zakładaj od razu, że się nie powiodła. Najpierw odśwież widok.
+
+Na liście turniejów otwórz menu kontekstowe i wybierz „Sprawdź oczekujące zmiany”. Strzałkami wybierz czynność, Enterem przejdź do jej szczegółów, a przyciskiem sprawdzenia ponownie ustal, czy została przyjęta. Nie wysyła to od nowa tego samego polecenia. Gdy wynik będzie znany, wróć do turnieju i sprawdź aktualny stan przed kolejną próbą.
+
+Dziękujemy guliwerowi za pomysł i wdrożenie turniejów!
+
 ## Pomoc w rozwoju programu
 
 ### Zgłaszanie błędów i propozycji
@@ -443,24 +630,26 @@ Przed opublikowaniem logu usuń z niego dane prywatne.
 
 ### Zgłaszanie pytań w Quizie
 
-W Quizie Ctrl+B oznacza bieżące pytanie, a Ctrl+Shift+B poprzednie.
+W Quizie i przy pytaniach w Wyścigach kaczek Ctrl+B oznacza bieżące pytanie, a Ctrl+Shift+B poprzednie.
 Skróty nie otwierają formularza, więc możesz grać dalej. Dopiero po opuszczeniu
 stołu program zapyta, czy chcesz wysłać zgłoszenia. Wybierz „Tak”, opisz problem
-i naciśnij „Wyślij”. Treść pytania i odpowiedzi zostaną dołączone automatycznie.
+i naciśnij „Wyślij”. Formularz pokazuje też poprawną odpowiedź według zestawu.
+Treść pytania i odpowiedzi zostaną dołączone automatycznie.
 Wybór „Nie” usuwa oznaczenia; nie ma szkiców zgłoszeń na później.
 
 ### Własne zestawy pytań
 
-W głównym oknie, po „Zapisanych grach”, znajdziesz „Tworzenie własnych zestawów
-pytań”. Otwiera się lista Twoich zestawów. Ctrl+N pozwala stworzyć własny
+W głównym oknie znajdziesz „Tworzenie własnych zestawów pytań do quizu”. Otwiera się lista Twoich zestawów. Ctrl+N pozwala stworzyć własny
 zestaw albo przygotować pytania do jednego z zestawów dostępnych w grze.
 Dla własnego zestawu podaj nazwę, język i ewentualny opis, a następnie wybierz
-„Zapisz”. Jeśli dodajesz pytania do istniejącego zestawu, wybierz go z listy.
+„Zapisz”. Jeśli dodajesz pytania do istniejącego zestawu, najpierw wybierz
+język i zatwierdź Enterem. W osobnym oknie wybierz zestaw w tym języku.
 
 Enter na zestawie otwiera menu:
 
-- „Dodaj pytanie” — wpisz pytanie i cztery odpowiedzi, wskaż poprawną odpowiedź
-  i wybierz kategorię z listy. Źródło i uwagi dla redaktora są opcjonalne.
+- „Dodaj pytanie” — wpisz pytanie, poprawną odpowiedź w pierwszym polu (A)
+  i trzy błędne w polach B, C, D. Wybierz kategorię z listy. Źródło i uwagi
+  dla redaktora są opcjonalne.
 - „Przeglądaj pytania” — otwórz listę zapisanych pytań; Enter pozwala
   edytować wybrane pytanie, a Ctrl+N dodać nowe.
 - „Dodaj kategorię” — nadaj nazwę kategorii, którą będzie można wybierać
@@ -476,7 +665,11 @@ w formularzu, a nowa kategoria jest od razu zaznaczona.
 Przycisk „Zapisz” zachowuje Twoją pracę jako szkic. Możesz do niego wrócić
 później, także na innym komputerze po zalogowaniu na to samo konto.
 Możesz zachować także nieukończone pytania. Menu kontekstowe pozwala usunąć
-pytanie lub zestaw oraz zmienić szczegóły własnego zestawu.
+pytanie lub zestaw oraz zmienić szczegóły własnego zestawu. Na liście zestawów
+klawisz Delete usuwa zaznaczony szkic po potwierdzeniu.
+
+Uszkodzony szkic jest oznaczony na liście i nie blokuje pozostałych zestawów.
+Jeśli nie chcesz go zachować, możesz usunąć go klawiszem Delete.
 
 Gdy pytania będą gotowe, wybierz „Wyślij do autora”. Jeśli czegoś brakuje,
 program wskaże numer pytania i pola do uzupełnienia. Pytania trafiają do autora
@@ -516,4 +709,3 @@ version 3. Pełny tekst znajduje się w pliku [LICENSE](LICENSE).
 Dźwięki, pytania i inne materiały mogą mieć odrębne warunki wykorzystania;
 ich pochodzenie i informacje licencyjne opisuje
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-

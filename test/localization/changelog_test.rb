@@ -379,6 +379,19 @@ assert(GameRoomChangelog.pending_entries(249, 250).map(&:build) == [250], 'build
 assert(GameRoomChangelog.pending_entries(nil, 250).map(&:build) == [250], 'first build 250 launch repeats history')
 assert(GameRoomChangelog.pending_entries(250, 250).empty?, 'build 250 reopens after being read')
 assert(GameRoomChangelog.list_items([entry_250]).first == 'Version 2.0.4.11, build 250', 'build 250 heading differs')
+entry_251 = entries.find { |entry| entry.build == 251 }
+assert(entry_251.version == '2.0.5' && entry_251.changes.length == 11, 'build 251 has incorrect release metadata')
+assert(entry_251.changes.uniq.length == 11, 'build 251 contains duplicate notes')
+assert(entry_251.changes.first.include?('directly after Saved games'), 'build 251 lacks the tournament menu placement')
+%w[Ctrl+Shift+T Ctrl+B Ctrl+Shift+B Delete bratczyk96 guliwer Zuzler].each do |topic|
+  assert(entry_251.changes.join(' ').include?(topic), "build 251 lacks #{topic}")
+end
+assert(GameRoomChangelog.pending_entries(250, 251).map(&:build) == [251], 'build 251 repeats older notes')
+assert(entry_251.changes[5].include?('Thank you to guliwer'), 'Tournament credit is missing after the tournament guide')
+assert(entry_251.changes[7].include?('separate window') && !entry_251.changes[7].include?('Tab'), 'Creator notes still describe the combined picker')
+assert(GameRoomChangelog.pending_entries(nil, 251).map(&:build) == [251], 'first build 251 launch repeats history')
+assert(GameRoomChangelog.pending_entries(251, 251).empty?, 'build 251 reopens after being read')
+assert(GameRoomChangelog.list_items([entry_251]).first == 'Version 2.0.5, build 251', 'build 251 heading differs')
 %w[PL CS ES RU].each do |language|
   bytes = File.binread(File.expand_path("../../locale/#{language}.mo", __dir__))
   total, source_table, target_table = bytes.byteslice(8, 12).unpack('V3')
@@ -394,5 +407,7 @@ assert(GameRoomChangelog.list_items([entry_250]).first == 'Version 2.0.4.11, bui
     "build 249 has untranslated #{language} notes")
   assert(entry_250.changes.all? { |source| !release_catalog.fetch(source, '').empty? },
     "build 250 has untranslated #{language} notes")
+  assert(entry_251.changes.all? { |source| !release_catalog.fetch(source, '').empty? },
+    "build 251 has untranslated #{language} notes")
 end
-puts "Changelog tests passed: first launch, updates, downgrade, Enter, storage, old notes preserved and multilingual build 250 notes"
+puts "Changelog tests passed: first launch, updates, downgrade, Enter, storage, old notes preserved and multilingual build 251 notes"

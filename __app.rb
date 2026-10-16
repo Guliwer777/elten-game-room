@@ -3,8 +3,8 @@
   "id": "c24d98cc-9ccd-4d50-b801-459da324ff60",
   "name": "Power Games",
   "description": "Accessible multiplayer games for ELTEN users.",
-  "version": "2.0.4.11",
-  "build_id": "250",
+  "version": "2.0.5",
+  "build_id": "251",
   "EltenAPIVersion": "3.0.4",
   "main_language": "en",
   "supported_languages": ["en", "pl", "cs", "es", "ru"],
@@ -159,6 +159,9 @@ require_relative "lib/game_bots"
 require_relative "lib/lobby_repository"
 require_relative "lib/game_repository"
 require_relative "lib/account_saved_games"
+require_relative "lib/tournaments/hub"
+require_relative "lib/tournaments/server_schema"
+require_relative "lib/tournaments/server_coordination_runtime"
 require_relative "lib/game_lifecycle"
 require_relative "lib/room_presentation"
 require_relative "lib/game_random"
@@ -188,8 +191,8 @@ class EltenGameRoom < Program
   extend GameRoomTableWatchRuntime
   extend GameRoomContactFiltersRuntime
   extend GameRoomAnalyticsRuntime
-  GAME_ROOM_VERSION = "2.0.4.11".freeze
-  GAME_ROOM_BUILD_ID = 250
+  GAME_ROOM_VERSION = "2.0.5".freeze
+  GAME_ROOM_BUILD_ID = 251
   GAME_ROOM_CAPABILITIES = ["invitations", "live_sessions", "live_session_stack"].freeze
   LOBBY_ACTIVITY_POLL_INTERVAL = 5.0
 
@@ -223,13 +226,14 @@ class EltenGameRoom < Program
       "indexes" => [["table_id", "created_at"], ["created_at"]],
       "limits" => { "max_select_limit" => 2_000 }
     }
-  }).freeze
+  }).then { |tables| GameRoomTournaments::ServerSchema.merge(tables) }.freeze
 
   MAIN_OPTIONS = [
     _("Create a new table"),
     _("Join a table"),
     _("Saved games"),
-    _("Create your own question sets"),
+    _("Tournaments"),
+    _("Create your own quiz question sets"),
     _("Leaderboards"),
     _("Statistics"),
     _("Settings"),
@@ -237,6 +241,8 @@ class EltenGameRoom < Program
     _("README"),
     _("What's new")
   ].freeze
+
+  extend GameRoomTournaments::ServerCoordinationRuntime
 
   GAME_REGISTRY = GameRoomGames::CATALOG
 
@@ -263,9 +269,9 @@ class EltenGameRoom < Program
       extension.every("room_presence", seconds: 1, autorun: false, persistent: false, first: :after_interval) do |context|
         run_presence_job(context.token)
       end
-      extension.start { table_watch_start }
-      extension.tick(interval: 1.0) { contacts_tick; table_watch_tick; InvitationResponseOutbox.tick_default; analytics_tick }
-      extension.stop { table_watch_stop; contacts_stop; stop_analytics }
+      extension.start { table_watch_start; start_tournament_coordination(program) }
+      extension.tick(interval: 1.0) { contacts_tick; table_watch_tick; tournament_coordination_tick; tournament_starts_tick; InvitationResponseOutbox.tick_default; analytics_tick }
+      extension.stop { table_watch_stop; contacts_stop; stop_tournament_coordination; stop_analytics }
       extension.main_tab(
         "tables",
         label: _("Power Games"),
@@ -314,6 +320,13 @@ class EltenGameRoom < Program
   end
 
   def self.map_game_room_notification(notification)
+    if notification.type.to_s==GameRoomTournaments::ServerCoordination::TYPE
+      return notification.presentation(title:'',body:'',sound:nil).suppress_default!
+    end
+    return tournament_start_presentation(notification) if notification.type.to_s==GameRoomTournaments::TournamentStartNotice::TYPE
+    if notification.type.to_s == GameRoomTournaments::ProposalNotice::TYPE
+      return notification.presentation(title: _("Game invitation"), body: _("This match invitation is no longer available."), sound: nil).suppress_default!
+    end
     if GameRoomInvitationReceipts::TYPES.include?(notification.type.to_s)
       return notification.presentation(title: "", body: "", sound: nil).suppress_default!
     end
@@ -349,9 +362,14 @@ class EltenGameRoom < Program
       variant = GameRoomTableVariant.text(GAME_REGISTRY.build(metadata["game"]), metadata["variant"])
       game_label = GAME_REGISTRY.name(metadata["game"]) || metadata["game_name"].to_s
       game_label = [game_label, variant].reject(&:empty?).join(", ")
+      invitation_text = if metadata["tournament_match"] == true
+        metadata["continuation"] == true ? _("%{sender} invites you to resume a tournament match (%{game}).") : _("%{sender} invites you to a tournament match (%{game}).")
+      else
+        metadata["continuation"] == true ? _("%{sender} invites you to resume %{table} (%{game}).") : _("%{sender} invites you to %{table} (%{game}).")
+      end
       presentation = notification.presentation(
         title: _("Game invitation"),
-        body: (metadata["continuation"] == true ? _("%{sender} invites you to resume %{table} (%{game}).") : _("%{sender} invites you to %{table} (%{game}).")) % {
+        body: invitation_text % {
           sender: metadata["sender"].to_s,
           table: metadata["table_name"].to_s,
           game: game_label
@@ -379,6 +397,16 @@ class EltenGameRoom < Program
   end
 
   def self.notification_received(notification, _presentation = nil, deferred: false)
+    if notification.type.to_s==GameRoomTournaments::ServerCoordination::TYPE
+      receive_tournament_change(notification) unless deferred
+      _presentation&.suppress_default!
+      return
+    end
+    if notification.type.to_s==GameRoomTournaments::TournamentStartNotice::TYPE
+      receive_tournament_start(notification) unless deferred
+      return
+    end
+
     receive_invitation_receipt(notification) if GameRoomInvitationReceipts::TYPES.include?(notification.type.to_s)
     return unless contact_notification_received(notification, _presentation, deferred: deferred)
     if notification.type.to_s == GameRoomTableWatch::TYPE
@@ -404,6 +432,7 @@ class EltenGameRoom < Program
   end
 
   def notification_action(action, notification)
+
     return open_new_table_notification(notification) if action.to_s == "open_new_table"
     return false if action.to_s.to_sym != :open_invitation
 
@@ -426,7 +455,7 @@ class EltenGameRoom < Program
       choices = load_pending_invitations
       return true if choices == nil
 
-      selected = choices.find { |choice| choice[:invitation].id == invitation_id }
+      selected = choices.find { |choice| choice[:invitation]&.id == invitation_id }
       if selected == nil
         revoke_invitation_notification(invitation_id, notification_id: notification.id)
         alert(_("This table is no longer available."))
@@ -551,7 +580,7 @@ class EltenGameRoom < Program
 
     @announced_table_access_state = state
     if state == :stamp_required
-      alert(_("Development mode without server table access. Global lobby history and sending invitations are unavailable."))
+      alert(_("The server requires an official launcher stamp that this Elten session cannot provide. Changing developer mode does not grant server table access. Global lobby history and sending invitations are unavailable until server table access is confirmed."))
     else
       alert(_("Server table access could not be checked. Global lobby history and sending invitations are unavailable until you reopen Power Games."))
     end
@@ -561,7 +590,7 @@ class EltenGameRoom < Program
     return true if @server_tables.available?
 
     if @server_tables.stamp_required?
-      alert(_("Sending invitations is unavailable in development mode without server table access."))
+      alert(_("Sending invitations is unavailable because the server requires an official launcher stamp that this Elten session cannot provide. Changing developer mode does not grant server table access."))
     else
       alert(_("Sending invitations is unavailable because server table access could not be confirmed."))
     end
@@ -721,21 +750,169 @@ class EltenGameRoom < Program
     when 2
       show_saved_games
     when 3
-      show_question_creator
+      show_tournaments
     when 4
-      show_leaderboards
+      show_question_creator
     when 5
-      show_statistics
+      show_leaderboards
     when 6
-      show_settings
+      show_statistics
     when 7
-      show_rules_library
+      show_settings
     when 8
-      show_readme
+      show_rules_library
     when 9
+      show_readme
+    when 10
       show_changelog
     end
   end
+
+  def show_tournaments(mine: false)
+    self.class.refresh_tournament_deadlines
+    GameRoomTournaments::Hub.new(program: self, registry: GAME_REGISTRY,
+      user: -> { Session.name }, alert: ->(message) { alert(message) },
+      confirm: ->(message) { confirm(message) },mine:mine).run
+  ensure
+    self.class.refresh_tournament_deadlines
+  end
+
+  def show_my_tournaments
+    was_showing=@showing_my_tournaments
+    if was_showing
+      layout=@table_network_view && @table_network_view[:layout]
+      active=$activecontrols.to_a.reverse.find{|control|control.is_a?(GameRoomUI::Form)}
+      return unless layout && active.equal?(layout.form)
+    end
+    @showing_my_tournaments=true
+    begin
+      initialize_services
+      show_tournaments(mine:true)
+    ensure
+      @showing_my_tournaments=was_showing
+    end
+  end
+
+  def open_tournaments_from_widget
+    show_my_tournaments
+  end
+
+  def ordinary_tournament_service(publication, worker: false)
+    @ordinary_tournament_services ||= {}
+    reference={'author'=>publication['__insertion_user'],'publication_key'=>publication['publication_key']}
+    key=JSON.generate(reference.merge('author'=>reference['author'].downcase))
+    @ordinary_tournament_services[key] ||= begin
+      workspace=GameRoomTournaments::ServerWorkspace.new(program:self,registry:GAME_REGISTRY,
+        user:-> {Session.name},alert:->(message){alert(message)},backend_uuid:self.class.server_app_uuid)
+      method=worker ? :ordinary_service_on_worker : :ordinary_service
+      workspace.public_send(method,publication_ref:reference,lobby:@lobby,games:@games,transport:@transport)
+    end
+  end
+
+  def open_ordinary_tournament_match(publication, match)
+    service=ordinary_tournament_service(publication)
+    return unless service
+    row=run_network_task(_("Creating tournament table"),ui: :none) {service.open_match(match_id:match['match_id'],leg:match['leg'])}
+    return unless row
+    activate_table_transport(row)
+    run_network_task(_("Sending invitation"),ui: :none) do
+      here=@lobby.snapshot_for(row)&.members.to_a.map(&:downcase)
+      service.invitation_players(row).each do |person|
+        deliver_table_invitation(row,person) unless here.include?(person.downcase)
+      end
+    end
+    # Ordinary invitations announce the table. Its creation changes neither
+    # the schedule nor standings; do not make every participant reread them.
+    show_table_screen(row)
+  rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
+    message=case error.code
+    when :waiting_for_match_creator then _("Another player is creating this match's table. Accept their invitation or try again shortly.")
+    when :closed_match_needs_recovery then _("This match was started or its state is uncertain. Resume the saved game or check Operations before playing again.")
+    when :already_at_another_table then _("Leave your current table before opening another tournament match.")
+    when :unsupported_match_players then _("This match has unsupported player counts or team assignments for the selected game.")
+    when :private_game_not_supported then _("This game variant requires a private table and is not supported by this server test.")
+    when :creation_unconfirmed then _("Table creation is not confirmed. Check Operations; the table will not be created again automatically.")
+    when :knockout_series_requires_local_test then _("First-to-wins knockout series currently run only in the local tournament test. The ordinary-table server trial cannot play subsequent games yet.")
+    else _("Tournament table operation blocked: %{reason}")%{reason:error.code}
+    end
+    alert(message)
+  rescue GameRoomTournaments::Publication::Invalid, GameRoomTournaments::OperationJournal::Error, GameRoomTournaments::ServerPlanArchive::Unconfirmed,
+      GameRoomTournaments::ServerPlanArchive::ContextChanged => error
+    alert(_("Tournament table or result not confirmed. Check Operations before trying again."))
+  end
+
+  def award_ordinary_tournament_forfeit(publication,match,winner,schedule_id,cancel_started:false)
+    service=ordinary_tournament_service(publication)
+    return unless service
+    run_network_task(_("Award forfeit"),ui: :none) do
+      service.award_forfeit(match_id:match['match_id'],leg:match['leg'],winner:winner,expected_schedule_id:schedule_id,cancel_started:cancel_started)
+    end
+  rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
+    message=error.code==:match_game_already_started ? _("This table already has a game. A forfeit cannot replace a game in progress or a finished result.") : _("Tournament table operation blocked: %{reason}")%{reason:error.code}
+    alert(message)
+  rescue GameRoomTournaments::Publication::Invalid, GameRoomTournaments::OperationJournal::Error, GameRoomTournaments::ServerPlanArchive::Unconfirmed,
+      GameRoomTournaments::ServerPlanArchive::ContextChanged, IOError, SystemCallError
+    alert(_("Tournament table or result not confirmed. Check Operations before trying again."))
+  end
+
+  def ordinary_tournament_overview(publication, workspace:, context:, lease:, match_controls:)
+    reference={'author'=>publication['__insertion_user'],'publication_key'=>publication['publication_key']}
+    key=JSON.generate(reference.merge('author'=>reference['author'].downcase))
+    service=@ordinary_tournament_services && @ordinary_tournament_services[key]
+    raise error if service && (error=service.take_error)
+    workspace.schedule_overview(publication_ref:reference,context:context,lease:lease,
+      games:@games,transport:@transport,
+      include_match_status:match_controls && reference['author'].to_s.downcase==Session.name.to_s.downcase)
+  rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
+    alert(_("Tournament table operation blocked: %{reason}")%{reason:error.code})
+    nil
+  rescue GameRoomTournaments::Publication::Invalid, GameRoomTournaments::OperationJournal::Error, GameRoomTournaments::ServerPlanArchive::Unconfirmed,
+      GameRoomTournaments::ServerPlanArchive::ContextChanged => error
+    alert(_("Tournament table or result not confirmed. Check Operations before trying again."))
+    nil
+  end
+
+  def reconcile_ordinary_tournament_operation(record)
+    document=GameRoomTournaments::StrictJson.parse(record['values']['document_json'],max_nesting:12)
+    reference=document.fetch('publication_ref')
+    key=JSON.generate(reference)
+    service=@ordinary_tournament_services && @ordinary_tournament_services[key]
+    unless service
+      workspace=GameRoomTournaments::ServerWorkspace.new(program:self,registry:GAME_REGISTRY,user:-> {Session.name},alert:->(message){alert(message)},backend_uuid:self.class.server_app_uuid)
+      service=workspace.ordinary_service_on_worker(publication_ref:reference,lobby:@lobby,games:@games,transport:@transport)
+      @ordinary_tournament_services ||= {}
+      @ordinary_tournament_services[key]=service
+    end
+    service.reconcile(record['id'])
+  end
+
+  def attach_tournament_table_on_worker(row, presentation_only: false)
+    return true unless row && row['tournament_match']
+    begin
+      marker=GameRoomTournamentMarker.copy(row['tournament_match'])
+    rescue GameRoomTournamentMarker::Invalid => error
+      raise GameRoomNetworkErrors::GamePaused,error.message
+    end
+    reference=marker.fetch('publication_ref')
+    service=ordinary_tournament_service({'__insertion_user'=>reference['author'],'publication_key'=>reference['publication_key']},worker:true)
+    raise GameRoomTournaments::OrdinaryMatchService::Blocked,:match_service_unavailable unless service
+    return true if presentation_only && service.attached_table?(row)
+    service.attach_table(row)
+  rescue GameRoomTournaments::OrdinaryMatchService::Blocked, GameRoomTournaments::Publication::Invalid,
+      GameRoomTournaments::OperationJournal::Error, GameRoomTournaments::ServerPlanArchive::Unconfirmed,
+      GameRoomTournaments::ServerPlanArchive::ContextChanged => error
+    # A stale invitation must not close the current room or enter an unbound
+    # tournament table. Keep this inside the ordinary network-task boundary.
+    raise GameRoomNetworkErrors::GamePaused, "Tournament entry: #{error.message}"
+  end
+
+  def tournament_completion_observer(table)
+    ->(session,replay,events) do
+      @ordinary_tournament_services&.values&.each{|service|service&.observe(table,session,replay,events)}
+    end
+  end
+
+  public :open_ordinary_tournament_match, :ordinary_tournament_overview, :reconcile_ordinary_tournament_operation, :award_ordinary_tournament_forfeit
 
   def game_local_services
     {server_tables: @server_tables, transport: @transport}
@@ -820,11 +997,26 @@ class EltenGameRoom < Program
   end
 
   def apply_game_join_role(table)
+    if table['tournament_match']
+      reference=table['tournament_match'].fetch('publication_ref')
+      key=JSON.generate(reference.merge('author'=>reference.fetch('author').downcase))
+      service=@ordinary_tournament_services && @ordinary_tournament_services[key]
+      raise GameRoomTournaments::OrdinaryMatchService::Blocked,:wrong_match_binding unless service
+      if service.observer_on_join?(table)
+        snapshot=@lobby.snapshot_for(table)
+        return snapshot if snapshot&.observer?(Session.name)
+        snapshot=@lobby.set_observer(table,Session.name,true)
+        raise GameRoomNetworkErrors::GamePaused,'Tournament observer role was not confirmed' unless snapshot&.observer?(Session.name)
+        return snapshot
+      end
+    end
     game = game_definition(table["game"])
     if game && game.join_as_observer?(game.options_from_json(table["game_options"]),
         viewer: Session.name, owner: @lobby.owner_of(table))
       @lobby.set_observer(table, Session.name, true)
     end
+  rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
+    raise GameRoomNetworkErrors::GamePaused, "Tournament entry: #{error.message}"
   end
 
   def show_update_changelog
@@ -967,8 +1159,9 @@ class EltenGameRoom < Program
     return false if !confirm(_("Save this game and close the table for everyone?"))
 
     result = run_network_task(_("Saving game")) do
+      tournament=(@ordinary_tournament_services || {}).values.filter_map{|service|service&.saved_match_reference(table,session)}.first
       GameRoomUseCases::SaveGame.new(repository: @games, transport: @transport, archives: method(:saved_games))
-        .call(table: table, table_id: @lobby.table_id(table), session: session, game: game)
+        .call(table: table, table_id: @lobby.table_id(table), session: session, game: game,tournament:tournament)
     end
     return false if !result
 
@@ -976,6 +1169,13 @@ class EltenGameRoom < Program
     play_game_sound("disconnect")
     alert(_("The game has been saved."))
     true
+  rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
+    alert(_("Tournament table operation blocked: %{reason}")%{reason:error.code})
+    false
+  rescue GameRoomTournaments::Publication::Invalid, GameRoomTournaments::OperationJournal::Error, GameRoomTournaments::ServerPlanArchive::Unconfirmed,
+      GameRoomTournaments::ServerPlanArchive::ContextChanged
+    alert(_("Tournament table or result not confirmed. Check Operations before trying again."))
+    false
   rescue ArgumentError, IOError, SystemCallError => error
     Log.warning("ELTEN Game Room save failed: #{error.class}") if defined?(Log)
     alert(_("The game could not be saved. The table was not closed by this operation."))
@@ -1055,6 +1255,13 @@ class EltenGameRoom < Program
   end
 
   def create_saved_game_table(saved)
+    if saved['tournament']
+      reference=saved['tournament']['publication_ref']
+      service=ordinary_tournament_service({'__insertion_user'=>reference['author'],'publication_key'=>reference['publication_key']})
+      return nil unless service
+      checked=run_network_task(_("Checking saved tournament match"),ui: :none){service.check_saved_match(saved,allow_prepared:true)}
+      return nil unless checked
+    end
     game = game_definition(saved["game"])
     saved_games.validate(saved, game: game)
     required_seats = saved["players"].length
@@ -1070,6 +1277,11 @@ class EltenGameRoom < Program
     current = checked.first
     if current != nil
       if current["resume_save_id"] == saved["id"]
+        if service
+          checked=run_network_task(_("Checking saved tournament match"),ui: :none){service.prepare_saved_match(saved,current)}
+          return nil unless checked
+          activate_table_transport(current)
+        end
         return current
       end
       alert(_("You are already at another table."))
@@ -1079,7 +1291,9 @@ class EltenGameRoom < Program
       created = @lobby.create_table(name: saved["table_name"], game: saved["game"], owner: Session.name,
         game_options: saved["options"], private_table: saved["private"], resume_save_id: saved["id"],
         bot_count: saved["players"].count { |player| GameRoomParticipants.bot?(player) },
-        bot_names: saved["players"].select { |player| GameRoomParticipants.bot?(player) }.map { |player| GameRoomParticipants.bot_name_token(player) })
+        bot_names: saved["players"].select { |player| GameRoomParticipants.bot?(player) }.map { |player| GameRoomParticipants.bot_name_token(player) },
+        tournament_match: saved['tournament']&.slice('publication_ref','schedule_id','match_id','leg'))
+      service.prepare_saved_match(saved,created.table) if service
       activate_table_transport(created.table)
       # Ownership of the archive is independent of its playing seats.
       @lobby.set_observer(created.table, Session.name, true) unless GameRoomParticipants.includes?(saved["players"], Session.name)
@@ -1093,6 +1307,13 @@ class EltenGameRoom < Program
     end
     speak(_("The table is waiting for the original players. Start the game when everyone has joined."))
     row
+  rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
+    alert(_("Tournament table operation blocked: %{reason}")%{reason:error.code})
+    nil
+  rescue GameRoomTournaments::Publication::Invalid, GameRoomTournaments::OperationJournal::Error, GameRoomTournaments::ServerPlanArchive::Unconfirmed,
+      GameRoomTournaments::ServerPlanArchive::ContextChanged
+    alert(_("Tournament table or result not confirmed. Check Operations before trying again."))
+    nil
   rescue ArgumentError => error
     Log.warning("ELTEN Game Room cannot restore saved game: #{error.message}") if defined?(Log)
     alert(_("This saved game is not compatible with this version or is damaged."))
@@ -1108,15 +1329,30 @@ class EltenGameRoom < Program
     game = state.game
     saved_games.validate(saved, game: game)
     restoration = saved_games.restored_data(saved, game: game, table_id: @lobby.table_id(row))
+    tournament_service=nil
+    if saved['tournament']
+      reference=saved['tournament']['publication_ref']
+      tournament_service=ordinary_tournament_service({'__insertion_user'=>reference['author'],'publication_key'=>reference['publication_key']})
+      return nil unless tournament_service
+    end
     missing = restoration[:players].reject { |player| restoration.fetch(:controllers, {})[player] == 'bot' || GameRoomParticipants.includes?(state.room.game_participants, player) }
     unless missing.empty?
       alert(_("Waiting for these players: %{players}.") % { players: missing.map { |player| GameRoomParticipants.display_name(player) }.join(", ") })
       return nil
     end
     started = run_network_task(_("Resuming game")) do
+      if tournament_service
+        checked=tournament_service.start_saved_match(saved,row)
+        restoration[:archive_id]=checked.fetch('continuation').fetch('archive_id')
+        restoration[:requested_session_id]=checked.fetch('session_id')
+      end
       @games.restore_session(table: row, game: game.id, players: restoration[:players], options: saved["options"], restore: restoration)
     end
     return nil if started == nil
+    if tournament_service
+      linked=run_network_task(_("Linking resumed tournament match"),ui: :none){tournament_service.bind_resumed_match(saved,row,started)}
+      return nil unless linked
+    end
 
     # The server has accepted the complete archive, including private-state
     # restoration. Consume only this save, not while merely preparing its room.
@@ -1134,6 +1370,13 @@ class EltenGameRoom < Program
     # as failed or start a second game. The original save is not a rollback point.
     run_network_task(_("Updating table"), ui: :none) { @lobby.set_game_active(row, true) }
     started
+  rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
+    alert(_("Tournament table operation blocked: %{reason}")%{reason:error.code})
+    nil
+  rescue GameRoomTournaments::Publication::Invalid, GameRoomTournaments::OperationJournal::Error, GameRoomTournaments::ServerPlanArchive::Unconfirmed,
+      GameRoomTournaments::ServerPlanArchive::ContextChanged
+    alert(_("Tournament table or result not confirmed. Check Operations before trying again."))
+    nil
   rescue ArgumentError, IOError, SystemCallError => error
     Log.warning("ELTEN Game Room restore failed: #{error.class}") if defined?(Log)
     alert(_("This saved game is not compatible with this version or is damaged."))
@@ -1413,6 +1656,10 @@ class EltenGameRoom < Program
   def show_table_screen(row)
     previous_reports = @question_reports
     return if row == nil
+    if row['tournament_match']
+      linked=run_network_task(_("Checking tournament match"),ui: :none){attach_tournament_table_on_worker(row,presentation_only:true)}
+      return unless linked
+    end
 
     @question_reports = if game_definition(row["game"])&.respond_to?(:reportable_question)
       GameRoomQuizReports::Tracker.new(user: Session.name, current_user: -> { Session.name })
@@ -1976,7 +2223,7 @@ class EltenGameRoom < Program
     end
 
     selected = if preferred_id.to_i > 0
-      choices.find { |choice| choice[:invitation].id == preferred_id.to_i }
+      choices.find { |choice| choice[:invitation]&.id == preferred_id.to_i }
     elsif choices.length == 1
       choices.first
     else
@@ -1997,7 +2244,7 @@ class EltenGameRoom < Program
   end
 
   def load_pending_invitations
-    run_network_task(_("Loading invitations")) do
+    result=run_network_task(_("Loading invitations")) do
       tables = @transport.discover_rooms(include_private: true)
       snapshots = tables.map { |table| @lobby.snapshot_for(table) || LobbyRepository::TableSnapshot.new(table: table, members: [@lobby.owner_of(table)], bots: @lobby.bots_for(table)) }
       by_id = snapshots.to_h { |snapshot| [@lobby.table_id(snapshot.table), snapshot] }
@@ -2011,6 +2258,7 @@ class EltenGameRoom < Program
         { invitation: invitation, snapshot: snapshot }
       end
     end
+    result
   end
 
   def select_pending_invitation(choices, mode: :accept)
@@ -2050,6 +2298,8 @@ class EltenGameRoom < Program
       maximum: @lobby.capacity_of(snapshot.table)
     }
   end
+
+
 
   def accept_pending_invitation(invitation, notification_id: nil)
     acceptance = invitation_acceptance
@@ -2133,7 +2383,8 @@ class EltenGameRoom < Program
   def invitation_acceptance
     membership = GameRoomUseCases::InvitationMembership.new(
       pending: method(:pending_invitations_for_table), complete: method(:complete_joined_table_invitations),
-      establish: method(:establish_invited_table_transport), reconnect: method(:establish_table_transport),
+      establish: method(:establish_invited_table_transport),
+      reconnect: ->(row) { [:joined, :already_here].include?(establish_invited_table_transport(row)) },
       leave: method(:leave_current_table), apply_role: method(:apply_game_join_role),
       revoke: method(:revoke_invitation_notification))
     GameRoomUseCases::AcceptInvitation.new(lobby: @lobby, transport: @transport,
@@ -2235,7 +2486,7 @@ class EltenGameRoom < Program
 
   def invitation_metadata(row, invitation_id)
     now = GameRoomClock.now.to_i
-    {
+    metadata = {
       "kind" => "game_room_invitation",
       "invitation_id" => invitation_id,
       "table_id" => @lobby.table_id(row),
@@ -2248,6 +2499,9 @@ class EltenGameRoom < Program
       "created_at" => now,
       "expires_at" => now + InvitationRepository::DEFAULT_TTL
     }
+    # Presentation only; accepting still verifies the native table and binding.
+    metadata["tournament_match"] = true if row["tournament_match"].is_a?(Hash)
+    metadata
   end
 
   def invitation_row_id(row)
@@ -2336,6 +2590,7 @@ class EltenGameRoom < Program
       creator: ->(slot) { launch_game_room_entry(:create_table_from_widget, slot) },
       presets: -> { game_room_settings["table_presets"] },
       invitations: -> { launch_game_room_entry(:accept_invitation_from_widget) },
+      tournaments: -> { launch_game_room_entry(:open_tournaments_from_widget) },
       roster: ->(snapshot) { @lobby.discovered_roster(snapshot) },
       table_options: ->(snapshot) { @lobby.discovered_options(snapshot) },
       description: ->(snapshot) { game_lobby_label(snapshot.table["game"]) },
@@ -2656,6 +2911,7 @@ class EltenGameRoom < Program
   end
 
   def establish_invited_table_transport(row)
+    attach_tournament_table_on_worker(row)
     @transport.establish_membership_status(table_id: @lobby.table_id(row), owner: @lobby.owner_of(row),
       capacity: @lobby.capacity_of(row), user: Session.name, table: row)
   end
@@ -2842,9 +3098,19 @@ class EltenGameRoom < Program
     end
     row = refreshed_room.table
 
+    start_prepared_game(row, state: state, game: game, participants: participants,
+      options: options, refreshed_room: refreshed_room)
+  rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
+    alert(_("Tournament table operation blocked: %{reason}")%{reason:error.code})
+    nil
+  end
+
+  def start_prepared_game(row, state:, game:, participants:, options:, refreshed_room:)
     previous_id = state.session_id(@games)
     statistics_service = self.class.statistics_service
     result = run_network_task(_("Starting game")) do
+      reserved={}
+      @ordinary_tournament_services&.values&.each{|service|reserved.merge!(service.start_parameters(row,players:participants,options:options)) if service}
       guard = game.build_start_guard(self, user: Session.name, **game_local_services)
       if guard != nil
         consumed = guard.consume(options)
@@ -2856,7 +3122,8 @@ class EltenGameRoom < Program
         players: participants,
         options: JSON.generate(options),
         recipients: refreshed_room.members,
-        expected_previous_session_id: previous_id
+        expected_previous_session_id: previous_id,
+        **reserved
       )
       record_statistics_start(started, game, service: statistics_service) if started != nil
       @lobby.set_game_active(row, true, snapshot: refreshed_room) if started != nil
@@ -3106,6 +3373,7 @@ class EltenGameRoom < Program
       membership_tracker: room_membership_tracker(table),
       game_status_changed: ->(current_table, active) { @lobby.set_game_active(current_table, active) },
       statistics_observer: statistics_observer_for(game),
+      completion_observer: tournament_completion_observer(table),
       activity_repository: @table_activity,
       game_name: ->(id) { game_name(id) },
       send_chat: ->(current_table, message, _users) do

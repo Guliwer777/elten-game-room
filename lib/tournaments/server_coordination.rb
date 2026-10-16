@@ -1,0 +1,219 @@
+require_relative 'server_workspace'
+require_relative 'proposal_notice'
+require_relative 'tournament_start_notice'
+
+module GameRoomTournaments
+  # Finite directory/result work. Ordinary table invitations need no readiness
+  # records, participant reservations or renewal timer.
+  class ServerCoordination
+    TYPE='game_room.tournament_changed'.freeze
+    Data=Publication::Data
+    LIMIT=64
+    attr_reader :last_error
+
+    def self.reference(value)
+      value=Data.copy(value,max_bytes:512,max_nodes:8,max_depth:2)
+      raise Publication::Invalid,:invalid_coordination_reference unless value.is_a?(Hash) && value.keys.sort==%w[author publication_key]
+      value['author']=Data.account(value['author']).downcase
+      Data.key!(value['publication_key'])
+      Data.freeze_tree(value)
+    end
+
+    def initialize(workspace:,user:,clock:,worker:,wake:,started:->(_reference){})
+      @workspace,@user,@clock,@worker,@wake,@started=workspace,user,clock,worker,wake,started
+      @owner=Data.account(user.call).downcase
+      @lock=Mutex.new
+      @pending,@deadlines={}, {}
+      @view_revisions,@view_values={},{}
+      @view_sequence=0
+      @active_job=@retry_job=nil
+      @started_references={}
+      @failures=0
+      @retry_at=0
+      @closed=false
+    end
+
+    def changed(reference,broadcast:false,sender:nil)
+      reference=self.class.reference(reference)
+      sender=Data.account(sender).downcase if sender
+      @lock.synchronize do
+        return false if @closed || @pending.size>=LIMIT && !@pending.key?(reference)
+        prior=@pending[reference]
+        @pending[reference]={broadcast:broadcast || prior&.fetch(:broadcast,false),sender:sender || prior&.fetch(:sender,nil),timed:false}
+      end
+      true
+    end
+
+    def bootstrap
+      @lock.synchronize{@bootstrap=true unless @closed}
+    end
+
+    def view_revision(reference)
+      @lock.synchronize{reference ? @view_revisions[reference] : @view_sequence}
+    end
+
+    # Presentation only, consumed on this revision's UI refresh. Mutations and
+    # explicit Refresh always read the server again through ServerWorkspace.
+    def view_snapshot(reference)
+      presentation_snapshot(reference)&.fetch('overview',nil)
+    end
+
+    private def presentation_snapshot(reference)
+      check!
+      @lock.synchronize do
+        return nil if @last_error || @pending.key?(reference) || @active_job&.first==reference || @retry_job&.first==reference
+        @view_values[reference]
+      end
+    end
+
+    def tick
+      return if @closed
+      if (done=@worker.take)
+        value,error=done
+        if !error && value && @active_job && @active_job.first!=:directory
+          visible=value.slice('completed','directory','results','blocked','overview')
+          reference=@active_job.first
+          @lock.synchronize do
+            if !visible.empty? && @view_values[reference]!=visible
+              @view_values[reference]=Data.freeze_tree(Data.copy(visible,max_bytes:2_097_152,max_nodes:131_072,max_depth:18))
+              @view_revisions[reference]=(@view_sequence+=1)
+              while @view_values.size>LIMIT
+                oldest=@view_values.shift.first
+                @view_revisions.delete(oldest)
+              end
+            end
+          end
+        end
+        @last_error=error if error
+        cause=error
+        cause=cause.cause while cause && cause.cause && !GameRoomNetworkErrors.expected?(cause)
+        if cause && (GameRoomNetworkErrors.expected?(cause) || cause.is_a?(IOError) || cause.is_a?(SystemCallError))
+          @failures+=1
+          delay=GameRoomNetworkErrors.retry_delay(cause,normal:[30 * 2**[@failures-1,4].min,300].min,rate_limit:60)
+          @retry_at=@clock.call+delay
+          # Startup and one-shot wakes may have no later availability timer.
+          # Retain the failed job, not just the delay before unrelated work.
+          @lock.synchronize{@retry_job=@active_job unless @closed}
+        else
+          # A closed window, incomplete roster or invalid fixture belongs to
+          # one tournament. Keep the error visible, but do not delay unrelated
+          # fixtures as though their connection had failed as well.
+          @failures=0
+          @retry_at=0
+          @last_error=nil unless error
+        end
+        @active_job=nil
+        @lock.synchronize{@bootstrap=true} if error.is_a?(GameRoomNetworkErrors::ClockUnavailable)
+        if value && value['deadlines']
+          @lock.synchronize{value['deadlines'].each{|ref,time|@deadlines[ref]=time}}
+        end
+      end
+      return if @worker.busy?
+      return if @clock.call<@retry_at
+      job=@lock.synchronize do
+        now=@clock.call
+        @deadlines.delete_if do |reference,time|
+          due=time<=now
+          @pending[reference] ||= {broadcast:false,sender:nil,timed:true} if due
+          due
+        end
+        if @retry_job
+          retry_job=@retry_job
+          @retry_job=nil
+          retry_job
+        elsif @bootstrap
+          @bootstrap=false
+          [:directory,nil]
+        elsif !@pending.empty?
+          @pending.shift
+        end
+      end
+      return unless job
+      @active_job=job
+      @worker.start do
+        check!
+        job.first==:directory ? directory : coordinate(job.first,**job.last)
+      end
+    end
+
+    def close
+      @lock.synchronize{@closed=true;@pending.clear;@deadlines.clear;@view_revisions.clear;@view_values.clear;@active_job=@retry_job=nil;@bootstrap=false}
+      @worker.close
+    end
+
+    # Public for deterministic integration tests; runtime calls it only on the
+    # managed worker. A remote wake carries no state or execution permission.
+    def coordinate(reference,broadcast:false,sender:nil,timed:false)
+      @workspace.read_operation { coordinate_current(reference,broadcast:broadcast,sender:sender,timed:timed) }
+    end
+
+    private def coordinate_current(reference,broadcast:,sender:,timed:)
+      context=notification_context!(reference,broadcast:broadcast,sender:sender)
+      visible={'directory'=>context.slice('publication','members','pairs','pair_requests')}
+      row=context['publication']
+      if !row || !TournamentTiming.started?(row,@clock.call)
+        deadline=row && TournamentLifecycle.next_change(row,now:@clock.call)
+        schedule(reference,deadline-@clock.call) if deadline
+        return visible
+      end
+
+      begin
+        source=@workspace.coordination_view_on_worker(publication_ref:reference)
+      rescue Publication::Invalid=>error
+        raise unless %i[registration_open no_players too_few_players incomplete_pairs unresolved_source_diagnostics].include?(error.code)
+        return visible.merge('blocked'=>error.code.to_s)
+      end
+      visible['results']=source.fetch('results')
+      visible['overview']=source.slice('candidate','results','phase_history')
+      if source.fetch('results')['completed']
+        @lock.synchronize{@deadlines.delete(reference)}
+        return visible.merge('completed'=>true)
+      end
+      @workspace.current_match_window(source.fetch('candidate'))
+      if reference['author']==@owner && !@started_references.key?(reference)
+        @started.call(reference)
+        @started_references.shift if @started_references.size>=LIMIT
+        @started_references[reference]=true
+      end
+      visible
+    end
+
+    private
+    def notification_context!(reference,broadcast:,sender:)
+      check!
+      source=@workspace.notification_context_on_worker(publication_ref:reference)
+      people=source.fetch('people')
+      eligible=source.fetch('senders')
+      raise ProposalNotice::Stale,'Unrelated tournament wake' if sender && !eligible.include?(sender)
+      raise ProposalNotice::Stale,'Not a tournament participant' unless eligible.include?(@owner)
+      check!
+      if broadcast
+        people.reject{|person|person==@owner}.each{|person|@wake.call(person,reference)}
+      end
+      source
+    end
+
+    def directory
+      data=@workspace.directory_on_worker
+      now=@clock.call
+      refs=data.fetch('announcements').filter_map do |row|
+        member=data.fetch('members').any?{|person|person['tournament_id']==row['__id'] && person['account']==@owner}
+        next unless member || row['__insertion_user'].downcase==@owner
+        start=TournamentTiming.starts_at(row)
+        next unless start
+        next if !TournamentTiming.optional?(row) && TournamentLifecycle.ending_at(row)<=now
+        [self.class.reference({'author'=>row['__insertion_user'],'publication_key'=>row['publication_key']}),[start,now].max]
+      end
+      {'deadlines'=>refs.first(LIMIT)}
+    end
+
+    def schedule(reference,seconds)
+      @lock.synchronize{@deadlines[reference]=@clock.call+seconds unless @closed}
+    end
+
+    def check!
+      raise ServerPlanArchive::ContextChanged,'Account changed' if @closed || Data.account(@user.call).downcase!=@owner
+      true
+    end
+  end
+end

@@ -31,7 +31,7 @@
           "es": "T repite la pregunta y Ctrl+T indica cuánto tiempo queda. Oirás un aviso a cinco segundos del final. No responder a tiempo da cero puntos."
         },
         {
-          "es": "Cuando todos hayan respondido o se agote el tiempo, se anuncia la respuesta correcta y quién ha ganado un punto. La tercera pregunta cierra la ronda. V consulta su resumen y S las puntuaciones."
+          "es": "Cuando todos hayan respondido o se agote el tiempo, se anuncia la respuesta correcta y quién ha ganado un punto. La tercera pregunta cierra la ronda. Antes de la siguiente hay una pausa de cinco segundos. V consulta el resumen de la ronda y S las puntuaciones."
         }
       ]
     },
@@ -85,6 +85,9 @@
         },
         {
           "es": "Al salir de la mesa, el programa te preguntará si quieres enviar las preguntas marcadas al autor. Elige «Sí», describe el problema de cada una y pulsa «Enviar». La pregunta y sus respuestas se incluyen automáticamente. Si eliges «No», se descartan las marcas; no se guardan para más tarde."
+        },
+        {
+          "es": "El formulario también muestra la respuesta que el conjunto considera correcta."
         }
       ]
     },

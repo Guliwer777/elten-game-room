@@ -519,6 +519,17 @@
       ]
     },
     {
+      "id": "question_reports",
+      "title": {
+        "es": "Avisar de errores en las preguntas"
+      },
+      "paragraphs": [
+        {
+          "es": "Ctrl+B marca la pregunta actual y Ctrl+Shift+B la anterior. Sirve para las preguntas de casillas, cartas y desafíos. Al salir de la mesa, elige «Sí» cuando se te pregunte si quieres enviar los avisos. Describe el problema y pulsa «Enviar». El formulario muestra la pregunta, las opciones y la respuesta que el conjunto considera correcta."
+        }
+      ]
+    },
+    {
       "id": "controls",
       "title": {
         "es": "Atajos de la carrera"
@@ -550,6 +561,12 @@
         },
         {
           "es": "P: repetir las instrucciones del desafío."
+        },
+        {
+          "es": "Ctrl+B: marcar la pregunta actual para avisar de un error."
+        },
+        {
+          "es": "Ctrl+Shift+B: marcar la pregunta anterior para avisar de un error."
         }
       ]
     }

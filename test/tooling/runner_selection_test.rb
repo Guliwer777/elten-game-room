@@ -38,6 +38,16 @@ end
 assert(GameRoomTestRunner.expand(['test/games/spades', 'test/games/spades/rules_test.rb']).map { |entry| entry[:script] }.uniq.length ==
   GameRoomTestRunner.expand(['test/games/spades']).length, 'overlapping selections ran a scenario twice')
 
+parts = (1..4).map { |index| GameRoomTestRunner.shard(expected, "#{index}/4") }
+assert_equal(expected, parts.flatten.map { |job| job.fetch(:script) }.sort, 'Sharding skipped or duplicated a scenario')
+assert_equal(parts, (1..4).map { |index| GameRoomTestRunner.shard(expected.reverse, "#{index}/4") }, 'Sharding depends on input order')
+%w[0/4 5/4 1/0 1/999999999999 1 1/-4 x/y].each do |selection|
+  assert_raises(ArgumentError) { GameRoomTestRunner.shard(expected, selection) }
+end
+output, status = Open3.capture2e(RbConfig.ruby, runner, '--suite', 'tournaments', '--shard', '2/4', '--list')
+assert(status.success?, output)
+assert_equal(GameRoomTestRunner.shard(GameRoomTestSuites.select('tournaments'), '2/4').map { |job| job[:script] }, output.lines.map(&:strip))
+
 Dir.mktmpdir('game-room-runner-options-') do |folder|
   %w[test/games/example test/support test/fixtures].each { |path| FileUtils.mkdir_p(File.join(folder, path)) }
   File.write(File.join(folder, 'test/games/example/nested_test.rb'), 'puts "nested scenario ran"')
@@ -51,18 +61,30 @@ Dir.mktmpdir('game-room-runner-options-') do |folder|
   result = GameRoomTestRunner.run(['test'], root: folder, output: StringIO.new)
   assert(GameRoomTestRunner.success?(result) && result.first[:output].include?('nested scenario ran'), 'nested scenario was not executed')
 
+  slow = File.join(folder, 'individual_quiz_finish_test.rb')
+  File.write(slow, '$stdout.sync = true; puts "started"; sleep 10')
+  limited = GameRoomTestRunner.run([slow], timeout: 0.2, output: StringIO.new).first
+  assert_equal('timeout', limited[:outcome], 'An explicit timeout must override a slow scenario budget')
+  assert(limited[:seconds] < 3, 'The explicit timeout was ignored')
+
   preload, scenario, check = %w[preload scenario additional].map { |name| File.join(folder, name + '.rb') }
   File.write(preload, 'RUNNER_PRELOADED = true')
   File.write(scenario, 'raise "missing preload" unless RUNNER_PRELOADED; raise "wrong env" unless ENV["GAME_ROOM_RUNNER_FIXTURE"] == "1"; raise "wrong args" unless ARGV == ["package"]; puts "scenario checked"')
   File.write(check, 'raise "suite env escaped" if ENV["GAME_ROOM_RUNNER_FIXTURE"] == "1"; puts "additional checked"')
   entries = [{script: scenario, env: {'GAME_ROOM_RUNNER_FIXTURE' => '1'}, ruby_args: ['-r', preload], args: ['package']},
     {script: check, env: {'GAME_ROOM_RUNNER_FIXTURE' => nil}}]
+  assert_equal(entries.sort_by { |entry| entry[:script] },
+    (1..2).flat_map { |index| GameRoomTestRunner.shard(entries, "#{index}/2") }.sort_by { |entry| entry[:script] },
+    'Sharding discarded scenario arguments, environment or preloads')
   results = GameRoomTestRunner.run(entries, output: StringIO.new)
   assert(GameRoomTestRunner.success?(results) && results.length == 2, "preload/environment/arguments changed: #{results.inspect}")
   assert(results.first[:output].include?('scenario checked') && results.last[:output].include?('additional checked'), 'per-script output missing')
   report = File.join(folder, 'report.json')
   output, status = Open3.capture2e(RbConfig.ruby, runner, '--list', '--report', report, scenario)
   assert(status.success? && output.lines.map(&:strip) == [scenario] && !File.exist?(report), 'list executed a test or wrote a report')
+  output, status = Open3.capture2e(RbConfig.ruby, runner, '--shard', '1/1', '--report', report, check)
+  assert(status.success?, "Sharded CLI execution failed: #{output}")
+  assert_equal([check], JSON.parse(File.read(report)).map { |row| row.fetch('test') })
 end
 assert_raises(ArgumentError) do
   BinaryTestSuite.run(['room/widget_feedback_binary_test.rb'], polish: ['widget_feedback_binary_test'])
