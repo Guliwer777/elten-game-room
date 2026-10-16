@@ -1,5 +1,6 @@
 # encoding: UTF-8
 require_relative '../support/tournament_local_execution_plan'
+require_relative '../support/tournament_time'
 include TournamentLocalExecutionPlanSupport
 file = File.expand_path('../../lib/tournaments/local_execution_plan_backend.rb', __dir__)
 require file if File.file?(file)
@@ -340,13 +341,22 @@ with_fixture(windows: windows) do |f|
     end
   end
 end
-# Rzeczywisty system sandboxa ma jesienną godzinę podwójną; brak zmiany ENV['TZ'].
-with_fixture(windows: [{'date' => '2026-10-25', 'start' => '02:30', 'end_date' => '2026-10-25', 'end' => '05:00'}]) do |f|
-  error = assert_raises(T::LocalRegistrationTime::Invalid) { f.backend.preview(publication_ref: f.reference, base_seats: f.base, intent_id: 'dst') }
-  assert_equal(:ambiguous_time, error.code)
-  assert(!File.exist?(File.join(f.directory,'k02','sandbox-k02.json')))
+# The machine running the suite may use UTC, with no repeated autumn hour.
+# Keep the real resolver and backend; supply deterministic DST clock data.
+[3600, 7200].each do |preferred|
+  [['2026-10-25', :ambiguous_time], ['2026-03-29', :nonexistent_time]].each do |date, code|
+    adapter = TournamentTimeSupport::SeasonalTime.new(preferred)
+    TournamentTimeSupport.with_adapter(adapter) do
+      with_fixture(windows: [{'date' => date, 'start' => '02:30', 'end_date' => date, 'end' => '05:00'}]) do |f|
+        error = assert_raises(T::LocalRegistrationTime::Invalid) { f.backend.preview(publication_ref: f.reference, base_seats: f.base, intent_id: 'dst') }
+        assert_equal(code, error.code)
+        assert(!adapter.local_calls.empty?, 'The backend bypassed the real local-time resolver')
+        assert(!File.exist?(File.join(f.directory,'k02','sandbox-k02.json')))
+      end
+    end
+  end
 end
-puts 'REGRESJA PASS wszystkie okna, realny systemowy roundtrip i odmowa DST'
+puts 'PASS all windows, real system roundtrip, deterministic DST gap and fold rejection'
 
 with_fixture do |f|
   armed = fired = false

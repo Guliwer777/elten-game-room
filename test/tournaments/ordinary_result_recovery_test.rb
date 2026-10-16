@@ -1,7 +1,8 @@
 require_relative '../run'
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 
-Dir.mktmpdir('tournament-result-', File.join(GameRoomTestRunner::ROOT, 'tmp')) do |directory|
+GameRoomTest::TemporaryDirectory.create('tournament-result-') do |directory|
   script = 'test/tournaments/ordinary_match_service_test.rb'
   jobs = [
     {script: script, env: {'TOURNAMENT_RESULT_READ_FAILURE' => '1', 'TOURNAMENT_RESULT_LOST_ACK' => nil}},

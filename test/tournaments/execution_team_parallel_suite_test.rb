@@ -1,9 +1,10 @@
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_execution_suite'
 require_relative '../support/assertions'
 require 'timeout'
 include GameRoomTest::Assertions
 
-scratch = Dir.mktmpdir('team-race-', File.join(TournamentExecutionSuite::ROOT, 'tmp'))
+scratch = GameRoomTest::TemporaryDirectory.create('team-race-')
 env = {'FT2_SCRATCH' => scratch, 'ENTRY_EVIDENCE' => File.join(scratch, 'prepare')}
 FileUtils.mkdir_p(env['ENTRY_EVIDENCE'])
 prepared = GameRoomTestRunner.run([{script: 'test/tournaments/fixed_team_execution_parallel_prepare_test.rb', env: env}],

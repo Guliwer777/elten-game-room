@@ -1,9 +1,10 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_ft2b1_entry'
 include GameRoomTest::Assertions
 F = TournamentFT2B1
 T = F::T
-directory = Dir.mktmpdir('b', File.expand_path('../../tmp', __dir__))
+directory = GameRoomTest::TemporaryDirectory.create('b')
 fixture = F.fixture(directory, accept_plan: false)
 program = fixture[:program]
 account, now = F::OWNER, 201

@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_ft2b1_entry'
 include GameRoomTest::Assertions
 F = TournamentFT2B1
@@ -24,7 +25,7 @@ if large
   require_relative '../../games/taboo'
   registry = GameRoomGames::Registry.new([GameRoomGames::Taboo])
 end
-directory = Dir.mktmpdir('p', File.expand_path('../../tmp', __dir__))
+directory = GameRoomTest::TemporaryDirectory.create('p')
 fixture = large ? F.fixture(directory, accept_plan: false, game_id: 'taboo', registry: registry,
   names: names, players_per_match: size * 2) : F.fixture(directory, accept_plan: false)
 program = fixture.fetch(:program)

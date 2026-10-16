@@ -1,5 +1,6 @@
 # encoding: UTF-8
 require_relative '../support/assertions'
+require_relative '../support/tournament_time'
 source = File.expand_path('../../lib/tournaments/local_registration_time.rb', __dir__)
 require source if File.file?(source)
 
@@ -34,39 +35,10 @@ module TournamentLocalRegistrationTimeTest
     assert_equal('12:34', time)
     assert(!date.frozen? && !time.frozen?)
   end
-  # Syntetyczny zegar reguł DST: to NIE jest dowód ustawień strefy Windows.
-  # Używa tylko Time.utc / getlocal(jawny offset); nie zmienia globalnego TZ.
-  class SyntheticTime
-    Stamp = Struct.new(:local_time) do
-      def getlocal; local_time; end
-    end
-    attr_reader :local_calls
-
-    def initialize(preferred = 7200)
-      @preferred, @local_calls = preferred, []
-      @spring = Time.utc(2026, 3, 29, 1, 0, 0).to_i
-      @autumn = Time.utc(2026, 10, 25, 1, 0, 0).to_i
-    end
-
-    def utc(*parts); Time.utc(*parts); end
-
-    def at(seconds)
-      offset = seconds >= @spring && seconds < @autumn ? 7200 : 3600
-      Stamp.new(Time.at(seconds).getlocal(offset))
-    end
-
-    def local(*parts)
-      @local_calls << parts
-      civil = Time.utc(*parts).to_i
-      options = [@preferred, 10_800 - @preferred].map { |offset| at(civil - offset).getlocal }
-      options.find { |time| time.to_a.values_at(5, 4, 3, 2, 1, 0) == parts } || at(civil - 3600).getlocal
-    end
-  end
-
   def test_03_syntetyczny_dst_jednoznaczny_niejednoznaczny_i_luka
     helper = GameRoomTournaments::LocalRegistrationTime
     [3600, 7200].each do |preferred|
-      adapter = SyntheticTime.new(preferred)
+      adapter = TournamentTimeSupport::SeasonalTime.new(preferred)
       error = assert_raises(helper::Invalid) { helper.convert('2026-10-25', '02:30', time_adapter: adapter) }
       assert_equal(:ambiguous_time, error.code)
       assert(error.message.include?('Choose another time'))
@@ -97,21 +69,38 @@ module TournamentLocalRegistrationTimeTest
   def test_04_nieobslugiwany_zegar_fail_closed_bledy_programu_jawne
     helper = GameRoomTournaments::LocalRegistrationTime
     [:local, :at, :utc].each do |method|
-      adapter = SyntheticTime.new
+      adapter = TournamentTimeSupport::SeasonalTime.new
       adapter.define_singleton_method(method) { |*| raise RangeError, 'Brak reprezentacji w platformie' }
       assert_equal(:unsupported_time, assert_raises(helper::Invalid) {
         helper.convert('2026-07-01', '12:00', time_adapter: adapter)
       }.code)
     end
-    adapter = SyntheticTime.new
+    adapter = TournamentTimeSupport::SeasonalTime.new
     adapter.define_singleton_method(:local) { |*| raise NoMethodError, 'Błąd programu' }
     assert_raises(NoMethodError) { helper.convert('2026-07-01', '12:00', time_adapter: adapter) }
-    adapter = SyntheticTime.new
+    adapter = TournamentTimeSupport::SeasonalTime.new
     result = helper.convert('9999-12-31', '12:00', time_adapter: adapter)
     assert_equal(9999, adapter.at(result).getlocal.year)
     assert_equal(:invalid_timestamp, assert_raises(helper::Invalid) {
       helper.convert('0001-01-01', '12:00', time_adapter: adapter)
     }.code)
+  end
+
+  def test_06_scoped_clock_restored_after_failure
+    helper = GameRoomTournaments::LocalRegistrationTime
+    expected = helper.convert('2026-07-01', '12:00')
+    timezone = ENV['TZ']
+    adapter = TournamentTimeSupport::SeasonalTime.new
+    assert_raises(IOError) do
+      TournamentTimeSupport.with_adapter(adapter) do
+        assert_equal(Time.utc(2026, 7, 1, 10).to_i, helper.convert('2026-07-01', '12:00'))
+        raise IOError, 'test failure'
+      end
+    end
+    calls = adapter.local_calls.size
+    assert_equal(expected, helper.convert('2026-07-01', '12:00'))
+    assert_equal(calls, adapter.local_calls.size, 'The temporary clock escaped its test')
+    assert_equal(timezone, ENV['TZ'], 'The test changed the process time zone')
   end
 end
 

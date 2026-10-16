@@ -1,9 +1,10 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_ft2b1_execution'
 include GameRoomTest::Assertions
 F = TournamentFT2B1
 T = F::T
-directory = Dir.mktmpdir('s', File.expand_path('../../tmp', __dir__))
+directory = GameRoomTest::TemporaryDirectory.create('s')
 fixture = F.fixture(directory)
 record = fixture[:record]
 deadline = record['evidence']['plan']['matches'].first['windows'].first['closes'] - 60

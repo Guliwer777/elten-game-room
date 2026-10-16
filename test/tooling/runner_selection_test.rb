@@ -1,6 +1,7 @@
 require_relative "../run"
 require_relative "../support/binary_suite"
 require_relative "../support/assertions"
+require_relative "../support/temporary_directory"
 require 'tmpdir'
 require 'stringio'
 include GameRoomTest::Assertions
@@ -89,8 +90,7 @@ end
 assert_raises(ArgumentError) do
   BinaryTestSuite.run(['room/widget_feedback_binary_test.rb'], polish: ['widget_feedback_binary_test'])
 end
-FileUtils.mkdir_p(File.join(root, 'tmp'))
-Dir.mktmpdir('binary-selection-', File.join(root, 'tmp')) do |folder|
+GameRoomTest::TemporaryDirectory.create('binary-selection-') do |folder|
   raise 'Binary fixture outside workspace' unless File.expand_path(folder).start_with?(root + '/')
   names = %w[pl en].map do |language|
     name = "../tmp/#{File.basename(folder)}/#{language}_test.rb"

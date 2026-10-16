@@ -78,6 +78,15 @@ definitions from `*_test.rb`. Binary aggregates run their children
 through the same runner, with separate processes, preloads and languages. In a coverage
 report, the aggregate and its children are not independent additional tests.
 
+For workspace-local scratch data, require `support/temporary_directory.rb` and
+use `GameRoomTest::TemporaryDirectory.create(prefix)`. It creates the ignored
+`tmp/` parent itself; a scenario must also work as the first test in a fresh
+checkout. Do not rely on a previous scenario to prepare directories. The block
+form removes its own directory, while the non-block form retains diagnostic evidence.
+Test local-time roundtrips against the current system clock, but use the shared
+`support/tournament_time.rb` adapter for specific daylight-saving gaps and folds.
+Those cases must run on UTC machines too, without changing Windows time-zone settings.
+
 The checks for one-off Quiz audits requiring external reports and the test
 implementation of the old `TurnGate` have been removed. Current checksums,
 corrected questions, the book-based Witcher set and the export are in `games/quiz/`.

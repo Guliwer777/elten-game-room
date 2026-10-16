@@ -1,11 +1,12 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_ft2b1_entry'
 require_relative '../../lib/tournaments/local_fixed_team_standings'
 require_relative '../../lib/tournaments/local_fixed_team_progress'
 include GameRoomTest::Assertions
 F = TournamentFT2B1
 T = GameRoomTournaments
-fixture = F.fixture(Dir.mktmpdir('s', File.expand_path('../../tmp', __dir__)))
+fixture = F.fixture(GameRoomTest::TemporaryDirectory.create('s'))
 record = fixture[:record]
 intent = record['preview']['intent_id']
 empty = T::LocalFixedTeamStandings.build(record: record, executions: [])

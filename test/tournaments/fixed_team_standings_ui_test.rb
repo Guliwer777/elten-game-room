@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_ft2b1_entry'
 include GameRoomTest::Assertions
 F = TournamentFT2B1
@@ -22,7 +23,7 @@ if generic
   require_relative '../../games/catalog'
 end
 options = generic ? {game_id: 'domino', registry: GameRoomGames::CATALOG, game_options: {'teams' => true, 'team_count' => '2'}} : {}
-fixture = F.fixture(Dir.mktmpdir('s', File.expand_path('../../tmp', __dir__)), **options)
+fixture = F.fixture(GameRoomTest::TemporaryDirectory.create('s'), **options)
 driver = TournamentNativeDriver.new
 hub = T::LocalTestHub.new(**F.args(fixture))
 complete = lambda do |form|

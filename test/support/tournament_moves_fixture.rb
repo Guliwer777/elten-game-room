@@ -1,10 +1,11 @@
 # encoding: UTF-8
+require_relative 'temporary_directory'
 require_relative 'tournament_ft2b1_execution'
 module TournamentMovesFixture
   F = TournamentFT2B1
   module_function
   def build(game_options: {}, game_id: 'spades', registry: F::REGISTRY)
-    fixture = F.fixture(Dir.mktmpdir('m', File.expand_path('../../tmp', __dir__)), game_options: game_options, game_id: game_id, registry: registry)
+    fixture = F.fixture(GameRoomTest::TemporaryDirectory.create('m'), game_options: game_options, game_id: game_id, registry: registry)
     record = fixture[:record]
     %w[Ala Anna Bartek Beata].each do |actor|
       F.with_execution(fixture, actor) do |execution|

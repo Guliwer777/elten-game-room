@@ -4,6 +4,7 @@ require 'fileutils'
 require 'json'
 require 'tmpdir'
 require_relative '../run'
+require_relative 'temporary_directory'
 
 # Maintained entry points run in separate processes. Historical versions stay
 # available by explicit path, but are never counted again as independent coverage.
@@ -121,10 +122,8 @@ module TournamentExecutionSuite
   end
 
   def self.run(group, only: nil)
-    temporary = File.join(ROOT, 'tmp')
-    FileUtils.mkdir_p(temporary)
     # Short paths keep local-test backend identities within the public contract.
-    scratch = Dir.mktmpdir('t', temporary)
+    scratch = GameRoomTest::TemporaryDirectory.create('t')
     results = GameRoomTestRunner.run(entries(group, scratch: scratch, only: only), root: ROOT,
       report: File.join(scratch, 'results.json'))
     raise "Tournament #{group} failed; evidence: #{scratch}" unless GameRoomTestRunner.success?(results)

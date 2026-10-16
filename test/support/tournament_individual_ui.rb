@@ -1,3 +1,4 @@
+require_relative 'temporary_directory'
 require_relative 'tournament_ft2b1_entry'
 require_relative '../../games/catalog'
 module TournamentIndividualUI
@@ -6,7 +7,7 @@ module TournamentIndividualUI
   F = TournamentFT2B1
   module_function
     def fixture(names: %w[Alpha Beta], group_count: nil, places_per_group: nil, rematch: true, group_advancement: nil, participant_limit: nil, game: 'tic_tac_toe', game_options: {}, players_per_match: 2, format: 'round_robin')
-    directory = Dir.mktmpdir('individual-ui-', File.expand_path('../../tmp', __dir__))
+    directory = GameRoomTest::TemporaryDirectory.create('individual-ui-')
     program = TournamentEntryContextTest::Program.new(directory)
     sandbox = File.join(directory, 'tournament-local-test-' + Digest::SHA256.hexdigest(F::OWNER.downcase))
     state = {program: program, sandbox: sandbox, plans: File.join(sandbox, 'plans'), actor: 'Organizator', now: 150}

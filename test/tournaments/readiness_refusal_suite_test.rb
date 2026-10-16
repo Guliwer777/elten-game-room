@@ -1,5 +1,6 @@
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_execution_suite'
-scratch = Dir.mktmpdir('refusal-', File.join(TournamentExecutionSuite::ROOT, 'tmp'))
+scratch = GameRoomTest::TemporaryDirectory.create('refusal-')
 entries = %w[pl en fallback].product(%w[legal mapping]).map.with_index do |args, index|
   evidence = File.join(scratch, index.to_s)
   FileUtils.mkdir_p(evidence)

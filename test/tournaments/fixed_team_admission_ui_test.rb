@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_ft2b1_execution'
 include GameRoomTest::Assertions
 F = TournamentFT2B1
@@ -17,7 +18,7 @@ if ARGV.include?('--binary')
     $VERBOSE = verbose
   end
 end
-fixture = F.fixture(Dir.mktmpdir('u', File.expand_path('../../tmp', __dir__)))
+fixture = F.fixture(GameRoomTest::TemporaryDirectory.create('u'))
 record = fixture[:record]
 begin
   %w[Ala Anna Bartek Beata].each do |actor|

@@ -1,3 +1,4 @@
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_execution_suite'
 require_relative '../support/assertions'
 require 'stringio'
@@ -59,7 +60,7 @@ assert(runtime.all? { |job| !job.key?(:args) }, 'Cold scripts do not take synthe
 native = TournamentExecutionSuite.jobs('recovery').select { |job| job[:script].include?('ft2b1_native_cold_') }
 assert_equal([['A', 'suite'], ['B', 'suite']], native.map { |job| job[:args] })
 
-Dir.mktmpdir('tournament-suite-', File.join(root, 'tmp')) do |scratch|
+GameRoomTest::TemporaryDirectory.create('tournament-suite-') do |scratch|
   jobs = TournamentExecutionSuite.entries('encoding', scratch: scratch)
   jobs.each do |job|
     env = job[:env]
