@@ -33,9 +33,9 @@ module GameRoomTournaments
         primary = nil
         begin
           boundary { StrictJson.verify! }
-          check_paths
+          check_paths(document: false)
           boundary { FileUtils.mkdir_p(@directory, mode: 0o700) }
-          check_paths
+          check_paths(document: false)
           boundary { lock = File.open(@path + '.lock', File::RDWR | File::CREAT, 0o600) }
           check_open(lock, @path + '.lock')
           raise C::PortUnavailable, 'Nie uzyskano blokady K03' unless boundary { lock.flock(File::LOCK_EX) }
@@ -131,7 +131,7 @@ module GameRoomTournaments
       raise
     end
 
-    def check_paths
+    def check_paths(document: true)
       path = @directory
       loop do
         value = stat(path)
@@ -140,7 +140,11 @@ module GameRoomTournaments
         break if parent == path
         path = parent
       end
-      [@path, @path + '.lock'].each do |file|
+      # Inspect the replaceable document only under its process lock. Even a
+      # metadata read can briefly prevent another process's rename on Windows.
+      # The directory and stable lock file must still be checked before opening.
+      files = document ? [@path, @path + '.lock'] : [@path + '.lock']
+      files.each do |file|
         value = stat(file)
         raise C::Blocked, :unsafe_sandbox if value && (value.symlink? || !value.file? || value.nlink != 1)
       end
