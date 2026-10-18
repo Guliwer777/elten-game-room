@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_native'
 require_relative '../support/tournament_local_hub'
 require_relative '../support/tournament_match_entry'
@@ -11,7 +12,7 @@ end
 H=TournamentLocalHubTest
 T=GameRoomTournaments
 GameRoomLocalization.boot(settings:{'interface_language'=>'en','known_languages'=>['en']})
-Dir.mktmpdir('d2b-ui-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('d2b-ui-') do |directory|
   program=TournamentMatchEntryTest.prepare(directory)
   hub=T::LocalTestHub.new(**H.args(program:program))
   driver=TournamentNativeDriver.new

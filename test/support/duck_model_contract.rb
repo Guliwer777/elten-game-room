@@ -44,13 +44,26 @@ module GameRoomTest
       rejected = h.game.replay(h.session, h.events + [unknown], h.repository)
       assert_equal(ContractValues.canonical(cached), ContractValues.canonical(rejected), 'Unknown Duck event changed state')
       assert_equal(before, ContractValues.digest([h.session, h.events]), 'Duck replay changed its inputs')
-      comparable = legacy ? legacy_projection(cached) : cached
+      comparable = reference_projection(cached, legacy: legacy)
       {'events' => h.events.length, 'replay' => ContractValues.digest(comparable)}
+    end
+
+    # Server-random support annotates public challenge inputs with their seed.
+    # Both recorded corpora predate that source of randomness: each new field
+    # must exist and be nil. Verify it, then compare every original Replay
+    # field (including all RNG state) against the unchanged reference bytes.
+    def reference_projection(replay, legacy: false)
+      copy = legacy ? legacy_projection(replay) : Marshal.load(Marshal.dump(replay))
+      copy.state.fetch(:duck_challenge_events).each do |event|
+        assert(event.key?(:seed), 'Duck public input seed metadata is missing')
+        assert_equal(nil, event.delete(:seed), 'Historical Duck input unexpectedly received a new random seed')
+      end
+      copy
     end
 
     # Protocol 2 adds bookkeeping even when reading a protocol 1 game. Verify
     # those additions explicitly, then compare every old field against v1.
-    # The v2 corpus retains the complete state, including the new fields.
+    # The v2 corpus retains these protocol-2 fields without removing them.
     def legacy_projection(replay)
       copy = Marshal.load(Marshal.dump(replay))
       state = copy.state

@@ -44,6 +44,7 @@ module GameRoomGames
     :table_id,
     :hidden_submissions,
     :random_source,
+    :server_random,
     :now,
     :options,
     :table_owner,

@@ -18,7 +18,7 @@ workspace=Object.new
 workspace.define_singleton_method(:actor){'Alice'}
 workspace.define_singleton_method(:mode_label){'Shared tournaments'}
 workspace.define_singleton_method(:load){TournamentPublicUI.snapshot([])}
-%i[join withdraw set_partner operations reconcile].each{|name|workspace.define_singleton_method(name){|*|raise 'Unexpected mutation'}}
+%i[join withdraw set_partner edit_tournament delete_tournament operations reconcile].each{|name|workspace.define_singleton_method(name){|*|raise 'Unexpected mutation'}}
 workspace.define_singleton_method(:publish){|**|raise 'Cancelled creation published tournament'}
 driver=TournamentNativeDriver.new
 driver.step(label.call('Tournaments'),[]) do |form|

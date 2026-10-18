@@ -40,6 +40,25 @@ class SaveAppDriver < EltenGameRoom
   def alert(message); @notices << message; end
   def play_game_sound(_name); end
   def send_notification(user, type:, metadata:, expires_in:); @notices << [user, type, metadata, expires_in]; end
+  # The current native session requires a server draw. Do not seed it with a
+  # precomputed simulation deal from the former client-random protocol.
+  def prepare_playing_game(table, session, game)
+    runner = GameRoomSessionRunner.new(program: self, transport: @transport, repository: @games,
+      game: game, table: table, session: session, owner: 'Alice', viewer: 'Alice', covered: -> { true },
+      room_snapshot_provider: -> { @lobby.snapshot_for(table) },
+      context: GameRoomGames::ActionContext.new(random_source: GameRoomRandom::LocalSecureSource.new))
+    20.times do
+      runner.step
+      error = runner.take_error
+      raise error if error
+      snapshot = @games.snapshot_for(session)
+      replay = game.replay(snapshot.session, snapshot.events, @games)
+      return replay if replay.state[:phase] == :playing
+    end
+    raise 'Native game did not finish dealing'
+  ensure
+    runner&.close
+  end
   def room_state(table)
     room = @lobby.snapshot_for(table)
     session = @games.session_for_table(table)

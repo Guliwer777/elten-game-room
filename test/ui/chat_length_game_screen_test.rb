@@ -4,9 +4,9 @@ h, screen = screen_fixture(GameRoomGames::FourInARow.new)
 sender = TableActivityRepository.new(server_tables: Object.new, transport: h.transports.fetch('Alice'))
 recipient = TableActivityRepository.new(server_tables: Object.new, transport: h.transports.fetch('Bob'))
 sent = []
-screen.instance_variable_set(:@send_chat, lambda do |table, text, _members|
+screen.instance_variable_set(:@send_chat, lambda do |table, text, _members, **options|
   sent << text
-  sender.append(table: table, kind: 'chat', message: text)
+  sender.append(table: table, kind: 'chat', message: text, **options)
 end)
 message = ('Zażółć gęślą jaźń. ' * 120)[0, 2000].rstrip
 stage = :send

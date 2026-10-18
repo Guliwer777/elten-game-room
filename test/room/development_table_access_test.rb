@@ -122,7 +122,14 @@ end
 
 require_relative "../../__app"
 
+# This headless host has no program runtime; publish the normal startup snapshot.
+EltenGameRoom.remember_settings(EltenGameRoom::DEFAULT_SETTINGS)
+
 class EmptyLiveEndpoint
+  attr_reader :user
+  def initialize(user)
+    @user = user.to_s.dup.freeze
+  end
   def sessions; []; end
   def on_invitation(&block); end
 end
@@ -133,7 +140,7 @@ app = EltenGameRoom.new
 tables = GameRoomServerTables.new(app, client: client)
 app.instance_variable_set(:@server_tables, tables)
 GameRoomStartupUpdate.define_singleton_method(:check) { |_program| nil } # This test covers table access, not catalogue updates.
-endpoint = EmptyLiveEndpoint.new
+endpoint = EmptyLiveEndpoint.new(Session.name)
 app.define_singleton_method(:live_sessions) { endpoint }
 entries = []
 app.define_singleton_method(:run_program_interface) { |current| entries << current }
@@ -181,6 +188,7 @@ assert(client.calls.length == 1, "An invitation shortcut queried a protected tab
 # Reusing the same instance must probe again and recover cached repository handles.
 client.error = nil
 Session.name = "Alice"
+endpoint = EmptyLiveEndpoint.new(Session.name)
 app.program_main
 assert(entries.length == 2 && tables.available?, "The second main invocation did not recover access")
 assert(client.calls.count { |table, operation, options| table == "game_room_users" && operation == :select && options[:limit] == 1 } == 2, "Main did not probe on every invocation")
@@ -221,7 +229,7 @@ end
 # Notification entry cannot bypass the access check, even on an existing instance.
 client.error = EltenLink::Error.new("apps.tables.stamp_required")
 app.define_singleton_method(:load_pending_invitations) { nil }
-notification = Struct.new(:metadata).new({ "invitation_id" => 1 })
+notification = Struct.new(:sender, :metadata).new("Bob", { "invitation_id" => 1 })
 2.times do
   before = client.calls.length
   assert(app.notification_action(:open_invitation, notification), "Notification entry did not complete")

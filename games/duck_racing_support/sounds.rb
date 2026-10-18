@@ -18,7 +18,13 @@ module GameRoomGames
       # shared presenter owns its cursor; snapshots, partial payloads and
       # reconstruction must not replay a roll or every private attempt.
       cues = history.filter_map do |entry|
-        entry.kind == :skipped && entry.value == true ? 'duck_frozen' : EVENT_SOUNDS[entry.kind]
+        if entry.kind == :trap && entry.value == 'mine'
+          'hit_ship1'
+        elsif entry.kind == :skipped && entry.value == true
+          'duck_frozen'
+        else
+          EVENT_SOUNDS[entry.kind]
+        end
       end
       cues << GameRoomDuckRacing::QuizSounds.result_cue(before_replay: before_replay,
         after_replay: after_replay, history: history, viewer: viewer)

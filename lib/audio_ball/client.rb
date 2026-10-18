@@ -126,6 +126,7 @@ module GameRoomAudioBall
       @audio.point(result[:scores], sets: after.state[:sets], set_finished: result[:set_finished],
         winner: result[:winner], viewer: side, finished: after.finished?, goal_at: preview && preview[:at])
       rally_state.ready_at = point_ready_at(result)
+      @ready_deadline_created_at = @clock.call
       point_state.goal_preview = nil
     end
 
@@ -185,7 +186,7 @@ module GameRoomAudioBall
       receive_events
       check_connection(now)
       healthy = healthy?(now)
-      active = healthy && local_ready?(now)
+      active = !session_paused? && healthy && local_ready?(now)
       playable = active && !rally_state.paused
       elapsed = rally_state.last_frame && !rally_state.paused && active && !@clock_reset ? [now - rally_state.last_frame, 0.0].max : 0.0
       @clock_reset = false
@@ -208,7 +209,7 @@ module GameRoomAudioBall
       end
       rally_state.snapshot = rally_state.engine&.snapshot
       send_state(now, healthy)
-      agree_point(now) if host? && healthy
+      agree_point(now) if host? && healthy && !session_paused?
       present
     end
 
@@ -287,6 +288,7 @@ module GameRoomAudioBall
       @disagreements = {}
       result = @replay.state[:last_point]
       rally_state.ready_at = result ? point_ready_at(result) : @clock.call
+      @ready_deadline_created_at = @clock.call
       rally_state.last_frame = nil
       rally_state.paused = true
       connection_state.next_send = 0.0
@@ -328,6 +330,7 @@ module GameRoomAudioBall
         next unless body['r'] == @replay.state[:rally]
         peer = (connection_state.peers[name] ||= GameRoomRealtime::PeerState.new)
         next unless peer.receive(packet, now: now, last_sent: connection_state.sequence)
+        next if session_paused?
         if !host? && @side == nil && rally_state.engine && body['state'].is_a?(Hash) && body['turn'] >= rally_state.engine.turn
           state = body['state']
           next unless state['server'] == @replay.state[:server] && state['level'] == @replay.state[:options]['difficulty'] &&
@@ -360,6 +363,7 @@ module GameRoomAudioBall
         end
         rally_state.deferred << data
       end
+      return if session_paused?
       rally_state.deferred.sort_by! { |data| [data['r'], data['turn'], %w[warn point].include?(data['action']) ? 1 : 0] }
       rally_state.deferred.delete_if do |data|
         next true if data['r'] < @replay.state[:rally]
@@ -432,7 +436,7 @@ module GameRoomAudioBall
         received ? now - received > STREAM_TIMEOUT : now - connection_state.connection_started > 10.0
       end
       recover('AudioBallStatusTimeout') if expired
-      return unless host? && !point_state.pending_point
+      return unless host? && !point_state.pending_point && !session_paused?
       @required.each do |name|
         peer = connection_state.peers[name.downcase]
         if peer && peer.body['resync']
@@ -521,7 +525,7 @@ module GameRoomAudioBall
     end
 
     def local_command(command)
-      return false unless command == 'hurry' && !@closed && !rally_state.paused && !@network_wait && !@settings_open && @side != nil && rally_state.engine
+      return false unless command == 'hurry' && !@closed && !session_paused? && !rally_state.paused && !@network_wait && !@settings_open && @side != nil && rally_state.engine
       data = {'action' => 'warn', 'side' => @side, 'turn' => rally_state.engine.turn, 'hits' => rally_state.engine.hits}
       return false unless accept_warning(data)
       emit_event(data)
@@ -592,6 +596,17 @@ module GameRoomAudioBall
     end
 
     def announce_set
+      if @single_point
+        view = @side || 0
+        left = Preferences.read(@program)['listening_side'] == 'left' ? view : 1 - view
+        orientation = [@players[left], @players[1 - left]]
+        if @announced_orientation != orientation
+          @announced_orientation = orientation
+          @audio.announce(GameRoomContent.utf8(_('%{left} is on the left; %{right} is on the right.')) % {
+            left: GameRoomContent.utf8(GameRoomParticipants.display_name(orientation[0])),
+            right: GameRoomContent.utf8(GameRoomParticipants.display_name(orientation[1]))})
+        end
+      end
       number = @replay.state[:set_number]
       if presentation_state.announced_set != number
         presentation_state.announced_set = number
@@ -617,12 +632,26 @@ module GameRoomAudioBall
 
     def pause_status
       return '' unless rally_state.paused
+      return _('Game paused.') if session_paused?
       return _('Waiting for the point to be saved.') if point_state.pending_point || rally_state.engine&.goal != nil
       result = @replay.state[:last_point]
       if result && @clock.call < rally_state.ready_at
         return result[:set_finished] ? _('Break between sets.') : _('Break between points.')
       end
       _('Waiting for players.')
+    end
+
+    def session_pause_changed(paused, elapsed)
+      rally_state.paused = true
+      @clock_reset = true
+      @defense_input.forget_held
+      @selected_lane = @selected_flight = nil
+      unless paused
+        ready_elapsed = @ready_deadline_created_at ? [elapsed, [@clock.call - @ready_deadline_created_at, 0.0].max].min : elapsed
+        rally_state.ready_at += ready_elapsed if rally_state.ready_at
+        @disagreements&.clear
+      end
+      rally_state.last_frame = @clock.call
     end
   end
 end

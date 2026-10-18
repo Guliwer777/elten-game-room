@@ -1,4 +1,6 @@
 # encoding: UTF-8
+require_relative '../support/tournament_evidence_environment'
+require_relative '../support/temporary_directory'
 require_relative '../support/assertions'
 require_relative '../support/tournament_environment'
 require 'fileutils'
@@ -6,7 +8,7 @@ require 'rbconfig'
 require 'json'
 require 'digest'
 include GameRoomTest::Assertions
-directory=Dir.mktmpdir('cold-native-', ENV.fetch('TMPDIR'))
+directory=GameRoomTest::TemporaryDirectory.create('cold-native-')
 FileUtils.mkdir_p(directory)
 job=File.expand_path('../support/tournament_readiness_cold_native_job.rb',__dir__)
 %w[a bob b history].each do |mode|
@@ -23,7 +25,7 @@ job=File.expand_path('../support/tournament_readiness_cold_native_job.rb',__dir_
     [name,Digest::SHA256.file(File.join(directory,name)).hexdigest]
   end
   argv=[RbConfig.ruby,job,mode,directory]
-  File.write(prefix+'-before.json',JSON.pretty_generate({env:ENV.to_h,argv:argv,cwd:Dir.pwd,data:data}),encoding:'UTF-8')
+  File.write(prefix+'-before.json',JSON.pretty_generate({env: TournamentTestEvidence.environment,argv:argv,cwd:Dir.pwd,data:data}),encoding:'UTF-8')
   pid=Process.spawn(ENV.to_h,*argv,out:prefix+'.stdout.raw',err:prefix+'.stderr.raw')
   waited,status=Process.wait2(pid)
   File.write(prefix+'-exit.json',JSON.generate({pid:pid,waited:waited,exit:status.exitstatus,joined:true}),encoding:'UTF-8')

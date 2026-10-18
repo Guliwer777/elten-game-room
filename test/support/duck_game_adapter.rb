@@ -49,17 +49,19 @@ module DuckGameAdapterTest
       current = game.replay(snapshot.session, snapshot.events, repository)
       owner = snapshot.session.fetch('__table_owner')
       context = GameRoomGames::ActionContext.new(session_id: session.fetch('__id'), table_id: table.fetch('__id'),
+        server_random: session['__server_random'] == GameRoomServerRandom::VERSION,
         now: at / 1000.0, table_owner: owner, random_source: SeedSource.new(seed), hidden_submissions: vault,
         local_data: {'duck_host' => GameRoomParticipants.same?(author, owner),
           'duck_ready' => true, 'duck_seat' => current.players.index(actor),
           'duck_stack_entry_bytes' => transports.fetch(author).game_action_limits(table)['max_stack_entry_bytes']})
       status, plan = game.action_for(selection, current, actor, context: context)
       assert_equal(:ok, status, "Native action rejected: #{selection.inspect}")
+      view(author).next_random_values = SeedSource.new(seed).roll(count:16,sides:256).values if GameRoomServerRandom.request_from(plan.events)
       as(author) do
         repository.append_events(session: session, sequence: repository.next_sequence(session, snapshot.events),
           events: plan.events, actor: actor, controller: !GameRoomParticipants.same?(author, actor))
       end
-      expected = current.accepted_events.length + plan.events.length
+      expected = events(author).length
       assert_equal(expected, replay(author).accepted_events.length, 'Native replay dropped the new action')
       plan
     end

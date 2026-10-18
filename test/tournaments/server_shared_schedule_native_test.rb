@@ -50,7 +50,7 @@ combined_context=->(form,expected){
   assert_equal('j',items.last.last)
   fixture[:program].singleton_class.remove_method(:switch_to_invited_table)
 }
-driver.step(L.call('Matches'), [13]) do |form|
+driver.step(L.call('Tournament matches'), [13]) do |form|
   list=form.fields.first
   assert_equal(3,list.options.size)
   assert_equal(header.call(1),list.options.first)
@@ -63,7 +63,8 @@ driver.step(L.call('Matches'), [13]) do |form|
   assert_equal('guliwer — Żółw; '+L.call('Return match')+'; '+L.call('To be played'),list.options[1],'Unplayed return match missing below summary')
   assert(!list.options.join.include?('a'*64),'Digest leaked into match labels')
   assert(!context.call(list).include?(L.call('Play')),'Completed match exposes Play')
-  combined_context.call(form,['Match result'])
+  combined_context.call(form,['Result details','Play return match'])
+  assert(list.options.last.include?('Żółw: 4; guliwer: 7'),'Full game score is missing from the match row')
   list.index=1
   list.trigger(:move)
   assert(context.call(list).include?(L.call('Play')),'Own unplayed match hides Play')
@@ -71,8 +72,8 @@ driver.step(L.call('Matches'), [13]) do |form|
   completed=true
   form.index=form.fields.index(F.button(form,L.call('Refresh')))
 end
-driver.step(L.call('Matches'), []){}
-driver.step(L.call('Matches'), [13]) do |form|
+driver.step(L.call('Tournament matches'), []){}
+driver.step(L.call('Tournament matches'), [13]) do |form|
   assert_equal(header.call(2),form.fields.first.options.first)
   assert_equal(2,form.fields.first.index,'Completion moved the selection away from the return match')
   details=F.field(form,L.call('Information'))
@@ -81,7 +82,7 @@ driver.step(L.call('Matches'), [13]) do |form|
   form.index=form.fields.index(F.button(form,L.call('Refresh')))
 end
 
-driver.step(L.call('Matches'), [27]) do |form|
+driver.step(L.call('Tournament matches'), [27]) do |form|
   assert(form.fields.first.options.empty?,'Failed refresh retained actionable matches')
   assert(context.call(form.fields.first).empty?,'Failed refresh retained actions')
   form.index=0

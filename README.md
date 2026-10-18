@@ -60,9 +60,9 @@ następnego nagłówka, a Shift+H — do poprzedniego. Escape zamyka dokument.
 
 ## W co można zagrać
 
-Obecnie Power Games zawiera 35 gier:
+Obecnie Power Games zawiera 36 gier:
 
-- Karcianki: 3-5-8, 99, 1000 mil, Biblios, Makao, Piki, Poker, Remik, Tysiąc,
+- Karcianki: 3-5-8, 99, 1000 mil, Biblios, Brydż, Makao, Piki, Poker, Remik, Tysiąc,
   UNO, Wojna i Wojna naukowa.
 - Gry planszowe i strategiczne: Chińczyk, Cztery w rzędzie,
   Kółko i krzyżyk, Mankala, Monopoly, Reversi, Statki, Szachy, Warcaby
@@ -115,6 +115,14 @@ Ten ostatni skrót działa w całym Power Games, również w widgecie.
 W grach dopuszczających obserwatorów można śledzić partię bez zajmowania
 miejsca gracza. To przydatne zarówno do kibicowania, jak i poznawania zasad.
 W Axel Pongu obserwator może także wybrać perspektywę słuchania.
+
+W Wyścigach kaczek możesz śledzić wyzwania zarówno jako obserwator stołu,
+jak i gracz, który nie bierze udziału w danym wyzwaniu. Usłyszysz publiczne
+rzuty, zagrania i wybory, a w indywidualnych próbach, takich jak Simon,
+rytm czy strzelanie do kaczek — tylko wyniki końcowe. Prywatne odpowiedzi
+pozostają ukryte do rozstrzygnięcia. Obserwator nie potwierdza gotowości
+ani nie słyszy odliczania przeznaczonego dla uczestników.
+
 Ctrl+Shift+O pozwala zgłosić się do gry lub obserwowania następnej partii,
 o ile dana gra udostępnia taki wybór. Ten skrót zmienia Twoją rolę.
 Gospodarz może zmienić rolę innej osoby w menu kontekstowym listy użytkowników;
@@ -140,6 +148,13 @@ zaznaczonej osoby:
 Po odejściu gospodarza stół może przejąć kolejny uczestnik. W obsługiwanych
 grach program zastępuje wychodzącego gracza botem, dzięki czemu pozostali
 mogą kontynuować partię.
+
+W zwykłej partii Państw-miast potwierdzone odejście usuwa gracza z bieżącej
+rozgrywki; nie trzeba czekać na jego odpowiedzi. Jeśli odchodzi sędzia,
+niedokończona runda zostaje anulowana i rozpoczyna się nowa. Przy mniej
+niż dwóch uczestnikach gra zostaje przerwana, bez przyznawania zwycięstwa.
+Osoba, która wróci, może obserwować i dołączyć do następnej partii.
+Chwilowy błąd połączenia sam w sobie nie powoduje usunięcia gracza.
 
 Drużyny wybiera się w osobnym oknie. Możesz je wylosować, zmienić przydział
 Enterem lub przestawiać osoby skrótami Shift+strzałka w górę i Shift+strzałka
@@ -236,6 +251,11 @@ czy od nikogo. Powiadomienia o zaproszeniach i o nowych stołach mają różne
 dźwięki. Ich opisy zawierają krótką informację o grze i jej najważniejszych
 ustawieniach; pełny opis stołu jest dostępny pod Ctrl+R.
 
+W ustawieniach powiadomień znajdziesz też Czarną listę. Dodaj do niej nazwy
+użytkowników, od których nie chcesz widzieć zaproszeń. Na liście Ctrl+N dodaje
+osobę, a Delete usuwa wybraną. Zmiany zatwierdź przyciskiem Zapisz.
+Czarna lista nie blokuje zaproszeń do meczów turniejowych.
+
 W Ustawienia → Komunikaty lobby osobno wybierasz, jakie komunikaty
 mają być odczytywane podczas przebywania w głównym oknie programu.
 
@@ -251,6 +271,24 @@ Głośność można regulować bez opuszczania gry:
 Do wyboru są wszystkie dźwięki razem lub oddzielnie: dźwięki gry, wejścia
 i wyjścia ze stołu, czat oraz zaproszenia i powiadomienia. Te same poziomy
 znajdziesz w Ustawienia → Dźwięki.
+
+Na początku tej kategorii jest pole dźwięku 3D (HRTF), domyślnie włączone.
+Dzięki niemu dźwięki ruchów
+innych graczy dochodzą z ich miejsc przy stole: siebie słyszysz na środku,
+a pozostałych graczy przed sobą: najpierw gracza po Twojej lewej — z przodu
+po lewej, a kolejnych zgodnie z ruchem wskazówek zegara aż do przodu po
+prawej. W grze we dwoje przeciwnik jest na wprost, a we czworo gracze siedzą
+z przodu po lewej, naprzeciwko i z przodu po prawej. Gracz naprzeciwko w grze
+we dwoje, we czworo i w sześć osób brzmi trochę głośniej i jakby z drugiego
+końca pokoju, żeby łatwo było odróżnić go od własnych dźwięków. Pod polem
+wyboru znajdziesz
+listę gier, w których dźwięk 3D ma działać; jej dwie pierwsze pozycje
+zaznaczają lub odznaczają wszystkie gry. Na liście nie ma gier, w których
+dźwięki nie pochodzą od ruchów poszczególnych graczy: Audio Ball i Axel Pong
+mają własny układ dźwięku, a w Krowie, Wyścigach kaczek, Państwach-miastach
+i Quizie dźwięki nie są przypisane do miejsc przy stole. Wygrana,
+przegrana, tasowanie i zgarnięcie puli w pokerze zawsze brzmią na środku.
+Najlepiej słychać to w słuchawkach.
 
 Przejście do wiadomości, konferencji lub innego okna ELTEN-a nie oznacza
 wstrzymania partii. To ważne szczególnie w grach zręcznościowych i przy
@@ -289,9 +327,11 @@ wznowienie zapisanej partii nie zmienia jej języka.
 
 ### Przerwij teraz, dokończ później
 
-W grach obsługujących zapis gospodarz może użyć Ctrl+S, aby zapisać partię
-i zamknąć stół. Zapis jest przypisany do jego konta i przechowywany na
+W zwykłych partiach gier obsługujących zapis gospodarz może użyć Ctrl+S,
+aby zapisać partię i zamknąć stół. Zapis jest przypisany do jego konta i przechowywany na
 serwerze, więc można wrócić do niego także na innym komputerze.
+
+Partii turniejowych nie można zapisywać ani wznawiać z zapisu.
 
 Do wznowienia służy pozycja „Zapisane gry” w głównym menu. Odtworzenie
 tworzy stół, przy którym można ponownie zebrać uczestników i kontynuować
@@ -378,6 +418,20 @@ przed zatwierdzeniem słowa. Ctrl+P włącza lub wyłącza lokalne komunikaty
 o tych zmianach. Domyślnie są wyłączone; nie trzeba włączać ich wszystkim
 przy stole.
 
+### Ocenianie odpowiedzi w Państwach-miastach
+
+Odpowiedzi są ułożone kategoriami, dzięki czemu łatwiej porównać podobne
+wpisy. Jako sędzia przechodź między nimi Tabem, wybieraj ocenę strzałkami
+i potwierdzaj Enterem. Przy wejściu na odpowiedź usłyszysz przypomnienie
+„Enter zatwierdza ocenę”, a po jej przyjęciu — „Oceniono”. Po ocenieniu
+wszystkich odpowiedzi wybierz „Zakończ ocenę”.
+
+Pola odpowiedzi dopowiadają przykład dla liter M i N, aby łatwiej je
+rozróżnić. Dźwięk sygnalizuje wysłanie odpowiedzi, a przy grze z limitem
+czasu osobne sygnały oznaczają ostatnie 20 sekund i koniec czasu.
+Po podliczeniu punktów jest przerwa przed następną rundą; jej czas
+na odpowiedzi zaczyna się dopiero po przerwie.
+
 ### Połączenie w grach audio
 
 Przy tworzeniu stołu Axel Ponga lub Audio Balla można opcjonalnie włączyć
@@ -414,7 +468,7 @@ do wskazanej listy lub pola gry, nie do wpisywania wiadomości.
 - Ctrl+O — dodanie bota; dla gospodarza, gdy jest to dostępne.
 - Ctrl+Shift+O — wybór roli gracza lub obserwatora na następną partię.
 - Ctrl+P — ustawienia lub przełącznik osobisty, w grach, które go mają.
-- Ctrl+S — zapis partii i zamknięcie stołu; dla gospodarza, w obsługiwanych grach.
+- Ctrl+S — zapis partii i zamknięcie stołu; dla gospodarza, w obsługiwanych grach poza turniejami.
 - Ctrl+Shift+S — eksport historii stołu do TXT, bez zamykania partii.
 - Ctrl+Q — zakończenie bieżącej partii bez zamykania stołu; dla gospodarza.
 - Ctrl+X — zmiana ustawień następnej partii; dla gospodarza, poza edycją tekstu.
@@ -448,10 +502,9 @@ Turniej łączy kilka partii w jedne rozgrywki: program układa spotkania, zbier
 W lobby wybierz „Turnieje”. Strzałkami wybierz turniej, a Enterem otwórz listę jego działań. Tab przenosi między listą, filtrem i pozostałymi polami. Filtr pozwala wyświetlić:
 
 - bieżące turnieje, w tym te, do których można się jeszcze zapisać;
-- „Moje turnieje”, czyli bieżące turnieje, w których uczestniczysz lub które organizujesz;
 - zakończone turnieje, żeby wrócić do ich wyników.
 
-W bieżących turniejach najpierw zobaczysz te, w których uczestniczysz, potem te, do których możesz się zapisać, a na końcu pozostałe.
+W bieżących turniejach najpierw zobaczysz te, w których uczestniczysz lub które organizujesz, potem te, do których możesz się zapisać, a na końcu pozostałe.
 
 Porzucony turniej znika po 14 dniach bez aktywności przed rozpoczęciem lub po 30 dniach bez postępu po rozpoczęciu. Zapisy i zmiany organizatora przedłużają ważność przed startem, a wyniki meczów — po starcie. Samo przeglądanie jej nie przedłuża. Jeśli zapisy lub start zaplanowano na przyszłość, turniej nie zniknie przed tym terminem. Wyniki ukończonych turniejów pozostają dostępne.
 
@@ -459,6 +512,7 @@ Przy nazwie turnieju znajdziesz grę, liczbę uczestników i stan rozgrywek. Na 
 
 - Ctrl+N — utwórz turniej.
 - Ctrl+R — odśwież listę turniejów.
+- Ctrl+O — otwórz turniej; Ctrl+D — dołącz; Ctrl+M — mecze; Ctrl+W — tabela wyników; Ctrl+E — zarządzanie; Ctrl+L — wypisz się. Dostępne działania wraz ze skrótami znajdziesz również w menu kontekstowym.
 - Ctrl+Shift+T — otwórz swoje bieżące turnieje z lobby lub widgetu. Jeśli masz tylko jeden taki turniej, od razu otworzy się lista jego działań.
 - Ctrl+J — otwórz zwykłą listę zaproszeń, również tych do meczów turniejowych.
 
@@ -468,10 +522,10 @@ F1 przypomina obsługę bieżącego okna, a Escape wraca do poprzedniego. Samo z
 
 Po otwarciu turnieju od razu trafiasz na listę działań. Wybierz pozycję strzałkami i naciśnij Enter. Nagłówek podaje nazwę turnieju i jego stan.
 
-- „Spotkania” — lista meczów. Tutaj wybierasz spotkanie do rozegrania lub sprawdzasz wynik zakończonego meczu.
-- „Wyniki” — klasyfikacja turnieju, również z wcześniejszych faz.
+- „Mecze turnieju” — lista meczów. Tutaj wybierasz spotkanie do rozegrania lub sprawdzasz wynik zakończonego meczu.
+- „Tabela wyników” — klasyfikacja turnieju, również z wcześniejszych faz.
 - „Uczestnicy” — lista osób zapisanych do turnieju.
-- „Zasady turnieju” — opis organizatora, ustawienia gry, sposób rozgrywania turnieju, zasady awansu oraz terminy.
+- „Informacje i zasady” — opis organizatora, ustawienia gry, sposób rozgrywania turnieju, zasady awansu oraz terminy.
 - „Zarządzaj turniejem” — działania organizatora. Inni uczestnicy nie mają tej pozycji.
 
 Opcje dołączenia, wypisania się i wyboru partnera pojawiają się wtedy, kiedy można z nich skorzystać.
@@ -480,21 +534,23 @@ Opcje dołączenia, wypisania się i wyboru partnera pojawiają się wtedy, kied
 
 Aby się zapisać, wybierz „Dołącz do turnieju”. Jeśli ta opcja nie jest dostępna, sprawdź stan w nagłówku: zapisy mogą jeszcze się nie rozpocząć, być już zamknięte albo może brakować miejsc. Jeśli jesteś już uczestnikiem, nie musisz zapisywać się ponownie. Przed rozpoczęciem możesz zrezygnować przez „Wypisz się z turnieju”.
 
+Organizator może też wysłać Ci zaproszenie do turnieju. Otwiera ono jego listę działań; dopiero wybór „Dołącz do turnieju” zapisuje Cię na rozgrywki. To nie jest zaproszenie do konkretnego meczu.
+
 W turnieju dla stałych par obie osoby najpierw zapisują się osobno. Następnie:
 
-1. Otwórz „Mój partner” i wybierz drugiego uczestnika.
+1. Otwórz „Partner w drużynie” i wybierz drugiego uczestnika.
 2. Poproś tę osobę, żeby w tym samym miejscu wybrała Ciebie.
 3. Po wzajemnym wyborze para jest potwierdzona. Na ekranie partnera sprawdzisz też, czy nadal czekasz na akceptację.
 
 Przed startem możesz zmienić wybór lub zrezygnować z partnera. Organizator także może ustawić pary. Nie da się przygotować spotkań drużynowych, dopóki część uczestników nie ma kompletnych par. Przez cały turniej grasz z tym samym partnerem, a wynik liczy się dla Was wspólnie.
 
-O rozpoczęciu turnieju otrzymasz powiadomienie, również gdy przeglądasz turnieje. Jego dźwięk podlega zwykłym ustawieniom powiadomień.
+Powiadomienie o rozpoczęciu turnieju otwiera jego mecze. Po zakończeniu fazy otrzymasz jeden komunikat z informacją o następnej, prowadzący do tabeli wyników zakończonej fazy. Po finale przychodzi już tylko powiadomienie o zakończeniu całego turnieju, ze zwycięzcą lub wspólnymi zwycięzcami. Otwiera ono końcową tabelę wyników. Dźwięki tych powiadomień podlegają zwykłym ustawieniom.
 
 ### Jak rozpocząć mecz
 
 Nie trzeba tworzyć osobnego stołu ani szukać go na liście publicznych partii.
 
-1. Otwórz swój turniej — z lobby lub widgetu możesz użyć Ctrl+Shift+T — i wybierz „Spotkania”.
+1. Otwórz swój turniej — z lobby lub widgetu możesz użyć Ctrl+Shift+T — i wybierz „Mecze turnieju”.
 2. Zaznacz swój nierozegrany mecz i naciśnij Enter lub Ctrl+G. Możesz też wybrać „Zagraj” z menu kontekstowego. Po potwierdzeniu program otworzy stół z ustawieniami turnieju i zaprosi pozostałych uczestników.
 3. Pozostali przyjmują zwykłe zaproszenie z powiadomienia ELTEN-a lub z listy pod Ctrl+J i od razu trafiają do stołu.
 4. Gdy wszyscy są przy stole, gospodarz wybiera „Rozpocznij grę”. Dalej korzystacie ze zwykłej obsługi wybranej gry.
@@ -503,21 +559,39 @@ Stół może otworzyć dowolny uczestnik danego meczu. Organizator nie musi być
 
 Osoby spoza składu tego meczu dołączają automatycznie jako obserwatorzy, także przed rozpoczęciem gry. Dotyczy to również uczestników turnieju, którzy mają rozegrać inne spotkanie.
 
-Zaproszenie jest ważne przez pięć minut. Odrzucenie go, jego wygaśnięcie ani wyjście ze stołu nie oznacza przegranej i nie wypisuje z turnieju. Wybierając ponownie „Zagraj”, wrócisz do istniejącego stołu i zaprosisz brakujące osoby.
+Zaproszenie jest ważne przez pięć minut. Odrzucenie go, jego wygaśnięcie ani wyjście ze stołu przed rozpoczęciem meczu nie oznacza przegranej i nie wypisuje z turnieju. Wybierając ponownie „Zagraj”, wrócisz do istniejącego stołu i zaprosisz brakujące osoby. Po rozpoczęciu meczu obowiązują opisane niżej zasady powrotu.
 
-Zanim wejdziesz do meczu, opuść inną partię. Nie możesz jednocześnie zająć miejsca przy dwóch stołach. Jeśli pusty stół zamknięto przed rozpoczęciem gry, możesz otworzyć mecz ponownie. Rozpoczętej partii nie zastępujemy automatycznie nową; do jej wznowienia służą „Zapisane gry”.
+Zanim wejdziesz do meczu, opuść inną partię. Nie możesz jednocześnie zająć miejsca przy dwóch stołach. Jeśli pusty stół zamknięto przed rozpoczęciem gry, możesz otworzyć mecz ponownie. Rozpoczętej partii nie zastępujemy automatycznie nową. Po utracie połączenia wróć do tego samego, nadal otwartego stołu.
 
 ### Spotkania, wyniki i przerwana partia
 
-„Spotkania” otwierają się na bieżącej fazie turnieju. Pierwsza pozycja listy podaje jej nazwę, np. „Ćwierćfinały”, oraz liczbę zakończonych meczów. Pod nią są najpierw Twoje nierozegrane mecze, potem nierozegrane mecze pozostałych uczestników, a na końcu wszystkie zakończone spotkania. Każdy widzi pełną listę.
+„Mecze turnieju” otwierają się na bieżącej fazie turnieju. Pierwsza pozycja listy podaje jej nazwę, np. „Ćwierćfinały”, oraz liczbę zakończonych meczów. Pod nią są najpierw Twoje nierozegrane mecze, potem nierozegrane mecze pozostałych uczestników, a na końcu wszystkie zakończone spotkania. Każdy widzi pełną listę.
 
 Tabem przechodzisz do listy faz. Możesz tam przejrzeć wcześniejsze etapy. Gdy oglądasz bieżącą fazę, lista automatycznie przejdzie do następnej po jej rozpoczęciu. Odświeżenie zachowuje wybrany mecz, jeśli nadal jest widoczny.
 
-Enter na zakończonym meczu informuje, że został już rozegrany. Jego wynik otworzysz przez Ctrl+W lub opcję „Wynik meczu” w menu kontekstowym. To samo menu pokazuje dostępne działania i ich skróty: Ctrl+G — zagraj, Ctrl+F — przyznaj walkower, Ctrl+Shift+F — anuluj rozpoczęty mecz i przyznaj walkower. Dwie ostatnie opcje są dostępne dla organizatora i wymagają wskazania zwycięzcy oraz potwierdzenia.
+Enter na zakończonym meczu informuje, że został już rozegrany. Jego wynik otworzysz przez Ctrl+W lub opcję „Szczegóły wyniku” w menu kontekstowym. To samo menu pokazuje dostępne działania i ich skróty: Ctrl+G — zagraj, Ctrl+F — przyznaj walkower. Ctrl+F służy organizatorowi do rozstrzygnięcia zarówno nierozpoczętego, jak i trwającego meczu: wskazuje się przegranego, a następnie potwierdza pokazane konsekwencje.
 
-„Wyniki” od razu pokazują listę uczestników: miejsce, nazwę, punkty turniejowe i liczbę rozegranych meczów. Tabem przejdziesz do wyboru fazy. Wyniki zakończonych partii zapisują się automatycznie; nie trzeba przepisywać ich z historii gry.
+Wpis zakończonego meczu zawiera też wynik samej gry, jeśli gra go udostępnia. Jeśli masz jeszcze zaplanowany rewanż z tymi przeciwnikami, w menu tego meczu pojawi się „Zagraj rewanż” pod Ctrl+G. Wysyła zwykłe zaproszenia i nie rozpoczyna partii automatycznie.
 
-Jeżeli gra obsługuje zapis, gospodarz może użyć Ctrl+S. Partię wznawia się z „Zapisanych gier”, a jej kontynuacja nadal należy do tego samego meczu turniejowego. Samo wyjście gracza lub zerwanie połączenia nie oznacza remisu ani walkowera. Nierozstrzygnięty mecz pozostaje do dokończenia lub decyzji organizatora.
+„Tabela wyników” pokazuje od razu miejsce, uczestnika, punkty turniejowe i liczbę rozegranych meczów. Tabem przejdziesz do wyboru fazy. Wyniki zapisują się automatycznie; nie musisz przepisywać ich z historii gry.
+
+Żadnej partii turniejowej nie można zapisać ani wznowić z pliku. Polecenie zapisu i Ctrl+S nie są tu dostępne, ale Ctrl+Shift+S nadal pozwala zachować historię w pliku tekstowym.
+
+W rozpoczętym meczu indywidualnym gra zatrzymuje się, gdy gracz zostanie rozłączony. Ma łącznie pięć minut na powrót w ciągu całego meczu: powrót zatrzymuje odliczanie, ale nie odnawia limitu. Wróć na to samo konto i do tego samego stołu, aby grać dalej z zachowanymi kartami, wynikiem i czasem na ruch.
+
+Po wyczerpaniu limitu w meczu jeden na jednego wygrywa przeciwnik. Przy większej obsadzie rozłączony zajmuje ostatnie miejsce. Jeśli gra pozwala kontynuować bez niego, pozostali grają dalej; w przeciwnym razie o ich miejscach decydują wyniki ukończonych rund. Bez ukończonej rundy pozostali dzielą pierwsze miejsce. Automatyczny limit dotyczy meczów indywidualnych, nie drużynowych. Nieodebrane zaproszenie nie oznacza przegranej.
+
+### Prywatne karty w turniejach
+
+W turniejach 1000 mil, Pików, Brydża, Tysiąca, 3-5-8, 99, Pokera, Wojny, Remika, Makao, Biblios i UNO serwer rozdaje karty osobno każdemu graczowi. Tak samo działa rozdawanie kostek w Domino i Mexican Train oraz liter w Scrabble. Inni gracze, obserwatorzy i gospodarz nie otrzymują zawartości Twojej ręki. Potrzebne karty, kostki lub litery są ujawniane przy zagrywaniu, przekazywaniu i rozliczaniu punktów. W brydżu ręka dziadka staje się widoczna po pierwszym zagraniu, a pozostałe karty są ujawniane po zakończeniu rozdania.
+
+Karty przekazywane innym graczom nie zachowują tej ochrony, choć zwykły interfejs nadal nie pokazuje cudzych rąk. Dotyczy to także całej przekazywanej ręki w UNO, kart zdobytych w Wojnie i kart zwracanych do talii. W UNO rozdający zna też dzikie karty pominięte przy wyborze pierwszej karty na stole. W Domino porównywana jest najwyższa kostka każdego gracza, żeby ustalić, kto zaczyna. Zasady gier pozostają bez zmian.
+
+W takim meczu nie można zastępować graczy, dodawać botów ani zapisywać partii do wznowienia przy innym stole. Po rozłączeniu wróć na to samo konto i do tego samego stołu — odzyskasz swoją rękę. Zmiana gospodarza nie ujawnia kart. Pozostawienie stołu otwartego nie przedłuża pięciominutowego limitu powrotu w rozpoczętym meczu indywidualnym.
+
+W turniejowym Taboo hasło i zakazane słowa otrzymują tylko opisujący oraz przeciwna drużyna. Gospodarz, który zgaduje, również ich nie widzi. Po zakończeniu tury hasła są ujawniane do przeglądu. Jeżeli opisujący straci połączenie, trzeba poczekać na jego powrót, aby zatwierdzić wynik. Takiego meczu również nie można zapisać do wznowienia przy innym stole ani zastąpić uczestnika.
+
+Zwykłe partie nadal obsługują boty, zastępstwa i zapis gry tam, gdzie dana gra na to pozwala.
 
 ### Tworzenie turnieju
 
@@ -528,7 +602,6 @@ Na liście turniejów naciśnij Ctrl+N. Najpierw wybierz grę, potem jej wariant
 - Limit uczestników — maksymalna liczba zapisanych osób, domyślnie 16, nie więcej niż 128. W turnieju par liczy się osoby, nie drużyny. Nie trzeba wypełnić limitu, żeby rozpocząć.
 - Liczba graczy przy stole — ile osób bierze udział w jednym meczu, a nie w całym turnieju. Wybór pojawia się, jeśli gra pozwala na różne liczby graczy.
 - Mecze rewanżowe — dodatkowe spotkanie w tym samym składzie, ze zmienioną kolejnością miejsc. Ta opcja dotyczy rozgrywek każdy z każdym i grup; puchar oraz finał mają osobne ustawienia.
-- Ustawienia gry — powrót do wariantu i reguł, które będą obowiązywać w meczach.
 - „Daty i godziny gry” — opcjonalne terminy zapisów, rozpoczęcia i rozgrywania spotkań.
 
 Dodatkowe pola zależą od formatu i gry. Rewanże są domyślnie wyłączone. Na końcu wybierz publikację turnieju; samo wypełnianie formularza nie udostępnia go innym.
@@ -599,7 +672,7 @@ W formularzu turnieju otwórz „Daty i godziny gry”. Nie musisz planować ża
 - Zamknięcie zapisów — opcjonalna data, po której nowe osoby już się nie zapiszą. Samo zamknięcie nie uruchamia turnieju.
 - Rozpoczęcie turnieju — opcjonalna data automatycznego startu. Rozpoczęcie kończy również zapisy.
 - Termin końcowy — informacja dla uczestników, do kiedy powinni rozegrać mecze. Nie rozstrzyga zaległych spotkań i nie przyznaje walkowerów.
-- Godziny gry — po włączeniu ograniczenia dodaj przedziały, w których można umawiać mecze. Każdy ma datę i godzinę początku oraz końca; zapisane przedziały możesz edytować lub usuwać.
+- Godziny gry — opcjonalny przedział powtarzany codziennie, np. od 18:00 do 22:00. Wybierz godzinę początku, końca i strefę czasową. Koniec wcześniejszy od początku oznacza następny dzień, np. 22:00–02:00. Godziny ograniczają rozpoczynanie meczów; rozpoczęte partie można dokończyć. Wybrana strefa ma stałe przesunięcie względem UTC i nie zmienia się automatycznie na czas letni lub zimowy.
 
 Aby ustawić datę, Tabem przejdź do jej pola. Strzałki w lewo i w prawo wybierają rok, miesiąc, dzień, godzinę lub minutę; góra i dół zmieniają wartość wybranej części. Program pokazuje czas lokalny Twojego komputera.
 
@@ -610,13 +683,18 @@ Po ustawieniu terminów zatwierdź je i wróć do formularza turnieju. Całość
 Otwórz swój turniej i wybierz „Zarządzaj turniejem”. Przed rozpoczęciem możesz:
 
 - edytować nazwę, ustawienia rozgrywek i terminy;
+- zaprosić gracza do zapisów przez „Zaproś do turnieju”, jeśli zapisy są otwarte i są wolne miejsca;
 - przez „Zarządzaj uczestnikami” usunąć wybraną osobę lub ustawić partnerów w turnieju par;
 - otworzyć albo zamknąć zapisy;
 - wybrać „Rozpocznij turniej”, jeśli nie chcesz korzystać z zaplanowanego startu.
 
-W trakcie rozgrywek walkower przyznaje się na liście „Spotkania”. Wybierz mecz, otwórz menu kontekstowe i wybierz „Przyznaj walkower”. Wskaż zwycięzcę i potwierdź decyzję. Dla już rozpoczętego, ale nierozstrzygniętego spotkania służy osobna opcja anulowania meczu turniejowego i przyznania walkowera. Wybrany zwycięzca wyprzedza wszystkich pozostałych, którzy dzielą ostatnie miejsce. Punkty liczą się według zwykłego wzoru; nie dopisuje się wyniku samej gry.
+Walkower przyznaje się na liście „Mecze turnieju”. Zaznacz nierozstrzygnięty mecz i naciśnij Ctrl+F albo wybierz „Przyznaj walkower” w menu kontekstowym. Wskaż osobę lub drużynę, która przegrywa, i przejdź dalej. To jedno polecenie działa przed rozpoczęciem meczu i w trakcie gry.
 
-Organizator może też anulować niezakończony turniej. Zrób to tylko wtedy, gdy chcesz odwołać całe rozgrywki, a nie pojedyncze zaproszenie. Przekroczenie terminu ani nieobecność gracza nie przyznają automatycznego walkowera — to decyzja organizatora.
+W meczu jeden na jednego wygrywa przeciwnik wskazanego przegranego. Przy większej obsadzie przegrany zajmuje ostatnie miejsce. Jeżeli rozpoczęta gra może trwać bez niego, pozostali grają dalej i dopiero rozgrywka ustala ich miejsca. W przeciwnym razie kolejność pozostałych wynika z punktów po ostatnim ukończonym rozdaniu lub rundzie. Niedokończonego rozdania lub rundy nie wlicza się. Równe wyniki dają wspólne miejsce; gra uwzględnia, czy lepszy jest wynik wyższy, czy niższy. Jeśli mecz nie ruszył albo nie ukończono jeszcze żadnej rundy z punktacją, pozostali dzielą pierwsze miejsce.
+
+Przed zatwierdzeniem przeczytaj podgląd: pokazuje przegranego i wyjaśnia, czy mecz się zakończy, czy pozostali będą grać dalej. Przy zakończeniu podaje miejsca, punkty turniejowe i wykorzystane wyniki gry. Dopiero „Potwierdź walkower” wykonuje tę decyzję. Jeśli sytuacja zmieniła się podczas podejmowania decyzji, trzeba sprawdzić i zatwierdzić nowy podgląd. Gdy nie można odczytać danych potrzebnych do rozstrzygnięcia lub gra ich nie udostępnia, program nie przyzna walkowera na podstawie zgadywanego wyniku.
+
+Organizator może też anulować niezakończony turniej. Zrób to tylko wtedy, gdy chcesz odwołać całe rozgrywki, a nie pojedyncze zaproszenie. Samo przekroczenie terminu nie przyznaje walkowera. Ręczną decyzję przez Ctrl+F możesz podjąć bez czekania na pięciominutowy limit powrotu.
 
 ### Gdy zmiana nie została potwierdzona
 

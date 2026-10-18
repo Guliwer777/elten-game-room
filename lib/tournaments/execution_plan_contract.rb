@@ -32,10 +32,12 @@ module GameRoomTournaments
       fields!(anchor['publication_ref'], %w[author publication_key])
       fields!(data['scope'], MatchBinding::SCOPE)
       source, plan = data.values_at('source', 'plan')
+      raise Invalid, :invalid_fields unless source.is_a?(Hash)
       source_fields = ANCHOR - ['source_digest'] + %w[roster game_id options windows matches]
       source_fields += ['knockout'] if source.key?('knockout')
       source_fields += ['result_policy'] if source.key?('result_policy')
       fields!(source, source_fields)
+      raise Invalid, :invalid_fields if source.key?('knockout') && !source['knockout'].is_a?(Hash)
       raise Invalid, :invalid_game_result if source.key?('result_policy') && !GameResult::EXPORT_POLICIES.include?(source['result_policy'])
       fields!(source['publication_ref'], %w[author publication_key])
       list!(source['roster']).each { |person| fields!(person, %w[account username]) }

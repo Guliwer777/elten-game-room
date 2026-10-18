@@ -162,7 +162,7 @@ review_surface.items.each do |item|
   assert(status == :ok, "the judge could not assess a grouped answer")
   append_plan(events, plan, "Alice", now: 114)
   replay = game.replay(session, events, repository)
-  assert(game.describe_event(events.last, repository, replay, "Alice").empty?, "the judge heard their own assessment echoed")
+  assert(game.describe_event(events.last, repository, replay, "Alice") == ["Assessed."], "the judge did not receive the concise local confirmation")
   assert(game.describe_event(events.last, repository, replay, "Bob").length == 1, "another player did not hear a confirmed assessment")
   review_text = replay.history.reverse.find { |entry| entry.kind == :review }.text
   expected_players = item.answer == "Athens" ? %w[Bob Carol] : [item.answer == "Austria" ? "Bob" : "Carol"]
@@ -202,6 +202,7 @@ assert(replay.state[:scores]["Bob"] == 3 && replay.state[:scores]["Carol"] == 3,
 assert(replay.state[:completed_rounds] == 1 && replay.state[:phase] == :round_complete, "the completed round did not advance")
 assert(replay.history.count { |entry| entry.kind == :score } == 2, "concise round score summaries were removed")
 
+context.now = replay.state[:resume_at]
 next_round = game.automatic_action(replay, "Alice", context: context)
 status, plan = game.action_for(next_round, replay, "Alice", context: context)
 assert(status == :ok, "the second round could not start")

@@ -4,9 +4,12 @@ require_relative "../lib/game_bots"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register('uno', ['deal'])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Uno < CardGame
+    def player_spatial_audio?; true; end
     COLORS = %w[R Y G B].freeze
     DARK_COLORS = %w[O P T U].freeze
     COLOUR_CHOICE_ORDER = %w[Y R B G].freeze
@@ -188,13 +191,27 @@ module GameRoomGames
     def replay(session, events, repository)
       players = repository.players_for(session)
       state = initial_state(players, options_from_json(session["options"]))
+      GameRoomPrivateCardLedger.initialize_state(state, session) if GameRoomPrivateCards.enabled?(session)
       accepted = []
       history = [starting_history(players)]
       events.each do |event|
         break if state[:winner] != nil
-        actor = repository.actor_of(event, session)
-        previous_recycle = state[:recycle]
-        applied = case event["action"].to_s
+        accepted << event if apply_replay_event(state, event, session, repository, history)
+      end
+      GameRoomSessionClock.attach(state, session)
+      Replay.new(board: nil, players: players, current_player: state[:current_player], winner: state[:winner],
+        draw: false, accepted_events: accepted, history: history, state: state)
+    end
+
+    def apply_replay_event(state, event, session, repository, history)
+      return private_apply_effect(state, event, session, repository, history) if state[:private_cards] && event['action'] != 'deal'
+      reduce_event(state, event, session, repository, history)
+    end
+
+    def reduce_event(state, event, session, repository, history)
+      actor = repository.actor_of(event, session)
+      previous_recycle = state[:recycle]
+      applied = case event["action"].to_s
         when "deal" then apply_deal(state, event, actor, repository, history)
         when "play" then apply_play(state, event, actor, repository, history)
         when "choose_colour" then apply_choose_colour(state, event, actor, repository, history)
@@ -207,15 +224,8 @@ module GameRoomGames
         when "buzz" then apply_buzz(state, event, actor, repository, history)
         else false
         end
-        if applied
-          record_deck_reshuffle(history, previous_recycle, state[:recycle], repository.event_id(event))
-          accepted << event
-        end
-      end
-      GameRoomSessionClock.attach(state, session)
-      Replay.new(board: nil, players: players, current_player: state[:current_player], winner: state[:winner],
-        draw: false, accepted_events: accepted, history: history,
-        state: state)
+      record_deck_reshuffle(history, previous_recycle, state[:recycle], repository.event_id(event)) if applied
+      applied
     end
 
     def automatic_action(replay, actor, context: nil)
@@ -230,7 +240,7 @@ module GameRoomGames
     end
 
     def automatic_action_due?(replay, actor, context: nil)
-      same_user?(actor, replay.players.first) && replay.state[:phase] == :playing && !replay.state[:buzzer_active] &&
+      same_user?(actor, uno_timeout_actor(replay.state)) && replay.state[:phase] == :playing && !replay.state[:buzzer_active] &&
         turn_deadline_reached?(replay.state, context&.now)
     end
 
@@ -332,12 +342,17 @@ module GameRoomGames
       if selection["kind"].to_s == "command" && selection["action"].to_s == "deal"
         return [:not_your_turn, nil] if !same_user?(actor, replay.players.first)
         return [:invalid, nil] if ![:awaiting_deal, :round_complete].include?(state[:phase]) || context&.random_source == nil
+        if context.server_random
+          dealer = state[:dealer_index] == nil ? '{dealer}' : next_game_active_index(state, state[:dealer_index], 1)
+          return [:ok, server_seed_plan('deal', template: "#{state[:round] + 1}|#{dealer}|{seed}|#{next_turn_deadline(state, context)}",
+            seats: (0...state[:players].length).to_a)]
+        end
         seed = card_seed(context.random_source)
         dealer = state[:dealer_index] == nil ? seed.to_i(16) % replay.players.length : next_game_active_index(state, state[:dealer_index], 1)
         return [:ok, event_plan("deal", "#{state[:round] + 1}|#{dealer}|#{seed}|#{next_turn_deadline(state, context)}")]
       end
       if selection["kind"].to_s == "command" && selection["action"].to_s == "turn_timeout"
-        return [:not_your_turn, nil] if !same_user?(actor, replay.players.first)
+        return [:not_your_turn, nil] if !same_user?(actor, uno_timeout_actor(state))
         return [:invalid, nil] if state[:phase] != :playing || !turn_deadline_reached?(state, context&.now)
         player = player_key(state, state[:current_player])
         return [:invalid, nil] if player == nil
@@ -608,10 +623,14 @@ module GameRoomGames
       return false if ![3, 4].include?(fields.length)
       round, dealer, seed = Integer(fields[0], 10), Integer(fields[1], 10), fields[2]
       deadline = fields.length == 4 ? Integer(fields[3], 10) : 0
+      expected = state[:dealer_index] == nil ? '{dealer}' : next_game_active_index(state, state[:dealer_index], 1)
+      return false unless GameRoomServerRandom.valid_text_seed_event?(event,
+        template: "#{state[:round] + 1}|#{expected}|{seed}|#{deadline}", seats: (0...state[:players].length).to_a)
       return false if round != state[:round] + 1 || seed !~ /\A[0-9a-f]{32}\z/
+      active = game_active_players(state)
+      return false if active.length < 2 || !dealer.between?(0, state[:players].length - 1) ||
+        !active.include?(state[:players][dealer])
       state[:round_eliminated] = state[:players].to_h { |player| [player, false] }
-      active = active_players(state)
-      return false if active.length < 2 || !active.include?(state[:players][dealer])
       deck = shuffled_cards(uno_deck(state[:options]), seed)
       hands = state[:players].to_h { |player| [player, []] }
       cursor = dealer
@@ -631,11 +650,16 @@ module GameRoomGames
         straight_actor: nil, straight_last: nil, straight_direction: nil,
         colour_choice_player: nil, colour_choice_card: nil, colour_choice_steps: nil,
         pending_finisher: nil)
-      id = repository.event_id(event)
-      history << HistoryEntry.new(key: "deal:#{round}", text: _("UNO round %{round} started. First card: %{card}.") % { round: round, card: uno_label(top, state) }, event_id: id, actor: actor, kind: :deal)
+      record_uno_deal(state, event, actor, repository, history)
       true
     rescue ArgumentError
       false
+    end
+
+    def record_uno_deal(state, event, actor, repository, history)
+      history << HistoryEntry.new(key: "deal:#{state[:round]}", text: _("UNO round %{round} started. First card: %{card}.") % {
+        round: state[:round], card: uno_label(state[:discard].last, state)
+      }, event_id: repository.event_id(event), actor: actor, kind: :deal)
     end
 
     def apply_choose_colour(state, event, actor, repository, history)
@@ -681,13 +705,13 @@ module GameRoomGames
       state[:uno_window] = nil
       (state[:uno_declarations] ||= {}).delete(player)
       drawn = if roulette
-        draw_until(state) { |card| !wild?(card) && card_color(card) == state[:pending_colour] }
+        draw_until(state, player: player) { |card| !wild?(card) && card_color(card) == state[:pending_colour] }
       elsif state[:pending_draw] > 0
-        draw_cards(state, state[:pending_draw])
+        draw_cards(state, state[:pending_draw], player: player)
       elsif state[:options]["draw_until_playable"]
-        draw_until(state) { |card| playable?(state, card) }
+        draw_until(state, player: player) { |card| playable?(state, card) }
       else
-        draw_cards(state, 1)
+        draw_cards(state, 1, player: player)
       end
       state[:hands][player].concat(drawn)
       penalty = state[:pending_draw] > 0 || roulette
@@ -707,7 +731,7 @@ module GameRoomGames
         advance_turn(state, player, next_deadline)
       elsif penalty && state[:options]["skip_after_penalty"]
         advance_turn(state, player, next_deadline)
-      elsif hand_for(state, player).none? { |card| playable?(state, card) }
+      elsif !has_playable_card?(state, player)
         advance_turn(state, player, next_deadline)
       end
       true
@@ -732,10 +756,11 @@ module GameRoomGames
     end
 
     def apply_catch(state, event, actor, repository, history)
+      return false unless active_players(state).include?(player_key(state, actor))
       target = catchable_player(state, actor)
       expected, deadline = event["value"].to_s.split("|", 2)
-      return false if target == nil || player_key(state, actor) == nil || (!expected.empty? && !same_user?(expected, target))
-      draw_cards(state, 2).each { |card| state[:hands][target] << card }
+      return false if expected == nil || target == nil || player_key(state, actor) == nil || (!expected.empty? && !same_user?(expected, target))
+      draw_cards(state, 2, player: target).each { |card| state[:hands][target] << card }
       state[:declared_uno] = target
       state[:uno_window] = nil
       apply_no_mercy(state, target, repository.event_id(event), history, deadline: deadline.to_i)
@@ -750,7 +775,7 @@ module GameRoomGames
       target = challenge_was_legal ? actor : source
       count = challenge_was_legal ? 6 : 4
       player = player_key(state, target)
-      drawn = draw_cards(state, count)
+      drawn = draw_cards(state, count, player: player)
       state[:hands][player].concat(drawn)
       (state[:uno_declarations] ||= {}).delete(player)
       state[:uno_window] = nil
@@ -770,13 +795,13 @@ module GameRoomGames
 
     def apply_buzz(state, event, actor, repository, history)
       player = player_key(state, actor)
-      return false if state[:phase] != :playing || !state[:buzzer_active] || player == nil || state[:buzzer_pressed][player]
+      return false if state[:phase] != :playing || !state[:buzzer_active] || !active_players(state).include?(player) || state[:buzzer_pressed][player]
 
       state[:buzzer_pressed][player] = true
       id = repository.event_id(event)
       remaining = active_players(state).reject { |candidate| state[:buzzer_pressed][candidate] }
       if remaining.empty?
-        cards = draw_cards(state, 2)
+        cards = draw_cards(state, 2, player: player)
         state[:hands][player].concat(cards)
         state[:buzzer_active] = false
         state[:buzzer_player] = nil
@@ -793,7 +818,7 @@ module GameRoomGames
     end
 
     def apply_turn_timeout(state, event, actor, repository, history)
-      return false if state[:phase] != :playing || state[:buzzer_active] || !same_user?(actor, state[:players].first)
+      return false if state[:phase] != :playing || state[:buzzer_active] || !same_user?(actor, uno_timeout_actor(state))
       player_index_text, expected_deadline_text, next_deadline_text = event["value"].to_s.split("|", 3)
       index = Integer(player_index_text, 10)
       expected_deadline = Integer(expected_deadline_text, 10)
@@ -804,9 +829,9 @@ module GameRoomGames
 
       roulette = state[:pending_type] == "C" && state[:pending_colour] != nil
       cards = if roulette
-        draw_until(state) { |card| !wild?(card) && card_color(card) == state[:pending_colour] }
+        draw_until(state, player: player) { |card| !wild?(card) && card_color(card) == state[:pending_colour] }
       else
-        draw_cards(state, [state[:pending_draw], 1].max)
+        draw_cards(state, [state[:pending_draw], 1].max, player: player)
       end
       state[:hands][player].concat(cards)
       state[:uno_window] = nil
@@ -897,11 +922,12 @@ module GameRoomGames
     end
 
     def can_draw?(state, actor)
+      return false if state[:buzzer_active]
       return false if colour_choice_pending?(state)
       return false if !same_user?(actor, state[:current_player])
       return true if state[:pending_type] == "C" && state[:pending_colour] != nil
       return true if state[:pending_draw] > 0
-      return false if !state[:options]["allow_optional_draw"] && hand_for(state, actor).any? { |card| playable?(state, card) }
+      return false if !state[:options]["allow_optional_draw"] && has_playable_card?(state, actor)
       state[:optional_draws].to_i < state[:options]["maximum_optional_draws"].to_i
     end
 
@@ -1136,7 +1162,13 @@ module GameRoomGames
       wild?(card) ? 50 : 20
     end
 
-    def draw_cards(state, count)
+    def has_playable_card?(state, player)
+      hand_for(state, player).any? { |card| playable?(state, card) }
+    end
+
+    def uno_timeout_actor(state); state[:players].first; end
+
+    def draw_cards(state, count, player: nil)
       result = []
       count.to_i.times do
         recycle(state) if state[:draw_pile].empty?
@@ -1156,10 +1188,10 @@ module GameRoomGames
       state[:mercy_cards] = []
     end
 
-    def draw_until(state)
+    def draw_until(state, player: nil)
       result = []
       loop do
-        card = draw_cards(state, 1).first
+        card = draw_cards(state, 1, player: player).first
         break if card == nil
         result << card
         break if yield(card)
@@ -1372,5 +1404,8 @@ module GameRoomGames
 end
 
 require_relative "uno/play_reduction"
+
+require_relative 'uno_private'
+GameRoomGames::Uno.prepend(GameRoomGames::UnoPrivate)
 
 require_relative 'generated/rulebooks/uno'

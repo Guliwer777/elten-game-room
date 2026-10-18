@@ -86,7 +86,7 @@ unless defined?(GameRoomDuckRacingLab::VERSION)
     end
 
     module PayloadHook
-      def each(events, action, repository, session, &block)
+      def each(events, action, repository, session, **options, &block)
         current = GameRoomDuckRacingLab.scope
         return super unless action == 'duck_racing' && current && current[:enabled] && current[:events]
 

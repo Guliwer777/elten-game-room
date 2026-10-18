@@ -229,6 +229,7 @@ module GameSurfaces
     :empty_label,
     :submit_label,
     :read_only,
+    :confirmation_hint,
     keyword_init: true
   )
 

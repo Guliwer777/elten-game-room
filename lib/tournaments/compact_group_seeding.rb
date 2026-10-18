@@ -59,7 +59,11 @@ module GameRoomTournaments
           [row['unit'], [row['points'], numeric ? sign * (row['score_for'] - row['score_against']) : 0,
             numeric ? sign * row['score_for'] : 0]]
         end
-        tiers = candidates.group_by { |row| keys.fetch(row['unit']) }.sort_by(&:first).reverse
+        # Equal scores must stay tied even when JSON uses 2 in one group and
+        # 2.0 in another. Float conversion would lose distinct large scores.
+        tiers = candidates.sort_by { |row| keys.fetch(row['unit']).map { |value| -value } }
+          .chunk_while { |left, right| (keys.fetch(left['unit']) <=> keys.fetch(right['unit'])).zero? }
+          .map { |tied| [keys.fetch(tied.first['unit']), tied] }
         tiers = tiers.flat_map do |key, tied|
           if tied.size > 1 && tied.all? { |row| wildcard_order.key?(row['unit']) }
             tied.group_by { |row| wildcard_order.fetch(row['unit']) }.sort_by(&:first).map { |_, rows| [key, rows] }

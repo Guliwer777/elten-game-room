@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_native'
 require_relative '../support/tournament_local_hub'
 require_relative '../support/tournament_match_entry'
@@ -7,7 +8,7 @@ include GameRoomTest::Assertions
 G = GameRoomTournaments
 H = TournamentLocalHubTest
 GameRoomLocalization.boot(settings: {'interface_language' => 'en', 'known_languages' => ['en']})
-Dir.mktmpdir('k03-diagnostyka-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('k03-diagnostyka-') do |directory|
   program = TournamentMatchEntryTest.prepare(directory)
   now = 200
   owner = G::LocalTestDialogs::Owner.new(-> { 'RealOwner' }, ->(message) { raise message })

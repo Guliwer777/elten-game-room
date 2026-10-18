@@ -54,7 +54,7 @@ GameRoomLocalization.boot(settings:{'interface_language'=>'en','known_languages'
     after=role==:observer ? %w[other other-return own-return own-second own-done own other-done] :
       %w[own-return own-second other other-return own-done own other-done]
     driver=TournamentNativeDriver.new
-    driver.step('Matches') do |form|
+    driver.step('Tournament matches') do |form|
       assert_equal(expected,ids.call,"#{role}, teams=#{teams}: wrong initial priorities")
       assert_equal(8,form.fields.first.options.size,'The full list is not visible')
       assert_equal(0,form.fields.first.index,'Summary is not the first selected row')
@@ -64,7 +64,7 @@ GameRoomLocalization.boot(settings:{'interface_language'=>'en','known_languages'
       completed<<receipt.call('own')
       revision+=1
     end
-    driver.step('Matches',[27]) do |form|
+    driver.step('Tournament matches',[27]) do |form|
       assert_equal(after,ids.call,"#{role}, teams=#{teams}: result did not reorder the list")
       assert_equal('own',screen.instance_variable_get(:@matches)[form.fields.first.index]['match_id'],'Refresh selected a different match')
       assert_equal([],SpeechOutput.calls,'Priority reorder announced the list')

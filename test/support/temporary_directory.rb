@@ -8,10 +8,14 @@ module GameRoomTest
   module TemporaryDirectory
     ROOT = File.expand_path('../..', __dir__)
 
-    def self.create(prefix, root: ROOT, &block)
+    def self.parent(root: ROOT)
       parent = File.join(root, 'tmp')
       FileUtils.mkdir_p(parent)
-      Dir.mktmpdir(prefix, parent, &block)
+      parent
+    end
+
+    def self.create(prefix, root: ROOT, &block)
+      Dir.mktmpdir(prefix, parent(root: root), &block)
     end
   end
 end

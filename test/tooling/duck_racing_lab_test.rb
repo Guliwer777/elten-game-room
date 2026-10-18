@@ -26,6 +26,15 @@ check = lambda do |name, &block|
   end
 end
 
+check.call('shared payload decoder forwards keyword options for other games') do
+  repository = Object.new
+  repository.define_singleton_method(:actor_of) { |event, _session| event['actor'] }
+  event = {'action'=>'taboo_draw','value'=>'slot','actor'=>'Alice'}
+  decoded = []
+  GameRoomActionPayload.each([event], 'taboo', repository, {}, controls:true) { |*row| decoded << row }
+  assert_equal([[nil,'Alice',[event]]], decoded)
+end
+
 def laboratory(count: 2, **options)
   Harness.new(count: count, **options, options: {
     LAB::OPTION => true, 'challenges' => LOGIC::Challenges::BY_ID.keys
@@ -359,6 +368,7 @@ check.call('native writer rejects a prepared action after the owner/control epoc
   replay = native.replay('Alice')
   selection = LAB.selection(replay, 'copy_number', [0, 1])
   context = GameRoomGames::ActionContext.new(session_id: native.session['__id'], table_id: native.table['__id'],
+    server_random: native.session['__server_random'] == GameRoomServerRandom::VERSION,
     table_owner: 'Alice', now: 1_001, local_data: {'duck_host' => true, 'duck_seat' => 0})
   status, plan = native.game.action_for(selection, replay, 'Alice', context: context)
   assert_equal(:ok, status)

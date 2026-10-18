@@ -25,7 +25,7 @@ owner=T::LocalTestDialogs::Owner.new(-> {TournamentIndividualUI::F::OWNER},->(me
 GameRoomLocalization.boot(settings:{'interface_language'=>'pl','known_languages'=>['pl']})
 l=->(text){GameRoomContent.utf8(GameRoomLocalization.translate(text))}
 driver=TournamentNativeDriver.new
-driver.step(l.call('Matches'),[13]) do |form|
+driver.step(l.call('Tournament matches'),[13]) do |form|
   assert_equal(1,reads)
   labels=form.fields.map{|field|field.is_a?(Button) ? field.label : field.header if field.respond_to?(:header) || field.is_a?(Button)}
   ['Shared player readiness','I am ready to play','Disable my availability for automatic matches'].each do |label|
@@ -33,7 +33,7 @@ driver.step(l.call('Matches'),[13]) do |form|
   end
   form.index=form.fields.index(form.fields.find{|field|field.is_a?(Button) && field.label==l.call('Refresh')})
 end
-driver.step(l.call('Matches'),[27]) do |form|
+driver.step(l.call('Tournament matches'),[27]) do |form|
   assert_equal(2,reads)
   list=form.fields.first
   assert_equal([],list.options,'Failed refresh retained an old match plan')

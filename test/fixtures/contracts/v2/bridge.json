@@ -1,0 +1,532 @@
+{
+  "game": "bridge",
+  "seed": 137,
+  "players": [
+    "Alice",
+    "Bob",
+    "Carol",
+    "Dave"
+  ],
+  "options": {
+    "variant": "rubber",
+    "honors": true,
+    "boards": 8,
+    "scoring": "imp",
+    "bot_delay": 0
+  },
+  "steps": [
+    {
+      "events": 1,
+      "replay": "962ffa371e34f0b189b4edb8acd4991881fd0545f3e6e5d749a2251a97af7aa5",
+      "actor": "Dave",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        444,
+        294,
+        949,
+        329,
+        512,
+        285,
+        984,
+        349
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 2,
+      "replay": "cf425ea6e87ade05823a73d9b4282edb883ace2d075d9b4351396292c60c81c6",
+      "actor": "Alice",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        444,
+        294,
+        949,
+        329,
+        512,
+        285,
+        984,
+        349
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 3,
+      "replay": "6a0192864156db70f3865138a07956eb8f18de22cf18a79bc1a341821f0d2643",
+      "actor": "Bob",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        444,
+        294,
+        949,
+        329,
+        512,
+        285,
+        984,
+        349
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 4,
+      "replay": "0c5e5357dc960e07b4d792d0b02eb953c35e050c67dbe9720df07a253609dca1",
+      "actor": "Carol",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        444,
+        294,
+        949,
+        329,
+        512,
+        285,
+        984,
+        349
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 6,
+      "replay": "b4eb42333494a9c3323185162ea19654e6ef9d7724a0c5cf530193e598f71e71",
+      "actor": "Alice",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        768,
+        720,
+        38,
+        967,
+        62,
+        461,
+        269,
+        886
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 7,
+      "replay": "833bc1dc02a12eaa73912e2890db207b22d58544dc41f9df8045666ede6c8262",
+      "actor": "Bob",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        768,
+        720,
+        38,
+        967,
+        62,
+        461,
+        269,
+        886
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 8,
+      "replay": "9d5de9525332eeea0f48cebe90e3c1ba486caa09511aba4444d8c784f9690eee",
+      "actor": "Carol",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        768,
+        720,
+        38,
+        967,
+        62,
+        461,
+        269,
+        886
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 9,
+      "replay": "317adfbb2ff36160618da30eeaa3fc41d9bc1409a60a8e635847ac6c9ebbf296",
+      "actor": "Dave",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        768,
+        720,
+        38,
+        967,
+        62,
+        461,
+        269,
+        886
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 11,
+      "replay": "80bddf435b0650ec2ef6ed343eab9fb1369524670af6bab7b95aff1bce84aa0f",
+      "actor": "Bob",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        928,
+        968,
+        241,
+        118,
+        546,
+        798,
+        781,
+        847
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 12,
+      "replay": "07747360a41b868a533c1ad10abe09cc3ce83fb35d65431d88d6223ff9030b72",
+      "actor": "Carol",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        928,
+        968,
+        241,
+        118,
+        546,
+        798,
+        781,
+        847
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 13,
+      "replay": "66684cc5f66bee4515c9c47eeb4a02b51da101eb2d9bfed3d6ceb0e58736b4d9",
+      "actor": "Dave",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        928,
+        968,
+        241,
+        118,
+        546,
+        798,
+        781,
+        847
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 14,
+      "replay": "917d48602e071bd6ad7bcbe127a789d0c9d808136e05640db0909133d2deb920",
+      "actor": "Alice",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        928,
+        968,
+        241,
+        118,
+        546,
+        798,
+        781,
+        847
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 16,
+      "replay": "63d8e128e714d37ff4f3dcc205cda0e714cd18484bcac39d27642c8fde976678",
+      "actor": "Carol",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        18,
+        620,
+        691,
+        212,
+        703,
+        67,
+        522,
+        549
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 17,
+      "replay": "9be0ffa5265305d2efe48384ddd31c384cbf970e9118fe35f55d934c89c70535",
+      "actor": "Dave",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        18,
+        620,
+        691,
+        212,
+        703,
+        67,
+        522,
+        549
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 18,
+      "replay": "c4387accfeae2c74c2bee32902403e803b7368548fc3d69a6a7df89a4f08f9c6",
+      "actor": "Alice",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        18,
+        620,
+        691,
+        212,
+        703,
+        67,
+        522,
+        549
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    },
+    {
+      "events": 19,
+      "replay": "578229e95d158b6ebe767d8b918562ee8671636b66082051d31b38d1a796927d",
+      "actor": "Bob",
+      "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+      "rng": [
+        18,
+        620,
+        691,
+        212,
+        703,
+        67,
+        522,
+        549
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "call": "P"
+      }
+    }
+  ],
+  "final": {
+    "events": 21,
+    "replay": "d1694d3675f2f6593a1204c18dc8cbea597ae38dc5d580c4e51322caadb82819",
+    "actor": "Dave",
+    "legal": "ff8e55cd66c516acf2d9acb80ae1333417018c6903c6027785b07e77a94d312b",
+    "rng": [
+      354,
+      347,
+      272,
+      224,
+      777,
+      988,
+      396,
+      99
+    ]
+  },
+  "session": {
+    "__id": 1,
+    "table_id": 1,
+    "game": "bridge",
+    "options": "{\"variant\":\"rubber\",\"honors\":true,\"boards\":8,\"scoring\":\"imp\",\"bot_delay\":0}",
+    "__players": [
+      "Alice",
+      "Bob",
+      "Carol",
+      "Dave"
+    ]
+  },
+  "events": [
+    {
+      "id": 1,
+      "sequence": 1,
+      "actor": "Alice",
+      "action": "deal",
+      "value": "1|3|de264d93f04b4e81e996369779b77933"
+    },
+    {
+      "id": 2,
+      "sequence": 2,
+      "actor": "Dave",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 3,
+      "sequence": 3,
+      "actor": "Alice",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 4,
+      "sequence": 4,
+      "actor": "Bob",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 5,
+      "sequence": 5,
+      "actor": "Carol",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 6,
+      "sequence": 6,
+      "actor": "Alice",
+      "action": "deal",
+      "value": "2|0|bb25b448ff1cd75c30df750c68673746"
+    },
+    {
+      "id": 7,
+      "sequence": 7,
+      "actor": "Alice",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 8,
+      "sequence": 8,
+      "actor": "Bob",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 9,
+      "sequence": 9,
+      "actor": "Carol",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 10,
+      "sequence": 10,
+      "actor": "Dave",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 11,
+      "sequence": 11,
+      "actor": "Alice",
+      "action": "deal",
+      "value": "3|1|ffcf25f7c63dcc0c75f4d01ea6f19b74"
+    },
+    {
+      "id": 12,
+      "sequence": 12,
+      "actor": "Bob",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 13,
+      "sequence": 13,
+      "actor": "Carol",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 14,
+      "sequence": 14,
+      "actor": "Dave",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 15,
+      "sequence": 15,
+      "actor": "Alice",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 16,
+      "sequence": 16,
+      "actor": "Alice",
+      "action": "deal",
+      "value": "4|2|9fc7f075211de90c4ebaae494fe87ca5"
+    },
+    {
+      "id": 17,
+      "sequence": 17,
+      "actor": "Carol",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 18,
+      "sequence": 18,
+      "actor": "Dave",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 19,
+      "sequence": 19,
+      "actor": "Alice",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 20,
+      "sequence": 20,
+      "actor": "Bob",
+      "action": "call",
+      "value": "P"
+    },
+    {
+      "id": 21,
+      "sequence": 21,
+      "actor": "Alice",
+      "action": "deal",
+      "value": "5|3|116bb2d3be420924715ec298b4235c83"
+    }
+  ]
+}

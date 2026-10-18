@@ -138,6 +138,21 @@ end
 end
 
 # Cold entry never replays an old roll or delays an already pending turn.
+%w[count_ducks simon copy_number].each do |kind|
+  model=DuckGameAdapterTest::Harness.new(kind:kind)
+  model.open_round
+  replay=model.replay
+  event=model.events.last
+  replay.history=[]
+  challenge=replay.state[:round][:challenge]
+  model.game.send(:append_notices,replay.history,[[:challenge,challenge[:id],kind,challenge[:participants],nil,:meeting]],model.repository.event_id(event),replay.players)
+  stages=model.game.event_presentation_stages(event,model.repository,nil,replay,'Alice')
+  assert_equal(kind=='count_ducks' ? 3.0 : kind=='simon' ? 2.0 : 0.0,stages.last[:delay],kind)
+end
+quiz_result=GameRoomDuckRacing::ChallengeEngine.settlement('quiz',balances:{0=>10,1=>10,2=>10},results:{0=>{correct:true},1=>{correct:true},2=>{correct:false}})
+assert_equal('Alice, Bob each receive 4 feathers.',h.game.send(:settlement_feathers_text,quiz_result,%w[Alice Bob Carol]))
+
+# Cold entry never replays an old roll or delays an already pending turn.
 cold = paced_presenter(h, program, [], [])
 cold.process_new_events(h.replay, session: h.session)
 assert(!cold.event_presentation_busy?)

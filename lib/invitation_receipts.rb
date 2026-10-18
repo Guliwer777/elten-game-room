@@ -164,7 +164,7 @@ module GameRoomInvitationReceipts
         history&.record("invited")
         history&.record("invitation_rejected") if response == "rejected"
         return false if Session.name.to_s.casecmp(user.to_s) != 0
-        InvitationRepository.resolve_sent(row["__id"], table_id: row["table_id"], recipient: recipient)
+        InvitationRepository.resolve_sent(row)
       end
     end
     # Also consume old duplicate rejection notices; never fabricate a room event

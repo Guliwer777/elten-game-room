@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_native'
 require_relative '../support/tournament_local_hub'
 require_relative '../support/tournament_match_entry'
@@ -7,7 +8,7 @@ GameRoomLocalization.boot(settings: {'interface_language' => 'en', 'known_langua
 include GameRoomTest::Assertions
 T = TournamentLocalHubTest
 G = GameRoomTournaments
-Dir.mktmpdir('entry-native-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('entry-native-') do |directory|
   program = TournamentMatchEntryTest.prepare(directory)
   runtime = program.class.app_runtime
   ui = Thread.current
@@ -41,7 +42,7 @@ end
 puts 'PASS R9: natywne kontrolki/Tasks, I/O tylko worker z runtime właściciela, jedno data_path i cleanup'
 
 [:success, :io_error].each do |mode|
-  Dir.mktmpdir('entry-late-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('entry-late-') do |directory|
     program = TournamentMatchEntryTest.prepare(directory)
     runtime = program.class.app_runtime
     gate = Queue.new
@@ -95,7 +96,7 @@ end
 puts 'PASS R8: bariera rzeczywistego Tasks; zamknięcie runtime odrzuca sukces i błąd starego workera bez prezentacji'
 
 [:details, :help].each do |kind|
-  Dir.mktmpdir('entry-modal-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('entry-modal-') do |directory|
     program = TournamentMatchEntryTest.prepare(directory)
     owner = G::LocalTestDialogs::Owner.new(-> { 'RealOwner' }, ->(message) { raise message })
     workspace = G::LocalWorkspace.new(program: program, registry: GameRoomGames::CATALOG,
@@ -153,7 +154,7 @@ end
 puts 'PASS R7: szczegóły/F1/Escape, reentry w modal/resume/before_focus/focus, jedno ogłoszenie, ID/tekst/caret i lease kończony przed resume'
 
 [:modal, :task].product([:account, :backend, :grant]).each do |boundary, kind|
-  Dir.mktmpdir('entry-aba-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('entry-aba-') do |directory|
     program = TournamentMatchEntryTest.prepare(directory)
     owner = G::LocalTestDialogs::Owner.new(-> { 'RealOwner' }, ->(message) { raise message })
     workspace = G::LocalWorkspace.new(program: program, registry: GameRoomGames::CATALOG,
@@ -205,7 +206,7 @@ puts 'PASS R7: szczegóły/F1/Escape, reentry w modal/resume/before_focus/focus,
 end
 puts 'PASS R4 native: 6 granic modal/Tasks × account/backend/grant, każde ABA emituje dwa prawdziwe callbacki; stary wynik odrzucony'
 
-Dir.mktmpdir('entry-owner-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('entry-owner-') do |directory|
   program = TournamentMatchEntryTest.prepare(directory)
   account, alerts, paths = 'RealOwner', [], 0
   ui = Thread.current
@@ -228,7 +229,7 @@ Dir.mktmpdir('entry-owner-', ENV.fetch('TMPDIR')) do |directory|
 end
 puts 'PASS R6: zmiana konta wewnątrz data_path, zatrzask czytnika bez UI, alert na UI przywraca A bez odblokowania'
 
-Dir.mktmpdir('entry-program-error-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('entry-program-error-') do |directory|
   program = TournamentEntryContextTest::Program.new(directory)
   primary = begin
     begin

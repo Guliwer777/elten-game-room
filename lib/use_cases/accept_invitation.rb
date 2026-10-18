@@ -23,41 +23,64 @@ module GameRoomUseCases
     end
 
     def lookup(invitation)
+      user = @user.call.to_s
+      current = account_guard(invitation)
+      return [nil, nil, nil] unless current.call
       tables = @transport.discover_rooms(include_private: true)
       snapshots = tables.map do |table|
         @lobby.snapshot_for(table) || LobbyRepository::TableSnapshot.new(table: table,
           members: [@lobby.owner_of(table)], bots: @lobby.bots_for(table))
       end
-      pending = @invitations.pending_by_id(invitation.id, @user.call, tables: snapshots.map(&:table))
+      return [nil, nil, nil] unless current.call
+      pending = @invitations.pending_by_id(invitation, user, tables: snapshots.map(&:table))
+      return [nil, nil, nil] unless current.call
       snapshot = snapshots.find { |item| @lobby.table_id(item.table) == invitation.table_id }
-      [pending, snapshot, @lobby.current_table_for(@user.call)]
+      table = @lobby.current_table_for(user)
+      current.call ? [pending, snapshot, table] : [nil, nil, nil]
     end
 
-    def reconnect(invitation, binding: nil, consent: nil)
+    def reconnect(invitation, binding: nil, consent: nil, admission: nil)
       unless binding.nil?
         outcome = join_bound(invitation, current: nil, binding: binding, consent: consent)
         return outcome.result.is_a?(LobbyRepository::JoinResult) && outcome.result.entered?
       end
+      current = account_guard(invitation)
+      return false unless current.call
+      return nil if admission && !admission.call
       pending = @membership.pending.call(invitation.table)
+      return false unless current.call
+      return nil if admission && !admission.call
       accepted = @membership.reconnect.call(invitation.table)
+      return false unless current.call
       if accepted
         @membership.apply_role.call(invitation.table)
+        return false unless current.call
         @membership.complete.call(invitation.table, pending)
       end
-      accepted
+      current.call && accepted
     end
 
-    def join(invitation, current:, notification_id: nil, binding: nil, consent: nil)
+    def join(invitation, current:, notification_id: nil, binding: nil, consent: nil, admission: nil)
       unless binding.nil?
         return join_bound(invitation, current: current, binding: binding, consent: consent)
       end
       left_current = false
+      allowed = account_guard(invitation)
+      refused = -> { InvitationJoin.new(result: :transport_failed, left_current: left_current) }
+      user = @user.call.to_s.dup
+      return refused.call unless allowed.call
+      return nil if admission && !admission.call
       pending = @membership.pending.call(invitation.table)
+      return refused.call unless allowed.call
+      return nil if admission && !admission.call
+      # Local visibility gates admission, not completion of an accepted RPC.
+      # Account/endpoint guards still apply throughout the entire operation.
       status = @membership.establish.call(invitation.table)
+      return refused.call unless allowed.call
       if status == :full
         return InvitationJoin.new(result: :table_full, left_current: false)
       elsif status == :closed
-        @membership.revoke.call(invitation.id, notification_id: notification_id)
+        @membership.revoke.call(invitation, notification_id: notification_id)
         return InvitationJoin.new(result: :table_closed, left_current: false)
       elsif ![:joined, :already_here].include?(status)
         return InvitationJoin.new(result: :transport_failed, left_current: false)
@@ -69,26 +92,37 @@ module GameRoomUseCases
           raise GameRoomNetworkErrors::GamePaused, 'The current table could not be left' if left == nil
           left_current = true
         rescue StandardError
-          @transport.deactivate_table(table_id: invitation.table_id)
+          @transport.deactivate_table(table_id: invitation.table_id) if allowed.call
           raise
         end
       end
+      return refused.call unless allowed.call
 
-      joined = @lobby.join_table(invitation.table, @user.call, announce: false)
+      joined = @lobby.join_table(invitation.table, user, announce: false)
+      return refused.call unless allowed.call
       @membership.apply_role.call(joined.table) if joined.entered?
+      return refused.call unless allowed.call
       if joined.entered?
         @membership.complete.call(joined.table, pending)
       elsif joined.status == :closed
         @transport.deactivate_table(table_id: invitation.table_id)
-        @invitations.respond(invitation, recipient: @user.call, response: 'expired')
-        @membership.revoke.call(invitation.id, notification_id: notification_id)
+        return refused.call unless allowed.call
+        @invitations.respond(invitation, recipient: user, response: 'expired')
+        return refused.call unless allowed.call
+        @membership.revoke.call(invitation, notification_id: notification_id)
       else
         @transport.deactivate_table(table_id: invitation.table_id)
       end
+      return refused.call unless allowed.call
       InvitationJoin.new(result: joined, left_current: left_current)
     end
 
     private
+
+    def account_guard(invitation)
+      recipient = GameRoomInvitationIdentity.row(invitation)["recipient"].to_s
+      GameRoomInvitationIdentity.account_guard(transport: @transport, user: @user, recipient: recipient)
+    end
 
     # Port przyszłego właściciela, nie adapter obecnego deactivate_table(table_id).
     # establish zwraca receipt własnej próby; release musi WARUNKOWO porównać

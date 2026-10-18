@@ -133,6 +133,7 @@ module GameRoomDuckRacing
     # memory snapshot: that would swallow the first of two quick digits.
     def event(_event, before, after, viewer, repository)
       return if @closed || !valid_replay?(after, viewer) || !before
+      observe_count_start(before, after, viewer)
       round = before.state[:round]
       round ||= after.state[:round]
       return unless round && %w[sound_memory sound_order].include?(round.dig(:challenge, :kind))
@@ -274,6 +275,7 @@ module GameRoomDuckRacing
             ensure_realtime
           else
             ensure_attempt unless presentation_busy?
+            advance_observation
             if @trace
               if advance_preparation
                 now = elapsed_ms
@@ -319,6 +321,15 @@ module GameRoomDuckRacing
       GameRoomRealtime::TaskUI.new(**options, clock: @clock, tick: -> {
         progress_frame(background: true) unless GameRoomRealtime::TaskUI.updates_form?(options[:ui], @form)
       })
+    end
+
+    # These keys only update the current UI-owned attempt or its existing
+    # bounded request list. The ordinary runner still validates/writes them.
+    # A read or chat write must not discard a completed numeric edit, Simon
+    # tone or readiness press; identity changes still clear the attempt.
+    def local_input_during_operation?(surface)
+      !@closed && !@technical_error && @surface.equal?(surface) && surface_matches? &&
+        roster_matches?(@replay) && participant? && !@event_presentation_busy.call
     end
 
     def action(selection, replay, viewer)
@@ -412,6 +423,44 @@ module GameRoomDuckRacing
         @realtime.attach_view(@form, @surface) if @form && native_surface?(@surface)
       else
         technical_failure(_('The audio game could not be started. The challenge will be cancelled.'))
+      end
+    end
+
+    # Only a newly presented start authorizes public quacks. A cold snapshot,
+    # reconnect or refresh must not start the old sequence from the beginning.
+    # This uses the ordinary challenge audio/clock, with no scoring or writes.
+    def observe_count_start(before, after, viewer)
+      round = after.state[:round]
+      return unless round && round[:phase] == :playing && round[:challenge][:kind] == 'count_ducks'
+      challenge = round[:challenge]
+      seat = after.players.index { |name| same?(name, viewer) }
+      return if challenge[:participants].include?(seat)
+      previous = before.state[:round]
+      return if previous&.dig(:challenge, :id) == challenge[:id] && previous[:phase] == :playing
+      return if @count_observation_id && challenge[:id] <= @count_observation_id
+
+      @count_observation_id = challenge[:id]
+    end
+
+    def advance_observation
+      return unless @challenge && !participant? && @challenge[:kind] == 'count_ducks'
+      if @count_observation_id == @challenge[:id] && @count_observation_started_id != @challenge[:id]
+        @count_observation_started_id = @challenge[:id]
+        engine = ChallengeEngine.start(@challenge, resources: @resources)
+        stimulus = ChallengeEngine.stimulus(engine, seat: @challenge[:participants].first)
+        end_ms = stimulus[:events].map { |cue| cue[:offset_ms] + cue[:duration_ms] }.max
+        # An old start delivered after the whole sequence is not live audio.
+        return if sequential_ms >= end_ms
+        @observation_audio = @audio_factory.call(clock_ms: -> { milliseconds },
+          on_action: ->(_action, _at) {}, on_error: ->(error) {
+            Log.warning("Power Games Duck Racing observer audio failed: #{error.class}: #{error.message}") if defined?(Log)
+          })
+        @observation_audio.play(stimulus.merge(requested_ms: milliseconds))
+      end
+      @observation_audio&.step(milliseconds)
+      if @observation_audio && !@observation_audio.busy?
+        @observation_audio.close
+        @observation_audio = nil
       end
     end
 
@@ -668,7 +717,7 @@ module GameRoomDuckRacing
         # Local expiry is not evidence that another client's attempt ended.
         view[:finished] = false
         view[:own] = (view[:own] || {}).merge(done: true) if @trace&.finished? || committed?
-        [:completed, :ready].each do |key|
+        [:completed, :ready, :answered].each do |key|
           next unless view[key]
           view[key] = @challenge[:participants].to_h do |seat|
             [seat, seat == @seat && @trace&.finished? || @replay.state.dig(:round, :private, :commitments)&.key?(seat) ||
@@ -677,12 +726,13 @@ module GameRoomDuckRacing
         end
       end
       view[:player_names] = @replay.players.each_with_index.to_h { |name, seat| [seat, name.dup] }
+      view = ChallengePresentation.observation_view(view) unless participant?
       if view != @view
         presentation = ChallengePresentation.project(kind: @challenge[:kind], view: view, viewer: @seat, previous_view: @view)
         initial_view = @view.nil?
         @view = view
         announced = announce(presentation[:announcement]) unless presentation[:announcement].empty?
-        if initial_view && (announced || participant? && ChallengePresentation.autoplay?(@challenge[:kind]))
+        if initial_view && (announced || !participant? || ChallengePresentation.autoplay?(@challenge[:kind]))
           @unfocused_prompt = true
         end
       end
@@ -742,6 +792,8 @@ module GameRoomDuckRacing
     def clear_attempt
       @quiz_sounds.reset
       @audio&.close
+      @observation_audio&.close
+      @observation_audio = nil
       @preview_audio&.close
       @preview_audio = nil
       @practice_ready = false

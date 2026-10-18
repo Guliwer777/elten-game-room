@@ -97,7 +97,10 @@ pending = invitations.transports.fetch("Bob").pending_invitations
 assert(pending.length == 1 && pending.first["expires_at"] <= Time.now.to_i + 300,
   "the Game Room invitation still exposes the native ten-minute lifetime")
 store = invitations.transports.fetch("Bob").instance_variable_get(:@live_store)
-stored = store.instance_variable_get(:@pending_invitations).fetch(7001)
+stored = store.instance_variable_get(:@pending_invitations).fetch(GameRoomInvitationIdentity.key(pending.first))
+assert(stored[:id] == 7001 && stored[:table_id] == invitations.table["__id"] &&
+  stored[:invitation].equal?(pending.first.fetch("__native_invitation")),
+  "the expiry fixture selected a different invitation")
 stored[:created_at] = Time.now.to_i - 301
 assert(invitations.transports.fetch("Bob").pending_invitations.empty?,
   "a five-minute-old invitation remained pending")

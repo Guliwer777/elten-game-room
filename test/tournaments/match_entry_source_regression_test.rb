@@ -1,11 +1,12 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/ui'
 require_relative '../support/tournament_local_hub'
 require_relative '../support/tournament_match_entry'
 require_relative '../../lib/tournaments/match_entry_screen'
 include GameRoomTest::Assertions
 G = GameRoomTournaments
-Dir.mktmpdir('entry-source-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('entry-source-') do |directory|
   program = TournamentMatchEntryTest.prepare(directory)
   now = 200
   workspace = G::LocalWorkspace.new(program: program, registry: GameRoomGames::CATALOG,

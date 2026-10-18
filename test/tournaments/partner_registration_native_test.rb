@@ -16,7 +16,7 @@ factory=->(actor){T::LocalWorkspace.new(program:state[:program],registry:GameRoo
   driver=TournamentNativeDriver.new
   driver.step(/\AIndividual UI — /,[13]) do |form|
     actions=form.fields.first
-    actions.index=actions.options.index(label.call('My partner'))
+    actions.index=actions.options.index(label.call('Team partner'))
     form.index=form.fields.index(actions)
   end
   driver.step(label.call('Team'),[13]) do |form|

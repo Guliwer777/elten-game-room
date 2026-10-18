@@ -51,7 +51,7 @@ module GameRoomTournaments
     def delivery_key(sender,notice)
       # Adding display fields must not authorize a second send of an already
       # attempted event, including attempts retained by the previous format.
-      identity=notice.slice(*TournamentStartNotice::FIELDS).merge('version'=>1)
+      identity=@service.delivery_identity(notice)
       Digest::SHA256.hexdigest(JSON.generate([sender,Publication::Data.copy(identity)]))
     end
     def validate!(state)
@@ -65,7 +65,7 @@ module GameRoomTournaments
             entry['descriptor'].is_a?(Hash) && entry['descriptor'].keys.sort==%w[metadata sender]
           raise ProposalNotice::Unavailable,'Start journal corrupt'
         end
-        notice=TournamentStartNotice.metadata(entry['descriptor']['metadata'])
+        notice=@service.class.metadata(entry['descriptor']['metadata'])
         sender=Publication::Data.account(entry['descriptor']['sender']).downcase
         raise ProposalNotice::Unavailable,'Start journal corrupt' unless key==delivery_key(sender,notice)
       end

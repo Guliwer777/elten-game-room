@@ -9,7 +9,7 @@ def n_(singular, plural, count); count == 1 ? singular : plural; end
 class NativeRoomHarness
   attr_reader :broker, :users, :table, :transports, :repositories, :session, :game
 
-  def initialize(game: nil, users: %w[Alice Bob Carol Dave], options: nil, bots: 0)
+  def initialize(game: nil, users: %w[Alice Bob Carol Dave], options: nil, bots: 0, tournament: nil)
     @broker = NativeLiveSessionsBroker.new
     @users = users
     @game = game
@@ -20,7 +20,7 @@ class NativeRoomHarness
     @table = as(users.first) do
       @transports.fetch(users.first).create_room(
         name: "Native test room", game: game&.id || "test", owner: users.first,
-        game_options: JSON.generate(@options), capacity: 8,
+        game_options: JSON.generate(@options), capacity: 8, tournament_match: tournament,
         stack_entries: game&.session_history_capacity(@options) || GameRoomLiveSessionStore::STACK_ENTRIES
       )
     end
@@ -82,6 +82,7 @@ class NativeRoomHarness
   def submit(user, selection = nil, context: nil, replay: nil)
     current = replay || self.replay(user)
     context ||= GameRoomGames::ActionContext.new(session_id: session["__id"], table_id: table["__id"], now: 1_000)
+    context.server_random = session['__server_random'] == GameRoomServerRandom::VERSION
     selection ||= game.automatic_action(current, user, context: context)
     status, plan = game.action_for(selection, current, user, context: context)
     assert(status == :ok, "#{game.id}: #{user}'s action failed: #{status}, #{selection.inspect}")

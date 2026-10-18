@@ -25,6 +25,8 @@ class GameRoomLiveSessionStore
           next if ended[id]
           ended[id] = true
           lifecycle.call(record, "game_aborted")
+        elsif record.packet['kind'] == 'game_boundary' && record.packet.dig('data', 'tournament_presence', 'mode') == 'continue'
+          lifecycle.call(record, 'tournament_elimination').merge('subject'=>record.packet['data']['tournament_presence']['loser'])
         elsif record.packet["kind"] == "room_state" && record.packet.dig("data", "options_changed") == true
           lifecycle.call(record, "options_changed") if option_changes.include?(record.sequence)
         elsif record.packet["kind"] == "room_activity"
@@ -95,26 +97,48 @@ class GameRoomLiveSessionStore
       # used the latest start's ID base. Reuse both without changing that format.
       game_record = starts.first
       action_game_record = starts.last
-      frozen = false
+      clock = {offset: action_game_record&.packet&.dig('data', 'clock_offset').to_i, frozen_at: nil}
       aborted = false
+      pause_intent = nil
+      intent_boundary = ''
+      intent_epochs = {}
       imported = if !session["__archive_id"].to_s.empty?
         (game_record == nil ? [] : archive_events_for(game_record).to_a).reject { |item| item.key?('players') }.map do |event|
-              event.merge("__id" => event["id"], "session_id" => session_id, "table_id" => table_id,
+              GameRoomSessionClock.archived_event(event).merge("__id" => event["id"], "session_id" => session_id, "table_id" => table_id,
                 "__insertion_user" => game_record.sender, "__controller" => true, "move_id" => "archive:#{game_record.message_id}:#{event['id']}")
         end
       else
         []
       end
       current = records.flat_map do |record|
+        if !clock[:frozen_at] && action_game_record && record.sequence >= action_game_record.sequence
+          intent_epochs[intent_boundary] ||= []
+          intent_epochs[intent_boundary] |= [ledger.epoch_at(record.sequence)]
+        end
         if record.packet["kind"] == "game_boundary" && record.packet.dig("data", "session_id") == session_id
-          frozen = record.packet.dig("data", "frozen") == true
+          if record.packet['data']['frozen'] && record.packet['data']['tournament_presence']
+            # A still-pending native request may cross a return and a second
+            # pause. Retain the actual unfrozen origins, never a paused origin.
+            pause_intent = intent_epochs.transform_values(&:dup) unless clock[:frozen_at]
+          else
+            pause_intent = nil
+            intent_boundary = record.message_id
+          end
+          advance_game_clock(clock, record)
           aborted ||= record.packet.dig("data", "aborted") == true
+          if record.packet.dig('data', 'tournament_presence', 'mode') == 'continue'
+            next [tournament_elimination_event(record, action_game_record, ledger, clock)]
+          end
         end
         next [] if record.packet["kind"].to_s != "game_action"
         next [] if record.packet.dig("data", "session_id").to_i != session_id
-        next [] if frozen || aborted
+        next [] if aborted
+        if clock[:frozen_at]
+          next [] unless pause_intent && record.server_pool && %w[take reveal].include?(record.server_pool['operation']) &&
+            pause_intent.fetch(record.packet['data']['presence_boundary'], []).include?(record.packet['data']['control_epoch'])
+        end
 
-        expand_game_action(record, game_record: action_game_record, ledger: ledger)
+        expand_game_action(record, game_record: action_game_record, ledger: ledger, clock: clock)
       end
       (imported + current).sort_by { |row| row["__id"].to_i }
     end
@@ -131,6 +155,19 @@ class GameRoomLiveSessionStore
     end
 
     private
+
+    def tournament_elimination_event(record, game_record, ledger, clock)
+      data = record.packet.fetch('data')
+      players = game_record.packet.fetch('data').fetch('players')
+      id = game_record.packet['data']['event_id_base'].to_i + record.sequence * EVENT_ID_MULTIPLIER
+      {'__id'=>id, 'id'=>id, 'session_id'=>data['session_id'], 'table_id'=>record.table_id,
+        'actor'=>players.first, 'action'=>'tournament_elimination',
+        'value'=>JSON.generate([players.index(data['tournament_presence']['loser'])]),
+        '__tournament_elimination'=>true, '__controller'=>true,
+        '__insertion_user'=>record.sender, '__authority_user'=>ledger.owner_at(record.sequence),
+        '__stack_sequence'=>record.sequence, '__stack_offset'=>0, '__clock_offset'=>clock[:offset],
+        'move_id'=>record.message_id, 'created_at'=>record.created_at.to_i}
+    end
 
     def game_start_records(table_or_id, force: false)
       table_id = table_or_id == nil ? nil : table_identifier(table_or_id)
@@ -256,6 +293,9 @@ class GameRoomLiveSessionStore
     def table_from_metadata(metadata, table_id)
       return nil if !supported_metadata?(metadata)
 
+      options = discovery_options(metadata)
+      parsed = options.empty? ? {} : JSON.parse(options)
+      raise ArgumentError, 'Invalid game option shape' unless GameRoomOptionValues.normalizable_options?(parsed)
       row = {
         "__id" => table_id,
         "id" => table_id,
@@ -269,7 +309,7 @@ class GameRoomLiveSessionStore
         "status" => %w[waiting playing].include?(metadata["status"]) ? metadata["status"] : "waiting",
         "max_players" => bounded_capacity(metadata["max_players"] || MAX_CAPACITY),
         "bot_count" => [[metadata["bot_count"].to_i, 0].max, MAX_CAPACITY].min,
-        "game_options" => discovery_options(metadata),
+        "game_options" => options,
         "player_count" => metadata.key?("player_count") ? [[metadata["player_count"].to_i, 0].max, MAX_CAPACITY].min : 1,
         "created_at" => metadata["created_at"].to_i,
         "updated_at" => metadata["created_at"].to_i,
@@ -314,6 +354,10 @@ class GameRoomLiveSessionStore
          'players' => change.packet['data']['players'].dup}
       end
       players = ledger.players(id, initial: players)
+      if data['private_cards'] == GameRoomPrivateCards::VERSION
+        players = initial
+        replacements = []
+      end
 
       session = {
         "__id" => id,
@@ -347,24 +391,50 @@ class GameRoomLiveSessionStore
         "__frozen" => clock[:frozen_at] != nil,
         "__aborted" => game_aborted?(record.table_id, id)
       }
+      session['__server_random'] = data['server_random'] if data.key?('server_random')
+      session['__private_cards'] = data['private_cards'] if data.key?('private_cards')
+      boundaries = records_for(record.table_id).select do |item|
+        item.packet['kind'] == 'game_boundary' && item.packet.dig('data', 'session_id') == id
+      end
+      session['__game_boundary'] = boundaries.last&.message_id.to_s
+      session['__game_revision'] = records_for(record.table_id).reverse.find do |item|
+        item.packet['kind'] == 'game_action' && item.packet.dig('data', 'session_id') == id
+      end&.message_id.to_s
+      presence, previous = nil, nil
+      boundaries.each do |item|
+        value = GameRoomTournamentPresence.transition(item.packet['data'], players: initial,
+          fixture: active_session(record.table_id)&.metadata.to_h['tournament_match'], previous: presence,
+          boundary_id: previous, epoch: item.packet.dig('data', 'tournament_presence', 'epoch'),
+          revision: item.packet.dig('data', 'tournament_presence', 'revision').to_s)
+        presence = value.merge('boundary_id'=>item.message_id) if value
+        previous = item.message_id
+      end
+      session['__tournament_presence'] = presence if presence
+      marker = active_session(record.table_id)&.metadata.to_h['tournament_match']
+      session['__tournament_match'] = GameRoomTournamentMarker.copy(marker) if marker
       if data.key?('statistics')
         session['__statistics'] = GameRoomStatistics::Identity.copy(data['statistics'], started_at: record.created_at.to_i)
       end
       session
     end
 
-    def game_clock_state(table_id, session_id, offset)
-      frozen_at = nil
+    def game_clock_state(table_id, session_id, offset, before_sequence: nil)
+      clock = {offset: offset, frozen_at: nil}
       records_for(table_id).each do |item|
+        break if before_sequence && item.sequence >= before_sequence
         next unless item.packet["kind"] == "game_boundary" && item.packet.dig("data", "session_id") == session_id
-        if item.packet.dig("data", "frozen") == true
-          frozen_at ||= item.created_at.to_i
-        elsif frozen_at != nil
-          offset += [item.created_at.to_i - frozen_at, 0].max
-          frozen_at = nil
-        end
+        advance_game_clock(clock, item)
       end
-      { offset: offset, frozen_at: frozen_at }
+      clock
+    end
+
+    def advance_game_clock(clock, boundary)
+      if boundary.packet.dig('data', 'frozen') == true
+        clock[:frozen_at] ||= boundary.created_at.to_i
+      elsif clock[:frozen_at] != nil
+        clock[:offset] += [boundary.created_at.to_i - clock[:frozen_at], 0].max
+        clock[:frozen_at] = nil
+      end
     end
 
     def activity_record(record, ledger: nil)
@@ -397,7 +467,14 @@ class GameRoomLiveSessionStore
         "__authority_validated" => true,
         "message" => "", "created_at" => record.created_at, "__stack_sequence" => record.sequence.to_i }
       data = record.packet["data"]
-      if kind == "options_changed"
+      if kind == 'game_aborted'
+        if data.dig('tournament_presence', 'loser')
+          result['reason'] = 'tournament_absence'
+          result['subject'] = data['tournament_presence']['loser']
+        else
+          result['reason'] = data['reason']
+        end
+      elsif kind == "options_changed"
         before = JSON.parse(data["expected_options"])
         after = JSON.parse(data["game_options"])
         keys = %w[team_players team_seats]
@@ -416,13 +493,21 @@ class GameRoomLiveSessionStore
       record.table_id.to_i
     end
 
-    def expand_game_action(record, game_record: nil, ledger: nil)
+    def expand_game_action(record, game_record: nil, ledger: nil, clock: nil)
       data = record.packet["data"].to_h
       table_id = table_id_for_record(record)
       actor = record.packet["actor"].to_s
       game_record ||= records_for(table_id).reverse.find { |item| item.packet["kind"] == "game_started" && item.packet.dig("data", "session_id") == data["session_id"] }
       ledger ||= control_ledger(table_id)
       id_base = game_record&.packet&.dig("data", "event_id_base").to_i
+      clock ||= game_clock_state(table_id, data['session_id'],
+        game_record&.packet&.dig('data', 'clock_offset').to_i, before_sequence: record.sequence)
+      # ACK/recovered events and a full history read must carry the same clock.
+      # A consumed in-flight receipt completes at the pause's logical time.
+      if clock[:frozen_at] && game_record
+        started = game_record.packet.fetch('data').fetch('created_at')
+        game_time = clock[:frozen_at] + started - game_record.created_at.to_i - clock[:offset]
+      end
       Array(data["events"]).each_with_index.map do |command, offset|
         {
           "__id" => id_base + record.sequence.to_i * EVENT_ID_MULTIPLIER + offset,
@@ -434,13 +519,18 @@ class GameRoomLiveSessionStore
           "sequence" => data["sequence"].to_i + offset,
           "__stack_sequence" => record.sequence.to_i,
           "__stack_offset" => offset,
+          "__clock_offset" => clock[:offset],
           "move_id" => command["move_id"].to_s,
           "actor" => actor,
           "__controller" => data["controller"] == true,
           "action" => command["action"].to_s,
           "value" => command["value"].to_s,
           "created_at" => record.created_at.to_i
-        }
+        }.tap do |event|
+          event['__game_time'] = game_time if game_time
+          event['__server_random'] = GameRoomSnapshot.copy(record.server_random) if record.server_random
+          event['__server_pool'] = GameRoomSnapshot.copy(record.server_pool) if record.server_pool
+        end
       end
     end
   end

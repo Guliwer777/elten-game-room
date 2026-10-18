@@ -33,6 +33,7 @@ module GameRoomTableWatchRuntime
             raise TypeError, "Invalid table receipt storage" unless state.is_a?(Hash)
             previous = state[user.downcase].is_a?(Hash) ? state[user.downcase]["resolved"] : {}
             previous = {} unless previous.is_a?(Hash)
+            previous = previous.select { |_key, expiry| GameRoomNotificationTime.integer_value?(expiry) }
             # Older writes from a prior runtime/account must not undo a
             # newer join. Only expiration can remove a resolved session.
             merged = previous.merge(value.fetch("resolved")) { |_key, old, fresh| [old.to_f, fresh.to_f].max }

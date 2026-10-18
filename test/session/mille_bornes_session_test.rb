@@ -82,6 +82,7 @@ module MilleBornesSessionRegression
       runner = runner_for(harness, user, covered: -> { covered })
       runners[user] = runner
       seed_bytes = seed.to_s(16).rjust(32, "0").scan(/../).map { |byte| byte.to_i(16) + 1 }
+      harness.view(user).next_random_values = seed_bytes.dup
       runner.instance_variable_get(:@context_template).random_source = GameRoomRandom::SequenceSource.new(seed_bytes + Array.new(200, 1))
       runner.instance_variable_get(:@turn).instance_variable_set(:@clock, -> { clock })
     end

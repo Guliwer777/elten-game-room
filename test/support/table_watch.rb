@@ -7,10 +7,15 @@ class WatchTable
   attr_accessor :user
   attr_reader :rows, :writes, :queries
   def initialize; @rows = []; @writes = []; @queries = []; @user = "Alice"; end
-  def select(where: nil, offset: 0, limit: 1000, columns: nil, **_)
-    @queries << {where: where, offset: offset, limit: limit, columns: columns}
-    rows = where ? @rows.select { |row| where.all? { |key, value| row[key] == value } } : @rows
-    (rows.sort_by { |row| row["__id"] }[offset, limit] || []).map { |row| columns ? row.slice(*columns) : row.dup }
+  def select(where: nil, offset: 0, limit: 1000, columns: nil, order: nil, **_)
+    @queries << {where: where, offset: offset, limit: limit, columns: columns, order: order}
+    rows = @rows.select do |row|
+      !where || where.all? do |key, value|
+        value.is_a?(Hash) ? value.keys == ["gte"] && row[key] >= value.fetch("gte") : row[key] == value
+      end
+    end.sort_by { |row| row["__id"] }
+    rows.reverse! if order == [["__id", "desc"]]
+    (rows[offset, limit] || []).map { |row| columns ? row.slice(*columns) : row.dup }
   end
   def insert(values)
     row = values.merge("__id" => (@rows.map { |item| item["__id"] }.max || 0) + 1, "__insertion_user" => @user)

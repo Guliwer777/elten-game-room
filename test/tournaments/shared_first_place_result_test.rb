@@ -11,7 +11,7 @@ roster=players.map{|name|{'account'=>name.downcase,'username'=>name}}
   [[[10,10,0],[3,3,0]],[[10,0,0],[4,1,1]],[[10,10,10],[2,2,2]]].each do |scores,expected|
     score_map=players.zip(scores).to_h
     winners=players.select{|name|score_map[name]==scores.max}
-    replay=GameRoomGames::Replay.new(players:players,state:{scores:score_map,winners:winners},
+    replay=GameRoomGames::Replay.new(players:players,state:{players:players,scores:score_map,winners:winners},
       winner:winners.size==1 ? winners.first : nil,draw:winners.size>1,accepted_events:[])
     replay.define_singleton_method(:finished?){true}
     old=T::GameResult.from_replay(game:game,replay:replay,players:roster,options:{},event_count:0,

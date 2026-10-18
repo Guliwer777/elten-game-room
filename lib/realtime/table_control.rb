@@ -13,6 +13,7 @@ module GameRoomRealtime
 
     def update_table_control(session)
       return if @closed
+      update_session_pause(session['__frozen'] == true)
       initial = session['__initial_players'] || session['__players']
       @initial_players = initial.dup if initial
       owner = session['__table_owner'] || @owner
@@ -36,6 +37,21 @@ module GameRoomRealtime
     end
 
     private
+
+    def session_paused?
+      @session_paused == true
+    end
+
+    # A durable session pause is independent of relay health/control epochs.
+    # Keep networking alive; each client suspends only its playable timeline.
+    def update_session_pause(paused)
+      return if paused == session_paused?
+      now = @clock.call
+      elapsed = @session_pause_started ? [now - @session_pause_started, 0.0].max : 0.0
+      @session_paused = paused
+      @session_pause_started = paused ? now : nil
+      session_pause_changed(paused, elapsed)
+    end
 
     def note_play_activity
       @activity_transport&.note_realtime_activity(@activity_table, @activity_session)

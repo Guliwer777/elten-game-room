@@ -1,12 +1,14 @@
 # Native task mechanics only. Recovery, messages and access announcements stay
 # with the caller that understands the operation's consequences.
 class GameRoomNetworkTask
-  def run(title, layout: nil, table_id: nil, ui: nil, client: nil, runner: nil, before_close: nil, &operation)
+  def run(title, layout: nil, table_id: nil, ui: nil, client: nil, runner: nil, before_close: nil, chat_admission: false, move_admission: nil, &operation)
     @before_close = before_close
     if layout&.binding_generation.to_i > 0
       token = EltenAPI::Tasks::CancellationToken.new
       @pending = GameRoomUI::PendingOperation.new(layout: layout, table_id: table_id,
-        session_id: layout.session_id, token: token, title: title)
+        session_id: layout.session_id, token: token, title: title, chat_admission: chat_admission,
+        move_admission: move_admission,
+        local_input: client.respond_to?(:local_input_during_operation?) ? client.method(:local_input_during_operation?) : nil)
       ui = @pending
     end
     options = { title: title, cancellable: true, show_after: 5.0 }

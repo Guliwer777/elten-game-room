@@ -1,11 +1,11 @@
-require 'tmpdir'
+require_relative '../support/temporary_directory'
 require_relative '../support/binary_rules_load' if ARGV.first
 require_relative '../support/session_runner'
 require_relative '../support/tournament_server_plan_table'
 require_relative '../../games/catalog'
 require_relative '../../lib/tournaments/ordinary_match_service'
 T=GameRoomTournaments
-Dir.mktmpdir('ordinary-counts-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('ordinary-counts-') do |directory|
   users=%w[Alice Bob Carol]
   game=GameRoomGames::ThreeFiveEight.new
   h=NativeRoomHarness.new(game:game,users:users)

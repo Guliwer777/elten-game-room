@@ -11,7 +11,8 @@ module GameRoomTournaments
     ENTRY_FIELDS = (FIELDS + %w[consent_id participant_id membership_generation status]).freeze
 
     def self.validate!(execution, core)
-      admission = execution['admission'] || {'consents' => {}, 'entries' => {}}
+      admission = execution['admission']
+      admission = {'consents' => {}, 'entries' => {}} if admission.nil?
       C.fields!(admission, %w[consents entries])
       unless admission.values.all? { |rows| rows.is_a?(Hash) && rows.size <= execution['request']['players'].size }
         raise Publication::Invalid, :sandbox_corrupt

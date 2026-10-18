@@ -11,6 +11,9 @@ module GameRoomGames
   # One catalog entry selects the variant; the shared executor owns all
   # adapters, including bot decisions.
   class Mahjong < Base
+    GameRoomServerRandom.register('mahjong', %w[mahjong_deal mahjong],
+      json_actions: {'mahjong' => {'a'=>'deal'}})
+
     include MahjongOptions
     include MahjongRules
     include MahjongInformationShortcuts

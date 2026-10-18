@@ -48,6 +48,13 @@ module GameRoomGames
       return [:finished, nil] if replay.finished?
       return [:not_your_turn, nil] unless same_user?(actor, replay.players.first)
       return [:stale, nil] if context && context.session_id != replay.state[:session_id]
+      input = selection.to_h
+      if context&.server_random && replay.state[:phase] == :awaiting_deal &&
+          input.values_at('kind', 'action', 'turn') == ['command', 'deal', 0]
+        command = GameRoomServerRandom.recipe_command(action: 'mahjong', kind: 'seed_json',
+          data: {'v'=>1, 't'=>0, 'a'=>'deal'})
+        return [:ok, ActionPlan.new(events: [command])]
+      end
       data = solitaire_input(selection, replay.state, context)
       return [:invalid, nil] unless data
       status, = solitaire_apply(replay.state, data)

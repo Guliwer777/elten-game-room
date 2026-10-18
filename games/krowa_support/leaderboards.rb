@@ -144,10 +144,12 @@ module GameRoomGames
       end
       return if today == nil
 
-      dates = network(_("Loading Daily Krowa dates")) { @store.daily_days }
-      return if dates == nil
-      dates = ([today] + dates.select { |date| date <= today }).uniq.sort.reverse
-      rows = daily_date_rows(dates, today)
+      loaded = network(_("Loading Daily Krowa dates")) do
+        dates = ([today] + @store.daily_days.select { |date| date <= today }).uniq.sort.reverse
+        [dates, daily_date_rows(dates, today)]
+      end
+      return if loaded == nil
+      dates, rows = loaded
       selected = show_table(
         [_('Date'), _('Word')], rows, header: _("Daily Krowa leaderboard"),
         empty_label: _("No daily results")
@@ -157,8 +159,19 @@ module GameRoomGames
 
     def show_daily_ranking(date_id, today: nil)
       date = date_id.to_s
-      results = network(_("Loading Daily Krowa leaderboard")) { @store.daily_ranking(date) }
-      return if results == nil
+      loaded = network(_("Loading Daily Krowa leaderboard")) do
+        results = @store.daily_ranking(date)
+        # A direct post-publication view also needs confirmed server time
+        # before an old solution can be revealed.
+        unless today
+          GameRoomClock.synchronize
+          raise "Unconfirmed server time" unless GameRoomClock.synchronized?
+          today = GameRoomKrowa::WarsawDate.today_id(clock: -> { Time.at(GameRoomClock.now).utc })
+        end
+        [results, daily_ranking_header(date, today)]
+      end
+      return if loaded == nil
+      results, header = loaded
 
       previous_attempts = nil
       previous_rank = 0
@@ -169,15 +182,6 @@ module GameRoomGames
         previous_rank = rank
         [rank.to_s, result["__insertion_user"].to_s, attempts.to_s]
       end
-      # A direct post-publication view also needs confirmed server time before
-      # an old solution can be revealed.
-      today ||= network(_("Checking server date")) do
-        GameRoomClock.synchronize
-        raise "Unconfirmed server time" unless GameRoomClock.synchronized?
-        GameRoomKrowa::WarsawDate.today_id(clock: -> { Time.at(GameRoomClock.now).utc })
-      end
-      return if today == nil
-      header = daily_ranking_header(date, today)
       show_table(
         [_('Place'), _('User'), _('Attempts')], rows,
         header: header, empty_label: _("No published results"), selectable: false

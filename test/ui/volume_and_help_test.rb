@@ -21,16 +21,28 @@ assert(invalid["all"] == 100 && invalid["room"] == 0 && invalid["game"] == 100, 
 app = EltenGameRoom.new
 state = { "sound_volumes" => { "all" => 50, "game" => 100, "room" => 100, "chat" => 40, "notifications" => 70 }, "unrelated" => "keep" }
 writes = 0
+volume_caller = Thread.current
+first_write = Queue.new
 app.define_singleton_method(:read_json) { |_file, default:| state }
-app.define_singleton_method(:update_json) { |_file, default:, &block| writes += 1; block.call(state); state }
+app.define_singleton_method(:update_json) do |_file, default:, &block|
+  assert(!Thread.current.equal?(volume_caller), 'volume write ran on the caller')
+  first_write.pop if writes.zero?
+  writes += 1
+  block.call(state)
+  state
+end
 played = []
 app.define_singleton_method(:play_sound_from_asset) { |name, volume:| played << [name, volume] }
 GameRoomSounds.play(app, "chatmsg")
 GameRoomSounds.play(app, "roll")
 GameRoomSounds.play(app, "notice")
 assert(played == [["chatmsg", 0.2], ["roll", 0.5], ["notice", 0.35]], "category/master multiplication")
-app.send(:adjust_game_room_volume, 2)
-assert(app.send(:game_room_sound_volume, 'roll') == 0.4 && writes.zero?, 'volume waited for disk')
+begin
+  app.send(:adjust_game_room_volume, 2)
+  assert(app.send(:game_room_sound_volume, 'roll') == 0.4 && writes.zero?, 'volume waited for disk')
+ensure
+  first_write << true
+end
 def await_volume(app)
   writer = app.class.instance_variable_get(:@volume_settings)
   deadline = Process.clock_gettime(Process::CLOCK_MONOTONIC) + 3
@@ -51,8 +63,10 @@ before = played.length
 GameRoomSounds.play(app, "roll")
 GameRoomSounds.play(app, "connect")
 assert(played.length == before, "zero master still plays")
+await_volume(app)
 before = writes
 app.send(:adjust_game_room_volume, 2)
+await_volume(app)
 assert(writes == before, "unchanged bound wrote settings")
 app.send(:adjust_game_room_volume, 3)
 await_volume(app)

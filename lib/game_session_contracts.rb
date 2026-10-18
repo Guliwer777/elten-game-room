@@ -9,7 +9,8 @@ module GameRoomSessionContracts
   GameSnapshot = Struct.new(:session, :events, keyword_init: true)
   RoomSnapshot = Struct.new(:table, :members, :bots, :observers, keyword_init: true)
   PresentationSnapshot = Struct.new(:session, :table, :replay, :members, :activity, :snapshot, :room, keyword_init: true)
-  PendingWrite = Struct.new(:message_id, :packet, :sender, :writing, :uncertain, :error, keyword_init: true)
+  PendingWrite = Struct.new(:message_id, :packet, :sender, :writing, :uncertain, :error, :random_request, :pool_request, :write_guard,
+    :resolution, keyword_init: true)
 
   SessionIdentity = Struct.new(:table_id, :session_id, :control_epoch, keyword_init: true) do
     def self.from_row(row)

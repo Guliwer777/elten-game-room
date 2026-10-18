@@ -4,6 +4,7 @@ require_relative 'tables_gateway'
 require_relative 'operation_journal'
 require_relative 'server_schedule_store'
 require_relative 'server_phase_store'
+require_relative 'phase_description'
 require_relative 'ordinary_match_service'
 require_relative 'server_readiness_service'
 require_relative 'server_proposal_service'
@@ -381,6 +382,30 @@ module GameRoomTournaments
       result
     end
 
+    def event_notice_source_on_worker(publication_ref:,kind:,phase_id:nil)
+      account!;compose
+      reference=stored_reference(publication_ref)
+      value=@service.notification_context(publication_ref:reference)
+      return value unless %w[finished phase_finished].include?(kind) && value['publication']
+      # Rendering/validating a notice is read-only. Only the coordinator may
+      # advance a sporting phase; a notice must not race its plan publication.
+      view=coordination_source_on_worker(publication_ref:reference)
+      if kind=='phase_finished'
+        transition=PhaseDescription.transitions(view).find{|entry|entry['phase_id']==phase_id}
+        transition=transition.merge('phase'=>PhaseDescription.label_data(transition['phase']),
+          'next_phase'=>PhaseDescription.label_data(transition['next_phase'])) if transition
+        return value.merge('transition'=>transition)
+      end
+      candidate=view.fetch('candidate')
+      reader=ordinary_service_on_worker(publication_ref:reference,lobby:nil,games:nil,transport:nil)
+      results=reader.result_view
+      units=results['champion'] ? [results['champion']] : results.fetch('standings').select{|row|row['place']==1}.map{|row|row['unit']}
+      teams=(candidate.dig('membership','units') || []).to_h{|unit|[unit['unit_id'],unit['accounts'].join(' + ')]}
+      value.merge('results'=>results.slice('completed','completed_at'),'winners'=>units.map{|unit|teams.fetch(unit,unit)})
+    ensure
+      reader&.close
+    end
+
     def coordination_source_on_worker(publication_ref:)
       account!; compose
       server_source(stored_reference(publication_ref))
@@ -738,7 +763,7 @@ module GameRoomTournaments
     # These APIs are also used directly by managed background work. UI access
     # and nested calls share the operation's scope, never another worker's.
     module WorkerReads
-      %i[directory_on_worker notification_context_on_worker start_notice_source_on_worker coordination_source_on_worker
+      %i[directory_on_worker notification_context_on_worker start_notice_source_on_worker event_notice_source_on_worker coordination_source_on_worker
         coordination_view_on_worker readiness_on_worker proposal_on_worker proposal_view_on_worker entry_status_on_worker].each do |name|
         define_method(name) do |*args,**keywords,&block|
           with_read_scope { super(*args,**keywords,&block) }

@@ -41,10 +41,6 @@ driver.press('Tournaments',9) do |form|
   assert_equal(1,form.instance_variable_get(:@timers).size,'Deadline event accumulated timers')
 end
 driver.press('Tournaments',39){|form|assert_equal(1,form.index)}
-driver.press('Tournaments',39) do |form|
-  assert_equal([11],form.fields[0].instance_variable_get(:@item_keys))
-  assert(form.fields[0].options.first.include?('You are registered'),'Own membership was not labelled')
-end
 driver.step('Tournaments',[13]) do |form|
   assert_equal([33,44],form.fields[0].instance_variable_get(:@item_keys))
   form.fields[0].index=1

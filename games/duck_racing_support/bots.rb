@@ -290,8 +290,8 @@ module GameRoomDuckRacing
       replay.state.fetch(:duck_challenge_events, []).each do |data|
         accepted = case data[:action]
         when "input"
-          ChallengeEngine.submit(model, seat: data[:seat], action: data[:input], now_ms: data[:at])
-        when "advance" then ChallengeEngine.expire(model, now_ms: data[:at])
+          ChallengeEngine.submit(model, seat: data[:seat], action: data[:input], now_ms: data[:at], seed: data[:seed])
+        when "advance" then ChallengeEngine.expire(model, now_ms: data[:at], seed: data[:seed])
         end
         memory = ChallengeBot.observe(ChallengeEngine.view(model, seat: seat), memory: memory) if accepted
       end

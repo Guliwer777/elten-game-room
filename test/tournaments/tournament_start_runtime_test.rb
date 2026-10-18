@@ -116,6 +116,43 @@ begin
   assert(!label.call(forged).last.include?(publications[1]['title']),'Foreign sender supplied a start description')
   scope['account_epoch']='new-epoch'
   assert(Programs.map_app_notification(rows[1]).last.default_suppressed?,'Old account epoch stayed visible')
+  GameRoomLocalization.boot(settings:{'interface_language'=>'en','known_languages'=>['en']})
+  now-=T::TournamentStartNotice::READING_GRACE
+  phase={'schedule_id'=>'a'*64,'format'=>'groups_knockout'}
+  next_phase={'format'=>'knockout','knockout'=>{'round'=>1,'seeds'=>%w[alice bob],'players_per_match'=>2}}
+  event_reads=[]
+  event_source=->(reference,kind,phase_id) do
+    event_reads<<[kind,Thread.current,Programs.current_runtime]
+    {'publication'=>publications.first,'people'=>%w[alice bob],'members'=>[],
+      'transition'=>{'phase_id'=>phase_id,'phase'=>phase,'next_phase'=>next_phase,'completed_at'=>now},
+      'results'=>{'completed'=>true,'completed_at'=>now},'winners'=>['alice']}
+  end
+  EltenGameRoom.configure_tournament_events(source:event_source,context:-> {scope},clock:-> {now},registry:GameRoomGames::CATALOG)
+  %w[phase_finished finished].each_with_index do |kind,index|
+    service=EltenGameRoom.instance_variable_get(:@tournament_event_services).fetch(kind)
+    reference={'author'=>'alice','publication_key'=>publications.first['publication_key']}
+    notice=service.notices(publication_ref:reference,phase_id:kind=='phase_finished' ? phase['schedule_id'] : nil).first
+    row=make_row.call(101+index,notice)
+    row.payload=row.payload.merge('type'=>T::TournamentEventNotice::TYPES.fetch(kind))
+    EltenAPI::NotificationService.rows<<row
+    before=events.size
+    before_sounds=sounds.size
+    assert(Programs.receive_app_notification(row).last.default_suppressed?,'Unverified phase/result was announced')
+    EltenGameRoom.tournament_starts_tick
+    event_worker=EltenGameRoom.instance_variable_get(:@tournament_event_inboxes).fetch(kind).instance_variable_get(:@worker)
+    wait_background_work(event_worker) or raise 'Event verification did not finish'
+    EltenGameRoom.tournament_starts_tick
+    assert_equal(before+1,events.size)
+    assert_equal(before_sounds+1,sounds.size)
+    presentation=Programs.map_app_notification(row).last
+    assert_equal(kind=='phase_finished' ? :open_tournament_phase_standings : :open_tournament_standings,presentation.action)
+    assert(presentation.body.include?(kind=='phase_finished' ? 'Next: Final.' : 'Winner: alice'),'Missing phase/winner description')
+    count=event_reads.size
+    5.times{Programs.receive_app_notification(row);EltenGameRoom.tournament_starts_tick}
+    assert_equal(count,event_reads.size,'Duplicate notice repeated source reads')
+    assert_equal(before+1,events.size,'Duplicate event was announced')
+    assert(event_reads.last[1]!=Thread.current && event_reads.last[2]==runtime,'Event verification lost its owning background runtime')
+  end
 ensure
   $donotdisturb=previous_dnd
   EltenGameRoom.stop_tournament_starts

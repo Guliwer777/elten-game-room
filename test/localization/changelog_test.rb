@@ -392,6 +392,31 @@ assert(entry_251.changes[7].include?('separate window') && !entry_251.changes[7]
 assert(GameRoomChangelog.pending_entries(nil, 251).map(&:build) == [251], 'first build 251 launch repeats history')
 assert(GameRoomChangelog.pending_entries(251, 251).empty?, 'build 251 reopens after being read')
 assert(GameRoomChangelog.list_items([entry_251]).first == 'Version 2.0.5, build 251', 'build 251 heading differs')
+entry_252 = entries.find { |entry| entry.build == 252 }
+assert(entry_252.version == '2.0.5.1' && entry_252.changes.length == 27, 'build 252 has incorrect release metadata')
+assert(entry_252.changes.uniq.length == 27, 'build 252 contains duplicate notes')
+assert(entry_252.changes.any? { |note| note.include?('blacklist') }, 'build 252 omits the invitation blacklist')
+assert(entry_252.changes.any? { |note| note.include?('Invitations to tournament matches are not blocked.') },
+  'build 252 omits the tournament invitation exception')
+ordinary_departure = entry_252.changes.find { |note| note.start_with?('In ordinary Countries and Cities,') }
+assert(ordinary_departure && ordinary_departure.include?('unfinished round') && ordinary_departure.include?('fewer than two'),
+  'build 252 omits ordinary Categories departure consequences')
+assert(!ordinary_departure.include?('five minutes'), 'Ordinary departure must not promise the tournament return allowance')
+assert(entry_252.changes.any? { |note| note.include?('total of five minutes') && note.include?('without ending') },
+  'build 252 omits the return allowance or continued play after elimination')
+assert(entry_252.changes.last.include?('HRTF') && entry_252.changes.last.include?('sound settings'),
+  'build 252 omits optional spatial audio and where to switch it off')
+assert(GameRoomChangelog.pending_entries(251, 252).map(&:build) == [252], 'build 252 repeats older notes')
+assert(GameRoomChangelog.pending_entries(nil, 252).map(&:build) == [252], 'first build 252 launch repeats history')
+assert(GameRoomChangelog.pending_entries(252, 252).empty?, 'build 252 reopens after being read')
+assert(GameRoomChangelog.list_items([entry_252]).first == 'Version 2.0.5.1, build 252', 'build 252 heading differs')
+assert(entry_252.changes[6].include?('lose this protection') && entry_252.changes[6].include?('Ordinary games'),
+  'Private-hand release notes omit disclosure or ordinary-game limitations')
+%w[Bridge Poker Countries Duck Chat Ctrl+F Statistics].each do |topic|
+  assert(entry_252.changes.join(' ').include?(topic), "build 252 lacks #{topic}")
+end
+assert(entry_252.changes[6].include?('Tournament matches cannot be saved'),
+  'Tournament release notes omit the uniform no-save policy')
 %w[PL CS ES RU].each do |language|
   bytes = File.binread(File.expand_path("../../locale/#{language}.mo", __dir__))
   total, source_table, target_table = bytes.byteslice(8, 12).unpack('V3')
@@ -409,5 +434,7 @@ assert(GameRoomChangelog.list_items([entry_251]).first == 'Version 2.0.5, build 
     "build 250 has untranslated #{language} notes")
   assert(entry_251.changes.all? { |source| !release_catalog.fetch(source, '').empty? },
     "build 251 has untranslated #{language} notes")
+  assert(entry_252.changes.all? { |source| !release_catalog.fetch(source, '').empty? },
+    "build 252 has untranslated #{language} notes")
 end
-puts "Changelog tests passed: first launch, updates, downgrade, Enter, storage, old notes preserved and multilingual build 251 notes"
+puts "Changelog tests passed: first launch, updates, downgrade, Enter, storage, old notes preserved and multilingual build 252 notes"

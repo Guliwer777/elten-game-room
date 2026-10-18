@@ -1,0 +1,319 @@
+{
+  "source": "games/bridge.rb",
+  "sections": [
+    {
+      "id": "aim",
+      "title": {
+        "en": "The aim"
+      },
+      "paragraphs": [
+        {
+          "en": "Bridge is played by four people in two partnerships. You and your partner bid for a contract: a promise to win a certain number of tricks. A trick is the four cards played in turn, one from each hand. If your pair wins the auction, you try to fulfil that promise; otherwise, you try to stop the other pair."
+        },
+        {
+          "en": "The default game is a rubber. It ends when a pair has won two games, and the pair with more points overall wins the match. The scoring chapters explain how individual deals build towards that result."
+        }
+      ]
+    },
+    {
+      "id": "deal",
+      "title": {
+        "en": "Your hand and your partner"
+      },
+      "paragraphs": [
+        {
+          "en": "North and South form one pair; East and West form the other. The teams chosen at the table determine these partnerships. Play follows the order North, East, South, West. Press I to hear your position and partner."
+        },
+        {
+          "en": "Everyone receives 13 cards. In each suit, the order from highest to lowest is ace, king, queen, jack, 10, 9 and so on down to 2. Browse your cards with the arrows; H reads the whole hand."
+        },
+        {
+          "en": "H also gives your high card points: 4 for an ace, 3 for a king, 2 for a queen and 1 for a jack. These help you judge your hand during bidding; they are separate from the match score."
+        }
+      ]
+    },
+    {
+      "id": "auction",
+      "title": {
+        "en": "Bidding for a contract"
+      },
+      "paragraphs": [
+        {
+          "en": "The dealer makes the first call. On your turn, choose a call with the arrows and confirm with Enter. B also opens the bidding choices."
+        },
+        {
+          "en": "A bid consists of a number from 1 to 7 and a suit, or no trump. Add six to the number to find your target: 1 heart promises seven tricks, while 4 spades promises ten. The named suit becomes trumps, whose cards can beat cards of the other suits. A no-trump contract has no such suit."
+        },
+        {
+          "en": "Each new bid must be higher than the last. At the same level, the order is clubs, diamonds, hearts, spades, no trump. Any bid at a higher level outranks those below it. After 1 spade, for example, you can bid 1 no trump or 2 clubs."
+        },
+        {
+          "en": "You can also make these calls:"
+        },
+        {
+          "en": "- Pass leaves the bidding to the next player. You can bid later if the auction comes back to you."
+        },
+        {
+          "en": "- Double raises the rewards for making the opponents' bid and the penalties for failing. It is available after an opponent's bid, possibly followed by passes."
+        },
+        {
+          "en": "- Redouble raises the stakes again after an opponent has doubled your pair's bid. A new, higher bid cancels the earlier double or redouble."
+        },
+        {
+          "en": "Three consecutive passes after a bid end the auction. The last bid becomes the contract. If all four players pass before anyone bids, the deal ends without a score and the next player deals."
+        },
+        {
+          "en": "L reads the auction; Ctrl+L lets you inspect its calls one by one."
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": {
+        "en": "Playing the contract"
+      },
+      "paragraphs": [
+        {
+          "en": "The declarer is the member of the winning pair who first bid the suit of the final contract, or first bid no trump if that is the contract. If North bids 1 heart and South later bids 4 hearts, North declares."
+        },
+        {
+          "en": "The player after declarer leads the first card. Declarer's partner then exposes their hand: this is dummy. Everyone can read it with D, but declarer chooses its cards. K repeats the contract and the number of tricks won by declarer's pair."
+        },
+        {
+          "en": "Choose a card with the arrows and play it with Enter. You must follow the suit led if you have it. Otherwise, you may play any card. The highest trump wins the trick; if no trump was played, the highest card of the led suit wins. The winner leads the next trick."
+        },
+        {
+          "en": "As declarer, wait for dummy's turn, then use Tab to reach dummy's card list and select a card there. Z takes you straight to a playable card in the hand due to play; Shift+Z goes backwards. With only one possible card, Z plays it."
+        },
+        {
+          "en": "C reads the current trick, F repeats the suit led, and P reads the previous trick and its winner. After all 13 tricks, the deal is scored and the next player becomes dealer."
+        }
+      ]
+    },
+    {
+      "id": "scoring",
+      "title": {
+        "en": "Scoring a rubber"
+      },
+      "paragraphs": [
+        {
+          "en": "Only the tricks promised beyond the first six earn contract points. If you make your contract, they are worth:"
+        },
+        {
+          "en": "- 20 each in clubs or diamonds."
+        },
+        {
+          "en": "- 30 each in hearts or spades."
+        },
+        {
+          "en": "- 40 for the first in no trump, then 30 each."
+        },
+        {
+          "en": "A double multiplies contract points by two; a redouble multiplies them by four. These points are recorded below the line. When a pair reaches 100 below the line, in one deal or several, it wins a game. Both pairs then start the next game from zero towards that target."
+        },
+        {
+          "en": "For example, making 2 hearts earns 60 below the line. Making 1 no trump in a later deal adds 40 and completes the game, provided neither pair has completed a game in between."
+        },
+        {
+          "en": "A pair that has won a game becomes vulnerable for the rest of the rubber. Vulnerability increases some bonuses and penalties. V reads the current deal and vulnerability."
+        },
+        {
+          "en": "The first pair to win two games ends the rubber and receives a bonus: 700 if the opponents won none, or 500 if they won one. All points, including the bonuses described next, count towards the final total. The higher total wins; equal totals are a draw. S reads the scores."
+        }
+      ]
+    },
+    {
+      "id": "bonuses",
+      "title": {
+        "en": "Extra tricks and penalties"
+      },
+      "paragraphs": [
+        {
+          "en": "Bonuses and penalties are recorded above the line. They count towards your total but not towards the 100 points needed to win a game."
+        },
+        {
+          "en": "- Each overtrick, beyond your contract, earns 20 in clubs or diamonds and 30 in hearts, spades or no trump."
+        },
+        {
+          "en": "- With a doubled contract, each overtrick earns 100, or 200 if vulnerable. Redoubling makes those amounts 200 and 400."
+        },
+        {
+          "en": "- Making a doubled contract adds 50; making a redoubled contract adds 100."
+        },
+        {
+          "en": "- Bidding and making 6, a small slam, earns a bonus of 500, or 750 if vulnerable. Bidding and making 7, a grand slam, earns 1000, or 1500 if vulnerable."
+        },
+        {
+          "en": "If your pair wins fewer tricks than promised, the opponents receive points for the shortfall:"
+        },
+        {
+          "en": "- Without a double: 50 for each missing trick, or 100 if your pair is vulnerable."
+        },
+        {
+          "en": "- Doubled, not vulnerable: 100 for the first missing trick, 200 each for the second and third, and 300 each after that."
+        },
+        {
+          "en": "- Doubled and vulnerable: 200 for the first missing trick and 300 each after that."
+        },
+        {
+          "en": "- Redoubled: twice the corresponding doubled penalty."
+        }
+      ]
+    },
+    {
+      "id": "honors",
+      "title": {
+        "en": "Honours"
+      },
+      "paragraphs": [
+        {
+          "en": "A strong group of cards in one hand can earn a separate bonus, even if its owner is defending:"
+        },
+        {
+          "en": "- Four of the five highest trumps — ace, king, queen, jack and 10 — earn 100 points. All five earn 150."
+        },
+        {
+          "en": "- In a no-trump contract, all four aces in one hand earn 150."
+        },
+        {
+          "en": "These points go above the line. Table settings let you turn honours off."
+        }
+      ]
+    },
+    {
+      "id": "variants",
+      "title": {
+        "en": "Comparison with an estimated score"
+      },
+      "paragraphs": [
+        {
+          "en": "Instead of a rubber, table settings offer a fixed series of 4, 8, 12, 16 or 24 boards; the default is 8. In this variant, each board is scored separately. The board number determines the dealer and vulnerability. V reads them."
+        },
+        {
+          "en": "A contract worth at least 100 contract points earns a game bonus of 300, or 500 if vulnerable. A smaller contract earns 50. Overtricks, doubles, slams and penalties keep the values described above. There are no honours or rubber bonuses."
+        },
+        {
+          "en": "Your result is then compared with a conventional reference score based on the stronger pair's combined high card points and vulnerability. This is an estimate, not a result from another table. It ignores suit lengths and how well the partners' hands fit."
+        },
+        {
+          "en": "For example, a pair with 26 high card points has a reference of 400 when not vulnerable or 600 when vulnerable. At 20 points each, the reference is zero. Even a passed-out board is compared: its actual result is zero."
+        },
+        {
+          "en": "Choose one of two ways to count that comparison:"
+        },
+        {
+          "en": "- IMPs convert the difference into points. A difference of up to 10 earns none; 20–40 earns 1, 50–80 earns 2 and 90–120 earns 3. Larger differences earn more, up to 24. The pair that outperforms the reference receives those points."
+        },
+        {
+          "en": "- Matchpoints give 2 to the pair that outperforms the reference and 0 to the other pair. An equal result gives 1 each. S also presents the total as a percentage of the available points."
+        },
+        {
+          "en": "After the agreed number of boards, the pair with the higher total wins. Equal totals are a draw."
+        }
+      ]
+    },
+    {
+      "id": "bots",
+      "title": {
+        "en": "Bidding with a bot"
+      },
+      "paragraphs": [
+        {
+          "en": "A bot uses its own cards, the exposed dummy and the public auction and play. Its natural bidding system includes these common openings:"
+        },
+        {
+          "en": "- 1 no trump shows a balanced hand with 15–17 high card points; 2 no trump shows 20–21."
+        },
+        {
+          "en": "- 1 heart or 1 spade usually shows at least 12 points and five cards in that suit. Without a five-card major, the bot opens a minor suit."
+        },
+        {
+          "en": "- 2 diamonds, 2 hearts or 2 spades shows a six-card suit and 6–10 points."
+        },
+        {
+          "en": "A raise of your suit shows support. Raising to two is weak; raising to three invites game. Bots do not double."
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "en": "Keyboard shortcuts"
+      },
+      "paragraphs": [
+        {
+          "en": "Arrows: browse cards or calls."
+        },
+        {
+          "en": "Enter: make the selected call or play the selected card."
+        },
+        {
+          "en": "B: choose a call on your bidding turn; otherwise read the auction."
+        },
+        {
+          "en": "L: read the auction."
+        },
+        {
+          "en": "Ctrl+L: inspect the auction."
+        },
+        {
+          "en": "H: read your hand and high card points."
+        },
+        {
+          "en": "D: read dummy's cards."
+        },
+        {
+          "en": "Tab: move between card lists."
+        },
+        {
+          "en": "Z: find the next playable card; play it if it is the only one."
+        },
+        {
+          "en": "Shift+Z: find the previous playable card."
+        },
+        {
+          "en": "K: read the contract and declarer's trick count."
+        },
+        {
+          "en": "C: read the current trick."
+        },
+        {
+          "en": "Ctrl+C: inspect the current trick."
+        },
+        {
+          "en": "F: read the suit led."
+        },
+        {
+          "en": "P: read the previous trick."
+        },
+        {
+          "en": "I: read your position, partner and role."
+        },
+        {
+          "en": "V: read the deal, vulnerability and contract."
+        },
+        {
+          "en": "S: read the scores."
+        },
+        {
+          "en": "T: read whose turn it is."
+        },
+        {
+          "en": "Shift+C: sort cards by suit."
+        },
+        {
+          "en": "Shift+H: sort cards by rank."
+        },
+        {
+          "en": "Shift+M: restore received order."
+        }
+      ]
+    }
+  ],
+  "option_chapters": {
+    "variant": "variants",
+    "boards": "variants",
+    "scoring": "variants",
+    "honors": "honors"
+  }
+}

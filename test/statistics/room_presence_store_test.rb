@@ -785,4 +785,5 @@ presence_test("retention rechecks renewed report and works after restart") do
   assert(api.rows.empty?, "A restarted reporter cannot clean its own expired rows")
 end
 
+raise "PRESENCE_CASE did not select any scenario" if $presence_tests.zero?
 puts "Room presence store: #{$presence_tests} scenarios, #{$presence_assertions} assertions passed (including real host Apps/AppTable with offline transport)"

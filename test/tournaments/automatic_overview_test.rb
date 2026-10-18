@@ -25,7 +25,7 @@ assert_equal(record, second[:rows].first['record'])
 assert_equal(1, I.with_connection(state, 'Alpha') { |connection| connection.tournament_catalog(publication_ref: state[:reference]).size })
 assert_equal(match_count, I.with_connection(state, 'Observer') { |connection| connection.tournament_catalog(publication_ref: state[:reference]).first['progress']['matches'].size })
 assert_equal(2, record['preview']['source']['candidate']['groups'].size) if groups
-puts 'PASS four players: 12 automatic return matches, standings and stable repeated overview'
+puts "PASS four players: #{match_count} automatic return matches, standings and stable repeated overview"
 entry.close
 session.close
 state[:program].finalize

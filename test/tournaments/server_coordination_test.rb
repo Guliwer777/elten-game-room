@@ -37,12 +37,12 @@ sandbox do |c|
   source=owner.shared_schedule(publication_ref:ref)
   match=source.fetch('candidate').fetch('matches').first
   args={publication_ref:ref,match_id:match['match_id'],leg:match['leg']}
-  wakes,starts=[],[]
+  wakes,starts,finishes=[],[],[]
   worker=Object.new
   worker.define_singleton_method(:close){}
   c.user='RealOwner'
   coordinator=T::ServerCoordination.new(workspace:owner,user:-> {c.user},clock:-> {c.now},worker:worker,
-    wake:->(*values){wakes<<values},started:->(reference){starts<<reference})
+    wake:->(*values){wakes<<values},started:->(reference){starts<<reference},finished:->(reference){finishes<<reference})
   writes=plans.rows.size
   stage='initial-coordination'
   coordinator.coordinate(ref,broadcast:true)
@@ -97,7 +97,8 @@ sandbox do |c|
   joiner.observe(table,h.session,h.replay('SecondPlayer'))
   deadline=Process.clock_gettime(Process::CLOCK_MONOTONIC)+5
   loop do
-    raise error if (error=joiner.take_error)
+    error = joiner.take_error
+    raise error if error
     break if guest.coordination_view_on_worker(publication_ref:ref)['results']['completed']
     raise 'Guest result did not arrive' if Process.clock_gettime(Process::CLOCK_MONOTONIC)>deadline
     Thread.pass
@@ -106,6 +107,15 @@ sandbox do |c|
   final_view=coordinator.coordinate(ref)
   assert_equal(true,final_view['completed'])
   assert_equal(1,final_view['results']['results'].size)
+  2.times{coordinator.coordinate(ref)}
+  assert_equal([ref],finishes,'Completion callback was repeated')
+  owner.define_singleton_method(:coordination_view_on_worker){|**|raise 'Notice attempted sporting phase advancement'}
+  writes=plans.rows.size
+  notice_source=owner.event_notice_source_on_worker(publication_ref:ref,kind:'finished')
+  assert_equal(writes,plans.rows.size,'Notice wrote to server plans')
+  assert_equal(true,notice_source['results']['completed'])
+  assert(notice_source['results']['completed_at'].positive?)
+  assert(!notice_source['winners'].empty?)
   assert_equal({},coordinator.instance_variable_get(:@deadlines))
   puts "SDK reads by stage: #{request_counts.inspect}"
 ensure

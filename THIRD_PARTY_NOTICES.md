@@ -36,6 +36,35 @@ a statement that the PRs have been merged on GitHub.
 
 ## Sounds
 
+### Poker — betting and pot sounds
+
+These six recordings were supplied with
+[PR #37](https://github.com/papierek1997/elten-game-room/pull/37).
+The integrated Opus files preserve the contribution's audio bytes; they
+were not encoded again during integration. The contribution converted
+Freesound HQ Ogg previews to Ogg Opus, 144 kb/s VBR, 48 kHz, 20 ms frames,
+audio mode and complexity 10.
+
+The fold sound uses the complete “Failure Jingle.ogg”, sped up from about
+3.2 to 2 seconds without changing pitch, with a gain of 1.15. The other
+five recordings were converted without trimming, normalization or gain
+changes. Channel counts and the imported files' metadata were retained;
+the authors' attribution is recorded below.
+
+| Application file | Original title and author | Source | License |
+| --- | --- | --- | --- |
+| `Audio/poker_fold.opus` | Failure Jingle.ogg — TitanKämpfer | [Freesound](https://freesound.org/people/TitanKaempfer/sounds/689902/) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `Audio/poker_check.opus` | Typewriter snippet02 — cabled_mess | [Freesound](https://freesound.org/people/cabled_mess/sounds/360602/) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `Audio/poker_call.opus` | poker_chips2.wav — fartheststar | [Freesound](https://freesound.org/people/fartheststar/sounds/201806/) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `Audio/poker_raise.opus` | clatter09 — SilverDubloons | [Freesound](https://freesound.org/people/SilverDubloons/sounds/817566/) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `Audio/poker_pot.opus` | Coins - 27.wav — DWOBoyle | [Freesound](https://freesound.org/people/DWOBoyle/sounds/140372/) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `Audio/poker_all_in.opus` | AllInPushChips.wav — Joma86 | [Freesound](https://freesound.org/people/Joma86/sounds/532861/) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+
+Full license texts: [CC0 1.0](LICENSES/CC0-1.0.txt) and
+[CC BY 4.0](LICENSES/CC-BY-4.0.txt). The authors do not endorse the
+application. Preserve the attribution, source links and modification
+notice when distributing these sounds.
+
 ### Farkle — banking points
 
 `Audio/farkle_bank.opus` uses “Save complete (PSX UI SFX Free)” by

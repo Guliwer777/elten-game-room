@@ -3,6 +3,20 @@
 module GameRoomNotificationTime
   module_function
 
+  # Native envelopes validate the outer Hash, not individual metadata values.
+  # Preserve the old scalar to_i conversion and missing-field defaults without
+  # allowing one malformed notice to interrupt a list or a deferred tick.
+  def integer_value?(value)
+    value.nil? || value.is_a?(String) || value.is_a?(Integer) ||
+      (value.is_a?(Float) && value.finite?)
+  end
+
+  def valid_metadata?(metadata)
+    metadata.is_a?(Hash) && %w[created_at expires_at expires_in native_expires_at].all? do |key|
+      integer_value?(metadata.key?(key) ? metadata[key] : metadata[key.to_sym])
+    end
+  end
+
   def created_at(notification)
     value = if notification.respond_to?(:date)
       notification.date.to_i
@@ -16,6 +30,7 @@ module GameRoomNotificationTime
 
   def expires_at(notification, metadata = nil)
     metadata ||= notification.respond_to?(:metadata) ? notification.metadata.to_h : {}
+    return 0 unless valid_metadata?(metadata)
     metadata = metadata.to_h.transform_keys(&:to_s)
     created = created_at(notification)
     # Compatibility with old/offline adapters that have no server envelope.

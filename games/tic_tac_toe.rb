@@ -8,6 +8,7 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class TicTacToe < Base
+    def player_spatial_audio?; true; end
     include GameRoomBoardPresentation
     SIZE = 3
     MARKS = ["X", "O"].freeze

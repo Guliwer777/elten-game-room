@@ -9,7 +9,8 @@ h.add_client('Watcher')
 h.join('Watcher')
 h.as('Alice') { h.transports['Alice'].set_observer(h.table, true, actor: 'Alice', subject: 'Watcher') }
 repo = h.repositories['Alice']
-context = GameRoomGames::ActionContext.new(random_source: GameRoomRandom::SeededSource.new(72))
+context = GameRoomGames::ActionContext.new(random_source: GameRoomRandom::SeededSource.new(72),
+  server_random: h.session['__server_random'] == GameRoomServerRandom::VERSION)
 before = h.replay('Alice')
 status, plan = h.game.action_for({'kind' => 'command', 'action' => 'deal'}, before, 'Alice', context: context)
 assert(status == :ok, 'The initial deal was not prepared')

@@ -62,7 +62,7 @@ driver.step(L.call('Tournament standings'), [27]) do |form|
   assert(content.include?(L.call('Tournament in progress')), 'Missing overall state')
   assert(content.include?(L.call('No numeric small points recorded.')), 'Missing explicit absence of game points') if generic
   %w[unit-A unit-B unit-C].each { |team| assert(content.include?(team), "Missing #{team}") }
-  assert(content.include?(L.call('Tournament points: win 2, draw 1, loss 0. Game points are recorded separately.')), 'Missing scoring scope')
+  assert(content.include?(L.call('Each match awards 2 tournament points per opponent beaten and 1 per tied opponent. Teams count as single opponents.')), 'Missing scoring scope')
 end
 driver.step(L.call('Accepted fixed-team plans'), [27]) do |form|
   assert_equal(selection, hub.instance_variable_get(:@fixed_team_entry).controller.view[:selection])

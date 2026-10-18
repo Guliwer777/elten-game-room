@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 # Pionowa regresja: prawdziwy hub, natywne kontrolki, Tasks i lokalny magazyn.
 # Wszystkie pliki wyłącznie w odizolowanym TMPDIR; wyjścia urządzeń w pamięci.
 require 'tmpdir'
@@ -79,7 +80,7 @@ observations = []
   invalid_options: ['game_options', {'bot_delay' => 'wrong'}, 'This form has not requested publication. Correct the game options in the saved draft.'],
   invalid_players_per_match: ['players_per_match', 3, 'This form has not requested publication. Correct the number of players per match in the saved draft.']
 }.each do |code, (key, value, expected)|
-  Dir.mktmpdir('publication-preflight-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('publication-preflight-') do |directory|
     $preflight_trace = {callback: 0, save: 0, service: 0, prepare: 0, insert: 0, validation: [], codes: []}
     alerts = []
     program = Object.new
@@ -142,7 +143,7 @@ G::TablesGateway.prepend(PreflightSnapshotFailure)
 
 # Dodatnia kontrola i prawdziwe awarie zapisu. Żaden callback nie fabrykuje nil.
 [:confirmed, :after_append, :journal, :snapshot, :program].each do |scenario|
-  Dir.mktmpdir('publication-preflight-boundary-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('publication-preflight-boundary-') do |directory|
     $preflight_trace = {callback: 0, save: 0, service: 0, prepare: 0, insert: 0, validation: [], codes: []}
     $preflight_failure = scenario
     messages, active, editor = [], nil, nil
@@ -257,7 +258,7 @@ G::DraftWorkspace.prepend(PreflightDraftLoadTrace)
 
 # Mutacje caller-a i zmiana realnego konta nie podmieniają migawki/aktora.
 [:alert, :help].each do |boundary|
-  Dir.mktmpdir('publication-preflight-context-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('publication-preflight-context-') do |directory|
     $preflight_trace = {callback: 0, save: 0, service: 0, prepare: 0, insert: 0, validation: [], codes: []}
     owner, messages, editor, active, parent, returns = 'RealOwner', [], nil, nil, nil, nil
     program = Object.new

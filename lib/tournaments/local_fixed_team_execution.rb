@@ -145,6 +145,7 @@ module GameRoomTournaments
     def knockout_execution_accept(preview:)
       raise Invalid, :missing_selection unless selection
       shown = KnockoutPhase.frozen_copy(preview)
+      raise Invalid, :invalid_preview unless shown.is_a?(Hash) && shown['source'].is_a?(Hash)
       record!(true)
       @port.transaction do |document|
         approved = knockout_store.readback(parent_intent: selection[:record]['preview']['intent_id'])
@@ -161,6 +162,7 @@ module GameRoomTournaments
     end
 
     def knockout_execution_readback
+      raise Invalid, :missing_selection unless selection
       approved = knockout_store.readback(parent_intent: selection[:record]['preview']['intent_id'])
       record = approved && @backend.readback(intent_id: 'knockout-execution-v1:' + approved['preview']['digest'])
       {state: record ? :confirmed : :unknown, record: record}.freeze

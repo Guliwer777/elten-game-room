@@ -41,7 +41,13 @@ module GameRoomTournaments
       @pairing_uncertain = true
       result = @workspace.set_partner(@publication['__id'], account, partner, 'organizer-pair:' + SecureRandom.uuid)
       @pairing_uncertain = false if result && result['status'] == 'confirmed'
-      @alert.call(text(result && result['status'] == 'confirmed' ? _("Pair saved. Refresh to check the current partners.") : _("Pair not confirmed. Check Operations before trying again.")))
+      message = if result && result['status'] == 'confirmed'
+        result.dig('evidence', 'pairing_applied') == false ?
+          _("The tournament changed. Refresh its view before changing it again.") : _("Pair saved. Refresh to check the current partners.")
+      else
+        _("Pair not confirmed. Check Operations before trying again.")
+      end
+      @alert.call(text(message))
       refresh_members
     end
     def remove_selected

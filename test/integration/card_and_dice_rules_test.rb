@@ -260,7 +260,8 @@ check("Monopoly: bankrupted rent payer cannot create unearned money") do
   before = state[:cash]["Bob"]
   monopoly.send(:resolve_square, state, "Alice", 1, [])
   expect(monopoly.send(:apply_bankruptcy, state, event("bankrupt"), "Alice", REPO, []), "Fixture bankruptcy rejected")
-  expect(state[:cash]["Bob"] - before <= 1 || state[:owners][3] == "Bob", "Creditor received #{state[:cash]['Bob'] - before} from 1 cash, debtor property returned to bank instead of creditor")
+  expect(state[:cash]["Bob"] - before == 1, "Creditor must receive exactly the bankrupt payer's remaining 1 cash")
+  expect(state[:owners][3] == "Bob", "Debtor property must pass to the creditor")
 end
 check("Monopoly: advance to Start counts a completed board lap") do
   state = initial(monopoly, "forbid_first_round_purchase" => true)

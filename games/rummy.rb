@@ -7,9 +7,12 @@ require_relative "../lib/game_bots"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register_payload('rummy', ['deal'])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Rummy < CardGame
+    def player_spatial_audio?; true; end
     include PublicHistoryAnnouncements
     Rules = GameRoomRummyRules
     DISCARDS = [
@@ -88,15 +91,20 @@ module GameRoomGames
 
     def replay(session, events, repository)
       state = initial_state(repository.players_for(session), options_from_json(session["options"]))
+      GameRoomPrivateCardLedger.initialize_state(state, session) if GameRoomPrivateCards.enabled?(session)
       accepted = []
       history = [starting_history(state[:players])]
       seen = {}
-      GameRoomActionPayload.each(events, "rummy", repository, session) do |data, actor, batch|
+      GameRoomActionPayload.each(events, "rummy", repository, session, controls: !!state[:private_cards]) do |data, actor, batch|
         next if state[:phase] == :finished || batch.any? { |e| seen[repository.event_id(e)] }
+        event = data ? batch.last.merge('action'=>data['action'], '__payload'=>data) : batch.last
+        # A rejected card action cannot undo its authenticated native reveal.
+        # Keep the public receipt even when the transactional model copy fails.
+        GameRoomPrivateCardLedger.observe_reveal(state, event, actor) if state[:private_cards]
         copy = copy_state(state)
         additions = []
         event_id = repository.event_id(batch.last)
-        next unless apply(copy, data, actor, event_id, additions) == :ok
+        next unless apply_replay_event(copy, event, session, repository, additions)
         record_deck_reshuffle(additions, state[:recycle], copy[:recycle], event_id)
         state = copy
         history.concat(additions)
@@ -122,10 +130,13 @@ module GameRoomGames
       data["time"] = (context&.now || GameRoomSessionClock.for_state(replay.state)).to_i
       if data["action"] == "deal"
         return [:invalid, nil] unless context&.random_source
-        data["seed"] = card_seed(context.random_source)
+        data["seed"] = context.server_random ? '0' * 32 : card_seed(context.random_source)
       end
       status = apply(copy_state(replay.state), data, actor, 0, [])
       return [status, nil] unless status == :ok
+      if data['action'] == 'deal' && context.server_random
+        return [:ok, ActionPlan.new(events: [GameRoomServerRandom.payload_seed_command(action: id, data: data)])]
+      end
       [:ok, ActionPlan.new(events: GameRoomActionPayload.commands("rummy", data))]
     rescue JSON::ParserError, TypeError
       [:invalid, nil]
@@ -206,6 +217,11 @@ module GameRoomGames
 
     protected
 
+    def apply_replay_event(state, event, session, repository, history)
+      data = event['__payload']
+      data && apply(state, data, repository.actor_of(event, session), repository.event_id(event), history) == :ok
+    end
+
     def copy_state(value)
       case value
       when Hash then value.to_h { |key, item| [key, copy_state(item)] }
@@ -242,7 +258,7 @@ module GameRoomGames
       end
       return :invalid unless state[:phase] == :playing
       if data["action"] == "timeout"
-        return :not_your_turn unless same_user?(actor, state[:players].first)
+        return :not_your_turn unless same_user?(actor, timeout_actor(state))
         return :invalid unless deadline_reached?(state, data["time"])
         player = state[:current_player]
         penalty(state, player, 50)
@@ -310,6 +326,8 @@ module GameRoomGames
       begin_turn(state, data["time"])
       add_history(history, id, state[:current_player], :deal, _("Round %{round}. Cards dealt.") % { round: state[:round] })
     end
+
+    def timeout_actor(state); state[:players].first; end
 
     def begin_turn(state, time)
       state[:turn] += 1
@@ -481,8 +499,7 @@ module GameRoomGames
         finish_round(state, player, id, history)
         return
       end
-      on_table = state[:melds].flat_map { |m| m[:cards] }
-      progress = state[:drawn] || !(state[:turn_initial_hand] & on_table).empty?
+      progress = turn_progress?(state)
       state[:blocked_turns] = progress ? 0 : state[:blocked_turns] + 1
       players = active_players(state)
       if !draw_possible?(state) && state[:blocked_turns] >= 2 * players.length
@@ -491,6 +508,11 @@ module GameRoomGames
       end
       state[:current_player] = players[(players.index(player) + 1) % players.length]
       begin_turn(state, data["time"])
+    end
+
+    def turn_progress?(state)
+      on_table = state[:melds].flat_map { |meld| meld[:cards] }
+      state[:drawn] || !(state[:turn_initial_hand] & on_table).empty?
     end
 
     def finish_round(state, winner, id, history)
@@ -551,3 +573,5 @@ end
 
 require_relative "rummy_bot"
 require_relative "rummy_ui"
+require_relative "rummy_private"
+GameRoomGames::Rummy.prepend(GameRoomGames::RummyPrivate)

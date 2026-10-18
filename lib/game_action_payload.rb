@@ -14,6 +14,17 @@ module GameRoomActionPayload
   MAX_JSON = 12_000
   module_function
 
+  # Used at the ordinary write/validation boundary as well as by replay.
+  # This decodes a complete logical action; a prefix is never an action.
+  def data_from_commands(commands, action)
+    rows = commands.map { |command| GameRoomEventProtocol.normalized(command) }
+    reader = Object.new
+    def reader.actor_of(_event, _session); ''; end
+    decoded = []
+    each(rows, action, reader, {}) { |data, _, batch| decoded << data if batch.length == rows.length }
+    decoded.one? ? decoded.first : nil
+  end
+
   def commands(action, data)
     json = JSON.generate(data)
     raise ArgumentError, "Game action payload is too large" if json.bytesize > MAX_JSON
@@ -27,7 +38,7 @@ module GameRoomActionPayload
     end
   end
 
-  def each(events, action, repository, session)
+  def each(events, action, repository, session, controls: false)
     batch = []
     actor = nil
     header = nil
@@ -36,6 +47,7 @@ module GameRoomActionPayload
       who = repository.actor_of(event, session)
       unless event["action"].to_s == action && match
         batch = []; header = nil
+        yield(nil, who, [event]) if controls && event['action'].to_s != action
         next
       end
       index, count = match[1].to_i(36), match[2].to_i(36)

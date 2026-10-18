@@ -20,7 +20,7 @@ begin
   documents=TournamentServerPlanTableSupport::Table.new(user:-> {'alpha'})
   journal=T::OperationJournal.new(directory:File.join(fixture[:sandbox],'history-ui'),owner:'alpha',backend_identity:'history-ui')
   receipts={}
-  reader=->(candidate,_root){{'results'=>receipts.fetch(candidate['schedule_id'],[]),'standings'=>[]}}
+  reader=->(candidate,_root){{'results'=>receipts.fetch(candidate['schedule_id'],[]),'standings'=>[],'progress_times'=>[1000+receipts.size]}}
   store=T::ServerPhaseStore.new(table:documents,journal:journal,user:-> {'alpha'},source:-> {root},results:reader)
   ids=[]
   2.times do
@@ -37,6 +37,9 @@ begin
   # Use the actual compact producer output, not full synthetic candidates.
   assert_equal(ids,observed['phase_history'].map{|row|row['candidate']['schedule_id']},'History lost stable phase IDs')
   assert_equal([8,4],observed['phase_history'].map{|row|row['candidate'].dig('knockout','seeds')&.size},'History lost bracket sizes')
+  transitions=T::PhaseDescription.transitions(observed)
+  assert_equal(ids,transitions.map{|row|row['phase_id']},'Completed phases do not match verified phase history')
+  assert_equal(['Semifinals','Final'],transitions.map{|row|T::PhaseDescription.label(row['next_phase'])})
   workspace=Object.new
   workspace.define_singleton_method(:actor){'alpha'}
   overview_reads=0
@@ -47,20 +50,20 @@ begin
   end
   owner=T::Dialogs::Owner.new(-> {TournamentIndividualUI::F::OWNER},->(message){raise message})
   driver=TournamentNativeDriver.new
-  driver.step('Matches') do |form|
+  driver.step('Tournament matches') do |form|
     phases=TournamentIndividualUI::F.field(form,'Tournament phase')
     assert_equal(['Quarterfinals','Semifinals','Final'],phases.options)
     assert_equal(2,phases.index)
     phases.index=0
     phases.trigger(:move)
   end
-  driver.step('Matches') do |form|
+  driver.step('Tournament matches') do |form|
     assert_equal('Matches — Quarterfinals; completed: 4/4',form.fields.first.options.first)
     phases=TournamentIndividualUI::F.field(form,'Tournament phase')
     phases.index=1
     phases.trigger(:move)
   end
-  driver.step('Matches',[27]) do |form|
+  driver.step('Tournament matches',[27]) do |form|
     assert_equal('Matches — Semifinals; completed: 2/2',form.fields.first.options.first)
   end
   T::ServerScheduleOverview.new(program:program,workspace:workspace,owner:owner,
@@ -71,7 +74,7 @@ begin
   screen=T::ServerScheduleOverview.new(program:program,workspace:workspace,owner:owner,mode: :results,
     publication:{'title'=>'Real compact history','__insertion_user'=>'alpha','publication_key'=>'history-ui'})
   driver=TournamentNativeDriver.new
-  driver.step('Results — Final',[27]) do |form|
+  driver.step('Standings — Final',[27]) do |form|
     reads=overview_reads
     screen.send(:refresh_schedule,automatic:true)
     assert_equal(reads,overview_reads,'Automatic results refresh repeated coordinator reads')
@@ -86,6 +89,13 @@ begin
     screen.instance_variable_set(:@mode,:results)
   end
   screen.run
+  driver.finish
+  driver=TournamentNativeDriver.new
+  driver.step('Standings — Quarterfinals',[27]) do |form|
+    assert_equal(0,TournamentIndividualUI::F.field(form,'Tournament phase').index,'Phase notice opened current standings instead of the requested phase')
+  end
+  T::ServerScheduleOverview.new(program:program,workspace:workspace,owner:owner,mode: :results,initial_phase_id:ids.first,
+    publication:{'title'=>'Real compact history','__insertion_user'=>'alpha','publication_key'=>'history-ui'}).run
   driver.finish
 ensure
   program.class.singleton_class.remove_method(:tournament_view_snapshot) if program.class.respond_to?(:tournament_view_snapshot)

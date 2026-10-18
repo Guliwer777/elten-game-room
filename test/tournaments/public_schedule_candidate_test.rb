@@ -1,11 +1,12 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_public_service'
 require_relative '../../lib/tournaments/public_service'
 require_relative '../../lib/tournaments/schedule_candidate'
 include GameRoomTest::Assertions
 extend TournamentPublicServiceSupport
 G = GameRoomTournaments
-Dir.mktmpdir('entry-public-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('entry-public-') do |directory|
   context = TournamentPublicServiceSupport::Context.new(directory, 'Organizator')
   service = context.service
   assert(service.respond_to?(:schedule_candidate), 'R1: PublicService nie udostępnia odczytu oryginalnej projekcji do ScheduleCandidate')

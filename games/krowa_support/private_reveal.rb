@@ -31,6 +31,7 @@ module GameRoomGames
       player = replay.players.find { |name| same?(name, viewer) }
       surrendered = player && state[:surrender_words].key?(player)
       host = context.table_owner.to_s.empty? ? replay.players.first : context.table_owner
+      @request_needed = surrendered && !@word && !replay.finished?
       if surrendered && same?(viewer, host)
         secret = secret_for(replay, context)
         @word = secret.payload["word"] if secret
@@ -58,9 +59,14 @@ module GameRoomGames
       end
       if @request_needed && @clock.call - @last_request >= 5
         @last_request = @clock.call
-        send_packet(host, "request", state)
+        send_packet(host, "request", state) unless same?(viewer, host)
       end
       @word
+    rescue HiddenSubmissions::StorageError
+      # The client reports the read failure. Retain a bounded retry for a
+      # surrendered host too; no further public move may arrive to wake it.
+      @last_request = @clock.call
+      raise
     end
 
     private

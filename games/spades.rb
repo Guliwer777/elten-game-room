@@ -7,9 +7,12 @@ require_relative "../lib/spades_round_planner"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register('spades', ['deal'])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Spades < Base
+    def player_spatial_audio?; true; end
     RANKS = %w[2 3 4 5 6 7 8 9 T J Q K A].freeze
     SUITS = %w[C D H S].freeze
     # Immutable deck metadata; each actual deal receives its own mutable array.
@@ -329,6 +332,17 @@ module GameRoomGames
       replay.state.fetch(:scores)
     end
 
+    def tournament_forfeit_continuation(_replay, losing_unit:, options:)
+      # Bids, trick targets and the private audit require the original seats.
+      {'status'=>'cannot_continue'}
+    end
+
+    def tournament_scored_checkpoint(replay, options:)
+      return {'status'=>'unsupported'} if replay.state[:private_error]
+      replay.state[:tournament_checkpoint] || {'status'=>
+        replay.state[:round].to_i <= 1 && replay.state[:phase] != :round_complete ? 'none' : 'unsupported'}
+    end
+
     def tournament_fixed_team_protocol; 'card-bids-and-tricks-v1'; end
 
     def options_error(options, player_count: nil)
@@ -376,6 +390,7 @@ module GameRoomGames
       options = options_from_json(session["options"])
       scoring = Scoring.new(players, options)
       state = initial_state(players, options, scoring)
+      GameRoomPrivateCardLedger.initialize_state(state, session) if GameRoomPrivateCards.enabled?(session)
       accepted = []
       history = [starting_history(players)]
 
@@ -484,6 +499,10 @@ module GameRoomGames
         return [:invalid, nil] if context == nil || context.random_source == nil
 
         round = state[:round].to_i + 1
+        if context.server_random
+          dealer = state[:dealer_index] == nil ? '{dealer}' : (state[:dealer_index] + 1) % replay.players.length
+          return [:ok, server_seed_plan('deal', template: "#{round}|#{dealer}|{seed}", seats: (0...replay.players.length).to_a)]
+        end
         seed = random_seed(context.random_source)
         dealer = if state[:dealer_index] == nil
           seed.to_i(16) % replay.players.length
@@ -674,6 +693,9 @@ module GameRoomGames
       return false if ![:awaiting_deal, :round_complete].include?(state[:phase])
 
       round, dealer, seed = parse_deal(event["value"])
+      expected = state[:dealer_index] == nil ? '{dealer}' : (state[:dealer_index] + 1) % state[:players].length
+      return false unless GameRoomServerRandom.valid_text_seed_event?(event,
+        template: "#{state[:round] + 1}|#{expected}|{seed}", seats: (0...state[:players].length).to_a)
       return false if round != state[:round] + 1
       return false if !dealer.between?(0, state[:players].length - 1)
       if state[:dealer_index] != nil
@@ -748,7 +770,7 @@ module GameRoomGames
       card = event["value"].to_s
       hand = hand_for(state, actor)
       return false if hand == nil || !hand.include?(card)
-      return false if !legal_cards(state, actor).include?(card)
+      return false if !state[:private_cards] && !legal_cards(state, actor).include?(card)
 
       hand.delete_at(hand.index(card))
       state[:spades_broken] = true if card_suit(card) == "S"
@@ -795,6 +817,7 @@ module GameRoomGames
         scores: state[:scores]
       )
       state[:scores] = result.scores
+      remember_tournament_checkpoint(state, event_id: event_id, index: state[:round], kind: 'deal') unless state[:private_cards]
       result.units.each do |unit|
         history << HistoryEntry.new(
           key: "score:#{state[:round]}:#{unit.unit}",
@@ -1109,6 +1132,9 @@ module GameRoomGames
     end
   end
 end
+
+require_relative 'spades_private'
+GameRoomGames::Spades.prepend(GameRoomGames::SpadesPrivate)
 
 require_relative "spades/bid_evaluation"
 

@@ -9,9 +9,12 @@ require_relative "../lib/hidden_submissions"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register('quiz', %w[round_draw question])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class QuizParty < Base
+    include HiddenSubmissions::Cleanup
     def tournament_private_protocol?; true; end
     QUESTIONS_PER_ROUND = 3
     ROUND_CATEGORY_CHOICES = 3
@@ -173,14 +176,15 @@ module GameRoomGames
       players = repository.players_for(session)
       options = options_from_json(session["options"])
       state = initial_state(players, options)
+      HiddenSubmissions::Cleanup.start(state, session)
       accepted = []
       history = [starting_history(players)]
       frame = GameRoomReduction::Frame.new(state: state, players: players, options: options, history: history, draw: false)
       events.each do |event|
         input = GameRoomReduction.decode(event, session, repository)
         next unless input
-        timestamp = event_timestamp(event)
-        input.timestamp = GameRoomSessionClock.from_server(session, timestamp) if timestamp != nil
+        timestamp = GameRoomReduction.timestamp(event)
+        input.timestamp = GameRoomSessionClock.from_server(session, timestamp, event: event) if timestamp != nil
         accepted << event if apply_replay_event(frame, input)
       end
 
@@ -307,6 +311,7 @@ module GameRoomGames
     end
 
     def participant_status(replay, participant, connected: true)
+      return _("eliminated") if eliminated_from_game?(replay, participant)
       return _("disconnected") if !connected
 
       state = replay.state
@@ -331,6 +336,19 @@ module GameRoomGames
       participant_scores(replay)
     end
 
+    def tournament_scored_checkpoint(replay, options:)
+      replay.state[:tournament_checkpoint] ||
+        {'status'=>replay.state.fetch(:completed_rounds).zero? ? 'none' : 'unsupported'}
+    end
+
+    def tournament_forfeit_continuation(replay, losing_unit:, options:)
+      return {'status'=>'unsupported'} unless %i[drawing choosing starting answering revealing].include?(replay.state[:phase])
+      active = tournament_remaining_players(replay.state)
+      return {'status'=>'unsupported'} unless includes_player?(active, losing_unit)
+
+      {'status'=>active.length > 2 ? 'continue' : 'cannot_continue'}
+    end
+
     def tournament_ranking_result(replay, options:)
       outcome = tournament_export_result(replay, options: options)
       outcome.merge(winners: replay.state.fetch(:winners).dup, draw: false)
@@ -342,9 +360,9 @@ module GameRoomGames
       when :choosing
         current_chooser(state) == nil ? [] : [current_chooser(state)]
       when :answering
-        state[:players].reject { |player| player_hash_key?(state[:commitments], player) }
+        tournament_remaining_players(state).reject { |player| player_hash_key?(state[:commitments], player) }
       when :revealing
-        state[:players].select do |player|
+        tournament_remaining_players(state).select do |player|
           player_hash_key?(state[:commitments], player) && !player_hash_key?(state[:reveals], player)
         end
       else
@@ -372,7 +390,7 @@ module GameRoomGames
           { "kind" => "question", "action" => "submit", "question_id" => category_surface_id(state), "answer" => category }
         end
       when :answering
-        return [] if !includes_player?(state[:players], actor) || player_hash_key?(state[:commitments], actor)
+        return [] if !includes_player?(tournament_remaining_players(state), actor) || player_hash_key?(state[:commitments], actor)
         return [] if deadline_reached?(state, context&.now)
 
         (0...OPTION_COUNT).map do |index|
@@ -548,7 +566,7 @@ module GameRoomGames
 
     def answering_surface(state, viewer)
       question = current_question(state)
-      if question != nil && includes_player?(state[:players], viewer) &&
+      if question != nil && includes_player?(tournament_remaining_players(state), viewer) &&
           !player_hash_key?(state[:commitments], viewer)
         return GameSurfaces::QuestionSpec.new(
           id: question_surface_id(state),
@@ -579,12 +597,12 @@ module GameRoomGames
       return [:invalid, nil] if code == nil
 
       round = state[:completed_rounds] + 1
-      value = [state[:attempt] + 1, round, chooser_index(state[:players], round), code].join(",")
+      value = [state[:attempt] + 1, round, state[:players].index(current_chooser(state)), code].join(",")
       [:ok, event_plan("round_category", value)]
     end
 
     def submit_answer(selection, state, actor, context)
-      return [:not_your_turn, nil] if state[:phase] != :answering || !includes_player?(state[:players], actor)
+      return [:not_your_turn, nil] if state[:phase] != :answering || !includes_player?(tournament_remaining_players(state), actor)
       return [:invalid, nil] if selection["question_id"].to_s != question_surface_id(state)
       return [:already_submitted, nil] if player_hash_key?(state[:commitments], actor)
       return [:invalid, nil] if context == nil || context.hidden_submissions == nil
@@ -610,6 +628,11 @@ module GameRoomGames
         return [:not_your_turn, nil] if state[:phase] != :drawing || !owner?(state[:players], actor)
         return [:invalid, nil] if !next_question_pause_over?(state, context&.now)
 
+        if context.server_random
+          return [:ok, ActionPlan.new(events:[GameRoomServerRandom.text_seed_command(action:'round_draw',
+            template:"#{state[:completed_rounds]+1},n:{seed}")])]
+        end
+
         drawn = draw_round_categories(state, context)
         return [:invalid, nil] if drawn.empty?
 
@@ -621,6 +644,12 @@ module GameRoomGames
       when "start_question"
         return [:not_your_turn, nil] if state[:phase] != :starting || !owner?(state[:players], actor)
         return [:invalid, nil] if !next_question_pause_over?(state, context&.now)
+
+        if context.server_random
+          return [:invalid, nil] if drawable_questions(state).empty?
+          return [:ok, ActionPlan.new(events:[GameRoomServerRandom.text_seed_command(action:'question',
+            template:"#{state[:round]},#{state[:position]+1},n:{seed}")])]
+        end
 
         question = draw_question(state, context)
         return [:invalid, nil] if question == nil
@@ -648,16 +677,14 @@ module GameRoomGames
     end
 
     def pending_reveal(state, actor, context)
-      if player_hash_key?(state[:reveals], actor)
-        context&.hidden_submissions&.discard(
-          session_id: context.session_id,
-          round_id: question_key(state),
-          user: actor
-        )
-        return nil
-      end
+      return nil if player_hash_key?(state[:reveals], actor)
       return nil if !player_hash_key?(state[:commitments], actor)
-      return nil if reveal_plan(state, actor, context).first != :ok
+      status = reveal_plan(state, actor, context).first
+      # Use the runner's bounded retry for a temporarily unreadable file.
+      # Once the existing reveal deadline expires, do not let that retry
+      # prevent the owner from finishing the question.
+      return nil unless status == :ok ||
+        (status == :local_storage_unavailable && !finish_due?(state, context&.now))
 
       surface_action("automatic", "reveal")
     end
@@ -683,6 +710,8 @@ module GameRoomGames
         EventCommand.new(action: "answer_nonce", value: encode_answer_value(state, envelope.nonce, digest: true)),
         EventCommand.new(action: "answer_pick", value: encode_answer_value(state, answer))
       ])]
+    rescue HiddenSubmissions::StorageError
+      [:local_storage_unavailable, nil]
     rescue ArgumentError, TypeError, KeyError, NoMethodError
       # A missing/corrupt local envelope must not starve the owner's timeout.
       [:invalid, nil]
@@ -706,6 +735,7 @@ module GameRoomGames
         commitment = player_hash_value(state[:commitments], player)
         if HiddenSubmissions::Commitment.valid?(payload: payload, nonce: parts[:nonce], commitment: commitment)
           state[:reveals][player] = parts[:answer].to_i
+          HiddenSubmissions::Cleanup.confirm(state, question_key(state), player => commitment)
         end
       end
       true
@@ -727,7 +757,8 @@ module GameRoomGames
       entries = [history_entry(event_id, _("Correct answer: %{answer}.") % { answer: correct }, actor, :answer)]
       right = []
       wrong = []
-      state[:players].each do |player|
+      active = tournament_remaining_players(state)
+      active.each do |player|
         answer = player_hash_value(state[:reveals], player)
         if answer != nil && answer.to_i == correct_option_index(state)
           right << player
@@ -735,7 +766,7 @@ module GameRoomGames
           wrong << player
         end
       end
-      state[:players].each do |player|
+      active.each do |player|
         entry = history_entry(event_id, "", player, :answer_result)
         entry.key = "answer_result:#{event_id}:#{player}"
         entry.field = right.include?(player) ? "right" : "wrong"
@@ -761,8 +792,9 @@ module GameRoomGames
         return mine == nil ? named : mine
       end
       if mine == nil
-        return nil if includes_player?(state[:players], viewer)
-        return nil if !same_user?(entry.actor, state[:players].first)
+        active = tournament_remaining_players(state)
+        return nil if includes_player?(active, viewer)
+        return nil if !same_user?(entry.actor, active.first)
       end
 
       [
@@ -774,7 +806,7 @@ module GameRoomGames
 
     def update_match_ending(state, history, event_id)
       target = state[:options]["target_score"].to_i
-      highest = state[:players].map { |player| state[:scores].fetch(player, 0).to_i }.max.to_i
+      highest = tournament_remaining_players(state).map { |player| state[:scores].fetch(player, 0).to_i }.max.to_i
       if state[:final_round] == nil && highest >= target
         state[:final_round] = state[:completed_rounds]
         history << history_entry(event_id, _("The target score was reached."), "", :final_round)
@@ -806,8 +838,9 @@ module GameRoomGames
     end
 
     def score_leaders(state)
-      maximum = state[:players].map { |player| state[:scores].fetch(player, 0).to_i }.max.to_i
-      state[:players].select { |player| state[:scores].fetch(player, 0).to_i == maximum }
+      active = tournament_remaining_players(state)
+      maximum = active.map { |player| state[:scores].fetch(player, 0).to_i }.max.to_i
+      active.select { |player| state[:scores].fetch(player, 0).to_i == maximum }
     end
 
     def pack_questions(options)
@@ -987,21 +1020,11 @@ module GameRoomGames
     end
 
     def commitments_complete?(state)
-      state[:players].all? { |player| player_hash_key?(state[:commitments], player) }
+      tournament_remaining_players(state).all? { |player| player_hash_key?(state[:commitments], player) }
     end
 
     def reveals_complete?(state)
       state[:commitments].keys.all? { |player| player_hash_key?(state[:reveals], player) }
-    end
-
-    def event_timestamp(event)
-      raw = event["created_at"] || event[:created_at]
-      return raw.to_i if raw != nil && raw.to_i > 0
-
-      sequence = event["sequence"] || event[:sequence]
-      return sequence.to_i - 1 if sequence != nil && sequence.to_i > 0
-
-      nil
     end
 
     def answers_may_close?(state, timestamp)
@@ -1040,7 +1063,15 @@ module GameRoomGames
 
     def current_chooser(state)
       players = state[:players].to_a
-      players[chooser_index(players, state[:completed_rounds] + 1)]
+      state[:category_chooser] || players[chooser_index(players, state[:completed_rounds] + 1)]
+    end
+
+    def advance_tournament_chooser(state)
+      return unless state.key?(:category_chooser)
+
+      active = tournament_remaining_players(state)
+      index = state[:players].index(state[:category_chooser])
+      state[:category_chooser] = state[:players].rotate(index + 1).find { |player| active.include?(player) }
     end
 
     def choosing_selection?(selection, state)
@@ -1093,6 +1124,22 @@ module GameRoomGames
       }
     rescue ArgumentError
       nil
+    end
+
+    def parse_seeded_categories(state, event)
+      round = state[:completed_rounds]+1
+      seed = GameRoomServerRandom.text_seed_value(event, template:"#{round},n:{seed}")
+      return nil unless seed
+      context = ActionContext.new(random_source:GameRoomRandom::SeededSource.new(seed.to_i(16)))
+      {round:round, categories:draw_round_categories(state,context).map { |c| category_code(state,c) }}
+    end
+
+    def parse_seeded_question(state, event)
+      seed = GameRoomServerRandom.text_seed_value(event, template:"#{state[:round]},#{state[:position]+1},n:{seed}")
+      return nil unless seed
+      context = ActionContext.new(random_source:GameRoomRandom::SeededSource.new(seed.to_i(16)))
+      question = draw_question(state,context)
+      {round:state[:round], position:state[:position]+1, question_id:question['id']} if question
     end
 
     def parse_round_category(value)

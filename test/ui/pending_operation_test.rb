@@ -61,6 +61,17 @@ operation.update
 assert(events.last == 'Table view changed', 'A late task updated a different match')
 operation.close
 
+previous_guard = -> { false }
+layout.surface.action_guard = previous_guard
+operation = GameRoomUI::PendingOperation.new(layout: layout, table_id: 7, session_id: 43, token: token, title: 'Read')
+operation.close
+assert(layout.surface.action_guard.equal?(previous_guard), 'Closing a task erased the preceding surface guard')
+operation = GameRoomUI::PendingOperation.new(layout: layout, table_id: 7, session_id: 43, token: token, title: 'Read')
+replacement_guard = -> { true }
+layout.surface.action_guard = replacement_guard
+operation.close
+assert(layout.surface.action_guard.equal?(replacement_guard), 'Old cleanup erased a newer surface guard')
+
 layout = pending_layout
 chat = layout.chat
 chat.set_text('Original')

@@ -1,3 +1,4 @@
+require_relative '../support/statistics_screen'
 require "date"
 require_relative "../support/ui"
 require_relative "../support/host_source"
@@ -57,6 +58,7 @@ data = {
 }
 reads = []
 Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
   assert(form.is_a?(GameRoomUI::Form) && form.game_room_program.equal?(program), "Statistics lost application-aware UI")
   summary = form.fields.first
   assert(summary.is_a?(EditBox) && summary.flags & EditBox::Flags::ReadOnly != 0 &&
@@ -69,8 +71,8 @@ Form.statistics_driver = lambda do |form|
   assert(form.instance_variable_get(:@timers).to_a.empty?, "Statistics installed polling")
   form.cancel_button.trigger(:press)
 end
-GameRoomStatisticsScreen.new(program: program, reader: ->(period) { reads << period; data },
-  years_reader: -> { [] }, registry: registry, today: Date.new(2026, 9, 25)).run
+GameRoomStatisticsScreen.new(program: program, reader: ->(period, _token) { reads << period; data },
+  years_reader: ->(_token) { [] }, registry: registry, today: Date.new(2026, 9, 25)).run
 registry = Registry.new({ "zero" => "A zero", "b" => "Beta", "a" => "Alpha", "lead" => "Leader", "started" => "Starter" })
 games = [
   { "id" => "b", "players" => 4, "started" => 5, "completed" => 2, "modes" => {} },
@@ -79,6 +81,7 @@ games = [
   { "id" => "started", "players" => 2, "started" => 6, "completed" => 2, "modes" => {} }
 ]
 Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
   table = form.fields.find { |field| field.is_a?(TableBox) }
   assert(table, "Statistics has no accessible native table")
   assert(table.columns == ["Game", "Players", "Started", "Completed"], "Game table lacks named count columns")
@@ -88,11 +91,12 @@ Form.statistics_driver = lambda do |form|
   assert(table.options.first.include?("Completed: 3"), "Native table did not expose count column speech")
   form.cancel_button.trigger(:press)
 end
-GameRoomStatisticsScreen.new(program: program, reader: ->(_) { data.merge("games" => games) },
-  years_reader: -> { [] }, registry: registry, today: Date.new(2026, 9, 25)).run
+GameRoomStatisticsScreen.new(program: program, reader: ->(_, _token) { data.merge("games" => games) },
+  years_reader: ->(_token) { [] }, registry: registry, today: Date.new(2026, 9, 25)).run
 reads = []
 year_reads = 0
 Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
   periods = form.fields.find { |field| field.is_a?(ListBox) }
   refresh = form.fields.find { |field| field.is_a?(Button) && field.label == "Refresh" }
   assert(periods && refresh, "Statistics lacks period selection or deliberate refresh")
@@ -101,6 +105,7 @@ Form.statistics_driver = lambda do |form|
   form.index = form.fields.index(periods)
   periods.index = 1
   periods.trigger(:move)
+  settle_statistics(form)
   assert(reads.map(&:key) == %w[today last_7], "Changing period does not read that period exactly once")
   assert(form.fields.first.text.include?("2026-09-19 to 2026-09-25"), "Period range was not refreshed")
   assert(form.fields.first.text.include?("Visitors: 13"), "Period summary is stale")
@@ -108,6 +113,7 @@ Form.statistics_driver = lambda do |form|
   table.index = 2
   form.index = form.fields.index(refresh)
   refresh.trigger(:press)
+  settle_statistics(form)
   assert(reads.map(&:key) == %w[today last_7 last_7], "Refresh changed the selected period or polled twice")
   assert(table.rows[table.index].first == "Alpha", "Refresh lost the selected game")
   assert(form.index == form.fields.index(refresh), "Refresh stole keyboard focus")
@@ -115,10 +121,11 @@ Form.statistics_driver = lambda do |form|
   form.cancel_button.trigger(:press)
 end
 GameRoomStatisticsScreen.new(program: program,
-  reader: ->(period) { reads << period; data.merge("visitors" => 11 + reads.length, "games" => games) },
-  years_reader: -> { year_reads += 1; [2025] }, registry: registry, today: Date.new(2026, 9, 25)).run
-[->(_) { nil }, ->(_) { raise IOError, "offline" }].each do |failed_reader|
+  reader: ->(period, _token) { reads << period; data.merge("visitors" => 11 + reads.length, "games" => games) },
+  years_reader: ->(_token) { year_reads += 1; [2025] }, registry: registry, today: Date.new(2026, 9, 25)).run
+[->(_, _token) { nil }, ->(_, _token) { raise IOError, "offline" }].each do |failed_reader|
   Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
     summary = form.fields.first.text
     table = form.fields.find { |field| field.is_a?(TableBox) }
     assert(summary.include?("Statistics are unavailable. Try Refresh."), "A read failure was not explained")
@@ -126,75 +133,87 @@ GameRoomStatisticsScreen.new(program: program,
     assert(table.empty_label == "Statistics unavailable", "An empty failed table has no accessible status")
     form.cancel_button.trigger(:press)
   end
-  GameRoomStatisticsScreen.new(program: program, reader: failed_reader, years_reader: -> { [] },
+  GameRoomStatisticsScreen.new(program: program, reader: failed_reader, years_reader: ->(_token) { [] },
     registry: registry, today: Date.new(2026, 9, 25)).run
 end
 responses = [data.merge("games" => games), nil, data.merge("games" => games)]
 Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
   table = form.fields.find { |field| field.is_a?(TableBox) }
   refresh = form.fields.find { |field| field.is_a?(Button) && field.label == "Refresh" }
   refresh.trigger(:press)
+  settle_statistics(form)
   assert(table.rows.empty? && form.fields.first.text.include?("unavailable"), "Failed refresh leaves stale counts on screen")
   refresh.trigger(:press)
+  settle_statistics(form)
   assert(!table.rows.empty? && form.fields.first.text.include?("Visitors: 12"), "Refresh cannot recover from a failed read")
   form.cancel_button.trigger(:press)
 end
-GameRoomStatisticsScreen.new(program: program, reader: ->(_) { responses.shift }, years_reader: -> { [] },
+GameRoomStatisticsScreen.new(program: program, reader: ->(_, _token) { responses.shift }, years_reader: ->(_token) { [] },
   registry: registry, today: Date.new(2026, 9, 25)).run
-[-> { nil }, -> { raise IOError, "years offline" }].each do |failed_years|
+[->(_token) { nil }, ->(_token) { raise IOError, "years offline" }].each do |failed_years|
   Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
     periods = form.fields.find { |field| field.is_a?(ListBox) }
     assert(periods.options == ["Today", "Last 7 days (including today)", "Last 30 days (including today)",
       "Last 365 days (including today)", "2026", "All time"], "Unavailable years hide required periods")
     assert(form.fields.first.text.include?("Calendar years are unavailable. Try Refresh."), "Year discovery failure is silent")
     form.cancel_button.trigger(:press)
   end
-  GameRoomStatisticsScreen.new(program: program, reader: ->(_) { data }, years_reader: failed_years,
+  GameRoomStatisticsScreen.new(program: program, reader: ->(_, _token) { data }, years_reader: failed_years,
     registry: registry, today: Date.new(2026, 9, 25)).run
 end
 [false, true].each do |partial|
   Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
     summary = form.fields.first
     assert(summary.text.include?("Collection started: 2026-09-20."), "Collection start date is missing")
     assert(summary.text.include?("Coverage is partial.") == partial, "Backend partial coverage is not represented")
     periods = form.fields.find { |field| field.is_a?(ListBox) }
     periods.index = 2
     periods.trigger(:move)
+    settle_statistics(form)
     assert(summary.text.include?("Coverage is partial."), "Dates before collection imply falsely complete coverage")
     periods.index = periods.options.length - 1
     periods.trigger(:move)
+    settle_statistics(form)
     assert(summary.text.include?("2026-09-20 to 2026-09-25"), "All-time range does not use the actual collection start")
     form.cancel_button.trigger(:press)
   end
-  GameRoomStatisticsScreen.new(program: program, reader: ->(_) { data.merge("partial" => partial) },
-    years_reader: -> { [] }, registry: registry, today: Date.new(2026, 9, 25)).run
+  GameRoomStatisticsScreen.new(program: program, reader: ->(_, _token) { data.merge("partial" => partial) },
+    years_reader: ->(_token) { [] }, registry: registry, today: Date.new(2026, 9, 25)).run
 end
 Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
   periods = form.fields.find { |field| field.is_a?(ListBox) }
   periods.index = periods.options.length - 1
   periods.trigger(:move)
+  settle_statistics(form)
   assert(form.fields.first.text.include?("No collection start date is available."), "Unknown coverage claims an invented collection date")
   form.cancel_button.trigger(:press)
 end
-GameRoomStatisticsScreen.new(program: program, reader: ->(_) { data.merge("first_day" => nil) },
-  years_reader: -> { [] }, registry: registry, today: Date.new(2026, 9, 25)).run
+GameRoomStatisticsScreen.new(program: program, reader: ->(_, _token) { data.merge("first_day" => nil) },
+  years_reader: ->(_token) { [] }, registry: registry, today: Date.new(2026, 9, 25)).run
 Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
   periods = form.fields.find { |field| field.is_a?(ListBox) }
   periods.index = periods.options.index("2025")
   periods.trigger(:move)
+  settle_statistics(form)
   assert(form.fields.first.text.include?("No statistics were collected for this period."), "Pre-collection year claims measured activity")
   table = form.fields.find { |field| field.is_a?(TableBox) }
   assert(table.rows.empty? && !form.fields.first.text.include?("Visitors:"), "Pre-collection year displays counts")
   assert(table.empty_label == "No statistics were collected for this period.", "Uncollected table is labelled unavailable")
   form.cancel_button.trigger(:press)
 end
-GameRoomStatisticsScreen.new(program: program, reader: ->(_) { data }, years_reader: -> { [2025] },
+GameRoomStatisticsScreen.new(program: program, reader: ->(_, _token) { data }, years_reader: ->(_token) { [2025] },
   registry: registry, today: Date.new(2026, 9, 25)).run
 detail_reads = 0
 detail_visits = 0
 modes = { "humans" => { "started" => 3, "completed" => 2 },
   "bots" => { "started" => 1, "completed" => 1 }, "solo" => { "started" => 0, "completed" => 0 } }
 Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
   table = form.fields.find { |field| field.is_a?(TableBox) }
   if table
     assert(form.accept_button, "The statistics table has no Enter action")
@@ -217,8 +236,8 @@ Form.statistics_driver = lambda do |form|
   end
 end
 GameRoomStatisticsScreen.new(program: program,
-  reader: ->(_) { detail_reads += 1; data.merge("games" => games.map { |game| game.merge("modes" => modes) }) },
-  years_reader: -> { [] }, registry: registry, today: Date.new(2026, 9, 25)).run
+  reader: ->(_, _token) { detail_reads += 1; data.merge("games" => games.map { |game| game.merge("modes" => modes) }) },
+  years_reader: ->(_token) { [] }, registry: registry, today: Date.new(2026, 9, 25)).run
 translation = Object.new
 translation.define_singleton_method(:translate) do |source, **_options|
   { "Statistics" => "Statystyki", "Today" => "Dzisiaj", "Game" => "Gra", "Period" => "Okres" }[source]
@@ -228,6 +247,7 @@ GameRoomLocalization.instance_variable_set(:@translator,
 registry_utf8 = Registry.new({ "z" => "Żółw".b.freeze, "a" => "Łódź".b.freeze })
 utf8_forms = 0
 Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
   utf8_forms += 1
   form.fields.each do |field|
     strings = case field
@@ -252,37 +272,42 @@ Form.statistics_driver = lambda do |form|
   end
   form.cancel_button.trigger(:press)
 end
-GameRoomStatisticsScreen.new(program: program, reader: ->(_) { data }, years_reader: -> { [] },
+GameRoomStatisticsScreen.new(program: program, reader: ->(_, _token) { data }, years_reader: ->(_token) { [] },
   registry: registry_utf8, today: Date.new(2026, 9, 25)).run
 assert(utf8_forms == 2, "UTF-8 verification skipped game details")
 GameRoomLocalization.boot(host_language: "en", settings: { "interface_language" => "en" })
 Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
   table = form.fields.find { |field| field.is_a?(TableBox) }
   assert(table.rows.map(&:first) == ["Z active", "A zero"], "A game with players but no starts is buried among zero rows")
   form.cancel_button.trigger(:press)
 end
 GameRoomStatisticsScreen.new(program: program,
-  reader: ->(_) { data.merge("games" => [{ "id" => "active", "players" => 1, "started" => 0, "completed" => 0, "modes" => {} }]) },
-  years_reader: -> { [] }, registry: Registry.new({ "zero" => "A zero", "active" => "Z active" }),
+  reader: ->(_, _token) { data.merge("games" => [{ "id" => "active", "players" => 1, "started" => 0, "completed" => 0, "modes" => {} }]) },
+  years_reader: ->(_token) { [] }, registry: Registry.new({ "zero" => "A zero", "active" => "Z active" }),
   today: Date.new(2026, 9, 25)).run
 day = Date.new(2026, 12, 31)
 reads = []
 Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
   periods = form.fields.find { |field| field.is_a?(ListBox) }
   refresh = form.fields.find { |field| field.is_a?(Button) && field.label == "Refresh" }
   periods.index = 1
   periods.trigger(:move)
+  settle_statistics(form)
   day = Date.new(2027, 1, 1)
   refresh.trigger(:press)
+  settle_statistics(form)
   assert(reads.last.key == "last_7" && reads.last.from_day == 20261226 && reads.last.to_day == 20270101,
     "Refresh does not reevaluate the supplied civil-date clock or preserve the period")
   assert(periods.options.include?("2027"), "New calendar year was not discovered automatically")
   form.cancel_button.trigger(:press)
 end
-GameRoomStatisticsScreen.new(program: program, reader: ->(period) { reads << period; data }, years_reader: -> { [2026] },
+GameRoomStatisticsScreen.new(program: program, reader: ->(period, _token) { reads << period; data }, years_reader: ->(_token) { [2026] },
   registry: registry, today: -> { day }).run
 
 Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
   table = form.fields.find { |field| field.is_a?(TableBox) }
   assert(table.rows.length == registry.ids.length && table.rows.all? { |row| row.drop(1) == %w[0 0 0] },
     "A successful empty result hides games or invents activity")
@@ -290,10 +315,11 @@ Form.statistics_driver = lambda do |form|
   form.cancel_button.trigger(:press)
 end
 GameRoomStatisticsScreen.new(program: program,
-  reader: ->(_) { data.merge("visitors" => 0, "players" => 0, "started" => 0, "completed" => 0, "first_day" => nil) },
-  years_reader: -> { [] }, registry: registry, today: Date.new(2026, 9, 25)).run
+  reader: ->(_, _token) { data.merge("visitors" => 0, "players" => 0, "started" => 0, "completed" => 0, "first_day" => nil) },
+  years_reader: ->(_token) { [] }, registry: registry, today: Date.new(2026, 9, 25)).run
 empty_details = 0
 Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
   empty_details += 1
   table = form.fields.find { |field| field.is_a?(TableBox) }
   form.index = form.fields.index(table)
@@ -301,31 +327,34 @@ Form.statistics_driver = lambda do |form|
   assert(empty_details == 1, "Enter on an unavailable table opens invented game details")
   form.cancel_button.trigger(:press)
 end
-GameRoomStatisticsScreen.new(program: program, reader: ->(_) { nil }, years_reader: -> { [] },
+GameRoomStatisticsScreen.new(program: program, reader: ->(_, _token) { nil }, years_reader: ->(_token) { [] },
   registry: registry, today: Date.new(2026, 9, 25)).run
 
 refresh_reads = 0
 year_reads = 0
 Form.statistics_driver = lambda do |form|
+  settle_statistics(form)
   table = form.fields.find { |field| field.is_a?(TableBox) }
   periods = form.fields.find { |field| field.is_a?(ListBox) }
   refresh = form.fields.find { |field| field.is_a?(Button) && field.label == "Refresh" }
   periods.index = periods.options.index("2026")
   periods.trigger(:move)
+  settle_statistics(form)
   table.index = table.rows.index { |row| row.first == "Alpha" }
   refresh.trigger(:press)
+  settle_statistics(form)
   assert(periods.options[periods.index] == "2026", "Failed year refresh lost a previously available calendar year")
   assert(table.rows[table.index].first == "Alpha", "Refresh preserved row number instead of game identity after sorting")
   assert(form.fields.first.text.include?("Calendar years are unavailable."), "Failed year refresh was silent")
   form.cancel_button.trigger(:press)
 end
 GameRoomStatisticsScreen.new(program: program,
-  reader: ->(_) do
+  reader: ->(_, _token) do
     refresh_reads += 1
     current_games = games.map { |game| game["id"] == "a" && refresh_reads > 2 ? game.merge("completed" => 7) : game }
     data.merge("games" => current_games)
   end,
-  years_reader: -> { year_reads += 1; year_reads == 1 ? [2026] : nil },
+  years_reader: ->(_token) { year_reads += 1; year_reads == 1 ? [2026] : nil },
   registry: registry, today: Date.new(2027, 1, 1)).run
 module Log
   def self.warning(message)
@@ -333,9 +362,9 @@ module Log
   end
   def self.statistics_warnings; @statistics_warnings || []; end
 end
-Form.statistics_driver = ->(form) { form.cancel_button.trigger(:press) }
-GameRoomStatisticsScreen.new(program: program, reader: ->(_) { raise IOError, "read failed" },
-  years_reader: -> { raise IOError, "years failed" }, registry: registry, today: Date.new(2026, 9, 25)).run
+Form.statistics_driver = ->(form) { settle_statistics(form); form.cancel_button.trigger(:press) }
+GameRoomStatisticsScreen.new(program: program, reader: ->(_, _token) { raise IOError, "read failed" },
+  years_reader: ->(_token) { raise IOError, "years failed" }, registry: registry, today: Date.new(2026, 9, 25)).run
 assert(Log.statistics_warnings.any? { |line| line.include?("read failed") } &&
   Log.statistics_warnings.any? { |line| line.include?("years failed") }, "Unavailable UI discarded exception diagnostics")
 puts "PASS statistics screen"

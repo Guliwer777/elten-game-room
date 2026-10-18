@@ -1,45 +1,61 @@
 require_relative "game_statistics_periods"
 require_relative "game_room_ui"
+require_relative "game_room_background"
 
 class GameRoomStatisticsScreen
   using GameRoomLocalization::Translations
 
-  def initialize(program:, reader:, years_reader:, registry:, today: -> { GameRoomStatistics::Periods.today })
+  class Form < GameRoomUI::Form
+    attr_writer :statistics_update
+
+    def update
+      super
+      @statistics_update&.call
+    end
+  end
+  private_constant :Form
+
+  def initialize(program:, reader:, years_reader:, registry:, today: -> { GameRoomStatistics::Periods.today }, valid: -> { true })
     @program, @reader, @years_reader, @registry, @today = program, reader, years_reader, registry, today
+    @valid = valid
   end
 
   def run
+    @work = GameRoomBackground::Work.new
+    @generation = 0
     update_periods
     @period_list = ListBox.new(@periods.map(&:label), header: text(_("Period")), quiet: true)
-    data = read_data
     @summary = EditBox.new(text(_("Statistics")),
       type: EditBox::Flags::ReadOnly | EditBox::Flags::MultiLine,
-      text: summary_text(data), quiet: true)
-    @games = game_rows(data)
+      text: summary_text(nil), quiet: true)
+    @games = []
     @table = TableBox.new([_("Game"), _("Players"), _("Started"), _("Completed")].map { |label| text(label) },
-      @games.map { |row| row.fetch(:cells) }, header: text(_("Games")), quiet: true,
-      empty_label: empty_label(data))
+      [], header: text(_("Games")), quiet: true, empty_label: empty_label(nil))
     details = Button.new(text(_("Game details")))
     @table.add_tip(text(_("Enter: show the selected game's mode breakdown.")))
     refresh = Button.new(text(_("Refresh")))
     back = Button.new(text(_("Back")))
-    @form = GameRoomUI::Form.new([@summary, @period_list, @table, refresh, details, back], program: @program, quiet: true)
+    @form = Form.new([@summary, @period_list, @table, refresh, details, back], program: @program, quiet: true)
+    @form.statistics_update = method(:update)
     @form.cancel_button = back
     @form.accept_button = details
     @form.hide(details)
     details.on(:press) { show_details if @form.fields[@form.index].equal?(@table) }
     @period_list.on(:move) do
+      next if @periods.empty?
       @period = @periods.fetch(@period_list.index)
-      refresh_data
+      request_data
     end
     refresh.on(:press) do
       update_periods
-      @period_list.options = @periods.map(&:label)
-      @period_list.index = @periods.index(@period)
-      refresh_data
+      render_periods
+      request_data(refresh_years: true)
     end
-    back.on(:press) { @form.resume }
+    back.on(:press) { close; @form.resume }
+    request_data(refresh_years: true)
     @form.wait
+  ensure
+    close
   end
 
   private
@@ -68,38 +84,127 @@ class GameRoomStatisticsScreen
   end
 
   def update_periods
-    key = @period&.key
-    today = @today.respond_to?(:call) ? @today.call : @today
-    years = read_years
-    @years_unavailable = years.nil?
-    @years = years unless years.nil?
-    @periods = GameRoomStatistics::Periods.options(today: today, years: @years)
-    @period = @periods.find { |period| period.key == key } || @periods.first
+    @period_key = @period&.key || @period_key
+    @date = @today.respond_to?(:call) ? @today.call : @today
+    rebuild_periods
+  rescue GameRoomNetworkErrors::ClockUnavailable
+    # A cold or changed account may not have a confirmed server date yet.
+    # Keep Refresh available without inventing a local date or querying tables.
+    @periods, @period, @date = [], nil, nil
   end
 
-  def refresh_data
-    selected = @games[@table.index]&.fetch(:id)
-    data = read_data
-    @summary.set_text(summary_text(data))
+  def rebuild_periods
+    @period_key = @period&.key || @period_key
+    @periods = GameRoomStatistics::Periods.options(today: @date, years: @years)
+    @period = @periods.find { |period| period.key == @period_key } || @periods.first
+  end
+
+  def render_periods
+    @period_list.options = @periods.map(&:label)
+    @period_list.index = @periods.index(@period) || 0
+  end
+
+  def render_data(data, loading: false)
+    @selected_game = @games[@table.index]&.fetch(:id) || @selected_game
+    @summary.set_text(loading ? text(_("Loading statistics")) : summary_text(data))
     @games = game_rows(data)
     @table.rows = @games.map { |row| row.fetch(:cells) }
-    @table.empty_label = empty_label(data)
+    @table.empty_label = loading ? text(_("Loading statistics")) : empty_label(data)
     @table.reload
-    @table.index = @games.index { |row| row.fetch(:id) == selected } || 0
+    @table.index = @games.index { |row| row.fetch(:id) == @selected_game } || 0
   end
 
-  def read_years
-    @years_reader.call
+  # Keep at most one native worker and one latest selection, rather than
+  # queuing every arrow key. Results only touch controls on the UI thread.
+  def request_data(refresh_years: false)
+    return if @closed
+    previous = @pending_request || @active_request
+    if @period && previous && previous[:period].key == @period.key && previous[:date] == @date &&
+        (!refresh_years || previous[:refresh_years])
+      return
+    end
+    @generation += 1
+    @pending_request = @period && {generation: @generation, period: @period, date: @date, refresh_years: refresh_years}.freeze
+    render_data(nil, loading: !@period.nil?)
+    start_pending
+  end
+
+  def start_pending
+    return if @closed || @active_request || !@pending_request
+    unless @valid.call
+      close
+      @form.resume
+      return
+    end
+    request, @pending_request = @pending_request, nil
+    token = EltenAPI::Tasks::CancellationToken.new
+    @active_request, @active_token = request, token
+    @work.start do
+      years = read_value(token) { @years_reader.call(token) } if request[:refresh_years]
+      data = read_value(token) { @reader.call(request[:period], token) }
+      {years: years, data: data}
+    end
+  rescue EltenAPI::Tasks::Busy => error
+    @active_request = @active_token = nil
+    log_read_error(error)
+    render_data(nil)
+  end
+
+  def update
+    return false if @closed
+    unless @valid.call && !@work.closed?
+      close
+      @form.resume
+      return false
+    end
+    if (outcome = @work.take)
+      request, @active_request = @active_request, nil
+      @active_token = nil
+      result, error = outcome
+      log_read_error(error) if error
+      result ||= {years: nil, data: nil}
+      # Year discovery is useful even if the user has already selected a
+      # different period. It must still belong to the same confirmed date.
+      if request[:refresh_years] && request[:date] == @date
+        @years_unavailable = result[:years].nil?
+        @years = result[:years] unless @years_unavailable
+        rebuild_periods
+        render_periods
+      end
+      if request[:generation] == @generation
+        render_data(result[:data])
+        if @form.fields[@form.index].equal?(@summary) && @form.game_room_hotkeys_active? && !@form.game_room_background_help?
+          @summary.focus
+        end
+      end
+    end
+    start_pending
+    !!(@active_request || @pending_request)
+  end
+
+  def close
+    @closed = true
+    @pending_request = nil
+    @active_token&.cancel
+    @work&.close
+    @form.statistics_update = nil if @form
+  end
+
+  def read_value(token)
+    token.raise_if_cancelled!
+    return unless @valid.call
+    result = yield
+    token.raise_if_cancelled!
+    result if @valid.call
+  rescue EltenAPI::Tasks::Cancelled
+    nil
   rescue StandardError => error
-    Log.warning("Statistics read failed: #{error.class}: #{error.message}") if defined?(Log)
+    log_read_error(error)
     nil
   end
 
-  def read_data
-    @reader.call(@period)
-  rescue StandardError => error
+  def log_read_error(error)
     Log.warning("Statistics read failed: #{error.class}: #{error.message}") if defined?(Log)
-    nil
   end
 
   def before_collection?(data)
@@ -125,6 +230,7 @@ class GameRoomStatisticsScreen
   end
 
   def summary_text(data)
+    return text(_("Statistics are unavailable. Try Refresh.")) unless @period
     first_date = data && data["first_day"] && Date.strptime(data.fetch("first_day").to_s, "%Y%m%d")
     from = @period.from_date || first_date
     lines = [text(_("Period: %{period}")) % { period: @period.label },

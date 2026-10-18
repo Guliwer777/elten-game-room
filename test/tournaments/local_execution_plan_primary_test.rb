@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_local_execution_plan'
 require_relative '../../lib/tournaments/local_execution_plan_backend'
 include TournamentLocalExecutionPlanSupport
@@ -105,7 +106,7 @@ results = []
 end
 
 # Brak pliku oraz błędne bajty parsera pozostają odrębnymi przypadkami danych.
-Dir.mktmpdir('primary-parser-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('primary-parser-') do |directory|
   storage = T::LocalExecutionPlanStorage.new(directory: directory, guard: -> {})
   storage.access(validate: ->(_) {}) { |doc| assert_equal(nil, doc); storage.write({'legal' => true}) }
   original = File.binread(storage.path)

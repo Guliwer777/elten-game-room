@@ -29,7 +29,7 @@ sandbox do |c|
   candidate['matches'].each_with_index do |match,index|
     assert(organizer.load['announcements'].none?{|item|item['sporting_completed']},'Partial schedule marked completed')
     c.now+=1
-    service.award_forfeit(match_id:match['match_id'],leg:match['leg'],winner:match['players'].first,expected_schedule_id:candidate['schedule_id'])
+    service.confirm_forfeit(preview:service.forfeit_preview(match_id:match['match_id'],leg:match['leg'],loser:match['players'].last,expected_schedule_id:candidate['schedule_id']))
   end
   complete=organizer.load['announcements'].first
   assert_equal(true,complete['sporting_completed'])

@@ -60,7 +60,8 @@ send_action = lambda do |user, action, extra = {}|
   selection = { 'action' => action, 'token' => game.token(current.state) }.merge(extra)
   actor = screen.send(:selected_action_actor, selection, current)
   now = %w[begin timeout].include?(action) ? current.state[:deadline] : current.state[:time] + 1
-  context = GameRoomGames::ActionContext.new(now: now, random_source: random, table_owner: 'Moderator')
+  context = GameRoomGames::ActionContext.new(now: now, random_source: random, table_owner: 'Moderator',
+    server_random: session['__server_random'] == GameRoomServerRandom::VERSION)
   status, plan = game.action_for(selection, current, actor, context: context)
   assert(status == :ok, "#{user}/#{action}: #{status}")
   own_repo = repositories.fetch(user)

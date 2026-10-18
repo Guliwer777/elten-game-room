@@ -8,6 +8,11 @@ module GameRoomTournaments
       if candidate.key?('starts_at')
         start=candidate['starts_at']
         raise Publication::Invalid,:tournament_not_started unless Publication::Data.integer?(start,1) && start<=now
+        if candidate['daily_hours']
+          window=TournamentTiming.daily_window(candidate['daily_hours'],now)
+          raise Publication::Invalid,:outside_window unless window
+          return window.merge('opens'=>[window['opens'],start].max)
+        end
         return {'opens'=>start,'closes'=>nil} if candidate.fetch('windows').empty?
       end
       windows=candidate.fetch('windows').map do |civil|

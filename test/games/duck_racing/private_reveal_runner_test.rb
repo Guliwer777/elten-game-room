@@ -4,6 +4,7 @@ require_relative '../../../lib/game_surfaces'
 require_relative '../../support/duck_game_adapter'
 require_relative '../../support/session_runner'
 require_relative '../../support/duck_legacy_flow'
+require_relative '../../support/hidden_submission_files'
 
 # Real game/repository/codec/executor; only the native network and clock are
 # local fixtures. The two human accounts have separate answer vaults.
@@ -57,6 +58,7 @@ module DuckPrivateRunnerTest
         end
         [user, runner]
       end
+      native.view(owner).next_random_values = SeedSource.new(seed_fixture.seed_for('super_challenge')).roll(count:16,sides:256).values
       tick(owner)
       assert(replay.state[:race], 'The host executor did not start the race')
       card = replay.state[:race][:racers][0][:hand].find { |copy| copy.type == 'super_challenge' }
@@ -373,6 +375,57 @@ check.call('missing durable bytes after an accepted prefix cancels without a par
     true
   ensure
     h.close
+  end
+end
+
+%w[Alice Bob].each do |locked_user|
+  check.call("unreadable durable trace for #{locked_user} cancels only the challenge, not the executor") do
+    h = DuckPrivateRunnerTest::Harness.new(kind: 'simon', stack_entry_bytes: 1536)
+    Dir.mktmpdir('duck-private-read-lock-') do |directory|
+      storage = HiddenSubmissionFiles::Storage.new(HiddenSubmissionFiles.new(directory))
+      storage.singleton_class.class_eval do
+        attr_accessor :read_locked
+        private
+        define_method(:read_snapshot_file) do |path|
+          raise Errno::EACCES, 'simulated private trace read lock' if read_locked
+          super(path)
+        end
+      end
+      h.runners.fetch(locked_user).instance_variable_get(:@context_template).hidden_submissions =
+        HiddenSubmissions::Vault.new(storage)
+      begin
+        h.commit_attempts
+        h.tick(locked_user)
+        protocol = h.replay.state[:round][:private]
+        seat = h.players.index(locked_user)
+        assert(!protocol[:pages].fetch(seat).empty?, 'Expected an accepted, incomplete native trace')
+        before = h.native.events('Alice').length
+        status, cancellation = h.game.action_for({'kind'=>'duck', 'action'=>'cancel', 'reason'=>'technical',
+          'challenge'=>h.replay.state[:round][:challenge][:id]}, h.replay(locked_user), locked_user,
+          context: h.runners.fetch(locked_user).send(:context))
+        assert_equal(:ok, status)
+        # The native private cancellation is one accepted command batch,
+        # including its envelope metadata, not necessarily one wire row.
+        expected_count = before + cancellation.events.length
+        storage.read_locked = true
+        h.mark_revision_checked(locked_user)
+        h.tick(locked_user)
+        result = h.replay.state[:last_resolution]
+        assert(result && result[:cancelled] == :technical, 'Unreadable trace left the challenge stuck')
+        assert_equal(nil, result[:settlement], 'A read failure invented a private score')
+        assert_equal([18, 18], h.replay.state[:race][:racers].values.map { |racer| racer[:feathers] })
+        assert_equal(expected_count, h.native.events('Alice').length, 'Expected one technical cancellation batch')
+        assert(!h.runners.fetch(locked_user).instance_variable_get(:@internal_error), 'Read fault stopped the executor')
+        storage.read_locked = false
+        3.times { h.native.users.each { |user| h.tick(user) } }
+        assert_equal(expected_count, h.native.events('Alice').length, 'Recovery repeated the cancelled reveal')
+        h.native.assert_converged('private trace read failure')
+        true
+      ensure
+        storage.read_locked = false
+        h.close
+      end
+    end
   end
 end
 

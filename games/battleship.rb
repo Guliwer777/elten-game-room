@@ -10,6 +10,9 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Battleship < Base
+    def player_spatial_audio?; true; end
+    include HiddenSubmissions::Cleanup
+
     def tournament_private_protocol?; true; end
     SIZE = 10
     ROUND_ID = "fleet".freeze
@@ -120,6 +123,10 @@ module GameRoomGames
         end
         accepted << event if applied
       end
+      if state[:phase] == :finished
+        HiddenSubmissions::Cleanup.start(state, session)
+        HiddenSubmissions::Cleanup.confirm(state, ROUND_ID, state[:commitments])
+      end
 
       Replay.new(
         board: nil, players: players, current_player: state[:current_player],
@@ -130,7 +137,6 @@ module GameRoomGames
 
     def automatic_action(replay, actor, context: nil)
       state = replay.state
-      remember_fleet(state, actor, context)
       return nil if replay.finished?
       return { "kind" => "command", "action" => "begin" } if !state[:started] && same_user?(actor, state[:players].first)
 
@@ -693,13 +699,8 @@ module GameRoomGames
       return if @sealed.key?(key) || !sealed?(state, actor)
       return if context == nil || context.hidden_submissions == nil
 
-      envelope = context.hidden_submissions.reveal(
-        session_id: context.session_id, round_id: ROUND_ID, user: actor,
-        commitment: state[:commitments][player_key(state, actor)]
-      )
-      return if envelope == nil
-      ships = envelope.payload["ships"]
-      return unless legal_fleet?(state, ships)
+      ships = sealed_fleet(state, actor, context)
+      return unless ships
       @sealed = { key => ships }
     rescue HiddenSubmissions::StorageError
       nil
@@ -746,6 +747,8 @@ module GameRoomGames
 
       cell = state[:pending]["cell"].to_i
       [:ok, event_plan("answer", shot_result(state, ships, cell))]
+    rescue HiddenSubmissions::StorageError
+      [:local_storage_unavailable, nil]
     end
 
     def shot_result(state, ships, cell)
@@ -778,6 +781,8 @@ module GameRoomGames
         EventCommand.new(action: "open", value: envelope.nonce),
         EventCommand.new(action: "fleet", value: encode_fleet(envelope.payload.fetch("ships", [])))
       ])]
+    rescue HiddenSubmissions::StorageError
+      [:local_storage_unavailable, nil]
     end
 
     def shoot(selection, state, actor)
@@ -799,7 +804,11 @@ module GameRoomGames
         session_id: context.session_id, round_id: ROUND_ID, user: actor,
         commitment: state[:commitments][player_key(state, actor)]
       )
-      envelope == nil ? nil : envelope.payload.fetch("ships", nil)
+      return nil unless envelope && envelope.commitment == state[:commitments][player_key(state, actor)] &&
+        context.hidden_submissions.verify(envelope) && envelope.payload.is_a?(Hash)
+
+      ships = envelope.payload["ships"]
+      ships if legal_fleet?(state, ships)
     end
 
 

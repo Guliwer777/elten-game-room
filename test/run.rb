@@ -79,7 +79,7 @@ module GameRoomTestRunner
       ensure
         reader&.kill&.join if reader&.alive?
       end
-      captured = captured.encode("UTF-8", invalid: :replace, undef: :replace)
+      captured = captured.force_encoding(Encoding::UTF_8).scrub
       # readpartial preserves CRLF on Windows; match the former text-mode read.
       captured = captured.gsub("\r\n", "\n") if File::ALT_SEPARATOR == "\\"
       outcome = timed_out ? "timeout" : !status.success? ? "failed" : captured.match?(/^\s*SKIP\b/) ? "skipped" : "passed"

@@ -1,4 +1,4 @@
-require 'tmpdir'
+require_relative '../support/temporary_directory'
 require_relative '../support/session_runner'
 require_relative '../support/tournament_server_plan_table'
 require_relative '../../games/catalog'
@@ -6,7 +6,7 @@ require_relative '../../lib/tournaments/ordinary_match_service'
 require_relative '../../lib/tournaments/server_read_scope'
 
 T = GameRoomTournaments
-Dir.mktmpdir('ordinary-read-budget-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('ordinary-read-budget-') do |directory|
   harness = NativeRoomHarness.new(game: GameRoomGames::TicTacToe.new, users: %w[Alice Bob])
   program = ProgramDouble.new(harness.broker.endpoint('Alice'))
   lobby = LobbyRepository.new(program, transport: harness.transports['Alice'], server_tables: Object.new)

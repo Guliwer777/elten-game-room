@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require_relative '../support/binary_rules_load'
 require_relative '../../lib/tournaments/draft_workspace'
@@ -58,7 +59,7 @@ raise 'Wybierz wyłącznie en lub pl' if languages.empty? || (languages - %w[en 
 languages.each do |language|
   $planning_language = language
   GameRoomTestLocalization.use_language(language)
-  Dir.mktmpdir('tournament-planning-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('tournament-planning-') do |directory|
     program = Object.new
     program.define_singleton_method(:data_path) { directory }
     alerts = []

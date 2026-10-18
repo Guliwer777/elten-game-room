@@ -54,7 +54,13 @@ state[:skip_penalty] = state[:draw_penalty] = 0
 replay.winner = nil
 before = Marshal.dump(replay)
 counts = Hash.new(0)
-trace = TracePoint.new(:call) { |event| counts[event.method_id] += 1 if event.self.equal?(game) }
+trace = TracePoint.new(:call) do |event|
+  next unless event.self.equal?(game)
+  # The shared private-hand guard delegates ordinary hands unchanged. Count
+  # actual packet enumeration, not the forwarding wrapper's method entry.
+  next if event.method_id == :legal_actions && event.defined_class != GameRoomGames::Makao
+  counts[event.method_id] += 1
+end
 coordinator = GameRoomBots::Coordinator.new
 assert(trace.enable { coordinator.pending_bot(game, replay) } == bot, 'pending bot changed')
 assert(counts[:legal_actions] == 0 && counts[:validate_packet] == 0, 'pending check enumerates packets')

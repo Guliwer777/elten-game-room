@@ -21,9 +21,11 @@ Journals are scoped by backend identity and cannot migrate implicitly.
 
 ## What works without a new server service
 
-The client implements publication, enrollment, shared schedules, explicit
-availability and consent, proposals, reservations, ordinary-table entry, results,
-return matches, series and saved continuation through the existing API.
+The client implements publication, enrollment, shared schedules, ordinary table
+invitations, match entry, results, return matches and series through the existing
+API. Players use the ordinary invitation controls, without a separate readiness
+screen. Tournament matches cannot be saved or resumed from private archives;
+ordinary non-tournament saves retain their existing behavior.
 Participants can coordinate an existing schedule while its organizer is offline.
 A new server-side coordinator is not a prerequisite for this workflow.
 
@@ -31,7 +33,7 @@ The server authenticates writes and orders records, but does not execute the
 application's validation code. Reservations select the first visible complete
 claim; they are not atomic transactions covering session creation. Modified
 clients and network partitions can violate guarantees that require trusted
-server logic. Do not advertise anti-cheat protection or exactly-once creation.
+server logic. Do not advertise complete anti-cheat protection or exactly-once creation.
 See [server integration](TOURNAMENT_SERVER_INTEGRATION.md).
 
 ## Before a public release

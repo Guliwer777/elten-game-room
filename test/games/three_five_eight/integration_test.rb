@@ -24,10 +24,13 @@ module ThreeFiveEightIntegration
   def submit(room, selection, session: room.session)
     before, snapshot = position(room, session)
     actor = before.current_player || before.players.first
-    status, plan = room.game.action_for(selection, before, actor)
+    context = GameRoomGames::ActionContext.new(server_random: snapshot.session['__server_random'] == GameRoomServerRandom::VERSION)
+    status, plan = room.game.action_for(selection, before, actor, context: context)
     assert(status == :ok, "3-5-8 normal selection rejected: #{status}")
     repository = room.repositories.fetch("Alice")
     room.as("Alice") do
+      # Deterministic entropy belongs to the server double, not the move.
+      room.view('Alice').next_random_values = [1] * 15 + [selection.fetch('round') * 3 + 1] if selection['action'] == 'deal'
       repository.append_events(session: snapshot.session,
         sequence: repository.next_sequence(snapshot.session, snapshot.events),
         events: plan.events, actor: actor, controller: true)

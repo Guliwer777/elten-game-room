@@ -113,7 +113,7 @@ module HiddenSubmissions
         if Process.clock_gettime(Process::CLOCK_MONOTONIC) < @coordinator[:retry_at]
           raise StorageError, "Cannot save hidden answers on this device."
         end
-        root[REVISION_KEY] = before.fetch(REVISION_KEY, 0).to_i + 1
+        root[REVISION_KEY] = before.fetch(REVISION_KEY, 0) + 1
         persist_snapshot(root)
         root
       end
@@ -135,9 +135,9 @@ module HiddenSubmissions
       # A newer recovery snapshot supersedes the original, including deletions.
       # This also works after reopening the screen or restarting ELTEN.
       snapshots = paths.map do |path|
-        normalize_root(read_snapshot_file(path))
+        validate_root!(read_snapshot_file(path))
       end
-      snapshots.max_by { |root| root.fetch(REVISION_KEY, 0).to_i }
+      snapshots.max_by { |root| root.fetch(REVISION_KEY, 0) }
     rescue SystemCallError, IOError
       raise StorageError, "Cannot read hidden answers on this device."
     end
@@ -179,11 +179,12 @@ module HiddenSubmissions
       File.delete(temporary) if temporary && File.file?(temporary)
     end
 
-    def normalize_root(root)
-      value = root.is_a?(Hash) ? root : {}
-      entries = value["entries"]
-      value["entries"] = {} if !entries.is_a?(Hash)
-      value
+    def validate_root!(root)
+      unless root.is_a?(Hash) && root["entries"].is_a?(Hash) &&
+          root.fetch(REVISION_KEY, 0).is_a?(Integer) && root.fetch(REVISION_KEY, 0) >= 0
+        raise StorageError, "Cannot read hidden answers on this device."
+      end
+      root
     end
   end
 
@@ -213,18 +214,18 @@ module HiddenSubmissions
         commitment: digest
       )
       @storage.update do |state|
-        state["entries"] ||= {}
+        entries = entries_for(state)
         key = entry_key(envelope.session_id, envelope.round_id, envelope.user)
-        old = state["entries"][key]
+        old = entry_for(entries, key)
         versions = old == nil ? {} : old.fetch("versions", {}).dup
         versions[old["commitment"]] = old.reject { |name, _| name == "versions" } if old != nil
-        state["entries"][key] = serialize(envelope).merge("versions" => versions)
+        entries[key] = serialize(envelope).merge("versions" => versions)
       end
       envelope
     end
 
     def reveal(session_id:, round_id:, user:, commitment: nil)
-      data = @storage.read.fetch("entries", {})[entry_key(session_id, round_id, user)]
+      data = entry_for(entries_for(@storage.read), entry_key(session_id, round_id, user))
       if data != nil && commitment != nil && data["commitment"] != commitment
         data = data.fetch("versions", {})[commitment]
       end
@@ -234,8 +235,10 @@ module HiddenSubmissions
     def discard(session_id:, round_id:, user:)
       removed = false
       @storage.update do |state|
-        entries = state["entries"] ||= {}
-        removed = entries.delete(entry_key(session_id, round_id, user)) != nil
+        entries = entries_for(state)
+        key = entry_key(session_id, round_id, user)
+        entry_for(entries, key)
+        removed = entries.delete(key) != nil
       end
       removed
     rescue StorageError
@@ -244,11 +247,35 @@ module HiddenSubmissions
       false
     end
 
+    # The receipt was reconstructed from accepted game events. Compare and
+    # remove in the same storage transaction so a newer uncertain submission
+    # cannot be erased between a read and a later discard.
+    def discard_confirmed(session_id:, receipts:)
+      complete = true
+      @storage.update do |state|
+        entries = entries_for(state)
+        receipts.each do |round_id, user, commitment|
+          key = entry_key(session_id, round_id, user)
+          data = entry_for(entries, key)
+          next unless data
+          if data["commitment"] == commitment
+            entries.delete(key)
+          else
+            complete = false
+          end
+        end
+      end
+      complete
+    rescue StorageError
+      false
+    end
+
     # A worker may reconcile durable answers after its game object was
     # recreated. Return only this account/session's current envelopes; older
     # versions and other games/accounts are not a cleanup authority.
     def envelopes(session_id:, user:, round_prefix:)
-      @storage.read.fetch("entries", {}).values.filter_map do |data|
+      entries_for(@storage.read).values.filter_map do |data|
+        validate_entry!(data)
         next unless data["session_id"] == session_id.to_i &&
           data["user"].to_s.downcase == user.to_s.downcase &&
           data["round_id"].to_s.start_with?(round_prefix)
@@ -265,6 +292,36 @@ module HiddenSubmissions
     end
 
     private
+
+    def entries_for(state)
+      unless state.is_a?(Hash) && state["entries"].is_a?(Hash)
+        raise StorageError, "Cannot read hidden answers on this device."
+      end
+      state["entries"]
+    end
+
+    def entry_for(entries, key)
+      return nil unless entries.key?(key)
+
+      data = entries[key]
+      validate_entry!(data)
+      data
+    end
+
+    def validate_entry!(data)
+      validate_envelope!(data)
+      versions = data.fetch("versions", {})
+      raise StorageError, "Cannot read hidden answers on this device." unless versions.is_a?(Hash)
+
+      versions.each_value { |version| validate_envelope!(version) }
+    end
+
+    def validate_envelope!(data)
+      unless data.is_a?(Hash) && data["session_id"].is_a?(Integer) && data.key?("payload") &&
+          %w[round_id user nonce commitment].all? { |name| data[name].is_a?(String) }
+        raise StorageError, "Cannot read hidden answers on this device."
+      end
+    end
 
     def entry_key(session_id, round_id, user)
       Digest::SHA256.hexdigest([session_id.to_i, round_id.to_s, user.to_s.downcase].join("\0"))
@@ -290,6 +347,40 @@ module HiddenSubmissions
         nonce: data["nonce"].to_s,
         commitment: data["commitment"].to_s
       )
+    end
+  end
+
+  # Public commitments, not private answers, survive subsequent rounds in the
+  # replay. The existing session worker reconciles them even when a guest no
+  # longer has an automatic action, or the game has already ended.
+  module Cleanup
+    def self.start(state, session)
+      state[:answer_cleanup] = {
+        session_id: (session["__id"] || session["id"]).to_i,
+        receipts: {}
+      }
+    end
+
+    def self.confirm(state, round_id, commitments)
+      proof = state[:answer_cleanup]
+      return unless proof && !commitments.empty?
+      round = proof[:receipts][round_id] ||= {}
+      commitments.each { |user, commitment| round[user.to_s.downcase] = commitment }
+    end
+
+    def cleanup_session_answers(replay, session_id:, actors:, hidden_submissions:)
+      proof = replay.state[:answer_cleanup]
+      return unless hidden_submissions && proof && session_id.positive? && proof[:session_id] == session_id
+      users = actors.map { |actor| actor.to_s.downcase }.uniq
+      receipts = proof[:receipts].flat_map do |round_id, commitments|
+        commitments.filter_map { |user, digest| [round_id, user, digest] if users.include?(user) }
+      end
+      return if receipts.empty?
+      checked = @confirmed_answer_cleanup
+      return if checked && checked[0] == session_id && checked[1].equal?(hidden_submissions) && checked[2] == receipts
+      if hidden_submissions.discard_confirmed(session_id: session_id, receipts: receipts)
+        @confirmed_answer_cleanup = [session_id, hidden_submissions, receipts]
+      end
     end
   end
 end

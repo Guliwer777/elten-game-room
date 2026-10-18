@@ -96,6 +96,7 @@ module GameRoomTournaments
     def shape!(shown)
       CoordinationRequest.fields!(shown, %w[version parent receipts plan dispatch_allowed digest])
       CoordinationRequest.fields!(shown['parent'], %w[intent_id expected_source plan_digest plan_id plan_revision seal])
+      raise Publication::Invalid, :invalid_fields unless shown['plan'].is_a?(Hash)
       fields = %w[generation round seeds players_per_match byes matches dispatch_allowed]
       fields += ['replay'] if shown['plan'].key?('replay')
       fields += ['rematch'] if shown['plan'].key?('rematch')

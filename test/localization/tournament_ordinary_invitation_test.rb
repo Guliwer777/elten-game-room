@@ -5,7 +5,7 @@ include GameRoomTest::Assertions
 
 messages = [
   "Another player is creating this match's table. Accept their invitation or try again shortly.",
-  "This match was started or its state is uncertain. Resume the saved game or check Operations before playing again.",
+  "This match was started or its state is uncertain, so it cannot be started again. Use 'Check pending changes' in the tournament list to check any unconfirmed operation.",
   "Leave your current table before opening another tournament match.",
   "%{sender} invites you to a tournament match (%{game}).",
   "%{sender} invites you to resume a tournament match (%{game})."

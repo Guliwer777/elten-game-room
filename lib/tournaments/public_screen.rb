@@ -29,7 +29,7 @@ module GameRoomTournaments
     end
     private_constant :Form
 
-    def initialize(program:, registry:, load:, join:, alert:, mode_label:, actor:, join_virtual: nil, overview: nil, withdraw: nil, manage_participants: nil, set_partner: nil, edit_tournament: nil, delete_tournament: nil, create: nil, recover: nil, mine: false, results:nil,phase:nil,clock: -> { Time.now.to_i })
+    def initialize(program:, registry:, load:, join:, alert:, mode_label:, actor:, join_virtual: nil, overview: nil, withdraw: nil, manage_participants: nil, set_partner: nil, edit_tournament: nil, delete_tournament: nil, create: nil, recover: nil, mine: false, results:nil,phase:nil,invite:nil,reference:nil,initial_action:nil,clock: -> { Time.now.to_i })
       @program, @registry, @load, @join, @alert = program, registry, load, join, alert
       @mode_label, @actor = mode_label, actor
       @join_virtual, @overview = join_virtual, overview
@@ -39,6 +39,7 @@ module GameRoomTournaments
       @edit_tournament, @delete_tournament = edit_tournament, delete_tournament
       @create, @recover, @mine = create, recover, mine
       @results,@phase=results,phase
+      @invite,@reference,@initial_action=invite,reference,initial_action
       @clock = clock
       @text = PublicText.new(registry: registry, mode_label: mode_label, actor: actor)
     end
@@ -61,20 +62,20 @@ module GameRoomTournaments
       return unless @snapshot
       @lists=[ListBox.new([],header:text(_("Tournaments")),quiet:true,
         empty_label:text(_("No tournaments in this view.")))]
-      @filter=ListBox.new([_("Current"),_("My tournaments"),_("Completed")].map{|label|text(label)},
-        header:text(_("Show tournaments")),index:@mine ? 1 : 0,flags:ListBox::Flags::AnyDir,quiet:true)
+      @filter=ListBox.new([_("Current"),_("Completed")].map{|label|text(label)},
+        header:text(_("Show tournaments")),index:0,flags:ListBox::Flags::AnyDir,quiet:true)
       @current_list=@lists.first
       @rows_by_list={}.compare_by_identity
       @status = GameRoomUI::HelpText.new(text(_("Status")),
         type: EditBox::Flags::ReadOnly | EditBox::Flags::MultiLine, text: '', quiet: true)
-      view = Button.new(text(_("View tournament")))
+      view = Button.new(text(_("Open tournament")))
       refresh = Button.new(text(_("Refresh")))
       back = Button.new(text(_("Back")))
       @form = Form.new([*@lists,@filter,@status,view,refresh,back],program:@program,index:0,quiet:true)
       @form.game_room_invitation_context_field = @current_list
       @form.hide(view)
       @form.hide(back)
-      @filter.on(:move){interaction(focus:false){render}}
+      @filter.on(:move){interaction(focus:false){@mine=false;render}}
       @lists.each do |list|
         list.on(:focus){@current_list=list unless (@rows_by_list[list] || []).empty?}
         list.bind_context{|menu|context_actions(menu,list)}
@@ -98,11 +99,20 @@ module GameRoomTournaments
       refresh.on(:press) { interaction { refresh_rows } }
       back.on(:press) { interaction { @finished = true; @form.resume } }
       interaction { render }
+      if @reference
+        row=@snapshot['announcements'].find{|item|item['__insertion_user'].downcase==@reference['author'] && item['publication_key']==@reference['publication_key']}
+        if row
+          interaction{preview(row:row,initial_action:@initial_action)}
+        else
+          @alert.call(text(_("This tournament is no longer available.")))
+        end
+        return
+      end
       if @mine && @rows_by_list[@current_list].empty?
         @alert.call(text(_("You have no active tournaments. The current tournaments are shown instead.")))
         @filter.index=0
-        interaction{render}
         @mine=false
+        interaction{render}
       end
       if @mine && @rows_by_list[@current_list].size==1
         interaction{preview}
@@ -138,7 +148,7 @@ module GameRoomTournaments
       dialog = PublicPreview.new(program: @program, registry: @registry, publication: row,
         snapshot: @snapshot, load: @load, join: @join, alert: @alert, mode_label: @mode_label, actor: @actor,
         join_virtual: @join_virtual, overview: @overview, withdraw: @withdraw, manage_participants: @manage_participants, set_partner: @set_partner, edit_tournament: @edit_tournament, delete_tournament: @delete_tournament,initial_action:initial_action,
-        results:@results,phase:@phase,clock:@clock)
+        results:@results,phase:@phase,invite:@invite,clock:@clock)
       initial_action ? dialog.perform(initial_action) : dialog.wait
       unless dialog.snapshot.equal?(@snapshot)
         @snapshot = dialog.snapshot
@@ -161,20 +171,22 @@ module GameRoomTournaments
         completed=[:ended,:completed].include?(states.fetch(row['__id'])[:state])
         mine=row['__insertion_user'].downcase==@actor.downcase ||
           @text.members(row,@snapshot).any?{|person|person['account'].downcase==@actor.downcase}
-        @filter.index==2 ? completed : !completed && (@filter.index==0 || mine)
+        @filter.index==1 ? completed : !completed && (!@mine || mine)
       end
       if @filter.index==0
         groups=[[],[],[]]
         rows.each do |row|
-          joined=@text.members(row,@snapshot).any?{|person|person['account'].downcase==@actor.downcase}
+          joined=row['__insertion_user'].downcase==@actor.downcase ||
+            @text.members(row,@snapshot).any?{|person|person['account'].downcase==@actor.downcase}
           priority=joined ? 0 : (@text.can_join?(row,@snapshot,now:now) ? 1 : 2)
           groups[priority] << row
         end
         rows=groups.flatten(1)
-      elsif @filter.index==2
+      elsif @filter.index==1
         rows.sort_by!{|row|[-(TournamentLifecycle.ending_at(row) || row['__insertion_time']),-row['__id']]}
       end
       @rows_by_list[@current_list]=rows
+      @current_list.empty_label=text(@filter.index==1 ? _("No completed tournaments.") : _("No current tournaments."))
       @current_list.update_options(rows.map{|row|@text.row_label(row,@snapshot)+'; '+@text.lifecycle_label(states.fetch(row['__id'])[:state])},keys:rows.map{|row|row['__id']})
       reports=@snapshot.fetch('diagnostics')
       value=reports.values.any?{|items|!items.empty?} ? text(_("Some tournament information could not be read. Refresh before making changes.")) : ''
@@ -200,17 +212,16 @@ module GameRoomTournaments
       state=TournamentLifecycle.classify(row,now:@clock.call)[:state]
       before_start=[:soon,:registration,:waiting].include?(state)
       registered=@text.members(row,@snapshot).any?{|person|person['account'].downcase==@actor.downcase}
-      actions=[[_('View tournament'),nil]]
-      actions<<[_('Join tournament'),:join] if @join && (@text.can_join?(row,@snapshot,now:@clock.call) || @join_virtual && before_start) && (!registered || @join_virtual)
-      actions<<[_('Matches'),:overview] if @overview
-      actions<<[_('Leave tournament'),:withdraw] if @withdraw && registered && before_start
-      if row['__insertion_user'].downcase==@actor.downcase && before_start
-        actions<<[_('Manage participants'),:manage] if @manage_participants
-        actions<<[_('Edit tournament'),:edit] if @edit_tournament
-        actions<<[_('Cancel tournament'),:delete] if @delete_tournament
+      actions=[[_('Open tournament'),nil,'o']]
+      actions<<[_('Join tournament'),:join,'d'] if @join && (@text.can_join?(row,@snapshot,now:@clock.call) || @join_virtual && before_start) && (!registered || @join_virtual)
+      actions<<[_('Tournament matches'),:overview,'m'] if @overview
+      actions<<[_('Standings'),:results,'w'] if @results
+      if row['__insertion_user'].downcase==@actor.downcase
+        actions<<[_('Manage tournament'),:manage,'e']
       end
-      actions.each do |label,action|
-        menu.option(text(label)) do
+      actions<<[_('Leave tournament'),:withdraw,'l'] if @withdraw && registered && before_start
+      actions.each do |label,action,key|
+        menu.option(text(label),nil,key) do
           interaction do
             fresh=@load.call
             next unless fresh

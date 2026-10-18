@@ -29,7 +29,7 @@ T.script(->(form){
   assert(!list.header.include?('Obcy') && !list.header.include?('settings_json'))
   assert(form.accept_button.nil?,'Reading details consented to membership')
   assert(!actions(form).options.include?('Join tournament'),'Registered player still has Join')
-  choose(form,'Tournament rules')
+  choose(form,'Information and rules')
   form.cancel_button.trigger(:press)
 },->(form){
   content=form.fields.first.text

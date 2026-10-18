@@ -1,4 +1,4 @@
-require 'tmpdir'
+require_relative '../support/temporary_directory'
 require_relative '../support/binary_rules_load' if ARGV.first
 require_relative '../support/session_runner'
 require_relative '../support/tournament_server_plan_table'
@@ -6,7 +6,7 @@ require_relative '../../games/catalog'
 require_relative '../../lib/tournaments/ordinary_match_service'
 T=GameRoomTournaments
 [3,4,8].each do |count|
-  Dir.mktmpdir('ordinary-many-',ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('ordinary-many-') do |directory|
     users=%w[Alice Bob Carol Dave Eve Frank Grace Heidi].first(count)
     game=GameRoomGames::Farkle.new
     options=game.normalize_options(game.default_options.merge('score_limit'=>1,'turn_minimum'=>1,'entry_minimum'=>1))
@@ -62,7 +62,8 @@ T=GameRoomTournaments
       deadline=Process.clock_gettime(Process::CLOCK_MONOTONIC)+5
       view=nil
       loop do
-        raise error if (error=services['Alice'].take_error)
+        error = services['Alice'].take_error
+        raise error if error
         view=services[users.last].result_view
         break if view['results'].size==1
         raise 'Native multiplayer receipt did not arrive' if Process.clock_gettime(Process::CLOCK_MONOTONIC)>deadline

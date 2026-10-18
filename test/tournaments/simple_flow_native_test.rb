@@ -27,7 +27,7 @@ end
 driver.step(/Individual UI/, [13]) do |form|
   assert(F.field(form, L.call('Virtual player name (local test only)')), 'Missing virtual registration field')
   actions = form.fields.first
-  actions.index = actions.options.index(L.call('Matches')) || raise('Missing matches action')
+  actions.index = actions.options.index(L.call('Tournament matches')) || raise('Missing matches action')
   form.index = 0
 end
 driver.step(L.call('Matches, groups and standings'), [27]) do |form|

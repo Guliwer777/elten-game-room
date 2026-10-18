@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require_relative '../support/tournament_native'
 require_relative '../support/native_tasks'
@@ -54,7 +55,7 @@ module NativeLocalHubFlow
 end
 F = NativeLocalHubFlow
 
-Dir.mktmpdir('native-local-hub-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('native-local-hub-') do |directory|
   owner = 'RealOwner'
   messages, io_threads = [], []
   program = Object.new
@@ -265,7 +266,7 @@ driver.finish
 puts 'PASS native invalid actor: kontrolowany alert i chroniony tekst/caret/fokus'
 
 # Bezpośrednio wejście/wybór aktora nie buduje nawet katalogu sandboxa.
-Dir.mktmpdir('hub-no-io-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('hub-no-io-') do |directory|
   program = Object.new
   program.define_singleton_method(:data_path) { raise 'data_path podczas samego wejścia' }
   [false, true].each do |choose|
@@ -298,7 +299,7 @@ module NativeLocalHubInsertBoundary
   end
 end
 G::LocalTestTables.prepend(NativeLocalHubInsertBoundary)
-Dir.mktmpdir('hub-uncertain-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('hub-uncertain-') do |directory|
   messages = []
   program = Object.new
   program.define_singleton_method(:data_path) { directory }
@@ -396,7 +397,7 @@ puts 'PASS native uncertain append/reopen/restart: one publication, one organize
 
 # Konto może wrócić do starej wartości jeszcze wewnątrz alertu workera.
 # Raz ZAOBSERWOWANA zmiana musi pozostać zatrzaśnięta w całym hubie.
-Dir.mktmpdir('hub-account-latch-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('hub-account-latch-') do |directory|
   owner, messages = 'RealOwner', []
   program = Object.new
   program.define_singleton_method(:data_path) { owner = 'OtherOwner'; directory }

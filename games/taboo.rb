@@ -8,9 +8,12 @@ require_relative "../lib/game_turn_clock"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register_payload('taboo', ['deal'])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Taboo < Base
+    def player_spatial_audio?; true; end
     include PublicHistoryAnnouncements
     RESULTS = %w[correct skipped buzzed neutral].freeze
     MODERATOR_ACTIONS = %w[deal begin timeout approve correct_result restart_turn].freeze
@@ -64,16 +67,22 @@ def tournament_export_scores(replay, options:)
     def replay(session, events, repository)
       state = initial_state(repository.players_for(session), options_from_json(session["options"]))
       state[:master] = session["__insertion_user"].to_s.empty? ? state[:players].first : session["__insertion_user"]
+      initialize_private_taboo(state, session) if GameRoomPrivateCards.enabled?(session)
       history, accepted, seen = [starting_history(state[:players])], [], {}
-      GameRoomActionPayload.each(events, id, repository, session) do |data, actor, batch|
+      GameRoomActionPayload.each(events, id, repository, session, controls: true) do |data, actor, batch|
         next if state[:phase] == :finished || batch.any? { |event| seen[repository.event_id(event)] }
         candidate, additions = clone_state(state), []
         authorized = batch.all? do |event|
           author = event["__insertion_user"] || event["actor"]
           same_user?(author, event["__authority_user"] || state[:master])
         end
-        next if MODERATOR_ACTIONS.include?(data["action"]) && !authorized
-        next unless apply(candidate, data, actor, repository.event_id(batch.last), additions) == :ok
+        if data
+          next if MODERATOR_ACTIONS.include?(data["action"]) && !authorized
+          reducer_actor = state[:private_cards] && MODERATOR_ACTIONS.include?(data['action']) ? state[:players].first : actor
+          next unless apply(candidate, data, reducer_actor, repository.event_id(batch.last), additions) == :ok
+        else
+          next unless state[:private_cards] && apply_private_taboo(candidate, batch.first, actor, host: authorized)
+        end
         state = candidate
         history.concat(additions)
         accepted.concat(batch)
@@ -97,10 +106,14 @@ def tournament_export_scores(replay, options:)
       end
       if data["action"] == "deal"
         return [:invalid, nil] unless context&.random_source
-        data["seed"] = context.random_source.roll(count: 16, sides: 256).values.map { |v| (v-1).to_s(16).rjust(2,"0") }.join
+        data["seed"] = context.server_random ? '0' * 32 :
+          context.random_source.roll(count: 16, sides: 256).values.map { |v| (v-1).to_s(16).rjust(2,"0") }.join
       end
       status = apply(clone_state(replay.state), data, actor, 0, [])
       return [status, nil] unless status == :ok
+      if data['action'] == 'deal' && context.server_random
+        return [:ok, ActionPlan.new(events: [GameRoomServerRandom.payload_seed_command(action: id, data: data)])]
+      end
       [:ok, ActionPlan.new(events: GameRoomActionPayload.commands(id, data))]
     end
     def automatic_action(replay, actor, context: nil)
@@ -121,6 +134,7 @@ def tournament_export_scores(replay, options:)
       state[:phase] == :describing ? [state[:current_player]] + state[:teams][1-state[:team]] : [state[:current_player]].compact
     end
     def save_game_error(replay)
+      return super if replay.state[:private_cards]
       return super if replay.finished?
       _("Save Taboo between turns, after the table master approves the review.") unless replay.state[:phase] == :ready
     end
@@ -260,3 +274,4 @@ def tournament_export_scores(replay, options:)
   end
 end
 require_relative "taboo_ui"
+require_relative "taboo_private"

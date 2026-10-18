@@ -14,7 +14,13 @@ module GameRoomQuizContributions
     end
 
     def list
-      transaction { |account| Model.copy(account['drafts'].values) }
+      transaction do |account|
+        account['drafts'].map do |id, value|
+          clean = Model.draft(value)
+          raise Invalid, _('Invalid local drafts.') unless id == clean['id']
+          editor_copy(value)
+        end
+      end
     end
 
     def save(value)
@@ -46,6 +52,19 @@ module GameRoomQuizContributions
     end
 
     private
+
+    def editor_copy(value)
+      # Incomplete text may be nil in recovery, but native editors consume
+      # strings. Do not normalize the stored draft: its snapshot, answer
+      # order and opaque recovery metadata must survive a read-only visit.
+      copy = Model.copy(value)
+      %w[title language description].each { |key| copy[key] = '' if copy[key].nil? }
+      copy['items'].each do |question|
+        %w[prompt category source note].each { |key| question[key] = '' if question[key].nil? }
+        question['choices'].map! { |answer| answer.nil? ? '' : answer }
+      end
+      copy
+    end
 
     def transaction
       check_account

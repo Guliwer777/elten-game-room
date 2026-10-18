@@ -1,0 +1,399 @@
+{
+  "source": "games/bridge.rb",
+  "sections": [
+    {
+      "id": "aim",
+      "title": {
+        "en": "The aim",
+        "pl": "Na czym polega gra"
+      },
+      "paragraphs": [
+        {
+          "en": "Bridge is played by four people in two partnerships. You and your partner bid for a contract: a promise to win a certain number of tricks. A trick is the four cards played in turn, one from each hand. If your pair wins the auction, you try to fulfil that promise; otherwise, you try to stop the other pair.",
+          "pl": "W brydża grają cztery osoby podzielone na dwie pary. Wspólnie z partnerem licytujesz kontrakt, czyli zobowiązanie do zdobycia określonej liczby lew. Lewa to cztery karty zagrane po jednej przez każdego gracza. Para, która wygra licytację, stara się wypełnić kontrakt, a przeciwnicy próbują jej w tym przeszkodzić."
+        },
+        {
+          "en": "The default game is a rubber. It ends when a pair has won two games, and the pair with more points overall wins the match. The scoring chapters explain how individual deals build towards that result.",
+          "pl": "Domyślnie gracie na robra. Kończy się on, gdy jedna para wygra dwie partie. O zwycięstwie w całym meczu decyduje suma punktów; poniżej znajdziesz wyjaśnienie, jak kolejne rozdania składają się na ten wynik."
+        }
+      ]
+    },
+    {
+      "id": "deal",
+      "title": {
+        "en": "Your hand and your partner",
+        "pl": "Twoje karty i partner"
+      },
+      "paragraphs": [
+        {
+          "en": "North and South form one pair; East and West form the other. The teams chosen at the table determine these partnerships. Play follows the order North, East, South, West. Press I to hear your position and partner.",
+          "pl": "Jedną parę tworzą Północ i Południe, a drugą Wschód i Zachód. O tym, z kim grasz, decyduje wybór drużyn przy stole. Gracze wykonują ruchy w kolejności: Północ, Wschód, Południe, Zachód. Klawisz I przypomina twoje miejsce i partnera."
+        },
+        {
+          "en": "Everyone receives 13 cards. In each suit, the order from highest to lowest is ace, king, queen, jack, 10, 9 and so on down to 2. Browse your cards with the arrows; H reads the whole hand.",
+          "pl": "Każdy otrzymuje 13 kart. W każdym kolorze najwyższy jest as, po nim król, dama, walet, dziesiątka i kolejne karty aż do dwójki. Karty przeglądasz strzałkami, a klawiszem H odczytasz całą rękę."
+        },
+        {
+          "en": "H also gives your high card points: 4 for an ace, 3 for a king, 2 for a queen and 1 for a jack. These help you judge your hand during bidding; they are separate from the match score.",
+          "pl": "Przy odczycie ręki usłyszysz też liczbę punktów honorowych: as daje 4, król 3, dama 2, a walet 1. Pomagają ocenić siłę kart przed licytacją. Nie są to punkty zdobywane w meczu."
+        }
+      ]
+    },
+    {
+      "id": "auction",
+      "title": {
+        "en": "Bidding for a contract",
+        "pl": "Licytacja"
+      },
+      "paragraphs": [
+        {
+          "en": "The dealer makes the first call. On your turn, choose a call with the arrows and confirm with Enter. B also opens the bidding choices.",
+          "pl": "Zaczyna rozdający. W swojej turze wybierz zapowiedź strzałkami i zatwierdź Enterem. Listę zapowiedzi możesz też otworzyć klawiszem B."
+        },
+        {
+          "en": "A bid consists of a number from 1 to 7 and a suit, or no trump. Add six to the number to find your target: 1 heart promises seven tricks, while 4 spades promises ten. The named suit becomes trumps, whose cards can beat cards of the other suits. A no-trump contract has no such suit.",
+          "pl": "Odzywka składa się z liczby od 1 do 7 oraz koloru albo określenia „bez atu”. Do liczby dodajesz sześć: 1 kier to zobowiązanie do zdobycia siedmiu lew, a 4 piki — dziesięciu. Wybrany kolor staje się atutem, czyli jego karty mogą pokonać karty pozostałych kolorów. Przy kontrakcie bez atu żaden kolor nie ma takiej przewagi."
+        },
+        {
+          "en": "Each new bid must be higher than the last. At the same level, the order is clubs, diamonds, hearts, spades, no trump. Any bid at a higher level outranks those below it. After 1 spade, for example, you can bid 1 no trump or 2 clubs.",
+          "pl": "Każda nowa odzywka musi być wyższa od poprzedniej. Przy tej samej liczbie kolejność jest następująca: trefle, kara, kiery, piki, bez atu. Wyższa liczba przebija wszystkie odzywki na niższym poziomie. Po 1 pik możesz więc powiedzieć 1 bez atu albo 2 trefle."
+        },
+        {
+          "en": "You can also make these calls:",
+          "pl": "Poza podwyższeniem odzywki masz do wyboru:"
+        },
+        {
+          "en": "- Pass leaves the bidding to the next player. You can bid later if the auction comes back to you.",
+          "pl": "- Pas: przekazujesz głos następnemu graczowi. Jeśli licytacja do ciebie wróci, możesz ponownie licytować."
+        },
+        {
+          "en": "- Double raises the rewards for making the opponents' bid and the penalties for failing. It is available after an opponent's bid, possibly followed by passes.",
+          "pl": "- Kontra: zwiększasz punkty za wypełnienie kontraktu przeciwników i kary za jego niewypełnienie. Kontrujesz odzywkę przeciwnika, po której mogły paść pasy."
+        },
+        {
+          "en": "- Redouble raises the stakes again after an opponent has doubled your pair's bid. A new, higher bid cancels the earlier double or redouble.",
+          "pl": "- Rekontra: po kontrze przeciwnika na odzywkę twojej pary jeszcze raz zwiększasz stawkę. Wyższa odzywka kasuje wcześniejszą kontrę lub rekontrę."
+        },
+        {
+          "en": "Three consecutive passes after a bid end the auction. The last bid becomes the contract. If all four players pass before anyone bids, the deal ends without a score and the next player deals.",
+          "pl": "Trzy pasy z rzędu po odzywce kończą licytację, a ostatnia odzywka staje się kontraktem. Gdy od początku spasują wszyscy czterej gracze, rozdanie kończy się bez punktów i rozdaje następna osoba."
+        },
+        {
+          "en": "L reads the auction; Ctrl+L lets you inspect its calls one by one.",
+          "pl": "Klawisz L odczytuje przebieg licytacji. Skrótem Ctrl+L przejrzysz zapowiedzi pojedynczo."
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": {
+        "en": "Playing the contract",
+        "pl": "Rozgrywka i dziadek"
+      },
+      "paragraphs": [
+        {
+          "en": "The declarer is the member of the winning pair who first bid the suit of the final contract, or first bid no trump if that is the contract. If North bids 1 heart and South later bids 4 hearts, North declares.",
+          "pl": "Rozgrywającym zostaje osoba z pary, która jako pierwsza zgłosiła kolor końcowego kontraktu albo bez atu, jeśli tak zakończyła się licytacja. Gdy Północ zalicytuje 1 kier, a Południe później 4 kiery, rozgrywa Północ."
+        },
+        {
+          "en": "The player after declarer leads the first card. Declarer's partner then exposes their hand: this is dummy. Everyone can read it with D, but declarer chooses its cards. K repeats the contract and the number of tricks won by declarer's pair.",
+          "pl": "Pierwszą kartę zagrywa gracz następny po rozgrywającym. Wtedy partner rozgrywającego wykłada swoją rękę — staje się dziadkiem. Wszyscy mogą odczytać te karty klawiszem D, ale wybiera je rozgrywający. Klawisz K przypomina kontrakt i liczbę lew zdobytą przez jego parę."
+        },
+        {
+          "en": "Choose a card with the arrows and play it with Enter. You must follow the suit led if you have it. Otherwise, you may play any card. The highest trump wins the trick; if no trump was played, the highest card of the led suit wins. The winner leads the next trick.",
+          "pl": "Wybierz kartę strzałkami i zagraj ją Enterem. Jeśli masz kolor pierwszej karty w lewie, musisz go dołożyć. Gdy go nie masz, możesz zagrać dowolną kartę. Lewę zdobywa najwyższy atut, a jeśli nikt go nie zagrał — najwyższa karta koloru wyjścia. Zwycięzca rozpoczyna następną lewę."
+        },
+        {
+          "en": "As declarer, wait for dummy's turn, then use Tab to reach dummy's card list and select a card there. Z takes you straight to a playable card in the hand due to play; Shift+Z goes backwards. With only one possible card, Z plays it.",
+          "pl": "Jako rozgrywający zagrywasz również z ręki dziadka. Gdy przypada jego ruch, przejdź Tabem do jego kart i wybierz jedną. Klawisz Z przenosi od razu do karty, którą wolno zagrać z właściwej ręki, a Shift+Z pozwala szukać wstecz. Jeśli pasuje tylko jedna karta, Z od razu ją zagrywa."
+        },
+        {
+          "en": "C reads the current trick, F repeats the suit led, and P reads the previous trick and its winner. After all 13 tricks, the deal is scored and the next player becomes dealer.",
+          "pl": "Klawisz C odczytuje bieżącą lewę, F przypomina kolor wyjścia, a P — poprzednią lewę i jej zwycięzcę. Po rozegraniu wszystkich 13 lew następuje podliczenie punktów, a rozdającym zostaje kolejna osoba."
+        }
+      ]
+    },
+    {
+      "id": "scoring",
+      "title": {
+        "en": "Scoring a rubber",
+        "pl": "Punktacja i robr"
+      },
+      "paragraphs": [
+        {
+          "en": "Only the tricks promised beyond the first six earn contract points. If you make your contract, they are worth:",
+          "pl": "Punkty za kontrakt otrzymujesz za obiecane lewy ponad pierwszych sześć. Jeśli para wypełni kontrakt, każda z nich daje:"
+        },
+        {
+          "en": "- 20 each in clubs or diamonds.",
+          "pl": "- 20 punktów przy treflach lub karach."
+        },
+        {
+          "en": "- 30 each in hearts or spades.",
+          "pl": "- 30 punktów przy kierach lub pikach."
+        },
+        {
+          "en": "- 40 for the first in no trump, then 30 each.",
+          "pl": "- W bez atu: 40 za pierwszą i po 30 za następne."
+        },
+        {
+          "en": "A double multiplies contract points by two; a redouble multiplies them by four. These points are recorded below the line. When a pair reaches 100 below the line, in one deal or several, it wins a game. Both pairs then start the next game from zero towards that target.",
+          "pl": "Kontra podwaja te punkty, a rekontra mnoży je przez cztery. Zapisuje się je pod kreską. Gdy para uzbiera tam 100 punktów, w jednym rozdaniu lub w kilku, wygrywa partię. Obie pary zaczynają wtedy zbieranie punktów do następnej partii od zera."
+        },
+        {
+          "en": "For example, making 2 hearts earns 60 below the line. Making 1 no trump in a later deal adds 40 and completes the game, provided neither pair has completed a game in between.",
+          "pl": "Przykładowo wypełniony kontrakt 2 kiery daje 60 punktów pod kreską. Wypełnienie później 1 bez atu dodaje 40 i kończy partię, o ile w międzyczasie nie zakończyła jej żadna z par."
+        },
+        {
+          "en": "A pair that has won a game becomes vulnerable for the rest of the rubber. Vulnerability increases some bonuses and penalties. V reads the current deal and vulnerability.",
+          "pl": "Para, która wygrała partię, jest odtąd „po partii”. Do końca robra niektóre jej premie i kary będą wyższe. Klawisz V przypomina numer rozdania oraz to, kto jest przed partią, a kto po partii."
+        },
+        {
+          "en": "The first pair to win two games ends the rubber and receives a bonus: 700 if the opponents won none, or 500 if they won one. All points, including the bonuses described next, count towards the final total. The higher total wins; equal totals are a draw. S reads the scores.",
+          "pl": "Zdobycie drugiej partii kończy robra i daje premię: 700 punktów, jeśli przeciwnicy nie wygrali żadnej partii, lub 500, jeśli wygrali jedną. Mecz wygrywa para z większą sumą wszystkich punktów, także premii opisanych dalej. Równe sumy oznaczają remis. Wynik sprawdzisz klawiszem S."
+        }
+      ]
+    },
+    {
+      "id": "bonuses",
+      "title": {
+        "en": "Extra tricks and penalties",
+        "pl": "Nadróbki, premie i wpadki"
+      },
+      "paragraphs": [
+        {
+          "en": "Bonuses and penalties are recorded above the line. They count towards your total but not towards the 100 points needed to win a game.",
+          "pl": "Premie i kary zapisuje się nad kreską. Powiększają wynik całego meczu, ale nie przybliżają do 100 punktów potrzebnych do wygrania partii."
+        },
+        {
+          "en": "- Each overtrick, beyond your contract, earns 20 in clubs or diamonds and 30 in hearts, spades or no trump.",
+          "pl": "- Lewa ponad kontrakt, czyli nadróbka, daje 20 punktów w treflach i karach oraz 30 w kierach, pikach i bez atu."
+        },
+        {
+          "en": "- With a doubled contract, each overtrick earns 100, or 200 if vulnerable. Redoubling makes those amounts 200 and 400.",
+          "pl": "- Przy kontrakcie z kontrą nadróbka daje 100 punktów przed partią lub 200 po partii. Z rekontrą te wartości wynoszą 200 i 400."
+        },
+        {
+          "en": "- Making a doubled contract adds 50; making a redoubled contract adds 100.",
+          "pl": "- Wypełnienie kontraktu z kontrą daje dodatkowe 50 punktów, a z rekontrą — 100."
+        },
+        {
+          "en": "- Bidding and making 6, a small slam, earns a bonus of 500, or 750 if vulnerable. Bidding and making 7, a grand slam, earns 1000, or 1500 if vulnerable.",
+          "pl": "- Wylicytowanie i wypełnienie kontraktu na poziomie 6, czyli szlemika, daje premię 500 punktów przed partią lub 750 po partii. Kontrakt na poziomie 7, czyli szlem, daje odpowiednio 1000 lub 1500."
+        },
+        {
+          "en": "If your pair wins fewer tricks than promised, the opponents receive points for the shortfall:",
+          "pl": "Jeśli zdobędziecie mniej lew, niż obiecaliście, przeciwnicy dostaną punkty za każdą brakującą lewę, zwaną wpadką:"
+        },
+        {
+          "en": "- Without a double: 50 for each missing trick, or 100 if your pair is vulnerable.",
+          "pl": "- Bez kontry: po 50 punktów przed partią lub po 100 po partii."
+        },
+        {
+          "en": "- Doubled, not vulnerable: 100 for the first missing trick, 200 each for the second and third, and 300 each after that.",
+          "pl": "- Z kontrą przed partią: 100 za pierwszą wpadkę, po 200 za drugą i trzecią oraz po 300 za każdą następną."
+        },
+        {
+          "en": "- Doubled and vulnerable: 200 for the first missing trick and 300 each after that.",
+          "pl": "- Z kontrą po partii: 200 za pierwszą wpadkę i po 300 za kolejne."
+        },
+        {
+          "en": "- Redoubled: twice the corresponding doubled penalty.",
+          "pl": "- Z rekontrą: dwukrotność odpowiedniej kary z kontrą."
+        }
+      ]
+    },
+    {
+      "id": "honors",
+      "title": {
+        "en": "Honours",
+        "pl": "Honory"
+      },
+      "paragraphs": [
+        {
+          "en": "A strong group of cards in one hand can earn a separate bonus, even if its owner is defending:",
+          "pl": "Premię może dać także zestaw wysokich kart w jednej ręce. Otrzymuje ją para właściciela kart, również wtedy, gdy broni kontraktu:"
+        },
+        {
+          "en": "- Four of the five highest trumps — ace, king, queen, jack and 10 — earn 100 points. All five earn 150.",
+          "pl": "- Cztery z pięciu najwyższych atutów — asa, króla, damy, waleta i dziesiątki — dają 100 punktów. Wszystkie pięć daje 150."
+        },
+        {
+          "en": "- In a no-trump contract, all four aces in one hand earn 150.",
+          "pl": "- W kontrakcie bez atu cztery asy w jednej ręce dają 150 punktów."
+        },
+        {
+          "en": "These points go above the line. Table settings let you turn honours off.",
+          "pl": "Honory zapisuje się nad kreską. Ich liczenie można wyłączyć w ustawieniach stołu."
+        }
+      ]
+    },
+    {
+      "id": "variants",
+      "title": {
+        "en": "Comparison with an estimated score",
+        "pl": "Porównanie z wynikiem orientacyjnym"
+      },
+      "paragraphs": [
+        {
+          "en": "Instead of a rubber, table settings offer a fixed series of 4, 8, 12, 16 or 24 boards; the default is 8. In this variant, each board is scored separately. The board number determines the dealer and vulnerability. V reads them.",
+          "pl": "Zamiast robra w ustawieniach stołu możesz wybrać serię 4, 8, 12, 16 lub 24 rozdań; domyślnie jest ich 8. W tym wariancie każde rozdanie liczy się osobno. Numer rozdania określa rozdającego i założenia, czyli to, kto jest przed partią, a kto po partii. Odczytasz je klawiszem V."
+        },
+        {
+          "en": "A contract worth at least 100 contract points earns a game bonus of 300, or 500 if vulnerable. A smaller contract earns 50. Overtricks, doubles, slams and penalties keep the values described above. There are no honours or rubber bonuses.",
+          "pl": "Kontrakt wart co najmniej 100 punktów za lewy daje premię za końcówkę: 300 przed partią lub 500 po partii. Mniejszy kontrakt daje premię 50. Nadróbki, kontry, szlemy i wpadki liczą się tak jak wcześniej. Nie ma honorów ani premii za robra."
+        },
+        {
+          "en": "Your result is then compared with a conventional reference score based on the stronger pair's combined high card points and vulnerability. This is an estimate, not a result from another table. It ignores suit lengths and how well the partners' hands fit.",
+          "pl": "Uzyskany wynik porównuje się z umownym wynikiem orientacyjnym, zależnym od punktów honorowych silniejszej pary i założeń. Nie jest to wynik graczy z innego stołu. Ten szacunek nie uwzględnia długości kolorów ani tego, jak karty partnerów do siebie pasują."
+        },
+        {
+          "en": "For example, a pair with 26 high card points has a reference of 400 when not vulnerable or 600 when vulnerable. At 20 points each, the reference is zero. Even a passed-out board is compared: its actual result is zero.",
+          "pl": "Przykładowo przy 26 punktach honorowych wynik orientacyjny wynosi 400 przed partią lub 600 po partii. Gdy obie pary mają po 20, wynosi zero. Porównanie obejmuje też rozdanie zakończone czterema pasami, którego rzeczywisty wynik to zero."
+        },
+        {
+          "en": "Choose one of two ways to count that comparison:",
+          "pl": "Do wyboru są dwa sposoby punktowania porównania:"
+        },
+        {
+          "en": "- IMPs convert the difference into points. A difference of up to 10 earns none; 20–40 earns 1, 50–80 earns 2 and 90–120 earns 3. Larger differences earn more, up to 24. The pair that outperforms the reference receives those points.",
+          "pl": "- IMP-y: różnica do 10 punktów nie daje IMP-ów, 20–40 daje 1, 50–80 daje 2, a 90–120 daje 3. Większe różnice dają więcej, najwyżej 24 IMP-y. Otrzymuje je para, która wypadła lepiej od wyniku orientacyjnego."
+        },
+        {
+          "en": "- Matchpoints give 2 to the pair that outperforms the reference and 0 to the other pair. An equal result gives 1 each. S also presents the total as a percentage of the available points.",
+          "pl": "- Zapis maksymalny: para z wynikiem lepszym od orientacyjnego dostaje 2 punkty, a druga 0. Zrównanie się z wynikiem orientacyjnym daje po 1 punkcie. Klawisz S przedstawia wynik także jako procent możliwych do zdobycia punktów."
+        },
+        {
+          "en": "After the agreed number of boards, the pair with the higher total wins. Equal totals are a draw.",
+          "pl": "Po ostatnim rozdaniu wygrywa para z większą sumą punktów. Przy równych sumach jest remis."
+        }
+      ]
+    },
+    {
+      "id": "bots",
+      "title": {
+        "en": "Bidding with a bot",
+        "pl": "Licytacja z botem"
+      },
+      "paragraphs": [
+        {
+          "en": "A bot uses its own cards, the exposed dummy and the public auction and play. Its natural bidding system includes these common openings:",
+          "pl": "Bot korzysta z własnych kart, odkrytego dziadka oraz publicznych zapowiedzi i zagrań. Licytuje naturalnie. Najczęstsze otwarcia oznaczają:"
+        },
+        {
+          "en": "- 1 no trump shows a balanced hand with 15–17 high card points; 2 no trump shows 20–21.",
+          "pl": "- 1 bez atu: ręka zrównoważona i 15–17 punktów honorowych; 2 bez atu: 20–21 punktów."
+        },
+        {
+          "en": "- 1 heart or 1 spade usually shows at least 12 points and five cards in that suit. Without a five-card major, the bot opens a minor suit.",
+          "pl": "- 1 kier lub 1 pik: zwykle co najmniej 12 punktów i pięć kart tego koloru. Bez pięciokartowych kierów ani pików bot otwiera treflem lub karem."
+        },
+        {
+          "en": "- 2 diamonds, 2 hearts or 2 spades shows a six-card suit and 6–10 points.",
+          "pl": "- 2 kara, 2 kiery lub 2 piki: sześć kart koloru i 6–10 punktów."
+        },
+        {
+          "en": "A raise of your suit shows support. Raising to two is weak; raising to three invites game. Bots do not double.",
+          "pl": "Podniesienie twojego koloru oznacza, że bot ma w nim wsparcie. Podniesienie na poziom 2 jest słabe, a na 3 zachęca do końcówki. Boty nie kontrują."
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "en": "Keyboard shortcuts",
+        "pl": "Skróty klawiszowe"
+      },
+      "paragraphs": [
+        {
+          "en": "Arrows: browse cards or calls.",
+          "pl": "Strzałki: przeglądanie kart lub zapowiedzi."
+        },
+        {
+          "en": "Enter: make the selected call or play the selected card.",
+          "pl": "Enter: zgłoszenie wybranej zapowiedzi lub zagranie karty."
+        },
+        {
+          "en": "B: choose a call on your bidding turn; otherwise read the auction.",
+          "pl": "B: wybór zapowiedzi we własnej turze licytacji; poza nią odczyt licytacji."
+        },
+        {
+          "en": "L: read the auction.",
+          "pl": "L: odczyt licytacji."
+        },
+        {
+          "en": "Ctrl+L: inspect the auction.",
+          "pl": "Ctrl+L: przeglądanie zapowiedzi."
+        },
+        {
+          "en": "H: read your hand and high card points.",
+          "pl": "H: odczyt ręki i punktów honorowych."
+        },
+        {
+          "en": "D: read dummy's cards.",
+          "pl": "D: odczyt kart dziadka."
+        },
+        {
+          "en": "Tab: move between card lists.",
+          "pl": "Tab: przejście między listami kart."
+        },
+        {
+          "en": "Z: find the next playable card; play it if it is the only one.",
+          "pl": "Z: następna karta, którą można zagrać; zagranie jedynej pasującej."
+        },
+        {
+          "en": "Shift+Z: find the previous playable card.",
+          "pl": "Shift+Z: poprzednia karta, którą można zagrać."
+        },
+        {
+          "en": "K: read the contract and declarer's trick count.",
+          "pl": "K: odczyt kontraktu i liczby lew rozgrywającego."
+        },
+        {
+          "en": "C: read the current trick.",
+          "pl": "C: odczyt bieżącej lewy."
+        },
+        {
+          "en": "Ctrl+C: inspect the current trick.",
+          "pl": "Ctrl+C: przeglądanie bieżącej lewy."
+        },
+        {
+          "en": "F: read the suit led.",
+          "pl": "F: odczyt koloru wyjścia."
+        },
+        {
+          "en": "P: read the previous trick.",
+          "pl": "P: odczyt poprzedniej lewy."
+        },
+        {
+          "en": "I: read your position, partner and role.",
+          "pl": "I: odczyt miejsca, partnera i roli w rozdaniu."
+        },
+        {
+          "en": "V: read the deal, vulnerability and contract.",
+          "pl": "V: odczyt rozdania, założeń i kontraktu."
+        },
+        {
+          "en": "S: read the scores.",
+          "pl": "S: odczyt wyniku."
+        },
+        {
+          "en": "T: read whose turn it is.",
+          "pl": "T: odczytaj, czyja jest tura."
+        },
+        {
+          "en": "Shift+C: sort cards by suit.",
+          "pl": "Shift+C: sortowanie kart według koloru."
+        },
+        {
+          "en": "Shift+H: sort cards by rank.",
+          "pl": "Shift+H: sortowanie kart według wartości."
+        },
+        {
+          "en": "Shift+M: restore received order.",
+          "pl": "Shift+M: przywrócenie kolejności otrzymanych kart."
+        }
+      ]
+    }
+  ]
+}

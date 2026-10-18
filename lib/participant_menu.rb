@@ -1,6 +1,7 @@
 require_relative "game_participants"
 require_relative "game_rules"
 require_relative "context_help"
+require_relative "tournament_marker"
 
 # One native global menu for the waiting room, active game and final-position
 # view. Removing/replacing a participant belongs to the selected Users row.
@@ -90,7 +91,46 @@ module GameRoomParticipantMenu
     active ? [:abort_game] : [:edit_options]
   end
 
-  def bind(layout, available:, read_options: nil, game: nil, options: nil, settings: nil, pong_settings: nil, room: nil, control: nil, user_menu: nil, &dispatch)
+  # The UI uses the already projected state only. The repository still repeats
+  # these checks against fresh state at the mutation boundary. An aborted game
+  # permits handing over its waiting room, never replacing one of its old seats.
+  def control_action_error(action, game:, session:, replay:, participant: nil, replacement: :choose)
+    session = session.to_h
+    return _("Game paused.") if session['__control_ready'] == false
+    return nil if action == :transfer_master && session['__aborted']
+    return _("Game paused.") if session['__frozen'] || session['__aborted']
+
+    if action == :transfer_master
+      game&.controller_change_error(replay)
+    else
+      game&.participant_replacement_error(replay, player: participant, replacement: replacement)
+    end
+  end
+
+  def control_actions(available:, room:, control:, game:, participant:, viewer: Session.name)
+    return [] unless available.include?(:manage_control) && room
+
+    control = control.to_h
+    actions = []
+    actions << :transfer_master if transfer_candidate?(room, participant, viewer: viewer)
+    if control[:active] && GameRoomParticipants.includes?(control[:players], participant)
+      actions << :replace_player
+    end
+    # Ordinary tables retain their existing menu. Their execution path applies
+    # the same policy checks, with explanations for private phases and no bots.
+    return actions unless GameRoomTournamentMarker.present?(room.table, control[:session])
+
+    owner = room.table['__insertion_user'].to_s.empty? ? room.table['owner'] : room.table['__insertion_user']
+    return [] unless GameRoomParticipants.same?(viewer, owner) && GameRoomParticipants.includes?(room.members, viewer)
+    return [] if control[:session] && control[:replay] == nil && !control[:session]['__aborted']
+
+    actions.reject do |action|
+      control_action_error(action, game: game, session: control[:session], replay: control[:replay], participant: participant) ||
+        (action == :replace_player && replacement_candidates(room: room, players: control[:players], participant: participant, game: game).empty?)
+    end
+  end
+
+  def bind(layout, available:, read_options: nil, game: nil, options: nil, settings: nil, pong_settings: nil, room: nil, control: nil, control_denied: nil, user_menu: nil, pending_action: nil, &dispatch)
     # Keep the former keyword as a compatibility alias for its host action.
     settings ||= pong_settings if game&.personal_settings_action == :show_pong_settings
     if user_menu
@@ -126,6 +166,7 @@ module GameRoomParticipantMenu
         menu.option(entry.label, nil, key) do
           next if !available.call.include?(entry.action)
           if layout.form.game_room_pending_operation && ![:table_options, :rules].include?(entry.action)
+            next if pending_action&.call(entry.action, nil)
             next layout.form.game_room_pending_operation.reject_action
           end
 
@@ -144,18 +185,17 @@ module GameRoomParticipantMenu
     # Resolve per-row actions when help is opened, as the selection and owner
     # can change without rebuilding the whole form.
     layout.users.game_room_context_help_provider = lambda do
-      tips = context_tips(available.call, game: game)
+      actions = available.call
+      tips = context_tips(actions, game: game)
       participant = layout.selected_participant
       snapshot = room&.call
-      if available.call.include?(:manage_control) && snapshot
-        if transfer_candidate?(snapshot, participant)
-          tips << GameRoomContextHelp.shortcut_tip("Ctrl+M", _("Transfer table master to this person"))
-        end
-        seats = control&.call
-        if seats&.dig(:active) && GameRoomParticipants.includes?(seats[:players], participant)
-          entry = replacement_entry
-          tips << GameRoomContextHelp.shortcut_tip(entry.help_key, entry.label)
-        end
+      controls = control_actions(available: actions, room: snapshot, control: control&.call, game: game, participant: participant)
+      if controls.include?(:transfer_master)
+        tips << GameRoomContextHelp.shortcut_tip("Ctrl+M", _("Transfer table master to this person"))
+      end
+      if controls.include?(:replace_player)
+        entry = replacement_entry
+        tips << GameRoomContextHelp.shortcut_tip(entry.help_key, entry.label)
       end
       tips
     end
@@ -175,23 +215,17 @@ module GameRoomParticipantMenu
         end
       end
       snapshot = room&.call
-      if actions.include?(:manage_control) && snapshot
-        if transfer_candidate?(snapshot, participant)
-          menu.option(_("Transfer table master to this person"), nil, "m") do
-            current = room&.call
-            if available.call.include?(:manage_control) && current && transfer_candidate?(current, participant)
-              dispatch.call(:transfer_master, participant)
-            end
-          end
-        end
-        seats = control&.call
-        if seats && seats[:active] && GameRoomParticipants.includes?(seats[:players], participant)
-          entry = replacement_entry
-          menu.option(entry.label, nil, entry.menu_key) do
-            current = control&.call
-            if available.call.include?(:manage_control) && current&.dig(:active) && GameRoomParticipants.includes?(current[:players], participant)
-              dispatch.call(:replace_player, participant)
-            end
+      controls = control_actions(available: actions, room: snapshot, control: control&.call, game: game, participant: participant)
+      controls.each do |action|
+        label, key = action == :transfer_master ?
+          [_("Transfer table master to this person"), "m"] : [replacement_entry.label, replacement_entry.menu_key]
+        menu.option(label, nil, key) do
+          current, seats = room&.call, control&.call
+          allowed = control_actions(available: available.call, room: current, control: seats, game: game, participant: participant)
+          if allowed.include?(action)
+            dispatch.call(action, participant)
+          else
+            control_denied&.call(_("This action is not available now."))
           end
         end
       end
@@ -220,9 +254,9 @@ module GameRoomParticipantMenu
     end
   end
 
-  def transfer_candidate?(room, participant)
+  def transfer_candidate?(room, participant, viewer: Session.name)
     GameRoomParticipants.human?(participant) && GameRoomParticipants.includes?(room.members, participant) &&
-      !GameRoomParticipants.same?(participant, Session.name)
+      !GameRoomParticipants.same?(participant, viewer)
   end
 
   def context_tips(actions, game: nil, text: false)

@@ -21,8 +21,9 @@ assert(ninety.events("Alice").map { |event| event["action"] } == %w[deal play_dr
 farkle = NativeRoomHarness.new(game: GameRoomGames::Farkle.new)
 farkle.start
 farkle.broker.automatic_delivery = false
+farkle.view('Alice').next_random_values = [1, 2, 3, 4, 5, 6]
 context = GameRoomGames::ActionContext.new(session_id: farkle.session["__id"], table_id: farkle.table["__id"],
-  random_source: GameRoomRandom::SequenceSource.new([1, 2, 3, 4, 5, 6]), now: 1_000)
+  random_source: GameRoomRandom::LocalSecureSource.new, server_random: true, now: 1_000)
 farkle.submit("Alice", { "kind" => "dice", "action" => "roll" }, context: context)
 keep = farkle.game.legal_actions(farkle.replay("Alice"), "Alice").find do |action|
   action["action"] == "keep" && action["indices"].to_s.split(",").length == 6

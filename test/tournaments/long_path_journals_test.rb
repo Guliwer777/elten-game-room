@@ -6,7 +6,7 @@ require_relative '../../lib/tournaments/readiness_history'
 R = TournamentReadinessFixture
 K = TournamentCoordinationFixture
 R.isolated do |root|
-  directory = File.join(root, 'x' * (205 - root.bytesize - 1))
+  directory = File.join(root, 'x' * [205 - root.bytesize - 1, 1].max)
   port = R::Port.new
   context = R::Context.new
   first = R.service(directory, port, context).declare(request: R.request)

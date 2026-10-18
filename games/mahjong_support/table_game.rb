@@ -81,9 +81,15 @@ module GameRoomGames
         return [:ok, event_plan('mahjong_ready', JSON.generate('v'=>1, 'h'=>replay.state[:hand_number]))]
       end
       if replay.state[:phase] == :awaiting_deal
-        return [:invalid, nil] unless seat == 0 && selection.to_h['kind'] == 'command' && selection.to_h['action'] == 'deal' && context&.random_source
+        return [:invalid, nil] unless seat == 0 && selection.to_h['kind'] == 'command' && selection.to_h['action'] == 'deal' && context && (context.server_random || context.random_source)
         if replay.state[:match]
           return [:stale, nil] unless input['hand'].is_a?(Integer) && input['hand'] == replay.state[:hand_number] + 1
+        end
+        if context.server_random
+          data = {'v'=>1}
+          data['h'] = input['hand'] if replay.state[:match]
+          command = GameRoomServerRandom.recipe_command(action: 'mahjong_deal', kind: 'seed_json', data: data)
+          return [:ok, ActionPlan.new(events: [command])]
         end
         values = context.random_source.roll(count: 8, sides: 256).values
         return [:invalid, nil] unless values.is_a?(Array) && values.length == 8 && values.all? { |value| value.is_a?(Integer) && value.between?(1, 256) }

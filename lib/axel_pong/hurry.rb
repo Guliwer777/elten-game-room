@@ -6,7 +6,7 @@ module GameRoomPong
   # from different machines or let an observer invent a penalty.
   module Hurry
     def request_hurry
-      return false unless @side != nil && rally_state.engine && !rally_state.paused &&
+      return false unless !session_paused? && @side != nil && rally_state.engine && !rally_state.paused &&
         rally_state.engine.goal == nil && rally_state.engine.turn.zero? && rally_state.rotation.team(@side) != rally_state.rotation.team(rally_state.engine.server)
       data = {'action' => 'hurry_request', 'side' => @side, 'turn' => 0}
       host? ? accept_hurry(data) : emit_peer_event(data)
@@ -18,7 +18,7 @@ module GameRoomPong
     def accept_hurry(data)
       side = data['side']
       now = @clock.call
-      return false if rally_state.paused || now < rally_state.ready_at || rally_state.engine.goal || !rally_state.engine.turn.zero? ||
+      return false if session_paused? || rally_state.paused || now < rally_state.ready_at || rally_state.engine.goal || !rally_state.engine.turn.zero? ||
         rally_state.rotation.team(side) == rally_state.rotation.team(rally_state.engine.server)
       return false if @hurry_until || now < (@hurry_cooldowns || {}).fetch(side, 0.0)
       @hurry_cooldowns ||= {}

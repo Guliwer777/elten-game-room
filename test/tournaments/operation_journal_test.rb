@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require 'json'
 require 'digest'
@@ -789,7 +790,7 @@ class TournamentOperationJournalTest
     end
     raise 'Brak wybranych scenariuszy' if tests.empty?
     tests.each do |name|
-      Dir.mktmpdir('tournament-operation-journal-', ENV.fetch('TMPDIR')) do |directory|
+      GameRoomTest::TemporaryDirectory.create('tournament-operation-journal-') do |directory|
         @directory = directory.tr('\\', '/')
         send(name)
       end

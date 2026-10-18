@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_native'
 require_relative '../support/tournament_local_hub'
 require_relative '../support/tournament_match_entry'
@@ -19,7 +20,7 @@ class EntryRegressionDriver < TournamentNativeDriver
 end
 modes = ARGV.empty? ? %w[selection parent_tab details_tab before_focus parent_help details_help parent_direct details_direct details_help_healthy finish_exception] : ARGV
 modes.each do |mode|
-  Dir.mktmpdir('entry-regression-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('entry-regression-') do |directory|
     program = TournamentMatchEntryTest.prepare(directory)
     account = 'RealOwner'
     owner = G::LocalTestDialogs::Owner.new(-> { account }, ->(_message) {})

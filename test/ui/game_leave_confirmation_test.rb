@@ -57,7 +57,7 @@ end
     [false, nil, true].fetch(calls - 1)
   end
   h, screen = screen_fixture(game, bots: 1, leave_table: leave)
-  screen.instance_variable_set(:@random_source, GameRoomRandom::SequenceSource.new([2]))
+  bot_serves_audio_ball(h) if game.id == 'audio_ball'
   Form.driver = lambda do |form|
     waits += 1
     raise 'Leave callback did not return control' if waits > 3

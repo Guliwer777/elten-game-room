@@ -42,13 +42,13 @@ app.instance_variable_set(:@transport, transport)
 app.define_singleton_method(:initialize_services) {}
 app.define_singleton_method(:check_server_table_access) {}
 app.define_singleton_method(:run_network_task) { |_title, &operation| operation.call }
-invitation = Struct.new(:id).new(7)
-other = Struct.new(:id).new(8)
+invitation = InvitationRepository::PendingInvitation.new(invitation: {"__id"=>7, "table_id"=>12, "sender"=>"Bob", "recipient"=>"Alice"})
+other = InvitationRepository::PendingInvitation.new(invitation: {"__id"=>8, "table_id"=>13, "sender"=>"Carol", "recipient"=>"Alice"})
 choices = [{ invitation: other }, { invitation: invitation }]
 app.define_singleton_method(:load_pending_invitations) { choices }
 action = :accept
 app.define_singleton_method(:select_notification_invitation_action) { action }
-received = Struct.new(:id, :metadata).new(42, { "invitation_id" => 7 })
+received = Struct.new(:id, :sender, :metadata).new(42, "Bob", { "invitation_id" => 7 })
 table = { "__id" => 12 }
 calls = []
 app.define_singleton_method(:accept_pending_invitation) do |selected, notification_id:|
@@ -59,7 +59,7 @@ app.define_singleton_method(:reject_pending_invitation) do |selected, notificati
   calls << [:reject, selected.id, notification_id]
 end
 app.define_singleton_method(:revoke_invitation_notification) do |id, notification_id:|
-  calls << [:revoke, id, notification_id]
+  calls << [:revoke, GameRoomInvitationIdentity.id(id), notification_id]
 end
 app.define_singleton_method(:run_program_interface) { |row| calls << [:open, row] }
 app.define_singleton_method(:alert) { |message| calls << [:alert, message] }
@@ -84,7 +84,9 @@ assert(calls == [[:revoke, 7, 42], [:alert, "This table is no longer available."
 join_app = EltenGameRoom.allocate
 joined_table = { "__id" => 12, "status" => "waiting" }
 join_snapshot = LobbyRepository::TableSnapshot.new(table: joined_table, members: ["Alice"], bots: [], observers: [])
-pending = Struct.new(:id, :table_id).new(70, 12)
+pending = InvitationRepository::PendingInvitation.new(invitation: {
+  "__id" => 70, "table_id" => 12, "sender" => "Bob", "recipient" => "Alice"
+})
 join_calls = []
 join_lobby = Object.new
 join_lobby.define_singleton_method(:table_id) { |row| row["__id"].to_i }
@@ -110,6 +112,7 @@ join_app.instance_variable_set(:@invitations, join_invitations)
 join_app.instance_variable_set(:@invitation_notifications, join_notifications)
 native_transport = Object.new
 native_transport.define_singleton_method(:live_store?) { true }
+native_transport.define_singleton_method(:invitation_account_identity) { [self, 'Alice'] }
 join_app.instance_variable_set(:@transport, native_transport)
 join_app.define_singleton_method(:run_network_task) { |_title, &operation| operation.call }
 join_app.define_singleton_method(:establish_invited_table_transport) do |row|

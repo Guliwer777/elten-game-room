@@ -56,24 +56,40 @@ class GameRoomUserRegistry
   end
 
   def verified_usernames
-    offset = 0
+    latest = registry_rows(columns: ['__id'], order: [['__id', 'desc']], limit: 1).first
+    return [] unless latest
+
+    upper, previous = latest.fetch('__id'), 0
     result = []
     loop do
-      rows = users_table.select(
-        columns: ["username", "__insertion_user"],
-        order: [["registered_at", "asc"]],
-        limit: PAGE_LIMIT,
-        offset: offset
-      ).to_a
+      rows = registry_rows(where: {'__id' => {'gte' => previous + 1}},
+        columns: ['username', '__insertion_user', '__id'],
+        order: [['__id', 'asc']], limit: PAGE_LIMIT)
+      break if rows.empty?
+
+      unless rows.first.fetch('__id') > previous &&
+          rows.each_cons(2).all? { |first, second| first.fetch('__id') < second.fetch('__id') }
+        raise IOError, 'Game Room registry pagination did not advance'
+      end
       rows.each do |row|
+        break if row.fetch('__id') > upper
         username = verified_username(row)
         result << username if username != nil
       end
-      break if rows.length < PAGE_LIMIT
-
-      offset += rows.length
+      previous = rows.last.fetch('__id')
+      # A short nonempty page is not EOF; stay within the initial ID boundary.
+      break if previous >= upper
     end
     result.uniq { |username| username.downcase }
+  end
+
+  def registry_rows(**options)
+    rows = users_table.select(**options)
+    unless rows.is_a?(Array) && rows.length <= options.fetch(:limit) &&
+        rows.all? { |row| row.is_a?(Hash) && row['__id'].is_a?(Integer) && row['__id'].positive? }
+      raise IOError, 'Invalid Game Room registry response'
+    end
+    rows
   end
 
   def verified_username(row)

@@ -7,18 +7,28 @@ h = NativeRoomHarness.new(game: game, users: ['Alice'], bots: 1,
 h.start
 players = h.repositories['Alice'].players_for(h.session)
 sim_repo = GameRoomSimulation::Repository.new(players)
-selection, deal = nil, nil
+selection, deal_seed = nil, nil
 (1..200).each do |seed|
+  next unless seed.even? # The bot must own the next turn so its planner runs.
   candidate = {'actor' => 'Alice', 'action' => 'deal', 'value' => "1|0|#{seed.to_s(16).rjust(32, '0')}|0", 'id' => 1}
   position = game.replay(h.session, [candidate], sim_repo)
   card = position.state[:hands]['Alice'].find { |id| game.send(:interceptable?, position.state, id) }
   next unless card && card[1].match?(/[0-9]/)
   selection = {'kind' => 'card', 'action' => 'select', 'card_id' => card, 'card' => card}
-  deal = candidate
+  deal_seed = seed
   break
 end
-assert(deal, 'could not prepare deterministic legal UNO interception')
-h.write('Alice', [deal])
+assert(deal_seed, 'could not prepare deterministic legal UNO interception')
+deal = lambda do |room|
+  room.view('Alice').next_random_values = deal_seed.to_s(16).rjust(32, '0').scan(/../).map { |byte| byte.to_i(16) + 1 }
+  context = GameRoomGames::ActionContext.new(now: 1_000,
+    random_source: GameRoomRandom::LocalSecureSource.new)
+  room.submit('Alice', {'kind' => 'command', 'action' => 'deal'}, context: context)
+  assert(room.view('Alice').calls[:random] == 1, 'fixture bypassed the authenticated server draw')
+  assert(room.events('Alice').length == 1 && room.replay('Alice').accepted_events.length == 1,
+    'server draw did not produce one accepted deal')
+end
+deal.call(h)
 r = runner_for(h)
 entered, release = Queue.new, Queue.new
 coordinator = r.instance_variable_get(:@coordinator)
@@ -49,7 +59,7 @@ puts 'UNO real interception is accepted during planning; obsolete decision disca
 h = NativeRoomHarness.new(game: game, users: ['Alice'], bots: 1,
   options: game.default_options.merge('interceptions' => true, 'bot_delay' => 0))
 h.start
-h.write('Alice', [deal])
+deal.call(h)
 r = runner_for(h)
 old = h.replay('Alice')
 wrong = old.state[:hands]['Alice'].find { |id| !game.send(:interceptable?, old.state, id) }
@@ -70,7 +80,7 @@ puts 'UNO revision race preserves late penalties and cannot cross round boundari
 h = NativeRoomHarness.new(game: game, users: ['Alice'], bots: 1,
   options: game.default_options.merge('interceptions' => true, 'bot_delay' => 0))
 h.start
-h.write('Alice', [deal])
+deal.call(h)
 r = runner_for(h)
 queued, ingested = false, false
 transport = h.transports['Alice']

@@ -77,7 +77,7 @@
       },
       "paragraphs": [
         {
-          "es": "La meta es alcanzar al menos 100 puntos. Cuando alguien la alcanza, se completan las rondas del ciclo actual para que todos hayan sido jueces el mismo número de veces. Entonces gana quien tenga más puntos."
+          "es": "La meta es alcanzar al menos 50 puntos. Cuando alguien la alcanza, se completan las rondas del ciclo actual para que todos hayan sido jueces el mismo número de veces. Entonces gana quien tenga más puntos."
         },
         {
           "es": "Si varias personas comparten la puntuación máxima, disputan un desempate. Solo ellas siguen respondiendo y alguien de los demás hace de juez. Si todos están empatados, el cargo de juez sigue rotando entre todos. Se continúa hasta que, al terminar un ciclo, una sola persona tenga la mayor puntuación."
@@ -132,7 +132,7 @@
           "es": "- El anfitrión puede ser juez fijo en vez de rotar el cargo. Evalúa todas las rondas y no compite por puntos. En ese caso, basta con terminar la ronda en la que se alcance la meta, sin esperar un ciclo de jueces."
         },
         {
-          "es": "- La meta puede ser distinta de 100 puntos. Si el juez va rotando, sigue siendo necesario completar el ciclo."
+          "es": "- La meta puede ser distinta de 50 puntos. Si el juez va rotando, sigue siendo necesario completar el ciclo."
         },
         {
           "es": "- Un empate puede dar una victoria compartida, sin rondas de desempate."

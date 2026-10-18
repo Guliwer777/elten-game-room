@@ -43,7 +43,11 @@ module GameRoomTournaments
         end
       end
       entries = Data.entries(registrations, complete: complete, key_name: 'operation_key') { |row| decode(row) }
-      groups, diagnostics = Data.reconcile(entries) { |row| [row['canonical_tournament_id'], row['kind']] }
+      groups, diagnostics = Data.reconcile(entries) do |row|
+        # A retry may differ only in its authenticated metadata or in the alias
+        # of the same publication, never in the requested target or payload.
+        row.reject { |key, _| key.start_with?('__') || key == 'tournament_id' }
+      end
       published = lifecycle(publications['announcements'], groups.flatten)
       operations, accepted = reduce_groups(groups, diagnostics)
       # Retention uses authenticated accepted operations, not arbitrary writes
@@ -57,11 +61,13 @@ module GameRoomTournaments
         'members' => members(accepted), 'operations' => operations,
         'diagnostics' => { 'announcements' => publications['diagnostics'],
           'registrations' => diagnostics.uniq.sort_by { |item| JSON.generate(item) } } }
+      @applied_pairings = {}
       unless @pairing_ids.empty?
         @pair_requests=[]
         data['pairs'] = pairs(accepted)
         data['pair_requests']=@pair_requests
       end
+      @applied_pairings.freeze
       @data = Data.freeze_tree(data)
       @by_id.freeze
       freeze
@@ -90,6 +96,18 @@ module GameRoomTournaments
 
     def pairing_used?(id)
       @pairing_ids.include?(id)
+    end
+
+    # An authenticated insert can be obsolete by the time it is projected.
+    # Preserve its write confirmation, but distinguish it from an applied
+    # choice. Later pair changes must not rewrite this historical outcome.
+    def pairing_applied?(account:, operation_key:)
+      account = Data.account(account).downcase
+      Data.key!(operation_key)
+      operation = @data['operations'].find do |item|
+        item['account'] == account && item['operation_key'] == operation_key
+      end
+      !!(operation && operation['eligible_ids'].any? { |id| @applied_pairings[id] })
     end
 
     def retention_history(id)
@@ -142,7 +160,12 @@ module GameRoomTournaments
         Data.key!(row['publication_generation'])
         values['publication_generation'] = row['publication_generation']
         if row['kind'] == 'amendment'
-          revised = StrictJson.parse(row['amendment_json'], max_nesting: 8)
+          raise Invalid, :invalid_amendment unless Data.text?(row['amendment_json'])
+          begin
+            revised = StrictJson.parse(row['amendment_json'], max_nesting: 8)
+          rescue JSON::ParserError
+            raise Invalid, :invalid_amendment
+          end
           raise Invalid, :invalid_amendment unless revised.is_a?(Hash) && revised.keys.sort == Publication::COLUMNS.sort && revised['publication_key'] == tournament['publication_key']
           checked = Publication.project(rows: [revised.merge(tournament.slice('__id', '__insertion_time', '__insertion_user'))], registry: @registry, complete: true)
           raise Invalid, :invalid_amendment unless checked['diagnostics'].empty? && checked['announcements'].size == 1
@@ -215,6 +238,7 @@ module GameRoomTournaments
             partner = row['partner']
             organizer = row['__insertion_user'].downcase == @by_id[id]['__insertion_user'].downcase
             next if !organizer && partner && links[partner] && links[partner] != account
+            @applied_pairings[row['__id']] = true
             links.delete(links.delete(account))
             requests.delete(account)
             if partner && (organizer && row['__insertion_user'].downcase!=account || requests[partner]==account)

@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_native'
 require_relative '../support/tournament_local_hub'
 require_relative '../support/tournament_match_entry'
@@ -11,7 +12,7 @@ GameRoomLocalization.boot(settings: {'interface_language' => 'en', 'known_langua
 
 # Bliskie granice tego samego resume, bez nowej macierzy reguł backendu.
 [:lease, :actor, :backend, :runtime, :primary, :primary_expire, :primary_cleanup, :cleanup].each do |mode|
-  Dir.mktmpdir('r1-granica-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('r1-granica-') do |directory|
     program = TournamentMatchEntryTest.prepare(directory)
     runtime = program.class.app_runtime
     session = T::LocalReadinessSession.new

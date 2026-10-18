@@ -42,14 +42,15 @@ driver.step(header,[]) do |form|
   list=form.fields[0]
   items=TournamentNativeContext.items(form)
   labels=items.map(&:first)
-  assert_equal(%w[View\ tournament Join\ tournament Matches Manage\ participants Edit\ tournament Cancel\ tournament Refresh Accept\ invitation].map(&l),labels)
+  assert_equal(%w[Open\ tournament Join\ tournament Tournament\ matches Manage\ tournament Refresh Accept\ invitation].map(&l),labels)
+  assert_equal('d',items[1].last,'Join conflicts with the global Ctrl+J invitation shortcut')
   assert_equal('j',items.last.last,'Invitation lost its Ctrl+J label')
   items.last[1].call
   assert_equal(1,invitations,'Reordered invitation lost its existing callback')
   form.index=1
   assert_equal([l.call('Accept invitation')],TournamentNativeContext.items(form).map(&:first),'Filter context lost or duplicated invitation')
   form.index=0
-  %w[Join\ tournament Leave\ tournament Edit\ tournament Manage\ participants Matches].each do |label|
+  %w[Join\ tournament Leave\ tournament Tournament\ matches].each do |label|
     menu=ReturnContextMenu.new
     list.context(menu,false)
     menu.actions.fetch(l.call(label)).call
@@ -57,24 +58,43 @@ driver.step(header,[]) do |form|
     assert_equal(0,form.index,'A context action moved focus away from its tournament list')
     assert_equal([11],list.instance_variable_get(:@item_keys))
   end
+  2.times do
+    menu=ReturnContextMenu.new
+    list.context(menu,false)
+    menu.actions.fetch(l.call('Manage tournament')).call
+    assert_equal(0,form.index,'Management moved the directory selection')
+    assert_equal([11],list.instance_variable_get(:@item_keys))
+  end
   menu=ReturnContextMenu.new
   list.context(menu,false)
-  menu.actions.fetch(l.call('View tournament')).call
+  menu.actions.fetch(l.call('Open tournament')).call
+end
+%w[Edit\ tournament Manage\ participants].each do |action|
+  driver.step(l.call('Manage tournament'),[]) do |form|
+    list=form.fields.first
+    list.index=list.options.index(l.call(action))
+    list.trigger(:select)
+  end
 end
 driver.step(/\APróba 11 — Łódź — /,[27]){}
 driver.step(header,[27]) do |form|
-  assert_equal(2,driver.forms.size,'Explicit View did not open exactly one details form')
+  assert_equal(4,driver.forms.size,'Explicit Open did not open exactly one tournament form')
   menu=ReturnContextMenu.new
   form.fields[0].context(menu,false)
-  menu.actions.fetch(l.call('Cancel tournament')).call
+  menu.actions.fetch(l.call('Manage tournament')).call
   assert_equal([],form.fields[0].instance_variable_get(:@item_keys))
   assert_equal(%w[Refresh Accept\ invitation].map(&l),TournamentNativeContext.items(form).map(&:first),'Empty list lost its general actions or duplicated invitation')
-  assert_equal(2,driver.forms.size,'Delete opened details after deleting the selected tournament')
+  assert_equal(5,driver.forms.size,'Delete opened tournament details after cancellation')
+end
+driver.step(l.call('Manage tournament'),[]) do |form|
+  list=form.fields.first
+  list.index=list.options.index(l.call('Cancel tournament'))
+  list.trigger(:select)
 end
 begin
   GameRoomTournaments::PublicScreen.new(**args).run
   driver.finish
-  assert_equal(%i[join withdraw edit manage overview delete],calls)
+  assert_equal(%i[join withdraw overview edit manage delete],calls)
   assert_equal(0,fixture[:program].class.app_runtime.managed_resources.size)
 ensure
   fixture[:program].finalize

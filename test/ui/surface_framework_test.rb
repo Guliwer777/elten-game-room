@@ -4,6 +4,12 @@ require_relative "../support/ui"
 # timers here, but the form's timer classification still needs the host type.
 class FormTimer; end unless defined?(FormTimer)
 
+# Native ELTEN supplies the current account through Structs::Session. This
+# lightweight fixture does not load the host, unlike the native UI tests.
+module Session
+  def self.name; "Alice"; end
+end
+
 require_relative "../../lib/game_surfaces"
 require_relative "../../lib/game_layout"
 require_relative "../../lib/game_chat_commands"
@@ -885,6 +891,8 @@ assert(review_actions.last.kind == "review" && review_actions.last.name == "chan
 assert(review_actions.last["item_id"] == "a1" && review_actions.last["decision"] == "accept", "manual review lost its answer decision")
 assert(review_actions.last["_stay_open"] == true, "an assessment still requests a full form refresh")
 assert(review.state["decisions"] == { "a1" => "accept" }, "manual review did not preserve its choices")
+assert(review.state["confirmed"].empty?, "requesting an assessment falsely confirmed its acceptance")
+review.action_accepted(review_actions.last)
 assert(review.state["confirmed"] == { "a1" => "accept" }, "manual review did not preserve its confirmed assessments")
 review.suppress_next_focus!(1)
 review.fields[1].focus

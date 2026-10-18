@@ -1,0 +1,525 @@
+{
+  "game": "poker",
+  "seed": 137,
+  "players": [
+    "Alice",
+    "Bob"
+  ],
+  "options": {
+    "variant": "holdem",
+    "starting_chips": 1000,
+    "small_blind": 5,
+    "big_blind": 10,
+    "ante": 5,
+    "draw_uses_blinds": false,
+    "betting": "no_limit",
+    "raise_cap_enabled": false,
+    "raise_cap": 3,
+    "blind_interval": "hands",
+    "blind_interval_value": 5,
+    "blind_multiplier": 2,
+    "draw_five": false,
+    "jacks_or_better": false,
+    "thinking_time": 0,
+    "bot_delay": 0
+  },
+  "steps": [
+    {
+      "events": 1,
+      "replay": "2da2b4b9e2eadae4ed7358f7be535af4de0269bf463f8e067b714dd5564507b2",
+      "actor": "Bob",
+      "legal": "727fd08da670efd01299918bc727901424c4222bb41d9ca0c33142aacb017f9c",
+      "rng": [
+        444,
+        294,
+        949,
+        329,
+        512,
+        285,
+        984,
+        349
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "amount": 5
+      }
+    },
+    {
+      "events": 2,
+      "replay": "bba395c135e52e9e483d8343e42ed718526b3b5f01deeee0578cabaf7a639687",
+      "actor": "Alice",
+      "legal": "a74a981e62b3a14ab0b20ee8e8726e4cf5c96ff85dbb9ac8252aa6d7179b1bb7",
+      "rng": [
+        444,
+        294,
+        949,
+        329,
+        512,
+        285,
+        984,
+        349
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    },
+    {
+      "events": 3,
+      "replay": "29aa08814344b28f413f1700761e7041f885cfea8b7ee68faf417a4ba6ed7346",
+      "actor": "Alice",
+      "legal": "a74a981e62b3a14ab0b20ee8e8726e4cf5c96ff85dbb9ac8252aa6d7179b1bb7",
+      "rng": [
+        444,
+        294,
+        949,
+        329,
+        512,
+        285,
+        984,
+        349
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    },
+    {
+      "events": 4,
+      "replay": "90feeda8cf647d957d3a97916d9f010461cc91729bcbdc716d7c13d31f4aac88",
+      "actor": "Bob",
+      "legal": "a74a981e62b3a14ab0b20ee8e8726e4cf5c96ff85dbb9ac8252aa6d7179b1bb7",
+      "rng": [
+        444,
+        294,
+        949,
+        329,
+        512,
+        285,
+        984,
+        349
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    },
+    {
+      "events": 5,
+      "replay": "c5e95a71283b5a5a50f9695972da55463093613567c8a38448fb6b05b6157c53",
+      "actor": "Alice",
+      "legal": "a74a981e62b3a14ab0b20ee8e8726e4cf5c96ff85dbb9ac8252aa6d7179b1bb7",
+      "rng": [
+        444,
+        294,
+        949,
+        329,
+        512,
+        285,
+        984,
+        349
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    },
+    {
+      "events": 6,
+      "replay": "e368b37b8bb0563e96f1267debcfeb7918a175e974f63342f843facd3a6b6c08",
+      "actor": "Bob",
+      "legal": "a74a981e62b3a14ab0b20ee8e8726e4cf5c96ff85dbb9ac8252aa6d7179b1bb7",
+      "rng": [
+        444,
+        294,
+        949,
+        329,
+        512,
+        285,
+        984,
+        349
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    },
+    {
+      "events": 7,
+      "replay": "033b13bcc580a3ba1f0c685cac30dee888472868f81ba40ffbe0738222b9f3a3",
+      "actor": "Alice",
+      "legal": "a74a981e62b3a14ab0b20ee8e8726e4cf5c96ff85dbb9ac8252aa6d7179b1bb7",
+      "rng": [
+        444,
+        294,
+        949,
+        329,
+        512,
+        285,
+        984,
+        349
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    },
+    {
+      "events": 8,
+      "replay": "5e03ce58ad4031008218238c24fe4f8fe609c2a0b75a8f535a7969eb5948fa02",
+      "actor": "Bob",
+      "legal": "a74a981e62b3a14ab0b20ee8e8726e4cf5c96ff85dbb9ac8252aa6d7179b1bb7",
+      "rng": [
+        444,
+        294,
+        949,
+        329,
+        512,
+        285,
+        984,
+        349
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    },
+    {
+      "events": 10,
+      "replay": "b8758f1cb3445bf48f2b07ecfde8a740b4c6ee2da4100762f4e852f9316ac9d5",
+      "actor": "Alice",
+      "legal": "3a25b92e9a87880062109c8c1ae0338d4c005bdda288e5224c2714b9c86282c4",
+      "rng": [
+        768,
+        720,
+        38,
+        967,
+        62,
+        461,
+        269,
+        886
+      ],
+      "action": {
+        "kind": "command",
+        "action": "call",
+        "amount": 5
+      }
+    },
+    {
+      "events": 11,
+      "replay": "2c8ec59374f4edfeadc83c0810a6e47a940fb9c03f5791a787cf9c4046496231",
+      "actor": "Bob",
+      "legal": "e61503feb08cf6af1c1d98787cc23166234782e394acb52bd638b156023c3920",
+      "rng": [
+        768,
+        720,
+        38,
+        967,
+        62,
+        461,
+        269,
+        886
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    },
+    {
+      "events": 12,
+      "replay": "153e410501b921c3f41422192e0fcb4fbb78e9f732259825b91a229e840ed112",
+      "actor": "Bob",
+      "legal": "e61503feb08cf6af1c1d98787cc23166234782e394acb52bd638b156023c3920",
+      "rng": [
+        768,
+        720,
+        38,
+        967,
+        62,
+        461,
+        269,
+        886
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    },
+    {
+      "events": 13,
+      "replay": "2b15906096c540b33c42d597af42394c9a4c765e8e8b200c3cec4f11e4e64e41",
+      "actor": "Alice",
+      "legal": "eff8f99e8e27e18ec25be375b7575f9f98c18c8e090b99b169f0d1ceae2bb937",
+      "rng": [
+        768,
+        720,
+        38,
+        967,
+        62,
+        461,
+        269,
+        886
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    },
+    {
+      "events": 14,
+      "replay": "3fc57f0fdd3529d9eea133abbf27de60561e19ba38b13054cc3634ad37884126",
+      "actor": "Bob",
+      "legal": "e61503feb08cf6af1c1d98787cc23166234782e394acb52bd638b156023c3920",
+      "rng": [
+        768,
+        720,
+        38,
+        967,
+        62,
+        461,
+        269,
+        886
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    },
+    {
+      "events": 15,
+      "replay": "9125b676ceac561233c88d77e9dde2e306916641bfc41fd50f8f122ad9621d03",
+      "actor": "Alice",
+      "legal": "eff8f99e8e27e18ec25be375b7575f9f98c18c8e090b99b169f0d1ceae2bb937",
+      "rng": [
+        768,
+        720,
+        38,
+        967,
+        62,
+        461,
+        269,
+        886
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    },
+    {
+      "events": 16,
+      "replay": "3d643321ecb3c51ef2d8a85a515615bc268ae5617d369edd04498ba70b52f1d8",
+      "actor": "Bob",
+      "legal": "e61503feb08cf6af1c1d98787cc23166234782e394acb52bd638b156023c3920",
+      "rng": [
+        768,
+        720,
+        38,
+        967,
+        62,
+        461,
+        269,
+        886
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    },
+    {
+      "events": 17,
+      "replay": "4c74b7c5a1d69c65b110bec76588e199536925465f6bcc79df911804cc8db962",
+      "actor": "Alice",
+      "legal": "eff8f99e8e27e18ec25be375b7575f9f98c18c8e090b99b169f0d1ceae2bb937",
+      "rng": [
+        768,
+        720,
+        38,
+        967,
+        62,
+        461,
+        269,
+        886
+      ],
+      "action": {
+        "kind": "command",
+        "action": "check",
+        "amount": 0
+      }
+    }
+  ],
+  "final": {
+    "events": 19,
+    "replay": "713bd9e36be66f11c48e6e90efaa0f6f9a763ead6174238fc027fdb9a7d14b3f",
+    "actor": "Bob",
+    "legal": "727fd08da670efd01299918bc727901424c4222bb41d9ca0c33142aacb017f9c",
+    "rng": [
+      928,
+      968,
+      241,
+      118,
+      546,
+      798,
+      781,
+      847
+    ]
+  },
+  "session": {
+    "__id": 1,
+    "table_id": 1,
+    "game": "poker",
+    "options": "{\"variant\":\"holdem\",\"starting_chips\":1000,\"small_blind\":5,\"big_blind\":10,\"ante\":5,\"draw_uses_blinds\":false,\"betting\":\"no_limit\",\"raise_cap_enabled\":false,\"raise_cap\":3,\"blind_interval\":\"hands\",\"blind_interval_value\":5,\"blind_multiplier\":2,\"draw_five\":false,\"jacks_or_better\":false,\"thinking_time\":0,\"bot_delay\":0}",
+    "__players": [
+      "Alice",
+      "Bob"
+    ]
+  },
+  "events": [
+    {
+      "id": 1,
+      "sequence": 1,
+      "actor": "Alice",
+      "action": "deal",
+      "value": "1|1|de264d93f04b4e81e996369779b77933|0"
+    },
+    {
+      "id": 2,
+      "sequence": 2,
+      "actor": "Bob",
+      "action": "bet",
+      "value": "call|5"
+    },
+    {
+      "id": 3,
+      "sequence": 3,
+      "actor": "Alice",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 4,
+      "sequence": 4,
+      "actor": "Alice",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 5,
+      "sequence": 5,
+      "actor": "Bob",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 6,
+      "sequence": 6,
+      "actor": "Alice",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 7,
+      "sequence": 7,
+      "actor": "Bob",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 8,
+      "sequence": 8,
+      "actor": "Alice",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 9,
+      "sequence": 9,
+      "actor": "Bob",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 10,
+      "sequence": 10,
+      "actor": "Alice",
+      "action": "deal",
+      "value": "2|0|bb25b448ff1cd75c30df750c68673746|9"
+    },
+    {
+      "id": 11,
+      "sequence": 11,
+      "actor": "Alice",
+      "action": "bet",
+      "value": "call|5"
+    },
+    {
+      "id": 12,
+      "sequence": 12,
+      "actor": "Bob",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 13,
+      "sequence": 13,
+      "actor": "Bob",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 14,
+      "sequence": 14,
+      "actor": "Alice",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 15,
+      "sequence": 15,
+      "actor": "Bob",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 16,
+      "sequence": 16,
+      "actor": "Alice",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 17,
+      "sequence": 17,
+      "actor": "Bob",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 18,
+      "sequence": 18,
+      "actor": "Alice",
+      "action": "bet",
+      "value": "check|0"
+    },
+    {
+      "id": 19,
+      "sequence": 19,
+      "actor": "Alice",
+      "action": "deal",
+      "value": "3|1|ffcf25f7c63dcc0c75f4d01ea6f19b74|18"
+    }
+  ]
+}

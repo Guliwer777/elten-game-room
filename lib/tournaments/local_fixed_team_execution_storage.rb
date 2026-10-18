@@ -27,6 +27,8 @@ module GameRoomTournaments
     MAX_EXECUTIONS = 512
     MAX_OPERATIONS = 1024
     MAX_ROOMS = 512
+    NATIVE_CORE_FIELDS = %w[id owner capacity metadata discovery_metadata visibility participants entries last_seq trimmed_through
+      closed invitations dedup stack_entries stack_entry_bytes].freeze
     attr_reader :identity, :directory, :path
 
     class Unconfirmed < IOError
@@ -194,6 +196,7 @@ module GameRoomTournaments
 
     def validate_busy!(document)
       validate_counts!(document)
+      validate_native_shapes!(document['native'])
       validate_records!(document)
       unless document.is_a?(Hash) && document['executions'].is_a?(Hash) && document['busy'].is_a?(Hash)
         raise Invalid, :sandbox_corrupt
@@ -271,6 +274,7 @@ module GameRoomTournaments
       fields += ['moves'] if execution.key?('moves')
       fields += ['result'] if execution.key?('result')
       C.fields!(execution, fields)
+      raise Invalid, :sandbox_corrupt if execution.key?('result') && !execution['result'].is_a?(Hash)
       request = CoordinationRequest.build(execution['request'], registry: @registry)
       raw = request.to_h
       record = document['records'][execution['record_intent']]
@@ -321,6 +325,7 @@ module GameRoomTournaments
         raise Invalid, :sandbox_corrupt
       end
       core = execution['target'] && document['native']['cores'].find { |row| row['id'] == execution['target']['binding']['native_uuid'] }
+      validate_native_identity!(core, target.to_h['readback']) if core
       LocalFixedTeamAdmission.validate!(execution, core)
       LocalFixedTeamStart.validate!(execution, core)
       if record['evidence']['version'].eql?(2) && GameResult::RESULT_POLICIES.include?(record['evidence']['source']['result_policy'])
@@ -355,6 +360,29 @@ module GameRoomTournaments
       end
     end
 
+    # Admission, Start and move replay inspect native data before the complete
+    # relationship checks below. Reject malformed containers before their use.
+    def validate_native_shapes!(native)
+      native['cores'].each do |core|
+        C.fields!(core, NATIVE_CORE_FIELDS)
+        unless core['participants'].is_a?(Hash) && core['entries'].is_a?(Array) &&
+            core['metadata'].is_a?(Hash) && core['discovery_metadata'].is_a?(Hash) &&
+            Data.integer?(core['stack_entry_bytes'], 1)
+          raise Invalid, :sandbox_corrupt
+        end
+      end
+    end
+
+    # Native replay assumes SDK metadata and visibility. Authenticate the
+    # stored identity against the verified target before handing it to replay.
+    def validate_native_identity!(core, readback)
+      expected_discovery = readback['discovery'].merge('player_count' => core['participants'].size)
+      unless core['metadata'].eql?(readback['metadata']) && core['discovery_metadata'].eql?(expected_discovery) &&
+          core['visibility'].eql?(readback['visibility'])
+        raise Invalid, :sandbox_corrupt
+      end
+    end
+
     def validate_native!(document)
       native = document['native']
       C.fields!(native, %w[creates cores])
@@ -366,17 +394,16 @@ module GameRoomTournaments
       end
       seen = []
       native['cores'].each do |core|
-        C.fields!(core, %w[id owner capacity metadata discovery_metadata visibility participants entries last_seq trimmed_through closed invitations dedup stack_entries stack_entry_bytes])
+        C.fields!(core, NATIVE_CORE_FIELDS)
         target = targets.find { |row| row['binding']['native_uuid'] == core['id'] }
         raise Invalid, :sandbox_corrupt unless target && !seen.include?(core['id'])
         seen << core['id']
         readback = target['readback']
         execution = document['executions'].values.find { |row| row['target'].equal?(target) }
         started = execution && execution['start']
-        expected_discovery = readback['discovery'].merge('player_count' => core['participants'].size)
-        unless core['metadata'].eql?(readback['metadata']) && core['discovery_metadata'].eql?(expected_discovery) &&
-            (started || core['entries'].eql?(readback['stack'])) &&
-            core['visibility'] == 'private' && core['owner'] == readback['table']['owner'] && core['capacity'].eql?(execution['request']['players'].size) &&
+        validate_native_identity!(core, readback)
+        unless (started || core['entries'].eql?(readback['stack'])) &&
+            core['owner'] == readback['table']['owner'] && core['capacity'].eql?(execution['request']['players'].size) &&
             core['closed'].equal?(!!execution['result']) &&
             (started || (core['last_seq'].eql?(1) && core['trimmed_through'].eql?(0) &&
               core['entries'].size == 1 && core['entries'].first.dig('packet', 'kind') == 'room_created'))

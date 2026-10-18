@@ -2,7 +2,7 @@ class GameRoomLiveSessionStore
   module Writer
     public
 
-    def append_game_action(session:, sequence:, events:, actor:, controller: false)
+    def append_game_action(session:, sequence:, events:, actor:, controller: false, write_guard: nil)
       table_id = positive_identifier(session["table_id"])
       session_id = positive_identifier(session["__id"] || session["id"])
       raise ArgumentError, "Invalid game" if table_id == nil || session_id == nil
@@ -22,12 +22,45 @@ class GameRoomLiveSessionStore
       raise GameRoomNetworkErrors::GamePaused, "The game was ended by the master" if game_aborted?(table_id, session_id)
       raise GameRoomNetworkErrors::GamePaused, "The game is being saved" if game_frozen?(table_id, session_id)
 
+      random_request = GameRoomServerRandom.request_from(events.to_a)
+      pool_request = GameRoomPrivateCards.request_from(events.to_a)
       commands = GameRoomEventProtocol.validate_commands!(events.to_a).map do |event|
         GameRoomEventProtocol.normalized(event).merge("move_id" => SecureRandom.uuid)
       end
       packet = GameRoomEventProtocol.game_action_packet(session_id: session_id, sequence: sequence,
         control_epoch: ledger.epoch, events: commands, actor: actor, controller: controller)
-      record = append_packet(table_id, packet)
+      current = game_session(session_id, table: table_id)
+      if pool_request && %w[take reveal].include?(pool_request['operation']) && current['__tournament_match']
+        # Retained with the PendingWrite/UUID across retries; this identifies
+        # the boundary from which the ordinary client began its private RPC.
+        packet['data']['presence_boundary'] = current['__game_boundary'].to_s
+      end
+      if GameRoomPrivateCards.enabled?(current)
+        raise ArgumentError, 'This game requires a private card operation' unless (!!pool_request ^ !!random_request)
+        operation = pool_request && pool_request['operation']
+        proof = %w[take reveal].include?(operation) ? {'operation'=>operation} : nil
+        unless GameRoomPrivateCards.valid_commands?(current['game'], commands,
+            controlled: controller, host: same_user?(writer, owner_for(table_id)), pool: proof, random: random_request)
+          raise ArgumentError, 'Invalid private card action for this game'
+        end
+        raise ArgumentError, 'A host cannot draw or reveal another player\'s cards' if controller && %w[take reveal check].include?(operation)
+      elsif pool_request
+        raise ArgumentError, 'This game does not use private hands'
+      end
+      if !random_request && current['__server_random'] == GameRoomServerRandom::VERSION &&
+          GameRoomServerRandom.required?(current['game'], commands)
+        raise ArgumentError, 'This action requires a server draw'
+      end
+      if random_request
+        unless current['__server_random'] == GameRoomServerRandom::VERSION &&
+            GameRoomServerRandom.actions(current['game']).include?(commands.first['action']) &&
+            GameRoomServerRandom.accepts_request?(current['game'], random_request)
+          raise ArgumentError, 'This game does not accept server random actions'
+        end
+        packet['data']['random_request'] = random_request
+      end
+      record = append_packet(table_id, packet, random_request: random_request, pool_request: pool_request, write_guard: write_guard)
+      return nil unless record
       expand_game_action(record)
     end
 
@@ -65,35 +98,62 @@ class GameRoomLiveSessionStore
       if pending != nil
         # An empty read is not evidence that a timed-out request cannot arrive
         # later. Keep its UUID, packet, actor, random values and event sequence.
-        write_record(table_id, pending)
+        write_record(table_id, pending) unless reconcile_tournament_presence_write(table_id, pending)
       end
       true
     end
 
     private
 
-    def append_record(table_id, kind, data, actor:, message_id: nil)
+    def append_record(table_id, kind, data, actor:, message_id: nil, write_guard: nil)
       packet = GameRoomEventProtocol.record_packet(kind: kind, actor: actor, data: data)
-      append_packet(table_id, packet, message_id: message_id)
+      append_packet(table_id, packet, message_id: message_id, write_guard: write_guard)
     end
 
-    def append_packet(table_id, packet, message_id: nil)
+    def append_packet(table_id, packet, message_id: nil, random_request: nil, pool_request: nil, write_guard: nil)
       session = active_session(table_id)
+      return if write_guard && !write_guard.call(session)
       raise ArgumentError, "The room is no longer active" if session == nil
 
       message_id ||= SecureRandom.uuid
-      pending = GameRoomSessionContracts::PendingWrite.new(message_id: message_id, packet: packet, sender: endpoint.user.to_s, writing: false)
-      @mutex.synchronize do
-        raise GameRoomNetworkErrors::PendingMove, "An earlier game move is awaiting confirmation" if @rooms[table_id]&.pending_move
-
-        room_state(table_id).pending_move = pending if packet['kind'] == "game_action"
+      pending = GameRoomSessionContracts::PendingWrite.new(message_id: message_id, packet: packet, sender: endpoint.user.to_s,
+        writing: false, random_request: random_request, pool_request: pool_request, write_guard: write_guard)
+      if packet['kind'] == 'room_activity' && packet.dig('data', 'activity_kind') == 'chat'
+        # Re-entering an unchanged failed draft keeps its authenticated UUID.
+        # A callback/recovery read may already have supplied the missing ACK.
+        # Do not duplicate either the request or an unrelated packet's receipt.
+        if (confirmed = confirmed_record(table_id, pending))
+          raise ArgumentError, 'The chat operation identity was reused' unless confirmed.packet == packet
+          return confirmed
+        end
       end
-      write_record(table_id, pending)
+      retained = @mutex.synchronize do
+        previous = @rooms[table_id]&.pending_move
+        if previous
+          if packet['kind'] == 'game_boundary' && packet['data'].key?('tournament_presence') &&
+              previous.message_id == message_id && previous.sender == pending.sender && previous.packet == packet
+            next previous
+          end
+          raise GameRoomNetworkErrors::PendingMove, "An earlier game move is awaiting confirmation"
+        end
+
+        room_state(table_id).pending_move = pending if packet['kind'] == "game_action" ||
+          packet['kind'] == 'game_boundary' && packet['data'].key?('tournament_presence')
+        nil
+      end
+      return write_record(table_id, retained) if retained
+      write_record(table_id, pending, write_guard: write_guard)
     end
 
-    def write_record(table_id, pending)
+    def write_record(table_id, pending, write_guard: nil)
       begin_room_io(table_id)
       acquired = false
+      request_attempted = false
+      # A server receipt wins over a later change of the precondition. It is
+      # not a retry and must never be undone or rejected by a changed guard.
+      confirmed = confirmed_record(table_id, pending)
+      return confirmed if confirmed
+      write_guard ||= pending.write_guard
       session = active_session(table_id)
       raise GameRoomNetworkErrors::PendingMove, "The game connection is not ready" if session == nil
       @mutex.synchronize do
@@ -102,7 +162,65 @@ class GameRoomLiveSessionStore
         pending[:writing] = true
         acquired = true
       end
-      result = session.stack_push(pending[:packet], message_id: pending[:message_id])
+      request = pending.random_request
+      native_pool = pending.pool_request && %w[take reveal].include?(pending.pool_request['operation'])
+      # Revalidate immediately before each actual push, including recovery.
+      # Losing the HTTP reply is not evidence that the original request failed;
+      # a denied retry therefore retains its uncertain UUID and packet.
+      return nil unless write_precondition_valid?(table_id, session, pending, write_guard)
+      # Acquiring the local slot is not a send. In particular, a failing read
+      # in write_guard must not create a phantom uncertain game operation.
+      # Private-pool verification also has read-only preflight work. Mark
+      # uncertainty at its first mutation, including retirement/creation.
+      result = if pending.pool_request
+        write_private_pool(table_id, session, pending) { request_attempted = true }
+      elsif request
+        request_attempted = true
+        session.stack_push_random(min: 1, max: request['sides'], count: request['count'],
+          context: pending.packet, message_id: pending.message_id)
+      else
+        request_attempted = true
+        session.stack_push(pending[:packet], message_id: pending[:message_id])
+      end
+      ingest_write_receipt(table_id, session, pending, result, native: request || native_pool)
+    rescue StandardError => error
+      # A native callback can confirm the write before its HTTP reply fails.
+      confirmed = confirmed_record(table_id, pending)
+      return confirmed if confirmed != nil
+
+      @mutex.synchronize do
+        if acquired && request_attempted && GameRoomNetworkErrors.transient?(error)
+          pending[:uncertain] = true
+          pending[:error] = error
+        end
+        (room_state(table_id).pending_move = nil) if room_state(table_id).pending_move.equal?(pending) && !pending[:uncertain] &&
+          (!request_attempted || !GameRoomNetworkErrors.transient?(error))
+      end
+      raise
+    ensure
+      @mutex.synchronize { pending[:writing] = false } if acquired
+      end_room_io(table_id)
+    end
+
+    def write_precondition_valid?(table_id, session, pending, write_guard)
+      begin
+        allowed = write_guard == nil || write_guard.call(session)
+      rescue StandardError => error
+        raise unless pending[:uncertain] && defined?(GameRoomSessionRunner::StaleView) && error.is_a?(GameRoomSessionRunner::StaleView)
+        raise GameRoomNetworkErrors::UncertainWrite, 'The earlier operation cannot safely be retried after the game changed'
+      end
+      return true if allowed
+      if pending[:uncertain]
+        raise GameRoomNetworkErrors::UncertainWrite, 'The earlier operation cannot safely be retried after the game changed'
+      end
+      @mutex.synchronize do
+        room = @rooms[table_id]
+        room.pending_move = nil if room&.pending_move.equal?(pending) && !pending[:uncertain]
+      end
+      false
+    end
+
+    def ingest_write_receipt(table_id, session, pending, result, native:)
       sequence = extract_push_sequence(result)
       server_time = result.is_a?(Hash) ? (result.dig("entry", "created_at") || result["created_at"]) : nil
       server_time = nil unless server_time.respond_to?(:to_i) && server_time.to_i.positive?
@@ -112,28 +230,13 @@ class GameRoomLiveSessionStore
         sequence: sequence,
         message_id: pending[:message_id],
         sender: pending[:sender],
-        packet: pending[:packet],
+        packet: native ? native_ack_packet(result) : pending[:packet],
+        native_metadata: native ? result : nil,
         created_at: timestamp,
         estimated_time: server_time == nil,
         source_session: session
       )
-      record || confirmed_record(table_id, pending)
-    rescue StandardError => error
-      # A native callback can confirm the write before its HTTP reply fails.
-      confirmed = confirmed_record(table_id, pending)
-      return confirmed if confirmed != nil
-
-      @mutex.synchronize do
-        if acquired && GameRoomNetworkErrors.transient?(error)
-          pending[:uncertain] = true
-          pending[:error] = error
-        end
-        (room_state(table_id).pending_move = nil) if room_state(table_id).pending_move.equal?(pending) && !GameRoomNetworkErrors.transient?(error)
-      end
-      raise
-    ensure
-      @mutex.synchronize { pending[:writing] = false } if acquired
-      end_room_io(table_id)
+      record || confirmed_record(table_id, pending) || raise(GameRoomNetworkErrors::UncertainWrite, 'The stored operation could not be verified')
     end
 
     def confirmed_record(table_id, pending)
@@ -151,10 +254,22 @@ class GameRoomLiveSessionStore
       sequence
     end
 
-    def ingest_record(table_id, sequence:, message_id:, sender:, packet:, created_at:, estimated_time: false, source_session: nil)
+    def native_ack_packet(result)
+      packet = result.is_a?(Hash) && (result['packet'] || result.dig('entry', 'packet'))
+      raise GameRoomNetworkErrors::UncertainWrite, 'Missing native operation receipt' unless packet.is_a?(Hash)
+      packet
+    end
+
+    def ingest_record(table_id, sequence:, message_id:, sender:, packet:, created_at:, estimated_time: false, source_session: nil, native_metadata: nil)
       seq = sequence.to_i
       identity = message_id.to_s
       return nil if seq <= 0 || identity.empty? || !packet.is_a?(Hash)
+      pool_decoded = GameRoomPrivateCards.decode(packet, native_metadata, sender: sender, message_id: message_id)
+      return nil unless pool_decoded
+      packet, server_pool = pool_decoded
+      decoded = GameRoomServerRandom.decode(packet, native_metadata)
+      return nil unless decoded
+      packet, server_random = decoded
       if packet["version"] != PROTOCOL || !packet["data"].is_a?(Hash) || !(packet["actor"].is_a?(String) && !packet["actor"].empty?) || sender.to_s.empty?
         # Do not print packet contents (they may contain private game data).
         Log.warning("ELTEN Game Room discarded invalid stack entry for table #{table_id}, sequence #{seq}") if defined?(Log)
@@ -168,8 +283,15 @@ class GameRoomLiveSessionStore
         sender: sender.to_s,
         packet: JSON.parse(JSON.generate(packet)),
         created_at: normalize_time(created_at),
-        estimated_time: estimated_time
+        estimated_time: estimated_time,
+        server_random: server_random,
+        server_pool: server_pool
       )
+      store_ingested_record(table_id, record, source_session)
+    end
+
+    def store_ingested_record(table_id, record, source_session)
+      seq, identity, sender, estimated_time = record.sequence, record.message_id, record.sender, record.estimated_time
       corrected = nil
       inserted = @mutex.synchronize do
         # The callback/read may have passed its earlier membership check just

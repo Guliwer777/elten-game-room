@@ -198,6 +198,7 @@ module GameRoomTournaments
       schedule = Data.copy({ 'windows' => draft['windows'] })
       optional = draft.key?('starts_at')
       schedule.merge!('starts_at' => draft['starts_at'], 'deadline_at' => draft.fetch('deadline_at', 0)) if optional
+      schedule['daily_hours']=Data.copy(draft['daily_hours']) if optional && draft['daily_hours']
       row = Data.copy({ 'publication_key' => publication_key, 'schema_version' => optional ? 2 : 1,
         'title' => draft['name'], 'game' => draft['game_id'], 'rules' => rules,
         'settings_json' => JSON.generate(settings), 'schedule_json' => JSON.generate(schedule),

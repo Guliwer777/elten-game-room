@@ -129,7 +129,7 @@ assert_result_lines(game.send(:settlement_text, penalties, %w[Alice Bob Carol]),
     'Bob loses 1 penalty feather.', 'Carol loses 2 penalty feathers.'])
 grants = logic::Settlement.quiz(balances: {0 => 18, 1 => 18}, answers: {0 => true, 1 => true})
 assert_result_lines(game.send(:settlement_text, grants, %w[Alice Bob]),
-  ['Alice receives 4 feathers.', 'Bob receives 4 feathers.'])
+  ['Alice, Bob each receive 4 feathers.'])
 tie = logic::Settlement.difference(balances: {0 => 18, 1 => 18}, scores: {0 => 4, 1 => 4})
 assert_result_lines(game.send(:settlement_text, tie, %w[Alice Bob]), ['The challenge ends in a draw.'])
 

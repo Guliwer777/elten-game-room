@@ -256,17 +256,18 @@ check.call('archive validates without a live session ID then restores completed 
   assert(h.decode.any? { |data, _actor, _events| data['action'] == 'start' && data['session'] == 91 && data['challenge_flow'] == 2 })
   assert_equal(91, after.state[:private_closures].last[:session_id], 'Archive changed the historical answer scope')
   actor = after.current_player
-  context = h.context(actor)
-  context.session_id = new_session['__id']
-  context.table_id = native.table['__id']
-  context.now += 2
-  status, plan = h.game.action_for({'action' => 'race', 'input' => {'kind' => 'roll'}}, after, actor, context: context)
-  assert_equal(:ok, status, 'The restored session could not continue')
-  native.write(actor, plan.events)
+  plan = native.submit_at({'action' => 'race', 'input' => {'kind' => 'roll'}},
+    actor: actor, at: h.now_ms + 2_000)
+  request = GameRoomServerRandom.request_from(plan.events)
+  assert(request, 'The new physical session must use its required native server draw')
   continued = native.replay(h.owner)
-  assert_equal(after.accepted_events.length + plan.events.length, continued.accepted_events.length)
+  written = native.events(h.owner).drop(after.accepted_events.length)
+  assert(!written.empty?, 'The restored session did not write the next action')
+  assert_equal(after.accepted_events.length + written.length, continued.accepted_events.length)
+  assert(written.all? { |event| event.dig('__server_random', 'id') == request.fetch('id') },
+    'The restored roll did not retain the server draw proof across its payload fragments')
   decoded = []
-  GameRoomActionPayload.each(native.events(h.owner).last(plan.events.length), h.game.id,
+  GameRoomActionPayload.each(written, h.game.id,
     native.repositories.fetch(h.owner), new_session) { |data, *_| decoded << data }
   assert_equal([new_session['__id']], decoded.map { |data| data['session'] })
   native.assert_converged('restored private challenge and next real action')
@@ -290,6 +291,16 @@ end
 
 check.call('new private challenge after native restore uses its NEW physical session scope') do
   h = Harness.new
+  # Ensure the required next challenge is naturally in the following player's
+  # hand. Reusing one controlled server seed for every roll no longer explores
+  # the old local RNG stream and is not a guarantee of another challenge.
+  seed = (1..10_000).find do |candidate|
+    race = LOGIC::Race.start(player_count: 2, laps: 3, seed: candidate, enabled_challenges: ['guess_number'])
+    race[:racers][0][:hand].any? { |card| card.type == 'super_challenge' } &&
+      race[:racers][1][:hand].any? { |card| %w[challenge super_challenge].include?(card.type) }
+  end
+  assert(seed, 'No natural deal contains the two required challenge cards')
+  h.start(seed: seed)
   h.open_round
   h.begin_round
   old_protocol = h.replay.state[:round][:private]
@@ -388,6 +399,8 @@ check.call('native human to bot to observer replacement preserves hand/history t
   assert_equal(current.accepted_events.length, final.accepted_events.length)
   second.assert_converged('archive after native human/bot/human replacements')
 end
+
+raise 'No Duck game adapter scenarios matched DUCK_ADAPTER_CASE' if checks.empty?
 
 report_dir = File.expand_path('../../../tmp/duck-racing', __dir__)
 FileUtils.mkdir_p(report_dir)

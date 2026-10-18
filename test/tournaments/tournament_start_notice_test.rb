@@ -1,3 +1,4 @@
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require_relative '../support/binary_rules_load' if ARGV.first
 require_relative '../support/tournament_public_ui'
@@ -27,7 +28,7 @@ assert_equal(2,notice['version'])
 assert_equal(row['title'],notice['title'])
 assert_raises(T::ProposalNotice::Stale){service.inspect(metadata:notice.merge('title'=>'Forged title'),sender:'Alice',delivery:true)}
 assert_equal(row['title'],service.inspect(metadata:notice,sender:'Alice',delivery:true)['title'])
-Dir.mktmpdir('start-notice-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('start-notice-') do |directory|
   program=ProposalNoticeStorageSupport::Program.new(directory)
   journal=-> {T::ProposalNoticeJournal.new(program:program,path:'starts.json')}
   sent=[]
@@ -43,7 +44,7 @@ Dir.mktmpdir('start-notice-',ENV.fetch('TMPDIR')) do |directory|
   assert_equal(:sent,cold.deliver(metadata:alice_notice))
   assert_equal([:attempt,:duplicate],sent,'Confirmed start sent again')
 end
-Dir.mktmpdir('start-notice-upgrade-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('start-notice-upgrade-') do |directory|
   program=ProposalNoticeStorageSupport::Program.new(directory)
   journal=T::ProposalNoticeJournal.new(program:program,path:'starts.json')
   sent=[]

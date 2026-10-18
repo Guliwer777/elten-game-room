@@ -270,9 +270,11 @@ module GameRoomGames
       event_id = repository.event_id(event).to_i
       history = after.history.select { |entry| entry.event_id.to_i == event_id }
       shown = history_entries_for_display(after, viewer)
+      observation = challenge_observation_result(before, after, viewer) if history.any? { |entry| entry.kind == :challenge_result }
       stage = lambda do |entries, delay, defer = false|
-        descriptions = entries.filter_map do |entry|
-          entry.text if shown.include?(entry) && ![:start, :started, :turn, :result].include?(entry.kind) && !entry.text.to_s.empty?
+        descriptions = entries.flat_map do |entry|
+          next [] unless shown.include?(entry) && ![:start, :started, :turn, :result].include?(entry.kind) && !entry.text.to_s.empty?
+          entry.kind == :challenge_result ? Array(observation) + [entry.text] : [entry.text]
         end
         {history: entries, descriptions: descriptions, delay: delay, defer_replay: defer}
       end
@@ -285,6 +287,7 @@ module GameRoomGames
         (challenge[:kind] == 'sound_order' || GameRoomDuckRacing::ChallengeEngine::SPEED_TYPES.include?(challenge[:kind]))
       challenge_delay = history.any? { |entry| [:challenge, :quiz_question].include?(entry.kind) } && challenge &&
         !opening_countdown ? 2.0 : 0.0
+      challenge_delay = 3.0 if challenge_delay > 0 && challenge[:kind] == 'count_ducks'
       ending_delay = [changed_turn ? 2.0 : 0.0, challenge_delay].max
       stages = if (index = history.index { |entry| entry.kind == :rolled })
         [stage.call(history.take(index + 1), 1.0, true),
@@ -297,7 +300,7 @@ module GameRoomGames
         if result.winner && (!feathers.empty? || last_result > index)
           winner_stage = stage.call(history.take(index + 1), 2.0, true)
           winner_stage[:descriptions] = stage.call(history.take(index), 0.0)[:descriptions] +
-            [settlement_outcome_text(result, after.players)]
+            Array(observation) + [settlement_outcome_text(result, after.players)]
           feathers_stage = stage.call(history[(index + 1)..last_result], 2.0, true)
           feathers_stage[:descriptions].unshift(feathers) unless feathers.empty?
           [winner_stage, feathers_stage, stage.call(history.drop(last_result + 1), challenge_delay)]
@@ -311,19 +314,7 @@ module GameRoomGames
       # Card and square effects can chain several moves in one accepted action.
       # Keep each destination with its rewards; pause only after its preceding
       # displacement announcement, including a resumed challenge continuation.
-      stages = stages.flat_map do |part|
-        split, offset = [], 0
-        part[:history].each_with_index do |entry, index|
-          next unless entry.kind == :displacement
-          split << stage.call(part[:history][offset..index], 1.0, true)
-          offset = index + 1
-        end
-        if split.empty?
-          [part]
-        else
-          split << stage.call(part[:history].drop(offset), part[:delay], part[:defer_replay])
-        end
-      end
+      stages = split_movement_stages(stages, stage)
 
       memory = before&.state&.dig(:round)
       if memory && memory[:phase] == :playing && memory[:challenge][:kind] == 'sound_memory'
@@ -439,6 +430,45 @@ module GameRoomGames
     end
 
     private
+
+    def split_movement_stages(stages, stage)
+      stages.flat_map do |part|
+        split, offset = [], 0
+        part[:history].each_with_index do |entry, index|
+          next unless entry.kind == :displacement
+          split << stage.call(part[:history][offset..index], 1.0, true)
+          offset = index + 1
+        end
+        if split.empty?
+          [part]
+        else
+          split << stage.call(part[:history].drop(offset), part[:delay], part[:defer_replay])
+        end
+      end
+    end
+
+    # The usual result/feather queue owns these lines too. Participants keep
+    # their concise result; observers see the final numbers or revealed quiz
+    # choices only after the ordinary verifier has resolved the challenge.
+    def challenge_observation_result(before, after, viewer)
+      challenge = before&.state&.dig(:round, :challenge)
+      result = after.state[:last_resolution]
+      return [] unless challenge && result && result[:id] == challenge[:id] && !result[:cancelled]
+      return [] if challenge[:participants].include?(player_index(after.players, viewer))
+      return [] unless %w[copy_number quiz].include?(challenge[:kind])
+
+      lines = []
+      if challenge[:kind] == 'copy_number' && !result[:answer].nil?
+        lines << (_("Correct answer: %{answer}.") % {answer: result[:answer]})
+      end
+      choices = resources_for(after.state[:options]).fetch(:questions).draw(seed: challenge[:seed])[:choices] if challenge[:kind] == 'quiz'
+      result[:results].each do |seat, answer|
+        value = answer[:answer]
+        detail = value.nil? ? _("No answer") : choices ? choices.fetch(value) : value.to_s
+        lines << (_("%{player}: %{result}.") % {player: participant_name(after.players.fetch(seat)), result: GameRoomContent.utf8(detail)})
+      end
+      lines
+    end
 
     def skipped_race_turn?(replay)
       race = replay&.state&.dig(:race)
@@ -577,6 +607,7 @@ module GameRoomGames
         entry = HistoryEntry.new(event_id: event_id, text: GameRoomContent.utf8(text), actor: "", kind: kind)
         entry.field, entry.value = args[0], args[1].lap if kind == :moved
         entry.value = args[1] if kind == :skipped # Whether this turn was skipped because of freezing.
+        entry.value = args[1] if kind == :trap
         history << entry
         if kind == :moved && !args[1].finished
           history << HistoryEntry.new(event_id: event_id, kind: :scenery,
@@ -675,7 +706,14 @@ module GameRoomGames
           other: participant_name(players.fetch(transfer.from)), count: transfer.amount}
       end
       result.burned.each { |seat, count| lines << n_("%{player} loses %{count} penalty feather.", "%{player} loses %{count} penalty feathers.", count) % {player: participant_name(players.fetch(seat)), count: count} }
-      result.grants.each { |seat, count| lines << n_("%{player} receives %{count} feather.", "%{player} receives %{count} feathers.", count) % {player: participant_name(players.fetch(seat)), count: count} }
+      result.grants.group_by { |_seat, count| count }.each do |count, grants|
+        names = grants.map { |seat, _count| participant_name(players.fetch(seat)) }
+        if names.size == 1
+          lines << n_("%{player} receives %{count} feather.", "%{player} receives %{count} feathers.", count) % {player: names.first, count: count}
+        else
+          lines << n_("%{players} each receive %{count} feather.", "%{players} each receive %{count} feathers.", count) % {players: names.join(', '), count: count}
+        end
+      end
       lines.join("\n")
     end
   end

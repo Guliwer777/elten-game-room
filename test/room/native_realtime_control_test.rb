@@ -12,7 +12,12 @@ require_relative "../../games/audio_ball"
   $game_room_test_user='Alice'
   session = repos['Alice'].start_session(table:table,game:game.id,players:%w[Alice Bob],options:table['game_options'])
   if game.id=='audio_ball'
-    repos['Alice'].append_events(session:session,sequence:0,actor:'Alice',events:[{action:'audio_ball_start',value:'0'}])
+    context = GameRoomGames::ActionContext.new(table_owner:'Alice', server_random:true,
+      random_source:GameRoomRandom::LocalSecureSource.new)
+    before = game.replay(session,[],repos['Alice'])
+    status, start = game.action_for(game.automatic_action(before,'Alice',context:context),before,'Alice',context:context)
+    assert(status==:ok,'Native initial server draw was not planned')
+    repos['Alice'].append_events(session:session,sequence:0,actor:'Alice',events:start.events)
   end
   action = game.id=='audio_ball' ? 'audio_ball_point' : 'pong_point'
   events = repos['Alice'].snapshot_for(session).events

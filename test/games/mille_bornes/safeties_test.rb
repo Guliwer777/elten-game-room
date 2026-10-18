@@ -230,7 +230,12 @@ test("runner rejects human reactions after a zero-delay bot draw and accepts the
     fixture.act("Bob", { "kind" => "command", "action" => "draw" })
     fixture.act("Bob", { "kind" => "card", "action" => "play", "card" => "speed_limit:1", "target" => "0" })
     fixture.events.each do |entry|
-      command = GameRoomGames::EventCommand.new(action: entry["action"], value: entry["value"])
+      command = if entry['action'] == 'deal'
+        harness.view(entry['actor']).next_random_values = seed.to_s(16).rjust(32, '0').scan(/../).map { |byte| byte.to_i(16) + 1 }
+        GameRoomServerRandom.seed_command(action: 'deal', round: 1)
+      else
+        GameRoomGames::EventCommand.new(action: entry["action"], value: entry["value"])
+      end
       harness.write(entry["actor"], [command])
     end
     runner = runner_for(harness, "Alice", covered: -> { covered })

@@ -11,8 +11,10 @@ questions = pack.data.fetch('questions')
 # This is an editorial baseline, not an engine compatibility requirement.
 # It includes the six approved wording corrections from the 2026-10-16
 # player reports, covered individually by reviewed_questions_test.rb.
+# It also includes the three approved prompt-only corrections reported by
+# Zuzler on 2026-10-18; answers, order and all other fields remain unchanged.
 assert(Digest::SHA256.hexdigest(JSON.generate(questions.first(14887))) ==
-  '988163e65b8eeba69785c9221ef186bd81f581f12f4ad735c48ea08a4770740b',
+  '79bdbd20be0498de01eb042c8b55f6baec7952c818b93d32d79c67b1f8bff086',
   'The existing Polish set changed while importing a community proposal')
 
 expected = {

@@ -42,14 +42,7 @@ module GameRoomTableWatch
     end
 
     def all
-      rows, offset = [], 0
-      loop do
-        page = @table.select(columns: COLUMNS, order: [["__id", "asc"]], limit: 1000, offset: offset).to_a
-        rows.concat(page)
-        break if page.size < 1000
-        offset += page.size
-      end
-      canonical(rows).values
+      canonical(read_rows).values
     end
 
     def load(user)
@@ -97,8 +90,42 @@ module GameRoomTableWatch
     def own_rows(user)
       # Account spelling is canonical on ELTEN. Never trust the supplied name
       # alone when changing/deleting a row, including duplicate cleanup.
-      rows = @table.select(where: { "username" => user.to_s }, columns: COLUMNS, order: [["__id", "asc"]], limit: 1000).to_a
+      rows = read_rows(where: { "username" => user.to_s })
       rows.select { |row| valid_identity?(row) && row["__insertion_user"].casecmp?(user.to_s) }.sort_by { |row| row["__id"].to_i }
+    end
+
+    def read_rows(where: {})
+      latest = preference_rows(where: where, order: [["__id", "desc"]], limit: 1).first
+      return [] unless latest
+
+      upper, previous, rows = latest.fetch("__id"), 0, []
+      loop do
+        page = preference_rows(where: where.merge("__id" => {"gte" => previous + 1}),
+          order: [["__id", "asc"]], limit: 1000)
+        break if page.empty?
+
+        unless page.first.fetch("__id") > previous &&
+            page.each_cons(2).all? { |first, second| first.fetch("__id") < second.fetch("__id") }
+          raise IOError, "Table notification preference pagination did not advance"
+        end
+        rows.concat(page.take_while { |row| row.fetch("__id") <= upper })
+        previous = page.last.fetch("__id")
+        # As in the registry, short pages are not EOF. Stable IDs avoid skips
+        # after deletion, and the initial upper ID excludes later insertions.
+        break if previous >= upper
+      end
+      rows
+    end
+
+    def preference_rows(where:, order:, limit:)
+      rows = @table.select(where: where, columns: COLUMNS, order: order, limit: limit)
+      unless rows.is_a?(Array) && rows.length <= limit && rows.all? do |row|
+          row.is_a?(Hash) && row["__id"].is_a?(Integer) && row["__id"].positive? &&
+            where.all? { |key, value| key == "__id" || row[key] == value }
+        end
+        raise IOError, "Invalid table notification preference response"
+      end
+      rows
     end
 
     def canonical(rows)
@@ -240,6 +267,10 @@ module GameRoomTableWatch
       @resolved = stored.is_a?(Hash) ? stored.fetch("resolved", {}).dup : {}
       @seen = {} unless @seen.is_a?(Hash)
       @resolved = {} unless @resolved.is_a?(Hash)
+      @seen.select! do |_key, value|
+        value.is_a?(Hash) && %w[id expires].all? { |key| GameRoomNotificationTime.integer_value?(value[key]) }
+      end
+      @resolved.select! { |_key, expiry| GameRoomNotificationTime.integer_value?(expiry) }
       trim
     end
 

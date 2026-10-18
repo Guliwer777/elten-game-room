@@ -31,6 +31,7 @@ begin
   assert(events.any? { |event| event['actor'].to_s.start_with?('bot:') }, 'No bot action passed through the executor')
   assert(events.length == current.accepted_events.length, 'Executor persisted a rejected move')
   assert(game.participant_scores(current).values.sum == 0, 'Final Mahjong payments do not balance')
+  step(h, runner) # Final human action is published before the next executor refresh.
   assert(h.transports['Alice'].room_snapshot(h.table)[:table]['status'] == 'waiting', 'Finished Mahjong hand left the room active')
   begin
     h.as('Alice') { runner.submit(session: h.session, replay: original, selection: {'kind'=>'command', 'action'=>'deal'}, actor: 'Alice') }

@@ -10,6 +10,7 @@ require_relative "../lib/game_rules"
 require_relative "../lib/game_content"
 require_relative "../lib/audio_tutorial"
 require_relative "../lib/participant_replay"
+require_relative "../lib/server_random"
 
 require_relative "../lib/game_room_localization"
 
@@ -42,6 +43,9 @@ module GameRoomGames
     def build_client(_program, **_services); nil; end
     def background_client?; false; end
     def audio_game?; false; end
+    # Shared HRTF placement of move sounds by seat. A game opts in only when its
+    # event cues come from the moving player; audio and realtime games own their sound scene.
+    def player_spatial_audio?; false; end
     # Turn-based model/actions can continue behind another native scene. A
     # realtime client owns its simulation, focus and pause protocol separately.
     def session_runner?; true; end
@@ -64,6 +68,7 @@ module GameRoomGames
     # Replacing one place need not transfer another player's private input.
     # The default remains conservative for existing private-protocol games.
     def participant_replacement_error(replay, player:, replacement: nil)
+      return _("Players cannot be replaced in a tournament with private hands. The same player can rejoin the table.") if replay&.state&.dig(:private_cards)
       controller_change_error(replay, replacement: replacement == nil)
     end
 
@@ -202,6 +207,7 @@ module GameRoomGames
     end
 
     def save_game_error(replay)
+      return _("This tournament uses private hands. Return to the same table to continue; saving to another table is unavailable.") if replay.state&.dig(:private_cards)
       replay.finished? ? _("This game has already finished.") : nil
     end
 
@@ -224,6 +230,18 @@ module GameRoomGames
     # This never grants an observer the right to make ordinary player moves.
     def moderator_action?(_selection)
       false
+    end
+
+    # Confirmed native membership is reconciled by the existing executor.
+    # Games opt in explicitly; absence is never inferred from an idle UI.
+    def membership_action(_replay, members:, table_owner:)
+      nil
+    end
+
+    # A game may stop without declaring a winner. The runner publishes the
+    # existing abort boundary, so statistics/results do not count a victory.
+    def interruption_reason(_replay)
+      nil
     end
 
     def automatic_actor(replay, viewer, table_owner:)
@@ -255,6 +273,8 @@ module GameRoomGames
     # Timer announcements are local UI cues. A stable key lets the screen say
     # each cue once without writing cosmetic events to the shared game log.
     # Entries contain [key, message, optional_sound_asset].
+    # An optional fourth value :skip_on_reconstruction marks an expired cue
+    # as historical on entry/rejoin; ordinary new timer crossings still play.
     def timer_announcements(_replay, _viewer, now: GameRoomClock.now.to_i)
       []
     end
@@ -296,8 +316,9 @@ module GameRoomGames
 
     # Override only for permanent removal from this match. A lost round,
     # folded hand, passed turn, all-in or disconnection is not elimination.
-    def eliminated_from_game?(_replay, _viewer)
-      false
+    def eliminated_from_game?(replay, viewer)
+      groups = replay&.state&.fetch(:tournament_eliminations, []) || []
+      GameRoomParticipants.includes?(groups.flatten, viewer)
     end
 
     attr_accessor :board_presentation_preferences
@@ -523,6 +544,10 @@ module GameRoomGames
 
     def event_plan(action, value)
       ActionPlan.single(action: action, value: value)
+    end
+
+    def server_seed_plan(action, template: '{seed}', seats: [0])
+      ActionPlan.new(events: [GameRoomServerRandom.text_seed_command(action: action, template: template, seats: seats)])
     end
 
     def starting_history(players)

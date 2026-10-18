@@ -34,7 +34,11 @@ require_relative "../../games/base"
 
 class NativeLiveSessionsBroker
   Participant = Struct.new(:id, :user, keyword_init: true)
-  Info = Struct.new(:sequence, :id, :created_at, keyword_init: true)
+  Info = Struct.new(:sequence, :id, :created_at, :origin, :min, :max, :count, :operation, :pool_id, keyword_init: true) do
+    def server_random?; origin == 'server'; end
+    def server_pool?; origin == 'server_pool'; end
+    def private?; false; end
+  end
 
   Core = Struct.new(
     :id, :metadata, :discovery_metadata, :capacity, :owner, :participants,
@@ -201,11 +205,12 @@ class NativeLiveSessionsBroker
   end
 
   class Invitation
-    attr_reader :metadata, :invitation_metadata, :inviter, :expires_at
+    attr_reader :id, :metadata, :invitation_metadata, :inviter, :expires_at
 
     def initialize(target, core, inviter, metadata)
       @target = target
       @core = core
+      @id = core.id
       @metadata = core.metadata
       @invitation_metadata = metadata
       @inviter = Participant.new(id: "inviter", user: inviter)
@@ -232,7 +237,7 @@ class NativeLiveSessionsBroker
   class View
     attr_reader :id, :metadata, :capacity
     def visibility; @core.visibility; end
-    attr_accessor :fail_next_push, :fail_next_read, :fail_next_trim
+    attr_accessor :fail_next_push, :fail_next_read, :fail_next_trim, :next_random_values
     attr_reader :calls
 
     def initialize(endpoint, core)
@@ -348,6 +353,39 @@ class NativeLiveSessionsBroker
       { "entries" => entries, "cursor" => cursor, "has_more" => @core.entries.any? { |entry| entry["seq"] > cursor }, "gap" => gap, "through" => @core.last_seq }
     end
 
+    # Native random metadata is outside the participant-controlled packet.
+    def stack_push_random(min:, max:, count:, context:, message_id:)
+      @calls[:random] += 1
+      fault, @fail_next_push = @fail_next_push, nil
+      raise EltenAPI::LiveSessions::TimeoutError, 'before random push' if fault == :before
+      raise fault if fault.is_a?(Exception)
+      raise EltenAPI::LiveSessions::SessionClosed if closed?
+      entry = @core.mutex.synchronize do
+        previous = @core.entries.find { |item| item['message_id'] == message_id && item.dig('sender', 'user') == user }
+        if previous
+          raise ArgumentError, 'random parameters changed' unless previous['random'] == {'min'=>min, 'max'=>max, 'count'=>count} && previous.dig('packet','context') == context
+          next previous
+        end
+        raise EltenAPI::LiveSessions::StackFull if @core.entries.length >= @core.stack_entries
+        values, @next_random_values = @next_random_values, nil
+        values ||= Array.new(count) { SecureRandom.random_number(max - min + 1) + min }
+        raise ArgumentError, 'Invalid random test values' unless values.length == count && values.all? { |n| n.between?(min, max) }
+        packet = {'values' => values, 'context' => JSON.parse(JSON.generate(context))}
+        raise EltenAPI::LiveSessions::StackPacketTooLarge if JSON.generate(packet).bytesize > @core.stack_entry_bytes
+        sequence = @core.last_seq + 1
+        result = {'seq'=>sequence, 'message_id'=>message_id, 'sender'=>{'user'=>user},
+          'sender_id'=>@core.participants.fetch(user.downcase).id, 'created_at'=>Time.now.to_i,
+          'packet'=>packet, 'origin'=>'server', 'random'=>{'min'=>min, 'max'=>max, 'count'=>count}}
+        @core.entries << result
+        @core.last_seq = sequence
+        @core.dedup[[user, message_id]] = sequence
+        result
+      end
+      @endpoint.broker.deliver if @endpoint.broker.automatic_delivery
+      raise EltenAPI::LiveSessions::TimeoutError, 'after random push' if fault == :after
+      entry.merge('stack' => stack_state)
+    end
+
     def stack_trim(through:)
       @calls[:trim] += 1
       raise EltenAPI::LiveSessions::NotOwner if !owner?
@@ -374,7 +412,9 @@ class NativeLiveSessionsBroker
       entries.each do |entry|
         @delivery_cursor = entry["seq"]
         sender = Participant.new(user: entry.dig("sender", "user"))
-        info = Info.new(sequence: entry["seq"], id: entry["message_id"], created_at: entry["created_at"])
+        info = Info.new(sequence: entry["seq"], id: entry["message_id"], created_at: entry["created_at"],
+          origin: entry['origin'], min: entry.dig('random', 'min'), max: entry.dig('random', 'max'), count: entry.dig('random', 'count'),
+          operation: entry.dig('pool', 'operation'), pool_id: entry.dig('pool', 'id'))
         (duplicate ? 2 : 1).times { stack_message(sender, entry["packet"], info) }
       end
     end

@@ -2,6 +2,16 @@ require "tmpdir"
 require "digest"
 require_relative "../../tools/support/release_files"
 
+# Observe enumeration without replacing filesystem results or release policy.
+Dir.singleton_class.prepend(Module.new do
+  def glob(...)
+    result = super
+    probe = Thread.current[:release_enumeration_probe]
+    probe[:paths].concat(result) if probe && Dir.pwd == probe[:source] && result.is_a?(Array)
+    result
+  end
+end)
+
 def assert(value, message)
   raise message unless value
 end
@@ -51,20 +61,49 @@ Dir.mktmpdir("gr-release-test-") do |directory|
     FileUtils.mkdir_p(File.dirname(File.join(source, path)))
     File.binwrite(File.join(source, path), path == "manifest.json" ? '{"required_assets":{"sounds":["test"]}}' : "# fixture\n")
   end
-  %w[Audio lib test tools docs].each { |path| FileUtils.mkdir_p(File.join(source, path)) }
+  %w[Audio lib games content locale LICENSES test tools docs tmp Workspace diagnostics .git].each do |path|
+    FileUtils.mkdir_p(File.join(source, path))
+  end
   fixture_audio = "OggS\x00\xFFOpusHeadfixture".b
   fixture_readme = File.binread(File.join(repo, "README.md"))
   File.binwrite(File.join(source, "README.md"), fixture_readme)
   File.binwrite(File.join(source, "Audio/test.opus"), fixture_audio)
   File.write(File.join(source, "lib/extra.rb"), "# runtime\n")
   File.write(File.join(source, "__app.rb"), "require_relative 'lib/extra'\n")
-  %w[test/private.rb tools/private.rb docs/private.md].each { |path| File.write(File.join(source, path), "not shipped") }
+  %w[test/private.rb tools/private.rb docs/private.md tmp/private.rb Workspace/private.rb
+     diagnostics/private.rb .git/private.rb lib/.secret.rb].each do |path|
+    File.write(File.join(source, path), "not shipped")
+  end
+  future_files = %w[games/future/game.rb lib/future/service.rb content/future/data.rb
+    Audio/future/sound.opus locale/DE.mo content/FUTURE_NOTICE.md LICENSES/FUTURE.txt]
+  future_files.each do |path|
+    FileUtils.mkdir_p(File.dirname(File.join(source, path)))
+    File.binwrite(File.join(source, path), path.start_with?("Audio/") ? fixture_audio : "# future asset\n")
+  end
   destination = File.join(directory, "release")
-  paths = GameRoomReleaseFiles.stage(source, destination)
+  probe = {source: File.realpath(source), paths: []}
+  begin
+    Thread.current[:release_enumeration_probe] = probe
+    paths = GameRoomReleaseFiles.stage(source, destination)
+  ensure
+    Thread.current[:release_enumeration_probe] = nil
+  end
+  assert(!probe[:paths].empty?, "Release enumeration was not observed")
+  private_roots = %w[test tools docs tmp Workspace diagnostics .git]
+  assert(probe[:paths].none? { |path| private_roots.include?(path.split('/').first) },
+    "Release enumeration traversed private/development trees before filtering")
+  assert((future_files - paths).empty?, "Future runtime roots or nested assets omitted")
+  assert(!paths.include?("lib/.secret.rb"), "Hidden file inside a runtime root admitted")
   assert(paths.include?("lib/extra.rb"), "Relative runtime dependency missing")
   assert(!File.exist?(File.join(destination, "test")), "Test folder distributed")
   assert(File.binread(File.join(destination, "Audio/test.opus")) == fixture_audio, "Binary resource changed")
   assert(File.binread(File.join(destination, "README.md")) == fixture_readme, "User-edited README changed")
+  File.rename(File.join(source, "README.md"), File.join(source, "readme.md"))
+  begin
+    must_reject("Incorrect casing of a required root file ignored") { GameRoomReleaseFiles.files(source) }
+  ensure
+    File.rename(File.join(source, "readme.md"), File.join(source, "README.md"))
+  end
   File.delete(File.join(source, "README.md"))
   must_reject("Missing runtime README ignored") { GameRoomReleaseFiles.files(source) }
   File.binwrite(File.join(source, "README.md"), fixture_readme)

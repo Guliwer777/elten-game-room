@@ -9,6 +9,7 @@ module GameRoomGames
     def replay(session, events, repository)
       players = repository.players_for(session)
       state = initial_state(players, options_from_json(session["options"]))
+      initialize_private_cards(state, session) if GameRoomPrivateCards.enabled?(session)
       accepted = []
       history = [starting_history(players)]
       seen = {}
@@ -22,6 +23,7 @@ module GameRoomGames
         seen[event_id] = true
         accepted << event
       end
+      finish_private_replay(state, history, events.empty? ? 0 : repository.event_id(events.last)) if state[:private_cards]
       result = SessionReplay.new(players: players, current_player: state[:current_player], winner: state[:winner],
         draw: state[:draw], accepted_events: accepted, history: history, state: state)
       result.session_identity = session["__id"] || session["id"]
@@ -29,6 +31,7 @@ module GameRoomGames
     end
 
     def automatic_action(replay, actor, context: nil)
+      return private_automatic_action(replay, actor, context) if replay.state[:private_cards]
       return nil if replay.finished? || !same_user?(actor, replay.players.first)
       return nil unless [:awaiting_deal, :round_complete].include?(replay.state[:phase])
 
@@ -43,16 +46,23 @@ module GameRoomGames
     end
 
     def legal_actions(replay, actor, context: nil)
+      if replay.state[:private_cards]
+        return [] if !same_user?(actor, replay.state[:private_viewer]) || replay.state[:private_error] || private_pool_needed?(replay.state)
+      end
       actions_for_state(replay.state, actor)
     end
 
     def action_for(selection, replay, actor, context: nil)
+      return private_action_for(selection, replay, actor, context) if replay.state[:private_cards]
       return [:finished, nil] if replay.finished?
       state = replay.state
       if selection["kind"] == "command" && selection["action"] == "deal"
         return [:not_your_turn, nil] unless same_user?(actor, replay.players.first)
         return [:invalid, nil] unless [:awaiting_deal, :round_complete].include?(state[:phase])
         return [:invalid, nil] if options_error(state[:options], player_count: state[:players].length) || !context&.random_source
+        if context.server_random
+          return [:ok, ActionPlan.new(events: [GameRoomServerRandom.seed_command(action: 'deal', round: state[:round] + 1)])]
+        end
         seed = context.random_source.roll(count: 16, sides: 256).values.map do |value|
           (value.to_i - 1).to_s(16).rjust(2, "0")
         end.join
@@ -111,6 +121,15 @@ module GameRoomGames
     end
 
     def apply_event(state, event, actor, event_id, history)
+      return apply_private_event(state, event, actor, event_id, history) if state[:private_cards]
+      apply_standard_event(state, event, actor, event_id, history)
+    end
+
+    def apply_standard_event(state, event, actor, event_id, history)
+      if event['action'] == 'deal' && (request = event['__server_random'])
+        return false unless GameRoomServerRandom.valid_request?(request) &&
+          GameRoomServerRandom.valid_seed_request?(request) && request['prefix'] == "#{state[:round] + 1}|"
+      end
       return apply_deal(state, event["value"], actor, event_id, history) if event["action"] == "deal"
       selection = selection_from_event(event)
       return false unless selection && actions_for_state(state, actor).include?(selection)
@@ -366,6 +385,7 @@ module GameRoomGames
     end
 
     def draw_card(state, player)
+      return draw_private_card(state, player) if state[:private_cards]
       if state[:draw_pile].empty? && state[:options]["recycle_discard"] && !state[:discard].empty?
         state[:recycle_count] += 1
         state[:draw_pile] = GameRoomRandom.shuffle(state[:discard],
@@ -378,10 +398,15 @@ module GameRoomGames
 
     def begin_turn(state, player)
       state[:current_player] = player
-      state[:phase] = draw_available?(state) ? :awaiting_draw : :playing
+      state[:phase] = if state[:private_bonus]
+        :awaiting_bonus_draw
+      else
+        draw_available?(state) ? :awaiting_draw : :playing
+      end
     end
 
     def round_over?(state)
+      return false if state[:private_bonus]
       state[:tracks].any? { |track| track[:miles] == 1000 } || state[:hands].values.any?(&:empty?)
     end
 

@@ -46,6 +46,9 @@ module GameRoomDuckRacing
       independent_swap = action == 'input' && state.dig(:round, :challenge, :kind) == 'sound_order'
       return false unless CONCURRENT.include?(action) || independent_swap || data["revision"] == state[:revision]
       state[:notices] = []
+      if data.key?('seed')
+        return false unless data['seed'].is_a?(Integer) && data['seed'].between?(0, (1 << 128) - 1)
+      end
       if action == "start"
         return false unless moderator && state[:race].nil? && data["seed"].is_a?(Integer) && data["seed"] >= 0
         return false unless [nil, 2].include?(data['challenge_flow'])
@@ -66,6 +69,8 @@ module GameRoomDuckRacing
         # a way for another client to spend this player's frozen turns.
         return false if kind == :skip && !moderator
         acting_seat = kind == :skip ? state[:race][:turn] : seat
+        # Old archives retain their RNG. A fresh receipt drives only this move.
+        state[:race][:random] = Random.new(data['seed']) if data.key?('seed')
         accepted = Race.new(state[:race]).apply(seat: acting_seat, revision: state[:race][:revision],
           action: {kind: kind, card: input["card"], target: input["target"]})
         return false unless accepted
@@ -152,11 +157,11 @@ module GameRoomDuckRacing
         end
       when "input"
         if participant && round[:phase] == :playing && round[:engine]
-          ChallengeEngine.submit(round[:engine], seat: seat, action: data["input"],
+          ChallengeEngine.submit(round[:engine], seat: seat, action: data["input"], seed: data['seed'],
             now_ms: now_ms - round[:started_at], resources: resources)
         end
       when "advance"
-        moderator && advance(round, now_ms)
+        moderator && advance(round, now_ms, seed: data['seed'])
       when "point"
         if moderator && round[:phase] == :playing && ChallengeEngine::REALTIME.include?(kind)
           accept_point(state, data["receipt"], now_ms)
@@ -229,7 +234,7 @@ module GameRoomDuckRacing
     end
     private_class_method :begin_challenge
 
-    def advance(round, now_ms)
+    def advance(round, now_ms, seed: nil)
       return false unless round[:phase] == :playing
       if round[:private]
         protocol = round[:private]
@@ -238,7 +243,7 @@ module GameRoomDuckRacing
         # score. The session's ninety-second inactivity policy handles it.
         false
       elsif round[:engine]
-        ChallengeEngine.expire(round[:engine], now_ms: now_ms - round[:started_at])
+        ChallengeEngine.expire(round[:engine], now_ms: now_ms - round[:started_at], seed: seed)
       else
         false
       end

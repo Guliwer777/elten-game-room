@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_native'
 require_relative '../support/tournament_local_hub'
 require_relative '../support/tournament_match_entry'
@@ -10,7 +11,7 @@ T = GameRoomTournaments
 mode = ARGV.first || 'removed'
 raise 'Nieznana odmowa źródła' unless %w[removed conflict read_failed missing_publication].include?(mode)
 GameRoomLocalization.boot(settings: {'interface_language'=>'en','known_languages'=>['en']})
-Dir.mktmpdir('refusal-history-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('refusal-history-') do |directory|
   program = TournamentMatchEntryTest.prepare(directory)
   now = 201
   alerts = []

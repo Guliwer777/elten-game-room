@@ -45,13 +45,12 @@ test("full games through action_for, conservation and deterministic histories") 
     options["team_count"] = 4 if count == 8
     fixture = Fixture.new(players: Array.new(count) { |index| "Player#{index + 1}" }, options: options)
     random = GameRoomRandom::SeededSource.new(count * 13)
-    fixture.start
+    current = fixture.start
     800.times do
-      current = fixture.replay
       break if current.finished?
       automatic = fixture.game.automatic_action(current, fixture.players.first)
       if automatic
-        fixture.act(fixture.players.first, automatic)
+        current = fixture.act(fixture.players.first, automatic, before: current)
         next
       end
       actor = fixture.game.active_actors(current).first
@@ -60,8 +59,11 @@ test("full games through action_for, conservation and deterministic histories") 
       assert(!actions.empty?, "active actor has no legal action")
       action = fixture.game.bot_strategy.choose(actions: actions, game: fixture.game, replay: current,
         actor: actor, random_source: random)
-      after = fixture.act(actor, action)
-      state = after.state
+      # act fully rebuilds the accepted log after every action. Reuse that
+      # result for the next choice instead of replaying the unchanged prefix
+      # twice more before writing the next event.
+      current = fixture.act(actor, action, before: current)
+      state = current.state
       cards = state[:hands].values.flatten + state[:draw_pile] + state[:discard] + state[:spent]
       equal(deck_count, cards.length, "card conservation")
       equal(deck_count, cards.uniq.length, "no physical duplicate")

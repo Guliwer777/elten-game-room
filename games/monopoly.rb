@@ -4,9 +4,12 @@ require_relative "../content/monopoly_boards"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register('monopoly', ['roll'])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Monopoly < CardGame
+    def player_spatial_audio?; true; end
     def event_sound_cues(event:, before_replay:, after_replay:, history:, viewer:, random_variant:)
       action = event["action"].to_s
       cues = []
@@ -265,6 +268,9 @@ module GameRoomGames
         deficit = -state[:cash][player_key(state, actor)].to_i
         return [("insolvent_#{deficit}").to_sym, nil] if deficit > 0
         return [:invalid, nil] if state[:phase] != :awaiting_roll || context&.random_source == nil
+        if context.server_random
+          return [:ok, ActionPlan.new(events: [GameRoomServerRandom.recipe_command(action: 'roll', kind: 'monopoly_roll')])]
+        end
         dice = context.random_source.roll(count: 2, sides: 6).values.map(&:to_i)
         return [:invalid, nil] if dice.length != 2
         seed = card_seed(context.random_source)
@@ -310,6 +316,7 @@ module GameRoomGames
     end
 
     def apply_roll(state, event, actor, repository, history)
+      return false unless GameRoomServerRandom.valid_recipe_event?(event, kind: 'monopoly_roll')
       return false if state[:phase] != :awaiting_roll || !same_user?(state[:current_player], actor)
       first_text, second_text, seed = event["value"].to_s.split(",", 3)
       first, second = Integer(first_text, 10), Integer(second_text, 10)

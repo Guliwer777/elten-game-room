@@ -137,7 +137,7 @@ module GameRoomGames
       return nil if before_replay.history.any? { |entry| entry.event_id == history.first.event_id }
 
       cues = case event["action"]
-      when "deal" then "shuffle"
+      when "deal", "private_deal" then "shuffle"
       when "draw" then "draw"
       when "discard" then "play"
       when "play", "dirty_trick"
@@ -174,11 +174,21 @@ module GameRoomGames
 
     def current_turn_shortcut_text(replay, viewer)
       return result_text(replay) if replay.finished?
+      return private_error_text(replay.state) if replay.state[:private_error]
+      return _("Waiting for all players to receive their cards.") if [:private_wait, :private_dealing].include?(replay.state[:phase])
       return _("Waiting for the next deal.") if [:awaiting_deal, :round_complete].include?(replay.state[:phase])
       if replay.state[:phase] == :awaiting_draw
         return GameRoomContent.utf8(_("%{player} must draw a card.") % { player: participant_name(replay.current_player) })
       end
       super
+    end
+
+    def private_error_text(state)
+      if state[:private_error] == :pool_limit
+        _("The private deck has reached the server limit. This game cannot continue.")
+      else
+        _("The server deck is inconsistent. This game cannot continue.")
+      end
     end
 
     def card_label(card)

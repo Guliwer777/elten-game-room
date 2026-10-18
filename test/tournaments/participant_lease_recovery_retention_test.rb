@@ -1,3 +1,4 @@
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require_relative '../support/native_room_harness'
 require_relative '../support/readiness_plan_table'
@@ -5,7 +6,7 @@ require_relative '../../lib/tournaments/server_participant_lease'
 include GameRoomTest::Assertions
 T=GameRoomTournaments
 subject={'publication_ref'=>{'author'=>'owner','publication_key'=>'test'},'schedule_id'=>'a'*64,'match_id'=>'b'*64,'leg'=>1}
-Dir.mktmpdir('lease-recovery-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('lease-recovery-') do |directory|
   actor,now='alice',100
   table=ReadinessPlanTableSupport::Table.new(user:-> {actor},clock:-> {now})
   journal=T::OperationJournal.new(directory:directory,owner:actor,backend_identity:'audit-lease')
@@ -47,7 +48,7 @@ Dir.mktmpdir('lease-recovery-',ENV.fetch('TMPDIR')) do |directory|
   assert_raises(T::ServerPlanArchive::ContextChanged){service.state}
 end
 
-Dir.mktmpdir('lease-delayed-release-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('lease-delayed-release-') do |directory|
   now=100
   table=ReadinessPlanTableSupport::Table.new(user:-> {'alice'},clock:-> {now})
   journal=T::OperationJournal.new(directory:directory,owner:'alice',backend_identity:'audit-delayed-release')
@@ -69,7 +70,7 @@ Dir.mktmpdir('lease-delayed-release-',ENV.fetch('TMPDIR')) do |directory|
   assert_raises(T::ServerParticipantLease::Busy){build.call.acquire(subject:subject,token:token)}
 end
 
-Dir.mktmpdir('lease-history-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('lease-history-') do |directory|
   now=100
   table=ReadinessPlanTableSupport::Table.new(user:-> {'alice'},clock:-> {now})
   journal=T::OperationJournal.new(directory:directory,owner:'alice',backend_identity:'audit-history')
@@ -111,7 +112,7 @@ Dir.mktmpdir('lease-history-',ENV.fetch('TMPDIR')) do |directory|
   puts "PASS bounded lease read after 2500 historical claims and 150 cold renewals: #{cold_reads.size} selects, #{cold_reads.sum} returned rows"
 end
 
-Dir.mktmpdir('lease-race-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('lease-race-') do |directory|
   now=100
   table=ReadinessPlanTableSupport::Table.new(user:-> {'alice'},clock:-> {now})
   journal=T::OperationJournal.new(directory:directory,owner:'alice',backend_identity:'audit-race')

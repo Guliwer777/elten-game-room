@@ -4,6 +4,14 @@ module GameRoomReduction
   Event = Struct.new(:action, :actor, :id, :value, :timestamp, :source, keyword_init: true)
   Frame = Struct.new(:state, :players, :options, :history, :winner, :draw, keyword_init: true)
 
+  def self.timestamp(event)
+    raw = event["created_at"] || event[:created_at]
+    return raw.to_i if raw != nil && raw.to_i > 0
+
+    sequence = event["sequence"] || event[:sequence]
+    sequence.to_i - 1 if sequence != nil && sequence.to_i > 0
+  end
+
   def self.decode(event, session, repository, timestamp: nil)
     actor = repository.actor_of(event, session)
     return if actor.to_s.empty?

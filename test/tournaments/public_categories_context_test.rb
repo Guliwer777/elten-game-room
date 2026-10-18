@@ -27,7 +27,7 @@ args=u.arguments(current,load:->{current},join:->(id){joins<<id;u.record('confir
 u.script(->(form){
   lists=form.fields.grep(ListBox)
   assert_equal(['Tournaments','Show tournaments'],lists.map(&:header))
-  assert_equal([33,22,11],lists[0].instance_variable_get(:@item_keys),'Own tournaments must precede joinable tournaments and the rest')
+  assert_equal([11,22,33],lists[0].instance_variable_get(:@item_keys),'Organized and joined tournaments must precede the rest')
   assert_equal(0,form.index)
   lists[0].index=lists[0].instance_variable_get(:@item_keys).index(11)
   unavailable=CategoryMenu.new;lists[0].context(unavailable,false)
@@ -39,8 +39,9 @@ u.script(->(form){
   lists[0].index=1
   menu=CategoryMenu.new;lists[0].context(menu,false)
   assert(menu.actions.key?('Join tournament'),'Registration context lacks Join')
-  assert(menu.actions.key?('Edit tournament') && menu.actions.key?('Cancel tournament'),'Organizer context lacks administration')
-  menu.actions['Edit tournament'].call
+  assert(menu.actions.key?('Manage tournament'),'Organizer context lacks administration')
+  assert(!menu.actions.key?('Edit tournament') && !menu.actions.key?('Cancel tournament'),'Administration is duplicated in the main context menu')
+  menu.actions['Manage tournament'].call
   assert_equal([22],edits)
   lists[0].index=lists[0].instance_variable_get(:@item_keys).index(33)
   other=CategoryMenu.new;lists[0].context(other,false)
@@ -52,11 +53,16 @@ u.script(->(form){
   assert_equal(1,alerts.size)
   now+=3*3600
   u.button(form,'Refresh').trigger(:press)
-  assert_equal([33,22],lists[0].instance_variable_get(:@item_keys))
-  lists[1].index=2
+  assert_equal([22,33],lists[0].instance_variable_get(:@item_keys))
+  lists[1].index=1
   lists[1].trigger(:move)
   assert_equal([11,55,44],lists[0].instance_variable_get(:@item_keys),'Finished tournament did not move to the completed filter')
   form.cancel_button.trigger(:press)
+},->(form){
+  list=form.fields.first
+  assert_equal('Manage tournament',list.header)
+  list.index=list.options.index('Edit tournament')
+  list.trigger(:select)
 }) do
   GameRoomTournaments::PublicScreen.new(**args,clock:->{now},withdraw:->(_id){raise 'Unexpected withdrawal'},
     join_virtual:->(*){raise 'Unexpected virtual registration after tournament start'},

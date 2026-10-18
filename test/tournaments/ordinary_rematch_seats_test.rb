@@ -1,11 +1,11 @@
-require 'tmpdir'
+require_relative '../support/temporary_directory'
 require_relative '../support/binary_rules_load' if ARGV.first
 require_relative '../support/session_runner'
 require_relative '../support/tournament_server_plan_table'
 require_relative '../../games/catalog'
 require_relative '../../lib/tournaments/ordinary_match_service'
 T=GameRoomTournaments
-Dir.mktmpdir('return-colours-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('return-colours-') do |directory|
   h=NativeRoomHarness.new(game:GameRoomGames::Chess.new,users:%w[Alice Bob])
   programs=h.users.to_h{|name|[name,ProgramDouble.new(h.broker.endpoint(name))]}
   lobbies=h.users.to_h{|name|[name,LobbyRepository.new(programs[name],transport:h.transports[name],server_tables:Object.new)]}

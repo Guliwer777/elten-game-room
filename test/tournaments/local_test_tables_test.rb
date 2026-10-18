@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require "tmpdir"
 require "json"
 require "fileutils"
@@ -10,10 +11,16 @@ source = File.expand_path("../../lib/tournaments/local_test_tables.rb", __dir__)
 require source if File.file?(source)
 
 # Iniekcje awarii są ograniczone do plików sandboxa i bieżącego wątku testu.
+module TournamentLocalTablesProbePaths
+  def self.logical(path)
+    path.delete_prefix('\\\\?\\').tr('\\', '/')
+  end
+end
+
 module TournamentLocalTablesFileProbe
   def write(payload)
     probe = Thread.current[:local_tables_probe]
-    if probe && path.start_with?(probe[:path] + ".tmp-")
+    if probe && TournamentLocalTablesProbePaths.logical(path).start_with?(probe[:path] + ".tmp-")
       probe[:events] << :write
       return super(payload.byteslice(0, 8)) if probe[:fail] == :short_write
       if probe[:fail] == :write
@@ -26,7 +33,7 @@ module TournamentLocalTablesFileProbe
 
   def flush
     probe = Thread.current[:local_tables_probe]
-    if probe && path.start_with?(probe[:path] + ".tmp-")
+    if probe && TournamentLocalTablesProbePaths.logical(path).start_with?(probe[:path] + ".tmp-")
       probe[:events] << :flush
       raise IOError, "Awaria testowa" if probe[:fail] == :flush
     end
@@ -35,7 +42,7 @@ module TournamentLocalTablesFileProbe
 
   def fsync
     probe = Thread.current[:local_tables_probe]
-    if probe && path.start_with?(probe[:path] + ".tmp-")
+    if probe && TournamentLocalTablesProbePaths.logical(path).start_with?(probe[:path] + ".tmp-")
       probe[:events] << :fsync
       raise IOError, "Awaria testowa" if probe[:fail] == :fsync
     end
@@ -44,7 +51,7 @@ module TournamentLocalTablesFileProbe
 
   def flock(operation)
     probe = Thread.current[:local_tables_probe]
-    if probe && path == probe[:path] + ".lock" && operation == File::LOCK_EX && probe[:fail] == :lock
+    if probe && TournamentLocalTablesProbePaths.logical(path) == probe[:path] + ".lock" && operation == File::LOCK_EX && probe[:fail] == :lock
       return false
     end
     super
@@ -54,12 +61,13 @@ end
 module TournamentLocalTablesRenameProbe
   def rename(source, destination)
     probe = Thread.current[:local_tables_probe]
-    if probe && destination == probe[:path]
+    matching = probe && TournamentLocalTablesProbePaths.logical(destination) == probe[:path]
+    if matching
       probe[:events] << :rename
       raise Errno::EACCES, "Awaria testowa" if probe[:fail] == :rename
     end
     result = super
-    raise IOError, "Utrata potwierdzenia" if probe && destination == probe[:path] && probe[:fail] == :rename_after
+    raise IOError, "Utrata potwierdzenia" if matching && probe[:fail] == :rename_after
 
     result
   end
@@ -592,8 +600,9 @@ class TournamentLocalTestTablesTest
     @assertions = 0
     tests = methods.grep(/^test_/).sort
     tests = tests.select { |name| name.to_s.include?(ENV["LOCAL_TABLES_TEST"]) } if ENV["LOCAL_TABLES_TEST"]
+    raise ArgumentError, 'No local table tests match the requested filter' if tests.empty?
     tests.each do |name|
-      Dir.mktmpdir("tournament-local-tables-", ENV.fetch("TMPDIR")) do |directory|
+      GameRoomTest::TemporaryDirectory.create("tournament-local-tables-") do |directory|
         @directory = directory.tr("\\", "/")
         @actor = "Testowa Alicja"
         send(name)

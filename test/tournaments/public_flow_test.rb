@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require 'json'
 require 'tmpdir'
 require_relative '../support/assertions'
@@ -37,7 +38,7 @@ module TournamentPublicFlowTest
   end
 
   def test_persisted_publications_and_joins_for_all_games
-    Dir.mktmpdir('tournament-public-flow-', ENV.fetch('TMPDIR')) do |directory|
+    GameRoomTest::TemporaryDirectory.create('tournament-public-flow-') do |directory|
       actor = 'Testowy Organizator'
       now = 90
       provider = GameRoomTournaments::LocalTestTables.new(directory: directory, user: -> { actor }, clock: -> { now })
@@ -84,7 +85,7 @@ module TournamentPublicFlowTest
   end
 
   def test_uncertain_local_commit_is_exposed_by_gateway
-    Dir.mktmpdir('tournament-public-uncertain-', ENV.fetch('TMPDIR')) do |directory|
+    GameRoomTest::TemporaryDirectory.create('tournament-public-uncertain-') do |directory|
       actor = 'Testowy Organizator'
       provider = GameRoomTournaments::LocalTestTables.new(directory: directory, user: -> { actor }, clock: -> { 90 })
       gateway = local_gateway(provider, user: -> { actor })
@@ -119,7 +120,7 @@ module TournamentPublicFlowTest
   end
 
   def test_local_read_failure_is_provider_failure_with_original_cause
-    Dir.mktmpdir('tournament-public-read-failure-', ENV.fetch('TMPDIR')) do |directory|
+    GameRoomTest::TemporaryDirectory.create('tournament-public-read-failure-') do |directory|
       provider = GameRoomTournaments::LocalTestTables.new(directory: directory, user: -> { 'Testowy Aktor' })
       gateway = local_gateway(provider, user: -> { 'Testowy Aktor' })
       path = File.join(directory, GameRoomTournaments::LocalTestTables::FILE_NAME)
@@ -135,7 +136,7 @@ module TournamentPublicFlowTest
 
   def test_local_context_loss_after_real_write_is_unconfirmed_without_retry
     [:account, :cancelled].product([false, true]).each do |change, response_lost|
-      Dir.mktmpdir('tournament-public-context-', ENV.fetch('TMPDIR')) do |directory|
+      GameRoomTest::TemporaryDirectory.create('tournament-public-context-') do |directory|
         actor, cancelled = 'Testowy Organizator', false
         provider = GameRoomTournaments::LocalTestTables.new(directory: directory, user: -> { actor }, clock: -> { 90 })
         gateway = local_gateway(provider, user: -> { actor }, cancelled: -> { cancelled })
@@ -165,7 +166,7 @@ module TournamentPublicFlowTest
 
   def test_local_preflight_does_not_insert_or_claim_uncertain_write
     [:account, :cancelled, :fetch_error].each do |change|
-      Dir.mktmpdir('tournament-public-preflight-', ENV.fetch('TMPDIR')) do |directory|
+      GameRoomTest::TemporaryDirectory.create('tournament-public-preflight-') do |directory|
         actor, cancelled = 'Testowy Organizator', false
         provider = GameRoomTournaments::LocalTestTables.new(directory: directory, user: -> { actor })
         gateway = local_gateway(provider, user: -> { actor }, cancelled: -> { cancelled })
@@ -193,7 +194,7 @@ module TournamentPublicFlowTest
 
   def test_actor_boundary_persists_and_remains_in_projection
     ['x', 'x' * 64, '😀' * 64].each do |actor|
-      Dir.mktmpdir('tournament-public-actor-', ENV.fetch('TMPDIR')) do |directory|
+      GameRoomTest::TemporaryDirectory.create('tournament-public-actor-') do |directory|
         provider = GameRoomTournaments::LocalTestTables.new(directory: directory, user: -> { actor }, clock: -> { 150 })
         gateway = local_gateway(provider, user: -> { actor })
         row = gateway.append('tournament_announcements', snapshot.to_row)
@@ -211,8 +212,10 @@ module TournamentPublicFlowTest
 
   def run
     selected = ENV['TOURNAMENT_FLOW_TEST']
-    methods(false).grep(/^test_/).sort.each do |name|
-      next if selected && !name.to_s.include?(selected)
+    tests = methods(false).grep(/^test_/).sort
+    tests.select! { |name| name.to_s.include?(selected) } if selected
+    raise ArgumentError, 'No public flow tests match the requested filter' if tests.empty?
+    tests.each do |name|
       public_send(name)
       puts "PASS #{name}"
     end

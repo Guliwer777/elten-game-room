@@ -460,7 +460,18 @@ module GameRoomTournaments
           file.fsync
         end
         check_paths
-        File.rename(LocalFilesystem.native(temporary), LocalFilesystem.native(@path))
+        retries = 0
+        begin
+          File.rename(LocalFilesystem.native(temporary), LocalFilesystem.native(@path))
+        rescue Errno::EACCES
+          # Windows readers may briefly deny replacement. Retry only this same
+          # atomic rename under the journal lock, never the operation or its write.
+          raise unless File::ALT_SEPARATOR == '\\' && retries < 4 && File.exist?(LocalFilesystem.native(temporary))
+          retries += 1
+          sleep(0.025)
+          check_paths
+          retry
+        end
       ensure
         File.delete(LocalFilesystem.native(temporary)) if created && File.exist?(LocalFilesystem.native(temporary))
       end

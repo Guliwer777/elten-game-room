@@ -31,7 +31,7 @@ sent = []
 screen = GameScreen.new(program: program, repository: h.repositories["Alice"], game: h.game,
   session: h.session, table: h.table, table_owner: "Alice", synchronizer: sync,
   room_snapshot_provider: -> { LobbyRepository::TableSnapshot.new(**h.transports["Alice"].room_snapshot(h.table)) },
-  send_chat: ->(_table, message, _members) { sent << message; nil })
+  send_chat: ->(_table, message, _members, **_options) { sent << message; nil })
 screen.instance_variable_set(:@hidden_submissions, vault)
 screen.define_singleton_method(:alert) { |message| raise "unexpected alert: #{message}" }
 stage = 0

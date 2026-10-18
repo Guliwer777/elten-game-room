@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/assertions'
 require 'tmpdir'
 require_relative '../../lib/tournaments/local_execution_plan_storage'
@@ -11,7 +12,7 @@ T = GameRoomTournaments
 end
 puts 'PASS odrzucenie niebezpiecznych ścieżek'
 
-Dir.mktmpdir('k02-storage-limit-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('k02-storage-limit-') do |directory|
   directory = File.expand_path(directory)
   storage = T::LocalExecutionPlanStorage.new(directory: directory, guard: -> {})
   validator = ->(doc) { assert(doc.is_a?(Hash), 'Magazyn wymaga obiektu') }
@@ -38,7 +39,7 @@ Dir.mktmpdir('k02-storage-limit-', ENV.fetch('TMPDIR')) do |directory|
 end
 puts 'PASS budżet całego magazynu z JSON escape oraz StrictJson na legalnym dokumencie'
 
-Dir.mktmpdir('k02-path-guard-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('k02-path-guard-') do |directory|
   directory = File.expand_path(directory)
   storage = T::LocalExecutionPlanStorage.new(directory: directory, guard: -> {})
   Dir.mkdir(storage.path)
@@ -55,7 +56,7 @@ end
 puts 'PASS kontrola typu i hardlinków własnego celu'
 
 [:exception, :throw].each do |mode|
-  Dir.mktmpdir('k02-primary-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('k02-primary-') do |directory|
     directory = File.expand_path(directory)
     cause = ArgumentError.new('Przyczyna testowa')
     primary = Exception.new('Pierwotna awaria flush')
@@ -105,7 +106,7 @@ end
 puts 'PASS zachowanie primary/cause/backtrace oraz zamknięcie uchwytów przy Exception i throw cleanup'
 
 [:lock, :temporary].each do |kind|
-  Dir.mktmpdir('k02-preguard-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('k02-preguard-') do |directory|
     directory = File.expand_path(directory)
     handles, effects = [], []
     armed = false
@@ -148,7 +149,7 @@ puts 'PASS zachowanie primary/cause/backtrace oraz zamknięcie uchwytów przy Ex
 end
 puts 'PASS preguard/throw od pierwszego przejęcia własnego locka i pliku tymczasowego'
 
-Dir.mktmpdir('k02-korzen-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('k02-korzen-') do |directory|
   directory = File.expand_path(directory)
   storage = T::LocalExecutionPlanStorage.new(directory: directory, guard: -> {})
   ['null', 'false', '[]', '1', '"tekst"'].each do |bytes|

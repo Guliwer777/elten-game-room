@@ -51,6 +51,9 @@ end
 check.call('new confirmed log uses the owned full snapshot without either Tasks read') do |f|
   f.move
   source = f.runner.presentation_snapshot
+  assert(source.snapshot.session['__game_revision'] != f.before.session['__game_revision'], 'The native move did not change its write-CAS token')
+  assert_equal(f.before.session.reject { |key, _| key == '__game_revision' },
+    source.snapshot.session.reject { |key, _| key == '__game_revision' }, 'The ordinary move changed semantic session metadata')
   original = EltenAPI::Tasks.method(:run)
   begin
     EltenAPI::Tasks.define_singleton_method(:run) { |**_options| raise 'A redundant Tasks read was started' }
@@ -70,6 +73,28 @@ check.call('new confirmed log uses the owned full snapshot without either Tasks 
     assert_equal(nil, f.screen.instance_variable_get(:@pending_runner_payload))
   ensure
     EltenAPI::Tasks.define_singleton_method(:run, original)
+  end
+end
+
+check.call('packet and raw snapshot must agree even on the write-CAS token') do |f|
+  f.move
+  assert(f.candidate)
+  changed = GameRoomSnapshot.copy(f.runner.presentation_snapshot)
+  changed.session = GameRoomSnapshot.copy(changed.session)
+  changed.session['__game_revision'] = 'unconfirmed-packet-cas'
+  f.runner.instance_variable_set(:@presentation_snapshot, changed)
+  assert_equal(nil, f.candidate)
+end
+
+check.call('a changed CAS does not make an incomplete runner packet usable') do |f|
+  f.move
+  confirmed = f.runner.presentation_snapshot
+  assert(f.candidate)
+  %i[snapshot room replay].each do |field|
+    changed = GameRoomSnapshot.copy(confirmed)
+    changed[field] = nil
+    f.runner.instance_variable_set(:@presentation_snapshot, changed)
+    assert_equal(nil, f.candidate, "Missing #{field} bypassed snapshot admission")
   end
 end
 
@@ -128,7 +153,7 @@ check.call('unchanged, older and corrected same-number log use the established r
   assert_equal(nil, f.screen.send(:prepared_runner_payload, revision))
 end
 
-%w[__control_epoch __table_owner __players __seat_changes options __clock_revision __server_started_at __clock_offset __frozen_at __id table_id].each do |field|
+%w[__control_epoch __table_owner __players __seat_changes options __clock_revision __server_started_at __clock_offset __frozen_at __id table_id __future_semantic_field].each do |field|
   check.call("changed session #{field} keeps the normal reconciliation path") do |f|
     f.move
     assert(f.candidate)
@@ -231,6 +256,32 @@ check.call('actual native rematch is discovered rather than reusing the old tabl
   assert_equal(nil, f.candidate)
   f.native.as('Alice') do
     assert_equal([:new_session, f.native.session['__id']], f.screen.send(:remote_game_update, f.wait.revision))
+  end
+end
+
+check.call('a further native move between queueing and taking retains the exact CAS guard') do |f|
+  f.move
+  assert(f.screen.send(:handle_signal_wait, f.wait, nil))
+  queued = f.screen.instance_variable_get(:@pending_runner_payload)
+  f.native.submit('Bob', f.native.game.legal_actions(f.native.replay('Bob'), 'Bob').first)
+  f.native.as('Alice') { f.runner.step }
+  confirmed = f.runner.ready_presentation_snapshot
+  assert_equal(2, confirmed.snapshot.events.length)
+  assert(queued.first.session['__game_revision'] != confirmed.session['__game_revision'])
+  tasks = []
+  original = EltenAPI::Tasks.method(:run)
+  begin
+    EltenAPI::Tasks.define_singleton_method(:run) do |**options, &operation|
+      tasks << options[:title]
+      operation.call(nil, options[:cancellation_token] || EltenAPI::Tasks::CancellationToken.new)
+    end
+    payload = f.native.as('Alice') { f.screen.send(:fetch_game_payload) }
+    assert_equal(['Updating game'], tasks)
+    assert_equal(confirmed.snapshot.events, payload.first.events)
+    assert_equal(confirmed.session, payload.first.session)
+    assert_equal(nil, f.screen.instance_variable_get(:@pending_runner_payload))
+  ensure
+    EltenAPI::Tasks.define_singleton_method(:run, original)
   end
 end
 

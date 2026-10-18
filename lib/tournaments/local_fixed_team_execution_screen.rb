@@ -162,7 +162,7 @@ module GameRoomTournaments
       progress['results'].each do |result|
         lines << saved_result_text(result)
       end
-      lines << text(_("Tournament points: win 2, draw 1, loss 0. Game points are recorded separately."))
+      lines << text(_("Each match awards 2 tournament points per opponent beaten and 1 per tied opponent. Teams count as single opponents."))
       Standings.new(program: @program, content: lines.join("\r\n"), context: @context, lease: @lease).run
     end
 
@@ -512,7 +512,7 @@ module GameRoomTournaments
 
     def boundary_text
       [text(_("Ready is not consent or entry. Each test participant must consent and confirm entry separately.")),
-        text(_("The creator can start one local game after all four entries. Check original local game reads its saved history.")),
+        text(_("The creator can start one local game after all players have entered. \"Check original local game\" reads its saved history.")),
         text(_("Local entry and Start do not open a network game."))].join("\r\n")
     end
 

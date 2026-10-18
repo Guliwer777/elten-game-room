@@ -13,7 +13,7 @@ T.script(->(form) {
   list=form.fields.first
   assert_equal([22],list.instance_variable_get(:@item_keys))
   filter=T.field(form,'Show tournaments')
-  filter.index=2
+  filter.index=1
   filter.trigger(:move)
   ended=list
   assert_equal([33,11],ended.instance_variable_get(:@item_keys))

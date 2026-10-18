@@ -1,0 +1,191 @@
+{
+  "game": "quiz",
+  "seed": 137,
+  "players": [
+    "Alice",
+    "Bob"
+  ],
+  "options": {
+    "content_language_id": "en",
+    "content_set_id": "quiz.general",
+    "answer_time": 20,
+    "target_score": 15,
+    "bot_delay": 0,
+    "content_pack_id": "quiz.general.en",
+    "content_pack_version": 4,
+    "content_pack_checksum": "4f1cf5d680f8387506bf0b65e456404aa4a102591f1617540dc61c1ec1b09634"
+  },
+  "steps": [
+    {
+      "events": 1,
+      "replay": "4791e47395488037f34db249c390de72cbe48701e9ee2c405f32945b83101dc7",
+      "actor": "Alice",
+      "legal": "42b2f65ec11d075320dc7cd3233fa0ae37e8cdfcd3e27066ae3e4c9985abbede",
+      "rng": [
+        332,
+        335,
+        130,
+        746,
+        407,
+        311,
+        408,
+        634
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "quiz-category-1-1",
+        "answer": "Geography"
+      }
+    },
+    {
+      "events": 3,
+      "replay": "f884fea852f005d2d995cff0ef69dba824bbd6eb677e5fc2eebdcac890a26380",
+      "actor": "Alice",
+      "legal": "226e65e2eebec1f6bda7ab962e9b92d1a54e7121932ea796caedfafcfb22fee9",
+      "rng": [
+        335,
+        130,
+        746,
+        407,
+        311,
+        408,
+        634,
+        440
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "quiz-question-1-1",
+        "answer": "0"
+      }
+    },
+    {
+      "events": 4,
+      "replay": "345105df6c94d77331b4c75b1398c7d8b42960fb2a6c186b8bcacf8b9bb159de",
+      "actor": "Bob",
+      "legal": "226e65e2eebec1f6bda7ab962e9b92d1a54e7121932ea796caedfafcfb22fee9",
+      "rng": [
+        335,
+        130,
+        746,
+        407,
+        311,
+        408,
+        634,
+        440
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "quiz-question-1-1",
+        "answer": "0"
+      }
+    }
+  ],
+  "final": {
+    "events": 11,
+    "replay": "936949b5d9c2d4bbec945ba901d762381bbe6fb49350a08301c44aaa2bdab5b5",
+    "actor": null,
+    "legal": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "rng": [
+      335,
+      130,
+      746,
+      407,
+      311,
+      408,
+      634,
+      440
+    ]
+  },
+  "session": {
+    "__id": 1,
+    "table_id": 1,
+    "game": "quiz",
+    "options": "{\"content_language_id\":\"en\",\"content_set_id\":\"quiz.general\",\"answer_time\":20,\"target_score\":15,\"bot_delay\":0,\"content_pack_id\":\"quiz.general.en\",\"content_pack_version\":4,\"content_pack_checksum\":\"4f1cf5d680f8387506bf0b65e456404aa4a102591f1617540dc61c1ec1b09634\"}",
+    "__players": [
+      "Alice",
+      "Bob"
+    ]
+  },
+  "events": [
+    {
+      "id": 1,
+      "sequence": 1,
+      "actor": "Alice",
+      "action": "round_draw",
+      "value": "1,6.14.18"
+    },
+    {
+      "id": 2,
+      "sequence": 2,
+      "actor": "Alice",
+      "action": "round_category",
+      "value": "1,1,0,6"
+    },
+    {
+      "id": 3,
+      "sequence": 3,
+      "actor": "Alice",
+      "action": "question",
+      "value": "1,1,129a8d35b8e3,22"
+    },
+    {
+      "id": 4,
+      "sequence": 4,
+      "actor": "Alice",
+      "action": "answer_commit",
+      "value": "1.1:GuYSqIiNiHfGV0PJpqi1bXSgIpzeRm+A2IGRnhHZwPY="
+    },
+    {
+      "id": 5,
+      "sequence": 5,
+      "actor": "Bob",
+      "action": "answer_commit",
+      "value": "1.1:S1Eg8SojCzfOMXdEfqrDHL3h7CBk7WWmo9a4gSuGKqs="
+    },
+    {
+      "id": 6,
+      "sequence": 6,
+      "actor": "Alice",
+      "action": "answers_closed",
+      "value": "round-1-question-1"
+    },
+    {
+      "id": 7,
+      "sequence": 7,
+      "actor": "Alice",
+      "action": "answer_nonce",
+      "value": "1.1:3iZNk/BLToHpljaXebd5M7sltEj/HNdcMN91DGhnN0Y="
+    },
+    {
+      "id": 8,
+      "sequence": 8,
+      "actor": "Alice",
+      "action": "answer_pick",
+      "value": "1.1:0"
+    },
+    {
+      "id": 9,
+      "sequence": 9,
+      "actor": "Bob",
+      "action": "answer_nonce",
+      "value": "1.1:/88l98Y9zAx19NAepvGbdJ/H8HUhHekMTrquSU/ofKU="
+    },
+    {
+      "id": 10,
+      "sequence": 10,
+      "actor": "Bob",
+      "action": "answer_pick",
+      "value": "1.1:0"
+    },
+    {
+      "id": 11,
+      "sequence": 11,
+      "actor": "Alice",
+      "action": "question_finished",
+      "value": "1,1,0"
+    }
+  ]
+}

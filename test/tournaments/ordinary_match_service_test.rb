@@ -1,11 +1,11 @@
-require 'tmpdir'
+require_relative '../support/temporary_directory'
 require_relative '../support/binary_rules_load' if ARGV.first
 require_relative '../support/session_runner'
 require_relative '../support/tournament_server_plan_table'
 require_relative '../../games/catalog'
 require_relative '../../lib/tournaments/ordinary_match_service'
 T=GameRoomTournaments
-Dir.mktmpdir('ordinary-match-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('ordinary-match-') do |directory|
   h=NativeRoomHarness.new(game:GameRoomGames::TicTacToe.new,users:%w[Alice Bob])
   program=ProgramDouble.new(h.broker.endpoint('Alice'))
   lobby=LobbyRepository.new(program,transport:h.transports['Alice'],server_tables:Object.new)

@@ -8,6 +8,7 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Mancala < Base
+    def player_spatial_audio?; true; end
     PITS = 6
     SIDE = PITS + 1
     TOTAL = SIDE * 2

@@ -7,7 +7,7 @@ class Program
 end
 require_relative "../../__app"
 
-Notice = Struct.new(:id, :app_uuid, :revoked, :type, :metadata, keyword_init: true)
+Notice = Struct.new(:id, :app_uuid, :revoked, :type, :metadata, :sender, keyword_init: true)
 class DurableNoticeGateway
   attr_accessor :error
   attr_reader :rows
@@ -18,8 +18,8 @@ class DurableNoticeGateway
   end
   def revoke(user, id); @rows[user].find { |row| row.id == id }.revoked = true; end
   def revoke_many(user, ids); ids.each { |id| revoke(user, id) }; end
-  def send(user, metadata, type: "game_room.invitation")
-    notice = Notice.new(id: @rows.values.flatten.length + 1, app_uuid: "test-app", revoked: false, type: type, metadata: metadata)
+  def send(user, metadata, type: "game_room.invitation", sender: metadata["sender"] || Session.name)
+    notice = Notice.new(id: @rows.values.flatten.length + 1, app_uuid: "test-app", revoked: false, type: type, metadata: metadata, sender: sender)
     @rows[user] << notice
     notice
   end
@@ -28,6 +28,8 @@ end
 class InvitationAppDriver < EltenGameRoom
   attr_reader :alerts, :errors, :sent
   def initialize(broker, user, gateway, fresh: false)
+    # Native startup publishes local preferences before notification actions.
+    self.class.remember_settings({}) unless self.class.instance_variable_get(:@normalized_settings)
     @alerts, @errors, @sent = [], [], []
     @user, @gateway = user, gateway
     program = ProgramDouble.new(broker.endpoint(user, fresh: fresh))
@@ -38,7 +40,7 @@ class InvitationAppDriver < EltenGameRoom
     @invitation_notifications = InvitationNotifications.new(client: user, app_uuid: "test-app", gateway: gateway)
     @invitations = InvitationRepository.new(transport: @transport,
       notification_source: ->(recipient, now) { @invitation_notifications.pending(recipient: recipient, now: now) },
-      response_sender: ->(row, _response) { InvitationRepository.resolve_sent(row["__id"], table_id: row["table_id"], recipient: row["recipient"]) })
+      response_sender: ->(row, _response) { InvitationRepository.resolve_sent(row) })
   end
   def run_network_task(*_arguments, **_keywords)
     yield
@@ -49,7 +51,7 @@ class InvitationAppDriver < EltenGameRoom
   end
   def send_notification(user, type:, metadata:, expires_in:)
     @sent << [type, metadata, expires_in]
-    @gateway.send(user, metadata, type: type)
+    @gateway.send(user, metadata, type: type, sender: Session.name)
   end
   def alert(text); @alerts << text; end
   def announce_joined_room(_row); end

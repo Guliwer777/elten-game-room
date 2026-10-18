@@ -1,5 +1,6 @@
 require_relative "../support/host_source"
 require_relative "../support/settings_widget"
+require 'timeout'
 
 # Real host objects and list grouping, offline; no altered installed client.
 host = File.join(EltenTestHost.root, "src/eapi")
@@ -73,7 +74,11 @@ rows.each do |row|
   _, _, presentation = Programs.receive_app_notification(row)
   assert(presentation.default_suppressed? && presentation.sound.nil?, "unknown/foreign sender leaked speech/audio")
 end
-started.pop
+initial_elapsed = Process.clock_gettime(Process::CLOCK_MONOTONIC) - t0
+assert(initial_elapsed < 0.75, "initial notification UI calls blocked behind contact read: #{initial_elapsed}s")
+# Dispatch scheduling is not time spent grouping notifications on the UI.
+Timeout.timeout(3) { started.pop }
+t0 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 250.times do
   assert(helper.build_notification_groups(rows).empty?, "unknown contacts left a visible notification row")
   EltenGameRoom.contacts_tick
@@ -81,6 +86,7 @@ end
 elapsed = Process.clock_gettime(Process::CLOCK_MONOTONIC) - t0
 assert(reads.length == 1 && reads[0][0] != Thread.current && reads[0][1].equal?(CONTACT_RUNTIME), "read duplicated, ran on UI or lost runtime")
 assert(elapsed < 0.75 && delivered.empty? && audio.empty?, "slow contact read blocked the UI or announced too early")
+assert(initial_elapsed + elapsed < 0.75, "combined UI notification calls blocked behind contact read: #{initial_elapsed + elapsed}s")
 release << true
 wait_background_work(EltenGameRoom.contacts_cache.instance_variable_get(:@worker)) or raise "read hung"
 EltenGameRoom.contacts_tick
@@ -101,7 +107,7 @@ assert(reads.length == 1, "disabling filters fetches contacts")
 # Account changes discard pending work, and a late old-user response is ignored.
 settings = settings.merge("invitation_notifications" => "contacts")
 EltenGameRoom.contacts_cache.snapshot(force: true)
-started.pop
+Timeout.timeout(3) { started.pop }
 old = EltenGameRoom.contacts_cache
 row = notice.call(20, "Bob")
 EltenAPI::NotificationService.rows << row
@@ -122,7 +128,7 @@ rows = [notice.call(30, "Bob"), notice.call(31, "Bob"), notice.call(32, "Bob")]
 rows[1].payload["metadata"]["expires_at"] = now - 1
 EltenAPI::NotificationService.rows = rows
 rows.each { |r| Programs.receive_app_notification(r) }
-started.pop
+Timeout.timeout(3) { started.pop }
 EltenAPI::NotificationService.rows = rows.drop(1)
 $donotdisturb = true
 release << true

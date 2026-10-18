@@ -168,11 +168,17 @@ end
         assert(stages.map(&:text) == ["First betting round.", "Card exchange.", "Second betting round."], stages.map(&:text).inspect)
         assert(replay.state[:community].empty?, "draw unexpectedly exposes community cards")
       end
-      assert(history.any? { |entry| entry.text.start_with?("Showdown:") }, "missing showdown")
+      assert(history.any? { |entry| entry.key.start_with?("showdown:") && entry.kind == :round_result }, "missing showdown")
+      assert(history.count { |entry| entry.key.start_with?("showdown_hand:") } == PLAYERS.length, "missing separately shown hands")
       assert(game.replay(session, events, REPO).history.map(&:text) == history.map(&:text), "replay differs")
       stages.each do |stage|
         source = events.find { |item| item["id"] == stage.event_id }
-        assert(game.describe_event(source, REPO, replay, "Carol").include?(stage.text), "phase not spoken")
+        spoken = game.describe_event(source, REPO, replay, "Carol")
+        if source['action'] == 'deal'
+          assert(!spoken.include?(stage.text), 'Deal repeated its initial betting-stage announcement')
+        else
+          assert(spoken.include?(stage.text), "phase not spoken")
+        end
       end
     end
   end

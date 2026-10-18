@@ -276,6 +276,21 @@ labels in EN/PL/CS/ES/RU. The registered facade uses this module. Bot management
 respects the selected occupied-seat count and excludes Solitaire bot additions
 and replacements. Exact roster validation applies again before starting play.
 
+## Current LiveSessions integration
+
+Live Mahjong tables use the shared server-random protocol introduced in 2.0.5.1.
+The initial Solitaire layout and every table hand request one native public draw;
+`seed_json` renders its entropy as the existing compact JSON event with a bounded
+63-bit seed. No client entropy is used on that path. Historical local events and
+ordinary saved games keep their original event dialect. The shared executor,
+write recovery, participant admission and saved-table preparation remain in use.
+
+Server-generated entropy is public. Mahjong has not opted into protocol-9 private
+card pools: ordinary UI hides opponents' tiles, but a modified client can derive
+the deal from the seed. This integration does not claim server-private Mahjong
+hands or anti-cheat protection. Tournament private-pool support requires a
+separate adapter and validation; do not advertise it as implemented.
+
 ## Native history budget
 
 Table variants request 32,768 native history entries through the shared game's

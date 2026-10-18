@@ -22,6 +22,14 @@ module GameSurfaces
       @duck_surface.keys
     end
 
+    def get_tips
+      # This native control survives accepted phase changes. Keep its current
+      # instruction separate from the host's custom and built-in help tips.
+      inherited = super.to_a
+      instruction = @duck_surface&.presentation&.[](:instruction).to_s
+      instruction.empty? ? inherited : [instruction] + inherited
+    end
+
     def update
       GameRoomDuckRacing::Keyboard.activate(self)
       key_pressed?(duck_keys.first) # refresh the host's snapshot first
@@ -196,7 +204,6 @@ module GameSurfaces
         @field.on(:change) { @number_edited = true }
         @number_submitted_generation = @field.game_room_edit_generation if state_value(state, 'number_submitted', false)
       end
-      @field.add_tip(@presentation[:instruction])
       @field.game_shortcut_keys = ('0'..'9').to_a if @field.respond_to?(:game_shortcut_keys=)
       refresh_control
     end
@@ -219,8 +226,11 @@ module GameSurfaces
     end
 
     def reusable_for?(spec)
+      # Keep a pending native edit across unrelated accepted updates, but a
+      # role change may replace the answer edit with an observation control.
       spec.is_a?(DuckChallengeSpec) && spec.challenge_id == @spec.challenge_id &&
-        spec.kind == @spec.kind && spec.viewer == @spec.viewer
+        spec.kind == @spec.kind && spec.viewer == @spec.viewer &&
+        projection(spec.view)[:mode] == @presentation[:mode]
     end
 
     def update_spec(spec)

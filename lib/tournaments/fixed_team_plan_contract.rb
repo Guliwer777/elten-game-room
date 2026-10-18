@@ -16,12 +16,14 @@ module GameRoomTournaments
       a.fields!(anchor['publication_ref'], %w[author publication_key])
       a.fields!(data['scope'], MatchBinding::SCOPE)
       source, plan = data.values_at('source', 'plan')
+      raise Invalid, :invalid_fields unless source.is_a?(Hash)
       fields = a::ANCHOR - ['source_digest'] + %w[roster game_id options windows matches source_kind source_version membership team_template roster_digest pairing rematch]
         fields += ['result_policy'] if source.key?('result_policy')
         raise Invalid, :invalid_game_result if source.key?('result_policy') && !GameResult::RESULT_POLICIES.include?(source['result_policy'])
         fields += ['groups'] if source.key?('groups')
         fields += ['knockout'] if source.key?('knockout')
       a.fields!(source, fields)
+      raise Invalid, :invalid_fields if source.key?('knockout') && !source['knockout'].is_a?(Hash)
       a.fields!(source['publication_ref'], %w[author publication_key])
       a.list!(source['roster']).each { |person| a.fields!(person, %w[account username]) }
       a.list!(source['windows']).each { |window| a.fields!(window, a::WINDOW) }

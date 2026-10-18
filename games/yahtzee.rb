@@ -1,11 +1,14 @@
 require_relative "base"
 require_relative "../lib/game_bots"
+require_relative "../lib/server_random"
 
 require_relative "../lib/game_room_localization"
 
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Yahtzee < Base
+    def player_spatial_audio?; true; end
+    GameRoomServerRandom.register('yahtzee', ['roll'])
     STANDARD_CATEGORIES = %w[
       ones twos threes fours fives sixes three_kind four_kind full_house
       small_straight large_straight yahtzee chance
@@ -92,6 +95,10 @@ module GameRoomGames
       events.each do |event|
         break if state[:winner] != nil || state[:draw]
         actor = repository.actor_of(event, session)
+        if event['action'] == 'tournament_elimination'
+          accepted << event if apply_tournament_elimination(state, event, repository, history)
+          next
+        end
         next if !same_user?(actor, state[:current_player])
 
         applied = case event["action"].to_s
@@ -146,6 +153,11 @@ module GameRoomGames
           parse_die_ids(selection["die_ids"])
         end
         return [:choose_dice, nil] if indices.empty?
+        if context.server_random
+          kept = state[:dice].each_with_index.filter_map { |value, index| value unless indices.include?(index) }
+          return [:ok, ActionPlan.new(events: [GameRoomServerRandom.command(action: 'roll',
+            count: indices.length, sides: 6, keep: kept, sort: true)])]
+        end
         dice = state[:dice].dup
         values = context.random_source.roll(count: indices.length, sides: 6).values
         return [:invalid, nil] if values.length != indices.length
@@ -199,6 +211,14 @@ module GameRoomGames
     def participant_scores(replay)
       state = replay.state
       state[:players].to_h { |player| [player, total_score(state, player)] }
+    end
+
+    def tournament_forfeit_continuation(replay, losing_unit:, options:)
+      return {'status'=>'unsupported'} if replay.finished?
+      active = tournament_remaining_players(replay.state)
+      return {'status'=>'unsupported'} unless active.any? { |player| same_user?(player, losing_unit) }
+
+      {'status'=>active.length > 2 ? 'continue' : 'cannot_continue'}
     end
 
     def custom_game_shortcuts(replay, viewer)
@@ -316,6 +336,18 @@ module GameRoomGames
 
     def apply_roll(state, event, actor, repository, history)
       return false if state[:turn_rolls].to_i >= 3
+      if (request = event['__server_random'])
+        return false unless GameRoomServerRandom.valid_request?(request)
+        kept = request['keep']
+        return false unless GameRoomServerRandom.valid_dice_event?(event,
+          count: 5 - kept.length, sides: 6, keep: kept, sort: true)
+        return false if state[:turn_rolls].zero? && !kept.empty?
+        remaining = state[:dice].dup
+        return false unless kept.all? do |value|
+          index = remaining.index(value)
+          index && remaining.delete_at(index)
+        end
+      end
       dice = event["value"].to_s.split(",").map { |value| Integer(value, 10) }
       return false if dice.length != 5 || dice.any? { |value| !value.between?(1, 6) } || dice != dice.sort
 
@@ -363,10 +395,10 @@ module GameRoomGames
     end
 
     def finish_or_advance(state, event_id, history)
+      active = tournament_remaining_players(state)
       current = player_index(state[:players], state[:current_player])
-      next_index = (current + 1) % state[:players].length
-      state[:current_player] = state[:players][next_index]
-      return if state[:sheets].values.any? { |sheet| sheet.length < categories(state).length }
+      state[:current_player] = state[:players].rotate(current + 1).find { |player| active.include?(player) }
+      return if active.any? { |player| state[:sheets].fetch(player).length < categories(state).length }
 
       state[:players].each do |player|
         state[:totals][player] += sheet_total(state, player)
@@ -377,8 +409,8 @@ module GameRoomGames
         actor: "", kind: :round_result
       )
       if state[:match].to_i >= state[:options]["matches"].to_i
-        maximum = state[:totals].values.max
-        winners = state[:players].select { |player| state[:totals][player] == maximum }
+        maximum = active.map { |player| state[:totals].fetch(player) }.max
+        winners = active.select { |player| state[:totals][player] == maximum }
         state[:winner] = winners.one? ? winners.first : nil
         state[:draw] = winners.length > 1
         history << result_history(event_id: event_id, winner: state[:winner], draw: state[:draw])
@@ -387,8 +419,23 @@ module GameRoomGames
         state[:sheets] = new_sheets(state[:players])
         state[:sheet_counted] = false
         state[:yahtzee_bonuses] = state[:players].to_h { |player| [player, 0] }
-        state[:current_player] = state[:players][(state[:match] - 1) % state[:players].length]
+        first = (state[:match] - 1) % state[:players].length
+        state[:current_player] = state[:players].rotate(first).find { |player| active.include?(player) }
       end
+    end
+
+    def apply_tournament_elimination(state, event, repository, history)
+      departed = tournament_elimination_players(event, players:state[:players])
+      active = tournament_remaining_players(state)
+      return false unless departed && (departed - active).empty? && (active - departed).length >= 2
+
+      (state[:tournament_eliminations] ||= []) << departed
+      if departed.include?(state[:current_player])
+        state[:dice] = Array.new(5)
+        state[:turn_rolls] = 0
+        finish_or_advance(state, repository.event_id(event), history)
+      end
+      true
     end
 
     def categories(state)

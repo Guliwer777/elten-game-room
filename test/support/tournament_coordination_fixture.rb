@@ -1,6 +1,7 @@
 # encoding: UTF-8
 require 'tmpdir'
 require 'fileutils'
+require_relative 'temporary_directory'
 require_relative 'tournament_match_data'
 path = File.expand_path('../../lib/tournaments/coordination_service.rb', __dir__)
 require path if File.file?(path) && !defined?(GameRoomTournaments::CoordinationService)
@@ -21,10 +22,6 @@ module TournamentCoordinationFixture
       'generation'=>'execution-1','epoch'=>1,'cancelled'=>false,'grant_epoch'=>1}
   end
   def isolated
-    raise 'TMP poza scratch' unless File.identical?(Dir.tmpdir, ENV.fetch('TMPDIR'))
-    directory=Dir.mktmpdir('coordination-')
-    value=yield directory
-    FileUtils.remove_entry(directory)
-    value
+    GameRoomTest::TemporaryDirectory.create('coordination-') { |directory| yield directory }
   end
 end

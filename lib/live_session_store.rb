@@ -13,6 +13,8 @@ require_relative "game_room_presence_identity"
 require_relative "game_room_background"
 require_relative "game_event_protocol"
 require_relative "game_session_contracts"
+require_relative "server_random"
+require_relative "private_cards"
 
 # The authoritative, ephemeral state of one Game Room table lives in one
 # discoverable LiveSession.  Every mutation is appended to the session stack;
@@ -28,6 +30,8 @@ class GameRoomLiveSessionStore
   NAMED_SEATS_DISCOVERY_PROTOCOL = 5
   THINKING_TIME_DISCOVERY_PROTOCOL = 6
   CURRENT_DISCOVERY_PROTOCOL = 7
+  SERVER_RANDOM_DISCOVERY_PROTOCOL = 8
+  PRIVATE_CARDS_DISCOVERY_PROTOCOL = 9
   DISCOVERY_BYTES = 1024
   MAX_OPTIONS_BYTES = 8192
   MAX_CAPACITY = 8
@@ -48,6 +52,8 @@ class GameRoomLiveSessionStore
     :packet,
     :created_at,
     :estimated_time,
+    :server_random,
+    :server_pool,
     keyword_init: true
   )
 
@@ -213,11 +219,14 @@ class GameRoomLiveSessionStore
     start
     table_id = unused_identifier
     maximum = bounded_capacity(capacity)
+    offline = @local_view && endpoint.respond_to?(:offline?) && endpoint.offline?
     metadata = {
       "kind" => KIND,
       # Shared thinking-time rules require the same replay rules on all clients.
       # Earlier clients must not join and silently ignore a clock/timeout event.
-      "protocol" => CURRENT_DISCOVERY_PROTOCOL,
+      # The explicit offline transaction view has no server RNG. Its existing
+      # recorded local inputs must not be labelled as server-authenticated draws.
+      "protocol" => offline || GameRoomServerRandom.actions(game).empty? ? CURRENT_DISCOVERY_PROTOCOL : SERVER_RANDOM_DISCOVERY_PROTOCOL,
       "table_id" => table_id,
       "statistics_room_id" => GameRoomPresence::Identity.create,
       "owner" => owner.to_s,
@@ -229,6 +238,11 @@ class GameRoomLiveSessionStore
       "created_at" => @clock.now.to_i
     }
     metadata['tournament_match'] = GameRoomTournamentMarker.copy(tournament_match) if tournament_match
+    if tournament_match && GameRoomPrivateCards.supported?(game)
+      raise ArgumentError, 'Tournament private hands do not support bots or saved games' if bot_count.to_i.positive? || !resume_save_id.to_s.empty?
+      metadata['protocol'] = PRIVATE_CARDS_DISCOVERY_PROTOCOL
+      metadata['private_cards'] = GameRoomPrivateCards::VERSION
+    end
     discovery = metadata.dup
     discovery.merge!("status" => "waiting", "bot_count" => [[bot_count.to_i, 0].max, maximum - 1].min,
       "player_count" => 1 + [[bot_count.to_i, 0].max, maximum - 1].min, "max_players" => maximum)
@@ -240,7 +254,7 @@ class GameRoomLiveSessionStore
       discovery_metadata: compact_discovery(discovery),
       stack_entry_bytes: STACK_ENTRY_BYTES,
       stack_entries: stack_entries,
-      pool_count: 1,
+      pool_count: metadata['private_cards'] ? GameRoomPrivateCards::MAX_POOLS : 1,
       private_messages: true
     )
     if stack_entries > STACK_ENTRIES && session.limits.fetch("max_stack_entries", 0).to_i < stack_entries
@@ -277,7 +291,7 @@ class GameRoomLiveSessionStore
     found = {}
     discovered = {}
     discover_pages(sources: include_private ? [:created, :invited, :public] : [:public]).each do |item|
-      metadata = item.discovery_metadata.to_h
+      metadata = item.discovery_metadata
       next if !supported_metadata?(metadata)
 
       table_id = positive_identifier(metadata["table_id"])
@@ -308,13 +322,24 @@ class GameRoomLiveSessionStore
   end
 
   def current_room(user)
+    account = invitation_account_identity
+    return nil unless same_user?(account.last, user)
+
     start
+    memberships = account.first.sessions.to_a
     username = user.to_s
-    active_table_ids.filter_map do |table_id|
+    selected = active_table_ids.filter_map do |table_id|
+      native = active_session(table_id)
+      next unless native && memberships.any? { |session| session.equal?(native) }
       next if !connected_users(table_id).any? { |candidate| same_user?(candidate, username) }
 
-      table_for(table_id)
-    end.max_by { |row| [row["created_at"].to_i, row["__id"].to_i] }
+      row = table_for(table_id)
+      [row, native] if row
+    end.max_by { |row, _native| [row["created_at"].to_i, row["__id"].to_i] }
+    return nil unless selected && invitation_account_current?(account)
+
+    room, native = selected
+    active_session(table_identifier(room)).equal?(native) ? room : nil
   end
 
   def room_snapshot(table_or_id, force: false, read_only: false, **read_options)
@@ -368,7 +393,14 @@ class GameRoomLiveSessionStore
   def join_room(table, user)
     table_id = table_identifier(table)
     return :closed if table_id == nil
-    return :already_here if active_session(table_id) != nil && connected_users(table_id).any? { |name| same_user?(name, user) }
+    account = invitation_account_identity
+    return :closed unless same_user?(account.last, user)
+    existing = active_session(table_id)
+    # Another endpoint for the same account owns a different native visit.
+    # The local SDK collection is authoritative here and does not perform I/O.
+    if existing && account.first.sessions.to_a.any? { |session| session.equal?(existing) }
+      return :already_here if connected_users(table_id).any? { |name| same_user?(name, user) } && invitation_account_current?(account)
+    end
 
     # DiscoveredSession#join creates membership on the endpoint that found it.
     # A widget/notification may pass a row discovered by another program
@@ -384,9 +416,12 @@ class GameRoomLiveSessionStore
     end
     return :closed if discovered.respond_to?(:state) && discovered.state.to_s == "closed"
     return :full if discovered.respond_to?(:can_join?) && !discovered.can_join? && discovered.join_reason.to_s == "full"
+    return :closed unless invitation_account_current?(account)
 
     session = discovered.join(participant_metadata: participant_metadata(table_id))
-    admit_joined_session(table_id, session)
+    status = admit_joined_session(table_id, session, account: account)
+    resolve_discovered_invitation(table_id, session, account: account) if [:joined, :full].include?(status)
+    status
   end
 
   def update_room(table_or_id, changes, actor:)
@@ -513,6 +548,7 @@ class GameRoomLiveSessionStore
     ledger = control_ledger(id)
     raise GameRoomNetworkErrors::GamePaused, "Table master synchronization is pending" unless ledger.complete && same_user?(ledger.current_owner, native.owner.user)
     game = game_session(session_id, table: id)
+    raise GameRoomNetworkErrors::GamePaused, 'Players cannot be replaced in a game with private hands' if game && GameRoomPrivateCards.enabled?(game)
     raise GameRoomNetworkErrors::GamePaused, "The player is not in this game" unless game && GameRoomParticipants.includes?(game['__players'], player)
     raise GameRoomNetworkErrors::GamePaused, 'The game is being saved' if game['__frozen']
     publish_control(id, session_id, {}, replacement: [player, replacement], control_guard: control_guard) != false
@@ -582,18 +618,26 @@ class GameRoomLiveSessionStore
     table_id = table_identifier(table_or_id)
     return false if table_id == nil
 
-    session = @mutex.synchronize { @sessions[table_id] }
+    session, attachment = @mutex.synchronize { [@sessions[table_id], @rooms[table_id]&.attachment] }
     return false if session == nil
 
     session.owner? ? session.close : session.leave
-    @mutex.synchronize do
-      (room_state(table_id).pending_move = nil)
-      room_state(table_id).take_recovered_moves
+    removed = @mutex.synchronize do
+      # The native RPC may return after a new endpoint has joined this room.
+      # Its close callback has the same identity guard; the caller must not
+      # erase a newer attachment (or its pending write) after that callback.
+      room = @rooms[table_id]
+      next false unless room && room.attachment.equal?(attachment)
+      current = @sessions[table_id]
+      next false if current && !current.equal?(session)
+      room.pending_move = nil
+      room.take_recovered_moves
       @native_session_ids.delete_if { |_native_id, id| id == table_id }
       @sessions.delete(table_id)
       retain_inactive_room(table_id)
+      true
     end
-    emit_presence_change
+    emit_presence_change if removed
     true
   end
 
@@ -612,6 +656,24 @@ class GameRoomLiveSessionStore
     table_id != nil && active_session(table_id) != nil
   end
 
+  # A UI intention belongs to this visit, not just the same room ID after
+  # leaving and rejoining. Reading the attachment never discovers/reconnects.
+  def membership_token(table_or_id)
+    table_id = table_identifier(table_or_id)
+    native = table_id && active_session(table_id)
+    return unless native
+    @mutex.synchronize { @rooms[table_id]&.attachment if @sessions[table_id].equal?(native) }
+  end
+
+  # Unlike the final owner's name, this local token also records A -> B -> A.
+  # It scopes queued roster input without invalidating unrelated chat drafts.
+  def ownership_token(table_or_id)
+    table_id = table_identifier(table_or_id)
+    native = table_id && active_session(table_id)
+    return unless native
+    @mutex.synchronize { @rooms[table_id]&.ownership_token if @sessions[table_id].equal?(native) }
+  end
+
   # Cached native capabilities only. The requested capacity at create time is
   # not necessarily the server's grant; this never opens or refreshes a room.
   def game_action_limits(table_or_id)
@@ -620,9 +682,30 @@ class GameRoomLiveSessionStore
     session && !session.closed? ? session.limits.slice('max_stack_entry_bytes', 'max_stack_entries').dup : {}
   end
 
-  def append_activity(table:, kind:, actor:, message: "", subject: nil, invitation_id: nil)
+  def append_activity(table:, kind:, actor:, message: "", subject: nil, invitation_id: nil,
+    message_id: nil, expected_session_id: nil, expected_membership: nil)
     table_id = table_identifier(table)
     raise ArgumentError, "Invalid activity room" if table_id == nil
+
+    if kind.to_s == 'chat' && expected_session_id != nil
+      write_guard = lambda do |native|
+        next false unless expected_membership && native && !native.closed? && same_user?(actor, endpoint.user)
+        # Reuse the authenticated projection. An arbitrary participant may
+        # append an invalid game_started packet, but cannot change this guard's
+        # match identity. Validation is local and may not run under @mutex.
+        records_for(table_id)
+        anchor = control_metadata(native)[GameRoomTableControl::ANCHOR_KEY]
+        @mutex.synchronize do
+          room = @rooms[table_id]
+          cache = room&.validated_records
+          next false unless cache && cache[:key] == [room.record_generation, native, anchor]
+          current = cache[:records].reverse.find { |record| record.packet['kind'] == 'game_started' }
+          @sessions[table_id].equal?(native) && room&.attachment.equal?(expected_membership) &&
+            current&.packet&.dig('data', 'session_id').to_i == expected_session_id.to_i
+        end
+      end
+      return unless write_guard.call(active_session(table_id))
+    end
 
     data = {
       "activity_kind" => kind.to_s,
@@ -630,7 +713,6 @@ class GameRoomLiveSessionStore
       "owner" => table["owner"].to_s,
       "game" => table["game"].to_s
     }
-    message_id = nil
     if %w[invited invitation_rejected].include?(kind.to_s)
       data.merge!("subject" => subject.to_s, "invitation_id" => invitation_id.to_i)
       # A lost HTTP reply must not duplicate a confirmed invitation activity.
@@ -639,7 +721,7 @@ class GameRoomLiveSessionStore
       hex[16] = "8"
       message_id = [hex[0, 8], hex[8, 4], hex[12, 4], hex[16, 4], hex[20, 12]].join("-")
     end
-    record = append_record(table_id, "room_activity", data, actor: actor, message_id: message_id)
+    record = append_record(table_id, "room_activity", data, actor: actor, message_id: message_id, write_guard: write_guard)
     activity_record(record)
   end
 
@@ -666,7 +748,8 @@ class GameRoomLiveSessionStore
     record != nil && applied.include?(record.sequence)
   end
 
-  def abort_game(session)
+  def abort_game(session, reason: nil)
+    raise ArgumentError, 'Invalid interruption reason' unless reason == nil || reason == 'not_enough_players'
     table_id = table_identifier(session["table_id"])
     id = session["__id"].to_i
     ensure_current(table_id, force: true)
@@ -679,9 +762,9 @@ class GameRoomLiveSessionStore
     hex = Digest::SHA256.hexdigest("abort:#{active_session(table_id).id}:#{id}")[0, 32]
     hex[12], hex[16] = "5", "8"
     uuid = [hex[0, 8], hex[8, 4], hex[12, 4], hex[16, 4], hex[20, 12]].join("-")
-    append_record(table_id, "game_boundary", {
-      "session_id" => id, "frozen" => true, "aborted" => true
-    }, actor: endpoint.user, message_id: uuid)
+    data = {"session_id" => id, "frozen" => true, "aborted" => true}
+    data['reason'] = reason if reason
+    append_record(table_id, "game_boundary", data, actor: endpoint.user, message_id: uuid)
     true
   end
 
@@ -714,6 +797,7 @@ class GameRoomLiveSessionStore
     end
     state = table_for(table_id)
     requested_players = unique_users(players.to_a)
+    private_cards = validate_private_start!(table_id, requested_players, restore)
     restored_controllers = restore ? restore.fetch(:controllers, {}) : {}
     validate_start_roster!(table_id, state, requested_players, restored_controllers)
 
@@ -748,6 +832,10 @@ class GameRoomLiveSessionStore
       "created_at" => @clock.now.to_i
     }
     payload['statistics'] = GameRoomStatistics::Identity.create(players: requested_players) unless restore
+    payload['private_cards'] = GameRoomPrivateCards::VERSION if private_cards
+    if [SERVER_RANDOM_DISCOVERY_PROTOCOL, PRIVATE_CARDS_DISCOVERY_PROTOCOL].include?(active_session(table_id).metadata['protocol'].to_i) && !GameRoomServerRandom.actions(game).empty?
+      payload['server_random'] = GameRoomServerRandom::VERSION
+    end
     if restore != nil
       payload['statistics'] = statistics if statistics
       payload['controllers'] = restored_controllers unless restored_controllers.empty?
@@ -776,6 +864,14 @@ class GameRoomLiveSessionStore
     if invalid_player
       raise ArgumentError, "The table roles changed before the game started"
     end
+  end
+
+  private def validate_private_start!(table_id, players, restore)
+    enabled = active_session(table_id).metadata['private_cards'] == GameRoomPrivateCards::VERSION
+    if enabled && (restore || players.any? { |player| GameRoomParticipants.bot?(player) })
+      raise ArgumentError, 'Tournament private hands do not support bots or saved games'
+    end
+    enabled
   end
 
   def freeze_game(session, frozen: true, expected_boundary: nil)
@@ -834,9 +930,14 @@ class GameRoomLiveSessionStore
 
   # Discovery and invitation acceptance must apply the same human + bot limit.
   # The native capacity alone only counts connected humans.
-  def admit_joined_session(table_id, session)
+  def admit_joined_session(table_id, session, account:)
+    return :closed unless invitation_account_current?(account)
     attach_session(table_id, session)
     snapshot = room_snapshot(table_id)
+    unless invitation_account_current?(account)
+      forget_joined_session(table_id, session)
+      return :closed
+    end
     status = if snapshot == nil
       :closed
     elsif (snapshot[:members] - snapshot[:observers]).length + snapshot[:bots].length > snapshot[:table]["max_players"].to_i
@@ -844,16 +945,44 @@ class GameRoomLiveSessionStore
     else
       :joined
     end
-    deactivate_room(table_id) if status != :joined
+    release_joined_session(table_id, session) if status != :joined
     status
   rescue StandardError
     begin
-      deactivate_room(table_id)
-      session.leave if !session.closed?
+      if invitation_account_current?(account)
+        release_joined_session(table_id, session)
+      else
+        forget_joined_session(table_id, session)
+      end
     rescue StandardError => error
       log_warning("rejected membership cleanup", table_id, error)
     end
     raise
+  end
+
+  def release_joined_session(table_id, session)
+    return unless @mutex.synchronize { @sessions[table_id].equal?(session) }
+    session.owner? ? session.close : session.leave unless session.closed?
+    forget_joined_session(table_id, session)
+  end
+
+  # An old accepted request may finish after the runtime changes account.
+  # Remove only its exact local attachment; do not leave its accepted remote
+  # membership or touch a replacement session installed by another operation.
+  def forget_joined_session(table_id, session)
+    removed = @mutex.synchronize do
+      next false unless @sessions[table_id].equal?(session)
+      room = room_state(table_id)
+      room.pending_move = nil
+      room.take_recovered_moves
+      room.take_private_game_messages
+      room.take_public_game_previews
+      @native_session_ids.delete(session.id.to_s)
+      @sessions.delete(table_id)
+      retain_inactive_room(table_id)
+      true
+    end
+    emit_presence_change if removed
   end
 
   def endpoint
@@ -899,7 +1028,7 @@ class GameRoomLiveSessionStore
 
   def discover_item(table_id)
     discover_pages.find do |item|
-      metadata = item.discovery_metadata.to_h
+      metadata = item.discovery_metadata
       supported_metadata?(metadata) && metadata["table_id"].to_i == table_id.to_i
     end
   end
@@ -929,6 +1058,7 @@ class GameRoomLiveSessionStore
           message_id: info.id,
           sender: sender.user,
           packet: packet,
+          native_metadata: info,
           created_at: info.created_at,
           source_session: session
         )
@@ -942,7 +1072,17 @@ class GameRoomLiveSessionStore
     end
     session.on_participant_joined { |_participant| emit_change(table_id, :table, nil); emit_presence_change } if session.respond_to?(:on_participant_joined)
     session.on_participant_left { |_participant, _reason = nil| emit_change(table_id, :table, nil); emit_presence_change } if session.respond_to?(:on_participant_left)
-    session.on_owner_changed { |_previous, _current| emit_change(table_id, :table, nil) } if session.respond_to?(:on_owner_changed)
+    if session.respond_to?(:on_owner_changed)
+      session.on_owner_changed do |_previous, _current|
+        current = @mutex.synchronize do
+          next false unless @sessions[table_id].equal?(session) &&
+            @rooms[table_id]&.attachment.equal?(attachment)
+          @rooms[table_id].ownership_token = Object.new
+          true
+        end
+        emit_change(table_id, :table, nil) if current
+      end
+    end
     session.on_discovery_metadata_changed { |_metadata| emit_change(table_id, :table, nil) } if session.respond_to?(:on_discovery_metadata_changed)
     if session.respond_to?(:on_closed)
       session.on_closed do |_reason|
@@ -1006,6 +1146,9 @@ class GameRoomLiveSessionStore
           payload: JSON.parse(JSON.generate(packet["payload"]))}
         queue.shift while queue.length > 64
       end
+      # Addressed draw delivery wakes the existing snapshot worker. No UI
+      # callback performs I/O and no second polling loop is needed.
+      emit_change(table_id, :game, packet['session_id']) if packet['payload']['type'] == 'private_draw_share'
     end
   end
 
@@ -1039,6 +1182,7 @@ class GameRoomLiveSessionStore
           message_id: entry["message_id"],
           sender: sender,
           packet: entry["packet"],
+          native_metadata: entry,
           created_at: entry["created_at"],
           source_session: session
         )
@@ -1084,7 +1228,7 @@ class GameRoomLiveSessionStore
     prefix_end = root && root.packet["data"]["previous"] == nil ? root.packet["data"]["from"].to_i : 0
     accepted = cache ? cache[:records].select { |record| record.sequence < prefix_end } : []
     retained = accepted.to_h { |record| [record.sequence, true] }
-    validator = RecordValidator.new(accepted)
+    validator = RecordValidator.new(accepted, metadata: native&.metadata.to_h)
     raw.each do |record|
       next if retained[record.sequence]
       accepted << record if validator.accept(record, owner: ledger.owner_at(record.sequence), ledger: ledger)
@@ -1142,8 +1286,25 @@ class GameRoomLiveSessionStore
   def supported_metadata?(metadata)
     metadata.is_a?(Hash) &&
       metadata["kind"].to_s == KIND &&
-      [PROTOCOL, FEATURE_DISCOVERY_PROTOCOL, LIFECYCLE_DISCOVERY_PROTOCOL, NAMED_SEATS_DISCOVERY_PROTOCOL, THINKING_TIME_DISCOVERY_PROTOCOL, CURRENT_DISCOVERY_PROTOCOL].include?(metadata["protocol"].to_i) &&
-      positive_identifier(metadata["table_id"]) != nil
+      metadata_numeric_fields_valid?(metadata) &&
+      [PROTOCOL, FEATURE_DISCOVERY_PROTOCOL, LIFECYCLE_DISCOVERY_PROTOCOL, NAMED_SEATS_DISCOVERY_PROTOCOL, THINKING_TIME_DISCOVERY_PROTOCOL, CURRENT_DISCOVERY_PROTOCOL, SERVER_RANDOM_DISCOVERY_PROTOCOL, PRIVATE_CARDS_DISCOVERY_PROTOCOL].include?(metadata["protocol"].to_i) &&
+      positive_identifier(metadata["table_id"]) != nil && private_metadata_valid?(metadata)
+  end
+
+  def metadata_numeric_fields_valid?(metadata)
+    %w[protocol created_at max_players bot_count player_count].all? do |key|
+      value = metadata[key]
+      next true if key == 'max_players' && value == false # Historical default capacity.
+      value == nil || value.is_a?(String) || value.is_a?(Integer) ||
+        (value.is_a?(Float) && value.finite?)
+    end
+  end
+
+  def private_metadata_valid?(metadata)
+    tournament = metadata.key?('tournament_match') || metadata.key?('match_ref')
+    required = tournament && GameRoomPrivateCards.supported?(metadata['game'])
+    return !metadata.key?('private_cards') unless required
+    metadata['protocol'] == PRIVATE_CARDS_DISCOVERY_PROTOCOL && metadata['private_cards'] == GameRoomPrivateCards::VERSION
   end
 
   # Discovery has a smaller budget than the private session metadata. Reserve
@@ -1273,6 +1434,8 @@ require_relative 'live_session_room_state'
 require_relative "live_session_projections"
 
 require_relative "live_session_writer"
+require_relative "live_session_tournament_presence"
+require_relative "live_session_private_cards"
 
 require_relative "live_session_invitations"
 

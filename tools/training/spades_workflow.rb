@@ -17,7 +17,7 @@ module GameRoomSpadesTools
   def evaluate(options)
     training = JSON.parse(File.read(options.fetch(:report), encoding: 'UTF-8'))
     selected = training.fetch('selected_profiles')
-    profiles = options[:profiles] || selected.keys
+    profiles = options[:profiles] || selected.keys - SpadesLearning::PROFILE_KEYS
     validate_profiles!(profiles)
     game = GameRoomGames::Spades.new
     baseline_set = SpadesLearning::PolicySet.default

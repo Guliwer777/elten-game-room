@@ -4,6 +4,7 @@ require 'base64'
 require 'tmpdir'
 require 'socket'
 require 'net/http'
+require_relative 'temporary_directory'
 require_relative 'native_room_harness'
 require_relative '../../games/four_in_a_row'
 require_relative '../../lib/account_saved_games'
@@ -31,7 +32,7 @@ module DurableSaveFixture
     end
   end
   def root!(root)
-    expected = File.expand_path(ENV.fetch('TMPDIR'))
+    expected = File.join(GameRoomTest::TemporaryDirectory::ROOT, 'tmp')
     raise 'Brak izolacji próby' unless File.expand_path(root).start_with?(expected + '/')
   end
   def dump(path, value)

@@ -27,6 +27,7 @@ def recovery_screen(h, user, context: nil, clock: [100.0])
   drain_wakeups(sync)
   screen = GameScreen.allocate
   { repository: h.repositories[user], game: h.game || GameRoomGames::Base.new, game_services: {}, session: h.session,
+    chat_sends: GameRoomUI::ChatSendBuffer.new,
     table: h.table, table_owner: h.users.first, synchronizer: sync,
     bot_turn_controller: h.repositories[user].bot_turn_controller(h.table["__id"]),
     room_snapshot_provider: -> {
@@ -153,9 +154,14 @@ check.call("a failed new-game switch keeps its target until recovery succeeds") 
   screen.send(:switch_to_new_session)
   assert(screen.instance_variable_get(:@new_session_id) == newest["__id"], "pending target was lost")
   assert(sync.next_reconcile_at.finite?, "switch failure did not schedule a retry")
-  screen.instance_variable_set(:@pending_chat_message, "hello while switching")
-  screen.instance_variable_set(:@send_chat, ->(*_args) { nil })
+  layout = GameRoomLayout::Screen.new(view_spec: GameRoomLayout::ViewSpec.new)
+  layout.session_id = old['__id']
+  layout.chat.set_text('hello while switching')
+  screen.instance_variable_set(:@layout, layout)
+  screen.send(:queue_chat_submission, layout.chat, layout.chat.text, session_id: old['__id'])
+  screen.instance_variable_set(:@send_chat, ->(*_args, **_options) { raise 'Chat migrated to a different game' })
   screen.send(:submit_chat)
+  assert(layout.chat.text == 'hello while switching', 'Discarding a stale intention removed its unsent text')
   assert(sync.next_reconcile_at.finite?, "chat cancelled the pending game switch")
   sync.synchronize(complete: false) { h.repositories["Bob"].snapshot_for(old) }
   clock[0] = 200.0

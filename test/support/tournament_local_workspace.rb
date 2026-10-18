@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative 'temporary_directory'
 require_relative 'tournament_public_service'
 require_relative 'native_tasks'
 require_relative '../../lib/game_room_localization'
@@ -47,7 +48,7 @@ module TournamentLocalWorkspaceSupport
   end
 
   def sandbox
-    Dir.mktmpdir('tournament-local-workspace-', ENV.fetch('TMPDIR')) { |directory| yield Context.new(directory) }
+    GameRoomTest::TemporaryDirectory.create('tournament-local-workspace-') { |directory| yield Context.new(directory) }
   end
 
   def local_params(**changes)

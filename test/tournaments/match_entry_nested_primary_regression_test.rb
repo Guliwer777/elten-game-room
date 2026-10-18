@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_native'
 require_relative '../support/tournament_local_hub'
 require_relative '../support/tournament_match_entry'
@@ -10,7 +11,7 @@ T = TournamentLocalHubTest
 results = []
 # Natywny Escape pomocy pompuje primary; ensure szczegółów może wykonać lokalny throw.
 [:parent, :details].product([false, true], [false, true]).each do |kind, expire, with_cause|
-  Dir.mktmpdir('nested-primary-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('nested-primary-') do |directory|
     program = TournamentMatchEntryTest.prepare(directory)
     owner = G::LocalTestDialogs::Owner.new(-> { 'RealOwner' }, ->(*) {})
     workspace = G::LocalWorkspace.new(program: program, registry: GameRoomGames::CATALOG,
@@ -75,7 +76,7 @@ assert(results.all? { |row| row[:passed] }, 'Zagnieżdżony powrót zgubił prim
 # wtórny wyjątek oraz unieważnienie dopiero w before_focus rodzica pomocy.
 [[:cleanup_only, false], [:primary_cleanup, false], [:primary_cleanup, true],
  [:primary_abort, false], [:primary_abort, true]].each do |mode, with_cause|
-  Dir.mktmpdir('nested-restore-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('nested-restore-') do |directory|
     program = TournamentMatchEntryTest.prepare(directory)
     owner = G::LocalTestDialogs::Owner.new(-> { 'RealOwner' }, ->(*) {})
     workspace = G::LocalWorkspace.new(program: program, registry: GameRoomGames::CATALOG,
@@ -141,7 +142,7 @@ end
 
 # Zdrowe Details -> F1 -> Escape -> Back -> ponowne wejście: pojedynczy fokus
 # i zachowany caret mimo zmiany pola/kursora w prawdziwym resume pomocy.
-Dir.mktmpdir('nested-healthy-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('nested-healthy-') do |directory|
   program = TournamentMatchEntryTest.prepare(directory)
   owner = G::LocalTestDialogs::Owner.new(-> { 'RealOwner' }, ->(*) {})
   workspace = G::LocalWorkspace.new(program: program, registry: GameRoomGames::CATALOG,

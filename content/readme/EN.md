@@ -41,9 +41,9 @@ This is a read-only document with a heading for each version. H moves to the nex
 
 ## What you can play
 
-Power Games currently includes 35 games:
+Power Games currently includes 36 games:
 
-- Card games: 3-5-8, 99, 1000 miles, Biblios, Makao, Spades, Poker, Rummy, Thousand, UNO, War and Scientific War.
+- Card games: 3-5-8, 99, 1000 miles, Biblios, Bridge, Makao, Spades, Poker, Rummy, Thousand, UNO, War and Scientific War.
 - Board and strategy games: Ludo, Four in a Row, Tic Tac Toe, Mancala, Monopoly, Reversi, Battleships, Chess, Checkers and Duck Racing.
 - Dice and dominoes: Cat, head, tail, Dominos, Farkle, Mexican Train and Yahtzee.
 - Words and knowledge: Krowa, Categories, Quiz Party, Scrabble and Taboo.
@@ -83,6 +83,9 @@ In the table list and widget, you can find out more before joining:
 At a table, Ctrl+I opens invitations to online users, while Ctrl+Shift+I lets you choose someone from your contacts. You can accept invitations through an ELTEN notification, the context menu or Ctrl+J. The last shortcut works throughout Power Games, including the widget.
 
 In games that allow spectators, you can follow a game without taking a player's seat. This is useful both for cheering people on and for learning the rules. Axel Pong spectators can also choose their listening perspective.
+
+In Duck Racing you can follow challenges both as a table spectator and as a racer who is not taking part in that challenge. You hear public rolls, plays and selections. Individual exercises such as Simon, Rhythm and Hit the duck show only the final results. Private answers stay hidden until the result is announced. Spectators do not confirm readiness or hear the participants' countdown.
+
 Ctrl+Shift+O lets you ask to play or spectate in the next game, where that choice is available.
 This shortcut changes your own role. To change someone else's role, the host uses the Users list's context menu; the action names the selected person.
 
@@ -98,6 +101,8 @@ On the user list, the host also has two commands for the selected person:
 - Ctrl+Shift+R replaces a player with a present spectator or a bot, if the game and its current stage allow it.
 
 When the host leaves, another participant can take over the table. In supported games, the program replaces a departing player with a bot so the others can continue.
+
+In an ordinary Categories game, a confirmed departure removes that player from the current game, so nobody has to wait for their answers. If the judge leaves, the unfinished round is cancelled and a new one begins. With fewer than two participants, the game ends as interrupted, without awarding a win. A returning player can spectate and join the next game. A temporary connection error alone does not remove anyone.
 
 Teams are selected in a separate window. You can randomise them, change a person's team with Enter or move people with Shift+Up and Shift+Down. Confirming teams returns you to the table; the game only begins when you select “Start game”. You do not have to set up teams again for the next game with the same participants.
 
@@ -154,6 +159,9 @@ In Settings → Notification settings, choose the games whose new public tables 
 
 Separately, choose whether to show invitations from everyone, only contacts or nobody. Invitations and new table notifications have different sounds. Their descriptions include brief information about the game and its main settings; Ctrl+R gives you the full table settings.
 
+Notification settings also contain the Blacklist. Add the user names of people whose invitations you do not want to see. On the list, Ctrl+N adds a person and Delete removes the selected one. Confirm your changes with Save.
+The blacklist does not block invitations to tournament matches.
+
 In Settings → Lobby announcements, you separately choose which announcements are read while you are in the program's main window.
 
 ## Sounds and playing in the background
@@ -166,6 +174,8 @@ You can adjust the volume without leaving the game:
 - Shift+F3 — next sound group.
 
 Choose all sounds together or separate groups: game sounds, people joining and leaving the table, chat, and invitations and notifications. The same levels are available in Settings → Sounds.
+
+The same category starts with the 3D sound (HRTF) check box, which is on by default. With it, other players' moves are heard from their seats at the table: you hear yourself in the centre, and the others in front of you: the player on your left from the front left, then the rest clockwise to the front right. In a two-player game your opponent is straight ahead; with four players they sit front left, opposite you and front right. In games of two, four or six players, the player opposite you sounds a little louder and as if from across the room, so their sounds are easy to tell from your own. Below the check box is the list of games that use 3D sound; its first two items select or deselect all games. Games whose sounds do not come from individual players' moves are not listed: Audio Ball and Axel Pong have their own sound layout, and Krowa, Duck Racing, Countries and cities and Quiz Party do not tie their sounds to seats. Winning, losing, shuffling and taking the poker pot always sound in the centre. Headphones give the best result.
 
 Moving to messages, a conference or another ELTEN window does not pause the game. This matters particularly in action games and when a turn time limit is enabled.
 
@@ -189,7 +199,9 @@ You can choose the language of questions, cards or a dictionary in games that of
 
 ### Stop now and finish later
 
-In games that support saving, the host can use Ctrl+S to save the game and close the table. The save belongs to the host's account and is stored on the server, so it can also be resumed on another computer.
+Outside tournaments, the host can use Ctrl+S in games that support saving to save the game and close the table. The save belongs to the host's account and is stored on the server, so it can also be resumed on another computer.
+
+Tournament games cannot be saved or resumed from a saved game.
 
 Use “Saved games” in the main menu to resume. Restoring a save creates a table where you can gather the participants again and continue playing. Not every game can be saved, and not every moment is suitable: the command depends on the game and its current stage.
 
@@ -242,6 +254,12 @@ Audio Ball's rules include an audio tutorial where you can listen to the sounds 
 
 In Scrabble, other participants can see letters being placed and removed before the word is confirmed. Ctrl+P turns local announcements of those changes on or off. They are off by default; you do not need to enable them for everyone at the table.
 
+### Reviewing answers in Categories
+
+Answers are grouped by category so that similar entries are easier to compare. As judge, use Tab to move between answers, choose an assessment with the arrows and confirm it with Enter. Focusing an answer gives the reminder “Enter confirms the assessment”; once your assessment is accepted, you hear “Assessed”. When every answer has been assessed, choose “Finish review”.
+
+Answer fields give an example word for M and N to help distinguish the letters. A sound marks submitted answers; in timed games, separate cues mark 20 seconds remaining and time running out. After the scores are announced, there is a pause before the next round; its answering time starts after that pause.
+
 ### Connections in audio games
 
 When creating an Axel Pong or Audio Ball table, you can optionally enable “Full P2P”: direct connections between participants where their networks allow it. The option is off by default. Enabling it reveals the P2P participant limit, which defaults to eight. ELTEN can still use a relay server when a direct connection is unavailable. Ctrl+F4 distinguishes the connections being measured.
@@ -270,7 +288,7 @@ This list covers the program's common controls. Use F1 for a specific game's com
 - Ctrl+O — add a bot; for the host, where available.
 - Ctrl+Shift+O — choose to play or spectate in the next game.
 - Ctrl+P — personal settings or a personal toggle, in games that provide one.
-- Ctrl+S — save the game and close the table; for the host, in supported games.
+- Ctrl+S — save the game and close the table; for the host, in supported games outside tournaments.
 - Ctrl+Shift+S — export table history to TXT without closing the game.
 - Ctrl+Q — end the current game without closing the table; for the host.
 - Ctrl+X — change settings for the next game; for the host, outside text editing.
@@ -304,10 +322,9 @@ A tournament brings several games together into one competition. Power Games arr
 Choose “Tournaments” in the lobby. Select an event with the arrow keys and press Enter to open its action list. Tab moves between the list, its filter and the other controls. The filter lets you show:
 
 - current tournaments, including those still accepting entries;
-- “My tournaments”: current events you have joined or are organising;
 - completed tournaments, so you can look up their results.
 
-Current tournaments put the ones you have joined first, followed by those you can join, then all the others.
+Current tournaments put the ones you have joined or organise first, followed by those you can join, then all the others.
 
 An abandoned tournament disappears after 14 days without activity before it starts, or 30 days without progress once it has started. Registrations and organiser changes renew that period before the start; match results renew it afterwards. Simply viewing a tournament does not. A future registration opening or start date is respected, so the tournament will not disappear before then. Completed tournaments keep their results.
 
@@ -315,6 +332,7 @@ Each entry includes the game, participant count and tournament status. These sho
 
 - Ctrl+N — create a tournament.
 - Ctrl+R — refresh the tournament list.
+- Ctrl+O — open tournament; Ctrl+D — join; Ctrl+M — matches; Ctrl+W — standings; Ctrl+E — manage; Ctrl+L — leave. Available actions and their shortcuts also appear in the context menu.
 - Ctrl+Shift+T — open your current tournaments from the lobby or widget. If there is only one, its action list opens straight away.
 - Ctrl+J — open the usual invitation list, which also includes tournament match invitations.
 
@@ -324,10 +342,10 @@ F1 explains the controls in the current window; Escape goes back. Closing a wind
 
 Opening a tournament takes you straight to its actions. Choose one with the arrow keys and press Enter. The heading gives the tournament's name and status.
 
-- “Matches” — choose a fixture to play or look up the result of a completed match.
-- “Results” — tournament standings, including earlier phases.
+- “Tournament matches” — choose a fixture to play or look up the result of a completed match.
+- “Standings” — tournament standings, including earlier phases.
 - “Participants” — the people registered for the tournament.
-- “Tournament rules” — the organiser's description, game settings, competition format, qualification rules and dates.
+- “Information and rules” — the organiser's description, game settings, competition format, qualification rules and dates.
 - “Manage tournament” — the organiser's controls. Other participants do not have this option.
 
 Joining, withdrawing and choosing a partner are offered when those actions are available.
@@ -336,21 +354,23 @@ Joining, withdrawing and choosing a partner are offered when those actions are a
 
 Choose “Join tournament” to register. If the option is unavailable, check the status in the heading: registration may not have opened, may have closed, or the tournament may be full. If you are already registered, you do not need to join again. Before the tournament starts, you can withdraw with “Leave tournament”.
 
+An organiser can invite you to register. This opens the tournament action list; you still choose “Join tournament” to sign up. It is not an invitation to a specific match.
+
 In a fixed-pair tournament, both players register individually first. Then:
 
-1. Open “My partner” and choose another participant.
+1. Open “Team partner” and choose another participant.
 2. Ask that player to choose you on the same screen.
 3. Once you have chosen each other, the pair is confirmed. The partner screen also tells you when you are still waiting for agreement.
 
 Before the start, you can change or clear your choice. The organiser can assign partners too. Team fixtures cannot be prepared while some participants are still without partners. You keep the same partner throughout the tournament and share a team result.
 
-You receive a notification when the tournament starts, even while browsing tournaments. Its sound follows your usual notification settings.
+The start notification opens the tournament matches. At the end of a phase, one notification names the next phase and opens the standings for the phase just completed. The final produces only the tournament completion notice, naming the winner or joint winners and opening the final standings. These sounds follow your usual notification settings.
 
 ### Starting a match
 
 You do not need to create a separate table or find one among the public games.
 
-1. Open your tournament — you can use Ctrl+Shift+T from the lobby or widget — and choose “Matches”.
+1. Open your tournament — you can use Ctrl+Shift+T from the lobby or widget — and choose “Tournament matches”.
 2. Select one of your unplayed matches and press Enter or Ctrl+G, or choose “Play” from its context menu. Confirm to open a table with the tournament settings and invite the other participants.
 3. The others accept the ordinary table invitation through an ELTEN notification or Ctrl+J and join the table directly.
 4. Once everyone is at the table, its host chooses “Start game”. From there, use the game's usual controls.
@@ -359,21 +379,39 @@ Any participant in that match can open its table; the organiser need not be pres
 
 Anyone not assigned to that match automatically joins as a spectator, even before the game starts. This includes tournament participants who are scheduled to play a different match.
 
-An invitation lasts five minutes. Declining it, letting it expire or leaving the table does not count as a loss or withdraw you from the tournament. Choose “Play” again to return to the existing table and invite anyone still missing.
+An invitation lasts five minutes. Declining it, letting it expire or leaving the table before the match starts does not count as a loss or withdraw you from the tournament. Choose “Play” again to return to the existing table and invite anyone still missing. Once play begins, the return rules below apply.
 
-Leave any other game before entering the match. You cannot take a seat at two tables at once. If an empty table was closed before play began, you can open the match again. A game that has already started is not automatically replaced with a new one; resume it through “Saved games”.
+Leave any other game before entering the match. You cannot take a seat at two tables at once. If an empty table was closed before play began, you can open the match again. A game that has already started is not automatically replaced with a new one. After losing your connection, return to the same table while it is still open.
 
 ### Matches, results and interrupted games
 
-“Matches” opens on the current tournament phase. The first item gives its name, such as “Quarterfinals”, and the number of completed matches. Your unfinished matches come next, followed by everyone else's unfinished matches, then all completed matches. Everyone sees the full list.
+“Tournament matches” opens on the current tournament phase. The first item gives its name, such as “Quarterfinals”, and the number of completed matches. Your unfinished matches come next, followed by everyone else's unfinished matches, then all completed matches. Everyone sees the full list.
 
 Press Tab to select a phase. You can browse earlier phases here. If you are viewing the current phase, the list follows the next one when it begins. Refreshing keeps the selected match as long as it is still visible.
 
-Enter on a completed match tells you it has already been played. Open its result with Ctrl+W or “Match result” in the context menu. The same menu shows the available actions and their shortcuts: Ctrl+G to play, Ctrl+F to award a forfeit, and Ctrl+Shift+F to cancel a started match and award a forfeit. The last two actions are for the organiser and require choosing a winner and confirming the decision.
+Enter on a completed match tells you it has already been played. Open its result with Ctrl+W or “Result details” in the context menu. The same menu shows the available actions and their shortcuts: Ctrl+G to play and Ctrl+F to award a forfeit. The organiser uses Ctrl+F for both unstarted and ongoing matches: choose the losing participant, then confirm the displayed consequences.
 
-“Results” opens directly on a standings list showing place, participant, tournament points and matches played. Tab moves to the phase selector. Completed game results are recorded automatically; you do not need to copy them from the game history.
+Completed match entries also show the game score when available. If a return match with the same opponents is still scheduled, the context menu offers “Play return match” on Ctrl+G. It sends the usual invitations without starting play automatically.
 
-If the game supports saving, the table host can use Ctrl+S. Resume it from “Saved games”; the continuation still belongs to the same tournament match. A player leaving or losing their connection does not itself produce a draw or forfeit. An unfinished match remains to be completed or settled by the organiser.
+“Standings” opens directly on a standings list showing place, participant, tournament points and matches played. Tab moves to the phase selector. Completed game results are recorded automatically; you do not need to copy them from the game history.
+
+No tournament game can be saved or resumed from a file. The save command and Ctrl+S are unavailable, but Ctrl+Shift+S still exports the history as text.
+
+Once an individual match has started, play pauses if a player disconnects. Each player has a total of five minutes to return during that match. Returning stops the clock but does not reset the allowance. Rejoin the same table on the same account to continue with your cards, score and remaining turn time intact.
+
+In a one-on-one match, exceeding the allowance gives the opponent the win. With more players, the disconnected player places last. If the game can continue without them, the others play on; otherwise their places come from completed rounds. With no completed round, the remaining players share first place. This automatic allowance applies to individual matches, not team matches. An unanswered invitation does not count as a defeat.
+
+### Private hands in tournaments
+
+In tournament Mille Bornes, Spades, Bridge, Thousand, 3-5-8, 99, Poker, War, Rummy, Makao, Biblios and UNO, the server deals cards privately to each player. Domino, Mexican Train and Scrabble tiles are dealt the same way. Other players, spectators and the table host do not receive your hand. Cards or tiles are revealed as needed when played, transferred or scored. In Bridge, dummy is exposed after the opening lead; the remaining cards are revealed when the deal ends.
+
+Cards passed to another player lose this protection, although the ordinary interface still hides other players' hands. This includes an entire transferred UNO hand, captured cards in War and cards returned to the deck. In UNO, the dealer also knows any wild cards skipped while choosing the opening card. Domino compares each player's highest tile to determine who starts. The game rules remain unchanged.
+
+These matches do not allow player replacements, bots or saving to resume at another table. If you disconnect, rejoin the same table using the same account to recover your hand. Changing the host does not expose anyone's cards. Keeping the table open does not extend the five-minute return allowance in a started individual match.
+
+In tournament Taboo, only the describer and the opposing team receive the phrase and forbidden words. A guessing host cannot see them either. Phrases are revealed for review after the turn. If the describer disconnects, they must return before the score can be approved. These matches also cannot be saved for another table or use replacement players.
+
+Ordinary games still support bots, replacements and saved games where the game allows them.
 
 ### Creating a tournament
 
@@ -384,7 +422,6 @@ Press Ctrl+N on the tournament list. Choose the game, then its variant and ordin
 - Participant limit — the maximum number of registered people, initially 16 and no more than 128. This counts people, not teams, even in pair tournaments. You do not have to fill every place before starting.
 - Players per match — the number at one table, not in the whole tournament. This choice appears when the game supports more than one match size.
 - Return matches — an extra fixture with the same players and a different seat order. This setting applies to round robin and group matches; knockout rounds and the final have separate settings.
-- Game settings — return to the variant and rules that will apply to matches.
 - “Dates and playing hours” — optional registration dates, start time and permitted playing periods.
 
 Additional fields depend on the game and format. Return matches are off by default. Publish the tournament when you are ready; filling in the form alone does not make it public.
@@ -455,7 +492,7 @@ Open “Dates and playing hours” in the tournament form. You do not have to sc
 - Registration closing — an optional time after which no one else can sign up. Closing registration does not itself start the tournament.
 - Tournament start — an optional scheduled start. Starting also closes registration.
 - Final deadline — tells participants when they should have played their matches. It does not settle outstanding matches or award forfeits.
-- Playing hours — enable the restriction and add periods in which matches can be arranged. Each has a start and end date and time. You can edit or remove saved periods.
+- Playing hours — an optional daily window, for example 18:00–22:00. Choose the start and end times and a time zone. An end earlier than the start means the following day, as in 22:00–02:00. The window limits starting matches; games already underway can continue. The chosen zone uses a fixed UTC offset and does not change automatically for daylight saving time.
 
 Tab to a date field to set it. Left and Right select the year, month, day, hour or minute; Up and Down change that part's value. Times are shown in your computer's local time zone.
 
@@ -466,13 +503,18 @@ Confirm the dates to return to the tournament form, then publish or save your ch
 Open your tournament and choose “Manage tournament”. Before the start, you can:
 
 - edit the name, competition settings and dates;
+- invite a player with “Invite to tournament” while registration is open and places are available;
 - use “Manage participants” to remove someone or assign partners in a pair tournament;
 - open or close registration;
 - choose “Start tournament” instead of waiting for a scheduled start.
 
-During the tournament, award forfeits from “Matches”. Select a fixture, open its context menu and choose “Award forfeit”, then select the winner and confirm. A separate option cancels an already-started, unresolved tournament match and awards a forfeit. The chosen winner places ahead of everyone else, and the others share last place. The usual points formula applies; no score is invented for the game itself.
+Award forfeits from “Tournament matches”. Select an unresolved match and press Ctrl+F or choose “Award forfeit” in its context menu. Select the player or team that loses and continue. The same action works before play begins and during the game.
 
-You can also cancel an unfinished tournament. Use this to call off the whole competition, not a single invitation. Missing a deadline or a player's absence does not automatically award a forfeit: that remains the organiser's decision.
+In a one-on-one match, the selected loser's opponent wins. With more participants, the loser places last. If a game in progress can continue without them, the others play on to decide their places. Otherwise they are ranked by the scores after the last completed deal or round. An unfinished deal or round does not count. Equal scores produce tied places, taking account of whether higher or lower scores are better in that game. If play has not begun or no scoring round has been completed, the remaining participants share first place.
+
+Read the preview before confirming: it names the loser and explains whether the match will end or the others will continue. For a match that ends, it also shows the places, tournament points and any game scores used. Only “Confirm forfeit” applies that decision. If the situation changes while you are deciding, you must review and confirm a new preview. If the necessary data cannot be read or the game does not provide it, the program will not award a forfeit using a guessed result.
+
+You can also cancel an unfinished tournament. Use this to call off the whole competition, not a single invitation. Missing a deadline does not award a forfeit. You can make a manual decision with Ctrl+F without waiting for the five-minute return allowance to expire.
 
 ### When a change is not confirmed
 

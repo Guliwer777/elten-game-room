@@ -14,6 +14,17 @@ module DuckBotRunnerFixture
     def now_f(_session); value; end
   end
 
+  # Worker backoff, turn scheduling and game time must advance together. A
+  # virtual game deadline must not outrun the real monotonic retry clock.
+  module MonotonicClock
+    def clock_gettime(clock_id, *arguments)
+      clock = Thread.current[:duck_bot_runner_clock]
+      return clock.value if clock && clock_id == Process::CLOCK_MONOTONIC && arguments.empty?
+      super
+    end
+  end
+  Process.singleton_class.prepend(MonotonicClock)
+
   class Seed
     def initialize(value); @value = value; end
     def roll(count:, sides:)
@@ -29,6 +40,9 @@ module DuckBotRunnerFixture
     attr_reader :harness, :runner, :clock, :plans, :game, :users
 
     def initialize(kind, bot_count: 2, bot_delay: 0)
+      @clock = Clock.new(1_000.0)
+      @previous_clock = Thread.current[:duck_bot_runner_clock]
+      Thread.current[:duck_bot_runner_clock] = clock
       @game = DuckBotFixture.game
       @users = %w[Host Observer]
       @options = game.default_options.merge("bot_delay" => bot_delay, "word_language" => "en",
@@ -46,14 +60,16 @@ module DuckBotRunnerFixture
         race[:racers][0][:hand].any? { |card| card.type == "super_challenge" }
       end
       assert(seed, "No fixture seed contains the real challenge card")
-      @clock, @plans = Clock.new(1_000.0), []
+      @plans = []
       @runner = runner_for(harness, users.first)
       runner.instance_variable_set(:@clock, clock)
       runner.instance_variable_get(:@turn).instance_variable_set(:@clock, -> { clock.value })
       template = runner.instance_variable_get(:@context_template)
       template.local_data = {"duck_host" => true,
         "duck_stack_entry_bytes" => harness.transports[users.first].game_action_limits(harness.table)['max_stack_entry_bytes']}
-      template.random_source = Seed.new(seed)
+      # The ordinary executor now receives its start seed from the native
+      # server draw, not from the context's local entropy source.
+      harness.view(users.first).next_random_values = Seed.new(seed).roll(count:16,sides:256).values
       runner.send(:register_execution_group)
       virtual_clock = clock
       runner.instance_variable_get(:@game).define_singleton_method(:duck_automatic_now_ms) do |_replay|
@@ -158,6 +174,8 @@ module DuckBotRunnerFixture
       runner&.close
       runner&.send(:unregister_execution_group)
       harness&.as(users.first) { harness.view(users.first)&.close }
+    ensure
+      Thread.current[:duck_bot_runner_clock] = @previous_clock if Thread.current[:duck_bot_runner_clock].equal?(clock)
     end
   end
 end

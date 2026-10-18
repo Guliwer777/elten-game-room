@@ -1,11 +1,11 @@
-require 'tmpdir'
+require_relative '../support/temporary_directory'
 require_relative '../support/binary_rules_load' if ARGV.first
 require_relative '../support/session_runner'
 require_relative '../support/tournament_server_plan_table'
 require_relative '../../games/catalog'
 require_relative '../../lib/tournaments/ordinary_match_service'
 T=GameRoomTournaments
-Dir.mktmpdir('cancel-match-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('cancel-match-') do |directory|
   h=NativeRoomHarness.new(game:GameRoomGames::TicTacToe.new,users:%w[Alice Bob])
   program=ProgramDouble.new(h.broker.endpoint('Alice'))
   lobby=LobbyRepository.new(program,transport:h.transports['Alice'],server_tables:Object.new)
@@ -29,13 +29,14 @@ Dir.mktmpdir('cancel-match-',ENV.fetch('TMPDIR')) do |directory|
   h.as('Bob'){guest.open_match(match_id:match['match_id'],leg:1)}
   started=h.as('Alice'){h.repositories['Alice'].start_session(table:table,game:h.game.id,players:h.users,options:JSON.generate(h.game.default_options),**creator.start_parameters(table,players:h.users))}
   h.instance_variable_set(:@session,started)
-  args={match_id:match['match_id'],leg:1,winner:'bob',expected_schedule_id:candidate['schedule_id'],cancel_started:true}
-  assert_raises(T::OrdinaryMatchService::Blocked){guest.award_forfeit(**args)}
+  args={match_id:match['match_id'],leg:1,loser:'alice',expected_schedule_id:candidate['schedule_id']}
+  assert_raises(T::OrdinaryMatchService::Blocked){guest.forfeit_preview(**args)}
   assert_equal(1,creator.result_view(include_match_status:true)['cancellable_matches'].size)
   docs.on_insert=->(row){raise IOError,'lost cancellation reply' if row['part_index']==row['part_count']}
-  assert_raises(IOError){creator.award_forfeit(**args)}
+  preview=creator.forfeit_preview(**args)
+  assert_raises(IOError){creator.confirm_forfeit(preview:preview)}
   docs.on_insert=nil
-  pending=creator.operations.find{|record|JSON.parse(record['values']['document_json'])['kind']=='ordinary-match-cancel-forfeit-v1'}
+  pending=creator.operations.find{|record|JSON.parse(record['values']['document_json'])['kind']=='ordinary-match-forfeit-v2'}
   count=docs.insert_count
   creator.reconcile(pending['id'])
   assert_equal(count,docs.insert_count)
@@ -57,7 +58,7 @@ Dir.mktmpdir('cancel-match-',ENV.fetch('TMPDIR')) do |directory|
   creator.collect(binding)
   assert_equal(before,docs.insert_count,'Cancelled game exported another tournament result')
   assert_equal(view,guest.result_view,'Later finish replaced cancellation')
-  assert_raises(T::OrdinaryMatchService::Blocked){creator.award_forfeit(**args.merge(winner:'alice'))}
+  assert_raises(T::OrdinaryMatchService::Blocked){creator.forfeit_preview(**args.merge(loser:'bob'))}
   creator.close; guest.close
 end
 puts 'PASS native sporting cancellation: organizer only, lost acknowledgement recovery, shared 2/0, later game completion excluded and history retained'

@@ -45,12 +45,17 @@ class GameRoomScrabblePreview
   end
 
   def attach_view(form, surface)
+    # Private dealing and refill temporarily display the shared status list.
+    # Keep progress attached, but bind drafts only to an actual word board.
+    surface = nil unless surface.is_a?(GameSurfaces::WordBoardSurface)
     return if @surface.equal?(surface) && @form.equal?(form)
     @surface.on_draft_changed = nil if @surface
     @form, @surface = form, surface
-    @surface.on_draft_changed = method(:draft_changed)
-    draft_changed(@surface.public_draft) if author?
-    @surface.remote_draft = @remote
+    if @surface
+      @surface.on_draft_changed = method(:draft_changed)
+      draft_changed(@surface.public_draft) if author?
+      @surface.remote_draft = @remote
+    end
     @progress.attach(form)
   end
 

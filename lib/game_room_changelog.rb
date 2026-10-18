@@ -484,6 +484,39 @@ module GameRoomChangelog
         "Added seven questions to the Polish general-knowledge set, based on suggestions from bratczyk96.",
         "Thank you to Zuzler for reporting problems with quiz questions!"
       ].freeze
+    ).freeze,
+    Entry.new(
+      version: "2.0.5.1",
+      build: 252,
+      changes: [
+        "Simplified tournament menus and removed duplicate actions. The main views are now Tournament matches, Standings, and Information and rules. Your tournaments appear first in the current list, and context menus show the available keyboard shortcuts.",
+        "Organizers can invite players to register for a tournament. Notifications now also announce the end of a phase or the whole tournament and open the relevant standings.",
+        "Tournament organizers can set daily playing hours, including a time range that crosses midnight. These hours restrict starting matches, not finishing games already in progress.",
+        "Completed tournament matches show the game's score when available. If a scheduled rematch remains, you can invite its players directly from the completed match with Ctrl+G. Forfeit details remain available after the tournament moves to its next phase.",
+        "Dice rolls and many card deals and question draws now use server-generated randomness. The rules of the games remain unchanged.",
+        "Added private tournament hands in 1000 miles, Spades, Thousand, 3-5-8, 99, Poker, War, Rummy, Makao, Biblios, UNO and Bridge, as well as private tiles in Domino, Mexican Train and Scrabble. Other players, observers and the host do not receive your unrevealed hand. In tournament Taboo, only the describer and the opposing team receive the current phrase.",
+        "In matches with private hands, return to the same table on the same account to recover your cards after a disconnection. Changing the host does not reveal hands. Tournament matches cannot be saved; matches with private hands also disallow bots and player replacement. Cards passed to others or returned to the deck lose this protection; README explains the exceptions. Ordinary games retain their existing bot, replacement and save options.",
+        "In Duck Racing, Count the ducks now waits three seconds after the challenge announcement before playing the quacks. When several players earn the same number of feathers, their reward is announced together.",
+        "Duck Racing's Audio Ball challenge now announces who is on each side. Axel Pong tells observers whose perspective they are following and who serves. Landing on a mine plays a separate sound.",
+        "Added Bridge, a card game for four players in two partnerships, with bidding, contracts and rubber scoring. It supports bots, saved ordinary games and tournaments. The rules explain the controls and available variants.",
+        "Poker has shorter, clearer announcements and new sounds for betting and paying out the pot. Your dealt cards are read to you, and a six-second pause between hands gives you time to hear the result.",
+        "Countries and Cities now defaults to 50 points. Sounds announce submitted answers, the last 20 seconds and the end of the time limit. There is a longer pause before the next round, and the final scores remain in the history.",
+        "Countries and Cities groups answers by category during assessment. The judge hears a reminder to confirm with Enter and a short confirmation when the grade is accepted. Spoken examples help distinguish the letters M and N.",
+        "In ordinary Countries and Cities, a player confirmed to have left the table is removed from the game. Their answers from the unfinished round are excluded from assessment. If the judge leaves, that round is cancelled and play resumes with a new judge. If fewer than two participants remain, the game is interrupted.",
+        "You can now follow more Duck Racing challenges without taking part. Spectators and racers outside the challenge hear the relevant public actions or final results, without readiness prompts or countdown sounds meant for the participants.",
+        "Chat no longer rejects your message just because another player acts at the same time. Improved handling of simultaneous actions also keeps typed challenge answers and newer chat drafts from being lost during a refresh or retry.",
+        "Tournament options now hide unavailable actions. Ctrl+F lets the organizer choose who forfeits and review the proposed result before confirming. For matches with more than two competing players or teams, this option is available only in games that can determine the remaining places.",
+        "Fixed problems with returning to a table, retrying invitations and resuming saved ordinary games after a connection error. Private-answer games can also recover from a temporary storage error without losing an accepted answer or stopping the game permanently.",
+        "Statistics load in the background, so you can change the period or close the window while waiting. Missing server data is no longer shown as zero results. If the current date cannot be confirmed, you can try Refresh again.",
+        "Fixed Audio Ball's timing between sets when the match starts some time after the table is created.",
+        "Clarified three questions in the Polish general-knowledge set following player reports.",
+        "Started individual tournament matches pause when a player disconnects. Each player has a total of five minutes to return during the match. After that, they lose a one-on-one match or place last in a multiplayer match; the others continue if the game allows it. The organizer can also eliminate a player with Ctrl+F without ending a game that can continue.",
+        "You can quickly add or remove several computer players without losing commands to Please wait, including between games.",
+        "When you enter an invalid number in an action dialog, the dialog stays open, explains the problem and selects the value so you can correct it immediately.",
+        "Improved interface responsiveness while loading the Daily Krowa leaderboard.",
+        "Notification settings now include a blacklist. Add a user name to hide ordinary invitations from that person, or remove it to see them again. Invitations to tournament matches are not blocked.",
+        "You can now hear other players' moves from their places around the table. 3D sound (HRTF) can be switched off altogether or for individual games in the sound settings."
+      ].freeze
     ).freeze
   ].freeze
 

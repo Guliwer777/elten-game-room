@@ -43,6 +43,9 @@ GameRoomGames::CATALOG.ids.each do |game_id|
         service.start_parameters(room, players: users[0...-1]+['Intruder'], options: options)
       end
       assert_equal(:wrong_game_players, failure.code, "#{game.id}: participant guard")
+      active = h.broker.endpoint('Alice').sessions.find { |session| session.id == room['__live_session_id'] }
+      expected_private = GameRoomPrivateCards.supported?(game.id) ? GameRoomPrivateCards::VERSION : nil
+      assert_equal(expected_private, active.metadata['private_cards'], "#{game.id}: bound tournament private-hand capability disagrees with registry")
       h.as('Alice') { lobby.close_table(room) }
       checked << game.id
     ensure

@@ -1,11 +1,11 @@
-require 'tmpdir'
+require_relative '../support/temporary_directory'
 require_relative '../support/binary_rules_load' if ARGV.first
-require_relative '../support/session_runner'
+require_relative '../support/private_card_games'
 require_relative '../support/tournament_server_plan_table'
 require_relative '../../games/catalog'
 require_relative '../../lib/tournaments/ordinary_match_service'
 T=GameRoomTournaments
-Dir.mktmpdir('ordinary-teams-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('ordinary-teams-') do |directory|
   users=%w[Alice Bob Carol Dave]
   game=GameRoomGames::Domino.new
   options=game.normalize_options(game.default_options.merge('teams'=>true,'team_count'=>'2','score_limit'=>1))
@@ -69,25 +69,28 @@ Dir.mktmpdir('ordinary-teams-',ENV.fetch('TMPDIR')) do |directory|
           replay=h.replay(creator)
           break if replay.finished?
           actor=replay.current_player
+          # The real runners first create the pool and collect each private
+          # hand. No player can act until that preparation is accepted.
+          next unless actor
           actions=game.legal_actions(h.replay(actor),actor)
           selected=actions.find{|action|action['action']=='play'} || actions.first
-          h.submit(actor,selected,context:contexts[actor]) if selected
+          PrivateCardGamesTest.submit(h,runners,actor,selected) if selected
         end
         assert(h.replay(creator).finished?,'Native team game did not finish')
         runners.each{|user,runner|step(h,runner,user)}
         deadline=Process.clock_gettime(Process::CLOCK_MONOTONIC)+5
         view=nil
         loop do
-          services.each_value do |service|
+          services.each do |reporter,service|
             error=service.take_error
             next unless error
             raise error unless lost_ack && error.is_a?(IOError) && error.message=='Team result saved but reply lost'
-            record=services[creator].operations.find{|operation|JSON.parse(operation['values']['document_json'])['kind']=='ordinary-match-result-v1'}
+            record=service.operations.find{|operation|JSON.parse(operation['values']['document_json'])['kind']=='ordinary-match-result-v1'}
             assert_equal('attempted',record['status'])
             before=docs.insert_count
             docs.on_insert=nil
-            recovery=T::OrdinaryMatchService.new(program:programs[creator],registry:GameRoomGames::CATALOG,lobby:lobbies[creator],games:h.repositories[creator],
-              transport:h.transports[creator],table:docs,journal:journal.call(creator),source:source,user:-> {creator})
+            recovery=T::OrdinaryMatchService.new(program:programs[reporter],registry:GameRoomGames::CATALOG,lobby:lobbies[reporter],games:h.repositories[reporter],
+              transport:h.transports[reporter],table:docs.for_user(reporter),journal:journal.call(reporter),source:source,user:-> {reporter})
             begin
               assert_equal('confirmed',recovery.reconcile(record['id'])['status'])
               assert_equal(before,docs.insert_count,'Uncertain team result was resent')

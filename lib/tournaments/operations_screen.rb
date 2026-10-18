@@ -104,7 +104,8 @@ module GameRoomTournaments
       # Potwierdzony wynik trafia do widoku przed odświeżeniem, które może zawieść.
       @rows = @rows.map { |item| item.fetch('id') == id ? result : item }
       render
-      @alert.call(text(_("Operation state: %{status}.")) % {status: label})
+      message = text(_("Operation state: %{status}.")) % {status: label}
+      @alert.call([message, outcome_notice(result)].compact.join("\r\n"))
       refresh_rows
     end
 
@@ -169,11 +170,20 @@ module GameRoomTournaments
       [@mode_label, text(_("Current identity: %{actor}")) % {actor: @actor}].join("\r\n")
     end
 
+    def outcome_notice(row)
+      return unless row['kind'] == 'pairing' && row['status'] == 'confirmed' &&
+        row.dig('evidence', 'pairing_applied') == false
+
+      text(_("The tournament changed. Refresh its view before changing it again."))
+    end
+
     def render_details
       lines = [context]
       if selected
         lines << label(selected)
         lines << text(_("Operation ID: %{id}")) % {id: text(selected.fetch('id'))}
+        notice = outcome_notice(selected)
+        lines << notice if notice
       end
       lines << text(_("An unconfirmed operation is not proof of failure. Checking never sends it again."))
       value = lines.join("\r\n\r\n")

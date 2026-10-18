@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 # Pełne komunikaty istniejącego D1; mapowanie oraz legalna publikacja przez PublicService.
 require_relative '../support/tournament_environment'
 require_relative '../support/tournament_local_test_language'
@@ -37,7 +38,7 @@ reasons = {
 results = []
 cases = mode == 'legal' ? [:too_few_players] : [:mapping]
 cases.each do |kind|
-  Dir.mktmpdir('refusal-completion-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('refusal-completion-') do |directory|
     if mode == 'mapping'
       program = TournamentMatchEntryTest.prepare(directory)
     else

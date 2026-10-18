@@ -24,11 +24,12 @@ class TableActivityRepository
     :teams,
     :role,
     :replacement,
+    :reason,
     keyword_init: true
   )
 
   TABLE_NAME = "table_activity".freeze
-  KINDS = %w[created joined left bot_added bot_removed chat invited invitation_rejected game_aborted options_changed role_changed owner_changed seat_control_changed player_replaced].freeze
+  KINDS = %w[created joined left bot_added bot_removed chat invited invitation_rejected game_aborted tournament_elimination options_changed role_changed owner_changed seat_control_changed player_replaced].freeze
   GLOBAL_KINDS = %w[created joined left bot_added bot_removed].freeze
   BOT_KINDS = %w[bot_added bot_removed].freeze
   TABLE_LIMIT = 2_000
@@ -41,7 +42,8 @@ class TableActivityRepository
     @transport = transport
   end
 
-  def append(table:, kind:, message: nil, actor: Session.name, subject: nil, invitation_id: nil)
+  def append(table:, kind:, message: nil, actor: Session.name, subject: nil, invitation_id: nil,
+    message_id: nil, expected_session_id: nil, expected_membership: nil)
     normalized_kind = kind.to_s
     raise ArgumentError, "Invalid table activity kind" if !KINDS.include?(normalized_kind)
 
@@ -76,6 +78,10 @@ class TableActivityRepository
         message: clean_message
       }
       arguments.merge!(subject: subject.to_s, invitation_id: invitation_id.to_i) if invitation_activity
+      if normalized_kind == 'chat' && message_id
+        arguments.merge!(message_id: message_id, expected_session_id: expected_session_id,
+          expected_membership: expected_membership)
+      end
       inserted = @transport.append_activity(**arguments)
       persist_global_activity(table, normalized_kind, author, message: clean_message) if GLOBAL_KINDS.include?(normalized_kind) && table["private"] != true
       return entry_from(inserted, table)
@@ -210,7 +216,15 @@ class TableActivityRepository
       when "invitation_rejected"
         _("%{user} declined %{player}'s invitation.") % { player: player, user: GameRoomParticipants.display_name(entry.subject) }
       when "game_aborted"
+        return _("The game was interrupted because fewer than two participants remain.") if entry.reason == 'not_enough_players'
+        if entry.reason == 'tournament_absence'
+          return _("%{player} loses by forfeit after five minutes of absence.") % {
+            player: GameRoomContent.utf8(GameRoomParticipants.display_name(entry.subject)) }
+        end
         _("%{player} ended the game. The table remains open.") % { player: player }
+      when 'tournament_elimination'
+        _("%{player} is eliminated by forfeit. The remaining participants continue playing.") % {
+          player: GameRoomContent.utf8(GameRoomParticipants.display_name(entry.subject)) }
       when "options_changed"
         if entry.teams && !entry.teams.empty?
           return entry.teams.each_with_index.map do |members, index|
@@ -388,10 +402,10 @@ class TableActivityRepository
     username = viewer.to_s.strip
     return entries if username.empty?
 
-    owner = table_owner(table)
-    anchor_kind = GameRoomParticipants.same?(owner, username) ? "created" : "joined"
+    # Ownership can change during a visit. Anchor the view to the last actual
+    # arrival, not the current role (including the original owner's return).
     anchor = entries.reverse.find do |entry|
-      entry.kind == anchor_kind && GameRoomParticipants.same?(entry.actor, username)
+      %w[created joined].include?(entry.kind) && GameRoomParticipants.same?(entry.actor, username)
     end
     return entries if anchor == nil
 
@@ -430,6 +444,10 @@ class TableActivityRepository
       return nil unless GameRoomParticipants.same?(actor, authority) &&
         %w[player observer].include?(row["role"]) && !subject.strip.empty? && subject.length <= 64 && GameRoomParticipants.human?(subject)
     end
+    if row['kind'] == 'tournament_elimination'
+      return nil unless native_live_sessions? && row['__authority_validated'] == true &&
+        !subject.empty? && subject.length <= 64
+    end
     if %w[owner_changed seat_control_changed player_replaced].include?(row["kind"])
       return nil unless native_live_sessions? && row["__authority_validated"] == true && GameRoomParticipants.same?(actor, authority)
       return nil if row["kind"] == "seat_control_changed" && (!%w[human bot].include?(row["role"]) || subject.empty?)
@@ -449,7 +467,8 @@ class TableActivityRepository
       created_at: row["created_at"].to_i,
       stack_sequence: row["__stack_sequence"],
       teams: row["kind"] == "options_changed" && GameRoomParticipants.same?(actor, authority) ? teams_from(row) : nil,
-      role: row["role"], replacement: row['replacement']
+      role: row["role"], replacement: row['replacement'],
+      reason: native_live_sessions? && row['__authority_validated'] == true ? row['reason'] : nil
     )
   end
 

@@ -1,3 +1,4 @@
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require_relative '../support/binary_rules_load' if ARGV.first
 require_relative '../support/assertions'
@@ -21,7 +22,7 @@ def receipts(phase,winner)
     {'match_id'=>match['match_id'],'leg'=>match['leg'],'summary'=>{'participants'=>match['players'].sort,'winners'=>winner ? [winner] : [],'draw'=>winner.nil?,'scores'=>nil,'event_count'=>9}}
   end
 end
-Dir.mktmpdir('phase-store-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('phase-store-') do |directory|
   root=candidate
   user='Alice'
   docs=TournamentServerPlanTableSupport::Table.new(user:-> {user})
@@ -57,7 +58,7 @@ Dir.mktmpdir('phase-store-',ENV.fetch('TMPDIR')) do |directory|
   assert_raises(T::ServerPlanArchive::ContextChanged){make.call.current}
 end
 first=candidate(target:2)
-Dir.mktmpdir('participant-phase-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('participant-phase-') do |directory|
   actor='Bob'
   docs=TournamentServerPlanTableSupport::Table.new(user:-> {actor})
   results={first['schedule_id']=>receipts(first,'alice')}

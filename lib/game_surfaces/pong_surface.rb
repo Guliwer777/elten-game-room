@@ -20,10 +20,10 @@ module GameSurfaces
 
     def update
       super
-      modified = key_held?(0x10) || key_held?(0x11) || key_held?(0x12)
-      @press += 1 if !modified && (key_pressed?(:key_up) || key_pressed?(:key_space))
-      @left_press += 1 if !modified && !@left_held && key_pressed?(:key_left)
-      @right_press += 1 if !modified && !@right_held && key_pressed?(:key_right)
+      modified = modifier_held_for_game?
+      @press += 1 if unmodified_press?(:key_up, 0x26) || unmodified_press?(:key_space, 0x20)
+      @left_press += 1 if !@left_held && unmodified_press?(:key_left, 0x25)
+      @right_press += 1 if !@right_held && unmodified_press?(:key_right, 0x27)
       @left_held, @right_held = key_held?(0x25), key_held?(0x27)
       @input = if modified
         { 'move' => 0, 'aim' => 0, 'hit' => false }
@@ -48,6 +48,22 @@ module GameSurfaces
     def blur
       @on_input_reset&.call
       super if defined?(super)
+    end
+
+    private
+
+    def modifier_held_for_game?
+      [0x10, 0x11, 0x12, 0x5B, 0x5C].any? { |code| key_held?(code) }
+    end
+
+    def unmodified_press?(key, code)
+      return false unless key_pressed?(key)
+      # A shortcut can be pressed and released between UI frames. Use the
+      # host's press-time modifiers, not only the final held-key snapshot.
+      return !modifier_held_for_game? unless respond_to?(:keyboard_modifier_held_when_pressed?, true)
+      ![:shift, :control, :option, :command].any? do |modifier|
+        keyboard_modifier_held_when_pressed?(code, modifier)
+      end
     end
   end
 

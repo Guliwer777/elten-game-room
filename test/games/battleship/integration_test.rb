@@ -99,7 +99,8 @@ real_repo = GameRepository.new(nil, transport: transport, server_tables: Object.
 assert(real_repo.append_events(session: session, sequence: 3, events: opening.events, actor: "Alice") == opening.events,
   "real repository rejected the compact reveal")
 begin
-  SavedGames.new(Object.new, owner: "Alice").put(game: game, table: {}, snapshot: nil, repository: nil)
+  snapshot = Struct.new(:session, :events).new(session, seals)
+  SavedGames.new(Object.new, owner: "Alice").put(game: game, table: {}, snapshot: snapshot, repository: nil)
   raise "a secret-fleet game was archived without its private data"
 rescue ArgumentError => error
   assert(error.message == "Unsupported saved game", "wrong archive refusal")

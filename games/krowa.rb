@@ -16,6 +16,7 @@ module GameRoomGames
     def tournament_private_protocol?; true; end
     include KrowaPresentation
     include KrowaSavedSecret
+    include HiddenSubmissions::Cleanup
 
     TOWER_ATTEMPT_LIMITS = {3 => 15, 4 => 24, 5 => 30,
       6 => 42, 7 => 49, 8 => 64}.freeze
@@ -213,6 +214,10 @@ module GameRoomGames
           next unless actor
           event_id = repository.event_id(event).to_i
           next unless apply_event(state, event, actor, event_id, history)
+          if event['action'] == 'krowa_word'
+            HiddenSubmissions::Cleanup.start(state, session) unless state[:answer_cleanup]
+            HiddenSubmissions::Cleanup.confirm(state, "krowa:#{state[:round]}", {actor => state[:commitment]})
+          end
           accepted << event
         end
       end

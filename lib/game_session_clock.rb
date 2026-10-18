@@ -3,6 +3,23 @@
 require_relative "game_room_clock"
 
 class GameRoomSessionClock
+  MAX_EVENT_TIME = (2**63 - 1)
+
+  def self.valid_event_time?(value)
+    value.is_a?(Integer) && value.between?(0, MAX_EVENT_TIME)
+  end
+
+  # Only validated archives provide this logical timestamp. Keep raw server
+  # created_at intact; a later restored epoch must not translate it again.
+  def self.archived_event(event)
+    projected = event.reject { |key, _| key == '__game_time' || key == '__clock_offset' }
+    if event.key?('game_time')
+      raise ArgumentError, 'Invalid archived event time' unless valid_event_time?(event['game_time'])
+      projected['__game_time'] = event['game_time']
+    end
+    projected
+  end
+
   def self.attach(state, session)
     state[:clock_epoch_offset] = session["__server_started_at"].to_i > 0 && session["created_at"].to_i > 0 ?
       session["created_at"].to_i - session["__server_started_at"].to_i : 0
@@ -14,11 +31,18 @@ class GameRoomSessionClock
   def self.for_state(state)
     (state[:frozen_at] || GameRoomClock.now).to_f + state[:clock_epoch_offset].to_i - state[:clock_offset].to_i
   end
-  def self.from_server(session, time)
+  def self.from_server(session, time, event: nil)
+    archived = event&.fetch('__game_time', nil)
+    return archived if valid_event_time?(archived)
     started = session["__server_started_at"].to_i
     epoch = session["created_at"].to_i
     shift = started.positive? && epoch.positive? ? epoch - started : 0
-    (time + shift - session["__clock_offset"].to_i).to_i
+    # A later pause must not move an earlier question/deal backwards in time.
+    # Native projections attach the offset accepted at this event's position.
+    # Calls without an event translate the current clock (e.g. saving a game).
+    offset = event&.fetch('__clock_offset', nil)
+    offset = session['__clock_offset'] if offset == nil
+    (time + shift - offset.to_i).to_i
   end
 
   def initialize(sample: -> { GameRoomClock.now if GameRoomClock.synchronized? },

@@ -122,6 +122,7 @@ module GameRoomTournaments
       raise Publication::Invalid, :missing_plan unless parent
       approval = shown['source']['knockout_approval']
       CoordinationRequest.fields!(approval, %w[preview approval dispatch_allowed])
+      KnockoutPhase.shape!(approval['preview'])
       proof = KnockoutPhase.build(record: parent, receipts: approval['preview']['receipts'], seeds: approval['preview']['plan']['seeds'])
       unless proof.eql?(approval['preview']) && approval['dispatch_allowed'].equal?(false) &&
           approval['approval'].eql?({'actor' => parent['preview']['source']['candidate']['publication_ref']['author'],
@@ -151,7 +152,11 @@ module GameRoomTournaments
     # earlier parents in RAM instead of re-entering its file lock. Every record
     # still passes the ordinary compiler/UUID/contract validation in super.
     def validate_document!(document)
-      return super unless document.is_a?(Hash) && document['records'].is_a?(Array) && document['records'].any? { |r| phase?(r['preview']) }
+      return super unless document.is_a?(Hash) && document['records'].is_a?(Array)
+      unless document['records'].all? { |record| record.is_a?(Hash) && record['preview'].is_a?(Hash) }
+        raise Publication::Invalid, :sandbox_corrupt
+      end
+      return super unless document['records'].any? { |record| phase?(record['preview']) }
       previous = @phase_validation_records
       if @phase_accept_parents
         document['records'].each do |record|

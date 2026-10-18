@@ -1,5 +1,6 @@
 require_relative '../network_errors'
 require_relative '../saved_game_save_intent'
+require_relative '../tournament_marker'
 
 module GameRoomUseCases
   # A save owns its freeze receipt. Failed persistence or close may release
@@ -15,6 +16,7 @@ module GameRoomUseCases
     end
 
     def call(table:, table_id:, session:, game:, intent: nil, tournament:nil)
+      GameRoomTournamentMarker.ensure_savable!(table, session, tournament: tournament)
       if intent
         return intent.with_save_attempt do
           save(table: table, table_id: table_id, session: session, game: game, intent: intent,tournament:tournament)

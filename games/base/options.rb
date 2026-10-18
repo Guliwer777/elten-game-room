@@ -124,6 +124,7 @@ module GameRoomGames
 
       def normalize_options(values)
         source = values.is_a?(Hash) ? values : {}
+        raise ArgumentError, 'Invalid game option shape' unless GameRoomOptionValues.normalizable_options?(source)
         result = effective_option_definitions.each_with_object({}) do |definition, normalized|
           key = definition.key.to_s
           raw = if source.key?(key)
@@ -163,6 +164,7 @@ module GameRoomGames
       end
 
       def validation_error(options, player_count: nil)
+        return _('The game settings are invalid.') unless GameRoomOptionValues.normalizable_options?(options)
         content_options_error(options) || multiple_values_options_error(options) || thinking_time_options_error(options) || bot_delay_options_error(options) || options_error(options, player_count: player_count)
       end
 
@@ -239,10 +241,11 @@ module GameRoomGames
       # Read-only snapshot of the effective settings, not the abbreviated lobby
       # summary. Disabled and inapplicable additions are intentionally omitted.
       def rules_options_text(options)
+        raise ArgumentError, 'Invalid game option shape' unless GameRoomOptionValues.normalizable_options?(options)
         lines = effective_option_definitions(options).filter_map do |definition|
           next if !rules_option_visible?(definition, options)
           value = GameRoomOptionValues.read(definition, options)
-          next if definition.omit_zero && value.to_i == 0
+          next if definition.omit_zero && GameRoomOptionValues.integer_value(value) == 0
           label = GameRoomContent.utf8(definition.summary_label || definition.label).sub(/[.\s]+\z/, "")
           case definition.kind.to_sym
           when :boolean
@@ -256,7 +259,7 @@ module GameRoomGames
           end
         end
         seats = options[GameRoomTeams::OPTION_KEY]
-        if seats.is_a?(Array) && options["team_size"].to_i > 0
+        if seats.is_a?(Array) && GameRoomOptionValues.integer_value(options["team_size"]) > 0
           lines << (_("Teams in seating order: %{teams}") % { teams: seats.map { |team| team.to_i + 1 }.join(", ") })
         end
         lines.empty? ? _("This table uses fixed rules with no configurable additions.") : lines.join("\r\n\r\n")
@@ -383,7 +386,7 @@ module GameRoomGames
         result[GameRoomContent::PACK_VERSION_KEY] = if stored_version == nil
           pack == nil ? 0 : pack.version
         else
-          stored_version.to_i
+          GameRoomOptionValues.integer_value(stored_version)
         end
         result[GameRoomContent::PACK_CHECKSUM_KEY] = if stored_checksum == nil
           pack&.checksum.to_s
@@ -416,7 +419,7 @@ module GameRoomGames
         if !pack.equal?(selected)
           return _("The selected content pack does not match the set and language.")
         end
-        if pack.version != option_source_value(values, GameRoomContent::PACK_VERSION_KEY).to_i
+        if pack.version != GameRoomOptionValues.integer_value(option_source_value(values, GameRoomContent::PACK_VERSION_KEY))
           return _("The installed game content pack has a different version.")
         end
         if pack.checksum != option_source_value(values, GameRoomContent::PACK_CHECKSUM_KEY).to_s.downcase
@@ -465,7 +468,7 @@ module GameRoomGames
               requested.include?(choice.value.to_s) ? mask | (1 << index) : mask
             end
           else
-            value.to_i & valid_mask
+            GameRoomOptionValues.integer_value(value) & valid_mask
           end
         when "multiple_values"
           # Do not interpret numbers as a mask or discard unknown identifiers.

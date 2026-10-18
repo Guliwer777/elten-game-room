@@ -13,6 +13,8 @@ module GameRoomDuckRacing
 
     def project(kind:, view:, viewer:, previous_view: nil)
       raise ArgumentError, "Invalid challenge view" unless view.is_a?(Hash) && view[:type] == kind
+      participants = view[:participants] || view[:seats] || []
+      return observation(kind, view, previous_view) unless !viewer.nil? && participants.include?(viewer)
       return practice(kind, view, viewer, previous_view) if view[:practice]
 
       name, instruction, mode = description(kind)
@@ -44,6 +46,65 @@ module GameRoomDuckRacing
         auto_submit_length: digits,
         max_length: digits || 12
       }
+    end
+
+    # Both kinds of nonparticipant get the same read-only projection. Keep
+    # private task hints out of the field AND the P reminder, not only speech.
+    # Results still come from accepted history, never a local observer model.
+    def observation_view(view)
+      result = view.reject { |key, _| [:own, :own_result, :own_answer, :answer_digits, :attempt_limit, :preparing].include?(key) }
+      result.delete(:question) unless %w[arithmetic race_question quiz].include?(view[:type])
+      result.delete(:public) if %w[rhythm sound_order simon hit_duck].include?(view[:type])
+      result.merge(observing: true)
+    end
+
+    def observation(kind, view, previous)
+      view = observation_view(view)
+      name = description(kind).first
+      question = observation_prompt(kind, view)
+      options, keys = %w[quiz numbered_balls].include?(kind) && !view[:practice] ? list_options(kind, view) : [[], []]
+      status = observation_status(kind, view)
+      initial = !previous.is_a?(Hash) || previous[:type] != kind || previous[:practice] && !view[:practice]
+      notice = []
+      notice << question if initial && !question.empty?
+      if %w[rock_paper_scissors quiz].include?(kind)
+        selected = observation_choices(view)
+        selected -= observation_choices(previous) unless initial || !previous
+        notice << (_('Already chosen: %{players}.') % {players: selected.join(', ')}) unless selected.empty?
+      end
+      {name: text(name), instruction: text(''), mode: options.empty? ? :button : :list,
+        header: [name, question, status].reject(&:empty?).map { |value| text(value) }.join(' '),
+        status: text(status), announcement: text(notice.join("\n")), options: options.map { |value| text(value) },
+        option_keys: keys, enabled: false, boundary: [kind, :observer, !!view[:practice]],
+        preparing: false, auto_submit_length: nil, max_length: 12}
+    end
+
+    def observation_prompt(kind, view)
+      view[:question] && %w[arithmetic race_question quiz].include?(kind) ? prompt(kind, view) : ''
+    end
+
+    def observation_choices(view)
+      chosen = view[:answered] || view[:ready] || {}
+      chosen.filter_map do |seat, ready|
+        text(GameRoomParticipants.display_name(view[:player_names].fetch(seat))) if ready && view[:player_names]&.key?(seat)
+      end
+    end
+
+    def observation_status(kind, view, totals: false)
+      parts = [_('You are watching.')]
+      turn = current_turn(view)
+      if !turn.nil? && view[:player_names]&.key?(turn)
+        parts << (_("%{player}'s turn.") % {player: text(GameRoomParticipants.display_name(view[:player_names].fetch(turn)))})
+      end
+      chosen = observation_choices(view) if %w[rock_paper_scissors quiz].include?(kind)
+      parts << (_('Already chosen: %{players}.') % {players: chosen.join(', ')}) if chosen && !chosen.empty?
+      if totals && kind == 'numbered_balls'
+        view.fetch(:scores, {}).each do |seat, score|
+          next unless view[:player_names]&.key?(seat)
+          parts << (_('%{player}: %{result}.') % {player: text(GameRoomParticipants.display_name(view[:player_names].fetch(seat))), result: score})
+        end
+      end
+      parts.join(' ')
     end
 
     def description(kind)
@@ -176,6 +237,10 @@ module GameRoomDuckRacing
     end
 
     def reminder(kind, view)
+      if view[:observing]
+        return [description(kind).first, observation_prompt(kind, view), observation_status(kind, view, totals: true)]
+          .reject(&:empty?).join(' ')
+      end
       return memory_instruction(view) if kind == 'sound_memory'
       question = prompt(kind, view)
       return question unless question.empty?

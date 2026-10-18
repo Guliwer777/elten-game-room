@@ -1,9 +1,10 @@
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require_relative '../support/native_room_harness'
 require_relative '../../lib/tournaments/operation_journal'
 include GameRoomTest::Assertions
 T=GameRoomTournaments
-Dir.mktmpdir('presence-journal-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('presence-journal-') do |directory|
   journal=T::OperationJournal.new(directory:directory,owner:'alice',backend_identity:'retention')
   prepare=->(name,kind) do
     values={'operation_key'=>Digest::SHA256.hexdigest(name),'tournament_id'=>1,

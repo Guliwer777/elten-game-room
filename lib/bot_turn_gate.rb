@@ -1,3 +1,5 @@
+require_relative 'server_random'
+
 module GameRoomBots
   # Coordinates every automated seat at one table. A computer may calculate
   # and submit one action, but the next computer is not released until that
@@ -251,7 +253,7 @@ module GameRoomBots
 
     def normalize_plan(events)
       events.to_a.map do |event|
-        [event_value(event, "action").to_s, event_value(event, "value").to_s]
+        GameRoomServerRandom.confirmation_key(event)
       end
     end
 
@@ -275,7 +277,7 @@ module GameRoomBots
         expected = @attempt.plan[matched]
         break if expected == nil
 
-        actual = [event_value(event, "action").to_s, event_value(event, "value").to_s]
+        actual = GameRoomServerRandom.confirmation_key(event)
         break if actual != expected
 
         matched += 1

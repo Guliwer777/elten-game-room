@@ -10,10 +10,12 @@ require_relative '../game_option_editor'
 module GameRoomTournaments
   class SharedHub < Dialogs::Window
     using GameRoomLocalization::Translations
-    def initialize(program:,registry:,user:,alert:,confirm:,clock:-> {GameRoomClock.now.to_i},workspace_factory:nil,mine:false)
+    def initialize(program:,registry:,user:,alert:,confirm:,clock:-> {GameRoomClock.now.to_i},workspace_factory:nil,mine:false,reference:nil,initial_action:nil,initial_phase_id:nil)
       @program,@registry,@user,@alert,@confirm,@clock=program,registry,user,alert,confirm,clock
       @owner=Dialogs::Owner.new(user,alert)
       @mine=mine
+      @reference,@initial_action=reference,initial_action
+      @initial_phase_id=initial_phase_id
       @workspace_factory=workspace_factory || -> {ServerWorkspace.new(program:@program,registry:@registry,user:@owner.method(:current),alert:@alert,clock:@clock,
         backend_uuid:@program.class.server_app_uuid)}
     end
@@ -39,10 +41,34 @@ module GameRoomTournaments
         overview:method(:show_schedule),results:->(row){show_schedule(row,mode: :results)},
         phase:method(:change_phase),manage_participants:method(:manage_participants),set_partner:@workspace.method(:set_partner),
         edit_tournament:method(:edit_tournament),delete_tournament:method(:delete_tournament),
-        create:-> {create_tournament if @owner.check},recover:-> {show_operations if @owner.check},mine:@mine,clock:@clock).run
+        create:-> {create_tournament if @owner.check},recover:-> {show_operations if @owner.check},mine:@mine,
+        invite:method(:invite_to_tournament),reference:@reference,initial_action:@initial_action,clock:@clock).run
+    end
+    def invite_to_tournament(row)
+      return unless @owner.check
+      reference={'author'=>row['__insertion_user'].downcase,'publication_key'=>row['publication_key']}
+      users=@program.send(:run_network_task,_("Loading users")) do
+        current=@workspace.notification_context_on_worker(publication_ref:reference)
+        EltenLink::Users.online(EltenLink::Client.new).reject{|user|current['people'].include?(user.to_s.downcase)}
+      end
+      return unless users && @owner.check
+      if users.empty?
+        @alert.call(text(_("There are no online users available to invite.")))
+        return
+      end
+      selected=@program.send(:select_invitation_recipient,users,text(_("Invite to tournament")))
+      return unless selected && @owner.check
+      result=@program.send(:run_network_task,_("Sending invitation")) do
+        @program.class.send_tournament_event(kind:'registration',publication_ref:reference,recipient:selected)
+      end
+      @alert.call(text(result && result.all?{|state|state==:sent} ? _("Invitation sent.") : _("The invitation could not be confirmed. It will not be sent again automatically.")))
+    rescue ProposalNotice::Stale,Publication::Invalid
+      @alert.call(text(_("Registration is closed, the tournament is full, or this player has already joined.")))
     end
     def show_schedule(row,mode: :matches)
-      ServerScheduleOverview.new(program:@program,workspace:@workspace,owner:@owner,publication:row,mode:mode).run if @owner.check
+      phase_id=@initial_phase_id
+      @initial_phase_id=nil
+      ServerScheduleOverview.new(program:@program,workspace:@workspace,owner:@owner,publication:row,mode:mode,initial_phase_id:phase_id).run if @owner.check
     end
     def change_phase(row,action)
       return unless @owner.check

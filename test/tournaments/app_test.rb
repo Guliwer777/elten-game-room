@@ -36,13 +36,21 @@ begin
   assert(ran && received[:program].equal?(instance), 'Wejście menu nie uruchomiło modułu na własnym programie')
   assert(received[:registry].equal?(EltenGameRoom::GAME_REGISTRY), 'Moduł nie otrzymał rejestru wszystkich gier')
   assert(received[:user].call == Session.name, 'Moduł nie otrzymał bieżącej tożsamości użytkownika')
-  assert(received.keys.sort == [:program, :registry, :user, :alert, :confirm, :mine].sort && received[:mine]==false, 'Menu przekazało nieuzgodniony kontekst')
+  expected_keys = [:program, :registry, :user, :alert, :confirm, :mine, :reference, :initial_action, :initial_phase_id]
+  assert(received.keys.sort == expected_keys.sort && received[:mine] == false, 'Menu przekazało nieuzgodniony kontekst')
+  assert([:reference, :initial_action, :initial_phase_id].all? { |key| received[key].nil? },
+    'Zwykłe wejście z lobby wybrało niezamówiony turniej, widok lub fazę')
   calls = []
   instance.define_singleton_method(:alert) { |message| calls << [:alert, message] }
   instance.define_singleton_method(:confirm) { |message| calls << [:confirm, message]; true }
   received[:alert].call('Komunikat')
   assert(received[:confirm].call('Pytanie'), 'Utracono wynik potwierdzenia')
   assert(calls == [[:alert, 'Komunikat'], [:confirm, 'Pytanie']], 'Callbacki nie należą do bieżącego programu')
+  reference = {'author' => 'alice', 'publication_key' => 'selected-tournament'}
+  instance.send(:show_tournaments, mine: true, reference: reference, initial_action: :results, initial_phase_id: 'phase-2')
+  assert(received.keys.sort == expected_keys.sort && received[:mine] == true, 'Szybkie wejście zmieniło kontrakt menu')
+  assert(received[:reference] == reference && received[:initial_action] == :results && received[:initial_phase_id] == 'phase-2',
+    'Szybkie wejście zgubiło wybrany turniej, tabelę wyników lub fazę')
 ensure
   GameRoomTournaments::Hub.define_singleton_method(:new, factory)
 end

@@ -17,7 +17,8 @@ scenario('Atomowy claim w dwóch prawdziwych procesach uprawnia dokładnie jeden
   operation = store.list.fetch(0)
   assert(operation['status'] == 'prepared' && service.state['uploads'] == 0, 'Niepoprawny punkt początkowy')
   worker = File.expand_path('../support/durable_save_claim_process.rb', __dir__)
-  children = %w[A B].map { |label| [label, *Open3.popen3(RbConfig.ruby, worker, root, label, operation['id'])] }
+  children = []
+  %w[A B].each { |label| children << [label, *Open3.popen3(RbConfig.ruby, worker, root, label, operation['id'])] }
   children.each do |_label,_input,output,_error,_waiter|
     assert(output.gets.start_with?('ready '), 'Dziecko nie osiągnęło bariery')
   end
@@ -33,4 +34,32 @@ scenario('Atomowy claim w dwóch prawdziwych procesach uprawnia dokładnie jeden
   assert(store.fetch(operation['id'])['status'] == 'attempted', 'Nie utrwalono wygranej')
   assert(save(command,h,store).is_a?(Intent::Pending) && service.state['uploads'] == 1, 'Retry dostało upload')
   puts JSON.generate('claim_processes'=>rows)
+ensure
+  cleanup_errors = []
+  Array(children).each do |_label, input, _output, _error, _waiter|
+    begin
+      input.close unless input.closed?
+    rescue StandardError => error
+      cleanup_errors << error
+    end
+  end
+  Array(children).each do |_label, _input, output, error, waiter|
+    begin
+      waiter.value
+    rescue StandardError => failure
+      cleanup_errors << failure
+    ensure
+      [output, error].each do |stream|
+        begin
+          stream.close unless stream.closed?
+        rescue StandardError => failure
+          cleanup_errors << failure
+        end
+      end
+    end
+  end
+  unless cleanup_errors.empty?
+    message = cleanup_errors.map { |error| error.full_message(highlight: false) }.join("\n")
+    raise RuntimeError.new(message), cause: $! || cleanup_errors.first
+  end
 end

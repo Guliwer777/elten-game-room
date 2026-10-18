@@ -7,6 +7,7 @@ require_relative "game_session_clock"
 require_relative "hidden_submissions"
 require_relative "participant_replay"
 require_relative "game_statistics_identity"
+require_relative "tournament_marker"
 
 # JSON archive format and validation shared by explicit storage adapters.
 class GameRoomSavedGameArchive
@@ -24,6 +25,7 @@ class GameRoomSavedGameArchive
   end
 
   def put(game:, table:, snapshot:, repository:, now: GameRoomClock.now.to_i, intent: nil, boundary: nil, attempt: nil, tournament:nil)
+    GameRoomTournamentMarker.ensure_savable!(table, snapshot.session, tournament: tournament)
     raise ArgumentError, "Unsupported saved game" unless game.supports_saved_games?
     raise ArgumentError, "Only the founder may save the game" unless GameRoomParticipants.same?(table["owner"], @owner)
     replay = game.replay(snapshot.session, snapshot.events, repository)
@@ -38,7 +40,14 @@ class GameRoomSavedGameArchive
       "events" => replay.accepted_events.map do |event|
         { "id" => repository.event_id(event), "sequence" => event["sequence"].to_i,
           "actor" => repository.actor_of(event, snapshot.session), "action" => event["action"].to_s,
-          "value" => event["value"].to_s, "created_at" => event["created_at"].to_i }
+          "value" => event["value"].to_s, "created_at" => event["created_at"].to_i }.tap do |saved|
+          # Native projections know the accepted offset at this event. Old
+          # archives without it keep their historical interpretation; do not
+          # manufacture a timestamp using the current restore offset.
+          if event.key?('__game_time') || event.key?('__clock_offset')
+            saved['game_time'] = GameRoomSessionClock.from_server(snapshot.session, saved['created_at'], event: event)
+          end
+        end
       end
     }
     if snapshot.session.key?('__statistics')
@@ -90,7 +99,7 @@ class GameRoomSavedGameArchive
       players.include?(seat) && !GameRoomParticipants.bot?(seat) && %w[bot human].include?(kind)
     end
     options = JSON.parse(row.fetch("options"))
-    raise ArgumentError, "Invalid saved rules" unless options.is_a?(Hash) && game.validation_error(options, player_count: players.length) == nil
+    raise ArgumentError, "Invalid saved rules" unless GameRoomOptionValues.normalizable_options?(options) && game.validation_error(options, player_count: players.length) == nil
     events = row["events"]
     raise ArgumentError, "Invalid saved events" unless events.is_a?(Array)
     replay_session = saved_replay_session(row)
@@ -101,13 +110,14 @@ class GameRoomSavedGameArchive
     events.each do |event|
       raise ArgumentError, "Invalid saved event" unless event.is_a?(Hash) && event["id"].is_a?(Integer) && event["id"] > last_id &&
         event["sequence"].is_a?(Integer) && event["sequence"] >= 0 &&
-        GameRoomParticipants.includes?(GameRoomParticipantReplay.roster_at(replay_session, event['id']), event["actor"]) &&
+        event['actor'].is_a?(String) && GameRoomParticipants.includes?(GameRoomParticipantReplay.roster_at(replay_session, event['id']), event["actor"]) &&
         event["action"].is_a?(String) && event["action"].length.between?(1, 32) && event["value"].is_a?(String) && event["value"].length <= 64 &&
-        event["created_at"].is_a?(Integer) && event["created_at"] >= 0
+        event["created_at"].is_a?(Integer) && event["created_at"] >= 0 &&
+        (!event.key?('game_time') || (GameRoomSessionClock.valid_event_time?(event['game_time']) && event['game_time'] <= row['game_time']))
       last_id = event["id"]
     end
     raise ArgumentError, 'Overlapping saved replacement' unless (events.map { |event| event['id'] } & changes.map { |change| change['id'] }).empty?
-    replay = game.replay(replay_session, events, ReplayRepository.new)
+    replay = game.replay(replay_session, events.map { |event| GameRoomSessionClock.archived_event(event) }, ReplayRepository.new)
     raise ArgumentError, "Incompatible saved game events" unless replay.accepted_events.length == events.length
     error = game.save_game_error(replay)
     raise ArgumentError, error if error != nil
@@ -118,6 +128,7 @@ class GameRoomSavedGameArchive
   end
 
   def restored_data(row, game:, table_id:, now: GameRoomClock.now.to_i)
+    GameRoomTournamentMarker.ensure_savable!(row)
     validate(row, game: game)
     bot_number = 0
     all_players = GameRoomParticipants.unique(row['players'] + row.fetch('initial_players', []) + row.fetch('seat_changes', []).flat_map { |change| change['players'] })
@@ -140,7 +151,8 @@ class GameRoomSavedGameArchive
     }
     restored[:statistics] = GameRoomStatistics::Identity.copy(row['statistics']) if row.key?('statistics')
     replay = game.replay({ '__players' => restored[:players], '__initial_players' => restored[:initial_players],
-      '__seat_changes' => restored[:seat_changes], 'options' => row['options'] }, restored[:events], ReplayRepository.new)
+      '__seat_changes' => restored[:seat_changes], 'options' => row['options'] },
+      restored[:events].map { |event| GameRoomSessionClock.archived_event(event) }, ReplayRepository.new)
     raise ArgumentError, "Incompatible saved game seats" unless replay.accepted_events.length == row["events"].length
     if row.key?("private_data")
       # This local callback is not serialized. The transport calls it before

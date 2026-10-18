@@ -2,12 +2,15 @@ require_relative "base"
 require_relative "../lib/game_bots"
 require_relative "../lib/farkle_strategy"
 require_relative "../lib/game_snapshot"
+require_relative "../lib/server_random"
 
 require_relative "../lib/game_room_localization"
 
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Farkle < Base
+    def player_spatial_audio?; true; end
+    GameRoomServerRandom.register('farkle', ['roll'])
     DIE_COUNT = 6
 
     def event_sound_cues(event:, before_replay:, after_replay:, history:, viewer:, random_variant:)
@@ -149,7 +152,7 @@ module GameRoomGames
       result = super
       source = values.is_a?(Hash) ? values : {}
       version = source["farkle_rules_version"] || source[:farkle_rules_version] || 2
-      result.merge("farkle_rules_version" => version.to_i)
+      result.merge("farkle_rules_version" => GameRoomOptionValues.integer_value(version))
     end
     def options_from_json(value)
       parsed = value.to_s.empty? ? {} : JSON.parse(value.to_s)
@@ -243,6 +246,9 @@ module GameRoomGames
         return [:invalid, nil] if context == nil || context.random_source == nil
 
         count = state[:dice_to_roll].to_i
+        if context.server_random
+          return [:ok, ActionPlan.new(events: [GameRoomServerRandom.command(action: 'roll', count: count, sides: 6)])]
+        end
         values = context.random_source.roll(count: count, sides: 6).values
         [:ok, event_plan("roll", values.join(","))]
       when "toggle"
@@ -354,12 +360,22 @@ module GameRoomGames
       participant_scores(replay)
     end
 
+    def tournament_forfeit_continuation(replay, losing_unit:, options:)
+      return {'status'=>'unsupported'} unless %i[awaiting_roll selecting].include?(replay.state[:phase])
+      active = tournament_remaining_players(replay.state)
+      return {'status'=>'unsupported'} unless active.any? { |player| same_user?(player, losing_unit) }
+
+      {'status'=>active.length > 2 ? 'continue' : 'cannot_continue'}
+    end
+
     def tournament_ranking_result(replay, options:)
       outcome = tournament_export_result(replay, options: options)
       return outcome unless outcome[:draw]
 
       scores = participant_scores(replay)
-      outcome.merge(winners: scores.select { |_, score| score == scores.values.max }.keys, draw: false)
+      active = tournament_remaining_players(replay.state)
+      highest = active.map { |player| scores.fetch(player) }.max
+      outcome.merge(winners: active.select { |player| scores.fetch(player) == highest }, draw: false)
     end
 
     def shortcut_features
@@ -445,10 +461,24 @@ module GameRoomGames
         when 'select' then apply_select(state, event, actor)
         when 'keep' then apply_keep(state, event, actor, repository, history)
         when 'bank' then apply_bank(state, event, actor, repository, history)
+        when 'tournament_elimination' then apply_tournament_elimination(state, event, repository, history)
         else false
         end
         accepted << event if applied
       end
+    end
+
+    def apply_tournament_elimination(state, event, repository, history)
+      departed = tournament_elimination_players(event, players:state[:players])
+      active = tournament_remaining_players(state)
+      return false unless departed && %i[awaiting_roll selecting].include?(state[:phase]) &&
+        (departed - active).empty? && (active - departed).length >= 2
+
+      (state[:tournament_eliminations] ||= []) << departed
+      if departed.include?(state[:current_player])
+        finish_turn(state, state[:current_player], repository.event_id(event), history)
+      end
+      true
     end
 
     def initial_state(players, options)
@@ -471,6 +501,7 @@ module GameRoomGames
       return false if !same_user?(state[:current_player], actor)
 
       values = parse_roll(event["value"])
+      return false unless GameRoomServerRandom.valid_dice_event?(event, count: state[:dice_to_roll].to_i, sides: 6)
       return false if values.length != state[:dice_to_roll].to_i
 
       state[:last_roll] = values
@@ -589,7 +620,7 @@ module GameRoomGames
       else
         if reached && !state[:final_round]
           state[:final_round] = true
-          unless same_user?(next_player(state[:players], actor), state[:players].first)
+          unless same_user?(next_active_player(state, actor), tournament_remaining_players(state).first)
             history << HistoryEntry.new(key: "final_round:#{event_id}",event_id: event_id,actor: player,kind: :game,
               text: _("%{player} reached the score limit. Finish the current round of turns.") % { player: participant_name(player) })
           end
@@ -600,8 +631,11 @@ module GameRoomGames
     end
 
     def finish_turn(state, actor, event_id, history)
-      if state[:final_round] && same_user?(next_player(state[:players],actor),state[:players].first)
-        winners = state[:players].select { |p| state[:scores][p] == state[:scores].values.max }
+      active = tournament_remaining_players(state)
+      next_actor = next_active_player(state, actor)
+      if state[:final_round] && same_user?(next_actor, active.first)
+        highest = active.map { |player| state[:scores].fetch(player) }.max
+        winners = active.select { |player| state[:scores][player] == highest }
         state[:winner] = winners.first if winners.length == 1
         state[:draw] = winners.length > 1
         state[:phase], state[:current_player] = :finished, nil
@@ -609,7 +643,7 @@ module GameRoomGames
         return
       end
       state[:phase] = :awaiting_roll
-      state[:current_player] = next_player(state[:players], actor)
+      state[:current_player] = next_actor
       state[:turn_points] = 0
       state[:dice_to_roll] = DIE_COUNT
       state[:last_roll] = []
@@ -708,9 +742,13 @@ module GameRoomGames
       state[:players].find { |player| same_user?(player, actor) }
     end
 
-    def next_player(players, actor)
+    def next_active_player(state, actor)
+      players = state[:players]
       index = players.index { |player| same_user?(player, actor) }
-      index == nil ? nil : players[(index + 1) % players.length]
+      return nil if index == nil
+
+      active = tournament_remaining_players(state)
+      players.rotate(index + 1).find { |player| active.include?(player) }
     end
 
     def scores_text(state, sorted: false)
