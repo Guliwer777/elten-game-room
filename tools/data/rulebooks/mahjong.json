@@ -1,0 +1,322 @@
+{
+  "source": "games/mahjong_rules.rb",
+  "sections": [
+    {
+      "id": "aim",
+      "title": {
+        "en": "Clearing the layout",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "Remove all 144 tiles in matching pairs. You play alone and win when you remove the last pair.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "tiles",
+      "title": {
+        "en": "Matching and free tiles",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "A pair normally contains two tiles with the same suit and number, the same wind, or the same dragon. Any two flowers match each other, as do any two seasons. A flower does not match a season.",
+          "pl": ""
+        },
+        {
+          "en": "Both tiles must be free: no tile may overlap them from above, and each must have an open left or right side. A visible tile can still be blocked on both sides. Covered tiles are announced without revealing their faces.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": {
+        "en": "Choosing a pair",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "In Tiles in the layout, Left and Right move between columns; Up and Down move between rows. Press 1, 2 or 3 to switch layers in Terraces; Flat has only layer 1. A layer is a height level, not a row. Press D to hear the layer, row and column, counted separately within each layer.",
+          "pl": ""
+        },
+        {
+          "en": "Each visible tile is announced as available from the left, from the right, from both sides, or blocked on both sides. A covered tile is announced without its face. Empty positions remain after removal, so the coordinates of the other tiles do not change.",
+          "pl": ""
+        },
+        {
+          "en": "Find a free tile and press Enter to mark it. Then find another free matching tile and press Enter to remove both. The first selection alone removes nothing. A mismatched second tile leaves the first selected. Press Enter again on the first tile, or Escape, to cancel the selection. The game does not list matching pairs for you.",
+          "pl": ""
+        },
+        {
+          "en": "Removing a pair can free tiles underneath or beside it. Consider which tiles your choice will uncover. A new puzzle has a solution, but some choices can leave you without another matching pair.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "title": {
+        "en": "Undo, progress and finishing",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "Use Undo the last pair to restore the most recently removed tiles. You can undo several moves, one pair at a time, until the starting layout returns.",
+          "pl": ""
+        },
+        {
+          "en": "Progress shows how many pairs you have removed and how many tiles remain. Your score is the number of removed pairs, up to 72. When no pair is available, undo a move to try another route or choose End this puzzle. Ending early does not count as clearing the layout.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "layout",
+      "title": {
+        "en": "Layout choice",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "Terraces is the default layered layout. Flat places all tiles on one layer. The matching rule and the requirement for a free left or right side are the same in both layouts.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "table_aim",
+      "title": {
+        "en": "Winning a hand",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "Build a winning hand before the other players. A normal winning hand contains four sets and one pair. You draw and discard tiles to improve your hand; you can also claim a tile discarded by another player.",
+          "pl": ""
+        },
+        {
+          "en": "Hong Kong and MCR have four occupied seats. Riichi supports four players or three-player sanma. Bots can occupy seats not taken by people. Read the chapter for your selected variant: its scoring requirements determine whether a complete hand can win.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "table_tiles",
+      "title": {
+        "en": "Tiles and sets",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "The three numbered suits are characters, bamboo and circles, each numbered 1 to 9. Honors are the four winds and three dragons. There are four copies of each ordinary tile. Honors have no numerical sequence.",
+          "pl": ""
+        },
+        {
+          "en": "- Chow: three consecutive numbers in one suit, such as bamboo 3, 4 and 5.",
+          "pl": ""
+        },
+        {
+          "en": "- Pung: three identical tiles. Kong: four identical tiles, counted as one set. A pair contains two identical tiles.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "table_turn",
+      "title": {
+        "en": "Drawing and discarding",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "The dealer begins with 14 tiles and the other players with 13. On your normal turn, use Tab to find Draw a tile and press Enter. After drawing, keep the tiles you need and discard one. Drawing is a separate action; browsing your hand does not draw or discard anything.",
+          "pl": ""
+        },
+        {
+          "en": "In the list of tiles available to discard, choose a tile with Up and Down and press Enter to discard it. The newly drawn tile is identified in its description. Other players now answer the discard before the next player draws. Use Tab to inspect exposed sets, discards and the number of tiles left in the wall.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "table_claims",
+      "title": {
+        "en": "Claiming a discard",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "When another player discards, the response list offers only legal choices. Select Pass if you do not want the tile. To claim it, choose Chow, Pung, Kong or Declare Mahjong and press Enter. A chow may be claimed only from the player immediately before you. A pung or kong can use a discard from any opponent.",
+          "pl": ""
+        },
+        {
+          "en": "A winning claim takes priority over a set claim; pung and kong take priority over chow. If several players can win on the same tile, the first in turn order after the discarder wins. The hand waits for every required response. After claiming chow or pung, discard without drawing; the claimed set stays exposed.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "table_kongs",
+      "title": {
+        "en": "Kongs and replacement tiles",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "After declaring a kong, draw a replacement tile before discarding. If you hold all four copies, the concealed-kong list lets you declare them together. You may also add your fourth tile to an exposed pung. Opponents can claim a win on that added tile before the kong is completed.",
+          "pl": ""
+        },
+        {
+          "en": "Hong Kong and MCR include flowers and seasons. They are exposed automatically and replaced, so they do not occupy space in your ordinary hand. Riichi has no flower or season tiles.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "table_winning",
+      "title": {
+        "en": "Declaring a win",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "When your drawn tile completes a legal winning hand, use Declare Mahjong instead of discarding. To win on another player’s discard, select the winning response. Seven pairs and thirteen orphans are alternative winning shapes where the selected scoring profile permits them. Completing a shape alone is not enough if the variant requires a minimum score or yaku.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "table_hong_kong",
+      "title": {
+        "en": "Hong Kong scoring",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "This preset requires at least 3 fan. Four pungs score 3 fan, a single suit with honors scores 3, a pure single suit scores 7, and seven pairs score 4. A dragon pung scores 1; a pung of your seat wind or the round wind also scores 1 each. Self-draw and having no flowers each add 1. A flower or season matching your seat scores 1; a complete set of four scores 2 instead.",
+          "pl": ""
+        },
+        {
+          "en": "Payments use a table capped at 8 fan. At 3 fan, a self-drawn win takes 16 points from each opponent. On a discarded tile, the discarder pays 16 and each other opponent pays 8. The winner therefore gains 48 or 32 respectively. Dealer wins and drawn hands keep the same dealer.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "table_riichi",
+      "title": {
+        "en": "Riichi and sanma",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "Riichi starts each player at 30,000 points and requires at least one yaku, a scoring condition. A concealed self-drawn win gives 1 han; a hand without ones, nines or honors gives 1; a dragon pung or valued wind pung gives 1; seven distinct pairs give 2. Dora increase the value but do not satisfy the yaku requirement alone. The score also uses fu and limits for high-value hands.",
+          "pl": ""
+        },
+        {
+          "en": "If your closed hand is one tile from winning, the Riichi list offers legal declaration discards. Select one and press Enter. An accepted declaration places 1,000 points on the table. Afterwards you must discard the drawn tile unless it wins; only a kong preserving all required hand interpretations is allowed. The winner collects the deposits; an unclaimed deposit carries to the next hand.",
+          "pl": ""
+        },
+        {
+          "en": "Furiten prevents winning on a discard when one of your winning tiles appears among your own discards. Passing a legal winning discard also blocks discard wins temporarily; after declaring Riichi, this block lasts for the rest of the hand. You can still win by drawing the tile yourself. In sanma, characters 2 through 8 are removed; North stays an ordinary honor tile, with no separate North-extraction action.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "table_mcr",
+      "title": {
+        "en": "MCR scoring",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "MCR requires at least 8 fan before flower points. The scorer evaluates the possible interpretations of your hand and compatible scoring patterns. Four pungs give 6 fan and a dragon pung adds 2: an exposed hand with pungs of characters 2, circles 4, bamboo 6 and white dragons, plus a pair of characters 5, meets the minimum. Flower points are added only after the hand meets the 8-fan requirement.",
+          "pl": ""
+        },
+        {
+          "en": "Each opponent pays a base 8 points. On a discard win, only the discarder also pays the hand value, including flowers; on self-draw, everyone pays that value as well. For an 8-fan hand without flowers, a discard win gains 32 points and self-draw gains 48. The dealer advances after every hand, including a draw: four wind rounds contain 16 hands.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "table_match",
+      "title": {
+        "en": "Between hands and match results",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "If nobody wins before the available wall is exhausted, the hand ends in a draw. Hong Kong and MCR make no hand payment for this draw. Riichi transfers 3,000 points between ready and not-ready hands in four-player play, or 2,000 in sanma; if everyone or nobody is ready, no such transfer occurs. A ready hand needs one tile to complete a winning shape.",
+          "pl": ""
+        },
+        {
+          "en": "After a hand, inspect the winner, hand value, point changes and match scores with Tab. For a longer match, every participant must use Ready for the next hand before the next deal starts. In Riichi the dealer repeats after a dealer win or a draw with a ready dealer; repeated hands carry honba bonuses. The selected round count ends the match after the required dealer rotations. The highest total wins; equal totals share a draw.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "table_options",
+      "title": {
+        "en": "Choosing the match",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "Choose the variant first in the game options. Hong Kong offers one hand, an East round or four wind rounds; Riichi offers one hand, East, or East and South; MCR offers one hand or the full four wind rounds. The Riichi seat selector chooses four players or sanma. Other scoring rules are fixed for each preset. Bot move delay changes only the pause before a bot acts.",
+          "pl": ""
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "en": "Keyboard reference",
+        "pl": ""
+      },
+      "paragraphs": [
+        {
+          "en": "- Tab / Shift+Tab: move between your hand, response lists, action buttons and table information.",
+          "pl": ""
+        },
+        {
+          "en": "- Up / Down: browse tiles, legal responses and declaration choices in the current list.",
+          "pl": ""
+        },
+        {
+          "en": "- Enter: confirm the selected discard, response or declaration, or activate the focused action button.",
+          "pl": ""
+        },
+        {
+          "en": "- Solitaire: Left/Right move columns; Up/Down move rows.",
+          "pl": ""
+        },
+        {
+          "en": "- Solitaire 1, 2, 3: choose a layer. Flat uses only 1.",
+          "pl": ""
+        },
+        {
+          "en": "- Solitaire D: read layer, row and column.",
+          "pl": ""
+        },
+        {
+          "en": "- Solitaire Enter: mark the first tile or remove it with the matching second tile. Escape cancels the selection.",
+          "pl": ""
+        }
+      ]
+    }
+  ],
+  "option_chapters": {
+    "variant": "table_aim",
+    "layout": "layout",
+    "riichi_seats": "table_riichi",
+    "hong_kong_winds": "table_options",
+    "riichi_winds": "table_options",
+    "mcr_winds": "table_options"
+  }
+}

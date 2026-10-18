@@ -1,0 +1,1056 @@
+{
+  "source": "games/mahjong_rules.rb",
+  "sections": [
+    {
+      "id": "table_aim",
+      "title": {
+        "en": "Mahjong: aim of the game"
+      },
+      "paragraphs": [
+        {
+          "en": "In the default Solitaire game you remove matching pairs and win by clearing the layout. Hong Kong, Riichi and MCR are separate games against other players: you build your own winning hand and score points. Each has its own complete part below, starting with its aim and terms."
+        },
+        {
+          "en": "Sounds distinguish dealing, drawing and discarding a tile, declaring a set and ending a hand. Solitaire also sounds pair removal and undo. Passing and browsing tiles are silent. Spoken descriptions still identify the tile and result."
+        },
+        {
+          "en": "While responding to a tile, D reads the tile to which Pass, Chow, Pung, Kong or Mahjong applies. It does not change or submit your choice. In Solitaire, D still reads coordinates."
+        }
+      ]
+    },
+    {
+      "id": "aim",
+      "title": {
+        "en": "Solitaire — terms and aim"
+      },
+      "paragraphs": [
+        {
+          "en": "Remove all 144 tiles in matching pairs. You play alone and win when you remove the last pair."
+        },
+        {
+          "en": "In Solitaire, the layout is the whole arrangement of tiles. A pair is two matching pieces; a layer is a height level; rows run across and columns down. A free tile has nothing above it and at least one open side, left or right. A visible tile can still be blocked on both sides."
+        },
+        {
+          "en": "You do not build chows, pungs or kongs, or count fan, han or yaku in this variant. Those belong to the multiplayer games. Here you win by removing every pair from the layout."
+        }
+      ]
+    },
+    {
+      "id": "tiles",
+      "title": {
+        "en": "Solitaire: Matching and free tiles"
+      },
+      "paragraphs": [
+        {
+          "en": "A pair normally contains two tiles with the same suit and number, the same wind, or the same dragon. Any two flowers match each other, as do any two seasons. A flower does not match a season."
+        },
+        {
+          "en": "Both tiles must be free: no tile may overlap them from above, and each must have an open left or right side. A visible tile can still be blocked on both sides. Covered tiles are announced without revealing their faces."
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": {
+        "en": "Solitaire: Choosing a pair"
+      },
+      "paragraphs": [
+        {
+          "en": "In Tiles in the layout, Left and Right move between columns; Up and Down move between rows. Press 1, 2 or 3 to switch layers in Terraces; Flat has only layer 1. A layer is a height level, not a row. Press D to hear the layer, row and column, counted separately within each layer."
+        },
+        {
+          "en": "Each visible tile is announced as available from the left, from the right, from both sides, or blocked on both sides. A covered tile is announced without its face. Empty positions remain after removal, so the coordinates of the other tiles do not change."
+        },
+        {
+          "en": "Find a free tile and press Enter to mark it. Then find another free matching tile and press Enter to remove both. The first selection alone removes nothing. A mismatched second tile leaves the first selected. Press Enter again on the first tile, or Escape, to cancel the selection. The game does not list matching pairs for you."
+        },
+        {
+          "en": "Removing a pair can free tiles underneath or beside it. Consider which tiles your choice will uncover. A new puzzle has a solution, but some choices can leave you without another matching pair."
+        },
+        {
+          "en": "Example: find a free bamboo 5 and press Enter to mark it. Find another free bamboo 5, possibly on another layer, and press Enter. Both are removed. If the second 5 is covered or blocked, first free it by removing other pairs."
+        },
+        {
+          "en": "When several identical tiles are available, consider which copies to remove. Removing an edge tile may free its neighbour; removing an upper tile uncovers one below. Not every available pair leads to a solution. Undo the last pair lets you return and try another order."
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "title": {
+        "en": "Solitaire: Undo, progress and finishing"
+      },
+      "paragraphs": [
+        {
+          "en": "Use Undo the last pair to restore the most recently removed tiles. You can undo several moves, one pair at a time, until the starting layout returns."
+        },
+        {
+          "en": "Progress shows how many pairs you have removed and how many tiles remain. Your score is the number of removed pairs, up to 72. When no pair is available, undo a move to try another route or choose End this puzzle. Ending early does not count as clearing the layout."
+        },
+        {
+          "en": "S reads your removed-pair score. M reads how many tiles remain in the layout. A new puzzle has 144 tiles; removing one pair leaves 142."
+        }
+      ]
+    },
+    {
+      "id": "layout",
+      "title": {
+        "en": "Solitaire: Layout choice"
+      },
+      "paragraphs": [
+        {
+          "en": "Terraces is the default layered layout. Flat places all tiles on one layer. The matching rule and the requirement for a free left or right side are the same in both layouts."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_aim",
+      "title": {
+        "en": "Hong Kong — Aim and winning conditions"
+      },
+      "paragraphs": [
+        {
+          "en": "Four players compete to complete a winning hand first. The normal shape is four sets and a pair, and it must be worth at least 3 fan: fan measure the hand’s scoring value. Over a full match, the player with the highest total points wins. The terms below explain the sets and scoring units before your first turn."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_terms",
+      "title": {
+        "en": "Hong Kong — How the terms work"
+      },
+      "paragraphs": [
+        {
+          "en": "You play against the other players. Tiles in your hand are yours to arrange into a winning pattern; you do not remove matching pairs from a layout as in Solitaire. A hand is one deal and its play. A match may contain many hands."
+        },
+        {
+          "en": "- A tile is one piece, such as bamboo 5. Its kind is its suit and number, or its particular wind or dragon. There are four copies of each ordinary kind."
+        },
+        {
+          "en": "- Suits are characters, bamboo and circles, numbered 1–9. Different suits do not mix in one sequence. Terminals are 1 and 9; simples are 2–8."
+        },
+        {
+          "en": "- Honors are East, South, West and North winds, and white, green and red dragons. They have no number and cannot form a sequence."
+        },
+        {
+          "en": "- A chow or chi is three consecutive numbers in one suit: bamboo 3, 4 and 5. Bamboo 3, circles 4 and bamboo 5 do not qualify. Nor do 8, 9 and 1 of one suit."
+        },
+        {
+          "en": "- A pung, also written pong or pon, is three identical tiles, such as three red dragons. Three fives from different suits are not a pung."
+        },
+        {
+          "en": "- A kong or kan is four identical tiles. You must declare it through the kong action; simply holding four copies does not declare a kong. It is one set, with an extra replacement draw."
+        },
+        {
+          "en": "- A pair is two identical tiles. A set is a chow, pung or kong. An ordinary winning hand needs four sets and one pair, not merely several pairs or a large number of tiles of one suit."
+        },
+        {
+          "en": "- The wall is the supply of tiles you draw from. Drawing adds a tile to your hand; discarding removes one tile from your hand and offers it to opponents."
+        },
+        {
+          "en": "- A closed hand has no sets claimed from opponents. Claiming a chow, pung or exposed kong opens it. Sets formed entirely from your own tiles can stay concealed. A declared concealed kong keeps your hand closed."
+        },
+        {
+          "en": "- A self-draw win uses the tile you have just drawn. A discard win uses an opponent’s discarded tile to finish your hand. Claim Mahjong to win; do not discard the winning tile first."
+        },
+        {
+          "en": "- A wait is a tile kind that would finish your hand. With bamboo 4–5 you might wait for bamboo 3 or 6. Being one tile from a complete shape is called tenpai. A complete shape must still satisfy this variant’s scoring conditions."
+        },
+        {
+          "en": "- Fan are scoring units awarded for patterns and winning circumstances. You need at least 3 fan to win this profile. They are converted into match points; 3 fan does not mean you gain only 3 points."
+        },
+        {
+          "en": "- Your seat wind is your current role: the dealer is East, followed by South, West and North. The round wind belongs to the whole table. A pung of your own wind or the round wind can score; a pair of that wind is not enough for that award."
+        },
+        {
+          "en": "- Flowers and seasons are bonus tiles. The game exposes and replaces them automatically. They do not fill a chow, pung or the pair and are separate from wind rounds."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_start",
+      "title": {
+        "en": "Hong Kong — Starting the hand"
+      },
+      "paragraphs": [
+        {
+          "en": "Balances start at zero; winning hands add payments and losing them subtracts payments."
+        },
+        {
+          "en": "The dealer starts with 14 tiles and discards first. Everyone else starts with 13. On a normal turn, choose Draw a tile and press Enter. Drawing is an action; moving through the tile list does not draw."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_play",
+      "title": {
+        "en": "Hong Kong — Your first turns"
+      },
+      "paragraphs": [
+        {
+          "en": "Before your first discard, read your hand with Up and Down. Think of numbered tiles as possible sequences, identical tiles as possible pungs, and one pair as your eventual pair. You do not select all four sets in the interface: sets left in your hand are recognised when you declare a win."
+        },
+        {
+          "en": "While you browse game fields, a new turn focuses Draw a tile. After drawing, focus moves to the newly drawn tile in your hand, marked just drawn. This does not discard it. You can move to another tile with the arrows or keep the new tile and discard an old one."
+        },
+        {
+          "en": "To discard, find one tile in the available-to-discard list and press Enter. You lose that copy from your hand. If you hold several identical copies, discarding one does not remove the others."
+        },
+        {
+          "en": "After another player discards, listen to the tile and read the response list. Pass means you do not claim that tile; it does not end your participation or concede the hand. If everyone passes, the next player draws. Passing several times does not mean you must draw each time: it may still be another player’s turn."
+        },
+        {
+          "en": "The first field describes the current situation. All available actions follow it: responses, Draw, Declare Mahjong, kong choices or Riichi when applicable. Your tile lists come after those actions. Tab and Shift+Tab move between fields; arrows choose within a list, and Enter confirms. An unavailable action is omitted."
+        },
+        {
+          "en": "Read Exposed sets to inspect everyone’s declared sets; each entry names its owner. Discards records which tiles each player has discarded. These fields help you see what is already used and what opponents may need. You can review them without submitting a move."
+        },
+        {
+          "en": "If a tile completes an eligible winning hand, choose Declare Mahjong rather than discarding it or passing. The game checks both the shape and this variant’s scoring requirements. If the wall runs out first, the hand is a draw; nobody wins merely for having the most nearly complete hand."
+        },
+        {
+          "en": "Press S to hear the current points of every player. Press M to hear how many tiles remain in the wall for drawing. These are read-only announcements: they do not draw, discard or pass, and do not reveal other hands."
+        },
+        {
+          "en": "W reads a legal winning hand value: fan or han and fu, and the points gained. It does not estimate an incomplete hand. Before a Riichi win it excludes hidden ura-dora, so the final value may be higher. U reads your exposed sets, Shift+U those of the other players, and R the hand number, winds and current situation. In Riichi, I reads dora indicators and tiles, your dora count, Riichi declarations, deposits, honba and your furiten restriction. These keys only read information."
+        }
+      ]
+    },
+    {
+      "id": "table_hand",
+      "title": {
+        "en": "Hong Kong — What you must build to win"
+      },
+      "paragraphs": [
+        {
+          "en": "Consider this complete shape: bamboo 2–3–4; circles 4–5–6; three characters 7; three red dragons; two West winds. The first two sets are chows, the next two are pungs, and the winds are the pair. Each tile belongs to only one of these groups."
+        },
+        {
+          "en": "Now remove bamboo 4 from that example. You hold 13 tiles and need bamboo 4 to complete the first chow. If you draw it, it may allow self-draw Mahjong. If an opponent discards it, Mahjong may appear in your responses. In either case you must also meet the scoring requirement below."
+        },
+        {
+          "en": "To improve an incomplete hand, keep useful links. With 4–5 you can use 3 or 6; with 4–6 only 5 joins those two into a chow. A pair can become a pung if you find its third copy, or remain the pair of your final hand. An isolated tile with no matching or neighbouring tiles is often a candidate to discard."
+        },
+        {
+          "en": "You do not have to declare a set formed in your own hand as soon as it appears. Keep your private tiles flexible. Once you claim and expose a set, those tiles stay together and cannot later be discarded separately. Claim only when it helps your intended winning hand."
+        },
+        {
+          "en": "The example shape is not automatically worth 3 fan. It has a dragon pung worth 1. If you have no flowers or seasons, that adds 1; self-draw adds 1, reaching 3. On a discard it would need another scoring condition. Always consider both completion and fan."
+        },
+        {
+          "en": "Seven pairs is another winning shape worth 4 fan. In this Chinese profile, four identical tiles kept undeclared may count as two pairs. Thirteen orphans is a rarer special hand. You can learn ordinary four-set hands first; the special shapes are alternatives, not additions required for every win."
+        },
+        {
+          "en": "Four three-tile sets plus a pair normally make 14 physical tiles. A declared kong has one extra tile but still counts as one set: one kong makes the complete hand 15 tiles, two make 16. Flowers and seasons do not belong to that count. You do not discard an extra tile merely to force a kong hand back to 14."
+        },
+        {
+          "en": "Thirteen orphans means one 1 and one 9 from each of the three suits, one of each of the four winds and three dragons, plus a second copy of any one of those thirteen kinds. It has no chows and needs no four ordinary sets. Keep it closed; this profile awards 13 fan."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_claims",
+      "title": {
+        "en": "Hong Kong — Claiming tiles and declaring kongs"
+      },
+      "paragraphs": [
+        {
+          "en": "When another player discards, the response list offers only legal choices. Select Pass if you do not want the tile. To claim it, choose Chow, Pung, Kong or Declare Mahjong and press Enter. A chow may be claimed only from the player immediately before you. A pung or kong can use a discard from any opponent."
+        },
+        {
+          "en": "A winning claim takes priority over a set claim; pung and kong take priority over chow. If several players can win on the same tile, the first in turn order after the discarder wins. The hand waits for every required response. After claiming chow or pung, discard without drawing; the claimed set stays exposed."
+        },
+        {
+          "en": "After declaring a kong, draw a replacement tile before discarding. If you hold all four copies, the concealed-kong list lets you declare them together. You may also add your fourth tile to an exposed pung. Opponents can claim a win on that added tile before the kong is completed."
+        },
+        {
+          "en": "Example: you hold two red dragons and someone discards a red dragon. Pung lets you take it and expose all three. You then discard one of your remaining tiles without first drawing. With bamboo 4–5, a bamboo 3 or 6 discarded by the player immediately before you may allow Chow. A matching tile from a different player cannot be claimed for Chow."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_practice",
+      "title": {
+        "en": "Hong Kong — Planning your hand"
+      },
+      "paragraphs": [
+        {
+          "en": "One straightforward plan is All Pungs: keep pairs and try to turn four of them into pungs, leaving a fifth pair. Four pungs already provide the required 3 fan. The cost is flexibility: a lone pair needs its exact third copy, while two adjacent numbers may accept two different tile kinds."
+        },
+        {
+          "en": "Another plan is one suit with honors for 3 fan. If most of your numbered tiles already share a suit, you can keep that suit and useful winds or dragons. Do not discard a nearly complete good hand merely to force a much more distant high-value pattern."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_sets",
+      "title": {
+        "en": "Hong Kong: pattern values and payments"
+      },
+      "paragraphs": [
+        {
+          "en": "This Hong Kong profile has no separate fu table and no award merely for concealing an ordinary pung or kong. A kong meets the same tile-type conditions as a pung. Fan come from whole-hand patterns, honors and the winning circumstances."
+        },
+        {
+          "en": "- Four chows give 1 fan; four pungs or kongs give 3; seven pairs give 4."
+        },
+        {
+          "en": "- One suit with honors gives 3 fan; one suit without honors gives 7."
+        },
+        {
+          "en": "- Each dragon pung or kong gives 1. Two dragon pungs and a pair of the third dragon make small three dragons for 5; all three dragon pungs make big three dragons for 8. These larger awards already include their component dragon-pung awards."
+        },
+        {
+          "en": "- Your seat-wind pung or kong gives 1 fan and the round wind another 1. When they coincide, the same set gives 2."
+        },
+        {
+          "en": "- Self-draw gives 1 fan. Winning on the final ordinary draw, the final discard, a replacement draw or a robbed kong has a corresponding 1-fan bonus."
+        },
+        {
+          "en": "- No flowers or seasons gives 1 fan. In each bonus family your own tile gives 1: number 1 is East, 2 South, 3 West, 4 North. A complete family of four gives 2 instead."
+        },
+        {
+          "en": "Special hands have separate values: thirteen orphans 13 fan, small four winds 10, big four winds 15, all honors 10, all terminals 10, four kongs 18, nine gates 15. Small four winds has three wind pungs and a pair of the fourth; big four winds has all four pungs. For such hands the game chooses the highest special award without ordinary bonuses."
+        },
+        {
+          "en": "A simple route to the minimum is four chows for 1, no flowers for 1 and self-draw for 1: total 3 fan. The same shape won on a discard may have only 2 and be ineligible. Four pungs alone already supply the required 3."
+        },
+        {
+          "en": "The payment base is 8 points at 3 fan, 16 at 4, 24 at 5, 32 at 6, 48 at 7 and 64 at 8 or more. On a discard win the discarder pays twice the base and the others pay it once. On self-draw every opponent pays twice the base. Thus 5 fan wins 96 on a discard or 144 on self-draw. The 8-fan cap applies to payments even when a special hand’s fan value is higher."
+        }
+      ]
+    },
+    {
+      "id": "table_winds",
+      "title": {
+        "en": "Hong Kong — Hands and match length"
+      },
+      "paragraphs": [
+        {
+          "en": "The default match has four wind rounds: East, South, West and North. Every player completes a dealer period in each round, making at least sixteen hands. Hand payments accumulate from zero; winning one hand does not necessarily win the match."
+        },
+        {
+          "en": "The dealer repeats after their win or any draw, so East takes at least four hands and can take more. Four wind rounds are East, South, West and North: at least 16 hands. Seasons are bonus tiles, not these rounds."
+        },
+        {
+          "en": "After a hand, inspect the winner, hand value and point changes. In a longer match everyone chooses Ready for the next hand. A draw changes no hand points in Hong Kong. After the selected rounds, the highest total wins; equal highest totals tie."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_variants",
+      "title": {
+        "en": "Hong Kong — Match length options"
+      },
+      "paragraphs": [
+        {
+          "en": "Choose match length in the game options before play. The following shorter settings change how many hands the match contains, not the rules for completing a winning hand."
+        },
+        {
+          "en": "One hand ends the game after one win or wall draw. East round means that all four players complete a dealer period. The dealer is East, but the shared round wind also remains East throughout that round. It is not one personal turn."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_aim",
+      "title": {
+        "en": "Riichi — Aim and winning conditions"
+      },
+      "paragraphs": [
+        {
+          "en": "In the standard four-player game you aim to complete your hand before the others. Usually it has four sets and a pair, but it also needs a yaku: a recognised winning condition. A complete shape without yaku may be unable to win. The match winner has the highest final points; the following terms explain these conditions."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_terms",
+      "title": {
+        "en": "Riichi — How the terms work"
+      },
+      "paragraphs": [
+        {
+          "en": "You play against the other players. Tiles in your hand are yours to arrange into a winning pattern; you do not remove matching pairs from a layout as in Solitaire. A hand is one deal and its play. A match may contain many hands."
+        },
+        {
+          "en": "- A tile is one piece, such as bamboo 5. Its kind is its suit and number, or its particular wind or dragon. There are four copies of each ordinary kind."
+        },
+        {
+          "en": "- Suits are characters, bamboo and circles, numbered 1–9. Different suits do not mix in one sequence. Terminals are 1 and 9; simples are 2–8."
+        },
+        {
+          "en": "- Honors are East, South, West and North winds, and white, green and red dragons. They have no number and cannot form a sequence."
+        },
+        {
+          "en": "- A chow or chi is three consecutive numbers in one suit: bamboo 3, 4 and 5. Bamboo 3, circles 4 and bamboo 5 do not qualify. Nor do 8, 9 and 1 of one suit."
+        },
+        {
+          "en": "- A pung, also written pong or pon, is three identical tiles, such as three red dragons. Three fives from different suits are not a pung."
+        },
+        {
+          "en": "- A kong or kan is four identical tiles. You must declare it through the kong action; simply holding four copies does not declare a kong. It is one set, with an extra replacement draw."
+        },
+        {
+          "en": "- A pair is two identical tiles. A set is a chow, pung or kong. An ordinary winning hand needs four sets and one pair, not merely several pairs or a large number of tiles of one suit."
+        },
+        {
+          "en": "- The wall is the supply of tiles you draw from. Drawing adds a tile to your hand; discarding removes one tile from your hand and offers it to opponents."
+        },
+        {
+          "en": "- A closed hand has no sets claimed from opponents. Claiming a chow, pung or exposed kong opens it. Sets formed entirely from your own tiles can stay concealed. A declared concealed kong keeps your hand closed."
+        },
+        {
+          "en": "- A self-draw win uses the tile you have just drawn. A discard win uses an opponent’s discarded tile to finish your hand. Claim Mahjong to win; do not discard the winning tile first."
+        },
+        {
+          "en": "- A wait is a tile kind that would finish your hand. With bamboo 4–5 you might wait for bamboo 3 or 6. Being one tile from a complete shape is called tenpai. A complete shape must still satisfy this variant’s scoring conditions."
+        },
+        {
+          "en": "- Yaku is a named condition that makes a winning shape eligible. You need at least one yaku. For example, a pung of dragons is a yaku; a random complete shape is not necessarily one."
+        },
+        {
+          "en": "- Han measure the value of yaku and bonuses. Fu are smaller points for how your sets, pair and wait are built. Han and fu together determine the payment. Fu alone do not supply the required yaku."
+        },
+        {
+          "en": "- Ron means a win on an opponent’s discard; tsumo means a win on your own draw. Menzen means closed. Menzen tsumo is therefore a closed-hand self-draw win and is itself a yaku."
+        },
+        {
+          "en": "- Riichi is a declaration that your closed hand is one tile from completion. It costs a 1000-point deposit and supplies a yaku, but restricts later changes to your hand."
+        },
+        {
+          "en": "- Dora is a bonus tile kind named by an indicator. Each copy adds han after you have a real yaku. Holding dora alone does not permit a win."
+        },
+        {
+          "en": "- Furiten is a restriction on winning from other players’ discards. It can arise from your own discards or from declining a winning discard. It does not prevent self-draw wins."
+        },
+        {
+          "en": "- Honba is the carry-over counter that adds payments after draws or dealer continuations. Mangan and higher limits are payment levels for valuable hands, not extra sets you must build."
+        },
+        {
+          "en": "- Your seat wind is your role relative to the dealer: East for the dealer, then South, West and North. Round wind is shared by the table. A pung of either value wind can score, and one set can serve both roles when they coincide."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_start",
+      "title": {
+        "en": "Riichi — Starting the hand"
+      },
+      "paragraphs": [
+        {
+          "en": "Everyone starts with 30,000 points. Payments and accepted Riichi deposits change that balance."
+        },
+        {
+          "en": "The dealer starts with 14 tiles and discards first. Everyone else starts with 13. On a normal turn, choose Draw a tile and press Enter. Drawing is an action; moving through the tile list does not draw."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_play",
+      "title": {
+        "en": "Riichi — Your first turns"
+      },
+      "paragraphs": [
+        {
+          "en": "Before your first discard, read your hand with Up and Down. Think of numbered tiles as possible sequences, identical tiles as possible pungs, and one pair as your eventual pair. You do not select all four sets in the interface: sets left in your hand are recognised when you declare a win."
+        },
+        {
+          "en": "While you browse game fields, a new turn focuses Draw a tile. After drawing, focus moves to the newly drawn tile in your hand, marked just drawn. This does not discard it. You can move to another tile with the arrows or keep the new tile and discard an old one."
+        },
+        {
+          "en": "To discard, find one tile in the available-to-discard list and press Enter. You lose that copy from your hand. If you hold several identical copies, discarding one does not remove the others."
+        },
+        {
+          "en": "After another player discards, listen to the tile and read the response list. Pass means you do not claim that tile; it does not end your participation or concede the hand. If everyone passes, the next player draws. Passing several times does not mean you must draw each time: it may still be another player’s turn."
+        },
+        {
+          "en": "The first field describes the current situation. All available actions follow it: responses, Draw, Declare Mahjong, kong choices or Riichi when applicable. Your tile lists come after those actions. Tab and Shift+Tab move between fields; arrows choose within a list, and Enter confirms. An unavailable action is omitted."
+        },
+        {
+          "en": "Read Exposed sets to inspect everyone’s declared sets; each entry names its owner. Discards records which tiles each player has discarded. These fields help you see what is already used and what opponents may need. You can review them without submitting a move."
+        },
+        {
+          "en": "If a tile completes an eligible winning hand, choose Declare Mahjong rather than discarding it or passing. The game checks both the shape and this variant’s scoring requirements. If the wall runs out first, the hand is a draw; nobody wins merely for having the most nearly complete hand."
+        },
+        {
+          "en": "Press S to hear the current points of every player. Press M to hear how many tiles remain in the wall for drawing. These are read-only announcements: they do not draw, discard or pass, and do not reveal other hands."
+        },
+        {
+          "en": "W reads a legal winning hand value: fan or han and fu, and the points gained. It does not estimate an incomplete hand. Before a Riichi win it excludes hidden ura-dora, so the final value may be higher. U reads your exposed sets, Shift+U those of the other players, and R the hand number, winds and current situation. In Riichi, I reads dora indicators and tiles, your dora count, Riichi declarations, deposits, honba and your furiten restriction. These keys only read information."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_build",
+      "title": {
+        "en": "Riichi — What you must build to win"
+      },
+      "paragraphs": [
+        {
+          "en": "Consider this complete shape: bamboo 2–3–4; circles 4–5–6; three characters 7; three red dragons; two West winds. The first two sets are chows, the next two are pungs, and the winds are the pair. Each tile belongs to only one of these groups."
+        },
+        {
+          "en": "Now remove bamboo 4 from that example. You hold 13 tiles and need bamboo 4 to complete the first chow. If you draw it, it may allow self-draw Mahjong. If an opponent discards it, Mahjong may appear in your responses. In either case you must also meet the scoring requirement below."
+        },
+        {
+          "en": "To improve an incomplete hand, keep useful links. With 4–5 you can use 3 or 6; with 4–6 only 5 joins those two into a chow. A pair can become a pung if you find its third copy, or remain the pair of your final hand. An isolated tile with no matching or neighbouring tiles is often a candidate to discard."
+        },
+        {
+          "en": "You do not have to declare a set formed in your own hand as soon as it appears. Keep your private tiles flexible. Once you claim and expose a set, those tiles stay together and cannot later be discarded separately. Claim only when it helps your intended winning hand."
+        },
+        {
+          "en": "The red-dragon pung in the example supplies a yaku worth 1 han, whether exposed or concealed. Once all four sets and the pair are complete, that yaku permits a win if no discard restriction such as furiten applies. The other sets need not each supply a yaku."
+        },
+        {
+          "en": "Seven distinct pairs is a separate 2-han yaku: four identical tiles do not count as two of those pairs in Riichi. Thirteen orphans uses each suited 1 and 9 and all seven honors, plus one duplicate, with no claimed sets. It is a yakuman, a high-limit hand. These shapes replace the normal four-set structure."
+        },
+        {
+          "en": "Four three-tile sets plus a pair normally make 14 physical tiles. A declared kong has one extra tile but still counts as one set: one kong makes the complete hand 15 tiles, two make 16. Flowers and seasons do not belong to that count. You do not discard an extra tile merely to force a kong hand back to 14."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_claims",
+      "title": {
+        "en": "Riichi — Claiming tiles and declaring kongs"
+      },
+      "paragraphs": [
+        {
+          "en": "When another player discards, the response list offers only legal choices. Select Pass if you do not want the tile. To claim it, choose Chow, Pung, Kong or Declare Mahjong and press Enter. A chow may be claimed only from the player immediately before you. A pung or kong can use a discard from any opponent."
+        },
+        {
+          "en": "A winning claim takes priority over a set claim; pung and kong take priority over chow. If several players can win on the same tile, the first in turn order after the discarder wins. The hand waits for every required response. After claiming chow or pung, discard without drawing; the claimed set stays exposed."
+        },
+        {
+          "en": "After declaring a kong, draw a replacement tile before discarding. If you hold all four copies, the concealed-kong list lets you declare them together. You may also add your fourth tile to an exposed pung. Opponents can claim a win on that added tile before the kong is completed."
+        },
+        {
+          "en": "Opening your hand can remove your planned yaku. Riichi and closed self-draw require a closed hand, while dragon pungs still score when exposed. Before claiming Chow or Pung, decide what yaku will remain."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_practice",
+      "title": {
+        "en": "Riichi — Planning your hand"
+      },
+      "paragraphs": [
+        {
+          "en": "For a first game, one workable plan is a closed hand aiming for Riichi. Draw, improve your sets and discard an unhelpful tile without claiming sets. When the Riichi list appears, choose an offered discard. This supplies a yaku but does not finish the hand: you still need a winning tile afterwards."
+        },
+        {
+          "en": "Another clear plan is a dragon pung. You may claim its third tile and keep its yaku even with an open hand. Still build the other three sets and a pair. Do not assume every completed hand wins: an open hand made of unrelated ordinary chows may have no yaku at all."
+        },
+        {
+          "en": "Nine gates uses the closed one-suit base 1–1–1–2–3–4–5–6–7–8–9–9–9 plus one more tile of that suit. It is a rare special hand, not nine chows. All green, in Riichi, means only bamboo 2, 3, 4, 6, 8 and green dragons; you must still make a valid complete shape."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi",
+      "title": {
+        "en": "Riichi — declaring readiness, dora and furiten"
+      },
+      "paragraphs": [
+        {
+          "en": "If your closed hand is one tile from winning, the Riichi list offers legal declaration discards. Select one and press Enter. An accepted declaration places 1,000 points on the table. Afterwards you must discard the drawn tile unless it wins; only a kong preserving all required hand interpretations is allowed. The winner collects the deposits; an unclaimed deposit carries to the next hand."
+        },
+        {
+          "en": "Furiten prevents winning on a discard when one of your winning tiles appears among your own discards. Passing a legal winning discard also blocks discard wins temporarily; after declaring Riichi, this block lasts for the rest of the hand. You can still win by drawing the tile yourself."
+        },
+        {
+          "en": "Suppose you wait for bamboo 3 or 6 but previously discarded bamboo 3. Furiten blocks a discard win on both winning kinds, including 6; it is not limited to the exact tile you discarded. A self-drawn 3 or 6 can still win if the hand qualifies."
+        }
+      ]
+    },
+    {
+      "id": "table_yaku",
+      "title": {
+        "en": "Riichi: yaku and opening your hand"
+      },
+      "paragraphs": [
+        {
+          "en": "A yaku is a named winning condition. Han from compatible yaku add together. An ordinary chow or pung of simples gives no han by itself. Claiming a tile can speed up your hand but removes some yaku and reduces others."
+        },
+        {
+          "en": "- Tanyao, only numbers 2–8 without honors: 1 han, even open. Each dragon pung or kong: 1. Seat-wind and round-wind pungs or kongs: 1 each; a shared wind gives 2."
+        },
+        {
+          "en": "- Riichi: 1 han, requiring a closed tenpai hand and a 1000-point deposit. Double riichi, declared in the first uninterrupted turn cycle: 2 instead. Ippatsu, winning within the first uninterrupted cycle after riichi, adds 1."
+        },
+        {
+          "en": "- Menzen tsumo, closed self-draw: 1 han. Pinfu: 1, closed only, with four chows, a non-value pair and a two-sided wait."
+        },
+        {
+          "en": "- Two identical chows in one suit: 1 han, closed only. Two such pairs: 3 instead, also closed only. Seven distinct pairs: 2."
+        },
+        {
+          "en": "- Four pungs or kongs: 2 han. Three concealed pungs: 2. Three kongs: 2. Two dragon pungs and a pair of the third dragon: 2, in addition to the dragon-pung awards."
+        },
+        {
+          "en": "- The same chow in all three suits, such as 2–3–4: 2 han closed, 1 open. Chows 1–2–3, 4–5–6 and 7–8–9 in one suit: 2 closed, 1 open. Same-number pungs in all three suits: 2 whether open or closed."
+        },
+        {
+          "en": "- One suit with honors: 3 han closed, 2 open. One suit without honors: 6 closed, 5 open."
+        },
+        {
+          "en": "- A terminal or honor in every set and the pair, with at least one chow: 2 han closed, 1 open. Without honors: 3 and 2 respectively. A hand entirely of terminals and honors gives 2."
+        },
+        {
+          "en": "- The final ordinary draw, final discard, a kong replacement draw or robbing a kong has a corresponding 1-han yaku."
+        },
+        {
+          "en": "Each dora tile adds 1 han only after a genuine yaku exists. An indicator points to the next tile in its cycle: bamboo 3 indicates bamboo 4, and 9 wraps to 1. Honor cycles are East–South–West–North and white–green–red dragon. Dora is a bonus, not a separate hand shape."
+        },
+        {
+          "en": "Yakuman replaces ordinary han and fu. Supported examples include thirteen orphans, four concealed pungs, three dragon pungs, small or big four winds, all honors, all terminals, all green, four kongs and nine gates. Compatible yakuman can stack. To win four concealed pungs on a discard, the discard must complete the pair; a fourth pung completed by a discard is not concealed."
+        }
+      ]
+    },
+    {
+      "id": "table_fu",
+      "title": {
+        "en": "Riichi: fu for sets and waits"
+      },
+      "paragraphs": [
+        {
+          "en": "Han measure yaku and bonuses; fu measure features of the hand’s construction. A chow gives 0 fu. An ordinary pair also gives 0; a dragon, seat-wind or round-wind pair gives 2. This game still awards 2 fu when the same wind is both your seat and the round wind."
+        },
+        {
+          "en": "Pung and kong values depend on exposure and tile type:"
+        },
+        {
+          "en": "- Pung of simples, numbers 2–8: exposed 2 fu, concealed 4 fu."
+        },
+        {
+          "en": "- Pung of terminals or honors: exposed 4 fu, concealed 8 fu."
+        },
+        {
+          "en": "- Kong of simples: exposed 8 fu, concealed 16 fu."
+        },
+        {
+          "en": "- Kong of terminals or honors: exposed 16 fu, concealed 32 fu."
+        },
+        {
+          "en": "A pung completed by the winning discard counts as exposed for fu. Other pungs held in your hand stay concealed. Adding a fourth tile to an exposed pung makes an exposed kong."
+        },
+        {
+          "en": "Ordinary calculation starts at 20 fu. A closed discard win adds 10; self-draw adds 2. A pair wait, closed wait or edge wait adds 2. Edge means waiting for 3 with 1–2, or 7 with 8–9; a closed wait means, for example, 5 with 4–6. A two-sided wait such as 3 or 6 with 4–5 adds no fu."
+        },
+        {
+          "en": "Round the total up to a multiple of ten: 32 becomes 40. Seven pairs is always 25 fu. Pinfu self-draw is 20 fu without the extra 2 for self-draw. Any other hand that would have only 20 receives a minimum of 30."
+        },
+        {
+          "en": "For example, 20 base, 10 for a closed discard win, 4 for a concealed pung of fives and 2 for a dragon pair total 36, rounded to 40 fu. You still need a yaku: fu alone cannot make the hand eligible to win."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_payments",
+      "title": {
+        "en": "Riichi: converting han and fu to points"
+      },
+      "paragraphs": [
+        {
+          "en": "For an ordinary win the base is fu multiplied by 2 to the power of han plus 2, capped at 2000. With 1 han and 30 fu it is 30 times 8, or 240. Round each final payment up to hundreds."
+        },
+        {
+          "en": "On a discard, a non-dealer winner receives four bases from the discarder; a dealer receives six. On self-draw, a non-dealer receives two bases from the dealer and one from each other player. When the dealer wins, everyone pays two bases."
+        },
+        {
+          "en": "For 1 han 30 fu without bonuses, a non-dealer wins 1000 on a discard, or 500 from the dealer and 300 from each other opponent on self-draw, totaling 1100. A dealer wins 1500 on a discard or 500 from each opponent, also 1500."
+        },
+        {
+          "en": "- Mangan: 5 han or reaching the base cap; this game also includes 3 han 60 fu and 4 han 30 fu. Discard payments are 8000 for a non-dealer or 12,000 for a dealer."
+        },
+        {
+          "en": "- Haneman: 6–7 han, respectively 12,000 or 18,000 on a discard."
+        },
+        {
+          "en": "- Baiman: 8–10 han, respectively 16,000 or 24,000."
+        },
+        {
+          "en": "- Sanbaiman: 11–12 han, respectively 24,000 or 36,000."
+        },
+        {
+          "en": "- Yakuman or at least 13 han: respectively 32,000 or 48,000. Multiple compatible yakuman multiply that payment."
+        },
+        {
+          "en": "Each honba adds 300 to a discard payment or 100 from each opponent on self-draw. Riichi deposits are awarded to the winner in addition. Honba increases after a draw or dealer repeat and resets after another player wins."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_match",
+      "title": {
+        "en": "Riichi — Hands and match length"
+      },
+      "paragraphs": [
+        {
+          "en": "The default is four players and East and South rounds, with 30,000 starting points each. Everyone completes a dealer period in East, then in South: at least eight hands, with dealer continuations adding more. Payments and accepted Riichi deposits change the balances during the match."
+        },
+        {
+          "en": "The dealer repeats after a dealer win or an exhaustive draw with a tenpai dealer."
+        },
+        {
+          "en": "On a wall draw, 3000 points move from noten to tenpai hands, unless everyone or nobody is tenpai. After each hand everyone confirms readiness. The selected rounds decide the end; this version does not stop early for a negative score or a leading final dealer. Highest final points wins, with tied highest scores a draw."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_variants",
+      "title": {
+        "en": "Riichi — three-player variant and match length"
+      },
+      "paragraphs": [
+        {
+          "en": "Choose match length in the game options before play. The following shorter settings change how many hands the match contains, not the rules for completing a winning hand."
+        },
+        {
+          "en": "One hand ends after one win or wall draw. East round gives each player a dealer period: at least four hands with four players or three in sanma. East and South gives two such rounds: at least eight or six hands. The dealer repeats after winning, or after a draw when tenpai, so the actual count may be larger."
+        },
+        {
+          "en": "The seat wind follows the current dealer: East, South, West, then North with four players. The round wind stays East until everyone has completed a dealer period, then becomes South in a two-round match. Value-wind sets may therefore score differently later. Sanma removes characters 2–8 and does not provide a separate North extraction action in this version."
+        },
+        {
+          "en": "In sanma you cannot claim Chow, but you may form sequences from your own numbered tiles."
+        },
+        {
+          "en": "In sanma the absent fourth player does not pay, and that share is not redistributed. Self-draw can therefore earn less than with four players. Draw settlements divide 2000 between tenpai and noten players, instead of 3000 with four players."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_aim",
+      "title": {
+        "en": "MCR — Aim and winning conditions"
+      },
+      "paragraphs": [
+        {
+          "en": "Four players try to finish a winning hand first. The usual shape is four sets and a pair, with at least 8 fan before flower bonuses. Fan are the value of compatible scoring patterns. A hand win earns a payment; the match winner is the player with the highest combined balance."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_terms",
+      "title": {
+        "en": "MCR — How the terms work"
+      },
+      "paragraphs": [
+        {
+          "en": "You play against the other players. Tiles in your hand are yours to arrange into a winning pattern; you do not remove matching pairs from a layout as in Solitaire. A hand is one deal and its play. A match may contain many hands."
+        },
+        {
+          "en": "- A tile is one piece, such as bamboo 5. Its kind is its suit and number, or its particular wind or dragon. There are four copies of each ordinary kind."
+        },
+        {
+          "en": "- Suits are characters, bamboo and circles, numbered 1–9. Different suits do not mix in one sequence. Terminals are 1 and 9; simples are 2–8."
+        },
+        {
+          "en": "- Honors are East, South, West and North winds, and white, green and red dragons. They have no number and cannot form a sequence."
+        },
+        {
+          "en": "- A chow or chi is three consecutive numbers in one suit: bamboo 3, 4 and 5. Bamboo 3, circles 4 and bamboo 5 do not qualify. Nor do 8, 9 and 1 of one suit."
+        },
+        {
+          "en": "- A pung, also written pong or pon, is three identical tiles, such as three red dragons. Three fives from different suits are not a pung."
+        },
+        {
+          "en": "- A kong or kan is four identical tiles. You must declare it through the kong action; simply holding four copies does not declare a kong. It is one set, with an extra replacement draw."
+        },
+        {
+          "en": "- A pair is two identical tiles. A set is a chow, pung or kong. An ordinary winning hand needs four sets and one pair, not merely several pairs or a large number of tiles of one suit."
+        },
+        {
+          "en": "- The wall is the supply of tiles you draw from. Drawing adds a tile to your hand; discarding removes one tile from your hand and offers it to opponents."
+        },
+        {
+          "en": "- A closed hand has no sets claimed from opponents. Claiming a chow, pung or exposed kong opens it. Sets formed entirely from your own tiles can stay concealed. A declared concealed kong keeps your hand closed."
+        },
+        {
+          "en": "- A self-draw win uses the tile you have just drawn. A discard win uses an opponent’s discarded tile to finish your hand. Claim Mahjong to win; do not discard the winning tile first."
+        },
+        {
+          "en": "- A wait is a tile kind that would finish your hand. With bamboo 4–5 you might wait for bamboo 3 or 6. Being one tile from a complete shape is called tenpai. A complete shape must still satisfy this variant’s scoring conditions."
+        },
+        {
+          "en": "- MCR means Mahjong Competition Rules. Fan measure scoring patterns. You need at least 8 fan before flower bonuses. Fan are then used in the payment calculation; they are not the same as your total match score."
+        },
+        {
+          "en": "- A scoring pattern describes a feature of the whole hand or its sets. Some patterns can combine; others already include a smaller pattern and exclude its extra points. Do not sum every name that seems to fit."
+        },
+        {
+          "en": "- Flowers and seasons are exposed and replaced automatically. Each adds 1 fan to a valid win but does not help reach the required 8. A 7-fan hand plus a flower cannot win."
+        },
+        {
+          "en": "- Seat wind is your role relative to the dealer; round wind is shared by everyone. A pung of your seat wind or round wind is a scoring pattern. Seasons are bonus tiles, unrelated to the four wind rounds."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_start",
+      "title": {
+        "en": "MCR — Starting the hand"
+      },
+      "paragraphs": [
+        {
+          "en": "Balances start at zero; winning hands add payments and losing them subtracts payments."
+        },
+        {
+          "en": "The dealer starts with 14 tiles and discards first. Everyone else starts with 13. On a normal turn, choose Draw a tile and press Enter. Drawing is an action; moving through the tile list does not draw."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_play",
+      "title": {
+        "en": "MCR — Your first turns"
+      },
+      "paragraphs": [
+        {
+          "en": "Before your first discard, read your hand with Up and Down. Think of numbered tiles as possible sequences, identical tiles as possible pungs, and one pair as your eventual pair. You do not select all four sets in the interface: sets left in your hand are recognised when you declare a win."
+        },
+        {
+          "en": "While you browse game fields, a new turn focuses Draw a tile. After drawing, focus moves to the newly drawn tile in your hand, marked just drawn. This does not discard it. You can move to another tile with the arrows or keep the new tile and discard an old one."
+        },
+        {
+          "en": "To discard, find one tile in the available-to-discard list and press Enter. You lose that copy from your hand. If you hold several identical copies, discarding one does not remove the others."
+        },
+        {
+          "en": "After another player discards, listen to the tile and read the response list. Pass means you do not claim that tile; it does not end your participation or concede the hand. If everyone passes, the next player draws. Passing several times does not mean you must draw each time: it may still be another player’s turn."
+        },
+        {
+          "en": "The first field describes the current situation. All available actions follow it: responses, Draw, Declare Mahjong, kong choices or Riichi when applicable. Your tile lists come after those actions. Tab and Shift+Tab move between fields; arrows choose within a list, and Enter confirms. An unavailable action is omitted."
+        },
+        {
+          "en": "Read Exposed sets to inspect everyone’s declared sets; each entry names its owner. Discards records which tiles each player has discarded. These fields help you see what is already used and what opponents may need. You can review them without submitting a move."
+        },
+        {
+          "en": "If a tile completes an eligible winning hand, choose Declare Mahjong rather than discarding it or passing. The game checks both the shape and this variant’s scoring requirements. If the wall runs out first, the hand is a draw; nobody wins merely for having the most nearly complete hand."
+        },
+        {
+          "en": "Press S to hear the current points of every player. Press M to hear how many tiles remain in the wall for drawing. These are read-only announcements: they do not draw, discard or pass, and do not reveal other hands."
+        },
+        {
+          "en": "W reads a legal winning hand value: fan or han and fu, and the points gained. It does not estimate an incomplete hand. Before a Riichi win it excludes hidden ura-dora, so the final value may be higher. U reads your exposed sets, Shift+U those of the other players, and R the hand number, winds and current situation. In Riichi, I reads dora indicators and tiles, your dora count, Riichi declarations, deposits, honba and your furiten restriction. These keys only read information."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_build",
+      "title": {
+        "en": "MCR — What you must build to win"
+      },
+      "paragraphs": [
+        {
+          "en": "Consider this complete shape: bamboo 2–3–4; circles 4–5–6; three characters 7; three red dragons; two West winds. The first two sets are chows, the next two are pungs, and the winds are the pair. Each tile belongs to only one of these groups."
+        },
+        {
+          "en": "Now remove bamboo 4 from that example. You hold 13 tiles and need bamboo 4 to complete the first chow. If you draw it, it may allow self-draw Mahjong. If an opponent discards it, Mahjong may appear in your responses. In either case you must also meet the scoring requirement below."
+        },
+        {
+          "en": "To improve an incomplete hand, keep useful links. With 4–5 you can use 3 or 6; with 4–6 only 5 joins those two into a chow. A pair can become a pung if you find its third copy, or remain the pair of your final hand. An isolated tile with no matching or neighbouring tiles is often a candidate to discard."
+        },
+        {
+          "en": "You do not have to declare a set formed in your own hand as soon as it appears. Keep your private tiles flexible. Once you claim and expose a set, those tiles stay together and cannot later be discarded separately. Claim only when it helps your intended winning hand."
+        },
+        {
+          "en": "Four sets and a pair are the normal shape, but you must also reach 8 fan without flowers. A dragon pung alone gives only 2, so it does not automatically make an otherwise ordinary hand eligible. Plan a combination of compatible patterns before opening your hand."
+        },
+        {
+          "en": "Seven pairs is a separate shape worth 24 fan. This Chinese profile permits four identical undeclared tiles as two pairs. Thirteen orphans is worth 88. MCR also has knitted special shapes, so ordinary sets are not its only possible winning form; you can begin with the normal four-set shape."
+        },
+        {
+          "en": "Four three-tile sets plus a pair normally make 14 physical tiles. A declared kong has one extra tile but still counts as one set: one kong makes the complete hand 15 tiles, two make 16. Flowers and seasons do not belong to that count. You do not discard an extra tile merely to force a kong hand back to 14."
+        },
+        {
+          "en": "A knitted straight is a special nine-tile group: 1–4–7 of one suit, 2–5–8 of a second and 3–6–9 of the third. For example characters 1–4–7, circles 2–5–8 and bamboo 3–6–9. Add one ordinary set and one pair to finish the hand. The suit assignments can be exchanged, but each number group stays in a single different suit. The knitted straight pattern is worth 12 fan."
+        },
+        {
+          "en": "Another special shape uses 14 different tiles, without a pair: take numbers from one such knitted nine-tile pattern and combine them with five, six or seven different honors. No tile repeats. With all seven honors it is Greater Honors and Knitted Tiles for 24 fan; with five or six it is Lesser Honors and Knitted Tiles for 12. These are alternatives to ordinary four-set hands."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_claims",
+      "title": {
+        "en": "MCR — Claiming tiles and declaring kongs"
+      },
+      "paragraphs": [
+        {
+          "en": "When another player discards, the response list offers only legal choices. Select Pass if you do not want the tile. To claim it, choose Chow, Pung, Kong or Declare Mahjong and press Enter. A chow may be claimed only from the player immediately before you. A pung or kong can use a discard from any opponent."
+        },
+        {
+          "en": "A winning claim takes priority over a set claim; pung and kong take priority over chow. If several players can win on the same tile, the first in turn order after the discarder wins. The hand waits for every required response. After claiming chow or pung, discard without drawing; the claimed set stays exposed."
+        },
+        {
+          "en": "After declaring a kong, draw a replacement tile before discarding. If you hold all four copies, the concealed-kong list lets you declare them together. You may also add your fourth tile to an exposed pung. Opponents can claim a win on that added tile before the kong is completed."
+        },
+        {
+          "en": "Suppose you have two white dragons and a third is discarded. Pung exposes them and secures a 2-fan dragon pattern, but you still need the rest of your hand to reach 8. Claiming a tile changes which concealed-hand patterns remain available. A legal Pung button does not promise that your eventual hand will meet the winning minimum."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_practice",
+      "title": {
+        "en": "MCR — Planning your hand"
+      },
+      "paragraphs": [
+        {
+          "en": "A concrete route is All Pungs for 6 fan plus a dragon pung for 2. For example, pungs of characters 2, circles 4, bamboo 6 and white dragons, with a pair of characters 5, meet at least 8 fan even when the pungs are exposed. Those are four different pungs, not one mixed set of numbers."
+        },
+        {
+          "en": "A high-value route is Seven Pairs for 24 fan, keeping your hand unclaimed. By contrast, one suit with honors gives only 6 fan, so that pattern alone is below the minimum. The score table helps you choose a plan, rather than collect sets without knowing how they could win."
+        },
+        {
+          "en": "For payment, every opponent pays a base 8 points. On a discard win, the discarder also pays the hand’s fan including flowers; on self-draw everyone pays that extra value. An 8-fan hand with no flowers therefore wins 32 on a discard or 48 on self-draw. The game performs this calculation."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_sets",
+      "title": {
+        "en": "MCR: exposed and concealed sets"
+      },
+      "paragraphs": [
+        {
+          "en": "MCR awards fan for conditions met by the winning hand, without Riichi fu. An ordinary chow or pung of simples has no fixed award by itself. Chows can form scoring patterns together, while a pung can score for its tile type or as part of a larger pattern."
+        },
+        {
+          "en": "- One kong: exposed 1 fan, concealed 2 fan."
+        },
+        {
+          "en": "- Two kongs: both exposed 4 fan, one exposed and one concealed 6, both concealed 8. These replace the individual kong awards."
+        },
+        {
+          "en": "- Three kongs give 32 fan and four give 88. Do not also add awards for fewer kongs."
+        },
+        {
+          "en": "- Two concealed pungs give 2 fan, three give 16, four give 64. A concealed kong also counts towards concealed pungs. A pung completed by the winning discard is not concealed."
+        },
+        {
+          "en": "- A dragon pung or kong gives 2 fan. Your seat-wind pung or kong gives 2 and the round wind another 2. A pung of terminals or a non-value wind gives 1."
+        },
+        {
+          "en": "- Four pungs or kongs give 6 fan. One suit with honors gives 6, one suit without honors 24, seven pairs 24 and thirteen orphans 88."
+        },
+        {
+          "en": "- Four chows with a numbered pair and no honors give 2 fan. Two identical chows in one suit give 1; chows 1–2–3 and 7–8–9 in the same suit also give 1."
+        },
+        {
+          "en": "A closed discard win gives 2 fan; a fully concealed self-draw gives 4. Self-draw with an open hand gives 1. Do not automatically add every matching description: a higher pattern can include and exclude a lower one. For example, two concealed kongs worth 8 do not receive another 2 merely for those same two concealed pungs."
+        },
+        {
+          "en": "Flowers and seasons each give 1 fan but cannot help reach the required 8. A 7-fan hand plus one flower still cannot claim Mahjong. The game selects compatible patterns; inspect the result details to see the awarded value."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_match",
+      "title": {
+        "en": "MCR — Hands and match length"
+      },
+      "paragraphs": [
+        {
+          "en": "The default match has four wind rounds and exactly sixteen hands, with balances starting at zero. East, South, West and North each last four hands. The dealer always changes after a hand, so a dealer win or a draw does not add an extra repeat."
+        },
+        {
+          "en": "Seat wind changes with the dealer, while round wind changes only after the four dealer periods. This changes which wind pungs score. Seasons remain separate bonus tiles. After each hand inspect the result and score; everyone must confirm readiness before the next hand."
+        },
+        {
+          "en": "A draw gives no hand points in MCR. After all sixteen hands the highest balance wins; equal highest balances tie. Winning many small hands and losing one very expensive hand can still leave you behind, so a hand win and a match win are different goals."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_variants",
+      "title": {
+        "en": "MCR — Match length options"
+      },
+      "paragraphs": [
+        {
+          "en": "Choose match length in the game options before play. The following shorter settings change how many hands the match contains, not the rules for completing a winning hand."
+        },
+        {
+          "en": "One hand ends after one win or wall draw. Four wind rounds means sixteen hands: four with round wind East, four South, four West, four North. Within each round every player deals once. The dealer always advances, even after winning or a draw, so these sixteen hands do not grow through dealer repeats."
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "en": "Keyboard reference"
+      },
+      "paragraphs": [
+        {
+          "en": "Tab: next field."
+        },
+        {
+          "en": "Shift+Tab: previous field."
+        },
+        {
+          "en": "Up/Down: choose a tile or action in a list."
+        },
+        {
+          "en": "Enter: confirm the selected action or discard."
+        },
+        {
+          "en": "S: read every player’s current points."
+        },
+        {
+          "en": "M: read remaining wall tiles; in Solitaire, remaining layout tiles."
+        },
+        {
+          "en": "Left/Right (Solitaire): move between columns."
+        },
+        {
+          "en": "Up/Down (Solitaire): move between rows."
+        },
+        {
+          "en": "1 (Solitaire): bottom layer."
+        },
+        {
+          "en": "2 (Solitaire): second layer in Terraces."
+        },
+        {
+          "en": "3 (Solitaire): top layer in Terraces."
+        },
+        {
+          "en": "D (Solitaire): read layer, row and column."
+        },
+        {
+          "en": "Enter (Solitaire): mark the first tile or remove a matching second tile."
+        },
+        {
+          "en": "Escape (Solitaire): cancel the marked tile."
+        },
+        {
+          "en": "D (table games): read the tile awaiting your response."
+        },
+        {
+          "en": "W (table games): legal winning hand value and points gained."
+        },
+        {
+          "en": "U (table games): your exposed sets."
+        },
+        {
+          "en": "Shift+U (table games): other players exposed sets."
+        },
+        {
+          "en": "R (table games): hand number, winds and current situation."
+        },
+        {
+          "en": "I (Riichi): dora, declarations, deposits, honba and your furiten."
+        }
+      ]
+    }
+  ],
+  "option_chapters": {
+    "variant": "table_aim",
+    "layout": "layout",
+    "riichi_seats": "table_riichi_variants",
+    "hong_kong_winds": "table_hk_variants",
+    "riichi_winds": "table_riichi_variants",
+    "mcr_winds": "table_mcr_variants"
+  }
+}

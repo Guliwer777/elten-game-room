@@ -41,13 +41,27 @@ This is a read-only document with a heading for each version. H moves to the nex
 
 ## What you can play
 
-Power Games currently includes 34 games:
+Power Games currently includes 35 games:
 
 - Card games: 3-5-8, 99, 1000 miles, Biblios, Makao, Spades, Poker, Rummy, Thousand, UNO, War and Scientific War.
 - Board and strategy games: Ludo, Four in a Row, Tic Tac Toe, Mancala, Monopoly, Reversi, Battleships, Chess, Checkers and Duck Racing.
 - Dice and dominoes: Cat, head, tail, Dominos, Farkle, Mexican Train and Yahtzee.
 - Words and knowledge: Krowa, Categories, Quiz Party, Scrabble and Taboo.
 - Audio action games: Axel Pong and Audio Ball.
+
+Mahjong has one entry in the game list. Choose Solitaire, Hong Kong, Riichi or MCR first; the options for that variant appear below it. Solitaire is solo. Hong Kong and MCR need four players; Riichi needs four or three in sanma. At the table, use Ctrl+O to add bots for missing seats. In a longer match, everyone confirms readiness after each hand. Open the rules and controls with Ctrl+F1.
+
+Sounds distinguish dealing, drawing and discarding a tile, declaring a set and ending a hand. Solitaire also sounds pair removal and undo. Passing and browsing tiles are silent. Spoken descriptions still identify the tile and result.
+
+While responding to a tile, D reads the tile to which Pass, Chow, Pung, Kong or Mahjong applies. It does not change or submit your choice. In Solitaire, D still reads coordinates.
+
+W reads a legal winning hand value: fan or han and fu, and the points gained. It does not estimate an incomplete hand. Before a Riichi win it excludes hidden ura-dora, so the final value may be higher. U reads your exposed sets, Shift+U those of the other players, and R the hand number, winds and current situation. In Riichi, I reads dora indicators and tiles, your dora count, Riichi declarations, deposits, honba and your furiten restriction. These keys only read information.
+
+Press S to hear the current points of every player. Press M to hear how many tiles remain in the wall for drawing. These are read-only announcements: they do not draw, discard or pass, and do not reveal other hands. In Solitaire, S reads removed pairs and M remaining layout tiles.
+
+The book teaches Solitaire, Hong Kong, Riichi and MCR in sequence; each table variant explains its aim, terms, preparation, play, scoring and match length. All available game actions follow the situation description and precede your tiles. In game fields, a new personal turn focuses Draw a tile, then drawing selects the new tile. Focus alone never submits a move.
+
+In Solitaire you choose individual tiles: arrows move between rows and columns, 1–3 switch layers, and D reads coordinates. Enter marks the first tile and confirms a matching second tile; Escape cancels the selection.
 
 Many games have several variants. The choices, player counts, bot support and additional settings depend on the game. Detailed rules, scoring and controls are described in the program's “Game rules” section.
 

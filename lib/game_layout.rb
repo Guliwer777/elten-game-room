@@ -197,6 +197,8 @@ module GameRoomLayout
       phase: :active, own_table: false, surface_state: nil, focus_location: nil,
       history_index: nil, users_index: nil, reset_surface: false, new_game: false)
       raise ArgumentError, "a game screen requires a view specification" if !view_spec.is_a?(ViewSpec)
+      previous_decision_key = @view_spec&.decision_focus_key
+      @decision_focus_changed = false
 
       # Chat, history and people belong to the room, not the match. A remote
       # start/end must not take focus from them or interrupt a text selection.
@@ -251,17 +253,9 @@ module GameRoomLayout
       @waiting_status.options = [waiting_text] if @waiting_status.options != [waiting_text]
       @waiting_status.index = 0
       reconcile_status_command_buttons(view_spec.status_commands)
-      status_actions = view_spec.status_commands.filter_map do |command|
-        @status_command_buttons[command.id.to_s]
-      end
-      status_fields = if phase == :waiting
-        (own_table ? [@primary_button] : [@waiting_status]) + status_actions
-      elsif phase == :finished
-        (own_table && view_spec.restartable ? [@restart_button] : [@waiting_status]) + status_actions
-      else
-        []
-      end
+      status_fields = phase_status_fields(view_spec, phase, own_table)
       game_fields = @surface == nil ? [] : @surface.fields
+      location = decision_focus_location(view_spec, location, game_fields, phase, new_game, previous_decision_key)
       trailing_fields = @surface.respond_to?(:fields_for_parts) ? @surface.fields_for_parts(view_spec.trailing_parts) : []
       section_fields = {
         status: status_fields,
@@ -290,6 +284,39 @@ module GameRoomLayout
       self
     end
 
+    private def phase_status_fields(view_spec, phase, own_table)
+      status_actions = view_spec.status_commands.filter_map do |command|
+        @status_command_buttons[command.id.to_s]
+      end
+      if phase == :waiting
+        (own_table ? [@primary_button] : [@waiting_status]) + status_actions
+      elsif phase == :finished
+        (own_table && view_spec.restartable ? [@restart_button] : [@waiting_status]) + status_actions
+      else
+        []
+      end
+    end
+
+    private def decision_focus_location(view_spec, location, game_fields, phase, new_game, previous_decision_key)
+      # A new decision may select its actionable control, once per boundary.
+      # Never interrupt room text, or refocus for another participant's reply.
+      if phase == :active && location[0] == :game && view_spec.decision_focus_key != nil &&
+          (new_game || previous_decision_key != view_spec.decision_focus_key) &&
+          @surface.respond_to?(:fields_for_parts)
+        target = @surface.fields_for_parts([view_spec.decision_focus_part.to_s]).first
+        if target && game_fields.include?(target)
+          index = view_spec.decision_focus_index
+          if index.is_a?(Integer) && index >= 0 && target.respond_to?(:index=) &&
+              target.respond_to?(:options) && index < target.options.length
+            target.index = index
+          end
+          location = [:game, game_fields.index(target)]
+          @decision_focus_changed = true
+        end
+      end
+      location
+    end
+
     private def transition_focus_location(previous_location, phase, phase_transition)
       keep_room_focus = [:chat, :history, :users].include?(previous_location.to_a.first)
       if phase_transition && !keep_room_focus
@@ -302,6 +329,8 @@ module GameRoomLayout
     def focus_location
       @field_locations&.[](@form.index.to_i)
     end
+
+    def decision_focus_changed?; @decision_focus_changed == true; end
 
     def focus_users
       @form.index = form_index_for_location([:users, 0])

@@ -90,11 +90,10 @@ class GameScreen
       layout.back_button.label = _("Leave")
       layout.activity_cursor = event_presenter.last_seen_activity_id
       @chat_control = layout.chat
-      # Moving to Restart/Waiting after the final event must preserve the result
-      # announcements, but the newly focused status should still be spoken after
-      # them. speech_wait below queues that focus instead of letting it interrupt.
+      # New decision controls and Restart/Waiting must follow the event speech.
+      # speech_wait queues their focus instead of cutting off the tile/result.
       room_focus_retained = phase_changed && [:chat, :history, :users].include?(layout.focus_location.to_a.first)
-      announce_finished_focus = phase_changed && phase == :finished && !room_focus_retained
+      announce_finished_focus = (phase_changed && phase == :finished && !room_focus_retained) || layout.decision_focus_changed?
       silent_entry = room_focus_retained || (@suppress_surface_focus && !announce_finished_focus)
       @suppress_surface_focus = false
       cursor_message = layout.take_cursor_announcement

@@ -217,5 +217,13 @@
     "puncture_proof_cards": "custom_deck",
     "driving_ace_cards": "custom_deck",
     "instant_repair_cards": "custom_deck"
+  },
+  "mahjong": {
+    "variant": "table_aim",
+    "layout": "layout",
+    "riichi_seats": "table_riichi",
+    "hong_kong_winds": "table_options",
+    "riichi_winds": "table_options",
+    "mcr_winds": "table_options"
   }
 }

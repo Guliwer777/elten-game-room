@@ -1,0 +1,514 @@
+{
+  "game": "mahjong",
+  "seed": 137,
+  "players": [
+    "Alice"
+  ],
+  "options": {
+    "variant": "solitaire",
+    "layout": "terraces",
+    "bot_delay": 0,
+    "seats": 1,
+    "match_winds": 0
+  },
+  "steps": [
+    {
+      "events": 1,
+      "replay": "65886b4edd66c8e3d86365ced4014f9c81db181718904f5f50dbc154774e7fff",
+      "actor": "Alice",
+      "legal": "73f03eeaff13fc8c7233aa0a361e4f1d5f6bb284673fed0ce7d6322f347ee37f",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:1",
+        "answer": "11:12"
+      }
+    },
+    {
+      "events": 2,
+      "replay": "92bed39beabcc7a35570df45301b3138086df891a346d9c5ddd6d4e4ef4d51c4",
+      "actor": "Alice",
+      "legal": "cd1a1022b880579b7f90fc5bd3f1ace59563dc9ecb27907556d5c1162636fc73",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:2",
+        "answer": "10:35"
+      }
+    },
+    {
+      "events": 3,
+      "replay": "aa344dff25de06cd6048c5ed7bf4fa3dee514d85650f8a994133e8bfdc8a5dd1",
+      "actor": "Alice",
+      "legal": "719bd20810a4a679e43993832273701ba63c8e20d08fa2ffa6bcf64efec40e4f",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:3",
+        "answer": "0:9"
+      }
+    },
+    {
+      "events": 4,
+      "replay": "196ba79845f8648115327adc4eba3f8e57bf6e87f62821dda41e6bc7682cb02e",
+      "actor": "Alice",
+      "legal": "d3a029e9b041993b197e3cd5c6919fe63f58edb7217ded375d30de42bbad0297",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:4",
+        "answer": "1:108"
+      }
+    },
+    {
+      "events": 5,
+      "replay": "d4938b6f0529fbdbdee84da09cc088b48830d5caa4c1cb118f8b030aedb8bcd1",
+      "actor": "Alice",
+      "legal": "2566ec023d7be99f5da95d5b20c9ba7a102c861afd320aa4cc3cb58aa65436dc",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:5",
+        "answer": "8:34"
+      }
+    },
+    {
+      "events": 6,
+      "replay": "77da62242ed9531ae2d5398008a800e4215ac8efa438e1c69b5164dcb6bd636a",
+      "actor": "Alice",
+      "legal": "cfd3da63c9fc8f6d28807b51f5cc68c4515a06b75c68f7a4c36a0d89c39ebf1b",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:6",
+        "answer": "13:72"
+      }
+    },
+    {
+      "events": 7,
+      "replay": "1765d644967dd1b3e710c23e47fdf6500bef117a12e862d100cb47cc70f2cfe8",
+      "actor": "Alice",
+      "legal": "c10155fa8c4957c340f60b839fb88abf1ff941fea8a9e21abcf335a7a63a6cf5",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:7",
+        "answer": "7:73"
+      }
+    },
+    {
+      "events": 8,
+      "replay": "bb063e8935c5b00fe06032482ffe2e07d58f139aca55bc251bbe3fdb35b4029d",
+      "actor": "Alice",
+      "legal": "b05ef7d4b4f35c90cf0be9eb03cedd2a624aba1d991df82696004784022876d5",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:8",
+        "answer": "14:23"
+      }
+    },
+    {
+      "events": 9,
+      "replay": "133ef95d79ca9673dde3f1c15a097a74dda5f43fc8d6bc28386ef03a3357a21c",
+      "actor": "Alice",
+      "legal": "af4c05b862c6dc9ed0c79fde4601634b249598dba6ba835a14d1c87a2da03aa6",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:9",
+        "answer": "24:119"
+      }
+    },
+    {
+      "events": 10,
+      "replay": "b70cdf6accbb86ec03fbe5b887e4b99f3a3745a5b558a2849bf481c53fca44c9",
+      "actor": "Alice",
+      "legal": "fc5a19bf26dda502e99b0d4ebb47c081773eda108577a9cbabeca80ebbda3cc5",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:10",
+        "answer": "36:126"
+      }
+    },
+    {
+      "events": 11,
+      "replay": "3638ce5e22e25de4e9b5823e61ef428bea0373b0d5106a7298e574c1ef18408b",
+      "actor": "Alice",
+      "legal": "f6305b739fb03a475d7a6416a15e0e5e53b5f596ddaed5560c7d6d6e254dff5b",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:11",
+        "answer": "47:59"
+      }
+    },
+    {
+      "events": 12,
+      "replay": "034233231905974668dd0a6e46741a68701327fd8efcbd41ac8e82eb2c6be9d2",
+      "actor": "Alice",
+      "legal": "a91b48b217e1501bbfc30262b82c51484dca2fc4c4d65ccd0d1153398aef4ec5",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:12",
+        "answer": "60:95"
+      }
+    },
+    {
+      "events": 13,
+      "replay": "bf4e88d885f890db6069d4a6b518b0278ea5e358ec4578761f95684a57ba3921",
+      "actor": "Alice",
+      "legal": "e8900a620148ae3af5887b125e7d4bdaf0ca0aab15436d557dc0bd00acb8d193",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:13",
+        "answer": "25:61"
+      }
+    },
+    {
+      "events": 14,
+      "replay": "df6d2f65401b244942d9f840aa4d7f7cc4c7b99e52036e94d602fe43348056ff",
+      "actor": "Alice",
+      "legal": "24d8e0dc649d9d0da63d4e57b049359b06dba99cf87af3d750c5a27adf38f895",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:14",
+        "answer": "26:33"
+      }
+    },
+    {
+      "events": 15,
+      "replay": "ef8f472bbedba3c213964be4c99215767a1ae3cb98c4ffc8a33c941d01958472",
+      "actor": "Alice",
+      "legal": "c58776039046bf40e33e496084d72fb3f4981fcd3e153bf89b1925303248265e",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:15",
+        "answer": "74:114"
+      }
+    },
+    {
+      "events": 16,
+      "replay": "944e801777fb3c5919160dd06079b15fc57662801dadd6597a51381e1008567a",
+      "actor": "Alice",
+      "legal": "031db4cb1b087507cf9910eeeb847a71f91f1ec00b0f97987c0427734e4db80c",
+      "rng": [
+        746,
+        407,
+        311,
+        408,
+        634,
+        440,
+        634,
+        52
+      ],
+      "action": {
+        "kind": "question",
+        "action": "submit",
+        "question_id": "mahjong-pairs:16",
+        "answer": "101:143"
+      }
+    }
+  ],
+  "final": {
+    "events": 17,
+    "replay": "5140c469300016081575668c089d3b1cc9c1922c6a6ae85e2ba9a6e638141339",
+    "actor": "Alice",
+    "legal": "01fc0a7dd409cdf673e5fb8e64ed84a8004f5c375f2b4789a4e93216ace9c616",
+    "rng": [
+      746,
+      407,
+      311,
+      408,
+      634,
+      440,
+      634,
+      52
+    ]
+  },
+  "session": {
+    "__id": 1,
+    "table_id": 1,
+    "game": "mahjong",
+    "options": "{\"variant\":\"solitaire\",\"layout\":\"terraces\",\"bot_delay\":0,\"seats\":1,\"match_winds\":0}",
+    "__players": [
+      "Alice"
+    ]
+  },
+  "events": [
+    {
+      "id": 1,
+      "sequence": 1,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":0,\"a\":\"deal\",\"r\":6784195186467229313}"
+    },
+    {
+      "id": 2,
+      "sequence": 2,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":1,\"a\":\"remove\",\"f\":11,\"s\":12}"
+    },
+    {
+      "id": 3,
+      "sequence": 3,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":2,\"a\":\"remove\",\"f\":10,\"s\":35}"
+    },
+    {
+      "id": 4,
+      "sequence": 4,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":3,\"a\":\"remove\",\"f\":0,\"s\":9}"
+    },
+    {
+      "id": 5,
+      "sequence": 5,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":4,\"a\":\"remove\",\"f\":1,\"s\":108}"
+    },
+    {
+      "id": 6,
+      "sequence": 6,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":5,\"a\":\"remove\",\"f\":8,\"s\":34}"
+    },
+    {
+      "id": 7,
+      "sequence": 7,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":6,\"a\":\"remove\",\"f\":13,\"s\":72}"
+    },
+    {
+      "id": 8,
+      "sequence": 8,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":7,\"a\":\"remove\",\"f\":7,\"s\":73}"
+    },
+    {
+      "id": 9,
+      "sequence": 9,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":8,\"a\":\"remove\",\"f\":14,\"s\":23}"
+    },
+    {
+      "id": 10,
+      "sequence": 10,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":9,\"a\":\"remove\",\"f\":24,\"s\":119}"
+    },
+    {
+      "id": 11,
+      "sequence": 11,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":10,\"a\":\"remove\",\"f\":36,\"s\":126}"
+    },
+    {
+      "id": 12,
+      "sequence": 12,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":11,\"a\":\"remove\",\"f\":47,\"s\":59}"
+    },
+    {
+      "id": 13,
+      "sequence": 13,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":12,\"a\":\"remove\",\"f\":60,\"s\":95}"
+    },
+    {
+      "id": 14,
+      "sequence": 14,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":13,\"a\":\"remove\",\"f\":25,\"s\":61}"
+    },
+    {
+      "id": 15,
+      "sequence": 15,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":14,\"a\":\"remove\",\"f\":26,\"s\":33}"
+    },
+    {
+      "id": 16,
+      "sequence": 16,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":15,\"a\":\"remove\",\"f\":74,\"s\":114}"
+    },
+    {
+      "id": 17,
+      "sequence": 17,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":16,\"a\":\"remove\",\"f\":101,\"s\":143}"
+    }
+  ]
+}

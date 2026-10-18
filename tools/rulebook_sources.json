@@ -83,6 +83,12 @@
     "source": "games/ludo.rb",
     "output": "games/generated/rulebooks/ludo.rb"
   },
+  "mahjong.json": {
+    "class": "MahjongRules",
+    "kind": "module",
+    "source": "games/mahjong_rules.rb",
+    "output": "games/generated/rulebooks/mahjong.rb"
+  },
   "makao.json": {
     "class": "Makao",
     "kind": "class",

@@ -1124,7 +1124,8 @@ class EltenGameRoom < Program
         game: game_id,
         owner: Session.name,
         game_options: JSON.generate(game_options),
-        private_table: privacy
+        private_table: privacy,
+        history_capacity: game.session_history_capacity(game_options)
       )
       activate_table_transport(created&.table)
       created
@@ -1290,6 +1291,7 @@ class EltenGameRoom < Program
     row = run_network_task(_("Preparing saved game")) do
       created = @lobby.create_table(name: saved["table_name"], game: saved["game"], owner: Session.name,
         game_options: saved["options"], private_table: saved["private"], resume_save_id: saved["id"],
+        history_capacity: game.session_history_capacity(game.options_from_json(saved["options"])),
         bot_count: saved["players"].count { |player| GameRoomParticipants.bot?(player) },
         bot_names: saved["players"].select { |player| GameRoomParticipants.bot?(player) }.map { |player| GameRoomParticipants.bot_name_token(player) },
         tournament_match: saved['tournament']&.slice('publication_ref','schedule_id','match_id','leg'))

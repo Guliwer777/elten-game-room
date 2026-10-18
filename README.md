@@ -60,9 +60,23 @@ następnego nagłówka, a Shift+H — do poprzedniego. Escape zamyka dokument.
 
 ## W co można zagrać
 
-Obecnie Power Games zawiera 34 gry:
+Obecnie Power Games zawiera 35 gry:
 
 - Karcianki: 3-5-8, 99, 1000 mil, Biblios, Makao, Piki, Poker, Remik, Tysiąc,
+Mahjong ma jedną pozycję na liście gier. W jego opcjach najpierw wybierz pasjansa, Hong Kong, Riichi albo MCR; poniżej pojawią się ustawienia tej odmiany. W pasjansa grasz sam. Hong Kong i MCR wymagają czterech graczy, a Riichi czterech lub trzech w sanmie; brakujące miejsca uzupełnisz botami przez Ctrl+O przy stole. Po rozdaniu dłuższego meczu każdy potwierdza gotowość do kolejnego. Zasady i obsługę otworzysz przez Ctrl+F1.
+
+Dźwięki rozróżniają rozdanie, dobranie i odrzucenie kamienia, wyłożenie układu oraz zakończenie rozdania. W pasjansie słychać zdjęcie pary i cofnięcie ruchu. Pas i samo przeglądanie kamieni są ciche. Opis słowny nadal podaje rodzaj kamienia i wynik.
+
+D podczas odpowiedzi na cudzy kamień odczytuje kamień, którego dotyczy Pas, Chow, Pung, Kong lub Mahjong. Nie zmienia wyboru ani nie zatwierdza odpowiedzi. W pasjansie D nadal odczytuje współrzędne.
+
+W odczytuje wartość legalnej wygranej: fan albo han i fu oraz przyrost punktów. Bez legalnej wygranej nie szacuje wartości niepełnej ręki. Przed wygraną w Riichi pomija ukryte ura-dora, więc końcowa wartość może być wyższa. U odczytuje twoje wyłożone układy, Shift+U układy pozostałych graczy, a R numer rozdania, wiatry i bieżącą sytuację. W Riichi I odczytuje wskaźniki i kamienie dora, liczbę twoich dora, zgłoszenia Riichi, depozyty, honba oraz blokadę furiten. Te klawisze tylko odczytują informacje.
+
+S odczytuje bieżące punkty wszystkich graczy. M podaje liczbę kamieni pozostałych do dobrania w murze. Te skróty tylko mówią: nie dobierają, nie odrzucają i nie pasują, ani nie ujawniają cudzych rąk. W pasjansie S odczytuje usunięte pary, a M pozostałe kamienie układu.
+
+Instrukcja opisuje kolejno pasjansa, Hong Kong, Riichi i MCR; każda odmiana stołowa opisuje cel, pojęcia, przygotowanie, przebieg, punktację i długość meczu. W grze wszystkie dostępne działania są zaraz za opisem sytuacji, przed twoimi kamieniami. Gdy jesteś w polach gry, nowa twoja tura ustawia fokus na Dobierz kamień, a po dobraniu zaznaczony jest nowy kamień. Samo przeniesienie fokusu nie wykonuje ruchu.
+
+W pasjansie sam wybierasz kamienie: strzałkami zmieniasz wiersz i kolumnę, klawiszami 1–3 warstwę, a D odczytuje współrzędne. Enter zaznacza pierwszy kamień i zatwierdza pasujący drugi; Escape anuluje zaznaczenie.
+
   UNO, Wojna i Wojna naukowa.
 - Gry planszowe i strategiczne: Chińczyk, Cztery w rzędzie,
   Kółko i krzyżyk, Mankala, Monopoly, Reversi, Statki, Szachy, Warcaby

@@ -1036,6 +1036,7 @@ module GameSurfaces
   require_relative "game_surfaces/duck_challenge_surface"
   require_relative "game_surfaces/pawn_track"
   require_relative "game_surfaces/piece_board"
+  require_relative "game_surfaces/layered_tile_board"
   require_relative "game_surfaces/dice_tray"
   require_relative "game_surfaces/roll_and_score"
   require_relative "game_surfaces/packet_cards"
@@ -1262,6 +1263,8 @@ module GameSurfaces
       FleetGrid.new(spec, state: state)
     when GridSpec
       GridBoard.new(spec, state: state)
+    when LayeredTileBoardSpec
+      LayeredTileBoard.new(spec, state: state)
     when CardTableSpec
       CardTable.new(spec, state: state)
     when MeldHandSpec

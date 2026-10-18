@@ -28,7 +28,14 @@ module GameRoomTest
       when Symbol then ['symbol', value.to_s]
       when String then value.dup.force_encoding(Encoding::UTF_8)
       when Numeric, TrueClass, FalseClass, NilClass then value
-      else raise TypeError, "Unsupported contract value: #{value.class}"
+      else
+        # Mahjong uses frozen value objects for ownership/round state. Include
+        # every stored field, without Marshal's process-specific alias bytes.
+        if value.class.name&.start_with?('GameRoomMahjong::') && value.frozen?
+          [value.class.name, value.instance_variables.sort.map { |key| [key.to_s, canonical(value.instance_variable_get(key))] }]
+        else
+          raise TypeError, "Unsupported contract value: #{value.class}"
+        end
       end
     end
 

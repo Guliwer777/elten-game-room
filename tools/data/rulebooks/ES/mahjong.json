@@ -1,0 +1,1056 @@
+{
+  "source": "games/mahjong_rules.rb",
+  "sections": [
+    {
+      "id": "table_aim",
+      "title": {
+        "es": "Mahjong: objetivo"
+      },
+      "paragraphs": [
+        {
+          "es": "En el Solitario predeterminado retiras parejas y ganas vaciando el diseño. Hong Kong, Riichi y MCR son juegos distintos contra otras personas: formas una mano ganadora y consigues puntos. Cada uno tiene su parte completa, empezando por objetivo y términos."
+        },
+        {
+          "es": "Los sonidos distinguen el reparto, el robo y el descarte de una ficha, la declaración de un grupo y el final de una mano. En Solitario también se oyen la retirada de una pareja y deshacer. Pasar y recorrer las fichas no producen sonidos. La descripción hablada sigue indicando la ficha y el resultado."
+        },
+        {
+          "es": "Al responder a una ficha, D lee la ficha a la que se refiere Pasar, Chow, Pung, Kong o Mahjong. No cambia ni confirma la elección. En Solitario, D sigue leyendo las coordenadas."
+        }
+      ]
+    },
+    {
+      "id": "aim",
+      "title": {
+        "es": "Solitario — términos y objetivo"
+      },
+      "paragraphs": [
+        {
+          "es": "Retira las 144 fichas por parejas coincidentes. Juegas en solitario y ganas al retirar la última pareja."
+        },
+        {
+          "es": "En el solitario, el diseño es toda la disposición de fichas. Una pareja son dos piezas que coinciden; una capa es un nivel de altura; las filas van horizontalmente y las columnas verticalmente. Una ficha libre no tiene otra encima y tiene abierto al menos un lado, izquierdo o derecho. Puede estar visible y bloqueada por ambos lados."
+        },
+        {
+          "es": "Aquí no formas chows, pungs ni kongs ni cuentas fan, han o yaku. Esos términos pertenecen a los juegos contra otras personas. En esta variante ganas retirando todas las parejas del diseño."
+        }
+      ]
+    },
+    {
+      "id": "tiles",
+      "title": {
+        "es": "Solitario: Fichas coincidentes y libres"
+      },
+      "paragraphs": [
+        {
+          "es": "Una pareja reúne dos fichas del mismo palo y número, dos vientos iguales o dos dragones iguales. Dos flores cualesquiera coinciden entre sí, al igual que dos estaciones cualesquiera. Una flor no forma pareja con una estación."
+        },
+        {
+          "es": "Las dos fichas deben estar libres: ninguna ficha puede cubrirlas desde arriba y cada una debe tener libre su lado izquierdo o derecho. Una ficha visible puede seguir bloqueada por ambos lados. Las fichas cubiertas se anuncian sin revelar su valor."
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": {
+        "es": "Solitario: Elegir una pareja"
+      },
+      "paragraphs": [
+        {
+          "es": "En Fichas del diseño, Izquierda y Derecha recorren las columnas; Arriba y Abajo recorren las filas. Pulsa 1, 2 o 3 para cambiar de capa en Terrazas; el diseño plano solo tiene la capa 1. Una capa indica altura, no una fila. Pulsa D para oír capa, fila y columna, numeradas por separado en cada capa."
+        },
+        {
+          "es": "Cada ficha visible indica si está libre por la izquierda, por la derecha, por ambos lados o bloqueada por ambos lados. Una ficha cubierta no revela su identidad. Las casillas vacías permanecen tras retirar fichas, de modo que las coordenadas de las demás no cambian."
+        },
+        {
+          "es": "Busca una ficha libre y pulsa Enter para marcarla. Después busca otra ficha libre que forme pareja y pulsa Enter para retirar ambas. La primera selección no retira nada. Si la segunda no coincide, la primera sigue marcada. Pulsa Enter otra vez sobre la primera, o Escape, para cancelar. El juego no te muestra una lista de parejas resueltas."
+        },
+        {
+          "es": "Retirar una pareja puede liberar fichas debajo o al lado. Piensa qué descubrirá tu elección. Un diseño nuevo tiene solución, pero algunas decisiones pueden dejarte sin otra pareja disponible."
+        },
+        {
+          "es": "Ejemplo: busca un bambú 5 libre y pulsa Enter para marcarlo. Busca otro bambú 5 libre, quizá en otra capa, y pulsa Enter. Ambos desaparecen. Si el segundo está cubierto o bloqueado, libéralo antes retirando otras parejas."
+        },
+        {
+          "es": "Si hay varias fichas idénticas, piensa qué copias retirar. Una ficha del borde puede liberar a la vecina; una superior descubre la inferior. No toda pareja disponible conduce a la solución. Deshacer la última pareja permite probar otro orden."
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "title": {
+        "es": "Solitario: Deshacer y terminar"
+      },
+      "paragraphs": [
+        {
+          "es": "El botón para deshacer la última pareja devuelve las dos fichas retiradas más recientemente. Puedes usarlo varias veces para retroceder hasta la disposición inicial."
+        },
+        {
+          "es": "El progreso indica cuántas parejas has retirado y cuántas fichas quedan. Tu puntuación es el número de parejas retiradas, hasta 72. Si no hay parejas disponibles, deshaz una jugada para probar otro camino o usa el botón para terminar este tablero. Terminar antes de retirar todas las fichas no cuenta como victoria."
+        },
+        {
+          "es": "S lee la puntuación, las parejas retiradas. M las fichas que quedan. Un diseño nuevo tiene 144; al retirar una pareja quedan 142."
+        }
+      ]
+    },
+    {
+      "id": "layout",
+      "title": {
+        "es": "Solitario: Elegir la disposición"
+      },
+      "paragraphs": [
+        {
+          "es": "Terrazas es la disposición predeterminada y tiene varias capas. La disposición plana utiliza una sola capa. Las reglas para formar parejas y dejar libre un lado son las mismas en ambas."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_aim",
+      "title": {
+        "es": "Hong Kong — Objetivo y condiciones de victoria"
+      },
+      "paragraphs": [
+        {
+          "es": "Cuatro jugadores buscan completar primero una mano ganadora. La forma normal son cuatro grupos y pareja por al menos 3 fan, unidades de valor de la mano. Gana la partida quien tenga más puntos totales. Los términos siguientes explican grupos y unidades antes del primer turno."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_terms",
+      "title": {
+        "es": "Hong Kong — Significado de los términos"
+      },
+      "paragraphs": [
+        {
+          "es": "Juegas contra los demás. Formas una mano ganadora con tus fichas; no retiras parejas de un diseño como en el solitario. Tu mano es el conjunto de tus fichas. Una mano de juego va desde el reparto hasta una victoria o empate; la partida puede contener varias."
+        },
+        {
+          "es": "- Una ficha es una pieza, como bambú 5. Su tipo es el palo y número, o el viento o dragón concreto. Hay cuatro copias de cada tipo normal."
+        },
+        {
+          "es": "- Los palos son caracteres, bambúes y círculos, con números 1–9. Una secuencia no mezcla palos. Los terminales son 1 y 9; los simples son 2–8."
+        },
+        {
+          "es": "- Los honores son los vientos Este, Sur, Oeste y Norte y los dragones blanco, verde y rojo. No tienen número ni forman secuencias."
+        },
+        {
+          "es": "- Un chow o chi son tres números consecutivos de un palo: bambúes 3, 4 y 5. Bambú 3, círculo 4 y bambú 5 no sirven, ni tampoco 8, 9 y 1 del mismo palo."
+        },
+        {
+          "es": "- Un pung, también pong o pon, son tres fichas idénticas, como tres dragones rojos. Tres cincos de palos distintos no son pung."
+        },
+        {
+          "es": "- Un kong o kan son cuatro fichas idénticas. Debes declararlo con la acción de kong; tener las cuatro no lo declara. Cuenta como un grupo y permite un robo de reposición."
+        },
+        {
+          "es": "- Una pareja son dos fichas idénticas. Un grupo es chow, pung o kong. Una mano ganadora normal necesita cuatro grupos y una pareja; varias parejas o muchas fichas de un palo no bastan."
+        },
+        {
+          "es": "- El muro es la reserva de fichas para robar. Robar añade una ficha a tu mano; descartar quita una y permite a los demás reclamarla."
+        },
+        {
+          "es": "- Una mano cerrada no tiene grupos reclamados a rivales. Reclamar chow, pung o kong expuesto la abre. Los grupos de fichas propias pueden quedarse ocultos. Un kong oculto declarado no abre la mano."
+        },
+        {
+          "es": "- Una victoria por robo propio usa la ficha que acabas de robar; una victoria por descarte usa la descartada por un rival. Elige Declarar Mahjong para ganar: no descartes antes la ficha ganadora."
+        },
+        {
+          "es": "- Una espera es un tipo de ficha que completaría la mano. Con bambúes 4–5 puedes esperar 3 o 6. Tenpai significa estar a una ficha de una forma completa. Para ganar también debe cumplirse la condición de puntuación de la variante."
+        },
+        {
+          "es": "- Los fan son unidades del valor de la mano por patrones y circunstancias. Este perfil exige al menos 3 fan para ganar. Luego se convierten en puntos de partida: 3 fan no significa ganar solo 3 puntos."
+        },
+        {
+          "es": "- El viento propio es tu función: quien reparte es Este, seguido de Sur, Oeste y Norte. El viento de ronda es común. Un pung del viento propio o de ronda puede puntuar; una pareja no recibe ese premio."
+        },
+        {
+          "es": "- Las flores y estaciones son bonos: el juego las expone y repone automáticamente. No ocupan un chow, pung ni la pareja y no indican rondas de vientos."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_start",
+      "title": {
+        "es": "Hong Kong — Inicio de la mano"
+      },
+      "paragraphs": [
+        {
+          "es": "Los saldos empiezan en cero; los pagos ganados suman puntos y los perdidos los restan."
+        },
+        {
+          "es": "Quien reparte empieza con 14 fichas y descarta primero; los demás tienen 13. En un turno normal elige Robar una ficha y pulsa Enter. Recorrer la lista no roba. Si empiezas repartiendo, ya tienes la ficha adicional para descartar."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_play",
+      "title": {
+        "es": "Hong Kong — Tus primeros turnos"
+      },
+      "paragraphs": [
+        {
+          "es": "Antes del primer descarte, recorre tu mano con Arriba y Abajo. Busca números próximos para chows, fichas iguales para pungs y una pareja final. No marcas por separado los grupos que conservas en la mano: el juego los reconoce al declarar victoria."
+        },
+        {
+          "es": "Si estás en los campos del juego, tu nuevo turno enfoca Robar una ficha. Tras robar, el foco pasa a la ficha nueva, marcada como recién robada. No la descarta. Puedes recorrer otras fichas, conservar la nueva y descartar una antigua."
+        },
+        {
+          "es": "Para descartar, busca una ficha en la lista de descartes permitidos y pulsa Enter. Solo pierdes esa copia. Si tenías tres iguales, las otras dos permanecen."
+        },
+        {
+          "es": "Tras un descarte ajeno oirás la ficha y verás respuestas. Pasar solo significa no reclamar esa ficha; no abandona ni concede la mano. Si todos pasan, roba el siguiente jugador. Puedes pasar varias veces antes de que te toque robar."
+        },
+        {
+          "es": "El primer campo describe la situación. Después van todas las acciones disponibles: respuestas, robar, declarar Mahjong, kongs o Riichi cuando corresponda. Luego vienen tus fichas. Tab y Shift+Tab cambian de campo; las flechas eligen y Enter confirma. Las acciones no disponibles se omiten."
+        },
+        {
+          "es": "Grupos expuestos muestra los grupos declarados de todos con el nombre de su dueño. Descartes indica quién descartó cada ficha. Sirven para saber qué se ha usado y qué podrían necesitar los rivales. Consultarlos no realiza una jugada."
+        },
+        {
+          "es": "Si una ficha completa una mano apta, elige Declarar Mahjong en vez de descartarla o pasar. El juego comprueba forma y requisitos de puntuación. Si antes se agota el muro, hay empate; no gana automáticamente quien esté más cerca de completar su mano."
+        },
+        {
+          "es": "S lee los puntos actuales de todos. M indica cuántas fichas quedan por robar en el muro. Solo informan: no roban, descartan ni pasan ni revelan manos ajenas."
+        },
+        {
+          "es": "W lee el valor de una victoria válida: fan o han y fu, y los puntos ganados. No estima una mano incompleta. Antes de ganar en Riichi excluye las ura-dora ocultas, por lo que el valor final puede ser mayor. U lee tus grupos expuestos, Mayús+U los de los demás y R el número de mano, los vientos y la situación actual. En Riichi, I lee los indicadores y fichas dora, tu cantidad de dora, las declaraciones de Riichi, los depósitos, honba y tu restricción furiten. Estas teclas solo leen información."
+        }
+      ]
+    },
+    {
+      "id": "table_hand",
+      "title": {
+        "es": "Hong Kong — Qué formar para ganar"
+      },
+      "paragraphs": [
+        {
+          "es": "Ejemplo completo: bambúes 2–3–4; círculos 4–5–6; tres caracteres 7; tres dragones rojos; dos Oestes. Los dos primeros grupos son chows, los siguientes pungs y los vientos la pareja. Cada ficha pertenece a un solo grupo y no puede usarse dos veces."
+        },
+        {
+          "es": "Quita ahora bambú 4 del ejemplo. Tienes 13 fichas y esperas esa ficha para completar el primer chow. Si la robas puedes ganar por robo propio; si la descarta un rival puede aparecer Mahjong entre las respuestas. Siempre debes cumplir también el requisito de puntuación explicado después."
+        },
+        {
+          "es": "Conserva conexiones útiles: 4–5 admite 3 o 6, mientras que 4–6 necesita un 5. Una pareja puede seguir como pareja final o convertirse en pung con la tercera copia. Una ficha aislada sin iguales ni números vecinos suele ser candidata a descarte."
+        },
+        {
+          "es": "No tienes que declarar enseguida un grupo formado con fichas propias: puedes reorganizar tu mano. Un grupo reclamado y expuesto queda unido; ya no puedes descartar sus fichas por separado. Reclama cuando ayude a la mano ganadora que planeas."
+        },
+        {
+          "es": "La forma del ejemplo no vale automáticamente 3 fan. El pung de dragones da 1; no tener flores ni estaciones añade 1 y el robo propio otro 1: total 3. Por descarte haría falta otra condición. Planea tanto la forma como su valor."
+        },
+        {
+          "es": "Siete parejas es otra forma ganadora por 4 fan. En este perfil chino, cuatro fichas idénticas sin declarar kong pueden contar como dos parejas. Trece huérfanos es otra forma especial. Puedes aprender primero cuatro grupos y pareja: las formas especiales son alternativas, no requisitos adicionales."
+        },
+        {
+          "es": "Cuatro grupos de tres y una pareja normalmente son 14 fichas físicas. Un kong declarado tiene una extra pero sigue siendo un grupo: con uno la mano completa tiene 15, con dos 16. Flores y estaciones no cuentan. No descartes otra ficha solo para obligar a volver a 14 con un kong."
+        },
+        {
+          "es": "Trece huérfanos reúne un 1 y un 9 de cada palo, cada uno de los cuatro vientos y tres dragones, más otra copia de cualquiera de esos trece tipos. No tiene chows ni cuatro grupos normales. Se conserva sin reclamar grupos y este perfil da 13 fan."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_claims",
+      "title": {
+        "es": "Hong Kong — Reclamar fichas y declarar kongs"
+      },
+      "paragraphs": [
+        {
+          "es": "Cuando otro jugador descarta, la lista de respuestas muestra las acciones permitidas. Elige Pasar si no quieres la ficha. Para reclamarla, selecciona Chow, Pung, Kong o la declaración de mahjong y pulsa Enter. Solo puedes reclamar un chow al jugador inmediatamente anterior. Un pung o kong puede usar el descarte de cualquier rival."
+        },
+        {
+          "es": "Una declaración de victoria tiene prioridad sobre una combinación; pung y kong tienen prioridad sobre chow. Si varios jugadores pueden ganar con la misma ficha, gana el primero en el orden de turno después de quien descartó. Se esperan todas las respuestas necesarias. Tras reclamar chow o pung, descarta sin robar; la combinación queda expuesta."
+        },
+        {
+          "es": "Después de declarar un kong, roba una ficha de reemplazo antes de descartar. Si tienes las cuatro copias, puedes declararlas desde la lista de kongs ocultos. También puedes añadir una cuarta ficha a un pung expuesto. Antes de completarse ese kong, los rivales pueden declarar victoria con la ficha añadida."
+        },
+        {
+          "es": "Si tienes dos dragones rojos y alguien descarta otro, Pung toma la ficha y expone los tres. Luego descartas sin robar. Con bambúes 4–5 puedes reclamar Chow con 3 o 6 solo del jugador inmediatamente anterior, no de otro rival."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_practice",
+      "title": {
+        "es": "Hong Kong — Planificar la mano con ejemplos"
+      },
+      "paragraphs": [
+        {
+          "es": "Un plan sencillo es Todo Pungs: conserva parejas, convierte cuatro en pungs y deja la quinta como pareja. Cuatro pungs ya dan los 3 fan exigidos. Es un plan, no una obligación: una pareja necesita su tercera copia exacta, mientras dos números vecinos pueden aceptar dos tipos."
+        },
+        {
+          "es": "Otro plan es un palo con honores por 3 fan. Si la mayoría de tus números ya son de un palo, puedes conservarlo junto a vientos o dragones útiles. No es obligatorio jugar siempre un palo ni destruir una mano casi lista por un patrón lejano y caro."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_sets",
+      "title": {
+        "es": "Hong Kong: patrones y pagos"
+      },
+      "paragraphs": [
+        {
+          "es": "Este perfil Hong Kong no usa una tabla de fu ni premia solo por ocultar un pung o kong normal. Un kong cumple las mismas condiciones de tipo de ficha que un pung. Los fan proceden de patrones de la mano, honores y circunstancias de victoria."
+        },
+        {
+          "es": "- Cuatro chows dan 1 fan; cuatro pungs o kongs, 3; siete parejas, 4."
+        },
+        {
+          "es": "- Un palo con honores da 3 fan; un palo sin honores, 7."
+        },
+        {
+          "es": "- Cada pung o kong de dragones da 1. Dos pungs de dragones y una pareja del tercero forman los tres pequeños dragones por 5; los tres pungs forman los tres grandes dragones por 8. Estos premios mayores ya incluyen los pungs de dragones que los componen."
+        },
+        {
+          "es": "- Un pung o kong del viento propio da 1 fan y del viento de ronda otro 1. Si coinciden, el mismo grupo da 2."
+        },
+        {
+          "es": "- El robo propio da 1 fan. Ganar con el último robo normal, el último descarte, un robo de reposición o al robar un kong tiene la correspondiente bonificación de 1 fan."
+        },
+        {
+          "es": "- No tener flores ni estaciones da 1 fan. En cada familia de bonos tu ficha propia da 1: número 1 Este, 2 Sur, 3 Oeste, 4 Norte. La familia completa de cuatro da 2 en su lugar."
+        },
+        {
+          "es": "Las manos especiales tienen valor propio: trece huérfanos 13 fan, cuatro pequeños vientos 10, cuatro grandes vientos 15, solo honores 10, solo terminales 10, cuatro kongs 18 y nueve puertas 15. Los cuatro pequeños vientos son tres pungs de vientos y pareja del cuarto; los grandes son los cuatro pungs. El juego elige el mayor premio especial sin añadir bonos normales."
+        },
+        {
+          "es": "Una ruta sencilla al mínimo: cuatro chows por 1, ninguna flor por 1 y robo propio por 1 suman 3 fan. La misma forma por descarte puede tener solo 2 y no permitir ganar. Cuatro pungs ya cumplen por sí solos el mínimo de 3."
+        },
+        {
+          "es": "La base del pago es 8 puntos con 3 fan, 16 con 4, 24 con 5, 32 con 6, 48 con 7 y 64 con 8 o más. Por descarte, quien descarta paga el doble de la base y los demás una base cada uno. Por robo propio todos pagan el doble. Así, 5 fan gana 96 por descarte o 144 por robo propio. El límite de 8 fan se aplica al pago aunque una mano especial valga más."
+        }
+      ]
+    },
+    {
+      "id": "table_winds",
+      "title": {
+        "es": "Hong Kong — Manos y duración de la partida"
+      },
+      "paragraphs": [
+        {
+          "es": "La partida predeterminada tiene cuatro rondas: Este, Sur, Oeste y Norte. Todos completan un período de reparto en cada una, al menos dieciséis manos. Los pagos se acumulan desde cero; una victoria de mano no garantiza ganar la partida."
+        },
+        {
+          "es": "Quien reparte repite tras su victoria o cualquier empate. Este dura al menos cuatro manos, a veces más. Cuatro rondas son Este, Sur, Oeste y Norte: al menos 16 manos. Las estaciones son bonos, no estas rondas."
+        },
+        {
+          "es": "Tras la mano consulta ganador, valor y cambios de puntos. En partidas largas todos eligen estar listos para la siguiente. El empate no cambia puntos de mano en Hong Kong. Tras las rondas elegidas gana el mayor saldo; máximos iguales empatan."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_variants",
+      "title": {
+        "es": "Hong Kong — Elegir la duración"
+      },
+      "paragraphs": [
+        {
+          "es": "Elige la duración en las opciones antes de jugar. Los ajustes más cortos cambian el número de manos, no cómo se forma una mano ganadora."
+        },
+        {
+          "es": "Una mano acaba tras una victoria o empate por muro agotado. Ronda Este significa que los cuatro completan su período de reparto. Quien reparte es Este y el viento común sigue siendo Este durante esa ronda. No es un turno individual."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_aim",
+      "title": {
+        "es": "Riichi — Objetivo y condiciones de victoria"
+      },
+      "paragraphs": [
+        {
+          "es": "En la partida normal de cuatro buscas completar tu mano antes que los rivales. Suele tener cuatro grupos y pareja, pero necesita un yaku, una condición reconocida de victoria. Una forma completa sin yaku puede no ganar. Gana el mayor saldo final; el siguiente capítulo explica los términos."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_terms",
+      "title": {
+        "es": "Riichi — Significado de los términos"
+      },
+      "paragraphs": [
+        {
+          "es": "Juegas contra los demás. Formas una mano ganadora con tus fichas; no retiras parejas de un diseño como en el solitario. Tu mano es el conjunto de tus fichas. Una mano de juego va desde el reparto hasta una victoria o empate; la partida puede contener varias."
+        },
+        {
+          "es": "- Una ficha es una pieza, como bambú 5. Su tipo es el palo y número, o el viento o dragón concreto. Hay cuatro copias de cada tipo normal."
+        },
+        {
+          "es": "- Los palos son caracteres, bambúes y círculos, con números 1–9. Una secuencia no mezcla palos. Los terminales son 1 y 9; los simples son 2–8."
+        },
+        {
+          "es": "- Los honores son los vientos Este, Sur, Oeste y Norte y los dragones blanco, verde y rojo. No tienen número ni forman secuencias."
+        },
+        {
+          "es": "- Un chow o chi son tres números consecutivos de un palo: bambúes 3, 4 y 5. Bambú 3, círculo 4 y bambú 5 no sirven, ni tampoco 8, 9 y 1 del mismo palo."
+        },
+        {
+          "es": "- Un pung, también pong o pon, son tres fichas idénticas, como tres dragones rojos. Tres cincos de palos distintos no son pung."
+        },
+        {
+          "es": "- Un kong o kan son cuatro fichas idénticas. Debes declararlo con la acción de kong; tener las cuatro no lo declara. Cuenta como un grupo y permite un robo de reposición."
+        },
+        {
+          "es": "- Una pareja son dos fichas idénticas. Un grupo es chow, pung o kong. Una mano ganadora normal necesita cuatro grupos y una pareja; varias parejas o muchas fichas de un palo no bastan."
+        },
+        {
+          "es": "- El muro es la reserva de fichas para robar. Robar añade una ficha a tu mano; descartar quita una y permite a los demás reclamarla."
+        },
+        {
+          "es": "- Una mano cerrada no tiene grupos reclamados a rivales. Reclamar chow, pung o kong expuesto la abre. Los grupos de fichas propias pueden quedarse ocultos. Un kong oculto declarado no abre la mano."
+        },
+        {
+          "es": "- Una victoria por robo propio usa la ficha que acabas de robar; una victoria por descarte usa la descartada por un rival. Elige Declarar Mahjong para ganar: no descartes antes la ficha ganadora."
+        },
+        {
+          "es": "- Una espera es un tipo de ficha que completaría la mano. Con bambúes 4–5 puedes esperar 3 o 6. Tenpai significa estar a una ficha de una forma completa. Para ganar también debe cumplirse la condición de puntuación de la variante."
+        },
+        {
+          "es": "- Un yaku es una condición con nombre que permite ganar con una forma completa. Necesitas al menos uno. Un pung de dragones es yaku; una forma completa cualquiera puede no tener ninguno."
+        },
+        {
+          "es": "- Los han miden el valor de yaku y bonos. Los fu son puntos menores por grupos, pareja y espera. Juntos determinan el pago. Los fu por sí solos no sustituyen el yaku exigido."
+        },
+        {
+          "es": "- Ron es ganar con descarte ajeno; tsumo, con robo propio. Menzen significa cerrado. Menzen tsumo es ganar por robo propio con mano cerrada y constituye un yaku."
+        },
+        {
+          "es": "- Riichi declara que a tu mano cerrada le falta una ficha. Depositas 1000 puntos y obtienes un yaku, pero restringe los cambios posteriores."
+        },
+        {
+          "es": "- Dora es un tipo de ficha de bonificación indicado por un marcador. Cada copia añade han cuando ya tienes yaku. Solo dora no permite ganar."
+        },
+        {
+          "es": "- Furiten restringe ganar con descartes ajenos. Puede venir de tus descartes o de rechazar un descarte ganador. No impide ganar por robo propio."
+        },
+        {
+          "es": "- Honba es el contador de pagos extra tras empates o repeticiones. Mangan y límites superiores son niveles de pago de manos valiosas, no grupos adicionales que debas formar."
+        },
+        {
+          "es": "- El viento propio depende de quien reparte: Este para él, luego Sur, Oeste y Norte. El viento de ronda es común. Un pung de cualquiera de los dos puede puntuar; si coinciden, un grupo cumple ambas condiciones."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_start",
+      "title": {
+        "es": "Riichi — Inicio de la mano"
+      },
+      "paragraphs": [
+        {
+          "es": "Todos empiezan con 30 000 puntos. Los pagos y depósitos Riichi aceptados cambian ese saldo."
+        },
+        {
+          "es": "Quien reparte empieza con 14 fichas y descarta primero; los demás tienen 13. En un turno normal elige Robar una ficha y pulsa Enter. Recorrer la lista no roba. Si empiezas repartiendo, ya tienes la ficha adicional para descartar."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_play",
+      "title": {
+        "es": "Riichi — Tus primeros turnos"
+      },
+      "paragraphs": [
+        {
+          "es": "Antes del primer descarte, recorre tu mano con Arriba y Abajo. Busca números próximos para chows, fichas iguales para pungs y una pareja final. No marcas por separado los grupos que conservas en la mano: el juego los reconoce al declarar victoria."
+        },
+        {
+          "es": "Si estás en los campos del juego, tu nuevo turno enfoca Robar una ficha. Tras robar, el foco pasa a la ficha nueva, marcada como recién robada. No la descarta. Puedes recorrer otras fichas, conservar la nueva y descartar una antigua."
+        },
+        {
+          "es": "Para descartar, busca una ficha en la lista de descartes permitidos y pulsa Enter. Solo pierdes esa copia. Si tenías tres iguales, las otras dos permanecen."
+        },
+        {
+          "es": "Tras un descarte ajeno oirás la ficha y verás respuestas. Pasar solo significa no reclamar esa ficha; no abandona ni concede la mano. Si todos pasan, roba el siguiente jugador. Puedes pasar varias veces antes de que te toque robar."
+        },
+        {
+          "es": "El primer campo describe la situación. Después van todas las acciones disponibles: respuestas, robar, declarar Mahjong, kongs o Riichi cuando corresponda. Luego vienen tus fichas. Tab y Shift+Tab cambian de campo; las flechas eligen y Enter confirma. Las acciones no disponibles se omiten."
+        },
+        {
+          "es": "Grupos expuestos muestra los grupos declarados de todos con el nombre de su dueño. Descartes indica quién descartó cada ficha. Sirven para saber qué se ha usado y qué podrían necesitar los rivales. Consultarlos no realiza una jugada."
+        },
+        {
+          "es": "Si una ficha completa una mano apta, elige Declarar Mahjong en vez de descartarla o pasar. El juego comprueba forma y requisitos de puntuación. Si antes se agota el muro, hay empate; no gana automáticamente quien esté más cerca de completar su mano."
+        },
+        {
+          "es": "S lee los puntos actuales de todos. M indica cuántas fichas quedan por robar en el muro. Solo informan: no roban, descartan ni pasan ni revelan manos ajenas."
+        },
+        {
+          "es": "W lee el valor de una victoria válida: fan o han y fu, y los puntos ganados. No estima una mano incompleta. Antes de ganar en Riichi excluye las ura-dora ocultas, por lo que el valor final puede ser mayor. U lee tus grupos expuestos, Mayús+U los de los demás y R el número de mano, los vientos y la situación actual. En Riichi, I lee los indicadores y fichas dora, tu cantidad de dora, las declaraciones de Riichi, los depósitos, honba y tu restricción furiten. Estas teclas solo leen información."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_build",
+      "title": {
+        "es": "Riichi — Qué formar para ganar"
+      },
+      "paragraphs": [
+        {
+          "es": "Ejemplo completo: bambúes 2–3–4; círculos 4–5–6; tres caracteres 7; tres dragones rojos; dos Oestes. Los dos primeros grupos son chows, los siguientes pungs y los vientos la pareja. Cada ficha pertenece a un solo grupo y no puede usarse dos veces."
+        },
+        {
+          "es": "Quita ahora bambú 4 del ejemplo. Tienes 13 fichas y esperas esa ficha para completar el primer chow. Si la robas puedes ganar por robo propio; si la descarta un rival puede aparecer Mahjong entre las respuestas. Siempre debes cumplir también el requisito de puntuación explicado después."
+        },
+        {
+          "es": "Conserva conexiones útiles: 4–5 admite 3 o 6, mientras que 4–6 necesita un 5. Una pareja puede seguir como pareja final o convertirse en pung con la tercera copia. Una ficha aislada sin iguales ni números vecinos suele ser candidata a descarte."
+        },
+        {
+          "es": "No tienes que declarar enseguida un grupo formado con fichas propias: puedes reorganizar tu mano. Un grupo reclamado y expuesto queda unido; ya no puedes descartar sus fichas por separado. Reclama cuando ayude a la mano ganadora que planeas."
+        },
+        {
+          "es": "El pung de dragones rojos del ejemplo da un yaku de 1 han abierto u oculto. Al completar los cuatro grupos y pareja permite ganar si no lo impide una restricción como furiten por descarte. No cada grupo necesita su propio yaku."
+        },
+        {
+          "es": "Siete parejas distintas es una mano separada y yaku de 2 han; cuatro iguales no cuentan como dos parejas distintas. Trece huérfanos usa todos los unos y nueves y los siete honores, más una repetición, sin grupos reclamados. Es yakuman, una mano de límite alto. Estas formas sustituyen cuatro grupos y pareja."
+        },
+        {
+          "es": "Cuatro grupos de tres y una pareja normalmente son 14 fichas físicas. Un kong declarado tiene una extra pero sigue siendo un grupo: con uno la mano completa tiene 15, con dos 16. Flores y estaciones no cuentan. No descartes otra ficha solo para obligar a volver a 14 con un kong."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_claims",
+      "title": {
+        "es": "Riichi — Reclamar fichas y declarar kongs"
+      },
+      "paragraphs": [
+        {
+          "es": "Cuando otro jugador descarta, la lista de respuestas muestra las acciones permitidas. Elige Pasar si no quieres la ficha. Para reclamarla, selecciona Chow, Pung, Kong o la declaración de mahjong y pulsa Enter. Solo puedes reclamar un chow al jugador inmediatamente anterior. Un pung o kong puede usar el descarte de cualquier rival."
+        },
+        {
+          "es": "Una declaración de victoria tiene prioridad sobre una combinación; pung y kong tienen prioridad sobre chow. Si varios jugadores pueden ganar con la misma ficha, gana el primero en el orden de turno después de quien descartó. Se esperan todas las respuestas necesarias. Tras reclamar chow o pung, descarta sin robar; la combinación queda expuesta."
+        },
+        {
+          "es": "Después de declarar un kong, roba una ficha de reemplazo antes de descartar. Si tienes las cuatro copias, puedes declararlas desde la lista de kongs ocultos. También puedes añadir una cuarta ficha a un pung expuesto. Antes de completarse ese kong, los rivales pueden declarar victoria con la ficha añadida."
+        },
+        {
+          "es": "Abrir puede eliminar el yaku planeado. Riichi y robo propio cerrado exigen mano cerrada; los pungs de dragones puntúan abiertos. Antes de reclamar piensa qué yaku quedará."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_practice",
+      "title": {
+        "es": "Riichi — Planificar la mano con ejemplos"
+      },
+      "paragraphs": [
+        {
+          "es": "Para empezar puedes mantener la mano cerrada buscando Riichi. Roba, mejora grupos y descarta lo menos útil sin reclamar. Cuando aparezca Riichi, elige un descarte ofrecido. Obtienes yaku, pero todavía no ganas: aún necesitas la ficha final."
+        },
+        {
+          "es": "Otra ruta clara es un pung de dragones: puedes reclamar el tercero y conservar su yaku con la mano abierta. Aún debes completar otros tres grupos y pareja. Una mano abierta de chows normales sin relación puede no tener ningún yaku."
+        },
+        {
+          "es": "Nueve puertas es una mano cerrada de un palo con base 1–1–1–2–3–4–5–6–7–8–9–9–9 y otra ficha de ese palo. No son nueve chows. Todo verde en Riichi usa solo bambúes 2, 3, 4, 6, 8 y dragones verdes, manteniendo una forma completa válida."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi",
+      "title": {
+        "es": "Riichi — declarar tenpai, dora y furiten"
+      },
+      "paragraphs": [
+        {
+          "es": "Si a tu mano cerrada le falta una ficha para ganar, la lista Riichi ofrece los descartes que permiten declarar que estás preparado. Elige uno y pulsa Enter. La declaración aceptada deposita 1 000 puntos en la mesa. Después debes descartar la ficha robada salvo que ganes; solo se permite un kong que conserve todas las interpretaciones exigidas. El ganador recoge los depósitos; los no reclamados pasan a la siguiente mano."
+        },
+        {
+          "es": "Furiten impide ganar por descarte si alguna ficha que completaría tu mano aparece entre tus propios descartes. Pasar una victoria válida sobre una ficha ajena también bloquea temporalmente esas victorias; tras declarar Riichi, el bloqueo dura hasta el final de la mano. Aún puedes ganar por robo propio."
+        },
+        {
+          "es": "Ejemplo de furiten: esperas bambú 3 o 6 pero antes descartaste 3. Se bloquea ganar por descarte con ambos, también con 6, no solo con la ficha descartada. Robar tú 3 o 6 aún puede ganar."
+        }
+      ]
+    },
+    {
+      "id": "table_yaku",
+      "title": {
+        "es": "Riichi: yaku y apertura de la mano"
+      },
+      "paragraphs": [
+        {
+          "es": "Un yaku es una condición de victoria con nombre. Los han de yaku compatibles se suman. Un chow o pung de simples normal no da han por sí solo. Reclamar puede acelerar la mano, pero elimina algunos yaku y reduce otros."
+        },
+        {
+          "es": "- Tanyao, solo números 2–8 sin honores: 1 han incluso abierto. Cada pung o kong de dragones: 1. Viento propio y viento de ronda en pung o kong: 1 cada uno; si coinciden, 2."
+        },
+        {
+          "es": "- Riichi: 1 han, mano cerrada en tenpai y depósito de 1000 puntos. Doble riichi en el primer ciclo sin interrupciones: 2 en su lugar. Ippatsu por ganar en el primer ciclo no interrumpido tras riichi añade 1."
+        },
+        {
+          "es": "- Menzen tsumo, robo propio con mano cerrada: 1 han. Pinfu: 1, solo cerrado, cuatro chows, pareja sin valor y espera por dos lados."
+        },
+        {
+          "es": "- Dos chows idénticos del mismo palo: 1 han solo cerrado. Dos pares de esos chows: 3 en su lugar, también cerrado. Siete parejas distintas: 2."
+        },
+        {
+          "es": "- Cuatro pungs o kongs: 2 han. Tres pungs ocultos: 2. Tres kongs: 2. Dos pungs de dragones y pareja del tercero: 2 además de los premios de los pungs de dragones."
+        },
+        {
+          "es": "- El mismo chow en los tres palos, como 2–3–4: 2 han cerrado, 1 abierto. Chows 1–2–3, 4–5–6 y 7–8–9 del mismo palo: 2 cerrado, 1 abierto. Pungs del mismo número en los tres palos: 2 abierto o cerrado."
+        },
+        {
+          "es": "- Un palo con honores: 3 han cerrado, 2 abierto. Sin honores: 6 cerrado, 5 abierto."
+        },
+        {
+          "es": "- Un terminal u honor en cada grupo y la pareja, con al menos un chow: 2 han cerrado, 1 abierto. Sin honores: 3 y 2 respectivamente. Una mano solo de terminales y honores da 2."
+        },
+        {
+          "es": "- El último robo normal, último descarte, robo de reposición de kong o robo de un kong tiene el correspondiente yaku de 1 han."
+        },
+        {
+          "es": "Cada dora añade 1 han solo después de existir un yaku verdadero. El indicador señala la siguiente ficha del ciclo: bambú 3 indica bambú 4 y tras 9 viene 1. Los ciclos de honores son Este–Sur–Oeste–Norte y dragón blanco–verde–rojo. Dora es un bono, no una forma de mano."
+        },
+        {
+          "es": "Yakuman sustituye los han y fu normales. Incluye, entre otros, trece huérfanos, cuatro pungs ocultos, tres pungs de dragones, cuatro pequeños o grandes vientos, solo honores, solo terminales, todo verde, cuatro kongs y nueve puertas. Los yakuman compatibles se acumulan. Para ganar cuatro pungs ocultos por descarte, este debe completar la pareja; un pung completado con un descarte no está oculto."
+        }
+      ]
+    },
+    {
+      "id": "table_fu",
+      "title": {
+        "es": "Riichi: fu por grupos y esperas"
+      },
+      "paragraphs": [
+        {
+          "es": "Los han valoran los yaku y las bonificaciones; los fu valoran la construcción de la mano. Un chow da 0 fu. Una pareja normal también da 0; una pareja de dragones, del viento propio o del viento de ronda da 2. En este juego sigue dando 2 fu si el viento propio coincide con el de ronda."
+        },
+        {
+          "es": "El valor de pungs y kongs depende de las fichas y de si están expuestos:"
+        },
+        {
+          "es": "- Pung de simples, números 2–8: expuesto 2 fu, oculto 4 fu."
+        },
+        {
+          "es": "- Pung de terminales u honores: expuesto 4 fu, oculto 8 fu."
+        },
+        {
+          "es": "- Kong de simples: expuesto 8 fu, oculto 16 fu."
+        },
+        {
+          "es": "- Kong de terminales u honores: expuesto 16 fu, oculto 32 fu."
+        },
+        {
+          "es": "El pung completado con el descarte ganador cuenta como expuesto para los fu. Los demás pungs conservados en la mano siguen ocultos. Añadir la cuarta ficha a un pung expuesto forma un kong expuesto."
+        },
+        {
+          "es": "El cálculo normal empieza en 20 fu. Ganar por descarte con mano cerrada añade 10; ganar por robo propio añade 2. Esperar la pareja, el centro o el borde de una secuencia añade 2. Borde significa esperar 3 con 1–2, o 7 con 8–9; centro, por ejemplo, 5 con 4–6. Una espera por dos lados, como 3 o 6 con 4–5, no añade fu."
+        },
+        {
+          "es": "Redondea el total hacia arriba a decenas: 32 pasa a 40 fu. Siete parejas siempre vale 25 fu. Pinfu por robo propio vale 20 fu sin los 2 adicionales del robo. Cualquier otra mano que solo tuviera 20 recibe un mínimo de 30."
+        },
+        {
+          "es": "Por ejemplo: 20 de base, 10 por victoria cerrada por descarte, 4 por un pung oculto de cincos y 2 por pareja de dragones suman 36, que se redondea a 40 fu. Sigue haciendo falta un yaku: los fu por sí solos no permiten ganar."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_payments",
+      "title": {
+        "es": "Riichi: convertir han y fu en puntos"
+      },
+      "paragraphs": [
+        {
+          "es": "Para una victoria normal la base es fu por 2 elevado a han más 2, con límite de 2000. Con 1 han y 30 fu es 30 por 8, es decir 240. Cada pago final se redondea hacia arriba a centenas."
+        },
+        {
+          "es": "Por descarte, quien gana sin repartir recibe cuatro bases de quien descarta; quien reparte recibe seis. Por robo propio, quien no reparte recibe dos bases de quien reparte y una de cada otro jugador. Si gana quien reparte, todos pagan dos bases."
+        },
+        {
+          "es": "Con 1 han 30 fu sin bonos, quien no reparte gana 1000 por descarte, o 500 de quien reparte y 300 de cada otro rival por robo propio, total 1100. Quien reparte gana 1500 por descarte o 500 de cada rival, también 1500."
+        },
+        {
+          "es": "- Mangan: 5 han o alcanzar el límite de base; aquí también 3 han 60 fu y 4 han 30 fu. Por descarte son 8000 sin repartir o 12 000 repartiendo."
+        },
+        {
+          "es": "- Haneman: 6–7 han, respectivamente 12 000 o 18 000 por descarte."
+        },
+        {
+          "es": "- Baiman: 8–10 han, 16 000 o 24 000."
+        },
+        {
+          "es": "- Sanbaiman: 11–12 han, 24 000 o 36 000."
+        },
+        {
+          "es": "- Yakuman o al menos 13 han: 32 000 o 48 000. Varios yakuman compatibles multiplican ese pago."
+        },
+        {
+          "es": "Cada honba añade 300 al pago por descarte o 100 de cada rival por robo propio. Quien gana también recibe los depósitos de Riichi. Honba aumenta tras un empate o repetición del reparto y vuelve a cero cuando gana otro jugador."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_match",
+      "title": {
+        "es": "Riichi — Manos y duración de la partida"
+      },
+      "paragraphs": [
+        {
+          "es": "Por defecto juegan cuatro con 30 000 puntos y rondas Este y Sur. Cada uno completa su reparto en ambas: mínimo ocho manos, más con repeticiones. Los pagos y depósitos Riichi aceptados cambian los saldos durante la partida."
+        },
+        {
+          "es": "Quien reparte repite tras su victoria o un empate de muro si está en tenpai."
+        },
+        {
+          "es": "En empate de muro se transfieren 3000 puntos de noten a tenpai, salvo que todos o ninguno estén listos. Después todos confirman la siguiente mano. Se juegan las rondas elegidas; aquí un saldo negativo o líder que reparte al final no termina antes. Gana el mayor saldo; máximos iguales empatan."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_variants",
+      "title": {
+        "es": "Riichi — variante de tres y duración"
+      },
+      "paragraphs": [
+        {
+          "es": "Elige la duración en las opciones antes de jugar. Los ajustes más cortos cambian el número de manos, no cómo se forma una mano ganadora."
+        },
+        {
+          "es": "Una mano acaba con victoria o empate por muro agotado. Ronda Este da a cada uno un período de reparto: mínimo cuatro manos con cuatro o tres en sanma. Este y Sur son dos rondas: mínimo ocho o seis. Quien reparte repite tras ganar o empatar en tenpai, así que puede haber más manos."
+        },
+        {
+          "es": "Los vientos propios siguen desde quien reparte: Este, Sur, Oeste y Norte con cuatro. El de ronda sigue Este hasta completar todos el reparto, luego Sur en dos rondas. Los vientos de valor pueden cambiar. Sanma elimina caracteres 2–8 y esta versión no tiene extracción separada de Norte."
+        },
+        {
+          "es": "En sanma no puedes reclamar Chow, aunque sí formar secuencias con tus fichas."
+        },
+        {
+          "es": "En sanma el cuarto jugador ausente no paga y su parte no se redistribuye. Por eso el robo propio puede ganar menos que con cuatro jugadores. Los empates reparten 2000 entre tenpai y noten, en vez de 3000."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_aim",
+      "title": {
+        "es": "MCR — Objetivo y condiciones de victoria"
+      },
+      "paragraphs": [
+        {
+          "es": "Cuatro jugadores intentan completar primero una mano ganadora. La forma normal son cuatro grupos y pareja con al menos 8 fan sin flores. Los fan valoran patrones compatibles. Ganar una mano da un pago; gana la partida el mayor saldo acumulado."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_terms",
+      "title": {
+        "es": "MCR — Significado de los términos"
+      },
+      "paragraphs": [
+        {
+          "es": "Juegas contra los demás. Formas una mano ganadora con tus fichas; no retiras parejas de un diseño como en el solitario. Tu mano es el conjunto de tus fichas. Una mano de juego va desde el reparto hasta una victoria o empate; la partida puede contener varias."
+        },
+        {
+          "es": "- Una ficha es una pieza, como bambú 5. Su tipo es el palo y número, o el viento o dragón concreto. Hay cuatro copias de cada tipo normal."
+        },
+        {
+          "es": "- Los palos son caracteres, bambúes y círculos, con números 1–9. Una secuencia no mezcla palos. Los terminales son 1 y 9; los simples son 2–8."
+        },
+        {
+          "es": "- Los honores son los vientos Este, Sur, Oeste y Norte y los dragones blanco, verde y rojo. No tienen número ni forman secuencias."
+        },
+        {
+          "es": "- Un chow o chi son tres números consecutivos de un palo: bambúes 3, 4 y 5. Bambú 3, círculo 4 y bambú 5 no sirven, ni tampoco 8, 9 y 1 del mismo palo."
+        },
+        {
+          "es": "- Un pung, también pong o pon, son tres fichas idénticas, como tres dragones rojos. Tres cincos de palos distintos no son pung."
+        },
+        {
+          "es": "- Un kong o kan son cuatro fichas idénticas. Debes declararlo con la acción de kong; tener las cuatro no lo declara. Cuenta como un grupo y permite un robo de reposición."
+        },
+        {
+          "es": "- Una pareja son dos fichas idénticas. Un grupo es chow, pung o kong. Una mano ganadora normal necesita cuatro grupos y una pareja; varias parejas o muchas fichas de un palo no bastan."
+        },
+        {
+          "es": "- El muro es la reserva de fichas para robar. Robar añade una ficha a tu mano; descartar quita una y permite a los demás reclamarla."
+        },
+        {
+          "es": "- Una mano cerrada no tiene grupos reclamados a rivales. Reclamar chow, pung o kong expuesto la abre. Los grupos de fichas propias pueden quedarse ocultos. Un kong oculto declarado no abre la mano."
+        },
+        {
+          "es": "- Una victoria por robo propio usa la ficha que acabas de robar; una victoria por descarte usa la descartada por un rival. Elige Declarar Mahjong para ganar: no descartes antes la ficha ganadora."
+        },
+        {
+          "es": "- Una espera es un tipo de ficha que completaría la mano. Con bambúes 4–5 puedes esperar 3 o 6. Tenpai significa estar a una ficha de una forma completa. Para ganar también debe cumplirse la condición de puntuación de la variante."
+        },
+        {
+          "es": "- MCR significa Mahjong Competition Rules. Los fan miden patrones puntuables. Necesitas al menos 8 fan antes de los bonos de flores. Luego sirven para calcular pagos; no son tu saldo total de partida."
+        },
+        {
+          "es": "- Un patrón describe una característica de la mano o sus grupos. Algunos se combinan; otros incluyen uno menor y excluyen sus puntos extra. No sumes todos los nombres que parezcan encajar."
+        },
+        {
+          "es": "- Las flores y estaciones se exponen y reponen automáticamente. Cada una añade 1 fan a una victoria válida, pero no ayuda a alcanzar los 8. Siete fan y una flor no permiten ganar."
+        },
+        {
+          "es": "- El viento propio es tu función respecto a quien reparte; el de ronda es común. Un pung de cualquiera de esos vientos puede puntuar. Las estaciones son bonos, no las cuatro rondas de vientos."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_start",
+      "title": {
+        "es": "MCR — Inicio de la mano"
+      },
+      "paragraphs": [
+        {
+          "es": "Los saldos empiezan en cero; los pagos ganados suman puntos y los perdidos los restan."
+        },
+        {
+          "es": "Quien reparte empieza con 14 fichas y descarta primero; los demás tienen 13. En un turno normal elige Robar una ficha y pulsa Enter. Recorrer la lista no roba. Si empiezas repartiendo, ya tienes la ficha adicional para descartar."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_play",
+      "title": {
+        "es": "MCR — Tus primeros turnos"
+      },
+      "paragraphs": [
+        {
+          "es": "Antes del primer descarte, recorre tu mano con Arriba y Abajo. Busca números próximos para chows, fichas iguales para pungs y una pareja final. No marcas por separado los grupos que conservas en la mano: el juego los reconoce al declarar victoria."
+        },
+        {
+          "es": "Si estás en los campos del juego, tu nuevo turno enfoca Robar una ficha. Tras robar, el foco pasa a la ficha nueva, marcada como recién robada. No la descarta. Puedes recorrer otras fichas, conservar la nueva y descartar una antigua."
+        },
+        {
+          "es": "Para descartar, busca una ficha en la lista de descartes permitidos y pulsa Enter. Solo pierdes esa copia. Si tenías tres iguales, las otras dos permanecen."
+        },
+        {
+          "es": "Tras un descarte ajeno oirás la ficha y verás respuestas. Pasar solo significa no reclamar esa ficha; no abandona ni concede la mano. Si todos pasan, roba el siguiente jugador. Puedes pasar varias veces antes de que te toque robar."
+        },
+        {
+          "es": "El primer campo describe la situación. Después van todas las acciones disponibles: respuestas, robar, declarar Mahjong, kongs o Riichi cuando corresponda. Luego vienen tus fichas. Tab y Shift+Tab cambian de campo; las flechas eligen y Enter confirma. Las acciones no disponibles se omiten."
+        },
+        {
+          "es": "Grupos expuestos muestra los grupos declarados de todos con el nombre de su dueño. Descartes indica quién descartó cada ficha. Sirven para saber qué se ha usado y qué podrían necesitar los rivales. Consultarlos no realiza una jugada."
+        },
+        {
+          "es": "Si una ficha completa una mano apta, elige Declarar Mahjong en vez de descartarla o pasar. El juego comprueba forma y requisitos de puntuación. Si antes se agota el muro, hay empate; no gana automáticamente quien esté más cerca de completar su mano."
+        },
+        {
+          "es": "S lee los puntos actuales de todos. M indica cuántas fichas quedan por robar en el muro. Solo informan: no roban, descartan ni pasan ni revelan manos ajenas."
+        },
+        {
+          "es": "W lee el valor de una victoria válida: fan o han y fu, y los puntos ganados. No estima una mano incompleta. Antes de ganar en Riichi excluye las ura-dora ocultas, por lo que el valor final puede ser mayor. U lee tus grupos expuestos, Mayús+U los de los demás y R el número de mano, los vientos y la situación actual. En Riichi, I lee los indicadores y fichas dora, tu cantidad de dora, las declaraciones de Riichi, los depósitos, honba y tu restricción furiten. Estas teclas solo leen información."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_build",
+      "title": {
+        "es": "MCR — Qué formar para ganar"
+      },
+      "paragraphs": [
+        {
+          "es": "Ejemplo completo: bambúes 2–3–4; círculos 4–5–6; tres caracteres 7; tres dragones rojos; dos Oestes. Los dos primeros grupos son chows, los siguientes pungs y los vientos la pareja. Cada ficha pertenece a un solo grupo y no puede usarse dos veces."
+        },
+        {
+          "es": "Quita ahora bambú 4 del ejemplo. Tienes 13 fichas y esperas esa ficha para completar el primer chow. Si la robas puedes ganar por robo propio; si la descarta un rival puede aparecer Mahjong entre las respuestas. Siempre debes cumplir también el requisito de puntuación explicado después."
+        },
+        {
+          "es": "Conserva conexiones útiles: 4–5 admite 3 o 6, mientras que 4–6 necesita un 5. Una pareja puede seguir como pareja final o convertirse en pung con la tercera copia. Una ficha aislada sin iguales ni números vecinos suele ser candidata a descarte."
+        },
+        {
+          "es": "No tienes que declarar enseguida un grupo formado con fichas propias: puedes reorganizar tu mano. Un grupo reclamado y expuesto queda unido; ya no puedes descartar sus fichas por separado. Reclama cuando ayude a la mano ganadora que planeas."
+        },
+        {
+          "es": "Cuatro grupos y pareja son la forma normal, pero también necesitas 8 fan sin flores. Un pung de dragones solo da 2 y no basta para una mano por lo demás normal. Planea patrones compatibles antes de abrir."
+        },
+        {
+          "es": "Siete parejas es una forma aparte por 24 fan. Este perfil chino permite cuatro fichas iguales sin declarar kong como dos parejas. Trece huérfanos vale 88. MCR también tiene formas especiales entrelazadas, pero puedes empezar con cuatro grupos normales y pareja."
+        },
+        {
+          "es": "Cuatro grupos de tres y una pareja normalmente son 14 fichas físicas. Un kong declarado tiene una extra pero sigue siendo un grupo: con uno la mano completa tiene 15, con dos 16. Flores y estaciones no cuentan. No descartes otra ficha solo para obligar a volver a 14 con un kong."
+        },
+        {
+          "es": "Una escalera entrelazada es un grupo especial de nueve fichas: 1–4–7 de un palo, 2–5–8 de otro y 3–6–9 del tercero. Por ejemplo caracteres 1–4–7, círculos 2–5–8 y bambúes 3–6–9. Añade un grupo normal y una pareja. Puedes intercambiar palos, pero cada terna numérica permanece en un palo distinto. El patrón vale 12 fan."
+        },
+        {
+          "es": "Otra forma especial contiene 14 fichas diferentes sin pareja: números de uno de esos patrones de nueve combinados con cinco, seis o siete honores distintos. Nada se repite. Con los siete honores es Honores Mayores y Fichas Entrelazadas por 24 fan; con cinco o seis, Honores Menores por 12. Sustituyen los cuatro grupos normales."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_claims",
+      "title": {
+        "es": "MCR — Reclamar fichas y declarar kongs"
+      },
+      "paragraphs": [
+        {
+          "es": "Cuando otro jugador descarta, la lista de respuestas muestra las acciones permitidas. Elige Pasar si no quieres la ficha. Para reclamarla, selecciona Chow, Pung, Kong o la declaración de mahjong y pulsa Enter. Solo puedes reclamar un chow al jugador inmediatamente anterior. Un pung o kong puede usar el descarte de cualquier rival."
+        },
+        {
+          "es": "Una declaración de victoria tiene prioridad sobre una combinación; pung y kong tienen prioridad sobre chow. Si varios jugadores pueden ganar con la misma ficha, gana el primero en el orden de turno después de quien descartó. Se esperan todas las respuestas necesarias. Tras reclamar chow o pung, descarta sin robar; la combinación queda expuesta."
+        },
+        {
+          "es": "Después de declarar un kong, roba una ficha de reemplazo antes de descartar. Si tienes las cuatro copias, puedes declararlas desde la lista de kongs ocultos. También puedes añadir una cuarta ficha a un pung expuesto. Antes de completarse ese kong, los rivales pueden declarar victoria con la ficha añadida."
+        },
+        {
+          "es": "Si tienes dos dragones blancos y se descarta otro, Pung los expone y asegura un patrón de 2 fan. El resto de la mano aún debe llegar a 8. Reclamar cambia los patrones de mano cerrada disponibles. Que Pung esté disponible no garantiza el mínimo futuro."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_practice",
+      "title": {
+        "es": "MCR — Planificar la mano con ejemplos"
+      },
+      "paragraphs": [
+        {
+          "es": "Ruta concreta: Todo Pungs por 6 fan más pung de dragones por 2. Pungs de caracteres 2, círculos 4, bambúes 6 y dragones blancos, con pareja de caracteres 5, llegan al menos a 8 incluso expuestos. Cada pung contiene tres iguales, no una mezcla de esos números."
+        },
+        {
+          "es": "Siete parejas por 24 fan es otra ruta, sin reclamar grupos. En cambio, un palo con honores solo da 6 y no basta por sí solo. La tabla sirve para elegir un plan en vez de reunir grupos sin saber cómo ganarían."
+        },
+        {
+          "es": "Cada rival paga una base de 8 puntos. Por descarte, quien descarta añade el valor de la mano con flores; por robo propio lo añaden todos. Una mano de 8 fan sin flores gana 32 por descarte o 48 por robo propio. El juego lo calcula."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_sets",
+      "title": {
+        "es": "MCR: grupos expuestos y ocultos"
+      },
+      "paragraphs": [
+        {
+          "es": "MCR concede fan por condiciones de la mano ganadora, sin los fu de Riichi. Un chow normal o un pung de simples no tiene un premio fijo por sí solo. Los chows pueden formar patrones entre sí; un pung puede puntuar por sus fichas o como parte de un patrón mayor."
+        },
+        {
+          "es": "- Un kong: expuesto 1 fan, oculto 2 fan."
+        },
+        {
+          "es": "- Dos kongs: ambos expuestos 4 fan, uno expuesto y otro oculto 6, ambos ocultos 8. Estos valores sustituyen los premios individuales."
+        },
+        {
+          "es": "- Tres kongs dan 32 fan; cuatro dan 88. No añadas también los premios por menos kongs."
+        },
+        {
+          "es": "- Dos pungs ocultos dan 2 fan, tres dan 16 y cuatro 64. Un kong oculto también cuenta entre los pungs ocultos. Un pung completado con el descarte ganador no está oculto."
+        },
+        {
+          "es": "- Un pung o kong de dragones da 2 fan. El viento propio da 2 y el de ronda otros 2. Un pung de terminales o de un viento sin valor da 1."
+        },
+        {
+          "es": "- Cuatro pungs o kongs dan 6 fan. Un solo palo con honores da 6; sin honores, 24. Siete parejas da 24 y trece huérfanos 88."
+        },
+        {
+          "es": "- Cuatro chows con pareja numerada y sin honores dan 2 fan. Dos chows idénticos del mismo palo dan 1; los chows 1–2–3 y 7–8–9 del mismo palo también dan 1."
+        },
+        {
+          "es": "Una victoria cerrada por descarte da 2 fan; una mano completamente oculta por robo propio da 4. Robar la ganadora con mano abierta da 1. No sumes automáticamente todas las descripciones: un patrón mayor puede incluir y excluir otro menor. Por ejemplo, dos kongs ocultos por 8 no reciben otros 2 solo por esos mismos dos pungs ocultos."
+        },
+        {
+          "es": "Cada flor o estación da 1 fan, pero no ayuda a alcanzar los 8 exigidos. Una mano de 7 fan con una flor sigue sin permitir Mahjong. El juego selecciona patrones compatibles; consulta el valor concedido en los detalles del resultado."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_match",
+      "title": {
+        "es": "MCR — Manos y duración de la partida"
+      },
+      "paragraphs": [
+        {
+          "es": "La partida predeterminada tiene cuatro rondas y exactamente dieciséis manos desde saldo cero. Este, Sur, Oeste y Norte duran cuatro cada una. El reparto siempre cambia, sin repetir por victoria del repartidor ni empate."
+        },
+        {
+          "es": "El viento propio cambia con quien reparte; el de ronda solo tras los cuatro períodos. Eso cambia qué vientos puntúan. Las estaciones siguen siendo bonos separados. Consulta resultado y saldo tras cada mano; todos deben confirmar la siguiente."
+        },
+        {
+          "es": "Un empate no da puntos de mano en MCR. Tras dieciséis manos gana el mayor saldo; máximos iguales empatan. Varias victorias baratas pueden no compensar una derrota cara. Ganar una mano y la partida son objetivos distintos."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_variants",
+      "title": {
+        "es": "MCR — Elegir la duración"
+      },
+      "paragraphs": [
+        {
+          "es": "Elige la duración en las opciones antes de jugar. Los ajustes más cortos cambian el número de manos, no cómo se forma una mano ganadora."
+        },
+        {
+          "es": "Una mano termina con victoria o empate de muro. Cuatro rondas son dieciséis manos: cuatro de viento Este, cuatro Sur, cuatro Oeste y cuatro Norte. Cada jugador reparte una vez en cada ronda. El reparto siempre avanza, incluso tras ganar o empatar, sin repeticiones que alarguen esas dieciséis."
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "es": "Referencia de teclado"
+      },
+      "paragraphs": [
+        {
+          "es": "Tab: campo siguiente."
+        },
+        {
+          "es": "Shift+Tab: campo anterior."
+        },
+        {
+          "es": "Arriba/Abajo: elegir ficha o acción en una lista."
+        },
+        {
+          "es": "Enter: confirmar acción o descarte."
+        },
+        {
+          "es": "S: leer puntos actuales de todos."
+        },
+        {
+          "es": "M: fichas restantes del muro; en Solitario, del diseño."
+        },
+        {
+          "es": "Izquierda/Derecha (solitario): cambiar columna."
+        },
+        {
+          "es": "Arriba/Abajo (solitario): cambiar fila."
+        },
+        {
+          "es": "1 (solitario): capa inferior."
+        },
+        {
+          "es": "2 (solitario): segunda capa de Terrazas."
+        },
+        {
+          "es": "3 (solitario): capa superior de Terrazas."
+        },
+        {
+          "es": "D (solitario): leer capa, fila y columna."
+        },
+        {
+          "es": "Enter (solitario): marcar primera ficha o retirar la segunda coincidente."
+        },
+        {
+          "es": "Escape (solitario): cancelar selección."
+        },
+        {
+          "es": "D (juegos de mesa): leer la ficha pendiente de tu respuesta."
+        },
+        {
+          "es": "W (juegos de mesa): valor de una victoria válida y puntos ganados."
+        },
+        {
+          "es": "U (juegos de mesa): tus grupos expuestos."
+        },
+        {
+          "es": "Mayús+U (juegos de mesa): grupos expuestos de los demás jugadores."
+        },
+        {
+          "es": "R (juegos de mesa): número de mano, vientos y situación actual."
+        },
+        {
+          "es": "I (Riichi): dora, declaraciones, depósitos, honba y tu furiten."
+        }
+      ]
+    }
+  ],
+  "option_chapters": {
+    "variant": "table_aim",
+    "layout": "layout",
+    "riichi_seats": "table_riichi_variants",
+    "hong_kong_winds": "table_hk_variants",
+    "riichi_winds": "table_riichi_variants",
+    "mcr_winds": "table_mcr_variants"
+  }
+}

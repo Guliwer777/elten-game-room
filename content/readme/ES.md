@@ -41,13 +41,27 @@ Es un documento de solo lectura con un encabezado para cada versión. H pasa al 
 
 ## A qué puedes jugar
 
-Power Games incluye actualmente 34 juegos:
+Power Games incluye actualmente 35 juegos:
 
 - Cartas: 3-5-8, 99, 1000 millas, Biblios, Makao, Picas, Póker, Rummy, Mil, UNO, War y Scientific War.
 - Tablero y estrategia: Ludo, Cuatro en raya, Tres en raya, Mancala, Monopoly, Reversi, Batalla naval, Ajedrez, Damas y Carrera de patos.
 - Dados y dominó: Cat, head, tail, Dominó, Farkle, Mexican Train y Yahtzee.
 - Palabras y conocimientos: Krowa, Categorías, Quiz Party, Scrabble y Taboo.
 - Acción con audio: Axel Pong y Audio Ball.
+
+Mahjong tiene una sola entrada en la lista de juegos. Elige primero Solitario, Hong Kong, Riichi o MCR; debajo aparecerán las opciones de esa variante. El solitario se juega a solas. Hong Kong y MCR necesitan cuatro jugadores; Riichi necesita cuatro o tres en sanma. En la mesa, usa Ctrl+O para añadir bots a los asientos vacíos. En partidas largas, todos confirman que están listos después de cada mano. Abre las reglas y los controles con Ctrl+F1.
+
+Los sonidos distinguen el reparto, el robo y el descarte de una ficha, la declaración de un grupo y el final de una mano. En Solitario también se oyen la retirada de una pareja y deshacer. Pasar y recorrer las fichas no producen sonidos. La descripción hablada sigue indicando la ficha y el resultado.
+
+Al responder a una ficha, D lee la ficha a la que se refiere Pasar, Chow, Pung, Kong o Mahjong. No cambia ni confirma la elección. En Solitario, D sigue leyendo las coordenadas.
+
+W lee el valor de una victoria válida: fan o han y fu, y los puntos ganados. No estima una mano incompleta. Antes de ganar en Riichi excluye las ura-dora ocultas, por lo que el valor final puede ser mayor. U lee tus grupos expuestos, Mayús+U los de los demás y R el número de mano, los vientos y la situación actual. En Riichi, I lee los indicadores y fichas dora, tu cantidad de dora, las declaraciones de Riichi, los depósitos, honba y tu restricción furiten. Estas teclas solo leen información.
+
+S lee los puntos actuales de todos. M indica cuántas fichas quedan por robar en el muro. Solo informan: no roban, descartan ni pasan ni revelan manos ajenas. En Solitario, S lee parejas retiradas y M fichas restantes del diseño.
+
+El manual enseña Solitario, Hong Kong, Riichi y MCR por separado; cada variante de mesa explica objetivo, términos, preparación, juego, puntuación y duración. Todas las acciones disponibles van tras la descripción y antes de tus fichas. En los campos de juego, tu nuevo turno enfoca robar y después la ficha recién robada. El foco solo no juega.
+
+En el solitario eliges fichas individuales: las flechas recorren filas y columnas, 1–3 cambian de capa y D lee las coordenadas. Enter marca la primera ficha y confirma la segunda coincidente; Escape cancela la selección.
 
 Muchos juegos tienen varias variantes. Las opciones, el número de participantes, la disponibilidad de bots y otros ajustes dependen del título. La sección «Reglas del juego» explica las reglas, la puntuación y los controles en detalle.
 

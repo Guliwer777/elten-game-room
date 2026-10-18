@@ -41,13 +41,27 @@ Jde o dokument pouze ke čtení s nadpisem pro každou verzi. H přejde na dalš
 
 ## Co si můžete zahrát
 
-Power Games v současnosti obsahuje 34 her:
+Power Games v současnosti obsahuje 35 her:
 
 - Karetní hry: 3-5-8, 99, 1000 mil, Biblios, Makao, Piky, Poker, Rummy, Tisíc, UNO, War a Scientific War.
 - Deskové a strategické hry: Člověče, nezlob se, Čtyři v řadě, Piškvorky, Mankala, Monopoly, Reversi, Lodě, Šachy, Dáma a Závody kachen.
 - Kostky a domino: Cat, head, tail, Domino, Farkle, Mexican Train a Yahtzee.
 - Slova a vědomosti: Krowa, Kategorie, Quiz Party, Scrabble a Taboo.
 - Zvukové akční hry: Axel Pong a Audio Ball.
+
+Mahjong má v seznamu her jednu položku. Nejprve vyber solitaire, Hong Kong, Riichi nebo MCR; pod volbou se zobrazí nastavení dané varianty. Solitaire hraješ sám. Hong Kong a MCR vyžadují čtyři hráče, Riichi čtyři nebo tři v sanmě. Chybějící místa doplníš u stolu boty pomocí Ctrl+O. V delším zápase každý po rozdání potvrdí připravenost k dalšímu. Pravidla a ovládání otevřeš pomocí Ctrl+F1.
+
+Zvuky rozlišují rozdání, dobrání a odhození kamene, vyložení sestavy a konec rozdání. V pasiánsu zazní také odebrání páru a vrácení tahu. Pasování a procházení kamenů jsou tiché. Slovní popis dál uvádí druh kamene a výsledek.
+
+Při odpovědi na kámen klávesa D přečte kámen, kterého se týká Pas, Chow, Pung, Kong nebo Mahjong. Nezmění ani nepotvrdí volbu. V pasiánsu D dál čte souřadnice.
+
+W přečte hodnotu platné výhry: fan nebo han a fu a získané body. Neodhaduje neúplnou ruku. Před výhrou v riichi nezahrnuje skryté ura-dora, takže konečná hodnota může být vyšší. U čte tvé vyložené sestavy, Shift+U sestavy ostatních a R číslo rozdání, větry a aktuální situaci. V riichi I čte ukazatele a kameny dora, počet tvých dora, hlášení riichi, vklady, honba a tvé omezení furiten. Tyto klávesy pouze čtou informace.
+
+S přečte průběžné body všech hráčů. M počet kamenů zbývajících k dobrání ve zdi. Jde jen o oznámení: nedobírají, neodhazují, nedávají pas ani neodhalují cizí ruce. V solitaire S čte odebrané páry a M zbývající kameny rozložení.
+
+Příručka postupně učí solitaire, Hong Kong, Riichi a MCR; každá stolní varianta vysvětluje cíl, pojmy, přípravu, průběh, bodování a délku zápasu. Všechny dostupné akce jsou hned za popisem situace před tvými kameny. V herních polích nový vlastní tah zaměří dobrání, po něm nový kámen. Samotný fokus tah neprovede.
+
+V solitaire vybíráš jednotlivé kameny: šipky mění řádek a sloupec, 1–3 přepínají vrstvy a D přečte souřadnice. Enter označí první kámen a potvrdí druhý do páru; Escape výběr zruší.
 
 Mnoho her nabízí několik variant. Jejich výběr, počet účastníků, dostupnost botů a další nastavení závisejí na konkrétní hře. Podrobná pravidla, bodování a ovládání popisuje část „Pravidla hry“ v programu.
 

@@ -58,7 +58,8 @@ module GameRoomParticipantMenu
     return [] unless GameRoomParticipants.includes?(players, participant)
 
     candidates = GameRoomParticipants.humans(room.members).reject { |person| GameRoomParticipants.includes?(players, person) }
-    candidates << :new_bot if GameRoomParticipants.human?(participant) && game&.supports_bots?
+    candidates << :new_bot if GameRoomParticipants.human?(participant) && game &&
+      game.supports_bots_for_options?(game.options_from_json(room.table['game_options']))
     candidates
   end
 
@@ -66,8 +67,9 @@ module GameRoomParticipantMenu
     return [] if room == nil || active || restoring || !GameRoomParticipants.same?(viewer, owner)
 
     actions = []
-    maximum = game == nil ? 0 : [room.table["max_players"].to_i, game.maximum_players.to_i].min
-    actions << :add_bot if game&.supports_bots? && room.participants.length < maximum
+    options = game&.options_from_json(room.table['game_options'])
+    maximum = game == nil ? 0 : [room.table["max_players"].to_i, game.maximum_players_for_options(options).to_i].min
+    actions << :add_bot if game&.supports_bots_for_options?(options) && room.participants.length < maximum
     actions << :remove_bot if !room.bots.to_a.empty?
     actions
   end

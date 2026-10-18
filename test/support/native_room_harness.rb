@@ -20,7 +20,8 @@ class NativeRoomHarness
     @table = as(users.first) do
       @transports.fetch(users.first).create_room(
         name: "Native test room", game: game&.id || "test", owner: users.first,
-        game_options: JSON.generate(@options), capacity: 8
+        game_options: JSON.generate(@options), capacity: 8,
+        stack_entries: game&.session_history_capacity(@options) || GameRoomLiveSessionStore::STACK_ENTRIES
       )
     end
     users.drop(1).each do |user|
