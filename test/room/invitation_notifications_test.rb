@@ -48,7 +48,7 @@ choices = [{ invitation: other }, { invitation: invitation }]
 app.define_singleton_method(:load_pending_invitations) { choices }
 action = :accept
 app.define_singleton_method(:select_notification_invitation_action) { action }
-received = Struct.new(:id, :metadata).new(42, { "invitation_id" => 7 })
+received = Struct.new(:id, :sender, :metadata).new(42, "Bob", { "invitation_id" => 7 })
 table = { "__id" => 12 }
 calls = []
 app.define_singleton_method(:accept_pending_invitation) do |selected, notification_id:|

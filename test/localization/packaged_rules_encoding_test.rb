@@ -101,8 +101,8 @@ end
 invitation_gateway = Object.new
 invitation_gateway.define_singleton_method(:list) { |*_arguments, **_keywords| [] }
 collector = InvitationNotifications.new(client: :binary_client, app_uuid: "binary-test", gateway: invitation_gateway)
-opened_notice = Struct.new(:id, :app_uuid, :revoked, :type, :metadata).new(
-  42, "binary-test", true, "game_room.invitation", {
+opened_notice = Struct.new(:id, :app_uuid, :revoked, :type, :sender, :metadata).new(
+  42, "binary-test", true, "game_room.invitation", "Alice", {
     "invitation_id" => 7, "table_id" => 12, "live_session_id" => "binary-session",
     "sender" => "Alice", "expires_at" => Time.now.to_i + 300
   })

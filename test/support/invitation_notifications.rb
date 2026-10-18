@@ -46,3 +46,6 @@ module Session
 end
 
 require_relative "../../__app"
+
+# Notification entry runs after the host has published its startup preferences.
+EltenGameRoom.remember_settings(EltenGameRoom::DEFAULT_SETTINGS)

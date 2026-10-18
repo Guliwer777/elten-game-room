@@ -122,6 +122,9 @@ end
 
 require_relative "../../__app"
 
+# This headless host has no program runtime; publish the normal startup snapshot.
+EltenGameRoom.remember_settings(EltenGameRoom::DEFAULT_SETTINGS)
+
 class EmptyLiveEndpoint
   attr_reader :user
   def initialize(user)
@@ -226,7 +229,7 @@ end
 # Notification entry cannot bypass the access check, even on an existing instance.
 client.error = EltenLink::Error.new("apps.tables.stamp_required")
 app.define_singleton_method(:load_pending_invitations) { nil }
-notification = Struct.new(:metadata).new({ "invitation_id" => 1 })
+notification = Struct.new(:sender, :metadata).new("Bob", { "invitation_id" => 1 })
 2.times do
   before = client.calls.length
   assert(app.notification_action(:open_invitation, notification), "Notification entry did not complete")

@@ -336,23 +336,8 @@ module GameRoomScreens
         _("Announce when a computer is added to or removed from a table"),
         checked: setting_enabled?("announce_computer_changes")
       )
-      invitation_policy = ListBox.new(
-        [_("From everyone"), _("From contacts"), _("From nobody")],
-        header: _("Show invitation notifications from"),
-        index: [INVITATION_POLICIES.index(@values["invitation_notifications"].to_s).to_i, 0].max,
-        quiet: true
-      )
-      invitation_blacklist = InvitationBlacklist.new(@values["invitation_blacklist"])
       watched_header = GameRoomContent.utf8(_("Notify me about games on public tables"))
-      watched_games = if @table_watch_available
-        multiple_game_list(watched_header, @values["table_watch_games"])
-      else
-        watched_games_status(watched_header, loading: @table_watch_loader != nil)
-      end
-      watched_contacts = CheckBox.new(
-        GameRoomContent.utf8(_("Notify me about new tables only from contacts")),
-        checked: @values["table_watch_contacts_only"] == true
-      )
+      invitation_policy, watched_games, watched_contacts, invitation_blacklist = notification_controls(watched_header)
       levels = GameRoomPreferences.sound_volumes(@values)
       volume_fields = GameRoomPreferences::SOUND_GROUPS.to_h do |group|
         [group, ListBox.new((0..100).map { |level| "#{level}%" },
@@ -497,6 +482,26 @@ module GameRoomScreens
     end
 
     private
+
+    def notification_controls(watched_header)
+      invitation_policy = ListBox.new(
+        [_("From everyone"), _("From contacts"), _("From nobody")],
+        header: _("Show invitation notifications from"),
+        index: [INVITATION_POLICIES.index(@values["invitation_notifications"].to_s).to_i, 0].max,
+        quiet: true
+      )
+      invitation_blacklist = InvitationBlacklist.new(@values["invitation_blacklist"])
+      watched_games = if @table_watch_available
+        multiple_game_list(watched_header, @values["table_watch_games"])
+      else
+        watched_games_status(watched_header, loading: @table_watch_loader != nil)
+      end
+      watched_contacts = CheckBox.new(
+        GameRoomContent.utf8(_("Notify me about new tables only from contacts")),
+        checked: @values["table_watch_contacts_only"] == true
+      )
+      [invitation_policy, watched_games, watched_contacts, invitation_blacklist]
+    end
 
     # The HRTF switch is followed by the games that place players' sounds.
     def hrtf_controls

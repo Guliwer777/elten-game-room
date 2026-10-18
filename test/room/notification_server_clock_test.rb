@@ -66,7 +66,7 @@ delivered = []
 begin
   GameRoomClock.define_singleton_method(:server_available?) { true }
   GameRoomClock.instance_variable_set(:@clock, game_room_test_clock { nil })
-  EltenGameRoom.define_singleton_method(:normalized_settings) { DEFAULT_SETTINGS.merge("invitation_notifications"=>"everyone", "table_watch_contacts_only"=>false) }
+  EltenGameRoom.define_singleton_method(:normalized_settings) { EltenGameRoom::DEFAULT_SETTINGS.merge("invitation_notifications"=>"everyone", "table_watch_contacts_only"=>false) }
   EltenGameRoom.define_singleton_method(:contact_notification_allowed?) { |*_, **_| true }
   EltenGameRoom.define_singleton_method(:present_deferred_contact_notification) { |n| delivered << n.id }
   pending_notice = ClockNotice.new(id:88,app_uuid:uuid,type:GameRoomTableWatch::TYPE,sender:"Bob",created_at:base,
