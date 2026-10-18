@@ -23,6 +23,12 @@
     "source": "games/biblios.rb",
     "output": "games/generated/rulebooks/biblios.rb"
   },
+  "bridge.json": {
+    "class": "Bridge",
+    "kind": "class",
+    "source": "games/bridge.rb",
+    "output": "games/generated/rulebooks/bridge.rb"
+  },
   "cat_head_tail.json": {
     "class": "CatHeadTail",
     "kind": "class",

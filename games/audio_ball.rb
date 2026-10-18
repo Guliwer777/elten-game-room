@@ -6,6 +6,8 @@ require_relative '../lib/realtime/p2p_options'
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register('audio_ball', ['audio_ball_start'])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class AudioBall < Base
@@ -96,12 +98,13 @@ module GameRoomGames
         next unless value.is_a?(String) && value.length <= 64
         case event['action']
         when 'audio_ball_start'
+          next unless GameRoomServerRandom.valid_recipe_event?(event, kind: 'first_server')
           next unless state[:first_server] == nil && /\A[01]\z/.match?(value)
           state[:first_server] = value.to_i
           accepted << event
         when 'audio_ball_point'
           match = point_match(value, state[:rally])
-          next unless state[:first_server] != nil && match && set_ready?(state, event['created_at'])
+          next unless state[:first_server] != nil && match && set_ready?(state, event_time(session, event))
           side = match[1].to_i
           state[:scores][side] += 1
           state[:rally] += 1
@@ -132,7 +135,7 @@ module GameRoomGames
             else
               state[:set_number] += 1
               state[:scores] = [0, 0]
-              state[:set_resume_at] = event['created_at'].to_i + SET_BREAK if event['created_at']
+              state[:set_resume_at] = event_time(session, event) + SET_BREAK if event['created_at']
             end
           end
         end
@@ -148,6 +151,9 @@ module GameRoomGames
       return [:invalid, nil] unless valid_roster?(replay.players) && owner_authority?(replay, actor, context)
       return [:invalid, nil] unless selection['kind'] == 'command'
       if selection['action'] == 'audio_ball_start' && replay.state[:first_server] == nil && context.random_source
+        if context.server_random
+          return [:ok, ActionPlan.new(events: [GameRoomServerRandom.recipe_command(action: 'audio_ball_start', kind: 'first_server')])]
+        end
         first_server = context.random_source.roll(count: 1, sides: 2).values.first - 1
         return [:ok, event_plan('audio_ball_start', first_server)]
       end
@@ -218,6 +224,11 @@ module GameRoomGames
     end
 
     private
+
+    def event_time(session, event)
+      return nil unless event['created_at']
+      GameRoomSessionClock.from_server(session, event['created_at'].to_i, event: event)
+    end
 
     def set_ready?(state, now)
       state[:set_resume_at] == nil || now == nil || now.to_f >= state[:set_resume_at]

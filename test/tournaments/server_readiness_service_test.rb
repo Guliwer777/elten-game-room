@@ -1,3 +1,4 @@
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require_relative '../support/binary_rules_load' if ARGV.first
 require_relative '../support/native_room_harness'
@@ -5,7 +6,7 @@ require_relative '../support/readiness_plan_table'
 require_relative '../../lib/tournaments/server_readiness_service'
 include GameRoomTest::Assertions
 T=GameRoomTournaments
-Dir.mktmpdir('shared-ready-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('shared-ready-') do |directory|
   actor,now='Alice',100
   table=ReadinessPlanTableSupport::Table.new(user:-> {actor},clock:-> {now})
   candidate={'publication_ref'=>{'author'=>'alice','publication_key'=>'fixture'},'schedule_id'=>'a'*64,

@@ -62,7 +62,7 @@ puts 'PASS F1: normal bot planning, repository submission and replay continue be
     channel_factory: ->(**args) { AudioBallTestChannel.new(network, **args) })
   game.define_singleton_method(:build_client) { |_program, **_services| client }
   h, screen = screen_fixture(game, bots: 1)
-  screen.instance_variable_set(:@random_source, GameRoomRandom::SequenceSource.new([2]))
+  bot_serves_audio_ball(h)
   help, score_changes, last_rally = nil, 0, 0
   Form.driver = lambda do |form|
     layout = screen.instance_variable_get(:@layout)

@@ -1,6 +1,7 @@
 require_relative "../support/log"
 require_relative "../support/native_tasks"
 require_relative "../../lib/game_room_contacts"
+require 'timeout'
 
 def assert(value, message); raise message unless value; end
 class ContactWorker
@@ -64,10 +65,15 @@ started, release = Queue.new, Queue.new
 real = GameRoomContacts::Cache.new(user: "Alice", loader: -> { started << true; release.pop; ["Bob"] })
 t0 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 real.include?("Bob")
-started.pop
+initial_duration = Process.clock_gettime(Process::CLOCK_MONOTONIC) - t0
+assert(initial_duration < 0.5, "initial UI read blocked behind network: #{initial_duration}s")
+# Dispatch scheduling is not time spent in the UI calls under examination.
+Timeout.timeout(3) { started.pop }
+t0 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 2000.times { real.include?("Eve"); real.revision }
 duration = Process.clock_gettime(Process::CLOCK_MONOTONIC) - t0
 assert(duration < 0.5, "memory reads blocked behind network: #{duration}s")
+assert(initial_duration + duration < 0.5, "combined UI reads blocked behind network: #{initial_duration + duration}s")
 release << true
 wait_background_work(real.instance_variable_get(:@worker)) or raise "worker hung"
 assert(real.include?("Bob"), "slow read never reached the cache")

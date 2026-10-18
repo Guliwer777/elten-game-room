@@ -1,6 +1,8 @@
 # encoding: UTF-8
 require_relative "tile_game"
 
+GameRoomServerRandom.register('domino', ['domino'], prefixes: {'domino' => ['n:']})
+
 require_relative "../lib/game_room_localization"
 
 module GameRoomGames
@@ -114,7 +116,7 @@ module GameRoomGames
 
     def can_draw?(state)
       return false if state[:drawn] || state[:options]["forbid_draw"] || state[:stock].empty? || hand(state, state[:current_player]).empty?
-      state[:options]["allow_playable_draw"] || placements(state, state[:current_player]).empty?
+      state[:options]["allow_playable_draw"] || !has_placement?(state, state[:current_player])
     end
 
     def bot_action_score(replay, actor, action, context: nil)
@@ -193,14 +195,23 @@ module GameRoomGames
       state[:stock] = Tiles.shuffle(Tiles.deck(maximum, copies), data["seed"])
       state[:hands] = state[:players].to_h { |p| [p, []] }
       count.times { players.each { |p| state[:hands][p] << state[:stock].shift } }
-      # Rotate tie priority without biasing the common high-double rule.
-      priority = players.rotate(state[:round] % players.length)
-      starter = priority.max_by do |p|
-        doubles = state[:hands][p].select { |t| Tiles.double?(t) }
-        doubles.empty? ? [-1, state[:hands][p].map { |t| Tiles.pips(t) }.max] : [doubles.map { |t| Tiles.faces(t).first }.max, 0]
-      end
-      state.merge!(phase: :playing, round: state[:round] + 1, current_player: starter,
+      state.merge!(phase: :playing, round: state[:round] + 1, current_player: nil,
         chain: [], blocked: 0, voids: {}, round_winner: nil)
+      complete_deal(state, data, event_id, history)
+    end
+
+    def opening_tile_rank(state, player)
+      doubles = state[:hands][player].select { |tile| Tiles.double?(tile) }
+      doubles.empty? ? state[:hands][player].map { |tile| Tiles.pips(tile) }.max :
+        100 + doubles.map { |tile| Tiles.faces(tile).first }.max
+    end
+
+    def complete_deal(state, data, event_id, history)
+      # Rotate tie priority without biasing the common high-double rule.
+      players = active_players(state)
+      priority = players.rotate((state[:round] - 1) % players.length)
+      starter = priority.max_by { |player| opening_tile_rank(state, player) }
+      state[:current_player] = starter
       begin_turn(state, data["time"])
       add_history(history, event_id, starter, :deal, _("Round %{round}. Tiles dealt.") % { round: state[:round] })
     end
@@ -236,11 +247,11 @@ module GameRoomGames
           tile = draw_one(state, player)
           break unless tile
           count += 1
-          break unless state[:options]["draw_until"] && targets_for(state, tile).empty?
+          break unless state[:options]["draw_until"] && !drawn_tile_playable?(state, player, tile)
         end
         state[:blocked] = 0
         add_history(history, event_id, player, :draw, n_("%{player} draws %{count} tile.", "%{player} draws %{count} tiles.", count) % { player: participant_name(player), count: count })
-        pass(state, data, event_id, history, announce: false) if placements(state, player).empty?
+        pass(state, data, event_id, history, announce: false) unless has_placement?(state, player)
       when "pass", "timeout"
         if data["action"] == "timeout" && !state[:drawn] && !state[:options]["forbid_draw"] && !state[:stock].empty?
           draw_one(state, player)
@@ -254,16 +265,20 @@ module GameRoomGames
 
     def pass(state, data, event_id, history, announce: true)
       player = state[:current_player]
-      unless state[:chain].empty? || !placements(state, player).empty?
+      unless state[:chain].empty? || has_placement?(state, player)
         state[:voids][player] = (state[:voids].fetch(player, []) + [state[:chain].first[:left], state[:chain].last[:right]]).uniq
       end
       add_history(history, event_id, player, :pass, _("%{player} passes.") % { player: participant_name(player) }) if announce
       state[:blocked] += 1
       blocked = (state[:stock].empty? || state[:options]["forbid_draw"]) &&
-        state[:blocked] >= waiting_players(state).length && waiting_players(state).all? { |p| placements(state, p).empty? }
+        state[:blocked] >= waiting_players(state).length && waiting_players(state).none? { |p| has_placement?(state, p) }
       blocked ? finish_round(state, nil, event_id, history) : next_turn(state, data["time"])
     end
+
+    def drawn_tile_playable?(state, _player, tile); !targets_for(state, tile).empty?; end
   end
 end
 
+require_relative 'tile_game_private'
+GameRoomGames::Domino.prepend(GameRoomGames::TileGamePrivate)
 require_relative 'generated/rulebooks/domino'

@@ -7,9 +7,12 @@ require_relative "../lib/biblios_strategy"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register('biblios', ['start'])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Biblios < CardGame
+    def player_spatial_audio?; true; end
     CATEGORIES = %w[p m f h s].freeze
     TIE_ORDER = %w[m p f h s].freeze
     LETTERS = %w[A B C D E F G H I].freeze
@@ -92,6 +95,7 @@ module GameRoomGames
     def replay(session, events, repository)
       players = repository.players_for(session)
       state = initial_state(players, options_from_json(session["options"]))
+      GameRoomPrivateCardLedger.initialize_state(state, session) if GameRoomPrivateCards.enabled?(session)
       accepted = []
       history = [starting_history(players)]
       seen = {}
@@ -106,15 +110,7 @@ module GameRoomGames
         actor = repository.actor_of(event, session)
         next unless players.any? { |player| same_user?(player, actor) }
         next if event["action"].to_s == "start" && !same_user?(actor, players.first)
-        applied = case event["action"].to_s
-        when "start" then apply_start(state, event, repository, history)
-        when "allocate" then apply_allocate(state, event, actor, repository, history)
-        when "take" then apply_take(state, event, actor, repository, history)
-        when "church" then apply_church(state, event, actor, repository, history)
-        when "bid" then apply_bid(state, event, actor, repository, history)
-        when "pay" then apply_pay(state, event, actor, repository, history)
-        else false
-        end
+        applied = apply_replay_event(state, event, session, repository, history)
         accepted << event if applied
       end
 
@@ -180,6 +176,9 @@ module GameRoomGames
         return [:not_your_turn, nil] unless same_user?(actor, replay.players.first)
         return [:invalid, nil] if state[:phase] != :setup || context == nil || context.random_source == nil
 
+        if context.server_random
+          return [:ok, ActionPlan.new(events: [GameRoomServerRandom.text_seed_command(action: 'start')])]
+        end
         return [:ok, event_plan("start", card_seed(context.random_source))]
       end
       return [:not_your_turn, nil] if !same_user?(state[:current_player], actor)
@@ -328,10 +327,8 @@ module GameRoomGames
       event_id = repository.event_id(event)
       entries = replay.history.select { |entry| entry.event_id.to_i == event_id.to_i && ![:start, :turn, :result].include?(entry.kind) }
       messages = entries.map(&:text)
-      if same_user?(repository.actor_of(event), viewer)
-        taken = entries.find { |entry| entry.kind == :allocate && entry.field == "self" }
-        messages << _("You pick up %{card}.") % { card: card_label(taken.value) } if taken != nil
-      end
+      taken = entries.find { |entry| entry.kind == :allocate && entry.field == "self" && same_user?(entry.actor, viewer) }
+      messages << _("You pick up %{card}.") % { card: card_label(taken.value) } if taken != nil
       drawn = drawn_card_message(replay.state, viewer)
       messages << drawn if drawn != nil
       messages.empty? ? nil : messages
@@ -346,7 +343,7 @@ module GameRoomGames
         "dice" => state[:dice],
         "hand" => state[:hands].fetch(player_key(state, actor), []),
         "public" => state[:public],
-        "card" => state[:phase] == :allocate && same_user?(state[:current_player], actor) ? state[:deck][state[:pointer]] : state[:card],
+        "card" => state[:phase] == :allocate && same_user?(state[:current_player], actor) ? gift_card(state) : state[:card],
         "known_cards" => state[:revealed].transform_values(&:dup),
         "high" => state[:high],
         "viewer" => actor.to_s
@@ -405,6 +402,26 @@ module GameRoomGames
 
     private
 
+    def apply_replay_event(state, event, session, repository, history)
+      return private_apply_effect(state, event, session, repository, history) if state[:private_cards] && event['action'] != 'start'
+      reduce_event(state, event, session, repository, history)
+    end
+
+    def reduce_event(state, event, session, repository, history)
+      actor = repository.actor_of(event, session)
+      case event['action']
+      when 'start' then apply_start(state, event, repository, history)
+      when 'allocate' then apply_allocate(state, event, actor, repository, history)
+      when 'take' then apply_take(state, event, actor, repository, history)
+      when 'church' then apply_church(state, event, actor, repository, history)
+      when 'bid' then apply_bid(state, event, actor, repository, history)
+      when 'pay' then apply_pay(state, event, actor, repository, history)
+      else false
+      end
+    end
+
+    def gift_card(state); state[:deck][state[:pointer]]; end
+
     def master_deck
       cards = CATEGORIES.flat_map { |category| LETTERS.map { |letter| "#{category}#{letter}" } }
       cards += (1..(GOLD_VALUES.length * GOLD_PER_VALUE)).map { |index| "o#{index}" }
@@ -412,13 +429,18 @@ module GameRoomGames
     end
 
     def prepared_deck(players, seed)
-      gold_removed, random_removed = SETUP.fetch(players.length, [0, 7])
+      random_removed = SETUP.fetch(players.length, [0, 7]).last
+      shuffled_cards(setup_deck(players), seed).drop(random_removed)
+    end
+
+    def setup_deck(players)
+      gold_removed = SETUP.fetch(players.length, [0, 7]).first
       deck = master_deck
       GOLD_VALUES.each do |value|
         matching = deck.select { |card| gold?(card) && gold_value(card) == value }
         deck -= matching.last(gold_removed)
       end
-      shuffled_cards(deck, seed).drop(random_removed)
+      deck
     end
 
     def initial_state(players, options)
@@ -450,6 +472,7 @@ module GameRoomGames
     end
 
     def apply_start(state, event, repository, history)
+      return false unless GameRoomServerRandom.valid_recipe_event?(event, kind: 'seed_text', template: '{seed}', seats: [0])
       return false if state[:phase] != :setup
 
       seed = event["value"].to_s
@@ -473,7 +496,7 @@ module GameRoomGames
       place = event["value"].to_s
       return false if !allocation_places(state).include?(place)
 
-      card = state[:deck][state[:pointer]]
+      card = gift_card(state)
       return false if card == nil
 
       event_id = repository.event_id(event)
@@ -1050,7 +1073,7 @@ module GameRoomGames
     end
 
     def allocation_surface(state)
-      card = state[:deck][state[:pointer]]
+      card = gift_card(state)
       labels = {
         "self" => _("Keep for yourself"),
         "auction" => _("Into the Auction pile"),
@@ -1119,7 +1142,7 @@ module GameRoomGames
     def drawn_card_message(state, viewer)
       return nil if state[:phase] != :allocate || !same_user?(state[:current_player], viewer)
 
-      card = state[:deck][state[:pointer]]
+      card = gift_card(state)
       return nil if card == nil
 
       _("You draw %{card}.") % { card: card_label(card) }
@@ -1322,7 +1345,7 @@ module GameRoomGames
     end
 
     def allocation_score(state, player, place)
-      card = state[:deck][state[:pointer]]
+      card = gift_card(state)
       worth = card_worth(state, player, card)
       case place
       when "self"
@@ -1390,3 +1413,5 @@ module GameRoomGames
 end
 
 require_relative 'generated/rulebooks/biblios'
+require_relative 'biblios_private'
+GameRoomGames::Biblios.prepend(GameRoomGames::BibliosPrivate)

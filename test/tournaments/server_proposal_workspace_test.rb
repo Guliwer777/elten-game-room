@@ -59,4 +59,4 @@ sandbox do |c|
   assert_equal(row['title'],start_source['publication']['title'])
   assert_equal([],c.alerts)
 end
-puts 'PASS real Tasks workspace pilot: shared server-table composition, source generation, explicit responses, only refuser unavailable, operations and cold readback, owner-thread alerts'
+puts 'PASS real Tasks workspace pilot: shared server-table composition, source generation, explicit responses without changing tournament availability, operations and cold readback, owner-thread alerts'

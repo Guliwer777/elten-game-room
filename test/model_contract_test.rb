@@ -18,11 +18,39 @@ assert_equal(without_replay_hashes.call(previous_tysiac), without_replay_hashes.
 # Build 251 removed question counts from the Quiz category announcement.
 # Comparing the reference source and current full replay showed only this
 # history text and its derived key changing; actions, events and RNG agree.
-quiz = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v2/quiz.json'), encoding: 'UTF-8'))
+previous_quiz_v2 = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v2/quiz.json'), encoding: 'UTF-8'))
 previous_quiz = corpus.fetch('cases').find { |item| item.fetch('game') == 'quiz' }
-assert_equal(without_replay_hashes.call(previous_quiz), without_replay_hashes.call(quiz), 'Quiz wording must not replace the reference actions or RNG')
-cases = corpus.fetch('cases').reject { |item| %w[tysiac quiz].include?(item.fetch('game')) } + [tysiac, quiz,
+assert_equal(without_replay_hashes.call(previous_quiz), without_replay_hashes.call(previous_quiz_v2), 'Quiz wording must not replace the reference actions or RNG')
+# Confirmed-answer cleanup adds only session-bound public receipt metadata.
+# The separate semantic test checks exact fields and all four historical v2
+# full replay hashes on detached copies; both earlier corpora stay unchanged.
+quiz = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v3/quiz.json'), encoding: 'UTF-8'))
+assert_equal(without_replay_hashes.call(previous_quiz_v2), without_replay_hashes.call(quiz), 'Quiz cleanup must not replace the reference actions or RNG')
+# The Poker presentation adds per-viewer deal lines and separates shown hands.
+# Its reviewed PR reference retains every old action, event, actor and RNG value.
+poker = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v2/poker.json'), encoding: 'UTF-8'))
+previous_poker = corpus.fetch('cases').find { |item| item.fetch('game') == 'poker' }
+assert_equal(without_replay_hashes.call(previous_poker), without_replay_hashes.call(poker), 'Poker wording must not replace the reference actions or RNG')
+# Categories adds pause, participant-departure and confirmed-cleanup metadata.
+# A separate semantic regression verifies their exact values and reproduces
+# both historical full replay hashes using detached copies.
+categories = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v2/categories.json'), encoding: 'UTF-8'))
+previous_categories = corpus.fetch('cases').find { |item| item.fetch('game') == 'categories' }
+assert_equal(without_replay_hashes.call(previous_categories), without_replay_hashes.call(categories), 'Categories metadata must not replace the reference actions or RNG')
+# Confirmed Scientific War reveals now retain public cleanup receipts across
+# tricks. The semantic regression checks their exact historical commitments
+# and reproduces every original full hash on a detached copy.
+scientific_war = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v2/scientific_war.json'), encoding: 'UTF-8'))
+previous_scientific_war = corpus.fetch('cases').find { |item| item.fetch('game') == 'scientific_war' }
+assert_equal(without_replay_hashes.call(previous_scientific_war), without_replay_hashes.call(scientific_war), 'Scientific War cleanup must not replace the reference actions or RNG')
+cases = corpus.fetch('cases').reject { |item| %w[tysiac quiz poker categories scientific_war].include?(item.fetch('game')) } + [tysiac, quiz, poker, categories, scientific_war,
   JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v1/mille_bornes.json'), encoding: 'UTF-8'))]
+# Bridge's shared private-hand integration changes ordinary hands from seat
+# arrays to account-keyed hashes. All original actions, order and RNG remain.
+bridge = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v2/bridge.json'), encoding: 'UTF-8'))
+previous_bridge = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v1/bridge.json'), encoding: 'UTF-8'))
+assert_equal(without_replay_hashes.call(previous_bridge), without_replay_hashes.call(bridge), 'Bridge hand storage must not replace the reference actions or RNG')
+cases << bridge
 duck = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v1/duck_racing.json'), encoding: 'UTF-8'))
 expected_ids = GameRoomGames::CATALOG.ids.reject { |id| %w[axel_pong audio_ball].include?(id) }.sort
 assert_equal(expected_ids, (cases.map { |item| item.fetch('game') } + [duck.fetch('game')]).sort, 'corpus must explicitly cover every turn-based game')

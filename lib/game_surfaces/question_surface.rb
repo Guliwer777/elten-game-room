@@ -61,12 +61,19 @@ module GameSurfaces
       GameSurfaces::Action.new(
         kind: "question",
         name: "submit",
-        payload: {
-          "question_id" => @spec.id.to_s,
-          "answer" => answer,
-          "required" => @spec.required == true
-        }
-      ).tap { clear_text_answer if @mode == :text && @spec.clear_on_submit == true }
+        payload: answer_payload(answer)
+      )
+    end
+
+    def action_accepted(selection)
+      return false unless @mode == :text && @spec.clear_on_submit == true && !@spec.read_only
+      return false unless selection['kind'] == 'question' && selection['question_id'] == @spec.id.to_s &&
+        selection['_text_input'] == text_input_identity && selection['answer'] == @answer.text.to_s
+      return false unless selection['action'] == 'submit' ||
+        @spec.extra_commands.to_a.any? { |command| command.id.to_s == selection['action'] }
+
+      clear_text_answer
+      true
     end
 
     private
@@ -150,16 +157,20 @@ module GameSurfaces
 
     def submit_answer(action = "submit")
       value = answer_value
-      clear_text_answer if @mode == :text && @spec.clear_on_submit == true
-      emit_action(
-        "question",
-        action,
-        {
-          "question_id" => @spec.id.to_s,
-          "answer" => value,
-          "required" => @spec.required == true
-        }
-      )
+      emit_action("question", action, answer_payload(value))
+    end
+
+    def answer_payload(value)
+      payload = {"question_id" => @spec.id.to_s, "answer" => value,
+        "required" => @spec.required == true}
+      # Local UI receipt only: a copied action may wait behind a chat write.
+      # The game still writes its own EventCommands, never this control token.
+      payload['_text_input'] = text_input_identity if @mode == :text && @spec.clear_on_submit == true
+      payload
+    end
+
+    def text_input_identity
+      [@answer.object_id, @answer.game_room_edit_generation]
     end
 
     def clear_text_answer

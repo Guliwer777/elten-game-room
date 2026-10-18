@@ -27,9 +27,10 @@ module GameRoomGames
       result = [surface_shortcut(key: "r", label: _("remaining time"), command: "taboo_time",
         payload: { "deadline" => state[:deadline], "offset" => state[:clock_offset].to_i, "frozen" => state[:frozen_at], "epoch" => state[:clock_epoch_offset].to_i }),
         announcement_shortcut(key: "s", label: _("team scores"), message: score_announcement_order([0, 1], state[:scores]).map { |team| _("Team %{number}: %{score}") % { number: team + 1, score: state[:scores][team] } }.join("; "))]
-      if card_visible?(state,viewer)
-        result << announcement_shortcut(key: "c", label: _("read the entire card"), message: card_lines(state,viewer).join(", "))
-        card_lines(state,viewer).each_with_index do |text, i|
+      lines = card_lines(state,viewer)
+      unless lines.empty?
+        result << announcement_shortcut(key: "c", label: _("read the entire card"), message: lines.join(", "))
+        lines.each_with_index do |text, i|
           result << announcement_shortcut(key: (i+1).to_s, label: i == 0 ? _("read the target") : _("read forbidden word %{number}") % { number: i }, message: text)
         end
         if same_user?(viewer,state[:current_player])

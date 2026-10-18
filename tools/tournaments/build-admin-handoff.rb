@@ -7,7 +7,7 @@ require_relative '../../lib/tournaments/server_schema'
 # Review bundle only. Does not install, register an application or upload data.
 package,inventory,verification,output=ARGV
 raise 'Usage: PACKAGE INVENTORY VERIFIED_REPORT NEW_ZIP' unless output
-raise 'Output already exists' if File.exist?(output)
+raise 'Output already exists' if File.exist?(output) || File.exist?(output + '.verification.json')
 root=File.expand_path('../..',__dir__)
 report=JSON.parse(File.read(verification))
 raise 'Package not verified' unless report['state']=='PASS' && report['sha256']==Digest::SHA256.file(package).hexdigest
@@ -30,65 +30,47 @@ entries['client/Power-Games-turnieje-admin.eltsetup']=File.binread(package)
 entries['client/inventory.json']=File.binread(inventory)
 entries['client/verification.json']=File.binread(verification)
 entries['schema/tournament-tables.json']=JSON.pretty_generate({'tables'=>GameRoomTournaments::ServerSchema::PROPOSED_TABLES,
-  'notifications'=>true,'coordination'=>'server_implementation_required','deployment'=>'official_owner_review_and_signature_required'})+"\n"
-entries['README-ADMIN-PL.txt']=<<~TEXT
-  PACZKA DLA ADMINISTRATORA POWER GAMES — 14 PAŹDZIERNIKA 2026
+  'notifications'=>true,'coordination'=>'authenticated_client_records','deployment'=>'not_performed_by_this_tool'})+"\n"
+entries['README-ADMIN.txt']=<<~TEXT
+  POWER GAMES — ADMINISTRATOR REVIEW BUNDLE
 
-  client: czysty instalator do przeglądu, bez trybów lokalnych, sztucznych graczy
-  i aplikacji testowej. Menu zawiera Listę turniejów, Utwórz turniej i Wstecz.
-  Operacje są w menu kontekstowym, ponieważ kontrola niepotwierdzonego zapisu
-  jest potrzebna również po wdrożeniu. Instalator jest niepodpisany.
+  client contains the supplied installer, inventory and verification report.
+  Its bytes match the SHA-256 in that report. Check the report for the package's
+  version, signature and tested scope; this archive adds no certification.
 
-  source/power-games: pełne źródła aplikacji wraz z częścią turniejową,
-  tłumaczeniami, zasobami, narzędziami i testami. Testy/adaptacja deweloperska
-  są wyłącznie materiałem źródłowym; nie ma ich w interfejsie instalatora.
-  Kod gier pozostaje, ponieważ turnieje uruchamiają istniejące gry LiveSessions.
-  schema: deklaracje trzech tabel turniejowych, gotowe do przeglądu właściciela.
-  FILES.json: rozmiary i SHA256 wszystkich plików wewnątrz paczki.
+  source/power-games contains maintained sources, documentation, assets,
+  development tools and tests. This is review material, not a release stage.
+  schema/tournament-tables.json contains declarations, not a deployment receipt.
+  FILES.json lists each bundled file's size and SHA-256, except FILES.json itself.
 
-  Klient wskazuje oficjalną aplikację Power Games:
-  468f59c5-c9d7-47cd-80f1-1a6fbfd1aa80. Nie wskazuje aplikacji testowej guliwera
-  i nie przenosi jej danych ani zgód. Bez wdrożonych tabel i praw oficjalnej
-  aplikacji nie uruchomi się pełny dostęp turniejowy. Właściciel musi też
-  podpisać oficjalną aktualizację; tej paczki nie należy traktować jako wydania.
+  Current integration, limitations and release checks:
+  source/power-games/docs/TOURNAMENT_ADMIN_HANDOFF.md
 
-  Gotowy jest kod klienta: tworzenie/zapisy/pary, planowanie i fazy, punktacja,
-  tabele i wyniki, powiązania ze zwykłymi stołami, ręczne walkowery/anulowanie,
-  zapis/wznowienie tego samego meczu oraz wcześniejszy status zakończenia.
-  Zachowano 2/1/0, brak automatycznych walkowerów i kontrolę historii/operacji.
-
-  NIE MA TU GOTOWEGO WDROŻONEGO SERWEROWEGO AUTOMATU.
-  Skopiowanie źródeł Ruby klienta na serwer nie tworzy takiego procesu.
-  Brakuje niezależnego koordynatora terminów, gotowości, zaproszeń i zajętości,
-  atomowych rezerwacji/startu, trwałych identyfikatorów operacji oraz
-  autorytatywnego zatwierdzania wyników, anulowania i wznowień. Istniejące
-  stoły i ruchy pozostają w LiveSessions; nie trzeba zastępować ich drugim
-  systemem stołów. Samo dodanie tabel nie uruchomi zaproszeń.
-
-  Wymaga też przeglądu skalowanie: obecny bezpośredni odczyt wyników klienta
-  ma budżet 64 spotkań, arytmetyka przyjmuje do 256 wyników, a dokument planu
-  ma ograniczenie 256 KiB. Limit 128 uczestników w formularzu nie oznacza,
-  że każdy format i pełne każdy-z-każdym dla 128 osób zmieści się w tych
-  budżetach. Przed publicznym wdrożeniem trzeba zapewnić serwerowe projekcje
-  wyników/paginację i uzgodnić ograniczenia. Nie wolno uznać częściowego
-  odczytu ani brakującego wyniku za zakończenie turnieju.
-
-  Instrukcja: source/power-games/docs/TOURNAMENT_ADMIN_HANDOFF.md.
-  Pozostałe kontrakty: TOURNAMENT_SERVER_INTEGRATION.md,
-  TOURNAMENT_PHASE_TRIAL.md, TOURNAMENT_FORFEIT_TRIAL.md,
-  TOURNAMENT_SAVED_MATCH_TRIAL.md w tym samym katalogu.
-
-  Nie ma kluczy, sesji MCP, prywatnego magazynu gracza ani historii Git.
-  Nie wykonano instalacji, wdrożenia na serwerze ani wysłania na GitHub.
+  The generator does not install the program, change server tables, publish a
+  release or upload files. It excludes hidden paths, temporary directories and
+  common key/binary extensions; that filter is not a general credential audit.
+  Review the source bundle before sharing it.
 TEXT
 manifest=entries.sort.map{|name,bytes|{'path'=>name,'bytes'=>bytes.bytesize,'sha256'=>Digest::SHA256.hexdigest(bytes)}}
 entries['FILES.json']=JSON.pretty_generate(manifest)+"\n"
-Zip::OutputStream.open(output){|zip|entries.sort.each{|name,bytes|zip.put_next_entry(name);zip.write(bytes)}}
+Zip::OutputStream.open(output) do |zip|
+  entries.sort.each do |name, bytes|
+    entry = Zip::Entry.new(output, name.encode(Encoding::UTF_8))
+    entry.gp_flags |= Zip::Entry::EFS
+    zip.put_next_entry(entry)
+    zip.write(bytes)
+  end
+end
 Zip::File.open(output) do |zip|
-  raise 'Archive entry set differs' unless zip.entries.map(&:name).sort==entries.keys.sort
-  entries.each{|name,bytes|raise "Archive bytes differ: #{name}" unless zip.read(name).b==bytes.b}
+  # Rubyzip reads names as binary strings even when the UTF-8 flag is present.
+  raise 'Archive entry set differs' unless zip.entries.map { |entry| entry.name.b }.sort == entries.keys.map(&:b).sort
+  zip.entries.each do |entry|
+    raise 'Archive UTF-8 flag missing' if (entry.gp_flags & Zip::Entry::EFS).zero?
+    name = entry.name.dup.force_encoding(Encoding::UTF_8)
+    raise "Archive bytes differ: #{name}" unless zip.read(entry).b == entries.fetch(name).b
+  end
 end
 result={'state'=>'PASS','files'=>entries.size,'bytes'=>File.size(output),'sha256'=>Digest::SHA256.file(output).hexdigest,
-  'installer_sha256'=>report['sha256'],'contains_credentials'=>false,'server_deployed'=>false}
+  'installer_sha256'=>report['sha256'],'server_changes_performed'=>false}
 File.write(output+'.verification.json',JSON.pretty_generate(result)+"\n")
 puts JSON.generate(result)

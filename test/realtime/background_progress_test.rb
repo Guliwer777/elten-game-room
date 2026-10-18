@@ -60,7 +60,7 @@ game.define_singleton_method(:build_client) do |_program, **_services|
   client
 end
 h, screen = screen_fixture(game, bots: 1)
-screen.instance_variable_set(:@random_source, GameRoomRandom::SequenceSource.new([2, 2]))
+bot_serves_audio_ball(h)
 $lastactivecontrols = [menu]
 h.as('Alice') { screen.start_covered_session(covered: -> { true }, activity_cursor: 0) }
 runner = screen.instance_variable_get(:@session_runner)
@@ -83,6 +83,7 @@ begin
   assert(!first.instance_variable_get(:@closed), 'Covered match closed at first point')
   assert(screen.instance_variable_get(:@layout).nil?, 'Covered game created a form')
   h.start
+  bot_serves_audio_ball(h)
   await_background(scene, runner) { clients.size == 2 }
   assert(first.instance_variable_get(:@closed), 'Rematch retained old client')
   await_background(scene, runner) { h.replay('Alice').state[:rally] >= 1 }

@@ -29,11 +29,13 @@ module GameSurfaces
     def reusable_for?(spec); spec.is_a?(TabooSpec); end
     def update_spec(spec)
       changed = @spec.token != spec.token
-      revealed = changed && !spec.lines.empty?
+      card_changed = @spec.lines != spec.lines
+      revealed = (changed || card_changed) && !spec.lines.empty?
       @spec = spec
       @list.options = labels
       @list.header = header if @list.respond_to?(:header=)
-      @list.index = 0 if changed
+      @list.index = 0 if changed || revealed
+      @announcement = nil if changed || card_changed
       @announcement = spec.lines.join(", ") if revealed
       self
     end

@@ -1,3 +1,4 @@
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require_relative '../support/binary_rules_load' if ARGV.first
 require_relative '../support/native_room_harness'
@@ -5,7 +6,7 @@ require_relative '../support/readiness_plan_table'
 require_relative '../../lib/tournaments/server_proposal_service'
 include GameRoomTest::Assertions
 T=GameRoomTournaments
-Dir.mktmpdir('pilot-proposal-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('pilot-proposal-') do |directory|
   actor,now='Alice',Time.utc(2026,10,13,12).to_i
   table=ReadinessPlanTableSupport::Table.new(user:-> {actor},clock:-> {now})
   candidate={'publication_ref'=>{'author'=>'alice','publication_key'=>'fixture'},'schedule_id'=>'a'*64,

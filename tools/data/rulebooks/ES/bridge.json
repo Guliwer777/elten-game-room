@@ -1,0 +1,319 @@
+{
+  "source": "games/bridge.rb",
+  "sections": [
+    {
+      "id": "aim",
+      "title": {
+        "es": "Objetivo"
+      },
+      "paragraphs": [
+        {
+          "es": "El bridge se juega entre cuatro personas, en dos parejas. Primero participas con tu compañero en una subasta para comprometeros a ganar cierto número de bazas. Una baza son las cuatro cartas que se juegan por turno, una de cada mano. La pareja que gana la subasta intenta cumplir su contrato y la otra trata de impedirlo."
+        },
+        {
+          "es": "Por defecto se juega un rubber, que termina cuando una pareja gana dos mangas. Vence la pareja con más puntos en total; ganar las dos mangas no garantiza por sí solo la victoria."
+        }
+      ]
+    },
+    {
+      "id": "deal",
+      "title": {
+        "es": "Tu mano y tu compañero"
+      },
+      "paragraphs": [
+        {
+          "es": "Norte juega con Sur, y Este con Oeste. La elección de equipos de la mesa determina las parejas. Los turnos siguen el orden Norte, Este, Sur y Oeste. La tecla I te recuerda tu posición y quién es tu compañero."
+        },
+        {
+          "es": "Cada jugador recibe 13 cartas. De mayor a menor, las cartas de cada palo son as, rey, dama, jota, diez y las demás hasta el dos. Recorre tu mano con las flechas o pulsa H para escucharla entera."
+        },
+        {
+          "es": "H también anuncia tus puntos de honor: 4 por un as, 3 por un rey, 2 por una dama y 1 por una jota. Sirven para valorar la mano durante la subasta, no se suman a la puntuación de la partida."
+        }
+      ]
+    },
+    {
+      "id": "auction",
+      "title": {
+        "es": "La subasta"
+      },
+      "paragraphs": [
+        {
+          "es": "Empieza el repartidor. En tu turno, elige una declaración con las flechas y confírmala con Intro. También puedes abrir las opciones con B."
+        },
+        {
+          "es": "Una apuesta indica un número del 1 al 7 y un palo, o sin triunfo. Al número se le suman seis para obtener las bazas prometidas: 1 corazón promete siete; 4 picas, diez. El palo elegido será triunfo y sus cartas podrán superar a las de otros palos. En un contrato sin triunfo ningún palo tiene esa ventaja."
+        },
+        {
+          "es": "Cada apuesta debe superar a la anterior. A igual número, el orden de menor a mayor es tréboles, diamantes, corazones, picas y sin triunfo. Un número mayor supera cualquier apuesta de nivel inferior. Después de 1 pica, por ejemplo, puedes declarar 1 sin triunfo o 2 tréboles."
+        },
+        {
+          "es": "También puedes elegir:"
+        },
+        {
+          "es": "- Paso: cedes la palabra al siguiente jugador. Si la subasta vuelve a ti, puedes volver a apostar."
+        },
+        {
+          "es": "- Doblo: aumentas tanto la recompensa por cumplir el contrato rival como la penalización por fallarlo. Puedes doblar la última apuesta de un rival, aunque después haya habido pasos."
+        },
+        {
+          "es": "- Redoblo: si un rival ha doblado la apuesta de tu pareja, vuelves a aumentar lo que está en juego. Una apuesta superior anula el doblo o redoblo anterior."
+        },
+        {
+          "es": "Tres pasos seguidos después de una apuesta cierran la subasta. La última apuesta es el contrato. Si los cuatro jugadores pasan desde el principio, el reparto termina sin puntos y reparte el siguiente jugador."
+        },
+        {
+          "es": "L lee toda la subasta; Ctrl+L permite consultar sus declaraciones una a una."
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": {
+        "es": "El declarante y el muerto"
+      },
+      "paragraphs": [
+        {
+          "es": "Declara quien, dentro de la pareja ganadora, nombró por primera vez el palo del contrato final, o sin triunfo si ese es el contrato. Si Norte abre con 1 corazón y Sur termina en 4 corazones, el declarante es Norte."
+        },
+        {
+          "es": "El jugador siguiente al declarante sale con la primera carta. Entonces el compañero del declarante descubre su mano: es el muerto. Todos pueden escuchar sus cartas con D, pero las juega el declarante. K recuerda el contrato y las bazas que lleva su pareja."
+        },
+        {
+          "es": "Elige una carta con las flechas y juégala con Intro. Si tienes cartas del palo de salida, debes jugar una. Si no, puedes jugar cualquier carta. Gana la baza el triunfo más alto; si no se ha jugado ninguno, gana la carta más alta del palo de salida. Quien gana sale en la siguiente baza."
+        },
+        {
+          "es": "Como declarante, cuando le toque jugar al muerto, usa Tab para pasar a su lista de cartas y elige una allí. Z busca una carta que puedas jugar en la mano a la que le toca; Mayús+Z busca hacia atrás. Si solo hay una carta posible, Z la juega directamente."
+        },
+        {
+          "es": "C lee la baza actual, F recuerda el palo de salida y P lee la baza anterior y su ganador. Tras las 13 bazas se calculan los puntos y el siguiente jugador reparte."
+        }
+      ]
+    },
+    {
+      "id": "scoring",
+      "title": {
+        "es": "Puntuación del rubber"
+      },
+      "paragraphs": [
+        {
+          "es": "Si cumples el contrato, recibes puntos por las bazas prometidas por encima de las seis primeras:"
+        },
+        {
+          "es": "- 20 por cada baza de tréboles o diamantes."
+        },
+        {
+          "es": "- 30 por cada baza de corazones o picas."
+        },
+        {
+          "es": "- Sin triunfo: 40 por la primera y 30 por cada una de las demás."
+        },
+        {
+          "es": "El doblo multiplica esos puntos por dos; el redoblo, por cuatro. Se anotan debajo de la línea. Una pareja gana una manga al reunir 100 puntos allí, en un reparto o en varios. Después ambas parejas vuelven a empezar de cero para la siguiente manga."
+        },
+        {
+          "es": "Por ejemplo, cumplir 2 corazones da 60 puntos debajo de la línea. Cumplir más adelante 1 sin triunfo añade 40 y completa la manga, siempre que ninguna pareja haya ganado una manga entre ambos repartos."
+        },
+        {
+          "es": "Una pareja que ha ganado una manga pasa a ser vulnerable hasta el final del rubber. Esto aumenta algunas primas y penalizaciones. V anuncia el reparto y la vulnerabilidad."
+        },
+        {
+          "es": "La segunda manga ganada termina el rubber. Su ganador recibe 700 puntos si los rivales no ganaron ninguna manga, o 500 si ganaron una. Gana la partida quien tenga más puntos en total, incluidas las primas que se explican a continuación. Si los totales coinciden, hay empate. S lee la puntuación."
+        }
+      ]
+    },
+    {
+      "id": "bonuses",
+      "title": {
+        "es": "Bazas extra y penalizaciones"
+      },
+      "paragraphs": [
+        {
+          "es": "Las primas y penalizaciones se anotan encima de la línea. Cuentan para el total, pero no para los 100 puntos necesarios para ganar una manga."
+        },
+        {
+          "es": "- Cada baza por encima del contrato da 20 puntos en tréboles o diamantes, y 30 en corazones, picas o sin triunfo."
+        },
+        {
+          "es": "- Con el contrato doblado, cada baza extra da 100 puntos sin vulnerabilidad o 200 siendo vulnerable. Si está redoblado, da 200 o 400."
+        },
+        {
+          "es": "- Cumplir un contrato doblado añade 50 puntos; cumplir uno redoblado, 100."
+        },
+        {
+          "es": "- Declarar y cumplir un pequeño slam, un contrato de nivel 6, añade 500 puntos o 750 siendo vulnerable. Un gran slam, de nivel 7, añade 1000 o 1500."
+        },
+        {
+          "es": "Si no alcanzas las bazas prometidas, los rivales reciben puntos por cada baza que te falte:"
+        },
+        {
+          "es": "- Sin doblar: 50 por baza si no eres vulnerable, o 100 si lo eres."
+        },
+        {
+          "es": "- Doblado y sin vulnerabilidad: 100 por la primera, 200 por la segunda y tercera, y 300 por cada una posterior."
+        },
+        {
+          "es": "- Doblado y vulnerable: 200 por la primera y 300 por cada una posterior."
+        },
+        {
+          "es": "- Redoblado: el doble de la penalización correspondiente a un contrato doblado."
+        }
+      ]
+    },
+    {
+      "id": "honors",
+      "title": {
+        "es": "Honores"
+      },
+      "paragraphs": [
+        {
+          "es": "Una pareja también puede ganar una prima por ciertas cartas en una sola mano, aunque esté defendiendo:"
+        },
+        {
+          "es": "- Cuatro de los cinco triunfos más altos — as, rey, dama, jota y diez — dan 100 puntos. Los cinco dan 150."
+        },
+        {
+          "es": "- En un contrato sin triunfo, tener los cuatro ases en una mano da 150 puntos."
+        },
+        {
+          "es": "Se anotan encima de la línea. Puedes desactivar los honores en los ajustes de la mesa."
+        }
+      ]
+    },
+    {
+      "id": "variants",
+      "title": {
+        "es": "Comparación con una puntuación estimada"
+      },
+      "paragraphs": [
+        {
+          "es": "En los ajustes puedes sustituir el rubber por una serie de 4, 8, 12, 16 o 24 repartos; por defecto son 8. Cada reparto se puntúa por separado. Su número determina quién reparte y la vulnerabilidad, que puedes consultar con V."
+        },
+        {
+          "es": "Un contrato que dé al menos 100 puntos por bazas prometidas recibe una prima de manga: 300 sin vulnerabilidad o 500 siendo vulnerable. Un contrato menor recibe 50. Las bazas extra, los doblos, los slams y las penalizaciones mantienen los valores anteriores. No hay honores ni prima de rubber."
+        },
+        {
+          "es": "El resultado se compara con una referencia convencional, calculada a partir de los puntos de honor de la pareja más fuerte y su vulnerabilidad. Es una estimación, no el resultado de otra mesa. No tiene en cuenta la longitud de los palos ni cómo se complementan las manos."
+        },
+        {
+          "es": "Por ejemplo, con 26 puntos de honor la referencia es 400 sin vulnerabilidad o 600 siendo vulnerable. Si cada pareja tiene 20, la referencia es cero. Un reparto en el que todos pasan también se compara: su resultado real es cero."
+        },
+        {
+          "es": "Hay dos formas de puntuar la comparación:"
+        },
+        {
+          "es": "- IMP: una diferencia de hasta 10 puntos no da nada; de 20 a 40 da 1 IMP, de 50 a 80 da 2 y de 90 a 120 da 3. Las diferencias mayores dan más, hasta un máximo de 24. Los recibe la pareja que supera la referencia."
+        },
+        {
+          "es": "- Puntos de match: superar la referencia da 2 puntos a esa pareja y 0 a la otra. Igualarla da 1 a cada una. S presenta también el total como porcentaje de los puntos posibles."
+        },
+        {
+          "es": "Al terminar los repartos acordados, gana la pareja con más puntos. Si tiene los mismos que la otra, la partida acaba en empate."
+        }
+      ]
+    },
+    {
+      "id": "bots",
+      "title": {
+        "es": "Subastar con un bot"
+      },
+      "paragraphs": [
+        {
+          "es": "El bot utiliza su propia mano, las cartas descubiertas del muerto, la subasta y las cartas jugadas. Estas son algunas de sus aperturas naturales:"
+        },
+        {
+          "es": "- 1 sin triunfo indica una mano equilibrada de 15–17 puntos de honor; 2 sin triunfo, de 20–21."
+        },
+        {
+          "es": "- 1 corazón o 1 pica suele indicar al menos 12 puntos y cinco cartas de ese palo. Sin cinco corazones ni cinco picas, abre un palo menor."
+        },
+        {
+          "es": "- 2 diamantes, 2 corazones o 2 picas indica seis cartas del palo y 6–10 puntos."
+        },
+        {
+          "es": "Subir tu palo indica apoyo. Una subida al nivel 2 es débil; al nivel 3 invita a manga. Los bots no doblan."
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "es": "Atajos de teclado"
+      },
+      "paragraphs": [
+        {
+          "es": "Flechas: recorrer cartas o declaraciones."
+        },
+        {
+          "es": "Intro: hacer la declaración elegida o jugar la carta."
+        },
+        {
+          "es": "B: elegir declaración en tu turno de subasta; fuera de él, leerla."
+        },
+        {
+          "es": "L: leer la subasta."
+        },
+        {
+          "es": "Ctrl+L: consultar la subasta."
+        },
+        {
+          "es": "H: leer tu mano y puntos de honor."
+        },
+        {
+          "es": "D: leer las cartas del muerto."
+        },
+        {
+          "es": "Tab: cambiar de lista de cartas."
+        },
+        {
+          "es": "Z: buscar la siguiente carta válida; jugarla si es la única."
+        },
+        {
+          "es": "Mayús+Z: buscar la carta válida anterior."
+        },
+        {
+          "es": "K: leer el contrato y las bazas del declarante."
+        },
+        {
+          "es": "C: leer la baza actual."
+        },
+        {
+          "es": "Ctrl+C: consultar la baza actual."
+        },
+        {
+          "es": "F: leer el palo de salida."
+        },
+        {
+          "es": "P: leer la baza anterior."
+        },
+        {
+          "es": "I: leer tu posición, compañero y papel."
+        },
+        {
+          "es": "V: leer reparto, vulnerabilidad y contrato."
+        },
+        {
+          "es": "S: leer la puntuación."
+        },
+        {
+          "es": "T: leer a quién le toca."
+        },
+        {
+          "es": "Mayús+C: ordenar cartas por palo."
+        },
+        {
+          "es": "Mayús+H: ordenar por valor."
+        },
+        {
+          "es": "Mayús+M: recuperar el orden recibido."
+        }
+      ]
+    }
+  ],
+  "option_chapters": {
+    "variant": "variants",
+    "boards": "variants",
+    "scoring": "variants",
+    "honors": "honors"
+  }
+}

@@ -41,9 +41,9 @@ Jde o dokument pouze ke čtení s nadpisem pro každou verzi. H přejde na dalš
 
 ## Co si můžete zahrát
 
-Power Games v současnosti obsahuje 34 her:
+Power Games v současnosti obsahuje 35 her:
 
-- Karetní hry: 3-5-8, 99, 1000 mil, Biblios, Makao, Piky, Poker, Rummy, Tisíc, UNO, War a Scientific War.
+- Karetní hry: 3-5-8, 99, 1000 mil, Biblios, Bridž, Makao, Piky, Poker, Rummy, Tisíc, UNO, War a Scientific War.
 - Deskové a strategické hry: Člověče, nezlob se, Čtyři v řadě, Piškvorky, Mankala, Monopoly, Reversi, Lodě, Šachy, Dáma a Závody kachen.
 - Kostky a domino: Cat, head, tail, Domino, Farkle, Mexican Train a Yahtzee.
 - Slova a vědomosti: Krowa, Kategorie, Quiz Party, Scrabble a Taboo.
@@ -69,6 +69,9 @@ V seznamu stolů i ve widgetu můžete zjistit více ještě před připojením:
 U stolu otevře Ctrl+I pozvání uživatelů, kteří jsou online, a Ctrl+Shift+I umožní vybrat někoho z kontaktů. Přijaté pozvánky otevřete přes oznámení ELTENu, kontextovou nabídku nebo Ctrl+J. Poslední zkratka funguje v celém Power Games, včetně widgetu.
 
 Ve hrách podporujících diváky můžete sledovat partii, aniž byste zabrali místo hráče. Hodí se to k fandění i k učení pravidel. V Axel Pongu si divák může vybrat také poslechovou perspektivu.
+
+V Kachních závodech můžete sledovat výzvy jako divák u stolu i jako závodník, který se dané výzvy neúčastní. Uslyšíte veřejné hody, zahrané karty a volby. U samostatných úloh, jako je Simon, rytmus nebo střelba na kachny, se dozvíte až konečné výsledky. Soukromé odpovědi zůstanou do vyhodnocení skryté. Diváci nepotvrzují připravenost ani neslyší odpočítávání určené účastníkům.
+
 Ctrl+Shift+O umožní přihlásit se do další partie jako hráč nebo divák, pokud hra takovou volbu nabízí.
 Tato zkratka mění vaši vlastní roli. Hostitel může změnit roli jiného účastníka v kontextovém menu seznamu uživatelů; příslušná položka obsahuje jméno vybrané osoby.
 
@@ -84,6 +87,8 @@ V seznamu uživatelů má hostitel také dva příkazy vztahující se k vybran�
 - Ctrl+Shift+R nahradí hráče přítomným divákem nebo botem, pokud to hra a její aktuální fáze dovolují.
 
 Po odchodu hostitele může stůl převzít další účastník. V podporovaných hrách program nahradí odcházejícího hráče botem, aby ostatní mohli pokračovat.
+
+V běžné partii Kategorií se hráč po potvrzeném odchodu vyřadí z aktuální hry, takže se nečeká na jeho odpovědi. Odejde-li rozhodčí, nedokončené kolo se zruší a začne nové. Zbudou-li méně než dva účastníci, partie se ukončí jako přerušená, bez přiznání vítězství. Hráč, který se vrátí, může sledovat hru a zapojit se do další partie. Samotná dočasná chyba spojení nikoho nevyřadí.
 
 Týmy se vybírají v samostatném okně. Můžete je rozlosovat, změnit přiřazení Enterem nebo přesouvat lidi pomocí Shift+šipka nahoru a Shift+šipka dolů. Potvrzení týmů vás vrátí ke stolu; partii zahájí až „Spusťte hru“. Pro další partii se stejnými účastníky nemusíte týmy nastavovat znovu.
 
@@ -140,6 +145,9 @@ V Nastavení → Nastavení oznámení vyberete hry, o jejichž nových veřejn�
 
 Samostatně určíte, zda chcete pozvánky od všech, jen od kontaktů, nebo od nikoho. Pozvánky a oznámení nových stolů mají různé zvuky. Jejich popis stručně uvádí hru a nejdůležitější nastavení; úplný popis nastavení stolu přečte Ctrl+R.
 
+V nastavení oznámení najdete také Černou listinu. Přidejte na ni uživatelská jména lidí, od kterých nechcete vidět pozvánky. Na seznamu přidáte člověka klávesami Ctrl+N a vybraného odeberete klávesou Delete. Změny potvrďte tlačítkem Uložit.
+Černá listina neblokuje pozvánky k turnajovým zápasům.
+
 V Nastavení → Oznámení v lobby zvlášť vybíráte, které zprávy se mají předčítat při pobytu v hlavním okně programu.
 
 ## Zvuky a hraní na pozadí
@@ -152,6 +160,8 @@ Hlasitost můžete měnit bez opuštění hry:
 - Shift+F3 — další skupina zvuků.
 
 Lze ovládat všechny zvuky společně nebo zvlášť zvuky hry, příchody a odchody od stolu, chat a pozvánky s oznámeními. Stejné úrovně najdete v Nastavení → Zvuky.
+
+Stejná kategorie začíná zaškrtávacím políčkem 3D zvuku (HRTF), které je ve výchozím stavu zapnuté. Zvuky tahů ostatních hráčů díky němu přicházejí z jejich míst u stolu: sebe slyšíte uprostřed, ostatní před sebou: hráče po vaší levici zepředu zleva a další ve směru hodinových ručiček až zepředu zprava. Ve hře dvou hráčů je soupeř přímo před vámi, ve čtyřech sedí hráči vpředu vlevo, naproti a vpředu vpravo. Ve hře dvou, čtyř nebo šesti hráčů zní hráč naproti o něco hlasitěji a jakoby z druhého konce místnosti, aby se jeho zvuky snadno odlišily od vašich. Pod zaškrtávacím políčkem je seznam her, ve kterých se 3D zvuk používá; jeho první dvě položky označí nebo zruší označení všech her. V seznamu nejsou hry, ve kterých zvuky nevycházejí z tahů jednotlivých hráčů: Audio Ball a Axel Pong mají vlastní rozložení zvuku a Krowa, Závody kachen, Státy a města a Quiz Party nepřiřazují zvuky k místům u stolu. Výhra, prohra, míchání a shrábnutí banku v pokeru znějí vždy uprostřed. Nejlépe je to slyšet ve sluchátkách.
 
 Přechod do zpráv, konference nebo jiného okna ELTENu partii nezastaví. Je to důležité hlavně u akčních her a při zapnutém časovém limitu tahu.
 
@@ -175,7 +185,9 @@ Jazyk otázek, karet nebo slovníku můžete zvolit v nastavení her, které to 
 
 ### Přerušit teď a dohrát později
 
-Ve hrách podporujících ukládání může hostitel pomocí Ctrl+S uložit partii a zavřít stůl. Uložená partie patří k jeho účtu a je na serveru, takže se k ní lze vrátit i z jiného počítače.
+Mimo turnaje může hostitel ve hrách podporujících ukládání pomocí Ctrl+S uložit partii a zavřít stůl. Uložená partie patří k jeho účtu a je na serveru, takže se k ní lze vrátit i z jiného počítače.
+
+Turnajové partie nelze ukládat ani obnovovat z uloženého souboru.
 
 K pokračování slouží „Uložené hry“ v hlavním menu. Obnovení vytvoří stůl, u kterého můžete znovu shromáždit účastníky a pokračovat. Ne každou hru lze uložit a ne každý okamžik je k tomu vhodný — dostupnost příkazu závisí na hře a aktuální fázi.
 
@@ -228,6 +240,12 @@ V pravidlech Audio Ballu je zvukový návod, ve kterém si můžete před hraní
 
 Ve Scrabble ostatní účastníci vidí přidávání a odebírání písmen ještě před potvrzením slova. Ctrl+P zapíná nebo vypíná místní oznamování těchto změn. Ve výchozím stavu je vypnuto; není nutné je zapínat všem u stolu.
 
+### Hodnocení odpovědí v Kategoriích
+
+Odpovědi jsou seřazené podle kategorií, aby se podobné zápisy lépe porovnávaly. Jako rozhodčí mezi nimi přecházejte Tabem, šipkami vyberte hodnocení a potvrďte ho Enterem. Po přechodu na odpověď zazní připomenutí „Enter potvrdí hodnocení“ a po přijetí hodnocení uslyšíte „Ohodnoceno“. Až ohodnotíte všechny odpovědi, zvolte „Ukončit hodnocení“.
+
+Pole odpovědí doplňují u písmen M a N příklad slova, který je pomáhá rozlišit. Zvuk oznámí odeslané odpovědi; při hře na čas samostatné signály upozorní na zbývajících 20 sekund a vypršení času. Po oznámení bodů následuje přestávka před dalším kolem. Jeho čas na odpovědi začne běžet až po ní.
+
 ### Spojení ve zvukových hrách
 
 Při vytváření stolu Axel Ponga nebo Audio Ballu lze volitelně zapnout „Full P2P“, tedy přímé spojení mezi účastníky, pokud je jejich síť umožňuje. Výchozí stav je vypnuto. Po zaškrtnutí se objeví limit účastníků P2P, standardně osm. Pokud přímé spojení není dostupné, ELTEN může nadále využít zprostředkující server. Ctrl+F4 rozlišuje měřená spojení.
@@ -256,7 +274,7 @@ Následující přehled se týká společného ovládání programu. Příkazy k
 - Ctrl+O — přidání bota; pro hostitele, je-li dostupné.
 - Ctrl+Shift+O — výběr role hráče či diváka pro další partii.
 - Ctrl+P — osobní nastavení nebo přepínač ve hrách, které jej nabízejí.
-- Ctrl+S — uložení partie a zavření stolu; pro hostitele v podporovaných hrách.
+- Ctrl+S — uložení partie a zavření stolu; pro hostitele v podporovaných hrách mimo turnaje.
 - Ctrl+Shift+S — export historie stolu do TXT bez ukončení partie.
 - Ctrl+Q — ukončení aktuální partie bez zavření stolu; pro hostitele.
 - Ctrl+X — změna nastavení další partie; pro hostitele, mimo editaci textu.
@@ -290,10 +308,9 @@ Turnaj spojuje několik partií do jedné soutěže. Program sestaví zápasy, z
 V hlavní nabídce zvolte „Turnaje“. Šipkami vyberte turnaj a Enterem otevřete seznam jeho akcí. Tab přepíná mezi seznamem, filtrem a dalšími ovládacími prvky. Filtrem zobrazíte:
 
 - aktuální turnaje, včetně těch, do kterých se ještě můžete přihlásit;
-- své aktuální turnaje, tedy ty, kterých se účastníte nebo je pořádáte;
 - dokončené turnaje, když se chcete vrátit k jejich výsledkům.
 
-V aktuálních turnajích jsou nejprve ty, kterých se účastníte, potom ty, do kterých se můžete přihlásit, a nakonec ostatní.
+V aktuálních turnajích jsou nejprve ty, kterých se účastníte nebo je pořádáte, potom ty, do kterých se můžete přihlásit, a nakonec ostatní.
 
 Opuštěný turnaj zmizí po 14 dnech nečinnosti před zahájením nebo po 30 dnech bez postupu po zahájení. Před startem se tato lhůta obnovuje přihláškami a změnami pořadatele, po startu výsledky zápasů. Samotné prohlížení ji neprodlužuje. Pokud mají přihlášky nebo turnaj začít až později, turnaj před tímto datem nezmizí. Výsledky dokončených turnajů zůstávají dostupné.
 
@@ -301,6 +318,7 @@ U názvu najdete hru, počet účastníků a stav turnaje. K dispozici jsou tak�
 
 - Ctrl+N — vytvořit turnaj.
 - Ctrl+R — obnovit seznam turnajů.
+- Ctrl+O — otevřít turnaj; Ctrl+D — přihlásit se; Ctrl+M — zápasy; Ctrl+W — tabulka výsledků; Ctrl+E — správa; Ctrl+L — odhlásit se. Dostupné akce i zkratky najdete také v kontextové nabídce.
 - Ctrl+Shift+T — otevřít své aktuální turnaje z hlavní nabídky nebo widgetu. Pokud máte jen jeden, rovnou se otevře seznam jeho akcí.
 - Ctrl+J — otevřít běžný seznam pozvánek, který obsahuje i pozvánky k turnajovým zápasům.
 
@@ -310,10 +328,10 @@ F1 připomene ovládání aktuálního okna, Escape se vrátí zpět. Zavřením
 
 Po otevření turnaje se rovnou zobrazí seznam akcí. Šipkami vyberte položku a potvrďte Enterem. Záhlaví uvádí název a stav turnaje.
 
-- „Zápasy“ — zde vyberete utkání k odehrání nebo si prohlédnete výsledek dokončeného zápasu.
-- „Výsledky“ — pořadí v turnaji, včetně předchozích fází.
+- „Zápasy turnaje“ — zde vyberete utkání k odehrání nebo si prohlédnete výsledek dokončeného zápasu.
+- „Tabulka výsledků“ — pořadí v turnaji, včetně předchozích fází.
 - „Účastníci“ — seznam přihlášených hráčů.
-- „Pravidla turnaje“ — popis pořadatele, nastavení hry, formát soutěže, pravidla postupu a termíny.
+- „Informace a pravidla“ — popis pořadatele, nastavení hry, formát soutěže, pravidla postupu a termíny.
 - „Spravovat turnaj“ — možnosti pořadatele. Ostatním účastníkům se tato položka nezobrazuje.
 
 Přihlášení, odhlášení a výběr spoluhráče se nabízejí tehdy, když je lze použít.
@@ -322,21 +340,23 @@ Přihlášení, odhlášení a výběr spoluhráče se nabízejí tehdy, když j
 
 Přihlaste se volbou „Přihlásit se do turnaje“. Pokud není dostupná, podívejte se na stav v záhlaví: přihlášky ještě nemusejí být otevřené, mohou být uzavřené nebo je turnaj plný. Jste-li již přihlášeni, nemusíte to dělat znovu. Před zahájením můžete zvolit „Odhlásit se z turnaje“.
 
+Pořadatel vám může poslat pozvánku do turnaje. Otevře seznam jeho akcí; přihlásíte se až volbou „Přihlásit se do turnaje“. Nejde o pozvánku ke konkrétnímu zápasu.
+
 V turnaji stálých dvojic se nejprve přihlásí každý hráč sám. Potom:
 
-1. Otevřete „Můj spoluhráč“ a vyberte jiného účastníka.
+1. Otevřete „Spoluhráč v týmu“ a vyberte jiného účastníka.
 2. Požádejte ho, aby si na stejné obrazovce vybral vás.
 3. Jakmile se vyberete navzájem, je dvojice potvrzená. Na obrazovce spoluhráče také zjistíte, zda ještě čekáte na souhlas.
 
 Před začátkem můžete svůj výběr změnit nebo zrušit. Dvojice může sestavit i pořadatel. Týmové zápasy nelze připravit, dokud některým účastníkům chybí spoluhráč. Po celý turnaj zůstáváte ve stejné dvojici a výsledek se vám počítá společně.
 
-O zahájení turnaje dostanete oznámení, i když právě prohlížíte turnaje. Jeho zvuk se řídí běžným nastavením oznámení.
+Oznámení o zahájení turnaje otevře jeho zápasy. Po dokončení fáze přijde jedno oznámení s názvem následující fáze; otevře tabulku výsledků právě dokončené fáze. Po finále přijde pouze oznámení o konci celého turnaje se jménem vítěze nebo společných vítězů a odkazem na konečnou tabulku. Zvuky se řídí běžným nastavením oznámení.
 
 ### Jak zahájit zápas
 
 Nemusíte vytvářet zvláštní stůl ani ho hledat mezi veřejnými partiemi.
 
-1. Otevřete svůj turnaj — v hlavní nabídce nebo ve widgetu můžete použít Ctrl+Shift+T — a zvolte „Zápasy“.
+1. Otevřete svůj turnaj — v hlavní nabídce nebo ve widgetu můžete použít Ctrl+Shift+T — a zvolte „Zápasy turnaje“.
 2. Vyberte svůj neodehraný zápas a stiskněte Enter nebo Ctrl+G, případně zvolte „Hrát“ z kontextové nabídky. Po potvrzení se otevře stůl s nastavením turnaje a ostatní účastníci dostanou pozvánku.
 3. Ostatní přijmou běžnou pozvánku ke stolu z oznámení ELTENu nebo přes Ctrl+J a rovnou se připojí.
 4. Jakmile jsou všichni u stolu, hostitel zvolí „Zahájit hru“. Dále používáte běžné ovládání vybrané hry.
@@ -345,21 +365,39 @@ Stůl může otevřít kterýkoli účastník daného zápasu. Pořadatel nemus�
 
 Kdo není zařazen do tohoto zápasu, připojí se automaticky jako divák, a to i před zahájením hry. Platí to také pro účastníky turnaje, kteří mají hrát jiný zápas.
 
-Pozvánka platí pět minut. Její odmítnutí, vypršení ani odchod od stolu neznamená prohru nebo odhlášení z turnaje. Opětovnou volbou „Hrát“ se vrátíte ke stávajícímu stolu a pozvete chybějící hráče.
+Pozvánka platí pět minut. Její odmítnutí, vypršení ani odchod od stolu před začátkem zápasu neznamená prohru nebo odhlášení z turnaje. Opětovnou volbou „Hrát“ se vrátíte ke stávajícímu stolu a pozvete chybějící hráče. Po zahájení zápasu platí níže popsaná pravidla návratu.
 
-Před vstupem do zápasu opusťte jinou partii. Nemůžete mít hráčské místo u dvou stolů současně. Pokud byl prázdný stůl zavřen ještě před zahájením hry, můžete zápas otevřít znovu. Rozehranou partii program automaticky nenahradí novou; pokračovat v ní můžete přes „Uložené hry“.
+Před vstupem do zápasu opusťte jinou partii. Nemůžete mít hráčské místo u dvou stolů současně. Pokud byl prázdný stůl zavřen ještě před zahájením hry, můžete zápas otevřít znovu. Rozehranou partii program automaticky nenahradí novou. Po ztrátě spojení se vraťte ke stejnému stolu, dokud je otevřený.
 
 ### Zápasy, výsledky a přerušená partie
 
-„Zápasy“ se otevřou v aktuální fázi turnaje. První položka seznamu uvádí její název, například „Čtvrtfinále“, a počet dokončených zápasů. Následují vaše neodehrané zápasy, potom neodehrané zápasy ostatních a nakonec všechny dokončené. Každý vidí celý seznam.
+„Zápasy turnaje“ se otevřou v aktuální fázi turnaje. První položka seznamu uvádí její název, například „Čtvrtfinále“, a počet dokončených zápasů. Následují vaše neodehrané zápasy, potom neodehrané zápasy ostatních a nakonec všechny dokončené. Každý vidí celý seznam.
 
 Tabem přejdete k výběru fáze. Můžete si prohlédnout i dřívější fáze. Pokud sledujete aktuální fázi, seznam po zahájení další přejde na ni automaticky. Obnovení zachová vybraný zápas, pokud je stále viditelný.
 
-Enter na dokončeném zápase oznámí, že už byl odehrán. Výsledek otevřete pomocí Ctrl+W nebo položky „Výsledek zápasu“ v kontextové nabídce. Nabídka ukazuje dostupné akce i jejich zkratky: Ctrl+G pro hraní, Ctrl+F pro přiznání kontumace a Ctrl+Shift+F pro zrušení zahájeného zápasu a přiznání kontumace. Poslední dvě akce jsou určeny pořadateli a vyžadují výběr vítěze a potvrzení.
+Enter na dokončeném zápase oznámí, že už byl odehrán. Výsledek otevřete pomocí Ctrl+W nebo položky „Podrobnosti výsledku“ v kontextové nabídce. Nabídka ukazuje dostupné akce i jejich zkratky: Ctrl+G pro hraní a Ctrl+F pro přiznání kontumace. Pořadatel používá Ctrl+F před začátkem zápasu i během něj: vybere poraženého a potvrdí zobrazené důsledky.
 
-„Výsledky“ rovnou zobrazí seznam s umístěním, jménem účastníka, turnajovými body a počtem odehraných zápasů. Tabem přejdete k výběru fáze. Výsledky dokončených partií se zapisují automaticky; nemusíte je opisovat z historie hry.
+U dokončeného zápasu najdete také skóre samotné hry, pokud je k dispozici. Je-li naplánována dosud neodehraná odveta proti stejným soupeřům, kontextová nabídka obsahuje „Hrát odvetu“ se zkratkou Ctrl+G. Rozešle běžné pozvánky, ale partii sama nezahájí.
 
-Pokud hra podporuje ukládání, hostitel stolu může použít Ctrl+S. Partii obnovíte z „Uložených her“ a její pokračování stále patří ke stejnému turnajovému zápasu. Samotný odchod hráče nebo ztráta spojení neznamená remízu ani kontumaci. Nerozhodnutý zápas čeká na dohrání nebo rozhodnutí pořadatele.
+„Tabulka výsledků“ rovnou zobrazí umístění, jméno účastníka, turnajové body a počet odehraných zápasů. Tabem přejdete k výběru fáze. Výsledky dokončených partií se zapisují automaticky; nemusíte je opisovat z historie hry.
+
+Žádnou turnajovou partii nelze uložit ani obnovit ze souboru. Příkaz k uložení ani Ctrl+S nejsou dostupné, ale Ctrl+Shift+S nadále umožňuje exportovat historii jako text.
+
+Pokud se hráč odpojí z rozehraného zápasu jednotlivců, hra se pozastaví. Na návrat má během celého zápasu dohromady pět minut. Návratem se odpočet zastaví, ale limit se neobnoví. Připojte se ke stejnému stolu se stejným účtem; karty, skóre i zbývající čas na tah zůstanou zachovány.
+
+Po vyčerpání limitu v zápase jeden na jednoho vyhraje soupeř. Při větším počtu hráčů obsadí odpojený hráč poslední místo. Pokud lze pokračovat bez něj, ostatní hrají dál. Jinak jejich pořadí určí výsledky dokončených kol. Není-li dokončeno žádné kolo, zbývající hráči sdílejí první místo. Automatický limit platí pro zápasy jednotlivců, ne týmů. Nepřijatá pozvánka neznamená prohru.
+
+### Soukromé karty v turnajích
+
+V turnajích her 1000 mil, Piky, Bridž, Tisíc, 3-5-8, 99, Poker, War, Rummy, Makao, Biblios a UNO rozdává server karty každému hráči zvlášť. Stejně se rozdávají kameny v Dominu a Mexican Train i písmena ve Scrabblu. Ostatní hráči, diváci ani hostitel neobdrží obsah vaší ruky. Potřebné karty a kameny se odhalují při zahrání, předání nebo počítání bodů. V bridži se ruka tichého hráče odkryje po úvodním výnosu a ostatní karty po skončení rozdání.
+
+Karty předané jinému hráči tuto ochranu ztrácejí, běžné rozhraní však cizí ruku nadále nezobrazuje. Platí to i pro celou předávanou ruku v UNO, získané karty ve War a karty vracené do balíčku. V UNO rozdávající zná také divoké karty přeskočené při výběru úvodní karty. V Dominu se porovnává nejvyšší kámen každého hráče, aby se určilo, kdo začíná. Pravidla her se nemění.
+
+V těchto zápasech nelze nahrazovat hráče, přidávat boty ani ukládat partii pro pokračování u jiného stolu. Po ztrátě spojení se vraťte ke stejnému stolu pod stejným účtem — své karty dostanete zpět. Předání hostitelství karty neodhalí. Otevřený stůl neprodlužuje pětiminutový limit pro návrat do rozehraného individuálního zápasu.
+
+V turnajovém Taboo dostane heslo a zakázaná slova pouze popisující hráč a soupeřův tým. Hostitel, který hádá, je také neuvidí. Po skončení tahu se hesla odhalí ke kontrole. Pokud se popisující hráč odpojí, musí se vrátit, než bude možné potvrdit skóre. Ani tuto partii nelze uložit pro pokračování u jiného stolu nebo nahradit účastníka.
+
+V běžných partiích zůstávají boti, náhradníci i ukládání dostupní tam, kde je daná hra podporuje.
 
 ### Vytvoření turnaje
 
@@ -370,7 +408,6 @@ Na seznamu turnajů stiskněte Ctrl+N. Vyberte hru, poté variantu a obvyklá na
 - Limit účastníků — nejvyšší počet přihlášených osob, standardně 16, nejvýše 128. I v turnaji dvojic se počítají lidé, nikoli týmy. K zahájení není nutné všechna místa obsadit.
 - Hráčů v zápase — počet osob u jednoho stolu, ne v celém turnaji. Volba se zobrazí, pokud hra umožňuje různé počty hráčů.
 - Odvety — další zápas ve stejném složení, se změněným pořadím míst. Tato volba platí pro systém každý s každým a skupiny; vyřazovací kola a finále mají vlastní nastavení.
-- Nastavení hry — návrat k variantě a pravidlům, podle kterých se budou zápasy hrát.
 - „Termíny a herní časy“ — nepovinné termíny přihlášek, zahájení a povolené doby pro zápasy.
 
 Další pole závisejí na hře a formátu. Odvety jsou ve výchozím stavu vypnuté. Až budete hotovi, turnaj zveřejněte; samotným vyplňováním formuláře ho ostatním nezpřístupníte.
@@ -441,7 +478,7 @@ Ve formuláři turnaje otevřete „Termíny a herní časy“. Nemusíte nastav
 - Uzavření přihlášek — nepovinný čas, po kterém už se nikdo další nepřihlásí. Samotné uzavření turnaj nezahájí.
 - Zahájení turnaje — nepovinný čas automatického startu. Zahájením se také uzavřou přihlášky.
 - Konečný termín — informace pro hráče, do kdy by měli odehrát zápasy. Nerozhodne nedohraná utkání ani nepřidělí kontumace.
-- Herní časy — po zapnutí omezení přidejte intervaly, ve kterých lze domlouvat zápasy. Každý má datum a čas začátku i konce. Uložené intervaly lze upravovat a odstraňovat.
+- Herní hodiny — nepovinný interval, který platí každý den, například 18:00–22:00. Vyberte začátek, konec a časové pásmo. Konec před začátkem znamená následující den, například 22:00–02:00. Omezení platí pro zahajování zápasů; rozehrané partie můžete dokončit. Zvolené pásmo má pevný posun vůči UTC, který se při přechodu na letní nebo zimní čas automaticky nemění.
 
 Tabem přejděte na pole data. Šipky vlevo a vpravo vybírají rok, měsíc, den, hodinu či minutu; šipky nahoru a dolů mění vybranou hodnotu. Čas se zobrazuje podle místního časového pásma počítače.
 
@@ -452,13 +489,18 @@ Termíny potvrďte a vraťte se do formuláře turnaje. Vše se uloží až zve�
 Otevřete svůj turnaj a zvolte „Spravovat turnaj“. Před zahájením můžete:
 
 - upravit název, nastavení soutěže a termíny;
+- pozvat hráče přes „Pozvat do turnaje“, pokud jsou přihlášky otevřené a zbývají volná místa;
 - přes „Spravovat účastníky“ někoho odebrat nebo přiřadit spoluhráče v turnaji dvojic;
 - otevřít či uzavřít přihlášky;
 - zvolit „Zahájit turnaj“ místo čekání na naplánovaný start.
 
-Během turnaje přidělujete kontumace v „Zápasech“. Vyberte utkání, otevřete kontextovou nabídku a zvolte „Přiznat kontumační výhru“. Určete vítěze a rozhodnutí potvrďte. Pro už zahájený, ale nerozhodnutý zápas slouží samostatná možnost zrušit turnajový zápas a přiznat kontumaci. Vybraný vítěz skončí před všemi ostatními, kteří sdílejí poslední místo. Body se přidělí podle běžného vzorce; skóre samotné hry se nevymýšlí.
+Kontumace se přidělují v seznamu „Zápasy turnaje“. Vyberte nerozhodnutý zápas a stiskněte Ctrl+F nebo v kontextové nabídce zvolte „Přiznat kontumační výhru“. Vyberte hráče či tým, který prohrává, a pokračujte. Tentýž příkaz slouží před začátkem zápasu i během hry.
 
-Můžete také zrušit nedokončený turnaj. Tím odvoláte celou soutěž, nikoli jen jednu pozvánku. Překročení termínu ani nepřítomnost hráče neudělí automatickou kontumaci — rozhoduje o ní pořadatel.
+V zápase jeden na jednoho vyhraje soupeř vybraného poraženého. Při větším počtu účastníků poražený obsadí poslední místo. Lze-li v rozehrané hře pokračovat bez něj, ostatní hrají dál a o jejich pořadí rozhodne hra. Jinak se seřadí podle skóre po posledním dokončeném rozdání nebo kole. Nedokončené rozdání či kolo se nepočítá. Shodné skóre znamená společné místo; zohledňuje se, zda je v dané hře lepší vyšší, nebo nižší výsledek. Pokud zápas ještě nezačal nebo nebylo dokončeno žádné bodované kolo, zbývající účastníci sdílejí první místo.
+
+Před potvrzením si přečtěte náhled: uvádí poraženého a vysvětluje, zda zápas skončí, nebo ostatní budou pokračovat. Při ukončení zápasu ukáže také umístění, turnajové body a použité skóre. Rozhodnutí provede až „Potvrdit kontumaci“. Změní-li se situace během rozhodování, je nutné zkontrolovat a potvrdit nový náhled. Nelze-li potřebné údaje načíst nebo je hra neposkytuje, program kontumaci nepřizná podle odhadnutého výsledku.
+
+Můžete také zrušit nedokončený turnaj. Tím odvoláte celou soutěž, nikoli jen jednu pozvánku. Samotné překročení termínu neznamená kontumaci. Ručně můžete rozhodnout pomocí Ctrl+F, aniž byste čekali na vyčerpání pěti minut pro návrat.
 
 ### Když se změna nepotvrdí
 

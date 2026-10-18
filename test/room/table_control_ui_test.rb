@@ -26,7 +26,7 @@ assert(app.games.session_for_table(table)['__players']==%w[Alice Bob], 'Former o
 private_game = GameRoomGames::Battleship.new
 room = LobbyRepository::TableSnapshot.new(table:table.merge('owner'=>'Alice'),members:%w[Alice Bob],bots:[],observers:[])
 replay = Struct.new(:state) { def finished?; false; end }.new({phase: :playing})
-state = Struct.new(:game,:replay,:room).new(private_game,replay,room)
+state = Struct.new(:game,:replay,:room,:session).new(private_game,replay,room,{'__id' => 'private-fixture'})
 app.define_singleton_method(:load_room_state) { |*_args, **_options| state }
 seq = broker.cores.values.first.last_seq
 assert(!app.send(:change_table_control,table,:transfer_master,'Bob'), 'Private game was silently handed over')

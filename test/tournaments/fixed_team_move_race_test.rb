@@ -53,13 +53,28 @@ begin
   end
   puts 'PASS move race: two fresh processes, one deal, stale loser; ungranted endpoint write rejected'
 ensure
+  primary_error = $!
+  cleanup_errors = []
   File.write(gate, 'cleanup') if gate && !File.exist?(gate)
   children.each do |pid, _path|
     begin
-      Process.wait(pid)
+      # Only a still-owned, unreaped child may be stopped. A timed-out wait
+      # must not be followed by an unbounded wait in cleanup.
+      next if Process.waitpid(pid, Process::WNOHANG)
+      begin
+        Process.kill('KILL', pid)
+      rescue Errno::ESRCH
+        # The owned child exited between the nonblocking check and the signal.
+      end
+      Timeout.timeout(5) { Process.wait(pid) }
     rescue Errno::ECHILD
+      # Already reaped by the normal wait2 path; never signal a reused PID.
+    rescue StandardError => error
+      cleanup_errors << error
+      warn "Owned child #{pid} cleanup failed: #{error.class}: #{error.message}"
     end
   end
   fixture[:program].finalize
   fixture[:program].class.app_runtime.close
+  raise cleanup_errors.first if !primary_error && !cleanup_errors.empty?
 end

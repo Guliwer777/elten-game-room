@@ -1,88 +1,112 @@
-require 'tmpdir'
+require_relative '../support/temporary_directory'
 require_relative '../support/binary_rules_load' if ARGV.first
 require_relative '../support/session_runner'
 require_relative '../support/tournament_server_plan_table'
 require_relative '../../games/catalog'
 require_relative '../../lib/tournaments/ordinary_match_service'
-require_relative '../../lib/saved_game_archive'
-T=GameRoomTournaments
-class TournamentSaveArchive < GameRoomSavedGameArchive
-  def persist(row);row;end
+T = GameRoomTournaments
+
+GameRoomTest::TemporaryDirectory.create('saved-match-') do |directory|
+  h = NativeRoomHarness.new(game: GameRoomGames::TicTacToe.new, users: %w[Alice Bob])
+  program = ProgramDouble.new(h.broker.endpoint('Alice'))
+  lobby = LobbyRepository.new(program, transport: h.transports['Alice'], server_tables: Object.new)
+  h.as('Alice') { lobby.close_table(h.table) }
+  docs = TournamentServerPlanTableSupport::Table.new(user: -> { 'Alice' })
+  match = {'match_id' => 'd' * 64, 'leg' => 1, 'number' => 1, 'players' => %w[alice bob]}
+  candidate = {'format' => 'round_robin', 'schedule_id' => 'a' * 64, 'publication_digest' => 'b' * 64,
+    'roster_generation' => 'c' * 64, 'game_id' => h.game.id, 'game_options' => h.game.default_options,
+    'publication_ref' => {'author' => 'alice', 'publication_key' => 'fixture'}, 'roster' => %w[alice bob], 'matches' => [match]}
+  journal = T::OperationJournal.new(directory: directory, owner: 'alice', backend_identity: 'saved-test')
+  service = T::OrdinaryMatchService.new(program: program, registry: GameRoomGames::CATALOG, lobby: lobby,
+    games: h.repositories['Alice'], transport: h.transports['Alice'], table: docs, journal: journal,
+    source: -> { {'candidate' => candidate, 'tournament_id' => 5} }, user: -> { 'Alice' })
+  begin
+    table = h.as('Alice') { service.open_match(match_id: match['match_id'], leg: 1) }
+    h.instance_variable_set(:@table, table)
+    h.as('Bob') { h.transports['Bob'].join_room(table, 'Bob') }
+    session = h.as('Alice') do
+      h.repositories['Alice'].start_session(table: table, game: h.game.id, players: h.users,
+        options: JSON.generate(h.game.default_options), **service.start_parameters(table, players: h.users))
+    end
+    h.instance_variable_set(:@session, session)
+    binding = service.instance_variable_get(:@bindings).fetch(table['__id']).first
+    writes = docs.insert_count
+    callbacks = [
+      -> { service.saved_match_reference(table, session) },
+      -> { service.check_saved_match({}, allow_linked: true, allow_prepared: true) },
+      -> { service.prepare_saved_match({}, table) },
+      -> { service.start_saved_match({}, table) },
+      -> { service.bind_resumed_match({}, table, session) }
+    ]
+    callbacks.each do |callback|
+      error = assert_raises(T::OrdinaryMatchService::Blocked, &callback)
+      assert_equal(:tournament_saved_game_disabled, error.code)
+    end
+    assert_equal(writes, docs.insert_count, 'A blocked continuation wrote tournament data')
+
+    12.times do
+      replay = h.replay('Alice')
+      break if replay.finished?
+      h.submit(replay.current_player, h.game.legal_actions(replay, replay.current_player).first)
+    end
+    snapshot = h.repositories['Alice'].snapshot_for(session, force_events: true)
+    replay = h.game.replay(snapshot.session, snapshot.events, h.repositories['Alice'])
+    assert(replay.finished?, 'Control game did not finish')
+    capture = T::OrdinaryMatchResults.capture(registry: GameRoomGames::CATALOG, binding: binding,
+      session: snapshot.session, replay: replay, events: snapshot.events)
+    %w[__restored __archive_id].each do |key|
+      error = assert_raises(T::Publication::Invalid) do
+        T::OrdinaryMatchResults.capture(registry: GameRoomGames::CATALOG, binding: binding,
+          session: snapshot.session.merge(key => true), replay: replay, events: snapshot.events)
+      end
+      assert_equal(:tournament_saved_game_disabled, error.code)
+    end
+
+    # Explicit historical fixtures emulate documents written before the ban.
+    # No public continuation method is used, and no real server is contacted.
+    legacy = T::Publication::Data.copy(binding)
+    legacy['continuation'] = {'archive_id' => SecureRandom.uuid, 'save_checksum' => '1' * 64,
+      'event_count' => snapshot.events.size,
+      'prefix_digest' => Digest::SHA256.hexdigest(JSON.generate(snapshot.events.map { |event| event.slice('actor', 'action', 'value') }))}
+    legacy = T::Publication::Data.copy(legacy)
+    assert(service.send(:valid_binding?, legacy, candidate, match), 'Historical fixture has an invalid binding')
+    document = {'kind' => 'ordinary-match-continuation-v1', 'publication_ref' => candidate['publication_ref'],
+      'schedule_id' => candidate['schedule_id'], 'match_id' => match['match_id'], 'leg' => 1,
+      'previous_digest' => service.send(:binding_digest, binding), 'binding' => legacy}
+    key = service.send(:continuation_anchor, candidate, 5, match, binding)
+    service.send(:publish_document, document, key) { true }
+    assert_equal(legacy, service.send(:read_match_binding, candidate, 5, match, nil),
+      'Historical continuation chain became unreadable')
+
+    legacy_capture = capture.merge('binding_digest' => service.send(:binding_digest, legacy))
+    assert_raises(T::Publication::Invalid) do
+      T::OrdinaryMatchResults.read(repository: Object.new, registry: Object.new, transport: Object.new,
+        table: table, binding: legacy)
+    end
+    before = [docs.insert_count, journal.list]
+    assert_raises(T::OrdinaryMatchService::Blocked) { service.collect([legacy, candidate, 5, match, legacy_capture]) }
+    assert_equal(before, [docs.insert_count, journal.list], 'Collection retained or published a restored result')
+
+    continuation_op = journal.list.find { |row| JSON.parse(row['values']['document_json'])['kind'] == 'ordinary-match-continuation-v1' }
+    assert_raises(T::OrdinaryMatchService::Blocked) { service.reconcile(continuation_op['id']) }
+    assert_equal(before, [docs.insert_count, journal.list], 'Continuation recovery mutated historical state')
+
+    retained_result = T::ServerPlanDocument.copy_document(legacy_capture.merge('publication_ref' => candidate['publication_ref']))
+    result_key = service.send(:anchor, candidate, 5, match, 'result')
+    operation = journal.prepare(kind: 'plan_document', intent_id: 'ordinary-document:' + result_key['operation_key'],
+      values: result_key.merge('kind' => 'plan_document', 'document_json' => JSON.generate(retained_result)))
+    before = [docs.insert_count, journal.list]
+    error = assert_raises(T::OrdinaryMatchService::Blocked) { service.reconcile(operation['id']) }
+    assert_equal(:tournament_saved_game_disabled, error.code)
+    assert_equal(before, [docs.insert_count, journal.list], 'Retained result recovery republished a saved match')
+
+    # Reading an already published historical result remains supported.
+    service.send(:publish_document, retained_result, result_key) { true }
+    view = service.result_view
+    assert_equal(1, view['results'].size)
+    assert_equal(match['match_id'], view['results'].first['match_id'])
+  ensure
+    service.close
+  end
 end
-Dir.mktmpdir('saved-match-',ENV.fetch('TMPDIR')) do |directory|
-  h=NativeRoomHarness.new(game:GameRoomGames::TicTacToe.new,users:%w[Alice Bob])
-  program=ProgramDouble.new(h.broker.endpoint('Alice'))
-  lobby=LobbyRepository.new(program,transport:h.transports['Alice'],server_tables:Object.new)
-  h.as('Alice'){lobby.close_table(h.table)}
-  docs=TournamentServerPlanTableSupport::Table.new(user:-> {'Alice'})
-  match={'match_id'=>'d'*64,'leg'=>1,'number'=>1,'players'=>%w[bob alice]}
-  candidate={'format'=>'round_robin','schedule_id'=>'a'*64,'publication_digest'=>'b'*64,'roster_generation'=>'c'*64,
-    'game_id'=>h.game.id,'game_options'=>h.game.default_options,'publication_ref'=>{'author'=>'alice','publication_key'=>'fixture'},
-    'roster'=>%w[alice bob],'matches'=>[match]}
-  make=->(actor,path) do
-    p=ProgramDouble.new(h.broker.endpoint(actor))
-    T::OrdinaryMatchService.new(program:p,registry:GameRoomGames::CATALOG,lobby:LobbyRepository.new(p,transport:h.transports[actor],server_tables:Object.new),
-      games:h.repositories[actor],transport:h.transports[actor],table:docs,
-      journal:T::OperationJournal.new(directory:File.join(directory,path),owner:actor.downcase,backend_identity:'saved-test'),
-      source:-> {{'candidate'=>candidate,'tournament_id'=>5}},user:-> {actor})
-  end
-  creator=make.call('Alice','alice'); guest=make.call('Bob','bob')
-  table=h.as('Alice'){creator.open_match(match_id:match['match_id'],leg:1)}
-  h.instance_variable_set(:@table,table)
-  h.as('Bob'){guest.open_match(match_id:match['match_id'],leg:1)}
-  session=h.as('Alice'){h.repositories['Alice'].start_session(table:table,game:h.game.id,players:h.users,options:JSON.generate(h.game.default_options),**creator.start_parameters(table,players:h.users))}
-  h.instance_variable_set(:@session,session)
-  replay=h.replay('Alice');h.submit(replay.current_player,h.game.legal_actions(replay,replay.current_player).first)
-  archive=TournamentSaveArchive.new(program,owner:'Alice')
-  marker=creator.saved_match_reference(table,session)
-  saved=h.as('Alice'){archive.put(game:h.game,table:table,snapshot:h.repositories['Alice'].snapshot_for(session,force_events:true),repository:h.repositories['Alice'],tournament:marker)}
-  assert_equal(match['match_id'],saved['tournament']['match_id'])
-  h.as('Alice'){lobby.close_table(table)}
-  guest.result_view(include_match_status:true)
-  new_table=h.as('Alice'){lobby.create_table(name:'Saved tournament',game:h.game.id,owner:'Alice',game_options:saved['options'],resume_save_id:saved['id']).table}
-  h.transports['Bob'].join_room(new_table,'Bob')
-  restoration=archive.restored_data(saved,game:h.game,table_id:new_table['__id'])
-  resumed=h.as('Alice'){h.repositories['Alice'].restore_session(table:new_table,game:h.game.id,players:restoration[:players],options:saved['options'],restore:restoration)}
-  if ENV['TEST_LOST_ACK']=='1'
-    docs.on_insert=->(row){raise IOError,'lost continuation reply' if row['part_index']==row['part_count']}
-    assert_raises(IOError){h.as('Alice'){creator.bind_resumed_match(saved,new_table,resumed)}}
-    docs.on_insert=nil
-    operation=creator.operations.find{|row|JSON.parse(row['values']['document_json'])['kind']=='ordinary-match-continuation-v1'}
-    before=docs.insert_count
-    creator.reconcile(operation['id'])
-    assert_equal(before,docs.insert_count,'Continuation recovery retried a write')
-  end
-  binding=h.as('Alice'){creator.bind_resumed_match(saved,new_table,resumed)}
-  assert_equal(resumed['__id'],binding['session_id'])
-  assert_equal(new_table['__id'],guest.send(:read_match_binding,candidate,5,match,'alice')['table']['__id'])
-  assert_equal(JSON.generate(binding), JSON.generate(guest.send(:read_match_binding,candidate,5,match,'alice')),
-    'Live binding differs from its server representation after resuming')
-  assert_raises(T::OrdinaryMatchService::Blocked){creator.check_saved_match(saved)}
-  h.instance_variable_set(:@table,new_table);h.instance_variable_set(:@session,resumed)
-  if ENV['TEST_CANCEL_RESUME']=='1'
-    creator.award_forfeit(match_id:match['match_id'],leg:1,winner:'bob',expected_schedule_id:candidate['schedule_id'],cancel_started:true)
-    assert_raises(T::OrdinaryMatchService::Blocked){creator.check_saved_match(saved,allow_linked:true)}
-  end
-  12.times do
-    replay=h.replay('Alice');break if replay.finished?
-    actor=replay.current_player;h.submit(actor,h.game.legal_actions(replay,actor).first)
-  end
-  assert(h.replay('Alice').finished?,'Resumed game did not finish')
-  retained = creator.instance_variable_get(:@bindings)[new_table['__id']]
-  snapshot = h.repositories['Alice'].snapshot_for(resumed, force_events: true)
-  captured = T::OrdinaryMatchResults.capture(registry: GameRoomGames::CATALOG, binding: retained.first,
-    session: snapshot.session, replay: h.replay('Alice'), events: snapshot.events)
-  creator.collect(retained + [captured])
-  view=guest.result_view
-  assert_equal(1,view['results'].size)
-  assert_equal(match['match_id'],view['results'].first['match_id'])
-  cold=make.call('Bob','cold')
-  assert_equal(view,cold.result_view,'Cold client lost saved-match lineage')
-  assert_raises(T::OrdinaryMatchService::Blocked){creator.check_saved_match(saved)}
-  count=docs.insert_count
-  operation=creator.operations.find{|row|JSON.parse(row['values']['document_json'])['kind']=='ordinary-match-continuation-v1'}
-  creator.reconcile(operation['id'])
-  assert_equal(count,docs.insert_count)
-  [creator,guest,cold].each(&:close)
-end
-puts 'PASS native tournament save continuation: same fixture after new native room, authentic restored history, shared result and cold second client, consumed-old-save guard'
+puts 'PASS tournament save policy: API denials, restored-session result guards, retained-operation prohibition and historical result readability'

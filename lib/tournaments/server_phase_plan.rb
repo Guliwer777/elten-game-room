@@ -36,7 +36,7 @@ module GameRoomTournaments
             projection=progress.fetch('projection')
             plan=KnockoutRound.from_qualification(qualified:projection['qualified'],seeds:projection['cross_seeding']['seeds'],players_per_match:2)
           else
-            plan=GroupTiebreak.build(snapshot:Data.copy(progress['snapshot']),attempt:candidate['knockout']['qualification']['attempt']+1)
+            plan=GroupTiebreak.build(snapshot:progress['snapshot'],attempt:candidate['knockout']['qualification']['attempt']+1)
           end
         else
         case view['knockout_state']

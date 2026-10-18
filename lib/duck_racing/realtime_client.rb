@@ -89,7 +89,7 @@ module GameRoomDuckRacing
       return if @closed
       previous_epoch = control_epoch
       previous_owner = @control['__table_owner'] || @binding&.[](:owner)
-      @control = session.slice('__table_owner', '__control_epoch', '__control_ready',
+      @control = session.slice('__table_owner', '__control_epoch', '__control_ready', '__frozen',
         '__players', '__initial_players', '__controllers').transform_values do |value|
         case value
         when Array then value.map { |item| item.is_a?(String) ? item.dup : item }

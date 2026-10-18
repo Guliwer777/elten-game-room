@@ -9,6 +9,9 @@ require_relative "duck_racing_support/wire_budget"
 require_relative "duck_racing_support/bots"
 require_relative "duck_racing_support/replay_cache"
 
+GameRoomServerRandom.register_payload('duck_racing', %w[start race advance], integer_seed: true,
+  inputs: {'input' => {'kind' => 'roll'}})
+
 module GameRoomGames
   using GameRoomLocalization::Translations
 
@@ -206,7 +209,7 @@ module GameRoomGames
           challenge_events = [] unless previous_challenge == model.dig(:round, :challenge, :id)
           if model.dig(:round, :engine) && %w[begin input advance].include?(data["action"])
             challenge_events << {action: data["action"], seat: seat,
-              at: now_ms - model[:round][:started_at], input: Logic::Session.copy(data["input"])}
+              at: now_ms - model[:round][:started_at], input: Logic::Session.copy(data["input"]), seed: data['seed']}
           end
           last_time = [last_time, now_ms].max
           accepted.concat(batch)
@@ -253,12 +256,17 @@ module GameRoomGames
       data["revision"] = replay.state[:revision]
       data["session"] = context.session_id.to_i
       data["at"] = (context.now.to_f * 1000).round
+      random_action = GameRoomServerRandom.payload_required?(id, data)
+      data['seed'] = 0 if context.server_random && random_action
       moderator = same_user?(context.table_owner, replay.state[:owner]) &&
         context.local_data.to_h["duck_host"] == true
       if data["action"] == "start"
         return [:invalid, nil] unless moderator && context.random_source
-        values = context.random_source.roll(count: 16, sides: 256).values
-        data["seed"] = values.reduce(0) { |seed, value| seed * 256 + value - 1 }
+        data['seed'] = if context.server_random
+          0 # Validate the ordinary transition before requesting server entropy.
+        else
+          context.random_source.roll(count:16,sides:256).values.reduce(0) { |seed,value| seed*256+value-1 }
+        end
         data["fingerprint"] = resources_for(replay.state[:options]).fetch(:fingerprint)
         data['challenge_flow'] = 2
       elsif data["action"] == "point"
@@ -268,6 +276,9 @@ module GameRoomGames
       candidate = Logic::Session.copy(replay.state)
       return [:invalid, nil] unless Logic::Session.apply(candidate, data, seat: seat, moderator: moderator,
         now_ms: data["at"], resources: resources_for(replay.state[:options]))
+      if random_action && context.server_random
+        return [:ok, ActionPlan.new(events:[GameRoomServerRandom.payload_seed_command(action:id,data:data)])]
+      end
       [:ok, private_plan || ActionPlan.new(events: GameRoomActionPayload.commands(id, data))]
     rescue Logic::PrivateRound::CapacityError
       return [:oversized_session_action, nil] if data["action"] == "cancel"
@@ -409,7 +420,7 @@ module GameRoomGames
           begin
             page = Logic::PrivateRound.recover_next_reveal_page(protocol, seat: seat, user: actor, vault: context.hidden_submissions,
               page_builder: duck_page_builder(replay, actor, context))
-          rescue Logic::PrivateRound::CapacityError
+          rescue Logic::PrivateRound::CapacityError, HiddenSubmissions::StorageError
             return base.merge("action" => "cancel", "reason" => "technical")
           end
           if page

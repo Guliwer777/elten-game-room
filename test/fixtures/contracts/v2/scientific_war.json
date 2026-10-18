@@ -1,0 +1,618 @@
+{
+  "game": "scientific_war",
+  "seed": 137,
+  "players": [
+    "Alice",
+    "Bob"
+  ],
+  "options": {
+    "trick_limit": 50,
+    "bot_delay": 0
+  },
+  "steps": [
+    {
+      "events": 0,
+      "replay": "18a5deb97236373574193fe1fa859d42b9c2fbe1e70d4314b76b7857c6576d56",
+      "actor": "Alice",
+      "legal": "2a7bf7dfc0ef5c49c363ff5c9f6643edbb25c142cc9a61b4cb75a330c277ff82",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "2H1"
+      }
+    },
+    {
+      "events": 1,
+      "replay": "51c85b5a06fc72fb0b0ec7bc42462e07456b6e294274165cd733f43e2fe344c8",
+      "actor": "Bob",
+      "legal": "58e7713017a0728c34d515838451457a481d9c8f45e51c0d4e09ed00e5d3b2b6",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "2S1"
+      }
+    },
+    {
+      "events": 4,
+      "replay": "3b07142abdbaf64797a7a1a7841a0585eae74180dd06fc79895b216ee09f8c33",
+      "actor": "Alice",
+      "legal": "e2dbc363c3eb86757fb436265d4458aeafb9a255b60fb910a165fcbb9c54fd5b",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "3H1"
+      }
+    },
+    {
+      "events": 5,
+      "replay": "4ba0ab9b92e0744cada6e9e23477c1776bb532aeda010b176f34328301829563",
+      "actor": "Bob",
+      "legal": "35c37391814a2254b2213e86a416c01950aff28f3bb640110085b0313cad44d3",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "3S1"
+      }
+    },
+    {
+      "events": 8,
+      "replay": "0c1cc4d28aa642bbcc3bfe558532160832496ec9d7f64f64f2b59841b91b30c8",
+      "actor": "Alice",
+      "legal": "4c0ce37e9e617b47c5074b8a14896cb8d82027f27acb8a4abc148f82ad427186",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "4H1"
+      }
+    },
+    {
+      "events": 9,
+      "replay": "c8f6b5eba1e49f91b37fc04449a2025394ed1d0f3bc660d28df79d43ad176766",
+      "actor": "Bob",
+      "legal": "035e0bc4fbd351991dc97653ddce80903e9c099734023338c7801020f2b135e4",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "4S1"
+      }
+    },
+    {
+      "events": 12,
+      "replay": "bf6f3bd9df9f3861fa13caecae5ed082f82ffda43120ed5bcbbb892537e4a3a4",
+      "actor": "Alice",
+      "legal": "a41c9c21301007a9c770f209245f3d4053927c06a9f11fb07973ee5c3f791f0a",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "5H1"
+      }
+    },
+    {
+      "events": 13,
+      "replay": "86800bf1feac314a25e82497d65b4db201a157997b8bd3d4376fe07f9682d79f",
+      "actor": "Bob",
+      "legal": "fac09360b32a2fa402bb4338408e3871def56a932f928ca568f852a9de3a1bea",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "5S1"
+      }
+    },
+    {
+      "events": 16,
+      "replay": "a16a6b0e683147c0e2e780d1fd148e0a2abece183d2e568d2a5ab8bb26a9edde",
+      "actor": "Alice",
+      "legal": "6857bf287ca024ade2d85b3207226832cc4269274b77b504d7a310a759e24244",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "6H1"
+      }
+    },
+    {
+      "events": 17,
+      "replay": "f81532b4be8888a8579a686ab9e127da154e6746148893cea4b923f098ba2f4b",
+      "actor": "Bob",
+      "legal": "b3bcc9b2f231edcc63b1d553e5714529c986542fc1c5e205e7e7bf08608cd8c3",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "6S1"
+      }
+    },
+    {
+      "events": 20,
+      "replay": "57b8f695c4904e82c4644054a27b68240b3a8fb0b9fa635c3a4dfac0e7370fe0",
+      "actor": "Alice",
+      "legal": "e339d6ae756d3996662efed44984a0e16a389bad9945d57367a67fa4c44006e9",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "7H1"
+      }
+    },
+    {
+      "events": 21,
+      "replay": "7e75a400e2b68c2f743bb894e1b396b1f2def81a14ddd5d8817af68d6edf6b8f",
+      "actor": "Bob",
+      "legal": "17b1ae585faf745867daa5b63e44791e603cfe511946988ca37602e13357dbe5",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "7S1"
+      }
+    },
+    {
+      "events": 24,
+      "replay": "240b84b37bc1e4c44ce625f5bb78f5bcf5db1f22146eec4d601d524e9b7eac88",
+      "actor": "Alice",
+      "legal": "c32ae6e93a3b1d3a580a7879190c9d812c604728e98cf8aa71fa304dfe61c865",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "8H1"
+      }
+    },
+    {
+      "events": 25,
+      "replay": "57e92a5046e50b64307e54f82df21c33bf5423ad571dc0b95bd1a2c569fa6039",
+      "actor": "Bob",
+      "legal": "57a6a5024c93d7508cbcb51f8c51f369cfdde6c33b8bb1fce060708443d09c56",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "8S1"
+      }
+    },
+    {
+      "events": 28,
+      "replay": "5add7cf261e144499464e5a888410132dacc81e3535a59d8ba94daa49872b657",
+      "actor": "Alice",
+      "legal": "9365cb77f5e28f0cc2a9c054b57bd5fd1a21d3e2fb10755f451a80644a2eb2ba",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "9H1"
+      }
+    },
+    {
+      "events": 29,
+      "replay": "71fbbd851d875e7540acf0472b1fd0c24635db9234be754a0a355ff74ba1c305",
+      "actor": "Bob",
+      "legal": "e665532d87a6a8dacbc482f3be603d6e1820fc5a9859c44777c7f25bedd37bdd",
+      "rng": [
+        735,
+        295,
+        590,
+        148,
+        241,
+        332,
+        335,
+        130
+      ],
+      "action": {
+        "kind": "card",
+        "action": "select",
+        "zone": "hand",
+        "card": "9S1"
+      }
+    }
+  ],
+  "final": {
+    "events": 32,
+    "replay": "71249210d4b6d034df3c4e662fbe8f7c186e7236706e792884689e418ce01dd6",
+    "actor": "Alice",
+    "legal": "b14f11cca43806ee4f8637cf7c58ed177b4823644063a097da5f965cc7bee968",
+    "rng": [
+      735,
+      295,
+      590,
+      148,
+      241,
+      332,
+      335,
+      130
+    ]
+  },
+  "session": {
+    "__id": 1,
+    "table_id": 1,
+    "game": "scientific_war",
+    "options": "{\"trick_limit\":50,\"bot_delay\":0}",
+    "__players": [
+      "Alice",
+      "Bob"
+    ]
+  },
+  "events": [
+    {
+      "id": 1,
+      "sequence": 1,
+      "actor": "Alice",
+      "action": "commit",
+      "value": "1:1oA7zq8Kj6e038FyDCamf7x6W3QdfC5HP2KOAN0Jw+A="
+    },
+    {
+      "id": 2,
+      "sequence": 2,
+      "actor": "Bob",
+      "action": "commit",
+      "value": "1:nRMmdvavBvRjX3bxoNUajebwRw2lIbjGgdztsH/9i9o="
+    },
+    {
+      "id": 3,
+      "sequence": 3,
+      "actor": "Alice",
+      "action": "reveal",
+      "value": "1:de264d93f04b4e81e996369779b77933:2H1"
+    },
+    {
+      "id": 4,
+      "sequence": 4,
+      "actor": "Bob",
+      "action": "reveal",
+      "value": "1:bb25b448ff1cd75c30df750c68673746:2S1"
+    },
+    {
+      "id": 5,
+      "sequence": 5,
+      "actor": "Alice",
+      "action": "commit",
+      "value": "2:eIeOAEa4tI7jM3X/+RmJfFkWHD5CQliIXSfjjjlKOVM="
+    },
+    {
+      "id": 6,
+      "sequence": 6,
+      "actor": "Bob",
+      "action": "commit",
+      "value": "2:Xgys+O3ECiCS7wqRU6davZRIpXCixN0rC7gg/2+usVI="
+    },
+    {
+      "id": 7,
+      "sequence": 7,
+      "actor": "Alice",
+      "action": "reveal",
+      "value": "2:ffcf25f7c63dcc0c75f4d01ea6f19b74:3H1"
+    },
+    {
+      "id": 8,
+      "sequence": 8,
+      "actor": "Bob",
+      "action": "reveal",
+      "value": "2:9fc7f075211de90c4ebaae494fe87ca5:3S1"
+    },
+    {
+      "id": 9,
+      "sequence": 9,
+      "actor": "Alice",
+      "action": "commit",
+      "value": "3:89Z92decB8cYAafZ5ctEXDDXe/8Tj8n6zYh1meCVIek="
+    },
+    {
+      "id": 10,
+      "sequence": 10,
+      "actor": "Bob",
+      "action": "commit",
+      "value": "3:wbxhYnsKm32U5ng/i6VV7wv2eGtBQS3QEgWP3QdeKnI="
+    },
+    {
+      "id": 11,
+      "sequence": 11,
+      "actor": "Alice",
+      "action": "reveal",
+      "value": "3:116bb2d3be420924715ec298b4235c83:4H1"
+    },
+    {
+      "id": 12,
+      "sequence": 12,
+      "actor": "Bob",
+      "action": "reveal",
+      "value": "3:615a0fdf08db8b624c5d316429f3a73d:4S1"
+    },
+    {
+      "id": 13,
+      "sequence": 13,
+      "actor": "Alice",
+      "action": "commit",
+      "value": "4:qzmR86j0AqKEhMPHqnxk7b5l9TTLyWxQJM0SShP/CLA="
+    },
+    {
+      "id": 14,
+      "sequence": 14,
+      "actor": "Bob",
+      "action": "commit",
+      "value": "4:Asqu+xxgFILDf4vNto66cf6kGjAudCpW5Qw0dF2nm8E="
+    },
+    {
+      "id": 15,
+      "sequence": 15,
+      "actor": "Alice",
+      "action": "reveal",
+      "value": "4:71df189b84a59efb25778e51cebdeaaf:5H1"
+    },
+    {
+      "id": 16,
+      "sequence": 16,
+      "actor": "Bob",
+      "action": "reveal",
+      "value": "4:5cc5f848d5466322b6bfd66b97ec1619:5S1"
+    },
+    {
+      "id": 17,
+      "sequence": 17,
+      "actor": "Alice",
+      "action": "commit",
+      "value": "5:U41FG+6WhbEKGMKKpLShpArXWdp1Kk3LB/KAIUKjO5k="
+    },
+    {
+      "id": 18,
+      "sequence": 18,
+      "actor": "Bob",
+      "action": "commit",
+      "value": "5:Ll7vpVfDn6hS7JEmO9GYc7DMbPOBddGziADfjxccKTE="
+    },
+    {
+      "id": 19,
+      "sequence": 19,
+      "actor": "Alice",
+      "action": "reveal",
+      "value": "5:b8c7859cd49ec312da65682ef8136eab:6H1"
+    },
+    {
+      "id": 20,
+      "sequence": 20,
+      "actor": "Bob",
+      "action": "reveal",
+      "value": "5:ff785c9b37240095b4693807a70f5746:6S1"
+    },
+    {
+      "id": 21,
+      "sequence": 21,
+      "actor": "Alice",
+      "action": "commit",
+      "value": "6:QEyMa8oY+d8bK+DW6F+DcuuNzrCQrAITcm3nVCqkCMA="
+    },
+    {
+      "id": 22,
+      "sequence": 22,
+      "actor": "Bob",
+      "action": "commit",
+      "value": "6:SVscB8bcVOVUtI6WMgMxpp5kMdfrYjY0MFCueOArpF0="
+    },
+    {
+      "id": 23,
+      "sequence": 23,
+      "actor": "Alice",
+      "action": "reveal",
+      "value": "6:9d18fb0d347ddc4f7e7ce0da036ec456:7H1"
+    },
+    {
+      "id": 24,
+      "sequence": 24,
+      "actor": "Bob",
+      "action": "reveal",
+      "value": "6:f47e21f0ff776e761af3dc87ee593454:7S1"
+    },
+    {
+      "id": 25,
+      "sequence": 25,
+      "actor": "Alice",
+      "action": "commit",
+      "value": "7:Y7fi8ngYFBO1dnesKHXYw/f3qVUutt7YLFwUsPgrqvQ="
+    },
+    {
+      "id": 26,
+      "sequence": 26,
+      "actor": "Bob",
+      "action": "commit",
+      "value": "7:8VHq/SAgL5WrThkukM3QOnVeaQH11sZkzWCrlCywjtQ="
+    },
+    {
+      "id": 27,
+      "sequence": 27,
+      "actor": "Alice",
+      "action": "reveal",
+      "value": "7:5f6bb00d53116bdd98954302295fb1e5:8H1"
+    },
+    {
+      "id": 28,
+      "sequence": 28,
+      "actor": "Bob",
+      "action": "reveal",
+      "value": "7:bd377783cd776d168bab1400405f5300:8S1"
+    },
+    {
+      "id": 29,
+      "sequence": 29,
+      "actor": "Alice",
+      "action": "commit",
+      "value": "8:2Ra8YlssfL2a9iyJh92G55j6iUOSMBfdivV7sqz44qo="
+    },
+    {
+      "id": 30,
+      "sequence": 30,
+      "actor": "Bob",
+      "action": "commit",
+      "value": "8:Bl8uYrcnYAO3lCPh5NDNJRqlYzjgimQ0cJiDQhaUhew="
+    },
+    {
+      "id": 31,
+      "sequence": 31,
+      "actor": "Alice",
+      "action": "reveal",
+      "value": "8:7fb44c7f8a1845a1a4069da880f0d949:9H1"
+    },
+    {
+      "id": 32,
+      "sequence": 32,
+      "actor": "Bob",
+      "action": "reveal",
+      "value": "8:24df99a6579481719247b790eccfaffb:9S1"
+    }
+  ]
+}

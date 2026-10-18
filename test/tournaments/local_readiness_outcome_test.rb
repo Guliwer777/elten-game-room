@@ -1,11 +1,12 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_match_entry'
 require_relative '../../lib/tournaments/local_readiness_session'
 require_relative '../../lib/tournaments/match_entry'
 require_relative '../../lib/game_room_background'
 include GameRoomTest::Assertions
 T=GameRoomTournaments
-Dir.mktmpdir('d2b-effect-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('d2b-effect-') do |directory|
   program=TournamentMatchEntryTest.prepare(directory)
   session=T::LocalReadinessSession.new
   session.choose_actor('Alicja')

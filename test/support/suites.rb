@@ -19,11 +19,21 @@ module GameRoomTestSuites
     'individual_multi_seat_dispatch_test.rb' => 420,
     'individual_quiz_private_test.rb' => 600,
     'knockout_replay_execution_test.rb' => 600,
+    # Three complete games (win, draw, win) and immutable series ancestry:
+    # measured 220 s on Windows; retain every match and result assertion.
+    'knockout_win_series_execution_test.rb' => 360,
     'generic_team_replay_execution_test.rb' => 600,
     'realtime_team_multi_table_test.rb' => 600,
     'automatic_phase_lifecycle_test.rb' => 600,
     'fixed_team_budget_nodes_test.rb' => 600,
-    'team_group_tiebreak_test.rb' => 600
+    'team_group_tiebreak_test.rb' => 600,
+    'biblios_private_cards_test.rb' => 300,
+    # Complete two- and three-player private Rummy, including cold return and
+    # host transfer: measured 229 s on Windows with all history checks intact.
+    'rummy_private_cards_test.rb' => 600,
+    # 372 authenticated events, full replay on all three accounts after each
+    # action: measured 198 s on Windows (one late projection about 110 ms).
+    'biblios_private_three_players_test.rb' => 360
   }.freeze
 
   def self.timeout_for(path, fallback:)

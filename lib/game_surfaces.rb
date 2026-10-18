@@ -21,6 +21,7 @@ module GameSurfaces
 
   module ActionEmitter
     include StateReader
+    attr_reader :action_guard
     def action_guard=(guard)
       @action_guard = guard
     end
@@ -32,6 +33,10 @@ module GameSurfaces
     def on_action(&handler)
       @action_handler = handler
       self
+    end
+
+    def action_accepted(_selection)
+      nil
     end
 
     def suppress_next_focus!(_field_index = 0)

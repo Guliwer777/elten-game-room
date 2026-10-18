@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 # Próba kodu z dokładnej paczki; bez argumentu kontroluje binarne źródła repo.
 $stdout.set_encoding(Encoding::UTF_8)
 $stderr.set_encoding(Encoding::UTF_8)
@@ -88,7 +89,7 @@ assert(EltenGameRoom::MAIN_OPTIONS.include?('Turnieje'), 'Brak nowej polskiej po
 %w[en pl].each do |language|
   $package_language = language
   GameRoomTestLocalization.use_language(language)
-  Dir.mktmpdir('tournament-package-flow-', ENV.fetch('TMPDIR')) do |directory|
+  GameRoomTest::TemporaryDirectory.create('tournament-package-flow-') do |directory|
     messages, threads = [], []
     program = Object.new
     program.define_singleton_method(:data_path) { threads << Thread.current; directory }

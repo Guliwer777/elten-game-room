@@ -14,7 +14,8 @@ GameRoomBotNames::NAMES.each do |token, name|
     raise "Binary lobby bot announcement lost name" unless global.valid_encoding? && global.include?(name) && !global.include?("komputer")
   end
 end
-raise "Lost games during binary loading" unless registry.ids.length == 34
+raise "Lost games during binary loading" unless registry.ids.length == 35
+raise "Bridge was not loaded from binary sources" unless registry.ids.include?("bridge")
 raise "Audio Ball was not loaded from binary sources" unless registry.ids.include?("audio_ball")
 raise "Quiz Party was not loaded from binary sources" unless registry.ids.include?("quiz")
 raise "Mille Bornes was not loaded from binary sources" unless registry.ids.include?("mille_bornes")
@@ -72,7 +73,8 @@ end
 # second ordinary require of the checkout. No network or host UI is used.
 raise "Missing binary save engine" unless defined?(GameRoomSavedGameArchive) && GameRoomSavedGameArchive::FORMAT == 1
 raise "Missing binary saved games menu" unless EltenGameRoom::MAIN_OPTIONS.include?(RULES_CATALOG.fetch("Saved games"))
-raise "Wrong number of saveable games" unless registry.ids.count { |id| registry.build(id).supports_saved_games? } == 29
+raise "Wrong number of saveable games" unless registry.ids.count { |id| registry.build(id).supports_saved_games? } == 30
+raise "Bridge saves were lost during binary loading" unless registry.build("bridge").supports_saved_games?
 raise "Mille Bornes saves were lost during binary loading" unless registry.build("mille_bornes").supports_saved_games?
 raise "Duck Racing saves were lost during binary loading" unless registry.build("duck_racing").supports_saved_games?
 %w[reversi checkers chess].each do |id|
@@ -93,6 +95,9 @@ raise "Binary purchase requires Enter" unless monopoly.automatic_action(purchase
 
 # Check the invitation fix from the decoded package, including the application
 # entry point, not just an ordinary require of the checkout's helper class.
+module Session
+  def self.name; "Bob"; end
+end
 invitation_gateway = Object.new
 invitation_gateway.define_singleton_method(:list) { |*_arguments, **_keywords| [] }
 collector = InvitationNotifications.new(client: :binary_client, app_uuid: "binary-test", gateway: invitation_gateway)
@@ -111,7 +116,9 @@ invitation_app.define_singleton_method(:initialize_services) {}
 invitation_app.define_singleton_method(:check_server_table_access) {}
 invitation_app.define_singleton_method(:run_network_task) { |*_args, **_kwargs, &operation| operation.call }
 invitation_app.define_singleton_method(:load_pending_invitations) do
-  collector.pending(recipient: "Bob").map { |row| { invitation: Struct.new(:id).new(row["__id"]) } }
+  collector.pending(recipient: "Bob").map do |row|
+    { invitation: InvitationRepository::PendingInvitation.new(invitation: row, table: {"__id"=>row["table_id"]}) }
+  end
 end
 invitation_app.define_singleton_method(:select_notification_invitation_action) { :accept }
 invitation_app.define_singleton_method(:accept_pending_invitation) do |pending, notification_id:|

@@ -17,7 +17,9 @@ class FakeGameRoomUsersTable
   def select(where: nil, order: nil, limit: nil, offset: nil, columns: nil)
     @queries << {where: where, columns: columns, offset: offset, limit: limit}
     selected = @rows.select do |row|
-      where == nil || where.all? { |key, value| row[key].to_s == value.to_s }
+      where == nil || where.all? do |key, value|
+        value.is_a?(Hash) ? value.all? { |operator, bound| operator == 'gte' && row.fetch(key) >= bound } : row[key].to_s == value.to_s
+      end
     end
     order.to_a.reverse_each do |key, direction|
       selected = selected.sort_by { |row| row[key].to_i }
@@ -69,7 +71,7 @@ table.rows << {
 }
 candidates = registry.registered(["Alice", "Bob", "Carol", "Dave"])
 assert(candidates == ["Alice", "Carol"], "the registry accepted a spoofed or unregistered user")
-assert(table.queries.last[:columns] == %w[username __insertion_user], 'Registry candidates fetched unused metadata or omitted the author')
+assert(table.queries.last[:columns] == %w[username __insertion_user __id], 'Registry candidates omitted the author/ID boundary or fetched unrelated metadata')
 query_count = table.queries.length
 assert(registry.registered([]).empty? && registry.registered(['Carol']) == ['Carol'] && table.queries.length == query_count,
   'Empty list or cached candidates issued another request')

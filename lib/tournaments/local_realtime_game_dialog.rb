@@ -101,7 +101,7 @@ module GameRoomTournaments
         end
       end
       def begin_work(**input)
-        return if @pending || @finished || !@context.current?(@lease)
+        return if @blocked || @pending || @finished || !@context.current?(@lease)
         @changes&.take if input[:action] == :local_realtime_view
         @pending = input.freeze
         started = @work.start do

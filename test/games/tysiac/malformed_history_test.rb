@@ -2,16 +2,21 @@ require_relative "../../support/tysiac_two_player"
 require_relative "../../support/native_room_harness"
 
 fixture = TwoPlayerTysiacFixture.new
-fixture.auction
-fixture.choose
-3.times { fixture.discard }
-fixture.move({'kind'=>'command', 'action'=>'contract', 'bid'=>100})
 h = NativeRoomHarness.new(game: fixture.game, users: fixture.players,
   options: JSON.parse(fixture.session.fetch('options')))
 h.start
-fixture.events.each do |event|
-  h.write(event.fetch('actor'), [GameRoomGames::EventCommand.new(action: event.fetch('action'), value: event.fetch('value'))])
+h.submit('Alice', {'kind'=>'command', 'action'=>'deal'}, context:context_for)
+assert(h.events('Alice').first['__server_random'], 'The native prefix did not use server random')
+h.submit(h.replay('Alice').current_player, {'kind'=>'command', 'action'=>'bid', 'bid'=>100})
+h.submit(h.replay('Alice').current_player, {'kind'=>'command', 'action'=>'bid', 'bid'=>'pass'})
+h.submit(h.replay('Alice').current_player,
+  {'kind'=>'question', 'action'=>'submit', 'question_id'=>'choose_talon', 'answer'=>'0'})
+3.times do
+  replay = h.replay('Alice')
+  actor = replay.current_player
+  h.submit(actor, {'kind'=>'card', 'action'=>'select', 'card'=>replay.state[:hands][actor].first})
 end
+h.submit(h.replay('Alice').current_player, {'kind'=>'command', 'action'=>'contract', 'bid'=>100})
 before = h.replay('Alice')
 assert(before.state[:phase] == :playing, 'Legal prefix did not reach play')
 ['normal|XX', 'normal', 'normal|', '|', '', 'invalid|AS', 'normal|AS|extra'].each do |value|

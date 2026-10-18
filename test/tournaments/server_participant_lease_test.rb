@@ -1,10 +1,11 @@
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require_relative '../support/native_room_harness'
 require_relative '../support/readiness_plan_table'
 require_relative '../../lib/tournaments/server_participant_lease'
 include GameRoomTest::Assertions
 T=GameRoomTournaments
-Dir.mktmpdir('participant-lease-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('participant-lease-') do |directory|
   actor,now='Alice',100
   table=ReadinessPlanTableSupport::Table.new(user:-> {actor},clock:-> {now})
   journal=T::OperationJournal.new(directory:directory,owner:'alice',backend_identity:'leases')
@@ -48,7 +49,7 @@ Dir.mktmpdir('participant-lease-',ENV.fetch('TMPDIR')) do |directory|
   actor='Bob'
   assert_raises(T::ServerPlanArchive::ContextChanged){service.state}
 end
-Dir.mktmpdir('participant-lease-clock-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('participant-lease-clock-') do |directory|
   now=100
   stamp=101
   table=ReadinessPlanTableSupport::Table.new(user:-> {'Alice'},clock:-> {stamp})

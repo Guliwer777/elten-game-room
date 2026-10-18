@@ -115,8 +115,16 @@ assert(app.lobby.add_bot(room.table).status == :full, "Lobby admitted a ninth pa
 session = app.games.start_session(table: room.table, game: game.id, players: players, options: JSON.generate(options))
 environment = GameRoomSimulation::Environment.new_game(game: game, players: players, options: options, seed: 73)
 environment.events.each do |event|
+  command = if event['action'] == 'deal'
+    round, seed = event['value'].split('|')
+    native = broker.endpoint('Alice').sessions.find { |view| view.id == table['__live_session_id'] }
+    native.next_random_values = seed.scan(/../).map { |byte| byte.to_i(16) + 1 }
+    GameRoomServerRandom.seed_command(action: 'deal', round: round.to_i)
+  else
+    GameRoomGames::EventCommand.new(action: event["action"], value: event["value"])
+  end
   app.games.append_events(session: session, sequence: event["sequence"],
-    events: [GameRoomGames::EventCommand.new(action: event["action"], value: event["value"])],
+    events: [command],
     actor: event["actor"], controller: true)
 end
 before = app.games.snapshot_for(session)

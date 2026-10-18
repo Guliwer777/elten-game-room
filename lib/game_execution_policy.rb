@@ -1,11 +1,13 @@
 require_relative "game_participants"
 require_relative "game_simulation"
+require_relative "tournament_marker"
 
 # Shared decisions, not a shared scheduler. Realtime clients retain their own
 # loop; the turn runner retains its lease, locks and post-planning validation.
 module GameRoomExecutionPolicy
   def self.departed_players(game:, replay:, session:, players:, members:, owner:, viewer:, transport:)
     return [] unless replay && members && GameRoomParticipants.same?(owner, viewer)
+    return [] if GameRoomTournamentMarker.present?(session)
     return [] if replay.finished? || session["__frozen"] || session["__aborted"] || session["__control_ready"] == false
     return [] unless transport.respond_to?(:set_seat_controller)
     controllers = session.fetch("__controllers", {})

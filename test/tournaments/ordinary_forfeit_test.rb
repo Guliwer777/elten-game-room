@@ -1,11 +1,11 @@
-require 'tmpdir'
+require_relative '../support/temporary_directory'
 require_relative '../support/binary_rules_load' if ARGV.first
 require_relative '../support/session_runner'
 require_relative '../support/tournament_server_plan_table'
 require_relative '../../games/catalog'
 require_relative '../../lib/tournaments/ordinary_match_service'
 T=GameRoomTournaments
-Dir.mktmpdir('ordinary-forfeit-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('ordinary-forfeit-') do |directory|
   actor='Alice'
   game=GameRoomGames::TicTacToe.new
   candidate={'format'=>'round_robin','schedule_id'=>'a'*64,'publication_digest'=>'b'*64,'roster_generation'=>'c'*64,
@@ -21,13 +21,14 @@ Dir.mktmpdir('ordinary-forfeit-',ENV.fetch('TMPDIR')) do |directory|
   end
   organizer=make.call('Alice','alice')
   guest=make.call('Bob','bob')
-  args={match_id:'d'*64,leg:1,winner:'bob',expected_schedule_id:'a'*64}
-  assert_raises(T::OrdinaryMatchService::Blocked){guest.award_forfeit(**args)}
+  args={match_id:'d'*64,leg:1,loser:'alice',expected_schedule_id:'a'*64}
+  assert_raises(T::OrdinaryMatchService::Blocked){guest.forfeit_preview(**args)}
   assert_equal(0,table.insert_count)
-  assert_raises(T::OrdinaryMatchService::Blocked){organizer.award_forfeit(**args.merge(winner:'stranger'))}
-  assert_raises(T::OrdinaryMatchService::Blocked){organizer.award_forfeit(**args.merge(expected_schedule_id:'e'*64))}
+  assert_raises(T::OrdinaryMatchService::Blocked){organizer.forfeit_preview(**args.merge(loser:'stranger'))}
+  assert_raises(T::OrdinaryMatchService::Blocked){organizer.forfeit_preview(**args.merge(expected_schedule_id:'e'*64))}
   assert_equal([],changes,'Rejected forfeit announced a change')
-  view=organizer.award_forfeit(**args)
+  preview=organizer.forfeit_preview(**args)
+  view=organizer.confirm_forfeit(preview:preview)
   assert_equal([['alice',candidate['publication_ref']]],changes,'Confirmed forfeit did not wake other views')
   assert_equal(true,view['completed'],'Resolved round-robin remained unfinished')
   assert_equal(2,view['standings'].find{|row|row['unit']=='bob'}['points'])
@@ -36,15 +37,16 @@ Dir.mktmpdir('ordinary-forfeit-',ENV.fetch('TMPDIR')) do |directory|
   cold=make.call('Bob','cold-bob')
   assert_equal(view,cold.result_view)
   count=table.insert_count
-  organizer.award_forfeit(**args)
+  organizer.confirm_forfeit(preview:preview)
   organizer.reconcile(organizer.operations.first['id'])
   assert_equal(count,table.insert_count,'Repeated decision or reconciliation wrote again')
   assert_raises(T::OrdinaryMatchService::Blocked){guest.open_match(match_id:'d'*64,leg:1)}
-  assert_raises(T::OrdinaryMatchService::Blocked){organizer.award_forfeit(**args.merge(winner:'alice'))}
+  assert_raises(T::OrdinaryMatchService::Blocked){organizer.forfeit_preview(**args.merge(loser:'bob'))}
   candidate['matches'] << {'match_id'=>'e'*64,'leg'=>2,'number'=>2,'players'=>%w[alice bob]}
   changes.clear
   table.on_insert=->(row){raise IOError,'lost reply' if row['part_index']==row['part_count']}
-  assert_raises(IOError){organizer.award_forfeit(**args.merge(match_id:'e'*64,leg:2))}
+  next_preview=organizer.forfeit_preview(**args.merge(match_id:'e'*64,leg:2))
+  assert_raises(IOError){organizer.confirm_forfeit(preview:next_preview)}
   assert_equal([],changes,'Unconfirmed write announced success')
   table.on_insert=nil
   pending=organizer.operations.find{|record|JSON.parse(record['values']['document_json'])['match_id']=='e'*64}

@@ -1,3 +1,4 @@
+require_relative '../support/temporary_directory'
 require_relative '../support/binary_rules_load' if ARGV.first
 require_relative '../support/ui'
 require_relative '../support/tournament_public_ui'
@@ -13,7 +14,7 @@ G = GameRoomTournaments
 G::DraftWorkspace.prepend(Module.new do
   def configure(_game,options); options; end
 end)
-Dir.mktmpdir('setup-storage-', ENV.fetch('TMPDIR')) do |base|
+GameRoomTest::TemporaryDirectory.create('setup-storage-') do |base|
   # Match the installed program's data path length; journal names then exceed MAX_PATH.
   root = File.join(base, 'installed-program-data-' + 'x' * 35)
   FileUtils.mkdir_p(root)

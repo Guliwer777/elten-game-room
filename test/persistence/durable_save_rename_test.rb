@@ -5,7 +5,7 @@ include DurableSaveCases
 module DurableSaveRenameFailure
   def rename(source, target)
     fault = Thread.current[:durable_save_rename_fault]
-    if fault && target == fault[:path]
+    if fault && target == GameRoomTournaments::LocalFilesystem.native(fault[:path])
       record = JSON.parse(File.binread(source)).fetch('operations').last
       if record['status'] == fault[:status]
         Thread.current[:durable_save_rename_fault] = nil
@@ -22,6 +22,7 @@ File.singleton_class.prepend(DurableSaveRenameFailure)
   scenario("Awaria rename #{status} after=#{after}: bez upload i ślepego retry") do |_root,h,store,service,archive,command|
     Thread.current[:durable_save_rename_fault] = {path: store.path, status: status, after: after}
     error = save(command,h,store)
+    assert(Thread.current[:durable_save_rename_fault].nil?, 'Rename fault was not exercised')
     assert(error.is_a?(Intent::Error) && error.code == :journal_io_error, "Zmieniono błąd rename: #{error.inspect}")
     assert(service.state['uploads'] == 0 && !h.core.closed, 'Awaria rename pozwoliła wysłać')
     operation = store.list.fetch(0)

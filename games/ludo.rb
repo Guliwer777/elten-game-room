@@ -1,5 +1,6 @@
 require_relative '../lib/board_preference_definition'
 require_relative "../lib/game_bots"
+require_relative "../lib/server_random"
 require_relative "base"
 
 require_relative "../lib/game_room_localization"
@@ -7,6 +8,8 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Ludo < Base
+    def player_spatial_audio?; true; end
+    GameRoomServerRandom.register('ludo', ['roll'])
     PAWNS_PER_PLAYER = 4
     OUTER_LENGTH = 52
     FINISH_PROGRESS = 57
@@ -200,6 +203,9 @@ module GameRoomGames
       if ["dice", "command"].include?(selection["kind"].to_s) && selection["action"].to_s == "roll"
         return [:invalid, nil] if state[:phase] != :awaiting_roll || context == nil || context.random_source == nil
 
+        if context.server_random
+          return [:ok, ActionPlan.new(events: [GameRoomServerRandom.command(action: 'roll', count: 1, sides: 6)])]
+        end
         value = context.random_source.roll(count: 1, sides: 6).values.first.to_i
         return [:ok, event_plan("roll", value.to_s)]
       end
@@ -528,6 +534,7 @@ module GameRoomGames
 
     def apply_roll!(state, event, actor, repository, history)
       return false if state[:phase] != :awaiting_roll
+      return false unless GameRoomServerRandom.valid_dice_event?(event, count: 1, sides: 6)
       value = event["value"].to_i
       return false if !value.between?(1, 6)
 

@@ -57,4 +57,4 @@ Dir.mktmpdir("categories-storage-217-") do |dir|
   append_plan(events, plan, "Alice")
   assert(game.replay(session, events, repository).state[:phase] == :review, "Categories did not enter review")
 end
-puts "Categories storage regression passed; existing rules tests also passed"
+puts "Categories storage regression passed"

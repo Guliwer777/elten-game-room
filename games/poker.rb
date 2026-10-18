@@ -5,9 +5,12 @@ require_relative "../lib/game_turn_clock"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register('poker', ['deal'])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Poker < CardGame
+    def player_spatial_audio?; true; end
     VARIANTS = [
       OptionChoice.new(value: "holdem", label: _("Texas Hold'em")),
       OptionChoice.new(value: "draw", label: _("Five-card draw"))
@@ -34,11 +37,35 @@ module GameRoomGames
     RANK_NAMES = { "T" => "10", "J" => _("jack"), "Q" => _("queen"), "K" => _("king"), "A" => _("ace") }.freeze
 
     def event_sound_cues(event:, before_replay:, after_replay:, history:, viewer:, random_variant:)
+      return nil unless after_replay.accepted_events.to_a.include?(event)
+      cue = betting_sound_cue(event, before_replay, after_replay)
+      # A private showdown can complete on a disclosure receipt rather than
+      # on the bet that requested it. Only the accepted result takes the pot.
+      return cue unless Array(history).any? { |entry| entry.kind == :round_result }
+      [cue, "poker_pot"].compact
+    end
+
+    def betting_sound_cue(event, before_replay, after_replay)
       action = event["action"].to_s
       return "shuffle" if action == "deal"
-      return "draw" if action == "exchange" && !GameRoomTurnClock.payload(after_replay.state, event).empty?
-      return "play" if action == "bet" && event["value"].to_s !~ /\A(?:check|fold)\|/
+      return "draw" if action == "private_draw" && event["value"] == "exchange"
+      if action == "exchange" && !after_replay.state[:private_cards]
+        return "draw" unless GameRoomTurnClock.payload(after_replay.state, event).empty?
+      end
+      return nil unless %w[bet turn_timeout].include?(action) && before_replay&.state.is_a?(Hash)
+      before, after = before_replay.state, after_replay.state
+      player = before[:current_player]
+      return nil if player == nil
+      return "poker_fold" if after[:folded].to_h[player] && !before[:folded].to_h[player]
+      return nil unless action == "bet"
+      return "poker_all_in" if after[:all_in].to_h[player] && !before[:all_in].to_h[player]
+      case GameRoomTurnClock.payload(after, event).split("|", 2).first
+      when "raise" then "poker_raise"
+      when "check" then "poker_check"
+      when "call" then "poker_call"
+      end
     end
+    private :betting_sound_cue
 
     def notification_option_keys(_options); %w[variant]; end
 
@@ -148,6 +175,7 @@ module GameRoomGames
     def replay(session, events, repository)
       players = repository.players_for(session)
       state = initial_state(players, options_from_json(session["options"]))
+      GameRoomPrivateCardLedger.initialize_state(state, session) if GameRoomPrivateCards.enabled?(session)
       accepted = []
       seen = {}
       history = [starting_history(players)]
@@ -156,7 +184,8 @@ module GameRoomGames
         original_event = event
         event_id = repository.event_id(event)
         next if seen[event_id]
-        decoded = GameRoomTurnClock.decode(state, event)
+        private_step = state[:private_cards] && event['action'].start_with?('private_', 'initial_hand')
+        decoded = private_step ? [event, GameRoomSessionClock.from_server(session, event['created_at'], event: event)] : GameRoomTurnClock.decode(state, event)
         next unless decoded
         event, time = decoded
         next if %w[bet exchange].include?(event["action"]) && poker_deadline_reached?(state, time)
@@ -164,36 +193,57 @@ module GameRoomGames
         if event["action"] == "deal" && time != nil
           event = event.merge("value" => "#{event['value']}|#{time}")
         end
-        actor = repository.actor_of(event, session)
         previous_recycle = state[:recycle]
-        applied = case event["action"].to_s
-        when "deal" then apply_deal(state, event, actor, repository, history)
-        when "bet" then apply_bet(state, event, actor, repository, history)
-        when "exchange" then apply_exchange(state, event, actor, repository, history)
-        when "turn_timeout" then apply_timeout(state, event, actor, repository, history, time)
-        else false
-        end
+        previous_phase = state[:phase]
+        applied = apply_replay_event(state, event, session, repository, history, time)
         if applied
+          if state[:phase] == :hand_complete && previous_phase != :hand_complete
+            completed_at = time
+            if completed_at == nil && original_event['created_at'].is_a?(Numeric)
+              completed_at = GameRoomSessionClock.from_server(session, original_event['created_at'], event: original_event)
+            end
+            state[:hand_resume_at] = completed_at + HAND_PAUSE_SECONDS if completed_at != nil
+          end
           record_deck_reshuffle(history, previous_recycle, state[:recycle], event_id)
-          GameRoomTurnClock.advance(state, time, running: [:betting, :exchange].include?(state[:phase]))
+          GameRoomTurnClock.advance(state, time, running: [:betting, :exchange].include?(state[:phase])) unless state[:private_cards] && private_waiting?(state)
           accepted << original_event
           seen[event_id] = true
         end
       end
-      GameRoomTurnClock.attach_session(state, session)
+      # The between-hand pause also needs the shared clock when turn limits
+      # are disabled. Its boundary comes from the accepted event, never now.
+      if state[:hand_resume_at]
+        GameRoomSessionClock.attach(state, session)
+      else
+        GameRoomTurnClock.attach_session(state, session)
+      end
       Replay.new(board: nil, players: players, current_player: state[:current_player], winner: state[:winner],
         draw: false, accepted_events: accepted, history: history, state: state)
+    end
+
+    def apply_replay_event(state, event, session, repository, history, time)
+      actor = repository.actor_of(event, session)
+      case event['action']
+      when 'deal' then apply_deal(state, event, actor, repository, history)
+      when 'bet' then apply_bet(state, event, actor, repository, history)
+      when 'exchange' then apply_exchange(state, event, actor, repository, history)
+      when 'turn_timeout' then apply_timeout(state, event, actor, repository, history, time)
+      else false
+      end
     end
 
     def automatic_action(replay, actor, context: nil)
       return nil if replay.finished? || !same_user?(actor, replay.players.first)
       return { "kind" => "command", "action" => "turn_timeout" } if poker_deadline_reached?(replay.state, context&.now)
       return nil if ![:awaiting_deal, :hand_complete].include?(replay.state[:phase])
+      return nil unless next_hand_ready?(replay.state, context&.now)
       { "kind" => "command", "action" => "deal" }
     end
 
     def automatic_action_due?(replay, actor, context: nil)
-      !replay.finished? && same_user?(actor, replay.players.first) && poker_deadline_reached?(replay.state, context&.now)
+      return false if replay.finished? || !same_user?(actor, replay.players.first)
+      poker_deadline_reached?(replay.state, context&.now) ||
+        (replay.state[:phase] == :hand_complete && next_hand_ready?(replay.state, context&.now))
     end
 
     def legal_actions(replay, actor, context: nil)
@@ -233,6 +283,14 @@ module GameRoomGames
       if selection["kind"].to_s == "command" && selection["action"].to_s == "deal"
         return [:not_your_turn, nil] if !same_user?(actor, replay.players.first)
         return [:invalid, nil] if ![:awaiting_deal, :hand_complete].include?(state[:phase]) || context&.random_source == nil
+        return [:invalid, nil] unless next_hand_ready?(state, context&.now)
+        if context.server_random
+          dealer = state[:dealer_index] == nil ? '{dealer}' : next_seated_index(state, state[:dealer_index])
+          template = "#{state[:hand_number] + 1}|#{dealer}|{seed}"
+          template += "|#{GameRoomTurnClock.logical_now(state, context)}" unless GameRoomTurnClock.enabled?(state)
+          return [:ok, server_seed_plan('deal', template: GameRoomTurnClock.encode(state, template, context),
+            seats: (0...state[:players].length).to_a)]
+        end
         seed = card_seed(context.random_source)
         dealer = state[:dealer_index] == nil ? seed.to_i(16) % replay.players.length : next_seated_index(state, state[:dealer_index])
         value = "#{state[:hand_number] + 1}|#{dealer}|#{seed}"
@@ -247,7 +305,8 @@ module GameRoomGames
       return [:invalid, nil] if poker_deadline_reached?(state, context&.now)
       legal = legal_actions(replay, actor, context: context)
       if selection["action"].to_s == "exchange"
-        cards = JSON.parse(selection["cards"].to_s).map(&:to_s)
+        cards = parse_exchange_cards(selection["cards"])
+        return [:invalid_exchange, nil] unless cards
         candidate = legal.find { |item| item["action"] == "exchange" && JSON.parse(item["cards"]).sort == cards.sort }
         return [:invalid_exchange, nil] if candidate == nil
         return [:ok, timed_poker_plan("exchange", cards.join(","), state, context)]
@@ -302,7 +361,13 @@ module GameRoomGames
           action: GameSurfaces::Action.new(kind: action["kind"], name: action["action"], payload: action.reject { |key, _| %w[kind action].include?(key) }, source: "poker_actions"))
       end
       if items.empty?
-        label = replay.finished? ? result_text(replay) : _("Waiting for %{player}") % { player: participant_name(state[:current_player]) }
+        label = if replay.finished?
+          result_text(replay)
+        elsif [:awaiting_deal, :hand_complete].include?(state[:phase])
+          _("Waiting for the next deal.")
+        else
+          _("Waiting for %{player}") % { player: participant_name(state[:current_player]) }
+        end
         items << GameSurfaces::PawnTrackItem.new(id: "status", label: label)
       end
       GameSurfaces::PawnTrackSpec.new(id: "poker_actions", header: _("Poker actions"), items: items, empty_label: _("No action is available"))
@@ -405,7 +470,8 @@ module GameRoomGames
       return super if player == nil
       if status == :invalid_exchange
         return _("It is not the card-exchange stage.") if state[:phase] != :exchange
-        cards = JSON.parse(selection["cards"].to_s) rescue []
+        cards = parse_exchange_cards(selection["cards"])
+        return move_error(status) unless cards
         maximum = state[:options]["draw_five"] ? 5 : 3
         return _("You may exchange at most %{count} cards.") % { count: maximum } if cards.length > maximum
         return _("Select each card only once, from your own hand.")
@@ -430,11 +496,86 @@ module GameRoomGames
 
     def describe_event(event, repository, replay, viewer)
       id = repository.event_id(event).to_i
-      values = replay.history.filter_map { |entry| entry.text if entry.event_id.to_i == id }
+      values = []
+      replay.history.each do |entry|
+        next if entry.event_id.to_i != id
+        if entry.kind == :deal
+          values << entry.text
+          unless replay.state[:private_cards]
+            cards = dealt_cards_for(replay.state, viewer, entry.key)
+            values << dealt_cards_text(cards) unless cards.empty?
+          end
+        elsif FORCED_BETS.include?(entry.field.to_s) && same_user?(entry.actor, viewer)
+          values << forced_bet_text(entry.field.to_s, nil, entry.value)
+        elsif entry.key.start_with?("stage:") && event['action'] == 'deal'
+          next
+        else
+          values << entry.text
+        end
+      end
+      if replay.state[:private_cards] && replay.accepted_events.to_a.include?(event) && event['action'] == 'initial_hand' &&
+          same_user?(replay.state[:private_viewer], viewer) && same_user?(repository.actor_of(event), viewer)
+        draw = replay.state[:private_draws].to_h[event.fetch('__server_pool', {})['draw_id']]
+        if draw && draw[:initial] && same_user?(draw[:player], viewer)
+          cards = dealt_cards_for(replay.state, viewer, "deal:#{replay.state[:hand_number]}")
+          values << dealt_cards_text(cards) unless cards.empty?
+        end
+      end
       values.empty? ? nil : values
     end
 
+    def turn_announcement(replay, viewer)
+      if replay && !replay.finished? && [:betting, :exchange].include?(replay.state[:phase]) &&
+          same_user?(replay.current_player, viewer)
+        return _("Your move.")
+      end
+      super
+    end
+
     private
+
+    FORCED_BETS = %w[small_blind big_blind ante].freeze
+    HAND_PAUSE_SECONDS = 6
+
+    def parse_exchange_cards(value)
+      cards = JSON.parse(value.to_s)
+      cards if cards.is_a?(Array) && cards.all? { |card| card.is_a?(String) }
+    rescue JSON::ParserError
+      nil
+    end
+
+    def next_hand_ready?(state, now)
+      return true if state[:phase] != :hand_complete || !state[:hand_resume_at]
+      (now || GameRoomSessionClock.for_state(state)).to_f >= state[:hand_resume_at]
+    end
+
+    def forced_bet_text(kind, player, amount)
+      if player == nil
+        case kind
+        when 'small_blind' then _("You pay the small blind: %{amount}.") % {amount: amount}
+        when 'big_blind' then _("You pay the big blind: %{amount}.") % {amount: amount}
+        else _("You pay ante: %{amount}.") % {amount: amount}
+        end
+      else
+        case kind
+        when 'small_blind' then _("%{player} pays the small blind: %{amount}.") % {player: player, amount: amount}
+        when 'big_blind' then _("%{player} pays the big blind: %{amount}.") % {player: player, amount: amount}
+        else _("%{player} pays ante: %{amount}.") % {player: player, amount: amount}
+        end
+      end
+    end
+
+    def dealt_cards_for(state, viewer, deal_key)
+      player = player_key(state, viewer)
+      return [] unless player && deal_key == "deal:#{state[:hand_number]}" && !state[:exchanged].to_h[player]
+      cards = state[:hands][player].to_a
+      return [] if cards.any? { |card| GameRoomPrivateCardLedger.hidden?(card) }
+      cards.sort_by { |card| playing_sort_key(card) }
+    end
+
+    def dealt_cards_text(cards)
+      _("Cards in hand: %{cards}.") % {cards: cards.map { |card| poker_card_label(card) }.join(', ')}
+    end
 
     def timed_poker_plan(action, value, state, context)
       event_plan(action, GameRoomTurnClock.encode(state, value, context))
@@ -489,6 +630,11 @@ module GameRoomGames
       return false if !same_user?(actor, state[:players].first) || ![:awaiting_deal, :hand_complete].include?(state[:phase])
       hand_text, dealer_text, seed, timestamp_text = event["value"].to_s.split("|", 4)
       hand_number, dealer, timestamp = Integer(hand_text, 10), Integer(dealer_text, 10), Integer(timestamp_text, 10)
+      expected = state[:dealer_index] == nil ? '{dealer}' : next_seated_index(state, state[:dealer_index])
+      template = "#{state[:hand_number] + 1}|#{expected}|{seed}"
+      template += "|#{timestamp}" unless GameRoomTurnClock.enabled?(state)
+      return false unless GameRoomServerRandom.valid_text_seed_event?(event, template: template,
+        seats: (0...state[:players].length).to_a, clock: GameRoomTurnClock.enabled?(state))
       return false if hand_number != state[:hand_number] + 1 || seed !~ /\A[0-9a-f]{32}\z/ || timestamp < 0
       seated = seated_players(state)
       return false if seated.length < 2 || !seated.include?(state[:players][dealer])
@@ -506,12 +652,13 @@ module GameRoomGames
         min_raise: current_big_blind(state), street_bets: state[:players].to_h { |player| [player, 0] },
         contributions: state[:players].to_h { |player| [player, 0] }, raises: 0, hand_started_at: timestamp,
         tournament_started_at: state[:tournament_started_at].to_i.zero? ? timestamp : state[:tournament_started_at])
+      state.delete(:hand_resume_at)
       state[:min_raise] = current_big_blind(state)
       payments = []
       if state[:options]["variant"] == "draw" && !state[:options]["draw_uses_blinds"]
         seated.each do |player|
           paid = commit_chips(state, player, [state[:options]["ante"].to_i, state[:stacks][player]].min, street: false)
-          payments << _("%{player} pays ante: %{amount}.") % { player: participant_name(player), amount: paid } if paid > 0
+          payments << [player, 'ante', paid] if paid > 0
         end
         state[:phase] = :betting
         state[:current_player] = first_actionable_after_dealer(state)
@@ -525,20 +672,23 @@ module GameRoomGames
         end
         small_paid = commit_chips(state, state[:players][small_index], [current_small_blind(state), state[:stacks][state[:players][small_index]]].min)
         big_paid = commit_chips(state, state[:players][big_index], [current_big_blind(state), state[:stacks][state[:players][big_index]]].min)
-        payments << _("%{player} pays the small blind: %{amount}.") % { player: participant_name(state[:players][small_index]), amount: small_paid }
-        payments << _("%{player} pays the big blind: %{amount}.") % { player: participant_name(state[:players][big_index]), amount: big_paid }
+        payments << [state[:players][small_index], 'small_blind', small_paid]
+        payments << [state[:players][big_index], 'big_blind', big_paid]
         state[:current_bet] = state[:street_bets].values.max
         state[:phase] = :betting
         state[:current_player] = state[:players][next_actionable_index(state, big_index)]
       end
       id = repository.event_id(event)
-      history << HistoryEntry.new(key: "deal:#{hand_number}", text: _("Poker hand %{hand} was dealt. Dealer: %{dealer}.") % { hand: hand_number, dealer: participant_name(state[:players][dealer]) }, event_id: id, actor: actor, kind: :deal)
+      history << HistoryEntry.new(key: "deal:#{hand_number}", text: _("Round %{hand}. Dealer: %{dealer}.") % { hand: hand_number, dealer: participant_name(state[:players][dealer]) }, event_id: id, actor: actor, kind: :deal)
       if (state[:options]["variant"] != "draw" || state[:options]["draw_uses_blinds"]) && previous_blinds != [current_small_blind(state), current_big_blind(state)]
-        payments.unshift(_("Blinds increase to %{small} and %{big}.") % { small: current_small_blind(state), big: current_big_blind(state) })
+        history << HistoryEntry.new(key: "forced_bets:#{id}", text: _("Blinds increase to %{small} and %{big}.") % { small: current_small_blind(state), big: current_big_blind(state) }, event_id: id, actor: '', kind: :game)
       end
-      history << HistoryEntry.new(key: "forced_bets:#{id}", text: payments.join(" "), event_id: id, actor: "", kind: :game) if !payments.empty?
+      payments.each do |player, kind, amount|
+        history << HistoryEntry.new(key: "forced_bet:#{id}:#{kind}:#{player.downcase}", text: forced_bet_text(kind, participant_name(player), amount),
+          event_id: id, actor: player, kind: :game, field: kind, value: amount)
+      end
       stage_history(state, id, history, state[:options]["variant"] == "draw" ? _("First betting round.") : _("Preflop. First betting round."))
-      progress_after_action(state, state[:players][dealer], id, history) if betting_complete?(state)
+      progress_after_action(state, state[:players][dealer], id, history) if betting_complete?(state) && !state[:private_cards]
       true
     rescue ArgumentError
       false
@@ -636,15 +786,19 @@ module GameRoomGames
             showdown(state, event_id, history)
           end
         elsif state[:street] < 3
-          reveal_community(state, event_id, history)
-          start_betting_street(state, state[:street] + 1)
-          run_out_if_needed(state, event_id, history)
+          advance_community_street(state, event_id, history)
         else
           showdown(state, event_id, history)
         end
       else
         state[:current_player] = state[:players][next_actionable_index(state, player_index(state[:players], actor))]
       end
+    end
+
+    def advance_community_street(state, event_id, history)
+      reveal_community(state, event_id, history)
+      start_betting_street(state, state[:street] + 1)
+      run_out_if_needed(state, event_id, history)
     end
 
     def start_betting_street(state, street)
@@ -696,6 +850,12 @@ module GameRoomGames
       ranks = eligible.to_h { |player| [player, hand_rank(hand_for(state, player) + state[:community])] }
       pots = side_pots(state, eligible)
       payouts = Hash.new(0)
+      eligible.each do |player|
+        cards = hand_for(state, player).sort_by { |card| playing_sort_key(card) }.map { |card| poker_card_label(card) }.join(', ')
+        history << HistoryEntry.new(key: "showdown_hand:#{event_id}:#{player.downcase}",
+          text: _("%{player} had %{cards}: %{hand}.") % {player: participant_name(player), cards: cards, hand: showdown_hand_text(ranks[player], [])},
+          event_id: event_id, actor: player, kind: :game)
+      end
       messages = []
       pots.each_with_index do |pot, index|
         winners = pot[:eligible].select { |player| ranks.key?(player) }
@@ -710,15 +870,18 @@ module GameRoomGames
         pot_name = index.zero? ? _("main pot") : _("side pot %{number}") % { number: index }
         messages << _("%{pot} is split between %{players}.") % { pot: pot_name, players: winners.map { |player| participant_name(player) }.join(", ") } if winners.length > 1
         winners.each do |player|
+          amount = share + (extra_chip.include?(player) ? 1 : 0)
           peers = pot[:eligible].reject { |other| other == player }.map { |other| ranks[other] }
-          messages << _("%{player} receives %{amount} from the %{pot}: %{hand}.") % {
-            player: participant_name(player), amount: share + (extra_chip.include?(player) ? 1 : 0),
-            pot: pot_name, hand: showdown_hand_text(ranks[player], peers)
-          }
+          deciding = deciding_card_text(ranks[player], peers)
+          messages << if pots.length == 1 && winners.length == 1
+            _("%{player} wins the whole pot: %{amount}%{deciding}.") % {player: participant_name(player), amount: amount, deciding: deciding}
+          else
+            _("%{player} wins %{amount} from the %{pot}%{deciding}.") % {player: participant_name(player), amount: amount, pot: pot_name, deciding: deciding}
+          end
         end
       end
       payouts.each { |player, amount| state[:stacks][player] += amount }
-      history << HistoryEntry.new(key: "showdown:#{event_id}", text: _("Showdown: %{summary}.") % { summary: messages.join(" ").sub(/\.\z/, "") }, event_id: event_id, actor: "", kind: :round_result)
+      history << HistoryEntry.new(key: "showdown:#{event_id}", text: messages.join("\n"), event_id: event_id, actor: "", kind: :round_result)
       complete_hand(state, event_id, history)
     end
 
@@ -876,16 +1039,20 @@ module GameRoomGames
       values = combination_values(rank)
       values = rank[1, 1] if rank[0] == 5
       text = values.empty? ? hand_name(rank) : _("%{hand}: %{values}") % { hand: hand_name(rank), values: values.map { |value| rank_label(value) }.join(", ") }
-      # A kicker matters only when the main combination is the same. Compare
-      # against the strongest competing hand, without exposing folded cards.
+      text + deciding_card_text(rank, peers)
+    end
+
+    def deciding_card_text(rank, peers)
+      values = combination_values(rank)
+      values = rank[1, 1] if rank[0] == 5
       runner_up = peers.compact.max
       if runner_up && rank[0] == runner_up[0] && (rank <=> runner_up) == 1
         difference = (1...[rank.length, runner_up.length].min).find { |i| rank[i] != runner_up[i] }
         if difference && difference > values.length
-          text += _("; deciding card: %{card}") % { card: rank_label(rank[difference]) }
+          return _("; deciding card: %{card}") % { card: rank_label(rank[difference]) }
         end
       end
-      text
+      ""
     end
 
     def combination_values(rank)
@@ -1165,6 +1332,7 @@ module GameRoomGames
 
     def blind_level(state)
       return 0 if state[:options]["blind_interval"] == "never"
+      return 0 if state[:options]["blind_interval_value"].to_i.zero?
       return [state[:hand_number].to_i - 1, 0].max / state[:options]["blind_interval_value"].to_i if state[:options]["blind_interval"] == "hands"
       elapsed = [state[:hand_started_at].to_i - state[:tournament_started_at].to_i, 0].max
       elapsed / (state[:options]["blind_interval_value"].to_i * 60)
@@ -1253,4 +1421,6 @@ module GameRoomGames
   end
 end
 
+require_relative 'poker_private'
+GameRoomGames::Poker.prepend(GameRoomGames::PokerPrivate)
 require_relative 'generated/rulebooks/poker'

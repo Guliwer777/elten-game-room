@@ -70,6 +70,7 @@ module GameRoomTournaments
         'matches' => matches, 'game_id' => row['game'], 'game_options' => settings['game_options'], 'windows' => schedule['windows']}
       data['groups'] = GroupSchedule.metadata(groups, matches) if groups
       data['starts_at']=schedule['starts_at'] if TournamentTiming.optional?(row)
+      data['daily_hours']=schedule['daily_hours'] if schedule['daily_hours']
       data['group_advancement'] = settings['group_advancement'] if settings.key?('group_advancement')
       Publication::ROUND_SETTINGS.each { |key| data[key] = settings[key] } if settings.key?('knockout_rematch')
       Publication::WIN_SETTINGS.each{|key|data[key]=settings[key] if settings.key?(key)}

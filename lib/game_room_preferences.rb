@@ -1,4 +1,5 @@
 require_relative "game_room_localization"
+require_relative "game_participants"
 
 module GameRoomPreferences
   using GameRoomLocalization::Translations
@@ -39,6 +40,7 @@ module GameRoomPreferences
       "lobby_games" => games.dup,
       "lobby_known_games" => games.dup,
       "invitation_notifications" => "everyone",
+      "invitation_blacklist" => [],
       "table_watch_contacts_only" => false,
       "game_sounds" => true,
       "room_membership_sounds" => true,
@@ -48,7 +50,10 @@ module GameRoomPreferences
       "widget_contacts_only" => false,
       "widget_games" => games.dup,
       "widget_known_games" => games.dup,
-      "widget_show_unavailable" => false
+      "widget_show_unavailable" => false,
+      "hrtf_enabled" => true,
+      "hrtf_games" => games.dup,
+      "hrtf_known_games" => games.dup
     }
   end
 
@@ -81,7 +86,12 @@ module GameRoomPreferences
     result["widget_games"], result["widget_known_games"] = game_selection(
       source, allowed_games, "widget_games", "widget_known_games", LEGACY_WIDGET_GAME_IDS
     )
+    result["hrtf_games"], result["hrtf_known_games"] = game_selection(
+      source, allowed_games, "hrtf_games", "hrtf_known_games", allowed_games
+    )
+    result["hrtf_enabled"] = source["hrtf_enabled"] != false
     result["invitation_notifications"] = normalized_invitation_policy(result["invitation_notifications"])
+    result["invitation_blacklist"] = invitation_blacklist(result["invitation_blacklist"])
     result["background_game_sounds"] = %w[all audio never].include?(source["background_game_sounds"]) ? source["background_game_sounds"] : "never"
     result["scrabble_draft_speech"] = source["scrabble_draft_speech"] == true
     %w[widget_contacts_only table_watch_contacts_only].each { |key| result[key] = source[key] == true }
@@ -147,6 +157,10 @@ module GameRoomPreferences
     levels["all"] * levels[sound_group(name)] / 10_000.0
   end
 
+  def hrtf_game?(values, game_id)
+    values.is_a?(Hash) && values["hrtf_enabled"] == true && values["hrtf_games"].to_a.map(&:to_s).include?(game_id.to_s)
+  end
+
   def widget_enabled?(values, game_ids)
     normalize(values, game_ids)["widget_enabled"]
   end
@@ -160,6 +174,16 @@ module GameRoomPreferences
     INVITATION_POLICIES.include?(policy) ? policy : "everyone"
   end
 
+  def invitation_blacklist(values)
+    names = values.is_a?(Array) ? values.grep(String).map(&:strip) : []
+    GameRoomParticipants.unique(names)
+  end
+
+  def invitation_blocked?(values, sender)
+    names = values.is_a?(Hash) ? invitation_blacklist(values["invitation_blacklist"]) : []
+    GameRoomParticipants.includes?(names, sender.to_s.strip)
+  end
+
   def normalized_game_ids(game_ids)
     game_ids.to_a.map(&:to_s).reject(&:empty?).uniq
   end
@@ -167,7 +191,9 @@ module GameRoomPreferences
   def selected_games(source, key, allowed)
     return allowed.dup if !source.key?(key)
 
-    requested = source[key].to_a.map(&:to_s)
+    # A present non-list selects no known games, as nil/objects did before.
+    # Do not reset it to all games; new-game migration remains independent.
+    requested = source[key].is_a?(Array) ? source[key].map(&:to_s) : []
     allowed.select { |game_id| requested.include?(game_id) }
   end
   private_class_method :selected_games

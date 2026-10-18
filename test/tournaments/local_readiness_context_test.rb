@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_match_entry'
 require_relative '../../lib/tournaments/entry_context'
 require_relative '../../lib/tournaments/readiness_contract'
@@ -7,7 +8,7 @@ T=GameRoomTournaments
 file=File.expand_path('../../lib/tournaments/local_readiness_session.rb',__dir__)
 require file if File.file?(file)
 assert(T.const_defined?(:LocalReadinessSession),'Brak rzeczywistego producenta epok sandboxa')
-Dir.mktmpdir('d2b-epochs-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('d2b-epochs-') do |directory|
   program=TournamentEntryContextTest::Program.new(directory)
   session=T::LocalReadinessSession.new
   events=[]

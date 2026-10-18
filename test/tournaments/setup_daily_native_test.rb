@@ -12,12 +12,12 @@ I=TournamentIndividualUI
 T=GameRoomTournaments
 GameRoomLocalization.boot(settings:{'interface_language'=>'en','known_languages'=>['en']})
 fixture=I.fixture
-daily=(16..18).map{|day|T::LocalRegistrationTime.utc_window(Time.local(2026,10,day,19).to_i,Time.local(2026,10,day,21).to_i)}
-continuous=T::LocalRegistrationTime.utc_window(Time.local(2026,10,16,19).to_i,Time.local(2026,10,18,21).to_i)
-[daily,[continuous]].each do |windows|
+daily={'start'=>'19:00','end'=>'21:00','utc_offset_minutes'=>120}
+overnight={'start'=>'22:00','end'=>'02:00','utc_offset_minutes'=>-210}
+[daily,overnight].each do |hours|
   draft={'name'=>'Weekend tournament','game_id'=>'tic_tac_toe','game_options'=>{},
     'format'=>'round_robin','players_per_match'=>2,'pairing'=>'all_combinations',
-    'rematch'=>false,'windows'=>windows}
+    'rematch'=>false,'windows'=>[],'starts_at'=>0,'deadline_at'=>0,'daily_hours'=>hours}
   publication=T::Publication.from_draft(draft:draft,registry:GameRoomGames::CATALOG,publication_key:'native-weekend',
     rules:'Test rules',registration_opens_at:120,registration_closes_at:240,timezone:'UTC').to_row
   saved=[]
@@ -27,10 +27,17 @@ continuous=T::LocalRegistrationTime.utc_window(Time.local(2026,10,16,19).to_i,Ti
     form.index=form.fields.index(I::F.button(form,'Dates and playing hours'))
   end
   driver.step('Dates and playing hours',[13]) do |form|
-    list=I::F.field(form,'Playing windows')
-    assert_equal(windows.size,list.options.size)
-    assert(list.options.first.include?('2026-10-16 19:00'),'Local start changed on reopening')
-    assert(list.options.last.include?('2026-10-18 21:00'),'Local end changed on reopening')
+    assert(form.fields.find{|f|f.is_a?(CheckBox) && f.label=='Limit playing hours'}.checked,'Daily hours were disabled on reopening')
+    %w[start end].each do |part|
+      h,m=hours.fetch(part).split(':')
+      field=form.fields.find{|f|f.is_a?(ListBox) && f.header.start_with?("Daily #{part} time:")}
+      assert_equal(h,field.options[field.index],'Daily hour changed on reopening')
+      field.trigger(:key_right)
+      assert_equal(m,field.options[field.index],'Daily minute changed on reopening')
+      field.trigger(:key_left)
+    end
+    zone=I::F.field(form,'Time zone (fixed UTC offset)')
+    assert_equal(T::TournamentTiming.offset_label(hours['utc_offset_minutes']),zone.options[zone.index])
     form.index=form.fields.index(form.accept_button)
   end
   driver.step('Tournament name',[13]){|form|form.index=form.fields.index(form.accept_button)}
@@ -38,8 +45,9 @@ continuous=T::LocalRegistrationTime.utc_window(Time.local(2026,10,16,19).to_i,Ti
     configure:->(*){raise 'Edit requested game configuration'},publication:publication,
     alert:->(message){raise message},publish:->(**values){saved<<values;{'status'=>'confirmed'}}).wait
   driver.finish
-  assert_equal(windows,saved.first[:draft]['windows'],'An edit replaced the existing windows')
-  assert_equal(T::LocalRegistrationTime.convert_utc(windows.first['date'],windows.first['start']),saved.first[:draft]['starts_at'])
+  assert_equal(hours,saved.first[:draft]['daily_hours'],'An edit changed daily hours or the explicit zone')
+  assert_equal([],saved.first[:draft]['windows'])
+  assert_equal(0,saved.first[:draft]['starts_at'],'Playing hours scheduled the tournament start')
   assert_equal(240,saved.first[:registration_closes_at])
 end
 # Cancelling the optional dates dialog leaves a new manual tournament manual.
@@ -61,4 +69,4 @@ assert_equal(0,saved.first[:draft]['starts_at'])
 assert_equal(0,saved.first[:registration_closes_at])
 fixture[:program].finalize
 fixture[:program].class.app_runtime.close
-puts 'PASS native optional dates: daily/overnight UTC windows preserved on edit, local display and cancelled dates retain manual start'
+puts 'PASS native daily/overnight hours and fixed offset survive editing; playing hours and cancelled dates retain manual start'

@@ -3,9 +3,12 @@ require_relative "../lib/game_bots"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register('war', ['deal'])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class War < CardGame
+    def player_spatial_audio?; true; end
     include PublicHistoryAnnouncements
 
     SHORT_RANKS = %w[9 T J Q K A].freeze
@@ -83,6 +86,7 @@ module GameRoomGames
     def replay(session, events, repository)
       players = repository.players_for(session)
       state = initial_state(players, options_from_json(session["options"]))
+      GameRoomPrivateCardLedger.initialize_state(state, session) if GameRoomPrivateCards.enabled?(session)
       accepted = []
       seen = {}
       history = [starting_history(players)]
@@ -90,12 +94,7 @@ module GameRoomGames
         break if state[:phase] == :finished
         event_id = repository.event_id(event)
         next if seen[event_id]
-        actor = repository.actor_of(event, session)
-        applied = case event["action"].to_s
-        when "deal" then apply_deal(state, event, actor, repository, history)
-        when "play" then apply_play(state, event, actor, repository, history)
-        else false
-        end
+        applied = apply_replay_event(state, event, session, repository, history)
         next unless applied
         accepted << event
         seen[event_id] = true
@@ -127,6 +126,9 @@ module GameRoomGames
         return [:not_your_turn, nil] unless same_user?(actor, replay.players.first)
         return [:invalid, nil] if state[:phase] != :awaiting_deal || context&.random_source == nil
 
+        if context.server_random
+          return [:ok, ActionPlan.new(events: [GameRoomServerRandom.text_seed_command(action: 'deal')])]
+        end
         [:ok, event_plan("deal", card_seed(context.random_source))]
       when "play"
         return [:not_your_turn, nil] unless same_user?(replay.current_player, actor)
@@ -227,6 +229,15 @@ module GameRoomGames
 
     private
 
+    def apply_replay_event(state, event, session, repository, history)
+      actor = repository.actor_of(event, session)
+      case event['action']
+      when 'deal' then apply_deal(state, event, actor, repository, history)
+      when 'play' then apply_play(state, event, actor, repository, history)
+      else false
+      end
+    end
+
     def initial_state(players, options)
       { players: players, options: options, phase: :awaiting_deal, seed: nil,
         piles: players.to_h { |player| [player, []] }, eliminated: {}, battle: 0, depth: 0,
@@ -235,6 +246,7 @@ module GameRoomGames
     end
 
     def apply_deal(state, event, actor, repository, history)
+      return false unless GameRoomServerRandom.valid_recipe_event?(event, kind: 'seed_text', template: '{seed}', seats: [0])
       return false if state[:phase] != :awaiting_deal || !same_user?(actor, state[:players].first)
       seed = event["value"].to_s
       return false unless seed.match?(/\A[0-9a-f]{32}\z/)
@@ -484,3 +496,5 @@ module GameRoomGames
 end
 
 require_relative 'generated/rulebooks/war'
+require_relative 'war_private'
+GameRoomGames::War.prepend(GameRoomGames::WarPrivate)

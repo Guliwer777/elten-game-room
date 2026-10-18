@@ -7,6 +7,7 @@ require_relative "game_simulation"
 require_relative "game_session_clock"
 require_relative "game_execution_policy"
 require_relative "game_background_policy"
+require_relative "tournament_presence"
 
 # One executor for turn-based automatic actions, in foreground AND background.
 # The screen owns presentation and input; this object never calls a control,
@@ -70,7 +71,8 @@ class GameRoomSessionRunner
 
   def initialize(program:, transport:, repository:, game:, session:, table:,
     owner:, viewer:, room_snapshot_provider:, context:, game_status_changed: nil,
-    covered: nil, activity_repository: nil, statistics_observer: nil, action_context_observer: nil, completion_observer: nil)
+    covered: nil, activity_repository: nil, statistics_observer: nil, action_context_observer: nil, completion_observer: nil,
+    tournament_presence: nil)
     @action_context_observer = action_context_observer
     @program, @transport, @repository = program, transport, repository
     @game = game.build_session_game
@@ -81,6 +83,7 @@ class GameRoomSessionRunner
     @activity_repository = activity_repository
     @statistics_observer = statistics_observer
     @completion_observer = completion_observer
+    @tournament_presence = tournament_presence
     @context_template = context
     @clock = GameRoomSessionClock.new
     @coordinator = GameRoomBots::Coordinator.new
@@ -235,11 +238,14 @@ class GameRoomSessionRunner
         return
       end
       @dirty = true if event
-      return unless activate_executor
-      return if @sync.waiting?
+      unless activate_executor && !@sync.waiting?
+        @presence_clock = nil
+        return
+      end
       verified = @turn.verification_due?
       refresh(force: verified || event&.kind == :recovery) if @dirty || verified
       return unless @snapshot && @replay
+      return if reconcile_tournament_presence
       return if closed? || @session["__frozen"] || @session["__aborted"] || @session["__control_ready"] == false
       update_table_status
       return if @replay.finished? || @sync.recovery_pending?
@@ -251,6 +257,7 @@ class GameRoomSessionRunner
     end
     perform_bot(bot_work) if bot_work
   rescue StandardError => error
+    @presence_clock = nil
     @dirty = true
     if GameRoomNetworkErrors.expected?(error) || GameRoomNetworkErrors.cancelled?(error)
       @sync.failed!(error)
@@ -318,19 +325,23 @@ class GameRoomSessionRunner
       end
       @snapshot, @session = snapshot, snapshot.session
       @replay = @game.replay(@session, snapshot.events, @repository)
-      if reconcile_departed_players
+      if reconcile_departed_players || reconcile_membership_action
         snapshot = @repository.snapshot_for(@session)
         @snapshot, @session = snapshot, snapshot.session
         @replay = @game.replay(@session, snapshot.events, @repository)
         room = @room_snapshot_provider.call || room
         @room, @table = room, copy(room.table)
+        @owner = @table['owner'].to_s
       end
       @statistics_observer&.call(@session, @replay)
-      @completion_observer&.call(@session,@replay,snapshot.events) if @replay.finished?
+      @completion_observer&.call(@session,@replay,snapshot.events) if @replay.finished? || GameRoomTournamentPresence.ended?(@session)
       @turn.observe(session_id: @repository.session_id(@session), events: snapshot.events,
         confirmed_event_ids: @repository.confirmed_event_ids(@session), verified: force)
+      # Named bots have their own seats, not legacy controller records. A
+      # former owner may still hold their confirmed local envelopes, too.
+      cleanup_actors = [@viewer, *controlled_actors, *@replay.players.select { |actor| GameRoomParticipants.bot?(actor) }]
       @game.cleanup_session_answers(@replay, session_id: @repository.session_id(@session),
-        actors: [@viewer, *controlled_actors].uniq, hidden_submissions: @context_template.hidden_submissions)
+        actors: cleanup_actors.uniq, hidden_submissions: @context_template.hidden_submissions)
       presentation = copy(GameRoomSessionContracts::PresentationSnapshot.new(session: @session, table: @table, replay: @replay, members: room.members,
         activity: @activity_repository ? @activity_repository.entries_for(@table, viewer: @viewer) : [],
         snapshot: snapshot, room: room))
@@ -345,6 +356,7 @@ class GameRoomSessionRunner
       session_id: @repository.session_id(@session), table_id: @table_id,
       hidden_submissions: @context_template.hidden_submissions,
       random_source: @context_template.random_source,
+      server_random: @session['__server_random'] == GameRoomServerRandom::VERSION,
       options: @game.options_from_json(@session["options"]), table_owner: @owner,
       local_data: view ? view[:local_data] : @context_template.local_data,
       now: @clock.public_send(@game.precise_action_clock? ? :now_f : :now, @session)
@@ -380,7 +392,12 @@ class GameRoomSessionRunner
       !@game.automatic_action_due?(@replay, actor, context: ctx)
     @automatic_checked = key
     selection = @game.automatic_action(@replay, actor, context: ctx)
-    return false unless selection
+    unless selection
+      # The retry completed without an action. Keep this revision checked;
+      # only a new revision or the normal game deadline needs another check.
+      @automatic_retry_key = nil if retrying
+      return false
+    end
     execute_automatic(selection, actor, key, now, controller: !GameRoomParticipants.same?(actor, @viewer))
   end
 
@@ -405,6 +422,9 @@ class GameRoomSessionRunner
     return nil unless GameRoomParticipants.same?(@owner, @viewer)
     actor = @coordinator.pending_bot(@game, @replay, controlled_actors: controlled_actors)
     return nil unless actor
+    retry_key = [@repository.session_id(@session), revision(@replay), @session['__control_epoch'], actor]
+    return nil if @empty_bot_retry_key == retry_key &&
+      Process.clock_gettime(Process::CLOCK_MONOTONIC) < @empty_bot_retry_at
     ctx = context
     rev = @repository.events_revision(@snapshot.events)
     @turn.schedule_decision(session_id: @repository.session_id(@session), actor: actor,
@@ -412,7 +432,8 @@ class GameRoomSessionRunner
     lease = @turn.acquire(session_id: @repository.session_id(@session), actor: actor, revision: rev)
     return nil unless lease
     {lease: lease, actor: actor, context: ctx, session: copy(@session), replay: copy(@replay),
-      revision: revision(@replay), players: @repository.players_for(@session), controlled_actors: controlled_actors}
+      revision: revision(@replay), players: @repository.players_for(@session), controlled_actors: controlled_actors,
+      empty_retry_key: retry_key}
   rescue Exception
     @turn.cancel(lease) if lease
     raise
@@ -429,7 +450,18 @@ class GameRoomSessionRunner
       decision = GameRoomExecutionPolicy.bot_decision(game: @planning_game, session: session, replay: replay,
         repository: @repository, coordinator: @coordinator, context: work[:context], players: work[:players],
         controlled_actors: work[:controlled_actors])
-      return false if closed? || !decision
+      return false if closed?
+      unless decision
+        # Missing private input or a time-dependent policy can leave an active
+        # bot without a legal action. Retry that unchanged position briefly,
+        # not in every worker frame; a new position is immediately eligible.
+        synchronize do
+          @empty_bot_retry_key = work[:empty_retry_key]
+          @empty_bot_retry_at = Process.clock_gettime(Process::CLOCK_MONOTONIC) + 1.0
+        end
+        return false
+      end
+      @empty_bot_retry_key = nil
       # The native client may have received another move while this worker was
       # calculating and the UI was covered. Decode that already queued change
       # before checking the planned revision; no additional server polling.
@@ -455,7 +487,7 @@ class GameRoomSessionRunner
     end
   end
 
-  def commit(selection, actor, controller: false, lease: nil)
+  def commit(selection, actor, controller: false, lease: nil, write_guard: nil)
     return [:closed, nil] if closed?
     action_context = context
     @action_context_observer&.call(action_context)
@@ -474,7 +506,9 @@ class GameRoomSessionRunner
     begin
       inserted = @repository.append_events(session: @session,
         sequence: @repository.next_sequence(@session, @replay.accepted_events), events: plan.events,
-        recipients: GameRoomParticipants.humans(@room.members), actor: actor, controller: controller)
+        recipients: GameRoomParticipants.humans(@room.members), actor: actor, controller: controller,
+        **(write_guard ? {write_guard: write_guard} : {}))
+      return [:stale_view, nil] if write_guard && !inserted
       raise GameRoomNetworkErrors::UncertainWrite, "Game action was not confirmed" unless inserted && !inserted.empty?
       @turn.submitted(lease, event_ids: inserted.map { |event| @repository.event_id(event) }) if lease
       @dirty = true
@@ -503,6 +537,7 @@ class GameRoomSessionRunner
   end
 
   def reconcile_departed_players
+    return false if GameRoomTournamentMarker.present?(@table, @session)
     departed = GameRoomExecutionPolicy.departed_players(game: @game, replay: @replay, session: @session,
       players: @repository.players_for(@session), members: @room&.members, owner: @owner, viewer: @viewer, transport: @transport)
     changed = false
@@ -513,6 +548,108 @@ class GameRoomSessionRunner
         control_guard: guard) || changed
     end
     changed
+  end
+
+  def tournament_observation_time
+    Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  end
+
+  def reconcile_tournament_presence
+    unless @tournament_presence && GameRoomTournamentMarker.present?(@table, @session) &&
+        !@replay.finished? && !@session['__aborted'] && @session['__control_ready'] != false &&
+        !@sync.recovery_pending? && @room&.members && GameRoomParticipants.same?(@owner, @viewer)
+      @presence_clock = nil
+      return false
+    end
+    prior = @session['__tournament_presence']
+    if @session['__frozen'] && (!prior || prior['boundary_id'] != @session['__game_boundary'])
+      @presence_clock = nil # An unrelated uncertain write owns this pause.
+      return false
+    end
+    active = @game.tournament_active_players(@replay, options: @game.options_from_json(@session['options']))
+    absent = active.reject { |person| GameRoomParticipants.includes?(@room.members, person) }
+    now = tournament_observation_time
+    key = [@session['__id'], @session['__control_epoch'], @session['__game_boundary']]
+    @presence_clock = [key, now] unless @presence_clock && @presence_clock.first == key
+    elapsed = prior && prior['epoch'] == @session['__control_epoch'] && !prior['absent'].empty? ?
+      [[((now - @presence_clock.last) * 1000).floor, 0].max, GameRoomTournamentPresence::LIMIT_MS].min : 0
+    changed = absent != (prior ? prior['absent'] : []) || prior && prior['epoch'] != @session['__control_epoch'] && !absent.empty?
+    accumulating = absent.any? { |player| !prior || prior['totals_ms'].fetch(player) < GameRoomTournamentPresence::LIMIT_MS }
+    return false unless changed || accumulating && elapsed >= GameRoomTournamentPresence::CHECKPOINT_SECONDS * 1000
+    context = @tournament_presence.call(@table, @session, @replay, @snapshot.events, decisive: false)
+    return false unless context
+    totals = GameRoomTournamentPresence.totals_after(@replay.players, prior, elapsed)
+    loser = absent.first if context['individual'] && absent.size == 1 &&
+      totals.fetch(absent.first) >= GameRoomTournamentPresence::LIMIT_MS && !GameRoomTournamentPresence.ambiguous?(totals.slice(*active))
+    mode = tournament_absence_resolution(@replay, loser) if loser
+    loser = nil unless mode
+    data = GameRoomTournamentPresence.data(session: @session, fixture: context.fetch('fixture'),
+      binding_digest: context.fetch('binding_digest'), absent: absent, elapsed_ms: elapsed, loser: loser,
+      mode: @replay.players.size > 2 ? mode : nil)
+    identity, expected_revision = GameRoomSessionContracts::SessionIdentity.from_row(@session), revision(@replay)
+    guard = lambda do |current|
+      snapshot = @repository.snapshot_for(current)
+      next false unless snapshot && identity == GameRoomSessionContracts::SessionIdentity.from_row(snapshot.session)
+      replay = @game.replay(snapshot.session, snapshot.events, @repository)
+      next false unless !replay.finished? && expected_revision == revision(replay)
+      next false if loser && tournament_absence_resolution(replay, loser) != mode
+      fresh = @tournament_presence.call(@table, snapshot.session, replay, snapshot.events, decisive: !loser.nil?)
+      fresh == context
+    end
+    written = @transport.append_tournament_presence(@session, data: data, write_guard: guard)
+    @presence_clock = nil
+    @dirty = true
+    if written
+      refresh
+      @presence_clock = [[@session['__id'], @session['__control_epoch'], @session['__game_boundary']], tournament_observation_time]
+    end
+    !!written
+  end
+
+  def tournament_absence_resolution(replay, loser)
+    options = @game.options_from_json(@session['options'])
+    active = @game.tournament_active_players(replay, options: options)
+    return nil unless active.include?(loser)
+    return 'terminal' if active.size == 2
+    continuation = @game.tournament_forfeit_continuation(replay, losing_unit: loser, options: options)
+    return 'continue' if continuation == {'status'=>'continue'}
+    return nil unless continuation == {'status'=>'cannot_continue'}
+    checkpoint = @game.tournament_scored_checkpoint(replay, options: options)
+    'terminal' if checkpoint.is_a?(Hash) && %w[scored none].include?(checkpoint['status'])
+  end
+
+  def reconcile_membership_action
+    return false unless @replay && @room&.members && GameRoomParticipants.same?(@owner, @viewer)
+    return false if @replay.finished? || @session['__frozen'] || @session['__aborted'] || @session['__control_ready'] == false
+    # Tournament departure uses its return allowance, never ordinary removal.
+    return false if @table.key?('tournament_match') || @table.key?('match_ref') ||
+      @session.key?('__tournament_match') || @session.key?('tournament_match')
+    if (reason = @game.interruption_reason(@replay))
+      return @transport.abort_game(@session, reason: reason)
+    end
+    selection = @game.membership_action(@replay, members: @room.members, table_owner: @owner)
+    return false unless selection
+    identity = GameRoomSessionContracts::SessionIdentity.from_row(@session)
+    expected_revision = revision(@replay)
+    attachment = @transport.membership_token(@table_id)
+    return false unless attachment
+    guard = lambda do |_native|
+      @transport.dispatch_pending_events
+      current_room = @transport.room_snapshot(@table_id, read_only: true)
+      next false unless current_room && current_room[:members] &&
+        GameRoomParticipants.same?(current_room[:table]['owner'], @viewer) &&
+        attachment == @transport.membership_token(@table_id)
+      next false if current_room[:table].key?('tournament_match') || current_room[:table].key?('match_ref')
+      current = @repository.snapshot_for(@session)
+      next false unless current && identity == GameRoomSessionContracts::SessionIdentity.from_row(current.session) &&
+        !current.session['__frozen'] && !current.session['__aborted'] && current.session['__control_ready'] != false
+      replay = @game.replay(current.session, current.events, @repository)
+      next false unless expected_revision == revision(replay)
+      fresh = @game.membership_action(replay, members: current_room[:members], table_owner: @viewer)
+      fresh && fresh.to_h == selection.to_h
+    end
+    status, = commit(selection, @replay.players.first, controller: true, write_guard: guard)
+    status == :ok
   end
 
   def revision(replay)

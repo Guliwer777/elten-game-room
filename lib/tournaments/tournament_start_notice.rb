@@ -77,6 +77,10 @@ module GameRoomTournaments
 
     def assert_context!;current!;end
 
+    def delivery_identity(notice)
+      notice.slice(*FIELDS).merge('version'=>1)
+    end
+
     def expired?(deadline)
       current!
       now!>=deadline

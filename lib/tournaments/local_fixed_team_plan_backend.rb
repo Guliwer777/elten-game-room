@@ -357,6 +357,7 @@ module GameRoomTournaments
     end
 
     def validate_preview!(shown)
+      raise Invalid, :invalid_fields unless shown.is_a?(Hash)
       fields = %w[version identity actor intent_id source membership team_template base_seats assignments windows digest]
       fields += ['result_policy'] if shown.key?('result_policy')
       CoordinationRequest.fields!(shown, fields)
@@ -370,11 +371,12 @@ module GameRoomTournaments
       projection = RegistrationProjection.build(announcements: source['announcements'], registrations: source['registrations'], registry: @registry, complete: true)
       fresh = FixedTeamScheduleCandidate.build(projection: projection, publication_ref: candidate['publication_ref'],
         backend_identity: @source_identity, observed_at: candidate['observed_at'], membership: shown['membership'], team_template: shown['team_template'])
+      raise Invalid, :invalid_preview unless fresh.to_h.eql?(candidate)
       policy!(candidate)
       expected_policy = preview_result_policy(candidate)
       valid_policy = expected_policy ? GameResult::RESULT_POLICIES.include?(shown['result_policy']) : shown['result_policy'].nil?
       raise Invalid, :invalid_preview unless valid_policy
-      unless fresh.to_h.eql?(candidate) && projection.to_h.eql?(source['projection']) && windows_for(candidate).eql?(shown['windows']) &&
+      unless projection.to_h.eql?(source['projection']) && windows_for(candidate).eql?(shown['windows']) &&
           FixedTeamSeats.assign(candidate, shown['base_seats'], members_for(source)).eql?(shown['assignments']) && digest(semantic(shown)) == shown['digest']
         raise Invalid, :invalid_preview
       end

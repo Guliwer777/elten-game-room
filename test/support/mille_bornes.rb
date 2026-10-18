@@ -49,8 +49,13 @@ module MilleBornesTest
       act(players.first, { "kind" => "command", "action" => "deal" })
     end
 
-    def act(actor, selection)
-      status, plan = game.action_for(selection, replay, actor, context: context)
+    def act(actor, selection, before: nil)
+      current = before || replay
+      if before
+        MilleBornesTest.assert(current.session_identity == (session["__id"] || session["id"]) &&
+          current.accepted_events == events, "provided replay is not the current event prefix")
+      end
+      status, plan = game.action_for(selection, current, actor, context: context)
       MilleBornesTest.assert(status == :ok, "action rejected: #{actor} #{selection}: #{status}")
       plan.events.each do |command|
         events << MilleBornesTest.event(events.length + 1, actor, command.action, command.value)

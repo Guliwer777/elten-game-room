@@ -9,12 +9,7 @@ table = app.lobby.create_table(name: 'Save boundary', game: game.id, owner: 'Ali
 players = ['Alice'] + GameRoomParticipants.bots_for(table['__id'], 1, names: ['pl20'])
 session = app.games.start_session(table: table, game: game.id, players: players,
   options: JSON.generate(game.default_options))
-env = GameRoomSimulation::Environment.new_game(game: game, players: players, seed: 11)
-env.events.each do |event|
-  app.games.append_events(session: session, sequence: event['sequence'],
-    events: [GameRoomGames::EventCommand.new(action: event['action'], value: event['value'])],
-    actor: event['actor'], controller: true)
-end
+app.prepare_playing_game(table, session, game)
 view = broker.endpoint('Alice').sessions.first
 view.singleton_class.prepend(Module.new do
   def stack_push(packet, message_id:)

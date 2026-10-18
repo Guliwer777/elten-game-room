@@ -124,7 +124,7 @@ A failed discovery read cannot establish closure.
 
 Before the first native game starts, an immutable start intent is retained.
 A started game or uncertain start/result cannot be silently replaced after
-closure. It requires saved-game continuation or explicit organizer handling.
+closure. It requires explicit organizer handling.
 Start intents and creator claims do not expire like invitations. A creator
 that disappears before its table can be confirmed may leave an operation for
 manual recovery rather than risk a duplicate table.
@@ -170,6 +170,30 @@ records; a signal contains no score or authorization.
 
 Matches use ordinary LiveSessions, game executors and immutable history.
 
+Started individual matches share a cumulative 300-second absence allowance per
+player. The current host records observed native membership loss through the
+existing ordered `game_boundary` stream, pausing the game clock. A return does
+not reset the allowance; a new host does not charge an unobserved interval.
+These are authenticated client assertions, not server-attested absence. Team
+matches do not silently inherit an unagreed automatic-forfeit policy.
+
+Boundary revision, previous boundary, controller epoch, fixture and binding
+identity fence every decision. Already-started private operations retain their
+original request identity across a pause; direct acknowledgements, recovered
+acknowledgements and cold replay must use the same logical clock. New ordinary
+inputs remain blocked while paused. A client-supplied origin boundary is not a
+cryptographic attestation of when the request began.
+
+Games declare whether active play can continue after an elimination and expose
+their last fully scored checkpoint. The shared projection alone emits trusted
+elimination events; an ordinary action with the same name is not sufficient.
+Original seats and historical authors remain fixed, while active participants
+shrink. Final results append eliminated participants in reverse elimination
+order. Ctrl+F uses the same game-owned policy, with separate organizer authority,
+a read-only consequence preview and fresh validation at confirmation. An unknown
+checkpoint is not a zero score, and an uncertain write must reconcile before
+another decision is attempted.
+
 The compact read-only history of previous phases retains each `schedule_id`
 and the knockout round's seeds and player count. Native phase lists need stable,
 unique IDs, and phase names depend on the bracket size. Do not substitute list
@@ -187,19 +211,15 @@ a copied canonical intent before its first network read. A failed read or lost
 acknowledgement must not silently discard a finished game. Conflicting results
 block progression instead of choosing an arbitrary winner.
 
-Saved continuations preserve the fixture and validated archive lineage.
-The restored waiting room keeps the tournament pointer and publishes its
-authenticated continuation before invitations. The continuation reserves the
-native game and archive IDs; it does not start the game or consume the save.
-Entry therefore applies the same planned-player/observer roles before and
-after restoration. Observers are not archived or automatically invited back.
+Tournament matches cannot be saved or resumed from private archives. The shared
+UI hides Save, and service/result boundaries reject archived or restored matches
+even when invoked without that UI. Historical binding chains remain readable
+for inspection, but cannot authorize a new playable continuation or its result.
+Ordinary non-tournament saves are unchanged; observers are not archived.
 A closed, explicitly reserved waiting room may be replaced only before a
-durable start intent exists. Starting retains that intent before publishing
-the archive; ambiguous starts require recovery, not a fresh table.
+durable start intent exists. Ambiguous starts require recovery, not a fresh table.
 Canonical binding bytes must agree locally and on server readback; JSON key
-insertion order must not change a result digest. Restoration consumes the save
-through the ordinary archive mechanism. Resolved or cancelled fixtures cannot
-reopen from old saves. Sporting cancellation rejects later results without
+insertion order must not change a result digest. Sporting cancellation rejects later results without
 closing a native table owned by another account.
 
 Network work runs outside the UI. Tournament invitations share the normal
@@ -264,7 +284,7 @@ compositions or smaller limits can reduce the schedule.
 
 Verify publication, ordinary invitation acceptance/refusal, competing creators,
 empty-table replacement, ordinary and return seats, automatic results,
-saved continuation, cancellation, lost acknowledgements
+rejection of saved continuations, cancellation, lost acknowledgements
 and organizer-offline operation. Local simulations and live accounts on one
 computer are separate evidence; neither proves independent-network behavior.
 See [administrator handoff](TOURNAMENT_ADMIN_HANDOFF.md).

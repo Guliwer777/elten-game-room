@@ -51,6 +51,7 @@ module WarHistoricalSummaryTest
     room = NativeRoomHarness.new(game: game, users: %w[Alice Bob])
     room.start
     context = GameRoomGames::ActionContext.new(random_source: GameRoomRandom::SeededSource.new(7))
+    room.view('Alice').next_random_values = GameRoomRandom::SeededSource.new(7).roll(count: 16, sides: 256).values
     assert(summary(game, room.replay('Alice'), 'Alice') == 'No battle has been decided yet.', 'initial War V is incorrect')
     room.submit('Alice', {'action' => 'deal'}, context: context)
     2.times do

@@ -6,11 +6,12 @@ require_relative "../../support/categories"
   session = {'options' => JSON.generate(game.new_game_options('answer_language' => language, 'round_time' => 10))}
   random = Object.new
   def random.roll(count:, sides:); Struct.new(:values).new(Array.new(count, 1)); end
-  context = Struct.new(:random_source, :now, :hidden_submissions).new(random, 100, nil)
+  context = GameRoomGames::ActionContext.new(random_source: random, now: 100, hidden_submissions: nil)
   events, letters = [], []
   alphabet = GameRoomGames::Categories::LANGUAGE_LETTERS.fetch(language)
   (alphabet.length * 2 + 2).times do |index|
     replay = game.replay(session, events, repo)
+    context.now = [context.now, replay.state[:resume_at].to_i].max
     action = game.automatic_action(replay, 'Alice', context: context)
     status, plan = game.action_for(action, replay, 'Alice', context: context)
     assert(status == :ok, 'Start failed')

@@ -32,6 +32,10 @@ class GameRoomTransport
     @live_store.local_actor
   end
 
+  def invitation_account_identity
+    @live_store.invitation_account_identity
+  end
+
   # Also used by the shared table-activity repository to choose its transport.
   def live_store?
     true
@@ -166,8 +170,8 @@ class GameRoomTransport
     @live_store.change_game_options(**arguments)
   end
 
-  def abort_game(session)
-    @live_store.abort_game(session)
+  def abort_game(session, **options)
+    @live_store.abort_game(session, **options)
   end
 
   def append_activity(**arguments)
@@ -206,8 +210,20 @@ class GameRoomTransport
     @live_store.game_events(session, force: force)
   end
 
+  def private_cards_snapshot(session, events)
+    @live_store.private_cards_snapshot(session, events)
+  end
+
+  def shared_private_draws_snapshot(session, audiences)
+    @live_store.shared_private_draws_snapshot(session, audiences)
+  end
+
   def freeze_game(session, frozen: true, expected_boundary: nil)
     @live_store.freeze_game(session, frozen: frozen, expected_boundary: expected_boundary)
+  end
+
+  def append_tournament_presence(session, **options)
+    @live_store.append_tournament_presence(session, **options)
   end
 
   def pending_invitations
@@ -264,6 +280,14 @@ class GameRoomTransport
 
   def active_membership?(table_id)
     @live_store.active_membership?(table_id)
+  end
+
+  def membership_token(table_id)
+    @live_store.membership_token(table_id)
+  end
+
+  def ownership_token(table_id)
+    @live_store.ownership_token(table_id)
   end
 
   def consume_new_join(table_id, user)

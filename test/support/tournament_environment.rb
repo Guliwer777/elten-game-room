@@ -4,6 +4,7 @@ require 'fileutils'
 require 'json'
 require 'digest'
 require 'rbconfig'
+require_relative 'temporary_directory'
 
 # Every standalone tournament scenario owns its scratch data. Multi-process
 # suites pass the same directories explicitly so a readback can reuse the first
@@ -11,8 +12,7 @@ require 'rbconfig'
 module TournamentTestEnvironment
   ROOT = File.expand_path('../..', __dir__)
   def self.prepare
-    ENV['TMPDIR'] = File.expand_path(ENV['TMPDIR'] || Dir.tmpdir)
-    scratch = ENV['FT2_SCRATCH'] || ENV['ENTRY_SCRATCH'] || Dir.mktmpdir('pg-tournament-', ENV['TMPDIR'])
+    scratch = ENV['FT2_SCRATCH'] || ENV['ENTRY_SCRATCH'] || GameRoomTest::TemporaryDirectory.create('pg-tournament-')
     scratch = File.expand_path(scratch)
     %w[FT1_SCRATCH FT2_SCRATCH ENTRY_SCRATCH].each { |name| ENV[name] ||= scratch }
     ENV['FT2_SOURCE'] ||= ROOT

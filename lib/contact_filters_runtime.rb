@@ -25,11 +25,17 @@ module GameRoomContactFiltersRuntime
     end
   end
 
+  def invitation_sender_allowed?(sender, tournament_match: false, settings: normalized_settings)
+    tournament_match == true || !GameRoomPreferences.invitation_blocked?(settings, sender)
+  end
+
   # nil means unknown, not a failed match. Do not fetch synchronously or turn
   # an unavailable contact list into permission to announce a stranger.
   def contact_notification_allowed?(notification, settings: normalized_settings)
     case notification.type.to_s
     when "game_room.invitation"
+      tournament = notification.metadata.is_a?(Hash) && notification.metadata["tournament_match"] == true
+      return false unless invitation_sender_allowed?(notification.sender, tournament_match: tournament, settings: settings)
       case settings["invitation_notifications"]
       when "nobody" then false
       when "contacts" then contacts_cache.include?(notification.sender)

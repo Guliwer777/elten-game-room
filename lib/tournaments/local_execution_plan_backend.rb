@@ -305,6 +305,7 @@ module GameRoomTournaments
     end
 
     def validate_preview!(shown)
+      raise Invalid, :invalid_fields unless shown.is_a?(Hash)
       fields = %w[version identity actor intent_id source base_seats assignments windows digest]
       fields += ['result_policy'] if shown.key?('result_policy')
       CoordinationRequest.fields!(shown, fields)

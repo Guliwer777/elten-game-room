@@ -8,6 +8,7 @@ require_relative 'match_order'
 require_relative 'ordinary_team_players'
 require_relative 'knockout_standings'
 require_relative 'ordinary_match_forfeit'
+require_relative 'ordinary_match_presence'
 require_relative 'ordinary_saved_match'
 require_relative 'ordinary_match_entry'
 require_relative 'server_document_rows'
@@ -18,6 +19,7 @@ module GameRoomTournaments
   # Any bound participant can retain its verified result after creator departure.
   class OrdinaryMatchService
     include OrdinaryMatchForfeit
+    include OrdinaryMatchPresence
     include OrdinarySavedMatch
     include OrdinaryMatchEntry
     class Blocked < StandardError
@@ -43,7 +45,7 @@ module GameRoomTournaments
       match = candidate.fetch('matches').find { |m| m['match_id'] == match_id && m['leg'] == leg }
       raise Blocked, :missing_match unless match
       documents=match_documents(candidate,id,match)
-      raise Blocked,:result_already_recorded if forfeit_document(candidate,id,match,rows:documents['forfeit']) ||
+      raise Blocked,:result_already_recorded if forfeit_document(candidate,id,match,rows:documents['forfeit'],result_rows:documents['result']) ||
         read_result_document(candidate,id,match,rows:documents['result'])
       raise Blocked, :unsupported_match_players unless supported_match?(candidate,match)
       raise Blocked, :not_a_match_player unless match['players'].include?(@owner)
@@ -90,7 +92,7 @@ module GameRoomTournaments
       account!
       binding,candidate,id,match=row
       documents=match_documents(candidate,id,match)
-      raise Blocked,:result_already_recorded if forfeit_document(candidate,id,match,rows:documents['forfeit']) ||
+      raise Blocked,:result_already_recorded if forfeit_document(candidate,id,match,rows:documents['forfeit'],result_rows:documents['result']) ||
         read_result_document(candidate,id,match,rows:documents['result'])
       raise Blocked,:not_a_match_player unless match['players'].include?(@owner) && table['owner'].to_s.downcase==@owner
       current,current_id=source!
@@ -128,7 +130,7 @@ module GameRoomTournaments
       match=candidate.fetch('matches').find{|row|row['match_id']==match_id && row['leg']==leg}
       raise Blocked,:missing_match unless match && supported_match?(candidate,match)
       documents=match_documents(candidate,id,match)
-      raise Blocked,:result_already_recorded if forfeit_document(candidate,id,match,rows:documents['forfeit']) ||
+      raise Blocked,:result_already_recorded if forfeit_document(candidate,id,match,rows:documents['forfeit'],result_rows:documents['result']) ||
         read_result_document(candidate,id,match,rows:documents['result'])
       initial=initial_match_binding(candidate,id,match,rows:documents['binding'],creator_rows:documents['creator'])
       binding=initial && read_match_binding(candidate,id,match,nil,initial:initial)
@@ -138,7 +140,7 @@ module GameRoomTournaments
     end
 
     def observe(table, session, replay, events=nil)
-      return unless replay.finished? && session && table
+      return unless session && table && (replay.finished? || GameRoomTournamentPresence.ended?(session))
       @lock.synchronize do
         row = @bindings[table['__id']]
         return unless row && row[0]['players'].any? { |person| person['account'] == @owner } && !@closed
@@ -162,33 +164,54 @@ module GameRoomTournaments
       raise Blocked, :plan_too_large if candidate['matches'].size > ServerCapacity::MAX_MATCHES
       rows = ServerDocumentRows.read_keys(@table, result_document_keys(candidate,id), guard: method(:account!))
       grouped=rows.group_by{|row|row.fetch('operation_key')}
-      bindings=result_bindings(candidate,id,grouped)
-      read=->(key,creator) do
-        entries=ServerDocumentRows.owned(grouped[key['operation_key']] || [],creator)
-        entries.empty? ? nil : ServerPlanDocument.decode(entries,anchor:key,author:creator)
+      forfeits=candidate['matches'].to_h do |match|
+        [ [match['match_id'],match['leg']],forfeit_receipts(candidate,id,match,
+            rows:grouped[anchor(candidate,id,match,'forfeit')['operation_key']] || []) ]
       end
+      ordered=candidate['matches'].to_h do |match|
+        key=[match['match_id'],match['leg']]
+        attempts=forfeits.fetch(key)
+        ordinary=ordinary_result_receipt(candidate,id,match,
+          rows:grouped[anchor(candidate,id,match,'result')['operation_key']] || [],
+          allow_incomplete:!attempts.empty?) if supported_match?(candidate,match)
+        [key,ordered_match_receipts(attempts,ordinary)]
+      end
+      effective_forfeits=ordered.transform_values do |attempts|
+        first=attempts.first
+        first && first['document']['kind']!='ordinary-match-result-v1' ? [first] : []
+      end
+      bindings=result_bindings(candidate,id,grouped,forfeits:effective_forfeits)
+      start_keys=include_match_status ? candidate['matches'].filter_map do |match|
+        binding=bindings[[match['match_id'],match['leg']]]
+        entry_anchor(candidate,id,match,'start',binding)['operation_key'] if binding
+      end : []
+      starts=ServerDocumentRows.read_keys(@table,start_keys,guard:method(:account!)).group_by { |row| row.fetch('operation_key') }
       results = []
       result_times=[]
+      forfeit_conflicts=[]
       forfeitable=[]
       cancellable=[]
+      unavailable=[]
       candidate.fetch('matches').each do |match|
         next unless supported_match?(candidate,match)
-        creator=prepared_match(candidate,match)['players'].first['account']
-        forfeit=read.call(anchor(candidate,id,match,'forfeit'),candidate.fetch('publication_ref').fetch('author').downcase)
+        attempts=ordered.fetch([match['match_id'],match['leg']])
+        accepted=attempts.first
+        forfeit=accepted && accepted['document']['kind']!='ordinary-match-result-v1' && accepted['document']
+        if attempts.size>1
+          forfeit_conflicts << match.slice('match_id','leg').merge('accepted_digest'=>accepted['digest'],
+            'accepted_kind'=>accepted['document']['kind'],
+            'later_attempts'=>attempts.drop(1).map { |entry| entry.slice('digest','completed_row_id').merge('kind'=>entry['document']['kind']) })
+        end
         if forfeit
           validate_forfeit!(forfeit,candidate,match)
-          if forfeit['kind']=='ordinary-match-cancel-forfeit-v1'
+          if forfeit['kind']=='ordinary-match-cancel-forfeit-v1' || forfeit['kind']=='ordinary-match-forfeit-v2' && forfeit.key?('cancelled_game')
             binding=read_match_binding(candidate,id,match,nil)
             raise Blocked,:wrong_match_binding unless cancellation_valid_binding?(forfeit,binding,candidate,match)
             # Explicit organizer cancellation is the sporting cutoff. Native
             # history remains untouched; any later ordinary receipt is excluded.
-          else
-            raise Blocked,:conflicting_match_results if read_result_document(candidate,id,match,rows:grouped[anchor(candidate,id,match,'result')['operation_key']] || [])
           end
           results << forfeit
-          key=anchor(candidate,id,match,'forfeit')
-          parts=ServerPlanDocument.canonical_rows(ServerDocumentRows.owned(grouped[key['operation_key']] || [],candidate['publication_ref']['author']),anchor:key,author:candidate['publication_ref']['author'])
-          time=document_time(parts)
+          time=accepted['time']
           result_times << time if time
           next
         end
@@ -198,32 +221,44 @@ module GameRoomTournaments
           next
         end
         raise Blocked, :wrong_match_binding unless valid_binding?(binding,candidate,match)
-        result_time=nil
-        receipt = read_result_document(candidate,id,match,rows:grouped[anchor(candidate,id,match,'result')['operation_key']] || []) { |time| result_time=time }
+        result_time=accepted && accepted['time']
+        receipt=accepted && accepted['document']
         unless receipt
-          if include_match_status && @transport && @transport.game_sessions(binding['table'],force:true).empty?
-            forfeitable << {'match_id'=>match['match_id'],'leg'=>match['leg']}
-          elsif include_match_status && @games
-            begin
-              cancellation_boundary(binding)
-              cancellable << {'match_id'=>match['match_id'],'leg'=>match['leg']}
-            rescue Blocked=>error
-              raise unless error.code==:result_already_recorded
-            end
+          if include_match_status && @transport
+            status=unfinished_result_status(candidate,id,match,binding,starts)
+            forfeitable << match.slice('match_id','leg') if status==:forfeitable
+            cancellable << match.slice('match_id','leg') if status==:cancellable
+            unavailable << match.slice('match_id','leg') if status==:unavailable
           end
           next
         end
-        unless receipt['kind']=='ordinary-match-result-v1' && receipt['binding_digest']==Digest::SHA256.hexdigest(JSON.generate(binding)) &&
-            receipt['match_id']==match['match_id'] && receipt['leg']==match['leg'] &&
-            receipt['session_id']==binding['session_id'] && receipt['history_digest'].is_a?(String) &&
-            /\A[0-9a-f]{64}\z/.match?(receipt['history_digest']) && receipt['summary'].is_a?(Hash) &&
-            valid_summary?(receipt['summary'],match)
-          raise Blocked, :invalid_result_receipt
-        end
+        validate_bound_result!(receipt,match,binding)
         results << receipt
         result_times << result_time if result_time
       end
-      result_summary(candidate, id, results, result_times, forfeitable, cancellable, include_match_status: include_match_status)
+      result_summary(candidate, id, results, result_times, forfeitable, cancellable,
+        include_match_status: include_match_status,forfeit_conflicts:forfeit_conflicts,unavailable:unavailable)
+    end
+
+    private def unfinished_result_status(candidate,id,match,binding,starts)
+      start_key=entry_anchor(candidate,id,match,'start',binding)['operation_key']
+      return :forfeitable if forfeit_native_sessions(candidate,id,match,binding,start_rows:starts.fetch(start_key,[])).empty?
+      return unless @games
+      cancellation_boundary(binding)
+      :cancellable
+    rescue Blocked=>error
+      raise unless [:result_already_recorded,:game_state_unavailable].include?(error.code)
+      :unavailable if error.code==:game_state_unavailable
+    end
+
+    private def validate_bound_result!(receipt,match,binding)
+      unless receipt['kind']=='ordinary-match-result-v1' && receipt['binding_digest']==Digest::SHA256.hexdigest(JSON.generate(binding)) &&
+          receipt['match_id']==match['match_id'] && receipt['leg']==match['leg'] &&
+          receipt['session_id']==binding['session_id'] && receipt['history_digest'].is_a?(String) &&
+          /\A[0-9a-f]{64}\z/.match?(receipt['history_digest']) && receipt['summary'].is_a?(Hash) &&
+          valid_summary?(receipt['summary'],match)
+        raise Blocked, :invalid_result_receipt
+      end
     end
 
     def result_document_keys(candidate,id)
@@ -232,12 +267,11 @@ module GameRoomTournaments
 
     # Traverse independent binding chains together. The same authenticated
     # lineage validation is used by entry/recovery; only SDK reads are batched.
-    private def result_bindings(candidate,id,grouped)
+    private def result_bindings(candidate,id,grouped,forfeits:)
       completed={}
       pending=candidate['matches'].filter_map do |match|
         next unless supported_match?(candidate,match)
-        forfeit_rows=grouped[anchor(candidate,id,match,'forfeit')['operation_key']] || []
-        next unless ServerDocumentRows.owned(forfeit_rows,candidate['publication_ref']['author']).empty?
+        next unless forfeits.fetch([match['match_id'],match['leg']]).empty?
         binding=initial_match_binding(candidate,id,match,rows:grouped[anchor(candidate,id,match,'binding')['operation_key']] || [],
           creator_rows:grouped[anchor(candidate,id,match,'creator')['operation_key']] || [])
         [match,binding] if binding
@@ -265,8 +299,8 @@ module GameRoomTournaments
       completed
     end
 
-    private def result_summary(candidate, id, results, result_times, forfeitable, cancellable, include_match_status:)
-      normalized = results.map { |r| r['summary'].slice('participants','winners','scores','score_order').merge('id'=>JSON.generate([r['match_id'],r['leg']])) }
+    private def result_summary(candidate, id, results, result_times, forfeitable, cancellable, include_match_status:,forfeit_conflicts:,unavailable:)
+      normalized = results.map { |r| r['summary'].slice('participants','winners','scores','score_order','places').merge('id'=>JSON.generate([r['match_id'],r['leg']])) }
       team=candidate.key?('membership')
       units=team ? candidate['membership']['units'].map{|unit|unit['unit_id']} : candidate.fetch('roster')
       knockout=nil
@@ -289,6 +323,8 @@ module GameRoomTournaments
       end
       value['forfeitable_matches']=forfeitable if include_match_status
       value['cancellable_matches']=cancellable if include_match_status
+      value['forfeit_conflicts']=forfeit_conflicts unless forfeit_conflicts.empty?
+      value['forfeit_unavailable_matches']=unavailable unless unavailable.empty?
       value.merge!(knockout.slice('knockout_state','champion','series_progress')) if knockout
       Data.freeze_tree(value)
     end
@@ -301,55 +337,39 @@ module GameRoomTournaments
       raise Blocked,:missing_operation unless record
       candidate,tournament_id=source!
       document=StrictJson.parse(record['values']['document_json'],max_nesting:12)
+      raise Blocked,:tournament_saved_game_disabled if document['kind']=='ordinary-match-continuation-v1'
+      raise Blocked,:legacy_forfeit_write_disabled if %w[ordinary-match-forfeit-v1 ordinary-match-cancel-forfeit-v1].include?(document['kind'])
       match=candidate['matches'].find{|m|m['match_id']==document['match_id'] && m['leg']==document['leg']}
+      if match && document['kind']=='ordinary-match-result-v1'
+        binding=read_match_binding(candidate,tournament_id,match,nil,stop_at:document['binding_digest'])
+        raise Blocked,:wrong_match_binding unless binding && binding_digest(binding)==document['binding_digest']
+        raise Blocked,:tournament_saved_game_disabled if binding.key?('continuation')
+      end
       if match && entry_operation?(document)
         return reconcile_entry_operation(record,document,candidate,tournament_id,match)
       end
-      is_forfeit=%w[ordinary-match-forfeit-v1 ordinary-match-cancel-forfeit-v1].include?(document['kind'])
+      is_forfeit=document['kind']=='ordinary-match-forfeit-v2'
       author=is_forfeit ? candidate.fetch('publication_ref').fetch('author').downcase : match && prepared_match(candidate,match)['players'].first['account']
-      if match && document['kind']=='ordinary-match-continuation-v1'
-        previous=read_match_binding(candidate,tournament_id,match,nil,stop_at:document['previous_digest'])
-        raise Blocked,:invalid_continuation unless previous && binding_digest(previous)==document['previous_digest'] &&
-          document.dig('binding','creator')==previous['creator']
-        author=previous['creator']
-      end
       authorized = author == @owner || document['kind'] == 'ordinary-match-result-v1' && match && match['players'].include?(@owner)
       raise Blocked,:source_changed unless match && candidate['schedule_id']==document.fetch('schedule_id',candidate['schedule_id']) && authorized
+      if is_forfeit
+        return forfeit_archive(document,candidate,tournament_id,match).resume(id).tap do
+          @result_changed.call(candidate.fetch('publication_ref'))
+        end
+      end
       if document['kind']=='ordinary-match-create-v1'
         bound=read_document(anchor(candidate,tournament_id,match,'binding'),@owner)
         raise Blocked,:creation_unconfirmed unless bound && valid_binding?(bound,candidate,match)
         return record if record['status']=='confirmed'
         return @journal.resolve(id,status:'confirmed',evidence:{'table_id'=>bound['table']['__id'],'native_session_id'=>bound['table']['__live_session_id']},expected_revision:record['revision'])
       end
-      kind=is_forfeit ? 'forfeit' : document['kind']=='ordinary-match-binding-v1' ? 'binding' : 'result'
+      kind=document['kind']=='ordinary-match-binding-v1' ? 'binding' : 'result'
       expected=anchor(candidate,tournament_id,match,kind)
-      if document['kind']=='ordinary-match-continuation-v1'
-        expected=anchor(candidate,tournament_id,match,'binding').merge('operation_key'=>Digest::SHA256.hexdigest(JSON.generate([
-          'ordinary-continuation-v1',@journal.backend_identity,document['previous_digest']])))
-        raise Blocked,:invalid_continuation unless valid_binding?(document['binding'],candidate,match) && document['binding'].key?('continuation')
-      end
       ServerPlanArchive.new(table:@table,journal:@journal,user:-> {account!; @user.call},verify:->(doc,retained) do
         current,current_id=source!
-        if kind=='forfeit'
-          validate_forfeit!(doc,candidate,match)
-          creator=prepared_match(candidate,match)['players'].first['account']
-          if doc['kind']=='ordinary-match-cancel-forfeit-v1'
-            binding=read_match_binding(candidate,tournament_id,match,creator)
-            raise Blocked,:wrong_match_binding unless cancellation_valid_binding?(doc,binding,candidate,match)
-          else
-            raise Blocked,:conflicting_match_results if read_result_document(candidate,tournament_id,match)
-          end
-        end
         retained==expected && current==candidate && current_id==tournament_id && doc==document
       end).resume(id).tap do
         @result_changed.call(candidate.fetch('publication_ref')) if %w[forfeit result].include?(kind)
-        if document['kind']=='ordinary-match-continuation-v1'
-          binding=document['binding']
-          if read_match_binding(candidate,tournament_id,match,@owner)==binding
-            @lock.synchronize{@bindings[binding['table']['__id']]=[Data.freeze_tree(binding),candidate,tournament_id,match]}
-            start_worker
-          end
-        end
       end
     end
     def close
@@ -360,6 +380,7 @@ module GameRoomTournaments
     # Public for deterministic tests of the queue consumer, never a game executor.
     def collect(row)
       binding, candidate, id, match, captured = row
+      raise Blocked,:tournament_saved_game_disabled if binding.key?('continuation')
       # The runner already verified this terminal history. Retain its immutable
       # result locally before the first network read, so an outage cannot lose
       # the only completion callback. This grants no permission to publish:
@@ -368,7 +389,7 @@ module GameRoomTournaments
       current, current_id = source!
       raise Blocked, :source_changed unless current == candidate && id == current_id
       documents=match_documents(candidate,id,match)
-      return if forfeit_document(candidate,id,match,rows:documents['forfeit'])
+      return if forfeit_document(candidate,id,match,rows:documents['forfeit'],result_rows:documents['result'])
       return unless read_match_binding(candidate,id,match,binding['creator'])==binding
       result ||= OrdinaryMatchResults.read(repository:@games,registry:@registry,transport:@transport,table:binding['table'],binding:binding)
       return unless result
@@ -449,7 +470,7 @@ module GameRoomTournaments
       keys.transform_values{|key|rows.fetch(key,[])}
     end
 
-    def read_result_document(candidate, id, match, rows: nil)
+    def read_result_document(candidate, id, match, rows: nil, allow_incomplete: false)
       key = anchor(candidate,id,match,'result')
       rows ||= ServerDocumentRows.read(@table,where:{'operation_key'=>key['operation_key']},guard:method(:account!))
       receipts = []
@@ -463,20 +484,20 @@ module GameRoomTournaments
             Data.integer?(receipt['session_id'],1) && %w[binding_digest history_digest].all? { |field| receipt[field].is_a?(String) && /\A[0-9a-f]{64}\z/.match?(receipt[field]) } &&
             valid_summary?(receipt['summary'],match)
           canonical=ServerPlanDocument.canonical_rows(parts,anchor:key,author:author)
-          receipts << [canonical.map { |row|row['__id'] }.max, receipt, document_time(canonical)]
+          receipts << [canonical.map { |row|row['__id'] }.max, receipt, document_time(canonical),canonical.first['document_digest']]
         rescue Publication::Invalid => error
           raise unless error.code == :incomplete_plan_document
           incomplete = true
         end
       end
-      raise ServerPlanArchive::Unconfirmed,'Result is incomplete' if receipts.empty? && incomplete
+      raise ServerPlanArchive::Unconfirmed,'Result is incomplete' if receipts.empty? && incomplete && !allow_incomplete
       return nil if receipts.empty?
       receipts.sort_by!(&:first)
       chosen = receipts.first[1]
       sporting = ->(value) { value.slice('binding_digest','session_id','match_id','leg').merge(
         'summary'=>value['summary'].reject { |field,_|field=='event_count' }) }
       raise Blocked,:conflicting_match_results unless receipts.all? { |_,value| sporting.call(value)==sporting.call(chosen) }
-      yield receipts.first[2] if block_given?
+      yield receipts.first[2],{'completed_row_id'=>receipts.first[0],'digest'=>receipts.first[3]} if block_given?
       chosen
     end
 
@@ -541,11 +562,16 @@ module GameRoomTournaments
     end
 
     def valid_summary?(summary,match)
-      return false unless summary.is_a?(Hash) && (summary.keys-%w[participants winners draw scores event_count score_order]).empty? &&
+      return false unless summary.is_a?(Hash) && (summary.keys-%w[participants winners draw scores event_count score_order places]).empty? &&
         summary['participants']==(match['unit_ids'] || match['players']).sort && summary['winners'].is_a?(Array) && summary['winners'].uniq==summary['winners'] &&
         (summary['winners']-summary['participants']).empty? && [true,false].include?(summary['draw']) &&
         (summary['draw'] ? summary['winners'].empty? : !summary['winners'].empty?) && Data.integer?(summary['event_count']) &&
         (!summary.key?('score_order') || %w[higher lower].include?(summary['score_order']))
+      if summary.key?('places')
+        groups=summary['places']
+        return false unless groups.is_a?(Array) && !groups.empty? && groups.all? { |group| group.is_a?(Array) && !group.empty? && group.all? { |unit| unit.is_a?(String) } } &&
+          groups.flatten.sort==summary['participants'] && groups.first.sort==summary['winners'].sort && summary['draw']==false
+      end
       scores=summary['scores']
       scores.nil? || (scores.is_a?(Hash) && scores.keys.sort==summary['participants'] &&
         scores.values.all?{|value|value.is_a?(Integer) || value.is_a?(Float) && value.finite?})
@@ -553,7 +579,7 @@ module GameRoomTournaments
 
     module WorkerReads
       %i[open_match attach_table start_parameters entry_status result_view collect reconcile
-        saved_match_reference check_saved_match prepare_saved_match start_saved_match bind_resumed_match award_forfeit].each do |name|
+        saved_match_reference check_saved_match prepare_saved_match start_saved_match bind_resumed_match award_forfeit forfeit_preview confirm_forfeit].each do |name|
         define_method(name) do |*args,**keywords,&block|
           @read_scope.call { super(*args,**keywords,&block) }
         end

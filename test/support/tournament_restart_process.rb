@@ -10,6 +10,7 @@ require 'base64'
 require 'date'
 require 'time'
 require_relative 'assertions'
+require_relative 'temporary_directory'
 
 module TournamentRestartProcess
   extend GameRoomTest::Assertions
@@ -26,7 +27,7 @@ module TournamentRestartProcess
   # Każdy dostęp do danych fixture poprzedza kontrola zasięgu. Nie korzystamy
   # z domyślnego katalogu tymczasowego systemu ani z profilu użytkownika.
   def temporary_base
-    File.realpath(ENV.fetch('TMPDIR'))
+    File.realpath(GameRoomTest::TemporaryDirectory.parent)
   end
 
   def safe_path(path)
@@ -34,7 +35,7 @@ module TournamentRestartProcess
     expanded = File.expand_path(path).tr('\\', '/')
     compare = File::ALT_SEPARATOR ? expanded.downcase : expanded
     prefix = File::ALT_SEPARATOR ? base.downcase : base
-    assert(compare.start_with?(prefix + '/'), "Katalog fixture poza TMPDIR: #{expanded}")
+    assert(compare.start_with?(prefix + '/'), "Katalog fixture poza własnym katalogiem testów: #{expanded}")
     cursor = expanded
     until cursor.casecmp?(base)
       assert(!File.symlink?(cursor), "Dowiązanie w fixture: #{cursor}")
@@ -202,7 +203,7 @@ module TournamentRestartProcess
   end
 
   def check_details(form, joined:)
-    text = TournamentLocalHubTest.field(form, 'Tournament rules').text
+    text = TournamentLocalHubTest.field(form, 'Information and rules').text
     assert(text.include?("Organizer: #{ACTOR_A}"), 'Podgląd pomylił organizatora')
     assert(text.include?("Accepted participants: #{joined ? 2 : 1}"), 'Błędna liczba zapisów w podglądzie')
     assert(text.include?(ACTOR_B), 'Podgląd nie widzi zapisu B') if joined
@@ -270,10 +271,10 @@ module TournamentRestartProcess
       driver.step(preview_header)
       driver.step(preview_header, [13]) do |form|
         list = form.fields.first
-        list.index = list.options.index('Tournament rules') || raise('Missing rules action')
+        list.index = list.options.index('Information and rules') || raise('Missing rules action')
         form.index = 0
       end
-      driver.step('Tournament rules', [27]) { |form| check_details(form, joined: phase == 'return') }
+      driver.step('Information and rules', [27]) { |form| check_details(form, joined: phase == 'return') }
       if phase == 'join'
         driver.step(preview_header)
         driver.step(preview_header, [13]) do |form|
@@ -287,10 +288,10 @@ module TournamentRestartProcess
         driver.step(preview_header)
         driver.step(preview_header, [13]) do |form|
           list = form.fields.first
-          list.index = list.options.index('Tournament rules') || raise('Missing rules after join')
+          list.index = list.options.index('Information and rules') || raise('Missing rules after join')
           form.index = 0
         end
-        driver.step('Tournament rules', [27]) { |form| check_details(form, joined: true) }
+        driver.step('Information and rules', [27]) { |form| check_details(form, joined: true) }
       end
       driver.step(preview_header)
       driver.step(preview_header, [27])

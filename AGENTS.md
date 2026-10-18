@@ -117,6 +117,13 @@
   Registration, start dates and play hours are independently optional; an
   organizational deadline must never award a forfeit automatically. Preserve
   event-driven view refresh, stable focus and the active-table guard.
+  Individual absence uses one cumulative 300-second allowance, ordered native
+  boundaries and the same logical clock for live ACK and cold replay. Never
+  reset it on return or charge an interval not observed by the current host.
+  Game-owned continuation/checkpoint hooks determine elimination and results;
+  preserve original seats and reject forged ordinary elimination actions.
+  Ctrl+F revalidates its displayed consequences and organizer authority at the
+  write boundary. Team absence policy is separate, not inferred from singles.
   See [TOURNAMENT_SERVER_INTEGRATION.md](docs/TOURNAMENT_SERVER_INTEGRATION.md).
 
 - Legacy participant-lease recovery checkpoints summarize an authenticated observed prefix,

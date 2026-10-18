@@ -1,3 +1,4 @@
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require 'json'
 require 'digest'
@@ -9,7 +10,7 @@ end
 require_relative '../support/assertions'
 include GameRoomTest::Assertions
 
-Dir.mktmpdir('draft-v2-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('draft-v2-') do |directory|
   program = Object.new
   program.define_singleton_method(:data_path) { directory }
   store = GameRoomTournaments::Drafts.new(program, owner: 'Tester')

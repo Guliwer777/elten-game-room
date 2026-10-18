@@ -68,6 +68,8 @@ with_fixture(game: 'categories', names: names, players_per_match: names.size, re
           revision: status['revision'], move_selection: choice)
         assert_equal(:confirmed, result[:state], result.inspect)
         acted = true
+        # The next judge starts only after the game's fixed between-round pause.
+        sleep GameRoomGames::Categories::NEXT_ROUND_PAUSE if result.dig(:status, 'phase') == 'round_complete'
       end
       break if acted || finished
     end
@@ -80,14 +82,22 @@ with_fixture(game: 'categories', names: names, players_per_match: names.size, re
     assert_equal(!winning, result[:effect]['summary']['draw'])
     assert_equal(winning ? ['alpha'] : [], result[:effect]['summary']['winners'])
     assert_equal(scores, result[:effect]['summary']['scores'])
-    assert_equal(winning ? [2, *Array.new(names.size - 1, 0)] : Array.new(names.size, 1), execution.progress['standings'].map { |row| row['points'] })
+    # Each opponent contributes 2 for a win, 1 for a tie, or 0 for a loss.
+    # In the winning variant all remaining players share second place.
+    points = winning ? [2 * (names.size - 1), *Array.new(names.size - 1, names.size - 2)] : Array.new(names.size, names.size - 1)
+    assert_equal(points, execution.progress['standings'].map { |row| row['points'] })
+    places = winning ? [1, *Array.new(names.size - 1, 2)] : Array.new(names.size, 1)
+    expected_standings = names.each_with_index.to_h do |name, index|
+      [name.downcase, {'points' => points.fetch(index), 'place' => places.fetch(index)}]
+    end
+    assert_equal(places, execution.progress['standings'].map { |row| row['place'] })
     assert_equal(scores.values.sort.reverse, execution.progress['standings'].map { |row| row['score_for'] })
     path = File.join(fixture.directory, 'k02/individual-v1/execution-v1/state.json')
     bytes = File.binread(path)
     assert_equal({}, JSON.parse(bytes)['busy'])
     assert_equal(record, fixture.backend(context: nil).readback(intent_id: 'categories-complete'))
     probe = File.expand_path('../support/tournament_game_finish_probe.rb', __dir__)
-    output = IO.popen([RbConfig.ruby, probe, fixture.directory, 'categories', 'categories-complete', status['event_count'].to_s, winning ? 'alpha' : ''], err: [:child, :out], &:read)
+    output = IO.popen([RbConfig.ruby, probe, fixture.directory, 'categories', 'categories-complete', status['event_count'].to_s, winning ? 'alpha' : '', JSON.generate(expected_standings)], err: [:child, :out], &:read)
     assert($?.success?, output)
     assert_equal(bytes, File.binread(path))
   end

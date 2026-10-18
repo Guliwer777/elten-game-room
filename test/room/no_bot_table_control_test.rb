@@ -115,7 +115,7 @@ end
     phases = id == 'categories' ? %i[answering revealing] : %i[setup active revealing]
     phases.each do |phase|
       replay = Struct.new(:state) { def finished?; false; end }.new({phase: phase, options: {'variant' => variant}})
-      state = Struct.new(:game, :replay, :room) { def active?; true; end }.new(game, replay, room)
+      state = Struct.new(:game, :replay, :room, :session) { def active?; true; end }.new(game, replay, room, {'__id' => 'private-fixture'})
       app.define_singleton_method(:load_room_state) { |*_args, **_kwargs| state }
       before = broker.cores.values.first.last_seq
       [:transfer_master, :replace_player].each do |action|

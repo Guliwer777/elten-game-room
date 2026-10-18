@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require "tmpdir"
 require "json"
 require "digest"
@@ -1057,7 +1058,7 @@ class TournamentDraftsTest
     cases = cases.select { |name| name.to_s.include?(ARGV.fetch(1)) } if ARGV.first == "--only"
     raise "Nie wybrano testów" if cases.empty?
     cases.each do |name|
-      Dir.mktmpdir("tournament-drafts-test-", ENV.fetch("TMPDIR")) do |directory|
+      GameRoomTest::TemporaryDirectory.create("tournament-drafts-test-") do |directory|
         @directory = directory
         @program = Program.new(directory)
         begin
@@ -1077,9 +1078,9 @@ end
 if $PROGRAM_NAME == __FILE__
   if ["--writer", "--portable-path"].include?(ARGV.first)
     directory = File.realpath(ARGV.fetch(1))
-    root = File.realpath(ENV.fetch("TMPDIR"))
+    root = File.realpath(GameRoomTest::TemporaryDirectory.parent)
     unless File.dirname(directory) == root && File.basename(directory).start_with?("tournament-drafts-test-")
-      abort "Proces testowy wymaga własnego katalogu pod TMPDIR"
+      abort "Proces testowy wymaga własnego katalogu testów"
     end
     if ARGV.first == "--portable-path"
       TournamentDraftsTest.new.verify_native_portable_data_path(directory)

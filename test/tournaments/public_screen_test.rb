@@ -30,7 +30,7 @@ T.script(lambda do |form|
   assert(status.include?('could not be read'), 'A conflicting announcement lost its warning')
   assert(!status.include?('announcements: 1'), 'The ordinary list exposes internal report counts')
   list.index = 1
-  assert(form.accept_button.label == 'View tournament', 'Globalny Enter nie jest podglądem')
+  assert(form.accept_button.label == 'Open tournament', 'Globalny Enter nie jest podglądem')
   form.accept_button.trigger(:press)
   assert(form.index == 0 && list.index == 1, 'Powrót zgubił pole lub ID')
   form.cancel_button.trigger(:press)
@@ -88,15 +88,15 @@ ordered=T.snapshot(rows,members)
 loads=0
 T.script(lambda do |form|
   list=form.fields.first
-  assert_equal([2,7,3,6,1,4,5,8],list.instance_variable_get(:@item_keys))
+  assert_equal([2,7,8,3,6,1,4,5],list.instance_variable_get(:@item_keys))
   assert_equal(1,loads,'Sorting performed additional server reads')
   filter=T.field(form,'Show tournaments')
   filter.index=1
   filter.trigger(:move)
-  assert_equal([2,7,8],list.instance_variable_get(:@item_keys),'My filter lost an organizer or changed its publication order')
+  assert_equal([],list.instance_variable_get(:@item_keys),'Completed filter includes active tournaments')
   filter.index=0
   filter.trigger(:move)
-  assert_equal([2,7,3,6,1,4,5,8],list.instance_variable_get(:@item_keys))
+  assert_equal([2,7,8,3,6,1,4,5],list.instance_variable_get(:@item_keys))
   form.cancel_button.trigger(:press)
 end) {screen(ordered,clock:-> {150},load:-> {loads+=1;ordered}).run}
 puts 'PASS current ordering: membership first, eligible open places next, full/closed/future last; stable groups and organizer distinction'

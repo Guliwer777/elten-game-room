@@ -24,7 +24,7 @@ class GameRoomLiveSessionStore
       _item, metadata, status = refreshed_discovery(table)
       return {status: status} unless status == :ready
       options = discovery_options(metadata)
-      return {status: :unavailable} if options.empty? || !JSON.parse(options).is_a?(Hash)
+      return {status: :unavailable} if options.empty? || !GameRoomOptionValues.normalizable_options?(JSON.parse(options))
       {status: :ready, game: metadata['game'], options: options}
     rescue JSON::ParserError, ArgumentError, Zlib::Error
       {status: :unavailable}
@@ -49,7 +49,7 @@ class GameRoomLiveSessionStore
       end
       return [nil, nil, :closed] if item.state.to_s == 'closed'
       return [nil, nil, :unavailable] unless item.state.to_s == 'open' && item.visibility.to_s == 'public'
-      metadata = item.discovery_metadata.to_h
+      metadata = item.discovery_metadata
       return [nil, nil, :unavailable] unless supported_metadata?(metadata) &&
         metadata['table_id'].to_i == table_identifier(table) && item.id.to_s == table['__live_session_id'].to_s
       [item, metadata, :ready]

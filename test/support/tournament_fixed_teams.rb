@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative 'temporary_directory'
 require_relative 'tournament_public_service'
 require_relative '../../lib/tournaments/public_service'
 
@@ -18,7 +19,7 @@ module TournamentFixedTeamsSupport
   end
 
   def fixture(rematch: true, pairing: 'all_combinations', names: NAMES, game: 'spades', directory: nil, group_count: nil, places_per_group: nil, group_advancement: nil, game_options: {}, timezone: 'local_test:system')
-    directory ||= Dir.mktmpdir('ft1-', ENV.fetch('TMPDIR'))
+    directory ||= GameRoomTest::TemporaryDirectory.create('ft1-')
     directory = File.expand_path(directory)
     context = TournamentPublicServiceSupport::Context.new(directory, 'Organizator')
     service = context.service

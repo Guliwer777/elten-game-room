@@ -1,17 +1,19 @@
 require_relative "game_room_clock"
 require "securerandom"
 require_relative "invitation_response_outbox"
+require_relative "invitation_identity"
 
 class InvitationRepository
   SENT_LOCK = Mutex.new
   SENT = {}
 
-  def self.resolve_sent(id, table_id:, recipient:)
+  def self.resolve_sent(reference, table_id: nil, recipient: nil)
+    expected = GameRoomInvitationIdentity.row(reference).dup
+    expected["table_id"] = table_id unless table_id.nil?
+    expected["recipient"] = recipient unless recipient.nil?
     SENT_LOCK.synchronize do
-      SENT.delete_if do |_key, row|
-        (row["__id"] || row["id"]).to_i == id.to_i && row["table_id"].to_i == table_id.to_i &&
-          row["recipient"].to_s.casecmp(recipient.to_s) == 0
-      end
+      selected = GameRoomInvitationIdentity.unique(SENT.values, expected)
+      SENT.delete_if { |_key, row| row.equal?(selected) } if selected
     end
   end
 
@@ -19,11 +21,8 @@ class InvitationRepository
     return nil if id.to_i <= 0 || table_id.to_i <= 0 || recipient.to_s.empty? || sender.to_s.empty?
 
     SENT_LOCK.synchronize do
-      SENT.values.find do |row|
-        row["__id"].to_i == id.to_i && row["table_id"].to_i == table_id.to_i &&
-          row["sender"].to_s.casecmp(sender.to_s) == 0 && row["recipient"].to_s.casecmp(recipient.to_s) == 0 &&
-          (live_session_id.to_s.empty? || row["live_session_id"].to_s == live_session_id.to_s)
-      end
+      GameRoomInvitationIdentity.unique(SENT.values, { "__id" => id, "table_id" => table_id,
+        "recipient" => recipient, "sender" => sender, "live_session_id" => live_session_id })
     end
   end
   InvitationResult = Struct.new(:invitation, :created, keyword_init: true) do
@@ -61,11 +60,14 @@ class InvitationRepository
   DEFAULT_TTL = 5 * 60
   RESPONSES = ["accepted", "rejected", "expired"].freeze
 
-  def initialize(server_tables: nil, transport: nil, notification_source: nil, response_sender: nil, response_outbox: nil)
+  def initialize(server_tables: nil, transport: nil, notification_source: nil, response_sender: nil, response_outbox: nil,
+    current_user: -> { defined?(Session) ? Session.name.to_s : "" }, sender_allowed: nil)
     @transport = transport
     @notification_source = notification_source
     @response_sender = response_sender
     @response_outbox = response_outbox
+    @current_user = current_user
+    @sender_allowed = sender_allowed
     @sent_invitations = SENT
     @responses = {}
   end
@@ -125,28 +127,30 @@ class InvitationRepository
   end
 
   def pending_for(recipient, tables:, now: GameRoomClock.now.to_i)
+    user = @current_user.call.to_s
+    return [] unless user.empty? || same_user?(user, recipient)
     table_by_id = tables.to_a.each_with_object({}) do |table, result|
       id = row_id(table)
       result[id] = table if id > 0 && %w[waiting playing].include?(table["status"].to_s)
     end
 
     rows = (@notification_source == nil ? [] : @notification_source.call(recipient, now)) + @transport.pending_invitations
-    return rows.uniq { |row| row_id(row) }.filter_map do |row|
+    return [] unless @current_user.call.to_s.casecmp?(user)
+    return rows.filter_map do |row|
+      next unless row_id(row).positive? && !row["sender"].to_s.empty?
       next if !same_user?(row["recipient"], recipient)
       next if row["expires_at"].to_i.positive? && row["expires_at"].to_i <= now.to_i
-      next if @responses.key?([row_id(row), recipient.to_s.downcase])
+      next if @responses.key?(GameRoomInvitationIdentity.key(row))
 
       table = table_by_id[row["table_id"].to_i]
       next if table != nil && !row["live_session_id"].to_s.empty? && row["live_session_id"].to_s != table["__live_session_id"].to_s
+      next if table && @sender_allowed && !@sender_allowed.call(row["sender"], table)
       table == nil ? nil : PendingInvitation.new(invitation: row, table: table)
-    end
+    end.uniq { |pending| GameRoomInvitationIdentity.key(pending) }
   end
 
-  def pending_by_id(id, recipient, tables:, now: GameRoomClock.now.to_i)
-    wanted = id.to_i
-    return nil if wanted <= 0
-
-    pending_for(recipient, tables: tables, now: now).find { |pending| pending.id == wanted }
+  def pending_by_id(reference, recipient, tables:, now: GameRoomClock.now.to_i)
+    GameRoomInvitationIdentity.unique(pending_for(recipient, tables: tables, now: now), reference)
   end
 
   def respond(invitation, recipient:, response:, now: GameRoomClock.now.to_i)
@@ -156,9 +160,11 @@ class InvitationRepository
     clean_response = response.to_s
     raise ArgumentError, "Invalid invitation" if invitation_id <= 0
     raise ArgumentError, "Invitation belongs to another user" if !same_user?(row["recipient"], clean_recipient)
+    user = @current_user.call.to_s
+    raise ArgumentError, "Invitation belongs to another user" unless user.empty? || same_user?(user, clean_recipient)
     raise ArgumentError, "Invalid invitation response" if !RESPONSES.include?(clean_response)
 
-    key = [invitation_id, clean_recipient.downcase]
+    key = GameRoomInvitationIdentity.key(row)
     return @responses[key] if @responses.key?(key)
 
     decision = {

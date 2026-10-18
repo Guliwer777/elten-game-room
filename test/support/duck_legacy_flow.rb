@@ -7,6 +7,12 @@ class DuckLegacyFlowGame < GameRoomGames::DuckRacing
   def action_for(selection, replay, actor, context: nil)
     status, plan = super
     return [status, plan] unless status == :ok && selection.to_h.transform_keys(&:to_s)['action'] == 'start'
+    if (request = GameRoomServerRandom.request_from(plan.events))
+      data = request.fetch('recipe').fetch('data')
+      raise 'Missing start marker in native legacy fixture' unless data.delete('challenge_flow') == 2
+      return [:ok, GameRoomGames::ActionPlan.new(events:[
+        GameRoomServerRandom.payload_seed_command(action:id,data:data)])]
+    end
     rows = plan.events.map { |command| {'action' => command.action, 'value' => command.value} }
     repository = Object.new
     repository.define_singleton_method(:actor_of) { |*, **| actor }

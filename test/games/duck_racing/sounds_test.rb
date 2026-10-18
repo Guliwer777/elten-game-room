@@ -132,6 +132,14 @@ class DuckSoundsTest
         kinds = after.history.select { |entry| entry.event_id == h.events.last['id'] }.map(&:kind)
         assert_equal(1, kinds.count(:placed), 'The actual card placement must retain its play cue')
         assert_equal(0, kinds.count(:played), 'Card placement repeated the generic play announcement')
+        activated=after.dup
+        activated.history=[]
+        h.game.send(:append_notices,activated.history,[[:trap,1,'mine',0]],h.repository.event_id(fragments.last),after.players)
+        assert_equal('mine',activated.history.first.value,'Trap card identity lost in canonical presentation history')
+        assert_equal('hit_ship1',cue(h,fragments.last,before,activated),'Mine activation lacks explosion')
+        presenter=build_presenter(h)
+        emit(presenter,h,activated)
+        assert_equal([],names,'Cold entry replayed the explosion')
       elsif type == 'repairing_rest'
         before = after
         h.accept({'action' => 'race', 'input' => {'kind' => 'skip'}}, actor: 'Alice')

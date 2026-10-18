@@ -1,5 +1,7 @@
 require_relative "../support/settings_widget"
 
+EltenGameRoom.remember_settings(EltenGameRoom::DEFAULT_SETTINGS)
+
 assert(defined?(GameRoomStatistics::Service), "Application did not load its statistics service")
 
 ranking = EltenGameRoom::MAIN_OPTIONS.index("Leaderboards")
@@ -47,7 +49,7 @@ begin
   assert(visits.length == 3, "Repeated explicit widget actions lost their entry hook")
   assert(app.notification_action(:not_game_room, nil) == false && visits.length == 3, "Unrelated notification counted as a visit")
   transport.define_singleton_method(:start) { false }
-  app.notification_action(:open_invitation, nil)
+  app.notification_action(:open_invitation, FakeNotification.new("Bob"))
   assert(visits.length == 4, "Opening an invitation did not record entry before connection failure")
   transport.define_singleton_method(:start) { true }
   receiver = Object.new
@@ -63,19 +65,21 @@ begin
   end
   observed = []
   spy.define_singleton_method(:observe) { |**values| observed << values }
-  game = Struct.new(:id).new("tic_tac_toe")
+  game = GameRoomGames::TicTacToe.new
   session = {"__id" => 42, "__players" => %w[Alice Bob]}
-  replay = Object.new
+  replay = game.replay(session, [], GameRepository.allocate)
+  assert(replay.state.nil? && replay.players == %w[Alice Bob],
+    "The fixture must use the actual board-game replay, including its optional state")
   observer = app.send(:statistics_observer_for, game)
   observer.call(session, replay)
-  assert(observed.last == {session: session, replay: replay, game_id: "tic_tac_toe", viewer: "Alice", participants: %w[Alice Bob]},
+  assert(observed.last == {session: session, replay: replay, game_id: game.id, viewer: "Alice", participants: %w[Alice Bob]},
     "The game observer lost its viewer, game or current participants")
   spy.define_singleton_method(:observe) { |**_values| raise IOError, "statistics disk unavailable" }
   observer.call(session, replay)
   started = []
   spy.define_singleton_method(:started) { |**values| started << values; raise IOError, "statistics disk unavailable" }
   app.send(:record_statistics_start, session, game)
-  assert(started == [{session: session, game_id: "tic_tac_toe"}], "The start observer lost the confirmed session")
+  assert(started == [{session: session, game_id: game.id}], "The start observer lost the confirmed session")
   spy.define_singleton_method(:visit) { raise IOError, "statistics disk unavailable" }
   entry_error = begin
     app.program_main

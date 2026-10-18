@@ -30,7 +30,7 @@ module GameRoomTournaments
     end
     private_constant :Form
 
-    def initialize(program:, registry:, publication:, snapshot:, load:, join:, alert:, mode_label:, actor:, join_virtual: nil, overview: nil, withdraw: nil, manage_participants: nil, set_partner: nil, edit_tournament: nil, delete_tournament: nil,initial_action:nil,results:nil,phase:nil,clock:-> {Time.now.to_i})
+    def initialize(program:, registry:, publication:, snapshot:, load:, join:, alert:, mode_label:, actor:, join_virtual: nil, overview: nil, withdraw: nil, manage_participants: nil, set_partner: nil, edit_tournament: nil, delete_tournament: nil,initial_action:nil,results:nil,phase:nil,invite:nil,clock:-> {Time.now.to_i})
       @initial_action=initial_action
       @program, @publication, @snapshot = program, publication, snapshot
       @load, @join, @alert = load, join, alert
@@ -40,6 +40,7 @@ module GameRoomTournaments
       @set_partner = set_partner
       @edit_tournament, @delete_tournament = edit_tournament, delete_tournament
       @results,@phase,@clock=results,phase,clock
+      @invite=invite
       settings = JSON.parse(publication['settings_json'])
       @pair_game = registry.build(publication['game']).team_size(settings['game_options'], player_count: settings['players_per_match']) == 2
       @text = PublicText.new(registry: registry, mode_label: mode_label, actor: actor)
@@ -71,7 +72,11 @@ module GameRoomTournaments
         when :overview
           @overview.call(@publication) if @overview
           refresh_snapshot
-        when :edit,:delete,:manage
+        when :results
+          @results.call(@publication) if @results
+          refresh_snapshot
+        when :manage then manage_tournament
+        when :edit,:delete
           if @publication['__insertion_user'].downcase==@actor.downcase
             callback={edit:@edit_tournament,delete:@delete_tournament,manage:@manage_participants}[action]
             callback.call(@publication) if callback
@@ -134,7 +139,11 @@ module GameRoomTournaments
         when :overview
           @overview.call(@publication) if @overview
           refresh_snapshot
-        when :edit,:delete,:manage
+        when :results
+          @results.call(@publication) if @results
+          refresh_snapshot
+        when :manage then manage_tournament
+        when :edit,:delete
           if @publication['__insertion_user'].downcase==@actor.downcase
             callback={edit:@edit_tournament,delete:@delete_tournament,manage:@manage_participants}[@initial_action]
             callback.call(@publication) if callback
@@ -155,7 +164,7 @@ module GameRoomTournaments
       when :participants
         value=@text.members(@publication,@snapshot).map{|person|person['username']}.join("\r\n")
         show_document(_("Participants"),value)
-      when :rules then show_document(_("Tournament rules"),@text.description(@publication,@snapshot))
+      when :rules then show_document(_("Information and rules"),@text.description(@publication,@snapshot))
       when :manage then manage_tournament
       when :refresh then refresh_snapshot
       end
@@ -177,6 +186,7 @@ module GameRoomTournaments
       options=[]
       before_start=[:soon,:registration,:waiting].include?(state)
       if before_start
+        options << [:invite,_("Invite to tournament")] if @invite && state==:registration && @text.can_join?(@publication,@snapshot,now:@clock.call)
         options << [:manage,_("Manage participants")] if @manage_participants
         options << [:edit,_("Edit tournament")] if @edit_tournament
         options << [:open,_("Open registration")] if @phase && state!=:registration
@@ -198,7 +208,7 @@ module GameRoomTournaments
           if [:open,:close,:start].include?(action)
             @phase.call(@publication,action.to_s)
           elsif action
-            {manage:@manage_participants,edit:@edit_tournament,delete:@delete_tournament}.fetch(action).call(@publication)
+            {invite:@invite,manage:@manage_participants,edit:@edit_tournament,delete:@delete_tournament}.fetch(action).call(@publication)
           end
           form.resume
         ensure
@@ -312,13 +322,13 @@ module GameRoomTournaments
       actions=[]
       unless @stale
         actions << [:join,_("Join tournament")] if @join && !registered? && !@join_requested && @text.can_join?(@publication,@snapshot,now:@clock.call)
-        actions << [:overview,_("Matches")] if @overview
-        actions << [:results,_("Results")] if @results
+        actions << [:overview,_("Tournament matches")] if @overview
+        actions << [:results,_("Standings")] if @results
         actions << [:participants,_("Participants")]
-        actions << [:partner,_("My partner")] if registered? && @pair_game && @set_partner && [:soon,:registration,:waiting].include?(state)
-        actions << [:rules,_("Tournament rules")]
-        actions << [:withdraw,_("Leave tournament")] if registered? && @withdraw && [:soon,:registration,:waiting].include?(state)
+        actions << [:rules,_("Information and rules")]
+        actions << [:partner,_("Team partner")] if registered? && @pair_game && @set_partner && [:soon,:registration,:waiting].include?(state)
         actions << [:manage,_("Manage tournament")] if @publication['__insertion_user'].downcase==@actor.downcase
+        actions << [:withdraw,_("Leave tournament")] if registered? && @withdraw && [:soon,:registration,:waiting].include?(state)
       end
       actions << [:refresh,_("Refresh")]
       @actions.header=@text.action_header(@publication,@snapshot,now:@clock.call)
@@ -357,7 +367,13 @@ module GameRoomTournaments
         partner=people[list.index]&.fetch('account')
         result=@set_partner.call(@publication['__id'],actor,partner,'pair-selection:'+SecureRandom.uuid)
         @pairing_uncertain=false if result && result['status']=='confirmed'
-        @alert.call(text(result && result['status']=='confirmed' ? _("Partner choice saved.") : _("The partner choice could not be confirmed. Refresh to check its status.")))
+        message = if result && result['status'] == 'confirmed'
+          result.dig('evidence', 'pairing_applied') == false ?
+            _("The tournament changed. Refresh its view before changing it again.") : _("Partner choice saved.")
+        else
+          _("The partner choice could not be confirmed. Refresh to check its status.")
+        end
+        @alert.call(text(message))
         form.resume
       end
       back.on(:press){form.resume}

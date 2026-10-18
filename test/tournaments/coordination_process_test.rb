@@ -3,17 +3,21 @@ require_relative '../support/tournament_coordination_file_port'
 require 'rbconfig'
 F=TournamentCoordinationFixture
 sequence=0
+children=[]
 spawn_child=->(request,state,dir,account,mode='request',fault='',barrier='') do
   sequence+=1
   evidence=ENV.fetch('COORD_EVIDENCE_DIR')
   prefix=File.join(evidence,"child-#{sequence}")
   command=[RbConfig.ruby,File.expand_path('../support/tournament_coordination_process.rb',__dir__),request,state,dir,account,mode,fault,barrier]
   pid=Process.spawn(*command,out:prefix+'.stdout.raw',err:prefix+'.stderr.raw')
-  [pid,prefix,command]
+  child=[pid,prefix,command]
+  children << child
+  child
 end
 finish=->(child) do
   pid,prefix,command=child
   _,status=Process.wait2(pid)
+  children.delete(child)
   File.write(prefix+'.command.json',JSON.pretty_generate({pid:pid,command:command,exit:status.exitstatus,
     env:ENV.to_h.slice('TMPDIR','TMP','TEMP','GEM_PATH','GEM_HOME','RUBYLIB','RUBYOPT','ELTEN_HOST_SOURCE','ELTEN_ZSTD_LIBRARY','COORD_EVIDENCE_DIR')}))
   F.assert(status.success?,"Dziecko #{pid}: #{File.binread(prefix+'.stderr.raw')}")
@@ -24,6 +28,33 @@ finish=->(child) do
   end
   JSON.parse(File.binread(prefix+'.stdout.raw'))
 end
+isolated=->(&block) do
+  F.isolated do |dir|
+    begin
+      block.call(dir)
+    ensure
+      cleanup_errors=[]
+      children.dup.each do |child|
+        begin
+          barrier=child[2].last
+          File.write(barrier+'.release','go') unless barrier.empty?
+        rescue StandardError => error
+          cleanup_errors << error
+        end
+        begin
+          finish.call(child)
+        rescue StandardError => error
+          cleanup_errors << error
+        end
+      end
+      raise cleanup_errors.first if cleanup_errors.one?
+      unless cleanup_errors.empty?
+        message=cleanup_errors.map { |error| error.full_message(highlight:false) }.join("\n")
+        raise RuntimeError.new(message), cause: $! || cleanup_errors.first
+      end
+    end
+  end
+end
 wait_file=->(path) do
   deadline=Process.clock_gettime(Process::CLOCK_MONOTONIC)+20
   until File.exist?(path)
@@ -32,7 +63,7 @@ wait_file=->(path) do
   end
 end
 %w[create_stored create_after].each do |fault|
-  F.isolated do |dir|
+  isolated.call do |dir|
     path=File.join(dir,'request.json');File.write(path,JSON.generate(F.request))
     state=File.join(dir,'service.json'); local=File.join(dir,'alice')
     a=finish.call(spawn_child.call(path,state,local,'alice','request',fault))
@@ -47,7 +78,7 @@ end
     F.assert(calls.count { |c| c['kind']=='create_bind' }==1,'Cold/next account zero drugiego create')
   end
 end
-F.isolated do |dir|
+isolated.call do |dir|
   path=File.join(dir,'request.json');File.write(path,JSON.generate(F.request))
   state=File.join(dir,'service.json');local=File.join(dir,'alice');barrier=File.join(dir,'barrier')
   a=spawn_child.call(path,state,local,'alice','hold','',barrier)
@@ -58,7 +89,7 @@ F.isolated do |dir|
   first=finish.call(a)
   F.assert(first['state']=='bound','Zwycięzca kończy pełny pion')
 end
-F.isolated do |dir|
+isolated.call do |dir|
   ab=F.request;ac=F.request(names:%w[Alice Carol]);ac['match_id']='match-AC'
   paths=[ab,ac].each_with_index.map { |r,i| p=File.join(dir,"request-#{i}.json");File.write(p,JSON.generate(r));p }
   state=File.join(dir,'service.json');barrier=File.join(dir,'race')
@@ -71,7 +102,7 @@ F.isolated do |dir|
   F.assert(server['calls'].none? { |c| c['kind']=='create_bind' && c['pid']==loser },'Przegrany zero create')
   F.assert(server['busy'].size==2,'Cały skład zwycięzcy albo nikt')
 end
-F.isolated do |dir|
+isolated.call do |dir|
   path=File.join(dir,'request.json');File.write(path,JSON.generate(F.request))
   state=File.join(dir,'service.json');local=File.join(dir,'alice')
   a=finish.call(spawn_child.call(path,state,local,'alice','request','reserve_after'))
@@ -83,7 +114,7 @@ F.isolated do |dir|
   server=JSON.parse(File.binread(state))
   F.assert(server['calls'].count { |c| c['kind']=='reserve' }==1 && server['calls'].none? { |c| c['kind']=='create_bind' },'Cold reserve bez drugiej mutacji')
 end
-F.isolated do |dir|
+isolated.call do |dir|
   path=File.join(dir,'request.json');File.write(path,JSON.generate(F.request))
   state=File.join(dir,'service.json');local=File.join(dir,'alice')
   a=finish.call(spawn_child.call(path,state,local,'alice','request','create_before'))

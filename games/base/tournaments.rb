@@ -82,6 +82,48 @@ module GameRoomGames
       # Optional game-owned hook. No score is inferred from private state fields.
       def tournament_scores(_replay, options:); nil; end
 
+      # Administrative interruption is distinct from a normally finished game.
+      # A missing adapter must not be interpreted as an empty scored round or
+      # permission to remove a player from a fixed-roster game.
+      def tournament_forfeit_continuation(_replay, losing_unit:, options:)
+        {'status'=>'unsupported'}
+      end
+
+      def tournament_scored_checkpoint(_replay, options:)
+        {'status'=>'unsupported'}
+      end
+
+      # Only the validated boundary projection supplies this internal marker.
+      # An ordinary game_action cannot authorize administrative elimination.
+      # Keep the original roster and return the affected original seats.
+      def tournament_elimination_players(event, players:)
+        return nil unless event['action'] == 'tournament_elimination' && event['__tournament_elimination'] == true
+        seats = JSON.parse(event['value'])
+        return nil unless seats.is_a?(Array) && !seats.empty? && seats.uniq == seats &&
+          seats.all? { |seat| seat.is_a?(Integer) && seat.between?(0, players.length - 1) }
+        seats.map { |seat| players.fetch(seat) }
+      rescue JSON::ParserError, TypeError
+        nil
+      end
+
+      def tournament_active_players(replay, options:)
+        return replay.players.dup unless replay.state
+        tournament_remaining_players(replay.state)
+      end
+
+      def tournament_remaining_players(state)
+        removed = state.fetch(:tournament_eliminations, []).flatten
+        state.fetch(:players).reject { |player| GameRoomParticipants.includes?(removed, player) }
+      end
+
+      # Called only at a game-owned, fully scored round/deal boundary. Copy the
+      # cumulative public scores now, before later partial scoring can alter them.
+      def remember_tournament_checkpoint(state, event_id:, index:, kind: 'round', order: 'higher')
+        state[:tournament_checkpoint] = {'status'=>'scored','event_id'=>event_id,
+          'index'=>index,'kind'=>kind,'order'=>order,'scores'=>state.fetch(:scores).dup}
+      end
+      private :remember_tournament_checkpoint
+
       # New accepted plans opt into this export; old receipts retain the old
       # tournament_scores contract. Games declare their own scoring semantics.
       def tournament_export_scores(replay, options:)

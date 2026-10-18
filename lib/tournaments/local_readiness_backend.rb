@@ -166,6 +166,7 @@ module GameRoomTournaments
     end
 
     def validate_candidate!(data)
+      raise C::Invalid, :invalid_fields unless data.is_a?(Hash)
       fields = %w[schedule_id roster_generation backend_identity publication_ref publication_digest format pairing rematch
         players_per_match roles_teams timezone registration_opens_at registration_closes_at state finality dispatch_allowed
         finalize_allowed start_allowed observed_at roster matches game_id game_options windows]

@@ -2,6 +2,7 @@
 require_relative 'tournament_start_publisher'
 require_relative 'proposal_notice_inbox'
 require_relative 'proposal_notice_journal'
+require_relative 'tournament_event_notice'
 
 module GameRoomTournaments
   module TournamentStartRuntime
@@ -18,6 +19,32 @@ module GameRoomTournaments
     def stop_tournament_starts
       @tournament_start_inbox&.close
       @tournament_start_inbox=@tournament_start_service=nil
+      @tournament_event_inboxes&.each_value(&:close)
+      @tournament_event_inboxes=@tournament_event_services=nil
+    end
+
+    def configure_tournament_events(source:,context:,clock:,registry:)
+      @tournament_event_services={}
+      @tournament_event_inboxes={}
+      TournamentEventNotice::TYPES.each_key do |kind|
+        service=TournamentEventNotice.new(kind:kind,source:->(reference,phase_id=nil){source.call(reference,kind,phase_id)},context:context,clock:clock,registry:registry)
+        @tournament_event_services[kind]=service
+        @tournament_event_inboxes[kind]=ProposalNoticeInbox.new(service:service,metadata:TournamentEventNotice.method(:metadata),
+          worker:GameRoomBackground::Work.new(runtime:app_runtime))
+      end
+    end
+
+    def send_tournament_event(kind:,publication_ref:,recipient:nil,phase_id:nil)
+      service=@tournament_event_services&.fetch(kind)
+      raise ProposalNotice::Unavailable,'Tournament notices are not connected' unless service
+      account=Publication::Data.account(Session.name).downcase
+      service.notices(publication_ref:publication_ref,recipient:recipient,phase_id:phase_id).map do |notice|
+        scope=Digest::SHA256.hexdigest(JSON.generate([account,notice['backend_identity']]))
+        journal=ProposalNoticeJournal.new(program:self,path:"tournament-#{kind}-deliveries-#{scope}.json")
+        TournamentStartPublisher.new(service:service,sender:-> {Session.name},transaction:journal.method(:update),
+          send:->(metadata,closes){send_notification(metadata['recipient'],type:TournamentEventNotice::TYPES.fetch(kind),metadata:metadata,
+            expires_in:[service.remaining_seconds(closes),TournamentEventNotice::LIFETIME].min)}).deliver(metadata:notice)
+      end
     end
 
     # Finite worker operation. One local durable attempt per recipient/event.
@@ -50,7 +77,7 @@ module GameRoomTournaments
       return notification.presentation(title:_("Tournament"),body:_("Open My tournaments to see the current status."),sound:nil).suppress_default! unless description
       body=GameRoomContent.utf8(_("The tournament %{name} (%{game}) you registered for has just started."))%
         {name:GameRoomContent.utf8(description['title']),game:GameRoomContent.utf8(@tournament_start_registry.name(description['game']))}
-      presentation=notification.presentation(title:_("Tournament started"),body:body,sound:nil)
+      presentation=notification.presentation(title:_("Tournament started"),body:body,sound:nil,action: :open_tournament_matches)
       presentation.suppress_default! unless valid
       if valid && normalized_settings['invitation_sounds'] && respond_to?(:play_sound_from_asset)
         presentation.extend(GameRoomUI::NotificationSound)
@@ -71,16 +98,71 @@ module GameRoomTournaments
     rescue Publication::Invalid
       false
     end
+
+    def tournament_event_presentation(notification)
+      kind=TournamentEventNotice::TYPES.key(notification.type.to_s)
+      service=@tournament_event_services&.[](kind)
+      notice=TournamentEventNotice.metadata(notification.metadata.to_h)
+      cached=@tournament_event_inboxes&.[](kind)&.verified(notification.id)
+      same_app=notification.app_uuid.to_s.downcase==server_app_uuid.to_s.downcase
+      valid=same_app && cached && cached[0]['metadata']==notice && cached[1]==notification.sender.to_s.downcase && service&.presentable?(cached[0])
+      description=service&.description(metadata:notice,sender:notification.sender) if same_app
+      return notification.presentation(title:_("Tournament"),body:_("This tournament notification is no longer available."),sound:nil).suppress_default! unless description
+      if kind=='registration'
+        title=_("Tournament invitation")
+        body=GameRoomContent.utf8(_("%{sender} invites you to register for %{name} (%{game})."))%{
+          sender:notification.sender,name:description['title'],game:@tournament_start_registry.name(description['game'])}
+        action=:open_tournament_registration
+      elsif kind=='phase_finished'
+        title=_("Tournament phase finished")
+        body=GameRoomContent.utf8(_("A phase of %{name} has finished. Open its standings."))%{name:description['title']}
+        if valid
+          body=GameRoomContent.utf8(_("%{name}: %{phase} has finished. Next: %{next_phase}."))%{
+            name:description['title'],phase:PhaseDescription.label(cached[0]['phase']),next_phase:PhaseDescription.label(cached[0]['next_phase'])}
+        end
+        action=:open_tournament_phase_standings
+      else
+        title=_("Tournament finished")
+        body=GameRoomContent.utf8(_("The tournament %{name} has finished."))%{name:description['title']}
+        if valid
+          winners=cached[0].fetch('winners')
+          body+=' '+GameRoomContent.utf8(winners.size==1 ? _("Winner: %{players}") : _("Joint winners: %{players}"))%{players:winners.join(', ')} unless winners.empty?
+        end
+        action=:open_tournament_standings
+      end
+      presentation=notification.presentation(title:title,body:body,sound:nil,action:action)
+      presentation.suppress_default! unless valid
+      if valid && normalized_settings['invitation_sounds'] && respond_to?(:play_sound_from_asset)
+        presentation.extend(GameRoomUI::NotificationSound)
+        presentation.game_room_notice_player=-> {
+          volume=GameRoomPreferences.sound_volume(normalized_settings,'notice')
+          play_sound_from_asset('notice',volume:volume) if volume>0
+        }
+      end
+      presentation
+    rescue Publication::Invalid,ProposalNotice::Stale
+      notification.presentation(title:_("Tournament"),body:_("This tournament notification is no longer available."),sound:nil).suppress_default!
+    end
+
+    def receive_tournament_event(notification)
+      return unless notification.app_uuid.to_s.downcase==server_app_uuid.to_s.downcase
+      return if notification.respond_to?(:revoked) && notification.revoked
+      kind=TournamentEventNotice::TYPES.key(notification.type.to_s)
+      @tournament_event_inboxes&.[](kind)&.receive(id:notification.id,metadata:notification.metadata.to_h,sender:notification.sender)
+    rescue Publication::Invalid
+      false
+    end
     def tournament_starts_tick
       return unless @tournament_start_inbox
-      @tournament_start_inbox.tick.each do |id,_proof|
+      inboxes=[@tournament_start_inbox,*(@tournament_event_inboxes || {}).values]
+      inboxes.flat_map(&:tick).each do |id,_proof|
         row=EltenAPI::NotificationService.active_notifications.find{|value|value.id.to_i==id && value.cat.to_s=='app' && value.app_uuid.to_s.downcase==server_app_uuid.to_s.downcase}
         next unless row && row.revoked!=true
         notification=Programs.app_notification_from(row)
-        next unless notification.type==TournamentStartNotice::TYPE
+        next unless ([TournamentStartNotice::TYPE]+TournamentEventNotice::TYPES.values).include?(notification.type)
         present_deferred_contact_notification(notification)
       end
-      revoked=@tournament_start_inbox.take_revoked
+      revoked=inboxes.flat_map(&:take_revoked).uniq
       EltenAPI::NotificationService.revoke_active_notifications(revoked) unless revoked.empty?
     rescue StandardError => error
       Log.warning("Tournament start delivery failed: #{error.class}: #{error.message}") if defined?(Log)

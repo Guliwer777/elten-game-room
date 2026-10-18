@@ -178,9 +178,9 @@ module GameRoomTournaments
       Data.freeze_tree(ServerPlanDocument.copy_document(binding))
     end
 
-    def read_start_intent(candidate,id,match,binding)
+    def read_start_intent(candidate,id,match,binding,rows:nil)
       key=entry_anchor(candidate,id,match,'start',binding)
-      rows=ServerDocumentRows.read(@table,where:{'operation_key'=>key['operation_key']},guard:method(:account!))
+      rows ||= ServerDocumentRows.read(@table,where:{'operation_key'=>key['operation_key']},guard:method(:account!))
       rows.any?{|row|match['players'].include?(row['__insertion_user'].to_s.downcase)}
     end
 

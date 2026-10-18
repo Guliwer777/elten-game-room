@@ -3,9 +3,12 @@ require_relative "../lib/hidden_submissions"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register('categories', %w[category_round])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Categories < Base
+    include HiddenSubmissions::Cleanup
     def tournament_private_protocol?; true; end
     EASY_CATEGORY_IDS = %w[
       country city name animal plant thing profession food color
@@ -38,13 +41,13 @@ module GameRoomGames
     MINIMUM_ROUND_TIME = 10
     MAXIMUM_ROUND_TIME = 3_600
     DEADLINE_SUBMISSION_GRACE = 3
+    NEXT_ROUND_PAUSE = 2
     DECISION_POINTS = {
       "unique" => 2,
       "partial" => 1,
       "duplicate" => 1,
       "incorrect" => 0
     }.freeze
-    REVIEW_DECISIONS = DECISION_POINTS.keys.freeze
     REVIEW_DECISION_CODES = {
       "unique" => "u",
       "partial" => "p",
@@ -159,7 +162,7 @@ module GameRoomGames
           key: "target_score",
           label: _("Target score"),
           kind: :integer,
-          default: 100
+          default: 50
         ),
         OptionDefinition.new(
           key: "tie_mode",
@@ -217,12 +220,15 @@ module GameRoomGames
       players = repository.players_for(session)
       options = options_from_json(session["options"])
       state = initial_state(players, options)
+      HiddenSubmissions::Cleanup.start(state, session)
       accepted = []
       history = [starting_history(players)]
       frame = GameRoomReduction::Frame.new(state: state, players: players, options: options, history: history, draw: false)
       events.each do |event|
         input = GameRoomReduction.decode(event, session, repository)
         next unless input
+        timestamp = GameRoomReduction.timestamp(event)
+        input.timestamp = GameRoomSessionClock.from_server(session, timestamp, event: event) if timestamp != nil
         accepted << event if apply_replay_event(frame, input)
       end
 
@@ -273,14 +279,16 @@ module GameRoomGames
       kind = selection["kind"].to_s
       action = selection["action"].to_s
 
+      return membership_plan(selection, state, actor, context) if kind == "membership"
+
       if kind == "answer_sheet" && action == "submit"
         return submit_answers(selection, state, actor, context)
       end
       if kind == "review" && action == "change"
-        return submit_review_change(selection, state, actor)
+        return submit_review_change(selection, state, actor, authority: context&.table_owner)
       end
       if kind == "review" && action == "finish"
-        return finish_review(selection, state, actor)
+        return finish_review(selection, state, actor, authority: context&.table_owner)
       end
       if kind == "command"
         return command_action(action, state, actor, context)
@@ -295,19 +303,8 @@ module GameRoomGames
     def automatic_action(replay, actor, context: nil)
       state = replay.state
       if state[:phase] == :revealing
-        if player_hash_key?(state[:reveals], actor)
-          context&.hidden_submissions&.discard(
-            session_id: context.session_id,
-            round_id: round_id(state),
-            user: actor
-          )
-        elsif player_hash_key?(state[:commitments], actor)
-          envelope = context&.hidden_submissions&.reveal(
-            session_id: context.session_id,
-            round_id: round_id(state),
-            user: actor,
-            commitment: player_hash_value(state[:commitments], actor)
-          )
+        if !player_hash_key?(state[:reveals], actor) && player_hash_key?(state[:commitments], actor)
+          envelope = private_answer_envelope(state, actor, context)
           return surface_action("automatic", "reveal", "envelope" => envelope) if envelope != nil
         end
       end
@@ -316,7 +313,7 @@ module GameRoomGames
 
       case state[:phase]
       when :setup, :round_complete
-        return surface_action("automatic", "start_round")
+        return surface_action("automatic", "start_round") if next_round_ready?(state, context&.now)
       when :answering
         if commitments_complete?(state) || closing_deadline_reached?(state, context&.now)
           return surface_action("automatic", "close_answers")
@@ -327,6 +324,10 @@ module GameRoomGames
         return surface_action("automatic", "score_round") if reviews_complete?(state)
       end
       nil
+    rescue HiddenSubmissions::StorageError
+      # Let action_for report the existing retryable status. A temporary file
+      # lock must not turn the session runner into a permanent internal error.
+      surface_action("automatic", "reveal")
     end
 
     def automatic_action_allowed?(replay, actor, table_owner:)
@@ -339,8 +340,10 @@ module GameRoomGames
 
     def automatic_action_due?(replay, actor, context: nil)
       state = replay.state
-      owner?(state[:players], actor) && state[:phase] == :answering &&
-        closing_deadline_reached?(state, context&.now)
+      return false unless owner?(state[:players], actor)
+      return next_round_ready?(state, context&.now) if state[:phase] == :round_complete
+
+      state[:phase] == :answering && closing_deadline_reached?(state, context&.now)
     end
 
     def automatic_surface_action(replay, actor, surface:, context: nil)
@@ -377,12 +380,16 @@ module GameRoomGames
       remaining = state[:deadline].to_i - now.to_i
       announcements = []
       if remaining <= 20 && remaining > 0
-        announcements << ["categories:#{round_id(state)}:twenty", _("20 seconds remain.")]
+        announcements << ["categories:#{round_id(state)}:twenty", _("20 seconds remain."), "buzzer2", :skip_on_reconstruction]
       end
       if remaining <= 0
-        announcements << ["categories:#{round_id(state)}:expired", _("Time is up.")]
+        announcements << ["categories:#{round_id(state)}:expired", _("Time is up."), "buzzer", :skip_on_reconstruction]
       end
       announcements
+    end
+
+    def event_sound_cues(event:, before_replay:, after_replay:, history:, viewer:, random_variant:)
+      "play" if event["action"] == "answer_commit" && history.any? { |entry| entry.kind == :submission }
     end
 
     def participant_status(replay, participant, connected: true)
@@ -408,6 +415,11 @@ module GameRoomGames
 
     def tournament_export_scores(replay, options:)
       participant_scores(replay)
+    end
+
+    def tournament_scored_checkpoint(replay, options:)
+      replay.state[:tournament_checkpoint] ||
+        {'status'=>replay.state.fetch(:completed_rounds).zero? ? 'none' : 'unsupported'}
     end
 
     def tournament_ranking_result(replay, options:)
@@ -446,11 +458,15 @@ module GameRoomGames
     def describe_event(event, repository, replay, viewer)
       action = event["action"].to_s
       actor = repository.actor_of(event)
-      if (action.start_with?("review_") || action == "review_commit") && same_user?(actor, viewer)
-        return []
-      end
       event_id = repository.event_id(event)
       entries = replay.history.select { |entry| entry.event_id.to_i == event_id }
+      if (action.start_with?("review_") || action == "review_commit") && same_user?(actor, viewer)
+        if %w[review_unique review_partial review_duplicate review_incorrect review_correct].include?(action) &&
+            entries.any? { |entry| entry.kind == :review }
+          return [_("Assessed.")]
+        end
+        return []
+      end
       entries.map(&:text)
     end
 
@@ -484,7 +500,13 @@ module GameRoomGames
         judge: nil,
         letter: "",
         deadline: 0,
+        resume_at: 0,
         active_players: [],
+        round_player_order: [],
+        departed_players: [],
+        roster_revision: 0,
+        judge_queue: players.dup,
+        permanent_judge: players.first,
         commitments: {},
         reveals: {},
         reveal_parts: {},
@@ -510,7 +532,7 @@ module GameRoomGames
               id: category,
               label: _("%{category} for letter %{letter}") % {
                 category: category_label(category),
-                letter: state[:letter]
+                letter: answer_letter_label(state[:letter])
               },
               required: false,
               max_length: ANSWER_MAX_LENGTH
@@ -563,9 +585,11 @@ module GameRoomGames
 
     def review_spec(state)
       GameSurfaces::ReviewSpec.new(
-        id: round_id(state),
+        id: "#{round_id(state)}-review-#{state[:roster_revision]}",
         header: _("Review answers for letter %{letter}") % { letter: state[:letter] },
-        items: review_items(state).map do |item|
+        # Keep the positional wire review_commit in its historical order.
+        # Only presentation changes; item IDs still identify the same answers.
+        items: review_items(state).sort_by { |item| round_category_ids(state).index(item[:category]) }.map do |item|
           GameSurfaces::ReviewItem.new(
             id: item[:id],
             author: "",
@@ -584,6 +608,7 @@ module GameRoomGames
         ],
         empty_label: _("There are no non-empty answers to review"),
         submit_label: _("Finish review"),
+        confirmation_hint: _("Enter confirms the assessment."),
         read_only: false
       )
     end
@@ -661,8 +686,8 @@ module GameRoomGames
       [:local_storage_unavailable, nil]
     end
 
-    def submit_review_change(selection, state, actor)
-      return [:not_your_turn, nil] if state[:phase] != :review || !same_user?(state[:judge], actor)
+    def submit_review_change(selection, state, actor, authority: nil)
+      return [:not_your_turn, nil] if state[:phase] != :review || !reviewing_actor?(state, actor, authority)
       return [:already_submitted, nil] if state[:review_finished]
 
       item = review_item_by_id(state, selection["item_id"])
@@ -672,14 +697,14 @@ module GameRoomGames
         return [:invalid, nil] if !state[:decisions].key?(item[:id])
         return [:ok, event_plan("review_clear", item[:id])]
       end
-      return [:invalid, nil] if !REVIEW_DECISIONS.include?(decision)
+      return [:invalid, nil] if !review_decision_allowed?(item, decision)
       return [:invalid, nil] if state[:decisions][item[:id]] == decision
 
       [:ok, event_plan("review_#{decision}", item[:id])]
     end
 
-    def finish_review(selection, state, actor)
-      return [:not_your_turn, nil] if state[:phase] != :review || !same_user?(state[:judge], actor)
+    def finish_review(selection, state, actor, authority: nil)
+      return [:not_your_turn, nil] if state[:phase] != :review || !reviewing_actor?(state, actor, authority)
       return [:already_submitted, nil] if state[:review_finished]
       source = selection["decisions"]
       return [:invalid, nil] if !source.respond_to?(:key?)
@@ -725,6 +750,14 @@ module GameRoomGames
       case action
       when "start_round"
         return [:not_your_turn, nil] if !owner?(state[:players], actor) || ![:setup, :round_complete].include?(state[:phase])
+        return [:invalid, nil] unless next_round_ready?(state, context&.now)
+        if context.server_random
+          duration = state[:options]['round_time'].to_i
+          deadline = duration.positive? ? context.now.to_i + duration : 0
+          command = GameRoomServerRandom.text_seed_command(action:'category_round',
+            template:"#{state[:attempt]+1},#{state[:completed_rounds]+1},n:{seed},#{deadline}")
+          return [:ok, ActionPlan.new(events:[command])]
+        end
         available = available_letters(state[:options], state[:used_letters])
         draw = available.length == 1 ? 1 : context.random_source.roll(count: 1, sides: available.length).values.first
         letter = available[draw - 1]
@@ -741,7 +774,8 @@ module GameRoomGames
         return [:invalid, nil] if !commitments_complete?(state) && !closing_deadline_reached?(state, context&.now)
         [:ok, event_plan("answers_closed", state[:round])]
       when "reveal"
-        return reveal_plan(selection["envelope"], state, actor, context)
+        envelope = selection["envelope"] || private_answer_envelope(state, actor, context)
+        return reveal_plan(envelope, state, actor, context)
       when "start_review"
         return [:not_your_turn, nil] if state[:phase] != :revealing || !owner?(state[:players], actor)
         return [:invalid, nil] if !reveals_complete?(state)
@@ -751,6 +785,17 @@ module GameRoomGames
       else
         [:invalid, nil]
       end
+    rescue HiddenSubmissions::StorageError
+      [:local_storage_unavailable, nil]
+    end
+
+    def private_answer_envelope(state, actor, context)
+      return nil unless state[:phase] == :revealing && player_hash_key?(state[:commitments], actor)
+      return nil unless context && context.hidden_submissions
+
+      context.hidden_submissions.reveal(session_id: context.session_id,
+        round_id: round_id(state), user: actor,
+        commitment: player_hash_value(state[:commitments], actor))
     end
 
     def reveal_plan(envelope, state, actor, context)
@@ -799,6 +844,7 @@ module GameRoomGames
         commitment = player_hash_value(state[:commitments], player)
         if HiddenSubmissions::Commitment.valid?(payload: payload, nonce: parts[:nonce], commitment: commitment)
           state[:reveals][player] = payload
+          HiddenSubmissions::Cleanup.confirm(state, round_id(state), player => commitment)
         end
       end
       true
@@ -807,11 +853,12 @@ module GameRoomGames
     def update_match_ending(state, history, event_id)
       target = state[:options]["target_score"].to_i
       contestants = state[:tie_break_players].to_a
-      contestants = contestants(state[:players], state[:options]) if contestants.empty?
+      contestants = remaining_contestants(state) if contestants.empty?
       highest = contestants.map { |player| player_hash_value(state[:scores], player).to_i }.max.to_i
-      cycle = state[:options]["judge_mode"] == JUDGE_ROTATING ? state[:players].length : 1
+      cycle = state[:options]["judge_mode"] == JUDGE_ROTATING ? remaining_players(state).length : 1
       if state[:final_end_round] == nil && highest >= target
-        state[:final_end_round] = ((state[:completed_rounds] + cycle - 1) / cycle) * cycle
+        remaining = state[:options]["judge_mode"] == JUDGE_ROTATING ? state[:judge_queue].length : 0
+        state[:final_end_round] = state[:completed_rounds] + remaining
         history << history_entry(
           event_id,
           _("The target score was reached. The final judge cycle has begun."),
@@ -824,7 +871,7 @@ module GameRoomGames
       leaders = score_leaders(state, contestants)
       if leaders.length > 1 && state[:options]["tie_mode"] == TIE_EXTRA_CYCLE
         state[:tie_break_players] = leaders
-        outside_judges = state[:players].reject do |player|
+        outside_judges = remaining_players(state).reject do |player|
           leaders.any? { |leader| same_user?(leader, player) }
         end
         state[:final_end_round] = state[:completed_rounds] + (outside_judges.empty? ? cycle : 1)
@@ -865,6 +912,7 @@ module GameRoomGames
     def review_items(state)
       groups = {}
       state[:active_players].each_with_index do |player, player_index|
+        player_index = state[:round_player_order].index(player) || player_index
         answers = player_hash_value(state[:reveals], player)
         next if !answers.respond_to?(:key?)
         round_category_ids(state).each_with_index do |category, category_index|
@@ -993,6 +1041,21 @@ module GameRoomGames
       state[:deadline].to_i > 0 && now.to_i >= state[:deadline].to_i
     end
 
+    def next_round_ready?(state, now)
+      ready_at = state[:resume_at].to_i
+      ready_at <= 0 || (now || GameRoomSessionClock.for_state(state)).to_f >= ready_at
+    end
+
+    # These easy-to-confuse letter names need a short, familiar cue. Adverbs
+    # avoid giving away a name, country, animal or another category answer.
+    def answer_letter_label(letter)
+      case letter
+      when "M" then p_("drawn letter cue", "M as in more")
+      when "N" then p_("drawn letter cue", "N as in never")
+      else letter
+      end
+    end
+
     def closing_deadline_reached?(state, now)
       state[:deadline].to_i > 0 && now.to_i >= state[:deadline].to_i + DEADLINE_SUBMISSION_GRACE
     end
@@ -1005,18 +1068,24 @@ module GameRoomGames
 
     def contestants_for_round(players, judge, state = nil)
       tied = state == nil ? [] : state[:tie_break_players].to_a
-      candidates = tied.empty? ? players : tied
+      candidates = tied.empty? ? (state ? remaining_players(state) : players) : tied
       candidates.reject { |player| same_user?(player, judge) }
     end
 
     def judge_index(options, players, round, state = nil)
-      return 0 if options["judge_mode"] == JUDGE_MASTER
+      return state ? (players.index(state[:permanent_judge]) || -1) : 0 if options["judge_mode"] == JUDGE_MASTER
 
       tied = state == nil ? [] : state[:tie_break_players].to_a
       judges = players.each_index.reject do |index|
-        tied.any? { |player| same_user?(player, players[index]) }
+        (state && includes_player?(state[:departed_players], players[index])) ||
+          tied.any? { |player| same_user?(player, players[index]) }
       end
-      return (round.to_i - 1) % players.length if tied.empty? || judges.empty?
+      if tied.empty? || judges.empty?
+        queue = state && state[:judge_queue]
+        candidates = queue && !queue.empty? ? queue : (state ? remaining_players(state) : players)
+        return players.index(candidates.first) if state
+        return (round.to_i - 1) % players.length
+      end
 
       judges[(round.to_i - 1) % judges.length]
     end
@@ -1113,6 +1182,18 @@ module GameRoomGames
       }
     rescue ArgumentError
       nil
+    end
+
+    def parse_seeded_round(state, event)
+      parts = event['value'].to_s.split(',',-1)
+      return nil unless parts.size == 4 && /\A[0-9]{1,10}\z/.match?(parts.last)
+      round, attempt = state[:completed_rounds]+1, state[:attempt]+1
+      seed = GameRoomServerRandom.text_seed_value(event, template:"#{attempt},#{round},n:{seed},#{parts.last}")
+      return nil unless seed
+      available = available_letters(state[:options],state[:used_letters])
+      draw = Random.new(seed.to_i(16)).rand(available.size)+1
+      {attempt:attempt, round:round, judge_index:judge_index(state[:options],state[:players],round,state),
+        letter:available[draw-1], deadline:parts.last.to_i, categories:draw_categories(state[:options],draw,round)}
     end
 
     def parse_score(value)
@@ -1224,6 +1305,7 @@ module GameRoomGames
     end
 
     def status_text(state, viewer)
+      return interruption_message if state[:phase] == :interrupted
       return result_text(Replay.new(state: state)) || scores_text(state) if state[:phase] == :finished
       return _("Preparing round %{round}.") % { round: state[:completed_rounds] + 1 } if [:setup, :round_complete].include?(state[:phase])
 
@@ -1318,5 +1400,6 @@ module GameRoomGames
 end
 
 require_relative 'categories/reduction'
+require_relative 'categories/membership'
 
 require_relative 'generated/rulebooks/categories'

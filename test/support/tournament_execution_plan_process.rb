@@ -6,7 +6,7 @@ F = TournamentCoordinationFixture
 T = GameRoomTournaments
 mode, directory = ARGV
 raise 'Brak trybu/katalogu izolowanego' unless mode && directory
-root = File.realpath(ENV.fetch('TMPDIR'))
+root = File.realpath(GameRoomTest::TemporaryDirectory.parent)
 directory = File.expand_path(directory)
 raise 'Katalog poza własnym scratch' unless directory.start_with?(root + '/')
 FileUtils.mkdir_p(directory)

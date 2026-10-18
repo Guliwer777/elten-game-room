@@ -94,10 +94,10 @@ module GameRoomGames
             interception ? previous_current_player : next_active_player(state, player, 1)
           end
           state[:challenge_source] = player
-          state[:challenge_legal] = !state[:hands][player].any? { |candidate| !wild?(candidate) && card_color(candidate) == previous_colour }
+          state[:challenge_legal] = challenge_legality(state, player, previous_colour)
         end
         if type == "A"
-          discarded = state[:hands][player].select { |candidate| card_color(candidate) == card_color(card) }
+          discarded = discard_colour_cards(state, player, card_color(card))
           state[:hands][player] -= discarded
           state[:discard].insert(state[:discard].length - 1, *discarded)
         end
@@ -181,6 +181,14 @@ module GameRoomGames
         end
         finish_pending_round(state, id, history) if state[:phase] == :playing
         true
+      end
+
+      def challenge_legality(state, player, previous_colour)
+        !state[:hands][player].any? { |candidate| !wild?(candidate) && card_color(candidate) == previous_colour }
+      end
+
+      def discard_colour_cards(state, player, colour)
+        state[:hands][player].select { |candidate| card_color(candidate) == colour }
       end
     end
 

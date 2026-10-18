@@ -2,8 +2,8 @@
   "packs": {
     "quiz.wikidata.pl": {
       "count": 14894,
-      "version": 13,
-      "checksum": "82f2b359e00d7f0e0f15553730a858d042df74c2ce999c427192bf5b421c494a"
+      "version": 14,
+      "checksum": "d6d7653da970a1d351f18acf0bce2cf54ed8e2fc01901ebbe2277c7cf37733f1"
     },
     "quiz.general.en": {
       "count": 13903,

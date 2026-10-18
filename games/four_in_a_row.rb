@@ -8,6 +8,7 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class FourInARow < Base
+    def player_spatial_audio?; true; end
     include GameRoomBoardPresentation
     ROWS = 6
     COLUMNS = 7

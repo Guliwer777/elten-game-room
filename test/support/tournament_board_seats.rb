@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative 'temporary_directory'
 require_relative 'tournament_local_execution_plan'
 require_relative '../../lib/tournaments/local_execution_plan_backend'
 require_relative '../../lib/game_repository'
@@ -19,7 +20,7 @@ module TournamentBoardSeatsSupport
   end
 
   def with_board(**settings)
-    fixture = Fixture.new(Dir.mktmpdir('planszowe-', ENV.fetch('TMPDIR')), **settings)
+    fixture = Fixture.new(GameRoomTest::TemporaryDirectory.create('planszowe-'), **settings)
     begin
       yield fixture
     ensure

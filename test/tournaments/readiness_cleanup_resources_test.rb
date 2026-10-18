@@ -7,6 +7,10 @@ class ReadinessCleanupFatal < Exception; end
 # Ratunkowy close jest wyłącznie po zapisanym FAIL; nigdy nie zalicza próby.
 module ReadinessCleanupResources
   module_function
+  def logical_path(path)
+    File.expand_path(path.tr('\\', '/').sub(%r{\A//\?/}, ''))
+  end
+
   def run(target:, primary_class:, cause_kind:, ambient:, secondary:)
     label=[target,primary_class && primary_class.name,cause_kind,ambient,secondary].join('/')
     F.isolated do |dir|
@@ -44,7 +48,10 @@ module ReadinessCleanupResources
       if target==:lock && primary
         port.hook=->(event,_) { injected=true; raise primary,cause:cause if event==:store_after }
       end
-      target_file=->(f) { target==:lock ? f.path.end_with?('/attempt.lock') : f.path.include?('/state.json.tmp-') }
+      target_file=->(f) do
+        path=logical_path(f.path)
+        target==:lock ? path.end_with?('/attempt.lock') : path.include?('/state.json.tmp-')
+      end
       trace=TracePoint.new(:call,:return,:c_return) do |event|
         if event.self.equal?(service) && event.method_id==:boundary
           if event.event==:call
@@ -55,7 +62,7 @@ module ReadinessCleanupResources
           end
         elsif event.event==:c_return && event.method_id==:open && event.self.equal?(File)
           file=event.return_value
-          handles << file if file.is_a?(File) && File.expand_path(file.path).start_with?(File.expand_path(dir)+'/')
+          handles << file if file.is_a?(File) && logical_path(file.path).start_with?(logical_path(dir)+'/')
         elsif event.event==:c_return && event.self.is_a?(File) && handles.include?(event.self)
           if target==:temporary && event.method_id==:fsync && target_file.call(event.self) && !injected
             injected=true

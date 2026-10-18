@@ -5,13 +5,15 @@ require_relative "../lib/tysiac_strategy"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register('tysiac', ['deal'])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   # Individual and partnership Tysiac share the same deal and action log.
-  # Card identities are reconstructed from the public deal seed, just as in
-  # the other card games in Game Room. The interface never announces cards
-  # passed by the taker to the other defenders.
+  # The private-hand adapter preserves the same rules and presentation.
+  # The interface never announces cards passed to the other defenders.
   class Tysiac < Base
+    def player_spatial_audio?; true; end
     RANKS = %w[9 J Q K T A].freeze
     SUITS = %w[H S D C].freeze
     SUIT_NAMES = {
@@ -52,9 +54,9 @@ module GameRoomGames
     def event_sound_cues(event:, before_replay:, after_replay:, history:, viewer:, random_variant:)
       action = event["action"].to_s
       return "shuffle" if action == "deal"
-      return nil if action != "play"
+      return nil unless %w[play contract_play].include?(action)
 
-      mode, card = event["value"].to_s.split("|", 2)
+      mode, card = event["value"].to_s.split("|").last(2)
       trump = after_replay&.state.to_h[:trump].to_s
       cues = ["play"]
       cues << "draw2" if !trump.empty? && card.to_s.end_with?(trump)
@@ -233,23 +235,13 @@ module GameRoomGames
     def replay(session, events, repository)
       players = repository.players_for(session)
       state = initial_state(players, options_from_json(session["options"]))
+      GameRoomPrivateCardLedger.initialize_state(state, session) if GameRoomPrivateCards.enabled?(session)
       accepted = []
       history = [starting_history(players)]
       events.each do |event|
         break if state[:winner] != nil
 
-        actor = repository.actor_of(event, session)
-        applied = case event["action"].to_s
-        when "deal" then apply_deal(state, event, actor, repository, history)
-        when "bid" then apply_bid(state, event, actor, repository, history)
-        when "pass_card" then apply_pass_card(state, event, actor, repository, history)
-        when "take_talon" then apply_take_talon(state, event, actor, repository, history)
-        when "discard_card" then apply_discard_card(state, event, actor, repository, history)
-        when "contract" then apply_contract(state, event, actor, repository, history)
-        when "surrender" then apply_surrender(state, event, actor, repository, history)
-        when "play" then apply_play(state, event, actor, repository, history)
-        else false
-        end
+        applied = apply_replay_event(state, event, session, repository, history)
         accepted << event if applied
       end
 
@@ -338,17 +330,7 @@ module GameRoomGames
       state = replay.state
       return [:finished, nil] if replay.finished?
       if selection["kind"].to_s == "command" && selection["action"].to_s == "deal"
-        return [:not_your_turn, nil] if !same_user?(actor, replay.players.first)
-        return [:invalid, nil] if ![:awaiting_deal, :round_complete].include?(state[:phase])
-        return [:invalid, nil] if context == nil || context.random_source == nil
-        return [:invalid, nil] if options_error(state[:options], player_count: state[:players].length)
-
-        round = state[:round].to_i + 1
-        count = state[:players].length
-        dealer = state[:dealer_index] == nil ? nil : (state[:dealer_index].to_i + 1) % count
-        seed = random_seed(context.random_source)
-        dealer = seed.to_i(16) % count if dealer == nil
-        return [:ok, event_plan("deal", [round, dealer, seed].join("|"))]
+        return deal_action_for(replay, actor, context)
       end
 
       return [:not_your_turn, nil] if !same_user?(state[:current_player], actor)
@@ -469,6 +451,17 @@ module GameRoomGames
       replay.players.to_h { |player| [player, replay.state[:scores].fetch(score_unit(replay.state, player))] }
     end
 
+    def tournament_forfeit_continuation(_replay, losing_unit:, options:)
+      # The variant fixes the auction, talon, partnerships and resting seat.
+      {'status'=>'cannot_continue'}
+    end
+
+    def tournament_scored_checkpoint(replay, options:)
+      return {'status'=>'unsupported'} if replay.state[:private_error]
+      replay.state[:tournament_checkpoint] || {'status'=>
+        replay.state[:round].to_i <= 1 && replay.state[:phase] != :round_complete ? 'none' : 'unsupported'}
+    end
+
     def shortcut_features
       super + [:hand, :table_cards, :table_cards_list, :led_suit, :scores, :statistics, :bidding]
     end
@@ -570,6 +563,40 @@ module GameRoomGames
 
     private
 
+    def deal_action_for(replay, actor, context)
+      state = replay.state
+      return [:not_your_turn, nil] if !same_user?(actor, replay.players.first)
+      return [:invalid, nil] if ![:awaiting_deal, :round_complete].include?(state[:phase])
+      return [:invalid, nil] if context == nil || context.random_source == nil
+      return [:invalid, nil] if options_error(state[:options], player_count: state[:players].length)
+
+      round = state[:round].to_i + 1
+      count = state[:players].length
+      dealer = state[:dealer_index] == nil ? nil : (state[:dealer_index].to_i + 1) % count
+      if context.server_random
+        return [:ok, server_seed_plan('deal', template: "#{round}|#{dealer || '{dealer}'}|{seed}", seats: (0...count).to_a)]
+      end
+      seed = random_seed(context.random_source)
+      dealer = seed.to_i(16) % count if dealer == nil
+      [:ok, event_plan("deal", [round, dealer, seed].join("|"))]
+    end
+
+    def apply_replay_event(state, event, session, repository, history)
+      actor = repository.actor_of(event, session)
+      case event['action']
+      when 'deal' then apply_deal(state, event, actor, repository, history)
+      when 'bid' then apply_bid(state, event, actor, repository, history)
+      when 'pass_card' then apply_pass_card(state, event, actor, repository, history)
+      when 'take_talon' then apply_take_talon(state, event, actor, repository, history)
+      when 'discard_card' then apply_discard_card(state, event, actor, repository, history)
+      when 'contract' then apply_contract(state, event, actor, repository, history)
+      when 'surrender' then apply_surrender(state, event, actor, repository, history)
+      when 'play' then apply_play(state, event, actor, repository, history)
+      when 'contract_play' then apply_contract_play(state, event, actor, repository, history)
+      else false
+      end
+    end
+
     def initial_state(players, options)
       assignment = team_assignment(options, players: players)
       teams = assignment ? players.to_h { |player| [player, "team:#{assignment.team_index_for(player)}"] } : {}
@@ -620,6 +647,9 @@ module GameRoomGames
       return false if !same_user?(actor, state[:players].first)
       return false if ![:awaiting_deal, :round_complete].include?(state[:phase])
       round, dealer, seed = parse_deal(event["value"])
+      expected = state[:dealer_index] == nil ? '{dealer}' : (state[:dealer_index] + 1) % state[:players].length
+      return false unless GameRoomServerRandom.valid_text_seed_event?(event,
+        template: "#{state[:round] + 1}|#{expected}|{seed}", seats: (0...state[:players].length).to_a)
       return false if round != state[:round].to_i + 1
       count = state[:players].length
       return false if !dealer.between?(0, count - 1)
@@ -876,7 +906,7 @@ module GameRoomGames
       end
       player = player_key(state, actor)
       return false if !state[:hands][player].include?(card)
-      return false if !legal_cards(state, player).include?(card)
+      return false if !state[:private_reducing] && !legal_cards(state, player).include?(card)
       return false if mode == "marriage" && !marriage_available?(state, player, card)
       return false if mode != "normal" && mode != "marriage"
 
@@ -961,6 +991,7 @@ module GameRoomGames
         apply_zero_penalties(state, barrel_before)
       end
       settle_barrels_and_winner(state, barrel_before, consume_deal: !surrendered)
+      remember_tournament_checkpoint(state, event_id: event_id, index: state[:round], kind: 'deal') unless state[:private_cards]
 
       round_results = scoring_units(state).map do |player|
         delta = state[:scores][player].to_i - before_scores[player].to_i
@@ -1095,7 +1126,7 @@ module GameRoomGames
       player = player_key(state, actor)
       return [] if player == nil || state[:passed][player]
       minimum = state[:current_bid] == nil ? BID_MINIMUM : state[:current_bid].to_i + BID_STEP
-      maximum = maximum_bid_for_hand(state[:hands][player])
+      maximum = state[:private_reducing] ? BID_MAXIMUM : maximum_bid_for_hand(state[:hands][player])
       values = (minimum..maximum).step(BID_STEP).to_a
       can_pass = state[:current_bid] != nil && !same_user?(player, state[:first_bidder])
       can_pass = state[:current_bid] != nil if state[:bids][player] != nil
@@ -1110,7 +1141,7 @@ module GameRoomGames
 
     def legal_contract_values(state, actor)
       return [] if !same_user?(state[:taker], actor)
-      maximum = maximum_bid_for_hand(hand_for(state, actor))
+      maximum = state[:private_reducing] ? BID_MAXIMUM : maximum_bid_for_hand(hand_for(state, actor))
       maximum = [maximum, state[:contract].to_i].max
       (state[:contract].to_i..maximum).step(BID_STEP).to_a
     end
@@ -1387,6 +1418,7 @@ module GameRoomGames
       return false if state[:phase] != :playing || !same_user?(state[:current_player], actor)
       return false if !state[:current_trick].empty? || state[:trick_number].to_i == 0
       return false if !["K", "Q"].include?(card_rank(card))
+      return true if state[:private_reducing]
 
       suit = card_suit(card)
       hand = hand_for(state, actor)
@@ -1736,5 +1768,8 @@ module GameRoomGames
     end
   end
 end
+
+require_relative 'tysiac_private'
+GameRoomGames::Tysiac.prepend(GameRoomGames::TysiacPrivate)
 
 require_relative 'generated/rulebooks/tysiac'

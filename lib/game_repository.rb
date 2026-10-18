@@ -6,6 +6,7 @@ require_relative "bot_turn_gate"
 require_relative "game_event_protocol"
 require_relative "game_session_contracts"
 require_relative "table_control"
+require_relative "tournament_marker"
 
 class GameRepository
   GameSnapshot = GameRoomSessionContracts::GameSnapshot
@@ -43,6 +44,7 @@ class GameRepository
   end
 
   def restore_session(table:, game:, players:, options:, restore:)
+    GameRoomTournamentMarker.ensure_savable!(table, restore)
     raise ArgumentError, "Only the founder may restore the game" unless GameRoomParticipants.same?(table["owner"], Session.name)
     @start_session_mutex ||= Mutex.new
     @start_session_mutex.synchronize do
@@ -109,6 +111,10 @@ class GameRepository
     # A terminal boundary can have arrived in the event read just completed.
     refreshed = @transport.game_session(session_id(current), table: current["table_id"])
     current = with_players(refreshed, players_for(refreshed)) if refreshed != nil
+    current = @transport.private_cards_snapshot(current, events) if GameRoomPrivateCards.enabled?(current)
+    if GameRoomPrivateCards.enabled?(current) && (projection = GameRoomPrivateCards.sharing_projection(current['game']))
+      current = @transport.shared_private_draws_snapshot(current, projection.call(current, events, self))
+    end
     GameSnapshot.new(session: current, events: events)
   end
 
@@ -177,7 +183,7 @@ class GameRepository
     @transport.consume_recovered_game_events(session)
   end
 
-  def append_events(session:, sequence:, events:, recipients: nil, actor: Session.name, controller: false)
+  def append_events(session:, sequence:, events:, recipients: nil, actor: Session.name, controller: false, write_guard: nil)
     raise ArgumentError, "The game no longer exists" if session_id(session) <= 0 || session["table_id"].to_i <= 0
 
     players = players_for(session)
@@ -205,7 +211,8 @@ class GameRepository
       sequence: sequence,
       events: commands,
       actor: event_actor,
-      controller: controller == true
+      controller: controller == true,
+      **(write_guard ? {write_guard: write_guard} : {})
     )
   end
 

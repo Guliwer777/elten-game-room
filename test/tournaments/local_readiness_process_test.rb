@@ -1,4 +1,6 @@
 # encoding: UTF-8
+require_relative '../support/tournament_evidence_environment'
+require_relative '../support/temporary_directory'
 require_relative '../support/assertions'
 require_relative '../support/tournament_environment'
 require 'json'
@@ -11,7 +13,7 @@ require_relative '../../lib/tournaments/readiness_request'
 include GameRoomTest::Assertions
 EVIDENCE=ENV.fetch('ENTRY_EVIDENCE')
 JOB=File.expand_path('../support/tournament_local_readiness_process.rb',__dir__)
-ROOT=Dir.mktmpdir('cold-cas-', ENV.fetch('TMPDIR'))
+ROOT=GameRoomTest::TemporaryDirectory.create('cold-cas-')
 FileUtils.mkdir_p(ROOT)
 @children=[]
 def spawn_case(label,mode,directory,job=nil)
@@ -19,7 +21,7 @@ def spawn_case(label,mode,directory,job=nil)
     [name,Digest::SHA256.file(File.join(directory,name)).hexdigest]
   end
   args=[RbConfig.ruby,JOB,mode,directory,job].compact
-  File.write(File.join(EVIDENCE,label+'-before.json'),JSON.pretty_generate({env:ENV.to_h,argv:args,cwd:Dir.pwd,data:before}),encoding:'UTF-8')
+  File.write(File.join(EVIDENCE,label+'-before.json'),JSON.pretty_generate({env: TournamentTestEvidence.environment,argv:args,cwd:Dir.pwd,data:before}),encoding:'UTF-8')
   pid=Process.spawn(ENV.to_h,*args,out:File.join(EVIDENCE,label+'.stdout.raw'),err:File.join(EVIDENCE,label+'.stderr.raw'))
   @children << [label,pid]
   pid
@@ -62,6 +64,18 @@ begin
     assert_equal(1,document['receipts'].count { |row| row['status']=='confirmed' })
   end
 ensure
-  @children.each { |label,pid| join_case(label,pid) }
+  cleanup_errors=[]
+  @children.dup.each do |label,pid|
+    begin
+      join_case(label,pid)
+    rescue StandardError => error
+      cleanup_errors << error
+    end
+  end
+  raise cleanup_errors.first if cleanup_errors.one?
+  unless cleanup_errors.empty?
+    message=cleanup_errors.map { |error| error.full_message(highlight:false) }.join("\n")
+    raise RuntimeError.new(message), cause: $! || cleanup_errors.first
+  end
 end
 puts 'PASS zimny A→B, dwa PID bez resend, dwa PID CAS, dwa PID exact dedup; wszystkie join'

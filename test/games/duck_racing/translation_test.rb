@@ -154,4 +154,4 @@ end
   assert_equal("Bob stoi #{turns} #{noun}.", history.first.text)
 end
 GameRoomTestLocalization.use_language('en')
-puts "PASS Duck UI in five languages: #{records.length} messages, 37 cards, 30 squares, 20 challenge names and plural counts #{counts.join('/')}"
+puts "PASS Duck UI in five languages: #{records.length} messages, 37 cards, 30 squares, #{LOGIC::Challenges::TYPES.length} challenge names and plural counts #{counts.join('/')}"

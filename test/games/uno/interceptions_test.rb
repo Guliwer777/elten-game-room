@@ -115,7 +115,7 @@ check.call("human and bot turns accept legal interceptions and penalize nonmatch
     assert(state.reject { |key, _| key == :scores } == before.reject { |key, _| key == :scores }, "Penalty changed cards, turn or timer")
     assert(history.one? && history.first.text.include?("Too late") && history.first.value == 3, "Missing penalty announcement/history")
     sound = GameRoomSounds.event_cue(game: uno, event: event, before_replay: replay_of(before), after_replay: replay_of(state).tap { |r| r.history = history }, repository: InterceptionRepository.new(state[:players]), viewer: "Alice")
-    assert(sound != "play" && sound != "reverse", "Penalty sounds like a played card")
+    assert((Array(sound) & %w[play reverse reverse3]).empty?, "Penalty sounds like a played card")
   end
 end
 

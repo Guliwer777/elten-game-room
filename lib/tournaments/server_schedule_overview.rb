@@ -3,22 +3,24 @@ require_relative 'tournament_window'
 require_relative 'match_order'
 require_relative 'server_forfeit_screen'
 require_relative 'view_refresh'
+require_relative 'phase_description'
 
 module GameRoomTournaments
   # Shared schedule and explicit ordinary-table entry for the selected fixture.
   class ServerScheduleOverview < TournamentWindow
     using GameRoomLocalization::Translations
-    def initialize(program:, workspace:, owner:, publication:,mode: :matches)
+    def initialize(program:, workspace:, owner:, publication:,mode: :matches,initial_phase_id:nil)
       super(program: program, workspace: workspace, owner: owner)
       @publication = publication
       @mode=mode
+      @initial_phase_id=initial_phase_id
     end
     private
     def build_form
       @details = readonly(_("Information"), '')
       refresh = button(_("Refresh")) { refresh_schedule }
-      @match_list = ListBox.new([],header:text(_("Matches")),quiet:true)
-      @standings_list=ListBox.new([],header:text(_("Results")),quiet:true)
+      @match_list = ListBox.new([],header:text(_("Tournament matches")),quiet:true)
+      @standings_list=ListBox.new([],header:text(_("Standings")),quiet:true)
       @phases=ListBox.new([],header:text(_("Tournament phase")),quiet:true)
       @phases.on(:move){interaction(restore:false,focus:false){render_phase}}
       @play = button(_("Play")) do
@@ -42,20 +44,11 @@ module GameRoomTournaments
           schedule_id=@candidate['schedule_id']
           units=match['unit_ids'] || match['players']
           teams=(@candidate.dig('membership','units') || []).to_h{|unit|[unit['unit_id'],unit['accounts'].join(' + ')]}
-          winner=ServerForfeitScreen.new(program:@program,names:units.map{|unit|teams.fetch(unit,unit)}).run
-          next if winner.nil? || !current?
-          @program.award_ordinary_tournament_forfeit(@publication,match,units.fetch(winner),schedule_id)
-          refresh_schedule if current?
-        end
-        @cancel_forfeit=button(_("Cancel tournament match and award forfeit")) do
-          next unless current? && cancel_forfeit_available?
-          match=@matches[@match_list.index]
-          schedule_id=@candidate['schedule_id']
-          units=match['unit_ids'] || match['players']
-          teams=(@candidate.dig('membership','units') || []).to_h{|unit|[unit['unit_id'],unit['accounts'].join(' + ')]}
-          winner=ServerForfeitScreen.new(program:@program,names:units.map{|unit|teams.fetch(unit,unit)},cancellation:true).run
-          next if winner.nil? || !current?
-          @program.award_ordinary_tournament_forfeit(@publication,match,units.fetch(winner),schedule_id,cancel_started:true)
+          loser=ServerForfeitScreen.new(program:@program,names:units.map{|unit|teams.fetch(unit,unit)}).run
+          next if loser.nil? || !current?
+          selected=@matches && @matches[@match_list.index]
+          next unless selected && @candidate['schedule_id']==schedule_id && selected['match_id']==match['match_id'] && selected['leg']==match['leg']
+          @program.award_ordinary_tournament_forfeit(@publication,match,units.fetch(loser),schedule_id,names:teams)
           refresh_schedule if current?
         end
       end
@@ -167,6 +160,11 @@ module GameRoomTournaments
       @phases.update_options(@result_phases.map{|phase|phase_label(phase['candidate'])},
         keys:@result_phases.map{|phase|phase['candidate']['schedule_id']})
       @phases.index=@result_phases.size-1 if was_current
+      if @initial_phase_id
+        requested=@result_phases.index{|phase|phase['candidate']['schedule_id']==@initial_phase_id}
+        @phases.index=requested if requested
+        @initial_phase_id=nil
+      end
       render_phase
     end
 
@@ -182,6 +180,7 @@ module GameRoomTournaments
       end
       lines=[@publication['title'],text(label)]
       lines<<text(_("Tournament winner: %{player}"))%{player:team_names.fetch(@result_view['champion'],@result_view['champion'])} if @result_view && @result_view['champion']
+      lines.concat(forfeit_diagnostics(@result_view))
       @details.set_text(lines.join("\n"))
     end
 
@@ -206,7 +205,7 @@ module GameRoomTournaments
       return unless phase
       teams=(phase['candidate'].dig('membership','units') || []).to_h{|unit|[unit['unit_id'],unit['accounts'].join(' + ')]}
       rows=phase['view']['standings'] || []
-      @standings_list.header=text(_("Results — %{phase}"))%{phase:phase_label(phase['candidate'])}
+      @standings_list.header=text(_("Standings — %{phase}"))%{phase:phase_label(phase['candidate'])}
       @standings_list.update_options(rows.map do |row|
         prefix=row['group'] ? text(_("Group"))+" #{row['group']}; " : ''
         prefix+(text(_("%{place}. %{player}; points: %{points}; played: %{played}"))%{
@@ -216,6 +215,7 @@ module GameRoomTournaments
       if (winner=phase['view']['champion'])
         lines << text(_("Tournament winner: %{player}"))%{player:teams.fetch(winner,winner)}
       end
+      lines.concat(forfeit_diagnostics(phase['view']))
       @details.set_text(lines.join("\n"))
       lines.empty? ? @form.hide(@details) : @form.show(@details)
     end
@@ -250,7 +250,7 @@ module GameRoomTournaments
     def forfeit_available?
       match=@matches && @matches[@match_list.index]
       @candidate && @candidate['schedule_id']==@current_schedule_id && @result_view && match && @publication['__insertion_user'].downcase==@workspace.actor.downcase &&
-        (@result_view['forfeitable_matches'] || []).any?{|row|row['match_id']==match['match_id'] && row['leg']==match['leg']} &&
+        ((@result_view['forfeitable_matches'] || [])+(@result_view['cancellable_matches'] || [])).any?{|row|row['match_id']==match['match_id'] && row['leg']==match['leg']} &&
         !@result_view['results'].any?{|receipt|receipt['match_id']==match['match_id'] && receipt['leg']==match['leg']}
     end
     def experimental_ui?;@workspace.respond_to?(:experimental_ui?) && @workspace.experimental_ui?;end
@@ -263,13 +263,32 @@ module GameRoomTournaments
       return unless current? && completed_match_selected?
       match=@matches[@match_list.index]
       receipt=@result_view['results'].find{|row|row['match_id']==match['match_id'] && row['leg']==match['leg']}
-      details=readonly(_("Match result"),result_label(receipt.fetch('summary'),team_names))
+      value=result_label(receipt.fetch('summary'),team_names)
+      if receipt['kind']=='ordinary-match-forfeit-v2'
+        loser=receipt.fetch('decision').fetch('loser')
+        value += "\n"+text(_("%{player} loses by forfeit. Organizer: %{organizer}."))%{
+          player:team_names.fetch(loser,loser),organizer:receipt.fetch('organizer')}
+        explanation=ServerForfeitScreen.explanation(receipt)
+        value += "\n"+text(explanation) if explanation
+      end
+      details=readonly(_("Result details"),value)
       back=Button.new(text(_("Back")))
       form=GameRoomUI::Form.new([details,back],program:@program,quiet:true)
       form.hide(back)
       form.cancel_button=back
       back.on(:press){form.resume}
       form.wait
+    end
+
+    def forfeit_diagnostics(view)
+      lines=[]
+      if view && !view.fetch('forfeit_conflicts',[]).empty?
+        lines << text(_("Conflicting match results were recorded. The first complete result remains in effect."))
+      end
+      if view && !view.fetch('forfeit_unavailable_matches',[]).empty?
+        lines << text(_("To decide a match in progress, join its table as an observer. A match with unavailable history cannot be decided here."))
+      end
+      lines
     end
 
     def match_context(menu)
@@ -283,11 +302,19 @@ module GameRoomTournaments
       identity=[@candidate['schedule_id'],match['match_id'],match['leg']]
       actions=[]
       if completed_match?(match)
-        actions << [_("Match result"),'w',-> {interaction{show_match_result}}]
+        actions << [_("Result details"),'w',-> {interaction{show_match_result}}]
+        if return_match_for(match)
+          actions << [_("Play return match"),'g',-> {
+            following=return_match_for(match)
+            if following
+              @match_list.index=@matches.index(following)
+              @play.press
+            end
+          }]
+        end
       elsif @candidate['schedule_id']==@current_schedule_id
         actions << [_("Play"),'g',-> {@play.press}] if match['players'].include?(@workspace.actor.downcase)
         actions << [_("Award forfeit"),'f',-> {@forfeit.press}] if @forfeit && forfeit_available?
-        actions << [_("Cancel tournament match and award forfeit"),'F',-> {@cancel_forfeit.press}] if @cancel_forfeit && cancel_forfeit_available?
       end
       actions.each do |label,key,action|
         menu.option(text(label),nil,key) do
@@ -296,47 +323,27 @@ module GameRoomTournaments
         end
       end
     end
-    def cancel_forfeit_available?
-      match=@matches && @matches[@match_list.index]
-      @candidate && @candidate['schedule_id']==@current_schedule_id && @result_view && match && @publication['__insertion_user'].downcase==@workspace.actor.downcase &&
-        (@result_view['cancellable_matches'] || []).any?{|row|row['match_id']==match['match_id'] && row['leg']==match['leg']} &&
-        !@result_view['results'].any?{|receipt|receipt['match_id']==match['match_id'] && receipt['leg']==match['leg']}
-    end
 
+    def return_match_for(match)
+      return unless @candidate['schedule_id']==@current_schedule_id && match['players'].include?(@workspace.actor.downcase)
+      @matches.compact.find do |following|
+        following['leg']>match['leg'] && following['players'].sort==match['players'].sort &&
+          following['unit_ids']&.sort==match['unit_ids']&.sort && !completed_match?(following)
+      end
+    end
     def ordered_matches(matches)
       matches.group_by{|match|[match['players'].sort,match['unit_ids']&.sort]}.values.flat_map{|pair|pair.sort_by{|match|match['leg']}}
     end
 
     def phase_label(candidate)
-      case candidate['format']
-      when 'round_robin'
-        text(_("Round robin"))
-      when 'groups_knockout'
-        text(_("Group stage"))
-      when 'knockout'
-        knockout=candidate.fetch('knockout')
-        return text(_("Additional matches to resolve group qualification")) if knockout['qualification']
-        # Seeds cover the whole round, including teams, byes and already resolved
-        # matches. A replay or a deciding leg may contain only one of its matches.
-        label=if knockout['players_per_match']==2
-          case knockout.fetch('seeds').size
-          when 2 then _("Final")
-          when 3..4 then _("Semifinals")
-          when 5..8 then _("Quarterfinals")
-          when 9..16 then _("Round of 16")
-          end
-        end
-        label ? text(label) : text(_("Knockout round: %{round}"))%{round:knockout.fetch('round')}
-      else
-        text(_("Tournament phase"))
-      end
+      PhaseDescription.label(candidate)
     end
 
     def match_label(match)
       names=match['unit_ids'] ? MatchOrder.players(@candidate['matches'],match,key:'unit_ids').map{|id|team_names.fetch(id)} : MatchOrder.players(@candidate['matches'],match)
       result=@result_view && @result_view['results'].find{|receipt|receipt['match_id']==match['match_id'] && receipt['leg']==match['leg']}
-      status=result ? result_label(result['summary'],team_names).lines.first.strip : text(_("To be played"))
-      status=text(_("Forfeit"))+"; "+status if result && %w[ordinary-match-forfeit-v1 ordinary-match-cancel-forfeit-v1].include?(result['kind'])
+      status=result ? result_label(result['summary'],team_names).lines.map(&:strip).join('; ') : text(_("To be played"))
+      status=text(_("Forfeit"))+"; "+status if result && %w[ordinary-match-forfeit-v1 ordinary-match-cancel-forfeit-v1 ordinary-match-forfeit-v2].include?(result['kind'])
       label=names.join(' — ')
       label+="; "+text(_("Return match")) if match['leg']==2
       label+"; "+status
@@ -344,6 +351,14 @@ module GameRoomTournaments
 
     def result_label(summary,teams={})
       outcome=summary['draw'] ? text(_("Draw")) : text(_("Winner: %{players}"))%{players:summary.fetch('winners').map{|unit|teams.fetch(unit,unit)}.join(', ')}
+      if summary['places']
+        place=1
+        outcome=summary['places'].map do |group|
+          line="#{place}. "+group.map { |unit| teams.fetch(unit,unit) }.join(', ')
+          place+=group.size
+          line
+        end.join("\n")
+      end
       scores=summary['scores']
       return outcome unless scores && !scores.empty?
       score=summary.fetch('participants').map{|player|"#{teams.fetch(player,player)}: #{scores.fetch(player)}"}.join('; ')

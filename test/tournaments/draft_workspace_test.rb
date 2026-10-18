@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require_relative '../support/ui'
 require_relative '../../games/catalog'
@@ -17,7 +18,7 @@ module EltenAPI
   end
 end
 
-Dir.mktmpdir('tournament-workspace-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('tournament-workspace-') do |directory|
   caller_thread = Thread.current
   path_threads = []
   program = Object.new
@@ -43,7 +44,7 @@ Dir.mktmpdir('tournament-workspace-', ENV.fetch('TMPDIR')) do |directory|
 end
 puts 'PASS integracja trwałego zapisu, odtworzenia, edycji i usuwania na workerze hosta'
 
-Dir.mktmpdir('tournament-workspace-errors-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('tournament-workspace-errors-') do |directory|
   program = Object.new
   program.define_singleton_method(:data_path) { directory }
   user = 'Alice'

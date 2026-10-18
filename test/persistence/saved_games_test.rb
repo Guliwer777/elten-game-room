@@ -2,7 +2,7 @@ require_relative "../support/native_live_sessions"
 require_relative "../../lib/saved_games"
 require_relative "../../lib/game_simulation"
 require_relative "../../content/monopoly_boards"
-%w[four_in_a_row tic_tac_toe chess checkers reversi ludo spades farkle cat_head_tail ninety_nine mille_bornes tysiac three_five_eight monopoly yahtzee uno poker makao].each do |name|
+%w[four_in_a_row tic_tac_toe chess checkers reversi ludo spades bridge farkle cat_head_tail ninety_nine mille_bornes tysiac three_five_eight monopoly yahtzee uno poker makao].each do |name|
   require_relative "../../games/#{name}"
 end
 
@@ -20,6 +20,38 @@ class ArchiveStorage
   end
 end
 
+# Keep the ordinary simulation's action selection, but write fixture moves
+# through the native contract. A locally generated deal is no longer a valid
+# source event for a new server-random session.
+class NativeArchiveEnvironment < GameRoomSimulation::Environment
+  def initialize(game:, session:, repository:, players:)
+    super(game:game, session:session, events:[], players:players,
+      random_source:GameRoomRandom::SeededSource.new(42))
+    @repository = repository
+    stabilize!
+  end
+
+  def players; @repository.players_for(@session); end
+
+  def context
+    super.tap do |value|
+      value.server_random = @session['__server_random'] == GameRoomServerRandom::VERSION
+      value.table_owner = 'Alice'
+      value.now = Time.now.to_i
+    end
+  end
+
+  private
+
+  def append_plan(plan, actor)
+    @repository.append_events(session:@session, sequence:@repository.next_sequence(@session, @events),
+      events:plan.events, actor:actor, controller:true)
+    snapshot = @repository.snapshot_for(@session)
+    @session, @events = snapshot.session, snapshot.events
+    @replay, @legal_actions_cache = nil, {}
+  end
+end
+
 def expect_error(message)
   begin
     yield
@@ -33,7 +65,7 @@ invalid_storage = ArchiveStorage.new
 invalid_storage.instance_variable_set(:@state, { "games" => "broken" })
 expect_error("corrupt saved storage escaped validation") { SavedGames.new(invalid_storage, owner: "Alice").delete("missing") }
 
-types = %w[FourInARow TicTacToe Chess Checkers Reversi Ludo Spades Farkle CatHeadTail NinetyNine MilleBornes Tysiac ThreeFiveEight Monopoly Yahtzee Uno Poker Makao]
+types = %w[FourInARow TicTacToe Chess Checkers Reversi Ludo Spades Bridge Farkle CatHeadTail NinetyNine MilleBornes Tysiac ThreeFiveEight Monopoly Yahtzee Uno Poker Makao]
 # Optional class names allow a new game to run the same save assertions on its
 # own. The ordinary invocation still covers every game in the list.
 unless ARGV.empty?
@@ -55,7 +87,12 @@ types.each do |type|
   public_row = bob.discover_rooms.first
   assert(bob.establish_membership(table_id: table["__id"], owner: "Alice", capacity: 8, user: "Bob", table: public_row), "Bob could not join")
   session = repo.start_session(table: table, game: game.id, players: players, options: JSON.generate(game.default_options))
-  env = GameRoomSimulation::Environment.new_game(game: game, players: players, seed: 42)
+  if game.id == 'tysiac'
+    # Preserve the archive fixture in which a human passes a card to a bot.
+    broker.endpoint('Alice').sessions.find { |view| view.id == table['__live_session_id'] }.next_random_values =
+      GameRoomRandom::SeededSource.new(42).roll(count:16, sides:256).values
+  end
+  env = NativeArchiveEnvironment.new(game:game, session:session, repository:repo, players:players)
   2.times do
     action = env.legal_actions.first
     break if action == nil || env.finished?
@@ -74,12 +111,6 @@ types.each do |type|
   3.times do
     break if game.save_game_error(env.replay) == nil || env.finished?
     assert(env.step(env.legal_actions.first) == :ok, "#{game.id} fixture choice failed")
-  end
-  env.events.each do |event|
-    actor = event["actor"]
-    $game_room_test_user = "Alice"
-    repo.append_events(session: session, sequence: event["sequence"],
-      events: [GameRoomGames::EventCommand.new(action: event["action"], value: event["value"])], actor: actor, controller: true)
   end
   boundary = owner.freeze_game(session)
   snapshot = repo.snapshot_for(session, force_events: true)
@@ -125,7 +156,8 @@ types.each do |type|
   assert(remote_repo.snapshot_for(remote).events.length == snapshot.events.length, "#{game.id}: remote client did not import archive")
   assert(repo.restore_session(table: restored_table, game: game.id, players: restoration[:players], options: row["options"], restore: restoration)["__id"] == restored["__id"], "repeated resume created a second game")
   actor = game.active_actors(after).first
-  context = GameRoomGames::ActionContext.new(now: row["game_time"], random_source: GameRoomRandom::SeededSource.new(43))
+  context = GameRoomGames::ActionContext.new(now: row["game_time"], random_source: GameRoomRandom::SeededSource.new(43),
+    server_random: restored['__server_random'] == GameRoomServerRandom::VERSION)
   action = game.legal_actions(after, actor, context: context).first
   if action
     status, plan = game.action_for(action, after, actor, context: context)

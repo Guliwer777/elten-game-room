@@ -17,6 +17,7 @@ module GameRoomGames
         when "answer_nonce" then reduce_answer_nonce(frame, input)
         when "answer_pick" then reduce_answer_pick(frame, input)
         when "question_finished" then reduce_question_finished(frame, input)
+        when "tournament_elimination" then reduce_tournament_elimination(frame, input)
         else false
         end
       end
@@ -29,7 +30,11 @@ module GameRoomGames
         event_id = input.id
         value = input.value
         accepted_event = false
-        parsed = parse_round_draw(value)
+        parsed = if input.source['__server_random'] || value.include?(',n:')
+          parse_seeded_categories(state,input.source)
+        else
+          parse_round_draw(value)
+        end
         drawn = parsed == nil ? nil : categories_by_codes(state, parsed[:categories])
         if state[:phase] == :drawing && owner?(players, actor) && parsed != nil &&
             drawn != nil && drawn.length == round_choice_count(state) &&
@@ -61,7 +66,7 @@ module GameRoomGames
         accepted_event = false
         parsed = parse_round_category(value)
         expected_round = state[:completed_rounds] + 1
-        expected_chooser = chooser_index(players, expected_round)
+        expected_chooser = players.index(current_chooser(state))
         category = parsed == nil ? nil : category_by_code(state, parsed[:category])
         if state[:phase] == :choosing && parsed != nil && category != nil &&
             state[:choices].include?(category) &&
@@ -97,7 +102,11 @@ module GameRoomGames
         value = input.value
         timestamp = input.timestamp
         accepted_event = false
-        parsed = parse_question(value)
+        parsed = if input.source['__server_random'] || value.include?(',n:')
+          parse_seeded_question(state,input.source)
+        else
+          parse_question(value)
+        end
         question = parsed == nil ? nil : question_by_id(state, parsed[:question_id])
         if state[:phase] == :starting && owner?(players, actor) && parsed != nil &&
             question != nil && question["category"].to_s == state[:category].to_s &&
@@ -137,7 +146,7 @@ module GameRoomGames
         timestamp = input.timestamp
         accepted_event = false
         commitment = decode_answer_value(state, value, digest: true)
-        if state[:phase] == :answering && includes_player?(players, actor) &&
+        if state[:phase] == :answering && includes_player?(tournament_remaining_players(state), actor) &&
             !player_hash_key?(state[:commitments], actor) && commitment != nil &&
             timestamp != nil && !closing_deadline_reached?(state, timestamp)
           state[:commitments][canonical_player(players, actor)] = commitment
@@ -196,9 +205,12 @@ module GameRoomGames
             parsed[:mask] == expected_score_mask(state) && question_may_finish?(state, timestamp)
           accepted_event = true
           history.concat(question_result_history(state, event_id, actor))
+          HiddenSubmissions::Cleanup.confirm(state, question_key(state), state[:commitments])
           apply_question_scores(state, parsed[:mask])
           if state[:position] >= QUESTIONS_PER_ROUND
+            advance_tournament_chooser(state)
             state[:completed_rounds] += 1
+            remember_tournament_checkpoint(state, event_id:event_id, index:state[:completed_rounds])
             state[:phase] = :drawing
             state[:choices] = []
             history << history_entry(
@@ -219,6 +231,35 @@ module GameRoomGames
           end
         end
         accepted_event
+      end
+
+      def reduce_tournament_elimination(frame, input)
+        state = frame.state
+        departed = tournament_elimination_players(input.source, players:frame.players)
+        active = tournament_remaining_players(state)
+        return false unless departed && %i[drawing choosing starting answering revealing].include?(state[:phase]) &&
+          (departed - active).empty? && (active - departed).length >= 2
+
+        # Keep the current chooser through a round already in progress. At its
+        # end, advance once in the original seat order, skipping removed seats.
+        state[:category_chooser] ||= current_chooser(state)
+        (state[:tournament_eliminations] ||= []) << departed
+        if %i[drawing choosing].include?(state[:phase]) && departed.include?(state[:category_chooser])
+          advance_tournament_chooser(state)
+        end
+        if %i[answering revealing].include?(state[:phase])
+          HiddenSubmissions::Cleanup.confirm(state, question_key(state), state[:commitments].select do |player, _|
+            includes_player?(departed, player)
+          end)
+          %i[commitments reveals reveal_parts].each do |key|
+            state[key].delete_if { |player, _| includes_player?(departed, player) }
+          end
+        end
+        departed.each do |player|
+          frame.history << history_entry(input.id,
+            _("%{player} left this game.") % {player: participant_name(player)}, player, :departure)
+        end
+        true
       end
     end
     include Reduction

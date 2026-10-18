@@ -60,7 +60,7 @@ module GameRoomDuckRacing
         last_press: seats.to_h { |seat| [seat, 0] }, last_time: seats.to_h { |seat| [seat, 0] }}
     end
 
-    def submit(state, seat:, action:, now_ms:, resources: {})
+    def submit(state, seat:, action:, now_ms:, resources: {}, seed: nil)
       return false unless state[:participants].include?(seat) && now_ms.is_a?(Integer) && now_ms >= state[:last_time].fetch(seat)
       input = normalize_input(action)
       return false unless input
@@ -72,6 +72,11 @@ module GameRoomDuckRacing
       end
       engine = engine_for(state[:kind])
       arguments = {seat: seat, action: input, now_ms: now_ms}
+      if seed
+        return false unless seed.is_a?(Integer) && seed.between?(0, (1 << 128) - 1) &&
+          %w[dice_duel risky_dice].include?(state[:kind]) && input[:kind] == :roll
+        state[:model][:players].fetch(seat)[:random] = Random.new(seed)
+      end
       return false unless engine.submit(state[:model], **arguments)
 
       state[:last_time][seat] = now_ms
@@ -79,7 +84,17 @@ module GameRoomDuckRacing
       true
     end
 
-    def expire(state, now_ms:)
+    def expire(state, now_ms:, seed: nil)
+      if seed && %w[dice_duel risky_dice].include?(state[:kind])
+        return false unless seed.is_a?(Integer) && seed.between?(0, (1 << 128) - 1)
+        # An expired turn can roll on behalf of more than one player. Their
+        # independent streams must come from this receipt, not the challenge
+        # seed which every participant has already seen.
+        random = Random.new(seed)
+        state[:participants].each do |seat|
+          state[:model][:players].fetch(seat)[:random] = Random.new(random.rand(1 << 128))
+        end
+      end
       engine_for(state[:kind]).expire(state[:model], now_ms: now_ms)
     end
 
@@ -89,7 +104,10 @@ module GameRoomDuckRacing
       unless revealed
         # A local model reaching its deadline is not permission to disclose
         # the answer while another participant's commitment is unresolved.
-        [:scores, :results, :answer, :outcome, :correct_index, :answers].each { |key| output.delete(key) }
+        [:results, :answer, :outcome, :correct_index, :answers].each { |key| output.delete(key) }
+        # Balls and their accepted picks are public throughout play. Their
+        # running totals are inspectable, unlike independent private scores.
+        output.delete(:scores) unless state[:kind] == 'numbered_balls'
         if state[:kind] == "guess_number" && output[:own]
           output[:own].delete(:best)
           output[:own][:attempts].each { |attempt| attempt.delete(:distance) }

@@ -23,11 +23,25 @@ module GameRoomTournaments
 
       configure_tournament_starts(source:->(reference){workspace.start_notice_source_on_worker(publication_ref:reference)},
         context:context,clock:clock,registry:const_get(:GAME_REGISTRY))
+      configure_tournament_events(source:->(reference,kind,phase_id){workspace.event_notice_source_on_worker(publication_ref:reference,kind:kind,phase_id:phase_id)},
+        context:context,clock:clock,registry:const_get(:GAME_REGISTRY))
       @tournament_coordinator=ServerCoordination.new(workspace:workspace,user:-> {Session.name},clock:clock,
         worker:GameRoomBackground::Work.new(runtime:app_runtime),
         wake:->(recipient,reference){send_notification(recipient,type:ServerCoordination::TYPE,
           metadata:{'version'=>1,'backend_identity'=>workspace.backend_identity,'publication_ref'=>reference,'recipient'=>recipient},expires_in:120)},
-        started:->(reference){
+        phase_finished:->(reference,phase_id){
+          begin
+            send_tournament_event(kind:'phase_finished',publication_ref:reference,phase_id:phase_id)
+          rescue ProposalNotice::Stale
+            nil
+          end
+        },finished:->(reference){
+          begin
+            send_tournament_event(kind:'finished',publication_ref:reference)
+          rescue ProposalNotice::Stale
+            nil
+          end
+        },started:->(reference){
           begin
             send_tournament_start_notices(publication_ref:reference)
           rescue ProposalNotice::Stale

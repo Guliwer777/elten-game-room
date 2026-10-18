@@ -1,9 +1,9 @@
 # encoding: UTF-8
-require 'tmpdir'
+require_relative '../support/temporary_directory'
 require 'json'
 require 'open3'
 require 'rbconfig'
-root = Dir.mktmpdir('durable-save-reconcile-', ENV.fetch('TMPDIR'))
+root = GameRoomTest::TemporaryDirectory.create('durable-save-reconcile-')
 worker = File.expand_path('../support/durable_save_reconcile_process.rb', __dir__)
 puts "Izolowane dane próby komponentu: #{root}"
 results = %w[A B].map do |phase|

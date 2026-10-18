@@ -42,7 +42,8 @@ T.script(choose_game('tic_tac_toe'), lambda do |form|
   headers = form.fields.map { |field| field.is_a?(Button) ? field.label : field.respond_to?(:header) ? field.header : nil }
   assert(headers.take(3) == ['Tournament name', 'Tournament format', 'Return matches'], 'Tournament choices follow the separate game settings')
   assert(!headers.include?('Participants and playing windows'), 'No nested tournament details dialog')
-  assert(headers.none? { |header| header == 'Tournament rules' }, 'No redundant free-form rules field')
+  assert(!headers.include?('Game settings'), 'New tournament repeats the already completed game settings')
+  assert(headers.none? { |header| header == 'Information and rules' }, 'No redundant free-form rules field')
   T.field(form, 'Tournament name').text = 'Simple league'
   T.field(form, 'Return matches').index = 1
   form.accept_button.trigger(:press)

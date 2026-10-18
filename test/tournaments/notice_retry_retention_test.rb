@@ -90,7 +90,9 @@ assert_equal(1,worker.starts,'Closed inbox continued retrying')
 # conservative lifetime and the migration commits even at the capacity limit.
 now=1000
 starts={}
-service=Object.new
+# Keep the production metadata/identity contract while isolating the clock
+# and source reads needed by the retention fixture.
+service=T::TournamentStartNotice.allocate
 service.define_singleton_method(:retention_deadline){now+T::TournamentStartNotice::READING_GRACE}
 service.define_singleton_method(:expired?){|expiry|now>=expiry}
 service.define_singleton_method(:assert_context!){true}

@@ -68,7 +68,9 @@ jobs:
       - name: Check generated runtime sources
         run: |
           ruby tools/compile-rulebooks.rb --check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           ruby tools/generate-krowa-nouns.rb --check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Run tests
         env:
           ELTEN_HOST_SOURCE: ${{ github.workspace }}/.ci/elten3

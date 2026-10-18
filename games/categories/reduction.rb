@@ -22,6 +22,8 @@ module GameRoomGames
         when "round_score" then reduce_round_score(frame, input)
         when "round_finished" then reduce_round_finished(frame, input)
         when "round_cancelled" then reduce_round_cancelled(frame, input)
+        when "participants_departed" then reduce_participants_departed(frame, input)
+        when "tournament_elimination" then reduce_tournament_elimination(frame, input)
         else false
         end
       end
@@ -35,7 +37,11 @@ module GameRoomGames
         event_id = input.id
         value = input.value
         accepted_event = false
-        parsed = parse_round(value)
+        parsed = if input.source['__server_random'] || value.include?(',n:')
+          parse_seeded_round(state,input.source)
+        else
+          parse_round(value)
+        end
         expected_round = state[:completed_rounds] + 1
         expected_attempt = state[:attempt] + 1
         expected_judge = judge_index(options, players, expected_round, state)
@@ -45,11 +51,14 @@ module GameRoomGames
             valid_round_categories?(parsed[:categories], options)
           state[:attempt] = parsed[:attempt]
           state[:round] = parsed[:round]
-          state[:judge] = players[parsed[:judge_index]]
+          state[:judge] = options["judge_mode"] == JUDGE_MASTER ? state[:permanent_judge] : players[parsed[:judge_index]]
           state[:letter] = parsed[:letter]
           state[:round_categories] = parsed[:categories]
           state[:deadline] = parsed[:deadline]
+          state[:resume_at] = 0
           state[:active_players] = contestants_for_round(players, state[:judge], state)
+          state[:round_player_order] = state[:active_players].dup
+          state[:judge_queue] = remaining_players(state) if state[:judge_queue].empty?
           state[:commitments] = {}
           state[:reveals] = {}
           state[:reveal_parts] = {}
@@ -184,8 +193,8 @@ module GameRoomGames
         accepted_event = false
         item = review_item_by_id(state, value)
         decision = normalize_review_decision(action.sub("review_", ""), item)
-        if state[:phase] == :review && same_user?(state[:judge], actor) && item != nil &&
-            REVIEW_DECISIONS.include?(decision) && state[:decisions][item[:id]] != decision &&
+        if state[:phase] == :review && reviewing_actor?(state, actor, input.source["__authority_user"]) && item != nil &&
+            review_decision_allowed?(item, decision) && state[:decisions][item[:id]] != decision &&
             !state[:review_finished]
           previous = state[:decisions][item[:id]]
           state[:decisions][item[:id]] = decision
@@ -208,7 +217,7 @@ module GameRoomGames
         value = input.value
         accepted_event = false
         item = review_item_by_id(state, value)
-        if state[:phase] == :review && same_user?(state[:judge], actor) && item != nil &&
+        if state[:phase] == :review && reviewing_actor?(state, actor, input.source["__authority_user"]) && item != nil &&
             state[:decisions].key?(item[:id]) && !state[:review_finished]
           previous = state[:decisions].delete(item[:id])
           accepted_event = true
@@ -223,7 +232,7 @@ module GameRoomGames
         actor = input.actor
         event_id = input.id
         accepted_event = false
-        if state[:phase] == :review && same_user?(state[:judge], actor) &&
+        if state[:phase] == :review && reviewing_actor?(state, actor, input.source["__authority_user"]) &&
             all_reviews_assessed?(state) && !state[:review_finished]
           state[:review_finished] = true
           accepted_event = true
@@ -240,7 +249,7 @@ module GameRoomGames
         value = input.value
         accepted_event = false
         decisions = parse_review_commit(state, value)
-        if state[:phase] == :review && same_user?(state[:judge], actor) && decisions != nil &&
+        if state[:phase] == :review && reviewing_actor?(state, actor, input.source["__authority_user"]) && decisions != nil &&
             !state[:review_finished]
           review_items(state).each do |item|
             decision = decisions.fetch(item[:id])
@@ -301,8 +310,12 @@ module GameRoomGames
         event_id = input.id
         accepted_event = false
         if state[:phase] == :review && owner?(players, actor) && round_scores_complete?(state)
+          HiddenSubmissions::Cleanup.confirm(state, round_id(state), state[:commitments])
           state[:completed_rounds] += 1
+          remember_tournament_checkpoint(state, event_id:event_id, index:state[:completed_rounds])
+          state[:judge_queue].delete(state[:judge])
           state[:phase] = :round_complete
+          state[:resume_at] = input.timestamp.to_i + NEXT_ROUND_PAUSE
           accepted_event = true
           history << history_entry(
             event_id,
@@ -312,6 +325,9 @@ module GameRoomGames
           )
           frame.winner, frame.draw = update_match_ending(state, history, event_id)
           state[:phase] = :finished if frame.winner != nil || frame.draw
+          if state[:phase] == :finished
+            history << history_entry(event_id, scores_text(state, sorted: true), actor, :final_scores)
+          end
         end
         accepted_event
       end
@@ -324,6 +340,8 @@ module GameRoomGames
         event_id = input.id
         accepted_event = false
         if [:revealing, :review].include?(state[:phase]) && owner?(players, actor)
+          HiddenSubmissions::Cleanup.confirm(state, round_id(state), state[:commitments])
+          rollback_incomplete_scores(state)
           state[:phase] = :round_complete
           accepted_event = true
           history << history_entry(

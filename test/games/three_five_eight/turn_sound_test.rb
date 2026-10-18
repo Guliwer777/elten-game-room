@@ -6,11 +6,13 @@ module ThreeFiveEightTurnSoundTest
 
   def submit(room, replay, selection)
     actor = replay.current_player || replay.players.first
-    status, plan = room.game.action_for(selection, replay, actor)
-    assert(status == :ok, "normal selection rejected: #{status}")
     repository = room.repositories.fetch('Alice')
     snapshot = repository.snapshot_for(room.session)
+    context = GameRoomGames::ActionContext.new(server_random: snapshot.session['__server_random'] == GameRoomServerRandom::VERSION)
+    status, plan = room.game.action_for(selection, replay, actor, context: context)
+    assert(status == :ok, "normal selection rejected: #{status}")
     room.as('Alice') do
+      room.view('Alice').next_random_values = [1] * 15 + [selection.fetch('round') * 3 + 2] if selection['action'] == 'deal'
       repository.append_events(session: snapshot.session,
         sequence: repository.next_sequence(snapshot.session, snapshot.events),
         events: plan.events, actor: actor, controller: true)

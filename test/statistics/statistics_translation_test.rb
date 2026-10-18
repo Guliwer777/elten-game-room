@@ -1,3 +1,4 @@
+require_relative '../support/statistics_screen'
 # encoding: UTF-8
 require_relative "../support/background_help_native"
 require_relative "../support/localization"
@@ -79,6 +80,7 @@ data = { "visitors" => 12, "players" => 8, "started" => 6, "completed" => 4,
   "games" => [{ "id" => "chess", "players" => 8, "started" => 6, "completed" => 4, "modes" => modes }] }
 forms = 0
 Form.statistics_translation_driver = lambda do |form|
+  settle_statistics(form)
   forms += 1
   verify_statistics_utf8(form)
   summary = form.fields.first
@@ -108,11 +110,12 @@ Form.statistics_translation_driver = lambda do |form|
   end
   form.cancel_button.press
 end
-GameRoomStatisticsScreen.new(program: program, reader: ->(_) { data }, years_reader: -> { [2025] },
+GameRoomStatisticsScreen.new(program: program, reader: ->(_, _token) { data }, years_reader: ->(_token) { [2025] },
   registry: registry, today: Date.new(2026, 9, 25)).run
 assert(forms == 2, "Polish statistics test missed the game details screen")
 
 Form.statistics_translation_driver = lambda do |form|
+  settle_statistics(form)
   summary = form.fields.first
   table = form.fields.find { |field| field.is_a?(TableBox) }
   assert(summary.text.include?(translate.call("Statistics are unavailable. Try Refresh.")), "Statistics failure stayed English")
@@ -121,12 +124,13 @@ Form.statistics_translation_driver = lambda do |form|
   verify_statistics_utf8(form)
   form.cancel_button.press
 end
-GameRoomStatisticsScreen.new(program: program, reader: ->(_) { nil }, years_reader: -> { nil },
+GameRoomStatisticsScreen.new(program: program, reader: ->(_, _token) { nil }, years_reader: ->(_token) { nil },
   registry: registry, today: Date.new(2026, 9, 25)).run
 
 presence = { "public_rooms" => 3, "private_rooms" => 2, "people" => 12 }
 responses = [presence, nil, presence.merge("people" => 0)]
 Form.statistics_translation_driver = lambda do |form|
+  settle_statistics(form)
   summary, refresh = form.fields
   assert(summary.header == "Obecnie w pokojach", "Presence screen title stayed English")
   assert(summary.text.include?("Pokoje publiczne: 3") && summary.text.include?("Pokoje prywatne: 2") &&
@@ -136,9 +140,11 @@ Form.statistics_translation_driver = lambda do |form|
   end
   assert(refresh.label == "Odśwież", "Presence refresh stayed English")
   refresh.press
+  settle_statistics(form)
   assert(summary.text.include?(translate.call("Room activity is unavailable. Try Refresh.")), "Presence failure stayed English")
   assert(!summary.text.include?("Osoby w pokojach:"), "Presence failure retained stale counts")
   refresh.press
+  settle_statistics(form)
   assert(summary.text.include?("Osoby w pokojach: 0"), "Successful zero was confused with an unavailable result")
   verify_statistics_utf8(form)
   form.cancel_button.press
@@ -150,6 +156,7 @@ class StatisticsTranslationNativeInput
   def speech_stop(*_args); end
 end
 Form.statistics_translation_driver = lambda do |form|
+  settle_statistics(form)
   options = form.fields.first
   menu = Menu.new
   options.context(menu, false)

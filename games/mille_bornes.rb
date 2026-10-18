@@ -6,6 +6,7 @@ module GameRoomGames
   using GameRoomLocalization::Translations
 
   class MilleBornes < Base
+    def player_spatial_audio?; true; end
     def tournament_export_scores(replay, options:)
       tournament_public_unit_scores(replay, options: options)
     end
@@ -161,6 +162,10 @@ end
 
 require_relative "mille_bornes/deck_options"
 require_relative "mille_bornes/model"
+require_relative '../lib/server_random'
+GameRoomServerRandom.register('mille_bornes', ['deal'])
+require_relative "mille_bornes/private_cards"
+require_relative "mille_bornes/private_model"
 require_relative "mille_bornes/presentation"
 require_relative "mille_bornes/bots"
 require_relative "generated/rulebooks/mille_bornes"

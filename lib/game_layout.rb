@@ -117,6 +117,10 @@ module GameRoomLayout
     attr_reader :surface, :history, :users, :chat, :back_button, :form,
       :primary_button, :restart_button, :waiting_status, :phase
 
+    def computer_changes
+      @computer_changes ||= GameRoomUI::ComputerChangeBuffer.new
+    end
+
     def initialize(
       view_spec:, surface_state: {}, history_items: [], user_items: [],
       history_index: nil, users_index: 0,
@@ -225,7 +229,8 @@ module GameRoomLayout
         previous = new_game || reset_surface ? nil : @surface
         @surface = if view_spec.surface == nil
           nil
-        elsif hand_update || view_spec.surface.is_a?(GameSurfaces::WordBoardSpec) || view_spec.surface.is_a?(GameSurfaces::TabooSpec)
+        elsif hand_update || view_spec.surface.is_a?(GameSurfaces::WordBoardSpec) ||
+            view_spec.surface.is_a?(GameSurfaces::TabooSpec) || view_spec.surface.is_a?(GameSurfaces::DuckChallengeSpec)
           GameSurfaces.reconcile(view_spec.surface, previous: previous, state: state)
         else
           GameSurfaces.build(view_spec.surface, state: state)

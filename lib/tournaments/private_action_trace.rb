@@ -28,6 +28,9 @@ module GameRoomTournaments
         end
       end
     end
+    # Runner maintenance is not an action_for input. Local execution archives
+    # retain their original envelopes for exact historical validation.
+    def discard_confirmed(**_target); false; end
     def verify(envelope); @vault.verify(envelope); end
     def consumed?; !@pending || @pending.empty?; end
   end

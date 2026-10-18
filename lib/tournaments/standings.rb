@@ -23,7 +23,7 @@ module GameRoomTournaments
       rows = Data.copy(results, max_bytes: 262_144, max_nodes: 16_384, max_depth: 8)
       ids = []
       rows.each do |result|
-        unless result.is_a?(Hash) && (result.keys - %w[id participants winners scores score_order]).empty? &&
+        unless result.is_a?(Hash) && (result.keys - %w[id participants winners scores score_order places]).empty? &&
             (!result.key?('score_order') || %w[higher lower].include?(result['score_order']))
           raise Publication::Invalid, :invalid_standings
         end
@@ -34,6 +34,13 @@ module GameRoomTournaments
             (scores.nil? || (scores.is_a?(Hash) && scores.keys.sort == people.sort &&
               scores.values.all? { |score| score.is_a?(Integer) || (score.is_a?(Float) && score.finite?) }))
           raise Publication::Invalid, :invalid_standings
+        end
+        if result.key?('places')
+          places=result['places']
+          unless places.is_a?(Array) && !places.empty? && places.all? { |group| group.is_a?(Array) && !group.empty? && group.all? { |unit| people.include?(unit) } } &&
+              places.flatten.size==people.size && places.flatten.sort==people.sort && places.first==winners
+            raise Publication::Invalid, :invalid_standings
+          end
         end
         ids << result['id']
       end
@@ -62,6 +69,11 @@ module GameRoomTournaments
     end
 
     def self.comparison(result,unit,opponent)
+      if result.key?('places')
+        own=result['places'].index { |group| group.include?(unit) }
+        other=result['places'].index { |group| group.include?(opponent) }
+        return own==other ? 'draw' : own<other ? 'win' : 'loss'
+      end
       winners=result['winners']
       return 'draw' if winners.empty?
       own_win,other_win=winners.include?(unit),winners.include?(opponent)

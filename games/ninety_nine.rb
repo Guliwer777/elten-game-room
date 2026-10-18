@@ -9,9 +9,12 @@ require_relative "../lib/game_turn_clock"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register('ninety_nine', ['deal'])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class NinetyNine < Base
+    def player_spatial_audio?; true; end
     include GameRoomCardDeckHistory
     RANKS = %w[2 3 4 5 6 7 8 9 T J Q K A].freeze
     SUITS = %w[C D H S].freeze
@@ -40,7 +43,7 @@ module GameRoomGames
     def event_sound_cues(event:, before_replay:, after_replay:, history:, viewer:, random_variant:)
       action = event["action"].to_s
       return "shuffle" if action == "deal"
-      return "draw" if action == "draw"
+      return "draw" if %w[draw private_draw].include?(action)
       return nil if !["play", "play_draw"].include?(action)
 
       previous_total = before_replay&.state.to_h.fetch(:total, 0).to_i
@@ -187,6 +190,7 @@ module GameRoomGames
     def replay(session, events, repository)
       players = repository.players_for(session)
       state = initial_state(players, options_from_json(session["options"]))
+      GameRoomPrivateCardLedger.initialize_state(state, session) if GameRoomPrivateCards.enabled?(session)
       accepted = []
       seen = {}
       history = [starting_history(players)]
@@ -196,34 +200,22 @@ module GameRoomGames
         original_event = event
         event_id = repository.event_id(event)
         next if seen[event_id]
-        decoded = GameRoomTurnClock.decode(state, event)
+        # Native disclosure remains public even when a timeout has already
+        # made this play's turn envelope stale. It does not accept the play.
+        GameRoomPrivateCardLedger.observe_reveal(state, event, repository.actor_of(event, session)) if state[:private_cards]
+        internal = state[:private_cards] && %w[private_deal private_recycle private_ready initial_hand private_draw].include?(event['action'])
+        decoded = internal ? [event, GameRoomSessionClock.from_server(session, event['created_at'].to_i, event: event)] : GameRoomTurnClock.decode(state, event)
         next unless decoded
         event, time = decoded
         next if %w[play play_draw draw skip_draw no_cards].include?(event["action"]) && ninety_deadline_reached?(state, time)
         actor = repository.actor_of(event, session)
         previous_recycle = state[:recycle_count]
-        applied = case event["action"].to_s
-        when "deal"
-          apply_deal(state, event, actor, repository, history)
-        when "play"
-          apply_play(state, event, actor, repository, history)
-        when "play_draw"
-          apply_play_draw(state, event, actor, repository, history)
-        when "draw"
-          apply_draw(state, event, actor, repository, history)
-        when "skip_draw"
-          apply_skip_draw(state, event, actor, repository, history)
-        when "no_cards"
-          apply_no_cards(state, event, actor, repository, history)
-        when "turn_timeout"
-          apply_timeout(state, event, actor, repository, history, time)
-        else
-          false
-        end
+        applied = apply_replay_event(state, event, session, repository, history, time)
         if applied
           record_deck_reshuffle(history, previous_recycle, state[:recycle_count], event_id)
           # A standalone legacy play still owes a draw, with the same clock.
-          GameRoomTurnClock.advance(state, time, running: state[:phase] == :playing) unless state[:phase] == :awaiting_draw
+          waiting = state[:phase] == :awaiting_draw || (state[:private_cards] && private_waiting?(state))
+          GameRoomTurnClock.advance(state, time, running: state[:phase] == :playing) unless waiting
           accepted << original_event
           seen[event_id] = true
         end
@@ -304,6 +296,11 @@ module GameRoomGames
         return [:invalid, nil] if context == nil || context.random_source == nil
 
         round = state[:round].to_i + 1
+        if context.server_random
+          dealer = state[:dealer_index] == nil ? '{dealer}' : next_dealer_index(state, '')
+          template = GameRoomTurnClock.encode(state, "#{round}|#{dealer}|{seed}", context)
+          return [:ok, server_seed_plan('deal', template: template, seats: (0...state[:players].length).to_a)]
+        end
         seed = random_seed(context.random_source)
         dealer = next_dealer_index(state, seed)
         return [:ok, timed_ninety_plan("deal", [round, dealer, seed].join("|"), state, context)]
@@ -423,6 +420,20 @@ module GameRoomGames
 
     private
 
+    def apply_replay_event(state, event, session, repository, history, time)
+      actor = repository.actor_of(event, session)
+      case event['action']
+      when 'deal' then apply_deal(state, event, actor, repository, history)
+      when 'play' then apply_play(state, event, actor, repository, history)
+      when 'play_draw' then apply_play_draw(state, event, actor, repository, history)
+      when 'draw' then apply_draw(state, event, actor, repository, history)
+      when 'skip_draw' then apply_skip_draw(state, event, actor, repository, history)
+      when 'no_cards' then apply_no_cards(state, event, actor, repository, history)
+      when 'turn_timeout' then apply_timeout(state, event, actor, repository, history, time)
+      else false
+      end
+    end
+
     def timed_ninety_plan(action, value, state, context)
       event_plan(action, GameRoomTurnClock.encode(state, value, context))
     end
@@ -485,6 +496,9 @@ module GameRoomGames
       return false if ![:awaiting_deal, :round_complete].include?(state[:phase])
 
       round, dealer, seed = parse_deal(event["value"])
+      expected = state[:dealer_index] == nil ? '{dealer}' : next_dealer_index(state, '')
+      return false unless GameRoomServerRandom.valid_text_seed_event?(event,
+        template: "#{state[:round] + 1}|#{expected}|{seed}", seats: (0...state[:players].length).to_a, clock: GameRoomTurnClock.enabled?(state))
       return false if round != state[:round] + 1
       return false if !dealer.between?(0, state[:players].length - 1)
       return false if state[:eliminated][state[:players][dealer]]
@@ -1050,4 +1064,6 @@ module GameRoomGames
   end
 end
 
+require_relative 'ninety_nine_private'
+GameRoomGames::NinetyNine.prepend(GameRoomGames::NinetyNinePrivate)
 require_relative 'generated/rulebooks/ninety_nine'

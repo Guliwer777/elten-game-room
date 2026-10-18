@@ -77,7 +77,7 @@
       },
       "paragraphs": [
         {
-          "en": "The usual target is 100 points. Once someone reaches it, finish the current cycle of rounds so everyone has judged equally often. The highest total then wins."
+          "en": "The usual target is 50 points. Once someone reaches it, finish the current cycle of rounds so everyone has judged equally often. The highest total then wins."
         },
         {
           "en": "Players tied for first continue in a tiebreak. Only they answer, with another player judging. If everyone is tied, the judge keeps rotating as before. Continue until one player leads after a complete cycle."
@@ -132,7 +132,7 @@
           "en": "- A fixed host judge replaces the rotating judge. The host judges every round and does not compete for points. Reaching the target is then resolved after a single round, without waiting for a judge cycle."
         },
         {
-          "en": "- The target may be changed from 100. Rotating-judge games still finish the whole cycle."
+          "en": "- The target may be changed from 50. Rotating-judge games still finish the whole cycle."
         },
         {
           "en": "- Tied leaders may share victory instead of playing a tiebreak."

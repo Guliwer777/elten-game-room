@@ -61,11 +61,13 @@ class GameRoomEventPresenter
     true
   end
 
-  def process_new_events(replay, signal_received_at: nil, session:, background: false)
+  def process_new_events(replay, signal_received_at: nil, session:, background: false, timer_now: nil)
     return unless prepare_presentation_session(session, background: background)
+    @presentation_session = session
     newest_id = replay.accepted_events.map { |event| @repository.call.event_id(event) }.max.to_i
     if @last_seen_event_id == nil
       @last_seen_event_id = newest_id
+      seed_reconstructed_timers(replay, now: timer_now) unless timer_now == nil
       presentation_replay.remember(session, replay)
       @history_changed.call(replay, true) unless background
       present_initial_decision(replay)
@@ -143,7 +145,14 @@ class GameRoomEventPresenter
         game: @game.call, event: event, before_replay: before_replay, after_replay: after_replay,
         repository: @repository.call, viewer: @viewer.call, history: stage&.[](:history), include_result: include_result
       )
-      Array(cues).map { |cue| GameRoomSounds.play(@program.call, cue) }
+      position = GameRoomSpatialSound.event_position(@program.call, @game.call, event, before_replay, after_replay,
+        @repository.call, @viewer.call, @presentation_session) if cues
+      Array(cues).map do |cue|
+        spatial = GameRoomSpatialSound.cue_position(cue, position)
+        # Keep ordinary centred playback on its original two-argument path.
+        spatial ? GameRoomSounds.play(@program.call, cue, spatial: spatial) :
+          GameRoomSounds.play(@program.call, cue)
+      end
     rescue StandardError => error
       Log.warning("ELTEN Game Room event sound failed: #{error.class}: #{error.message}") if defined?(Log)
       []
@@ -257,6 +266,13 @@ class GameRoomEventPresenter
 
   def normalize_event_descriptions(description)
     Array(description).compact.map(&:to_s).reject(&:empty?)
+  end
+
+  def seed_reconstructed_timers(replay, now:)
+    @game.call.timer_announcements(replay, @viewer.call, now: now).to_a.each do |announcement|
+      key, _message, _sound, policy = announcement.to_a
+      @spoken_timer_announcements[key.to_s] = true if policy == :skip_on_reconstruction && !key.to_s.empty?
+    end
   end
 
   def announce_due_timers(replay, now:)

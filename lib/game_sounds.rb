@@ -1,6 +1,7 @@
 require_relative "game_participants"
 require_relative "game_turn_clock"
 require_relative "game_sound_output"
+require_relative "game_spatial_sound"
 
 module GameRoomSounds
   ASSET_NAMES = %w[
@@ -29,6 +30,12 @@ module GameRoomSounds
     domino_take_chip
     farkle
     farkle_bank
+    poker_fold
+    poker_check
+    poker_call
+    poker_raise
+    poker_all_in
+    poker_pot
     cht-roll-dice
     cht-bank
     cht-lost-points
@@ -130,7 +137,8 @@ module GameRoomSounds
     end
   end
 
-  def play(program, name)
+  # `spatial` is an optional HRTF direction of the seat the cue belongs to.
+  def play(program, name, spatial: nil)
     return nil if name == nil || !ASSET_NAMES.include?(name.to_s)
     if program.respond_to?(:game_room_sound_enabled?, true)
       return nil if !program.send(:game_room_sound_enabled?, name.to_s)
@@ -141,11 +149,9 @@ module GameRoomSounds
       volume = program.send(:game_room_sound_volume, name.to_s) * gain
       return nil if volume <= 0
 
-      play_asset(program, name.to_s, volume)
-    elsif gain != 1.0
-      play_asset(program, name.to_s, gain)
+      play_asset(program, name.to_s, volume, spatial: spatial)
     else
-      play_asset(program, name.to_s, 1.0)
+      play_asset(program, name.to_s, gain, spatial: spatial)
     end
   rescue Exception => error
     Log.warning("ELTEN Game Room sound #{name} failed: #{error.class}: #{error.message}") if defined?(Log)
@@ -156,9 +162,15 @@ module GameRoomSounds
     names.to_a.each { |name| play(program, name) }
   end
 
-  def play_asset(program, name, volume)
+  def play_asset(program, name, volume, spatial: nil)
     if %w[connect disconnect chatmsg notice table_notice invitation_rejected ding].include?(name)
       program.play_sound_from_asset(name, volume: volume)
+    elsif spatial
+      # The host returns nil when the 3D voice cannot start; stay audible.
+      placed = volume * GameRoomSpatialSound.gain(spatial)
+      (GameRoomSpatialSound.distant?(spatial) && GameRoomSpatialSound.play_distant(program, name, placed, spatial)) ||
+        GameRoomSoundOutput.play(program, name, volume: placed, spatial: spatial) ||
+        GameRoomSoundOutput.play(program, name, volume: volume)
     else
       GameRoomSoundOutput.play(program, name, volume: volume)
     end

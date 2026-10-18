@@ -1,4 +1,5 @@
 require_relative 'game_content'
+require_relative 'game_teams'
 require_relative 'game_room_localization'
 
 # Definitions describe effective settings; normalized storage may omit defaults.
@@ -7,6 +8,31 @@ require_relative 'game_room_localization'
 module GameRoomOptionValues
   using GameRoomLocalization::Translations
   module_function
+
+  # Wire/discovery/archive readers do not have a game definition yet. Reject
+  # malformed shared collections before permissive game normalizers can turn
+  # an unusable team assignment into an unrelated automatic one.
+  def normalizable_options?(options)
+    return false unless options.is_a?(Hash)
+
+    [GameRoomTeams::OPTION_KEY, GameRoomTeams::OPTION_KEY.to_sym].all? do |key|
+      seats = options[key]
+      !options.key?(key) || seats == nil ||
+        (seats.is_a?(Array) && seats.all? { |value| integer_coercible?(value) })
+    end
+  end
+
+  # Ordinary historical settings allow to_i coercion, unlike strict published
+  # tournament options. Preserve it for supported scalars without calling to_i
+  # on a JSON object/boolean or a nonfinite Float.
+  def integer_value(value)
+    integer_coercible?(value) ? value.to_i : 0
+  end
+
+  def integer_coercible?(value)
+    value == nil || value.is_a?(Integer) || value.is_a?(String) || (value.is_a?(Float) && value.finite?)
+  end
+  private_class_method :integer_coercible?
 
   def read(definition, options)
     key = definition.key.to_s
@@ -40,7 +66,7 @@ module GameRoomOptionValues
       selected = if definition.kind.to_sym == :multiple_values
         value.is_a?(Array) && value.include?(choice.value)
       else
-        (value.to_i & (1 << index)) != 0
+        (integer_value(value) & (1 << index)) != 0
       end
       choice if selected
     end

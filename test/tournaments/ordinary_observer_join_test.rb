@@ -1,9 +1,9 @@
-require 'tmpdir'
+require_relative '../support/temporary_directory'
 require_relative '../support/invitation_fresh_endpoint'
 require_relative '../support/tournament_server_plan_table'
 
 T = GameRoomTournaments
-Dir.mktmpdir('ordinary-observers-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('ordinary-observers-') do |directory|
   broker = NativeLiveSessionsBroker.new
   gateway = DurableNoticeGateway.new
   game = EltenGameRoom::GAME_REGISTRY.build('tic_tac_toe')

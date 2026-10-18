@@ -96,6 +96,7 @@ operations = choose.call('Operacje lokalnego testu', 'Local test operations')
 editor = choose.call('Opublikuj szkic w lokalnym trybie testowym', 'Publish draft in local test')
 status_label = choose.call('Stan', 'Status')
 rules_label = choose.call('Regulamin turnieju', 'Tournament rules')
+information_label = choose.call('Informacje i zasady', 'Information and rules')
 
 # Hub i pojedynczy powrót prawdziwej wspólnej pomocy F1.
 driver = TournamentNativeDriver.new
@@ -161,8 +162,8 @@ public_args = {program: program, registry: registry, load: -> { snapshot }, join
   alert: args[:alert], mode_label: mode, actor: T::ACTOR, clock: -> { 150 }}
 driver = TournamentNativeDriver.new
 driver.step(list, [13]) { |form| T.read_form(form) }
-T.action(driver, preview, rules_label)
-driver.step(rules_label, [27]) do |form|
+T.action(driver, preview, information_label)
+driver.step(information_label, [27]) do |form|
   T.read_form(form)
   text = form.fields.first.text
   %w[18:00 21:00].each { |value| T.check(text.include?(value), 'Brak okien rozgrywek') }

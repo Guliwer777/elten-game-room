@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require_relative '../support/binary_rules_load'
 require_relative '../../lib/tournaments/draft_workspace'
@@ -27,7 +28,7 @@ module PackagedTournamentForm
 end
 Form.prepend(PackagedTournamentForm)
 
-Dir.mktmpdir('tournament-binary-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('tournament-binary-') do |directory|
   program = Object.new
   program.define_singleton_method(:data_path) { directory }
   store = GameRoomTournaments::Drafts.new(program, owner: 'Tester')

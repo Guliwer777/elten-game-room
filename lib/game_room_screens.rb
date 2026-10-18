@@ -250,6 +250,52 @@ module GameRoomScreens
     end
   end
 
+  class InvitationBlacklist < ListBox
+    def initialize(values)
+      @names = GameRoomPreferences.invitation_blacklist(values)
+      super(@names.dup, header: GameRoomContent.utf8(_("Blacklist")), quiet: true)
+      disable_contextinglobal
+      bind_context do |menu|
+        menu.option(GameRoomContent.utf8(_("Add user")), nil, 'n') { add_user }
+        menu.option(GameRoomContent.utf8(_("Remove user")), nil, :del) { remove_user } unless @names.empty?
+      end
+      GameRoomContextHelp.replace([self], [
+        GameRoomContextHelp.shortcut_tip('Ctrl+N', _("Add user")),
+        GameRoomContextHelp.shortcut_tip('Delete', _("Remove user"))
+      ])
+    end
+
+    def names
+      @names.dup
+    end
+
+    def add_user
+      return if @editing
+      begin
+        @editing = true
+        value = input_text(GameRoomContent.utf8(_("User name")), escapable: true)
+        name = GameRoomPreferences.invitation_blacklist([value]).first
+        return unless name
+        @names = GameRoomPreferences.invitation_blacklist(@names + [name])
+        self.options = @names.dup
+        self.index = @names.index { |entry| GameRoomParticipants.same?(entry, name) }
+      ensure
+        @editing = false
+        EltenAPI::KeyboardState.clear_current_frame if defined?(EltenAPI::KeyboardState)
+        focus
+      end
+    end
+
+    def remove_user
+      return if @editing || @names.empty?
+      position = index.to_i
+      @names.delete_at(position)
+      self.options = @names.dup
+      self.index = position.clamp(0, [@names.length - 1, 0].max)
+      focus
+    end
+  end
+
   class Settings
     INVITATION_POLICIES = %w[everyone contacts nobody].freeze
     attr_reader :table_watch_baseline
@@ -259,6 +305,7 @@ module GameRoomScreens
       @program = program
       @values = values.to_h
       @games = games.to_a
+      @hrtf_games = @games.select { |game| game[:spatial_audio] == true }
       @preset_editor = preset_editor
       @preset_writer = preset_writer
       @table_watch_available = table_watch_available
@@ -295,6 +342,7 @@ module GameRoomScreens
         index: [INVITATION_POLICIES.index(@values["invitation_notifications"].to_s).to_i, 0].max,
         quiet: true
       )
+      invitation_blacklist = InvitationBlacklist.new(@values["invitation_blacklist"])
       watched_header = GameRoomContent.utf8(_("Notify me about games on public tables"))
       watched_games = if @table_watch_available
         multiple_game_list(watched_header, @values["table_watch_games"])
@@ -310,6 +358,7 @@ module GameRoomScreens
         [group, ListBox.new((0..100).map { |level| "#{level}%" },
           header: _(GameRoomUI::VOLUME_LABELS.fetch(group)), index: levels.fetch(group), quiet: true)]
       end
+      hrtf = hrtf_controls
       widget_enabled = CheckBox.new(
         _("Show Power Games on the ELTEN main screen"),
         checked: setting_enabled?("widget_enabled")
@@ -353,8 +402,8 @@ module GameRoomScreens
       groups = [
         [primary_language, known_languages, background_speech, background_turn, background_sounds],
         [lobby_games, created, joined, left, computers],
-        [invitation_policy, watched_games, watched_contacts],
-        volume_fields.values,
+        [invitation_policy, watched_games, watched_contacts, invitation_blacklist],
+        hrtf + volume_fields.values,
         [widget_enabled, widget_games, widget_unavailable, widget_contacts, presets].compact
       ]
       form = PresetSettingsForm.new([sections] + groups.flatten + [save_button, cancel_button], program: @program, quiet: true)
@@ -416,7 +465,7 @@ module GameRoomScreens
 
       # Assignments are independent, immediately saved operations. Returning
       # an opening-time copy here could undo them when Settings is accepted.
-      result = @values.reject { |key, _| %w[table_presets table_watch_games].include?(key) }.merge({
+      result = @values.reject { |key, _| %w[table_presets table_watch_games].include?(key) }.merge(hrtf_values(*hrtf)).merge({
         "interface_language" => languages.fetch(primary_language.index).fetch(:id),
         "background_table_speech" => background_speech.checked,
         "background_turn_sound" => background_turn.checked,
@@ -432,6 +481,7 @@ module GameRoomScreens
         "announce_computer_changes" => computers.checked,
         "announce_lobby_changes" => [created, joined, left, computers].any?(&:checked),
         "invitation_notifications" => INVITATION_POLICIES[invitation_policy.index.to_i] || "everyone",
+        "invitation_blacklist" => invitation_blacklist.names,
         "table_watch_contacts_only" => watched_contacts.checked,
         "sound_volumes" => form.game_room_volume_reader.call,
         "widget_enabled" => widget_enabled.checked,
@@ -448,6 +498,20 @@ module GameRoomScreens
 
     private
 
+    # The HRTF switch is followed by the games that place players' sounds.
+    def hrtf_controls
+      [CheckBox.new(GameRoomContent.utf8(_("Use 3D sound (HRTF) to hear other players around the table")),
+        checked: @values["hrtf_enabled"] == true),
+        GameList.new(@hrtf_games, header: GameRoomContent.utf8(_("Games with 3D sound")),
+          selected: @values.fetch("hrtf_games", @hrtf_games.map { |game| game.fetch(:id) }))]
+    end
+
+    def hrtf_values(enabled, games)
+      { "hrtf_enabled" => enabled.checked, "hrtf_games" => selected_game_ids(games, @hrtf_games),
+        "hrtf_known_games" => GameRoomPreferences.normalized_game_ids(
+          @values["hrtf_known_games"].to_a + @games.map { |game| game.fetch(:id) }) }
+    end
+
     def watched_games_status(header, loading:)
       text = loading ? _("Loading notification settings") :
         _("New-table subscriptions are unavailable without access to server settings. Other settings can still be changed.")
@@ -459,8 +523,8 @@ module GameRoomScreens
       GameList.new(@games, header: header, selected: selected)
     end
 
-    def selected_game_ids(control)
-      control.game_indices.filter_map { |index| @games[index]&.fetch(:id)&.to_s }
+    def selected_game_ids(control, games = @games)
+      control.game_indices.filter_map { |index| games[index]&.fetch(:id)&.to_s }
     end
 
     def setting_enabled?(key)

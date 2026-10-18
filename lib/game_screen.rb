@@ -91,7 +91,7 @@ class GameScreen
     @send_chat = send_chat
     initialize_view_state
     attach_table_layout(@layout) if @layout != nil
-    @pending_chat_message = nil
+    @chat_sends = GameRoomUI::ChatSendBuffer.new
     @clear_chat_after_action = false
     @history_navigator = GameRoomHistory::Navigator.new
     @hidden_submissions = HiddenSubmissions::Vault.new(
@@ -262,6 +262,9 @@ class GameScreen
       end
 
       case action
+      when :queued_game_action
+        submit_pending_move
+        @suppress_surface_focus = true
       when :game_action
         accepted = submit_action(replay)
         clear_chat_draft(receipt: @chat_submission) if accepted && @clear_chat_after_action
@@ -276,6 +279,11 @@ class GameScreen
         @save_table_history&.call(combined_history_entries(replay))
         @suppress_surface_focus = true
       when :save_game
+        if GameRoomTournamentMarker.present?(@table, @session)
+          speak(_("Tournament games cannot be saved or resumed from a saved game."))
+          @suppress_surface_focus = true
+          next
+        end
         surface = @layout&.surface
         if surface.respond_to?(:save_game_error) && (error = surface.save_game_error)
           speak(error)
@@ -349,6 +357,9 @@ class GameScreen
       end
     end
   ensure
+    @chat_sends&.clear
+    @layout&.computer_changes&.clear
+    @pending_move_intent = nil
     stop_session_runner
     @layout&.form&.clear_game_room_background_help
     @layout.form.game_room_background_help_enabled = false if @layout
@@ -394,6 +405,7 @@ class GameScreen
       owner: @table_owner, viewer: Session.name, room_snapshot_provider: @room_snapshot_provider,
       context: action_context, game_status_changed: @game_status_changed, statistics_observer: @statistics_observer,
       completion_observer: @completion_observer,
+      tournament_presence: @game_services[:tournament_presence],
       activity_repository: @activity_repository, covered: @runner_covered || -> {
         GameRoomBackgroundPolicy.covered?(@presentation_ui_thread, program: @program, form: -> { @layout&.form })
       }).start
@@ -601,9 +613,13 @@ class GameScreen
 
   def number_shortcut_action(shortcut)
     value_text = shortcut.default_value == nil ? "" : shortcut.default_value.to_i.to_s
+    error_text = nil
     loop do
+      # Announce the error with the reopened field, rather than interrupting
+      # an alert as soon as focus returns. No dependency on speech duration.
+      prompt = error_text == nil ? shortcut.prompt : "#{GameRoomContent.utf8(error_text)} #{GameRoomContent.utf8(shortcut.prompt)}"
       entered = input_text(
-        shortcut.prompt,
+        prompt,
         flags: EditBox::Flags::Numbers,
         text: value_text,
         escapable: true,
@@ -628,12 +644,7 @@ class GameScreen
       allowed = allowed_values_text(shortcut.allowed_values)
       message = shortcut.invalid_message.to_s
       message = _("This value is not allowed.") if message.empty?
-      alert(
-        _("%{message} Allowed values: %{values}.") % {
-          message: message,
-          values: allowed
-        }
-      )
+      error_text = _("%{message} Allowed values: %{values}.") % {message: message, values: allowed}
     end
   end
 
@@ -776,7 +787,7 @@ class GameScreen
     normalized.join(", ")
   end
 
-  def submit_action(replay)
+  def submit_action(replay, intent: nil)
     previous_players = @session.fetch('__initial_players', []) + @session.fetch('__seat_changes', []).flat_map { |change| change['players'] }
     if GameRoomParticipants.includes?(previous_players, Session.name) && !GameRoomParticipants.includes?(replay.players, Session.name) &&
         !@game.moderator_action?(@selected_surface_action.to_h)
@@ -792,11 +803,13 @@ class GameScreen
 
     selection = @selected_surface_action
     @selected_surface_action = nil
+    surface, surface_session = @layout&.surface, @layout&.session_id
     actor = selected_action_actor(selection, replay)
     if @session_runner
-      result = submit_runner_action(replay, selection, actor, title: _("Sending action"))
+      result = submit_runner_action(replay, selection, actor, title: _("Sending action"), intent: intent)
       return false unless result
       @pending_event_ids = result.map { |event| @repository.event_id(event) }
+      confirm_surface_action(surface, selection, session_id: surface_session)
       return true
     end
     status, plan = @game.action_for(
@@ -827,14 +840,23 @@ class GameScreen
     return false if inserted == nil || inserted.empty?
 
     @pending_event_ids = inserted.map { |event| @repository.event_id(event) }
+    confirm_surface_action(surface, selection, session_id: surface_session)
     true
+  end
+
+  def confirm_surface_action(surface, selection, session_id:)
+    return unless surface && @layout&.surface.equal?(surface) && @layout.session_id == session_id &&
+      @repository.session_id(@session) == session_id
+    remember_layout_position if surface.action_accepted(selection)
   end
 
   def submit_inline_action(replay, selection, title: _("Sending assessment"))
     return nil if connection_recovery_pending? || event_presentation_busy?
 
+    actor = selected_action_actor(selection, replay)
+
     if @session_runner
-      inserted = submit_runner_action(replay, selection, Session.name, title: title)
+      inserted = submit_runner_action(replay, selection, actor, title: title)
       return nil unless inserted
       updated = @game.replay(@session, replay.accepted_events + inserted, @repository)
       accepted_ids = updated.accepted_events.map { |event| @repository.event_id(event) }
@@ -848,7 +870,7 @@ class GameScreen
     status, plan = @game.action_for(
       selection,
       replay,
-      Session.name,
+      actor,
       context: action_context
     )
     if status != :ok
@@ -864,7 +886,8 @@ class GameScreen
         sequence: @repository.next_sequence(@session, replay.accepted_events),
         events: plan.events,
         recipients: game_recipients,
-        actor: Session.name
+        actor: actor,
+        controller: !same_user?(actor, Session.name)
       )
     end
     return nil if inserted == nil || inserted.empty?
@@ -878,9 +901,10 @@ class GameScreen
     [updated, inserted]
   end
 
-  def submit_runner_action(replay, selection, actor, title:)
+  def submit_runner_action(replay, selection, actor, title:, intent: nil)
     result = network_task(title) do
-      @session_runner.submit(session: @session, replay: replay, selection: selection,
+      next unless intent == nil || pending_move_current?(intent)
+      @session_runner.submit(session: intent ? intent.session : @session, replay: replay, selection: selection,
         actor: actor, controller: !same_user?(actor, Session.name))
     end
     return nil unless result
@@ -921,7 +945,13 @@ class GameScreen
   def switch_to_new_session
     requested_id = @new_session_id
     session = synchronized_network_task(_("Opening the new game"), complete: false) do
-      @repository.session_by_id(requested_id, table: @table)
+      # The wake-up is unvalidated and can name a valid but historical game.
+      # Only the latest accepted projection may select the active session.
+      # A mismatching ID still gets one fresh read to recover a missed start
+      # behind stale native metadata. Failed reads retain the pending target.
+      latest = @repository.session_for_table(@table)
+      latest && @repository.session_id(latest) == requested_id ? latest :
+        @repository.session_for_table(@table, force: true)
     end
     if session == nil
       @synchronizer.request_recovery!(delay: GameRoomSync::ERROR_BACKOFF) if @synchronizer.next_reconcile_at.infinite?
@@ -949,6 +979,7 @@ class GameScreen
     @synchronizer.update_session(@repository.session_id(session), discard_pending: true).synchronized!
     @surface_state = {}
     @selected_surface_action = nil
+    @pending_move_intent = nil
     @history_index = 0
     @users_index = 0
     @form_index = @layout ? @layout.form.index.to_i : 0
@@ -983,7 +1014,7 @@ class GameScreen
       return prepared if current && current.session == prepared.first.session
     end
 
-    network_task(_("Updating game"), ui: refresh_input_ui,
+    network_task(_("Updating game"), ui: refresh_input_ui, admit_move: true,
       silent: @automatic_recovery_pending || @new_session_id != nil) do
       @synchronizer.synchronize(complete: @new_session_id == nil) do
         room = @room_snapshot || @room_snapshot_provider.call
@@ -1017,7 +1048,10 @@ class GameScreen
     # Metadata changes (including clock corrections, a new controller, a saved
     # game or a rematch) retain their established reconciliation path. A cheap
     # equality check is intentionally stricter than merely matching the ID.
-    @session_runner && !@session_runner.closed? && session == @session &&
+    # Only the write-CAS token may differ for a newer, already verified log.
+    @session_runner && !@session_runner.closed? &&
+      session.reject { |key, _value| key == '__game_revision' } ==
+      @session.reject { |key, _value| key == '__game_revision' } &&
       !session["__frozen"] && !session["__aborted"] && session["__control_ready"] != false &&
       !connection_recovery_pending? && @new_session_id == nil && @pending_event_ids.empty? &&
       !@layout&.form&.game_room_pending_operation
@@ -1064,7 +1098,10 @@ class GameScreen
     end
     latest_id = @repository.session_id(latest)
     current_id = @repository.session_id(@session)
-    return [:new_session, latest_id] if latest_id > 0 && latest_id != current_id
+    # Recovery also resolves a previously unavailable start notification that
+    # proved invalid: route the confirmed current ID through the normal switch
+    # acknowledgement instead of leaving its untrusted target pending forever.
+    return [:new_session, latest_id] if latest_id > 0 && (latest_id != current_id || @new_session_id != nil)
     return [:refresh, nil] if latest != nil && latest["__aborted"] != @session["__aborted"]
     return [:refresh, nil] if latest != nil && latest["__frozen"] != @session["__frozen"]
     return [:refresh, nil] if latest != nil && %w[__control_epoch __table_owner __control_ready].any? { |key| latest[key] != @session[key] }
@@ -1072,6 +1109,14 @@ class GameScreen
       return [:refresh, nil]
     end
     return [:refresh, nil] if @repository.event_revision(@session, known_revision: revision) != revision
+
+    # An addressed draw can arrive after the public take without adding a
+    # stack entry. Re-project it on the existing notification worker; public
+    # revision equality does not mean the viewer's private data is unchanged.
+    if GameRoomPrivateCards.enabled?(@session) && GameRoomPrivateCards.sharing_projection(@session['game'])
+      snapshot = @repository.snapshot_for(@session)
+      return [:refresh, nil] if snapshot && snapshot.session['__shared_draws'] != @session['__shared_draws']
+    end
 
     [nil, nil]
   end
@@ -1142,21 +1187,89 @@ class GameScreen
    @layout.activity_cursor = event_presenter.last_seen_activity_id if !background && @layout != nil
  end
 
+  def queue_chat_submission(control, message, session_id:)
+    result = @chat_sends.enqueue(control, message: message, session_id: session_id,
+      table: @table, actor: Session.name, membership: chat_membership)
+    if result == :full
+      @layout.form.game_room_pending_operation&.reject_action
+    end
+    result == :queued
+  end
+
+  def chat_membership
+    transport = @game_services[:transport]
+    transport.membership_token(table_id) if transport.respond_to?(:membership_token)
+  end
+
+  def chat_context
+    {table_id: table_id, session_id: @repository.session_id(@session),
+      actor: Session.name, membership: chat_membership}
+  end
+
+  def pending_chat_ready?
+    return false unless @send_chat
+    if @new_session_id
+      @chat_sends.clear
+      return false
+    end
+    @chat_sends.pending?(**chat_context) && !connection_recovery_pending?
+  end
+
+  # A single gesture may wait behind an independent read/chat task. It keeps
+  # the displayed model and completed payload, never a control to reread later.
+  # The normal runner still validates its revision before action_for and write.
+  def move_admission_available?
+    @session_runner && @pending_move_intent == nil && !@session['__frozen'] &&
+      @new_session_id == nil && !connection_recovery_pending? && !event_presentation_busy?
+  end
+
+  def capture_pending_move(wait, selection, chat_receipt: nil)
+    return false unless move_admission_available?
+    session, replay, action = GameRoomSnapshot.copy([wait.session, wait.replay, selection])
+    @pending_move_intent = PendingMoveIntent.new(session: session, replay: replay,
+      selection: action, membership: wait.membership, actor: wait.actor,
+      chat_receipt: chat_receipt).freeze
+    true
+  end
+
+  def pending_move_current?(intent)
+    intent && @new_session_id == nil && !@session['__frozen'] && !@session['__aborted'] &&
+      GameRoomParticipants.same?(intent.actor, Session.name) &&
+      intent.membership.equal?(chat_membership) &&
+      GameRoomSessionContracts::SessionIdentity.from_row(intent.session) ==
+        GameRoomSessionContracts::SessionIdentity.from_row(@session)
+  end
+
+  def pending_move_ready?
+    @pending_move_intent = nil unless pending_move_current?(@pending_move_intent)
+    @pending_move_intent && !connection_recovery_pending? && !event_presentation_busy?
+  end
+
+  def submit_pending_move
+    intent, @pending_move_intent = @pending_move_intent, nil
+    return false unless pending_move_current?(intent)
+    @selected_surface_action = intent.selection
+    accepted = submit_action(intent.replay, intent: intent)
+    clear_chat_draft(receipt: intent.chat_receipt) if accepted && intent.chat_receipt
+    accepted
+  end
+
   def submit_chat
-    pending_message = @pending_chat_message
-    @pending_chat_message = nil
-    message = (pending_message == nil ? @chat_text : pending_message).to_s.strip
-    return if message.empty? || @send_chat == nil
+    return unless pending_chat_ready? && @send_chat
+    intent = @chat_sends.take(**chat_context)
+    return unless intent
 
-    receipt = @chat_submission
-    @chat_submission = nil
+    receipt, message = intent.receipt, intent.message
 
-    entry = network_task(_("Sending chat message"), ui: :none) do
+    entry = network_task(_("Sending chat message"), ui: :none, admit_move: true) do
       @synchronizer.synchronize(complete: false) do
-        @send_chat.call(@table, message, @room_snapshot&.members.to_a)
+        next unless @new_session_id == nil && intent.current?(**chat_context)
+        @send_chat.call(intent.table, message, @room_snapshot&.members.to_a, **intent.write_options)
       end
     end
-    return if entry == nil
+    if entry == nil
+      return
+    end
 
     @activity_entries ||= []
     @activity_entries << entry if !@activity_entries.any? { |candidate| candidate.id.to_i == entry.id.to_i }
@@ -1165,6 +1278,8 @@ class GameScreen
     text = @activity_repository&.text_for(entry, game_name: @game_name, global: false)
     speak(text, stop: false, break_sequence: false) if !text.to_s.empty?
     clear_chat_draft(receipt: receipt)
+  ensure
+    @chat_sends&.complete(intent, success: entry != nil) if intent
   end
 
   def clear_chat_draft(receipt: nil)
@@ -1286,6 +1401,7 @@ class GameScreen
       table_id: table_id,
       hidden_submissions: @hidden_submissions,
       random_source: @random_source,
+      server_random: session['__server_random'] == GameRoomServerRandom::VERSION,
       options: @game.options_from_json(session["options"]),
       table_owner: table_owner,
       local_data: @game_client&.context_data,
@@ -1381,7 +1497,8 @@ class GameScreen
   end
 
   def process_new_events(*args, session: @session, **options)
-    event_presenter.process_new_events(*args, session: session, **options)
+    timer_now = (@action_clock ||= GameRoomSessionClock.new).now(session)
+    event_presenter.process_new_events(*args, session: session, timer_now: timer_now, **options)
   end
 
   def present_game_event(*args, **options)
@@ -1441,19 +1558,23 @@ class GameScreen
     @pending_event_ids = []
   end
 
-  def network_task(title, ui: nil, silent: false, &operation)
+  def network_task(title, ui: nil, silent: false, admit_move: false, &operation)
     return nil if @synchronizer&.waiting?
 
     task = GameRoomNetworkTask.new
     pending_table_id = table_id if @layout&.binding_generation.to_i > 0
     task.run(title, layout: @layout, table_id: pending_table_id, ui: ui,
       client: @game_client, runner: @session_runner,
+      chat_admission: @send_chat != nil,
+      move_admission: admit_move ? method(:move_admission_available?) : nil,
       before_close: -> { remember_layout_position }, &operation)
   rescue EltenAPI::Tasks::Cancelled
+    @layout&.computer_changes&.clear
     @automatic_recovery_pending = true
     @synchronizer&.request_recovery!(delay: GameRoomSync::ERROR_BACKOFF)
     nil
   rescue StandardError => error
+    @layout&.computer_changes&.clear
     if error.is_a?(GameRoomSessionRunner::StaleView)
       @automatic_recovery_pending = true
       @synchronizer&.request_recovery!
@@ -1489,8 +1610,8 @@ class GameScreen
     @automatic_recovery_pending || (@synchronizer != nil && @synchronizer.recovery_pending?)
   end
 
-  def synchronized_network_task(title, ui: :none, complete: true, &operation)
-    network_task(title, ui: ui, silent: true) do
+  def synchronized_network_task(title, ui: :none, complete: true, admit_move: false, &operation)
+    network_task(title, ui: ui, silent: true, admit_move: admit_move) do
       @synchronizer.synchronize(complete: complete, &operation)
     end
   end

@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/ui'
 require_relative '../support/tournament_local_hub'
 require_relative '../support/tournament_entry_context'
@@ -30,7 +31,7 @@ assert(program.path_calls.empty?, 'Wejście/Cancel rozpoczęło I/O')
 puts 'PASS R0: rzeczywisty LocalTestHub, jawny aktor, ekran, Back do przycisku; brak I/O i skutków'
 
 require_relative '../support/tournament_match_entry'
-Dir.mktmpdir('entry-ui-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('entry-ui-') do |directory|
   program = TournamentMatchEntryTest.prepare(directory)
   before = TournamentMatchEntryTest.files(directory)
   hub = G::LocalTestHub.new(**T.args(program: program))
@@ -92,7 +93,7 @@ Dir.mktmpdir('entry-ui-', ENV.fetch('TMPDIR')) do |directory|
 end
 puts 'PASS R1 UI: hub → rzeczywiste join → cały Candidate → własne pełne mecze 2/3 osób; Enter tylko szczegóły'
 
-Dir.mktmpdir('entry-reasons-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('entry-reasons-') do |directory|
   program = TournamentMatchEntryTest.prepare(directory)
   now, alerts = 199, []
   workspace = G::LocalWorkspace.new(program: program, registry: GameRoomGames::CATALOG,
@@ -112,7 +113,7 @@ Dir.mktmpdir('entry-reasons-', ENV.fetch('TMPDIR')) do |directory|
 end
 puts 'PASS R2: otwarte zapisy bez planu; niepełny odczyt zachowuje ostatni poprawny widok'
 
-Dir.mktmpdir('entry-conflict-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('entry-conflict-') do |directory|
   program = TournamentMatchEntryTest.prepare(directory)
   workspace = G::LocalWorkspace.new(program: program, registry: GameRoomGames::CATALOG,
     user: -> { 'RealOwner' }, actor: 'Bob', alert: ->(message) { raise message })
@@ -133,7 +134,7 @@ Dir.mktmpdir('entry-conflict-', ENV.fetch('TMPDIR')) do |directory|
 end
 puts 'PASS R2 alias: rzeczywisty konflikt publikacji nie udaje braku członkostwa ani nie usuwa ostatniego widoku'
 
-Dir.mktmpdir('entry-few-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('entry-few-') do |directory|
   program = TournamentEntryContextTest::Program.new(directory)
   now = 150
   workspace = G::LocalWorkspace.new(program: program, registry: GameRoomGames::CATALOG,
@@ -157,7 +158,7 @@ Dir.mktmpdir('entry-few-', ENV.fetch('TMPDIR')) do |directory|
 end
 puts 'PASS R2: jeden potwierdzony uczestnik bez planu i obcy aktor bez własnych zapisów'
 
-Dir.mktmpdir('entry-closed-handler-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('entry-closed-handler-') do |directory|
   program = TournamentMatchEntryTest.prepare(directory)
   owner = G::LocalTestDialogs::Owner.new(-> { 'RealOwner' }, ->(message) { raise message })
   workspace = G::LocalWorkspace.new(program: program, registry: GameRoomGames::CATALOG,

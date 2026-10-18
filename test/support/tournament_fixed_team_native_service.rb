@@ -36,6 +36,9 @@ class TournamentFixedTeamNativeService
     end
 
     class Endpoint < NativeLiveSessionsBroker::Endpoint
+      # Match the production local transaction endpoint, not a live server.
+      def offline?; true; end
+
       def initialize(broker, user)
         super
         broker.cores.each_value do |core|

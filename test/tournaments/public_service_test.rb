@@ -631,8 +631,10 @@ module TournamentPublicServiceTest
 
   def run
     selected = ENV['TOURNAMENT_SERVICE_TEST']
-    methods(false).grep(/^test_/).sort.each do |name|
-      next if selected && !name.to_s.include?(selected)
+    tests = methods(false).grep(/^test_/).sort
+    tests.select! { |name| name.to_s.include?(selected) } if selected
+    raise ArgumentError, 'No public service tests match the requested filter' if tests.empty?
+    tests.each do |name|
       public_send(name)
       puts "PASS #{name}"
     end

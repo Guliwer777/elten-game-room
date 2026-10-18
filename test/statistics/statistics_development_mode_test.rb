@@ -64,10 +64,10 @@ begin
     service = factory.statistics_service
     collector = factory.room_presence_collector
     assert(service && collector && factory.analytics_enabled?, "Normal mode no longer initializes analytics")
-    game = Struct.new(:id).new("tic_tac_toe")
+    game = GameRoomGames::TicTacToe.new
     session = {"__id" => 7, "__players" => [user, "Bob"], "__statistics" => {
       "id" => "22222222-2222-4222-8222-222222222222", "mode" => "humans", "started_at" => 1_790_294_400}}
-    replay = Struct.new(:finished?).new(false)
+    replay = GameRoomGames::Replay.new(players: session.fetch("__players"), current_player: user)
     observer = app.send(:statistics_observer_for, game, service: service)
     start = -> { app.send(:record_statistics_start, session, game, service: service) }
     app.send(:record_statistics_visit)
@@ -117,6 +117,7 @@ begin
       "Returning to normal mode discarded the pending services")
     observer.call(session, replay)
     start.call
+    assert(warnings.empty?, "Normal-mode observers failed: #{warnings.inspect}")
     assert(!calls.include?(:write_storage), "Captured observers wrote storage on the calling thread")
     # Presence intentionally coalesces for one second; advance its injected
     # monotonic clock without sleeping. Worker callbacks do not bypass deadlines.
@@ -129,6 +130,7 @@ begin
       "Normal-mode scheduled telemetry no longer works")
     assert(data.fetch(GameRoomStatistics::Queue::PATH).fetch("accounts").fetch(user.downcase).fetch("pending").empty?,
       "Normal-mode upload did not acknowledge preserved history")
+    assert(warnings.empty?, "Normal-mode recovery emitted telemetry failures: #{warnings.inspect}")
   end
 ensure
   GameRoomClock.define_singleton_method(:synchronized?, original_clock_ready)

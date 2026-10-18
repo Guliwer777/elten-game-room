@@ -2,7 +2,23 @@
 require 'base64'
 module GameRoomTournamentMarker
   class Invalid < ArgumentError; end
+  class SavingDisabled < ArgumentError; end
   module_function
+
+  # This is a local restriction, not proof of tournament authority. Even an
+  # incomplete marker must not turn a tournament table into a savable game.
+  def present?(*records)
+    records.any? do |record|
+      record.is_a?(Hash) && %w[tournament_match __tournament_match match_ref tournament].any? { |key| record.key?(key) }
+    end
+  end
+
+  def ensure_savable!(*records, tournament: nil)
+    if present?(*records) || !tournament.nil?
+      raise SavingDisabled, 'Tournament games cannot be saved or resumed from a saved game.'
+    end
+    true
+  end
 
   # Compact only the discovery pointer; the native table and signed result
   # binding retain the explicit fields. The two hex digests occupy 64 bytes.

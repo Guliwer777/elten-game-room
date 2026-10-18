@@ -29,7 +29,7 @@ module GameRoomPong
       end
       receive_peer_packets(now)
       receive_peer_events
-      check_peer_agreement(now) if host?
+      check_peer_agreement(now) if host? && !session_paused?
       established = if host?
         @required.all? { |u| (p = connection_state.peers[u.downcase]) && p.body['r'] == @replay.state[:rally] }
       else
@@ -50,20 +50,20 @@ module GameRoomPong
       healthy = local_match? || (@channel.connected? && transport_members_ready? && established && !expired)
       was_playable = !rally_state.paused && rally_state.snapshot && rally_state.snapshot['goal'] == nil
       raw = surface_input
-      prepare_first_serve(now, healthy)
-      announce_ready(now) if healthy
+      prepare_first_serve(now, healthy) unless session_paused?
+      announce_ready(now) if healthy && !session_paused?
       waiting = now < rally_state.ready_at || (host? && peer_service_waiting?) ||
         (!host? && rally_state.engine.turn.zero? && (@host_serve_wait == true || now < @host_ready_at))
-      set_paused(!healthy || waiting, waiting: healthy && waiting)
+      set_paused(session_paused? || !healthy || waiting, waiting: session_paused? || healthy && waiting)
       rally_state.engine.automatic_for(@side, Preferences.read(@program)['auto_return']) if @side != nil
-      raw = sample_pointer_input(raw, true)
-      input = playable_input(raw, active: was_playable && !rally_state.paused && rally_state.engine.goal == nil, moving: true)
-      input['move'] = raw.fetch('move', 0)
+      raw = sample_pointer_input(raw, !session_paused?)
+      input = playable_input(raw, active: was_playable && !rally_state.paused && rally_state.engine.goal == nil, moving: !session_paused?)
+      input['move'] = session_paused? ? 0 : raw.fetch('move', 0)
       if host? || @side != nil
         inputs = Array.new(@players.length) { {} }
         inputs[@side] = input if @side != nil
         each_physics_frame(now) do |frame_at|
-          inputs[@side] = pointer_input(input, frame_at) if @side != nil
+          inputs[@side] = pointer_input(input, frame_at) if @side != nil && !session_paused?
           if !rally_state.paused && !rally_state.engine.goal && frame_at >= rally_state.ready_at
             rally_state.engine.step(inputs, now_ms: (frame_at * 1000).to_i)
             if (event = rally_state.engine.take_transition)
@@ -79,7 +79,7 @@ module GameRoomPong
         end
       end
       @mouse.finish_frame
-      hurry_tick(healthy)
+      hurry_tick(healthy) unless session_paused?
       rally_state.snapshot = rally_state.engine.snapshot if host? || (@side != nil && rally_state.snapshot)
       send_peer_state(now)
       commit_peer_goal(now) if host?
@@ -141,6 +141,7 @@ module GameRoomPong
         next unless body['r'] == @replay.state[:rally]
         peer = (connection_state.peers[user] ||= GameRoomRealtime::PeerState.new)
         next unless peer.receive(packet, now: now, last_sent: connection_state.sequence)
+        next if session_paused?
         if host?
           side = @players.index { |p| p.to_s.casecmp?(user) }
           rally_state.engine.remote_paddle(side, body['x'], edges: body['edges']) if side != nil && side != @side
@@ -200,12 +201,13 @@ module GameRoomPong
       end
       queued.each do |sender, packet|
         data = packet['d']
+        next if data['r'] < @replay.state[:rally]
         # A remote spectator listens to the owner's complete snapshot (fx
         # included). It has no playable physics timeline and may have joined
         # halfway through a rally. Only presentation notices need this lane.
         next if @side == nil && !host? && !%w[point hurry].include?(data['action'])
         future_action = data['r'] == @replay.state[:rally] && peer_event_waiting?(data)
-        if data['r'] == @replay.state[:rally] + 1 || future_action
+        if session_paused? || data['r'] == @replay.state[:rally] + 1 || future_action
           # The durable score may arrive after the next reliable serve. Keep
           # it, but authenticate the actor before allowing it into this buffer.
           # Never silently truncate current actions behind deferred ones.

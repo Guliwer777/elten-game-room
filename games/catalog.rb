@@ -8,6 +8,7 @@ require_relative "checkers"
 require_relative "reversi"
 require_relative "ludo"
 require_relative "spades"
+require_relative "bridge"
 require_relative "farkle"
 require_relative "cat_head_tail"
 require_relative "ninety_nine"
@@ -46,6 +47,7 @@ module GameRoomGames
     GameRoomGames::Reversi,
     GameRoomGames::Ludo,
     GameRoomGames::Spades,
+    GameRoomGames::Bridge,
     GameRoomGames::Farkle,
     GameRoomGames::CatHeadTail,
     GameRoomGames::NinetyNine,

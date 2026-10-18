@@ -51,7 +51,8 @@ module GameRoomQuizContributions
     def set_menu(draft, index: 0)
       labels = [_('Add a question'), _('Browse questions'), _('Add a category'), _('Delete draft'), _('Send to the author')]
       actions = draft['kind'] == 'set' ? [[:details, _('Set details'), nil]] : []
-      selection(Model.title(draft), labels, index: index, actions: actions)
+      title = Model.title(draft).to_s
+      selection(title.empty? ? _('Untitled set') : title, labels, index: index, actions: actions)
     end
 
     def questions(draft, index: 0)

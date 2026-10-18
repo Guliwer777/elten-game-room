@@ -5,7 +5,7 @@ module DurableSaveCases
   Intent = GameRoomSavedGameSaveIntent
   class ProgramError < StandardError; end
   def scenario(name)
-    root = Dir.mktmpdir('durable-save-case-', ENV.fetch('TMPDIR'))
+    root = GameRoomTest::TemporaryDirectory.create('durable-save-case-')
     h = DurableSaveFixture.room
     h.as('Alice') do
       store = DurableSaveFixture.intent(root)

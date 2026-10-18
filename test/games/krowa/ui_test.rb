@@ -28,7 +28,9 @@ assert(screen.send(:wait_for_action, run.replay, {}) == :game_action, "Enter not
 selected = screen.instance_variable_get(:@selected_surface_action)
 assert(selected["answer"] == "las" && selected["action"] == "submit", "Enter lost typed word")
 layout = screen.instance_variable_get(:@layout)
-assert(layout.surface.fields.first.text.empty?, "answer not cleared")
+assert(layout.surface.fields.first.text == "las", "answer cleared before the move was accepted")
+layout.surface.action_accepted(selected)
+assert(layout.surface.fields.first.text.empty?, "accepted answer not cleared")
 layout.chat.text = "chat draft"
 layout.chat.index = 3; layout.chat.check = 1
 settings_opened = 0

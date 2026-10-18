@@ -426,11 +426,18 @@ class DuckClientPromptNativeTest
     focus(:chat)
     SpeechOutput.reset
     observed = begin_challenge(:race)
-    assert_initial_challenge(kind, observed, role: :chat, observer: true)
+    # Observers hear only permitted public questions on entry. The challenge
+    # name comes from shared history; watching status remains on manual focus.
+    expected = %w[arithmetic race_question quiz].include?(kind) ? [prompt] : []
+    assert_equal(expected, SpeechOutput.calls.map(&:first), 'Observer entry added instructions or private task hints')
+    SpeechOutput.calls.each do |call|
+      assert_equal([0, false], call.drop(1), 'Observer question interrupted queued speech')
+      assert(observed[:queue].include?(call.first), 'The public question was removed from the speech queue')
+    end
     assert_equal(:chat, @layout.focus_location.first)
     assert(!@surface.presentation[:enabled], 'An observer received an enabled game action')
     3.times { render }
-    assert_equal(kind == 'sound_memory' ? 0 : 1, initial_calls(kind).length)
+    assert_equal(expected, SpeechOutput.calls.map(&:first), 'Unchanged observer refresh repeated a question')
     manual_challenge_focus(kind)
     instruction = GameRoomDuckRacing::ChallengePresentation.description(kind)[1]
     unless instruction.empty? || kind == 'quiz'

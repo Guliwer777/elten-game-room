@@ -11,9 +11,12 @@ require_relative "../lib/game_turn_clock"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register_payload('scrabble', %w[deal exchange])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Scrabble < Base
+    def player_spatial_audio?; true; end
     include PublicHistoryAnnouncements
     Rules = GameRoomScrabbleRules
     def event_sound_cues(event:, before_replay:, after_replay:, history:, viewer:, random_variant:)
@@ -72,11 +75,16 @@ module GameRoomGames
 
     def replay(session, events, repository)
       state = initial_state(repository.players_for(session), options_from_json(session["options"]))
+      if GameRoomPrivateCards.enabled?(session)
+        GameRoomPrivateCardLedger.initialize_state(state, session)
+        state[:hands] = state[:racks]
+      end
       history, accepted, seen = [starting_history(state[:players])], [], {}
-      GameRoomActionPayload.each(events, id, repository, session) do |data, actor, batch|
+      GameRoomActionPayload.each(events, id, repository, session, controls: !!state[:private_cards]) do |data, actor, batch|
         next if state[:phase] == :finished || batch.any? { |event| seen[repository.event_id(event)] }
         candidate, additions = copy_state(state), []
-        next unless apply(candidate, data, actor, repository.event_id(batch.last), additions) == :ok
+        event = data ? batch.last.merge('action'=>data['action'], '__payload'=>data) : batch.last
+        next unless apply_replay_event(candidate, event, session, repository, additions)
         state = candidate
         history.concat(additions)
         accepted.concat(batch)
@@ -94,10 +102,14 @@ module GameRoomGames
       data.merge!("revision" => replay.state[:revision], "time" => GameRoomTurnClock.logical_now(replay.state, context))
       if %w[deal exchange].include?(data["action"])
         return [:invalid, nil] unless context&.random_source
-        data["seed"] = context.random_source.roll(count: 16, sides: 256).values.map { |v| (v-1).to_s(16).rjust(2,"0") }.join
+        data["seed"] = context.server_random ? '0' * 32 :
+          context.random_source.roll(count: 16, sides: 256).values.map { |v| (v-1).to_s(16).rjust(2,"0") }.join
       end
       status = apply(copy_state(replay.state), data, actor, 0, [])
       return [status, nil] unless status == :ok
+      if %w[deal exchange].include?(data['action']) && context.server_random
+        return [:ok, ActionPlan.new(events: [GameRoomServerRandom.payload_seed_command(action: id, data: data)])]
+      end
       [:ok, ActionPlan.new(events: GameRoomActionPayload.commands(id, data))]
     end
 
@@ -142,6 +154,14 @@ module GameRoomGames
 
     protected
 
+    def apply_replay_event(state, event, session, repository, history)
+      if state[:private_cards] && event['action'] != 'deal'
+        return private_apply_effect(state, event, session, repository, history)
+      end
+      data = event['__payload']
+      data && apply(state, data, repository.actor_of(event, session), repository.event_id(event), history) == :ok
+    end
+
     def copy_state(value)
       case value
       when Hash then value.to_h { |k,v| [k,copy_state(v)] }
@@ -178,7 +198,7 @@ module GameRoomGames
         record(history, event_id, actor, :deal, _("The tiles have been dealt."))
       else
         return :invalid unless state[:phase] == :playing
-        expected_actor = action == "timeout" ? state[:players].first : state[:current_player]
+        expected_actor = action == "timeout" ? timeout_actor(state) : state[:current_player]
         return :not_your_turn unless same_user?(actor, expected_actor)
         return :invalid if action == "timeout" ? !expired?(state, time) : expired?(state, time)
         player = state[:current_player]
@@ -201,7 +221,7 @@ module GameRoomGames
           state[:scores][player] += result.score
           state[:words].concat(result.words.map { |word| word.merge(player: player, turn: state[:turn]) })
           used = data["placements"].map(&:first)
-          state[:racks][player] = rack.reject { |tile| used.include?(tile) } + state[:bag].shift([used.length,state[:bag].length].min)
+          state[:racks][player] = rack.reject { |tile| used.include?(tile) } + draw_tiles(state, player, used.length)
           location = result.words.map { |w| "#{w[:word]} (#{Rules.field(w[:start])})" }.join(", ")
           record(history, event_id, player, :play, _("%{player} plays %{words}: %{points} points.") % { player: participant_name(player), words: location, points: result.score })
           if state[:bag].empty? && state[:racks][player].empty?
@@ -213,8 +233,8 @@ module GameRoomGames
           return :exchange_unavailable if state[:bag].length < 8
           ids = data["tiles"]
           return :invalid unless ids.is_a?(Array) && ids.length.between?(1,7) && ids.uniq == ids && (ids - rack).empty? && seed_valid?(data)
-          state[:bag] = GameRoomRandom.shuffle(state[:bag] + ids, random: Random.new(data["seed"].to_i(16)))
-          state[:racks][player] = rack.reject { |tile| ids.include?(tile) } + state[:bag].shift(ids.length)
+          return_tiles(state, ids, data['seed'])
+          state[:racks][player] = rack.reject { |tile| ids.include?(tile) } + draw_tiles(state, player, ids.length)
           record(history, event_id, player, :exchange, _("%{player} exchanges %{count} tiles.") % { player: participant_name(player), count: ids.length })
           next_turn(state, time, event_id, history, placed: false)
         when "pass", "timeout"
@@ -228,6 +248,11 @@ module GameRoomGames
       :ok
     end
     def seed_valid?(data); /\A[0-9a-f]{32}\z/.match?(data["seed"].to_s); end
+    def timeout_actor(state); state[:players].first; end
+    def draw_tiles(state, _player, count); state[:bag].shift([count,state[:bag].length].min); end
+    def return_tiles(state, ids, seed)
+      state[:bag] = GameRoomRandom.shuffle(state[:bag] + ids, random:Random.new(seed.to_i(16)))
+    end
     def next_turn(state, time, event_id, history, placed:)
       state[:idle_turns] = placed ? 0 : state[:idle_turns] + 1
       if state[:bag].length <= 7 && state[:idle_turns] >= state[:players].length * 3
@@ -251,3 +276,5 @@ module GameRoomGames
 end
 
 require_relative "scrabble_ui"
+require_relative "scrabble_private"
+GameRoomGames::Scrabble.prepend(GameRoomGames::ScrabblePrivate)

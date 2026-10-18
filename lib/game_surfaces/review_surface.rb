@@ -17,7 +17,7 @@ module GameSurfaces
       @decisions = @spec.decisions.to_a
       @read_only = @spec.read_only == true
       validate_items!
-      @confirmed_decisions = confirmed_decisions(state)
+      @confirmed_decisions = confirmed_decisions
       @heading = build_heading if !@read_only
       @list = build_read_only_list(state) if @read_only || @items.empty?
       @controls = build_decision_controls(state) if !@read_only
@@ -42,6 +42,23 @@ module GameSurfaces
     def suppress_next_focus!(field_index = 0)
       control = fields[field_index.to_i]
       control.suppress_next_focus! if control.respond_to?(:suppress_next_focus!)
+    end
+
+    # Emitting an action only asks the screen to submit it. Update this open
+    # form after replay accepted the write, never after a denied or stale Enter.
+    def action_accepted(selection)
+      return if @read_only || selection['kind'] != 'review' || selection['action'] != 'change'
+      return unless selection['review_id'].to_s == @spec.id.to_s
+      item = @items.find { |candidate| candidate.id.to_s == selection['item_id'].to_s }
+      return if item == nil
+      value = selection['decision'].to_s
+      return unless value.empty? || decisions_for(item).any? { |decision| decision.id.to_s == value }
+
+      if value.empty?
+        @confirmed_decisions.delete(item.id.to_s)
+      else
+        @confirmed_decisions[item.id.to_s] = value
+      end
     end
 
     private
@@ -71,7 +88,7 @@ module GameSurfaces
         decisions = decisions_for(item)
         control = RefreshAwareListBox.new(
           [_('Not assessed')] + decisions.map { |decision| decision.label.to_s },
-          header: item_label(item),
+          header: [item_label(item), @spec.confirmation_hint.to_s].reject(&:empty?).join('. '),
           index: remembered_decision_index(remembered, item, decisions),
           quiet: true
         )
@@ -106,11 +123,6 @@ module GameSurfaces
       previous = @confirmed_decisions[item.id.to_s].to_s
       return if value == previous
 
-      if value.empty?
-        @confirmed_decisions.delete(item.id.to_s)
-      else
-        @confirmed_decisions[item.id.to_s] = value
-      end
       emit_action(
         "review",
         "change",
@@ -141,23 +153,14 @@ module GameSurfaces
       index == nil ? 0 : index + 1
     end
 
-    def confirmed_decisions(state)
-      result = @items.each_with_object({}) do |item, values|
+    def confirmed_decisions
+      # A rebuilt form receives authoritative decisions in its specification.
+      # Remembered navigation must not override a newer accepted assessment.
+      @items.each_with_object({}) do |item, values|
         value = item.decision.to_s
         allowed = decisions_for(item).any? { |decision| decision.id.to_s == value }
         values[item.id.to_s] = value if allowed
       end
-      remembered = state_value(state, "confirmed", {})
-      @items.each do |item|
-        value = remembered_value(remembered, item.id).to_s
-        allowed = decisions_for(item).any? { |decision| decision.id.to_s == value }
-        if allowed
-          result[item.id.to_s] = value
-        elsif remembered.respond_to?(:key?) && (remembered.key?(item.id.to_s) || remembered.key?(item.id.to_sym))
-          result.delete(item.id.to_s)
-        end
-      end
-      result
     end
 
     def decisions_for(item)

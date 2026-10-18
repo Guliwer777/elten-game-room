@@ -65,53 +65,53 @@ end
   screen=T::ServerScheduleOverview.new(program:program,workspace:workspace,owner:owner,
     publication:{'title'=>'Actions','__insertion_user'=>'alpha','publication_key'=>'actions'})
   driver=MatchShortcutDriver.new
-  driver.step(l.call('Matches'),[13]) do |form|
+  driver.step(l.call('Tournament matches'),[13]) do |form|
     GlobalMenu.control=form.fields.first
     assert(GlobalMenu.ctitems.empty?,'Summary has match actions')
   end
-  driver.step(l.call('Matches'))
-  driver.step(l.call('Matches'),[13]) do |form|
+  driver.step(l.call('Tournament matches'))
+  driver.step(l.call('Tournament matches'),[13]) do |form|
     assert(confirmations.empty? && actions.empty?,'Enter on summary performed a match action')
     form.fields.first.index=1
     GlobalMenu.control=form.fields.first
     assert_equal([[l.call('Play'),'g'],[l.call('Award forfeit'),'f']],GlobalMenu.ctitems.map{|item|[item[0],item[3]]})
   end
-  driver.step(l.call('Matches')) do
+  driver.step(l.call('Tournament matches')) do
     assert_equal([l.call('Do you want to play this match?')],confirmations)
     assert(actions.empty?,'Declining Play sent a request')
   end
-  driver.step(l.call('Matches'),[17,71]){answer=true}
-  driver.step(l.call('Matches')) do |form|
+  driver.step(l.call('Tournament matches'),[17,71]){answer=true}
+  driver.step(l.call('Tournament matches')) do |form|
     assert_equal(2,confirmations.size,'Ctrl+G did not ask for confirmation exactly once')
     assert_equal([:play],actions.map(&:first),'Ctrl+G did not open the ordinary table exactly once')
     form.fields.first.index=3
   end
-  driver.step(l.call('Matches'),[13])
-  driver.step(l.call('Matches')) do |form|
+  driver.step(l.call('Tournament matches'),[13])
+  driver.step(l.call('Tournament matches')) do |form|
     assert_equal([l.call('This match has already been played.')],alerts)
     assert_equal(2,confirmations.size,'Completed match asked to play')
     GlobalMenu.control=form.fields.first
-    assert_equal([[l.call('Match result'),'w']],GlobalMenu.ctitems.map{|item|[item[0],item[3]]})
+    assert_equal([[l.call('Result details'),'w']],GlobalMenu.ctitems.map{|item|[item[0],item[3]]})
   end
-  driver.step(l.call('Matches'),[17,87])
-  driver.step(l.call('Match result'),[27]){|form|assert_equal(l.call('Draw'),form.fields.first.text)}
-  driver.step(l.call('Matches')){|form|form.fields.first.index=1}
-  driver.step(l.call('Matches'),[17,70])
-  driver.step(l.call('Winner by forfeit'),[27])
-  driver.step(l.call('Matches')) do |form|
+  driver.step(l.call('Tournament matches'),[17,87])
+  driver.step(l.call('Result details'),[27]){|form|assert_equal(l.call('Draw'),form.fields.first.text)}
+  driver.step(l.call('Tournament matches')){|form|form.fields.first.index=1}
+  driver.step(l.call('Tournament matches'),[17,70])
+  driver.step(l.call('Who loses by forfeit?'),[27])
+  driver.step(l.call('Tournament matches')) do |form|
     assert(!actions.any?{|item|item.first==:forfeit},'Cancelling the forfeit recorded a result')
     form.fields.first.index=2
     GlobalMenu.control=form.fields.first
-    assert_equal([[l.call('Cancel tournament match and award forfeit'),'F']],GlobalMenu.ctitems.map{|item|[item[0],item[3]]})
+    assert_equal([[l.call('Award forfeit'),'f']],GlobalMenu.ctitems.map{|item|[item[0],item[3]]})
   end
-  driver.step(l.call('Matches'),[17,16,70])
-  driver.step(l.call('Cancelling the tournament match'),[27])
-  driver.step(l.call('Matches')) do |form|
+  driver.step(l.call('Tournament matches'),[17,70])
+  driver.step(l.call('Who loses by forfeit?'),[27])
+  driver.step(l.call('Tournament matches')) do |form|
     form.fields.first.index=1
     after_confirm=-> {screen.instance_variable_set(:@current_schedule_id,'new-phase')}
   end
-  driver.step(l.call('Matches'),[13])
-  driver.step(l.call('Matches'),[27]) do
+  driver.step(l.call('Tournament matches'),[13])
+  driver.step(l.call('Tournament matches'),[27]) do
     assert_equal(3,confirmations.size)
     assert_equal([:play],actions.map(&:first),'A phase change during confirmation opened a stale match')
     assert_equal([l.call('This match has already been played.')],alerts)
@@ -125,4 +125,4 @@ end
     program.class.app_runtime.close
   end
 end
-puts 'PASS match actions in five languages: summary, Enter, Ctrl+G/W/F/Shift+F, decline, completed notice and stale confirmation'
+puts 'PASS match actions in five languages: summary, Enter, Ctrl+G/W, one Ctrl+F for started/unstarted, decline, completed notice and stale confirmation'

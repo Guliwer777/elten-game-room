@@ -11,6 +11,25 @@ section_titles = {
   'es' => ['Torneos', 'Colaborar en el programa'],
   'ru' => ['Турниры', 'Помощь в развитии программы']
 }.freeze
+blacklist_exception_text = {
+  'pl' => 'Czarna lista nie blokuje zaproszeń do meczów turniejowych.',
+  'en' => 'The blacklist does not block invitations to tournament matches.',
+  'cs' => 'Černá listina neblokuje pozvánky k turnajovým zápasům.',
+  'es' => 'La lista negra no bloquea las invitaciones a partidas de torneo.',
+  'ru' => 'Чёрный список не блокирует приглашения на турнирные матчи.'
+}.freeze
+tournament_contract_text = {
+  'pl' => ['wskazuje się przegranego', 'ostatnim ukończonym rozdaniu lub rundzie',
+    'pozostali dzielą pierwsze miejsce', 'nie można zapisać ani wznowić z pliku'],
+  'en' => ['choose the losing participant', 'last completed deal or round',
+    'remaining participants share first place', 'No tournament game can be saved or resumed from a file'],
+  'cs' => ['vybere poraženého', 'posledním dokončeném rozdání nebo kole',
+    'zbývající účastníci sdílejí první místo', 'Žádnou turnajovou partii nelze uložit ani obnovit ze souboru'],
+  'es' => ['elige a quien pierde', 'última mano o ronda completada',
+    'los demás comparten el primer puesto', 'Ninguna partida de torneo se puede guardar ni reanudar desde un archivo'],
+  'ru' => ['выбирает проигравшего', 'последней завершённой сдачи или раунда',
+    'остальные участники делят первое место', 'Ни одну турнирную партию нельзя сохранить или возобновить из файла']
+}.freeze
 assert(paths.keys.sort == manifest.fetch("supported_languages").sort, "Every interface language needs a complete README")
 assert(paths.values.sort == (["README.md"] + GameRoomReleaseFiles::README_TRANSLATIONS).sort, "README runtime and installer lists differ")
 assert(GameRoomReadmeView.path("future") == paths.fetch("en"), "Future unknown language has no English fallback")
@@ -40,6 +59,8 @@ paths.each do |language, path|
   bytes = File.binread(File.join(root, path))
   markdown = bytes.dup.force_encoding(Encoding::UTF_8)
   assert(markdown.valid_encoding?, "#{language}: invalid UTF-8")
+  assert(markdown.include?(blacklist_exception_text.fetch(language)),
+    "#{language}: invitation blacklist omits the tournament exception")
   tournament_title, help_title = section_titles.fetch(language)
   chapters = markdown.scan(/^## (.+)$/).flatten.map(&:strip)
   tournament_index = chapters.index(tournament_title)
@@ -48,6 +69,9 @@ paths.each do |language, path|
   tournament_section = markdown[/^## #{Regexp.escape(tournament_title)}\r?\n(.*?)(?=^## |\z)/m, 1]
   assert(tournament_section && tournament_section.include?('guliwer'),
     "#{language}: tournament section is missing the contributor credit")
+  tournament_contract_text.fetch(language).each do |description|
+    assert(tournament_section.include?(description), "#{language}: current tournament help omits #{description}")
+  end
   contents_titles = markdown.lines.filter_map { |line| line[/\A- \[([^\]]+)\]\(#/, 1] }
   contents_index = contents_titles.index(tournament_title)
   assert(contents_index && contents_titles[contents_index + 1] == help_title,
@@ -57,7 +81,7 @@ paths.each do |language, path|
     assert(markdown.include?(key), "#{language}: missing tournament action shortcut #{key}")
   end
   cancel_forfeit_key=language=='es' ? 'Ctrl+Mayús+F' : 'Ctrl+Shift+F'
-  assert(markdown.include?(cancel_forfeit_key), "#{language}: missing started-match forfeit shortcut")
+  assert(!markdown.include?(cancel_forfeit_key), "#{language}: obsolete separate started-match forfeit shortcut")
   assert(markdown.lines.filter_map { |line| line[/\A(#+) /, 1]&.length } == levels, "#{language}: section structure differs from the user's README")
   assert(markdown.lines.count { |line| line.start_with?("- ") } == bullets, "#{language}: missing list entries")
   %w[Ctrl+R Ctrl+W Ctrl+I Ctrl+Shift+I Ctrl+J Ctrl+Shift+T Ctrl+O Ctrl+M Ctrl+Shift+R Ctrl+Q Ctrl+X Ctrl+F1 Ctrl+F4 Ctrl+P Ctrl+N Ctrl+S Ctrl+Shift+S Ctrl+Home Ctrl+End Shift+C Shift+H Shift+M Ctrl+C Ctrl+Shift+H Ctrl+H].each do |key|

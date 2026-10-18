@@ -259,7 +259,16 @@ screen.instance_variable_set(:@game_name, ->(id) { id.to_s })
 screen.instance_variable_set(:@chat_text, "hello")
 screen.instance_variable_set(:@chat_index, 5)
 screen.instance_variable_set(:@chat_check, 2)
-screen.instance_variable_set(:@send_chat, lambda do |table, message, users|
+screen.instance_variable_set(:@session, { '__id' => 42 })
+screen.instance_variable_set(:@game_services, {})
+screen.instance_variable_get(:@repository).define_singleton_method(:session_id) { |session| session.fetch('__id') }
+screen.instance_variable_set(:@chat_sends, GameRoomUI::ChatSendBuffer.new)
+history_layout.session_id = 42
+history_layout.chat.set_text('hello')
+screen.instance_variable_set(:@chat_control, history_layout.chat)
+screen.send(:queue_chat_submission, history_layout.chat, 'hello', session_id: 42)
+screen.instance_variable_set(:@send_chat, lambda do |table, message, users, **options|
+  assert(options[:expected_session_id] == 42 && !options[:message_id].to_s.empty?, 'chat identity was lost')
   sent_chat = [table, message, users]
   activity
 end)

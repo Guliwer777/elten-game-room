@@ -61,10 +61,10 @@ driver.step(/Serwerowy test natywny/, [13]) do |form|
   assert(form.fields.none? { |field| field.respond_to?(:header) && field.header == L.call('Virtual player name (local test only)') }, 'Virtual actor control in server view')
   actions = form.fields.first
   assert(actions.options.include?(L.call('Manage tournament')), 'Missing organizer menu')
-  actions.index = actions.options.index(L.call('Matches')) || raise('Missing matches action')
+  actions.index = actions.options.index(L.call('Tournament matches')) || raise('Missing matches action')
   form.index = 0
 end
-driver.step(L.call('Matches'), [27]) do |form|
+driver.step(L.call('Tournament matches'), [27]) do |form|
   assert_equal([L.call('Refresh')], form.fields.each_with_index.filter_map do |control, index|
     control.label if control.is_a?(Button) && !form.instance_variable_get(:@hidden)[index]
   end)

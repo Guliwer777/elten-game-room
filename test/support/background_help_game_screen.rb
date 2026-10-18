@@ -80,3 +80,12 @@ def screen_fixture(game, bots: 0, **screen_options)
   screen.define_singleton_method(:monotonic_time) { $help_clock }
   [h, screen]
 end
+
+# Keep the real random recipe/write/replay path. A hidden human does not serve;
+# these background-progress scenarios specifically need the bot to start.
+def bot_serves_audio_ball(harness)
+  values = Array.new(15, 1) + [2]
+  assert(GameRoomServerRandomRendering.render({'kind' => 'first_server'}, values) == '1',
+    'Fixture must let the bot serve first')
+  harness.view('Alice').next_random_values = values
+end

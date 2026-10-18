@@ -102,7 +102,7 @@ controller.define_singleton_method(:cancel) { |_lease| }
   board_preferences: GameRoomBoardPreferences.new(nil, game),
   history_navigator: GameRoomHistory::Navigator.new,
   bot_turn_controller: controller, invite_online: ->(_table) {}, invite_contacts: ->(_table) {},
-  turn_history_entries: {}, activity_entries: []
+  turn_history_entries: {}, activity_entries: [], game_services: {}
 }.each { |key, value| screen.instance_variable_set("@#{key}", value) }
 original_game_controls = nil
 Form.driver = lambda do |form|
@@ -141,7 +141,7 @@ layout.form.index = layout.form.fields.index(layout.chat)
 # A remotely started session may replace an active game while chat is focused.
 # Preserve the active chat editor across the remote match boundary as well.
 next_session = session.merge("__id" => 2)
-repository.define_singleton_method(:session_by_id) { |_id, table:| next_session }
+repository.define_singleton_method(:session_for_table) { |_table, **_options| next_session }
 controller.define_singleton_method(:switch_session) { |_id| }
 new_session_sync = Object.new
 new_session_sync.define_singleton_method(:recovery_pending?) { false }

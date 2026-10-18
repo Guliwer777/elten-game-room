@@ -3,8 +3,8 @@
   "id": "c24d98cc-9ccd-4d50-b801-459da324ff60",
   "name": "Power Games",
   "description": "Accessible multiplayer games for ELTEN users.",
-  "version": "2.0.5",
-  "build_id": "251",
+  "version": "2.0.5.1",
+  "build_id": "252",
   "EltenAPIVersion": "3.0.4",
   "main_language": "en",
   "supported_languages": ["en", "pl", "cs", "es", "ru"],
@@ -30,7 +30,8 @@
       "hit1", "hit_ship1", "hit_ship2", "rocket_launch1", "rocket_launch2", "rocket_launch3", "rocket_miss",
       "interception", "lose1", "lose3", "play", "play2", "replay",
       "reverse", "reverse3", "roll", "skip", "win1", "win2",
-      "farkle_bank", "ninety3366", "1000_mariage", "win_party", "lose_party",
+      "farkle_bank", "poker_fold", "poker_check", "poker_call", "poker_raise", "poker_all_in", "poker_pot",
+      "ninety3366", "1000_mariage", "win_party", "lose_party",
       "domino_refill", "domino_move_tile", "domino_take_chip", "card-shuffle",
       "krowa-race", "krowa-word-tower", "krowa-single", "krowa-opponent-guessed",
       "krowa-duplicate", "krowa-unknown", "krowa-length", "krowa-success",
@@ -191,8 +192,8 @@ class EltenGameRoom < Program
   extend GameRoomTableWatchRuntime
   extend GameRoomContactFiltersRuntime
   extend GameRoomAnalyticsRuntime
-  GAME_ROOM_VERSION = "2.0.5".freeze
-  GAME_ROOM_BUILD_ID = 251
+  GAME_ROOM_VERSION = "2.0.5.1".freeze
+  GAME_ROOM_BUILD_ID = 252
   GAME_ROOM_CAPABILITIES = ["invitations", "live_sessions", "live_session_stack"].freeze
   LOBBY_ACTIVITY_POLL_INTERVAL = 5.0
 
@@ -324,6 +325,7 @@ class EltenGameRoom < Program
       return notification.presentation(title:'',body:'',sound:nil).suppress_default!
     end
     return tournament_start_presentation(notification) if notification.type.to_s==GameRoomTournaments::TournamentStartNotice::TYPE
+    return tournament_event_presentation(notification) if GameRoomTournaments::TournamentEventNotice::TYPES.value?(notification.type.to_s)
     if notification.type.to_s == GameRoomTournaments::ProposalNotice::TYPE
       return notification.presentation(title: _("Game invitation"), body: _("This match invitation is no longer available."), sound: nil).suppress_default!
     end
@@ -406,6 +408,10 @@ class EltenGameRoom < Program
       receive_tournament_start(notification) unless deferred
       return
     end
+    if GameRoomTournaments::TournamentEventNotice::TYPES.value?(notification.type.to_s)
+      receive_tournament_event(notification) unless deferred
+      return
+    end
 
     receive_invitation_receipt(notification) if GameRoomInvitationReceipts::TYPES.include?(notification.type.to_s)
     return unless contact_notification_received(notification, _presentation, deferred: deferred)
@@ -432,21 +438,30 @@ class EltenGameRoom < Program
   end
 
   def notification_action(action, notification)
-
+    if %w[open_tournament_matches open_tournament_standings open_tournament_phase_standings open_tournament_registration].include?(action.to_s)
+      return open_tournament_notification(action.to_s,notification)
+    end
     return open_new_table_notification(notification) if action.to_s == "open_new_table"
     return false if action.to_s.to_sym != :open_invitation
+    tournament = notification.metadata.is_a?(Hash) && notification.metadata["tournament_match"] == true
+    visible = -> { self.class.invitation_sender_allowed?(notification.sender, tournament_match: tournament) }
+    return true unless visible.call
 
+    invitation_user = Session.name.to_s.dup.freeze
     initialize_services
     record_statistics_visit
     check_server_table_access
     connected = run_network_task(_("Connecting to Elten")) { @transport.start }
     return true unless connected
-    invitation_id = notification.metadata.to_h["invitation_id"].to_i
+    return true unless invitation_user.casecmp?(Session.name.to_s)
+    return true unless visible.call
+    invitation_reference = GameRoomInvitationIdentity.notification_reference(notification, recipient: invitation_user)
+    return true unless invitation_reference
     expiry = GameRoomNotificationTime.expires_at(notification)
     # Older notifications did not carry an expiry. Their actual invitation
     # still needs the authoritative lookup below, not a false "expired".
     if expiry > 0 && expiry <= GameRoomClock.now.to_i
-      revoke_invitation_notification(invitation_id, notification_id: notification.id)
+      revoke_invitation_notification(invitation_reference, notification_id: notification.id)
       alert(_("This invitation has expired."))
       return true
     end
@@ -454,10 +469,12 @@ class EltenGameRoom < Program
     @invitation_notifications.with_opened(notification) do
       choices = load_pending_invitations
       return true if choices == nil
+      return true unless invitation_user.casecmp?(Session.name.to_s)
+      return true unless visible.call
 
-      selected = choices.find { |choice| choice[:invitation]&.id == invitation_id }
+      selected = GameRoomInvitationIdentity.unique(choices, invitation_reference) { |choice| choice[:invitation] }
       if selected == nil
-        revoke_invitation_notification(invitation_id, notification_id: notification.id)
+        revoke_invitation_notification(invitation_reference, notification_id: notification.id)
         alert(_("This table is no longer available."))
         return true
       end
@@ -497,8 +514,12 @@ class EltenGameRoom < Program
     return nil unless service && self.class.analytics_enabled?
     lambda do |session, replay|
       next unless self.class.analytics_enabled?
+      participants = session.fetch("__players", [])
+      if replay && game.eliminated_from_game?(replay, viewer)
+        participants = participants.reject { |player| GameRoomParticipants.same?(player, viewer) }
+      end
       service.observe(session: session, replay: replay, game_id: game.id,
-        viewer: viewer, participants: session.fetch("__players", []))
+        viewer: viewer, participants: participants)
     rescue StandardError => error
       log_statistics_failure("Statistics observation failed: #{error.class}")
     end
@@ -551,7 +572,9 @@ class EltenGameRoom < Program
       activity_repository: @table_activity
     )
     @games ||= GameRepository.new(self, transport: @transport, server_tables: @server_tables)
-    @invitations ||= InvitationRepository.new(transport: @transport, notification_source: ->(recipient, now) {
+    @invitations ||= InvitationRepository.new(transport: @transport,
+      sender_allowed: ->(sender, table) { self.class.invitation_sender_allowed?(sender,
+        tournament_match: table["tournament_match"].is_a?(Hash)) }, notification_source: ->(recipient, now) {
       @invitation_notifications.pending(recipient: recipient, now: now)
     }, response_sender: ->(invitation, response) {
       deliver_invitation_response(invitation, response)
@@ -768,13 +791,38 @@ class EltenGameRoom < Program
     end
   end
 
-  def show_tournaments(mine: false)
+  def show_tournaments(mine: false,reference:nil,initial_action:nil,initial_phase_id:nil)
     self.class.refresh_tournament_deadlines
     GameRoomTournaments::Hub.new(program: self, registry: GAME_REGISTRY,
       user: -> { Session.name }, alert: ->(message) { alert(message) },
-      confirm: ->(message) { confirm(message) },mine:mine).run
+      confirm: ->(message) { confirm(message) },mine:mine,reference:reference,initial_action:initial_action,initial_phase_id:initial_phase_id).run
   ensure
     self.class.refresh_tournament_deadlines
+  end
+
+  def open_tournament_notification(action,notification)
+    expected={'open_tournament_matches'=>GameRoomTournaments::TournamentStartNotice::TYPE,
+      'open_tournament_standings'=>GameRoomTournaments::TournamentEventNotice::TYPES['finished'],
+      'open_tournament_phase_standings'=>GameRoomTournaments::TournamentEventNotice::TYPES['phase_finished'],
+      'open_tournament_registration'=>GameRoomTournaments::TournamentEventNotice::TYPES['registration']}
+    return false unless notification.type.to_s==expected[action] && notification.app_uuid.to_s.downcase==self.class.server_app_uuid.to_s.downcase
+    parser=action=='open_tournament_matches' ? GameRoomTournaments::TournamentStartNotice : GameRoomTournaments::TournamentEventNotice
+    metadata=parser.metadata(notification.metadata.to_h)
+    return false unless metadata['recipient']==Session.name.to_s.downcase &&
+      metadata['publication_ref']['author']==notification.sender.to_s.downcase &&
+      metadata['backend_identity']=="elten-tournaments:#{self.class.server_app_uuid}"
+    initialize_services
+    record_statistics_visit
+    check_server_table_access
+    # Opening only selects a freshly loaded public view. Join/Play still have
+    # their normal explicit confirmation and fresh authorization.
+    show_tournaments(reference:metadata['publication_ref'],initial_action:{
+      'open_tournament_matches'=>:overview,'open_tournament_standings'=>:results,'open_tournament_phase_standings'=>:results}[action],
+      initial_phase_id:metadata['phase_id'])
+    true
+  rescue GameRoomTournaments::Publication::Invalid
+    alert(_("This tournament notification is no longer available."))
+    true
   end
 
   def show_my_tournaments
@@ -827,7 +875,7 @@ class EltenGameRoom < Program
   rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
     message=case error.code
     when :waiting_for_match_creator then _("Another player is creating this match's table. Accept their invitation or try again shortly.")
-    when :closed_match_needs_recovery then _("This match was started or its state is uncertain. Resume the saved game or check Operations before playing again.")
+    when :closed_match_needs_recovery then _("This match was started or its state is uncertain, so it cannot be started again. Use 'Check pending changes' in the tournament list to check any unconfirmed operation.")
     when :already_at_another_table then _("Leave your current table before opening another tournament match.")
     when :unsupported_match_players then _("This match has unsupported player counts or team assignments for the selected game.")
     when :private_game_not_supported then _("This game variant requires a private table and is not supported by this server test.")
@@ -841,14 +889,29 @@ class EltenGameRoom < Program
     alert(_("Tournament table or result not confirmed. Check Operations before trying again."))
   end
 
-  def award_ordinary_tournament_forfeit(publication,match,winner,schedule_id,cancel_started:false)
+  def award_ordinary_tournament_forfeit(publication,match,loser,schedule_id,names:{})
     service=ordinary_tournament_service(publication)
     return unless service
-    run_network_task(_("Award forfeit"),ui: :none) do
-      service.award_forfeit(match_id:match['match_id'],leg:match['leg'],winner:winner,expected_schedule_id:schedule_id,cancel_started:cancel_started)
+    loop do
+      preview=run_network_task(_("Award forfeit"),ui: :none) do
+        service.forfeit_preview(match_id:match['match_id'],leg:match['leg'],loser:loser,expected_schedule_id:schedule_id)
+      end
+      return unless preview && GameRoomTournaments::ServerForfeitScreen::Confirmation.new(program:self,preview:preview,names:names).run
+      begin
+        return run_network_task(_("Award forfeit"),ui: :none) {service.confirm_forfeit(preview:preview)}
+      rescue GameRoomTournaments::OrdinaryMatchService::Blocked=>error
+        raise unless error.code==:forfeit_preview_changed
+        alert(_("The match changed. Review the updated consequences before confirming again."))
+      end
     end
   rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
-    message=error.code==:match_game_already_started ? _("This table already has a game. A forfeit cannot replace a game in progress or a finished result.") : _("Tournament table operation blocked: %{reason}")%{reason:error.code}
+    message=case error.code
+    when :tournament_continuation_unsupported then _("This game does not yet support removing a participant from a tournament match in progress. No result was recorded.")
+    when :tournament_checkpoint_unsupported then _("The scores from a completed round are unavailable. No forfeit was recorded.")
+    when :game_state_unavailable then _("The current game history is unavailable. Join the table as an observer and try again. No forfeit was recorded.")
+    when :result_already_recorded then _("This match has already been resolved.")
+    else _("Tournament table operation blocked: %{reason}")%{reason:error.code}
+    end
     alert(message)
   rescue GameRoomTournaments::Publication::Invalid, GameRoomTournaments::OperationJournal::Error, GameRoomTournaments::ServerPlanArchive::Unconfirmed,
       GameRoomTournaments::ServerPlanArchive::ContextChanged, IOError, SystemCallError
@@ -915,7 +978,14 @@ class EltenGameRoom < Program
   public :open_ordinary_tournament_match, :ordinary_tournament_overview, :reconcile_ordinary_tournament_operation, :award_ordinary_tournament_forfeit
 
   def game_local_services
-    {server_tables: @server_tables, transport: @transport}
+    {server_tables: @server_tables, transport: @transport,
+      tournament_presence: ->(table, session, replay, events, decisive:) do
+        @ordinary_tournament_services&.values&.filter_map do |service|
+          service&.presence_context(table, session, replay, events, decisive: decisive)
+        end&.first
+      rescue GameRoomTournaments::OrdinaryMatchService::Blocked, GameRoomTournaments::Publication::Invalid => error
+        raise GameRoomNetworkErrors::GamePaused, "Tournament presence: #{error.message}"
+      end}
   end
 
   def show_question_creator
@@ -948,11 +1018,16 @@ class EltenGameRoom < Program
 
   def show_statistics
     service = self.class.statistics_service
+    runtime = self.class.app_runtime if self.class.respond_to?(:app_runtime)
+    account = [Session.name.to_s.downcase.freeze, Session.token.to_s.dup.freeze].freeze
+    valid = -> { account == [Session.name.to_s.downcase, Session.token.to_s] &&
+      (!runtime || self.class.app_runtime.equal?(runtime)) }
     GameRoomStatisticsScreen.new(
       program: self,
       registry: GAME_REGISTRY,
-      reader: ->(period) { read_statistics { |token| service&.store&.report(period, cancellation_token: token, reuse_snapshot: true) } },
-      years_reader: -> { read_statistics { |token| service&.store&.years(today: GameRoomStatistics::Periods.today, cancellation_token: token) } }
+      valid: valid,
+      reader: ->(period, token) { service&.store&.report(period, cancellation_token: token, reuse_snapshot: true) if self.class.analytics_enabled? },
+      years_reader: ->(token) { service&.store&.years(today: GameRoomStatistics::Periods.today, cancellation_token: token) if self.class.analytics_enabled? }
     ).run
   end
 
@@ -997,23 +1072,31 @@ class EltenGameRoom < Program
   end
 
   def apply_game_join_role(table)
+    allowed = invitation_account_guard
+    return nil unless allowed.call
+    user = Session.name.to_s.dup
     if table['tournament_match']
       reference=table['tournament_match'].fetch('publication_ref')
       key=JSON.generate(reference.merge('author'=>reference.fetch('author').downcase))
       service=@ordinary_tournament_services && @ordinary_tournament_services[key]
       raise GameRoomTournaments::OrdinaryMatchService::Blocked,:wrong_match_binding unless service
       if service.observer_on_join?(table)
+        return nil unless allowed.call
         snapshot=@lobby.snapshot_for(table)
-        return snapshot if snapshot&.observer?(Session.name)
-        snapshot=@lobby.set_observer(table,Session.name,true)
-        raise GameRoomNetworkErrors::GamePaused,'Tournament observer role was not confirmed' unless snapshot&.observer?(Session.name)
+        return nil unless allowed.call
+        return snapshot if snapshot&.observer?(user)
+        snapshot=@lobby.set_observer(table,user,true)
+        return nil unless allowed.call
+        raise GameRoomNetworkErrors::GamePaused,'Tournament observer role was not confirmed' unless snapshot&.observer?(user)
         return snapshot
       end
     end
+    return nil unless allowed.call
     game = game_definition(table["game"])
     if game && game.join_as_observer?(game.options_from_json(table["game_options"]),
-        viewer: Session.name, owner: @lobby.owner_of(table))
-      @lobby.set_observer(table, Session.name, true)
+        viewer: user, owner: @lobby.owner_of(table))
+      return nil unless allowed.call
+      @lobby.set_observer(table, user, true)
     end
   rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
     raise GameRoomNetworkErrors::GamePaused, "Tournament entry: #{error.message}"
@@ -1149,6 +1232,7 @@ class EltenGameRoom < Program
   end
 
   def save_current_game(table, session, game)
+    GameRoomTournamentMarker.ensure_savable!(table, session)
     before = run_network_task(_("Checking game before saving"), ui: :none) { @games.snapshot_for(session) }
     return false if before == nil
     error = game.save_game_error(game.replay(before.session, before.events, @games))
@@ -1169,6 +1253,9 @@ class EltenGameRoom < Program
     play_game_sound("disconnect")
     alert(_("The game has been saved."))
     true
+  rescue GameRoomTournamentMarker::SavingDisabled
+    alert(_("Tournament games cannot be saved or resumed from a saved game."))
+    false
   rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
     alert(_("Tournament table operation blocked: %{reason}")%{reason:error.code})
     false
@@ -1255,58 +1342,60 @@ class EltenGameRoom < Program
   end
 
   def create_saved_game_table(saved)
-    if saved['tournament']
-      reference=saved['tournament']['publication_ref']
-      service=ordinary_tournament_service({'__insertion_user'=>reference['author'],'publication_key'=>reference['publication_key']})
-      return nil unless service
-      checked=run_network_task(_("Checking saved tournament match"),ui: :none){service.check_saved_match(saved,allow_prepared:true)}
-      return nil unless checked
+    allowed = invitation_account_guard
+    unless allowed.call
+      @saved_game_table_preparation = nil
+      return nil
     end
+    GameRoomTournamentMarker.ensure_savable!(saved)
     game = game_definition(saved["game"])
     saved_games.validate(saved, game: game)
+    actor = Session.name.to_s.dup
     required_seats = saved["players"].length
-    required_seats += 1 unless GameRoomParticipants.includes?(saved["players"], Session.name)
+    required_seats += 1 unless GameRoomParticipants.includes?(saved["players"], actor)
     if required_seats > LobbyRepository::MAX_ROOM_CAPACITY
       alert(_("This saved game needs %{count} seats, but tables support at most %{maximum}.") % {
         count: required_seats, maximum: LobbyRepository::MAX_ROOM_CAPACITY
       })
       return nil
     end
-    checked = run_network_task(_("Checking the current table"), ui: :none) { [@lobby.current_table_for(Session.name)] }
-    return nil if checked == nil
+    checked = run_network_task(_("Checking the current table"), ui: :none) do
+      [@lobby.current_table_for(actor)] if allowed.call
+    end
+    return nil if checked == nil || !allowed.call
     current = checked.first
+    intent = @saved_game_table_preparation
+    if intent && (!current || !intent[:identity] || intent[:identity] != saved_game_preparation_identity(current) || current["resume_save_id"] != saved["id"])
+      @saved_game_table_preparation = nil
+    end
     if current != nil
       if current["resume_save_id"] == saved["id"]
-        if service
-          checked=run_network_task(_("Checking saved tournament match"),ui: :none){service.prepare_saved_match(saved,current)}
-          return nil unless checked
-          activate_table_transport(current)
-        end
-        return current
+        GameRoomTournamentMarker.ensure_savable!(current)
+        return current unless @saved_game_table_preparation
+      else
+        alert(_("You are already at another table."))
+        return nil
       end
-      alert(_("You are already at another table."))
-      return nil
+    else
+      prepared = create_saved_game_continuation(saved, game, actor, allowed: allowed)
+      return nil if prepared == nil || !allowed.call
+      row = prepared.table
+      unless prepared.created?
+        # Another entry may have acquired a table after the first check. Reuse
+        # only this archive's continuation, without repeating its setup/invites.
+        if row["resume_save_id"] == saved["id"]
+          GameRoomTournamentMarker.ensure_savable!(row)
+          return row
+        end
+        alert(_("You are already at another table."))
+        return nil
+      end
     end
-    row = run_network_task(_("Preparing saved game")) do
-      created = @lobby.create_table(name: saved["table_name"], game: saved["game"], owner: Session.name,
-        game_options: saved["options"], private_table: saved["private"], resume_save_id: saved["id"],
-        bot_count: saved["players"].count { |player| GameRoomParticipants.bot?(player) },
-        bot_names: saved["players"].select { |player| GameRoomParticipants.bot?(player) }.map { |player| GameRoomParticipants.bot_name_token(player) },
-        tournament_match: saved['tournament']&.slice('publication_ref','schedule_id','match_id','leg'))
-      service.prepare_saved_match(saved,created.table) if service
-      activate_table_transport(created.table)
-      # Ownership of the archive is independent of its playing seats.
-      @lobby.set_observer(created.table, Session.name, true) unless GameRoomParticipants.includes?(saved["players"], Session.name)
-      created.table
-    end
-    return nil if row == nil
 
-    saved["players"].each do |player|
-      next if GameRoomParticipants.bot?(player) || saved.fetch('controllers', {})[player] == 'bot' || GameRoomParticipants.same?(player, Session.name)
-      run_network_task(_("Sending invitation"), ui: :none) { deliver_table_invitation(row, player, continuation: true) }
-    end
-    speak(_("The table is waiting for the original players. Start the game when everyone has joined."))
-    row
+    finish_saved_game_table_preparation(saved, actor, allowed: allowed)
+  rescue GameRoomTournamentMarker::SavingDisabled
+    alert(_("Tournament games cannot be saved or resumed from a saved game."))
+    nil
   rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
     alert(_("Tournament table operation blocked: %{reason}")%{reason:error.code})
     nil
@@ -1320,39 +1409,133 @@ class EltenGameRoom < Program
     nil
   end
 
+  def saved_game_preparation_identity(table, actor: Session.name)
+    return nil unless table
+    membership = @transport.membership_token(@lobby.table_id(table))
+    return nil unless membership && !table["__live_session_id"].to_s.empty?
+    [actor.to_s.downcase, table["resume_save_id"], @lobby.table_id(table), table["__live_session_id"], membership]
+  end
+
+  def create_saved_game_continuation(saved, game, actor, allowed:)
+    run_network_task(_("Preparing saved game")) do
+      next unless allowed.call
+      created = @lobby.create_table(name: saved["table_name"], game: saved["game"], owner: actor,
+        game_options: saved["options"], private_table: saved["private"], resume_save_id: saved["id"],
+        bot_count: saved["players"].count { |player| GameRoomParticipants.bot?(player) },
+        bot_names: saved["players"].select { |player| GameRoomParticipants.bot?(player) }.map { |player| GameRoomParticipants.bot_name_token(player) })
+      if created.created?
+        # Keep only our own unfinished preparation, before the first stage
+        # that can fail. Another retained room is never implicitly repaired.
+        recipients = saved["players"].reject do |player|
+          GameRoomParticipants.bot?(player) || saved.fetch('controllers', {})[player] == 'bot' || GameRoomParticipants.same?(player, actor)
+        end
+        recipients = [] unless game.table_invitations_allowed?(game.options_from_json(saved["options"]))
+        @saved_game_table_preparation = {
+          identity: saved_game_preparation_identity(created.table, actor: actor), activated: false, recipients: recipients,
+          observer: !GameRoomParticipants.includes?(saved["players"], actor)
+        }
+      end
+      created
+    end
+  end
+
+  def finish_saved_game_table_preparation(saved, actor, allowed:)
+    intent = @saved_game_table_preparation
+    preparation_current = lambda do |table|
+      allowed.call && intent && intent[:identity] && @saved_game_table_preparation.equal?(intent) &&
+        intent[:identity] == saved_game_preparation_identity(table) && table["resume_save_id"] == saved["id"] &&
+        GameRoomParticipants.same?(actor, Session.name) && GameRoomParticipants.same?(@lobby.owner_of(table), actor) &&
+        @lobby.waiting?(table)
+    end
+    row = run_network_task(_("Preparing saved game")) do
+      next unless allowed.call
+      current = @lobby.current_table_for(actor)
+      next unless allowed.call
+      snapshot = @lobby.snapshot_for(current, force: true) if preparation_current.call(current)
+      next unless allowed.call
+      unless snapshot && preparation_current.call(snapshot.table)
+        @saved_game_table_preparation = nil
+        next :unavailable
+      end
+      unless intent[:activated]
+        unless activate_table_transport(snapshot.table)
+          @saved_game_table_preparation = nil
+          next :unavailable
+        end
+        intent[:activated] = true
+      end
+      next unless allowed.call
+      # A lost acknowledgement may still have applied this role. Read it
+      # before retrying; ownership of the archive is not a playing seat.
+      if intent[:observer] && !snapshot.observer?(actor)
+        snapshot = @lobby.set_observer(snapshot.table, actor, true)
+        next unless allowed.call
+        unless snapshot && preparation_current.call(snapshot.table) && snapshot.observer?(actor)
+          @saved_game_table_preparation = nil
+          next :unavailable
+        end
+      end
+      snapshot.table
+    end
+    return nil unless allowed.call
+    if row == :unavailable
+      alert(_("This table is no longer available."))
+      return nil
+    end
+    return nil unless row
+
+    return nil unless send_saved_game_invitations(row, actor, intent, preparation_current, allowed: allowed)
+    return nil unless allowed.call
+    @saved_game_table_preparation = nil
+    speak(_("The table is waiting for the original players. Start the game when everyone has joined."))
+    row
+  end
+
+  def send_saved_game_invitations(row, actor, intent, preparation_current, allowed:)
+    intent[:recipients].dup.each do |player|
+      sent = run_network_task(_("Sending invitation"), ui: :none) do
+        unless preparation_current.call(@lobby.current_table_for(actor))
+          @saved_game_table_preparation = nil
+          next :unavailable
+        end
+        result = deliver_table_invitation(row, player, continuation: true)
+        intent[:recipients].delete(player) if result
+        [result]
+      end
+      return false unless allowed.call
+      if sent == :unavailable
+        alert(_("This table is no longer available."))
+        return false
+      end
+      return false unless sent
+      unless sent.first
+        alert(_("The operation could not be completed. Please try again."))
+        return false
+      end
+    end
+    true
+  end
+
   def resume_saved_game_at_table(row, state)
+    GameRoomTournamentMarker.ensure_savable!(row)
     saved = run_network_task(_("Loading saved game")) { saved_games.fetch(row["resume_save_id"]) }
     if saved == nil
       alert(_("The saved game is no longer available."))
       return nil
     end
+    GameRoomTournamentMarker.ensure_savable!(saved)
     game = state.game
     saved_games.validate(saved, game: game)
     restoration = saved_games.restored_data(saved, game: game, table_id: @lobby.table_id(row))
-    tournament_service=nil
-    if saved['tournament']
-      reference=saved['tournament']['publication_ref']
-      tournament_service=ordinary_tournament_service({'__insertion_user'=>reference['author'],'publication_key'=>reference['publication_key']})
-      return nil unless tournament_service
-    end
     missing = restoration[:players].reject { |player| restoration.fetch(:controllers, {})[player] == 'bot' || GameRoomParticipants.includes?(state.room.game_participants, player) }
     unless missing.empty?
       alert(_("Waiting for these players: %{players}.") % { players: missing.map { |player| GameRoomParticipants.display_name(player) }.join(", ") })
       return nil
     end
     started = run_network_task(_("Resuming game")) do
-      if tournament_service
-        checked=tournament_service.start_saved_match(saved,row)
-        restoration[:archive_id]=checked.fetch('continuation').fetch('archive_id')
-        restoration[:requested_session_id]=checked.fetch('session_id')
-      end
       @games.restore_session(table: row, game: game.id, players: restoration[:players], options: saved["options"], restore: restoration)
     end
     return nil if started == nil
-    if tournament_service
-      linked=run_network_task(_("Linking resumed tournament match"),ui: :none){tournament_service.bind_resumed_match(saved,row,started)}
-      return nil unless linked
-    end
 
     # The server has accepted the complete archive, including private-state
     # restoration. Consume only this save, not while merely preparing its room.
@@ -1370,6 +1553,9 @@ class EltenGameRoom < Program
     # as failed or start a second game. The original save is not a rollback point.
     run_network_task(_("Updating table"), ui: :none) { @lobby.set_game_active(row, true) }
     started
+  rescue GameRoomTournamentMarker::SavingDisabled
+    alert(_("Tournament games cannot be saved or resumed from a saved game."))
+    nil
   rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
     alert(_("Tournament table operation blocked: %{reason}")%{reason:error.code})
     nil
@@ -1524,11 +1710,16 @@ class EltenGameRoom < Program
 
   def join_table_snapshot(snapshot)
     return nil if snapshot == nil
+    allowed = invitation_account_guard
+    user = Session.name.to_s.dup
+    return nil unless allowed.call
     return nil unless game_join_allowed?(snapshot.table)
 
-    run_network_task(_("Joining table")) do
+    result = run_network_task(_("Joining table")) do
+      next :transport_failed unless allowed.call
       selected_table = snapshot.table
       pending_invitations = pending_invitations_for_table(selected_table)
+      next :transport_failed unless allowed.call
       if @transport.live_store?
         status = establish_invited_table_transport(selected_table)
         unless [:joined, :already_here].include?(status)
@@ -1538,16 +1729,20 @@ class EltenGameRoom < Program
         connected = establish_table_transport(selected_table, bootstrap: true)
         next :transport_failed if !connected
       end
+      next :transport_failed unless allowed.call
 
-      joined = @lobby.join_table(selected_table, Session.name, announce: false)
+      joined = @lobby.join_table(selected_table, user, announce: false)
+      next :transport_failed unless allowed.call
       apply_game_join_role(joined.table) if joined.entered?
+      next :transport_failed unless allowed.call
       if joined&.entered?
         complete_joined_table_invitations(joined.table, pending_invitations)
       else
         @transport.deactivate_table(table_id: @lobby.table_id(selected_table))
       end
-      joined
+      allowed.call ? joined : :transport_failed
     end
+    allowed.call ? result : nil
   end
 
   def pending_invitations_for_table(row)
@@ -1562,14 +1757,20 @@ class EltenGameRoom < Program
   end
 
   def complete_joined_table_invitations(row, invitations)
+    allowed = invitation_account_guard
+    user = Session.name.to_s.dup
+    return false unless allowed.call
+    return false unless invitations.to_a.all? { |invitation| invitation.recipient.casecmp?(user) }
     self.class.table_watch_receiver.resolve(row["__live_session_id"])
     invitations.to_a.each do |invitation|
+      return false unless allowed.call
       begin
-        @invitations.respond(invitation, recipient: Session.name, response: "accepted")
+        @invitations.respond(invitation, recipient: user, response: "accepted")
       rescue StandardError => error
         Log.warning("ELTEN Game Room joined-table invitation response failed: #{error.class}: #{error.message}") if defined?(Log)
       end
     end
+    return false unless allowed.call
     revoke_table_invitation_notifications(@lobby.table_id(row), live_session_id: row["__live_session_id"])
   end
 
@@ -1683,6 +1884,11 @@ class EltenGameRoom < Program
     background_table = prepared_screen = nil
     last_room_state = nil
     quiet_reentry = false
+    chat_sends = GameRoomUI::ChatSendBuffer.new
+    chat_context = lambda do
+      {table_id: table_id, session_id: layout&.session_id, actor: Session.name,
+        membership: (@transport.membership_token(table_id) if @transport.respond_to?(:membership_token))}
+    end
     synchronizer = GameRoomSync::Controller.new(
       transport: @transport, table_id: table_id,
       reconnect: -> { activate_table_transport(row) }
@@ -1696,201 +1902,271 @@ class EltenGameRoom < Program
         stop_table_background(background_table)
         background_table = nil
       end
-      state = load_room_state(
-        row, title: _("Updating table"), synchronizer: synchronizer,
-        ui: layout&.focus_location.to_a[0] == :chat ? layout.chat : :none
-      )
-      if state == :unavailable
-        if last_room_state == nil
-          event = GameScreen.wait_for_connection(synchronizer, program: self)
-          return if event == nil || event.kind == :closed
-          next
-        end
-        state = last_room_state
-      end
+      state = table_screen_state(row, layout, synchronizer, last_room_state)
+      next if state == :retry
       return if state == nil
       last_room_state = state
-
-      snapshot = state.room
-      row = snapshot.table
-      owner = @lobby.owner_of(row)
-      own_table = GameRoomParticipants.same?(owner, Session.name)
-      if prepared_screen
-        prepared_screen.send(:present_session_membership, snapshot.members)
-      else
-        play_game_sounds(room_membership_tracker(row).observe(snapshot.members))
-      end
-      activity_cursor = announce_new_table_activity(state.activity_entries, after_id: layout&.activity_cursor)
-      synchronizer.update_session(state.session_id(@games))
-      options = {
-        view_spec: table_game_view_spec(state), history_items: room_history_items(state, state.activity_entries),
-        user_items: room_user_rows(state), users_header: table_header(snapshot),
-        phase: state.phase, own_table: own_table
-      }
-      if layout == nil
-        layout = GameRoomLayout::Screen.new(**options)
-        layout.form.game_room_program = self
-        @table_layouts[table_id] = layout
-      else
-        layout.update(**options)
-      end
-      @table_network_view = {layout: layout, table_id: table_id, synchronizer: synchronizer}
-      layout.activity_cursor = activity_cursor
-      layout.primary_button.label = table_start_label(state)
+      row = state.room.table
+      layout = present_table_screen(state, layout, table_id, prepared_screen, synchronizer, chat_sends) { |created| layout = created }
       if state.active? || state.finished?
+        chat_sends.clear
+        layout.computer_changes.clear
         current_screen, prepared_screen = prepared_screen, nil
-        result = run_game_screen(state.session, state.game, table: row, prepared_screen: current_screen)
-        if result == :room_closed
-          forget_room_membership(row)
-          return
-        end
-        return if result == :saved || result == :left_table
-        start_new_game(row) if result == :restart
-        return if result == :back && leave_table_from_screen(row)
-
+        return if run_active_table_screen(state, row, current_screen) == :exit
         quiet_reentry = true
         next
       end
 
       prepared_screen&.close_covered_session
       prepared_screen = nil
-      layout.begin_bindings
-      layout.back_button.label = _("Leave")
-      form = layout.form
       history_navigator ||= GameRoomHistory::Navigator.new
-      GameRoomHistory.bind(form) do |operation, value|
-        entries = room_history_entries(state, state.activity_entries)
-        message = history_navigator.navigate(entries, operation, value, view: layout.history,
-          focused: form.fields[form.index.to_i].equal?(layout.history))
-        speak(message.to_s) unless message.to_s.empty?
+      selection = bind_waiting_table_screen(state, row, layout, synchronizer, history_navigator, chat_sends, chat_context)
+      background_table = start_waiting_table_background(state, row, layout)
+      if chat_sends.pending?(**chat_context.call) && !synchronizer.recovery_pending?
+        selection[:action] = :chat
+      elsif !synchronizer.recovery_pending? && (command = layout.computer_changes.take(**waiting_computer_context(row, chat_context)))
+        selection[:action], selection[:participant] = command
+      else
+        quiet_reentry ? layout.wait_without_announcement : layout.form.wait
       end
-      action = nil
-      participant = nil
-      chat_submission = nil
-      dispatch = lambda do |requested, selected = nil|
-        if form.game_room_pending_operation
-          if requested == :rules && state.game
-            book = state.game.rule_book(options: state.game.options_from_json(row["game_options"]))
-            GameRoomScreens::GameRules.new(book, program: self, audio_tutorial: state.game.audio_tutorial_entries).open_on(form)
-          else
-            form.game_room_pending_operation.reject_action
-          end
-          next
-        end
-        next if action != nil
-
-        action = requested
-        participant = selected
-        form.resume
-      end
-      layout.primary_button.on(:press) { dispatch.call(:start_game) }
-      layout.bind_status_commands { |command| dispatch.call(:local_game_command, command) }
-      bind_game_room_shortcuts(form, state.game) { |command| dispatch.call(:local_game_command, command) }
-      layout.back_button.on(:press) { dispatch.call(:leave) }
-      layout.chat.on_submit do
-        if layout.chat.text.to_s.strip.empty?
-          alert(_("Type a chat message first."))
-        else
-          chat_submission = GameRoomUI::ChatSubmission.capture(layout.chat, session_id: layout.session_id)
-          dispatch.call(:chat)
-        end
-      end
-      GameRoomParticipantMenu.bind(layout, available: -> do
-        [:invite_online, :invite_contacts, :rules, :save_table_history, :leave] +
-          GameRoomParticipantMenu.role_actions(room: snapshot, viewer: Session.name, owner: owner) +
-          (editable_table_state?(state) && state.game.team_assignment(state.game.options_from_json(row["game_options"]), players: snapshot.game_participants) ? [:edit_teams] : []) +
-          GameRoomParticipantMenu.lifecycle_actions(active: state.active?, viewer: Session.name, owner: owner,
-            compatible: !legacy_table?(row),
-            restoring: state.session == nil && !row["resume_save_id"].to_s.empty?,
-            frozen: state.session.to_h["__frozen"] && !state.session.to_h["__aborted"]) +
-          GameRoomParticipantMenu.management_actions(
-            room: snapshot, game: state.game, active: state.active?, viewer: Session.name, owner: owner,
-            restoring: state.session == nil && !row["resume_save_id"].to_s.empty?
-          )
-      end, game: state.game, options: state.game&.options_from_json(row["game_options"]), room: -> { snapshot },
-        user_menu: ->(user) { usermenu(user) if action == nil },
-        read_options: -> { announce_table_options(state.game, row) },
-        settings: GameRoomParticipantMenu.settings_callback(state.game, program: self), &dispatch)
-      form.add_timer(FormTimer.new(GameScreen::TIMER_INTERVAL, repeat: true) do
-        next if form.game_room_pending_operation
-        next if action != nil
-
-        event = synchronizer.next_event
-        next if event == nil
-
-        action = event.kind == :closed ? :closed : :refresh
-        form.resume_for_refresh
-      end)
-      if @transport.respond_to?(:live_store?) && @transport.live_store?
-        background_table = GameRoomTableBackground.new(program: self, transport: @transport,
-          repository: @games, lobby: @lobby, activity_repository: @table_activity,
-          table: row, session_id: state.session_id(@games), activity_cursor: layout.activity_cursor, form: form,
-          screen_builder: ->(session, game, table) { build_game_screen(session, game, table: table, layout: nil) }).start
-      end
-      quiet_reentry ? layout.wait_without_announcement : form.wait
-      quiet_reentry = false
-      case action
-      when :closed
-        forget_room_membership(row)
-        return
-      when :start_game
-        start_new_game(row)
-        quiet_reentry = true
-      when :local_game_command
-        state.game&.run_room_command(self, participant, viewer: Session.name, **game_local_services)
-        quiet_reentry = true
-      when :edit_options
-        change_table_game_options(row)
-        quiet_reentry = true
-      when :edit_teams
-        change_table_teams(row)
-        quiet_reentry = true
-      when :add_bot, :remove_bot
-        change_room_computer(row, action, participant)
-        quiet_reentry = true
-      when :observe_next_game, :play_next_game
-        change_observer_mode(row, action)
-        quiet_reentry = true
-      when :make_observer, :make_player
-        change_observer_mode(row, action, participant)
-        quiet_reentry = true
-      when :transfer_master, :replace_player, :restore_player, :close_table
-        changed = change_table_control(row, action, participant)
-        return if changed == :closed
-        quiet_reentry = true
-      when :rules
-        show_game_rules(state.game, options: state.game&.options_from_json(row["game_options"]))
-      when :save_table_history
-        save_table_history(room_history_entries(state, state.activity_entries))
-        quiet_reentry = true
-      when :invite_online
-        show_invite_users(row, source: :online)
-      when :invite_contacts
-        show_invite_users(row, source: :contacts)
-      when :chat
-        message = chat_submission.text
-        entry = run_network_task(_("Sending chat message"), ui: :none) do
-          @table_activity.append(table: row, kind: "chat", message: message)
-        end
-        if entry != nil
-          play_game_sound("chatmsg")
-          text = @table_activity.text_for(entry, game_name: ->(id) { game_name(id) }, global: false)
-          speak(text, stop: false, break_sequence: false) if !text.to_s.empty?
-          chat_submission.clear_if_current(layout.chat, session_id: layout.session_id)
-        end
-        quiet_reentry = true
-      when :leave
-        return if leave_table_from_screen(row)
-      when :refresh
-        quiet_reentry = true
-      end
+      outcome = execute_waiting_table_action(selection, state, row, layout, chat_sends, chat_context, synchronizer)
+      return if outcome == :exit
+      quiet_reentry = outcome == :quiet
     end
   ensure
+    chat_sends&.clear
+    layout&.computer_changes&.clear
     @table_network_view = previous_network_view
     stop_table_background(background_table) if background_table
     prepared_screen&.close_covered_session
     layout&.begin_bindings
     @table_layouts&.delete(table_id) if table_id != nil
+  end
+
+  def table_screen_state(row, layout, synchronizer, last_room_state)
+    state = load_room_state(row, title: _("Updating table"), synchronizer: synchronizer,
+      ui: layout&.focus_location.to_a[0] == :chat ? layout.chat : :none)
+    return state unless state == :unavailable
+    return last_room_state unless last_room_state == nil
+
+    event = GameScreen.wait_for_connection(synchronizer, program: self)
+    event == nil || event.kind == :closed ? nil : :retry
+  end
+
+  def present_table_screen(state, layout, table_id, prepared_screen, synchronizer, chat_sends)
+    snapshot = state.room
+    row = snapshot.table
+    own_table = GameRoomParticipants.same?(@lobby.owner_of(row), Session.name)
+    if prepared_screen
+      prepared_screen.send(:present_session_membership, snapshot.members)
+    else
+      play_game_sounds(room_membership_tracker(row).observe(snapshot.members))
+    end
+    activity_cursor = announce_new_table_activity(state.activity_entries, after_id: layout&.activity_cursor)
+    synchronizer.update_session(state.session_id(@games))
+    options = {
+      view_spec: table_game_view_spec(state), history_items: room_history_items(state, state.activity_entries),
+      user_items: room_user_rows(state), users_header: table_header(snapshot),
+      phase: state.phase, own_table: own_table
+    }
+    if layout == nil
+      layout = GameRoomLayout::Screen.new(**options)
+      # The caller owns cleanup even if a later presentation step raises.
+      yield layout
+      layout.form.game_room_program = self
+      @table_layouts[table_id] = layout
+    else
+      layout.update(**options)
+    end
+    layout.session_id = state.session_id(@games)
+    @table_network_view = {layout: layout, table_id: table_id, synchronizer: synchronizer, chat_sends: chat_sends}
+    layout.activity_cursor = activity_cursor
+    layout.primary_button.label = table_start_label(state)
+    layout
+  end
+
+  def run_active_table_screen(state, row, prepared_screen)
+    result = run_game_screen(state.session, state.game, table: row, prepared_screen: prepared_screen)
+    if result == :room_closed
+      forget_room_membership(row)
+      return :exit
+    end
+    return :exit if result == :saved || result == :left_table
+    start_new_game(row) if result == :restart
+    return :exit if result == :back && leave_table_from_screen(row)
+    :continue
+  end
+
+  def waiting_computer_context(row, chat_context)
+    chat_context.call.merge(owner: @lobby.owner_of(row),
+      ownership: (@transport.ownership_token(row) if @transport.respond_to?(:ownership_token)))
+  end
+
+  def bind_waiting_table_screen(state, row, layout, synchronizer, history_navigator, chat_sends, chat_context)
+    layout.begin_bindings
+    layout.back_button.label = _("Leave")
+    form = layout.form
+    GameRoomHistory.bind(form) do |operation, value|
+      entries = room_history_entries(state, state.activity_entries)
+      message = history_navigator.navigate(entries, operation, value, view: layout.history,
+        focused: form.fields[form.index.to_i].equal?(layout.history))
+      speak(message.to_s) unless message.to_s.empty?
+    end
+    selection = {action: nil, participant: nil}
+    pending_computer = ->(action, participant) {
+      layout.computer_changes.enqueue(action, participant, **waiting_computer_context(row, chat_context))
+    }
+    dispatch = lambda do |requested, selected = nil|
+      if form.game_room_pending_operation
+        if requested == :rules && state.game
+          book = state.game.rule_book(options: state.game.options_from_json(row["game_options"]))
+          GameRoomScreens::GameRules.new(book, program: self, audio_tutorial: state.game.audio_tutorial_entries).open_on(form)
+        elsif !pending_computer.call(requested, selected)
+          form.game_room_pending_operation.reject_action
+        end
+        next
+      end
+      next if selection[:action] != nil
+
+      selection[:action] = requested
+      selection[:participant] = selected
+      form.resume
+    end
+    layout.primary_button.on(:press) { dispatch.call(:start_game) }
+    layout.bind_status_commands { |command| dispatch.call(:local_game_command, command) }
+    bind_game_room_shortcuts(form, state.game) { |command| dispatch.call(:local_game_command, command) }
+    layout.back_button.on(:press) { dispatch.call(:leave) }
+    bind_waiting_table_chat(layout, row, selection, chat_sends, chat_context, dispatch)
+    bind_waiting_table_participants(layout, state, row, selection, dispatch, pending_computer: pending_computer)
+    form.add_timer(FormTimer.new(GameScreen::TIMER_INTERVAL, repeat: true) do
+      next if form.game_room_pending_operation
+      next if selection[:action] != nil
+
+      event = synchronizer.next_event
+      next if event == nil
+
+      selection[:action] = event.kind == :closed ? :closed : :refresh
+      form.resume_for_refresh
+    end)
+    selection
+  end
+
+  def bind_waiting_table_chat(layout, row, selection, chat_sends, chat_context, dispatch)
+    layout.chat.on_submit do
+      pending = layout.form.game_room_pending_operation
+      next if selection[:action] != nil && pending == nil
+      if layout.chat.text.to_s.strip.empty?
+        alert(_("Type a chat message first."))
+      else
+        result = chat_sends.enqueue(layout.chat, message: layout.chat.text,
+          session_id: layout.session_id, table: row, actor: Session.name,
+          membership: chat_context.call[:membership])
+        pending&.reject_action if result == :full
+        dispatch.call(:chat) if result == :queued && pending == nil
+      end
+    end
+  end
+
+  def bind_waiting_table_participants(layout, state, row, selection, dispatch, pending_computer: nil)
+    GameRoomParticipantMenu.bind(layout, available: -> { waiting_table_actions(state, row) },
+      game: state.game, options: state.game&.options_from_json(row["game_options"]), room: -> { state.room },
+      control: -> { {active: state.active?, players: state.players, session: state.session, replay: state.replay} },
+      control_denied: ->(message) { alert(message) },
+      user_menu: ->(user) { usermenu(user) if selection[:action] == nil },
+      pending_action: pending_computer,
+      read_options: -> { announce_table_options(state.game, row) },
+      settings: GameRoomParticipantMenu.settings_callback(state.game, program: self), &dispatch)
+  end
+
+  def waiting_table_actions(state, row)
+    snapshot = state.room
+    owner = @lobby.owner_of(row)
+    [:invite_online, :invite_contacts, :rules, :save_table_history, :leave] +
+      GameRoomParticipantMenu.role_actions(room: snapshot, viewer: Session.name, owner: owner) +
+      (editable_table_state?(state) && state.game.team_assignment(state.game.options_from_json(row["game_options"]), players: snapshot.game_participants) ? [:edit_teams] : []) +
+      GameRoomParticipantMenu.lifecycle_actions(active: state.active?, viewer: Session.name, owner: owner,
+        compatible: !legacy_table?(row),
+        restoring: state.session == nil && !row["resume_save_id"].to_s.empty?,
+        frozen: state.session.to_h["__frozen"] && !state.session.to_h["__aborted"]) +
+      GameRoomParticipantMenu.management_actions(
+        room: snapshot, game: state.game, active: state.active?, viewer: Session.name, owner: owner,
+        restoring: state.session == nil && !row["resume_save_id"].to_s.empty?
+      )
+  end
+
+  def start_waiting_table_background(state, row, layout)
+    return nil unless @transport.respond_to?(:live_store?) && @transport.live_store?
+    GameRoomTableBackground.new(program: self, transport: @transport,
+      repository: @games, lobby: @lobby, activity_repository: @table_activity,
+      table: row, session_id: state.session_id(@games), activity_cursor: layout.activity_cursor, form: layout.form,
+      screen_builder: ->(session, game, table) { build_game_screen(session, game, table: table, layout: nil) }).start
+  end
+
+  def execute_waiting_table_action(selection, state, row, layout, chat_sends, chat_context, synchronizer)
+    action, participant = selection.values_at(:action, :participant)
+    case action
+    when :closed
+      forget_room_membership(row)
+      return :exit
+    when :start_game
+      start_new_game(row)
+    when :local_game_command
+      state.game&.run_room_command(self, participant, viewer: Session.name, **game_local_services)
+    when :edit_options
+      change_table_game_options(row)
+    when :edit_teams
+      change_table_teams(row)
+    when :add_bot, :remove_bot
+      change_room_computer(row, action, participant)
+    when :observe_next_game, :play_next_game
+      change_observer_mode(row, action)
+    when :make_observer, :make_player
+      change_observer_mode(row, action, participant)
+    when :transfer_master, :replace_player, :restore_player, :close_table
+      return :exit if change_table_control(row, action, participant) == :closed
+    when :rules
+      show_game_rules(state.game, options: state.game&.options_from_json(row["game_options"]))
+      return :normal
+    when :save_table_history
+      save_table_history(room_history_entries(state, state.activity_entries))
+    when :invite_online
+      show_invite_users(row, source: :online)
+      return :normal
+    when :invite_contacts
+      show_invite_users(row, source: :contacts)
+      return :normal
+    when :chat
+      send_waiting_table_chat(layout, chat_sends, chat_context, synchronizer)
+    when :leave
+      return leave_table_from_screen(row) ? :exit : :normal
+    when :refresh
+      # No command to execute; re-enter without another focus announcement.
+    else
+      return :normal
+    end
+    :quiet
+  end
+
+  def send_waiting_table_chat(layout, chat_sends, chat_context, synchronizer)
+    intent = chat_sends.take(**chat_context.call) unless synchronizer.recovery_pending?
+    return unless intent
+    entry = nil
+    begin
+      entry = run_network_task(_("Sending chat message"), ui: :none) do
+        synchronizer.synchronize(complete: false) do
+          next unless intent.current?(**chat_context.call)
+          @table_activity.append(table: intent.table, kind: "chat", message: intent.message, **intent.write_options)
+        end
+      end
+      if entry != nil
+        play_game_sound("chatmsg")
+        text = @table_activity.text_for(entry, game_name: ->(id) { game_name(id) }, global: false)
+        speak(text, stop: false, break_sequence: false) if !text.to_s.empty?
+        intent.receipt.clear_if_current(layout.chat, session_id: layout.session_id)
+      end
+    ensure
+      chat_sends.complete(intent, success: entry != nil)
+    end
   end
 
   def stop_table_background(background)
@@ -1967,6 +2243,7 @@ class EltenGameRoom < Program
     return if !available.include?(action)
     return if action == :remove_bot && !GameRoomParticipants.includes?(state.room.bots, participant)
 
+    previous_bots = state.room.bots.dup
     result = run_network_task(action == :add_bot ? _("Adding computer") : _("Removing computer")) do
       if action == :add_bot
         @lobby.add_bot(row, snapshot: state.room)
@@ -1975,6 +2252,10 @@ class EltenGameRoom < Program
       end
     end
     status = result.respond_to?(:status) ? result.status : result
+    if action == :remove_bot && status == :updated
+      @table_network_view&.dig(:layout)&.computer_changes&.removed(participant,
+        before: previous_bots, after: result.snapshot.bots)
+    end
     alert(_("This table is full.")) if status == :full
     alert(_("This table is no longer available.")) if status == :closed
     alert(_("Create a new table to add named computers.")) if status == :old_room
@@ -2007,11 +2288,8 @@ class EltenGameRoom < Program
       forget_room_membership(row) if closed
       return closed ? :closed : nil
     end
-    error = if action == :transfer_master
-      state.game.controller_change_error(state.replay)
-    else
-      state.game.participant_replacement_error(state.replay, player: participant, replacement: replacement)
-    end
+    error = GameRoomParticipantMenu.control_action_error(action, game: state.game, session: state.session,
+      replay: state.replay, participant: participant, replacement: replacement)
     if error
       alert(error)
       return nil
@@ -2223,7 +2501,7 @@ class EltenGameRoom < Program
     end
 
     selected = if preferred_id.to_i > 0
-      choices.find { |choice| choice[:invitation]&.id == preferred_id.to_i }
+      GameRoomInvitationIdentity.unique(choices, preferred_id) { |choice| choice[:invitation] }
     elsif choices.length == 1
       choices.first
     else
@@ -2302,22 +2580,28 @@ class EltenGameRoom < Program
 
 
   def accept_pending_invitation(invitation, notification_id: nil)
+    allowed_account = invitation_account_guard(invitation)
+    selected_invitation = invitation
+    admission = -> { allowed_account.call && invitation_visible?(selected_invitation) }
+    return nil unless admission.call
     acceptance = invitation_acceptance
     return nil if expire_invitation(invitation, notification_id)
     payload = run_network_task(_("Checking invitation")) do
       acceptance.lookup(invitation)
     end
-    return nil if payload == nil
+    return nil if payload == nil || !admission.call
 
     current_invitation, snapshot, current = payload
     return nil if expire_invitation(invitation, notification_id)
     if current_invitation == nil || snapshot == nil
-      revoke_invitation_notification(invitation.id, notification_id: notification_id)
+      revoke_invitation_notification(invitation, notification_id: notification_id)
       alert(snapshot == nil ? _("This table is no longer available.") : _("This invitation is no longer available."))
       return nil
     end
+    selected_invitation = current_invitation
 
     return nil unless game_join_allowed?(current_invitation.table)
+    return nil unless admission.call
     if snapshot.participant_count >= @lobby.capacity_of(snapshot.table) && (current == nil || @lobby.table_id(current) != invitation.table_id)
       alert(_("This table is full."))
       return nil
@@ -2325,8 +2609,9 @@ class EltenGameRoom < Program
 
     if current != nil && @lobby.table_id(current) == current_invitation.table_id
       connected = run_network_task(_("Accepting invitation")) do
-        acceptance.reconnect(current_invitation)
+        acceptance.reconnect(current_invitation, admission: admission)
       end
+      return nil if connected.nil? || !allowed_account.call
       if connected
         alert(_("You are already at this table."))
       else
@@ -2341,13 +2626,15 @@ class EltenGameRoom < Program
         true
       end
       return nil unless allowed
+      return nil unless admission.call
       return nil unless confirm(_("Do you want to leave your current table and join the invited table?"))
+      return nil unless admission.call
     end
 
     outcome = run_network_task(_("Accepting invitation")) do
-      acceptance.join(current_invitation, current: current, notification_id: notification_id)
+      acceptance.join(current_invitation, current: current, notification_id: notification_id, admission: admission)
     end
-    return nil if outcome == nil
+    return nil if outcome == nil || !allowed_account.call
     result = outcome.result
 
     if outcome.left_current
@@ -2391,34 +2678,57 @@ class EltenGameRoom < Program
       invitations: @invitations, membership: membership, user: -> { Session.name })
   end
 
+  def invitation_account_guard(invitation = nil)
+    recipient = GameRoomInvitationIdentity.row(invitation)["recipient"] if invitation
+    GameRoomInvitationIdentity.account_guard(transport: @transport,
+      user: -> { Session.name }, recipient: recipient)
+  end
+
+  def invitation_visible?(invitation)
+    self.class.invitation_sender_allowed?(GameRoomInvitationIdentity.row(invitation)["sender"],
+      tournament_match: invitation.respond_to?(:table) && invitation.table.to_h["tournament_match"].is_a?(Hash))
+  end
+
   def expire_invitation(invitation, notification_id)
     return false if invitation.expires_at > GameRoomClock.now.to_i
-    revoke_invitation_notification(invitation.id, notification_id: notification_id)
+    revoke_invitation_notification(invitation, notification_id: notification_id)
     alert(_("This invitation has expired."))
     true
   end
 
   def reject_pending_invitation(invitation, notification_id: nil)
+    allowed = invitation_account_guard(invitation)
+    admission = -> { allowed.call && invitation_visible?(invitation) }
+    user = Session.name.to_s.dup
+    return false unless admission.call
     result = run_network_task(_("Rejecting invitation")) do
+      next nil unless admission.call
       tables = @transport.discover_rooms(include_private: true)
+      next nil unless admission.call
       current_invitation = @invitations.pending_by_id(
-        invitation.id,
-        Session.name,
+        invitation,
+        user,
         tables: tables
       )
+      next nil unless admission.call
       next :unavailable if current_invitation == nil
+      next nil unless invitation_visible?(current_invitation)
 
       @transport.reject_discovered_invitation(current_invitation.table) if current_invitation.table["private"] == true
-      @invitations.respond(current_invitation, recipient: Session.name, response: "rejected")
-      revoke_invitation_notification(current_invitation.id, notification_id: notification_id)
+      next :unavailable unless allowed.call
+      @invitations.respond(current_invitation, recipient: user, response: "rejected")
+      next :unavailable unless allowed.call
+      revoke_invitation_notification(current_invitation, notification_id: notification_id)
       :rejected
     end
+    return false unless allowed.call
 
     case result
     when :rejected
       true
     when :unavailable
-      revoke_invitation_notification(invitation.id, notification_id: notification_id)
+      return false unless invitation_visible?(invitation)
+      revoke_invitation_notification(invitation, notification_id: notification_id)
       alert(_("This invitation is no longer available."))
       false
     else
@@ -2770,7 +3080,9 @@ class EltenGameRoom < Program
       self.class.table_watch_start(refresh: true)
       preferences_loader = -> { self.class.table_watch_preferences_snapshot }
     end
-    games = GAME_REGISTRY.ids.map { |game_id| { id: game_id, name: game_name(game_id) } }
+    games = GAME_REGISTRY.ids.map do |game_id|
+      { id: game_id, name: game_name(game_id), spatial_audio: GAME_REGISTRY.build(game_id).player_spatial_audio? }
+    end
     screen = GameRoomScreens::Settings.new(settings, games: games, program: self,
       table_watch_available: false, table_watch_loader: preferences_loader,
       preset_editor: ->(entry) { edit_table_preset(entry) },
@@ -2850,15 +3162,17 @@ class EltenGameRoom < Program
     client = layout&.game_client if layout&.binding_generation.to_i > 0
     task = GameRoomNetworkTask.new
     result = task.run(title, layout: layout, table_id: view&.dig(:table_id),
-      ui: ui, client: client, &operation)
+      ui: ui, client: client, chat_admission: view&.dig(:chat_sends) != nil, &operation)
     announce_server_table_access
     result
   rescue EltenAPI::Tasks::Cancelled
+    layout&.computer_changes&.clear
     view&.dig(:synchronizer)&.request_recovery!(delay: GameRoomSync::ERROR_BACKOFF)
     nil
   rescue StandardError => error
     raise if !GameRoomNetworkErrors.expected?(error)
 
+    layout&.computer_changes&.clear
     Log.warning("ELTEN Game Room network operation failed: #{error.class}: #{error.message}")
     if @server_tables&.last_error.equal?(error)
       announce_server_table_access
@@ -2911,9 +3225,13 @@ class EltenGameRoom < Program
   end
 
   def establish_invited_table_transport(row)
+    allowed = invitation_account_guard
+    user = Session.name.to_s.dup
+    return :closed unless allowed.call
     attach_tournament_table_on_worker(row)
+    return :closed unless allowed.call
     @transport.establish_membership_status(table_id: @lobby.table_id(row), owner: @lobby.owner_of(row),
-      capacity: @lobby.capacity_of(row), user: Session.name, table: row)
+      capacity: @lobby.capacity_of(row), user: user, table: row)
   end
 
   def missing_live_session_members(snapshot)
@@ -3376,8 +3694,8 @@ class EltenGameRoom < Program
       completion_observer: tournament_completion_observer(table),
       activity_repository: @table_activity,
       game_name: ->(id) { game_name(id) },
-      send_chat: ->(current_table, message, _users) do
-        @table_activity.append(table: current_table, kind: "chat", message: message)
+      send_chat: ->(current_table, message, _users, **options) do
+        @table_activity.append(table: current_table, kind: "chat", message: message, **options)
       end,
       layout: layout,
       manage_computer: ->(current_table, action, participant) { change_room_computer(current_table, action, participant) },
@@ -3387,7 +3705,8 @@ class EltenGameRoom < Program
       edit_options: ->(current_table) { change_table_game_options(current_table) },
       abort_game: ->(current_table, current_session) { abort_current_game(current_table, current_session) },
       leave_table: ->(current_table) { leave_table_from_screen(current_table) },
-      save_game: game.supports_saved_games? ? ->(current_table, current_session, current_game) { save_current_game(current_table, current_session, current_game) } : nil
+      save_game: game.supports_saved_games? && !GameRoomTournamentMarker.present?(table, session) ?
+        ->(current_table, current_session, current_game) { save_current_game(current_table, current_session, current_game) } : nil
     )
   end
 
@@ -3473,6 +3792,10 @@ class EltenGameRoom < Program
 
   def game_room_sound_volume(name)
     GameRoomPreferences.sound_volume(game_room_settings, name)
+  end
+
+  def game_room_hrtf?(game_id)
+    GameRoomPreferences.hrtf_game?(game_room_settings, game_id)
   end
 
   def adjust_game_room_volume(key, reader: nil, writer: nil)

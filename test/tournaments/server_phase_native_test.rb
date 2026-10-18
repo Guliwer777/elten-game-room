@@ -1,12 +1,13 @@
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require_relative '../support/binary_rules_load' if ARGV.first
-require_relative '../support/session_runner'
+require_relative '../support/private_card_games'
 require_relative '../support/tournament_server_plan_table'
 require_relative '../../games/catalog'
 require_relative '../../lib/tournaments/ordinary_match_service'
 require_relative '../../lib/tournaments/server_phase_store'
 T=GameRoomTournaments
-Dir.mktmpdir('server-phase-native-',ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('server-phase-native-') do |directory|
   teams=ENV['TEST_TEAMS']=='1'
   wildcard=ENV['TEST_WILDCARD']=='1'
   direct=ENV['TEST_DIRECT_FINAL']=='1'
@@ -51,10 +52,10 @@ Dir.mktmpdir('server-phase-native-',ENV.fetch('TMPDIR')) do |directory|
   ordinary_journal=->(user){T::OperationJournal.new(directory:File.join(directory,'ordinary',user),owner:user.downcase,backend_identity:'ordinary-native-phase')}
   reader=->(phase,original) do
     service=T::OrdinaryMatchService.new(program:programs['Alice'],registry:GameRoomGames::CATALOG,lobby:nil,games:nil,transport:nil,
-      table:docs,journal:ordinary_journal.call('Alice'),source:-> {original.merge('candidate'=>phase)},user:-> {'Alice'})
+      table:docs.for_user('Alice'),journal:ordinary_journal.call('Alice'),source:-> {original.merge('candidate'=>phase)},user:-> {'Alice'})
     begin;service.result_view;ensure;service.close;end
   end
-  store_for=->(user){T::ServerPhaseStore.new(table:docs,journal:T::OperationJournal.new(directory:File.join(directory,'phases',user),owner:user.downcase,backend_identity:'native-phase-store'),user:-> {user},source:root,results:reader)}
+  store_for=->(user){T::ServerPhaseStore.new(table:docs.for_user(user),journal:T::OperationJournal.new(directory:File.join(directory,'phases',user),owner:user.downcase,backend_identity:'native-phase-store'),user:-> {user},source:root,results:reader)}
   store=store_for.call('Alice')
   failure=assert_raises(T::Publication::Invalid){store.advance(expected_schedule_id:candidate['schedule_id'])}
   assert_equal(:phase_results_incomplete,failure.code)
@@ -71,7 +72,7 @@ Dir.mktmpdir('server-phase-native-',ENV.fetch('TMPDIR')) do |directory|
       creator=prepared ? users.find{|user|user.downcase==prepared['players'].first['account']} : actors.first
       author=creator
       services=actors.to_h{|user|[user,T::OrdinaryMatchService.new(program:programs[user],registry:GameRoomGames::CATALOG,lobby:lobbies[user],games:h.repositories[user],transport:h.transports[user],
-        table:docs,journal:ordinary_journal.call(user),source:-> {store.current},user:-> {user})]}
+        table:docs.for_user(user),journal:ordinary_journal.call(user),source:-> {store.current},user:-> {user})]}
       runners={}
       begin
         table=h.as(creator){services[creator].open_match(match_id:match['match_id'],leg:match['leg'])}
@@ -92,6 +93,9 @@ Dir.mktmpdir('server-phase-native-',ENV.fetch('TMPDIR')) do |directory|
           replay=h.replay(creator)
           break if replay.finished?
           actor=replay.current_player
+          # Real private-card runners prepare the pool and each hand before
+          # exposing a turn, exactly as they do at an ordinary game screen.
+          next unless actor
           actions=game.legal_actions(h.replay(actor),actor)
           selected=actions.find{|action|action['action']=='play'} || actions.first
           draw_fixture=(group_draw && phase_index==0 || extra_draw && phase_index==1 && phase.dig('knockout','qualification')) && match_index==0
@@ -101,13 +105,16 @@ Dir.mktmpdir('server-phase-native-',ENV.fetch('TMPDIR')) do |directory|
             raise 'Planned legal draw move missing' unless selected
             move_index+=1
           end
-          h.submit(actor,selected,context:contexts[actor]) if selected
+          PrivateCardGamesTest.submit(h,runners,actor,selected) if selected
         end
         runners.each{|user,runner|step(h,runner,user)}
         assert(h.replay(creator).finished?,'Native phase fixture did not finish')
         deadline=Process.clock_gettime(Process::CLOCK_MONOTONIC)+5
         loop do
-          raise error if (error=services[creator].take_error)
+          services.each_value do |service|
+            error = service.take_error
+            raise error if error
+          end
           begin
             break if reader.call(phase,current)['results'].any?{|receipt|receipt['match_id']==match['match_id']}
           rescue T::Publication::Invalid=>error

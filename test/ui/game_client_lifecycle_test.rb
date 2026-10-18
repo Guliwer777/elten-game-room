@@ -28,6 +28,7 @@ def lifecycle_screen(game, program, unavailable_snapshot: false, services: {})
   gate = GameRoomBots::TurnController.new
   repo.define_singleton_method(:bot_turn_controller) { |_id| gate }
   repo.define_singleton_method(:session_by_id) { |id, table:| {'__id' => id, 'options' => '{}'} }
+  repo.define_singleton_method(:session_for_table) { |table, force: false| {'__id' => 2, 'options' => '{}'} if table['__id'] == 7 }
   repo.define_singleton_method(:snapshot_for) { |current, **| GameRepository::GameSnapshot.new(session: current, events: []) }
   repo.define_singleton_method(:confirmed_event_ids) { |_| [] }
   repo.define_singleton_method(:events_revision) { |_| [0, 0] }

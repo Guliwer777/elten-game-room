@@ -1,4 +1,5 @@
 require_relative "../support/settings_widget"
+require_relative '../support/statistics_screen'
 require_relative "../support/host_source"
 require File.join(EltenTestHost.root, "src/eapi/tasks")
 
@@ -27,25 +28,22 @@ class Form
     attr_accessor :statistics_driver
   end
   def wait
+    settle_statistics(self)
     Form.statistics_driver.call(self)
   end
 end
 
 def loop_update; end
+def Session.token; 'statistics-test-token'; end
 
 original_run = EltenAPI::Tasks.method(:run)
 original_service = EltenGameRoom.method(:statistics_service)
 original_today = GameRoomStatistics::Periods.method(:today)
 today = Date.new(2026, 9, 25)
 GameRoomStatistics::Periods.define_singleton_method(:today) { today }
-tasks = []
 tokens = []
-EltenAPI::Tasks.define_singleton_method(:run) do |**options, &operation|
-  tasks << options
-  original_run.call(**options.merge(ui: :none)) do |progress, token|
-    tokens << token
-    operation.call(progress, token)
-  end
+EltenAPI::Tasks.define_singleton_method(:run) do |**_options, &_operation|
+  raise 'Statistics nested a modal task instead of keeping its form responsive'
 end
 ui_thread = Thread.current
 reads = []
@@ -56,7 +54,8 @@ data = {"visitors" => 12, "players" => 8, "started" => 6, "completed" => 4,
 store = Object.new
 store.define_singleton_method(:years) do |today:, cancellation_token:|
   assert(Thread.current != ui_thread, "Statistics years were read on the UI thread")
-  assert(cancellation_token.equal?(tokens.last), "Year discovery lost the task cancellation token")
+  assert(cancellation_token.is_a?(EltenAPI::Tasks::CancellationToken), "Year discovery lost native cancellation")
+  tokens << cancellation_token
   reads << [:years, today]
   raise read_error if read_error
   cancellation_token.cancel if cancel_read == :years
@@ -65,7 +64,8 @@ end
 store.define_singleton_method(:report) do |period, cancellation_token:, reuse_snapshot:|
   assert(reuse_snapshot == true, "Statistics dialog did not reuse its short read snapshot")
   assert(Thread.current != ui_thread, "Statistics report was read on the UI thread")
-  assert(cancellation_token.equal?(tokens.last), "Report lost the task cancellation token")
+  assert(cancellation_token.is_a?(EltenAPI::Tasks::CancellationToken), "Report lost native cancellation")
+  tokens << cancellation_token
   reads << [:report, period.key]
   raise read_error if read_error
   cancellation_token.cancel if cancel_read == :report
@@ -91,8 +91,10 @@ Form.statistics_driver = lambda do |form|
   assert(periods.options.include?("2025"), "Statistics did not use discovered calendar years")
   periods.index = 1
   periods.trigger(:move)
+  settle_statistics(form)
   refresh = form.fields.find { |field| field.is_a?(Button) && field.label == "Refresh" }
   refresh.trigger(:press)
+  settle_statistics(form)
   form.cancel_button.trigger(:press)
 end
 begin
@@ -101,8 +103,8 @@ begin
   assert(forms.length == 1, "Statistics menu did not open exactly one screen")
   assert(reads == [[:years, today], [:report, "today"], [:report, "last_7"], [:years, today], [:report, "last_7"]],
     "Statistics menu callbacks do not follow explicit screen reads")
-  assert(tasks.length == reads.length && tasks.all? { |options| options[:cancellable] == true && !options[:title].to_s.empty? },
-    "Statistics reads do not use cancellable host tasks")
+  assert(tokens.length == reads.length && tokens.uniq.length == 3 && tokens[0].equal?(tokens[1]),
+    "Statistics did not use one cancellable task for each requested snapshot")
   assert(service_reads == 1, "Statistics screen did not pin its account service")
   assert(server_tables.last_error.equal?(lobby_error), "Statistics changed the shared lobby error")
   [IOError.new("statistics offline"), EltenLink::Error.new("statistics denied")].each do |failure|
@@ -123,7 +125,7 @@ begin
     Form.statistics_driver = lambda do |form|
       summary = form.fields.first.text
       assert(summary.include?("Calendar years are unavailable.") == (kind == :years), "Cancelled year discovery was accepted")
-      assert(summary.include?("Statistics are unavailable.") == (kind == :report), "Cancelled report was accepted")
+      assert(summary.include?("Statistics are unavailable."), "Cancelled snapshot was accepted")
       form.cancel_button.trigger(:press)
     end
     app.send(:show_statistics)

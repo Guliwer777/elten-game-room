@@ -51,6 +51,10 @@ module GameRoomTournaments
       @mutex.synchronize { @closed }
     end
 
+    # This explicit local tournament simulator never calls a server. A local
+    # transport view alone does not imply this: diagnostics may use real APIs.
+    def offline?; true; end
+
     def on_invitation(&callback)
       access do
         handle = Callback.new(callback)

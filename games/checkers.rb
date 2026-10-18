@@ -9,6 +9,7 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Checkers < TurnBasedBoardGame
+    def player_spatial_audio?; true; end
     include GameRoomColourBoardPresentation
     MEN_CAPTURE_BACKWARD = 1
     FLYING_KINGS = 2

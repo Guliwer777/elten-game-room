@@ -92,6 +92,10 @@ with_fixture(game: 'axel_pong', names: %w[Alice Bob], rematch: false, game_optio
       end
       status = execution.local_game(action: :local_game_status)[:status]
       assert(status['finished'], 'Actual game must finish before finalization')
+      output, error, guard_status = Open3.capture3(RbConfig.ruby,
+        File.expand_path('../support/tournament_realtime_guard_probe.rb', __dir__), fixture.directory)
+      assert(guard_status.success?, "Blocked realtime result view failed: #{output}\n#{error}")
+      puts output
       result = execution.local_game(action: :finalize_local_game, revision: status['revision'])
       assert_equal(:confirmed, result[:state], result.inspect)
       assert_equal({owner.downcase => 7, h.players.find { |name| name != owner }.downcase => 0}, result[:effect]['summary']['scores'])

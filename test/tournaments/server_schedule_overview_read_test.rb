@@ -64,8 +64,8 @@ sandbox do |c|
   assert_equal(combined.merge('storage'=>'observed'),readonly,'Read-only display changed a plan or its results')
   assert(reads.size<combined_count,'Read-only display still reconciles a persisted observed plan')
   match=combined['candidate']['matches'].first
-  service.award_forfeit(match_id:match['match_id'],leg:match['leg'],winner:match['players'].first,
-    expected_schedule_id:combined['candidate']['schedule_id'])
+  service.confirm_forfeit(preview:service.forfeit_preview(match_id:match['match_id'],leg:match['leg'],loser:match['players'].last,
+    expected_schedule_id:combined['candidate']['schedule_id']))
   reads.clear
   updated=organizer.schedule_overview(publication_ref:reference,include_match_status:true)
   assert_equal(1,updated.fetch('results').fetch('results').size,'Refresh reused pre-write results')

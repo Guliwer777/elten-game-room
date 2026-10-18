@@ -30,8 +30,14 @@ class DuckMemoryStartTest
       client.attach_view(form, surface)
       [viewer, {client: client, surface: surface, form: form}]
     end
-    @copies.each_value do |copy|
-      assert(copy[:surface].presentation[:practice])
+    @copies.each do |viewer, copy|
+      if h.players.include?(viewer)
+        assert(copy[:surface].presentation[:practice])
+      else
+        assert(!copy[:surface].presentation[:practice], 'An observer received a participant practice control')
+        assert_equal(false, copy[:surface].presentation[:enabled])
+        assert(copy[:surface].presentation[:header].include?('You are watching.'))
+      end
       assert_equal(false, copy[:client].context_data['duck_ready'])
     end
     selection = ->(viewer) { h.game.automatic_action(h.replay, viewer,
@@ -39,6 +45,8 @@ class DuckMemoryStartTest
     h.players.each { |viewer| assert_equal(nil, selection.call(viewer), 'Ready was sent without Enter') }
     press('Observer', 0x0D)
     assert_equal(false, @copies['Observer'][:client].context_data['duck_ready'])
+    assert_equal(nil, @copies['Observer'][:client].context_data['duck_action'], 'Observer Enter submitted readiness')
+    assert_equal({}, h.replay.state[:round][:ready], 'Observer Enter changed the shared start state')
     press(first, 0x31)
     assert_equal([], @program.events, 'Preparation revealed a hidden sound')
     press(first, 0x09) # chat
@@ -74,6 +82,11 @@ class DuckMemoryStartTest
     assert_equal([], SpeechOutput.calls, 'Local activation duplicated the start announcement')
     assert_equal(:playing, h.replay.state[:round][:phase])
     @copies.each_value { |copy| assert(!copy[:client].local_view[:practice]) }
+    observer = @copies.fetch('Observer')
+    assert_equal(false, observer[:surface].presentation[:enabled])
+    assert_equal(nil, observer[:client].instance_variable_get(:@trace))
+    press('Observer', 0x31)
+    assert_equal(nil, observer[:client].context_data['duck_action'], 'Observer digit revealed a hidden sound')
     before = messages.dup
     presenter.process_new_events(h.replay, session: h.session)
     assert_equal(before, messages, 'Refresh repeated the first player')

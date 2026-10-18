@@ -5,6 +5,7 @@ module GameRoomTournaments
   module KnockoutWinSeries
     module_function
     def progress(base:, history:, target:)
+      raise Publication::Invalid, :invalid_knockout_configuration unless base.is_a?(Hash)
       expected=KnockoutRound.build(seeds:base['seeds'],players_per_match:base['players_per_match'],round_number:base['round'])
       raise Publication::Invalid,:invalid_knockout_configuration unless base==expected && base['players_per_match']==2
       raise Publication::Invalid,:invalid_phase_results unless history.is_a?(Array) && history.size<=4096

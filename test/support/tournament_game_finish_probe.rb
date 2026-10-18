@@ -18,10 +18,21 @@ begin
     assert_equal(winners.map { |person| person['account'] }, status['result']['summary']['winners'])
     assert_equal(true, status['result']['summary']['draw']) if winners.empty?
     assert_equal(true, execution.progress['complete'])
-    assert(people.size == 2 || winners.empty?, 'Multiplayer winners need explicit place expectations in this cold probe')
+    expected_standings = ARGV[5] && JSON.parse(ARGV[5])
+    if expected_standings
+      assert_equal(people.map { |person| person['account'] }.sort, expected_standings.keys.sort)
+    else
+      assert(people.size == 2 || winners.empty?, 'Multiplayer winners need explicit place expectations in this cold probe')
+    end
     execution.progress['standings'].each do |row|
-      assert_equal(row['wins'] * 2 + row['draws'] * (people.size - 1), row['points'],
-        'An all-player draw awards one point per tied opponent')
+      if expected_standings
+        expected = expected_standings.fetch(row['unit'])
+        assert_equal(expected.fetch('points'), row['points'])
+        assert_equal(expected.fetch('place'), row['place'])
+      else
+        assert_equal(row['wins'] * 2 + row['draws'] * (people.size - 1), row['points'],
+          'An all-player draw awards one point per tied opponent')
+      end
       assert(row['place'].is_a?(Integer) && row['place'] > 0)
     end
   end

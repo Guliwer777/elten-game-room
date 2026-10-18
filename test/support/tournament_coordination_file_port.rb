@@ -9,7 +9,7 @@ class TournamentCoordinationFilePort < TournamentCoordinationPort
     super(request,account:account)
     @state_path,@fault=state_path,fault
     root=File.realpath(File.dirname(state_path))
-    scratch=File.realpath(ENV.fetch('TMPDIR'))
+    scratch=File.realpath(GameRoomTest::TemporaryDirectory.parent)
     raise 'Usługa poza scratch' unless root.downcase.start_with?(scratch.downcase+File::SEPARATOR)
     transact do |state|
       state['matches'][request['match_id']] ||= {'request'=>copy(request),'ready'=>copy(@ready),'grant'=>nil,'operations'=>{}}

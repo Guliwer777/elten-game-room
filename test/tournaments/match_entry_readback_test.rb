@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/ui'
 require_relative '../support/tournament_local_hub'
 require_relative '../support/tournament_entry_context'
@@ -10,7 +11,7 @@ G = GameRoomTournaments
 T = TournamentLocalHubTest
 Form.prepend(T::Script)
 assert(G::MatchEntry.instance_method(:initialize).parameters.any? { |_, name| name == :readback }, 'R12: brak odrębnej wstrzykiwanej ścieżki odczytu pierwotnej koordynacji')
-Dir.mktmpdir('entry-readback-', ENV.fetch('TMPDIR')) do |directory|
+GameRoomTest::TemporaryDirectory.create('entry-readback-') do |directory|
   raw = TournamentCoordinationFixture.request
   request = G::CoordinationRequest.build(raw, registry: GameRoomGames::CATALOG)
   port = TournamentCoordinationPort.new(raw)

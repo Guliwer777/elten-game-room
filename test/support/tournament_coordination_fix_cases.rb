@@ -62,10 +62,9 @@ module TournamentCoordinationFixCases
   end
 
   def run(cases, label)
-    assert(File.identical?(Dir.tmpdir,ENV.fetch('TMPDIR')),'TMP przed fixture')
     results=cases.map do |name,test|
       row={name:name,pid:Process.pid}
-      Dir.mktmpdir('coord-fix1-') do |dir|
+      GameRoomTest::TemporaryDirectory.create('coord-fix1-') do |dir|
         row[:scratch]=dir
         cwd=Dir.pwd
         begin

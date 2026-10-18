@@ -41,9 +41,9 @@ Es un documento de solo lectura con un encabezado para cada versión. H pasa al 
 
 ## A qué puedes jugar
 
-Power Games incluye actualmente 34 juegos:
+Power Games incluye actualmente 35 juegos:
 
-- Cartas: 3-5-8, 99, 1000 millas, Biblios, Makao, Picas, Póker, Rummy, Mil, UNO, War y Scientific War.
+- Cartas: 3-5-8, 99, 1000 millas, Biblios, Bridge, Makao, Picas, Póker, Rummy, Mil, UNO, War y Scientific War.
 - Tablero y estrategia: Ludo, Cuatro en raya, Tres en raya, Mancala, Monopoly, Reversi, Batalla naval, Ajedrez, Damas y Carrera de patos.
 - Dados y dominó: Cat, head, tail, Dominó, Farkle, Mexican Train y Yahtzee.
 - Palabras y conocimientos: Krowa, Categorías, Quiz Party, Scrabble y Taboo.
@@ -69,6 +69,9 @@ En la lista de mesas y en el widget puedes obtener más información antes de en
 En una mesa, Ctrl+I abre la selección de usuarios conectados a los que invitar, y Ctrl+Shift+I permite elegir a alguien de tus contactos. Puedes aceptar invitaciones desde una notificación de ELTEN, desde el menú contextual o con Ctrl+J. Este último atajo funciona en todo Power Games, incluido el widget.
 
 En los juegos que admiten espectadores puedes seguir una partida sin ocupar una plaza de jugador. Sirve tanto para animar como para aprender las reglas. En Axel Pong, los espectadores también pueden elegir la perspectiva de escucha.
+
+En Carrera de patos puedes seguir los desafíos como espectador de la mesa o como corredor que no participa en ese desafío. Oirás las tiradas, jugadas y elecciones públicas. En pruebas individuales como Simon, Ritmo o Dispara al pato, solo se muestran los resultados finales. Las respuestas privadas permanecen ocultas hasta la resolución. Los espectadores no confirman que están listos ni oyen la cuenta atrás de los participantes.
+
 Ctrl+Shift+O permite solicitar el papel de jugador o espectador para la siguiente partida, si el juego ofrece esa posibilidad.
 Este atajo cambia tu propio papel. Para cambiar el de otra persona, el anfitrión utiliza el menú contextual de la lista de usuarios; la opción indica el nombre de la persona seleccionada.
 
@@ -84,6 +87,8 @@ En la lista de usuarios, el anfitrión dispone además de dos órdenes para la p
 - Ctrl+Shift+R sustituye a un jugador por un espectador presente o un bot, si el juego y la fase actual lo permiten.
 
 Si el anfitrión se marcha, otro participante puede hacerse cargo de la mesa. En los juegos compatibles, el programa sustituye por un bot al jugador que se va, para que los demás puedan continuar.
+
+En una partida normal de Categorías, cuando se confirma que alguien ha abandonado la mesa, se le retira de la partida y los demás no tienen que esperar sus respuestas. Si se marcha el juez, se anula la ronda sin terminar y comienza otra. Con menos de dos participantes, la partida se da por interrumpida, sin conceder una victoria. Quien vuelva puede observar y participar en la siguiente partida. Un error de conexión temporal no basta para retirar a nadie.
 
 Los equipos se eligen en una ventana independiente. Puedes sortearlos, cambiar la asignación con Enter o mover personas con Shift+flecha arriba y Shift+flecha abajo. Al confirmar vuelves a la mesa; la partida no comienza hasta seleccionar «Iniciar partida». No es necesario volver a configurar los equipos para otra partida con los mismos participantes.
 
@@ -140,6 +145,9 @@ En Ajustes → Ajustes de notificaciones, elige los juegos cuyas nuevas mesas p�
 
 Por separado, elige si quieres ver invitaciones de todos, solo de tus contactos o de nadie. Las invitaciones y los avisos de mesas nuevas tienen sonidos diferentes. Sus descripciones incluyen información breve sobre el juego y sus ajustes principales; Ctrl+R ofrece los ajustes completos de la mesa.
 
+Los ajustes de notificaciones también contienen la Lista negra. Añade los nombres de las personas cuyas invitaciones no quieres ver. En la lista, Ctrl+N añade un usuario y Delete quita al seleccionado. Confirma los cambios con Guardar.
+La lista negra no bloquea las invitaciones a partidas de torneo.
+
 En Ajustes → Avisos de la sala de espera eliges por separado qué avisos se leen mientras estás en la ventana principal del programa.
 
 ## Sonidos y juego en segundo plano
@@ -152,6 +160,8 @@ Puedes ajustar el volumen sin salir del juego:
 - Shift+F3 — grupo de sonidos siguiente.
 
 Puedes controlar todos los sonidos juntos o grupos separados: juego, entradas y salidas de la mesa, chat, e invitaciones y notificaciones. Encontrarás los mismos niveles en Ajustes → Sonidos.
+
+La misma categoría empieza con la casilla de sonido 3D (HRTF), activada de forma predeterminada. Con ella, las jugadas de los demás se oyen desde su sitio en la mesa: tú te oyes en el centro, y a los demás delante de ti: al jugador de tu izquierda por delante a la izquierda y a los siguientes en el sentido de las agujas del reloj hasta delante a la derecha. En una partida de dos, el rival está justo enfrente; con cuatro jugadores, se sientan delante a la izquierda, enfrente y delante a la derecha. En partidas de dos, cuatro o seis jugadores, quien está enfrente suena algo más fuerte y como desde el otro extremo de la sala, para distinguir fácilmente sus sonidos de los tuyos. Debajo de la casilla está la lista de juegos que usan sonido 3D; sus dos primeros elementos marcan o desmarcan todos los juegos. No aparecen los juegos cuyos sonidos no proceden de las jugadas de cada jugador: Audio Ball y Axel Pong tienen su propia disposición del sonido, y Krowa, Carrera de patos, Países y ciudades y Quiz Party no asocian sus sonidos a los asientos. Ganar, perder, barajar y llevarse el bote del póquer siempre suenan en el centro. Se aprecia mejor con auriculares.
 
 Pasar a mensajes, a una conferencia o a otra ventana de ELTEN no pausa la partida. Esto es especialmente importante en juegos de acción o cuando hay un límite de tiempo por turno.
 
@@ -175,7 +185,9 @@ Puedes elegir el idioma de las preguntas, las cartas o el diccionario en los jue
 
 ### Parar ahora y continuar después
 
-En los juegos que permiten guardar, el anfitrión puede usar Ctrl+S para guardar la partida y cerrar la mesa. El guardado pertenece a su cuenta y se almacena en el servidor, así que también puede retomarlo desde otro ordenador.
+Fuera de los torneos, el anfitrión puede usar Ctrl+S en los juegos que permiten guardar para conservar la partida y cerrar la mesa. El guardado pertenece a su cuenta y se almacena en el servidor, así que también puede retomarlo desde otro ordenador.
+
+Las partidas de torneo no se pueden guardar ni reanudar desde un archivo guardado.
 
 Para continuar, usa «Partidas guardadas» en el menú principal. Restaurar un guardado crea una mesa donde podéis reuniros de nuevo y seguir jugando. No todos los juegos se pueden guardar ni cualquier momento es adecuado: la orden depende del juego y de su fase actual.
 
@@ -228,6 +240,12 @@ Las reglas de Audio Ball incluyen un tutorial de audio para escuchar los sonidos
 
 En Scrabble, los demás participantes ven cómo se colocan y retiran letras antes de confirmar la palabra. Ctrl+P activa o desactiva los avisos locales de esos cambios. Están desactivados por defecto; no hace falta activarlos para toda la mesa.
 
+### Evaluar respuestas en Categorías
+
+Las respuestas se agrupan por categoría para facilitar la comparación de entradas parecidas. Si eres el juez, recórrelas con Tab, elige una valoración con las flechas y confírmala con Enter. Al llegar a una respuesta oirás «Enter confirma la valoración» y, cuando se acepte, «Valoración guardada». Cuando estén todas evaluadas, elige «Finalizar evaluación».
+
+Los campos de respuesta añaden una palabra de ejemplo para distinguir las letras M y N. Un sonido avisa cuando alguien envía sus respuestas; si hay límite de tiempo, otras señales marcan los últimos 20 segundos y el fin del plazo. Tras anunciar los puntos hay una pausa antes de la siguiente ronda. El tiempo para responder empieza después de esa pausa.
+
 ### Conexión en los juegos de audio
 
 Al crear una mesa de Axel Pong o Audio Ball puedes activar «Full P2P»: conexiones directas entre participantes cuando la red lo permite. La opción está desactivada por defecto. Al marcarla aparece el límite de participantes P2P, que por defecto es ocho. ELTEN sigue pudiendo usar un servidor intermediario cuando no hay conexión directa. Ctrl+F4 distingue las conexiones medidas.
@@ -256,7 +274,7 @@ Esta lista cubre los controles comunes del programa. Para las órdenes de un jue
 - Ctrl+O — añadir un bot; para el anfitrión, cuando esté disponible.
 - Ctrl+Shift+O — elegir el papel de jugador o espectador para la siguiente partida.
 - Ctrl+P — ajustes o interruptor personal en los juegos que lo ofrecen.
-- Ctrl+S — guardar la partida y cerrar la mesa; para el anfitrión, en juegos compatibles.
+- Ctrl+S — guardar la partida y cerrar la mesa; para el anfitrión, en juegos compatibles fuera de los torneos.
 - Ctrl+Shift+S — exportar el historial de la mesa a TXT sin cerrar la partida.
 - Ctrl+Q — terminar la partida actual sin cerrar la mesa; para el anfitrión.
 - Ctrl+X — cambiar los ajustes de la siguiente partida; para el anfitrión, fuera de la edición de texto.
@@ -290,10 +308,9 @@ Un torneo reúne varias partidas en una competición. Power Games organiza los e
 Elige «Torneos» en el vestíbulo. Selecciona uno con las flechas y pulsa Intro para abrir su lista de acciones. Tab recorre la lista, el filtro y los demás controles. El filtro permite mostrar:
 
 - torneos actuales, incluidos los que aún admiten inscripciones;
-- tus torneos actuales: aquellos en los que participas o que organizas;
 - torneos terminados, para consultar sus resultados.
 
-En los torneos actuales aparecen primero aquellos en los que participas, después los que admiten tu inscripción y, por último, los demás.
+En los torneos actuales aparecen primero aquellos en los que participas o que organizas, después los que admiten tu inscripción y, por último, los demás.
 
 Un torneo abandonado desaparece tras 14 días sin actividad antes de empezar, o tras 30 días sin avances una vez iniciado. Las inscripciones y los cambios del organizador renuevan ese plazo antes del inicio; después lo renuevan los resultados de los encuentros. Consultar el torneo no lo prolonga. Si la apertura de inscripciones o el inicio están previstos para más adelante, el torneo no desaparecerá antes de esa fecha. Los resultados de los torneos terminados siguen disponibles.
 
@@ -301,6 +318,7 @@ Cada entrada indica el juego, el número de participantes y el estado del torneo
 
 - Ctrl+N — crear un torneo.
 - Ctrl+R — actualizar la lista de torneos.
+- Ctrl+O — abrir torneo; Ctrl+D — inscribirse; Ctrl+M — partidos; Ctrl+W — clasificación; Ctrl+E — administrar; Ctrl+L — retirarse. El menú contextual también muestra las acciones disponibles y sus atajos.
 - Ctrl+Shift+T — abrir tus torneos actuales desde el menú principal o el widget. Si solo tienes uno, se abre directamente su lista de acciones.
 - Ctrl+J — abrir la lista habitual de invitaciones, que incluye las de encuentros de torneo.
 
@@ -310,10 +328,10 @@ F1 recuerda los controles de la ventana actual y Escape vuelve atrás. Cerrar la
 
 Al abrir un torneo accedes directamente a sus acciones. Elige una con las flechas y confirma con Intro. El encabezado indica el nombre y el estado del torneo.
 
-- «Encuentros» — elige una partida pendiente o consulta el resultado de una terminada.
-- «Resultados» — la clasificación del torneo, también de fases anteriores.
+- «Partidos del torneo» — elige una partida pendiente o consulta el resultado de una terminada.
+- «Clasificación» — la clasificación del torneo, también de fases anteriores.
 - «Participantes» — la lista de personas inscritas.
-- «Reglas del torneo» — descripción del organizador, ajustes del juego, formato, criterios de clasificación y fechas.
+- «Información y reglas» — descripción del organizador, ajustes del juego, formato, criterios de clasificación y fechas.
 - «Administrar torneo» — las acciones del organizador. Los demás participantes no tienen esta opción.
 
 Las opciones para inscribirse, retirarse o elegir compañero aparecen cuando se pueden utilizar.
@@ -322,21 +340,23 @@ Las opciones para inscribirse, retirarse o elegir compañero aparecen cuando se 
 
 Elige «Inscribirse en el torneo» para participar. Si la opción no está disponible, consulta el estado del encabezado: las inscripciones pueden no haber comenzado, haber terminado o no quedar plazas. Si ya estás inscrito, no necesitas repetirlo. Antes del comienzo puedes retirarte mediante «Darse de baja del torneo».
 
+El organizador puede invitarte a inscribirte. La invitación abre las acciones del torneo; aún debes elegir la opción de inscripción para apuntarte. No es una invitación a un partido concreto.
+
 En un torneo de parejas fijas, cada persona se inscribe por separado. Después:
 
-1. Abre «Mi compañero» y elige a otro participante.
+1. Abre «Compañero de equipo» y elige a otro participante.
 2. Pídele que te elija en esa misma pantalla.
 3. La pareja queda confirmada cuando os habéis elegido mutuamente. En la pantalla del compañero también verás si aún esperas su aceptación.
 
 Antes del inicio puedes cambiar o quitar tu elección. El organizador también puede asignar parejas. Los encuentros por equipos no se pueden preparar mientras haya participantes sin compañero. Mantienes la misma pareja durante todo el torneo y compartís el resultado.
 
-Recibirás una notificación cuando empiece el torneo, aunque estés consultando los torneos. Su sonido respeta tus ajustes habituales de notificaciones.
+La notificación de inicio abre los partidos del torneo. Al terminar una fase, un único aviso indica cuál viene a continuación y abre la clasificación de la fase terminada. Tras la final solo llega el aviso de fin del torneo, con el ganador o los ganadores empatados y acceso a la clasificación final. Estos sonidos respetan tus ajustes habituales de notificaciones.
 
 ### Iniciar un encuentro
 
 No hace falta crear otra mesa ni buscarla entre las partidas públicas.
 
-1. Abre tu torneo — puedes usar Ctrl+Shift+T desde el menú principal o el widget — y elige «Encuentros».
+1. Abre tu torneo — puedes usar Ctrl+Shift+T desde el menú principal o el widget — y elige «Partidos del torneo».
 2. Selecciona uno de tus encuentros pendientes y pulsa Intro o Ctrl+G, o elige «Jugar» en su menú contextual. Al confirmar, se abre una mesa con los ajustes del torneo y se invita a los demás participantes.
 3. Los demás aceptan la invitación habitual a la mesa desde una notificación de ELTEN o con Ctrl+J y entran directamente.
 4. Cuando todos estén en la mesa, el anfitrión elige «Iniciar partida». A partir de ahí se usan los controles habituales del juego.
@@ -345,21 +365,39 @@ Cualquier participante de ese encuentro puede abrir la mesa; el organizador no n
 
 Quien no esté asignado a ese encuentro entra automáticamente como espectador, incluso antes de que empiece la partida. Esto también se aplica a los participantes del torneo que tengan que jugar otro encuentro.
 
-La invitación dura cinco minutos. Rechazarla, dejarla caducar o salir de la mesa no cuenta como derrota ni te da de baja del torneo. Vuelve a elegir «Jugar» para regresar a la mesa existente e invitar a quienes falten.
+La invitación dura cinco minutos. Rechazarla, dejarla caducar o salir de la mesa antes de que empiece el encuentro no cuenta como derrota ni te da de baja del torneo. Vuelve a elegir «Jugar» para regresar a la mesa existente e invitar a quienes falten. Una vez iniciada la partida, se aplican las reglas de regreso que se explican a continuación.
 
-Sal de cualquier otra partida antes de entrar. No puedes ocupar una plaza en dos mesas a la vez. Si una mesa vacía se cerró antes de empezar a jugar, puedes abrir el encuentro de nuevo. Una partida ya iniciada no se sustituye automáticamente por otra; se reanuda desde «Partidas guardadas».
+Sal de cualquier otra partida antes de entrar. No puedes ocupar una plaza en dos mesas a la vez. Si una mesa vacía se cerró antes de empezar a jugar, puedes abrir el encuentro de nuevo. Una partida ya iniciada no se sustituye automáticamente por otra. Si pierdes la conexión, vuelve a la misma mesa mientras siga abierta.
 
 ### Encuentros, resultados y partidas interrumpidas
 
-«Encuentros» se abre en la fase actual del torneo. La primera entrada indica su nombre, por ejemplo «Cuartos de final», y el número de encuentros terminados. A continuación aparecen tus encuentros pendientes, luego los pendientes de los demás y, al final, todos los terminados. Todo el mundo ve la lista completa.
+«Partidos del torneo» se abre en la fase actual del torneo. La primera entrada indica su nombre, por ejemplo «Cuartos de final», y el número de encuentros terminados. A continuación aparecen tus encuentros pendientes, luego los pendientes de los demás y, al final, todos los terminados. Todo el mundo ve la lista completa.
 
 Con Tab puedes seleccionar la fase, incluidas las anteriores. Si estás viendo la fase actual, la lista pasa automáticamente a la siguiente cuando comienza. La actualización conserva el encuentro seleccionado mientras siga visible.
 
-Intro sobre un encuentro terminado indica que ya se ha jugado. Abre su resultado con Ctrl+W o con «Resultado del encuentro» en el menú contextual. Este menú muestra las acciones disponibles y sus atajos: Ctrl+G para jugar, Ctrl+F para conceder una victoria por incomparecencia y Ctrl+Mayús+F para cancelar un encuentro iniciado y conceder esa victoria. Las dos últimas acciones son del organizador y requieren elegir al ganador y confirmar la decisión.
+Intro sobre un encuentro terminado indica que ya se ha jugado. Abre su resultado con Ctrl+W o con «Detalles del resultado» en el menú contextual. Este menú muestra las acciones disponibles y sus atajos: Ctrl+G para jugar y Ctrl+F para conceder una victoria por incomparecencia. El organizador usa Ctrl+F tanto antes del inicio como durante el encuentro: elige a quien pierde y confirma las consecuencias que se muestran.
 
-«Resultados» abre directamente una lista con el puesto, el participante, los puntos de torneo y las partidas jugadas. Con Tab pasas al selector de fase. Los resultados se registran automáticamente; no tienes que copiarlos del historial del juego.
+Las entradas de partidos terminados incluyen el marcador del juego cuando está disponible. Si queda una revancha programada contra los mismos rivales, el menú contextual ofrece «Jugar la revancha» con Ctrl+G. Envía las invitaciones habituales sin iniciar la partida automáticamente.
 
-Si el juego permite guardar, el anfitrión de la mesa puede usar Ctrl+S. Se continúa desde «Partidas guardadas» y la partida sigue perteneciendo al mismo encuentro del torneo. Que alguien salga o pierda la conexión no produce por sí solo un empate ni una victoria por incomparecencia. El encuentro queda pendiente de terminar o de una decisión del organizador.
+«Clasificación» muestra el puesto, el participante, los puntos de torneo y las partidas jugadas. Con Tab pasas al selector de fase. Los resultados se registran automáticamente; no tienes que copiarlos del historial del juego.
+
+Ninguna partida de torneo se puede guardar ni reanudar desde un archivo. La orden de guardar y Ctrl+S no están disponibles, pero Ctrl+Shift+S sigue permitiendo exportar el historial como texto.
+
+Una vez iniciado un encuentro individual, la partida se pausa si alguien se desconecta. Cada jugador dispone de cinco minutos en total para volver durante ese encuentro. Al regresar se detiene la cuenta, pero no se recupera el tiempo ya gastado. Vuelve a la misma mesa con la misma cuenta para continuar con tus cartas, tu puntuación y el tiempo de turno que te quedaba.
+
+En un encuentro de uno contra uno, agotar el plazo da la victoria al rival. Si hay más jugadores, quien sigue desconectado queda último. Los demás continúan si el juego lo permite; de lo contrario, sus puestos se deciden con los resultados de las rondas completadas. Si aún no se ha completado ninguna, comparten el primer puesto. Este límite automático se aplica a encuentros individuales, no a los de equipos. No aceptar una invitación no cuenta como derrota.
+
+### Cartas privadas en los torneos
+
+En los torneos de 1000 millas, Picas, Bridge, Mil, 3-5-8, 99, Póker, War, Rummy, Makao, Biblios y UNO, el servidor reparte las cartas a cada jugador de forma privada. Lo mismo ocurre con las fichas de Dominó, Mexican Train y Scrabble. Ni los demás jugadores, ni los espectadores, ni el anfitrión reciben el contenido de tu mano. Las cartas o fichas necesarias se revelan al jugarlas, pasarlas a otro jugador o calcular la puntuación. En bridge, la mano del muerto se descubre tras la salida y las cartas restantes se revelan al terminar el reparto.
+
+Las cartas que se pasan a otro jugador pierden esta protección, aunque la interfaz habitual sigue ocultando las manos ajenas. Esto incluye una mano completa intercambiada en UNO, las cartas ganadas en War y las que se devuelven al mazo. En UNO, quien reparte también conoce los comodines descartados temporalmente al elegir la carta inicial. En Dominó se compara la ficha más alta de cada jugador para decidir quién empieza. Las reglas de los juegos no cambian.
+
+En estos encuentros no se pueden sustituir jugadores, añadir bots ni guardar la partida para continuar en otra mesa. Si pierdes la conexión, vuelve a la misma mesa con la misma cuenta para recuperar tus cartas. Cambiar de anfitrión no revela las manos. Mantener la mesa abierta no amplía el plazo de cinco minutos para volver a un encuentro individual que ya haya empezado.
+
+En los torneos de Taboo, solo reciben la palabra y los términos prohibidos quien la describe y el equipo contrario. Si el anfitrión está adivinando, tampoco puede verlos. Las palabras se revelan para revisarlas al terminar el turno. Si quien describe pierde la conexión, tendrá que volver antes de aprobar la puntuación. Tampoco se pueden guardar estas partidas para continuarlas en otra mesa ni sustituir participantes.
+
+Las partidas normales siguen permitiendo bots, sustituciones y guardado en los juegos que admiten esas funciones.
 
 ### Crear un torneo
 
@@ -370,7 +408,6 @@ Pulsa Ctrl+N en la lista de torneos. Elige el juego, después la variante y los 
 - Límite de participantes — el máximo de personas inscritas, inicialmente 16 y nunca más de 128. También en los torneos por parejas se cuentan personas, no equipos. No hace falta llenar todas las plazas para empezar.
 - Jugadores por encuentro — cuántas personas juegan en una mesa, no en todo el torneo. Esta opción aparece si el juego admite distintos tamaños de encuentro.
 - Revanchas — otro encuentro con los mismos jugadores y un orden de asientos diferente. Esta opción se aplica a la liga y a los grupos; las eliminatorias y la final tienen ajustes propios.
-- Ajustes del juego — volver a la variante y las reglas que se usarán en los encuentros.
 - «Fechas y horarios de juego» — fechas opcionales de inscripción y comienzo, y periodos permitidos para jugar.
 
 Los demás campos dependen del juego y el formato. Las revanchas están desactivadas inicialmente. Publica el torneo cuando esté listo; rellenar el formulario no lo hace visible a los demás.
@@ -441,7 +478,7 @@ Abre «Fechas y horarios de juego» en el formulario del torneo. No tienes que p
 - Cierre de inscripciones — una fecha opcional a partir de la cual nadie más puede apuntarse. Cerrar las inscripciones no inicia por sí solo el torneo.
 - Inicio del torneo — una fecha opcional de comienzo automático. El inicio también cierra las inscripciones.
 - Fecha límite final — indica a los participantes cuándo deberían haber terminado sus encuentros. No resuelve partidas pendientes ni concede victorias por incomparecencia.
-- Horarios de juego — activa la restricción y añade los periodos en los que se pueden concertar encuentros. Cada uno tiene fecha y hora de inicio y fin; puedes editarlo o eliminarlo.
+- Horario de juego — una franja diaria opcional, por ejemplo de 18:00 a 22:00. Elige la hora de inicio, la de fin y la zona horaria. Si el fin es anterior al inicio, corresponde al día siguiente, como en 22:00–02:00. El horario limita el inicio de los partidos; las partidas en curso pueden terminarse. La zona elegida usa un desfase fijo respecto a UTC, sin cambiar automáticamente entre horario de verano e invierno.
 
 Llega al campo de fecha con Tab. Izquierda y Derecha eligen año, mes, día, hora o minuto; Arriba y Abajo cambian el valor de esa parte. Los horarios se muestran en la zona horaria local del ordenador.
 
@@ -452,13 +489,18 @@ Confirma las fechas para volver al formulario y publica el torneo o guarda los c
 Abre tu torneo y elige «Administrar torneo». Antes del comienzo puedes:
 
 - editar el nombre, los ajustes de competición y las fechas;
+- invitar a un jugador con «Invitar al torneo» mientras las inscripciones estén abiertas y queden plazas;
 - usar «Gestionar participantes» para retirar a alguien o asignar compañeros en un torneo de parejas;
 - abrir o cerrar las inscripciones;
 - elegir «Iniciar torneo» en lugar de esperar al comienzo programado.
 
-Durante el torneo, las victorias por incomparecencia se conceden en «Encuentros». Selecciona una partida, abre su menú contextual y elige «Conceder victoria por incomparecencia». Elige al ganador y confirma. Hay una opción aparte para cancelar un encuentro ya iniciado, pero aún sin resolver, y conceder esa victoria. El ganador queda por delante de los demás, que comparten el último puesto. Se aplica la fórmula habitual de puntos; no se inventa un marcador del propio juego.
+Para resolver un encuentro por incomparecencia, selecciónalo en «Partidos del torneo» y pulsa Ctrl+F o elige «Conceder victoria por incomparecencia» en el menú contextual. Elige al jugador o equipo que pierde y continúa. Es la misma acción antes de empezar y durante la partida.
 
-También puedes cancelar un torneo que no haya terminado. Hazlo para anular toda la competición, no una invitación concreta. Superar una fecha o la ausencia de un jugador no concede automáticamente una victoria por incomparecencia: es una decisión del organizador.
+En un encuentro de uno contra uno gana el rival de quien pierde por incomparecencia. Si hay más participantes, el perdedor ocupa el último puesto. Si la partida en curso puede continuar sin él, los demás siguen jugando para decidir sus puestos. De lo contrario, se ordenan según el marcador tras la última mano o ronda completada. Una mano o ronda sin terminar no cuenta. Los marcadores iguales dan puestos compartidos, teniendo en cuenta si en ese juego es mejor un resultado mayor o menor. Si el encuentro aún no ha empezado o no se ha completado ninguna ronda puntuable, los demás comparten el primer puesto.
+
+Antes de confirmar, lee la vista previa: indica quién pierde y explica si el encuentro terminará o los demás seguirán jugando. Si va a terminar, muestra también los puestos, los puntos de torneo y los marcadores utilizados. Solo «Confirmar victoria por incomparecencia» aplica la decisión. Si la situación cambia mientras decides, tendrás que revisar y confirmar una nueva vista previa. Si no se pueden leer los datos necesarios o el juego no los proporciona, el programa no resolverá el encuentro con un resultado supuesto.
+
+También puedes cancelar un torneo que no haya terminado. Hazlo para anular toda la competición, no una invitación concreta. Superar una fecha no concede una victoria por incomparecencia. Puedes tomar una decisión manual con Ctrl+F sin esperar a que se agoten los cinco minutos para volver.
 
 ### Si un cambio no se confirma
 

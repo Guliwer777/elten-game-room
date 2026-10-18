@@ -44,6 +44,11 @@ class GameRoomPresentationReplay
 
   def incremental(before, session, event)
     return nil if @game.method(:incremental_replay).owner == GameRoomGames::Base
+    # Historical actors/values belong to their event-time seats. Only full
+    # replay applies that mapping and preserves the original history names.
+    # Later moves already use the current roster and keep the fast path.
+    last_change = session.fetch('__seat_changes', []).last
+    return nil if last_change && @repository.event_id(event) <= last_change.fetch('id')
     isolated = copy(before)
     @game.incremental_replay(isolated, session, [event], @repository) if isolated
   rescue StandardError => error
@@ -61,7 +66,9 @@ class GameRoomPresentationReplay
   end
 
   def session_key(session)
-    Marshal.dump(session)
+    # The write-CAS token changes with every action. The exact accepted-event
+    # prefix already guards that history; keep all semantic session metadata.
+    Marshal.dump(session.reject { |key, _value| key == '__game_revision' })
   rescue TypeError
     nil
   end

@@ -100,7 +100,8 @@ h.as("Alice") { h.transports["Alice"].set_observer(h.table, true, actor: "Alice"
 session = h.as("Alice") { h.repositories["Alice"].start_session(table: h.table, game: game.id, players: %w[Bob Carol], options: JSON.generate(game.default_options.merge("answer_time" => 5))) }
 h.instance_variable_set(:@session, session)
 ctx = GameRoomGames::ActionContext.new(session_id: session["__id"], table_id: h.table["__id"], now: 2000,
-  random_source: GameRoomRandom::SeededSource.new(3), hidden_submissions: HiddenSubmissions::Vault.new(HiddenSubmissions::MemoryStorage.new))
+  random_source: GameRoomRandom::SeededSource.new(3), hidden_submissions: HiddenSubmissions::Vault.new(HiddenSubmissions::MemoryStorage.new),
+  server_random: session['__server_random'] == GameRoomServerRandom::VERSION)
 screen = GameScreen.allocate
 { game: game, table_owner: "Alice", repository: h.repositories["Alice"], session: session, table: h.table }.each { |key, value| screen.instance_variable_set("@#{key}", value) }
 screen.define_singleton_method(:action_context) { ctx }

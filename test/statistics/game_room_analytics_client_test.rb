@@ -458,4 +458,5 @@ analytics_test("real Client times out held HTTP without a cancellation token and
 end
 
 puts "Analytics real host: #{$analytics_scenarios} scenarios, #{$analytics_assertions} assertions, #{$analytics_failures.length} failures"
+raise "ANALYTICS_CASE did not select any scenario" if $analytics_scenarios.zero?
 raise $analytics_failures.join("\n") unless $analytics_failures.empty?

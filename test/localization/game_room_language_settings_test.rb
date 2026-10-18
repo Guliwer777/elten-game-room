@@ -96,12 +96,12 @@ settings_dialog("interface_language" => "pl", "known_languages" => %w[pl en]) do
   assert(primary.options == ["English", "polski"] && known.options == primary.options,
     "language choices do not match the available catalogs")
   assert(primary.index == 1 && known.multiselections == [0, 1], "saved language selections were not restored")
-  categories.index = 5
+  categories.index = categories.options.index("Widget") || raise("Widget settings category missing")
   categories.trigger(:move)
-  assert(form.hidden_controls.include?(primary) && form.hidden_controls.include?(known), "language controls remained visible in Pong")
+  assert(form.hidden_controls.include?(primary) && form.hidden_controls.include?(known), "language controls remained visible in Widget settings")
   categories.index = 0
   categories.trigger(:move)
-  assert((form.fields - form.hidden_controls) == visible, "returning to Language lost its controls or order")
+  assert((form.fields - form.hidden_controls) == visible, "returning to General lost its controls or order")
   form.cancel_button.trigger(:press)
 end
 

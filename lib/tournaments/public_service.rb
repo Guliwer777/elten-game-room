@@ -583,8 +583,11 @@ module GameRoomTournaments
       return record if status == 'unconfirmed'
 
       ids = operation ? operation['record_ids'] : validated_join_ids(view, values['operation_key'])
+      pairing_applied = if record['kind'] == 'pairing' && status == 'confirmed'
+        model.pairing_applied?(account: @journal.owner, operation_key: values['operation_key'])
+      end
       resolve(record, status, key: values['operation_key'], ids: ids,
-        canonical_id: target && target['__id'])
+        canonical_id: target && target['__id'], pairing_applied: pairing_applied)
     end
 
     def validated_join_ids(view, key)
@@ -636,13 +639,14 @@ module GameRoomTournaments
       end.uniq.sort
     end
 
-    def resolve(record, status, key:, ids:, canonical_id:)
+    def resolve(record, status, key:, ids:, canonical_id:, pairing_applied: nil)
       # Dowód ograniczony niezależnie od rozmiaru aliasów. Licznik jawnie
       # informuje o skróceniu listy ID; decyzja korzysta z całej projekcji.
       return record if record['status'] == 'conflict'
 
       evidence = {'status' => status, 'record_ids' => ids.first(64), 'record_count' => ids.length,
         'canonical_id' => canonical_id, 'author' => @journal.owner, 'key' => key}
+      evidence['pairing_applied'] = pairing_applied unless pairing_applied.nil?
       boundary { @journal.resolve(record['id'], status: status, evidence: evidence, expected_revision: record['revision']) }
     end
 

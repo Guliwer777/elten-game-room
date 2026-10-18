@@ -73,8 +73,10 @@ exchange-card selection and Monopoly do not use legal-play navigation.
 
 The annotations exist in UNO, Ninety-Nine, Spades, Thousand, Makao and Poker's
 exchange hand. Poker still advances to the next phase after exchange
-confirmation: no new hand list was added to betting, nor automatic card
-announcements in the betting menu. The final view is not overridden by hand
+confirmation: no hand list or cursor-driven card announcements are added to
+the betting menu. Its separate deal announcement reads only the viewer's own
+cards, after authenticated delivery in private-card games. It does not repeat
+on refresh or cold reconstruction. The final view is not overridden by hand
 announcements either.
 
 GameRoomLayout reuses only a marked hand, including when additional fields

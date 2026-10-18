@@ -49,34 +49,35 @@ end
 
 def play_unique_round(game, session, repository, events, context, owner:, judge:, answerer:)
   replay = game.replay(session, events, repository)
+  context.now = [context.now.to_i, replay.state[:resume_at].to_i].max
   action = game.automatic_action(replay, owner, context: context)
   status, plan = game.action_for(action, replay, owner, context: context)
   raise "round start failed" if status != :ok
-  append_plan(events, plan, owner)
+  append_plan(events, plan, owner, now: context.now)
   replay = game.replay(session, events, repository)
 
   answers = { "country" => "Austria", "city" => "", "name" => "", "animal" => "", "plant" => "", "thing" => "" }
   status, plan = game.action_for(surface_action("answer_sheet", "submit", "answers" => answers), replay, answerer, context: context)
   raise "submission failed" if status != :ok
-  append_plan(events, plan, answerer)
+  append_plan(events, plan, answerer, now: context.now)
   replay = game.replay(session, events, repository)
 
   action = game.automatic_action(replay, owner, context: context)
   status, plan = game.action_for(action, replay, owner, context: context)
   raise "answer closing failed" if status != :ok
-  append_plan(events, plan, owner)
+  append_plan(events, plan, owner, now: context.now)
   replay = game.replay(session, events, repository)
 
   action = game.automatic_action(replay, answerer, context: context)
   status, plan = game.action_for(action, replay, answerer, context: context)
   raise "reveal failed" if status != :ok
-  append_plan(events, plan, answerer)
+  append_plan(events, plan, answerer, now: context.now)
   replay = game.replay(session, events, repository)
 
   action = game.automatic_action(replay, owner, context: context)
   status, plan = game.action_for(action, replay, owner, context: context)
   raise "review start failed" if status != :ok
-  append_plan(events, plan, owner)
+  append_plan(events, plan, owner, now: context.now)
   replay = game.replay(session, events, repository)
 
   item = replay.state[:active_players].empty? ? nil : game.surface_spec(replay, judge)
@@ -90,7 +91,7 @@ def play_unique_round(game, session, repository, events, context, owner:, judge:
     context: context
   )
   raise "review decision failed" if status != :ok
-  append_plan(events, plan, judge)
+  append_plan(events, plan, judge, now: context.now)
   replay = game.replay(session, events, repository)
 
   status, plan = game.action_for(
@@ -100,12 +101,12 @@ def play_unique_round(game, session, repository, events, context, owner:, judge:
     context: context
   )
   raise "review finish failed" if status != :ok
-  append_plan(events, plan, judge)
+  append_plan(events, plan, judge, now: context.now)
   replay = game.replay(session, events, repository)
 
   action = game.automatic_action(replay, owner, context: context)
   status, plan = game.action_for(action, replay, owner, context: context)
   raise "round scoring failed" if status != :ok
-  append_plan(events, plan, owner)
+  append_plan(events, plan, owner, now: context.now)
   game.replay(session, events, repository)
 end

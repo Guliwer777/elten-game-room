@@ -102,11 +102,19 @@ module GameRoomTournaments
         pair(_("Tournament rules"), publication.fetch('rules')),
         pair(_("Registration opens"), optional_date(publication.fetch('registration_opens_at'))),
         pair(_("Registration closes"), optional_date(publication.fetch('registration_closes_at')))]
-      lines << text(_("Each match awards 2 tournament points per opponent beaten and 1 per tied opponent. Teams count as single opponents."))
+      scoring = text(_("Each match awards 2 tournament points per opponent beaten and 1 per tied opponent. Teams count as single opponents."))
+      lines << scoring unless text(publication.fetch('rules')) == scoring
       if TournamentTiming.optional?(publication)
         lines << pair(_("Tournament starts"),optional_date(TournamentTiming.starts_at(publication)))
         lines << pair(_("Tournament deadline"),TournamentTiming.deadline_at(publication) ? local_date(TournamentTiming.deadline_at(publication)) : _("Not set"))
-        lines << text(_("Matches may be played at any time after the tournament starts.")) if TournamentTiming.schedule(publication)['windows'].empty?
+        schedule=TournamentTiming.schedule(publication)
+        if (hours=schedule['daily_hours'])
+          lines << text(_("Daily playing hours: %{start}–%{end} (%{zone}, fixed offset)."))%{
+            start:hours['start'],end:hours['end'],zone:TournamentTiming.offset_label(hours['utc_offset_minutes'])}
+          lines << text(_("These hours limit starting matches, not finishing games already in progress."))
+        elsif schedule['windows'].empty?
+          lines << text(_("Matches may be played at any time after the tournament starts."))
+        end
       end
       if settings['format'] == 'groups_knockout' && settings['group_advancement'] == 'automatic_compact_groups_v2'
         lines << text(_("Groups of three or four; four preferred. Extra qualifying places compare results without matches against the last player of a larger group."))

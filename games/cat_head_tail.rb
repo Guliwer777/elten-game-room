@@ -1,11 +1,14 @@
 require_relative "base"
 require_relative "../lib/cat_head_tail_strategy"
 
+GameRoomServerRandom.register('cat_head_tail', ['roll'])
+
 require_relative "../lib/game_room_localization"
 
 module GameRoomGames
   using GameRoomLocalization::Translations
   class CatHeadTail < Base
+    def player_spatial_audio?; true; end
     def event_sound_cues(event:, before_replay:, after_replay:, history:, viewer:, random_variant:)
       action = event["action"].to_s
       entries = history
@@ -96,6 +99,8 @@ module GameRoomGames
           apply_roll(state, event, actor, repository, history)
         when "bank"
           apply_bank(state, event, actor, repository, history)
+        when "tournament_elimination"
+          apply_tournament_elimination(state, event, repository, history)
         else
           false
         end
@@ -142,6 +147,10 @@ module GameRoomGames
       when "roll"
         return [:invalid, nil] if context == nil || context.random_source == nil
 
+        if context.server_random
+          return [:ok, ActionPlan.new(events: [GameRoomServerRandom.recipe_command(action: 'roll', kind: 'cat_tail')])]
+        end
+
         roll = context.random_source.roll(count: 1, sides: 8).values.first.to_i
         value = if roll == 8
           tail = context.random_source.roll(count: 1, sides: 2).values.first.to_i == 1 ? "minus" : "plus"
@@ -176,6 +185,14 @@ module GameRoomGames
 
     def participant_scores(replay)
       replay.state[:scores].dup
+    end
+
+    def tournament_forfeit_continuation(replay, losing_unit:, options:)
+      return {'status'=>'unsupported'} unless replay.state[:phase] == :playing
+      active = tournament_remaining_players(replay.state)
+      return {'status'=>'unsupported'} unless active.any? { |player| same_user?(player, losing_unit) }
+
+      {'status'=>active.length > 2 ? 'continue' : 'cannot_continue'}
     end
 
     def shortcut_features
@@ -228,6 +245,7 @@ module GameRoomGames
     end
 
     def apply_roll(state, event, actor, repository, history)
+      return false unless GameRoomServerRandom.valid_recipe_event?(event, kind: 'cat_tail')
       return false if state[:phase] != :playing
       return false if !same_user?(state[:current_player], actor)
 
@@ -300,6 +318,19 @@ module GameRoomGames
       true
     end
 
+    def apply_tournament_elimination(state, event, repository, history)
+      departed = tournament_elimination_players(event, players:state[:players])
+      active = tournament_remaining_players(state)
+      return false unless departed && state[:phase] == :playing &&
+        (departed - active).empty? && (active - departed).length >= 2
+
+      (state[:tournament_eliminations] ||= []) << departed
+      if departed.include?(state[:current_player])
+        finish_turn(state, state[:current_player], repository.event_id(event), history, eliminated:true)
+      end
+      true
+    end
+
     def apply_bank(state, event, actor, repository, history)
       return false if state[:phase] != :playing
       return false if !same_user?(state[:current_player], actor)
@@ -322,12 +353,13 @@ module GameRoomGames
       true
     end
 
-    def finish_turn(state, actor, event_id, history)
+    def finish_turn(state, actor, event_id, history, eliminated:false)
       state[:turn_points] = 0
-      next_actor = next_player(state[:players], actor)
-      if !state[:final_round] && state[:scores].fetch(actor, 0).to_i >= state[:options]["score_limit"].to_i
+      active = tournament_remaining_players(state)
+      next_actor = next_active_player(state, actor)
+      if !eliminated && !state[:final_round] && state[:scores].fetch(actor, 0).to_i >= state[:options]["score_limit"].to_i
         state[:final_round] = true
-        if !same_user?(next_actor, state[:players].first)
+        if !same_user?(next_actor, active.first)
           history << HistoryEntry.new(
             key: "final_round:#{event_id}",
             text: _("%{player} reached the score limit. Finish the current round of turns.") % {
@@ -339,8 +371,9 @@ module GameRoomGames
           )
         end
       end
-      if state[:final_round] && same_user?(next_actor, state[:players].first)
-        winners = state[:players].select { |player| state[:scores][player] == state[:scores].values.max }
+      if state[:final_round] && same_user?(next_actor, active.first)
+        highest = active.map { |player| state[:scores].fetch(player) }.max
+        winners = active.select { |player| state[:scores][player] == highest }
         state[:winner] = winners.first if winners.length == 1
         state[:draw] = winners.length > 1
         state[:phase] = :finished
@@ -418,9 +451,13 @@ module GameRoomGames
       state[:players].find { |player| same_user?(player, actor) }
     end
 
-    def next_player(players, actor)
+    def next_active_player(state, actor)
+      players = state[:players]
       index = players.index { |player| same_user?(player, actor) }
-      index == nil ? nil : players[(index + 1) % players.length]
+      return nil if index == nil
+
+      active = tournament_remaining_players(state)
+      players.rotate(index + 1).find { |player| active.include?(player) }
     end
   end
 end

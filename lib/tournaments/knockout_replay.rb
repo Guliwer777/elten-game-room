@@ -6,6 +6,7 @@ module GameRoomTournaments
   module KnockoutReplay
     module_function
     def build(base:, resolved:, attempt:)
+      raise Publication::Invalid, :invalid_knockout_configuration unless base.is_a?(Hash)
       expected = KnockoutRound.build(seeds: base['seeds'], players_per_match: base['players_per_match'], round_number: base['round'])
       unless expected.eql?(base) && Publication::Data.integer?(attempt, 1) && attempt <= 255
         raise Publication::Invalid, :invalid_knockout_configuration

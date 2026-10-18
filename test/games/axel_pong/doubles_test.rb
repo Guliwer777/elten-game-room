@@ -50,9 +50,23 @@ assert(game.replay(session, forged, repository).state[:scores] == [0, 0], 'unaut
 [players.take(3), players + ['E'], %w[A A C D]].each do |invalid|
   assert(game.replay(session.merge('__players' => invalid), events, repository).accepted_events.empty?, 'invalid doubles roster scored')
 end
-[[0, 0, 0, 1], [0, 1], [0, 1, 2, 2], ['x', 0, 1, 1], false, nil].each do |seats|
+[[0, 0, 0, 1], [0, 1], [0, 1, 2, 2], ['x', 0, 1, 1], nil].each do |seats|
   invalid = session.merge('options' => JSON.generate(manual.merge('team_seats' => seats)))
   assert(game.replay(invalid, events, repository).accepted_events.empty?, 'malformed doubles teams scored')
+end
+# Invalid shared collection shapes are refused before game replay. They must
+# not be normalized to an unrelated automatic team assignment.
+[false, true, {}, [0, {}, 1, 1], [0, true, 1, 1]].each do |seats|
+  invalid_options = manual.merge('team_seats' => seats)
+  original = JSON.generate(invalid_options)
+  assert(game.validation_error(invalid_options, player_count: 4) != nil, 'malformed team shape passed setup validation')
+  begin
+    game.replay(session.merge('options' => original), events, repository)
+    raise 'malformed team shape reached doubles replay'
+  rescue ArgumentError => error
+    assert(error.message == 'Invalid game option shape', 'unexpected malformed-team failure')
+  end
+  assert(JSON.generate(invalid_options) == original, 'rejecting malformed teams changed the input')
 end
 single_session = session.merge('__players' => players.take(2), 'options' => '{}')
 assert(game.replay(single_session, events, repository).winner == 'A', 'legacy singles winner changed')

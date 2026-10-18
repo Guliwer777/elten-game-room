@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/tournament_evidence_environment'
 require_relative '../support/ft2_runtime_cold'
 require 'rbconfig'
 include FT2RuntimeCold
@@ -31,7 +32,7 @@ rows = []
         FileUtils.mkdir_p(File.dirname(archive)); File.binwrite(archive, File.binread(p)) unless File.exist?(archive)
       end
       child_file = File.expand_path('../support/ft2_fencing_revoke_process.rb', __dir__)
-      oracle_file("child-#{stage}-before.json", {inputs: pins, argv: [RbConfig.ruby, child_file, context.directory, stage], env: ENV.to_h})
+      oracle_file("child-#{stage}-before.json", {inputs: pins, argv: [RbConfig.ruby, child_file, context.directory, stage], env: TournamentTestEvidence.environment})
       stdout = File.join(ENV.fetch('ENTRY_EVIDENCE'), "child-#{stage}-stdout.raw")
       stderr = File.join(ENV.fetch('ENTRY_EVIDENCE'), "child-#{stage}-stderr.raw")
       pid = Process.spawn(RbConfig.ruby, child_file, context.directory, stage, out: stdout, err: stderr)

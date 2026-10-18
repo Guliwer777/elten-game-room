@@ -28,7 +28,7 @@ begin
     app.define_singleton_method(:initialize_services) {}
     app.define_singleton_method(:check_server_table_access) {}
     app.define_singleton_method(:run_network_task) { |*_,&block| block.call }
-    choice = Struct.new(:id).new(7)
+    choice = InvitationRepository::PendingInvitation.new(invitation: row)
     app.define_singleton_method(:load_pending_invitations) { [{invitation:choice}] }
     app.define_singleton_method(:select_notification_invitation_action) { :accept }
     accepted, alerts = [],[]

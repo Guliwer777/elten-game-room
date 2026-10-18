@@ -66,6 +66,7 @@ class GameRoomAudio
     values = value.is_a?(Hash) ? value : {}
     DEFAULTS.to_h do |key, default|
       raw = values.fetch(key, default)
+      raw = default if key.end_with?("_volume") && !raw.respond_to?(:to_i)
       [key, key.end_with?("_volume") ? [[raw.to_i, 0].max, 100].min : raw == true]
     end
   end

@@ -314,6 +314,7 @@ check('Active GameScreen routes Ctrl+P and the menu to its current client withou
   controller = Object.new
   controller.define_singleton_method(:cancel) { |_| }
   {game: game, repository: repository, session: session, table: room.table,
+    game_services: {},
     bot_turn_controller: controller, board_preferences: GameRoomBoardPreferences.new(nil, game),
     table_owner: 'Alice', room_snapshot: room, surface_state: {}, game_client: client,
     history_navigator: GameRoomHistory::Navigator.new, turn_history_entries: {}, activity_entries: []

@@ -130,6 +130,7 @@ module GameRoomPong
       if preview
         score_at = [@clock.call, preview[:at] + 3.0].max
         rally_state.ready_at, rally_state.serve_announce_at = score_at + SINGLE_SERVE_DELAY, score_at + 2.0
+        @ready_deadline_created_at = @clock.call
         if defined?(Log) && Log.respond_to?(:debug)
           Log.debug("Game Room Pong point_confirmed rally=#{before.state[:rally]} durable_confirmation_ms=#{((@clock.call - preview[:at]) * 1000).round}")
         end
@@ -301,7 +302,11 @@ module GameRoomPong
         return true unless @players[seat]
         @observed_player = @players[seat]
         present
-        speak(_('Perspective: %{player}.') % { player: @game.participant_name(@observed_player) })
+        if @single_point && rally_state.snapshot
+          speak(single_point_spectator_announcement)
+        else
+          speak(_('Perspective: %{player}.') % { player: @game.participant_name(@observed_player) })
+        end
       when 'crowd'
         if @audio.toggle_crowd
           speak(@audio.crowd ? _('Crowd on.') : _('Crowd off.'))
@@ -430,6 +435,7 @@ module GameRoomPong
       @initial_rally = initial
       @initial_ready_since = nil
       @host_ready_at = 0.0
+      @ready_deadline_created_at = @clock.call
       rally_state.ready_at = initial ? Float::INFINITY : @clock.call + (3.0 + SINGLE_SERVE_DELAY)
       rally_state.serve_announce_at = initial ? Float::INFINITY : @clock.call + 5.0
       if point_state.goal_preview && point_state.goal_preview[:rally] == @replay.state[:rally] - 1
@@ -452,6 +458,8 @@ module GameRoomPong
         return false unless data['teams'] == @teams && @players.each_index.include?(data['receiver'])
         rotation = Rotation.new(teams: @teams, rally: body['r'], first_server: first_server)
         return false unless data['server'] == rotation.server && data['receiver'] == rotation.receiver
+      elsif data['teams'] != nil
+        return false
       end
       return false unless [true, false].include?(data['invisible'])
       return false unless data['p'].is_a?(Array) && data['p'].length == @players.length && data['p'].all? { |n| finite?(n, 1, 29) }
@@ -460,11 +468,16 @@ module GameRoomPong
       return false unless data['shields'].is_a?(Array) && data['shields'].length == @players.length && data['shields'].all? { |n| n.is_a?(Integer) && n.between?(0, 625) }
       b = data['b']
       return false unless valid_ball?(b)
-      data['fx'].is_a?(Array) && data['fx'].length <= 8 && data['fx'].all? do |fx|
-        fx.is_a?(Array) && fx.length == 5 && fx[0].is_a?(Integer) && fx[0] >= 0 &&
-          %w[step edge serve hit wall shield_on shield_off shield_hit invisible goal].include?(fx[1]) &&
-          (fx[2] == nil || @players.each_index.include?(fx[2])) && finite?(fx[3], 0, 30) && finite?(fx[4], -1000, 1020)
-      end
+      data['fx'].is_a?(Array) && data['fx'].length <= 8 && data['fx'].all? { |fx| valid_snapshot_effect?(fx) }
+    end
+
+    def valid_snapshot_effect?(fx)
+      return false unless fx.is_a?(Array) && fx.length == 5 && fx[0].is_a?(Integer) && fx[0] >= 0
+      return false unless %w[step edge serve hit wall shield_on shield_off shield_hit invisible goal].include?(fx[1])
+      # Paddle/contact effects index the participant's position in Audio;
+      # wall/invisibility (and ignored effects) legitimately have no player.
+      return false if fx[2] == nil && %w[serve hit shield_on shield_off shield_hit].include?(fx[1])
+      (fx[2] == nil || @players.each_index.include?(fx[2])) && finite?(fx[3], 0, 30) && finite?(fx[4], -1000, 1020)
     end
 
     def valid_ball?(b)
@@ -516,9 +529,20 @@ module GameRoomPong
           server: GameRoomContent.utf8(GameRoomParticipants.display_name(@players[rally_state.rotation.server])),
           receiver: GameRoomContent.utf8(GameRoomParticipants.display_name(@players[rally_state.rotation.receiver])) })
       else
-        announce_progress(_('%{player} serves.') % { player: GameRoomContent.utf8(GameRoomParticipants.display_name(@players[rally_state.snapshot['server']])) })
+        text = if @single_point && @side.nil?
+          single_point_spectator_announcement
+        else
+          _('%{player} serves.') % { player: GameRoomContent.utf8(GameRoomParticipants.display_name(@players[rally_state.snapshot['server']])) }
+        end
+        announce_progress(text)
       end
       @audio.start_match
+    end
+
+    def single_point_spectator_announcement
+      _("Watching %{player}. %{server} serves.") % {
+        player: GameRoomContent.utf8(GameRoomParticipants.display_name(@players[observer_side])),
+        server: GameRoomContent.utf8(GameRoomParticipants.display_name(@players[rally_state.snapshot['server']]))}
     end
 
     def peer_service_waiting?
@@ -548,7 +572,9 @@ module GameRoomPong
     end
 
     def present
-      status = if @waiting_for_serve
+      status = if session_paused?
+        _('Game paused.')
+      elsif @waiting_for_serve
         _('Waiting for the next serve.')
       elsif rally_state.paused
         _('Match paused. Waiting for synchronization.')
@@ -560,6 +586,26 @@ module GameRoomPong
       @surface.listening_seat = audio_side if @surface.respond_to?(:listening_seat=)
       @surface&.present(rally_state.snapshot, status)
       @audio.update(rally_state.snapshot, viewer: audio_side, paused: rally_state.paused)
+    end
+
+    def session_pause_changed(paused, elapsed)
+      if paused
+        rally_state.paused = true
+        @mouse.suspend
+      else
+        # A confirmed point or new control epoch may create a new deadline
+        # during the pause. Only preserve time since that deadline existed.
+        ready_elapsed = @ready_deadline_created_at ? [elapsed, [@clock.call - @ready_deadline_created_at, 0.0].max].min : elapsed
+        rally_state.ready_at += ready_elapsed if rally_state.ready_at
+        rally_state.serve_announce_at += ready_elapsed if rally_state.serve_announce_at
+        @host_ready_at += elapsed if @host_ready_at
+        @hurry_until += elapsed if @hurry_until
+        @hurry_cooldowns&.transform_values! { |deadline| deadline + elapsed }
+        @peer_disagreements&.clear
+        rally_state.physics_at = rally_state.physics_updated_at = nil
+        # No frame may charge shields for time spent outside active physics.
+        rally_state.engine&.position([], now_ms: (@clock.call * 1000).to_i)
+      end
     end
   end
 end

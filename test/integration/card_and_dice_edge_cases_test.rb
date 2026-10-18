@@ -216,7 +216,8 @@ sound_cases = [
   [GameRoomGames::Uno.new, "play", "R6a||0", "play"],
   [GameRoomGames::Uno.new, "draw", "0", "draw"],
   [makao, "play", "7H|", "play"], [makao, "draw", "", "draw"],
-  [poker, "bet", "raise|57", "play"], [poker, "exchange", "7H,8C", "draw"],
+  # Poker's accepted state transitions, including private exchange receipts,
+  # have separate coverage in poker/accepted_sounds_contract_test.rb.
   [yahtzee, "roll", "2,3,4,4,4", "roll"], [yahtzee, "score", "chance", "play"],
   [monopoly, "roll", "1,2,seed", "roll"], [monopoly, "buy", "", "play2"]
 ]

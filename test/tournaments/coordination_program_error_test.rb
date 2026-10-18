@@ -47,6 +47,7 @@ F.isolated do |dir|
   port.hook=->(event,_) { if event==:create_stored; fail_context=true;raise primary,cause:cause;end }
   begin
     service.request_match(request:request)
+    raise 'Zamaskowany ProgramError po błędzie wtórnego czytnika'
   rescue CoordinationProgramError => caught
     F.assert(caught.equal?(primary) && caught.cause.equal?(cause),'Drugi wyjątek nie maskuje primary')
   end

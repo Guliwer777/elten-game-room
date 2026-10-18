@@ -16,7 +16,7 @@ class DuckChallengeIntroductionTest
     sound_policy
     client_preparation('copy_number', delay: 0)
     client_preparation('guess_number', delay: 2_000)
-    client_preparation('count_ducks', delay: 2_000)
+    client_preparation('count_ducks', delay: 3_000)
     client_preparation('quiz', delay: 2_000, question: :card)
     client_preparation('quiz', delay: 3_000, question: :square)
     report('Duck introductions: distinct encounter/question cues, fixed 2s after card/landing, input readiness, no stacked pause, snapshots and sound policy')
@@ -91,12 +91,13 @@ class DuckChallengeIntroductionTest
     immediate_countdown = kind == 'sound_order' || ENGINE::SPEED_TYPES.include?(kind) && kind != 'count_ducks'
     assert_equal(!immediate_countdown, p.event_presentation_busy?, "#{kind}: incorrect introduction pause")
     unless immediate_countdown
-      @program.now_ms = 1_999
+      duration_ms = kind == 'count_ducks' ? 3_000 : 2_000
+      @program.now_ms = duration_ms - 1
       p.event_presentation.advance
       assert(p.event_presentation_busy?, "#{kind}: introduction ended early")
-      @program.now_ms = 2_000
+      @program.now_ms = duration_ms
       p.event_presentation.advance
-      assert(!p.event_presentation_busy?, "#{kind}: introduction lasted over two seconds")
+      assert(!p.event_presentation_busy?, "#{kind}: introduction exceeded #{duration_ms} ms")
     end
     3.times { emit(p, h, after) }
     emit(p, h, before)

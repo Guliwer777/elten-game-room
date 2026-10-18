@@ -1,6 +1,8 @@
 # encoding: UTF-8
 require_relative "tile_game"
 
+GameRoomServerRandom.register('mexican_train', ['mexican_train'], prefixes: {'mexican_train' => ['n:']})
+
 require_relative "../lib/game_room_localization"
 
 module GameRoomGames
@@ -43,7 +45,7 @@ module GameRoomGames
 
     def can_draw?(state)
       return false if state[:drawn] || state[:stock].empty? || hand(state, state[:current_player]).empty?
-      state[:options]["allow_playable_draw"] || placements(state, state[:current_player]).empty?
+      state[:options]["allow_playable_draw"] || !has_placement?(state, state[:current_player])
     end
 
     def custom_game_shortcuts(replay, viewer)
@@ -215,8 +217,12 @@ module GameRoomGames
       trains["m"] = { owner: nil, open: true, end: station, chain: [] }
       state.merge!(phase: :playing, round: state[:round] + 1, station: station, trains: trains,
         pending: [], announced_obligation: nil, series: false, starter: starter, current_player: starter, blocked: 0, voids: {}, round_winner: nil)
+      complete_deal(state, data, event_id, history)
+    end
+
+    def complete_deal(state, data, event_id, history)
       begin_turn(state, data["time"])
-      add_history(history, event_id, starter, :deal, _("Round %{round}. Station %{station}. Tiles dealt.") % { round: state[:round], station: "#{station}–#{station}" })
+      add_history(history, event_id, state[:current_player], :deal, _("Round %{round}. Station %{station}. Tiles dealt.") % { round: state[:round], station: "#{state[:station]}–#{state[:station]}" })
     end
 
     def apply_move(state, data, event_id, history)
@@ -268,7 +274,7 @@ module GameRoomGames
         draw_one(state, player)
         state[:blocked] = 0
         add_history(history, event_id, player, :draw, _("%{player} draws a tile.") % { player: participant_name(player) })
-        pass(state, data, event_id, history) if placements(state, player).empty?
+        pass(state, data, event_id, history) unless has_placement?(state, player)
       when "pass"
         pass(state, data, event_id, history)
       else return :invalid
@@ -299,10 +305,12 @@ module GameRoomGames
       add_history(history, event_id, player, :pass, (opened ? _("%{player}'s train opens; turn passed.") : _("%{player} passes.")) % { player: participant_name(player) })
       state[:series] = false
       state[:blocked] += 1
-      blocked = state[:stock].empty? && state[:blocked] >= waiting_players(state).length && waiting_players(state).all? { |p| placements(state, p).empty? }
+      blocked = state[:stock].empty? && state[:blocked] >= waiting_players(state).length && waiting_players(state).none? { |p| has_placement?(state, p) }
       blocked ? finish_round(state, nil, event_id, history) : end_turn(state, data["time"], event_id, history)
     end
   end
 end
 
+require_relative 'tile_game_private'
+GameRoomGames::MexicanTrain.prepend(GameRoomGames::TileGamePrivate)
 require_relative 'generated/rulebooks/mexican_train'

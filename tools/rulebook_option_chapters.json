@@ -2,6 +2,7 @@
   "audio_ball": { "mode": "court", "difficulty": "pace", "sets_to_win": "match" },
   "axel_pong": { "arcade": "arcade", "team_size": "doubles", "difficulty": "difficulty", "target": "rally", "custom_target": "rally" },
   "battleship": { "fleet": "fleet", "touching": "fleet" },
+  "bridge": { "variant": "variants", "boards": "variants", "scoring": "variants", "honors": "honors" },
   "duck_racing": { "laps": "aim", "question_language": "settings", "question_sets": "settings", "challenges": "settings" },
   "mancala": { "variant": "board", "stones": "board", "skill": "computer", "capture": "kalah" },
   "biblios": {

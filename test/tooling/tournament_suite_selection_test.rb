@@ -22,9 +22,12 @@ assert_equal(tournaments, ci_parts.sort, 'CI shard coverage must be complete and
 assert_equal(5400, GameRoomTestSuites.timeout_for('test/tournaments/individual_quiz_finish_test.rb', fallback: 180))
 assert_equal(600, GameRoomTestSuites.timeout_for('test/tournaments/execution_native_suite_test.rb', fallback: 180))
 assert_equal(300, GameRoomTestSuites.timeout_for('test/tournaments/fixed_team_dispatch_test.rb', fallback: 180))
+assert_equal(600, GameRoomTestSuites.timeout_for('test/transport/rummy_private_cards_test.rb', fallback: 180))
 assert_equal(180, GameRoomTestSuites.timeout_for('test/games/quiz/model_test.rb', fallback: 180))
+paths = GameRoomTestSuites.paths(root: root)
 GameRoomTestSuites::SLOW_TIMEOUTS.each_key do |name|
-  assert(File.file?(File.join(root, 'test/tournaments', name)), "Stale timeout: #{name}")
+  matches = paths.select { |path| File.basename(path) == name }
+  assert_equal(1, matches.length, "Stale or ambiguous timeout: #{name}; #{matches.inspect}")
 end
 families = TournamentExecutionSuite::GROUPS.keys + %w[encoding cold recovery compatibility team_cold legacy_archive]
 families.each do |family|
@@ -32,7 +35,6 @@ families.each do |family|
   assert(!jobs.empty?, "Empty tournament group: #{family}")
   jobs.each { |job| assert(File.file?(File.join(root, job[:script])), "Missing entry point: #{job[:script]}") }
 end
-paths = GameRoomTestSuites.paths(root: root)
 GameRoomTestSuites::PARAMETERIZED_FILES.each do |name|
   assert(paths.none? { |path| File.basename(path) == name }, "Unprepared child selected: #{name}")
 end

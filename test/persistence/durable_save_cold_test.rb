@@ -1,9 +1,9 @@
 # encoding: UTF-8
-require 'tmpdir'
+require_relative '../support/temporary_directory'
 require 'json'
 require 'open3'
 require 'rbconfig'
-root = Dir.mktmpdir('durable-save-cold-', ENV.fetch('TMPDIR'))
+root = GameRoomTest::TemporaryDirectory.create('durable-save-cold-')
 worker = File.expand_path('../support/durable_save_process.rb', __dir__)
 puts "Izolowane dane próby: #{root}"
 results = %w[A B].map do |phase|

@@ -53,14 +53,14 @@ end
 owner=T::Dialogs::Owner.new(-> {TournamentIndividualUI::F::OWNER},->(message){raise message})
 begin
   driver=TournamentNativeDriver.new
-  driver.step('Matches') do |form|
+  driver.step('Tournament matches') do |form|
     assert_equal('Matches — Quarterfinals; completed: 0/1',form.fields.first.options.first)
     history << {'candidate'=>candidate,'view'=>{'results'=>[],'standings'=>[]}}
     candidate=candidate.merge('schedule_id'=>'semifinal','knockout'=>{'round'=>2,'players_per_match'=>2,'seeds'=>%w[alpha beta gamma delta]})
     SpeechOutput.reset
     revision+=1
   end
-  driver.step('Matches') do |form|
+  driver.step('Tournament matches') do |form|
     assert_equal('Matches — Semifinals; completed: 0/1',form.fields.first.options.first)
     assert_equal([],SpeechOutput.calls,'Changing the phase header spoke over the user')
     assert_equal(0,form.fields.first.index)
@@ -69,13 +69,13 @@ begin
     phases.index=0
     phases.trigger(:move)
   end
-  driver.step('Matches') do |form|
+  driver.step('Tournament matches') do |form|
     assert_equal('Matches — Quarterfinals; completed: 0/1',form.fields.first.options.first)
     history << {'candidate'=>candidate,'view'=>{'results'=>[],'standings'=>[]}}
     candidate=candidate.merge('schedule_id'=>'final','knockout'=>{'round'=>3,'players_per_match'=>2,'seeds'=>%w[alpha beta]})
     revision+=1
   end
-  driver.step('Matches',[27]) do |form|
+  driver.step('Tournament matches',[27]) do |form|
     assert_equal(0,TournamentIndividualUI::F.field(form,'Tournament phase').index,'Refresh interrupted browsing an earlier phase')
     assert_equal('Matches — Quarterfinals; completed: 0/1',form.fields.first.options.first)
   end
@@ -83,7 +83,7 @@ begin
     publication:{'title'=>'Phase names','__insertion_user'=>TournamentIndividualUI::F::OWNER,'publication_key'=>'phase-names'}).run
   driver.finish
   driver=TournamentNativeDriver.new
-  driver.step('Matches',[27]) do |form|
+  driver.step('Tournament matches',[27]) do |form|
     assert_equal(2,TournamentIndividualUI::F.field(form,'Tournament phase').index,'Reopening did not select the latest phase')
     assert_equal('Matches — Final; completed: 0/1',form.fields.first.options.first)
   end

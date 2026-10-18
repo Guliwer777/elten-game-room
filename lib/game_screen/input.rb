@@ -1,8 +1,9 @@
 require_relative '../game_room_localization'
 
 class GameScreen
-  WaitState = Struct.new(:replay, :revision, :action, keyword_init: true)
+  WaitState = Struct.new(:replay, :revision, :action, :session, :membership, :actor, keyword_init: true)
   WaitView = Struct.new(:layout, :silent_entry, :announce_finished_focus, keyword_init: true)
+  PendingMoveIntent = Struct.new(:session, :replay, :selection, :membership, :actor, :chat_receipt, keyword_init: true)
 
   module Input
     using GameRoomLocalization::Translations
@@ -10,7 +11,8 @@ class GameScreen
 
     def wait_for_action(replay, revision)
       replay = event_presenter.event_presentation.visible_replay if event_presentation_busy? && event_presenter.event_presentation.visible_replay != nil
-      wait = WaitState.new(replay: replay, revision: revision)
+      wait = WaitState.new(replay: replay, revision: revision, session: @session,
+        membership: chat_membership, actor: Session.name.to_s.dup.freeze)
       view = prepare_action_view(replay)
       layout = view.layout
       form = layout.form
@@ -23,7 +25,13 @@ class GameScreen
       bind_wait_surface(wait, layout, remember_position)
       bind_wait_chat(wait, layout, remember_position)
       bind_wait_timer(wait, layout, remember_position)
-      if view.announce_finished_focus
+      if pending_move_ready?
+        wait.action = :queued_game_action
+      elsif pending_chat_ready?
+        wait.action = :chat
+      elsif take_pending_computer(wait, layout)
+        # Run the normal room mutation after the previous task has finished.
+      elsif view.announce_finished_focus
         speech_wait
         form.wait
       elsif !view.silent_entry
@@ -34,7 +42,15 @@ class GameScreen
       loop do
         break if handle_wait_result(wait, layout)
         wait.action = nil
-        layout.wait_without_announcement
+        if pending_move_ready?
+          wait.action = :queued_game_action
+        elsif pending_chat_ready?
+          wait.action = :chat
+        elsif take_pending_computer(wait, layout)
+          # No extra key press is needed for an already accepted intention.
+        else
+          layout.wait_without_announcement
+        end
       end
       @latest_wait_replay = wait.replay
       wait.action
@@ -141,7 +157,8 @@ class GameScreen
         end
         pending = form.game_room_pending_operation
         if pending
-          next pending.reject_action unless pending.safe_shortcut?(shortcut)
+          next pending.reject_action unless pending.safe_shortcut?(shortcut) ||
+            (pending.admits_move? && [:action, :surface].include?(shortcut.kind))
         else
           next if wait.action != nil
         end
@@ -180,6 +197,10 @@ class GameScreen
         next if selection == nil || @session["__frozen"] || event_presentation_busy?
 
         remember_position.call
+        if pending
+          capture_pending_move(wait, selection)
+          next
+        end
         @selected_surface_action = selection
         wait.action = :game_action
         form.resume
@@ -205,10 +226,14 @@ class GameScreen
 
     def bind_wait_participants(wait, layout, remember_position)
       form = layout.form
+      pending_computer = ->(action, participant) {
+        wait.replay.finished? && layout.computer_changes.enqueue(action, participant, **computer_change_context)
+      }
       GameRoomParticipantMenu.bind(layout, available: -> do
         actions = [:rules, :leave]
         actions << :save_table_history if @save_table_history != nil
-        actions << :save_game if @save_game != nil && same_user?(@table_owner, Session.name)
+        actions << :save_game if @save_game != nil && same_user?(@table_owner, Session.name) &&
+          !GameRoomTournamentMarker.present?(@table, @session)
         compatible = !@table.key?("__discovery_protocol") || @table["__discovery_protocol"].to_i >= GameRoomLiveSessionStore::CURRENT_DISCOVERY_PROTOCOL
         if compatible && same_user?(@table_owner, Session.name) && !@session["__frozen"]
           actions << :edit_options if wait.replay.finished? && @edit_options != nil
@@ -231,7 +256,10 @@ class GameScreen
         actions
       end, game: @game, options: @game.options_from_json(@session["options"]), room: -> { @room_snapshot },
         user_menu: ->(user) { @program.__send__(:usermenu, user) if wait.action == nil },
-        control: -> { {active: !wait.replay.finished?, players: @repository.players_for(@session), controllers: @session.fetch('__controllers', {})} },
+        pending_action: pending_computer,
+        control: -> { {active: !wait.replay.finished?, players: @repository.players_for(@session),
+          controllers: @session.fetch('__controllers', {}), session: @session, replay: wait.replay} },
+        control_denied: ->(message) { alert(message) },
         settings: GameRoomParticipantMenu.settings_callback(@game, client: @game_client),
         read_options: -> {
         source = wait.replay.finished? ? @room_snapshot&.table.to_h["game_options"] : @session["options"]
@@ -240,7 +268,7 @@ class GameScreen
         if form.game_room_pending_operation
           if requested == :rules
             show_game_rules(wait.replay)
-          else
+          elsif !pending_computer.call(requested, participant)
             form.game_room_pending_operation.reject_action
           end
           next
@@ -252,6 +280,22 @@ class GameScreen
         wait.action = requested == :leave ? :back : requested
         form.resume
       end
+    end
+
+    def computer_change_context
+      transport = @game_services[:transport]
+      chat_context.merge(owner: @table_owner,
+        ownership: (transport.ownership_token(@table) if transport.respond_to?(:ownership_token)))
+    end
+
+    def take_pending_computer(wait, layout)
+      layout.computer_changes.clear unless wait.replay.finished? && !@session['__frozen'] && @new_session_id == nil
+      return false if connection_recovery_pending? || event_presentation_busy?
+      command = layout.computer_changes.take(**computer_change_context)
+      return false unless command
+
+      wait.action, @selected_participant = command
+      true
     end
 
     def bind_wait_restart(wait, layout, remember_position)
@@ -272,6 +316,13 @@ class GameScreen
       form = layout.form
       back_button = layout.back_button
       surface.on_action do |selection|
+        if (pending = form.game_room_pending_operation)
+          next pending.reject_action unless pending.admits_move?
+          next if selection['kind'] == 'surface' && selection['action'] == 'refresh'
+          remember_position.call
+          capture_pending_move(wait, selection)
+          next
+        end
         next if wait.action != nil
         next if @session["__frozen"]
         if selection["kind"] == "surface" && selection["action"] == "refresh"
@@ -315,7 +366,8 @@ class GameScreen
       form = layout.form
       chat = layout.chat
       chat.on_submit do
-        next if wait.action != nil
+        pending = form.game_room_pending_operation
+        next if wait.action != nil && pending == nil
 
         remember_position.call
         submission = GameRoomChatCommands.interpret(@chat_text, surface)
@@ -327,11 +379,18 @@ class GameScreen
         elsif submission.kind == :chat && @send_chat == nil
           alert(_("Chat is not available."))
         elsif submission.kind == :chat
-          @chat_submission = GameRoomUI::ChatSubmission.capture(chat, session_id: layout.session_id)
-          @pending_chat_message = submission.text
-          wait.action = :chat
-          form.resume
+          queued = queue_chat_submission(chat, submission.text, session_id: layout.session_id)
+          if queued && pending == nil
+            wait.action = :chat
+            form.resume
+          end
         elsif submission.kind == :movement
+          if pending
+            next pending.reject_action unless pending.admits_move?
+            capture_pending_move(wait, submission.action,
+              chat_receipt: GameRoomUI::ChatSubmission.capture(chat, session_id: layout.session_id))
+            next
+          end
           next if @session["__frozen"] || event_presentation_busy?
           @chat_submission = GameRoomUI::ChatSubmission.capture(chat, session_id: layout.session_id)
           @selected_surface_action = submission.action
@@ -422,6 +481,14 @@ class GameScreen
         wait.replay, inserted = inline_result
         newest_id = inserted.map { |event| @repository.event_id(event) }.max.to_i
         wait.revision = [wait.revision[0].to_i + inserted.length, [wait.revision[1].to_i, newest_id].max]
+        if !inserted.empty?
+          layout.surface&.action_accepted(selection)
+          # The form stays open and its revision already includes this write.
+          # A later feed may therefore have nothing to refresh. Present the
+          # accepted events now through the same deduplicating path as a refresh.
+          process_new_events(wait.replay)
+          refresh_history_control(layout.history, wait.replay)
+        end
       end
       false
     end
@@ -435,7 +502,7 @@ class GameScreen
 
       remote_action, remote_session_id = synchronized_network_task(
         _("Checking for game updates"),
-        ui: refresh_input_ui, complete: false
+        ui: refresh_input_ui, complete: false, admit_move: true
       ) do
         remote_game_update(wait.revision)
       end || [nil, nil]
@@ -456,7 +523,7 @@ class GameScreen
       users = layout.users
       room_status, snapshot, activity_entries, remote_action, remote_session_id = synchronized_network_task(
         _("Updating table"),
-        ui: refresh_input_ui, complete: false
+        ui: refresh_input_ui, complete: false, admit_move: true
       ) do
         room_update = fetch_room_snapshot
         # Replacing a participant and changing the master are table

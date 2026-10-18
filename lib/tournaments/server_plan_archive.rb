@@ -13,9 +13,11 @@ module GameRoomTournaments
     class Unconfirmed < StandardError; end
     ANCHOR_FIELDS = %w[operation_key tournament_id publication_digest roster_generation].freeze
 
-    def initialize(table:, journal:, user:, verify:, refresh: nil)
+    def initialize(table:, journal:, user:, verify:, refresh: nil, document_digest: nil)
       @table, @journal, @user, @verify = table, journal, user, verify
       @refresh = refresh
+      ServerPlanDocument.digest!(document_digest) if document_digest
+      @document_digest = document_digest&.dup&.freeze
       @owner = journal.owner
       @changed = false
       account!
@@ -117,7 +119,11 @@ module GameRoomTournaments
     private :write_missing
 
     def read_rows(anchor)
-      ServerDocumentRows.read(@table, where: {'operation_key' => anchor['operation_key']}, guard: method(:account!), author: @owner)
+      where = {'operation_key' => anchor['operation_key']}
+      # Opt-in immutable attempts share a discovery key, but never parts or
+      # journal intents. All existing single-document callers remain strict.
+      where['document_digest'] = @document_digest if @document_digest
+      ServerDocumentRows.read(@table, where: where, guard: method(:account!), author: @owner)
     end
 
     def account!
@@ -133,6 +139,9 @@ module GameRoomTournaments
       account!
       document = Publication::Data.freeze_tree(ServerPlanDocument.copy_document(document))
       anchor = Publication::Data.freeze_tree(Publication::Data.copy(anchor))
+      if @document_digest && Digest::SHA256.hexdigest(JSON.generate(document)) != @document_digest
+        raise Publication::Invalid, :plan_document_digest_mismatch
+      end
       permitted = if @refresh
         @refresh.call
         @verify.call(document,anchor)

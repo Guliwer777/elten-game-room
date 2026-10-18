@@ -5,9 +5,12 @@ require_relative "../lib/game_bots"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register('makao', ['deal'])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Makao < CardGame
+    def player_spatial_audio?; true; end
     def remembered_option_definitions(definitions, options: nil)
       return super unless options == nil || options["profile"].to_s == "custom"
 
@@ -155,6 +158,7 @@ module GameRoomGames
     def replay(session, events, repository)
       players = repository.players_for(session)
       state = initial_state(players, options_from_json(session["options"]))
+      GameRoomPrivateCardLedger.initialize_state(state, session) if GameRoomPrivateCards.enabled?(session)
       accepted = []
       seen = {}
       history = [starting_history(players)]
@@ -163,26 +167,8 @@ module GameRoomGames
         original_event = event
         event_id = repository.event_id(event)
         next if seen[event_id]
-        decoded = GameRoomTurnClock.decode(state, event)
-        next unless decoded
-        event, time = decoded
-        next if %w[play draw pass accept_skip].include?(event["action"]) && makao_deadline_reached?(state, time)
-        actor = repository.actor_of(event, session)
-        previous_recycle = state[:recycle]
-        applied = case event["action"].to_s
-        when "deal" then apply_deal(state, event, actor, repository, history)
-        when "play" then apply_play(state, event, actor, repository, history)
-        when "draw" then apply_draw(state, event, actor, repository, history)
-        when "accept_skip" then apply_accept_skip(state, event, actor, repository, history)
-        when "makao" then apply_makao(state, event, actor, repository, history)
-        when "catch" then apply_catch(state, event, actor, repository, history)
-        when "pass" then apply_pass(state, event, actor, repository, history)
-        when "makao_timeout" then apply_timeout(state, event, actor, repository, history, time)
-        else false
-        end
+        applied = apply_replay_event(state, event, session, repository, history)
         if applied
-          record_deck_reshuffle(history, previous_recycle, state[:recycle], event_id)
-          refresh_makao_clock(state, event["action"], time) if time
           accepted << original_event
           seen[event_id] = true
         end
@@ -194,7 +180,7 @@ module GameRoomGames
 
     def automatic_action(replay, actor, context: nil)
       return nil if replay.finished?
-      if same_user?(actor, replay.players.first) && makao_deadline_reached?(replay.state, context&.now)
+      if same_user?(actor, makao_timeout_actor(replay.state)) && makao_deadline_reached?(replay.state, context&.now)
         return { "kind" => "command", "action" => "makao_timeout" }
       end
       forced = forced_penalty_action(replay, actor)
@@ -221,7 +207,7 @@ module GameRoomGames
     def thinking_time_range; 1..600; end
 
     def automatic_action_due?(replay, actor, context: nil)
-      !replay.finished? && same_user?(actor, replay.players.first) && makao_deadline_reached?(replay.state, context&.now)
+      !replay.finished? && same_user?(actor, makao_timeout_actor(replay.state)) && makao_deadline_reached?(replay.state, context&.now)
     end
 
     def concurrent_session_input?(before, after, selection)
@@ -318,20 +304,25 @@ module GameRoomGames
       if selection["kind"].to_s == "command" && selection["action"].to_s == "deal"
         return [:not_your_turn, nil] if !same_user?(actor, replay.players.first)
         return [:invalid, nil] if state[:phase] != :awaiting_deal || context&.random_source == nil
+        if context.server_random
+          return [:ok, server_seed_plan('deal', template: GameRoomTurnClock.encode(state, '{dealer}|{seed}', context),
+            seats: (0...state[:players].length).to_a)]
+        end
         seed = card_seed(context.random_source)
         dealer = seed.to_i(16) % replay.players.length
         return [:ok, timed_makao_plan("deal", "#{dealer}|#{seed}", state, context)]
       end
       action = selection["action"].to_s
       if action == "makao_timeout"
-        return [:not_your_turn, nil] unless same_user?(actor, replay.players.first)
+        return [:not_your_turn, nil] unless same_user?(actor, makao_timeout_actor(state))
         return [:invalid, nil] unless makao_deadline_reached?(state, context&.now)
         return [:ok, timed_makao_plan(action, state[:turn_deadline].to_i.to_s(36), state, context)]
       end
       return [:invalid, nil] if %w[play draw pass accept_skip].include?(action) && makao_deadline_reached?(state, context&.now)
       if action == "play"
         return [:not_your_turn, nil] if !same_user?(state[:current_player], actor)
-        cards = JSON.parse(selection["cards"].to_s).map(&:to_s)
+        cards = JSON.parse(selection["cards"].to_s)
+        return [:invalid_packet, nil] unless cards.is_a?(Array) && cards.all? { |card| card.is_a?(String) }
         choice = selection["choice"].to_s
         status = validate_packet(state, actor, cards, choice)
         return [status, nil] if status != :ok
@@ -477,6 +468,40 @@ module GameRoomGames
 
     private
 
+    def apply_replay_event(state, event, session, repository, history)
+      if state[:private_cards] && event['action'] != 'deal'
+        return private_apply_effect(state, event, session, repository, history)
+      end
+      reduce_event(state, event, session, repository, history)
+    end
+
+    def reduce_event(state, event, session, repository, history)
+      decoded = GameRoomTurnClock.decode(state, event)
+      return false unless decoded
+      event, time = decoded
+      return false if %w[play draw pass accept_skip].include?(event['action']) && makao_deadline_reached?(state, time)
+      actor = repository.actor_of(event, session)
+      previous_recycle = state[:recycle]
+      applied = case event['action'].to_s
+      when 'deal' then apply_deal(state, event, actor, repository, history)
+      when 'play' then apply_play(state, event, actor, repository, history)
+      when 'draw' then apply_draw(state, event, actor, repository, history)
+      when 'accept_skip' then apply_accept_skip(state, event, actor, repository, history)
+      when 'makao' then apply_makao(state, event, actor, repository, history)
+      when 'catch' then apply_catch(state, event, actor, repository, history)
+      when 'pass' then apply_pass(state, event, actor, repository, history)
+      when 'makao_timeout' then apply_timeout(state, event, actor, repository, history, time)
+      else false
+      end
+      if applied
+        record_deck_reshuffle(history, previous_recycle, state[:recycle], repository.event_id(event))
+        refresh_makao_clock(state, event['action'], time) if time
+      end
+      applied
+    end
+
+    def makao_timeout_actor(state); state[:players].first; end
+
     def forced_penalty_action(replay, actor)
       state = replay.state
       return nil if replay.finished? || state[:phase] != :playing || !same_user?(state[:current_player], actor)
@@ -540,6 +565,8 @@ module GameRoomGames
     end
 
     def apply_deal(state, event, actor, repository, history)
+      return false unless GameRoomServerRandom.valid_text_seed_event?(event, template: '{dealer}|{seed}',
+        seats: (0...state[:players].length).to_a, clock: GameRoomTurnClock.enabled?(state))
       return false if state[:phase] != :awaiting_deal || !same_user?(actor, state[:players].first)
       dealer_text, seed = event["value"].to_s.split("|", 2)
       dealer = Integer(dealer_text, 10)
@@ -623,7 +650,7 @@ module GameRoomGames
     end
 
     def apply_timeout(state, event, actor, repository, history, time)
-      return false unless same_user?(actor, state[:players].first) && makao_deadline_reached?(state, time)
+      return false unless same_user?(actor, makao_timeout_actor(state)) && makao_deadline_reached?(state, time)
       return false unless /\A[0-9a-z]+\z/.match?(event["value"].to_s) && event["value"].to_i(36) == state[:turn_deadline]
       player = state[:current_player]
       if state[:skip_penalty].to_i > 0
@@ -638,9 +665,11 @@ module GameRoomGames
       return false if state[:skip_penalty].to_i > 0 || (!timeout && state[:drawn_this_turn])
       player = player_key(state, actor)
       penalty = state[:draw_penalty] > 0
-      return false if !timeout && !penalty && !state[:options]["allow_playable_draw"] && hand_for(state, actor).any? { |card| playable_first?(state, card) }
+      if !timeout && !penalty && !state[:options]["allow_playable_draw"]
+        return false if private_hand_decision(state, actor, 'playable_hand') { hand_for(state, actor).any? { |card| playable_first?(state, card) } }
+      end
       count = state[:draw_penalty] > 0 ? state[:draw_penalty] : 1
-      drawn = draw_cards(state, count)
+      drawn = draw_cards(state, count, player: player)
       state[:hands][player].concat(drawn)
       (state[:makao_declarations] ||= {}).delete(player)
       (state[:makao_windows] ||= {}).delete(player)
@@ -654,7 +683,8 @@ module GameRoomGames
         # Paying a draw attack is this waiting player's entire scheduled turn.
         state[:skip_turns][player] -= 1
       end
-      if !timeout && !penalty && state[:options]["draw_responses"] && drawn.length == 1 && playable_first?(state, drawn.first)
+      if !timeout && !penalty && state[:options]["draw_responses"] && drawn.length == 1 &&
+          private_hand_decision(state, actor, 'playable_draw') { playable_first?(state, drawn.first) }
         # The drawn card stays available to play in the same turn.
       else
         state[:current_player] = advance_player(state, player, 1)
@@ -699,7 +729,7 @@ module GameRoomGames
     def apply_catch(state, event, actor, repository, history)
       target = catchable_player(state, actor)
       return false if target == nil || player_key(state, actor) == nil || (!event["value"].to_s.empty? && !same_user?(target, event["value"]))
-      cards = draw_cards(state, state[:options]["makao_penalty"].to_i)
+      cards = draw_cards(state, state[:options]["makao_penalty"].to_i, player: target)
       state[:hands][target].concat(cards)
       state[:declared_makao] = target
       (state[:makao_windows] ||= {}).delete(target)
@@ -907,7 +937,7 @@ module GameRoomGames
       index == nil ? 15 : index + 2
     end
 
-    def draw_cards(state, count)
+    def draw_cards(state, count, player: nil)
       result = []
       count.to_i.times do
         recycle(state) if state[:draw_pile].empty?
@@ -995,3 +1025,5 @@ module GameRoomGames
 end
 
 require_relative 'generated/rulebooks/makao'
+require_relative 'makao_private'
+GameRoomGames::Makao.prepend(GameRoomGames::MakaoPrivate)

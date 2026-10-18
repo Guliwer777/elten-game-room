@@ -77,7 +77,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Gracie do co najmniej 100 punktów. Gdy ktoś je zdobędzie, dokańczacie rundy z obecnego cyklu tak, żeby każdy był sędzią tyle samo razy. Następnie porównujecie wyniki. Wygrywa osoba, która ma najwięcej punktów."
+          "pl": "Gracie do co najmniej 50 punktów. Gdy ktoś je zdobędzie, dokańczacie rundy z obecnego cyklu tak, żeby każdy był sędzią tyle samo razy. Następnie porównujecie wyniki. Wygrywa osoba, która ma najwięcej punktów."
         },
         {
           "pl": "Jeśli najwyższy wynik ma kilka osób, rozgrywają dogrywkę. Odpowiadają już tylko te osoby, a sędzią zostaje ktoś z pozostałych graczy. Jeśli remisują wszyscy, każdy nadal pełni rolę sędziego po kolei. Gracie dalej, aż po zakończeniu takiego cyklu jedna osoba będzie miała najwięcej punktów."
@@ -132,7 +132,7 @@
           "pl": "- Zamiast zmiennego sędziego można wybrać stałe sędziowanie przez gospodarza. Gospodarz ocenia każdą rundę i nie bierze udziału w rywalizacji punktowej. Osiągnięcie celu rozstrzyga się wtedy po rundzie, bez czekania na cykl sędziów."
         },
         {
-          "pl": "- Cel punktowy można zmienić ze 100 na inną wartość. Przy zmiennym sędziowaniu nadal trzeba dokończyć cały cykl."
+          "pl": "- Cel punktowy można zmienić z 50 na inną wartość. Przy zmiennym sędziowaniu nadal trzeba dokończyć cały cykl."
         },
         {
           "pl": "- Remis można uznać za wspólne zwycięstwo zamiast rozgrywać dogrywkę."

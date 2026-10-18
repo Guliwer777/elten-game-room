@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative 'temporary_directory'
 require_relative 'tournament_public_service'
 require_relative 'tournament_entry_context'
 require_relative '../../lib/tournaments/public_service'
@@ -99,7 +100,7 @@ module TournamentLocalExecutionPlanSupport
   end
 
   def with_fixture(**options)
-    directory = Dir.mktmpdir('k02-', ENV.fetch('TMPDIR'))
+    directory = GameRoomTest::TemporaryDirectory.create('k02-')
     fixture = Fixture.new(directory, **options)
     begin
       yield fixture

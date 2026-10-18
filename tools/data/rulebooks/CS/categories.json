@@ -77,7 +77,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Bodový cíl je 100. Jakmile ho někdo dosáhne, dohrajete současný cyklus kol, aby každý rozhodoval stejně často. Potom vítězí nejvyšší součet bodů."
+          "cs": "Bodový cíl je 50. Jakmile ho někdo dosáhne, dohrajete současný cyklus kol, aby každý rozhodoval stejně často. Potom vítězí nejvyšší součet bodů."
         },
         {
           "cs": "Při shodě na prvním místě se hraje rozstřel. Odpovídají jen hráči s nejvyšším skóre a rozhoduje někdo z ostatních. Remizují-li všichni, dál se v rozhodování střídají všichni. Po dokončených cyklech porovnáváte skóre, dokud nezůstane jediný vítěz."
@@ -132,7 +132,7 @@
           "cs": "- Místo střídání rozhodčích může stále rozhodovat hostitel. Pak nehraje o body a dosažení cíle se vyhodnotí hned po kole, bez čekání na celý cyklus."
         },
         {
-          "cs": "- Cílových 100 bodů lze nahradit jinou hodnotou. Při střídání rozhodčích je stále třeba dohrát celý cyklus."
+          "cs": "- Cílových 50 bodů lze nahradit jinou hodnotou. Při střídání rozhodčích je stále třeba dohrát celý cyklus."
         },
         {
           "cs": "- Remíza může znamenat společné vítězství místo rozstřelu."

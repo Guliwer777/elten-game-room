@@ -9,6 +9,7 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Chess < TurnBasedBoardGame
+    def player_spatial_audio?; true; end
     include GameRoomColourBoardPresentation
     SIZE = 8
     def tournament_roles(player_count:, options: {})

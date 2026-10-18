@@ -1,3 +1,4 @@
+require_relative '../support/temporary_directory'
 require 'tmpdir'
 require 'fileutils'
 require 'date'
@@ -12,7 +13,7 @@ end
 require_relative '../support/assertions'
 include GameRoomTest::Assertions
 
-Dir.mktmpdir('long-publication-', ENV.fetch('TMPDIR')) do |root|
+GameRoomTest::TemporaryDirectory.create('long-publication-') do |root|
   padding = 160 - root.bytesize - 1
   raise 'Test root is too long for the intended boundary' unless padding > 0
   directory = File.join(root, 'x' * padding)

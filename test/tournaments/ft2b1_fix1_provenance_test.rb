@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require_relative '../support/temporary_directory'
 require_relative '../support/tournament_ft2b1_ui_probe'
 include GameRoomTest::Assertions
 def self.assert(value, message = 'Asercja pochodzenia FT2B1'); super(value, message); end
@@ -113,7 +114,7 @@ begin
   # Primary walidatora pozostaje oryginałem również przy throw w postguard
   # i zamykaniu własnego pliku; stan opcji nie przechodzi do legacy.
   [:exception, :throw].product([false, true]).each do |mode, with_cause|
-    Dir.mktmpdir('fix1-primary-', ENV.fetch('TMPDIR')) do |path|
+    GameRoomTest::TemporaryDirectory.create('fix1-primary-') do |path|
       active = false
       cause = with_cause ? ArgumentError.new('Przyczyna primary') : nil
       primary = T::Publication::Invalid.new(:invalid_fields)

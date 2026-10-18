@@ -26,8 +26,9 @@ T=GameRoomTournaments
   driver=TournamentNativeDriver.new
   driver.step(l.call('Dates and playing hours'),[27]) do |form|
     editor.instance_variable_get(:@limited).checked=true
+    editor.instance_variable_get(:@daily_end).instance_variable_set(:@values,[2000,1,1,18,0])
     editor.send(:save_dates)
-    assert_equal(l.call('Add at least one playing window or turn off the playing-hours limit.'),alerts.last)
+    assert_equal(l.call('Choose different start and end times, or turn off the playing-hours limit.'),alerts.last)
     assert(!editor.instance_variable_get(:@finished),'Invalid hours closed the form')
   end
   assert_equal(nil,editor.run)

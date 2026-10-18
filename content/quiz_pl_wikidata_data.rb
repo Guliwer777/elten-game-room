@@ -3,7 +3,7 @@ require 'json'
 module GameRoomContent
   module Packa0830f585cc4689a1e2a6335
     def self.load
-      JSON.parse(<<'QUIZ_DATA_82f2b359e00d7f0e0f15553730a858d042df74c2ce999c427192bf5b421c494a')
+      JSON.parse(<<'QUIZ_DATA_d6d7653da970a1d351f18acf0bce2cf54ed8e2fc01901ebbe2277c7cf37733f1')
 {
   "questions": [
     {
@@ -97514,7 +97514,7 @@ module GameRoomContent
       "id": "1z10_c3d564fd0cc5ffd4",
       "category": "Kultura",
       "level": "medium",
-      "prompt": "Jak nazywamy taką i inne piosenki żeglarskie?",
+      "prompt": "Jak nazywamy piosenki żeglarskie?",
       "correct": "Szanty",
       "wrong": [
         "Kolędy",
@@ -209402,7 +209402,7 @@ module GameRoomContent
       "id": "1z10_e64f53c82b2a9009",
       "category": "Język",
       "level": "medium",
-      "prompt": "Jaką wspólną nazwę noszą wąsata, ryba słodkowodna i waluta w Uzbekistanie?",
+      "prompt": "Jaką wspólną nazwę noszą wąsata ryba słodkowodna i waluta w Uzbekistanie?",
       "correct": "Sum",
       "wrong": [
         "Dinar",
@@ -234730,7 +234730,7 @@ module GameRoomContent
       "id": "1z10_c8e8f19505f38537",
       "category": "Życie codzienne",
       "level": "medium",
-      "prompt": "Potoczna nazwa jednego metra sześciennego używana w leśnictwie na przykład brzmi?",
+      "prompt": "Jak potocznie nazywa się metr sześcienny?",
       "correct": "Kubik",
       "wrong": [
         "Sąg",
@@ -238320,7 +238320,7 @@ module GameRoomContent
   ],
   "source": "content/QUIZ_PL_GENERAL_SOURCES.txt"
 }
-QUIZ_DATA_82f2b359e00d7f0e0f15553730a858d042df74c2ce999c427192bf5b421c494a
+QUIZ_DATA_d6d7653da970a1d351f18acf0bce2cf54ed8e2fc01901ebbe2277c7cf37733f1
     end
   end
 end

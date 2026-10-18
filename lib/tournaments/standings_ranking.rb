@@ -10,14 +10,14 @@ module GameRoomTournaments
       end
       table = Standings.calculate(units: units, results: results, points: points)
       ranked = []
-      table.group_by { |row| row['points'] }.sort_by { |value, _| -value }.each do |_, tied|
+      numeric_groups(table) { |row| row['points'] }.each do |tied|
         groups = [tied]
         criteria.each do |criterion|
           groups = groups.flat_map do |group|
             next [group] if group.size == 1
             keys = values(group, results, points, criterion)
             next [group] unless keys
-            group.group_by { |row| keys.fetch(row['unit']) }.sort_by { |value, _| -value }.map(&:last)
+            numeric_groups(group) { |row| keys.fetch(row['unit']) }
           end
         end
         groups.each do |group|
@@ -48,6 +48,14 @@ module GameRoomTournaments
         end
       end
     end
-    private_class_method :values
+
+    # Hash equality distinguishes Integer and Float keys (0 and 0.0), while
+    # sporting scores compare numerically. Keep exact large integers intact.
+    def self.numeric_groups(rows)
+      rows.map { |row| [yield(row), row] }.sort_by { |value, _row| -value }
+        .chunk_while { |left, right| (left.first <=> right.first).zero? }
+        .map { |group| group.map(&:last) }
+    end
+    private_class_method :values, :numeric_groups
   end
 end

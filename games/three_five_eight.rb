@@ -7,6 +7,8 @@ require_relative "../lib/participant_decision_events"
 
 require_relative "../lib/game_room_localization"
 
+GameRoomServerRandom.register('three_five_eight', ['deal'])
+
 module GameRoomGames
   using GameRoomLocalization::Translations
 
@@ -15,6 +17,7 @@ module GameRoomGames
   # reconstructed from the public deal seed, while only information intended
   # by the rules is announced to other players.
   class ThreeFiveEight < Base
+    def player_spatial_audio?; true; end
     RANKS = %w[2 3 4 5 6 7 8 9 T J Q K A].freeze
     SUITS = %w[H S D C].freeze
     CONTRACTS = %w[H S D C NT MISERE].freeze
@@ -201,22 +204,13 @@ module GameRoomGames
     def replay(session, events, repository)
       players = repository.players_for(session)
       state = initial_state(players, options_from_json(session["options"]))
+      GameRoomPrivateCardLedger.initialize_state(state, session) if GameRoomPrivateCards.enabled?(session)
       accepted = []
       history = [starting_history(players)]
       events.each do |event|
         break if state[:phase] == :finished
 
-        actor = repository.actor_of(event, session)
-        applied = case event["action"].to_s
-        when "deal" then apply_deal(state, event, actor, repository, history)
-        when "choose_contract" then apply_choose_contract(state, event, actor, repository, history)
-        when "exchange" then apply_exchange(state, event, actor, repository, history)
-        when "return" then apply_exchange_return(state, event, actor, repository, history)
-        when "stop_exchange" then apply_stop_exchange(state, event, actor, repository, history)
-        when "discard" then apply_discard(state, event, actor, repository, history)
-        when "play" then apply_play(state, event, actor, repository, history)
-        else false
-        end
+        applied = apply_replay_event(state, event, session, repository, history)
         accepted << event if applied
       end
       Replay.new(
@@ -232,6 +226,8 @@ module GameRoomGames
       return nil if !same_user?(actor, replay.players.first)
       return nil if ![:awaiting_deal, :round_complete].include?(state[:phase])
       return nil if context == nil || context.random_source == nil
+
+      return {"kind"=>"command", "action"=>"deal"} if context.server_random
 
       seed = random_seed(context.random_source)
       round = state[:round].to_i + 1
@@ -293,6 +289,10 @@ module GameRoomGames
       if selection["action"].to_s == "deal"
         return [:not_your_turn, nil] if !same_user?(actor, replay.players.first)
         return [:invalid, nil] if ![:awaiting_deal, :round_complete].include?(state[:phase])
+        if context&.server_random
+          dealer = state[:dealer_index] == nil ? '{dealer}' : (state[:dealer_index] + 1) % 3
+          return [:ok, server_seed_plan('deal', template: "#{state[:round] + 1}|#{dealer}|{seed}", seats: [0, 1, 2])]
+        end
         if selection["seed"].to_s.empty?
           return [:invalid, nil] if context == nil || context.random_source == nil
           generated = automatic_action(replay, actor, context: context)
@@ -406,6 +406,17 @@ module GameRoomGames
       {scores: participant_scores(replay), order: 'higher'}
     end
 
+    def tournament_forfeit_continuation(_replay, losing_unit:, options:)
+      # Three fixed roles, targets and the exchange are part of this game.
+      {'status'=>'cannot_continue'}
+    end
+
+    def tournament_scored_checkpoint(replay, options:)
+      return {'status'=>'unsupported'} if replay.state[:private_error]
+      replay.state[:tournament_checkpoint] || {'status'=>
+        replay.state[:round].to_i<=1 && replay.state[:phase]!=:round_complete ? 'none' : 'unsupported'}
+    end
+
     def tournament_ranking_result(replay, options:)
       outcome=tournament_result(replay,options:options)
       # A tie for first place does not make the third player a co-winner.
@@ -444,6 +455,20 @@ module GameRoomGames
 
     private
 
+    def apply_replay_event(state, event, session, repository, history)
+      actor = repository.actor_of(event, session)
+      case event['action']
+      when 'deal' then apply_deal(state, event, actor, repository, history)
+      when 'choose_contract' then apply_choose_contract(state, event, actor, repository, history)
+      when 'exchange' then apply_exchange(state, event, actor, repository, history)
+      when 'return' then apply_exchange_return(state, event, actor, repository, history)
+      when 'stop_exchange' then apply_stop_exchange(state, event, actor, repository, history)
+      when 'discard' then apply_discard(state, event, actor, repository, history)
+      when 'play' then apply_play(state, event, actor, repository, history)
+      else false
+      end
+    end
+
     def initial_state(players, options)
       {
         players: players, options: options, round: 0, phase: :awaiting_deal,
@@ -463,6 +488,9 @@ module GameRoomGames
       return false if !same_user?(actor, state[:players].first)
       return false if ![:awaiting_deal, :round_complete].include?(state[:phase])
       round, dealer, seed = parse_deal(event["value"])
+      expected = state[:dealer_index] == nil ? '{dealer}' : (state[:dealer_index] + 1) % 3
+      return false unless GameRoomServerRandom.valid_text_seed_event?(event,
+        template: "#{state[:round] + 1}|#{expected}|{seed}", seats: [0, 1, 2])
       return false if round != state[:round] + 1 || !dealer.between?(0, 2)
       return false if state[:dealer_index] != nil && dealer != (state[:dealer_index] + 1) % 3
 
@@ -530,7 +558,7 @@ module GameRoomGames
 
       hand.delete_at(hand.index(card))
       state[:hands][target] << card
-      if card_suit(card) == state[:contract]
+      if card_suit(card) == state[:contract] || state[:private_cards]
         state[:pending_exchange] = { giver: giver, target: target, card: card }
         state[:phase] = :exchange_return
         state[:current_player] = target
@@ -539,7 +567,7 @@ module GameRoomGames
           text: _("%{giver} gave a trump card to %{target}; %{target} chooses the return card.") % {
             giver: participant_name(giver), target: participant_name(target)
           }, event_id: repository.event_id(event), actor: actor, kind: :exchange
-        )
+        ) if card_suit(card) == state[:contract]
       else
         returned = highest_card_of_suit(state[:hands][target], card_suit(card))
         finish_exchange_card(state, giver, target, returned)
@@ -559,7 +587,8 @@ module GameRoomGames
       return false if state[:phase] != :exchange_return || pending == nil
       return false if !same_user?(actor, pending[:target])
       card = event["value"].to_s
-      return false if !exchange_return_cards(state, actor).include?(card)
+      return false if !state[:private_reducing] && !exchange_return_cards(state, actor).include?(card)
+      return false unless hand_for(state, actor).include?(card)
 
       finish_exchange_card(state, pending[:giver], pending[:target], card)
       state[:pending_exchange] = nil
@@ -610,7 +639,7 @@ module GameRoomGames
       return false if state[:phase] != :playing || !same_user?(actor, state[:current_player])
       card = event["value"].to_s
       hand = hand_for(state, actor)
-      return false if hand == nil || !hand.include?(card) || !legal_cards(state, actor).include?(card)
+      return false if hand == nil || !hand.include?(card) || (!state[:private_reducing] && !legal_cards(state, actor).include?(card))
 
       hand.delete_at(hand.index(card))
       state[:current_trick] << { player: player_key(state, actor), card: card }
@@ -655,6 +684,7 @@ module GameRoomGames
           }, event_id: event_id, actor: player, kind: :round_result, value: delta
         )
       end
+      remember_tournament_checkpoint(state, event_id:event_id, index:state[:round], kind:'deal')
       if state[:round] >= 18
         best = state[:scores].values.max
         state[:winners] = state[:players].select { |player| state[:scores][player] == best }
@@ -1084,5 +1114,8 @@ module GameRoomGames
     end
   end
 end
+
+require_relative 'three_five_eight_private'
+GameRoomGames::ThreeFiveEight.prepend(GameRoomGames::ThreeFiveEightPrivate)
 
 require_relative 'generated/rulebooks/three_five_eight'

@@ -11,8 +11,7 @@ selected = bob.discover_rooms.first
 assert(bob.establish_membership(table_id: table["__id"], owner: "Alice", capacity: 8, user: "Bob", table: selected), "Bob cannot join original game")
 players = %w[Alice Bob] + GameRoomParticipants.bots_for(table["__id"], 1, names: ["pl20"])
 session = app.games.start_session(table: table, game: game.id, players: players, options: JSON.generate(game.default_options))
-env = GameRoomSimulation::Environment.new_game(game: game, players: players, seed: 11)
-env.events.each { |event| app.games.append_events(session: session, sequence: event["sequence"], events: [GameRoomGames::EventCommand.new(action: event["action"], value: event["value"])], actor: event["actor"], controller: true) }
+app.prepare_playing_game(table, session, game)
 app.write_error = true
 assert(!app.send(:save_current_game, table, session, game), "write failure closed the table")
 assert(app.transport.current_room("Alice") != nil && !app.games.snapshot_for(session).session["__frozen"], "write failure lost membership or kept game frozen")
@@ -29,7 +28,7 @@ assert(app.transport.current_room("Alice") == nil && broker.cores.values.first.c
 saved = app.send(:saved_games).fetch(app.send(:saved_games).list.first['id'])
 new_table = app.send(:create_saved_game_table, saved)
 assert(new_table && new_table["resume_save_id"] == saved["id"], "saved game did not create a continuation room")
-assert(broker.cores[new_table["__live_session_id"]].metadata["protocol"] == GameRoomLiveSessionStore::CURRENT_DISCOVERY_PROTOCOL, "legacy clients can join an unsupported archive")
+assert(broker.cores[new_table["__live_session_id"]].metadata["protocol"] == GameRoomLiveSessionStore::SERVER_RANDOM_DISCOVERY_PROTOCOL, "legacy clients can join an unsupported archive")
 assert(new_table["bot_count"] == 1, "original bots were not restored before waiting")
 assert(new_table["bot_names"] == ["pl20"], "restoration lost the saved computer name")
 assert(app.notices.any? { |notice| notice.is_a?(Array) && notice[0] == "Bob" && notice[2]["continuation"] == true }, "original human did not receive continuation invitation")

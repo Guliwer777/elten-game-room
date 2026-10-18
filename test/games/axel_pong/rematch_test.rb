@@ -15,13 +15,17 @@ end
 
 class RematchRepository
   attr_accessor :available
-  attr_reader :sessions
-  def initialize; @sessions, @available = {}, true; end
+  attr_reader :sessions, :table_reads
+  def initialize; @sessions, @available, @table_reads = {}, true, []; end
   def session_id(session); session['__id']; end
   def players_for(session); session['__players']; end
   def actor_of(event, _session); event['actor']; end
   def event_id(event); event['__id']; end
   def session_by_id(id, table:); @sessions[id] if @available && table['__id'] == 20; end
+  def session_for_table(table, force: false)
+    @table_reads << [table['__id'], force]
+    @sessions.values.reverse.find { |session| session['table_id'] == table['__id'] } if @available
+  end
 end
 
 class RematchSync
@@ -176,6 +180,15 @@ begin
     client.before_wait(h.replay, name)
     assert(client.engine.equal?(engines[name]), 'ordinary refresh restarted the rally')
   end
+  # A native notification can name a rejected start. The fresh authoritative
+  # table lookup then still returns this game, without recreating its client.
+  h.screens.each do |name, screen|
+    assert(h.switch(name, 999_999) == true, 'rejected start did not retain the authoritative current game')
+    assert(screen.instance_variable_get(:@new_session_id).nil?, 'rejected start remained pending')
+    assert(h.clients[name].equal?(current[name]) && h.clients[name].engine.equal?(engines[name]), 'rejected start reset the current client')
+  end
+  assert(h.repository.table_reads.select(&:last) == Array.new(3) { [20, true] }, 'missing IDs did not force the correct table projection')
+  assert(h.repository.table_reads.reject(&:last) == Array.new(9) { [20, false] }, 'session switches did not check the cached latest game exactly once')
   # Late callbacks/invitations from the old match must not replace the new one.
   endpoints = h.rig.endpoints.dup
   old_group = h.rig.groups.first
@@ -205,6 +218,8 @@ begin
     assert(screen.instance_variable_get(:@synchronizer).recovery, 'failed read did not schedule recovery')
     assert(h.clients[name].equal?(before_retry[name]) && !h.audio(before_retry[name]).closed, 'failed read disposed the old client')
   end
+  assert(h.repository.table_reads.select(&:last) == Array.new(6) { [20, true] }, 'failed read skipped its fresh lookup or queried another table')
+  assert(h.repository.table_reads.reject(&:last) == Array.new(12) { [20, false] }, 'failed switch skipped or repeated its cached latest lookup')
   h.repository.available = true
   h.screens.each_key { |name| h.switch(name); h.attach(name) }
   h.advance(500)

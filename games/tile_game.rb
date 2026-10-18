@@ -10,6 +10,7 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class TileGame < Base
+    def player_spatial_audio?; true; end
     def event_sound_cues(event:, before_replay:, after_replay:, history:, viewer:, random_variant:)
       GameRoomRoundCues.for_event(history, after_replay, viewer,
         assets: %w[domino_refill domino_take_chip domino_move_tile])
@@ -38,14 +39,13 @@ module GameRoomGames
 
     def replay(session, events, repository)
       state = initial_state(repository.players_for(session), options_from_json(session["options"]))
+      GameRoomPrivateCardLedger.initialize_state(state, session) if GameRoomPrivateCards.enabled?(session)
       history, accepted, seen = [starting_history(state[:players])], [], {}
       events.each do |event|
         event_id = repository.event_id(event)
-        next if seen[event_id] || event["action"].to_s != id || state[:phase] == :finished
-        data = decode(event["value"].to_s)
-        next unless data
+        next if seen[event_id] || state[:phase] == :finished
         candidate, additions = copy_state(state), []
-        next unless apply(candidate, data, repository.actor_of(event, session), event_id, additions) == :ok
+        next unless apply_replay_event(candidate, event, session, repository, additions)
         state = candidate
         history.concat(additions)
         accepted << event
@@ -63,10 +63,14 @@ module GameRoomGames
       data.merge!("round" => replay.state[:round], "turn" => replay.state[:turn], "time" => GameRoomTurnClock.logical_now(replay.state, context))
       if data["action"] == "deal"
         return [:invalid, nil] unless context&.random_source
-        data["seed"] = context.random_source.roll(count: 16, sides: 256).values.map { |v| (v - 1).to_s(16).rjust(2, "0") }.join
+        data["seed"] = context.server_random ? '0' * 32 :
+          context.random_source.roll(count: 16, sides: 256).values.map { |v| (v - 1).to_s(16).rjust(2, "0") }.join
       end
       status = apply(copy_state(replay.state), data, actor, 0, [])
       return [status, nil] unless status == :ok
+      if data['action'] == 'deal' && context.server_random
+        return [:ok, server_seed_plan(id, template: encode(data.merge('seed' => '{seed}')))]
+      end
       value = encode(data)
       return [:invalid, nil] if value.length > 64
       [:ok, event_plan(id, value)]
@@ -163,6 +167,22 @@ module GameRoomGames
 
     protected
 
+    def apply_replay_event(state, event, session, repository, history)
+      return false unless event['action'] == id || (state[:private_cards] && event['action'] == 'deal')
+      data = decode(event['value'].to_s)
+      return false unless data
+      if data['action'] == 'deal'
+        return false unless GameRoomServerRandom.valid_text_seed_event?(event,
+          template:encode(data.merge('seed'=>'{seed}')))
+      elsif state[:private_cards]
+        return private_apply_effect(state, event, session, repository, history)
+      end
+      apply(state, data, repository.actor_of(event, session), repository.event_id(event), history) == :ok
+    end
+
+    def has_placement?(state, player); !placements(state, player).empty?; end
+    def automatic_move_actor(state); state[:players].first; end
+
     def auto_play_unique_tile?; true; end
 
     def command(action, **values); { "kind" => "tile", "action" => action }.merge(values.transform_keys(&:to_s)); end
@@ -243,10 +263,10 @@ module GameRoomGames
       end
       return :invalid unless state[:phase] == :playing
       auto = %w[timeout pass].include?(data["action"])
-      return :not_your_turn unless same_user?(actor, auto ? state[:players].first : state[:current_player])
+      return :not_your_turn unless same_user?(actor, auto ? automatic_move_actor(state) : state[:current_player])
       return :invalid if !auto && deadline_reached?(state, data["time"])
       return :invalid if data["action"] == "timeout" && !deadline_reached?(state, data["time"])
-      return :invalid if data["action"] == "pass" && (!placements(state, state[:current_player]).empty? || can_draw?(state))
+      return :invalid if data["action"] == "pass" && (has_placement?(state, state[:current_player]) || can_draw?(state))
       apply_move(state, data, event_id, history)
     end
 

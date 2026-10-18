@@ -1,5 +1,6 @@
 require_relative "game_room_background"
 require_relative "network_errors"
+require_relative "invitation_identity"
 
 # Decisions are idempotent receipts, not invitations or visible notices.
 # Keep a failed delivery separately from the recipient's already-made choice.
@@ -26,12 +27,13 @@ class InvitationResponseOutbox
   def submit(row, response, &sender)
     user = row["recipient"].to_s
     raise ArgumentError, "Invitation belongs to another user" unless @current_user.call.to_s.casecmp?(user)
-    key = [user.downcase, row["live_session_id"].to_s, row["table_id"].to_i, (row["__id"] || row["id"]).to_i]
+    key = GameRoomInvitationIdentity.key(row)
     job = @lock.synchronize do
       prune
       return @jobs[key][:response] if @jobs.key?(key)
       raise GameRoomNetworkErrors::PendingMove, "Invitation response queue is full" if @jobs.size >= LIMIT
-      @jobs[key] = { key: key, row: row.dup, user: user, response: response,
+      snapshot = row.transform_values { |value| value.is_a?(String) ? value.dup.freeze : value }.freeze
+      @jobs[key] = { key: key, row: snapshot, user: user.dup.freeze, response: response,
         send: sender, expires: @clock.call + TTL, state: :sending }
     end
     begin

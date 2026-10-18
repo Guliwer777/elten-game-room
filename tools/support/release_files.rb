@@ -7,6 +7,7 @@ require "open3"
 
 module GameRoomReleaseFiles
   ROOT_FILES = %w[__app.rb manifest.json README.md LICENSE THIRD_PARTY_NOTICES.md].freeze
+  RUNTIME_DIRECTORIES = %w[games lib content Audio locale LICENSES].freeze
   README_TRANSLATIONS = %w[EN CS ES RU].map { |language| "content/readme/#{language}.md" }.freeze
   AUDIO_EXTENSIONS = %w[.ogg .opus .wav .wave .mp3 .flac .aac .m4a .wma .spx .webm].freeze
   REQUIRED_FILES = (ROOT_FILES + README_TRANSLATIONS + %w[locale/PL.mo LICENSES/RUBY.txt LICENSES/RUBY-BSDL.txt
@@ -25,7 +26,13 @@ module GameRoomReleaseFiles
   def self.files(source)
     source = File.realpath(source)
     selected = Dir.chdir(source) do
-      Dir.glob("**/*", File::FNM_DOTMATCH).select { |path| File.file?(path) && allowed?(path) }.sort
+      entries = Dir.children(".")
+      directories = entries.select do |path|
+        RUNTIME_DIRECTORIES.include?(path) && File.directory?(path) && !File.symlink?(path)
+      end
+      candidates = entries.select { |path| ROOT_FILES.include?(path) } +
+        directories.flat_map { |path| Dir.glob("#{path}/**/*", File::FNM_DOTMATCH) }
+      candidates.select { |path| File.file?(path) && allowed?(path) }.sort
     end
     if File.file?(File.join(source,'lib/tournaments/shared_hub.rb'))
       ruby=selected.grep(/\.rb\z/)

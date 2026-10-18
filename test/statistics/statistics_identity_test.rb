@@ -127,12 +127,14 @@ require_relative "../../games/four_in_a_row"
 def statistics_save_fixture
   h = NativeRoomHarness.new(game: GameRoomGames::FourInARow.new, users: %w[Alice Bob])
   h.broker.automatic_delivery = false
-  push = h.view('Alice').method(:stack_push)
-  h.view('Alice').define_singleton_method(:stack_push) do |packet, message_id:|
-    result = push.call(packet, message_id: message_id)
-    entry = h.core.entries.find { |item| item['message_id'] == message_id }
-    entry['created_at'] = 1_700_000_000
-    result.merge('created_at' => entry['created_at'])
+  h.users.each do |user|
+    push = h.view(user).method(:stack_push)
+    h.view(user).define_singleton_method(:stack_push) do |packet, message_id:|
+      result = push.call(packet, message_id: message_id)
+      entry = h.core.entries.find { |item| item['message_id'] == message_id }
+      entry['created_at'] = 1_700_000_000
+      result.merge('created_at' => entry['created_at'])
+    end
   end
   h.start
   h.write('Alice', [GameRoomGames::EventCommand.new(action: 'drop', value: '3')])

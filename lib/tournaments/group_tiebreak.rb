@@ -11,12 +11,12 @@ module GameRoomTournaments
   module GroupTiebreak
     module_function
     def snapshot(summary:, candidate:, record: nil)
-      Publication::Data.copy({'policy' => candidate['group_advancement'], 'groups' => summary.fetch('groups'),
+      copy_snapshot({'policy' => candidate['group_advancement'], 'groups' => summary.fetch('groups'),
         'results_by_group' => summary.fetch('group_results'), 'wildcard_order' => {},
-        'membership' => candidate['membership'], 'roster' => record && record.dig('evidence','source','roster')},
-        max_bytes: 1_048_576, max_nodes: 65_536, max_depth: 16)
+        'membership' => candidate['membership'], 'roster' => record && record.dig('evidence','source','roster')})
     end
     def projection(snapshot)
+      snapshot_shape!(snapshot)
       groups = snapshot.fetch('groups')
       state = if groups.any? { |g| g['qualification']['state'] == 'tie_requires_resolution' }
         'tie_requires_resolution'
@@ -34,6 +34,7 @@ module GameRoomTournaments
         'qualified' => cross && cross['state'] == 'ready' ? cross['seeds'] : groups.flat_map { |g| g['qualification']['qualified'] }}
     end
     def tasks(snapshot)
+      snapshot_shape!(snapshot)
       groups = snapshot['groups']
       total = groups.sum { |g| g['units'].size }
       target = GroupAdvancement.target(total, policy: snapshot['policy'])
@@ -79,7 +80,7 @@ module GameRoomTournaments
       plan
     end
     def progress(plan:, results:)
-      snapshot = Publication::Data.copy(plan['qualification']['snapshot'])
+      snapshot = copy_snapshot(plan['qualification']['snapshot'])
       index = plan['matches'].to_h { |m| [m['id'], m['participants']] }
       Standings.calculate(units: plan['seeds'], results: results)
       raise Publication::Invalid, :invalid_phase_results unless results.all? { |r| index[r['id']] == r['participants'] }
@@ -101,5 +102,41 @@ module GameRoomTournaments
       view = projection(snapshot)
       {'state' => view['group_state'], 'snapshot' => snapshot, 'projection' => view}
     end
+
+    # Validate containers before arithmetic/indexing. Do not rebuild standings:
+    # an earlier tiebreak may have changed places without changing group points.
+    def snapshot_shape!(snapshot)
+      unless snapshot.is_a?(Hash) && snapshot['groups'].is_a?(Array) && !snapshot['groups'].empty? &&
+          snapshot['results_by_group'].is_a?(Array) && snapshot['results_by_group'].size == snapshot['groups'].size &&
+          snapshot['results_by_group'].all? { |rows| rows.is_a?(Array) &&
+            rows.all? { |row| row.is_a?(Hash) && row['participants'].is_a?(Array) } } &&
+          snapshot['wildcard_order'].is_a?(Hash) &&
+          snapshot['wildcard_order'].values.all? { |place| Publication::Data.integer?(place, 1) }
+        raise Publication::Invalid, :invalid_group_plan
+      end
+      snapshot['groups'].each do |group|
+        unless group.is_a?(Hash) && group['units'].is_a?(Array) && !group['units'].empty? &&
+            group['places'].is_a?(Integer) && group['places'].between?(1, group['units'].size) &&
+            group['qualification'].is_a?(Hash)
+          raise Publication::Invalid, :invalid_group_plan
+        end
+        qualification = group['qualification']
+        unless qualification['qualified'].is_a?(Array) && qualification['standings'].is_a?(Array) &&
+            !qualification['standings'].empty? && qualification['standings'].all? { |row|
+              row.is_a?(Hash) && row['unit'].is_a?(String) &&
+                row['place'].is_a?(Integer) && row['place'].between?(1, group['units'].size)
+            }
+          raise Publication::Invalid, :invalid_group_plan
+        end
+      end
+    end
+    private_class_method :snapshot_shape!
+
+    # A qualified snapshot retains the whole original group table. Reading or
+    # replaying it must use the same bounded shape as its initial construction.
+    def copy_snapshot(value)
+      Publication::Data.copy(value, max_bytes: 1_048_576, max_nodes: 65_536, max_depth: 16)
+    end
+    private_class_method :copy_snapshot
   end
 end

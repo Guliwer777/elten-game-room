@@ -1,6 +1,7 @@
 require_relative 'server_workspace'
 require_relative 'proposal_notice'
 require_relative 'tournament_start_notice'
+require_relative 'phase_description'
 
 module GameRoomTournaments
   # Finite directory/result work. Ordinary table invitations need no readiness
@@ -19,8 +20,10 @@ module GameRoomTournaments
       Data.freeze_tree(value)
     end
 
-    def initialize(workspace:,user:,clock:,worker:,wake:,started:->(_reference){})
+    def initialize(workspace:,user:,clock:,worker:,wake:,started:->(_reference){},finished:->(_reference){},phase_finished:->(_reference,_phase_id){})
       @workspace,@user,@clock,@worker,@wake,@started=workspace,user,clock,worker,wake,started
+      @finished=finished
+      @phase_finished=phase_finished
       @owner=Data.account(user.call).downcase
       @lock=Mutex.new
       @pending,@deadlines={}, {}
@@ -28,6 +31,8 @@ module GameRoomTournaments
       @view_sequence=0
       @active_job=@retry_job=nil
       @started_references={}
+      @finished_references={}
+      @announced_phases={}
       @failures=0
       @retry_at=0
       @closed=false
@@ -167,9 +172,22 @@ module GameRoomTournaments
       visible['overview']=source.slice('candidate','results','phase_history')
       if source.fetch('results')['completed']
         @lock.synchronize{@deadlines.delete(reference)}
+        if reference['author']==@owner && !@finished_references.key?(reference)
+          @finished.call(reference)
+          @finished_references.shift if @finished_references.size>=LIMIT
+          @finished_references[reference]=true
+        end
         return visible.merge('completed'=>true)
       end
-      @workspace.current_match_window(source.fetch('candidate'))
+      if reference['author']==@owner
+        PhaseDescription.transitions(source).each do |transition|
+          key=[reference,transition['phase_id']]
+          next if @announced_phases.key?(key)
+          @phase_finished.call(reference,transition['phase_id'])
+          @announced_phases.shift if @announced_phases.size>=LIMIT
+          @announced_phases[key]=true
+        end
+      end
       if reference['author']==@owner && !@started_references.key?(reference)
         @started.call(reference)
         @started_references.shift if @started_references.size>=LIMIT

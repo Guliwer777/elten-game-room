@@ -86,7 +86,7 @@ sandbox do |c|
     state=workspace.shared_schedule(publication_ref:ref)
     candidate=state.fetch('candidate')
     match=candidate['matches'].first
-    service.award_forfeit(match_id:match['match_id'],leg:match['leg'],winner:match['players'].first,expected_schedule_id:candidate['schedule_id'])
+    service.confirm_forfeit(preview:service.forfeit_preview(match_id:match['match_id'],leg:match['leg'],loser:match['players'].last,expected_schedule_id:candidate['schedule_id']))
     c.now+=2*D
     assert_equal(1,make.call.load['announcements'].size,'A confirmed result did not extend retention')
     assert_equal([150+29*D],service.result_view['progress_times'])
@@ -128,7 +128,7 @@ sandbox do |c|
   service=workspace.ordinary_service(publication_ref:ref,lobby:nil,games:nil,transport:nil)
   begin
     match=candidate['matches'].first
-    service.award_forfeit(match_id:match['match_id'],leg:match['leg'],winner:match['players'].first,expected_schedule_id:candidate['schedule_id'])
+    service.confirm_forfeit(preview:service.forfeit_preview(match_id:match['match_id'],leg:match['leg'],loser:match['players'].last,expected_schedule_id:candidate['schedule_id']))
     c.now+=300*D
     finished=make.call.load['announcements'].first
     assert(finished && finished['sporting_completed'],'Completed tournament was deleted as abandoned')

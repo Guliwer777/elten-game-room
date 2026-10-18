@@ -6,7 +6,7 @@ module GameRoomTournaments
   module KnockoutSchedule
     module_function
     def direct_metadata(seeds:, generation:, publication_digest:, rematch: false,target:nil)
-      raise Publication::Invalid, :invalid_participants unless seeds.size == 2
+      raise Publication::Invalid, :invalid_participants unless seeds.is_a?(Array) && seeds.size == 2
       plan = KnockoutRound.build(seeds: seeds, players_per_match: 2, round_number: 1)
       raise Publication::Invalid,:invalid_win_target if target && rematch
       plan=KnockoutWinSeries.build(base:plan,history:[],target:target,attempt:1) if target
@@ -28,6 +28,8 @@ module GameRoomTournaments
     end
 
     def matches(metadata:, generation:, membership: nil)
+      raise Publication::Invalid, :invalid_fields unless metadata.is_a?(Hash)
+      raise Publication::Invalid, :invalid_fields if metadata.key?('series') && !metadata['series'].is_a?(Hash)
       if metadata['origin'] == 'direct_final'
         fields = %w[round seeds players_per_match generation phase_digest origin publication_digest]
         fields += ['rematch'] if metadata.key?('rematch')

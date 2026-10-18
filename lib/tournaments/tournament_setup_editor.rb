@@ -3,7 +3,6 @@ require_relative 'draft_editor'
 require_relative 'local_registration_time'
 require_relative 'publication'
 require_relative 'tournament_datetime_field'
-require_relative 'playing_days'
 require_relative 'tournament_dates_editor'
 
 module GameRoomTournaments
@@ -112,7 +111,7 @@ module GameRoomTournaments
       enrollment=GameRoomUI::HelpText.new(text(_("Organizer")),type:EditBox::Flags::ReadOnly,
         text:text(_("Publishing also enrolls you as a participant. You can withdraw before the tournament starts.")),quiet:true) unless @initial_publication
       [@name, @format, @rematch, @knockout_rematch, @knockout_target, @final_rematch, @final_target, @count, @seats, @pairing,
-        fields[2],dates,enrollment,@advancement, @group_count, @group_places, fields[-2], fields[-1]].compact
+        (@initial_publication ? fields[2] : nil),dates,enrollment,@advancement, @group_count, @group_places, fields[-2], fields[-1]].compact
     end
     def configure_settings
       super
@@ -155,6 +154,7 @@ module GameRoomTournaments
       draft = attributes.merge('players_per_match' => count,
         'pairing' => %w[all_combinations balanced_cycle].fetch(@pairing.index),
         'participant_limit' => raw.to_i, 'windows' => windows,'starts_at'=>@timing['starts'],'deadline_at'=>@timing['deadline'])
+      draft['daily_hours']=@timing['daily_hours'] if @timing['daily_hours']
       if draft['format'] == 'groups_knockout'
         draft.merge!('group_advancement' => GroupAdvancement::COMPACT, 'group_count' => nil, 'places_per_group' => nil)
         draft.merge!('knockout_rematch' => @knockout_rematch.index == 1, 'final_rematch' => @final_rematch.index == 1)
@@ -165,7 +165,7 @@ module GameRoomTournaments
           draft[key]=value.to_i
         end
       end
-      rules = @initial_publication ? @initial_publication['rules'] : text(_("Win: 2 points; draw: 1 point; loss: 0 points."))
+      rules = @initial_publication ? @initial_publication['rules'] : text(_("Each match awards 2 tournament points per opponent beaten and 1 per tied opponent. Teams count as single opponents."))
       Publication.from_draft(draft: draft, registry: @registry, publication_key: 'setup-preflight', rules: rules,
         registration_opens_at: opens, registration_closes_at: closes, timezone: 'UTC')
       @submitted = true
@@ -188,8 +188,7 @@ module GameRoomTournaments
       when :registration_after_start then _("Registration must close no later than the tournament starts.")
       when :invalid_registration_window,:invalid_registration_time then _("Registration cannot close before it opens.")
       when :deadline_before_start then _("The deadline cannot be earlier than the tournament start.")
-      when :invalid_playing_hours then _("The daily end time must be later than the start time.")
-      when :invalid_playing_days then _("Choose valid dates in chronological order, covering at most 256 days.")
+      when :invalid_playing_hours then _("Choose different start and end times, or turn off the playing-hours limit.")
       else _("Check tournament settings and dates: %{reason}")
       end
       @alert.call(text(message)%{reason:error.code})

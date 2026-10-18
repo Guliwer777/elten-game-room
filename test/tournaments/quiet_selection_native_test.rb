@@ -42,7 +42,7 @@ publication={'title'=>'Selection test','__insertion_user'=>F::OWNER,'publication
 
 begin
   driver=TournamentNativeDriver.new
-  driver.step('Matches',[13]) do |form|
+  driver.step('Tournament matches',[13]) do |form|
     assert_equal(0,form.fields.first.index,'The phase summary was not selected on entry')
     assert_equal('Matches — Round robin; completed: 1/3',form.fields.first.options.first)
     assert(!form.fields.any?{|field|field.respond_to?(:header) && ['Match status','Show matches'].include?(field.header)},'Redundant match filter remains')
@@ -51,25 +51,25 @@ begin
     menu.define_singleton_method(:option){|*|raise 'Summary exposes a match action'}
     form.fields.first.context(menu,false)
   end
-  driver.step('Matches',[38]) do |form|
+  driver.step('Tournament matches',[38]) do |form|
     # Exercise a normal arrow, not a direct call to the move handler.
     form.fields.first.index=2
     SpeechOutput.reset
   end
-  driver.step('Matches') do |form|
+  driver.step('Tournament matches') do |form|
     one_selection_announcement(form.fields.first)
     form.fields.first.index=1
     SpeechOutput.reset
     completed << {'match_id'=>'b'*64,'leg'=>1,'summary'=>{'draw'=>true,'winners'=>[]}}
     revision+=1
   end
-  driver.step('Matches',[9]) do |form|
+  driver.step('Tournament matches',[9]) do |form|
     assert_equal([],SpeechOutput.calls,'An event-driven refresh spoke the list')
     assert_equal('Matches — Round robin; completed: 2/3',form.fields.first.options.first)
     assert_equal(3,form.fields.first.index,'Refresh moved to a different match')
     assert_equal('alpha — gamma; Draw',form.fields.first.options[3])
   end
-  driver.step('Matches',[27]) do |form|
+  driver.step('Tournament matches',[27]) do |form|
     assert_equal(F.field(form,'Tournament phase'),form.fields[form.index],'Tab did not move directly to the phase selector')
     assert_equal(['beta — gamma; To be played','alpha — beta; Draw','alpha — gamma; Draw'],form.fields.first.options.drop(1),'Unfinished matches must precede completed ones')
     assert_equal('alpha — gamma; Draw',form.fields.first.options[form.fields.first.index],'Tab moved to another match')
@@ -79,7 +79,7 @@ begin
 
   actor='spectator'
   driver=TournamentNativeDriver.new
-  driver.step('Matches',[27]) do |form|
+  driver.step('Tournament matches',[27]) do |form|
     assert_equal(4,form.fields.first.options.size)
     assert_equal('beta — gamma; To be played',form.fields.first.options[1],'A spectator did not see the unfinished match below the summary')
   end
@@ -119,22 +119,22 @@ begin
   driver.step(/\APróba 11 — Łódź — /,[13]) do |form|
     actions=form.fields.first
     assert_equal(actions,form.fields[form.index],'Entry did not focus the actions')
-    assert_equal(1,actions.options.count('Matches'),'The match entry is missing or duplicated')
+    assert_equal(1,actions.options.count('Tournament matches'),'The match entry is missing or duplicated')
     assert(!actions.options.include?('My match'),'Redundant My match remains')
     form.index=form.fields.index(actions)
-    actions.index=actions.options.index('Matches')
+    actions.index=actions.options.index('Tournament matches')
   end
   driver.step(/\APróba 11 — Łódź — /) do |form|
     assert_equal(1,opened.size,'Matches did not open the shared schedule')
     actions=form.fields.first
-    actions.index=actions.options.index('Tournament rules')
+    actions.index=actions.options.index('Information and rules')
     SpeechOutput.reset
     revision+=1
   end
   driver.step(/\APróba 11 — Łódź — /,[27]) do |form|
     assert_equal([],SpeechOutput.calls,'A dashboard refresh announced the actions again')
     actions=form.fields.first
-    assert_equal('Tournament rules',actions.options[actions.index])
+    assert_equal('Information and rules',actions.options[actions.index])
     assert_equal(actions,form.fields[form.index])
   end
   T::PublicPreview.new(**TournamentPublicUI.arguments(snapshot,program:program,overview:->(row){opened<<row},

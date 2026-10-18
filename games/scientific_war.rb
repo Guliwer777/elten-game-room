@@ -9,6 +9,8 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class ScientificWar < CardGame
+    def player_spatial_audio?; true; end
+    include HiddenSubmissions::Cleanup
     SUIT_ORDER = %w[H S D C].freeze
     TRICK_LIMITS = (20..100).freeze
     EVENT_BUDGET = 1_900
@@ -160,6 +162,7 @@ module GameRoomGames
     def replay(session, events, repository)
       players = repository.players_for(session)
       state = initial_state(players, options_from_json(session["options"]))
+      HiddenSubmissions::Cleanup.start(state, session)
       accepted = []
       seen = {}
       history = [starting_history(players)]
@@ -194,8 +197,11 @@ module GameRoomGames
 
       envelope = context.hidden_submissions.reveal(session_id: context.session_id, round_id: round_id(state),
         user: viewer, commitment: state[:commits][player])
-      card = envelope&.payload.to_h["card"]
-      @chosen[key] = card if card != nil
+      return unless envelope && envelope.commitment == state[:commits][player] &&
+        context.hidden_submissions.verify(envelope) && envelope.payload.is_a?(Hash)
+
+      card = envelope.payload["card"]
+      @chosen[key] = card if state[:hands][player].include?(card)
     rescue HiddenSubmissions::StorageError
       nil
     end
@@ -205,7 +211,10 @@ module GameRoomGames
       return nil if replay.finished? || state[:phase] != :revealing || GameRoomParticipants.bot?(actor)
       player = player_key(state, actor)
       return nil if player == nil || !pending_reveal?(state, player)
-      return nil if reveal_plan(state, player, actor, context).first != :ok
+      status = reveal_plan(state, player, actor, context).first
+      # A temporary file lock is an attempted action, not an absent choice.
+      # Let the shared runner report it and apply its bounded retry.
+      return nil unless [:ok, :local_storage_unavailable].include?(status)
 
       { "kind" => "command", "action" => "reveal" }
     end
@@ -217,8 +226,12 @@ module GameRoomGames
       replay.state[:phase] == :revealing && player != nil && pending_reveal?(replay.state, player)
     end
 
-    def automatic_action_due?(replay, actor, context: nil)
-      automatic_action(replay, actor, context: context) != nil
+    def automatic_actor(replay, viewer, table_owner:)
+      state = replay.state
+      player = player_key(state, viewer)
+      return viewer if state[:phase] == :revealing && player != nil && pending_reveal?(state, player)
+
+      super
     end
 
     def active_actors(replay)
@@ -457,6 +470,7 @@ module GameRoomGames
       return false unless HiddenSubmissions::Commitment.valid?(payload: { "card" => card }, nonce: nonce, commitment: state[:commits][player])
 
       state[:reveals][player] = card
+      HiddenSubmissions::Cleanup.confirm(state, round_id(state), player => state[:commits].fetch(player))
       return true unless choosers(state).all? { |item| state[:reveals].key?(item) }
 
       if spy(state) != nil
@@ -652,7 +666,6 @@ module GameRoomGames
       return [:already_submitted, nil] if state[:commits].key?(player)
       return [:invalid, nil] if context == nil || context.hidden_submissions == nil
 
-      context.hidden_submissions.discard(session_id: context.session_id, round_id: "trick:#{state[:trick] - 1}", user: actor) if state[:trick] > 1
       envelope = context.hidden_submissions.prepare(session_id: context.session_id, round_id: round_id(state), user: actor,
         payload: { "card" => card }, nonce: SecureRandom.hex(16))
       (@chosen ||= {})[[actor.to_s.downcase, envelope.commitment]] = envelope.payload["card"]
@@ -667,7 +680,8 @@ module GameRoomGames
 
       envelope = context.hidden_submissions.reveal(session_id: context.session_id, round_id: round_id(state), user: actor,
         commitment: state[:commits][player])
-      return [:invalid, nil] if envelope == nil || envelope.commitment != state[:commits][player] || !context.hidden_submissions.verify(envelope)
+      return [:invalid, nil] if envelope == nil || envelope.commitment != state[:commits][player] ||
+        !context.hidden_submissions.verify(envelope) || !envelope.payload.is_a?(Hash)
       card = envelope.payload.to_h["card"].to_s
       return [:invalid, nil] if !envelope.nonce.to_s.match?(NONCE_PATTERN) || !state[:hands][player].include?(card)
 
