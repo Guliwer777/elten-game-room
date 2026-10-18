@@ -60,9 +60,17 @@ następnego nagłówka, a Shift+H — do poprzedniego. Escape zamyka dokument.
 
 ## W co można zagrać
 
-Obecnie Power Games zawiera 35 gry:
+Obecnie Power Games zawiera 35 gier:
 
 - Karcianki: 3-5-8, 99, 1000 mil, Biblios, Makao, Piki, Poker, Remik, Tysiąc,
+  UNO, Wojna i Wojna naukowa.
+- Gry planszowe i strategiczne: Chińczyk, Cztery w rzędzie,
+  Kółko i krzyżyk, Mankala, Monopoly, Reversi, Statki, Szachy, Warcaby
+  i Wyścigi kaczek.
+- Kości i domino: Cat, head, tail, Domino, Farkle, Mexican Train i Yahtzee.
+- Słowa i wiedza: Krowa, Państwa-miasta, Quiz, Scrabble i Taboo.
+- Gry zręcznościowe audio: Axel Pong i Audio Ball.
+
 Mahjong ma jedną pozycję na liście gier. W jego opcjach najpierw wybierz pasjansa, Hong Kong, Riichi albo MCR; poniżej pojawią się ustawienia tej odmiany. W pasjansa grasz sam. Hong Kong i MCR wymagają czterech graczy, a Riichi czterech lub trzech w sanmie; brakujące miejsca uzupełnisz botami przez Ctrl+O przy stole. Po rozdaniu dłuższego meczu każdy potwierdza gotowość do kolejnego. Zasady i obsługę otworzysz przez Ctrl+F1.
 
 Dźwięki rozróżniają rozdanie, dobranie i odrzucenie kamienia, wyłożenie układu oraz zakończenie rozdania. W pasjansie słychać zdjęcie pary i cofnięcie ruchu. Pas i samo przeglądanie kamieni są ciche. Opis słowny nadal podaje rodzaj kamienia i wynik.
@@ -76,14 +84,6 @@ S odczytuje bieżące punkty wszystkich graczy. M podaje liczbę kamieni pozosta
 Instrukcja opisuje kolejno pasjansa, Hong Kong, Riichi i MCR; każda odmiana stołowa opisuje cel, pojęcia, przygotowanie, przebieg, punktację i długość meczu. W grze wszystkie dostępne działania są zaraz za opisem sytuacji, przed twoimi kamieniami. Gdy jesteś w polach gry, nowa twoja tura ustawia fokus na Dobierz kamień, a po dobraniu zaznaczony jest nowy kamień. Samo przeniesienie fokusu nie wykonuje ruchu.
 
 W pasjansie sam wybierasz kamienie: strzałkami zmieniasz wiersz i kolumnę, klawiszami 1–3 warstwę, a D odczytuje współrzędne. Enter zaznacza pierwszy kamień i zatwierdza pasujący drugi; Escape anuluje zaznaczenie.
-
-  UNO, Wojna i Wojna naukowa.
-- Gry planszowe i strategiczne: Chińczyk, Cztery w rzędzie,
-  Kółko i krzyżyk, Mankala, Monopoly, Reversi, Statki, Szachy, Warcaby
-  i Wyścigi kaczek.
-- Kości i domino: Cat, head, tail, Domino, Farkle, Mexican Train i Yahtzee.
-- Słowa i wiedza: Krowa, Państwa-miasta, Quiz, Scrabble i Taboo.
-- Gry zręcznościowe audio: Axel Pong i Audio Ball.
 
 Wiele gier ma kilka wariantów. Ich wybór, liczba uczestników, dostępność botów
 i dodatkowe ustawienia zależą od konkretnego tytułu. Szczegółowe reguły,
