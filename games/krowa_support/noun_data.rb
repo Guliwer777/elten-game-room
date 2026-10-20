@@ -134,7 +134,6 @@ module GameRoomKrowa
       abstrakcje
       abstrakt
       abstrakty
-      abstrakt
       abstrakta
       abstynencja
       abstynencje
@@ -190,15 +189,9 @@ module GameRoomKrowa
       achylie
       acydofil
       acydofile
-      acydofile
-      acydofile
       acydofit
       acydofity
-      acydofity
-      acydofity
       acydofob
-      acydofoby
-      acydofoby
       acydofoby
       acydymetria
       acydymetrie
@@ -225,14 +218,9 @@ module GameRoomKrowa
       adaptery
       adaptowanie
       adaptowania
-      adaptowanie
-      adaptowania
       addend
       addendy
       addenda
-      addenda
-      addendy
-      addendy
       addukcja
       addukcje
       adduktor
@@ -265,8 +253,6 @@ module GameRoomKrowa
       adiantyty
       adidas
       adidasy
-      adidasy
-      adidasy
       adideacja
       adideacje
       adiudykacja
@@ -296,7 +282,6 @@ module GameRoomKrowa
       admiralicje
       admirał
       admirałowie
-      admirał
       admirały
       admirator
       admiratorzy
@@ -314,7 +299,6 @@ module GameRoomKrowa
       adoniki
       adonis
       adonisi
-      adonis
       adonisy
       adopcja
       adopcje
@@ -382,8 +366,6 @@ module GameRoomKrowa
       aeroby
       aerobiont
       aerobionty
-      aerobionty
-      aerobionty
       aerobioza
       aerobiozy
       aerobus
@@ -429,7 +411,6 @@ module GameRoomKrowa
       aeroplankton
       aeroplanktony
       aerosanie
-      aerosanie
       aeroskop
       aeroskopy
       aerostat
@@ -466,8 +447,6 @@ module GameRoomKrowa
       afiksacje
       afiliacja
       afiliacje
-      afiliacje
-      afiliacje
       afiliowanie
       afiliowania
       afinacja
@@ -480,8 +459,6 @@ module GameRoomKrowa
       afisze
       afiszowanie
       afiszowania
-      afiszowanie
-      afiszowania
       afleksyjność
       afleksyjności
       afonia
@@ -492,8 +469,6 @@ module GameRoomKrowa
       aforystyki
       aforyzm
       aforyzmy
-      afrodyta
-      afrodyty
       afrodyta
       afrodyty
       afront
@@ -509,10 +484,8 @@ module GameRoomKrowa
       afrykata
       afrykaty
       afty
-      afty
       aga
       agowie
-      aga
       agi
       agama
       agamy
@@ -572,8 +545,6 @@ module GameRoomKrowa
       aglutyniny
       aglutynowanie
       aglutynowania
-      aglutynowanie
-      aglutynowania
       agnacja
       agnacje
       agnat
@@ -609,8 +580,6 @@ module GameRoomKrowa
       agramatyzm
       agramatyzmy
       agranulocyt
-      agranulocyty
-      agranulocyty
       agranulocyty
       agrariusz
       agrariusze
@@ -687,7 +656,6 @@ module GameRoomKrowa
       akademiczki
       akademik
       akademicy
-      akademik
       akademiki
       akademizacja
       akademizacje
@@ -830,15 +798,12 @@ module GameRoomKrowa
       akryle
       akrylan
       akrylany
-      akrylany
-      akrylany
       aksamit
       aksamity
       aksamitka
       aksamitki
       aksamitność
       aksamitności
-      akselbanty
       akselbanty
       aksjologia
       aksjologie
@@ -856,9 +821,6 @@ module GameRoomKrowa
       aksynity
       akt
       akty
-      akt
-      akta
-      akta
       akta
       aktor
       aktorzy
@@ -872,7 +834,6 @@ module GameRoomKrowa
       aktorzyny
       aktówka
       aktówki
-      aktualia
       aktualia
       aktualista
       aktualiści
@@ -897,12 +858,9 @@ module GameRoomKrowa
       aktynoterapia
       aktynoterapie
       aktynowce
-      aktynowce
       aktynowiec
-      aktynowce
       aktyw
       aktywy
-      aktywa
       aktywa
       aktywacja
       aktywacje
@@ -920,8 +878,6 @@ module GameRoomKrowa
       aktywizmy
       aktywizowanie
       aktywizowania
-      aktywizowanie
-      aktywizowania
       aktywność
       aktywności
       aktywowanie
@@ -934,10 +890,6 @@ module GameRoomKrowa
       akumulatorki
       akumulatornia
       akumulatornie
-      akumulatornia
-      akumulatornie
-      akumulowanie
-      akumulowania
       akumulowanie
       akumulowania
       akupunktura
@@ -965,7 +917,6 @@ module GameRoomKrowa
       akwamaryn
       akwamaryny
       akwamaryna
-      akwamaryny
       akwanauta
       akwanauci
       akwanautyka
@@ -1021,13 +972,10 @@ module GameRoomKrowa
       albertyzmy
       albigens
       albigensi
-      albigensi
-      albigensi
       albinizm
       albinizmy
       albinos
       albinosi
-      albinos
       albinosy
       albinoska
       albinoski
@@ -1043,12 +991,8 @@ module GameRoomKrowa
       albuminy
       albuminoid
       albuminoidy
-      albuminoidy
-      albuminoidy
       albuminuria
       albuminurie
-      albuminy
-      albuminy
       alchemia
       alchemie
       alchemik
@@ -1059,13 +1003,9 @@ module GameRoomKrowa
       alcistki
       aldehyd
       aldehydy
-      aldehydy
-      aldehydy
       aldosteron
       aldosterony
       aldoza
-      aldozy
-      aldozy
       aldozy
       aldrowanda
       aldrowandy
@@ -1140,11 +1080,9 @@ module GameRoomKrowa
       algrafia
       algrafie
       alianci
-      alianci
       alians
       alianse
       aliant
-      alianci
       aliantka
       aliantki
       aliaż
@@ -1155,13 +1093,9 @@ module GameRoomKrowa
       alienacje
       alienowanie
       alienowania
-      alienowanie
-      alienowania
       aligator
       aligatory
       alikwot
-      alikwoty
-      alikwoty
       alikwoty
       alimentacja
       alimentacje
@@ -1169,7 +1103,6 @@ module GameRoomKrowa
       alimentatorzy
       alimentowanie
       alimentowania
-      alimenty
       alimenty
       alit
       ality
@@ -1184,20 +1117,15 @@ module GameRoomKrowa
       alkad
       alkadzi
       alkalia
-      alkalia
       alkaliczność
       alkaliczności
       alkalifil
-      alkalifile
-      alkalifile
       alkalifile
       alkalimetria
       alkalimetrie
       alkalizowanie
       alkalizowania
       alkaloid
-      alkaloidy
-      alkaloidy
       alkaloidy
       alkaloza
       alkalozy
@@ -1207,8 +1135,6 @@ module GameRoomKrowa
       alkaniny
       alkanna
       alkanny
-      alkany
-      alkany
       alkazar
       alkazary
       alken
@@ -1220,8 +1146,6 @@ module GameRoomKrowa
       alkierzyk
       alkierzyki
       alkil
-      alkile
-      alkile
       alkile
       alkohol
       alkohole
@@ -1313,7 +1237,6 @@ module GameRoomKrowa
       alpejczycy
       alpejka
       alpejki
-      alpidy
       alpidy
       alpinarium
       alpinaria
@@ -1415,9 +1338,6 @@ module GameRoomKrowa
       amaranty
       amarylek
       amarylki
-      amarylek
-      amarylki
-      amarylkowate
       amarylkowate
       amatol
       amatole
@@ -1432,10 +1352,6 @@ module GameRoomKrowa
       amazonit
       amazonity
       amazonka
-      amazonki
-      amazonka
-      amazonki
-      amazonki
       amazonki
       ambaras
       ambarasy
@@ -1481,8 +1397,6 @@ module GameRoomKrowa
       ameby
       amebocyt
       amebocyty
-      amebocyty
-      amebocyty
       ameboza
       amebozy
       ameryk
@@ -1495,10 +1409,6 @@ module GameRoomKrowa
       amerykanizmy
       amerykanka
       amerykanki
-      amerykanka
-      amerykanki
-      amerykany
-      amerykany
       amerykańskość
       ametabolizm
       ametabolizmy
@@ -1509,8 +1419,6 @@ module GameRoomKrowa
       amfibia
       amfibie
       amfibol
-      amfibole
-      amfibole
       amfibole
       amfibolia
       amfibolie
@@ -1525,7 +1433,6 @@ module GameRoomKrowa
       amfimacer
       amfimakry
       amfimakr
-      amfimakry
       amfiploid
       amfiploidy
       amfisben
@@ -1536,8 +1443,6 @@ module GameRoomKrowa
       amfitrionowie
       amfolit
       amfolity
-      amfolity
-      amfolity
       amfora
       amfory
       amia
@@ -1546,10 +1451,6 @@ module GameRoomKrowa
       amidy
       amidaza
       amidazy
-      amidazy
-      amidazy
-      amidy
-      amidy
       amigdalina
       amigdaliny
       amimia
@@ -1562,20 +1463,12 @@ module GameRoomKrowa
       aminobenzeny
       aminocukier
       aminocukry
-      aminocukry
-      aminocukry
       aminokwas
-      aminokwasy
-      aminokwasy
       aminokwasy
       aminoplast
       aminoplasty
-      aminoplasty
-      aminoplasty
       aminowanie
       aminowania
-      aminy
-      aminy
       amiotrofia
       amiotrofie
       amitoza
@@ -1604,8 +1497,6 @@ module GameRoomKrowa
       amonifikacje
       amonit
       amonity
-      amonit
-      amonity
       amor
       amory
       amoralista
@@ -1621,17 +1512,12 @@ module GameRoomKrowa
       amorfizm
       amorfizmy
       amorka
-      amorki
       amortyzacja
       amortyzacje
       amortyzator
       amortyzatory
       amortyzowanie
       amortyzowania
-      amortyzowanie
-      amortyzowania
-      amory
-      amory
       ampeks
       ampeksy
       amper
@@ -1717,7 +1603,6 @@ module GameRoomKrowa
       anakruza
       anakruzy
       analekta
-      analekta
       analfabeta
       analfabeci
       analfabetka
@@ -1735,13 +1620,11 @@ module GameRoomKrowa
       analizy
       analizator
       analizatorzy
-      analizator
       analizatory
       analizowanie
       analizowania
       analog
       analodzy
-      analog
       analogi
       analogia
       analogie
@@ -1756,9 +1639,6 @@ module GameRoomKrowa
       anamorfozy
       ananas
       ananasy
-      ananas
-      ananasy
-      ananasowate
       ananasowate
       ananim
       ananimy
@@ -1804,8 +1684,6 @@ module GameRoomKrowa
       androfobie
       androgen
       androgeny
-      androgeny
-      androgeny
       androginia
       androginie
       android
@@ -1813,16 +1691,10 @@ module GameRoomKrowa
       andrologia
       andrologie
       androny
-      androny
       andrus
       andrusy
       andrut
       andruty
-      andrut
-      andruty
-      andruty
-      andruty
-      andrzejki
       andrzejki
       andynista
       andyniści
@@ -1882,7 +1754,6 @@ module GameRoomKrowa
       anestetyk
       anestetyki
       anestetyka
-      anestetyki
       anestetysta
       anestetyści
       anestezja
@@ -1896,8 +1767,6 @@ module GameRoomKrowa
       anfelcje
       angaria
       angarie
-      angażowanie
-      angażowania
       angażowanie
       angażowania
       angelologia
@@ -1914,19 +1783,14 @@ module GameRoomKrowa
       angiologie
       anglez
       anglezy
-      anglez
-      anglezy
       anglezowanie
       anglezowania
-      anglezy
-      anglezy
       anglezyt
       anglezyty
       anglicyzm
       anglicyzmy
       anglik
       anglicy
-      anglik
       angliki
       anglikanin
       anglikanie
@@ -1940,8 +1804,6 @@ module GameRoomKrowa
       anglistki
       anglistyka
       anglistyki
-      anglizowanie
-      anglizowania
       anglizowanie
       anglizowania
       angloarab
@@ -2010,7 +1872,6 @@ module GameRoomKrowa
       animusze
       anioł
       aniołowie
-      anioł
       anioły
       aniołek
       aniołki
@@ -2045,8 +1906,6 @@ module GameRoomKrowa
       annalistyka
       annalistyki
       annały
-      annały
-      annaty
       annaty
       annominacja
       annominacje
@@ -2070,7 +1929,6 @@ module GameRoomKrowa
       anomalie
       anonim
       anonimowie
-      anonim
       anonimy
       anonimat
       anonimaty
@@ -2078,8 +1936,6 @@ module GameRoomKrowa
       anonimowości
       anons
       anonsy
-      anonsowanie
-      anonsowania
       anonsowanie
       anonsowania
       anoreksja
@@ -2095,7 +1951,6 @@ module GameRoomKrowa
       anosmie
       ansambl
       ansamble
-      anse
       anse
       anszlus
       anszlusy
@@ -2116,7 +1971,6 @@ module GameRoomKrowa
       antałek
       antałki
       antecedencje
-      antecedencje
       antecedens
       antecedensy
       antefiks
@@ -2131,9 +1985,6 @@ module GameRoomKrowa
       antenaci
       antenatka
       antenatki
-      anteny
-      anteny
-      anteriora
       anteriora
       antidotum
       antidota
@@ -2176,8 +2027,6 @@ module GameRoomKrowa
       antropogeneza
       antropogenezy
       antropoid
-      antropoidy
-      antropoidy
       antropoidy
       antropolatria
       antropolatrie
@@ -2337,7 +2186,6 @@ module GameRoomKrowa
       antypoda
       antypodzi
       antypody
-      antypody
       antypowieść
       antypowieści
       antyproton
@@ -2357,11 +2205,8 @@ module GameRoomKrowa
       antyseptyk
       antyseptyki
       antyseptyka
-      antyseptyki
       antystrofa
       antystrofy
-      antytalent
-      antytalenty
       antytalent
       antytalenty
       antyteza
@@ -2474,8 +2319,6 @@ module GameRoomKrowa
       apogea
       apokalipsa
       apokalipsy
-      apokalipsa
-      apokalipsy
       apokopa
       apokopy
       apokryf
@@ -2519,7 +2362,6 @@ module GameRoomKrowa
       apostrof
       apostrofy
       apostrofa
-      apostrofy
       apotema
       apotemy
       apoteoza
@@ -2546,7 +2388,6 @@ module GameRoomKrowa
       aproksymacja
       aproksymacje
       aprosze
-      aprosze
       aprowizacja
       aprowizacje
       aprowizator
@@ -2571,10 +2412,8 @@ module GameRoomKrowa
       aptekarzówny
       ary
       ara
-      ary
       arab
       arabowie
-      arab
       araby
       arabeska
       arabeski
@@ -2586,17 +2425,11 @@ module GameRoomKrowa
       arabizmy
       arabizowanie
       arabizowania
-      arabizowanie
-      arabizowania
-      arabka
-      arabki
       arabka
       arabki
       arabszczyzna
       arabszczyzny
       arachid
-      arachidy
-      arachidy
       arachidy
       aragonit
       aragonity
@@ -2604,7 +2437,6 @@ module GameRoomKrowa
       araki
       aralia
       aralie
-      araliowate
       araliowate
       aranżacja
       aranżacje
@@ -2622,8 +2454,6 @@ module GameRoomKrowa
       arbitraże
       arboretum
       arboreta
-      arbuz
-      arbuzy
       arbuz
       arbuzy
       archaiczność
@@ -2672,7 +2502,6 @@ module GameRoomKrowa
       architraw
       architrawy
       archiwalia
-      archiwalia
       archiwariusz
       archiwariusze
       archiwista
@@ -2686,8 +2515,6 @@ module GameRoomKrowa
       archont
       archonci
       archozaur
-      archozaury
-      archozaury
       archozaury
       arcybiskup
       arcybiskupi
@@ -2703,10 +2530,6 @@ module GameRoomKrowa
       arcyksiążęta
       arcyksięstwo
       arcyksięstwa
-      arcyksięstwo
-      arcyksięstwo
-      arcyksiężna
-      arcyksiężne
       arcyksiężna
       arcyksiężne
       arcyłgarz
@@ -2759,12 +2582,8 @@ module GameRoomKrowa
       argon
       argony
       argona
-      argony
       argonauta
       argonauci
-      argonauta
-      argonauci
-      argonauta
       argonauty
       argument
       argumenty
@@ -2772,9 +2591,6 @@ module GameRoomKrowa
       argumentacje
       argus
       argusowie
-      argus
-      argusowie
-      argus
       argusy
       aria
       arie
@@ -2811,9 +2627,6 @@ module GameRoomKrowa
       arkan
       arkany
       arkana
-      arkana
-      arkany
-      arkany
       arkatura
       arkatury
       arkebuz
@@ -2886,17 +2699,11 @@ module GameRoomKrowa
       arseniany
       arsenin
       arseniny
-      arseniny
-      arseniny
-      arsenki
-      arsenki
       arsenopiryt
       arsenopiryty
       arsenowodór
       arsenowodory
       arsyna
-      arsyny
-      arsyny
       arsyny
       arszenik
       arszeniki
@@ -2946,13 +2753,9 @@ module GameRoomKrowa
       aryjczycy
       aryjka
       aryjki
-      aryjka
-      aryjki
       aryjskość
       aryjskości
       aryl
-      aryle
-      aryle
       aryle
       arylowanie
       arylowania
@@ -2994,7 +2797,6 @@ module GameRoomKrowa
       arywizm
       arywizmy
       asy
-      asy
       asafetyda
       asafetydy
       ascendent
@@ -3021,8 +2823,6 @@ module GameRoomKrowa
       asekurantyzmy
       asekurator
       asekuratorzy
-      asekurowanie
-      asekurowania
       asekurowanie
       asekurowania
       asenizacja
@@ -3069,8 +2869,6 @@ module GameRoomKrowa
       askarydy
       askarydoza
       askarydozy
-      askarydy
-      askarydy
       asocjacja
       asocjacje
       asocjacjonizm
@@ -3096,8 +2894,6 @@ module GameRoomKrowa
       aspidistra
       aspidistry
       aspiracja
-      aspiracje
-      aspiracje
       aspiracje
       aspirant
       aspiranci
@@ -3131,8 +2927,6 @@ module GameRoomKrowa
       astenotymie
       astenotymik
       astenotymicy
-      aster
-      astry
       aster
       astry
       astereognozja
@@ -3216,8 +3010,6 @@ module GameRoomKrowa
       asymilacje
       asymilowanie
       asymilowania
-      asymilowanie
-      asymilowania
       asymptota
       asymptoty
       asynchronia
@@ -3274,8 +3066,6 @@ module GameRoomKrowa
       atencje
       ateneum
       atenea
-      ateneum
-      atenea
       atest
       atesty
       atestowanie
@@ -3307,7 +3097,6 @@ module GameRoomKrowa
       atmosfery
       atmosferka
       atmosferki
-      atmosferyki
       atmosferyki
       atol
       atole
@@ -3446,7 +3235,6 @@ module GameRoomKrowa
       autentyk
       autentyki
       autentyka
-      autentyki
       autentyzm
       autentyzmy
       auto
@@ -3559,8 +3347,6 @@ module GameRoomKrowa
       autopiloty
       autoploid
       autoploidy
-      autoploidy
-      autoploidy
       autopompa
       autopompy
       autoportret
@@ -3588,7 +3374,6 @@ module GameRoomKrowa
       autoryzacje
       autoryzowanie
       autoryzowania
-      autosanie
       autosanie
       autoserwis
       autoserwisy
@@ -3643,8 +3428,6 @@ module GameRoomKrowa
       awanse
       awanscena
       awansceny
-      awanse
-      awanse
       awansowanie
       awansowania
       awantaż
@@ -3693,8 +3476,6 @@ module GameRoomKrowa
       awiza
       awizowanie
       awizowania
-      awizowanie
-      awizowania
       azalia
       azalie
       azbest
@@ -3714,8 +3495,6 @@ module GameRoomKrowa
       azotany
       azotek
       azotki
-      azotki
-      azotki
       azotniak
       azotniaki
       azotobakter
@@ -3723,12 +3502,8 @@ module GameRoomKrowa
       azotowanie
       azotowania
       azotowce
-      azotowce
       azotowiec
-      azotowce
       azotyn
-      azotyny
-      azotyny
       azotyny
       azulan
       azulany
@@ -3737,8 +3512,6 @@ module GameRoomKrowa
       azuryt
       azuryty
       azydek
-      azydki
-      azydki
       azydki
       azyl
       azyle
@@ -3776,12 +3549,7 @@ module GameRoomKrowa
       babirusy
       babka
       babki
-      babki
-      babki
       babkowate
-      babkowate
-      babranie
-      babrania
       babranie
       babrania
       babsko
@@ -3805,8 +3573,6 @@ module GameRoomKrowa
       baca
       bacowie
       bachanalia
-      bachanalia
-      bachanalie
       bachanalie
       bachantka
       bachantki
@@ -3830,8 +3596,6 @@ module GameRoomKrowa
       badaczki
       badanie
       badania
-      badanie
-      badania
       badian
       badiany
       badminton
@@ -3846,8 +3610,6 @@ module GameRoomKrowa
       badylarstwa
       badylarz
       badylarze
-      badylarz
-      badylarze
       bagatela
       bagatele
       bagatelka
@@ -3856,7 +3618,6 @@ module GameRoomKrowa
       bagaże
       bagażnik
       bagażniki
-      bagażowe
       bagażowe
       bagażownia
       bagażownie
@@ -3879,7 +3640,6 @@ module GameRoomKrowa
       bagnica
       bagnice
       bagnicowate
-      bagnicowate
       bagnisko
       bagniska
       bagnistość
@@ -3899,7 +3659,6 @@ module GameRoomKrowa
       baj
       baje
       baja
-      baje
       bajadera
       bajadery
       bajaderka
@@ -3948,25 +3707,16 @@ module GameRoomKrowa
       bajzle
       bak
       baki
-      bak
-      baki
-      bak
-      baki
       bakalarstwo
       bakalarstwa
       bakalaureat
       bakalaureaty
-      bakalie
       bakalie
       bakałarz
       bakałarze
       bakan
       bakany
       bakarat
-      bakaraty
-      bakarat
-      bakaraty
-      bakaraty
       bakaraty
       bakburta
       bakburty
@@ -3976,8 +3726,6 @@ module GameRoomKrowa
       bakelity
       baken
       bakeny
-      baki
-      baki
       bakłażan
       bakłażany
       bakonista
@@ -3990,17 +3738,11 @@ module GameRoomKrowa
       bakszysze
       bakteria
       bakterie
-      bakterie
-      bakterie
       bakteriemia
       bakteriemie
       bakteriocyd
       bakteriocydy
-      bakteriocydy
-      bakteriocydy
       bakteriofag
-      bakteriofagi
-      bakteriofagi
       bakteriofagi
       bakterioliza
       bakteriolizy
@@ -4014,8 +3756,6 @@ module GameRoomKrowa
       bakteriozy
       baktrian
       baktriany
-      bal
-      bale
       bal
       bale
       balans
@@ -4045,22 +3785,15 @@ module GameRoomKrowa
       baldaszek
       baldaszki
       baldaszkowate
-      baldaszkowate
       balerina
       baleriny
       balerinka
       balerinki
-      balerinki
-      balerinki
-      baleriny
-      baleriny
       baleron
       balerony
       balet
       balety
       baletka
-      baletki
-      baletki
       baletki
       baletmistrz
       baletmistrze
@@ -4142,7 +3875,6 @@ module GameRoomKrowa
       balustradka
       balustradki
       balzakiana
-      balzakiana
       balzakista
       balzakiści
       bałabajka
@@ -4175,8 +3907,6 @@ module GameRoomKrowa
       bałtystyki
       bałwan
       bałwany
-      bałwan
-      bałwany
       bałwanek
       bałwanki
       bałwanica
@@ -4186,19 +3916,12 @@ module GameRoomKrowa
       bałwochwalca
       bałwochwalcy
       bambetle
-      bambetle
       bambocjada
       bambocjady
       bambosz
       bambosze
-      bambosze
-      bambosze
       bamboszek
       bamboszki
-      bamboszki
-      bamboszki
-      bambus
-      bambusy
       bambus
       bambusy
       ban
@@ -4256,13 +3979,10 @@ module GameRoomKrowa
       bania
       banie
       banialuki
-      banialuki
       banian
       baniany
       banicja
       banicje
-      banie
-      bania
       banieczka
       banieczki
       baniopień
@@ -4313,15 +4033,12 @@ module GameRoomKrowa
       baptysteria
       bar
       bary
-      bar
-      bary
       baraban
       barabany
       barak
       baraki
       barakuda
       barakudy
-      barakudowate
       barakudowate
       baran
       barany
@@ -4361,8 +4078,6 @@ module GameRoomKrowa
       barciele
       barczatka
       barczatki
-      barczatki
-      barczatki
       barć
       barci
       bard
@@ -4384,9 +4099,7 @@ module GameRoomKrowa
       barierka
       barierki
       bark
-      barki
       barka
-      barki
       barkarola
       barkarole
       barkas
@@ -4422,7 +4135,6 @@ module GameRoomKrowa
       baronet
       baroneci
       baronostwo
-      baronostwo
       baronowa
       baronowe
       barowóz
@@ -4436,7 +4148,6 @@ module GameRoomKrowa
       barta
       barty
       bartne
-      bartne
       bartnictwo
       bartnictwa
       bartnik
@@ -4447,8 +4158,6 @@ module GameRoomKrowa
       barwice
       barwienie
       barwienia
-      barwienie
-      barwienia
       barwinek
       barwinki
       barwnik
@@ -4457,12 +4166,8 @@ module GameRoomKrowa
       barwności
       barwoczułość
       barwoczułości
-      bary
-      bary
       barykada
       barykady
-      barykadowanie
-      barykadowania
       barykadowanie
       barykadowania
       baryła
@@ -4481,10 +4186,6 @@ module GameRoomKrowa
       baryty
       baryton
       barytony
-      baryton
-      barytony
-      bas
-      basy
       bas
       basy
       basałyk
@@ -4503,16 +4204,11 @@ module GameRoomKrowa
       basetliści
       basior
       basiory
-      basior
-      basiory
       basiora
-      basiory
       basista
       basiści
       baskerwil
       baskerwile
-      baskijka
-      baskijki
       baskijka
       baskijki
       baskina
@@ -4523,10 +4219,7 @@ module GameRoomKrowa
       basowania
       bastard
       bastardy
-      bastard
-      bastardy
       bastarda
-      bastardy
       bastardyzacja
       bastardyzacje
       basteja
@@ -4535,8 +4228,6 @@ module GameRoomKrowa
       bastiony
       bastylia
       bastylie
-      basy
-      basy
       basza
       baszowie
       baszta
@@ -4545,8 +4236,6 @@ module GameRoomKrowa
       baśniowości
       baśń
       baśnie
-      bat
-      baty
       bat
       baty
       batalia
@@ -4567,8 +4256,6 @@ module GameRoomKrowa
       batiale
       batik
       batiki
-      batiki
-      batiki
       batikowanie
       batikowania
       batog
@@ -4581,8 +4268,6 @@ module GameRoomKrowa
       batometrie
       baton
       batony
-      baton
-      batony
       batonik
       batoniki
       batożenie
@@ -4590,14 +4275,9 @@ module GameRoomKrowa
       batut
       batuty
       batuta
-      batuty
-      baty
-      baty
       batybental
       batybentale
       batybiont
-      batybionty
-      batybionty
       batybionty
       batymetr
       batymetry
@@ -4615,8 +4295,6 @@ module GameRoomKrowa
       batystaty
       bawarka
       bawarki
-      bawarka
-      bawarki
       bawełna
       bawełny
       bawełnica
@@ -4625,8 +4303,6 @@ module GameRoomKrowa
       bawety
       bawidamek
       bawidamki
-      bawienie
-      bawienia
       bawienie
       bawienia
       bawolica
@@ -4645,13 +4321,10 @@ module GameRoomKrowa
       bazgracze
       bazgrała
       bazgrały
-      bazgrała
-      bazgrały
       bazgranie
       bazgrania
       bazgranina
       bazgraniny
-      bazgroły
       bazgroły
       bazia
       bazie
@@ -4669,22 +4342,14 @@ module GameRoomKrowa
       bazylianie
       bazylika
       bazyliki
-      bazyliki
-      bazyliki
       bazylissa
       bazylissy
       bazyliszek
       bazyliszki
-      bazyliszek
-      bazyliszki
-      bażanciarnia
-      bażanciarnie
       bażanciarnia
       bażanciarnie
       bażant
       bażanty
-      bażantarnia
-      bażantarnie
       bażantarnia
       bażantarnie
       bażyna
@@ -4699,10 +4364,6 @@ module GameRoomKrowa
       bąblowce
       bączek
       bączki
-      bączek
-      bączki
-      bąk
-      bąki
       bąk
       bąki
       bąkanie
@@ -4721,8 +4382,6 @@ module GameRoomKrowa
       beatyfikacje
       bebech
       bebechy
-      bebechy
-      bebechy
       bebeszenie
       bebeszenia
       bebop
@@ -4737,8 +4396,6 @@ module GameRoomKrowa
       beczki
       beczkarnia
       beczkarnie
-      beczkarnia
-      beczkarnie
       beczkowanie
       beczkowania
       beczkowóz
@@ -4749,11 +4406,8 @@ module GameRoomKrowa
       bedekery
       bedliszka
       bedliszki
-      bedliszki
-      bedliszki
       bedłka
       bedłki
-      bedłkowate
       bedłkowate
       bednarka
       bednarki
@@ -4777,10 +4431,8 @@ module GameRoomKrowa
       bejdewindy
       bek
       bekowie
-      bek
       beki
       beka
-      beki
       bekadło
       bekadła
       bekanie
@@ -4799,14 +4451,10 @@ module GameRoomKrowa
       bekony
       bekoniarnia
       bekoniarnie
-      bekoniarnia
-      bekoniarnie
       bekoniarstwo
       bekoniarstwa
       bekowisko
       bekowiska
-      beksa
-      beksy
       beksa
       beksy
       bekwarek
@@ -4828,7 +4476,6 @@ module GameRoomKrowa
       beletryzator
       belfer
       belfrzy
-      belfer
       belfry
       belferka
       belferki
@@ -4838,10 +4485,7 @@ module GameRoomKrowa
       belfrowania
       belg
       belgowie
-      belg
       belgi
-      belgijka
-      belgijki
       belgijka
       belgijki
       belka
@@ -4860,8 +4504,6 @@ module GameRoomKrowa
       belwedery
       belzebub
       belzebuby
-      belzebub
-      belzebuby
       bełkot
       bełkoty
       bełkotanie
@@ -4878,7 +4520,6 @@ module GameRoomKrowa
       bemole
       benedyktyn
       benedyktyni
-      benedyktyn
       benedyktyny
       benedyktynka
       benedyktynki
@@ -4911,12 +4552,10 @@ module GameRoomKrowa
       ber
       bery
       bera
-      bery
       berbeć
       berbecie
       berberys
       berberysy
-      berberysowate
       berberysowate
       berdysz
       berdysze
@@ -4945,19 +4584,16 @@ module GameRoomKrowa
       berło
       berła
       bermudy
-      bermudy
       bermyca
       bermyce
       bernard
       bernardy
       bernardyn
       bernardyni
-      bernardyn
       bernardyny
       bernardynek
       bernardynki
       bernardynka
-      bernardynki
       bernikla
       bernikle
       berso
@@ -4993,7 +4629,6 @@ module GameRoomKrowa
       bet
       bety
       beta
-      bety
       betatron
       betatrony
       betel
@@ -5004,8 +4639,6 @@ module GameRoomKrowa
       betoniarki
       betoniarnia
       betoniarnie
-      betoniarnia
-      betoniarnie
       betoniarz
       betoniarze
       betonoskop
@@ -5014,8 +4647,6 @@ module GameRoomKrowa
       betonowania
       betonownia
       betonownie
-      bety
-      bety
       bewatron
       bewatrony
       bez
@@ -5038,8 +4669,6 @@ module GameRoomKrowa
       bezbronności
       bezcelowość
       bezcelowości
-      bezczaszkowce
-      bezczaszkowce
       bezczaszkowce
       bezczelność
       bezczelności
@@ -5080,11 +4709,8 @@ module GameRoomKrowa
       bezkresność
       bezkresności
       bezkręgowce
-      bezkręgowce
-      bezkręgowe
       bezkręgowe
       bezkręgowiec
-      bezkręgowce
       bezkrólewie
       bezkrólewia
       bezkrytycyzm
@@ -5093,14 +4719,10 @@ module GameRoomKrowa
       bezliku
       bezlotek
       bezlotki
-      bezlotki
-      bezlotki
       bezludzie
       bezludzia
       bezład
       bezłady
-      bezłożyskowce
-      bezłożyskowce
       bezłożyskowce
       bezmian
       bezmiany
@@ -5119,8 +4741,6 @@ module GameRoomKrowa
       bezosobowości
       bezowocność
       bezowocności
-      bezowodniowce
-      bezowodniowce
       bezowodniowce
       bezpańskość
       bezpańskości
@@ -5178,17 +4798,13 @@ module GameRoomKrowa
       bezstylowość
       bezstylowości
       bezszczękowce
-      bezszczękowce
-      bezszczękowce
       bezszmerowość
       bezśnieżność
       bezśnieżności
       beztalencie
       beztalencia
       beztlenowce
-      beztlenowce
       beztlenowiec
-      beztlenowce
       beztroska
       beztroski
       bezwiedność
@@ -5248,9 +4864,7 @@ module GameRoomKrowa
       białaczka
       białaczki
       białka
-      białka
       białko
-      białka
       białkomocz
       białkomocze
       białkowanie
@@ -5259,7 +4873,6 @@ module GameRoomKrowa
       białkówki
       białodrzew
       białodrzewy
-      białodrzew
       białodrzewie
       białorusycyzm
       białorzytka
@@ -5284,8 +4897,6 @@ module GameRoomKrowa
       bibeloty
       bibka
       bibki
-      biblia
-      biblie
       biblia
       biblie
       bibliobus
@@ -5326,7 +4937,6 @@ module GameRoomKrowa
       bibosz
       bibosze
       bibrety
-      bibrety
       bibuła
       bibuły
       bibułka
@@ -5335,14 +4945,10 @@ module GameRoomKrowa
       bicepsy
       bicie
       bicia
-      bicie
-      bicia
       bicykl
       bicykle
       bicz
       bicze
-      biczowanie
-      biczowania
       biczowanie
       biczowania
       biczownik
@@ -5362,16 +4968,12 @@ module GameRoomKrowa
       biedaczek
       biedaczki
       biedaczka
-      biedaczki
       biedaczyna
       biedaczyny
       biedaczysko
       biedaczyska
-      biedaczysko
-      biedaczyska
       biedak
       biedacy
-      biedak
       biedaki
       biedaszyb
       biedaszyby
@@ -5393,8 +4995,6 @@ module GameRoomKrowa
       biedowania
       biedronka
       biedronki
-      biedronki
-      biedronki
       biedrzeniec
       biedrzeńce
       biedula
@@ -5407,15 +5007,8 @@ module GameRoomKrowa
       biegi
       biegacz
       biegacze
-      biegacz
-      biegacze
-      biegacz
-      biegacze
-      biegacze
-      biegacze
       biegaczka
       biegaczki
-      biegaczowate
       biegaczowate
       bieganie
       biegania
@@ -5429,7 +5022,6 @@ module GameRoomKrowa
       biegnięcia
       biegnik
       biegniki
-      biegówki
       biegówki
       biegun
       bieguny
@@ -5451,12 +5043,8 @@ module GameRoomKrowa
       bielarki
       bielarnia
       bielarnie
-      bielarnia
-      bielarnie
       bielawa
       bielawy
-      bielenie
-      bielenia
       bielenie
       bielenia
       bielica
@@ -5481,15 +5069,11 @@ module GameRoomKrowa
       bielnice
       bielnik
       bielniki
-      bielnik
-      bielniki
       bieluń
       bielunie
       bieługa
       bieługi
       bierka
-      bierki
-      bierki
       bierki
       biernik
       bierniki
@@ -5552,13 +5136,10 @@ module GameRoomKrowa
       bil
       bile
       bila
-      bile
       bilans
       bilanse
       bilansista
       bilansiści
-      bilansowanie
-      bilansowania
       bilansowanie
       bilansowania
       bilard
@@ -5611,7 +5192,6 @@ module GameRoomKrowa
       bindaże
       binistor
       binistory
-      binokle
       binokle
       binokular
       binokulary
@@ -5666,8 +5246,6 @@ module GameRoomKrowa
       biokorozje
       biolit
       biolity
-      biolity
-      biolity
       biolog
       biolodzy
       biologia
@@ -5691,8 +5269,6 @@ module GameRoomKrowa
       bioniki
       biopolimer
       biopolimery
-      biopolimery
-      biopolimery
       bioprąd
       bioprądy
       biopreparat
@@ -5714,8 +5290,6 @@ module GameRoomKrowa
       biotyna
       biotyny
       biotyp
-      biotypy
-      biotypy
       biotypy
       biotyt
       biotyty
@@ -5749,13 +5323,7 @@ module GameRoomKrowa
       bisurmanie
       biszkopcik
       biszkopciki
-      biszkopcik
-      biszkopciki
       biszkopt
-      biszkopty
-      biszkopt
-      biszkopty
-      biszkopty
       biszkopty
       biszofit
       biszofity
@@ -5774,8 +5342,6 @@ module GameRoomKrowa
       bitumiczność
       bitumiczności
       bitumin
-      bituminy
-      bituminy
       bituminy
       bitumowanie
       bitumowania
@@ -5832,8 +5398,6 @@ module GameRoomKrowa
       blacharki
       blacharnia
       blacharnie
-      blacharnia
-      blacharnie
       blacharstwo
       blacharstwa
       blacharz
@@ -5861,9 +5425,6 @@ module GameRoomKrowa
       blank
       blanki
       blanka
-      blanki
-      blanki
-      blanki
       blankiet
       blankiety
       blankista
@@ -5882,15 +5443,12 @@ module GameRoomKrowa
       blastocele
       blastomer
       blastomery
-      blastomery
-      blastomery
       blastula
       blastule
       blaszanka
       blaszanki
       blaszka
       blaszki
-      blaszkodziobe
       blaszkodziobe
       blat
       blaty
@@ -5912,8 +5470,6 @@ module GameRoomKrowa
       blendy
       bleskotka
       bleskotki
-      bleskotki
-      bleskotki
       blezer
       blezery
       blich
@@ -5929,7 +5485,6 @@ module GameRoomKrowa
       blindgafel
       blindgafle
       bliny
-      bliny
       bliskość
       bliskości
       blizna
@@ -5943,12 +5498,8 @@ module GameRoomKrowa
       bliźniaczek
       bliźniaczki
       bliźniaczka
-      bliźniaczki
       bliźniak
       bliźniacy
-      bliźniak
-      bliźniaki
-      bliźniak
       bliźniaki
       bliźnienie
       bliźnienia
@@ -5983,7 +5534,6 @@ module GameRoomKrowa
       blondynek
       blondynki
       blondynka
-      blondynki
       blotka
       blotki
       blues
@@ -6030,11 +5580,7 @@ module GameRoomKrowa
       błamy
       bławatek
       bławatki
-      bławatek
-      bławatki
       bławatnik
-      bławatniki
-      bławatniki
       bławatniki
       błazen
       błazny
@@ -6084,8 +5630,6 @@ module GameRoomKrowa
       błonki
       błonkówka
       błonkówki
-      błonkówki
-      błonkówki
       błonnik
       błonniki
       błotko
@@ -6093,8 +5637,6 @@ module GameRoomKrowa
       błotniak
       błotniaki
       błotniarka
-      błotniarki
-      błotniarki
       błotniarki
       błotnik
       błotniki
@@ -6115,16 +5657,11 @@ module GameRoomKrowa
       błystki
       błyszcz
       błyszcze
-      błyszcz
-      błyszcze
       błyszczek
       błyszczki
       błyszczenie
       błyszczenia
-      błyszczenie
-      błyszczenia
       błyszczka
-      błyszczki
       błyszczyk
       błyszczyki
       błyśnięcie
@@ -6137,8 +5674,6 @@ module GameRoomKrowa
       bobaki
       bobas
       bobasy
-      bobas
-      bobasy
       bobasek
       bobaski
       bobik
@@ -6148,10 +5683,8 @@ module GameRoomKrowa
       bobiniarka
       bobiniarki
       bobki
-      bobki
       bobrek
       bobrki
-      bobrkowate
       bobrkowate
       bobrowanie
       bobrowania
@@ -6177,7 +5710,6 @@ module GameRoomKrowa
       bociańce
       bocianię
       bocianięta
-      bocianowate
       bocianowate
       bociek
       boćki
@@ -6210,9 +5742,6 @@ module GameRoomKrowa
       bodziszek
       bodziszki
       bodziszkowate
-      bodziszkowate
-      bogacenie
-      bogacenia
       bogacenie
       bogacenia
       bogactwo
@@ -6224,8 +5753,6 @@ module GameRoomKrowa
       bogatek
       bogatki
       bogatka
-      bogatki
-      bogatkowate
       bogatkowate
       bogaty
       bogaci
@@ -6253,8 +5780,6 @@ module GameRoomKrowa
       bohomazy
       boiken
       boikeny
-      boiken
-      boikeny
       boisko
       boiska
       boja
@@ -6279,13 +5804,11 @@ module GameRoomKrowa
       bojlery
       bojowiec
       bojowcy
-      bojowiec
       bojowce
       bojowniczka
       bojowniczki
       bojownik
       bojownicy
-      bojownik
       bojowniki
       bojowość
       bojowości
@@ -6298,17 +5821,13 @@ module GameRoomKrowa
       bok
       boki
       bokobrody
-      bokobrody
       boks
       boksy
       bokser
       bokserzy
-      bokser
       boksery
       bokserka
       bokserki
-      boksowanie
-      boksowania
       boksowanie
       boksowania
       boksyt
@@ -6332,7 +5851,6 @@ module GameRoomKrowa
       boleści
       boleściach
       boleść
-      boleści
       bolid
       bolidy
       bolimuszka
@@ -6343,7 +5861,6 @@ module GameRoomKrowa
       bolometry
       bolończyk
       bolończycy
-      bolończyk
       bolończyki
       bolszewik
       bolszewicy
@@ -6384,7 +5901,6 @@ module GameRoomKrowa
       bon
       bony
       bona
-      bony
       bonanza
       bonanzy
       bonapartysta
@@ -6424,7 +5940,6 @@ module GameRoomKrowa
       bor
       bory
       bora
-      bory
       boracyt
       boracyty
       boraks
@@ -6447,11 +5962,8 @@ module GameRoomKrowa
       borki
       borgis
       borgisy
-      borki
-      borki
       bormaszyna
       bormaszyny
-      bornaski
       bornaski
       borneol
       borneole
@@ -6464,34 +5976,23 @@ module GameRoomKrowa
       borowanie
       borowania
       borowce
-      borowce
       borowiaczek
       borowiaczki
       borowiec
       borowcy
-      borowiec
-      borowce
       borowik
       borowiki
       borowikowate
-      borowikowate
       borowina
-      borowiny
-      borowiny
       borowiny
       borowodorek
       borowodorki
-      borowodorki
-      borowodorki
-      borowodory
       borowodory
       borowodór
-      borowodory
       borowy
       borowi
       borówka
       borówki
-      borówkowate
       borówkowate
       borsalino
       borsalina
@@ -6504,7 +6005,6 @@ module GameRoomKrowa
       bort
       borty
       borta
-      borty
       borykanie
       borykania
       bosak
@@ -6521,8 +6021,6 @@ module GameRoomKrowa
       bossowie
       boston
       bostony
-      boston
-      bostony
       bot
       boty
       botaniczka
@@ -6533,8 +6031,6 @@ module GameRoomKrowa
       botaniki
       botek
       botki
-      botki
-      botki
       botriomykoza
       botriomykozy
       botulizm
@@ -6543,8 +6039,6 @@ module GameRoomKrowa
       botwiny
       botwinka
       botwinki
-      boty
-      boty
       boy
       boye
       bożątko
@@ -6564,13 +6058,11 @@ module GameRoomKrowa
       bóg
       bogowie
       bój
-      boje
       bójka
       bójki
       ból
       bóle
       bór
-      bory
       bóstwo
       bóstwa
       bóżnica
@@ -6592,21 +6084,16 @@ module GameRoomKrowa
       brajl
       brajle
       brajtszwance
-      brajtszwance
       brak
       braki
       brakarka
       brakarki
       brakarnia
       brakarnie
-      brakarnia
-      brakarnie
       brakarstwo
       brakarstwa
       brakarz
       brakarze
-      braki
-      braki
       brakorób
       brakoroby
       brakoróbstwo
@@ -6643,8 +6130,6 @@ module GameRoomKrowa
       brandzle
       branie
       brania
-      branie
-      brania
       branka
       branki
       brankard
@@ -6671,15 +6156,10 @@ module GameRoomKrowa
       bratanice
       bratanie
       bratania
-      bratanie
-      bratania
       bratanka
       bratanki
       bratek
       bratkowie
-      bratek
-      bratki
-      bratek
       bratki
       braterstwo
       braterstwa
@@ -6707,15 +6187,10 @@ module GameRoomKrowa
       brązowania
       brązowienie
       brązowienia
-      brązowienie
-      brązowienia
       brązownictwo
       brązownictwa
       brązownik
       brązownicy
-      brązy
-      brązy
-      brednie
       brednie
       bredzenie
       bredzenia
@@ -6738,7 +6213,6 @@ module GameRoomKrowa
       brew
       brwi
       brewerie
-      brewerie
       brewiarz
       brewiarze
       brewka
@@ -6751,8 +6225,6 @@ module GameRoomKrowa
       bridże
       briofil
       briofile
-      briofile
-      briofile
       briologia
       briologie
       brnięcie
@@ -6761,8 +6233,6 @@ module GameRoomKrowa
       broczenia
       broda
       brody
-      brodacz
-      brodacze
       brodacz
       brodacze
       brodaczka
@@ -6778,15 +6248,12 @@ module GameRoomKrowa
       brodnik
       brodniki
       brodzące
-      brodzące
       brodzenie
       brodzenia
       brodziec
       brodźce
       brodzik
       brodziki
-      brodźce
-      brodźce
       brojenie
       brojenia
       brojler
@@ -6803,8 +6270,6 @@ module GameRoomKrowa
       bromki
       bromian
       bromiany
-      bromki
-      bromki
       bromoform
       bromoformy
       bromowanie
@@ -6817,8 +6282,6 @@ module GameRoomKrowa
       brony
       bronchit
       bronchity
-      bronienie
-      bronienia
       bronienie
       bronienia
       bronowanie
@@ -6850,18 +6313,13 @@ module GameRoomKrowa
       brożyna
       brożyny
       bród
-      brody
       bródka
       bródki
       bróg
       brogi
       brucela
       brucele
-      brucele
-      brucele
       bruceloza
-      brucelozy
-      brucelozy
       brucelozy
       brucyt
       brucyty
@@ -6875,14 +6333,8 @@ module GameRoomKrowa
       bruderszafty
       brudnica
       brudnice
-      brudnice
-      brudnice
       brudnopis
       brudnopisy
-      brudy
-      brudy
-      brudzenie
-      brudzenia
       brudzenie
       brudzenia
       brudzio
@@ -6905,8 +6357,6 @@ module GameRoomKrowa
       bruliony
       brunatnica
       brunatnice
-      brunatnice
-      brunatnice
       brunatnienie
       brunatnienia
       brunatność
@@ -6920,8 +6370,6 @@ module GameRoomKrowa
       brus
       brusy
       brusznica
-      brusznice
-      brusznice
       brusznice
       brutal
       brutale
@@ -6939,8 +6387,6 @@ module GameRoomKrowa
       bruzdkowania
       bruzdnica
       bruzdnice
-      bruzdnice
-      bruzdnice
       bruzdobrzuch
       bruzdobrzuchy
       bruzdogłowiec
@@ -6951,7 +6397,6 @@ module GameRoomKrowa
       bruzdownice
       brużdżenie
       brużdżenia
-      bryczesy
       bryczesy
       bryczka
       bryczki
@@ -6986,13 +6431,10 @@ module GameRoomKrowa
       bryk
       bryki
       bryka
-      bryki
       brykanie
       brykania
       brykieciarka
       brykieciarki
-      brykieciarnia
-      brykieciarnie
       brykieciarnia
       brykieciarnie
       brykiel
@@ -7004,7 +6446,6 @@ module GameRoomKrowa
       brykietownia
       brykietownie
       brykla
-      brykle
       bryknięcie
       bryknięcia
       brylancik
@@ -7037,7 +6478,6 @@ module GameRoomKrowa
       bryzy
       bryzganie
       bryzgania
-      bryzgi
       bryzgi
       bryzgnięcie
       bryzgnięcia
@@ -7079,8 +6519,6 @@ module GameRoomKrowa
       brzezinki
       brzeźniak
       brzeźniaki
-      brzeźniak
-      brzeźniaki
       brzeżek
       brzeżki
       brzęczenie
@@ -7110,14 +6548,12 @@ module GameRoomKrowa
       brzoza
       brzozy
       brzozowate
-      brzozowate
       brzózka
       brzózki
       brzuch
       brzuchy
       brzuchomówca
       brzuchomówcy
-      brzuchonogie
       brzuchonogie
       brzuchonóg
       brzuchonogi
@@ -7169,18 +6605,10 @@ module GameRoomKrowa
       buchtowiska
       bucik
       buciki
-      buciki
-      buciki
       bucior
       buciory
-      buciory
-      buciory
-      buciska
       buciska
       bucisko
-      buciska
-      buczek
-      buczki
       buczek
       buczki
       buczenie
@@ -7205,16 +6633,12 @@ module GameRoomKrowa
       budowy
       budowanie
       budowania
-      budowanie
-      budowania
       budowla
       budowle
-      budowlani
       budowlani
       budowlaniec
       budowlańcy
       budowlany
-      budowlani
       budownictwo
       budownictwa
       budowniczy
@@ -7233,8 +6657,6 @@ module GameRoomKrowa
       budynki
       budyń
       budynie
-      budzenie
-      budzenia
       budzenie
       budzenia
       budziciel
@@ -7261,28 +6683,18 @@ module GameRoomKrowa
       bufonady
       bufor
       bufory
-      bufor
-      bufory
       buhaj
       buhaje
       bujak
       bujaki
       bujanie
       bujania
-      bujanie
-      bujania
       bujanka
-      bujanki
-      bujanki
       bujanki
       bujda
       bujdy
       buk
       buki
-      buk
-      buki
-      bukat
-      bukaty
       bukat
       bukaty
       bukieciarka
@@ -7308,7 +6720,6 @@ module GameRoomKrowa
       bukowanie
       bukowania
       bukowate
-      bukowate
       bukowisko
       bukowiska
       buksa
@@ -7317,7 +6728,6 @@ module GameRoomKrowa
       buksowania
       bukszpan
       bukszpany
-      bukszpanowate
       bukszpanowate
       bukszpir
       bukszpiry
@@ -7411,8 +6821,6 @@ module GameRoomKrowa
       bunty
       buntowanie
       buntowania
-      buntowanie
-      buntowania
       buntowniczość
       buntownik
       buntownicy
@@ -7424,8 +6832,6 @@ module GameRoomKrowa
       bury
       buraczarnia
       buraczarnie
-      buraczarnia
-      buraczarnie
       buraczek
       buraczki
       burak
@@ -7434,8 +6840,6 @@ module GameRoomKrowa
       burany
       burczenie
       burczenia
-      burczymucha
-      burczymuchy
       burczymucha
       burczymuchy
       burda
@@ -7450,12 +6854,9 @@ module GameRoomKrowa
       burety
       burgrabia
       burgrabiowie
-      burgrabia
-      burgrabiowie
       burgund
       burgundy
       burka
-      burki
       burknięcie
       burknięcia
       burleska
@@ -7498,8 +6899,6 @@ module GameRoomKrowa
       burzany
       burzenie
       burzenia
-      burzenie
-      burzenia
       burzliwość
       burzliwości
       burzyciel
@@ -7507,8 +6906,6 @@ module GameRoomKrowa
       burzycielstwo
       burzycielstwa
       burzyk
-      burzyki
-      burzyki
       burzyki
       burżuazja
       burżuazje
@@ -7529,7 +6926,6 @@ module GameRoomKrowa
       but
       buty
       buta
-      buty
       butadien
       butadieny
       butan
@@ -7552,8 +6948,6 @@ module GameRoomKrowa
       butwienia
       butwina
       butwiny
-      buty
-      buty
       butyl
       butyle
       butylen
@@ -7578,18 +6972,12 @@ module GameRoomKrowa
       bycia
       byczek
       byczki
-      byczek
-      byczki
       byczenie
       byczenia
-      byczki
-      byczki
       byczysko
       byczyska
       bydełko
       bydełka
-      bydlak
-      bydlaki
       bydlak
       bydlaki
       bydlątko
@@ -7599,9 +6987,6 @@ module GameRoomKrowa
       bydlę
       bydlęta
       bydło
-      bydło
-      byk
-      byki
       byk
       byki
       bykowiec
@@ -7634,16 +7019,12 @@ module GameRoomKrowa
       bywalczynie
       bywalec
       bywalcy
-      bywalec
-      bywalcy
       bywanie
       bywania
       bzdura
       bzdury
       bzdurzenie
       bzdurzenia
-      bzik
-      bziki
       bzik
       bziki
       bzikowanie
@@ -7700,15 +7081,11 @@ module GameRoomKrowa
       całości
       całowanie
       całowania
-      całowanie
-      całowania
       całun
       całuny
       całus
       całusy
       całusek
-      całuski
-      całuski
       całuski
       campanilla
       campanille
@@ -7724,8 +7101,6 @@ module GameRoomKrowa
       canotiery
       canzona
       canzony
-      cap
-      capy
       cap
       capy
       capina
@@ -7753,7 +7128,6 @@ module GameRoomKrowa
       caryzm
       caryzmy
       cążki
-      cążki
       ceber
       cebry
       ceberek
@@ -7770,8 +7144,6 @@ module GameRoomKrowa
       cebulanki
       cebularz
       cebularze
-      cebularz
-      cebularze
       cebulica
       cebulice
       cebulka
@@ -7779,9 +7151,6 @@ module GameRoomKrowa
       cech
       cechy
       cecha
-      cechy
-      cechowanie
-      cechowania
       cechowanie
       cechowania
       cechownia
@@ -7819,7 +7188,6 @@ module GameRoomKrowa
       cedzidło
       cedzidła
       cedziny
-      cedziny
       cefal
       cefale
       cefeida
@@ -7848,8 +7216,6 @@ module GameRoomKrowa
       cekhauzy
       cekin
       cekiny
-      cekiny
-      cekiny
       ceklarz
       ceklarze
       cekropia
@@ -7859,7 +7225,6 @@ module GameRoomKrowa
       cel
       cele
       cela
-      cele
       celebra
       celebry
       celebracja
@@ -7874,15 +7239,12 @@ module GameRoomKrowa
       celesty
       celestyn
       celestyni
-      celestyn
       celestyny
       celibat
       celibaty
       celka
       celki
       cellon
-      cellony
-      cellony
       cellony
       celnictwo
       celnictwa
@@ -7910,7 +7272,6 @@ module GameRoomKrowa
       celowania
       celownica
       celownice
-      celowniczy
       celowniczy
       celownik
       celowniki
@@ -7952,8 +7313,6 @@ module GameRoomKrowa
       cementarki
       cementowanie
       cementowania
-      cementowanie
-      cementowania
       cementownia
       cementownie
       cementownik
@@ -7966,8 +7325,6 @@ module GameRoomKrowa
       ceny
       cenestezja
       cenestezje
-      cenienie
-      cenienia
       cenienie
       cenienia
       cennik
@@ -8023,7 +7380,6 @@ module GameRoomKrowa
       centrówka
       centrówki
       centrum
-      centra
       centryfuga
       centryfugi
       centrysta
@@ -8059,15 +7415,12 @@ module GameRoomKrowa
       cenzurka
       cenzurki
       cenzurowane
-      cenzurowane
       cenzurowanie
       cenzurowania
       cenzus
       cenzusy
       ceownik
       ceowniki
-      cep
-      cepy
       cep
       cepy
       cepelia
@@ -8078,12 +7431,9 @@ module GameRoomKrowa
       cepiska
       cepowisko
       cepowiska
-      cepy
-      cepy
       cer
       cery
       cera
-      cery
       ceramik
       ceramicy
       ceramika
@@ -8102,17 +7452,10 @@ module GameRoomKrowa
       ceratyty
       cerber
       cerbery
-      cerber
-      cerbery
-      cerber
-      cerbery
       cerbet
       cerbety
       cerebrozyd
       cerebrozydy
-      cerebrozydy
-      cerebrozydy
-      ceregiele
       ceregiele
       ceregielenie
       ceregielenia
@@ -8165,7 +7508,6 @@ module GameRoomKrowa
       certa
       certy
       certacje
-      certacje
       certolenie
       certolenia
       certowanie
@@ -8179,8 +7521,6 @@ module GameRoomKrowa
       cerusyt
       cerusyty
       cerwid
-      cerwidy
-      cerwidy
       cerwidy
       cesarstwo
       cesarstwa
@@ -8218,8 +7558,6 @@ module GameRoomKrowa
       cewiarki
       cewiarnia
       cewiarnie
-      cewiarnia
-      cewiarnie
       cewienie
       cewienia
       cewka
@@ -8231,7 +7569,6 @@ module GameRoomKrowa
       cez
       cezy
       ceza
-      cezy
       cezalpinia
       cezalpinie
       cezar
@@ -8244,7 +7581,6 @@ module GameRoomKrowa
       cezaryzmy
       cezura
       cezury
-      cęgi
       cęgi
       chabaź
       chabazie
@@ -8319,8 +7655,6 @@ module GameRoomKrowa
       chamy
       chamefit
       chamefity
-      chamefity
-      chamefity
       chamica
       chamice
       chamidło
@@ -8333,7 +7667,6 @@ module GameRoomKrowa
       chamki
       champion
       championi
-      champion
       championy
       championka
       championki
@@ -8402,7 +7735,6 @@ module GameRoomKrowa
       chasydyzm
       chasydyzmy
       chaszcze
-      chaszcze
       chata
       chaty
       chateńka
@@ -8412,13 +7744,10 @@ module GameRoomKrowa
       chatynka
       chatynki
       chcący
-      chcący
       chcenie
       chcenia
       chciejstwo
       chciejstwa
-      chciwiec
-      chciwcy
       chciwiec
       chciwcy
       chciwość
@@ -8452,7 +7781,6 @@ module GameRoomKrowa
       chemik
       chemicy
       chemikalia
-      chemikalia
       chemikaliowce
       chemioterapia
       chemioterapie
@@ -8464,8 +7792,6 @@ module GameRoomKrowa
       chemizatorzy
       chemizm
       chemizmy
-      chemizowanie
-      chemizowania
       chemizowanie
       chemizowania
       chemoautotrof
@@ -8482,8 +7808,6 @@ module GameRoomKrowa
       chemotropizmy
       cherlactwo
       cherlactwa
-      cherlak
-      cherlaki
       cherlak
       cherlaki
       cherlawiec
@@ -8510,21 +7834,12 @@ module GameRoomKrowa
       chichotania
       chichotek
       chichotki
-      chichotek
-      chichotki
       chichotka
-      chichotki
-      chichotki
-      chichotki
       chiliasta
       chiliaści
       chiliazm
       chiliazmy
       chimera
-      chimery
-      chimera
-      chimery
-      chimery
       chimery
       chimeryczka
       chimeryczki
@@ -8541,15 +7856,12 @@ module GameRoomKrowa
       chinoliny
       chinon
       chinony
-      chinony
-      chinony
       chinowiec
       chinowce
       chinozol
       chinozole
       chińczyk
       chińczycy
-      chińczyk
       chińczyku
       chińszczyzna
       chińszczyzny
@@ -8569,10 +7881,6 @@ module GameRoomKrowa
       chirurgie
       chiton
       chitony
-      chiton
-      chitony
-      chitony
-      chitony
       chityna
       chityny
       chiwian
@@ -8580,15 +7888,11 @@ module GameRoomKrowa
       chlamida
       chlamidy
       chlamidospory
-      chlamidospory
       chlanie
       chlania
       chlap
       chlapy
       chlapa
-      chlapy
-      chlapanie
-      chlapania
       chlapanie
       chlapania
       chlapanina
@@ -8599,10 +7903,6 @@ module GameRoomKrowa
       chlapnięcia
       chlastanie
       chlastania
-      chlastanie
-      chlastania
-      chlaśnięcie
-      chlaśnięcia
       chlaśnięcie
       chlaśnięcia
       chleb
@@ -8671,14 +7971,10 @@ module GameRoomKrowa
       chloromierze
       chloroplast
       chloroplasty
-      chloroplasty
-      chloroplasty
       chlorowanie
       chlorowania
       chlorowce
-      chlorowce
       chlorowiec
-      chlorowce
       chlorownia
       chlorownie
       chlorownica
@@ -8692,8 +7988,6 @@ module GameRoomKrowa
       chloroza
       chlorozy
       chloryn
-      chloryny
-      chloryny
       chloryny
       chloryt
       chloryty
@@ -8733,14 +8027,11 @@ module GameRoomKrowa
       chłodnięcia
       chłodnik
       chłodnicy
-      chłodnik
       chłodniki
       chłodniowiec
       chłodniowcy
       chłodnorost
       chłodnorosty
-      chłodzenie
-      chłodzenia
       chłodzenie
       chłodzenia
       chłodziarka
@@ -8755,7 +8046,6 @@ module GameRoomKrowa
       chłonności
       chłop
       chłopy
-      chłop
       chłopi
       chłopaczek
       chłopaczkowie
@@ -8763,11 +8053,8 @@ module GameRoomKrowa
       chłopaczyny
       chłopaczysko
       chłopaczyska
-      chłopaczysko
-      chłopaczyska
       chłopak
       chłopacy
-      chłopak
       chłopaki
       chłopczyca
       chłopczyce
@@ -8775,8 +8062,6 @@ module GameRoomKrowa
       chłopczyki
       chłopczyna
       chłopczyny
-      chłopczysko
-      chłopczyska
       chłopczysko
       chłopczyska
       chłopeczka
@@ -8795,14 +8080,9 @@ module GameRoomKrowa
       chłopięctwa
       chłopina
       chłopiny
-      chłopina
-      chłopiny
-      chłopisko
-      chłopiska
       chłopisko
       chłopiska
       chłopka
-      chłopki
       chłopoman
       chłopomani
       chłopomania
@@ -8831,10 +8111,6 @@ module GameRoomKrowa
       chmary
       chmiel
       chmiele
-      chmiel
-      chmiele
-      chmielarnia
-      chmielarnie
       chmielarnia
       chmielarnie
       chmielarstwo
@@ -8863,12 +8139,8 @@ module GameRoomKrowa
       chmurnienia
       chmurzenie
       chmurzenia
-      chmurzenie
-      chmurzenia
       chmurzysko
       chmurzyska
-      chmyz
-      chmyzy
       chmyz
       chmyzy
       chochelka
@@ -8881,11 +8153,7 @@ module GameRoomKrowa
       chochoły
       chodaczek
       chodaczki
-      chodaczki
-      chodaczki
       chodak
-      chodaki
-      chodaki
       chodaki
       chodliwość
       chodliwości
@@ -8894,8 +8162,6 @@ module GameRoomKrowa
       chodniczek
       chodniczki
       chodnik
-      chodniki
-      chodniki
       chodniki
       chodzenie
       chodzenia
@@ -8929,7 +8195,6 @@ module GameRoomKrowa
       cholery
       cholernik
       cholernicy
-      cholernik
       cholerniki
       cholerowanie
       cholerowania
@@ -8964,22 +8229,16 @@ module GameRoomKrowa
       chomikowanie
       chomikowania
       chomikowate
-      chomikowate
       chondra
       chondry
       chondroblast
       chondroblasty
-      chondroblasty
-      chondroblasty
       chondrocyt
-      chondrocyty
-      chondrocyty
       chondrocyty
       chondrologia
       chondrologie
       chondryt
       chondryty
-      chopiniana
       chopiniana
       chopinista
       chopiniści
@@ -8999,7 +8258,6 @@ module GameRoomKrowa
       chorągwie
       chorągiewka
       chorągiewki
-      chorążostwo
       chorążostwo
       chorąży
       chorążowie
@@ -9027,7 +8285,6 @@ module GameRoomKrowa
       chorobliwość
       chorobliwości
       chorobowe
-      chorobowe
       chorobowość
       chorobowości
       chorologia
@@ -9042,8 +8299,6 @@ module GameRoomKrowa
       chorzy
       chowacz
       chowacze
-      chowanie
-      chowania
       chowanie
       chowania
       chowanka
@@ -9073,19 +8328,14 @@ module GameRoomKrowa
       chrap
       chrapy
       chrapa
-      chrapy
       chrapanie
       chrapania
       chrapka
-      chrapki
-      chrapki
       chrapki
       chrapliwość
       chrapliwości
       chrapnięcie
       chrapnięcia
-      chrapy
-      chrapy
       chrestomatia
       chrestomatie
       chrobot
@@ -9101,8 +8351,6 @@ module GameRoomKrowa
       chromanie
       chromania
       chromatofor
-      chromatofory
-      chromatofory
       chromatofory
       chromatograf
       chromatografy
@@ -9124,8 +8372,6 @@ module GameRoomKrowa
       chromity
       chromofor
       chromofory
-      chromofory
-      chromofory
       chromogen
       chromogeny
       chromolenie
@@ -9133,8 +8379,6 @@ module GameRoomKrowa
       chromonikiel
       chromonikle
       chromoplast
-      chromoplasty
-      chromoplasty
       chromoplasty
       chromoproteid
       chromosfera
@@ -9147,11 +8391,7 @@ module GameRoomKrowa
       chromowanie
       chromowania
       chromowce
-      chromowce
       chromowiec
-      chromowce
-      chronienie
-      chronienia
       chronienie
       chronienia
       chronograf
@@ -9185,7 +8425,6 @@ module GameRoomKrowa
       chrupanie
       chrupania
       chrupki
-      chrupki
       chrupkość
       chrupkości
       chrupnięcie
@@ -9197,8 +8436,6 @@ module GameRoomKrowa
       chrust
       chrusty
       chruściel
-      chruściele
-      chruściele
       chruściele
       chruścik
       chruściki
@@ -9250,8 +8487,6 @@ module GameRoomKrowa
       chrząstniki
       chrząszcz
       chrząszcze
-      chrząszcze
-      chrząszcze
       chrząszczyk
       chrząszczyki
       chrząścica
@@ -9260,7 +8495,6 @@ module GameRoomKrowa
       chrzciciele
       chrzcielnica
       chrzcielnice
-      chrzciny
       chrzciny
       chrzczenie
       chrzczenia
@@ -9277,7 +8511,6 @@ module GameRoomKrowa
       chrześniaczek
       chrześniaczki
       chrześniaczka
-      chrześniaczki
       chrześniak
       chrześniacy
       chrzęst
@@ -9285,8 +8518,6 @@ module GameRoomKrowa
       chrzęstniak
       chrzęstniaki
       chrzęstnik
-      chrzęstniki
-      chrzęstniki
       chrzęstniki
       chrzęszczenie
       chrzęszczenia
@@ -9324,10 +8555,7 @@ module GameRoomKrowa
       chudźce
       chudzielec
       chudzielcy
-      chudzielec
       chudzielce
-      chudzina
-      chudziny
       chudzina
       chudziny
       chuligan
@@ -9358,10 +8586,6 @@ module GameRoomKrowa
       chwalcy
       chwalenie
       chwalenia
-      chwalenie
-      chwalenia
-      chwalipięta
-      chwalipięty
       chwalipięta
       chwalipięty
       chwała
@@ -9374,8 +8598,6 @@ module GameRoomKrowa
       chwastowniki
       chwat
       chwaty
-      chwianie
-      chwiania
       chwianie
       chwiania
       chwiejba
@@ -9396,8 +8618,6 @@ module GameRoomKrowa
       chwilówki
       chwycenie
       chwycenia
-      chwycenie
-      chwycenia
       chwyt
       chwyty
       chwytacz
@@ -9410,8 +8630,6 @@ module GameRoomKrowa
       chwytliwości
       chwytnik
       chwytniki
-      chwytniki
-      chwytniki
       chwytność
       chwytności
       chybianie
@@ -9422,12 +8640,8 @@ module GameRoomKrowa
       chyboty
       chybotanie
       chybotania
-      chybotanie
-      chybotania
       chybotliwość
       chybotliwości
-      chylenie
-      chylenia
       chylenie
       chylenia
       chyłomierz
@@ -9439,7 +8653,6 @@ module GameRoomKrowa
       chytrusek
       chytruski
       chytruska
-      chytruski
       chytry
       chytrzy
       chytrzenie
@@ -9448,10 +8661,6 @@ module GameRoomKrowa
       chyżości
       ciachanie
       ciachania
-      ciachanie
-      ciachania
-      ciachnięcie
-      ciachnięcia
       ciachnięcie
       ciachnięcia
       ciacho
@@ -9464,12 +8673,8 @@ module GameRoomKrowa
       ciałopalenia
       ciamajda
       ciamajdy
-      ciamajda
-      ciamajdy
       ciamkanie
       ciamkania
-      ciapa
-      ciapy
       ciapa
       ciapy
       ciapanie
@@ -9482,14 +8687,10 @@ module GameRoomKrowa
       ciapnięcia
       ciarka
       ciarki
-      ciarki
-      ciarki
       ciasnota
       ciasnoty
       ciasteczko
       ciasteczka
-      ciastkarnia
-      ciastkarnie
       ciastkarnia
       ciastkarnie
       ciastkarstwo
@@ -9508,12 +8709,8 @@ module GameRoomKrowa
       ciągadła
       ciąganie
       ciągania
-      ciąganie
-      ciągania
       ciągarka
       ciągarki
-      ciągarnia
-      ciągarnie
       ciągarnia
       ciągarnie
       ciągarstwo
@@ -9526,21 +8723,16 @@ module GameRoomKrowa
       ciągnienia
       ciągnięcie
       ciągnięcia
-      ciągnięcie
-      ciągnięcia
       ciągnik
       ciągniki
       ciągomierz
       ciągomierze
       ciągotki
-      ciągotki
-      ciągoty
       ciągoty
       ciągownictwo
       ciągownictwa
       ciągownik
       ciągowniki
-      ciągutki
       ciągutki
       ciąża
       ciąże
@@ -9581,8 +8773,6 @@ module GameRoomKrowa
       ciekawości
       ciekawski
       ciekawscy
-      cieki
-      cieki
       cieknięcie
       cieknięcia
       cielaczek
@@ -9625,8 +8815,6 @@ module GameRoomKrowa
       ciemiona
       ciemięga
       ciemięgi
-      ciemięga
-      ciemięgi
       ciemięstwo
       ciemięstwa
       ciemięzca
@@ -9645,15 +8833,11 @@ module GameRoomKrowa
       ciemniactwa
       ciemniak
       ciemniacy
-      ciemniak
-      ciemniaki
-      ciemniak
       ciemniaki
       ciemnica
       ciemnice
       ciemnienie
       ciemnienia
-      ciemno
       ciemno
       ciemnogród
       ciemnogrody
@@ -9672,8 +8856,6 @@ module GameRoomKrowa
       cienkości
       cienkusz
       cienkusze
-      cienkusz
-      cienkusze
       ciennik
       cienniki
       cień
@@ -9686,11 +8868,7 @@ module GameRoomKrowa
       cieplarki
       cieplarnia
       cieplarnie
-      cieplarnia
-      cieplarnie
       cieplica
-      cieplice
-      cieplice
       cieplice
       ciepło
       ciepła
@@ -9715,8 +8893,6 @@ module GameRoomKrowa
       cierniczki
       ciernik
       cierniki
-      cierniki
-      cierniki
       cierniopląt
       cierniopląty
       cierniówka
@@ -9725,7 +8901,6 @@ module GameRoomKrowa
       ciernistości
       cierń
       ciernie
-      cierpiący
       cierpiący
       cierpienie
       cierpienia
@@ -9749,14 +8924,10 @@ module GameRoomKrowa
       ciesiołki
       cieszenie
       cieszenia
-      cieszenie
-      cieszenia
       cieszynianka
       cieszynianki
       cieszynit
       cieszynity
-      cieśla
-      cieśle
       cieśla
       cieśle
       cieślica
@@ -9769,7 +8940,6 @@ module GameRoomKrowa
       cięcia
       cięciwa
       cięciwy
-      cięgi
       cięgi
       cięgło
       cięgła
@@ -9802,7 +8972,6 @@ module GameRoomKrowa
       cios
       ciosy
       ciosa
-      ciosy
       ciosak
       ciosaki
       ciosanie
@@ -9835,22 +9004,15 @@ module GameRoomKrowa
       cisawice
       ciskanie
       ciskania
-      ciskanie
-      ciskania
-      cisowate
       cisowate
       cissus
       cissusy
       cisuranowce
-      cisuranowce
       cisuranowiec
-      cisuranowce
       cisza
       cisze
       ciśnienie
       ciśnienia
-      ciśnięcie
-      ciśnięcia
       ciśnięcie
       ciśnięcia
       citroen
@@ -9859,8 +9021,6 @@ module GameRoomKrowa
       ciuchy
       ciuchcia
       ciuchcie
-      ciuchy
-      ciuchy
       ciuciubabka
       ciuciubabki
       ciułactwo
@@ -9887,11 +9047,7 @@ module GameRoomKrowa
       ciżby
       ciżemka
       ciżemki
-      ciżemki
-      ciżemki
       ciżma
-      ciżmy
-      ciżmy
       ciżmy
       ckliwica
       ckliwice
@@ -9907,7 +9063,6 @@ module GameRoomKrowa
       clochardzi
       clown
       clowny
-      clown
       clowni
       cło
       cła
@@ -9919,12 +9074,8 @@ module GameRoomKrowa
       cmentarzyska
       cmokanie
       cmokania
-      cmokanie
-      cmokania
       cmokier
       cmokierzy
-      cmoknięcie
-      cmoknięcia
       cmoknięcie
       cmoknięcia
       cmoknonsens
@@ -9947,12 +9098,8 @@ module GameRoomKrowa
       codzienności
       cofanie
       cofania
-      cofanie
-      cofania
       cofka
       cofki
-      cofnięcie
-      cofnięcia
       cofnięcie
       cofnięcia
       cokołówka
@@ -10002,7 +9149,6 @@ module GameRoomKrowa
       córunia
       córunie
       cracoviana
-      cracoviana
       crawle
       cucenie
       cucenia
@@ -10012,7 +9158,6 @@ module GameRoomKrowa
       cuchnięcia
       cud
       cudy
-      cud
       cuda
       cudactwo
       cudactwa
@@ -10023,7 +9168,6 @@ module GameRoomKrowa
       cudeńko
       cudeńka
       cudo
-      cuda
       cudotwórca
       cudotwórcy
       cudotwórczyni
@@ -10031,7 +9175,6 @@ module GameRoomKrowa
       cudotwórstwa
       cudowność
       cudowności
-      cudze
       cudze
       cudzołożenie
       cudzołożenia
@@ -10048,7 +9191,6 @@ module GameRoomKrowa
       cug
       cugi
       cugle
-      cugle
       cukier
       cukry
       cukiereczek
@@ -10057,8 +9199,6 @@ module GameRoomKrowa
       cukierki
       cukierenka
       cukierenki
-      cukiernia
-      cukiernie
       cukiernia
       cukiernie
       cukiernica
@@ -10076,9 +9216,7 @@ module GameRoomKrowa
       cukrowanie
       cukrowania
       cukrowce
-      cukrowce
       cukrowiec
-      cukrowce
       cukrownia
       cukrownie
       cukrownictwo
@@ -10095,9 +9233,6 @@ module GameRoomKrowa
       cukrzyce
       cukrzyk
       cukrzycy
-      cukrzyk
-      cukrzyki
-      cukrzyki
       cukrzyki
       cuma
       cumy
@@ -10120,10 +9255,8 @@ module GameRoomKrowa
       cwaniaczek
       cwaniaczki
       cwaniaczka
-      cwaniaczki
       cwaniak
       cwaniacy
-      cwaniak
       cwaniaki
       cwaniara
       cwaniary
@@ -10136,9 +9269,6 @@ module GameRoomKrowa
       cybet
       cybety
       cybeta
-      cybety
-      cybety
-      cybety
       cyborg
       cyborgi
       cyborgizacja
@@ -10173,22 +9303,13 @@ module GameRoomKrowa
       cygaje
       cygan
       cyganie
-      cygan
-      cygany
-      cygan
       cygany
       cyganeczka
       cyganeczki
-      cyganeczka
-      cyganeczki
-      cyganek
-      cyganki
       cyganek
       cyganki
       cyganeria
       cyganerie
-      cyganiątko
-      cyganiątka
       cyganiątko
       cyganiątka
       cyganicha
@@ -10196,9 +9317,6 @@ module GameRoomKrowa
       cyganienie
       cyganienia
       cyganka
-      cyganki
-      cyganka
-      cyganki
       cygaństwo
       cygaństwa
       cygaretka
@@ -10227,13 +9345,10 @@ module GameRoomKrowa
       cyjanozy
       cykada
       cykady
-      cykady
-      cykady
       cykanie
       cykania
       cykas
       cykasy
-      cykasowate
       cykasowate
       cykata
       cykaty
@@ -10272,10 +9387,7 @@ module GameRoomKrowa
       cyklony
       cyklop
       cyklopy
-      cyklop
       cyklopi
-      cyklop
-      cyklopy
       cyklotron
       cyklotrony
       cyknięcie
@@ -10296,14 +9408,8 @@ module GameRoomKrowa
       cymbaliści
       cymbał
       cymbały
-      cymbał
-      cymbały
       cymbałek
       cymbałki
-      cymbałki
-      cymbałki
-      cymbały
-      cymbały
       cymelium
       cymelia
       cymes
@@ -10311,10 +9417,7 @@ module GameRoomKrowa
       cyna
       cyny
       cynaderki
-      cynaderki
       cynadra
-      cynadry
-      cynadry
       cynadry
       cynamon
       cynamony
@@ -10326,8 +9429,6 @@ module GameRoomKrowa
       cynestezje
       cynfolia
       cynfolie
-      cyngiel
-      cyngle
       cyngiel
       cyngle
       cynia
@@ -10364,7 +9465,6 @@ module GameRoomKrowa
       cyprysy
       cyprysik
       cyprysiki
-      cyprysowate
       cyprysowate
       cypryśnik
       cypryśniki
@@ -10422,8 +9522,6 @@ module GameRoomKrowa
       cystotomie
       cystyda
       cystydy
-      cystydy
-      cystydy
       cystyna
       cystyny
       cytadela
@@ -10431,7 +9529,6 @@ module GameRoomKrowa
       cytat
       cytaty
       cytata
-      cytaty
       cytoblast
       cytoblasty
       cytochemia
@@ -10454,12 +9551,9 @@ module GameRoomKrowa
       cytrony
       cytrus
       cytrusy
-      cytrusy
-      cytrusy
       cytryn
       cytryny
       cytryna
-      cytryny
       cytrynada
       cytrynady
       cytrynek
@@ -10467,7 +9561,6 @@ module GameRoomKrowa
       cytrynian
       cytryniany
       cytrynka
-      cytrynki
       cytrynowiec
       cytrynowce
       cytrynówka
@@ -10492,14 +9585,10 @@ module GameRoomKrowa
       cywilizatorzy
       cywilizowanie
       cywilizowania
-      cywilizowanie
-      cywilizowania
       cyzelator
       cyzelatorzy
       cyzelatura
       cyzelatury
-      cyzelernia
-      cyzelernie
       cyzelernia
       cyzelernie
       cyzelowanie
@@ -10549,7 +9638,6 @@ module GameRoomKrowa
       czapla
       czaple
       czaplowate
-      czaplowate
       czapnictwo
       czapnictwa
       czapnik
@@ -10559,7 +9647,6 @@ module GameRoomKrowa
       czar
       czary
       czara
-      czary
       czarcikęs
       czarcikęsy
       czarcikęsik
@@ -10591,8 +9678,6 @@ module GameRoomKrowa
       czarnuch
       czarnuchy
       czarnucha
-      czarnuchy
-      czarnuchowate
       czarnuchowate
       czarnula
       czarnule
@@ -10612,7 +9697,6 @@ module GameRoomKrowa
       czarownicy
       czart
       czarci
-      czart
       czarty
       czartawa
       czartawy
@@ -10626,8 +9710,6 @@ module GameRoomKrowa
       czartyzmy
       czaruś
       czarusie
-      czary
-      czary
       czas
       czasy
       czasomierz
@@ -10643,9 +9725,7 @@ module GameRoomKrowa
       czaszka
       czaszki
       czaszkowce
-      czaszkowce
       czaszkowiec
-      czaszkowce
       czata
       czaty
       czatowanie
@@ -10676,13 +9756,9 @@ module GameRoomKrowa
       czechizmy
       czechizowanie
       czechizowania
-      czechizowanie
-      czechizowania
       czeczota
       czeczoty
       czeczotka
-      czeczotki
-      czeczotki
       czeczotki
       czek
       czeki
@@ -10708,11 +9784,9 @@ module GameRoomKrowa
       czelności
       czeluść
       czeluście
-      czeluść
       czeluści
       czempion
       czempioni
-      czempion
       czempiony
       czempionka
       czempionki
@@ -10729,7 +9803,6 @@ module GameRoomKrowa
       czepienie
       czepienia
       czepigi
-      czepigi
       czepliwość
       czepliwości
       czerecha
@@ -10744,10 +9817,6 @@ module GameRoomKrowa
       czereśnie
       czerkies
       czerkiesy
-      czerkies
-      czerkiesy
-      czerkieska
-      czerkieski
       czerkieska
       czerkieski
       czermień
@@ -10762,8 +9831,6 @@ module GameRoomKrowa
       czernidła
       czerniec
       czerńce
-      czernienie
-      czernienia
       czernienie
       czernienia
       czernina
@@ -10791,29 +9858,20 @@ module GameRoomKrowa
       czerw
       czerwie
       czerwce
-      czerwce
       czerwczyk
       czerwczyki
       czerwica
       czerwice
       czerwiec
-      czerwce
-      czerwiec
-      czerwce
       czerwienie
       czerwienia
       czerwienienie
       czerwienienia
-      czerwienienie
-      czerwienienia
       czerwień
-      czerwienie
       czerwliwość
       czerwliwości
       czerwonak
       czerwonaki
-      czerwoniec
-      czerwońce
       czerwoniec
       czerwońce
       czerwonka
@@ -10829,13 +9887,10 @@ module GameRoomKrowa
       czesalnie
       czesanie
       czesania
-      czesanie
-      czesania
       czesanka
       czesanki
       czesarka
       czesarki
-      czesne
       czesne
       czesucza
       czesucze
@@ -10856,8 +9911,6 @@ module GameRoomKrowa
       częstotliwość
       częstowanie
       częstowania
-      częstowanie
-      częstowania
       część
       części
       czkanie
@@ -10874,21 +9927,16 @@ module GameRoomKrowa
       człeczyny
       człeczysko
       człeczyska
-      człeczysko
-      człeczyska
       człek
       człekowie
-      człek
       człeki
       człon
       człony
       członek
       członkowie
-      członek
       członki
       członkini
       członkinie
-      członkonogie
       członkonogie
       członkonóg
       członkonogi
@@ -10897,22 +9945,15 @@ module GameRoomKrowa
       członowanie
       członowania
       członowce
-      członowce
       członowiec
-      członowce
       człowieczek
       człowieczki
       człowieczyna
       człowieczyny
       człowieczysko
       człowieczyska
-      człowieczysko
-      człowieczyska
       człowiek
       ludzie
-      człowiek
-      ludzie
-      człowiekowate
       człowiekowate
       czmychanie
       czmychania
@@ -10920,8 +9961,6 @@ module GameRoomKrowa
       czmychnięcia
       czochra
       czochry
-      czochranie
-      czochrania
       czochranie
       czochrania
       czołg
@@ -10988,12 +10027,8 @@ module GameRoomKrowa
       czubatki
       czubek
       czubki
-      czubek
-      czubki
       czubienie
       czubienia
-      czucie
-      czucia
       czucie
       czucia
       czujka
@@ -11006,19 +10041,13 @@ module GameRoomKrowa
       czulenia
       czułek
       czułki
-      czułki
-      czułki
-      czułkowce
       czułkowce
       czułkowiec
-      czułkowce
-      czułostki
       czułostki
       czułostkowość
       czułości
       czułościach
       czułość
-      czułości
       czupiradło
       czupiradła
       czupryna
@@ -11037,17 +10066,12 @@ module GameRoomKrowa
       czwartaczki
       czwartak
       czwartacy
-      czwartak
-      czwartaki
-      czwartak
       czwartaki
       czwartek
       czwartki
       czwartorzęd
       czwartorzędy
       czworaczki
-      czworaczki
-      czworaki
       czworaki
       czworobok
       czworoboki
@@ -11058,11 +10082,8 @@ module GameRoomKrowa
       czworomian
       czworomiany
       czworonogi
-      czworonogi
-      czworonogie
       czworonogie
       czworonóg
-      czworonogi
       czworościan
       czworościany
       czwóra
@@ -11086,8 +10107,6 @@ module GameRoomKrowa
       czyn
       czyny
       czynel
-      czynele
-      czynele
       czynele
       czynienie
       czynienia
@@ -11117,8 +10136,6 @@ module GameRoomKrowa
       czyszczalnie
       czyszczenie
       czyszczenia
-      czyszczenie
-      czyszczenia
       czyścica
       czyścice
       czyściciel
@@ -11128,11 +10145,9 @@ module GameRoomKrowa
       czyścioch
       czyściochy
       czyściocha
-      czyściochy
       czyścioszek
       czyścioszki
       czyścioszka
-      czyścioszki
       czyściwo
       czyściwa
       czytanie
@@ -11161,8 +10176,6 @@ module GameRoomKrowa
       ćmy
       ćmienie
       ćmienia
-      ćmienie
-      ćmienia
       ćpanie
       ćpania
       ćwiarteczka
@@ -11174,9 +10187,7 @@ module GameRoomKrowa
       ćwiartuchna
       ćwiartuchny
       ćwiczenia
-      ćwiczenia
       ćwiczenie
-      ćwiczenia
       ćwieczek
       ćwieczki
       ćwiek
@@ -11213,8 +10224,6 @@ module GameRoomKrowa
       dachówczarki
       dachówczarnia
       dachówczarnie
-      dachówczarnia
-      dachówczarnie
       dachówka
       dachówki
       dachówkarz
@@ -11237,8 +10246,6 @@ module GameRoomKrowa
       daglezje
       dakron
       dakrony
-      daktyl
-      daktyle
       daktyl
       daktyle
       daktylioteka
@@ -11269,7 +10276,6 @@ module GameRoomKrowa
       dalmatyki
       dalmatyńczyk
       dalmatyńczycy
-      dalmatyńczyk
       dalmatyńczyki
       dalmierz
       dalmierze
@@ -11299,12 +10305,7 @@ module GameRoomKrowa
       dancingi
       dandys
       dandysy
-      dandys
       dandysi
-      dane
-      dane
-      danie
-      dania
       danie
       dania
       daniel
@@ -11318,11 +10319,8 @@ module GameRoomKrowa
       dansing
       dansingi
       dań
-      danie
       dar
       dary
-      darcie
-      darcia
       darcie
       darcia
       darczyńca
@@ -11365,12 +10363,8 @@ module GameRoomKrowa
       datiwy
       datowanie
       datowania
-      datowanie
-      datowania
       datownik
       datowniki
-      dawanie
-      dawania
       dawanie
       dawania
       dawca
@@ -11406,11 +10400,8 @@ module GameRoomKrowa
       dąsanie
       dąsania
       dąsy
-      dąsy
-      dążenia
       dążenia
       dążenie
-      dążenia
       dążność
       dążności
       dbałość
@@ -11421,8 +10412,6 @@ module GameRoomKrowa
       debaty
       debatowanie
       debatowania
-      debel
-      deble
       debel
       deble
       debet
@@ -11461,8 +10450,6 @@ module GameRoomKrowa
       dechy
       decybel
       decybele
-      decydowanie
-      decydowania
       decydowanie
       decydowania
       decygram
@@ -11552,8 +10539,6 @@ module GameRoomKrowa
       deformacje
       deformowanie
       deformowania
-      deformowanie
-      deformowania
       defraudacja
       defraudacje
       defraudant
@@ -11564,8 +10549,6 @@ module GameRoomKrowa
       degeneracje
       degenerat
       degeneraci
-      degenerowanie
-      degenerowania
       degenerowanie
       degenerowania
       deglomeracja
@@ -11599,7 +10582,6 @@ module GameRoomKrowa
       dek
       deki
       deka
-      deki
       dekabrysta
       dekabryści
       dekada
@@ -11659,12 +10641,8 @@ module GameRoomKrowa
       deklaratywizm
       deklarowanie
       deklarowania
-      deklarowanie
-      deklarowania
       deklasacja
       deklasacje
-      deklasowanie
-      deklasowania
       deklasowanie
       deklasowania
       deklinacja
@@ -11673,8 +10651,6 @@ module GameRoomKrowa
       deklinatory
       deklinometr
       deklinometry
-      deklinowanie
-      deklinowania
       deklinowanie
       deklinowania
       dekoder
@@ -11704,15 +10680,11 @@ module GameRoomKrowa
       dekoratorki
       dekoratornia
       dekoratornie
-      dekoratornia
-      dekoratornie
       dekoratorstwo
       dekoratorstwa
       dekoratywność
       dekorowanie
       dekorowania
-      dekowanie
-      dekowania
       dekowanie
       dekowania
       dekownik
@@ -11721,7 +10693,6 @@ module GameRoomKrowa
       dekrety
       dekretacja
       dekretacje
-      dekretalia
       dekretalia
       dekretowanie
       dekretowania
@@ -11745,7 +10716,6 @@ module GameRoomKrowa
       delektowania
       delfin
       delfini
-      delfin
       delfiny
       delfinista
       delfiniści
@@ -11758,12 +10728,9 @@ module GameRoomKrowa
       deliberowanie
       deliberowania
       delicje
-      delicje
       delikacik
       delikaciki
       delikates
-      delikatesy
-      delikatesy
       delikatesy
       delikatnienie
       delikatnienia
@@ -11791,8 +10758,6 @@ module GameRoomKrowa
       demarkacje
       demaskator
       demaskatorzy
-      demaskowanie
-      demaskowania
       demaskowanie
       demaskowania
       demencja
@@ -11890,8 +10855,6 @@ module GameRoomKrowa
       dendryty
       denerwowanie
       denerwowania
-      denerwowanie
-      denerwowania
       deniwelacja
       deniwelacje
       denko
@@ -11900,9 +10863,6 @@ module GameRoomKrowa
       dennice
       dennik
       denniki
-      dennik
-      denniki
-      dennikowate
       dennikowate
       denotacja
       denotacje
@@ -11965,8 +10925,6 @@ module GameRoomKrowa
       deprawatorki
       deprawowanie
       deprawowania
-      deprawowanie
-      deprawowania
       deprecjacja
       deprecjacje
       depresja
@@ -11994,10 +10952,8 @@ module GameRoomKrowa
       derbistka
       derbistki
       derby
-      derby
       derenina
       dereniny
-      dereniowate
       dereniowate
       dereniówka
       dereniówki
@@ -12017,15 +10973,9 @@ module GameRoomKrowa
       dermy
       dermatofit
       dermatofity
-      dermatofity
-      dermatofity
       dermatofityd
       dermatofitydy
-      dermatofitydy
-      dermatofitydy
       dermatoglif
-      dermatoglify
-      dermatoglify
       dermatoglify
       dermatoid
       dermatoidy
@@ -12065,7 +11015,6 @@ module GameRoomKrowa
       desantowcy
       descendent
       descendenci
-      descendent
       descendenty
       deseczka
       deseczki
@@ -12082,8 +11031,6 @@ module GameRoomKrowa
       deser
       desery
       deska
-      deski
-      deski
       deski
       deskowanie
       deskowania
@@ -12120,14 +11067,10 @@ module GameRoomKrowa
       destrukcje
       destrukt
       destrukty
-      destrukty
-      destrukty
       destylacja
       destylacje
       destylarka
       destylarki
-      destylarnia
-      destylarnie
       destylarnia
       destylarnie
       destylat
@@ -12138,7 +11081,6 @@ module GameRoomKrowa
       destylowania
       desulfitacja
       desulfitacje
-      desusy
       desusy
       desygnacja
       desygnacje
@@ -12191,7 +11133,6 @@ module GameRoomKrowa
       determinant
       determinanty
       determinanta
-      determinanty
       determinista
       determiniści
       determinizm
@@ -12214,8 +11155,6 @@ module GameRoomKrowa
       dewaluacje
       dewaluowanie
       dewaluowania
-      dewaluowanie
-      dewaluowania
       dewastacja
       dewastacje
       dewastator
@@ -12234,11 +11173,8 @@ module GameRoomKrowa
       dewizki
       dewizowiec
       dewizowcy
-      dewizy
-      dewizy
       dewocja
       dewocje
-      dewocjonalia
       dewocjonalia
       dewolucja
       dewolucje
@@ -12281,7 +11217,6 @@ module GameRoomKrowa
       dezynfekcje
       dezynfektor
       dezynfektorzy
-      dezynfektor
       dezynfektory
       dezynsekcja
       dezynsekcje
@@ -12299,8 +11234,6 @@ module GameRoomKrowa
       dębiny
       dębniak
       dębniaki
-      dębniak
-      dębniaki
       dęciak
       dęciaki
       dęcie
@@ -12315,10 +11248,7 @@ module GameRoomKrowa
       diabelstwa
       diabeł
       diabli
-      diabeł
       diabły
-      diabełek
-      diabełki
       diabełek
       diabełki
       diabetolog
@@ -12394,8 +11324,6 @@ module GameRoomKrowa
       dialogi
       diamencik
       diamenciki
-      diamencik
-      diamenciki
       diament
       diamenty
       diamentowanie
@@ -12414,14 +11342,11 @@ module GameRoomKrowa
       diaskopy
       diaspora
       diaspory
-      diaspory
-      diaspory
       diastaza
       diastazy
       diastem
       diastemy
       diastema
-      diastemy
       diatermia
       diatermie
       diateza
@@ -12436,7 +11361,6 @@ module GameRoomKrowa
       diazotypie
       dichroizm
       dichroizmy
-      didaskalia
       didaskalia
       diecezja
       diecezje
@@ -12458,15 +11382,11 @@ module GameRoomKrowa
       dietetyki
       dietka
       dietki
-      diety
-      diety
       digitalis
       digitalisy
       dinar
       dinary
       dinozaur
-      dinozaury
-      dinozaury
       dinozaury
       dintojra
       dintojry
@@ -12490,8 +11410,6 @@ module GameRoomKrowa
       diploidy
       diploidalność
       diplokok
-      diplokoki
-      diplokoki
       diplokoki
       diplopia
       diplopie
@@ -12521,8 +11439,6 @@ module GameRoomKrowa
       dławice
       dławiec
       dławce
-      dławienie
-      dławienia
       dławienie
       dławienia
       dławik
@@ -12560,10 +11476,8 @@ module GameRoomKrowa
       długopłetwiec
       długopłetwce
       długoskrzydłe
-      długoskrzydłe
       długosz
       długosze
-      długoszowate
       długoszowate
       długoszpon
       długoszpony
@@ -12611,7 +11525,6 @@ module GameRoomKrowa
       dniówka
       dniówki
       dno
-      dna
       doba
       doby
       dobarwianie
@@ -12622,8 +11535,6 @@ module GameRoomKrowa
       dobermany
       dobicie
       dobicia
-      dobicie
-      dobicia
       dobieg
       dobiegi
       dobieganie
@@ -12632,14 +11543,9 @@ module GameRoomKrowa
       dobiegnięcia
       dobieranie
       dobierania
-      dobieranie
-      dobierania
       dobijak
       dobijaki
       dobijakowate
-      dobijakowate
-      dobijanie
-      dobijania
       dobijanie
       dobijania
       dobitka
@@ -12651,19 +11557,12 @@ module GameRoomKrowa
       dobór
       dobory
       dobra
-      dobra
       dobranie
       dobrania
-      dobranie
-      dobrania
-      dobre
       dobre
       dobrnięcie
       dobrnięcia
       dobro
-      dobra
-      dobro
-      dobra
       dobrobyt
       dobrobyty
       dobroczynność
@@ -12690,8 +11589,6 @@ module GameRoomKrowa
       dobudówki
       dobudzenie
       dobudzenia
-      dobudzenie
-      dobudzenia
       dobycie
       dobycia
       dobytek
@@ -12714,10 +11611,6 @@ module GameRoomKrowa
       dochodzenia
       dochowanie
       dochowania
-      dochowanie
-      dochowania
-      dochowywanie
-      dochowywania
       dochowywanie
       dochowywania
       dochód
@@ -12742,8 +11635,6 @@ module GameRoomKrowa
       docieraki
       docieranie
       docierania
-      docieranie
-      docierania
       docierarka
       docierarki
       docięcie
@@ -12758,16 +11649,10 @@ module GameRoomKrowa
       dociskacze
       dociskanie
       dociskania
-      dociskanie
-      dociskania
-      dociśnięcie
-      dociśnięcia
       dociśnięcie
       dociśnięcia
       docucenie
       docucenia
-      doczekanie
-      doczekania
       doczekanie
       doczekania
       doczekiwanie
@@ -12788,10 +11673,6 @@ module GameRoomKrowa
       doczyszczenia
       doczytanie
       doczytania
-      doczytanie
-      doczytania
-      doczytywanie
-      doczytywania
       doczytywanie
       doczytywania
       dodajna
@@ -12828,8 +11709,6 @@ module GameRoomKrowa
       dogi
       dogadanie
       dogadania
-      dogadywanie
-      dogadywania
       dogadywanie
       dogadywania
       dogadzanie
@@ -12891,12 +11770,8 @@ module GameRoomKrowa
       dogorywania
       dogotowanie
       dogotowania
-      dogotowanie
-      dogotowania
       dogotowywacz
       dogotowywacze
-      dogotowywanie
-      dogotowywania
       dogotowywanie
       dogotowywania
       dogranie
@@ -12911,18 +11786,10 @@ module GameRoomKrowa
       dogryzienia
       dogrzanie
       dogrzania
-      dogrzanie
-      dogrzania
-      dogrzebywanie
-      dogrzebywania
       dogrzebywanie
       dogrzebywania
       dogrzewanie
       dogrzewania
-      dogrzewanie
-      dogrzewania
-      dohodowanie
-      dohodowania
       dohodowanie
       dohodowania
       doholowanie
@@ -12957,10 +11824,6 @@ module GameRoomKrowa
       doki
       dokarmianie
       dokarmiania
-      dokarmianie
-      dokarmiania
-      dokarmienie
-      dokarmienia
       dokarmienie
       dokarmienia
       dokazanie
@@ -12975,8 +11838,6 @@ module GameRoomKrowa
       doklejenia
       dokładanie
       dokładania
-      dokładanie
-      dokładania
       dokładka
       dokładki
       dokładność
@@ -12985,12 +11846,8 @@ module GameRoomKrowa
       dokłosia
       dokonanie
       dokonania
-      dokonanie
-      dokonania
       dokonaność
       dokonaności
-      dokonywanie
-      dokonywania
       dokonywanie
       dokonywania
       dokończanie
@@ -12999,10 +11856,6 @@ module GameRoomKrowa
       dokończenia
       dokopanie
       dokopania
-      dokopanie
-      dokopania
-      dokopywanie
-      dokopywania
       dokopywanie
       dokopywania
       dokowanie
@@ -13023,10 +11876,6 @@ module GameRoomKrowa
       dokrojenia
       dokształcanie
       dokształcania
-      dokształcanie
-      dokształcania
-      dokształcenie
-      dokształcenia
       dokształcenie
       dokształcenia
       doktor
@@ -13035,7 +11884,6 @@ module GameRoomKrowa
       doktoranci
       doktorat
       doktoraty
-      doktorostwo
       doktorostwo
       doktorowa
       doktorowe
@@ -13059,8 +11907,6 @@ module GameRoomKrowa
       dokumentacje
       dokumentalizm
       dokumentaryzm
-      dokumenty
-      dokumenty
       dokupienie
       dokupienia
       dokupowanie
@@ -13103,10 +11949,6 @@ module GameRoomKrowa
       dolichocefale
       doliczanie
       doliczania
-      doliczanie
-      doliczania
-      doliczenie
-      doliczenia
       doliczenie
       doliczenia
       dolina
@@ -13131,10 +11973,6 @@ module GameRoomKrowa
       doładowywania
       dołączanie
       dołączania
-      dołączanie
-      dołączania
-      dołączenie
-      dołączenia
       dołączenie
       dołączenia
       dołeczek
@@ -13145,8 +11983,6 @@ module GameRoomKrowa
       dołowania
       dołownik
       dołowniki
-      dołożenie
-      dołożenia
       dołożenie
       dołożenia
       dom
@@ -13169,8 +12005,6 @@ module GameRoomKrowa
       domejkity
       domek
       domki
-      domeldowanie
-      domeldowania
       domeldowanie
       domeldowania
       domena
@@ -13223,10 +12057,6 @@ module GameRoomKrowa
       domownicy
       domówienie
       domówienia
-      domówienie
-      domówienia
-      domycie
-      domycia
       domycie
       domycia
       domykanie
@@ -13235,18 +12065,12 @@ module GameRoomKrowa
       domysły
       domyślanie
       domyślania
-      domyślanie
-      domyślania
-      domyślenie
-      domyślenia
       domyślenie
       domyślenia
       domyślnik
       domyślniki
       domyślność
       domyślności
-      domywanie
-      domywania
       domywanie
       domywania
       donaszanie
@@ -13258,9 +12082,7 @@ module GameRoomKrowa
       doniczka
       doniczki
       doniczkowce
-      doniczkowce
       doniczkowiec
-      doniczkowce
       doniesienie
       doniesienia
       doniosłość
@@ -13289,20 +12111,12 @@ module GameRoomKrowa
       donżuanerie
       dopadanie
       dopadania
-      dopadanie
-      dopadania
-      dopadnięcie
-      dopadnięcia
       dopadnięcie
       dopadnięcia
       dopalacz
       dopalacze
       dopalanie
       dopalania
-      dopalanie
-      dopalania
-      dopalenie
-      dopalenia
       dopalenie
       dopalenia
       dopasanie
@@ -13311,36 +12125,20 @@ module GameRoomKrowa
       dopasienia
       dopasowanie
       dopasowania
-      dopasowanie
-      dopasowania
-      dopasowywanie
-      dopasowywania
       dopasowywanie
       dopasowywania
       dopatrywanie
       dopatrywania
-      dopatrywanie
-      dopatrywania
-      dopatrzenie
-      dopatrzenia
       dopatrzenie
       dopatrzenia
       dopchanie
       dopchania
-      dopchanie
-      dopchania
-      dopchnięcie
-      dopchnięcia
       dopchnięcie
       dopchnięcia
       dopełniacz
       dopełniacze
       dopełnianie
       dopełniania
-      dopełnianie
-      dopełniania
-      dopełnienie
-      dopełnienia
       dopełnienie
       dopełnienia
       dopełzanie
@@ -13355,24 +12153,16 @@ module GameRoomKrowa
       dopicia
       dopieczenie
       dopieczenia
-      dopieczenie
-      dopieczenia
-      dopiekanie
-      dopiekania
       dopiekanie
       dopiekania
       dopieranie
       dopierania
       dopięcie
       dopięcia
-      dopięcie
-      dopięcia
       dopijanie
       dopijania
       dopilnowanie
       dopilnowania
-      dopinanie
-      dopinania
       dopinanie
       dopinania
       doping
@@ -13413,32 +12203,18 @@ module GameRoomKrowa
       dopożyczenia
       dopracowanie
       dopracowania
-      dopracowanie
-      dopracowania
       dopranie
       doprania
       dopraszanie
       dopraszania
-      dopraszanie
-      dopraszania
-      doprawianie
-      doprawiania
       doprawianie
       doprawiania
       doprawienie
       doprawienia
-      doprawienie
-      doprawienia
-      doproszenie
-      doproszenia
       doproszenie
       doproszenia
       doprowadzanie
       doprowadzania
-      doprowadzanie
-      doprowadzania
-      doprowadzenie
-      doprowadzenia
       doprowadzenie
       doprowadzenia
       doprzędzenie
@@ -13453,26 +12229,14 @@ module GameRoomKrowa
       dopusty
       dopuszczanie
       dopuszczania
-      dopuszczanie
-      dopuszczania
-      dopuszczenie
-      dopuszczenia
       dopuszczenie
       dopuszczenia
       dopychanie
       dopychania
-      dopychanie
-      dopychania
-      dopytanie
-      dopytania
       dopytanie
       dopytania
       dopytywanie
       dopytywania
-      dopytywanie
-      dopytywania
-      dorabianie
-      dorabiania
       dorabianie
       dorabiania
       dorachowanie
@@ -13503,8 +12267,6 @@ module GameRoomKrowa
       dorobki
       dorobienie
       dorobienia
-      dorobienie
-      dorobienia
       dorobkiewicz
       dorobkiewicze
       dorodność
@@ -13532,9 +12294,6 @@ module GameRoomKrowa
       dorsz
       dorsze
       dorszowate
-      dorszowate
-      dorwanie
-      dorwania
       dorwanie
       dorwania
       dorysowanie
@@ -13549,10 +12308,6 @@ module GameRoomKrowa
       dorzeczności
       dorzucanie
       dorzucania
-      dorzucanie
-      dorzucania
-      dorzucenie
-      dorzucenia
       dorzucenie
       dorzucenia
       dorzynanie
@@ -13571,8 +12326,6 @@ module GameRoomKrowa
       doschnięcia
       dosiadanie
       dosiadania
-      dosiadanie
-      dosiadania
       dosiadywanie
       dosiadywania
       dosiedzenie
@@ -13587,8 +12340,6 @@ module GameRoomKrowa
       doskoczenia
       doskok
       doskoki
-      doskonalenie
-      doskonalenia
       doskonalenie
       doskonalenia
       doskonałość
@@ -13609,10 +12360,6 @@ module GameRoomKrowa
       dosłuchiwania
       dosługiwanie
       dosługiwania
-      dosługiwanie
-      dosługiwania
-      dosłużenie
-      dosłużenia
       dosłużenie
       dosłużenia
       dosłyszenie
@@ -13621,8 +12368,6 @@ module GameRoomKrowa
       dosolenia
       dospanie
       dospania
-      dostanie
-      dostania
       dostanie
       dostania
       dostarczanie
@@ -13636,16 +12381,10 @@ module GameRoomKrowa
       dostawy
       dostawanie
       dostawania
-      dostawanie
-      dostawania
       dostawca
       dostawcy
       dostawianie
       dostawiania
-      dostawianie
-      dostawiania
-      dostawienie
-      dostawienia
       dostawienie
       dostawienia
       dostawka
@@ -13666,14 +12405,8 @@ module GameRoomKrowa
       dostojności
       dostosowanie
       dostosowania
-      dostosowanie
-      dostosowania
       dostrajanie
       dostrajania
-      dostrajanie
-      dostrajania
-      dostrojenie
-      dostrojenia
       dostrojenie
       dostrojenia
       dostrzegalnia
@@ -13708,18 +12441,12 @@ module GameRoomKrowa
       dosyty
       doszkalanie
       doszkalania
-      doszkalanie
-      doszkalania
-      doszkolenie
-      doszkolenia
       doszkolenie
       doszkolenia
       doszlifowanie
       doszlifowania
       doszlusowanie
       doszlusowania
-      doszorowanie
-      doszorowania
       doszorowanie
       doszorowania
       dosztukowanie
@@ -13752,26 +12479,16 @@ module GameRoomKrowa
       dotacje
       dotarcie
       dotarcia
-      dotarcie
-      dotarcia
-      dotknięcie
-      dotknięcia
       dotknięcie
       dotknięcia
       dotlenianie
       dotleniania
-      dotlenianie
-      dotleniania
-      dotlenienie
-      dotlenienia
       dotlenienie
       dotlenienia
       dotłaczanie
       dotłaczania
       dotłoczenie
       dotłoczenia
-      dotłuczenie
-      dotłuczenia
       dotłuczenie
       dotłuczenia
       dotowanie
@@ -13794,14 +12511,8 @@ module GameRoomKrowa
       dotykalności
       dotykanie
       dotykania
-      dotykanie
-      dotykania
       douczanie
       douczania
-      douczanie
-      douczania
-      douczenie
-      douczenia
       douczenie
       douczenia
       doważanie
@@ -13812,10 +12523,6 @@ module GameRoomKrowa
       dowcipy
       dowcipas
       dowcipasy
-      dowcipas
-      dowcipasy
-      dowcipasek
-      dowcipaski
       dowcipasek
       dowcipaski
       dowcipkowanie
@@ -13830,22 +12537,14 @@ module GameRoomKrowa
       dowiązywania
       dowiedzenie
       dowiedzenia
-      dowiedzenie
-      dowiedzenia
       dowiercanie
       dowiercania
-      dowiercanie
-      dowiercania
-      dowiercenie
-      dowiercenia
       dowiercenie
       dowiercenia
       dowierzchnia
       dowierzchnie
       dowiezienie
       dowiezienia
-      dowleczenie
-      dowleczenia
       dowleczenie
       dowleczenia
       dowodzenie
@@ -13866,10 +12565,6 @@ module GameRoomKrowa
       dozy
       dozbrajanie
       dozbrajania
-      dozbrajanie
-      dozbrajania
-      dozbrojenie
-      dozbrojenia
       dozbrojenie
       dozbrojenia
       doznanie
@@ -13923,17 +12618,12 @@ module GameRoomKrowa
       dożynanie
       dożynania
       dożynki
-      dożynki
       dożywalność
       dożywalności
       dożywanie
       dożywania
       dożywianie
       dożywiania
-      dożywianie
-      dożywiania
-      dożywienie
-      dożywienia
       dożywienie
       dożywienia
       dożywocie
@@ -13960,7 +12650,6 @@ module GameRoomKrowa
       dragi
       dragon
       dragoni
-      dragon
       dragony
       dragonia
       dragonie
@@ -14000,8 +12689,6 @@ module GameRoomKrowa
       drapalnie
       drapanie
       drapania
-      drapanie
-      drapania
       draparka
       draparki
       draperia
@@ -14018,16 +12705,10 @@ module GameRoomKrowa
       drapieżności
       drapnięcie
       drapnięcia
-      drapnięcie
-      drapnięcia
-      drapowanie
-      drapowania
       drapowanie
       drapowania
       drastyczność
       drastyczności
-      draśnięcie
-      draśnięcia
       draśnięcie
       draśnięcia
       dratwa
@@ -14084,10 +12765,6 @@ module GameRoomKrowa
       drewienka
       drewniak
       drewniaki
-      drewniak
-      drewniaki
-      drewniaki
-      drewniaki
       drewnienie
       drewnienia
       drewno
@@ -14096,8 +12773,6 @@ module GameRoomKrowa
       drewnowce
       drezyna
       drezyny
-      dręczenie
-      dręczenia
       dręczenie
       dręczenia
       dręczyciel
@@ -14116,7 +12791,6 @@ module GameRoomKrowa
       drgalnice
       drganie
       drgania
-      drgawki
       drgawki
       drgnienie
       drgnienia
@@ -14148,8 +12822,6 @@ module GameRoomKrowa
       drobiony
       drobione
       drobne
-      drobne
-      drobniaki
       drobniaki
       drobnica
       drobnice
@@ -14162,9 +12834,7 @@ module GameRoomKrowa
       drobność
       drobności
       drobnoustroje
-      drobnoustroje
       drobnoustrój
-      drobnoustroje
       droczenie
       droczenia
       droga
@@ -14173,7 +12843,6 @@ module GameRoomKrowa
       drogerie
       drogocenności
       drogocenność
-      drogocenności
       drogomierz
       drogomierze
       drogomistrz
@@ -14191,7 +12860,6 @@ module GameRoomKrowa
       drop
       dropie
       dropsy
-      dropsy
       drozd
       drozdy
       drozofila
@@ -14202,9 +12870,6 @@ module GameRoomKrowa
       drożdżaki
       drożdżarnia
       drożdżarnie
-      drożdżarnia
-      drożdżarnie
-      drożdże
       drożdże
       drożdżowanie
       drożdżowania
@@ -14214,8 +12879,6 @@ module GameRoomKrowa
       drożdżówki
       drożdżyca
       drożdżyce
-      drożenie
-      drożenia
       drożenie
       drożenia
       drożność
@@ -14229,7 +12892,6 @@ module GameRoomKrowa
       drób
       drobiu
       dróbki
-      dróbki
       dróżka
       dróżki
       dróżniczka
@@ -14238,8 +12900,6 @@ module GameRoomKrowa
       dróżnicy
       druciak
       druciaki
-      druciarnia
-      druciarnie
       druciarnia
       druciarnie
       druciarstwo
@@ -14254,7 +12914,6 @@ module GameRoomKrowa
       druczki
       drugoklasista
       drugoklasiści
-      drugoroczniak
       drugoroczniak
       drugorzędność
       druh
@@ -14273,13 +12932,10 @@ module GameRoomKrowa
       drukarki
       drukarnia
       drukarnie
-      drukarnia
-      drukarnie
       drukarstwo
       drukarstwa
       drukarz
       drukarze
-      drukowane
       drukowane
       drukowanie
       drukowania
@@ -14287,16 +12943,12 @@ module GameRoomKrowa
       drumle
       drumlin
       drumliny
-      drumliny
-      drumliny
       drut
       druty
       drutowanie
       drutowania
       drutowce
-      drutowce
       drutowiec
-      drutowce
       drutownia
       drutownie
       drutownica
@@ -14318,7 +12970,6 @@ module GameRoomKrowa
       drużynowy
       drużynowi
       drwa
-      drwa
       drwal
       drwale
       drwalka
@@ -14329,8 +12980,6 @@ module GameRoomKrowa
       drwalnictwa
       drwalnik
       drwalniki
-      drwalniki
-      drwalniki
       drwienie
       drwienia
       drwina
@@ -14339,7 +12988,6 @@ module GameRoomKrowa
       drwinki
       drwionek
       drwionki
-      drwionkowate
       drwionkowate
       dryblas
       dryblasy
@@ -14392,7 +13040,6 @@ module GameRoomKrowa
       drzewiga
       drzewigi
       drzewigowate
-      drzewigowate
       drzewisz
       drzewisze
       drzewko
@@ -14418,7 +13065,6 @@ module GameRoomKrowa
       drzwi
       drzwiach
       drzwiczki
-      drzwiczki
       drżączka
       drżączki
       drżenie
@@ -14442,9 +13088,7 @@ module GameRoomKrowa
       dubeltówka
       dubeltówki
       dubia
-      dubia
       dubla
-      duble
       dubler
       dublerzy
       dublerka
@@ -14453,7 +13097,6 @@ module GameRoomKrowa
       dublety
       dublowanie
       dublowania
-      duby
       duby
       duch
       duchy
@@ -14470,13 +13113,8 @@ module GameRoomKrowa
       dudek
       dudki
       dudka
-      dudki
-      dudki
-      dudki
       dudnienie
       dudnienia
-      dudy
-      dudy
       dudziarz
       dudziarze
       duet
@@ -14524,7 +13162,6 @@ module GameRoomKrowa
       dupa
       dupy
       duperele
-      duperele
       dupleks
       dupleksy
       duplika
@@ -14537,8 +13174,6 @@ module GameRoomKrowa
       duraluminia
       dureń
       durnie
-      dureń
-      durnie
       durnienie
       durnienia
       durność
@@ -14549,8 +13184,6 @@ module GameRoomKrowa
       durometry
       duroplast
       duroplasty
-      duroplasty
-      duroplasty
       durra
       durry
       durszlak
@@ -14559,15 +13192,8 @@ module GameRoomKrowa
       duryty
       durzenie
       durzenia
-      durzenie
-      durzenia
-      dusery
       dusery
       dusiciel
-      dusiciele
-      dusiciel
-      dusiciele
-      dusiciele
       dusiciele
       dusigrosz
       dusigrosze
@@ -14575,8 +13201,6 @@ module GameRoomKrowa
       dusze
       duszek
       duszki
-      duszenie
-      duszenia
       duszenie
       duszenia
       dusznica
@@ -14593,22 +13217,13 @@ module GameRoomKrowa
       duumwiraty
       dwoinka
       dwoinki
-      dwoinki
-      dwoinki
       dwoistość
       dwoistości
       dwojaczki
-      dwojaczki
-      dwojaczki
-      dwojaczki
       dwojak
-      dwojaki
-      dwojaki
       dwojaki
       dwojarka
       dwojarki
-      dwojenie
-      dwojenia
       dwojenie
       dwojenia
       dworak
@@ -14616,7 +13231,6 @@ module GameRoomKrowa
       dworek
       dworki
       dworka
-      dworki
       dworność
       dworności
       dworowanie
@@ -14662,12 +13276,9 @@ module GameRoomKrowa
       dwuchromiany
       dwucukier
       dwucukry
-      dwucukry
-      dwucukry
       dwuczłonowość
       dwuczub
       dwuczuby
-      dwudyszne
       dwudyszne
       dwudzielność
       dwudzielności
@@ -14698,10 +13309,7 @@ module GameRoomKrowa
       dwukropki
       dwulatek
       dwulatki
-      dwulatek
-      dwulatki
       dwulatka
-      dwulatki
       dwulecie
       dwulecia
       dwulicowiec
@@ -14710,7 +13318,6 @@ module GameRoomKrowa
       dwulicowości
       dwulistnik
       dwulistniki
-      dwuliścienne
       dwuliścienne
       dwumasztowiec
       dwumasztowce
@@ -14727,9 +13334,7 @@ module GameRoomKrowa
       dwunożność
       dwunożności
       dwuparce
-      dwuparce
       dwuparzec
-      dwuparce
       dwupłat
       dwupłaty
       dwupłatowiec
@@ -14740,7 +13345,6 @@ module GameRoomKrowa
       dwupolówki
       dwuprzymierze
       dwuprzymierza
-      dwurożne
       dwurożne
       dwuróg
       dwurogi
@@ -14760,7 +13364,6 @@ module GameRoomKrowa
       dwusieczne
       dwuskibowiec
       dwuskibowce
-      dwuskrzydłe
       dwuskrzydłe
       dwuster
       dwustery
@@ -14791,10 +13394,7 @@ module GameRoomKrowa
       dwutygodnik
       dwutygodniki
       dwuwargowe
-      dwuwargowe
       dwuwęglan
-      dwuwęglany
-      dwuwęglany
       dwuwęglany
       dwuwiersz
       dwuwiersze
@@ -14825,7 +13425,6 @@ module GameRoomKrowa
       dybrach
       dybrachy
       dyby
-      dyby
       dycha
       dychy
       dychawica
@@ -14844,8 +13443,6 @@ module GameRoomKrowa
       dydek
       dydki
       dydelf
-      dydelfy
-      dydelfy
       dydelfy
       dyferencjacja
       dyferencjacje
@@ -14949,14 +13546,11 @@ module GameRoomKrowa
       dymienice
       dymienie
       dymienia
-      dymienie
-      dymienia
       dyminucja
       dyminucje
       dymisja
       dymisje
       dymka
-      dymki
       dymnica
       dymnice
       dymnik
@@ -14970,7 +13564,6 @@ module GameRoomKrowa
       dyn
       dyny
       dyna
-      dyny
       dynamiczność
       dynamiczności
       dynamika
@@ -15004,7 +13597,6 @@ module GameRoomKrowa
       dyngusy
       dynia
       dynie
-      dyniowate
       dyniowate
       dynoda
       dynody
@@ -15041,8 +13633,6 @@ module GameRoomKrowa
       dyrdanie
       dyrdania
       dyrdymałki
-      dyrdymałki
-      dyrdymały
       dyrdymały
       dyrekcja
       dyrekcje
@@ -15052,7 +13642,6 @@ module GameRoomKrowa
       dyrektoriaty
       dyrektorka
       dyrektorki
-      dyrektorostwo
       dyrektorostwo
       dyrektorowa
       dyrektorowe
@@ -15165,8 +13754,6 @@ module GameRoomKrowa
       dyspepsje
       dyspergator
       dyspergatory
-      dyspergatory
-      dyspergatory
       dyspergowanie
       dyspergowania
       dyspersja
@@ -15185,8 +13772,6 @@ module GameRoomKrowa
       dyspozycje
       dyspozytor
       dyspozytorzy
-      dyspozytornia
-      dyspozytornie
       dyspozytornia
       dyspozytornie
       dyspozytura
@@ -15217,15 +13802,12 @@ module GameRoomKrowa
       dystrybucje
       dystrybutor
       dystrybutorzy
-      dystrybutor
       dystrybutory
       dystrykt
       dystrykty
       dystych
       dystychy
       dystynkcja
-      dystynkcje
-      dystynkcje
       dystynkcje
       dysydent
       dysydenci
@@ -15242,9 +13824,7 @@ module GameRoomKrowa
       dyszkant
       dyszkanty
       dyszlowe
-      dyszlowe
       dyszlowy
-      dyszlowe
       dyszolot
       dyszoloty
       dytrochej
@@ -15311,30 +13891,19 @@ module GameRoomKrowa
       dzbanuszki
       dzeolit
       dzeolity
-      dzeolity
-      dzeolity
       dziabanie
       dziabania
-      dziabanie
-      dziabania
-      dziabnięcie
-      dziabnięcia
       dziabnięcie
       dziabnięcia
       dziad
       dziadowie
-      dziad
       dziady
       dziadek
-      dziadkowie
-      dziadkowie
       dziadkowie
       dziadostwo
       dziadostwa
       dziadowanie
       dziadowania
-      dziadowina
-      dziadowiny
       dziadowina
       dziadowiny
       dziadowizna
@@ -15343,10 +13912,6 @@ module GameRoomKrowa
       dziadówki
       dziadunio
       dziaduniowie
-      dziady
-      dziady
-      dziadyga
-      dziadygi
       dziadyga
       dziadygi
       dziadzienie
@@ -15355,8 +13920,6 @@ module GameRoomKrowa
       dziadziny
       dziadzio
       dziadziowie
-      dziadzisko
-      dziadziska
       dziadzisko
       dziadziska
       dziadziuś
@@ -15369,13 +13932,10 @@ module GameRoomKrowa
       działalność
       działalności
       działania
-      działania
       działanie
-      działania
       działka
       działki
       działko
-      działka
       działkowicz
       działkowicze
       działkowiec
@@ -15394,15 +13954,12 @@ module GameRoomKrowa
       dzianety
       dzianie
       dziania
-      dzianie
-      dziania
       dzianina
       dzianiny
       dziarnina
       dziarniny
       dziarskość
       dziarskości
-      dziatki
       dziatki
       dziatwa
       dziatwy
@@ -15411,17 +13968,13 @@ module GameRoomKrowa
       dziąsłowość
       dziąsłowości
       dzicy
-      dzicy
       dzicz
       dzicze
-      dziczek
-      dziczki
       dziczek
       dziczki
       dziczenie
       dziczenia
       dziczka
-      dziczki
       dziczyzna
       dziczyzny
       dzida
@@ -15434,8 +13987,6 @@ module GameRoomKrowa
       dzieciaczki
       dzieciak
       dzieciaki
-      dzieciarnia
-      dzieciarnie
       dzieciarnia
       dzieciarnie
       dzieciątko
@@ -15461,7 +14012,6 @@ module GameRoomKrowa
       dzieciobójca
       dzieciobójcy
       dzieciska
-      dzieciska
       dzieciuch
       dzieciuchy
       dziecko
@@ -15482,15 +14032,12 @@ module GameRoomKrowa
       dziegieć
       dziegcie
       dzieje
-      dzieje
       dziekan
       dziekani
       dziekanat
       dziekanaty
       dzielarka
       dzielarki
-      dzielenie
-      dzielenia
       dzielenie
       dzielenia
       dzielna
@@ -15520,7 +14067,6 @@ module GameRoomKrowa
       dziennikarze
       dzień
       dni
-      dzień
       dnie
       dziergaczka
       dziergaczki
@@ -15545,7 +14091,6 @@ module GameRoomKrowa
       dzierżawienie
       dzierżawienia
       dzierżawne
-      dzierżawne
       dzierżenie
       dzierżenia
       dzierżymorda
@@ -15557,9 +14102,6 @@ module GameRoomKrowa
       dziesiątek
       dziesiątki
       dziesiątka
-      dziesiątki
-      dziesiątki
-      dziesiątki
       dziesięcina
       dziesięciny
       dziesięciobok
@@ -15579,16 +14121,12 @@ module GameRoomKrowa
       dziewczyny
       dziewczynisko
       dziewczyniska
-      dziewczynisko
-      dziewczyniska
       dziewczynka
       dziewczynki
       dzieweczka
       dzieweczki
       dziewiarka
       dziewiarki
-      dziewiarnia
-      dziewiarnie
       dziewiarnia
       dziewiarnie
       dziewiarstwo
@@ -15633,10 +14171,6 @@ module GameRoomKrowa
       dziękowania
       dzik
       dziki
-      dzik
-      dziki
-      dzik
-      dziki
       dzikarz
       dzikarze
       dzikość
@@ -15647,10 +14181,6 @@ module GameRoomKrowa
       dzikuski
       dziobacz
       dziobacze
-      dziobacze
-      dziobacze
-      dziobak
-      dziobaki
       dziobak
       dziobaki
       dziobanie
@@ -15680,7 +14210,6 @@ module GameRoomKrowa
       dzisiejszość
       dzisiejszości
       dziubałkowate
-      dziubałkowate
       dziumdzia
       dziumdzie
       dziupla
@@ -15689,7 +14218,6 @@ module GameRoomKrowa
       dziuplaki
       dziura
       dziury
-      dziurawcowate
       dziurawcowate
       dziurawiec
       dziurawce
@@ -15713,7 +14241,6 @@ module GameRoomKrowa
       dziw
       dziwy
       dziwa
-      dziwy
       dziwactwo
       dziwactwa
       dziwaczenie
@@ -15726,12 +14253,9 @@ module GameRoomKrowa
       dziwadła
       dziwak
       dziwacy
-      dziwak
       dziwaki
       dziwerówka
       dziwerówki
-      dziwienie
-      dziwienia
       dziwienie
       dziwienia
       dziwka
@@ -15741,17 +14265,10 @@ module GameRoomKrowa
       dziwność
       dziwności
       dziwo
-      dziwa
-      dziwoląg
-      dziwolągi
-      dziwoląg
-      dziwolągi
       dziwoląg
       dziwolągi
       dziwonia
       dziwonie
-      dziwotwór
-      dziwotwory
       dziwotwór
       dziwotwory
       dziwowanie
@@ -15760,8 +14277,6 @@ module GameRoomKrowa
       dziwowiska
       dziwożona
       dziwożony
-      dziwy
-      dziwy
       dzwon
       dzwony
       dzwonek
@@ -15773,15 +14288,12 @@ module GameRoomKrowa
       dzwonko
       dzwonka
       dzwonkowate
-      dzwonkowate
       dzwonnica
       dzwonnice
       dzwonnik
       dzwonnicy
       dzyndzyk
       dzyndzyki
-      dźganie
-      dźgania
       dźganie
       dźgania
       dźgnięcie
@@ -15798,8 +14310,6 @@ module GameRoomKrowa
       dźwigi
       dźwiganie
       dźwigania
-      dźwiganie
-      dźwigania
       dźwigar
       dźwigary
       dźwigarka
@@ -15808,8 +14318,6 @@ module GameRoomKrowa
       dźwignie
       dźwignica
       dźwignice
-      dźwignięcie
-      dźwignięcia
       dźwignięcie
       dźwignięcia
       dźwignik
@@ -15832,8 +14340,6 @@ module GameRoomKrowa
       dżerseje
       dżet
       dżety
-      dżety
-      dżety
       dżez
       dżezy
       dżezbend
@@ -15846,7 +14352,6 @@ module GameRoomKrowa
       dżiny
       dżinizm
       dżinizmy
-      dżinsy
       dżinsy
       dżip
       dżipy
@@ -15909,11 +14414,8 @@ module GameRoomKrowa
       echosonda
       echosondy
       ecydia
-      ecydia
-      ecydiospory
       ecydiospory
       ecydium
-      ecydia
       edafon
       edafony
       eden
@@ -15922,14 +14424,10 @@ module GameRoomKrowa
       edometry
       edredon
       edredony
-      edredon
-      edredony
       edukacja
       edukacje
       edukacjonizm
       edukacjonizmy
-      edukowanie
-      edukowania
       edukowanie
       edukowania
       edycja
@@ -15940,7 +14438,6 @@ module GameRoomKrowa
       edylowie
       edytor
       edytorzy
-      edytor
       edytory
       edytorstwo
       edytorstwa
@@ -15968,8 +14465,6 @@ module GameRoomKrowa
       efemery
       efemeryczność
       efemeryda
-      efemerydy
-      efemerydy
       efemerydy
       efemeryzm
       efemeryzmy
@@ -16038,7 +14533,6 @@ module GameRoomKrowa
       egzekutywa
       egzekutywy
       egzekwie
-      egzekwie
       egzekwowanie
       egzekwowania
       egzema
@@ -16073,12 +14567,8 @@ module GameRoomKrowa
       egzotyczności
       egzotyk
       egzotycy
-      egzotyk
-      egzotyki
-      egzotyk
       egzotyki
       egzotyka
-      egzotyki
       egzotyzacja
       egzotyzacje
       egzotyzm
@@ -16107,8 +14597,6 @@ module GameRoomKrowa
       eklektycy
       eklektyzm
       eklektyzmy
-      ekler
-      eklery
       ekler
       eklery
       eklezjologia
@@ -16183,11 +14671,8 @@ module GameRoomKrowa
       ekscerptor
       ekscerptorzy
       ekscesy
-      ekscesy
       ekscytacja
       ekscytacje
-      ekscytowanie
-      ekscytowania
       ekscytowanie
       ekscytowania
       eksfoliacja
@@ -16203,7 +14688,6 @@ module GameRoomKrowa
       ekskawator
       ekskawatory
       eksklamacje
-      eksklamacje
       eksklawa
       eksklawy
       ekskluzywizm
@@ -16211,7 +14695,6 @@ module GameRoomKrowa
       ekskluzywność
       ekskomunika
       ekskomuniki
-      ekskrementy
       ekskrementy
       ekslibris
       ekslibrisy
@@ -16400,8 +14883,6 @@ module GameRoomKrowa
       elaboraty
       elajoplast
       elajoplasty
-      elajoplasty
-      elajoplasty
       elajosom
       elajosomy
       elana
@@ -16416,15 +14897,12 @@ module GameRoomKrowa
       elastile
       elastomer
       elastomery
-      elastomery
-      elastomery
       elastooptyka
       elastooptyki
       elastor
       elastory
       elastyczność
       elastyczności
-      elastyki
       elastyki
       elastyl
       elastyle
@@ -16544,11 +15022,8 @@ module GameRoomKrowa
       elementarność
       elementarz
       elementarze
-      elementy
-      elementy
       elenium
       elenia
-      eleuterie
       eleuterie
       elew
       elewi
@@ -16585,7 +15060,6 @@ module GameRoomKrowa
       elizja
       elizje
       elki
-      elki
       eloksalacja
       eloksalacje
       eloksalowanie
@@ -16608,8 +15082,6 @@ module GameRoomKrowa
       emalierzy
       emaliernia
       emaliernie
-      emaliernia
-      emaliernie
       emaliernik
       emaliernicy
       emalierstwo
@@ -16626,8 +15098,6 @@ module GameRoomKrowa
       emancypacje
       emancypantka
       emancypantki
-      emancypowanie
-      emancypowania
       emancypowanie
       emancypowania
       emanowanie
@@ -16650,8 +15120,6 @@ module GameRoomKrowa
       embriolodzy
       embriologia
       embriologie
-      embrion
-      embriony
       embrion
       embriony
       embriotomia
@@ -16705,8 +15173,6 @@ module GameRoomKrowa
       emocjonalizm
       emocjonalizmy
       emocjonalność
-      emocjonowanie
-      emocjonowania
       emocjonowanie
       emocjonowania
       empiria
@@ -16823,8 +15289,6 @@ module GameRoomKrowa
       entodermy
       entomofag
       entomofagi
-      entomofagi
-      entomofagi
       entomofauna
       entomofauny
       entomogam
@@ -16901,8 +15365,6 @@ module GameRoomKrowa
       epifity
       epifitoza
       epifitozy
-      epifity
-      epifity
       epifonem
       epifonemy
       epifora
@@ -16945,13 +15407,10 @@ module GameRoomKrowa
       epileptycy
       epilit
       epility
-      epility
-      epility
       epilog
       epilogi
       epilowanie
       epilowania
-      epimery
       epimery
       epimorfoza
       epimorfozy
@@ -16999,7 +15458,6 @@ module GameRoomKrowa
       epody
       epoka
       epoki
-      epolety
       epolety
       eponim
       eponimy
@@ -17053,8 +15511,6 @@ module GameRoomKrowa
       erodowania
       eros
       erosy
-      eros
-      erosy
       erotoman
       erotomani
       erotomania
@@ -17064,7 +15520,6 @@ module GameRoomKrowa
       erotyk
       erotyki
       erotyka
-      erotyki
       erotyzm
       erotyzmy
       erozja
@@ -17084,12 +15539,9 @@ module GameRoomKrowa
       erygowanie
       erygowania
       erynie
-      erynie
       erystyka
       erystyki
       erytrocyt
-      erytrocyty
-      erytrocyty
       erytrocyty
       erytromycyna
       erytromycyny
@@ -17203,8 +15655,6 @@ module GameRoomKrowa
       estragony
       estrogen
       estrogeny
-      estrogeny
-      estrogeny
       estryfikacja
       estryfikacje
       estuarium
@@ -17219,7 +15669,6 @@ module GameRoomKrowa
       estymowania
       estywacja
       estywacje
-      esy
       esy
       eszelon
       eszelony
@@ -17253,8 +15702,6 @@ module GameRoomKrowa
       eternity
       eteromania
       eteromanie
-      etery
-      etery
       eteryczność
       eteryczności
       etiolacja
@@ -17359,15 +15806,12 @@ module GameRoomKrowa
       eukaliptusy
       eunuch
       eunuchowie
-      eunuch
       eunuchy
       eunuchoid
       eunuchoidzi
       eunuchoidyzm
       eunuchoidyzmy
       eupatryda
-      eupatrydzi
-      eupatrydzi
       eupatrydzi
       europ
       europy
@@ -17397,14 +15841,10 @@ module GameRoomKrowa
       ewakuanci
       ewakuowanie
       ewakuowania
-      ewakuowanie
-      ewakuowania
       ewaluacja
       ewaluacje
       ewaluowanie
       ewaluowania
-      ewangelia
-      ewangelie
       ewangelia
       ewangelie
       ewangeliarz
@@ -17442,8 +15882,6 @@ module GameRoomKrowa
       ewokowanie
       ewokowania
       ewolucja
-      ewolucje
-      ewolucje
       ewolucje
       ewolucjonista
       ewolucjoniści
@@ -17500,7 +15938,6 @@ module GameRoomKrowa
       facelia
       facelie
       faceliowate
-      faceliowate
       facet
       faceci
       facetka
@@ -17521,10 +15958,6 @@ module GameRoomKrowa
       fadingi
       faeton
       faetony
-      faeton
-      faetony
-      fagas
-      fagasy
       fagas
       fagasy
       fagasostwo
@@ -17547,8 +15980,6 @@ module GameRoomKrowa
       fajczarze
       fajczenie
       fajczenia
-      fajczenie
-      fajczenia
       fajeczka
       fajeczki
       fajerka
@@ -17563,14 +15994,8 @@ module GameRoomKrowa
       fajranty
       fajtanie
       fajtania
-      fajtanie
-      fajtania
       fajtłapa
       fajtłapy
-      fajtłapa
-      fajtłapy
-      fajtnięcie
-      fajtnięcia
       fajtnięcie
       fajtnięcia
       fakcik
@@ -17589,7 +16014,6 @@ module GameRoomKrowa
       faktomontaże
       faktor
       faktorzy
-      faktor
       faktory
       faktoria
       faktorie
@@ -17670,11 +16094,8 @@ module GameRoomKrowa
       fałd
       fałdy
       fałda
-      fałdy
       fałdka
       fałdki
-      fałdowanie
-      fałdowania
       fałdowanie
       fałdowania
       fałdzistka
@@ -17689,8 +16110,6 @@ module GameRoomKrowa
       fałszowania
       fałszywiec
       fałszywcy
-      fałszywiec
-      fałszywcy
       fałszywość
       fałszywości
       fama
@@ -17699,7 +16118,6 @@ module GameRoomKrowa
       familie
       familiarność
       familiarności
-      fanaberie
       fanaberie
       fanatyczka
       fanatyczki
@@ -17710,8 +16128,6 @@ module GameRoomKrowa
       fandango
       fandanga
       fanerofit
-      fanerofity
-      fanerofity
       fanerofity
       fanfara
       fanfary
@@ -17724,7 +16140,6 @@ module GameRoomKrowa
       fanga
       fangi
       fango
-      fanga
       fant
       fanty
       fantasmagoria
@@ -17763,8 +16178,6 @@ module GameRoomKrowa
       farbiarki
       farbiarnia
       farbiarnie
-      farbiarnia
-      farbiarnie
       farbiarstwo
       farbiarstwa
       farbiarz
@@ -17773,8 +16186,6 @@ module GameRoomKrowa
       farbki
       farbkowanie
       farbkowania
-      farbowanie
-      farbowania
       farbowanie
       farbowania
       farbownik
@@ -17802,8 +16213,6 @@ module GameRoomKrowa
       farmer
       farmerzy
       farmerka
-      farmerki
-      farmerki
       farmerki
       farmerstwo
       farmerstwa
@@ -17919,18 +16328,13 @@ module GameRoomKrowa
       fatyganci
       fatygowanie
       fatygowania
-      fatygowanie
-      fatygowania
       faul
       faule
       faulowanie
       faulowania
       faun
       fauny
-      faun
-      fauny
       fauna
-      fauny
       faunista
       fauniści
       faunistyka
@@ -17938,13 +16342,10 @@ module GameRoomKrowa
       faworek
       faworki
       fawory
-      fawory
       faworyt
       faworyci
-      faworyt
       faworyty
       faworyta
-      faworyty
       faworytka
       faworytki
       faworyzacja
@@ -17984,7 +16385,6 @@ module GameRoomKrowa
       feeria
       feerie
       fekalia
-      fekalia
       felc
       felce
       felcowanie
@@ -18022,8 +16422,6 @@ module GameRoomKrowa
       feminizmy
       feminizowanie
       feminizowania
-      feminizowanie
-      feminizowania
       fen
       feny
       fenek
@@ -18032,22 +16430,16 @@ module GameRoomKrowa
       fenigi
       feniks
       feniksy
-      feniks
-      feniksy
       fenogenetyka
       fenogenetyki
       fenokopia
       fenokopie
       fenol
       fenole
-      fenole
-      fenole
       fenolog
       fenolodzy
       fenologia
       fenologie
-      fenomen
-      fenomeny
       fenomen
       fenomeny
       fenomenalista
@@ -18060,18 +16452,14 @@ module GameRoomKrowa
       fenomenologie
       fenoplast
       fenoplasty
-      fenoplasty
-      fenoplasty
       fenotyp
       fenotypy
       ferajna
       ferajny
       ferie
-      ferie
       ferm
       fermy
       ferma
-      fermy
       fermata
       fermaty
       ferment
@@ -18082,8 +16470,6 @@ module GameRoomKrowa
       fermentowania
       fermentownia
       fermentownie
-      fermenty
-      fermenty
       fernambuk
       fernambuki
       ferniko
@@ -18094,8 +16480,6 @@ module GameRoomKrowa
       ferrochromy
       ferroelektryk
       ferrolit
-      ferrolity
-      ferrolity
       ferrolity
       ferromagnetyk
       ferromangan
@@ -18136,9 +16520,6 @@ module GameRoomKrowa
       fezy
       fiakier
       fiakrzy
-      fiakier
-      fiakry
-      fiakier
       fiakry
       fiala
       fiale
@@ -18150,13 +16531,9 @@ module GameRoomKrowa
       fibry
       fibroblast
       fibroblasty
-      fibroblasty
-      fibroblasty
       fibroina
       fibroiny
       fibryla
-      fibryle
-      fibryle
       fibryle
       fibryna
       fibryny
@@ -18171,14 +16548,11 @@ module GameRoomKrowa
       fideizm
       fideizmy
       fidrygałki
-      fidrygałki
       field
       fieldy
       fifka
       fifki
       figa
-      figi
-      figi
       figi
       figiel
       figle
@@ -18241,8 +16615,6 @@ module GameRoomKrowa
       filantropki
       filar
       filary
-      filar
-      filary
       filarek
       filarki
       filareta
@@ -18250,8 +16622,6 @@ module GameRoomKrowa
       filaria
       filarie
       filarioza
-      filariozy
-      filariozy
       filariozy
       filarowanie
       filarowania
@@ -18263,8 +16633,6 @@ module GameRoomKrowa
       filatelistyki
       filc
       filce
-      filcowanie
-      filcowania
       filcowanie
       filcowania
       fildekos
@@ -18366,16 +16734,12 @@ module GameRoomKrowa
       filozofowania
       filtr
       filtry
-      filtr
-      filtry
       filtracja
       filtracje
       filtrat
       filtraty
       filtrator
       filtratory
-      filtrowanie
-      filtrowania
       filtrowanie
       filtrowania
       filumenista
@@ -18393,7 +16757,6 @@ module GameRoomKrowa
       filuterność
       filuterności
       filutka
-      filutki
       finalik
       finaliki
       finalista
@@ -18408,7 +16771,6 @@ module GameRoomKrowa
       finalizowania
       finał
       finały
-      finanse
       finanse
       finansista
       finansiści
@@ -18439,7 +16801,6 @@ module GameRoomKrowa
       fioczek
       fioczki
       fioki
-      fioki
       fiokowanie
       fiokowania
       fiolet
@@ -18452,11 +16813,8 @@ module GameRoomKrowa
       fioły
       fiołeczek
       fiołeczki
-      fiołeczek
-      fiołeczki
       fiołek
       fiołki
-      fiołkowate
       fiołkowate
       fiord
       fiordy
@@ -18494,17 +16852,12 @@ module GameRoomKrowa
       fiskus
       fiskusy
       fistaszki
-      fistaszki
       fistuła
       fistuły
       fiszbin
       fiszbiny
       fiszbinowce
-      fiszbinowce
       fiszbinowiec
-      fiszbinowce
-      fiszbiny
-      fiszbiny
       fiszka
       fiszki
       fitobentos
@@ -18519,11 +16872,7 @@ module GameRoomKrowa
       fitochemie
       fitocyd
       fitocydy
-      fitocydy
-      fitocydy
       fitofag
-      fitofagi
-      fitofagi
       fitofagi
       fitogeografia
       fitogeografie
@@ -18624,7 +16973,6 @@ module GameRoomKrowa
       flamy
       flamand
       flamandowie
-      flamand
       flamandy
       flamandczyzna
       flamandczyzny
@@ -18643,7 +16991,6 @@ module GameRoomKrowa
       flank
       flanki
       flanka
-      flanki
       flankier
       flankierzy
       flankowanie
@@ -18699,8 +17046,6 @@ module GameRoomKrowa
       flegmony
       flejtuch
       flejtuchy
-      flejtuch
-      flejtuchy
       flejtuszek
       flejtuszki
       flek
@@ -18714,7 +17059,6 @@ module GameRoomKrowa
       flesz
       flesze
       flesza
-      flesze
       fleszowanie
       fleszowania
       flet
@@ -18730,7 +17074,6 @@ module GameRoomKrowa
       flint
       flinty
       flinta
-      flinty
       flirciarka
       flirciarki
       flirciarz
@@ -18754,14 +17097,12 @@ module GameRoomKrowa
       fliza
       flizy
       flokeny
-      flokeny
       floks
       floksy
       flokulacja
       flokulacje
       flokulator
       flokulatory
-      flokuły
       flokuły
       flora
       flory
@@ -18771,7 +17112,6 @@ module GameRoomKrowa
       florecistki
       floren
       floreny
-      floresy
       floresy
       floret
       florety
@@ -18814,9 +17154,7 @@ module GameRoomKrowa
       fluorowanie
       fluorowania
       fluorowce
-      fluorowce
       fluorowiec
-      fluorowce
       fluorowodór
       fluorowodory
       fluoryt
@@ -18829,13 +17167,9 @@ module GameRoomKrowa
       fobia
       fobie
       fochy
-      fochy
       fok
       foki
       foka
-      foki
-      foki
-      foki
       fokmaszt
       fokmaszty
       fokreja
@@ -18997,8 +17331,6 @@ module GameRoomKrowa
       formierki
       formiernia
       formiernie
-      formiernia
-      formiernie
       formierstwo
       formierstwa
       formierz
@@ -19009,8 +17341,6 @@ module GameRoomKrowa
       formiści
       formizm
       formizmy
-      formowanie
-      formowania
       formowanie
       formowania
       formownia
@@ -19027,8 +17357,6 @@ module GameRoomKrowa
       fornale
       forniernia
       forniernie
-      forniernia
-      forniernie
       fornir
       forniry
       fornirowanie
@@ -19043,8 +17371,6 @@ module GameRoomKrowa
       forsy
       forsowanie
       forsowania
-      forsowanie
-      forsowania
       forsycja
       forsycje
       forszmak
@@ -19052,7 +17378,6 @@ module GameRoomKrowa
       fort
       forty
       forta
-      forty
       fortalicja
       fortalicje
       forteca
@@ -19071,15 +17396,9 @@ module GameRoomKrowa
       fortunki
       fortyfikacja
       fortyfikacje
-      fortyfikacje
-      fortyfikacje
-      fory
-      fory
       fosa
       fosy
       fosfagen
-      fosfageny
-      fosfageny
       fosfageny
       fosfat
       fosfaty
@@ -19096,15 +17415,12 @@ module GameRoomKrowa
       fosforyczność
       fosforyn
       fosforyny
-      fosforyny
-      fosforyny
       fosforyt
       fosforyty
       fosgen
       fosgeny
       fosgenit
       fosgenity
-      fosylia
       fosylia
       fosylizacja
       fosylizacje
@@ -19311,10 +17627,8 @@ module GameRoomKrowa
       frazeologizm
       frazeologizmy
       frazesy
-      frazesy
       frazowanie
       frazowania
-      frażety
       frażety
       freblówka
       freblówki
@@ -19355,9 +17669,7 @@ module GameRoomKrowa
       frędzelek
       frędzelki
       frędzelka
-      frędzelki
       frędzla
-      frędzle
       fronda
       frondy
       frondowanie
@@ -19390,11 +17702,8 @@ module GameRoomKrowa
       frustraci
       frustrowanie
       frustrowania
-      frustrowanie
-      frustrowania
       fruwanie
       fruwania
-      frycowe
       frycowe
       fryga
       frygi
@@ -19402,36 +17711,24 @@ module GameRoomKrowa
       frygania
       frygijka
       frygijki
-      frygijka
-      frygijki
       frygnięcie
       frygnięcia
-      frykasy
       frykasy
       frykatywność
       frykatywności
       frymarczenie
       frymarczenia
       frytki
-      frytki
       frytura
       frytury
-      frywolitki
       frywolitki
       frywolność
       frywolności
       fryz
       fryzy
-      fryz
-      fryzy
       fryza
-      fryzy
       fryzarnia
       fryzarnie
-      fryzarnia
-      fryzarnie
-      fryzernia
-      fryzernie
       fryzernia
       fryzernie
       fryzjer
@@ -19442,8 +17739,6 @@ module GameRoomKrowa
       fryzjerstwa
       fryzka
       fryzki
-      fryzowanie
-      fryzowania
       fryzowanie
       fryzowania
       fryzura
@@ -19476,8 +17771,6 @@ module GameRoomKrowa
       fugowniki
       fujara
       fujary
-      fujara
-      fujary
       fujareczka
       fujareczki
       fujarka
@@ -19500,11 +17793,7 @@ module GameRoomKrowa
       fulary
       fulwokwas
       fulwokwasy
-      fulwokwasy
-      fulwokwasy
       fumarola
-      fumarole
-      fumarole
       fumarole
       fumator
       fumatory
@@ -19512,11 +17801,8 @@ module GameRoomKrowa
       fumigacje
       fumigant
       fumiganty
-      fumiganty
-      fumiganty
       fumologia
       fumologie
-      fumy
       fumy
       funda
       fundy
@@ -19538,8 +17824,6 @@ module GameRoomKrowa
       fundusze
       fungicyd
       fungicydy
-      fungicydy
-      fungicydy
       funkcja
       funkcje
       funkcjonalizm
@@ -19553,8 +17837,6 @@ module GameRoomKrowa
       funkcyjni
       funktor
       funktory
-      funt
-      funty
       funt
       funty
       fura
@@ -19612,7 +17894,6 @@ module GameRoomKrowa
       furunkuł
       furunkuły
       fusy
-      fusy
       fuszer
       fuszerzy
       fuszerka
@@ -19659,17 +17940,11 @@ module GameRoomKrowa
       futuryzmy
       fuzarioza
       fuzariozy
-      fuzariozy
-      fuzariozy
       fuzel
       fuzle
       fuzja
       fuzje
-      fuzle
-      fuzle
       fuzulina
-      fuzuliny
-      fuzuliny
       fuzuliny
       fuzyjka
       fuzyjki
@@ -19687,7 +17962,6 @@ module GameRoomKrowa
       gabinet
       gabinety
       gable
-      gable
       gablota
       gabloty
       gablotka
@@ -19698,9 +17972,6 @@ module GameRoomKrowa
       gacenia
       gach
       gachy
-      gach
-      gachy
-      gacie
       gacie
       gad
       gady
@@ -19718,8 +17989,6 @@ module GameRoomKrowa
       gadożery
       gadulstwo
       gadulstwa
-      gaduła
-      gaduły
       gaduła
       gaduły
       gadzina
@@ -19743,8 +18012,6 @@ module GameRoomKrowa
       gaj
       gaje
       gaja
-      gaje
-      gajdy
       gajdy
       gajowiec
       gajowce
@@ -19754,10 +18021,7 @@ module GameRoomKrowa
       gajówki
       gal
       gale
-      gal
-      gale
       gala
-      gale
       galabija
       galabije
       galaktolipid
@@ -19766,8 +18030,6 @@ module GameRoomKrowa
       galaktometry
       galaktoza
       galaktozy
-      galaktyka
-      galaktyki
       galaktyka
       galaktyki
       galalit
@@ -19791,8 +18053,6 @@ module GameRoomKrowa
       galas
       galasy
       galasówka
-      galasówki
-      galasówki
       galasówki
       galeas
       galeasy
@@ -19843,8 +18103,6 @@ module GameRoomKrowa
       galwanizerzy
       galwanizernia
       galwanizernie
-      galwanizernia
-      galwanizernie
       galwanokauter
       galwanometr
       galwanometry
@@ -19872,15 +18130,9 @@ module GameRoomKrowa
       gałęzatki
       gałęziak
       gałęziaki
-      gałęziaki
-      gałęziaki
-      gałgan
-      gałgany
       gałgan
       gałgany
       gałganek
-      gałganki
-      gałganki
       gałganki
       gałgaństwo
       gałgaństwa
@@ -19888,12 +18140,8 @@ module GameRoomKrowa
       gałki
       gałuszka
       gałuszki
-      gały
-      gały
       gama
       gamy
-      gamajda
-      gamajdy
       gamajda
       gamajdy
       gamba
@@ -19910,11 +18158,8 @@ module GameRoomKrowa
       gametangia
       gametofit
       gametofity
-      gamety
-      gamety
       gamoń
       gamonie
-      ganasze
       ganasze
       ganaszowanie
       ganaszowania
@@ -19936,21 +18181,14 @@ module GameRoomKrowa
       gangsterstwa
       ganianie
       ganiania
-      ganianie
-      ganiania
       ganienie
       ganienia
       ganoid
-      ganoidy
-      ganoidy
       ganoidy
       gaolian
       gaoliany
       gapa
       gapy
-      gapa
-      gapy
-      gapie
       gapie
       gapienie
       gapienia
@@ -19958,7 +18196,6 @@ module GameRoomKrowa
       gapiostwa
       gapiowatość
       gapiowatości
-      gapowe
       gapowe
       gapowicz
       gapowicze
@@ -19974,8 +18211,6 @@ module GameRoomKrowa
       garbacenia
       garbarnia
       garbarnie
-      garbarnia
-      garbarnie
       garbarstwo
       garbarstwa
       garbarz
@@ -19988,22 +18223,15 @@ module GameRoomKrowa
       garbki
       garbienie
       garbienia
-      garbienie
-      garbienia
       garbnik
       garbniki
       garbowanie
       garbowania
       garbus
       garbusy
-      garbus
-      garbusy
-      garbusek
-      garbuski
       garbusek
       garbuski
       garbuska
-      garbuski
       garda
       gardy
       gardenia
@@ -20034,8 +18262,6 @@ module GameRoomKrowa
       garkuchnie
       garłacz
       garłacze
-      garłacz
-      garłacze
       garmażer
       garmażerzy
       garmażeria
@@ -20044,16 +18270,12 @@ module GameRoomKrowa
       garmażerki
       garmażernia
       garmażernie
-      garmażernia
-      garmażernie
       garmond
       garmondy
       garna
       garny
       garncarka
       garncarki
-      garncarnia
-      garncarnie
       garncarnia
       garncarnie
       garncarstwo
@@ -20070,8 +18292,6 @@ module GameRoomKrowa
       garnce
       garnieryt
       garnieryty
-      garnięcie
-      garnięcia
       garnięcie
       garnięcia
       garnirowanie
@@ -20102,7 +18322,6 @@ module GameRoomKrowa
       garstki
       garść
       garście
-      garść
       garści
       gasidło
       gasidła
@@ -20143,7 +18362,6 @@ module GameRoomKrowa
       gaśnięcie
       gaśnięcia
       gatki
-      gatki
       gatunek
       gatunki
       gatunkowanie
@@ -20166,8 +18384,6 @@ module GameRoomKrowa
       gawędziarze
       gawial
       gawiale
-      gawiale
-      gawiale
       gawiedź
       gawiedzie
       gaworzenie
@@ -20187,7 +18403,6 @@ module GameRoomKrowa
       gaz
       gazy
       gaza
-      gazy
       gazda
       gazdowie
       gazdostwo
@@ -20210,8 +18425,6 @@ module GameRoomKrowa
       gaziarze
       gazik
       gaziki
-      gazik
-      gaziki
       gazobeton
       gazobetony
       gazociąg
@@ -20225,8 +18438,6 @@ module GameRoomKrowa
       gazole
       gazolina
       gazoliny
-      gazoliniarnia
-      gazoliniarnie
       gazoliniarnia
       gazoliniarnie
       gazometr
@@ -20249,8 +18460,6 @@ module GameRoomKrowa
       gazówki
       gazyfikacja
       gazyfikacje
-      gazyfikowanie
-      gazyfikowania
       gazyfikowanie
       gazyfikowania
       gaździna
@@ -20277,14 +18486,8 @@ module GameRoomKrowa
       gąsieniczki
       gąsienicznik
       gąsieniczniki
-      gąsieniczniki
-      gąsieniczniki
       gąsior
       gąsiory
-      gąsior
-      gąsiory
-      gąsiorek
-      gąsiorki
       gąsiorek
       gąsiorki
       gąska
@@ -20293,7 +18496,6 @@ module GameRoomKrowa
       gąszcze
       gązewnik
       gązewniki
-      gązewnikowate
       gązewnikowate
       gbur
       gbury
@@ -20354,7 +18556,6 @@ module GameRoomKrowa
       generacja
       generacje
       generalia
-      generalia
       generalicja
       generalicje
       generalizacja
@@ -20364,9 +18565,7 @@ module GameRoomKrowa
       generalstwa
       generał
       generałowie
-      generał
       generały
-      generałostwo
       generałostwo
       generałowa
       generałowe
@@ -20389,9 +18588,6 @@ module GameRoomKrowa
       genina
       geniny
       genitalia
-      genitalia
-      geniusz
-      geniusze
       geniusz
       geniusze
       genologia
@@ -20402,15 +18598,11 @@ module GameRoomKrowa
       gentlemani
       genua
       genuy
-      genua
-      genuy
       geoakustyka
       geoakustyki
       geoantyklina
       geoantykliny
       geobiont
-      geobionty
-      geobionty
       geobionty
       geobotanika
       geobotaniki
@@ -20432,11 +18624,7 @@ module GameRoomKrowa
       geoenergetyki
       geofil
       geofile
-      geofile
-      geofile
       geofit
-      geofity
-      geofity
       geofity
       geofizyk
       geofizycy
@@ -20481,8 +18669,6 @@ module GameRoomKrowa
       georginia
       georginie
       geosfera
-      geosfery
-      geosfery
       geosfery
       geosynklina
       geosynkliny
@@ -20552,7 +18738,6 @@ module GameRoomKrowa
       geścik
       geściki
       getry
-      getry
       getto
       getta
       getyt
@@ -20596,18 +18781,13 @@ module GameRoomKrowa
       gęś
       gęsi
       gęśle
-      gęśle
-      gęśliki
       gęśliki
       gęśnik
       gęśniki
       giaur
       giaurzy
-      giaur
       giaury
       giberelina
-      gibereliny
-      gibereliny
       gibereliny
       gibkość
       gibkości
@@ -20615,7 +18795,6 @@ module GameRoomKrowa
       gibony
       gid
       gidowie
-      gid
       gidy
       gidia
       gidie
@@ -20637,8 +18816,6 @@ module GameRoomKrowa
       giezła
       gięcie
       gięcia
-      gięcie
-      gięcia
       giętarka
       giętarki
       giętkość
@@ -20651,7 +18828,6 @@ module GameRoomKrowa
       gigametry
       gigant
       giganci
-      gigant
       giganty
       gigantofon
       gigantofony
@@ -20674,8 +18850,6 @@ module GameRoomKrowa
       gigolowie
       gik
       giki
-      gil
-      gile
       gil
       gile
       gilbert
@@ -20757,8 +18931,6 @@ module GameRoomKrowa
       giserzy
       gisernia
       gisernie
-      gisernia
-      gisernie
       giserstwo
       giserstwa
       gitana
@@ -20814,16 +18986,11 @@ module GameRoomKrowa
       glejt
       glejty
       glejta
-      glejty
-      ględa
-      ględy
       ględa
       ględy
       ględzenie
       ględzenia
       gliceryd
-      glicerydy
-      glicerydy
       glicerydy
       gliceryna
       gliceryny
@@ -20839,20 +19006,13 @@ module GameRoomKrowa
       glikole
       glikoproteid
       glikoproteidy
-      glikoproteidy
-      glikoproteidy
       glikoza
       glikozy
       glikozyd
       glikozydy
-      glikozydy
-      glikozydy
       glin
       gliny
       glina
-      gliny
-      glina
-      gliny
       gliniak
       gliniaki
       glinian
@@ -20867,9 +19027,7 @@ module GameRoomKrowa
       glinowanie
       glinowania
       glinowce
-      glinowce
       glinowiec
-      glinowce
       gliptal
       gliptale
       gliptodont
@@ -20900,8 +19058,6 @@ module GameRoomKrowa
       globule
       globulina
       globuliny
-      globuliny
-      globuliny
       globulka
       globulki
       globus
@@ -20915,9 +19071,7 @@ module GameRoomKrowa
       glon
       glony
       glonowce
-      glonowce
       glonowiec
-      glonowce
       gloria
       glorie
       glorieta
@@ -20969,8 +19123,6 @@ module GameRoomKrowa
       gładzarki
       gładzenie
       gładzenia
-      gładzenie
-      gładzenia
       gładziarka
       gładziarki
       gładzica
@@ -20987,20 +19139,14 @@ module GameRoomKrowa
       głaszczki
       głaśnięcie
       głaśnięcia
-      głaśnięcie
-      głaśnięcia
       głaz
       głazy
       głąb
       głąby
-      głąb
-      głąby
-      głąb
       głębie
       głąbik
       głąbiki
       głębia
-      głębie
       głębienie
       głębienia
       głębina
@@ -21009,12 +19155,8 @@ module GameRoomKrowa
       głębokości
       głodek
       głodki
-      głodek
-      głodki
       głodny
       głodni
-      głodomorek
-      głodomorki
       głodomorek
       głodomorki
       głodomór
@@ -21023,8 +19165,6 @@ module GameRoomKrowa
       głodowania
       głodówka
       głodówki
-      głodzenie
-      głodzenia
       głodzenie
       głodzenia
       głogowiec
@@ -21058,7 +19198,6 @@ module GameRoomKrowa
       głowacz
       głowacze
       głowaczowate
-      głowaczowate
       głowica
       głowice
       głowienie
@@ -21072,10 +19211,7 @@ module GameRoomKrowa
       głownia
       głownie
       głowniowate
-      głowniowate
       głowniowe
-      głowniowe
-      głowonogie
       głowonogie
       głowonóg
       głowonogi
@@ -21117,8 +19253,6 @@ module GameRoomKrowa
       głuptactwa
       głuptak
       głuptaki
-      głuptak
-      głuptaki
       głuptas
       głuptasy
       głuptasek
@@ -21137,8 +19271,6 @@ module GameRoomKrowa
       gmaszyska
       gmatwanie
       gmatwania
-      gmatwanie
-      gmatwania
       gmatwanina
       gmatwaniny
       gmeranie
@@ -21148,11 +19280,8 @@ module GameRoomKrowa
       gmin
       gminy
       gmina
-      gminy
       gnanie
       gnania
-      gnat
-      gnaty
       gnat
       gnaty
       gnatarz
@@ -21165,14 +19294,11 @@ module GameRoomKrowa
       gnębicielki
       gnębienie
       gnębienia
-      gnębienie
-      gnębienia
       gniada
       gniade
       gniadosz
       gniadosze
       gniady
-      gniade
       gniazdeczko
       gniazdeczka
       gniazdko
@@ -21197,14 +19323,10 @@ module GameRoomKrowa
       gnidosze
       gniecenie
       gniecenia
-      gniecenie
-      gniecenia
       gnieciuch
       gnieciuchy
       gniew
       gniewy
-      gniewanie
-      gniewania
       gniewanie
       gniewania
       gniewosz
@@ -21218,15 +19340,11 @@ module GameRoomKrowa
       gniłek
       gniłki
       gniotowce
-      gniotowce
       gniotowiec
-      gniotowce
       gniotownik
       gniotowniki
       gnojak
       gnojaki
-      gnojarnia
-      gnojarnie
       gnojarnia
       gnojarnie
       gnojarz
@@ -21235,20 +19353,15 @@ module GameRoomKrowa
       gnojki
       gnojenie
       gnojenia
-      gnojenie
-      gnojenia
       gnojka
-      gnojki
       gnojnica
       gnojnice
       gnojnik
       gnojniki
       gnojowce
-      gnojowce
       gnojowica
       gnojowice
       gnojowiec
-      gnojowce
       gnojowisko
       gnojowiska
       gnojownia
@@ -21259,10 +19372,7 @@ module GameRoomKrowa
       gnojówki
       gnom
       gnomy
-      gnom
-      gnomy
       gnoma
-      gnomy
       gnomolog
       gnomolodzy
       gnomon
@@ -21279,8 +19389,6 @@ module GameRoomKrowa
       gnozy
       gnozeologia
       gnozeologie
-      gnój
-      gnoje
       gnój
       gnoje
       gnójka
@@ -21302,16 +19410,11 @@ module GameRoomKrowa
       godność
       godności
       gody
-      gody
-      godzenie
-      godzenia
       godzenie
       godzenia
       godzina
       godziny
       godzinka
-      godzinki
-      godzinki
       godzinki
       godziwość
       godziwości
@@ -21320,11 +19423,8 @@ module GameRoomKrowa
       gofrowanie
       gofrowania
       gogle
-      gogle
       goguś
       gogusie
-      gojenie
-      gojenia
       gojenie
       gojenia
       gokart
@@ -21339,21 +19439,11 @@ module GameRoomKrowa
       golaski
       golec
       golcy
-      golec
       golce
       golenie
       golenia
-      golenie
-      golenia
       goleń
-      golenie
-      goleń
-      golenie
       golf
-      golfy
-      golf
-      golfy
-      golfy
       golfy
       golgota
       golgoty
@@ -21361,7 +19451,6 @@ module GameRoomKrowa
       goliardzi
       goliat
       goliaci
-      goliat
       goliaty
       golibroda
       golibrody
@@ -21378,24 +19467,16 @@ module GameRoomKrowa
       gołąbek
       gołąbki
       gołąbka
-      gołąbki
-      gołąbki
-      gołąbki
       gołek
       gołki
       gołębiarstwo
       gołębiarstwa
       gołębiarz
       gołębiarze
-      gołębiarz
-      gołębiarze
       gołębica
       gołębice
-      gołębie
-      gołębie
       gołębię
       gołębięta
-      gołębiowate
       gołębiowate
       gołębnik
       gołębniki
@@ -21423,8 +19504,6 @@ module GameRoomKrowa
       gonady
       gonadotropina
       gonadotropiny
-      gonadotropiny
-      gonadotropiny
       gondola
       gondole
       gondolier
@@ -21438,17 +19517,10 @@ module GameRoomKrowa
       goniatyt
       goniatyty
       gonidia
-      gonidia
       gonidium
-      gonidia
       goniec
       gońcy
-      goniec
       gońce
-      goniec
-      gońce
-      gonienie
-      gonienia
       gonienie
       gonienia
       goniometr
@@ -21464,8 +19536,6 @@ module GameRoomKrowa
       gonochoryzm
       gonochoryzmy
       gonokok
-      gonokoki
-      gonokoki
       gonokoki
       gonorea
       gonoree
@@ -21485,8 +19555,6 @@ module GameRoomKrowa
       gorączki
       gorączkowanie
       gorączkowania
-      gorączkowanie
-      gorączkowania
       gorączkowość
       gorączkowości
       gorbusza
@@ -21499,8 +19567,6 @@ module GameRoomKrowa
       gordingi
       gorgona
       gorgony
-      gorliwiec
-      gorliwcy
       gorliwiec
       gorliwcy
       gorliwość
@@ -21517,8 +19583,6 @@ module GameRoomKrowa
       gorsety
       gorszenie
       gorszenia
-      gorszenie
-      gorszenia
       gorszyciel
       gorszyciele
       gorszycielka
@@ -21530,11 +19594,8 @@ module GameRoomKrowa
       goryczka
       goryczki
       goryczkowate
-      goryczkowate
       gorycznik
       goryczniki
-      goryl
-      goryle
       goryl
       goryle
       gorylica
@@ -21573,8 +19634,6 @@ module GameRoomKrowa
       gospodarze
       gospodarzenie
       gospodarzenia
-      gospodarzenie
-      gospodarzenia
       gospodyni
       gospodynie
       gosposia
@@ -21593,8 +19652,6 @@ module GameRoomKrowa
       goście
       gotowanie
       gotowania
-      gotowanie
-      gotowania
       gotowość
       gotowości
       gotówka
@@ -21605,11 +19662,8 @@ module GameRoomKrowa
       goudy
       goździeniec
       goździeńce
-      goździeniec
-      goździeńce
       goździk
       goździki
-      goździkowate
       goździkowate
       goździkowiec
       goździkowce
@@ -21621,14 +19675,11 @@ module GameRoomKrowa
       góry
       góral
       górale
-      góral
-      górale
       góralczyk
       góralczyki
       góralek
       góralki
       góralka
-      góralki
       góralski
       góralskie
       góralszczyzna
@@ -21665,18 +19716,14 @@ module GameRoomKrowa
       grab
       graby
       graba
-      graby
       grabarstwo
       grabarstwa
-      grabarz
-      grabarze
       grabarz
       grabarze
       grabczak
       grabczaki
       grabiarka
       grabiarki
-      grabie
       grabie
       grabienie
       grabienia
@@ -21689,7 +19736,6 @@ module GameRoomKrowa
       grabisko
       grabiska
       grabki
-      grabki
       grabniak
       grabniaki
       grabołusk
@@ -21698,16 +19744,12 @@ module GameRoomKrowa
       grace
       graciarnia
       graciarnie
-      graciarnia
-      graciarnie
       gracja
       gracje
       gracka
       gracki
       gracowanie
       gracowania
-      gracz
-      gracze
       gracz
       gracze
       grad
@@ -21726,14 +19768,11 @@ module GameRoomKrowa
       gradzinowania
       graf
       grafowie
-      graf
       grafy
       grafik
       graficy
-      grafik
       grafiki
       grafika
-      grafiki
       grafion
       grafiony
       grafit
@@ -21788,10 +19827,6 @@ module GameRoomKrowa
       gramolenia
       gramota
       gramoty
-      gramoty
-      gramoty
-      granacik
-      granaciki
       granacik
       granaciki
       granat
@@ -21837,18 +19872,13 @@ module GameRoomKrowa
       granulki
       granulocyt
       granulocyty
-      granulocyty
-      granulocyty
       granulometria
       granulometrie
       granulowanie
       granulowania
       grań
-      granie
       grapa
       grapy
-      grapefruit
-      grapefruity
       grapefruit
       grapefruity
       grasejowanie
@@ -21863,7 +19893,6 @@ module GameRoomKrowa
       gratisy
       gratka
       gratki
-      gratulacje
       gratulacje
       gratulowanie
       gratulowania
@@ -21897,8 +19926,6 @@ module GameRoomKrowa
       grążele
       grążyca
       grążyce
-      grążyce
-      grążyce
       grdyka
       grdyki
       grecysta
@@ -21909,8 +19936,6 @@ module GameRoomKrowa
       grecyzacje
       grecyzm
       grecyzmy
-      grejpfrut
-      grejpfruty
       grejpfrut
       grejpfruty
       grejzen
@@ -21937,11 +19962,8 @@ module GameRoomKrowa
       grępel
       gręple
       grępla
-      gręple
       gręplarka
       gręplarki
-      gręplarnia
-      gręplarnie
       gręplarnia
       gręplarnie
       gręplarz
@@ -21973,7 +19995,6 @@ module GameRoomKrowa
       grochowianka
       grochowianki
       grochowiny
-      grochowiny
       grochowisko
       grochowiska
       grochówka
@@ -21996,8 +20017,6 @@ module GameRoomKrowa
       gromadniki
       gromadzenie
       gromadzenia
-      gromadzenie
-      gromadzenia
       gromienie
       gromienia
       gromnica
@@ -22007,16 +20026,12 @@ module GameRoomKrowa
       gronko
       gronka
       gronkowce
-      gronkowce
       gronkowiec
-      gronkowce
       grono
       grona
       gronorost
       gronorosty
       gronostaj
-      gronostaje
-      gronostaje
       gronostaje
       gros
       grosy
@@ -22029,10 +20044,6 @@ module GameRoomKrowa
       groszak
       groszaki
       groszek
-      groszki
-      groszek
-      groszki
-      groszki
       groszki
       groszkowanie
       groszkowania
@@ -22047,11 +20058,9 @@ module GameRoomKrowa
       grot
       groty
       grota
-      groty
       grotesk
       groteski
       groteska
-      groteski
       groteskowość
       groteskowości
       grotmarsel
@@ -22083,7 +20092,6 @@ module GameRoomKrowa
       grubasek
       grubaski
       grubaska
-      grubaski
       gruber
       grubery
       gruberowanie
@@ -22108,7 +20116,6 @@ module GameRoomKrowa
       grubosz
       grubosze
       gruboszowate
-      gruboszowate
       grubość
       grubości
       gruchacz
@@ -22117,10 +20124,6 @@ module GameRoomKrowa
       gruchania
       gruchnięcie
       gruchnięcia
-      gruchnięcie
-      gruchnięcia
-      gruchot
-      gruchoty
       gruchot
       gruchoty
       gruchotanie
@@ -22135,8 +20138,6 @@ module GameRoomKrowa
       grudy
       grudka
       grudki
-      grudkowanie
-      grudkowania
       grudkowanie
       grudkowania
       grudkowatość
@@ -22163,8 +20164,6 @@ module GameRoomKrowa
       grupowe
       grupowanie
       grupowania
-      grupowanie
-      grupowania
       grusza
       grusze
       gruszka
@@ -22181,8 +20180,6 @@ module GameRoomKrowa
       gruzobetony
       gruzowisko
       gruzowiska
-      gruzy
-      gruzy
       gruźlica
       gruźlice
       gruźliczak
@@ -22193,8 +20190,6 @@ module GameRoomKrowa
       gruźlicy
       gryf
       gryfy
-      gryf
-      gryfy
       gryfon
       gryfony
       gryka
@@ -22202,8 +20197,6 @@ module GameRoomKrowa
       grylaż
       grylaże
       grymas
-      grymasy
-      grymasy
       grymasy
       grymaszenie
       grymaszenia
@@ -22231,28 +20224,18 @@ module GameRoomKrowa
       gryzaki
       gryzienie
       gryzienia
-      gryzienie
-      gryzienia
       gryzipiórek
       gryzipiórki
       gryzmolenie
       gryzmolenia
       gryzmoła
       gryzmoły
-      gryzmoła
-      gryzmoły
-      gryzmoły
-      gryzmoły
-      gryzonie
       gryzonie
       gryzoń
-      gryzonie
       grzałka
       grzałki
       grzaneczka
       grzaneczki
-      grzanie
-      grzania
       grzanie
       grzania
       grzaniec
@@ -22261,8 +20244,6 @@ module GameRoomKrowa
       grzanki
       grządka
       grządki
-      grządziel
-      grządziele
       grządziel
       grządziele
       grzbiecik
@@ -22279,20 +20260,13 @@ module GameRoomKrowa
       grzbietówki
       grzebacz
       grzebacze
-      grzebacze
-      grzebacze
       grzebalisko
       grzebaliska
       grzebanie
       grzebania
-      grzebanie
-      grzebania
-      grzebiące
       grzebiące
       grzebienica
       grzebienice
-      grzebieniowce
-      grzebieniowce
       grzebieniowce
       grzebień
       grzebienie
@@ -22320,7 +20294,6 @@ module GameRoomKrowa
       grzechotniki
       grzeczności
       grzeczność
-      grzeczności
       grzejnictwo
       grzejnictwa
       grzejnik
@@ -22338,25 +20311,18 @@ module GameRoomKrowa
       grzęzawisko
       grzęzawiska
       grzęzy
-      grzęzy
       grzęźnięcie
       grzęźnięcia
       grzmienie
       grzmienia
       grzmocenie
       grzmocenia
-      grzmocenie
-      grzmocenia
       grzmot
       grzmoty
       grzmotnięcie
       grzmotnięcia
-      grzmotnięcie
-      grzmotnięcia
       grzyb
       grzyby
-      grzybek
-      grzybki
       grzybek
       grzybki
       grzybiarz
@@ -22366,7 +20332,6 @@ module GameRoomKrowa
       grzybienie
       grzybienia
       grzybień
-      grzybienie
       grzybnia
       grzybnie
       grzybobranie
@@ -22380,8 +20345,6 @@ module GameRoomKrowa
       grzybożywność
       grzywa
       grzywy
-      grzywacz
-      grzywacze
       grzywacz
       grzywacze
       grzyweczka
@@ -22406,10 +20369,6 @@ module GameRoomKrowa
       gubernatorowe
       gubernia
       gubernie
-      gubernia
-      gubernie
-      gubienie
-      gubienia
       gubienie
       gubienia
       guignol
@@ -22429,8 +20388,6 @@ module GameRoomKrowa
       guma
       gumy
       gumiak
-      gumiaki
-      gumiaki
       gumiaki
       gumiguta
       gumiguty
@@ -22463,10 +20420,8 @@ module GameRoomKrowa
       gurt
       gurty
       gusła
-      gusła
       gust
       gusty
-      gust
       gusta
       gustowanie
       gustowania
@@ -22488,8 +20443,6 @@ module GameRoomKrowa
       guzy
       guzdralska
       guzdralskie
-      guzdrała
-      guzdrały
       guzdrała
       guzdrały
       guzdranie
@@ -22521,7 +20474,6 @@ module GameRoomKrowa
       gwar
       gwary
       gwara
-      gwary
       gwarancja
       gwarancje
       gwarant
@@ -22540,9 +20492,6 @@ module GameRoomKrowa
       gwardzistki
       gwarek
       gwarkowie
-      gwarek
-      gwarki
-      gwarek
       gwarki
       gwarowość
       gwarowości
@@ -22600,14 +20549,10 @@ module GameRoomKrowa
       gwoździownice
       gwóźdź
       gwoździe
-      gwóźdź
-      gwoździe
       gytia
       gytie
       gzik
       gziki
-      gzy
-      gzy
       gzyms
       gzymsy
       gzymsik
@@ -22628,8 +20573,6 @@ module GameRoomKrowa
       habilitanci
       habilitowanie
       habilitowania
-      habilitowanie
-      habilitowania
       habit
       habity
       habitat
@@ -22646,8 +20589,6 @@ module GameRoomKrowa
       haczyki
       hafciarka
       hafciarki
-      hafciarnia
-      hafciarnie
       hafciarnia
       hafciarnie
       hafciarstwo
@@ -22671,10 +20612,7 @@ module GameRoomKrowa
       hajdamak
       hajdamacy
       hajdamaka
-      hajdamacy
-      hajdamaka
       hajdamaki
-      hajdawery
       hajdawery
       hajduczek
       hajduczki
@@ -22690,8 +20628,6 @@ module GameRoomKrowa
       hakatyści
       hakatyzm
       hakatyzmy
-      haki
-      haki
       hakownica
       hakownice
       hala
@@ -22712,7 +20648,6 @@ module GameRoomKrowa
       halfwindy
       halibut
       halibuty
-      halifaksy
       halifaksy
       halimetr
       halimetry
@@ -22736,15 +20671,9 @@ module GameRoomKrowa
       halne
       halobiont
       halobionty
-      halobionty
-      halobionty
       halofil
       halofile
-      halofile
-      halofile
       halofit
-      halofity
-      halofity
       halofity
       halogen
       halogeny
@@ -22790,8 +20719,6 @@ module GameRoomKrowa
       hamletyzmy
       hamowanie
       hamowania
-      hamowanie
-      hamowania
       hamownia
       hamownie
       hamulcowy
@@ -22823,15 +20750,12 @@ module GameRoomKrowa
       haniebność
       haniebności
       hantle
-      hantle
       hanza
       hanzy
       hanzeata
       hanzeaci
       hańba
       hańby
-      hańbienie
-      hańbienia
       hańbienie
       hańbienia
       haplografia
@@ -22846,13 +20770,10 @@ module GameRoomKrowa
       harapy
       haratanie
       haratania
-      haratanie
-      haratania
       haratanina
       harataniny
       harcap
       harcapy
-      harce
       harce
       harcerka
       harcerki
@@ -22900,7 +20821,6 @@ module GameRoomKrowa
       harmonista
       harmoniści
       harmonium
-      harmonia
       harmonizacja
       harmonizacje
       harmonogram
@@ -22915,8 +20835,6 @@ module GameRoomKrowa
       harpagony
       harpia
       harpie
-      harpie
-      harpie
       harpun
       harpuny
       harpunnik
@@ -22925,8 +20843,6 @@ module GameRoomKrowa
       harty
       hartowacz
       hartowacze
-      hartowanie
-      hartowania
       hartowanie
       hartowania
       hartownia
@@ -22966,7 +20882,6 @@ module GameRoomKrowa
       heban
       hebany
       hebankowate
-      hebankowate
       hebel
       heble
       hebelek
@@ -22975,7 +20890,6 @@ module GameRoomKrowa
       heblarki
       heblowanie
       heblowania
-      heblowiny
       heblowiny
       hebraista
       hebraiści
@@ -23052,11 +20966,7 @@ module GameRoomKrowa
       heliodory
       heliofil
       heliofile
-      heliofile
-      heliofile
       heliofit
-      heliofity
-      heliofity
       heliofity
       heliofizyk
       heliofizycy
@@ -23098,22 +21008,16 @@ module GameRoomKrowa
       helmintologie
       helmintoza
       helmintozy
-      helmintozy
-      helmintozy
       heloderma
       helodermy
       helofit
-      helofity
-      helofity
       helofity
       helota
       heloci
       helotyzm
       helotyzmy
       helowce
-      helowce
       helowiec
-      helowce
       hełm
       hełmy
       hełmofon
@@ -23125,8 +21029,6 @@ module GameRoomKrowa
       hemantus
       hemantusy
       hematofag
-      hematofagi
-      hematofagi
       hematofagi
       hematolog
       hematolodzy
@@ -23141,8 +21043,6 @@ module GameRoomKrowa
       hemeralopia
       hemeralopie
       hemiceluloza
-      hemicelulozy
-      hemicelulozy
       hemicelulozy
       hemikryptofit
       hemimetabolia
@@ -23177,15 +21077,10 @@ module GameRoomKrowa
       hemolizowania
       hemolizyna
       hemolizyny
-      hemolizyny
-      hemolizyny
       hemometr
       hemometry
       hemoproteid
       hemoproteidy
-      hemoproteidy
-      hemoproteidy
-      hemoroidy
       hemoroidy
       hemoterapia
       hemoterapie
@@ -23221,8 +21116,6 @@ module GameRoomKrowa
       herby
       herbaciarnia
       herbaciarnie
-      herbaciarnia
-      herbaciarnie
       herbarium
       herbaria
       herbarz
@@ -23233,17 +21126,12 @@ module GameRoomKrowa
       herbatki
       herbatnik
       herbatniki
-      herbatniki
-      herbatniki
       herbicyd
-      herbicydy
-      herbicydy
       herbicydy
       herboryzacja
       herboryzacje
       herc
       herce
-      hercynidy
       hercynidy
       heretyczka
       heretyczki
@@ -23253,13 +21141,11 @@ module GameRoomKrowa
       herezje
       herkules
       herkulesi
-      herkules
       herkulesy
       herma
       hermy
       hermafrodyta
       hermafrodyci
-      hermafrodyta
       hermafrodyty
       hermeneutyka
       hermeneutyki
@@ -23268,7 +21154,6 @@ module GameRoomKrowa
       hermetyzacje
       hermetyzm
       hermetyzmy
-      herody
       herody
       heroiczność
       heroiczności
@@ -23312,8 +21197,6 @@ module GameRoomKrowa
       heterofonie
       heterogameta
       heterogamety
-      heterogamety
-      heterogamety
       heterogamia
       heterogamie
       heterogeneza
@@ -23344,7 +21227,6 @@ module GameRoomKrowa
       heterozygoty
       hetman
       hetmani
-      hetman
       hetmany
       hetmaństwo
       hetmaństwa
@@ -23399,8 +21281,6 @@ module GameRoomKrowa
       hieroglify
       hieroglifika
       hieroglifiki
-      hieroglify
-      hieroglify
       hierokracja
       hierokracje
       hieromancja
@@ -23415,11 +21295,7 @@ module GameRoomKrowa
       higienizacje
       higrofil
       higrofile
-      higrofile
-      higrofile
       higrofit
-      higrofity
-      higrofity
       higrofity
       higrofobia
       higrofobie
@@ -23439,8 +21315,6 @@ module GameRoomKrowa
       higrostaty
       hikora
       hikory
-      hikory
-      hikory
       hilemorfizm
       hilemorfizmy
       hilobiolog
@@ -23449,11 +21323,7 @@ module GameRoomKrowa
       hilobiologie
       hilobiont
       hilobionty
-      hilobionty
-      hilobionty
       hilofil
-      hilofile
-      hilofile
       hilofile
       hiloteizm
       hiloteizmy
@@ -23617,8 +21487,6 @@ module GameRoomKrowa
       histerycy
       histiocyt
       histiocyty
-      histiocyty
-      histiocyty
       histochemia
       histochemie
       histogeneza
@@ -23653,8 +21521,6 @@ module GameRoomKrowa
       histrioni
       hiszpanka
       hiszpanki
-      hiszpanka
-      hiszpanki
       hiszpański
       hiszpańskie
       hitlerowiec
@@ -23675,8 +21541,6 @@ module GameRoomKrowa
       hodografy
       hodoskop
       hodoskopy
-      hodowanie
-      hodowania
       hodowanie
       hodowania
       hodowca
@@ -23701,25 +21565,16 @@ module GameRoomKrowa
       hokeje
       hokejka
       hokejki
-      hokejki
-      hokejki
       hokejówka
       hokejówki
-      hol
-      hole
       hol
       hole
       holding
       holdingi
       holender
       holendrzy
-      holender
       holendry
       holenderka
-      holenderki
-      holenderka
-      holenderki
-      holenderki
       holenderki
       holendrowanie
       holendrowania
@@ -23756,7 +21611,6 @@ module GameRoomKrowa
       hołdownik
       hołdownicy
       hołoble
-      hołoble
       hołota
       hołoty
       hołubiec
@@ -23789,7 +21643,6 @@ module GameRoomKrowa
       homiletyki
       homilia
       homilie
-      hominidy
       hominidy
       homofon
       homofony
@@ -23842,11 +21695,8 @@ module GameRoomKrowa
       honoraria
       honorowanie
       honorowania
-      honory
-      honory
       hopak
       hopaki
-      hopki
       hopki
       hoplita
       hoplici
@@ -23891,13 +21741,10 @@ module GameRoomKrowa
       hoteliki
       hrabia
       hrabiowie
-      hrabia
-      hrabiowie
       hrabianka
       hrabianki
       hrabina
       hrabiny
-      hrabiostwo
       hrabiostwo
       hrabstwo
       hrabstwa
@@ -23911,10 +21758,7 @@ module GameRoomKrowa
       hubki
       hucuł
       huculi
-      hucuł
       hucuły
-      huczek
-      huczki
       huczek
       huczki
       huczenie
@@ -23931,8 +21775,6 @@ module GameRoomKrowa
       huki
       hukanie
       hukania
-      huknięcie
-      huknięcia
       huknięcie
       huknięcia
       hulajdusza
@@ -23976,8 +21818,6 @@ module GameRoomKrowa
       humifikacje
       humina
       huminy
-      huminy
-      huminy
       humolit
       humolity
       humor
@@ -23986,8 +21826,6 @@ module GameRoomKrowa
       humorki
       humoreska
       humoreski
-      humory
-      humory
       humorysta
       humoryści
       humorystka
@@ -24043,8 +21881,6 @@ module GameRoomKrowa
       husytyzmy
       huśtanie
       huśtania
-      huśtanie
-      huśtania
       huśtawka
       huśtawki
       huta
@@ -24055,14 +21891,10 @@ module GameRoomKrowa
       hutnicy
       huzar
       huzarzy
-      huzar
       huzary
       hybryd
       hybrydy
-      hybryd
-      hybrydy
       hybryda
-      hybrydy
       hybrydyzacja
       hybrydyzacje
       hycanie
@@ -24071,8 +21903,6 @@ module GameRoomKrowa
       hycle
       hycnięcie
       hycnięcia
-      hydra
-      hydry
       hydra
       hydry
       hydrant
@@ -24089,8 +21919,6 @@ module GameRoomKrowa
       hydrauliki
       hydrazyd
       hydrazydy
-      hydrazydy
-      hydrazydy
       hydrazyna
       hydrazyny
       hydria
@@ -24104,8 +21932,6 @@ module GameRoomKrowa
       hydrobiologia
       hydrobiologie
       hydrobiont
-      hydrobionty
-      hydrobionty
       hydrobionty
       hydrobudowa
       hydrobudowy
@@ -24124,17 +21950,10 @@ module GameRoomKrowa
       hydroenergie
       hydrofil
       hydrofile
-      hydrofil
-      hydrofile
-      hydrofile
-      hydrofile
       hydrofit
-      hydrofity
-      hydrofity
       hydrofity
       hydrofob
       hydrofobi
-      hydrofob
       hydrofoby
       hydrofobia
       hydrofobie
@@ -24144,15 +21963,12 @@ module GameRoomKrowa
       hydrofory
       hydrofornia
       hydrofornie
-      hydrofornia
-      hydrofornie
       hydrogeolog
       hydrogeolodzy
       hydrogeologia
       hydrogeologie
       hydrograf
       hydrografowie
-      hydrograf
       hydrografy
       hydrografia
       hydrografie
@@ -24164,17 +21980,11 @@ module GameRoomKrowa
       hydrokinetyki
       hydroksykwas
       hydroksykwasy
-      hydroksykwasy
-      hydroksykwasy
       hydroksyl
       hydroksyle
       hydrokwas
       hydrokwasy
-      hydrokwasy
-      hydrokwasy
       hydrolaza
-      hydrolazy
-      hydrolazy
       hydrolazy
       hydrolit
       hydrolity
@@ -24192,8 +22002,6 @@ module GameRoomKrowa
       hydrolokatory
       hydromechanik
       hydrometeor
-      hydrometeory
-      hydrometeory
       hydrometeory
       hydrometr
       hydrometry
@@ -24248,8 +22056,6 @@ module GameRoomKrowa
       hylobiologia
       hylobiologie
       hylobiont
-      hylobionty
-      hylobionty
       hylobionty
       hylofil
       hylofile
@@ -24313,8 +22119,6 @@ module GameRoomKrowa
       idealizowania
       ideał
       ideały
-      ideał
-      ideały
       idejka
       idejki
       identyczność
@@ -24340,8 +22144,6 @@ module GameRoomKrowa
       idioctwa
       idiofon
       idiofony
-      idiofony
-      idiofony
       idiografizm
       idiografizmy
       idiolatria
@@ -24366,8 +22168,6 @@ module GameRoomKrowa
       idiotyczności
       idiotyzm
       idiotyzmy
-      idiotyzmy
-      idiotyzmy
       idiotyzowanie
       idiotyzowania
       idokraz
@@ -24378,7 +22178,6 @@ module GameRoomKrowa
       idolatrie
       idololatria
       idololatrie
-      idy
       idy
       idylla
       idylle
@@ -24403,7 +22202,6 @@ module GameRoomKrowa
       iglarka
       iglarki
       iglaste
-      iglaste
       iglica
       iglice
       iglicówka
@@ -24412,7 +22210,6 @@ module GameRoomKrowa
       igliczki
       iglicznia
       iglicznie
-      igliczniowate
       igliczniowate
       igliwie
       igliwia
@@ -24440,17 +22237,12 @@ module GameRoomKrowa
       ignorantki
       ignorowanie
       ignorowania
-      ignorowanie
-      ignorowania
       igranie
       igrania
       igraszka
       igraszki
       igrek
       igreki
-      igrek
-      igreki
-      igrzyska
       igrzyska
       iguana
       iguany
@@ -24494,8 +22286,6 @@ module GameRoomKrowa
       ikrzyska
       iks
       iksy
-      iks
-      iksy
       iksińska
       iksińskie
       iksiński
@@ -24516,7 +22306,6 @@ module GameRoomKrowa
       iluminacje
       iluminator
       iluminatorzy
-      iluminator
       iluminatory
       iluminizm
       iluminizmy
@@ -24595,14 +22384,12 @@ module GameRoomKrowa
       imbir
       imbiry
       imbirowate
-      imbirowate
       imbryczek
       imbryczki
       imbryk
       imbryki
       imersja
       imersje
-      imieniny
       imieniny
       imiennictwo
       imiennictwa
@@ -24630,7 +22417,6 @@ module GameRoomKrowa
       imitacjonizmy
       imitator
       imitatorzy
-      imitator
       imitatory
       imitatorstwo
       imitatorstwa
@@ -24700,8 +22486,6 @@ module GameRoomKrowa
       implantowania
       implikacja
       implikacje
-      implikowanie
-      implikowania
       implikowanie
       implikowania
       implodowanie
@@ -24860,14 +22644,10 @@ module GameRoomKrowa
       indykatrysy
       indykcja
       indykcje
-      indyki
-      indyki
       indywidualizm
       indywiduum
       indywidua
       inedita
-      inedita
-      ineksprymable
       ineksprymable
       inercja
       inercje
@@ -24911,7 +22691,6 @@ module GameRoomKrowa
       informacje
       informator
       informatorzy
-      informator
       informatory
       informatorka
       informatorki
@@ -24921,8 +22700,6 @@ module GameRoomKrowa
       informatyki
       informel
       informele
-      informowanie
-      informowania
       informowanie
       informowania
       infraczerwień
@@ -24941,7 +22718,6 @@ module GameRoomKrowa
       ingerowanie
       ingerowania
       ingrediencje
-      ingrediencje
       ingres
       ingresy
       ingresja
@@ -24952,8 +22728,6 @@ module GameRoomKrowa
       inhalatory
       inhalatorium
       inhalatoria
-      inhalowanie
-      inhalowania
       inhalowanie
       inhalowania
       inherencja
@@ -24968,11 +22742,8 @@ module GameRoomKrowa
       inicjalności
       inicjał
       inicjały
-      inicjały
-      inicjały
       inicjator
       inicjatorzy
-      inicjator
       inicjatory
       inicjatorka
       inicjatorki
@@ -25024,8 +22795,6 @@ module GameRoomKrowa
       inkubatory
       inkubatornia
       inkubatornie
-      inkubatornia
-      inkubatornie
       inkunabuł
       inkunabuły
       inkwizycja
@@ -25056,8 +22825,6 @@ module GameRoomKrowa
       insektarium
       insektaria
       insektycyd
-      insektycydy
-      insektycydy
       insektycydy
       inseminacja
       inseminacje
@@ -25093,14 +22860,10 @@ module GameRoomKrowa
       inspiratorki
       inspirowanie
       inspirowania
-      inspirowanie
-      inspirowania
       instalacja
       instalacje
       instalator
       instalatorzy
-      instalowanie
-      instalowania
       instalowanie
       instalowania
       instancja
@@ -25121,8 +22884,6 @@ module GameRoomKrowa
       instrumenty
       instruowanie
       instruowania
-      instruowanie
-      instruowania
       instynkt
       instynkty
       instytucja
@@ -25133,7 +22894,6 @@ module GameRoomKrowa
       insuliny
       insurekcja
       insurekcje
-      insygnia
       insygnia
       insynuacja
       insynuacje
@@ -25157,8 +22917,6 @@ module GameRoomKrowa
       integratory
       integrometr
       integrometry
-      integrowanie
-      integrowania
       integrowanie
       integrowania
       integrysta
@@ -25203,11 +22961,7 @@ module GameRoomKrowa
       interesiki
       interesowanie
       interesowania
-      interesowanie
-      interesowania
       interesowność
-      interesy
-      interesy
       interfaza
       interfazy
       interferencja
@@ -25382,7 +23136,6 @@ module GameRoomKrowa
       inżynieria
       inżynierie
       inżynierostwo
-      inżynierostwo
       inżynierowa
       inżynierowe
       ipekakuana
@@ -25435,16 +23188,8 @@ module GameRoomKrowa
       irysy
       irysek
       iryski
-      irysek
-      iryski
-      iryski
-      iryski
-      irysy
-      irysy
       irytacja
       irytacje
-      irytowanie
-      irytowania
       irytowanie
       irytowania
       iryzacja
@@ -25457,8 +23202,6 @@ module GameRoomKrowa
       isagogiki
       ischias
       ischiasy
-      iskanie
-      iskania
       iskanie
       iskania
       iskiereczka
@@ -25495,8 +23238,6 @@ module GameRoomKrowa
       italianizmy
       italika
       italiki
-      italika
-      italika
       iteracja
       iteracje
       iteratiwum
@@ -25532,7 +23273,6 @@ module GameRoomKrowa
       izobar
       izobary
       izobara
-      izobary
       izobata
       izobaty
       izochora
@@ -25542,8 +23282,6 @@ module GameRoomKrowa
       izofona
       izofony
       izogameta
-      izogamety
-      izogamety
       izogamety
       izogamia
       izogamie
@@ -25579,16 +23317,11 @@ module GameRoomKrowa
       izoleksy
       izolowanie
       izolowania
-      izolowanie
-      izolowania
       izomer
       izomery
       izomerazy
-      izomerazy
       izomeria
       izomerie
-      izomery
-      izomery
       izomeryzacja
       izomeryzacje
       izomorfa
@@ -25629,21 +23362,13 @@ module GameRoomKrowa
       izotypie
       izraelita
       izraelici
-      izraelita
-      izraelici
       izraelitka
       izraelitki
-      izraelitka
-      izraelitki
-      izydia
       izydia
       jabłecznik
       jabłeczniki
       jabłka
-      jabłka
       jabłko
-      jabłka
-      jabłkowe
       jabłkowe
       jabłkowiec
       jabłkowce
@@ -25688,10 +23413,8 @@ module GameRoomKrowa
       jagielnik
       jagielniki
       jagiełki
-      jagiełki
       jaglica
       jaglice
-      jagły
       jagły
       jagniąca
       jagniące
@@ -25716,7 +23439,6 @@ module GameRoomKrowa
       jaguar
       jaguary
       jaja
-      jaja
       jajczarstwo
       jajczarstwa
       jajeczko
@@ -25728,13 +23450,10 @@ module GameRoomKrowa
       jajecznik
       jajeczniki
       jajka
-      jajka
       jajko
-      jajka
       jajnik
       jajniki
       jajo
-      jaja
       jajogłowy
       jajogłowi
       jajorodność
@@ -25798,7 +23517,6 @@ module GameRoomKrowa
       jamniczek
       jamniczki
       jamniczka
-      jamniczki
       jamnik
       jamniki
       jamochłon
@@ -25807,9 +23525,6 @@ module GameRoomKrowa
       janczarzy
       janczarka
       janczarki
-      janczarki
-      janczarki
-      janczary
       janczary
       jankes
       jankesi
@@ -25828,10 +23543,6 @@ module GameRoomKrowa
       japonizm
       japonizmy
       japonka
-      japonki
-      japonka
-      japonki
-      japonki
       japonki
       japonolog
       japonolodzy
@@ -25873,14 +23584,9 @@ module GameRoomKrowa
       jaryzacje
       jarząb
       jarzęby
-      jarząb
-      jarzęby
-      jarząb
       jarzębie
       jarząbek
       jarząbki
-      jarzenie
-      jarzenia
       jarzenie
       jarzenia
       jarzeniówka
@@ -25903,13 +23609,10 @@ module GameRoomKrowa
       jarzyniarki
       jarzyniarnia
       jarzyniarnie
-      jarzyniarnia
-      jarzyniarnie
       jarzyniarstwo
       jarzyniarstwa
       jarzynka
       jarzynki
-      jasełka
       jasełka
       jasełkowość
       jasełkowości
@@ -25930,9 +23633,6 @@ module GameRoomKrowa
       jaskółka
       jaskółki
       jaskra
-      jaskry
-      jaskrawienie
-      jaskrawienia
       jaskrawienie
       jaskrawienia
       jaskrawość
@@ -25965,8 +23665,6 @@ module GameRoomKrowa
       jaszcze
       jaszczur
       jaszczury
-      jaszczur
-      jaszczury
       jaszczurka
       jaszczurki
       jaszczyk
@@ -25985,19 +23683,14 @@ module GameRoomKrowa
       jatagany
       jatka
       jatki
-      jatki
-      jatki
       jatrochemia
       jatrochemie
       jawa
       jawy
       jawajka
       jawajki
-      jawajka
-      jawajki
       jawienie
       jawienia
-      jawnopączkowe
       jawnopączkowe
       jawność
       jawności
@@ -26035,12 +23728,8 @@ module GameRoomKrowa
       jądrzaki
       jąkała
       jąkały
-      jąkała
-      jąkały
       jąkanie
       jąkania
-      jątrzenie
-      jątrzenia
       jątrzenie
       jątrzenia
       jechanie
@@ -26057,8 +23746,6 @@ module GameRoomKrowa
       jednakowości
       jednanie
       jednania
-      jednanie
-      jednania
       jednia
       jednie
       jednoaktówka
@@ -26067,10 +23754,6 @@ module GameRoomKrowa
       jednochodźce
       jednocukier
       jednocukry
-      jednocukry
-      jednocukry
-      jednoczenie
-      jednoczenia
       jednoczenie
       jednoczenia
       jednoczesność
@@ -26080,18 +23763,12 @@ module GameRoomKrowa
       jednokonka
       jednokonki
       jednokopytne
-      jednokopytne
       jednokrok
       jednokroki
       jednokrotność
       jednolatek
       jednolatki
-      jednolatek
-      jednolatki
       jednolatka
-      jednolatki
-      jednolicenie
-      jednolicenia
       jednolicenie
       jednolicenia
       jednolitość
@@ -26122,15 +23799,12 @@ module GameRoomKrowa
       jednostajność
       jednostka
       jednostki
-      jednostki
-      jednostki
       jednostkowość
       jedności
       jednościach
       jednościan
       jednościany
       jedność
-      jedności
       jednoślad
       jednoślady
       jednośladowce
@@ -26141,8 +23815,6 @@ module GameRoomKrowa
       jednożerność
       jednożerności
       jedwab
-      jedwabie
-      jedwabie
       jedwabie
       jedwabik
       jedwabiki
@@ -26158,7 +23830,6 @@ module GameRoomKrowa
       jedynaczki
       jedynak
       jedynacy
-      jedyne
       jedyne
       jedynka
       jedynki
@@ -26176,11 +23847,9 @@ module GameRoomKrowa
       jeepy
       jegier
       jegrzy
-      jegier
       jegry
       jegomość
       jegomościowie
-      jegomość
       jegomoście
       jehowita
       jehowici
@@ -26188,27 +23857,19 @@ module GameRoomKrowa
       jejmoście
       jelec
       jelce
-      jelec
-      jelce
       jeleniak
       jeleniaki
       jelenina
       jeleniny
-      jeleniowate
       jeleniowate
       jeleń
       jelenie
       jelito
       jelita
       jelitodyszce
-      jelitodyszce
       jelitodyszec
-      jelitodyszce
-      jelitodyszne
       jelitodyszne
       jelonek
-      jelonki
-      jelonki
       jelonki
       jełczenie
       jełczenia
@@ -26243,10 +23904,8 @@ module GameRoomKrowa
       jesionek
       jesionki
       jesionka
-      jesionki
       jesiotr
       jesiotry
-      jesiotrowate
       jesiotrowate
       jestestwo
       jestestwa
@@ -26254,7 +23913,6 @@ module GameRoomKrowa
       jezdnie
       jezierza
       jezierze
-      jezierzowate
       jezierzowate
       jeziorko
       jeziorka
@@ -26270,14 +23928,9 @@ module GameRoomKrowa
       jezuityzmy
       jeździec
       jeźdźcy
-      jeździec
-      jeźdźcy
-      jeździec
       jeźdźce
       jeździectwo
       jeździectwa
-      jeż
-      jeże
       jeż
       jeże
       jeżatka
@@ -26288,11 +23941,8 @@ module GameRoomKrowa
       jeżdżenia
       jeżenie
       jeżenia
-      jeżenie
-      jeżenia
       jeżogłówka
       jeżogłówki
-      jeżowate
       jeżowate
       jeżowiec
       jeżowce
@@ -26329,8 +23979,6 @@ module GameRoomKrowa
       jęknięcie
       jęknięcia
       jętka
-      jętki
-      jętki
       jętki
       jęzor
       jęzory
@@ -26391,7 +24039,6 @@ module GameRoomKrowa
       jol
       jole
       jola
-      jole
       jolka
       jolki
       jołop
@@ -26452,8 +24099,6 @@ module GameRoomKrowa
       jubileusze
       jucha
       juchy
-      jucha
-      juchy
       jucht
       juchty
       juczenie
@@ -26464,8 +24109,6 @@ module GameRoomKrowa
       judaiści
       judaizm
       judaizmy
-      judasz
-      judasze
       judasz
       judasze
       judowiec
@@ -26493,7 +24136,6 @@ module GameRoomKrowa
       juk
       juki
       juka
-      juki
       jumper
       jumpery
       jumping
@@ -26515,17 +24157,12 @@ module GameRoomKrowa
       juniorek
       juniorki
       juniorka
-      juniorki
-      juniorki
-      juniorki
       junkier
       junkrzy
       junkierstwo
       junkierstwa
       junta
       junty
-      jupiter
-      jupitery
       jupiter
       jupitery
       jura
@@ -26555,7 +24192,6 @@ module GameRoomKrowa
       jut
       juty
       juta
-      juty
       jutro
       jutra
       jutrzenka
@@ -26563,8 +24199,6 @@ module GameRoomKrowa
       jutrznia
       jutrznie
       juwenalia
-      juwenalia
-      juwenilia
       juwenilia
       juz
       juzy
@@ -26572,8 +24206,6 @@ module GameRoomKrowa
       juzingi
       kabacik
       kabaciki
-      kabaczek
-      kabaczki
       kabaczek
       kabaczki
       kabalarka
@@ -26657,15 +24289,12 @@ module GameRoomKrowa
       kacenjamery
       kacerz
       kacerze
-      kacerz
-      kacerze
       kacet
       kacety
       kacetowiec
       kacetowcy
       kacyk
       kacykowie
-      kacyk
       kacyki
       kacykostwo
       kacykostwa
@@ -26680,8 +24309,6 @@ module GameRoomKrowa
       kaczę
       kaczęta
       kaczka
-      kaczki
-      kaczki
       kaczki
       kacznik
       kaczniki
@@ -26720,7 +24347,6 @@ module GameRoomKrowa
       kadr
       kadry
       kadra
-      kadry
       kadrowa
       kadrowe
       kadrowanie
@@ -26731,8 +24357,6 @@ module GameRoomKrowa
       kadrowiczki
       kadrowiec
       kadrowcy
-      kadry
-      kadry
       kadryl
       kadryle
       kaduceusz
@@ -26765,8 +24389,6 @@ module GameRoomKrowa
       kafle
       kafelek
       kafelki
-      kaflarnia
-      kaflarnie
       kaflarnia
       kaflarnie
       kaflarstwo
@@ -26804,8 +24426,6 @@ module GameRoomKrowa
       kajdaniarz
       kajdaniarze
       kajdanki
-      kajdanki
-      kajdany
       kajdany
       kajet
       kajety
@@ -26820,8 +24440,6 @@ module GameRoomKrowa
       kajtek
       kajtki
       kajtonia
-      kajtonie
-      kajtonie
       kajtonie
       kajuta
       kajuty
@@ -26842,13 +24460,8 @@ module GameRoomKrowa
       kaktus
       kaktusy
       kaktusowate
-      kaktusowate
       kalafior
       kalafiory
-      kalafior
-      kalafiory
-      kalafiorek
-      kalafiorki
       kalafiorek
       kalafiorki
       kalafiorowa
@@ -26868,11 +24481,8 @@ module GameRoomKrowa
       kalander
       kalandry
       kalandra
-      kalandry
       kalandrowanie
       kalandrowania
-      kalanie
-      kalania
       kalanie
       kalania
       kalarepa
@@ -26883,13 +24493,9 @@ module GameRoomKrowa
       kalceolarie
       kalcyfil
       kalcyfile
-      kalcyfile
-      kalcyfile
       kalcyfit
       kalcyfity
       kalcyfob
-      kalcyfoby
-      kalcyfoby
       kalcyfoby
       kalcynacja
       kalcynacje
@@ -26903,9 +24509,6 @@ module GameRoomKrowa
       kalectwa
       kaleczenie
       kaleczenia
-      kaleczenie
-      kaleczenia
-      kaledonidy
       kaledonidy
       kalefaktor
       kalefaktorzy
@@ -26913,8 +24516,6 @@ module GameRoomKrowa
       kalejdofony
       kalejdoskop
       kalejdoskopy
-      kaleka
-      kaleki
       kaleka
       kaleki
       kalema
@@ -26926,10 +24527,8 @@ module GameRoomKrowa
       kalendarzyk
       kalendarzyki
       kalendy
-      kalendy
       kalenica
       kalenice
-      kalesony
       kalesony
       kaleta
       kalety
@@ -26989,14 +24588,11 @@ module GameRoomKrowa
       kalkulacje
       kalkulator
       kalkulatorzy
-      kalkulator
       kalkulatory
       kalkulatorka
       kalkulatorki
       kalkulograf
       kalkulografy
-      kalkulowanie
-      kalkulowania
       kalkulowanie
       kalkulowania
       kalla
@@ -27025,8 +24621,6 @@ module GameRoomKrowa
       kaloryzowania
       kalosz
       kalosze
-      kalosze
-      kalosze
       kalota
       kaloty
       kalotypia
@@ -27053,8 +24647,6 @@ module GameRoomKrowa
       kałakuty
       kałamarnica
       kałamarnice
-      kałamarnice
-      kałamarnice
       kałamarz
       kałamarze
       kałamarzyk
@@ -27067,15 +24659,10 @@ module GameRoomKrowa
       kałany
       kałanek
       kałanki
-      kałanki
-      kałanki
       kałdun
       kałduny
       kałmuk
       kałmucy
-      kałmuk
-      kałmuki
-      kałmuk
       kałmuki
       kaługa
       kaługi
@@ -27084,8 +24671,6 @@ module GameRoomKrowa
       kałużka
       kałużki
       kałużnica
-      kałużnice
-      kałużnice
       kałużnice
       kama
       kamy
@@ -27097,11 +24682,7 @@ module GameRoomKrowa
       kamaryle
       kamasz
       kamasze
-      kamasze
-      kamasze
       kamaszek
-      kamaszki
-      kamaszki
       kamaszki
       kamasznictwo
       kamasznictwa
@@ -27116,13 +24697,10 @@ module GameRoomKrowa
       kambuz
       kambuzy
       kambuza
-      kambuzy
       kamea
       kamee
       kameduła
       kameduli
-      kameleon
-      kameleony
       kameleon
       kameleony
       kamelia
@@ -27180,7 +24758,6 @@ module GameRoomKrowa
       kamieniodruk
       kamieniodruki
       kamieniołomy
-      kamieniołomy
       kamienioryt
       kamienioryty
       kamienisko
@@ -27227,8 +24804,6 @@ module GameRoomKrowa
       kamuflety
       kamuflowanie
       kamuflowania
-      kamuflowanie
-      kamuflowania
       kamusznik
       kamuszniki
       kamyczek
@@ -27237,8 +24812,6 @@ module GameRoomKrowa
       kamyki
       kanada
       kanady
-      kanadyjka
-      kanadyjki
       kanadyjka
       kanadyjki
       kanadyjkarz
@@ -27265,8 +24838,6 @@ module GameRoomKrowa
       kanapki
       kanar
       kanary
-      kanar
-      kanary
       kanarecznik
       kanareczniki
       kanarek
@@ -27288,7 +24859,6 @@ module GameRoomKrowa
       kancerek
       kancerki
       kancerka
-      kancerki
       kancerofobia
       kancerofobie
       kancerowanie
@@ -27315,8 +24885,6 @@ module GameRoomKrowa
       kandy
       kandahar
       kandahary
-      kandahary
-      kandahary
       kandela
       kandele
       kandelabr
@@ -27336,7 +24904,6 @@ module GameRoomKrowa
       kanefora
       kanefory
       kanele
-      kanele
       kanelowanie
       kanelowania
       kangur
@@ -27349,7 +24916,6 @@ module GameRoomKrowa
       kanie
       kanianka
       kanianki
-      kaniankowate
       kaniankowate
       kanibal
       kanibale
@@ -27423,7 +24989,6 @@ module GameRoomKrowa
       kantoniery
       kantor
       kantorzy
-      kantor
       kantory
       kantorek
       kantorki
@@ -27433,7 +24998,6 @@ module GameRoomKrowa
       kantowizny
       kantownik
       kantownicy
-      kantownik
       kantowniki
       kantówka
       kantówki
@@ -27442,7 +25006,6 @@ module GameRoomKrowa
       kantyk
       kantyki
       kantyka
-      kantyki
       kantylena
       kantyleny
       kantyna
@@ -27486,16 +25049,11 @@ module GameRoomKrowa
       kaparek
       kaparki
       kaparowate
-      kaparowate
-      kapary
-      kapary
       kapcan
       kapcany
       kapcanienie
       kapcanienia
       kapce
-      kapce
-      kapcie
       kapcie
       kapciuch
       kapciuchy
@@ -27504,14 +25062,10 @@ module GameRoomKrowa
       kapeczka
       kapeczki
       kapeć
-      kapcie
-      kapeć
-      kapcie
       kapela
       kapele
       kapelan
       kapelani
-      kapelan
       kapelany
       kapelmistrz
       kapelmistrze
@@ -27538,7 +25092,6 @@ module GameRoomKrowa
       kapibara
       kapibary
       kapiec
-      kapce
       kapilara
       kapilary
       kapilarność
@@ -27553,8 +25106,6 @@ module GameRoomKrowa
       kapiszonówki
       kapitalik
       kapitaliki
-      kapitaliki
-      kapitaliki
       kapitalista
       kapitaliści
       kapitalistka
@@ -27566,7 +25117,6 @@ module GameRoomKrowa
       kapitał
       kapitały
       kapitała
-      kapitały
       kapitałka
       kapitałki
       kapitan
@@ -27575,7 +25125,6 @@ module GameRoomKrowa
       kapitanaty
       kapitanka
       kapitanki
-      kapitanostwo
       kapitanostwo
       kapitanowa
       kapitanowe
@@ -27619,8 +25168,6 @@ module GameRoomKrowa
       kapłonienia
       kapnięcie
       kapnięcia
-      kapnięcie
-      kapnięcia
       kapnik
       kapniki
       kapo
@@ -27634,7 +25181,6 @@ module GameRoomKrowa
       kapot
       kapoty
       kapota
-      kapoty
       kapotaż
       kapotaże
       kapotka
@@ -27652,8 +25198,6 @@ module GameRoomKrowa
       kaprolaktam
       kaprolaktamy
       kapron
-      kaprony
-      kaprony
       kaprony
       kapryfolium
       kapryfolia
@@ -27674,7 +25218,6 @@ module GameRoomKrowa
       kapsiplast
       kapsiplasty
       kapsla
-      kapsle
       kapslarz
       kapslarze
       kapslowanie
@@ -27705,14 +25248,10 @@ module GameRoomKrowa
       kapturzenia
       kapucyn
       kapucyni
-      kapucyn
       kapucyny
       kapucynek
       kapucynki
       kapucynka
-      kapucynki
-      kapucynki
-      kapucynki
       kapusta
       kapusty
       kapustka
@@ -27729,12 +25268,6 @@ module GameRoomKrowa
       kapuściska
       kapuśniaczek
       kapuśniaczki
-      kapuśniaczek
-      kapuśniaczki
-      kapuśniaczek
-      kapuśniaczki
-      kapuśniak
-      kapuśniaki
       kapuśniak
       kapuśniaki
       kapuśnisko
@@ -27744,7 +25277,6 @@ module GameRoomKrowa
       kar
       kary
       kara
-      kary
       karabela
       karabele
       karabin
@@ -27769,18 +25301,10 @@ module GameRoomKrowa
       karagany
       karaim
       karaimi
-      karaim
-      karaimi
-      karaimka
-      karaimki
       karaimka
       karaimki
       karaita
       karaici
-      karaita
-      karaici
-      karaitka
-      karaitki
       karaitka
       karaitki
       karakal
@@ -27788,8 +25312,6 @@ module GameRoomKrowa
       karakol
       karakole
       karakuł
-      karakuły
-      karakuły
       karakuły
       karakurt
       karakurty
@@ -27810,7 +25332,6 @@ module GameRoomKrowa
       karawan
       karawany
       karawana
-      karawany
       karawaniarz
       karawaniarze
       karawaning
@@ -27831,13 +25352,9 @@ module GameRoomKrowa
       karbidownie
       karbidówka
       karbidówki
-      karbidy
-      karbidy
       karbieniec
       karbieńce
       karbik
-      karbiki
-      karbiki
       karbiki
       karbikomierz
       karbikomierze
@@ -27870,7 +25387,6 @@ module GameRoomKrowa
       karbonizacja
       karbonizacje
       karbonizator
-      karbonizator
       karbonizatory
       karborund
       karborundy
@@ -27878,7 +25394,6 @@ module GameRoomKrowa
       karbowania
       karbownik
       karbownicy
-      karbownik
       karbowniki
       karbowy
       karbowi
@@ -27902,7 +25417,6 @@ module GameRoomKrowa
       karciarstwa
       karciarz
       karciarze
-      karcięta
       karcięta
       karcinotron
       karcinotrony
@@ -27930,9 +25444,6 @@ module GameRoomKrowa
       karczownice
       karczownik
       karczownicy
-      karczownik
-      karczowniki
-      karczownik
       karczowniki
       karczunek
       karczunki
@@ -27963,7 +25474,6 @@ module GameRoomKrowa
       kardynalstwa
       kardynał
       kardynałowie
-      kardynał
       kardynały
       kardynałek
       kardynałki
@@ -27982,7 +25492,6 @@ module GameRoomKrowa
       karier
       kariery
       kariera
-      kariery
       karierowicz
       karierowicze
       karierowiczka
@@ -28033,22 +25542,16 @@ module GameRoomKrowa
       karmaniole
       karmazyn
       karmazyni
-      karmazyn
-      karmazyny
-      karmazyn
       karmazyny
       karmazynek
       karmazynki
       karmazynka
-      karmazynki
       karmel
       karmele
       karmelarstwo
       karmelarstwa
       karmelarz
       karmelarze
-      karmelek
-      karmelki
       karmelek
       karmelki
       karmelita
@@ -28059,8 +25562,6 @@ module GameRoomKrowa
       karmelitki
       karmelizacja
       karmelizacje
-      karmelki
-      karmelki
       karmiciel
       karmiciele
       karmicielka
@@ -28069,8 +25570,6 @@ module GameRoomKrowa
       karmidełka
       karmidło
       karmidła
-      karmienie
-      karmienia
       karmienie
       karmienia
       karmin
@@ -28104,7 +25603,6 @@ module GameRoomKrowa
       karny
       karne
       karo
-      kara
       karoca
       karoce
       karosaż
@@ -28119,8 +25617,6 @@ module GameRoomKrowa
       karoteny
       karotenoid
       karotenoidy
-      karotenoidy
-      karotenoidy
       karotka
       karotki
       karp
@@ -28134,10 +25630,8 @@ module GameRoomKrowa
       karpina
       karpiny
       karpiowate
-      karpiowate
       karpiówka
       karpiówki
-      karple
       karple
       karpologia
       karpologie
@@ -28148,17 +25642,13 @@ module GameRoomKrowa
       kart
       karty
       karta
-      karty
       kartacz
-      kartacze
-      kartacze
       kartacze
       kartaczownica
       kartaczownice
       kartaun
       kartauny
       kartauna
-      kartauny
       karteczka
       karteczki
       kartel
@@ -28183,12 +25673,8 @@ module GameRoomKrowa
       kartofle
       kartofelek
       kartofelki
-      kartofelek
-      kartofelki
       kartoflanka
       kartoflanki
-      kartoflarnia
-      kartoflarnie
       kartoflarnia
       kartoflarnie
       kartoflisko
@@ -28225,8 +25711,6 @@ module GameRoomKrowa
       kartuzi
       kartuzja
       kartuzje
-      karty
-      karty
       karuk
       karuki
       karuzel
@@ -28237,7 +25721,6 @@ module GameRoomKrowa
       karuzelówki
       karwasz
       karwasze
-      kary
       kare
       karygodność
       karygodności
@@ -28247,10 +25730,6 @@ module GameRoomKrowa
       karykaturki
       karykiel
       karykle
-      karzeł
-      karły
-      karzeł
-      karły
       karzeł
       karły
       karzełek
@@ -28299,8 +25778,6 @@ module GameRoomKrowa
       kasłania
       kasowanie
       kasowania
-      kasowanie
-      kasowania
       kasownik
       kasowniki
       kasowość
@@ -28309,7 +25786,6 @@ module GameRoomKrowa
       kassaty
       kasta
       kasty
-      kastaniety
       kastaniety
       kastet
       kastety
@@ -28323,7 +25799,6 @@ module GameRoomKrowa
       kastracje
       kastrat
       kastraci
-      kastrat
       kastraty
       kastrator
       kastratorzy
@@ -28343,8 +25818,6 @@ module GameRoomKrowa
       kaszaloty
       kaszanka
       kaszanki
-      kaszarnia
-      kaszarnie
       kaszarnia
       kaszarnie
       kaszarnictwo
@@ -28382,19 +25855,13 @@ module GameRoomKrowa
       kaszt
       kaszty
       kaszta
-      kaszty
-      kasztan
-      kasztany
       kasztan
       kasztany
       kasztanek
       kasztanki
       kasztanka
-      kasztanki
       kasztanowiec
       kasztanowce
-      kasztany
-      kasztany
       kasztel
       kasztele
       kasztelan
@@ -28411,10 +25878,7 @@ module GameRoomKrowa
       kaszyce
       kat
       katy
-      kat
       kaci
-      kat
-      katy
       katabolizm
       katabolizmy
       katachreza
@@ -28423,7 +25887,6 @@ module GameRoomKrowa
       katafalki
       kataklizm
       kataklizmy
-      katakumby
       katakumby
       kataleksa
       kataleksy
@@ -28455,7 +25918,6 @@ module GameRoomKrowa
       katapulty
       katar
       katarowie
-      katar
       katary
       katarakta
       katarakty
@@ -28468,8 +25930,6 @@ module GameRoomKrowa
       katarynka
       katarynki
       katarzynka
-      katarzynki
-      katarzynki
       katarzynki
       katastaza
       katastazy
@@ -28557,17 +26017,12 @@ module GameRoomKrowa
       katorżnicy
       katowanie
       katowania
-      katowanie
-      katowania
       katownia
       katownie
       katta
       katty
       katulanie
       katulania
-      katulanie
-      katulania
-      katusze
       katusze
       katzenjammer
       katzenjammery
@@ -28597,7 +26052,6 @@ module GameRoomKrowa
       kauzalności
       kauzyperda
       kauzyperdy
-      kauzyperda
       kauzyperdzi
       kawa
       kawy
@@ -28617,7 +26071,6 @@ module GameRoomKrowa
       kawalątka
       kawaler
       kawalerowie
-      kawaler
       kawalerzy
       kawaleria
       kawalerie
@@ -28653,8 +26106,6 @@ module GameRoomKrowa
       kawiarki
       kawiarnia
       kawiarnie
-      kawiarnia
-      kawiarnie
       kawiarz
       kawiarze
       kawior
@@ -28667,8 +26118,6 @@ module GameRoomKrowa
       kawki
       kawon
       kawony
-      kawon
-      kawony
       kawowiec
       kawowce
       kawunia
@@ -28678,8 +26127,6 @@ module GameRoomKrowa
       kazalnica
       kazalnice
       kazamata
-      kazamaty
-      kazamaty
       kazamaty
       kazanie
       kazania
@@ -28708,7 +26155,6 @@ module GameRoomKrowa
       kaźń
       kaźnie
       każdy
-      każdy
       kącik
       kąciki
       kądziel
@@ -28721,8 +26167,6 @@ module GameRoomKrowa
       kąkole
       kąpanie
       kąpania
-      kąpanie
-      kąpania
       kąpiel
       kąpiele
       kąpielisko
@@ -28730,13 +26174,8 @@ module GameRoomKrowa
       kąpielowicz
       kąpielowicze
       kąpielówki
-      kąpielówki
       kąsacz
       kąsacze
-      kąsacze
-      kąsacze
-      kąsanie
-      kąsania
       kąsanie
       kąsania
       kąsek
@@ -28769,8 +26208,6 @@ module GameRoomKrowa
       kedywowie
       kefalina
       kefaliny
-      kefaliny
-      kefaliny
       kefalometria
       kefalometrie
       keffekilit
@@ -28781,8 +26218,6 @@ module GameRoomKrowa
       kegle
       keja
       keje
-      keks
-      keksy
       keks
       keksy
       kelner
@@ -28832,7 +26267,6 @@ module GameRoomKrowa
       ket
       kety
       keta
-      kety
       ketchup
       ketchupy
       keten
@@ -28843,11 +26277,7 @@ module GameRoomKrowa
       ketony
       ketonokwas
       ketonokwasy
-      ketonokwasy
-      ketonokwasy
       ketoza
-      ketozy
-      ketozy
       ketozy
       kędzierzawka
       kędzierzawki
@@ -28903,7 +26333,6 @@ module GameRoomKrowa
       kiczowatość
       kiczowatości
       kić
-      kicie
       kidnaper
       kidnaperzy
       kidnaperka
@@ -28948,8 +26377,6 @@ module GameRoomKrowa
       kiełzna
       kiełż
       kiełże
-      kiełże
-      kiełże
       kiep
       kpy
       kier
@@ -28974,8 +26401,6 @@ module GameRoomKrowa
       kierowalności
       kierowanie
       kierowania
-      kierowanie
-      kierowania
       kierowca
       kierowcy
       kierownica
@@ -28987,9 +26412,7 @@ module GameRoomKrowa
       kierownik
       kierownicy
       kierpce
-      kierpce
       kierpec
-      kierpce
       kierunek
       kierunki
       kierunkowość
@@ -29010,7 +26433,6 @@ module GameRoomKrowa
       kieszonka
       kieszonki
       kieszonkowe
-      kieszonkowe
       kieszonkowiec
       kieszonkowcy
       kifoskolioza
@@ -29025,8 +26447,6 @@ module GameRoomKrowa
       kijarki
       kijaszek
       kijaszki
-      kije
-      kije
       kijek
       kijki
       kiks
@@ -29036,8 +26456,6 @@ module GameRoomKrowa
       kikut
       kikuty
       kikutnica
-      kikutnice
-      kikutnice
       kikutnice
       kil
       kile
@@ -29053,8 +26471,6 @@ module GameRoomKrowa
       kilimiarki
       kilimiarstwo
       kilimiarstwa
-      kilimkarnia
-      kilimkarnie
       kilimkarnia
       kilimkarnie
       kilimkarstwo
@@ -29131,15 +26547,11 @@ module GameRoomKrowa
       kinetyki
       kineza
       kinezy
-      kinezy
-      kinezy
       king
       kingi
       kingston
       kingstony
       kinina
-      kininy
-      kininy
       kininy
       kinkiecik
       kinkieciki
@@ -29196,14 +26608,10 @@ module GameRoomKrowa
       kisielki
       kiszarnia
       kiszarnie
-      kiszarnia
-      kiszarnie
       kiszeczka
       kiszeczki
       kiszeniak
       kiszeniaki
-      kiszenie
-      kiszenia
       kiszenie
       kiszenia
       kiszka
@@ -29223,7 +26631,6 @@ module GameRoomKrowa
       kit
       kity
       kita
-      kity
       kitara
       kitary
       kitarzysta
@@ -29235,25 +26642,16 @@ module GameRoomKrowa
       kitka
       kitki
       kitla
-      kitle
       kitowanie
       kitowania
       kituś
       kitusie
       kiur
       kiury
-      kiur
-      kiury
-      kiurowce
       kiurowce
       kiurowiec
-      kiurowce
       kiwanie
       kiwania
-      kiwanie
-      kiwania
-      kiwnięcie
-      kiwnięcia
       kiwnięcie
       kiwnięcia
       kizeryt
@@ -29287,7 +26685,6 @@ module GameRoomKrowa
       klamka
       klamki
       klamoty
-      klamoty
       klamp
       klampy
       klamra
@@ -29315,26 +26712,19 @@ module GameRoomKrowa
       klapek
       klapki
       klapka
-      klapki
-      klapki
-      klapki
       klapnięcie
       klapnięcia
       klapowanie
       klapowania
       klaps
       klapsy
-      klaps
-      klapsy
       klapsa
-      klapsy
       klapser
       klapserzy
       klapserka
       klapserki
       klark
       klarkowie
-      klark
       klarki
       klarnecik
       klarneciki
@@ -29344,8 +26734,6 @@ module GameRoomKrowa
       klarnecistki
       klarnet
       klarnety
-      klarowanie
-      klarowania
       klarowanie
       klarowania
       klarownica
@@ -29374,8 +26762,6 @@ module GameRoomKrowa
       klasówki
       klaster
       klastery
-      klasy
-      klasy
       klasycysta
       klasycyści
       klasycyzm
@@ -29400,7 +26786,6 @@ module GameRoomKrowa
       klatki
       klaun
       klauny
-      klaun
       klauni
       klaustrofobia
       klaustrofobie
@@ -29420,8 +26805,6 @@ module GameRoomKrowa
       klawicymbały
       klawikord
       klawikordy
-      klawisz
-      klawisze
       klawisz
       klawisze
       kląskanie
@@ -29448,12 +26831,8 @@ module GameRoomKrowa
       klejarki
       klejarnia
       klejarnie
-      klejarnia
-      klejarnie
       klejarz
       klejarze
-      klejenie
-      klejenia
       klejenie
       klejenia
       klejnocik
@@ -29494,8 +26873,6 @@ module GameRoomKrowa
       klepaki
       klepanie
       klepania
-      klepanie
-      klepania
       kleparka
       kleparki
       klepisko
@@ -29506,8 +26883,6 @@ module GameRoomKrowa
       klepkarki
       klepkowanie
       klepkowania
-      klepnięcie
-      klepnięcia
       klepnięcie
       klepnięcia
       klepsydra
@@ -29536,8 +26911,6 @@ module GameRoomKrowa
       klerykałowie
       kleszcz
       kleszcze
-      kleszcze
-      kleszcze
       kleszczka
       kleszczki
       kleszczojad
@@ -29547,10 +26920,7 @@ module GameRoomKrowa
       kleszczowina
       kleszczowiny
       kleszczyki
-      kleszczyki
       kleterek
-      kleterki
-      kleterki
       kleterki
       klezmer
       klezmerzy
@@ -29600,8 +26970,6 @@ module GameRoomKrowa
       klimenie
       klin
       kliny
-      klin
-      kliny
       klincz
       klincze
       klinczowanie
@@ -29618,14 +26986,9 @@ module GameRoomKrowa
       klińce
       klinik
       kliniki
-      klinik
-      kliniki
       klinika
-      kliniki
       klinkier
       klinkiery
-      klinkiernia
-      klinkiernie
       klinkiernia
       klinkiernie
       klinkierówka
@@ -29640,8 +27003,6 @@ module GameRoomKrowa
       klinometry
       klinowanie
       klinowania
-      klinowanie
-      klinowania
       klinowatość
       klinowatości
       klipa
@@ -29650,16 +27011,12 @@ module GameRoomKrowa
       klipry
       klips
       klipsy
-      klipsy
-      klipsy
       kliring
       kliringi
       klistron
       klistrony
       klisza
       klisze
-      kliszarnia
-      kliszarnie
       kliszarnia
       kliszarnie
       kliszka
@@ -29692,8 +27049,6 @@ module GameRoomKrowa
       kloce
       klocek
       klocki
-      klocki
-      klocki
       klocowanie
       klocowania
       klocowatość
@@ -29712,7 +27067,6 @@ module GameRoomKrowa
       kloniki
       klonina
       kloniny
-      klonowate
       klonowate
       klops
       klopsy
@@ -29734,7 +27088,6 @@ module GameRoomKrowa
       klotoidy
       klown
       klowny
-      klown
       klowni
       klozet
       klozety
@@ -29774,8 +27127,6 @@ module GameRoomKrowa
       kluseczki
       kluska
       kluski
-      kluski
-      kluski
       kluza
       kluzy
       kluzja
@@ -29788,18 +27139,12 @@ module GameRoomKrowa
       kładki
       kładzenie
       kładzenia
-      kładzenie
-      kładzenia
       kłak
-      kłaki
-      kłaki
       kłaki
       kłamanie
       kłamania
       kłamca
       kłamcy
-      kłamczuch
-      kłamczuchy
       kłamczuch
       kłamczuchy
       kłamliwość
@@ -29810,7 +27155,6 @@ module GameRoomKrowa
       kłamstwa
       kłanianie
       kłaniania
-      kłańce
       kłańce
       kłapak
       kłapaki
@@ -29836,8 +27180,6 @@ module GameRoomKrowa
       kłobuczki
       kłobuk
       kłobuki
-      kłobuk
-      kłobuki
       kłoć
       kłocie
       kłoda
@@ -29849,7 +27191,6 @@ module GameRoomKrowa
       kłokoczka
       kłokoczki
       kłokoczkowate
-      kłokoczkowate
       kłomia
       kłomie
       kłomla
@@ -29858,12 +27199,8 @@ module GameRoomKrowa
       kłonice
       kłonienie
       kłonienia
-      kłonienie
-      kłonienia
       kłopot
       kłopoty
-      kłopotanie
-      kłopotania
       kłopotanie
       kłopotania
       kłopotliwość
@@ -29886,8 +27223,6 @@ module GameRoomKrowa
       kłoszenia
       kłócenie
       kłócenia
-      kłócenie
-      kłócenia
       kłódeczka
       kłódeczki
       kłódka
@@ -29900,8 +27235,6 @@ module GameRoomKrowa
       kłótnice
       kłótnik
       kłótnicy
-      kłucie
-      kłucia
       kłucie
       kłucia
       kłujka
@@ -29919,8 +27252,6 @@ module GameRoomKrowa
       kłusownik
       kłusownicy
       kłykcina
-      kłykciny
-      kłykciny
       kłykciny
       kłykieć
       kłykcie
@@ -29950,17 +27281,11 @@ module GameRoomKrowa
       knechci
       knedel
       knedle
-      knedel
-      knedle
-      knedle
-      knedle
       kniazienie
       kniazienia
       kniaź
       kniaziowie
       knidoblast
-      knidoblasty
-      knidoblasty
       knidoblasty
       knieć
       kniecie
@@ -30081,8 +27406,6 @@ module GameRoomKrowa
       kochankowie
       kochanie
       kochania
-      kochanie
-      kochania
       kochanka
       kochanki
       kochany
@@ -30095,10 +27418,6 @@ module GameRoomKrowa
       kochinchiny
       kociak
       kociaki
-      kociak
-      kociaki
-      kociarnia
-      kociarnie
       kociarnia
       kociarnie
       kociątko
@@ -30123,8 +27442,6 @@ module GameRoomKrowa
       kociuby
       kocmołuch
       kocmołuchy
-      kocmołuch
-      kocmołuchy
       kocowanie
       kocowania
       kocur
@@ -30135,8 +27452,6 @@ module GameRoomKrowa
       kocze
       koczek
       koczki
-      koczkodan
-      koczkodany
       koczkodan
       koczkodany
       koczowanie
@@ -30152,7 +27467,6 @@ module GameRoomKrowa
       kod
       kody
       koda
-      kody
       kodeina
       kodeiny
       kodeks
@@ -30219,8 +27533,6 @@ module GameRoomKrowa
       koje
       kojarzenie
       kojarzenia
-      kojarzenie
-      kojarzenia
       kojczyk
       kojczyki
       kojec
@@ -30231,12 +27543,8 @@ module GameRoomKrowa
       kojoty
       kok
       kokowie
-      kok
-      koki
-      kok
       koki
       koka
-      koki
       kokaina
       kokainy
       kokainista
@@ -30273,8 +27581,6 @@ module GameRoomKrowa
       koklusze
       kokolit
       kokolity
-      kokolity
-      kokolity
       kokon
       kokony
       kokonizacja
@@ -30282,13 +27588,10 @@ module GameRoomKrowa
       kokornak
       kokornaki
       kokornakowate
-      kokornakowate
       kokorycz
       kokorycze
       kokoryczka
       kokoryczki
-      kokos
-      kokosy
       kokos
       kokosy
       kokosowiec
@@ -30304,13 +27607,10 @@ module GameRoomKrowa
       koks
       koksy
       koksa
-      koksy
       koksagiz
       koksagizy
       koksiak
       koksiaki
-      koksiarnia
-      koksiarnie
       koksiarnia
       koksiarnie
       koksiarz
@@ -30351,16 +27651,12 @@ module GameRoomKrowa
       kolageny
       kolagenoza
       kolagenozy
-      kolagenozy
-      kolagenozy
       kolamina
       kolaminy
       kolanisko
       kolaniska
       kolanka
-      kolanka
       kolanko
-      kolanka
       kolano
       kolana
       kolanówka
@@ -30379,7 +27675,6 @@ module GameRoomKrowa
       kolaski
       kolator
       kolatorzy
-      kolator
       kolatory
       kolaudacja
       kolaudacje
@@ -30389,7 +27684,6 @@ module GameRoomKrowa
       kolby
       kolbka
       kolbki
-      kolce
       kolce
       kolchicyna
       kolchicyny
@@ -30408,7 +27702,6 @@ module GameRoomKrowa
       kolczak
       kolczaki
       kolczakowate
-      kolczakowate
       kolczatka
       kolczatki
       kolczoch
@@ -30425,12 +27718,9 @@ module GameRoomKrowa
       koleby
       kolebanie
       kolebania
-      kolebanie
-      kolebania
       kolebka
       kolebki
       kolec
-      kolce
       kolega
       koledzy
       kolegialność
@@ -30449,8 +27739,6 @@ module GameRoomKrowa
       kolejarki
       kolejarz
       kolejarze
-      koleje
-      koleje
       kolejka
       kolejki
       kolejnictwo
@@ -30466,12 +27754,10 @@ module GameRoomKrowa
       kolekcyjka
       kolekcyjki
       kolektanea
-      kolektanea
       kolektiwum
       kolektiwa
       kolektor
       kolektorzy
-      kolektor
       kolektory
       kolektorka
       kolektorki
@@ -30488,7 +27774,6 @@ module GameRoomKrowa
       kolender
       kolendry
       kolendra
-      kolendry
       koleń
       kolenie
       koleopter
@@ -30509,7 +27794,6 @@ module GameRoomKrowa
       koleżeństwa
       koleżka
       koleżkowie
-      koleżka
       koleżki
       kolęda
       kolędy
@@ -30531,9 +27815,6 @@ module GameRoomKrowa
       kolidowania
       koligacenie
       koligacenia
-      koligacenie
-      koligacenia
-      koligacje
       koligacje
       kolimacja
       kolimacje
@@ -30544,8 +27825,6 @@ module GameRoomKrowa
       kolistość
       kolistości
       koliszek
-      koliszki
-      koliszki
       koliszki
       kolizja
       kolizje
@@ -30565,8 +27844,6 @@ module GameRoomKrowa
       kologarytmy
       koloid
       koloidy
-      koloidy
-      koloidy
       kolokacja
       kolokacje
       kolokazja
@@ -30584,7 +27861,6 @@ module GameRoomKrowa
       kolombiny
       kolon
       koloni
-      kolon
       kolony
       kolonat
       kolonaty
@@ -30596,8 +27872,6 @@ module GameRoomKrowa
       kolonialiści
       kolonializm
       kolonializmy
-      kolonie
-      kolonie
       kolonijka
       kolonijki
       kolonista
@@ -30620,8 +27894,6 @@ module GameRoomKrowa
       kolorki
       kolorowanie
       kolorowania
-      kolory
-      kolory
       kolorymetr
       kolorymetry
       kolorymetria
@@ -30678,21 +27950,17 @@ module GameRoomKrowa
       kołacze
       kołatanie
       kołatania
-      kołatanie
-      kołatania
       kołatanina
       kołataniny
       kołatek
       kołatki
       kołatka
-      kołatki
       kołchoz
       kołchozy
       kołchoźnica
       kołchoźnice
       kołchoźnik
       kołchoźnicy
-      kołchoźnik
       kołchoźniki
       kołczan
       kołczany
@@ -30705,12 +27973,9 @@ module GameRoomKrowa
       kołdrzyna
       kołdrzyny
       kołduny
-      kołduny
       kołeczek
       kołeczki
       kołek
-      kołki
-      kołki
       kołki
       kołkowanie
       kołkowania
@@ -30762,20 +28027,14 @@ module GameRoomKrowa
       kołpaki
       kołtun
       kołtuny
-      kołtun
-      kołtuny
       kołtuneria
       kołtunerie
-      kołtunienie
-      kołtunienia
       kołtunienie
       kołtunienia
       kołtunka
       kołtunki
       kołtuństwo
       kołtuństwa
-      kołysanie
-      kołysania
       kołysanie
       kołysania
       kołysanka
@@ -30820,8 +28079,6 @@ module GameRoomKrowa
       kombatantki
       kombinacja
       kombinacje
-      kombinacje
-      kombinacje
       kombinat
       kombinaty
       kombinator
@@ -30830,7 +28087,6 @@ module GameRoomKrowa
       kombinatorki
       kombinatoryka
       kombinatoryki
-      kombinerki
       kombinerki
       kombinezon
       kombinezony
@@ -30899,15 +28155,12 @@ module GameRoomKrowa
       kominki
       kominiarczyk
       kominiarczyki
-      kominiarczyk
-      kominiarczyki
       kominiarka
       kominiarki
       kominiarstwo
       kominiarstwa
       kominiarz
       kominiarze
-      kominowe
       kominowe
       kominówka
       kominówki
@@ -30923,7 +28176,6 @@ module GameRoomKrowa
       komisarze
       komisja
       komisje
-      komisowe
       komisowe
       komisyjka
       komisyjki
@@ -30953,7 +28205,6 @@ module GameRoomKrowa
       komora
       komory
       komorne
-      komorne
       komornica
       komornice
       komornictwo
@@ -30965,11 +28216,8 @@ module GameRoomKrowa
       komosa
       komosy
       komosowate
-      komosowate
       komódka
       komódki
-      komórczak
-      komórczaki
       komórczak
       komórczaki
       komóreczka
@@ -31007,16 +28255,12 @@ module GameRoomKrowa
       kompensatory
       kompensowanie
       kompensowania
-      kompensowanie
-      kompensowania
-      kompetencje
       kompetencje
       kompetentność
       kompilacja
       kompilacje
       kompilator
       kompilatorzy
-      kompilator
       kompilatory
       kompilatorka
       kompilatorki
@@ -31045,10 +28289,6 @@ module GameRoomKrowa
       kompletownie
       komplikacja
       komplikacje
-      komplikacje
-      komplikacje
-      komplikowanie
-      komplikowania
       komplikowanie
       komplikowania
       kompocik
@@ -31127,16 +28367,12 @@ module GameRoomKrowa
       komunikaty
       komunikowanie
       komunikowania
-      komunikowanie
-      komunikowania
       komunista
       komuniści
       komunistka
       komunistki
       komunizm
       komunizmy
-      komunizowanie
-      komunizowania
       komunizowanie
       komunizowania
       komutacja
@@ -31147,10 +28383,8 @@ module GameRoomKrowa
       komutowanie
       komutowania
       komysze
-      komysze
       komża
       komże
-      konający
       konający
       konanie
       konania
@@ -31231,9 +28465,6 @@ module GameRoomKrowa
       kondensory
       kondensowanie
       kondensowania
-      kondensowanie
-      kondensowania
-      kondolencje
       kondolencje
       kondom
       kondomy
@@ -31259,7 +28490,6 @@ module GameRoomKrowa
       kondycjonery
       kondygnacja
       kondygnacje
-      koneksje
       koneksje
       koneser
       koneserzy
@@ -31326,8 +28556,6 @@ module GameRoomKrowa
       konformizmy
       konfraternia
       konfraternie
-      konfraternia
-      konfraternie
       konfrontacja
       konfrontacje
       konfucjanista
@@ -31368,7 +28596,6 @@ module GameRoomKrowa
       konidiofor
       konidiofory
       konidiospory
-      konidiospory
       konidium
       konidia
       koniec
@@ -31383,8 +28610,6 @@ module GameRoomKrowa
       koniiny
       konik
       koniki
-      konik
-      koniki
       konimetr
       konimetry
       konina
@@ -31395,7 +28620,6 @@ module GameRoomKrowa
       koniokrady
       koniokradztwo
       koniokradztwa
-      koniowate
       koniowate
       konisko
       koniska
@@ -31462,7 +28686,6 @@ module GameRoomKrowa
       konkurs
       konkursy
       konkury
-      konkury
       konkwista
       konkwisty
       konkwistador
@@ -31475,8 +28698,6 @@ module GameRoomKrowa
       konometr
       konometry
       konopie
-      konopie
-      konopiowate
       konopiowate
       konosament
       konosamenty
@@ -31513,10 +28734,6 @@ module GameRoomKrowa
       konserwatyzmy
       konserwiarnia
       konserwiarnie
-      konserwiarnia
-      konserwiarnie
-      konserwowanie
-      konserwowania
       konserwowanie
       konserwowania
       konskrypcja
@@ -31547,8 +28764,6 @@ module GameRoomKrowa
       konspiratorzy
       konspiratorka
       konspiratorki
-      konspirowanie
-      konspirowania
       konspirowanie
       konspirowania
       konstabl
@@ -31582,13 +28797,10 @@ module GameRoomKrowa
       konsulat
       konsulaty
       konsulostwo
-      konsulostwo
       konsultacja
       konsultacje
       konsultant
       konsultanci
-      konsultowanie
-      konsultowania
       konsultowanie
       konsultowania
       konsum
@@ -31616,15 +28828,11 @@ module GameRoomKrowa
       konsystorz
       konsystorze
       konszachciki
-      konszachciki
-      konszachty
       konszachty
       konszowanie
       konszowania
       kontakt
       kontakty
-      kontaktowanie
-      kontaktowania
       kontaktowanie
       kontaktowania
       kontaminacja
@@ -31750,8 +28958,6 @@ module GameRoomKrowa
       kontrolki
       kontrolowanie
       kontrolowania
-      kontrolowanie
-      kontrolowania
       kontrowanie
       kontrowania
       kontrowersja
@@ -31799,8 +29005,6 @@ module GameRoomKrowa
       kontystka
       kontystki
       konularia
-      konularie
-      konularie
       konularie
       konurbacja
       konurbacje
@@ -31862,15 +29066,10 @@ module GameRoomKrowa
       konwój
       konwoje
       konwulsje
-      konwulsje
-      koń
-      konie
       koń
       konie
       końcówka
       końcówki
-      kończenie
-      kończenia
       kończenie
       kończenia
       kończyna
@@ -31919,22 +29118,14 @@ module GameRoomKrowa
       kopalnictwa
       kopanie
       kopania
-      kopanie
-      kopania
       kopanina
       kopaniny
       koparka
       koparki
       kopcenie
       kopcenia
-      kopcenie
-      kopcenia
       kopciuch
       kopciuchy
-      kopciuch
-      kopciuchy
-      kopciuszek
-      kopciuszki
       kopciuszek
       kopciuszki
       kopcowanie
@@ -31949,7 +29140,6 @@ module GameRoomKrowa
       kopry
       koperek
       koperki
-      kopernikana
       kopernikana
       kopernikolog
       koperta
@@ -31992,10 +29182,7 @@ module GameRoomKrowa
       kopniaki
       kopnięcie
       kopnięcia
-      kopnięcie
-      kopnięcia
       kopra
-      kopry
       koproducent
       koproducenci
       koprodukcja
@@ -32007,8 +29194,6 @@ module GameRoomKrowa
       koprolalia
       koprolalie
       koprolit
-      koprolity
-      koprolity
       koprolity
       kopula
       kopule
@@ -32030,19 +29215,13 @@ module GameRoomKrowa
       kopystki
       kopyść
       kopyście
-      kopyść
       kopyści
       kopytka
-      kopytka
       kopytko
-      kopytka
       kopytkowe
-      kopytkowe
-      kopytne
       kopytne
       kopytnik
       kopytnicy
-      kopytnik
       kopytniki
       kopyto
       kopyta
@@ -32054,10 +29233,6 @@ module GameRoomKrowa
       korabie
       koral
       korale
-      koral
-      korale
-      korale
-      korale
       koraliczek
       koraliczki
       koralik
@@ -32065,9 +29240,7 @@ module GameRoomKrowa
       koralka
       koralki
       koralowce
-      koralowce
       koralowiec
-      koralowce
       koralowina
       koralowiny
       korazja
@@ -32082,8 +29255,6 @@ module GameRoomKrowa
       korcenia
       korczyk
       korczyki
-      kord
-      kordy
       kord
       kordy
       kordait
@@ -32108,8 +29279,6 @@ module GameRoomKrowa
       kordziki
       koreczek
       koreczki
-      koreczki
-      koreczki
       koreferat
       koreferaty
       koreferent
@@ -32128,12 +29297,9 @@ module GameRoomKrowa
       korekty
       korektor
       korektorzy
-      korektor
       korektory
       korektorka
       korektorki
-      korektornia
-      korektornie
       korektornia
       korektornie
       korektura
@@ -32148,16 +29314,12 @@ module GameRoomKrowa
       korelowania
       korepetycja
       korepetycje
-      korepetycje
-      korepetycje
       korepetytor
       korepetytorzy
       korepetytorka
       korepetytorki
       korespondent
       korespondenci
-      korki
-      korki
       korkociąg
       korkociągi
       korkowacenie
@@ -32171,8 +29333,6 @@ module GameRoomKrowa
       korkownica
       korkownice
       kormofit
-      kormofity
-      kormofity
       kormofity
       kormoran
       kormorany
@@ -32188,13 +29348,9 @@ module GameRoomKrowa
       kornele
       korner
       kornery
-      korner
-      kornery
       kornet
       kornety
       kornik
-      korniki
-      korniki
       korniki
       korniszon
       korniszony
@@ -32218,8 +29374,6 @@ module GameRoomKrowa
       koronkarki
       koronkarnia
       koronkarnie
-      koronkarnia
-      koronkarnie
       koronkarstwo
       koronkarstwa
       koronkarz
@@ -32228,8 +29382,6 @@ module GameRoomKrowa
       koronkowości
       koronograf
       koronografy
-      koronowanie
-      koronowania
       koronowanie
       koronowania
       koroplastyka
@@ -32244,8 +29396,6 @@ module GameRoomKrowa
       korowalnie
       korowanie
       korowania
-      korowanie
-      korowania
       korowarka
       korowarki
       korowiec
@@ -32255,9 +29405,7 @@ module GameRoomKrowa
       korownik
       korowniki
       korowody
-      korowody
       korowód
-      korowody
       korowódka
       korowódki
       korozja
@@ -32289,7 +29437,6 @@ module GameRoomKrowa
       kort
       korty
       kortezy
-      kortezy
       kortyna
       kortyny
       kortyzon
@@ -32309,7 +29456,6 @@ module GameRoomKrowa
       korygowanie
       korygowania
       koryntki
-      koryntki
       korytarz
       korytarze
       korytarzowiec
@@ -32323,17 +29469,13 @@ module GameRoomKrowa
       korzec
       korce
       korzenie
-      korzenie
       korzenienie
       korzenienia
       korzenionóżka
       korzenionóżki
-      korzenionóżki
-      korzenionóżki
       korzeniówka
       korzeniówki
       korzeń
-      korzenie
       korzonek
       korzonki
       korzystanie
@@ -32341,14 +29483,11 @@ module GameRoomKrowa
       korzyści
       korzyściach
       korzyść
-      korzyści
       kos
       kosy
       kosa
-      kosy
       kosaciec
       kosaćce
-      kosaćcowate
       kosaćcowate
       kosarz
       kosarze
@@ -32389,13 +29528,8 @@ module GameRoomKrowa
       kosmetyk
       kosmetyki
       kosmetyka
-      kosmetyki
-      kosmetyki
-      kosmetyki
       kosmita
       kosmici
-      kosmki
-      kosmki
       kosmobiolog
       kosmobiolodzy
       kosmobiologia
@@ -32457,8 +29591,6 @@ module GameRoomKrowa
       kostiumerzy
       kostiumernia
       kostiumernie
-      kostiumernia
-      kostiumernie
       kostiumik
       kostiumiki
       kostiumolog
@@ -32499,12 +29631,8 @@ module GameRoomKrowa
       kostusie
       kostyczność
       kostyczności
-      kosy
-      kosy
       kosynier
       kosynierzy
-      kosz
-      kosze
       kosz
       kosze
       koszałka
@@ -32512,13 +29640,10 @@ module GameRoomKrowa
       koszar
       koszary
       koszara
-      koszary
       koszarka
       koszarki
       koszarowanie
       koszarowania
-      koszary
-      koszary
       koszarzenie
       koszarzenia
       koszatka
@@ -32539,11 +29664,8 @@ module GameRoomKrowa
       koszmary
       koszówka
       koszówki
-      koszówki
-      koszówki
       koszt
       koszty
-      koszt
       koszta
       kosztela
       kosztele
@@ -32554,7 +29676,6 @@ module GameRoomKrowa
       kosztowania
       kosztowności
       kosztowność
-      kosztowności
       koszula
       koszule
       koszularka
@@ -32577,8 +29698,6 @@ module GameRoomKrowa
       koszykarki
       koszykarnia
       koszykarnie
-      koszykarnia
-      koszykarnie
       koszykarstwo
       koszykarstwa
       koszykarz
@@ -32597,8 +29716,6 @@ module GameRoomKrowa
       kościołki
       kościotrup
       kościotrupy
-      kościotrup
-      kościotrupy
       kościozrost
       kościozrosty
       kościół
@@ -32608,20 +29725,11 @@ module GameRoomKrowa
       kościsko
       kościska
       kościste
-      kościste
       kościuszkowcy
       kość
-      kości
-      kość
-      kości
-      koślawce
       koślawce
       koślawiec
       koślawcy
-      koślawiec
-      koślawce
-      koślawienie
-      koślawienia
       koślawienie
       koślawienia
       koślawość
@@ -32631,7 +29739,6 @@ module GameRoomKrowa
       kot
       koty
       kota
-      koty
       kotangens
       kotangensy
       kotangensoida
@@ -32643,7 +29750,6 @@ module GameRoomKrowa
       koteczek
       koteczki
       koteczka
-      koteczki
       kotek
       kotki
       kotelnia
@@ -32661,11 +29767,6 @@ module GameRoomKrowa
       kotik
       kotiki
       kotka
-      kotki
-      kotki
-      kotki
-      kotlarnia
-      kotlarnie
       kotlarnia
       kotlarnie
       kotlarstwo
@@ -32682,8 +29783,6 @@ module GameRoomKrowa
       kotlinki
       kotlista
       kotliści
-      kotłowanie
-      kotłowania
       kotłowanie
       kotłowania
       kotłowanina
@@ -32714,8 +29813,6 @@ module GameRoomKrowa
       koturny
       koturnowość
       koturnowości
-      koturny
-      koturny
       kotwa
       kotwy
       kotwica
@@ -32728,22 +29825,14 @@ module GameRoomKrowa
       kotwiczki
       kotwienie
       kotwienia
-      koty
-      koty
-      kotylion
-      kotyliony
       kotylion
       kotyliony
       kotylozaur
-      kotylozaury
-      kotylozaury
       kotylozaury
       kowadełko
       kowadełka
       kowadło
       kowadła
-      kowal
-      kowale
       kowal
       kowale
       kowalik
@@ -32768,22 +29857,13 @@ module GameRoomKrowa
       kozactwa
       kozaczek
       kozaczki
-      kozaczek
-      kozaczki
-      kozaczki
-      kozaczki
       kozaczyzna
       kozaczyzny
       kozak
       kozacy
-      kozak
-      kozaki
-      kozaki
       kozaki
       kozetka
       kozetki
-      koziarnia
-      koziarnie
       koziarnia
       koziarnie
       koziarz
@@ -32800,8 +29880,6 @@ module GameRoomKrowa
       kozińce
       kozioł
       kozły
-      kozioł
-      kozły
       koziołeczek
       koziołeczki
       koziołek
@@ -32815,23 +29893,17 @@ module GameRoomKrowa
       kozłek
       kozłki
       kozłkowate
-      kozłkowate
       kozłowanie
       kozłowania
       kozodoje
-      kozodoje
       kozodój
-      kozodoje
       kozub
       kozuby
       kozuba
-      kozuby
       kozunia
       kozunie
       koźlak
       koźlaki
-      koźlarz
-      koźlarze
       koźlarz
       koźlarze
       koźlątko
@@ -32870,7 +29942,6 @@ module GameRoomKrowa
       kółkowcy
       kózka
       kózki
-      kózkowate
       kózkowate
       kpiarka
       kpiarki
@@ -32914,8 +29985,6 @@ module GameRoomKrowa
       kraje
       krajacz
       krajacze
-      krajacz
-      krajacze
       krajak
       krajaki
       krajalnia
@@ -32925,9 +29994,6 @@ module GameRoomKrowa
       krajalność
       krajalności
       krajan
-      krajanie
-      krajanie
-      krajania
       krajanie
       krajania
       krajanka
@@ -32952,17 +30018,12 @@ module GameRoomKrowa
       krakelury
       krakers
       krakersy
-      krakersy
-      krakersy
       kraking
       krakingi
       kraknięcie
       kraknięcia
       krakowiak
       krakowiacy
-      krakowiak
-      krakowiacy
-      krakowiak
       krakowiaki
       krakowian
       krakowiany
@@ -32970,15 +30031,10 @@ module GameRoomKrowa
       krakowianie
       krakowianka
       krakowianki
-      krakowianka
-      krakowianki
       kraksa
       kraksy
       krakus
       krakusy
-      krakus
-      krakusi
-      krakus
       krakusi
       krakuska
       krakuski
@@ -33021,7 +30077,6 @@ module GameRoomKrowa
       kras
       krasy
       krasa
-      krasy
       krasawica
       krasawice
       kraska
@@ -33054,8 +30109,6 @@ module GameRoomKrowa
       kraśnienie
       kraśnienia
       kraśnik
-      kraśniki
-      kraśniki
       kraśniki
       krata
       kraty
@@ -33124,7 +30177,6 @@ module GameRoomKrowa
       krągłość
       krągłości
       krągłouste
-      krągłouste
       krąp
       krąpie
       krążek
@@ -33132,8 +30184,6 @@ module GameRoomKrowa
       krążenie
       krążenia
       krążkopław
-      krążkopławy
-      krążkopławy
       krążkopławy
       krążkowanie
       krążkowania
@@ -33213,8 +30263,6 @@ module GameRoomKrowa
       krenologie
       kreodont
       kreodonty
-      kreodonty
-      kreodonty
       kreolizm
       kreolizmy
       kreowanie
@@ -33259,12 +30307,8 @@ module GameRoomKrowa
       kresowianki
       kresowość
       kresowości
-      kresy
-      kresy
       kreślarka
       kreślarki
-      kreślarnia
-      kreślarnie
       kreślarnia
       kreślarnie
       kreślarstwo
@@ -33283,8 +30327,6 @@ module GameRoomKrowa
       kretowania
       kretowisko
       kretowiska
-      krety
-      krety
       kretyn
       kretyni
       kretynizm
@@ -33296,8 +30338,6 @@ module GameRoomKrowa
       krew
       krwie
       krewetka
-      krewetki
-      krewetki
       krewetki
       krewienie
       krewienia
@@ -33315,22 +30355,15 @@ module GameRoomKrowa
       krezki
       krezol
       krezole
-      krezole
-      krezole
       krezus
       krezusy
-      krezus
       krezusi
-      krezus
       krezusie
-      kręcenie
-      kręcenia
       kręcenie
       kręcenia
       kręcz
       kręcze
       kręg
-      kręgi
       kręgarstwo
       kręgarstwa
       kręgarz
@@ -33342,15 +30375,10 @@ module GameRoomKrowa
       kręglarz
       kręglarze
       kręgle
-      kręgle
       kręgosłup
       kręgosłupy
       kręgowce
-      kręgowce
       kręgowiec
-      kręgowce
-      krępowanie
-      krępowania
       krępowanie
       krępowania
       krępulec
@@ -33371,15 +30399,11 @@ module GameRoomKrowa
       krętarze
       krętek
       krętki
-      krętki
-      krętki
       krętogłów
       krętogłowy
       krętość
       krętości
       kriofit
-      kriofity
-      kriofity
       kriofity
       kriofizyka
       kriofizyki
@@ -33426,20 +30450,15 @@ module GameRoomKrowa
       krochmalnia
       krochmalnie
       krocie
-      krocie
       krocień
       krocienie
-      krocionogie
       krocionogie
       krocionóg
       krocionogi
       krocz
       krocze
-      krocz
-      krocze
       kroczak
       kroczaki
-      krocze
       krocza
       kroczek
       kroczki
@@ -33448,11 +30467,8 @@ module GameRoomKrowa
       krogulec
       krogulce
       krojczy
-      krojczy
       krojczyni
       krojczynie
-      krojenie
-      krojenia
       krojenie
       krojenia
       krojownia
@@ -33466,8 +30482,6 @@ module GameRoomKrowa
       krokiewka
       krokiewki
       krokodyl
-      krokodyle
-      krokodyle
       krokodyle
       krokodylek
       krokodylki
@@ -33507,8 +30521,6 @@ module GameRoomKrowa
       kropeczki
       kropelka
       kropelki
-      kropelki
-      kropelki
       kropidełko
       kropidełka
       kropidlak
@@ -33521,8 +30533,6 @@ module GameRoomKrowa
       kropielniczki
       kropienie
       kropienia
-      kropienie
-      kropienia
       kropka
       kropki
       kropkowanie
@@ -33531,16 +30541,12 @@ module GameRoomKrowa
       krople
       kroplan
       kroplany
-      krople
-      krople
       kroplik
       kropliki
       kroplomierz
       kroplomierze
       kroplówka
       kroplówki
-      kropnięcie
-      kropnięcia
       kropnięcie
       kropnięcia
       krosienko
@@ -33578,7 +30584,6 @@ module GameRoomKrowa
       krowiak
       krowiaki
       krowiakowate
-      krowiakowate
       krowianka
       krowianki
       krowiarka
@@ -33607,17 +30612,13 @@ module GameRoomKrowa
       kroje
       król
       królowie
-      król
       króle
       królestwo
       królestwa
-      królestwo
-      królestwo
       królewiątko
       królewiątka
       królewicz
       królewicze
-      królewięta
       królewięta
       królewna
       królewny
@@ -33629,14 +30630,9 @@ module GameRoomKrowa
       króliczki
       królik
       królikowie
-      królik
       króliki
       królikarnia
       królikarnie
-      królikarnia
-      królikarnie
-      króliki
-      króliki
       królobójca
       królobójcy
       królobójstwo
@@ -33663,8 +30659,6 @@ module GameRoomKrowa
       krótkowidze
       krówka
       krówki
-      krówki
-      krówki
       krówsko
       krówska
       krtań
@@ -33679,15 +30673,12 @@ module GameRoomKrowa
       krucyfiksy
       kruczek
       kruczki
-      kruczek
-      kruczki
       kruczość
       kruczości
       kruk
       kruki
       krukanie
       krukania
-      krukowate
       krukowate
       krukówka
       krukówki
@@ -33706,7 +30697,6 @@ module GameRoomKrowa
       krupierstwo
       krupierstwa
       krupki
-      krupki
       krupniczek
       krupniczki
       krupnik
@@ -33719,12 +30709,8 @@ module GameRoomKrowa
       kruponiarki
       kruponowanie
       kruponowania
-      krupy
-      krupy
       kruszarka
       kruszarki
-      kruszarnia
-      kruszarnie
       kruszarnia
       kruszarnie
       kruszczyca
@@ -33733,8 +30719,6 @@ module GameRoomKrowa
       kruszczyki
       kruszec
       kruszce
-      kruszenie
-      kruszenia
       kruszenie
       kruszenia
       kruszeń
@@ -33754,15 +30738,12 @@ module GameRoomKrowa
       kruszynek
       kruszynki
       kruszynka
-      kruszynki
-      kruszynkowate
       kruszynkowate
       kruszywo
       kruszywa
       kruż
       kruże
       kruża
-      kruże
       krużganek
       krużganki
       krwawiączka
@@ -33773,9 +30754,6 @@ module GameRoomKrowa
       krwawienia
       krwawnica
       krwawnice
-      krwawnice
-      krwawnice
-      krwawnicowate
       krwawnicowate
       krwawnik
       krwawniki
@@ -33783,12 +30761,8 @@ module GameRoomKrowa
       krwiaki
       krwinka
       krwinki
-      krwinki
-      krwinki
-      krwinkowce
       krwinkowce
       krwinkowiec
-      krwinkowce
       krwiobieg
       krwiobiegi
       krwiodawca
@@ -33813,9 +30787,6 @@ module GameRoomKrowa
       krwotoki
       krycie
       krycia
-      krycie
-      krycia
-      krygi
       krygi
       krygowanie
       krygowania
@@ -33841,14 +30812,11 @@ module GameRoomKrowa
       kryminologia
       kryminologie
       krymka
-      krymki
       krynica
       krynice
       krynicznik
       kryniczniki
       krynoid
-      krynoidy
-      krynoidy
       krynoidy
       krynolina
       krynoliny
@@ -33861,8 +30829,6 @@ module GameRoomKrowa
       krypta
       krypty
       kryptofit
-      kryptofity
-      kryptofity
       kryptofity
       kryptograf
       kryptografia
@@ -33954,15 +30920,11 @@ module GameRoomKrowa
       krzemionka
       krzemionki
       krzemowodory
-      krzemowodory
       krzemowodór
-      krzemowodory
       krzemyk
       krzemyki
       krzepa
       krzepy
-      krzepienie
-      krzepienia
       krzepienie
       krzepienia
       krzepkość
@@ -33999,8 +30961,6 @@ module GameRoomKrowa
       krzewiciele
       krzewicielka
       krzewicielki
-      krzewienie
-      krzewienia
       krzewienie
       krzewienia
       krzewina
@@ -34041,18 +31001,12 @@ module GameRoomKrowa
       krzywdy
       krzywdzenie
       krzywdzenia
-      krzywdzenie
-      krzywdzenia
       krzywdziciel
       krzywdziciele
       krzywica
       krzywice
       krzywienie
       krzywienia
-      krzywienie
-      krzywienia
-      krzywik
-      krzywiki
       krzywik
       krzywiki
       krzywizna
@@ -34071,9 +31025,6 @@ module GameRoomKrowa
       krzyżactwa
       krzyżak
       krzyżacy
-      krzyżak
-      krzyżaki
-      krzyżak
       krzyżaki
       krzyżmo
       krzyżma
@@ -34083,10 +31034,6 @@ module GameRoomKrowa
       krzyżowe
       krzyżowanie
       krzyżowania
-      krzyżowanie
-      krzyżowania
-      krzyżowe
-      krzyżowe
       krzyżowiaczek
       krzyżowiaczki
       krzyżowiec
@@ -34100,8 +31047,6 @@ module GameRoomKrowa
       krzyżyk
       krzyżyki
       ksantofil
-      ksantofile
-      ksantofile
       ksantofile
       ksantypa
       ksantypy
@@ -34117,11 +31062,7 @@ module GameRoomKrowa
       ksenony
       kserofil
       kserofile
-      kserofile
-      kserofile
       kserofit
-      kserofity
-      kserofity
       kserofity
       kseroftalmia
       kseroftalmie
@@ -34155,14 +31096,10 @@ module GameRoomKrowa
       księgarenki
       księgarnia
       księgarnie
-      księgarnia
-      księgarnie
       księgarstwo
       księgarstwa
       księgarz
       księgarze
-      księgi
-      księgi
       księgosusz
       księgosusze
       księgowa
@@ -34181,10 +31118,6 @@ module GameRoomKrowa
       księgoznawcy
       księstwo
       księstwa
-      księstwo
-      księstwo
-      księżna
-      księżne
       księżna
       księżne
       księżniczka
@@ -34195,7 +31128,6 @@ module GameRoomKrowa
       księżycorogi
       księżyna
       księżyny
-      ksiuty
       ksiuty
       ksylamit
       ksylamity
@@ -34209,11 +31141,7 @@ module GameRoomKrowa
       ksylity
       ksylofag
       ksylofagi
-      ksylofagi
-      ksylofagi
       ksylofit
-      ksylofity
-      ksylofity
       ksylofity
       ksylofon
       ksylofony
@@ -34231,8 +31159,6 @@ module GameRoomKrowa
       ksylozy
       kształcenie
       kształcenia
-      kształcenie
-      kształcenia
       kształt
       kształty
       kształtka
@@ -34241,12 +31167,8 @@ module GameRoomKrowa
       kształtności
       kształtowanie
       kształtowania
-      kształtowanie
-      kształtowania
       kształtownik
       kształtowniki
-      kształty
-      kształty
       kszyk
       kszyki
       kubas
@@ -34287,8 +31209,6 @@ module GameRoomKrowa
       kucania
       kucany
       kucane
-      kuce
-      kuce
       kucharka
       kucharki
       kucharz
@@ -34306,7 +31226,6 @@ module GameRoomKrowa
       kuchta
       kuchty
       kuchy
-      kuchy
       kucie
       kucia
       kucmerka
@@ -34315,25 +31234,13 @@ module GameRoomKrowa
       kucnięcia
       kucyk
       kucyki
-      kucyk
-      kucyki
-      kucyki
-      kucyki
       kuczka
       kuczki
-      kuczki
-      kuczki
       kudełki
-      kudełki
-      kudłacenie
-      kudłacenia
       kudłacenie
       kudłacenia
       kudłacz
       kudłacze
-      kudłacz
-      kudłacze
-      kudły
       kudły
       kuesta
       kuesty
@@ -34363,7 +31270,6 @@ module GameRoomKrowa
       kujawiaczki
       kujawiak
       kujawiacy
-      kujawiak
       kujawiaki
       kujnięcie
       kujnięcia
@@ -34403,8 +31309,6 @@ module GameRoomKrowa
       kukułeczki
       kukułka
       kukułki
-      kukułki
-      kukułki
       kukuruźnik
       kukuruźniki
       kukurydza
@@ -34413,10 +31317,6 @@ module GameRoomKrowa
       kule
       kulanie
       kulania
-      kulanie
-      kulania
-      kulas
-      kulasy
       kulas
       kulasy
       kulawiec
@@ -34432,10 +31332,8 @@ module GameRoomKrowa
       kulbak
       kulbaki
       kulbaka
-      kulbaki
       kulbin
       kulbiny
-      kulbinowate
       kulbinowate
       kulczyba
       kulczyby
@@ -34445,8 +31343,6 @@ module GameRoomKrowa
       kulebiaki
       kuleczka
       kuleczki
-      kulenie
-      kulenia
       kulenie
       kulenia
       kulfon
@@ -34461,8 +31357,6 @@ module GameRoomKrowa
       kulisy
       kulistość
       kulistości
-      kulisy
-      kulisy
       kulka
       kulki
       kulkowanie
@@ -34477,7 +31371,6 @@ module GameRoomKrowa
       kulminowania
       kulnik
       kulniki
-      kulnikowate
       kulnikowate
       kulochwyt
       kulochwyty
@@ -34516,14 +31409,12 @@ module GameRoomKrowa
       kultyzm
       kultyzmy
       kuluary
-      kuluary
       kułactwo
       kułactwa
       kułaczka
       kułaczki
       kułak
       kułacy
-      kułak
       kułaki
       kułan
       kułany
@@ -34546,7 +31437,6 @@ module GameRoomKrowa
       kumkanie
       kumkania
       kumostwo
-      kumostwo
       kumoszka
       kumoszki
       kumoter
@@ -34561,8 +31451,6 @@ module GameRoomKrowa
       kumulacje
       kumulen
       kumuleny
-      kumulowanie
-      kumulowania
       kumulowanie
       kumulowania
       kumys
@@ -34617,8 +31505,6 @@ module GameRoomKrowa
       kuperki
       kupidyn
       kupidyny
-      kupidyn
-      kupidyny
       kupidynek
       kupidynki
       kupiec
@@ -34656,7 +31542,6 @@ module GameRoomKrowa
       kur
       kury
       kura
-      kury
       kuracja
       kuracje
       kuracjusz
@@ -34693,8 +31578,6 @@ module GameRoomKrowa
       kurczątka
       kurczenie
       kurczenia
-      kurczenie
-      kurczenia
       kurczę
       kurczęta
       kurczliwość
@@ -34713,8 +31596,6 @@ module GameRoomKrowa
       kureczki
       kurek
       kurki
-      kurek
-      kurki
       kurenda
       kurendy
       kureń
@@ -34729,14 +31610,12 @@ module GameRoomKrowa
       kurie
       kurier
       kurierzy
-      kurier
       kuriery
       kurierka
       kurierki
       kuriozum
       kurioza
       kurka
-      kurki
       kurkówka
       kurkówki
       kurkuma
@@ -34761,11 +31640,6 @@ module GameRoomKrowa
       kurosy
       kurowanie
       kurowania
-      kurowanie
-      kurowania
-      kurpie
-      kurpie
-      kurpie
       kurpie
       kurs
       kursy
@@ -34788,8 +31662,6 @@ module GameRoomKrowa
       kurta
       kurty
       kurtaczek
-      kurtaczki
-      kurtaczki
       kurtaczki
       kurteczka
       kurteczki
@@ -34820,7 +31692,6 @@ module GameRoomKrowa
       kurzenie
       kurzenia
       kurzeń
-      kurzenie
       kurzowiec
       kurzowce
       kurzyślad
@@ -34841,13 +31712,10 @@ module GameRoomKrowa
       kustodie
       kustosz
       kustosze
-      kustosz
-      kustosze
       kustoszostwo
       kustoszostwa
       kustrzebka
       kustrzebki
-      kusy
       kusy
       kusza
       kusze
@@ -34877,8 +31745,6 @@ module GameRoomKrowa
       kutry
       kuternoga
       kuternogi
-      kuternoga
-      kuternogi
       kutia
       kutie
       kutner
@@ -34886,8 +31752,6 @@ module GameRoomKrowa
       kutnerowanie
       kutnerowania
       kutnerowatość
-      kutwa
-      kutwy
       kutwa
       kutwy
       kutykula
@@ -34907,7 +31771,6 @@ module GameRoomKrowa
       kuzynka
       kuzynki
       kuzynostwo
-      kuzynostwo
       kuźnia
       kuźnie
       kuźniarka
@@ -34926,8 +31789,6 @@ module GameRoomKrowa
       kwadranse
       kwadransik
       kwadransiki
-      kwadrant
-      kwadranty
       kwadrant
       kwadranty
       kwadrat
@@ -34966,9 +31827,6 @@ module GameRoomKrowa
       kwaknięcia
       kwalifikacja
       kwalifikacje
-      kwalifikacje
-      kwalifikacje
-      kwalifikator
       kwalifikator
       kwalifikatory
       kwant
@@ -35033,19 +31891,12 @@ module GameRoomKrowa
       kwasowość
       kwasowości
       kwastopłetwe
-      kwastopłetwe
-      kwasy
-      kwasy
-      kwaszarnia
-      kwaszarnie
       kwaszarnia
       kwaszarnie
       kwaszarnictwo
       kwaszarnictwa
       kwaszeniak
       kwaszeniaki
-      kwaszenie
-      kwaszenia
       kwaszenie
       kwaszenia
       kwaszonka
@@ -35102,8 +31953,6 @@ module GameRoomKrowa
       kwiaciarki
       kwiaciarnia
       kwiaciarnie
-      kwiaciarnia
-      kwiaciarnie
       kwiaciarstwo
       kwiaciarstwa
       kwiaciarz
@@ -35128,7 +31977,6 @@ module GameRoomKrowa
       kwiecenia
       kwieciak
       kwieciaki
-      kwiecie
       kwiecie
       kwiecień
       kwietnie
@@ -35212,9 +32060,7 @@ module GameRoomKrowa
       labirynt
       labirynty
       labiryntowce
-      labiryntowce
       labiryntowiec
-      labiryntowce
       laborant
       laboranci
       laborantka
@@ -35223,11 +32069,8 @@ module GameRoomKrowa
       laboratoria
       labrador
       labradory
-      labrador
-      labradory
       labradoryt
       labradoryty
-      labry
       labry
       laburzysta
       laburzyści
@@ -35255,20 +32098,13 @@ module GameRoomKrowa
       laikaty
       lajkonik
       lajkoniki
-      lajkonik
-      lajkoniki
       lak
       laki
       laka
-      laki
       lakier
       lakiery
       lakierek
       lakierki
-      lakierki
-      lakierki
-      lakiernia
-      lakiernie
       lakiernia
       lakiernie
       lakiernictwo
@@ -35326,10 +32162,8 @@ module GameRoomKrowa
       lalusia
       lalusie
       laluś
-      lalusie
       lama
       lamowie
-      lama
       lamy
       lamaita
       lamaici
@@ -35381,8 +32215,6 @@ module GameRoomKrowa
       lamperie
       lampiarnia
       lampiarnie
-      lampiarnia
-      lampiarnie
       lampiarz
       lampiarze
       lampion
@@ -35391,8 +32223,6 @@ module GameRoomKrowa
       lampki
       lampownia
       lampownie
-      lampy
-      lampy
       lamus
       lamusy
       lanca
@@ -35413,10 +32243,6 @@ module GameRoomKrowa
       landryny
       landrynka
       landrynki
-      landrynki
-      landrynki
-      landryny
-      landryny
       landszaft
       landszafty
       landtag
@@ -35425,30 +32251,22 @@ module GameRoomKrowa
       langusty
       lanie
       lania
-      lanie
-      lania
       lanital
       lanitale
       lanolina
       lanoliny
       lansada
       lansady
-      lansady
-      lansady
       lansjer
       lansjerzy
-      lansjer
       lansjery
       lansowanie
       lansowania
       lantan
       lantany
       lantana
-      lantany
-      lantanowce
       lantanowce
       lantanowiec
-      lantanowce
       laparoskopia
       laparoskopie
       laparotomia
@@ -35473,9 +32291,6 @@ module GameRoomKrowa
       larwy
       larwicyd
       larwicydy
-      larwicydy
-      larwicydy
-      lary
       lary
       laryngofon
       laryngofony
@@ -35492,12 +32307,7 @@ module GameRoomKrowa
       laseczek
       laseczki
       laseczka
-      laseczki
-      laseczki
-      laseczki
       lasecznik
-      laseczniki
-      laseczniki
       laseczniki
       lasek
       laski
@@ -35508,8 +32318,6 @@ module GameRoomKrowa
       laserunek
       laserunki
       laska
-      laski
-      lasonogie
       lasonogie
       lasonóg
       lasonogi
@@ -35517,8 +32325,6 @@ module GameRoomKrowa
       lasostepy
       lasotundra
       lasotundry
-      lasowanie
-      lasowania
       lasowanie
       lasowania
       lassalizm
@@ -35540,41 +32346,26 @@ module GameRoomKrowa
       laszt
       laszty
       lata
-      lata
       latacz
       latacze
       latania
       latanie
-      latanie
-      latania
       latanina
       lataniny
       latarka
       latarki
       latarnia
       latarnie
-      latarnia
-      latarnie
-      latarnie
-      latarnie
       latarnik
       latarnicy
-      latarnik
-      latarniki
-      latarniki
       latarniki
       latarniowiec
       latarniowce
-      latawce
       latawce
       latawica
       latawice
       latawiec
       latawcy
-      latawiec
-      latawce
-      latawiec
-      latawce
       lateks
       lateksy
       lateryt
@@ -35582,12 +32373,9 @@ module GameRoomKrowa
       latimeria
       latimerie
       latka
-      latka
       lato
-      lata
       latopis
       latopisowie
-      latopis
       latopisy
       latopisarz
       latopisarze
@@ -35611,7 +32399,6 @@ module GameRoomKrowa
       laubzegi
       laufer
       laufrzy
-      laufer
       laufry
       laur
       laury
@@ -35625,8 +32412,6 @@ module GameRoomKrowa
       laurki
       laurowiśnia
       laurowiśnie
-      laury
-      laury
       lawa
       lawy
       lawenda
@@ -35675,9 +32460,7 @@ module GameRoomKrowa
       lądownik
       lądowniki
       lądzienie
-      lądzienie
       lądzień
-      lądzienie
       ląg
       lęgi
       leader
@@ -35688,10 +32471,6 @@ module GameRoomKrowa
       lebiodki
       lecytyna
       lecytyny
-      lecytyny
-      lecytyny
-      leczenie
-      leczenia
       leczenie
       leczenia
       lecznica
@@ -35716,7 +32495,6 @@ module GameRoomKrowa
       legary
       legat
       legaci
-      legat
       legaty
       legatariusz
       legatariusze
@@ -35752,8 +32530,6 @@ module GameRoomKrowa
       legitymizmy
       legitymowanie
       legitymowania
-      legitymowanie
-      legitymowania
       legnięcie
       legnięcia
       legowisko
@@ -35768,13 +32544,9 @@ module GameRoomKrowa
       leizny
       lej
       leje
-      lej
-      leje
       leja
-      leje
       lejbik
       lejbiki
-      lejce
       lejce
       lejek
       lejki
@@ -35802,8 +32574,6 @@ module GameRoomKrowa
       lekkoatletki
       lekkoatletyka
       lekkoatletyki
-      lekkoduch
-      lekkoduchy
       lekkoduch
       lekkoduchy
       lekkomyślność
@@ -35866,34 +32636,22 @@ module GameRoomKrowa
       leńce
       lenienie
       lenienia
-      lenienie
-      lenienia
-      leniniana
       leniniana
       leninizm
       leninizmy
       leninowiec
       leninowcy
       leniowate
-      leniowate
       lenistwo
       lenistwa
-      leniuch
-      leniuchy
       leniuch
       leniuchy
       leniuchowanie
       leniuchowania
       leniuszek
       leniuszki
-      leniuszek
-      leniuszki
-      leniwce
       leniwce
       leniwiec
-      leniwce
-      leniwiec
-      leniwce
       lennictwo
       lennictwa
       lenniczka
@@ -35908,8 +32666,6 @@ module GameRoomKrowa
       lenie
       leonin
       leoniny
-      leoniny
-      leoniny
       leopard
       leopardy
       lep
@@ -35917,8 +32673,6 @@ module GameRoomKrowa
       lepianka
       lepianki
       lepidodendron
-      lepienie
-      lepienia
       lepienie
       lepienia
       lepiężnik
@@ -35951,8 +32705,6 @@ module GameRoomKrowa
       lerki
       lesbijka
       lesbijki
-      lesbijka
-      lesbijki
       leseferyzm
       leseferyzmy
       lesistość
@@ -35970,10 +32722,8 @@ module GameRoomKrowa
       leśnictwo
       leśnictwa
       leśniczostwo
-      leśniczostwo
       leśniczówka
       leśniczówki
-      leśniczy
       leśniczy
       leśniczyna
       leśniczyny
@@ -35995,20 +32745,14 @@ module GameRoomKrowa
       leukocyty
       leukocytoza
       leukocytozy
-      leukocyty
-      leukocyty
       leukopenia
       leukopenie
       leukoplast
       leukoplasty
-      leukoplasty
-      leukoplasty
       lew
       lewy
-      lew
       lwy
       lewa
-      lewy
       lewactwo
       lewactwa
       lewak
@@ -36045,8 +32789,6 @@ module GameRoomKrowa
       lewoskręty
       lezginka
       lezginki
-      lezginka
-      lezginki
       lezienie
       lezienia
       leżak
@@ -36068,9 +32810,7 @@ module GameRoomKrowa
       lędźwian
       lędźwiany
       lędźwie
-      lędźwie
       lęg
-      lęgi
       lęgnia
       lęgnie
       lęgnięcie
@@ -36152,7 +32892,6 @@ module GameRoomKrowa
       lichwiarz
       lichwiarze
       lico
-      lica
       licowanie
       licowania
       licówka
@@ -36165,8 +32904,6 @@ module GameRoomKrowa
       licytatorzy
       licytowanie
       licytowania
-      licytowanie
-      licytowania
       liczba
       liczby
       liczebnik
@@ -36175,13 +32912,10 @@ module GameRoomKrowa
       liczebności
       liczenie
       liczenia
-      liczenie
-      liczenia
       liczko
       liczka
       liczman
       liczmani
-      liczman
       liczmany
       licznik
       liczniki
@@ -36189,8 +32923,6 @@ module GameRoomKrowa
       liczydełka
       liczydło
       liczydła
-      liczykrupa
-      liczykrupy
       liczykrupa
       liczykrupy
       lider
@@ -36206,8 +32938,6 @@ module GameRoomKrowa
       ligawka
       ligawki
       ligaza
-      ligazy
-      ligazy
       ligazy
       lignifikacja
       lignifikacje
@@ -36254,25 +32984,16 @@ module GameRoomKrowa
       lilijka
       lilijki
       liliowate
-      liliowate
-      liliowce
       liliowce
       liliowiec
-      liliowce
-      liliowiec
-      liliowce
       liliowienie
       liliowienia
       liliput
       lilipuci
-      liliput
       liliputy
       liliputek
       liliputki
-      liliputek
-      liliputki
       liliputka
-      liliputki
       limakologia
       limakologie
       liman
@@ -36287,8 +33008,6 @@ module GameRoomKrowa
       limfocyty
       limfocytoza
       limfocytozy
-      limfocyty
-      limfocyty
       limit
       limity
       limitacja
@@ -36311,7 +33030,6 @@ module GameRoomKrowa
       lin
       liny
       lina
-      liny
       lincz
       lincze
       linczowanie
@@ -36350,19 +33068,16 @@ module GameRoomKrowa
       liniowania
       liniowiec
       liniowcy
-      liniowiec
       liniowce
       liniowość
       liniowości
       liniuszek
       liniuszki
       linka
-      linki
       linoleum
       linolea
       linoryt
       linoryty
-      linoskoczek
       linoskoczek
       linoskoczki
       linotyp
@@ -36381,15 +33096,10 @@ module GameRoomKrowa
       liparyty
       lipaza
       lipazy
-      lipazy
-      lipazy
       lipid
-      lipidy
-      lipidy
       lipidy
       lipiec
       lipce
-      lipieniowate
       lipieniowate
       lipień
       lipienie
@@ -36399,14 +33109,10 @@ module GameRoomKrowa
       lipki
       lipoproteid
       lipoproteidy
-      lipoproteidy
-      lipoproteidy
-      lipowate
       lipowate
       lir
       liry
       lira
-      liry
       lirnik
       lirnicy
       lirogon
@@ -36415,10 +33121,8 @@ module GameRoomKrowa
       liryczki
       liryk
       lirycy
-      liryk
       liryki
       liryka
-      liryki
       liryzacja
       liryzacje
       liryzm
@@ -36432,11 +33136,8 @@ module GameRoomKrowa
       lisica
       lisice
       lisicowate
-      lisicowate
       lisisko
       lisiska
-      lisiura
-      lisiury
       lisiura
       lisiury
       lisiurka
@@ -36446,7 +33147,6 @@ module GameRoomKrowa
       list
       listy
       lista
-      listy
       listeczek
       listeczki
       listek
@@ -36469,8 +33169,6 @@ module GameRoomKrowa
       listwy
       listwowanie
       listwowania
-      lisy
-      lisy
       liszaj
       liszaje
       liszajec
@@ -36486,14 +33184,12 @@ module GameRoomKrowa
       liściarka
       liściarki
       liściaste
-      liściaste
       liściec
       liśćce
       liścień
       liścienie
       liścik
       liściki
-      liścionogie
       liścionogie
       liścionos
       liścionosy
@@ -36507,7 +33203,6 @@ module GameRoomKrowa
       lity
       litania
       litanie
-      litaury
       litaury
       litera
       litery
@@ -36528,7 +33223,6 @@ module GameRoomKrowa
       litergol
       litergole
       literka
-      literki
       liternictwo
       liternictwa
       literniczka
@@ -36559,8 +33253,6 @@ module GameRoomKrowa
       litologie
       litometeor
       litometeory
-      litometeory
-      litometeory
       litoptern
       litopterny
       litoral
@@ -36580,9 +33272,7 @@ module GameRoomKrowa
       litowanie
       litowania
       litowce
-      litowce
       litowiec
-      litowce
       litr
       litry
       litraż
@@ -36609,12 +33299,8 @@ module GameRoomKrowa
       liwistonie
       lizaczek
       lizaczki
-      lizaczek
-      lizaczki
       lizak
       lizaki
-      lizanie
-      lizania
       lizanie
       lizania
       lizawka
@@ -36644,7 +33330,6 @@ module GameRoomKrowa
       lnisko
       lniska
       lnowate
-      lnowate
       lob
       loby
       lobelia
@@ -36652,13 +33337,11 @@ module GameRoomKrowa
       lobelina
       lobeliny
       lobeliowate
-      lobeliowate
       lobowanie
       lobowania
       loch
       lochy
       locha
-      lochy
       lochająca
       lochające
       lochanie
@@ -36696,11 +33379,8 @@ module GameRoomKrowa
       lodówka
       lodówki
       lody
-      lody
       lodziarka
       lodziarki
-      lodziarnia
-      lodziarnie
       lodziarnia
       lodziarnie
       lodziarstwo
@@ -36801,8 +33481,6 @@ module GameRoomKrowa
       lokomotywy
       lokowanie
       lokowania
-      lokowanie
-      lokowania
       lokówka
       lokówki
       loksodroma
@@ -36844,7 +33522,6 @@ module GameRoomKrowa
       loszek
       loszki
       loszka
-      loszki
       lot
       loty
       loteria
@@ -36852,8 +33529,6 @@ module GameRoomKrowa
       loteryjka
       loteryjki
       lotka
-      lotki
-      lotki
       lotki
       lotnia
       lotnie
@@ -36877,16 +33552,10 @@ module GameRoomKrowa
       lotosy
       lowelas
       lowelasy
-      lowelas
       lowelasi
       loża
       loże
       lód
-      lody
-      lód
-      lody
-      lśnienie
-      lśnienia
       lśnienie
       lśnienia
       luba
@@ -36895,8 +33564,6 @@ module GameRoomKrowa
       lubaszki
       lubczyk
       lubczyki
-      lubienie
-      lubienia
       lubienie
       lubienia
       lubieżnik
@@ -36913,16 +33580,10 @@ module GameRoomKrowa
       lucerny
       lucyfer
       lucyfery
-      lucyfer
-      lucyfery
       lucyper
       lucypery
       lud
       ludy
-      lud
-      ludy
-      ludek
-      ludki
       ludek
       ludki
       ludność
@@ -36955,8 +33616,6 @@ module GameRoomKrowa
       ludwiki
       ludwisarnia
       ludwisarnie
-      ludwisarnia
-      ludwisarnie
       ludwisarstwo
       ludwisarstwa
       ludwisarz
@@ -36965,13 +33624,8 @@ module GameRoomKrowa
       ludyczności
       ludyzm
       ludyzmy
-      ludzie
-      ludzie
       ludzik
       ludziki
-      ludzik
-      ludziki
-      ludziska
       ludziska
       ludzkość
       ludzkości
@@ -36996,7 +33650,6 @@ module GameRoomKrowa
       luk
       luki
       luka
-      luki
       lukier
       lukry
       lukratywność
@@ -37007,7 +33660,6 @@ module GameRoomKrowa
       lukrowania
       luks
       luksy
-      luksfery
       luksfery
       luksografia
       luksografie
@@ -37040,8 +33692,6 @@ module GameRoomKrowa
       luminizm
       luminizmy
       luminofor
-      luminofory
-      luminofory
       luminofory
       lumityp
       lumitypy
@@ -37091,8 +33741,6 @@ module GameRoomKrowa
       lustra
       lustrowanie
       lustrowania
-      lustrowanie
-      lustrowania
       lustrzanka
       lustrzanki
       lustrzeń
@@ -37131,7 +33779,6 @@ module GameRoomKrowa
       lutowiny
       lutownica
       lutownice
-      luty
       lute
       luwers
       luwersy
@@ -37139,16 +33786,11 @@ module GameRoomKrowa
       luzy
       luzak
       luzacy
-      luzak
       luzaki
-      luzowanie
-      luzowania
       luzowanie
       luzowania
       luźność
       luźności
-      lwiarnia
-      lwiarnie
       lwiarnia
       lwiarnie
       lwiątko
@@ -37163,11 +33805,7 @@ module GameRoomKrowa
       lynchy
       lżenie
       lżenia
-      lżenie
-      lżenia
       łosięta
-      łabędziarnia
-      łabędziarnie
       łabędziarnia
       łabędziarnie
       łabędzica
@@ -37176,26 +33814,18 @@ module GameRoomKrowa
       łabędzie
       łabuniec
       łabuńce
-      łabuńce
-      łabuńce
       łach
       łachy
       łacha
-      łachy
       łachman
       łachmany
       łachmaniarz
       łachmaniarze
       łachmyta
       łachmyty
-      łachmyta
-      łachmyty
       łachotanie
       łachotania
       łachotki
-      łachotki
-      łachudra
-      łachudry
       łachudra
       łachudry
       łacina
@@ -37212,10 +33842,6 @@ module GameRoomKrowa
       ładnienia
       ładowacz
       ładowacze
-      ładowacz
-      ładowacze
-      ładowanie
-      ładowania
       ładowanie
       ładowania
       ładowarka
@@ -37224,7 +33850,6 @@ module GameRoomKrowa
       ładownie
       ładownica
       ładownice
-      ładowniczy
       ładowniczy
       ładownik
       ładowniki
@@ -37252,7 +33877,6 @@ module GameRoomKrowa
       łajdaczyny
       łajdak
       łajdacy
-      łajdak
       łajdaki
       łajka
       łajki
@@ -37260,14 +33884,9 @@ module GameRoomKrowa
       łajna
       łajza
       łajzy
-      łajza
-      łajzy
       łaknienie
       łaknienia
       łakocie
-      łakocie
-      łakomczuch
-      łakomczuchy
       łakomczuch
       łakomczuchy
       łakomienie
@@ -37276,21 +33895,12 @@ module GameRoomKrowa
       łakomstwa
       łamacz
       łamacze
-      łamacz
-      łamacze
-      łamacze
-      łamacze
-      łamaga
-      łamagi
       łamaga
       łamagi
       łamana
       łamane
       łamanie
       łamania
-      łamanie
-      łamania
-      łamańce
       łamańce
       łamigłówka
       łamigłówki
@@ -37298,7 +33908,6 @@ module GameRoomKrowa
       łamistrajki
       łamliwość
       łamliwości
-      łamy
       łamy
       łan
       łany
@@ -37314,29 +33923,20 @@ module GameRoomKrowa
       łapy
       łapanie
       łapania
-      łapanie
-      łapania
       łapanka
       łapanki
       łapcia
-      łapcie
-      łapcie
       łapcie
       łapczywość
       łapczywości
       łapeczka
       łapeczki
       łapeć
-      łapcie
-      łapeć
-      łapcie
       łapiduch
       łapiduchy
       łapina
       łapiny
       łapka
-      łapki
-      łapki
       łapki
       łapownictwo
       łapownictwa
@@ -37358,9 +33958,6 @@ module GameRoomKrowa
       łapska
       łasica
       łasice
-      łasice
-      łasice
-      łasicowate
       łasicowate
       łasiczka
       łasiczki
@@ -37373,7 +33970,6 @@ module GameRoomKrowa
       łaskotanie
       łaskotania
       łaskotki
-      łaskotki
       łaskun
       łaskuny
       łasowanie
@@ -37384,13 +33980,9 @@ module GameRoomKrowa
       łasze
       łaszczenie
       łaszczenia
-      łasze
-      łasze
       łaszenie
       łaszenia
       łaszki
-      łaszki
-      łaszowate
       łaszowate
       łata
       łaty
@@ -37422,17 +34014,12 @@ module GameRoomKrowa
       ławnik
       ławnicy
       łazanki
-      łazanki
       łazarz
       łazarze
       łazęga
       łazęgi
-      łazęga
-      łazęgi
       łazienka
       łazienki
-      łazik
-      łaziki
       łazik
       łaziki
       łazikostwo
@@ -37442,7 +34029,6 @@ module GameRoomKrowa
       łaziwo
       łaziwa
       łaźcowate
-      łaźcowate
       łaźnia
       łaźnie
       łażenie
@@ -37451,8 +34037,6 @@ module GameRoomKrowa
       łączarki
       łącze
       łącza
-      łączenie
-      łączenia
       łączenie
       łączenia
       łączeń
@@ -37469,7 +34053,6 @@ module GameRoomKrowa
       łączniczki
       łącznik
       łącznicy
-      łącznik
       łączniki
       łącznościowcy
       łączność
@@ -37490,21 +34073,15 @@ module GameRoomKrowa
       łby
       łebek
       łebki
-      łebek
-      łebki
       łechtaczka
       łechtaczki
       łechtanie
       łechtania
       łepek
       łepki
-      łepek
-      łepki
       łepetyna
       łepetyny
       łezka
-      łezki
-      łezki
       łezki
       łęcina
       łęciny
@@ -37512,11 +34089,7 @@ module GameRoomKrowa
       łęgi
       łęk
       łęki
-      łęki
-      łęki
       łękotka
-      łękotki
-      łękotki
       łękotki
       łganie
       łgania
@@ -37550,9 +34123,6 @@ module GameRoomKrowa
       łodyżki
       łodzik
       łodziki
-      łodzik
-      łodziki
-      łodzikowate
       łodzikowate
       łogawizna
       łogawizny
@@ -37582,8 +34152,6 @@ module GameRoomKrowa
       łopatki
       łopatologia
       łopatologie
-      łopaty
-      łopaty
       łopian
       łopiany
       łopot
@@ -37593,14 +34161,12 @@ module GameRoomKrowa
       łopuch
       łopuchy
       łopucha
-      łopuchy
       łosica
       łosice
       łoskot
       łoskoty
       łoskotanie
       łoskotania
-      łososiowate
       łososiowate
       łosoś
       łososie
@@ -37612,7 +34178,6 @@ module GameRoomKrowa
       łosie
       łotr
       łotrzy
-      łotr
       łotry
       łotrostwo
       łotrostwa
@@ -37621,7 +34186,6 @@ module GameRoomKrowa
       łowca
       łowcy
       łowczy
-      łowczy
       łowiectwo
       łowiectwa
       łowienie
@@ -37629,12 +34193,10 @@ module GameRoomKrowa
       łowik
       łowiki
       łowikowate
-      łowikowate
       łowisko
       łowiska
       łowność
       łowności
-      łowy
       łowy
       łoza
       łozy
@@ -37653,14 +34215,11 @@ module GameRoomKrowa
       łożyskowanie
       łożyskowania
       łożyskowce
-      łożyskowce
       łożyskowiec
-      łożyskowce
       łódeczka
       łódeczki
       łódka
       łódki
-      łódkonogie
       łódkonogie
       łódkonóg
       łódkonogi
@@ -37679,7 +34238,6 @@ module GameRoomKrowa
       łubin
       łubiny
       łubki
-      łubki
       łuczek
       łuczki
       łucznictwo
@@ -37690,8 +34248,6 @@ module GameRoomKrowa
       łucznicy
       łuczywo
       łuczywa
-      łudzenie
-      łudzenia
       łudzenie
       łudzenia
       ług
@@ -37716,8 +34272,6 @@ module GameRoomKrowa
       łupy
       łupanie
       łupania
-      łupanie
-      łupania
       łuparka
       łuparki
       łupek
@@ -37736,16 +34290,12 @@ module GameRoomKrowa
       łupiny
       łupinka
       łupinki
-      łupki
-      łupki
       łupkowatość
       łupkowatości
       łupkoząb
       łupkozęby
       łupliwość
       łupliwości
-      łupnięcie
-      łupnięcia
       łupnięcie
       łupnięcia
       łuseczka
@@ -37759,15 +34309,10 @@ module GameRoomKrowa
       łuskodrzew
       łuskodrzewy
       łuskonośne
-      łuskonośne
-      łuskoskóre
       łuskoskóre
       łuskoskrzydłe
-      łuskoskrzydłe
-      łuskowce
       łuskowce
       łuskowiec
-      łuskowce
       łuskwina
       łuskwiny
       łuszczak
@@ -37776,10 +34321,6 @@ module GameRoomKrowa
       łuszczarki
       łuszczarnia
       łuszczarnie
-      łuszczarnia
-      łuszczarnie
-      łuszczenie
-      łuszczenia
       łuszczenie
       łuszczenia
       łuszczka
@@ -37800,14 +34341,11 @@ module GameRoomKrowa
       łychy
       łyczek
       łyczkowie
-      łyczek
       łyczki
       łyczko
       łyczka
       łydka
       łydki
-      łyk
-      łyki
       łyk
       łyki
       łykanie
@@ -37844,8 +34382,6 @@ module GameRoomKrowa
       łyżewki
       łyżka
       łyżki
-      łyżki
-      łyżki
       łyżkowanie
       łyżkowania
       łyżnik
@@ -37858,8 +34394,6 @@ module GameRoomKrowa
       łyżwiarstwa
       łyżwiarz
       łyżwiarze
-      łyżwy
-      łyżwy
       łza
       łzy
       łzawienie
@@ -37872,8 +34406,6 @@ module GameRoomKrowa
       łzawości
       maca
       mace
-      macanie
-      macania
       macanie
       macania
       maccartyzm
@@ -37904,8 +34436,6 @@ module GameRoomKrowa
       machlojki
       machnięcie
       machnięcia
-      machnięcie
-      machnięcia
       machometr
       machometry
       machora
@@ -37930,7 +34460,6 @@ module GameRoomKrowa
       maciorka
       maciorki
       macki
-      macki
       macocha
       macochy
       maczanie
@@ -37942,9 +34471,7 @@ module GameRoomKrowa
       maczuga
       maczugi
       maczugowce
-      maczugowce
       maczugowiec
-      maczugowce
       mada
       mady
       madera
@@ -38051,7 +34578,6 @@ module GameRoomKrowa
       magnetyk
       magnetyki
       magnetyka
-      magnetyki
       magnetyt
       magnetyty
       magnetyzm
@@ -38067,13 +34593,10 @@ module GameRoomKrowa
       magnolia
       magnolie
       magnoliowate
-      magnoliowate
       magot
       magoty
       maharadża
       maharadżowie
-      mahatma
-      mahatmowie
       mahatma
       mahatmowie
       mahdi
@@ -38094,11 +34617,7 @@ module GameRoomKrowa
       maje
       majaczenie
       majaczenia
-      majaczenie
-      majaczenia
       majak
-      majaki
-      majaki
       majaki
       mająteczek
       mająteczki
@@ -38126,14 +34645,12 @@ module GameRoomKrowa
       majonezy
       major
       majorzy
-      major
       majory
       majorat
       majoraty
       majordom
       majordomowie
       majordomus
-      majorostwo
       majorostwo
       majorowa
       majorowe
@@ -38159,12 +34676,9 @@ module GameRoomKrowa
       majtanie
       majtania
       majtasy
-      majtasy
-      majteczki
       majteczki
       majtek
       majtkowie
-      majtki
       majtki
       majtnięcie
       majtnięcia
@@ -38189,15 +34703,9 @@ module GameRoomKrowa
       makarony
       makaroniarnia
       makaroniarnie
-      makaroniarnia
-      makaroniarnie
       makaroniarz
       makaroniarze
       makaronik
-      makaroniki
-      makaronik
-      makaroniki
-      makaroniki
       makaroniki
       makaronista
       makaroniści
@@ -38226,7 +34734,6 @@ module GameRoomKrowa
       makolągwa
       makolągwy
       makowate
-      makowate
       makowiec
       makowce
       makownik
@@ -38235,7 +34742,6 @@ module GameRoomKrowa
       makówki
       makrela
       makrele
-      makrelowate
       makrelowate
       makroanaliza
       makroanalizy
@@ -38246,8 +34752,6 @@ module GameRoomKrowa
       makroelement
       makroelementy
       makrofag
-      makrofagi
-      makrofagi
       makrofagi
       makrofizyka
       makrofizyki
@@ -38297,8 +34801,6 @@ module GameRoomKrowa
       malarki
       malarnia
       malarnie
-      malarnia
-      malarnie
       malarskość
       malarskości
       malarstwo
@@ -38323,8 +34825,6 @@ module GameRoomKrowa
       maliny
       maliniak
       maliniaki
-      maliniak
-      maliniaki
       malinka
       malinki
       malinnik
@@ -38341,11 +34841,7 @@ module GameRoomKrowa
       malmy
       malowanie
       malowania
-      malowanie
-      malowania
       malowanka
-      malowanki
-      malowanki
       malowanki
       malowidło
       malowidła
@@ -38353,16 +34849,12 @@ module GameRoomKrowa
       malowniczości
       maltaza
       maltazy
-      maltazy
-      maltazy
       maltoza
       maltozy
       maltretowanie
       maltretowania
       maltuzjanizm
       maltuzjanizmy
-      maluch
-      maluchy
       maluch
       maluchy
       malunek
@@ -38376,8 +34868,6 @@ module GameRoomKrowa
       malwersantka
       malwersantki
       mała
-      małe
-      małe
       małe
       małgorzatka
       małgorzatki
@@ -38402,8 +34892,6 @@ module GameRoomKrowa
       małpeczki
       małpiarnia
       małpiarnie
-      małpiarnia
-      małpiarnie
       małpiarstwo
       małpiarstwa
       małpiatka
@@ -38422,19 +34910,13 @@ module GameRoomKrowa
       małpowania
       małż
       małże
-      małże
-      małże
       małżeństwo
       małżeństwa
       małżonek
       małżonkowie
       małżonka
       małżonki
-      małżonkowie
-      małżonkowie
       małżoraczek
-      małżoraczki
-      małżoraczki
       małżoraczki
       małżowina
       małżowiny
@@ -38476,8 +34958,6 @@ module GameRoomKrowa
       mamusie
       mamut
       mamuty
-      mamut
-      mamuty
       mamutowiec
       mamutowce
       manager
@@ -38509,9 +34989,6 @@ module GameRoomKrowa
       mandryle
       manekin
       manekiny
-      manekin
-      manekiny
-      manele
       manele
       manetka
       manetki
@@ -38519,8 +34996,6 @@ module GameRoomKrowa
       manewry
       manewrowanie
       manewrowania
-      manewry
-      manewry
       maneż
       maneże
       mangan
@@ -38534,10 +35009,7 @@ module GameRoomKrowa
       manganometria
       manganometrie
       manganowce
-      manganowce
       manganowiec
-      manganowce
-      mangrowe
       mangrowe
       mangusta
       mangusty
@@ -38561,10 +35033,6 @@ module GameRoomKrowa
       manierki
       manierowanie
       manierowania
-      manierowanie
-      manierowania
-      maniery
-      maniery
       manieryczność
       manierysta
       manieryści
@@ -38586,11 +35054,8 @@ module GameRoomKrowa
       manioki
       manipulacja
       manipulacje
-      manipulacje
-      manipulacje
       manipulator
       manipulatorzy
-      manipulator
       manipulatory
       manipulowanie
       manipulowania
@@ -38615,7 +35080,6 @@ module GameRoomKrowa
       manometria
       manometrie
       manowce
-      manowce
       mansarda
       mansardy
       mansardka
@@ -38624,8 +35088,6 @@ module GameRoomKrowa
       manszety
       mantyczenie
       mantyczenia
-      mantyka
-      mantyki
       mantyka
       mantyki
       mantyla
@@ -38664,7 +35126,6 @@ module GameRoomKrowa
       mary
       marabut
       marabuci
-      marabut
       marabuty
       marakas
       marakasy
@@ -38705,7 +35166,6 @@ module GameRoomKrowa
       margiel
       margle
       marginalia
-      marginalia
       marginalizm
       marginalizmy
       marginalność
@@ -38717,16 +35177,12 @@ module GameRoomKrowa
       marglowania
       margrabia
       margrabiowie
-      margrabia
-      margrabiowie
       margrabstwo
       margrabstwa
       margraf
       margrafowie
       marianin
       marianie
-      mariasz
-      mariasze
       mariasz
       mariasze
       mariawita
@@ -38744,7 +35200,6 @@ module GameRoomKrowa
       marionetka
       marionetki
       marka
-      marki
       markasyt
       markasyty
       markazyt
@@ -38769,8 +35224,6 @@ module GameRoomKrowa
       markizy
       markizeta
       markizety
-      markizy
-      markizy
       markotnienie
       markotnienia
       markowanie
@@ -38811,20 +35264,12 @@ module GameRoomKrowa
       marnotrawstwa
       marnowanie
       marnowania
-      marnowanie
-      marnowania
       maron
       maronowie
-      maron
       marony
       maronita
       maronici
       marowate
-      marowate
-      mars
-      marsy
-      mars
-      marsy
       mars
       marsy
       marsel
@@ -38841,20 +35286,13 @@ module GameRoomKrowa
       marsylie
       marsylianka
       marsylianki
-      marsylianka
-      marsylianki
-      marsz
-      marsze
       marsz
       marsze
       marszałek
       marszałkowie
       marszałkostwo
-      marszałkostwo
       marszand
       marszandzi
-      marszczenie
-      marszczenia
       marszczenie
       marszczenia
       marszobieg
@@ -38879,8 +35317,6 @@ module GameRoomKrowa
       martyrologie
       maruda
       marudy
-      maruda
-      marudy
       maruder
       maruderzy
       maruderstwo
@@ -38889,8 +35325,6 @@ module GameRoomKrowa
       marudzenia
       maruna
       maruny
-      mary
-      mary
       marynarczyna
       marynarczyny
       marynareczka
@@ -38915,7 +35349,6 @@ module GameRoomKrowa
       marzanki
       marzanna
       marzanny
-      marzanowate
       marzanowate
       marzec
       marce
@@ -38943,8 +35376,6 @@ module GameRoomKrowa
       masakry
       masakrowanie
       masakrowania
-      masarnia
-      masarnie
       masarnia
       masarnie
       masarstwo
@@ -38981,8 +35412,6 @@ module GameRoomKrowa
       maskoty
       maskowanie
       maskowania
-      maskowanie
-      maskowania
       maskowatość
       maskowatości
       maskownica
@@ -39005,8 +35434,6 @@ module GameRoomKrowa
       masonerie
       masowanie
       masowania
-      masowanie
-      masowania
       masowiec
       masowce
       masowość
@@ -39025,8 +35452,6 @@ module GameRoomKrowa
       mastyki
       mastyks
       mastyksy
-      masy
-      masy
       masyw
       masywy
       masywność
@@ -39075,18 +35500,12 @@ module GameRoomKrowa
       maślanki
       maślarnia
       maślarnie
-      maślarnia
-      maślarnie
       maślnica
       maślnice
       mat
       maci
-      mat
-      maty
-      mat
       maty
       mata
-      maty
       matactwo
       matactwa
       matacz
@@ -39130,7 +35549,6 @@ module GameRoomKrowa
       materiał
       materiały
       matiesy
-      matiesy
       matka
       matki
       matkobójca
@@ -39145,8 +35563,6 @@ module GameRoomKrowa
       matoły
       matołectwo
       matołectwa
-      matołek
-      matołki
       matołek
       matołki
       matowanie
@@ -39182,7 +35598,6 @@ module GameRoomKrowa
       matusia
       matusie
       matuś
-      matusie
       matuzal
       matuzale
       matuzalem
@@ -39201,16 +35616,12 @@ module GameRoomKrowa
       mazaki
       mazanie
       mazania
-      mazanie
-      mazania
       mazanina
       mazaniny
       mazdaizm
       mazdaizmy
       mazdeizm
       mazdeizmy
-      mazepa
-      mazepy
       mazepa
       mazepy
       mazer
@@ -39229,10 +35640,7 @@ module GameRoomKrowa
       mazowizmy
       mazur
       mazurzy
-      mazur
       mazury
-      mazurek
-      mazurki
       mazurek
       mazurki
       mazurzenie
@@ -39247,12 +35655,8 @@ module GameRoomKrowa
       maźnięcia
       mącenie
       mącenia
-      mącenie
-      mącenia
       mąciciel
       mąciciele
-      mąciwoda
-      mąciwody
       mąciwoda
       mąciwody
       mączka
@@ -39269,16 +35673,11 @@ module GameRoomKrowa
       mączystości
       mądrala
       mądrale
-      mądrala
-      mądrale
       mądrości
       mądrościach
       mądrość
-      mądrości
       mądry
       mądrzy
-      mądrzenie
-      mądrzenia
       mądrzenie
       mądrzenia
       mąka
@@ -39296,7 +35695,6 @@ module GameRoomKrowa
       mdłości
       mdłościach
       mdłość
-      mdłości
       meander
       meandry
       meandrowanie
@@ -39313,15 +35711,12 @@ module GameRoomKrowa
       meblościanki
       meblowanie
       meblowania
-      meblowanie
-      meblowania
       meblowóz
       meblowozy
       mecenas
       mecenasi
       mecenaska
       mecenaski
-      mecenasostwo
       mecenasostwo
       mecenasowa
       mecenasowe
@@ -39331,8 +35726,6 @@ module GameRoomKrowa
       mecenaty
       mech
       mchy
-      mechacenie
-      mechacenia
       mechacenie
       mechacenia
       mechanicyzm
@@ -39352,12 +35745,9 @@ module GameRoomKrowa
       mechanoskopia
       mechanoskopie
       mechowce
-      mechowce
       mechowiec
-      mechowce
       mechowisko
       mechowiska
-      mecyje
       mecyje
       mecz
       mecze
@@ -39411,15 +35801,12 @@ module GameRoomKrowa
       mediumizmy
       meduza
       meduzy
-      meduza
-      meduzy
       medycyna
       medycyny
       medyczka
       medyczki
       medyk
       medycy
-      medykamenty
       medykamenty
       medytacja
       medytacje
@@ -39469,8 +35856,6 @@ module GameRoomKrowa
       megawolty
       megiera
       megiery
-      megiera
-      megiery
       melamina
       melaminy
       melancholia
@@ -39493,8 +35878,6 @@ module GameRoomKrowa
       melchiory
       meldowanie
       meldowania
-      meldowanie
-      meldowania
       meldunek
       meldunki
       melika
@@ -39503,8 +35886,6 @@ module GameRoomKrowa
       meliny
       meliniarz
       meliniarze
-      melinowanie
-      melinowania
       melinowanie
       melinowania
       melioracja
@@ -39542,11 +35923,8 @@ module GameRoomKrowa
       melomanki
       melon
       melony
-      melon
-      melony
       melonik
       meloniki
-      melonowcowate
       melonowcowate
       melonowiec
       melonowce
@@ -39556,8 +35934,6 @@ module GameRoomKrowa
       melorecytacje
       melotypia
       melotypie
-      meluzyna
-      meluzyny
       meluzyna
       meluzyny
       membrana
@@ -39579,8 +35955,6 @@ module GameRoomKrowa
       menażerstwo
       menażerstwa
       menażka
-      menażki
-      menażki
       menażki
       menchia
       menchie
@@ -39604,8 +35978,6 @@ module GameRoomKrowa
       menility
       meningokok
       meningokoki
-      meningokoki
-      meningokoki
       menisk
       meniski
       mennica
@@ -39628,7 +36000,6 @@ module GameRoomKrowa
       mentony
       mentor
       mentorzy
-      mentor
       mentory
       mentorka
       mentorki
@@ -39644,7 +36015,6 @@ module GameRoomKrowa
       menzurki
       mer
       merowie
-      mer
       mery
       mercedes
       mercedesy
@@ -39674,8 +36044,6 @@ module GameRoomKrowa
       merlany
       merostwo
       merostwa
-      merostwo
-      merostwo
       merynos
       merynosy
       merystem
@@ -39699,7 +36067,6 @@ module GameRoomKrowa
       meszek
       meszki
       meszka
-      meszki
       meta
       mety
       metabaza
@@ -39709,8 +36076,6 @@ module GameRoomKrowa
       metabola
       metabole
       metabolit
-      metabolity
-      metabolity
       metabolity
       metabolizm
       metabolizmy
@@ -39835,7 +36200,6 @@ module GameRoomKrowa
       metonimie
       metr
       metrowie
-      metr
       metry
       metrampaż
       metrampaże
@@ -39879,8 +36243,6 @@ module GameRoomKrowa
       mezodermy
       mezofit
       mezofity
-      mezofity
-      mezofity
       mezognatyzm
       mezognatyzmy
       mezoklimat
@@ -39907,12 +36269,7 @@ module GameRoomKrowa
       mezzotinty
       męczarnia
       męczarnie
-      męczarnia
-      męczarnie
       męczelkowate
-      męczelkowate
-      męczenie
-      męczenia
       męczenie
       męczenia
       męczennica
@@ -39923,8 +36280,6 @@ module GameRoomKrowa
       męczeństwa
       męczydusza
       męczydusze
-      męczydusza
-      męczydusze
       mędrek
       mędrki
       mędrkowanie
@@ -39932,8 +36287,6 @@ module GameRoomKrowa
       mędrzec
       mędrcy
       męka
-      męki
-      męki
       męki
       męskość
       męskości
@@ -39951,8 +36304,6 @@ module GameRoomKrowa
       mętnienia
       mętność
       mętności
-      męty
-      męty
       mężatka
       mężatki
       mężczyzna
@@ -39985,8 +36336,6 @@ module GameRoomKrowa
       miałkości
       miano
       miana
-      mianowanie
-      mianowania
       mianowanie
       mianowania
       mianownictwo
@@ -40038,7 +36387,6 @@ module GameRoomKrowa
       micha
       michy
       michałki
-      michałki
       miczurinizm
       miczurinizmy
       miczurinowiec
@@ -40051,24 +36399,17 @@ module GameRoomKrowa
       miechowici
       miechunka
       miechunki
-      miechy
-      miechy
       miecz
       miecze
       miecznik
       miecznicy
-      miecznik
       mieczniki
       miecznikostwo
       miecznikostwa
-      miecznikostwo
-      miecznikostwo
       mieczogon
       mieczogony
       mieczowanie
       mieczowania
-      mieczyk
-      mieczyki
       mieczyk
       mieczyki
       miednica
@@ -40089,11 +36430,8 @@ module GameRoomKrowa
       miedziowanie
       miedziowania
       miedziowce
-      miedziowce
       miedziowiec
       miedziowcy
-      miedziowiec
-      miedziowce
       miedziownik
       miedziownicy
       miedź
@@ -40122,8 +36460,6 @@ module GameRoomKrowa
       mienia
       mienienie
       mienienia
-      mienienie
-      mienienia
       mienszewik
       mienszewicy
       mienszewizm
@@ -40131,13 +36467,10 @@ module GameRoomKrowa
       miernictwo
       miernictwa
       mierniczy
-      mierniczy
       miernik
       mierniki
       miernikowce
-      miernikowce
       miernikowiec
-      miernikowce
       mierność
       mierności
       miernota
@@ -40146,12 +36479,8 @@ module GameRoomKrowa
       mierzeje
       mierzenie
       mierzenia
-      mierzenie
-      mierzenia
       mierzwa
       mierzwy
-      mierzwienie
-      mierzwienia
       mierzwienie
       mierzwienia
       mierzynek
@@ -40163,13 +36492,10 @@ module GameRoomKrowa
       miesiączek
       miesiączki
       miesiączka
-      miesiączki
       miesiącznica
       miesiącznice
       miesięcznik
       miesięczniki
-      mieszacz
-      mieszacze
       mieszacz
       mieszacze
       mieszadełko
@@ -40184,11 +36510,8 @@ module GameRoomKrowa
       mieszałki
       mieszanie
       mieszania
-      mieszanie
-      mieszania
       mieszaniec
       mieszańcy
-      mieszaniec
       mieszańce
       mieszanina
       mieszaniny
@@ -40202,8 +36525,6 @@ module GameRoomKrowa
       mieszczanki
       mieszczaństwo
       mieszczaństwa
-      mieszczenie
-      mieszczenia
       mieszczenie
       mieszczenia
       mieszczka
@@ -40221,7 +36542,6 @@ module GameRoomKrowa
       mieszkanka
       mieszkanki
       mieszkanko
-      mieszkanka
       mieścina
       mieściny
       mietelnik
@@ -40230,24 +36550,16 @@ module GameRoomKrowa
       mietlice
       miewanie
       miewania
-      miewanie
-      miewania
       mięcho
       mięcha
       mięcie
       mięcia
-      mięcie
-      mięcia
-      mięczak
-      mięczaki
       mięczak
       mięczaki
       międlak
       międlaki
       międlarka
       międlarki
-      międlarnia
-      międlarnie
       międlarnia
       międlarnie
       międlenie
@@ -40280,8 +36592,6 @@ module GameRoomKrowa
       międzyżebrza
       miękczenie
       miękczenia
-      miękczenie
-      miękczenia
       miękisz
       miękisze
       miękkość
@@ -40311,7 +36621,6 @@ module GameRoomKrowa
       mięsożerca
       mięsożercy
       mięsożerne
-      mięsożerne
       mięśniak
       mięśniaki
       mięśniochwat
@@ -40326,12 +36635,8 @@ module GameRoomKrowa
       miętówki
       miętus
       miętusy
-      miętusy
-      miętusy
       migacz
       migacze
-      miganie
-      migania
       miganie
       migania
       migawka
@@ -40342,20 +36647,13 @@ module GameRoomKrowa
       migdalenia
       migdał
       migdały
-      migdał
-      migdały
       migdałek
       migdałki
       migdałowiec
       migdałowce
-      migdały
-      migdały
-      migi
       migi
       miglanc
       miglance
-      mignięcie
-      mignięcia
       mignięcie
       mignięcia
       mignon
@@ -40374,8 +36672,6 @@ module GameRoomKrowa
       migreny
       migrowanie
       migrowania
-      mijanie
-      mijania
       mijanie
       mijania
       mijanka
@@ -40412,13 +36708,9 @@ module GameRoomKrowa
       mikrodruki
       mikroelement
       mikroelementy
-      mikroelementy
-      mikroelementy
       mikroewolucja
       mikroewolucje
       mikrofag
-      mikrofagi
-      mikrofagi
       mikrofagi
       mikrofala
       mikrofale
@@ -40447,8 +36739,6 @@ module GameRoomKrowa
       mikroksiężyc
       mikroksiężyce
       mikrolit
-      mikrolity
-      mikrolity
       mikrolity
       mikrolog
       mikrolodzy
@@ -40496,11 +36786,8 @@ module GameRoomKrowa
       mikrowolty
       mikrus
       mikrusy
-      mikrus
-      mikrusy
       mikser
       mikserzy
-      mikser
       miksery
       miksowanie
       miksowania
@@ -40560,7 +36847,6 @@ module GameRoomKrowa
       milisekunda
       milisekundy
       militaria
-      militaria
       militarysta
       militaryści
       militaryzacja
@@ -40588,7 +36874,6 @@ module GameRoomKrowa
       miłorząb
       miłorzęby
       miłorzębowe
-      miłorzębowe
       miłosierdzie
       miłosierdzia
       miłosna
@@ -40605,13 +36890,10 @@ module GameRoomKrowa
       miłośnicy
       miłowanie
       miłowania
-      miłowanie
-      miłowania
       miły
       mili
       mim
       mimowie
-      mim
       mimy
       mimetyzm
       mimetyzmy
@@ -40628,7 +36910,6 @@ module GameRoomKrowa
       mimośrody
       mimoza
       mimozy
-      mimozowate
       mimozowate
       mimozowatość
       mimozowatości
@@ -40669,8 +36950,6 @@ module GameRoomKrowa
       miniaturzyści
       minięcie
       minięcia
-      minięcie
-      minięcia
       minimalista
       minimaliści
       minimalistka
@@ -40705,8 +36984,6 @@ module GameRoomKrowa
       minoderie
       minoderyjność
       minogi
-      minogi
-      minogowate
       minogowate
       minorat
       minoraty
@@ -40719,11 +36996,8 @@ module GameRoomKrowa
       minowiec
       minowce
       minóg
-      minogi
       minstrel
       minstrele
-      minus
-      minusy
       minus
       minusy
       minuskuła
@@ -40738,8 +37012,6 @@ module GameRoomKrowa
       miodki
       miodnik
       miodniki
-      miodniki
-      miodniki
       miodobranie
       miodobrania
       miodojad
@@ -40750,7 +37022,6 @@ module GameRoomKrowa
       miodowniki
       miodówka
       miodówki
-      miodówkowate
       miodówkowate
       miodunka
       miodunki
@@ -40764,12 +37035,8 @@ module GameRoomKrowa
       mioty
       miotacz
       miotacze
-      miotacz
-      miotacze
       miotaczka
       miotaczki
-      miotanie
-      miotania
       miotanie
       miotania
       miotarka
@@ -40789,13 +37056,11 @@ module GameRoomKrowa
       miozyn
       miozyny
       miozyna
-      miozyny
       miód
       miody
       mir
       miry
       mira
-      miry
       mirabelka
       mirabelki
       mirabilit
@@ -40806,7 +37071,6 @@ module GameRoomKrowa
       mirandy
       miraż
       miraże
-      miriady
       miriady
       miriagram
       miriagramy
@@ -40819,12 +37083,10 @@ module GameRoomKrowa
       mirt
       mirty
       mirtowate
-      mirtowate
       mirza
       mirzowie
       misa
       misy
-      miscellanea
       miscellanea
       miseczka
       miseczki
@@ -40840,8 +37102,6 @@ module GameRoomKrowa
       misiurki
       misja
       misje
-      misje
-      misje
       misjonarka
       misjonarki
       misjonarstwo
@@ -40851,9 +37111,7 @@ module GameRoomKrowa
       miska
       miski
       misteria
-      misteria
       misterium
-      misteria
       misterność
       misterności
       mistral
@@ -40861,9 +37119,7 @@ module GameRoomKrowa
       mistrz
       mistrzowie
       mistrzostwa
-      mistrzostwa
       mistrzostwo
-      mistrzostwa
       mistrzyni
       mistrzynie
       mistycyzm
@@ -40880,12 +37136,10 @@ module GameRoomKrowa
       mistyka
       mistyki
       miś
-      misie
       mit
       mity
       mitel
       mitle
-      mitochondria
       mitochondria
       mitolog
       mitolodzy
@@ -40919,8 +37173,6 @@ module GameRoomKrowa
       mityczności
       mitygowanie
       mitygowania
-      mitygowanie
-      mitygowania
       mityng
       mityngi
       mityzacja
@@ -40949,16 +37201,12 @@ module GameRoomKrowa
       mizeraczki
       mizerak
       mizeraki
-      mizerak
-      mizeraki
       mizeria
       mizerie
       mizernienie
       mizernienia
       mizerność
       mizerności
-      mizerota
-      mizeroty
       mizerota
       mizeroty
       mizerykordia
@@ -40989,16 +37237,12 @@ module GameRoomKrowa
       mlaśnięcia
       mlecz
       mlecze
-      mlecz
-      mlecze
       mleczaj
       mleczaje
       mleczak
       mleczaki
       mleczarka
       mleczarki
-      mleczarnia
-      mleczarnie
       mleczarnia
       mleczarnie
       mleczarstwo
@@ -41019,8 +37263,6 @@ module GameRoomKrowa
       młocarki
       młocarnia
       młocarnie
-      młocarnia
-      młocarnie
       młocarz
       młocarze
       młocek
@@ -41028,10 +37270,7 @@ module GameRoomKrowa
       młociarz
       młociarze
       młocka
-      młocki
       młoda
-      młode
-      młode
       młode
       młodniak
       młodniaki
@@ -41048,8 +37287,6 @@ module GameRoomKrowa
       młodzi
       młodziak
       młodziaki
-      młodziak
-      młodziaki
       młodzian
       młodziany
       młodziczka
@@ -41064,14 +37301,9 @@ module GameRoomKrowa
       młodzieżowość
       młodzik
       młodzicy
-      młodzik
-      młodziki
-      młodzik
       młodziki
       młokos
       młokosy
-      młot
-      młoty
       młot
       młoty
       młoteczek
@@ -41086,7 +37318,6 @@ module GameRoomKrowa
       młotnicy
       młotowanie
       młotowania
-      młotowate
       młotowate
       młotowina
       młotowiny
@@ -41124,7 +37355,6 @@ module GameRoomKrowa
       mnemotechniki
       mnich
       mnisi
-      mnich
       mnichy
       mniejszość
       mniejszości
@@ -41133,17 +37363,12 @@ module GameRoomKrowa
       mniszek
       mniszki
       mniszka
-      mniszki
       mnogość
       mnogości
       mnożarka
       mnożarki
       mnożarnia
       mnożarnie
-      mnożarnia
-      mnożarnie
-      mnożenie
-      mnożenia
       mnożenie
       mnożenia
       mnożna
@@ -41158,8 +37383,6 @@ module GameRoomKrowa
       mobile
       mobilizacja
       mobilizacje
-      mobilizowanie
-      mobilizowania
       mobilizowanie
       mobilizowania
       mobilność
@@ -41179,8 +37402,6 @@ module GameRoomKrowa
       mocodawcy
       mocowanie
       mocowania
-      mocowanie
-      mocowania
       mocz
       mocze
       moczan
@@ -41188,9 +37409,6 @@ module GameRoomKrowa
       moczarka
       moczarki
       moczary
-      moczary
-      moczenie
-      moczenia
       moczenie
       moczenia
       mocznica
@@ -41203,18 +37421,12 @@ module GameRoomKrowa
       moczówki
       moczymorda
       moczymordy
-      moczymorda
-      moczymordy
       moda
       mody
       modalność
       modalności
       model
       modele
-      model
-      modele
-      modelarnia
-      modelarnie
       modelarnia
       modelarnie
       modelarstwo
@@ -41225,8 +37437,6 @@ module GameRoomKrowa
       modelatorzy
       modelatorka
       modelatorki
-      modelatornia
-      modelatornie
       modelatornia
       modelatornie
       modelik
@@ -41255,18 +37465,14 @@ module GameRoomKrowa
       modlenia
       modliszka
       modliszki
-      modliszki
-      modliszki
       modlitewnik
       modlitewniki
       modlitwa
       modlitwy
       modły
-      modły
       modnisia
       modnisie
       modniś
-      modnisie
       modrak
       modraki
       modraszek
@@ -41293,18 +37499,13 @@ module GameRoomKrowa
       modyfikatory
       modyfikowanie
       modyfikowania
-      modyfikowanie
-      modyfikowania
       modylon
       modylony
       modystka
       modystki
       modzel
       modzele
-      modzele
-      modzele
       modzelowatość
-      mofety
       mofety
       mogiła
       mogiły
@@ -41317,12 +37518,9 @@ module GameRoomKrowa
       moi
       moich
       moje
-      moje
       mojra
       mojry
       mokasyn
-      mokasyny
-      mokasyny
       mokasyny
       mokiet
       mokiety
@@ -41358,8 +37556,6 @@ module GameRoomKrowa
       molina
       molo
       mola
-      moloch
-      molochy
       moloch
       molochy
       moltopren
@@ -41429,8 +37625,6 @@ module GameRoomKrowa
       monocykle
       monocyt
       monocyty
-      monocyty
-      monocyty
       monodia
       monodie
       monodram
@@ -41438,8 +37632,6 @@ module GameRoomKrowa
       monodramat
       monodramaty
       monofag
-      monofagi
-      monofagi
       monofagi
       monofagizm
       monofagizmy
@@ -41512,8 +37704,6 @@ module GameRoomKrowa
       monorym
       monorymy
       monosacharyd
-      monosacharydy
-      monosacharydy
       monosacharydy
       monospermia
       monospermie
@@ -41605,7 +37795,6 @@ module GameRoomKrowa
       mord
       mordy
       morda
-      mordy
       mordeczka
       mordeczki
       morderca
@@ -41620,8 +37809,6 @@ module GameRoomKrowa
       mordki
       mordobicie
       mordobicia
-      mordowanie
-      mordowania
       mordowanie
       mordowania
       mordownia
@@ -41672,8 +37859,6 @@ module GameRoomKrowa
       moroszki
       mors
       morsy
-      mors
-      morsy
       morszczuk
       morszczuki
       morszczyn
@@ -41693,11 +37878,8 @@ module GameRoomKrowa
       morwa
       morwy
       morwowate
-      morwowate
       morze
       morza
-      morzenie
-      morzenia
       morzenie
       morzenia
       morzysko
@@ -41721,21 +37903,16 @@ module GameRoomKrowa
       mostek
       mostki
       mostowe
-      mostowe
       mostownica
       mostownice
       moszcz
       moszcze
       moszczenie
       moszczenia
-      moszczenie
-      moszczenia
       moszna
       moszny
       motak
       motaki
-      motanie
-      motania
       motanie
       motania
       motarka
@@ -41767,12 +37944,10 @@ module GameRoomKrowa
       motorek
       motorki
       motorniczy
-      motorniczy
       motorower
       motorowery
       motorowiec
       motorowcy
-      motorowiec
       motorowce
       motorowodniak
       motorowy
@@ -41785,8 +37960,6 @@ module GameRoomKrowa
       motorynki
       motoryzacja
       motoryzacje
-      motoryzowanie
-      motoryzowania
       motoryzowanie
       motoryzowania
       motoszybowiec
@@ -41803,13 +37976,10 @@ module GameRoomKrowa
       motykowania
       motyl
       motyle
-      motyle
-      motyle
       motylek
       motylki
       motylica
       motylice
-      motylkowate
       motylkowate
       motyw
       motywy
@@ -41843,7 +38013,6 @@ module GameRoomKrowa
       możliwości
       możliwościach
       możliwość
-      możliwości
       możność
       możności
       możnowładca
@@ -41855,9 +38024,7 @@ module GameRoomKrowa
       możylinek
       możylinki
       mól
-      mole
       mórg
-      morgi
       mówca
       mówcy
       mówczyni
@@ -41880,8 +38047,6 @@ module GameRoomKrowa
       móżdżki
       mroczek
       mroczki
-      mroczki
-      mroczki
       mrocznienie
       mrocznienia
       mroczność
@@ -41890,8 +38055,6 @@ module GameRoomKrowa
       mroki
       mrowie
       mrowia
-      mrowienie
-      mrowienia
       mrowienie
       mrowienia
       mrowisko
@@ -41906,13 +38069,9 @@ module GameRoomKrowa
       mrożenia
       mrożonka
       mrożonki
-      mrożonki
-      mrożonki
       mrówczan
       mrówczany
       mrówka
-      mrówki
-      mrówki
       mrówki
       mrówkojad
       mrówkojady
@@ -41930,14 +38089,10 @@ module GameRoomKrowa
       mrugnięcia
       mruk
       mruki
-      mruk
-      mruki
       mrukliwość
       mrukliwości
       mruknięcie
       mruknięcia
-      mrużenie
-      mrużenia
       mrużenie
       mrużenia
       mrzonka
@@ -41956,11 +38111,7 @@ module GameRoomKrowa
       mszary
       mszczenie
       mszczenia
-      mszczenie
-      mszczenia
       mszyca
-      mszyce
-      mszyce
       mszyce
       mszywioł
       mszywioły
@@ -41976,23 +38127,15 @@ module GameRoomKrowa
       muchołapki
       muchołówka
       muchołówki
-      muchołówki
-      muchołówki
       muchomor
       muchomory
       muchomór
-      muchomory
       muchotrzew
       muchotrzewy
       muchowate
-      muchowate
       muchówka
       muchówki
-      muchówki
-      muchówki
       mucyna
-      mucyny
-      mucyny
       mucyny
       muczenie
       muczenia
@@ -42010,8 +38153,6 @@ module GameRoomKrowa
       mukoidy
       mukoproteid
       mukoproteidy
-      mukoproteidy
-      mukoproteidy
       mulątko
       mulątka
       mulda
@@ -42024,7 +38165,6 @@ module GameRoomKrowa
       muliny
       mulit
       mulity
-      multanki
       multanki
       multicyklon
       multicyklony
@@ -42039,10 +38179,6 @@ module GameRoomKrowa
       multyplikator
       muł
       muły
-      muł
-      muły
-      mułek
-      mułki
       mułek
       mułki
       mułła
@@ -42057,8 +38193,6 @@ module GameRoomKrowa
       mundury
       mundurek
       mundurki
-      mundurowanie
-      mundurowania
       mundurowanie
       mundurowania
       municypium
@@ -42080,39 +38214,26 @@ module GameRoomKrowa
       murena
       mureny
       murenowate
-      murenowate
       murłat
       murłaty
       murłata
-      murłaty
       murowanie
       murowania
       mursz
       mursze
       murszenie
       murszenia
-      mury
-      mury
       murza
       murzowie
       murzyn
       murzyni
-      murzyn
-      murzyni
-      murzynek
-      murzynki
       murzynek
       murzynki
       murzynka
-      murzynki
-      murzynki
-      murzynki
       mus
       musy
       musical
       musicale
-      muskanie
-      muskania
       muskanie
       muskania
       muskaryna
@@ -42131,9 +38252,6 @@ module GameRoomKrowa
       mustrowania
       mustyk
       mustyki
-      mustyki
-      mustyki
-      mustykowate
       mustykowate
       muszelka
       muszelki
@@ -42163,8 +38281,6 @@ module GameRoomKrowa
       muśliny
       muśnięcie
       muśnięcia
-      muśnięcie
-      muśnięcia
       mutacja
       mutacje
       mutacjonizm
@@ -42173,7 +38289,6 @@ module GameRoomKrowa
       mutageny
       mutant
       mutanci
-      mutant
       mutanty
       mutra
       mutry
@@ -42181,7 +38296,6 @@ module GameRoomKrowa
       mutualizmy
       muza
       muzy
-      muzealia
       muzealia
       muzealnictwo
       muzealnictwa
@@ -42226,8 +38340,6 @@ module GameRoomKrowa
       muzykowania
       mycie
       mycia
-      mycie
-      mycia
       mycka
       mycki
       mydelniczka
@@ -42236,15 +38348,10 @@ module GameRoomKrowa
       mydełka
       mydlarnia
       mydlarnie
-      mydlarnia
-      mydlarnie
       mydlarstwo
       mydlarstwa
       mydlenie
       mydlenia
-      mydlenie
-      mydlenia
-      mydliny
       mydliny
       mydlnica
       mydlnice
@@ -42266,8 +38373,6 @@ module GameRoomKrowa
       mykwy
       mylenie
       mylenia
-      mylenie
-      mylenia
       mysikrólik
       mysikróliki
       mysz
@@ -42281,7 +38386,6 @@ module GameRoomKrowa
       myszopłoch
       myszopłochy
       myszowate
-      myszowate
       myśl
       myśli
       myślenie
@@ -42294,7 +38398,6 @@ module GameRoomKrowa
       myślistwa
       myśliwiec
       myśliwcy
-      myśliwiec
       myśliwce
       myśliwy
       myśliwi
@@ -42314,10 +38417,6 @@ module GameRoomKrowa
       nabarłożenia
       nabawianie
       nabawiania
-      nabawianie
-      nabawiania
-      nabawienie
-      nabawienia
       nabawienie
       nabawienia
       nabazgranie
@@ -42326,14 +38425,10 @@ module GameRoomKrowa
       nabiały
       nabicie
       nabicia
-      nabicie
-      nabicia
       nabiedowanie
       nabiedowania
       nabiedzenie
       nabiedzenia
-      nabieganie
-      nabiegania
       nabieganie
       nabiegania
       nabiegnięcie
@@ -42344,12 +38439,8 @@ module GameRoomKrowa
       nabieraczki
       nabieranie
       nabierania
-      nabieranie
-      nabierania
       nabieżnik
       nabieżniki
-      nabijanie
-      nabijania
       nabijanie
       nabijania
       nablagowanie
@@ -42370,8 +38461,6 @@ module GameRoomKrowa
       nabory
       nabranie
       nabrania
-      nabranie
-      nabrania
       nabrojenie
       nabrojenia
       nabrudzenie
@@ -42388,10 +38477,6 @@ module GameRoomKrowa
       nabrzmienia
       nabudowanie
       nabudowania
-      nabudowanie
-      nabudowania
-      nabujanie
-      nabujania
       nabujanie
       nabujania
       nabuntowanie
@@ -42416,10 +38501,6 @@ module GameRoomKrowa
       nachlapania
       nachmurzenie
       nachmurzenia
-      nachmurzenie
-      nachmurzenia
-      nachodzenie
-      nachodzenia
       nachodzenie
       nachodzenia
       nachorowanie
@@ -42430,10 +38511,6 @@ module GameRoomKrowa
       nachwytania
       nachylanie
       nachylania
-      nachylanie
-      nachylania
-      nachylenie
-      nachylenia
       nachylenie
       nachylenia
       naciąg
@@ -42444,10 +38521,6 @@ module GameRoomKrowa
       naciągaczki
       naciąganie
       naciągania
-      naciąganie
-      naciągania
-      naciągnięcie
-      naciągnięcia
       naciągnięcie
       naciągnięcia
       nacieczenie
@@ -42460,26 +38533,18 @@ module GameRoomKrowa
       nacieknięcia
       nacieranie
       nacierania
-      nacieranie
-      nacierania
       nacierpienie
       nacierpienia
       nacieszenie
       nacieszenia
       nacięcie
       nacięcia
-      nacięcie
-      nacięcia
       nacinak
       nacinaki
       nacinanie
       nacinania
-      nacinanie
-      nacinania
       nacios
       naciosy
-      naciosanie
-      naciosania
       naciosanie
       naciosania
       naciosywanie
@@ -42503,7 +38568,6 @@ module GameRoomKrowa
       naczekanie
       naczekania
       naczelne
-      naczelne
       naczelniczka
       naczelniczki
       naczelnik
@@ -42521,11 +38585,9 @@ module GameRoomKrowa
       naczółek
       naczółki
       naczynia
-      naczynia
       naczyniak
       naczyniaki
       naczynie
-      naczynia
       naczyniówka
       naczyniówki
       naczyńko
@@ -42538,24 +38600,14 @@ module GameRoomKrowa
       nadajniki
       nadanie
       nadania
-      nadanie
-      nadania
-      nadarcie
-      nadarcia
       nadarcie
       nadarcia
       nadarzanie
       nadarzania
-      nadarzanie
-      nadarzania
-      nadarzenie
-      nadarzenia
       nadarzenie
       nadarzenia
       nadawa
       nadawy
-      nadawanie
-      nadawania
       nadawanie
       nadawania
       nadawca
@@ -42646,16 +38698,12 @@ module GameRoomKrowa
       nadeptywania
       naderwanie
       naderwania
-      naderwanie
-      naderwania
       naderznięcie
       naderznięcia
       naderżnięcie
       naderżnięcia
       nadesłanie
       nadesłania
-      nadęcie
-      nadęcia
       nadęcie
       nadęcia
       nadętość
@@ -42673,11 +38721,8 @@ module GameRoomKrowa
       nadgniwanie
       nadgniwania
       nadgodziny
-      nadgodziny
       nadgonienie
       nadgonienia
-      nadgorliwiec
-      nadgorliwcy
       nadgorliwiec
       nadgorliwcy
       nadgorliwość
@@ -42726,15 +38771,11 @@ module GameRoomKrowa
       nadleśnictwo
       nadleśnictwa
       nadleśniczy
-      nadleśniczy
       nadlewanie
       nadlewania
       nadliczbówki
-      nadliczbówki
       nadlina
       nadliny
-      nadludzie
-      nadludzie
       nadlufka
       nadlufki
       nadłamanie
@@ -42778,11 +38819,7 @@ module GameRoomKrowa
       nadnercze
       nadnercza
       nadobroty
-      nadobroty
       nadobrót
-      nadobroty
-      nadojenie
-      nadojenia
       nadojenie
       nadojenia
       nadokiennik
@@ -42793,8 +38830,6 @@ module GameRoomKrowa
       nadokuczania
       nadpalanie
       nadpalania
-      nadpalenie
-      nadpalenia
       nadpalenie
       nadpalenia
       nadpicie
@@ -42836,8 +38871,6 @@ module GameRoomKrowa
       nadprzewodnik
       nadpsucie
       nadpsucia
-      nadpsucie
-      nadpsucia
       nadrabianie
       nadrabiania
       nadrdzewienie
@@ -42876,10 +38909,6 @@ module GameRoomKrowa
       nadskarpia
       nadstawianie
       nadstawiania
-      nadstawianie
-      nadstawiania
-      nadstawienie
-      nadstawienia
       nadstawienie
       nadstawienia
       nadstawka
@@ -42907,11 +38936,7 @@ module GameRoomKrowa
       nadtaczania
       nadtapianie
       nadtapiania
-      nadtapianie
-      nadtapiania
       nadtlenek
-      nadtlenki
-      nadtlenki
       nadtlenki
       nadtłuczenie
       nadtłuczenia
@@ -42919,8 +38944,6 @@ module GameRoomKrowa
       nadtłukiwania
       nadtoczenie
       nadtoczenia
-      nadtopienie
-      nadtopienia
       nadtopienie
       nadtopienia
       nadtrawianie
@@ -42949,8 +38972,6 @@ module GameRoomKrowa
       nadwerężania
       nadwerężenie
       nadwerężenia
-      nadwerężenie
-      nadwerężenia
       nadwieszanie
       nadwieszania
       nadwieszenie
@@ -42971,14 +38992,10 @@ module GameRoomKrowa
       nadwzroczność
       nadymanie
       nadymania
-      nadymanie
-      nadymania
       nadymienie
       nadymienia
       nadział
       nadziały
-      nadzianie
-      nadziania
       nadzianie
       nadziania
       nadziąślak
@@ -42987,8 +39004,6 @@ module GameRoomKrowa
       nadzieje
       nadzienie
       nadzienia
-      nadziewanie
-      nadziewania
       nadziewanie
       nadziewania
       nadziewarka
@@ -43025,7 +39040,6 @@ module GameRoomKrowa
       naftociąg
       naftociągi
       naftopochodne
-      naftopochodne
       naftowanie
       naftowania
       naftowiec
@@ -43038,18 +39052,13 @@ module GameRoomKrowa
       nagabywania
       nagadanie
       nagadania
-      nagadanie
-      nagadania
       nagadywanie
       nagadywania
       nagan
       nagany
       nagana
-      nagany
       naganiacz
       naganiacze
-      naganianie
-      naganiania
       naganianie
       naganiania
       naganka
@@ -43070,16 +39079,10 @@ module GameRoomKrowa
       nagazowania
       nagderanie
       nagderania
-      nagderanie
-      nagderania
       nagietek
       nagietki
       nagięcie
       nagięcia
-      nagięcie
-      nagięcia
-      naginanie
-      naginania
       naginanie
       naginania
       naglenie
@@ -43108,15 +39111,12 @@ module GameRoomKrowa
       nagniatania
       nagniecenie
       nagniecenia
-      nagniecenie
-      nagniecenia
       nagniotek
       nagniotki
       nagolenica
       nagolenice
       nagolennik
       nagolenniki
-      nagonasienne
       nagonasienne
       nagonienie
       nagonienia
@@ -43126,18 +39126,11 @@ module GameRoomKrowa
       nagości
       nagotowanie
       nagotowania
-      nagotowanie
-      nagotowania
       nagozalążkowe
-      nagozalążkowe
-      nagrabienie
-      nagrabienia
       nagrabienie
       nagrabienia
       nagradzanie
       nagradzania
-      nagranie
-      nagrania
       nagranie
       nagrania
       nagrobek
@@ -43150,10 +39143,6 @@ module GameRoomKrowa
       nagrodzenia
       nagromadzanie
       nagromadzania
-      nagromadzanie
-      nagromadzania
-      nagromadzenie
-      nagromadzenia
       nagromadzenie
       nagromadzenia
       nagrymaszenie
@@ -43164,20 +39153,14 @@ module GameRoomKrowa
       nagryzania
       nagryzienie
       nagryzienia
-      nagryzienie
-      nagryzienia
       nagryzmolenie
       nagryzmolenia
-      nagrzanie
-      nagrzania
       nagrzanie
       nagrzania
       nagrzbietnik
       nagrzbietniki
       nagrzeszenie
       nagrzeszenia
-      nagrzewanie
-      nagrzewania
       nagrzewanie
       nagrzewania
       nagrzewarka
@@ -43200,8 +39183,6 @@ module GameRoomKrowa
       nahajki
       nahałasowanie
       nahałasowania
-      nahałasowanie
-      nahałasowania
       naharowanie
       naharowania
       nahulanie
@@ -43221,7 +39202,6 @@ module GameRoomKrowa
       naiwności
       naiwnościach
       naiwność
-      naiwności
       najada
       najady
       najazd
@@ -43230,8 +39210,6 @@ module GameRoomKrowa
       najądrza
       najdroższa
       najdroższe
-      najechanie
-      najechania
       najechanie
       najechania
       najedzenie
@@ -43250,24 +39228,16 @@ module GameRoomKrowa
       najeźdźcy
       najeżanie
       najeżania
-      najeżanie
-      najeżania
       najeżdżanie
       najeżdżania
       najeżdżenie
       najeżdżenia
       najeżenie
       najeżenia
-      najeżenie
-      najeżenia
-      najęcie
-      najęcia
       najęcie
       najęcia
       najgorsze
       najgorsza
-      najmowanie
-      najmowania
       najmowanie
       najmowania
       najście
@@ -43304,14 +39274,10 @@ module GameRoomKrowa
       naklejki
       naklęcie
       naklęcia
-      naklęcie
-      naklęcia
       nakład
       nakłady
       nakładacz
       nakładacze
-      nakładanie
-      nakładania
       nakładanie
       nakładania
       nakładarka
@@ -43320,8 +39286,6 @@ module GameRoomKrowa
       nakładcy
       nakładka
       nakładki
-      nakłady
-      nakłady
       nakładzenie
       nakładzenia
       nakłamanie
@@ -43344,10 +39308,6 @@ module GameRoomKrowa
       nakolanniki
       nakopanie
       nakopania
-      nakopanie
-      nakopania
-      nakopcenie
-      nakopcenia
       nakopcenie
       nakopcenia
       nakostniak
@@ -43356,10 +39316,6 @@ module GameRoomKrowa
       nakostniki
       nakoszenie
       nakoszenia
-      nakoszenie
-      nakoszenia
-      nakradzenie
-      nakradzenia
       nakradzenie
       nakradzenia
       nakrajanie
@@ -43378,8 +39334,6 @@ module GameRoomKrowa
       nakręcania
       nakręcenie
       nakręcenia
-      nakręcenie
-      nakręcenia
       nakrętka
       nakrętki
       nakrojenie
@@ -43390,10 +39344,6 @@ module GameRoomKrowa
       nakruszenia
       nakrycie
       nakrycia
-      nakrycie
-      nakrycia
-      nakrywanie
-      nakrywania
       nakrywanie
       nakrywania
       nakrzątanie
@@ -43402,16 +39352,12 @@ module GameRoomKrowa
       nakrzemowania
       nakrzyczenie
       nakrzyczenia
-      nakrzyczenie
-      nakrzyczenia
       nakupienie
       nakupienia
       nakurzenie
       nakurzenia
       nakwaszenie
       nakwaszenia
-      nalanie
-      nalania
       nalanie
       nalania
       nalatanie
@@ -43430,18 +39376,12 @@ module GameRoomKrowa
       nalepiania
       nalepienie
       nalepienia
-      nalepienie
-      nalepienia
       nalepka
       nalepki
       naleśnik
       naleśniki
-      naleśnik
-      naleśniki
       nalew
       nalewy
-      nalewanie
-      nalewania
       nalewanie
       nalewania
       nalewka
@@ -43454,24 +39394,14 @@ module GameRoomKrowa
       naliczania
       naliczenie
       naliczenia
-      naliczenie
-      naliczenia
       nalot
       naloty
       naładowanie
       naładowania
-      naładowanie
-      naładowania
-      naładowywanie
-      naładowywania
       naładowywanie
       naładowywania
       nałamanie
       nałamania
-      nałamanie
-      nałamania
-      nałapanie
-      nałapania
       nałapanie
       nałapania
       nałogowiec
@@ -43480,10 +39410,6 @@ module GameRoomKrowa
       nałokietniki
       nałowienie
       nałowienia
-      nałowienie
-      nałowienia
-      nałożenie
-      nałożenia
       nałożenie
       nałożenia
       nałóg
@@ -43504,24 +39430,14 @@ module GameRoomKrowa
       namalowania
       namarszczenie
       namarszczenia
-      namarszczenie
-      namarszczenia
       namarzanie
       namarzania
       namarznięcie
       namarznięcia
-      namarznięcie
-      namarznięcia
-      namaszczanie
-      namaszczania
       namaszczanie
       namaszczania
       namaszczenie
       namaszczenia
-      namaszczenie
-      namaszczenia
-      namawianie
-      namawiania
       namawianie
       namawiania
       namaz
@@ -43530,8 +39446,6 @@ module GameRoomKrowa
       namazania
       namazywanie
       namazywania
-      namęczenie
-      namęczenia
       namęczenie
       namęczenia
       namiar
@@ -43544,8 +39458,6 @@ module GameRoomKrowa
       namierniki
       namierzanie
       namierzania
-      namierzenie
-      namierzenia
       namierzenie
       namierzenia
       namiestnictwo
@@ -43569,28 +39481,16 @@ module GameRoomKrowa
       namiotnik
       namiotniki
       namiotnikowce
-      namiotnikowce
-      namiotnikowce
       namiotowisko
       namiotowiska
       namłócenie
       namłócenia
-      namłócenie
-      namłócenia
-      namnożenie
-      namnożenia
       namnożenie
       namnożenia
       namoczenie
       namoczenia
-      namoczenie
-      namoczenia
       namoknięcie
       namoknięcia
-      namoknięcie
-      namoknięcia
-      namordowanie
-      namordowania
       namordowanie
       namordowania
       namorzyn
@@ -43603,10 +39503,6 @@ module GameRoomKrowa
       namozolenia
       namówienie
       namówienia
-      namówienie
-      namówienia
-      namulanie
-      namulania
       namulanie
       namulania
       namulenie
@@ -43621,10 +39517,6 @@ module GameRoomKrowa
       namurnice
       namydlanie
       namydlania
-      namydlanie
-      namydlania
-      namydlenie
-      namydlenia
       namydlenie
       namydlenia
       namysł
@@ -43637,7 +39529,6 @@ module GameRoomKrowa
       namywy
       nanercz
       nanercze
-      nanerczowate
       nanerczowate
       naniesienie
       naniesienia
@@ -43665,18 +39556,12 @@ module GameRoomKrowa
       naobierania
       naobijanie
       naobijania
-      naobijanie
-      naobijania
-      naodkładanie
-      naodkładania
       naodkładanie
       naodkładania
       naoliwianie
       naoliwiania
       naoliwienie
       naoliwienia
-      naopowiadanie
-      naopowiadania
       naopowiadanie
       naopowiadania
       naostrzenie
@@ -43691,20 +39576,14 @@ module GameRoomKrowa
       napadnięcia
       napakowanie
       napakowania
-      napakowanie
-      napakowania
       napalanie
       napalania
-      napalenie
-      napalenia
       napalenie
       napalenia
       napalm
       napalmy
       napar
       napary
-      naparcie
-      naparcia
       naparcie
       naparcia
       naparowanie
@@ -43721,14 +39600,8 @@ module GameRoomKrowa
       napartaczenia
       naparzanie
       naparzania
-      naparzanie
-      naparzania
       naparzenie
       naparzenia
-      naparzenie
-      naparzenia
-      napasienie
-      napasienia
       napasienie
       napasienia
       napaskudzenie
@@ -43741,8 +39614,6 @@ module GameRoomKrowa
       napastnicy
       napastowanie
       napastowania
-      napastowanie
-      napastowania
       napaść
       napaści
       napatoczenie
@@ -43751,22 +39622,14 @@ module GameRoomKrowa
       napatrzenia
       napawanie
       napawania
-      napawanie
-      napawania
       napawarka
       napawarki
-      napchanie
-      napchania
       napchanie
       napchania
       napełniacz
       napełniacze
       napełnianie
       napełniania
-      napełnianie
-      napełniania
-      napełnienie
-      napełnienia
       napełnienie
       napełnienia
       napęcznienie
@@ -43783,12 +39646,8 @@ module GameRoomKrowa
       napieczenia
       napieranie
       napierania
-      napieranie
-      napierania
       napierśnik
       napierśniki
-      napięcie
-      napięcia
       napięcie
       napięcia
       napięstek
@@ -43803,8 +39662,6 @@ module GameRoomKrowa
       napinacze
       napinanie
       napinania
-      napinanie
-      napinania
       napis
       napisy
       napisanie
@@ -43817,8 +39674,6 @@ module GameRoomKrowa
       naplecenia
       napletek
       napletki
-      naplotkowanie
-      naplotkowania
       naplotkowanie
       naplotkowania
       naplucie
@@ -43843,16 +39698,12 @@ module GameRoomKrowa
       napoczynania
       napojenie
       napojenia
-      napojenie
-      napojenia
       napoleondor
       napoleondory
       napoleonka
       napoleonki
       napolowanie
       napolowania
-      napomadowanie
-      napomadowania
       napomadowanie
       napomadowania
       napominanie
@@ -43897,16 +39748,12 @@ module GameRoomKrowa
       naprężacze
       naprężanie
       naprężania
-      naprężanie
-      naprężania
       naprężenie
       naprężenia
       naprężnik
       naprężniki
       naprostowanie
       naprostowania
-      naproszenie
-      naproszenia
       naproszenie
       naproszenia
       naprowadzanie
@@ -43933,20 +39780,14 @@ module GameRoomKrowa
       napuchnięcia
       napuszanie
       napuszania
-      napuszanie
-      napuszania
       napuszczanie
       napuszczania
       napuszczenie
       napuszczenia
       napuszenie
       napuszenia
-      napuszenie
-      napuszenia
       napuszoność
       napuszoności
-      napychanie
-      napychania
       napychanie
       napychania
       napylanie
@@ -43955,14 +39796,8 @@ module GameRoomKrowa
       napylenia
       napyskowanie
       napyskowania
-      napyskowanie
-      napyskowania
       napytanie
       napytania
-      napytanie
-      napytania
-      narachowanie
-      narachowania
       narachowanie
       narachowania
       narada
@@ -43979,36 +39814,22 @@ module GameRoomKrowa
       narajenia
       naramiennik
       naramienniki
-      naramienniki
-      naramienniki
       narastanie
       narastania
       narażanie
       narażania
-      narażanie
-      narażania
       narażenie
       narażenia
-      narażenie
-      narażenia
-      narąbanie
-      narąbania
       narąbanie
       narąbania
       narciarka
       narciarki
-      narciarki
-      narciarki
-      narciarnia
-      narciarnie
       narciarnia
       narciarnie
       narciarstwo
       narciarstwa
       narciarz
       narciarze
-      narcyz
-      narcyzy
       narcyz
       narcyzy
       narcyzm
@@ -44023,9 +39844,7 @@ module GameRoomKrowa
       nareperowania
       naręcz
       naręcze
-      naręcze
       naręcza
-      nargile
       nargile
       narkoman
       narkomani
@@ -44041,8 +39860,6 @@ module GameRoomKrowa
       narkozy
       narobienie
       narobienia
-      narobienie
-      narobienia
       narodnictwo
       narodnictwa
       narodnik
@@ -44053,9 +39870,6 @@ module GameRoomKrowa
       narodowości
       narodzenie
       narodzenia
-      narodzenie
-      narodzenia
-      narodziny
       narodziny
       narośl
       narośle
@@ -44063,10 +39877,6 @@ module GameRoomKrowa
       narośnięcia
       narowienie
       narowienia
-      narowienie
-      narowienia
-      narozbijanie
-      narozbijania
       narozbijanie
       narozbijania
       narozlewanie
@@ -44093,24 +39903,15 @@ module GameRoomKrowa
       narty
       nartnik
       nartniki
-      nartniki
-      nartniki
-      nartosanki
       nartosanki
       nartostrada
       nartostrady
-      narty
-      narty
       naruszanie
       naruszania
       naruszenie
       naruszenia
       narwal
       narwale
-      narwale
-      narwale
-      narwanie
-      narwania
       narwanie
       narwania
       narwaniec
@@ -44129,14 +39930,10 @@ module GameRoomKrowa
       narządzania
       narządzenie
       narządzenia
-      narządzenie
-      narządzenia
       narzecze
       narzecza
       narzeczeństwo
       narzeczeństwa
-      narzeczeństwo
-      narzeczeństwo
       narzeczona
       narzeczone
       narzeczony
@@ -44145,8 +39942,6 @@ module GameRoomKrowa
       narzekania
       narzędnik
       narzędniki
-      narzędziarnia
-      narzędziarnie
       narzędziarnia
       narzędziarnie
       narzędziarz
@@ -44160,11 +39955,8 @@ module GameRoomKrowa
       narzępik
       narzępiki
       narzępikowate
-      narzępikowate
       narznięcie
       narznięcia
-      narzucanie
-      narzucania
       narzucanie
       narzucania
       narzucenie
@@ -44172,7 +39964,6 @@ module GameRoomKrowa
       narzut
       narzuty
       narzuta
-      narzuty
       narzutka
       narzutki
       narzutnica
@@ -44197,15 +39988,10 @@ module GameRoomKrowa
       nasadzenia
       nasączanie
       nasączania
-      nasączanie
-      nasączania
-      nasączenie
-      nasączenia
       nasączenie
       nasączenia
       naschodzenie
       naschodzenia
-      nasi
       nasi
       nasiadka
       nasiadki
@@ -44245,13 +40031,9 @@ module GameRoomKrowa
       nasilania
       nasilenie
       nasilenia
-      nasilenie
-      nasilenia
       nasionko
       nasionka
       nasionnica
-      nasionnice
-      nasionnice
       nasionnice
       nasiusianie
       nasiusiania
@@ -44263,16 +40045,12 @@ module GameRoomKrowa
       naskałki
       naskarżenie
       naskarżenia
-      naskarżenie
-      naskarżenia
       naskładanie
       naskładania
       naskoczenie
       naskoczenia
       naskórek
       naskórki
-      naskrobanie
-      naskrobania
       naskrobanie
       naskrobania
       nasłanie
@@ -44287,8 +40065,6 @@ module GameRoomKrowa
       nasłużenia
       nasmarowanie
       nasmarowania
-      nasmarowanie
-      nasmarowania
       nasmażenie
       nasmażenia
       nasmołowanie
@@ -44301,10 +40077,6 @@ module GameRoomKrowa
       naspraszania
       nasrożenie
       nasrożenia
-      nasrożenie
-      nasrożenia
-      nastanie
-      nastania
       nastanie
       nastania
       nastawa
@@ -44313,14 +40085,8 @@ module GameRoomKrowa
       nastawania
       nastawiacz
       nastawiacze
-      nastawiacz
-      nastawiacze
       nastawianie
       nastawiania
-      nastawianie
-      nastawiania
-      nastawienie
-      nastawienia
       nastawienie
       nastawienia
       nastawka
@@ -44330,7 +40096,6 @@ module GameRoomKrowa
       nastawnica
       nastawnice
       nastawniczy
-      nastawniczy
       nastawnik
       nastawniki
       nastawność
@@ -44338,8 +40103,6 @@ module GameRoomKrowa
       nastąpienie
       nastąpienia
       nastecznik
-      nasteczniki
-      nasteczniki
       nasteczniki
       następ
       następy
@@ -44360,23 +40123,14 @@ module GameRoomKrowa
       nastolatek
       nastolatki
       nastolatka
-      nastolatki
-      nastrajanie
-      nastrajania
       nastrajanie
       nastrajania
       nastraszenie
       nastraszenia
       nastręczanie
       nastręczania
-      nastręczanie
-      nastręczania
       nastręczenie
       nastręczenia
-      nastręczenie
-      nastręczenia
-      nastrojenie
-      nastrojenia
       nastrojenie
       nastrojenia
       nastrojowiec
@@ -44385,22 +40139,13 @@ module GameRoomKrowa
       nastrojowości
       nastrosz
       nastrosze
-      nastrosz
-      nastrosze
       nastroszenie
       nastroszenia
-      nastroszenie
-      nastroszenia
-      nastroszowate
       nastroszowate
       nastrój
       nastroje
       nastrzelanie
       nastrzelania
-      nastrzelanie
-      nastrzelania
-      nastrzępienie
-      nastrzępienia
       nastrzępienie
       nastrzępienia
       nastrzyżenie
@@ -44408,13 +40153,8 @@ module GameRoomKrowa
       nasturcja
       nasturcje
       nasturcjowate
-      nasturcjowate
       nasunięcie
       nasunięcia
-      nasunięcie
-      nasunięcia
-      nasuwanie
-      nasuwania
       nasuwanie
       nasuwania
       nasuwka
@@ -44425,12 +40165,8 @@ module GameRoomKrowa
       nasycalniki
       nasycanie
       nasycania
-      nasycanie
-      nasycania
       nasycarka
       nasycarki
-      nasycenie
-      nasycenia
       nasycenie
       nasycenia
       nasyłanie
@@ -44439,14 +40175,8 @@ module GameRoomKrowa
       nasypy
       nasypanie
       nasypania
-      nasypanie
-      nasypania
       nasypywanie
       nasypywania
-      nasypywanie
-      nasypywania
-      naszarpanie
-      naszarpania
       naszarpanie
       naszarpania
       naszatkowanie
@@ -44465,12 +40195,8 @@ module GameRoomKrowa
       naszkodzenia
       naszpikowanie
       naszpikowania
-      naszpikowanie
-      naszpikowania
       naszukanie
       naszukania
-      naszycie
-      naszycia
       naszycie
       naszycia
       naszyjnik
@@ -44502,15 +40228,10 @@ module GameRoomKrowa
       naśmiecenie
       naśmiecenia
       naśmiecone
-      naśmiecone
       naśmiewanie
       naśmiewania
       naświetlanie
       naświetlania
-      naświetlanie
-      naświetlania
-      naświetlenie
-      naświetlenia
       naświetlenie
       naświetlenia
       naświnienie
@@ -44521,12 +40242,8 @@ module GameRoomKrowa
       natapirowania
       natarcie
       natarcia
-      natarcie
-      natarcia
       natarczywość
       natarczywości
-      nataskanie
-      nataskania
       nataskanie
       nataskania
       nataszczenie
@@ -44539,10 +40256,6 @@ module GameRoomKrowa
       natęsknienia
       natężanie
       natężania
-      natężanie
-      natężania
-      natężenie
-      natężenia
       natężenie
       natężenia
       natka
@@ -44553,20 +40266,12 @@ module GameRoomKrowa
       natknięcia
       natlenianie
       natleniania
-      natlenianie
-      natleniania
       natlenienie
       natlenienia
-      natlenienie
-      natlenienia
-      natłoczenie
-      natłoczenia
       natłoczenie
       natłoczenia
       natłok
       natłoki
-      natłuczenie
-      natłuczenia
       natłuczenie
       natłuczenia
       natłuszczanie
@@ -44591,8 +40296,6 @@ module GameRoomKrowa
       natrony
       natrudzenie
       natrudzenia
-      natrudzenie
-      natrudzenia
       natrysk
       natryski
       natryskiwacz
@@ -44603,8 +40306,6 @@ module GameRoomKrowa
       natryty
       natrząsanie
       natrząsania
-      natrzęsienie
-      natrzęsienia
       natrzęsienie
       natrzęsienia
       natura
@@ -44639,8 +40340,6 @@ module GameRoomKrowa
       nauczania
       nauczenie
       nauczenia
-      nauczenie
-      nauczenia
       nauczka
       nauczki
       nauczyciel
@@ -44660,7 +40359,6 @@ module GameRoomKrowa
       naurąganie
       naurągania
       nauszniki
-      nauszniki
       nautilus
       nautilusy
       nautofon
@@ -44669,8 +40367,6 @@ module GameRoomKrowa
       nautyki
       naużeranie
       naużerania
-      naużywanie
-      naużywania
       naużywanie
       naużywania
       nawa
@@ -44685,12 +40381,9 @@ module GameRoomKrowa
       nawalcowania
       nawalenie
       nawalenia
-      nawalenie
-      nawalenia
       nawał
       nawały
       nawała
-      nawały
       nawałnica
       nawałnice
       nawałnik
@@ -44705,16 +40398,10 @@ module GameRoomKrowa
       nawary
       nawarstwianie
       nawarstwiania
-      nawarstwianie
-      nawarstwiania
-      nawarstwienie
-      nawarstwienia
       nawarstwienie
       nawarstwienia
       nawarzenie
       nawarzenia
-      naważenie
-      naważenia
       naważenie
       naważenia
       nawąchanie
@@ -44737,10 +40424,6 @@ module GameRoomKrowa
       nawiasowości
       nawiązanie
       nawiązania
-      nawiązanie
-      nawiązania
-      nawiązywanie
-      nawiązywania
       nawiązywanie
       nawiązywania
       nawiedzanie
@@ -44785,8 +40468,6 @@ module GameRoomKrowa
       nawijaki
       nawijanie
       nawijania
-      nawijanie
-      nawijania
       nawijarka
       nawijarki
       nawilgacanie
@@ -44807,8 +40488,6 @@ module GameRoomKrowa
       nawilżenia
       nawinięcie
       nawinięcia
-      nawinięcie
-      nawinięcia
       nawis
       nawisy
       nawleczenie
@@ -44819,14 +40498,10 @@ module GameRoomKrowa
       nawłocie
       nawłóczenie
       nawłóczenia
-      nawłóczenie
-      nawłóczenia
       nawodnienie
       nawodnienia
       nawojowanie
       nawojowania
-      nawoływanie
-      nawoływania
       nawoływanie
       nawoływania
       nawoskowanie
@@ -44837,10 +40512,6 @@ module GameRoomKrowa
       nawozy
       nawracanie
       nawracania
-      nawracanie
-      nawracania
-      nawrócenie
-      nawrócenia
       nawrócenie
       nawrócenia
       nawrót
@@ -44861,8 +40532,6 @@ module GameRoomKrowa
       nawydziwiania
       nawygadywanie
       nawygadywania
-      nawygrażanie
-      nawygrażania
       nawygrażanie
       nawygrażania
       nawyk
@@ -44889,8 +40558,6 @@ module GameRoomKrowa
       nazaretanki
       nazbieranie
       nazbierania
-      nazbieranie
-      nazbierania
       nazbijanie
       nazbijania
       nazewnictwo
@@ -44909,10 +40576,6 @@ module GameRoomKrowa
       nazmyślania
       naznaczanie
       naznaczania
-      naznaczanie
-      naznaczania
-      naznaczenie
-      naznaczenia
       naznaczenie
       naznaczenia
       naznoszenie
@@ -44923,20 +40586,14 @@ module GameRoomKrowa
       nazwy
       nazwanie
       nazwania
-      nazwanie
-      nazwania
       nazwisko
       nazwiska
       nazwożenie
       nazwożenia
       nazywanie
       nazywania
-      nazywanie
-      nazywania
       nażarcie
       nażarcia
-      nażęcie
-      nażęcia
       nażęcie
       nażęcia
       nażłopanie
@@ -44967,9 +40624,6 @@ module GameRoomKrowa
       negliże
       negliżowanie
       negliżowania
-      negliżowanie
-      negliżowania
-      negocjacje
       negocjacje
       negocjator
       negocjatorzy
@@ -44979,13 +40633,9 @@ module GameRoomKrowa
       negowania
       negroid
       negroidzi
-      negroidzi
-      negroidzi
       negus
       negusi
       nekrofag
-      nekrofagi
-      nekrofagi
       nekrofagi
       nekrofil
       nekrofile
@@ -45008,8 +40658,6 @@ module GameRoomKrowa
       nektarium
       nektaria
       nektarnik
-      nektarniki
-      nektarniki
       nektarniki
       nelson
       nelsony
@@ -45113,8 +40761,6 @@ module GameRoomKrowa
       neptki
       neptun
       neptuny
-      neptun
-      neptuny
       nerczyca
       nerczyce
       nereczka
@@ -45127,11 +40773,8 @@ module GameRoomKrowa
       nerfotomie
       nerka
       nerki
-      nerki
-      nerki
       nerkowiec
       nerkowcy
-      nerkowiec
       nerkowce
       nerkówka
       nerkówki
@@ -45163,14 +40806,12 @@ module GameRoomKrowa
       neseserki
       nestor
       nestorzy
-      nestor
       nestory
       nestorka
       nestorki
       net
       nety
       neta
-      nety
       neuma
       neumy
       neuralgia
@@ -45233,8 +40874,6 @@ module GameRoomKrowa
       nędznicy
       nękanie
       nękania
-      nękanie
-      nękania
       niania
       nianie
       niańczenie
@@ -45247,16 +40886,12 @@ module GameRoomKrowa
       nibyjagody
       nibynóżka
       nibynóżki
-      nibynóżki
-      nibynóżki
       nichrom
       nichromy
       nicianka
       nicianki
       niciarka
       niciarki
-      niciarnia
-      niciarnie
       niciarnia
       niciarnie
       nicielnica
@@ -45283,7 +40918,6 @@ module GameRoomKrowa
       niebieskość
       niebieskości
       niebiosa
-      niebiosa
       niebo
       nieba
       nieboga
@@ -45291,7 +40925,6 @@ module GameRoomKrowa
       nieboraczek
       nieboraczki
       nieboraczka
-      nieboraczki
       nieborak
       nieboraki
       nieboskłon
@@ -45323,33 +40956,23 @@ module GameRoomKrowa
       nieciecze
       niecierpek
       niecierpki
-      niecierpek
-      niecierpki
       niecka
       niecki
       niecnota
       niecnoty
-      niecnota
-      niecnoty
       niecukier
-      niecukry
-      niecukry
       niecukry
       nieczułość
       nieczułości
       nieczystości
       nieczystość
-      nieczystości
       nieczytelność
       niedbalstwo
       niedbalstwa
       niedbaluch
       niedbaluchy
-      niedbaluch
-      niedbaluchy
       niedbałość
       niedbałości
-      niedobitki
       niedobitki
       niedobór
       niedobory
@@ -45364,8 +40987,6 @@ module GameRoomKrowa
       niedojadania
       niedojda
       niedojdy
-      niedojda
-      niedojdy
       niedojrzałość
       niedokładność
       niedokonaność
@@ -45378,8 +40999,6 @@ module GameRoomKrowa
       niedokwaśność
       niedola
       niedole
-      niedołęga
-      niedołęgi
       niedołęga
       niedołęgi
       niedołęstwo
@@ -45397,8 +41016,6 @@ module GameRoomKrowa
       niedopałki
       niedoprzęd
       niedoprzędy
-      niedorajda
-      niedorajdy
       niedorajda
       niedorajdy
       niedorąb
@@ -45454,8 +41071,6 @@ module GameRoomKrowa
       niegodzenia
       niegodziwiec
       niegodziwcy
-      niegodziwiec
-      niegodziwcy
       niegodziwość
       niegodziwości
       niegościnność
@@ -45464,7 +41079,6 @@ module GameRoomKrowa
       nieistnienia
       niejasność
       niejasności
-      niejednolity
       niejednolity
       niekaralność
       niekaralności
@@ -45489,8 +41103,6 @@ module GameRoomKrowa
       nieloty
       nielubienie
       nielubienia
-      nielubienie
-      nielubienia
       nieludzkość
       nieludzkości
       nieład
@@ -45501,17 +41113,11 @@ module GameRoomKrowa
       niełaski
       niełaz
       niełazy
-      niełazy
-      niełazy
-      niemczenie
-      niemczenia
       niemczenie
       niemczenia
       niemczyzna
       niemczyzny
       niemetal
-      niemetale
-      niemetale
       niemetale
       niemęskość
       niemęskości
@@ -45529,8 +41135,6 @@ module GameRoomKrowa
       niemoralności
       niemota
       niemoty
-      niemowa
-      niemowy
       niemowa
       niemowy
       niemowlak
@@ -45555,10 +41159,6 @@ module GameRoomKrowa
       nienaruszenia
       nienasycenie
       nienasycenia
-      nienasycenie
-      nienasycenia
-      nienawidzenie
-      nienawidzenia
       nienawidzenie
       nienawidzenia
       nienawiść
@@ -45586,15 +41186,12 @@ module GameRoomKrowa
       nieomylności
       nieopanowanie
       nieopanowania
-      nieopanowanie
-      nieopanowania
       nieopatrzność
       nieopisanie
       nieopisania
       nieostrość
       nieostrości
       nieostrożność
-      niepalący
       niepalący
       niepamięć
       niepamięci
@@ -45605,7 +41202,6 @@ module GameRoomKrowa
       niepełności
       niepewność
       niepewności
-      niepijący
       niepijący
       niepiśmienny
       niepiśmienni
@@ -45626,13 +41222,9 @@ module GameRoomKrowa
       niepokaźność
       niepokaźności
       niepokoje
-      niepokoje
-      niepokojenie
-      niepokojenia
       niepokojenie
       niepokojenia
       niepokój
-      niepokoje
       niepomyślność
       niepopłatność
       niepoprawność
@@ -45688,8 +41280,6 @@ module GameRoomKrowa
       niesforności
       niesienie
       niesienia
-      niesienie
-      niesienia
       nieskalanie
       nieskalania
       nieskładność
@@ -45707,8 +41297,6 @@ module GameRoomKrowa
       niesmak
       niesmaki
       niesnaski
-      niesnaski
-      niesnujowate
       niesnujowate
       niesolidność
       niesolidności
@@ -45739,7 +41327,6 @@ module GameRoomKrowa
       nieszczęśnik
       nieszczęśnicy
       nieszpory
-      nieszpory
       nieszpułka
       nieszpułki
       niesztowica
@@ -45757,8 +41344,6 @@ module GameRoomKrowa
       nietolerancja
       nietolerancje
       nietoperz
-      nietoperze
-      nietoperze
       nietoperze
       nietrafność
       nietrafności
@@ -45780,8 +41365,6 @@ module GameRoomKrowa
       nieuczciwości
       nieuczenie
       nieuczenia
-      nieuczenie
-      nieuczenia
       nieudolność
       nieudolności
       nieufność
@@ -45801,16 +41384,12 @@ module GameRoomKrowa
       nieuwagi
       nieużytek
       nieużytki
-      nieużytki
-      nieużytki
       nieważkość
       nieważkości
       nieważność
       nieważności
       niewdzięcznik
       niewiadoma
-      niewiadome
-      niewiadome
       niewiadome
       niewiara
       niewiary
@@ -45822,8 +41401,6 @@ module GameRoomKrowa
       niewidomi
       niewidzenie
       niewidzenia
-      niewidzenie
-      niewidzenia
       niewiedza
       niewiedze
       niewierność
@@ -45832,7 +41409,6 @@ module GameRoomKrowa
       niewierni
       niewierząca
       niewierzące
-      niewierzący
       niewierzący
       niewieścienie
       niewieścienia
@@ -45864,9 +41440,6 @@ module GameRoomKrowa
       niewydolności
       niewygoda
       niewygody
-      niewygody
-      niewygody
-      niewymowne
       niewymowne
       niewypał
       niewypały
@@ -45903,8 +41476,6 @@ module GameRoomKrowa
       niezbywalność
       niezdara
       niezdary
-      niezdara
-      niezdary
       niezdarność
       niezdarności
       niezdatność
@@ -45919,14 +41490,10 @@ module GameRoomKrowa
       niezgrabiasze
       niezguła
       niezguły
-      niezguła
-      niezguły
       niezliczoność
       niezłomność
       niezłomności
       niezmiarka
-      niezmiarki
-      niezmiarki
       niezmiarki
       niezmiennik
       niezmienniki
@@ -45938,7 +41505,6 @@ module GameRoomKrowa
       nieznajomości
       nieznajomy
       nieznajomi
-      nieznane
       nieznane
       niezręczność
       niezręczności
@@ -45968,7 +41534,6 @@ module GameRoomKrowa
       nikielin
       nikieliny
       nikielina
-      nikieliny
       niklowanie
       niklowania
       nikłość
@@ -45998,30 +41563,21 @@ module GameRoomKrowa
       nirwana
       nirwany
       niskopączkowe
-      niskopączkowe
       niskość
       niskości
       nisza
       nisze
       niszczenie
       niszczenia
-      niszczenie
-      niszczenia
-      niszczyciel
-      niszczyciele
       niszczyciel
       niszczyciele
       niszczycielka
       niszczycielki
       nit
       nity
-      nit
-      nity
       niteczka
       niteczki
       nitka
-      nitki
-      nitki
       nitki
       nitkowatość
       nitkowatości
@@ -46041,11 +41597,7 @@ module GameRoomKrowa
       nitrofile
       nitrofit
       nitrofity
-      nitrofity
-      nitrofity
       nitrofob
-      nitrofoby
-      nitrofoby
       nitrofoby
       nitrolakier
       nitrolakiery
@@ -46057,11 +41609,8 @@ module GameRoomKrowa
       nitryfikacje
       nitryfikator
       nitryfikatory
-      nitryfikatory
-      nitryfikatory
       nitryt
       nitryty
-      niuanse
       niuanse
       niuansik
       niuansiki
@@ -46101,8 +41650,6 @@ module GameRoomKrowa
       nobilitacje
       nobilitowanie
       nobilitowania
-      nobilitowanie
-      nobilitowania
       noc
       noce
       nocek
@@ -46110,12 +41657,9 @@ module GameRoomKrowa
       nochal
       nochale
       nocka
-      nocki
       nocleg
       noclegi
       nocnicówka
-      nocnicówki
-      nocnicówki
       nocnicówki
       nocniczek
       nocniczki
@@ -46149,7 +41693,6 @@ module GameRoomKrowa
       nokturny
       nomada
       nomadowie
-      nomada
       nomadzi
       nomadyzm
       nomadyzmy
@@ -46197,8 +41740,6 @@ module GameRoomKrowa
       nordycy
       norka
       norki
-      norki
-      norki
       norma
       normy
       normalizacja
@@ -46220,13 +41761,9 @@ module GameRoomKrowa
       normatywności
       normowanie
       normowania
-      normowanie
-      normowania
       nornica
       nornice
       nornik
-      norniki
-      norniki
       norniki
       nos
       nosy
@@ -46234,10 +41771,6 @@ module GameRoomKrowa
       nosacizny
       nosacz
       nosacze
-      nosacz
-      nosacze
-      nosal
-      nosale
       nosal
       nosale
       noseczek
@@ -46250,7 +41783,6 @@ module GameRoomKrowa
       nosicielki
       nosicielstwo
       nosicielstwa
-      nosidła
       nosidła
       nosisko
       nosiska
@@ -46267,9 +41799,6 @@ module GameRoomKrowa
       nostrzyk
       nostrzyki
       nosze
-      nosze
-      noszenie
-      noszenia
       noszenie
       noszenia
       nośnik
@@ -46278,7 +41807,6 @@ module GameRoomKrowa
       nośności
       nota
       noty
-      notable
       notable
       notacja
       notacje
@@ -46307,8 +41835,6 @@ module GameRoomKrowa
       noumenon
       noumenony
       nowalie
-      nowalie
-      nowalijki
       nowalijki
       nowator
       nowatorzy
@@ -46348,8 +41874,6 @@ module GameRoomKrowa
       nowinkarstwa
       nowinkarz
       nowinkarze
-      nowinki
-      nowinki
       nowobogacka
       nowobogackie
       nowoczesność
@@ -46364,23 +41888,16 @@ module GameRoomKrowa
       nowotwory
       nowożeniec
       nowożeńcy
-      nowożeńcy
-      nowożeńcy
-      nozdrza
       nozdrza
       nozologia
       nozologie
       nożęta
-      nożęta
       nożownik
       nożownicy
       nożyce
-      nożyce
-      nożyczki
       nożyczki
       nożyk
       nożyki
-      nożyny
       nożyny
       nożysko
       nożyska
@@ -46391,7 +41908,6 @@ module GameRoomKrowa
       nóż
       noże
       nóżęta
-      nóżęta
       nóżka
       nóżki
       nucenie
@@ -46401,13 +41917,10 @@ module GameRoomKrowa
       nudności
       nudnościach
       nudność
-      nudności
       nudysta
       nudyści
       nudyzm
       nudyzmy
-      nudzenie
-      nudzenia
       nudzenie
       nudzenia
       nudziara
@@ -46447,8 +41960,6 @@ module GameRoomKrowa
       numizmatyki
       numulit
       numulity
-      numulity
-      numulity
       nuncjatura
       nuncjatury
       nuncjusz
@@ -46457,7 +41968,6 @@ module GameRoomKrowa
       nury
       nurek
       nurkowie
-      nurek
       nurki
       nurkarstwo
       nurkarstwa
@@ -46469,16 +41979,12 @@ module GameRoomKrowa
       nurkownictwa
       nurnik
       nurniki
-      nurnik
-      nurniki
       nurogęś
       nurogęsi
       nurt
       nurty
       nurtowanie
       nurtowania
-      nurzanie
-      nurzania
       nurzanie
       nurzania
       nurzaniec
@@ -46488,24 +41994,15 @@ module GameRoomKrowa
       nut
       nuty
       nuta
-      nuty
       nutka
       nutki
       nutria
       nutrie
-      nutrie
-      nutrie
       nutriety
-      nutriety
-      nuty
-      nuty
-      nużenie
-      nużenia
       nużenie
       nużenia
       nużeniec
       nużeńce
-      nużeńcowate
       nużeńcowate
       nużyca
       nużyce
@@ -46513,18 +42010,12 @@ module GameRoomKrowa
       nygusy
       nylon
       nylony
-      nylony
-      nylony
       nysa
       nysy
       oaza
       oazy
       obalanie
       obalania
-      obalanie
-      obalania
-      obalenie
-      obalenia
       obalenie
       obalenia
       obałamucanie
@@ -46535,14 +42026,8 @@ module GameRoomKrowa
       obandażowania
       obarczanie
       obarczania
-      obarczanie
-      obarczania
       obarczenie
       obarczenia
-      obarczenie
-      obarczenia
-      obarzanek
-      obarzanki
       obarzanek
       obarzanki
       obawa
@@ -46560,19 +42045,13 @@ module GameRoomKrowa
       obcasisko
       obcasiska
       obcążki
-      obcążki
       obcesowość
       obcesowości
       obcęgi
-      obcęgi
       obchody
-      obchody
-      obchodzenie
-      obchodzenia
       obchodzenie
       obchodzenia
       obchód
-      obchody
       obciąg
       obciągi
       obciągacz
@@ -46585,10 +42064,6 @@ module GameRoomKrowa
       obciążalności
       obciążanie
       obciążania
-      obciążanie
-      obciążania
-      obciążenie
-      obciążenia
       obciążenie
       obciążenia
       obcieczenie
@@ -46597,8 +42072,6 @@ module GameRoomKrowa
       obciekania
       obcieknięcie
       obcieknięcia
-      obcieranie
-      obcierania
       obcieranie
       obcierania
       obcięcie
@@ -46626,17 +42099,12 @@ module GameRoomKrowa
       obcowanie
       obcowania
       obcy
-      obcy
       obczyzna
       obczyzny
       obdarcie
       obdarcia
       obdarowanie
       obdarowania
-      obdarowanie
-      obdarowania
-      obdarowywanie
-      obdarowywania
       obdarowywanie
       obdarowywania
       obdartus
@@ -46645,10 +42113,6 @@ module GameRoomKrowa
       obdartuski
       obdarzanie
       obdarzania
-      obdarzanie
-      obdarzania
-      obdarzenie
-      obdarzenia
       obdarzenie
       obdarzenia
       obdrapanie
@@ -46659,10 +42123,6 @@ module GameRoomKrowa
       obdukcje
       obdzielanie
       obdzielania
-      obdzielanie
-      obdzielania
-      obdzielenie
-      obdzielenia
       obdzielenie
       obdzielenia
       obdzieranie
@@ -46681,14 +42141,8 @@ module GameRoomKrowa
       obejmy
       obejmowanie
       obejmowania
-      obejmowanie
-      obejmowania
       obejrzenie
       obejrzenia
-      obejrzenie
-      obejrzenia
-      obejście
-      obejścia
       obejście
       obejścia
       obelga
@@ -46703,8 +42157,6 @@ module GameRoomKrowa
       oberki
       obertas
       obertasy
-      oberwanie
-      oberwania
       oberwanie
       oberwania
       oberwaniec
@@ -46729,18 +42181,12 @@ module GameRoomKrowa
       obetonowania
       obeznanie
       obeznania
-      obeznanie
-      obeznania
       obfitość
       obfitości
       obfitowanie
       obfitowania
       obgadanie
       obgadania
-      obgadanie
-      obgadania
-      obgadywanie
-      obgadywania
       obgadywanie
       obgadywania
       obgarnianie
@@ -46763,8 +42209,6 @@ module GameRoomKrowa
       obiboki
       obicie
       obicia
-      obicie
-      obicia
       obiecanie
       obiecania
       obiecanka
@@ -46777,7 +42221,6 @@ module GameRoomKrowa
       obiegania
       obiegnięcie
       obiegnięcia
-      obiekcje
       obiekcje
       obiekt
       obiekty
@@ -46793,11 +42236,7 @@ module GameRoomKrowa
       obieralności
       obieranie
       obierania
-      obieranie
-      obierania
       obierki
-      obierki
-      obierzyny
       obierzyny
       obietnica
       obietnice
@@ -46805,10 +42244,6 @@ module GameRoomKrowa
       obieżyświaty
       obijanie
       obijania
-      obijanie
-      obijania
-      objadanie
-      objadania
       objadanie
       objadania
       objaśnianie
@@ -46819,10 +42254,6 @@ module GameRoomKrowa
       objawy
       objawianie
       objawiania
-      objawianie
-      objawiania
-      objawienie
-      objawienia
       objawienie
       objawienia
       objazd
@@ -46831,34 +42262,22 @@ module GameRoomKrowa
       objechania
       objedzenie
       objedzenia
-      objedzenie
-      objedzenia
       objeżdżanie
       objeżdżania
       objeżdżenie
       objeżdżenia
       objęcia
-      objęcia
       objęcie
-      objęcia
-      objęcie
-      objęcia
       objętość
       objętości
       objuczanie
       objuczania
-      objuczanie
-      objuczania
-      objuczenie
-      objuczenia
       objuczenie
       objuczenia
       obklejanie
       obklejania
       obklejenie
       obklejenia
-      obkładanie
-      obkładania
       obkładanie
       obkładania
       obkopanie
@@ -46873,24 +42292,16 @@ module GameRoomKrowa
       obkrojenia
       obkucie
       obkucia
-      obkucie
-      obkucia
       obkupienie
       obkupienia
       obkuwanie
       obkuwania
-      obkuwanie
-      obkuwania
-      obladzanie
-      obladzania
       obladzanie
       obladzania
       oblamowanie
       oblamowania
       oblamowywanie
       oblamowywania
-      oblanie
-      oblania
       oblanie
       oblania
       oblatanie
@@ -46911,20 +42322,12 @@ module GameRoomKrowa
       oblekania
       obleniec
       obleńce
-      obleńce
-      obleńce
       oblepianie
       oblepiania
-      oblepianie
-      oblepiania
-      oblepienie
-      oblepienia
       oblepienie
       oblepienia
       obleśność
       obleśności
-      oblewanie
-      oblewania
       oblewanie
       oblewania
       oblezienie
@@ -46947,14 +42350,8 @@ module GameRoomKrowa
       obligowania
       oblizanie
       oblizania
-      oblizanie
-      oblizania
       oblizywanie
       oblizywania
-      oblizywanie
-      oblizywania
-      oblodzenie
-      oblodzenia
       oblodzenie
       oblodzenia
       oblot
@@ -46963,16 +42360,8 @@ module GameRoomKrowa
       oblubienice
       oblubieniec
       oblubieńcy
-      oblubieniec
-      oblubieńcy
-      oblubieńcy
-      oblubieńcy
       obluzowanie
       obluzowania
-      obluzowanie
-      obluzowania
-      obluzowywanie
-      obluzowywania
       obluzowywanie
       obluzowywania
       obluźnianie
@@ -46981,26 +42370,14 @@ module GameRoomKrowa
       obluźnienia
       obładowanie
       obładowania
-      obładowanie
-      obładowania
-      obładowywanie
-      obładowywania
       obładowywanie
       obładowywania
       obłamanie
       obłamania
-      obłamanie
-      obłamania
-      obłamywanie
-      obłamywania
       obłamywanie
       obłamywania
       obłaskawianie
       obłaskawiania
-      obłaskawianie
-      obłaskawiania
-      obłaskawienie
-      obłaskawienia
       obłaskawienie
       obłaskawienia
       obława
@@ -47025,8 +42402,6 @@ module GameRoomKrowa
       obłędy
       obłocenie
       obłocenia
-      obłocenie
-      obłocenia
       obłoczek
       obłoczki
       obłoczniak
@@ -47037,8 +42412,6 @@ module GameRoomKrowa
       obłowienia
       obłożenie
       obłożenia
-      obłożenie
-      obłożenia
       obłuda
       obłudy
       obłudnica
@@ -47047,14 +42420,10 @@ module GameRoomKrowa
       obłudnicy
       obłupanie
       obłupania
-      obłupanie
-      obłupania
       obłupianie
       obłupiania
       obłupienie
       obłupienia
-      obłupywanie
-      obłupywania
       obłupywanie
       obłupywania
       obłuskanie
@@ -47063,10 +42432,6 @@ module GameRoomKrowa
       obłuskiwania
       obmacanie
       obmacania
-      obmacanie
-      obmacania
-      obmacywanie
-      obmacywania
       obmacywanie
       obmacywania
       obmalowanie
@@ -47079,14 +42444,8 @@ module GameRoomKrowa
       obmarznięcia
       obmawianie
       obmawiania
-      obmawianie
-      obmawiania
       obmazanie
       obmazania
-      obmazanie
-      obmazania
-      obmazywanie
-      obmazywania
       obmazywanie
       obmazywania
       obmiatanie
@@ -47103,14 +42462,10 @@ module GameRoomKrowa
       obmowy
       obmówienie
       obmówienia
-      obmówienie
-      obmówienia
       obmurowanie
       obmurowania
       obmurowywanie
       obmurowywania
-      obmycie
-      obmycia
       obmycie
       obmycia
       obmyślanie
@@ -47119,30 +42474,18 @@ module GameRoomKrowa
       obmyślenia
       obmywanie
       obmywania
-      obmywanie
-      obmywania
       obnażanie
       obnażania
-      obnażanie
-      obnażania
-      obnażenie
-      obnażenia
       obnażenie
       obnażenia
       obniesienie
       obniesienia
       obniżanie
       obniżania
-      obniżanie
-      obniżania
-      obniżenie
-      obniżenia
       obniżenie
       obniżenia
       obniżka
       obniżki
-      obnoszenie
-      obnoszenia
       obnoszenie
       obnoszenia
       obocznik
@@ -47159,8 +42502,6 @@ module GameRoomKrowa
       obojętności
       obojnactwo
       obojnactwa
-      obojnak
-      obojnaki
       obojnak
       obojnaki
       obol
@@ -47182,8 +42523,6 @@ module GameRoomKrowa
       obostrzenie
       obostrzenia
       obowiązek
-      obowiązki
-      obowiązki
       obowiązki
       obowiązkowość
       obowiązywanie
@@ -47214,8 +42553,6 @@ module GameRoomKrowa
       obracaki
       obracanie
       obracania
-      obracanie
-      obracania
       obrachowanie
       obrachowania
       obrachunek
@@ -47226,7 +42563,6 @@ module GameRoomKrowa
       obradlenia
       obradowanie
       obradowania
-      obrady
       obrady
       obradzanie
       obradzania
@@ -47243,12 +42579,10 @@ module GameRoomKrowa
       obraz
       obrazy
       obraza
-      obrazy
       obrazeczek
       obrazeczki
       obrazek
       obrazki
-      obrazkowate
       obrazkowate
       obrazoburca
       obrazoburcy
@@ -47264,10 +42598,6 @@ module GameRoomKrowa
       obrażalskie
       obrażanie
       obrażania
-      obrażanie
-      obrażania
-      obrażenie
-      obrażenia
       obrażenie
       obrażenia
       obrąbanie
@@ -47292,16 +42622,12 @@ module GameRoomKrowa
       obręcze
       obrobienie
       obrobienia
-      obrobienie
-      obrobienia
       obrodzenie
       obrodzenia
       obrok
       obroki
       obrona
       obrony
-      obronienie
-      obronienia
       obronienie
       obronienia
       obronność
@@ -47322,8 +42648,6 @@ module GameRoomKrowa
       obróbki
       obrócenie
       obrócenia
-      obrócenie
-      obrócenia
       obrót
       obroty
       obrównanie
@@ -47334,10 +42658,6 @@ module GameRoomKrowa
       obróżki
       obrumienianie
       obrumieniania
-      obrumienianie
-      obrumieniania
-      obrumienienie
-      obrumienienia
       obrumienienie
       obrumienienia
       obrus
@@ -47348,10 +42668,6 @@ module GameRoomKrowa
       obrusiki
       obruszanie
       obruszania
-      obruszanie
-      obruszania
-      obruszenie
-      obruszenia
       obruszenie
       obruszenia
       obrys
@@ -47364,14 +42680,8 @@ module GameRoomKrowa
       obrywy
       obrywanie
       obrywania
-      obrywanie
-      obrywania
       obryzganie
       obryzgania
-      obryzganie
-      obryzgania
-      obryzgiwanie
-      obryzgiwania
       obryzgiwanie
       obryzgiwania
       obrządek
@@ -47412,18 +42722,12 @@ module GameRoomKrowa
       obrzmiewania
       obrzucanie
       obrzucania
-      obrzucanie
-      obrzucania
-      obrzucenie
-      obrzucenia
       obrzucenie
       obrzucenia
       obrzutka
       obrzutki
       obrzydlistwo
       obrzydlistwa
-      obrzydliwiec
-      obrzydliwcy
       obrzydliwiec
       obrzydliwcy
       obrzydliwość
@@ -47451,7 +42755,6 @@ module GameRoomKrowa
       obsączenie
       obsączenia
       obscena
-      obscena
       obserwacja
       obserwacje
       obserwator
@@ -47460,8 +42763,6 @@ module GameRoomKrowa
       obserwatoria
       obserwatorka
       obserwatorki
-      obserwowanie
-      obserwowania
       obserwowanie
       obserwowania
       obsesja
@@ -47512,22 +42813,12 @@ module GameRoomKrowa
       obsługi
       obsługiwanie
       obsługiwania
-      obsługiwanie
-      obsługiwania
-      obsłużenie
-      obsłużenia
       obsłużenie
       obsłużenia
       obsmarowanie
       obsmarowania
-      obsmarowanie
-      obsmarowania
       obsmażanie
       obsmażania
-      obsmażanie
-      obsmażania
-      obsmażenie
-      obsmażenia
       obsmażenie
       obsmażenia
       obstalowanie
@@ -47540,10 +42831,6 @@ module GameRoomKrowa
       obstawania
       obstawianie
       obstawiania
-      obstawianie
-      obstawiania
-      obstawienie
-      obstawienia
       obstawienie
       obstawienia
       obstąpienie
@@ -47556,10 +42843,6 @@ module GameRoomKrowa
       obstrzały
       obstrzelanie
       obstrzelania
-      obstrzelanie
-      obstrzelania
-      obstrzępienie
-      obstrzępienia
       obstrzępienie
       obstrzępienia
       obstrzyganie
@@ -47572,18 +42855,10 @@ module GameRoomKrowa
       obstukiwania
       obsunięcie
       obsunięcia
-      obsunięcie
-      obsunięcia
-      obsuszanie
-      obsuszania
       obsuszanie
       obsuszania
       obsuszenie
       obsuszenia
-      obsuszenie
-      obsuszenia
-      obsuwanie
-      obsuwania
       obsuwanie
       obsuwania
       obsychanie
@@ -47592,10 +42867,6 @@ module GameRoomKrowa
       obsyłania
       obsypanie
       obsypania
-      obsypanie
-      obsypania
-      obsypywanie
-      obsypywania
       obsypywanie
       obsypywania
       obszar
@@ -47608,16 +42879,10 @@ module GameRoomKrowa
       obszarnicy
       obszarpanie
       obszarpania
-      obszarpanie
-      obszarpania
       obszarpaniec
       obszarpańcy
       obszarpywanie
       obszarpywania
-      obszarpywanie
-      obszarpywania
-      obszczekanie
-      obszczekania
       obszczekanie
       obszczekania
       obszerność
@@ -47634,18 +42899,10 @@ module GameRoomKrowa
       obszywki
       obściskanie
       obściskania
-      obściskanie
-      obściskania
-      obściskiwanie
-      obściskiwania
       obściskiwanie
       obściskiwania
       obślinianie
       obśliniania
-      obślinianie
-      obśliniania
-      obślinienie
-      obślinienia
       obślinienie
       obślinienia
       obślizgiwanie
@@ -47662,14 +42919,8 @@ module GameRoomKrowa
       obtańczenia
       obtarcie
       obtarcia
-      obtarcie
-      obtarcia
       obtłuczenie
       obtłuczenia
-      obtłuczenie
-      obtłuczenia
-      obtłukiwanie
-      obtłukiwania
       obtłukiwanie
       obtłukiwania
       obtoczenie
@@ -47692,16 +42943,12 @@ module GameRoomKrowa
       obuchy
       obucie
       obucia
-      obucie
-      obucia
       obudowa
       obudowy
       obudowanie
       obudowania
       obudowywanie
       obudowywania
-      obudzenie
-      obudzenia
       obudzenie
       obudzenia
       obumarcie
@@ -47714,17 +42961,10 @@ module GameRoomKrowa
       oburęczności
       oburzanie
       oburzania
-      oburzanie
-      oburzania
-      oburzenie
-      oburzenia
       oburzenie
       oburzenia
       obuwanie
       obuwania
-      obuwanie
-      obuwania
-      obuwie
       obuwie
       obuwik
       obuwiki
@@ -47736,16 +42976,10 @@ module GameRoomKrowa
       obwałowania
       obwarowanie
       obwarowania
-      obwarowanie
-      obwarowania
       obwarowywanie
       obwarowywania
       obwarzaneczek
       obwarzaneczki
-      obwarzaneczek
-      obwarzaneczki
-      obwarzanek
-      obwarzanki
       obwarzanek
       obwarzanki
       obwarzanie
@@ -47758,16 +42992,10 @@ module GameRoomKrowa
       obwąchiwania
       obwiązanie
       obwiązania
-      obwiązanie
-      obwiązania
-      obwiązywanie
-      obwiązywania
       obwiązywanie
       obwiązywania
       obwiedzenie
       obwiedzenia
-      obwieszanie
-      obwieszania
       obwieszanie
       obwieszania
       obwieszczanie
@@ -47776,18 +43004,12 @@ module GameRoomKrowa
       obwieszczenia
       obwieszenie
       obwieszenia
-      obwieszenie
-      obwieszenia
       obwieś
       obwiesie
       obwiezienie
       obwiezienia
-      obwiezienie
-      obwiezienia
       obwijanie
       obwijania
-      obwinianie
-      obwiniania
       obwinianie
       obwiniania
       obwinienie
@@ -47816,14 +43038,10 @@ module GameRoomKrowa
       obwoływania
       obwożenie
       obwożenia
-      obwożenie
-      obwożenia
       obwód
       obwody
       obwódka
       obwódki
-      obycie
-      obycia
       obycie
       obycia
       obyczaj
@@ -47842,22 +43060,14 @@ module GameRoomKrowa
       obywatelstwa
       obznajamianie
       obznajamiania
-      obznajamianie
-      obznajamiania
       obznajomienie
       obznajomienia
-      obznajomienie
-      obznajomienia
-      obżarcie
-      obżarcia
       obżarcie
       obżarcia
       obżarstwo
       obżarstwa
       obżartuch
       obżartuchy
-      obżeranie
-      obżerania
       obżeranie
       obżerania
       ocalanie
@@ -47876,8 +43086,6 @@ module GameRoomKrowa
       ocechowania
       ocelot
       oceloty
-      oceloty
-      oceloty
       ocembrowanie
       ocembrowania
       ocena
@@ -47894,18 +43102,12 @@ module GameRoomKrowa
       ochlaje
       ochlapanie
       ochlapania
-      ochlapanie
-      ochlapania
       ochlapus
       ochlapusy
       ochlapywanie
       ochlapywania
-      ochlapywanie
-      ochlapywania
       ochlokracja
       ochlokracje
-      ochładzanie
-      ochładzania
       ochładzanie
       ochładzania
       ochłap
@@ -47914,8 +43116,6 @@ module GameRoomKrowa
       ochłody
       ochłodnięcie
       ochłodnięcia
-      ochłodzenie
-      ochłodzenia
       ochłodzenie
       ochłodzenia
       ochłonięcie
@@ -47932,8 +43132,6 @@ module GameRoomKrowa
       ochoty
       ochotka
       ochotki
-      ochotki
-      ochotki
       ochotniczka
       ochotniczki
       ochotnik
@@ -47944,12 +43142,8 @@ module GameRoomKrowa
       ochraniacze
       ochranianie
       ochraniania
-      ochranianie
-      ochraniania
       ochrona
       ochrony
-      ochronienie
-      ochronienia
       ochronienie
       ochronienia
       ochronka
@@ -47962,18 +43156,12 @@ module GameRoomKrowa
       ochrzanienia
       ochrzczenie
       ochrzczenia
-      ochrzczenie
-      ochrzczenia
       ochrzęstna
       ochrzęstne
       ochwacenie
       ochwacenia
-      ochwacenie
-      ochwacenia
       ochwat
       ochwaty
-      ociąganie
-      ociągania
       ociąganie
       ociągania
       ociągnięcie
@@ -48000,8 +43188,6 @@ module GameRoomKrowa
       ocieplania
       ocieplenie
       ocieplenia
-      ocieplenie
-      ocieplenia
       ociężałość
       ociężałości
       ociosanie
@@ -48026,10 +43212,6 @@ module GameRoomKrowa
       octówki
       ocucanie
       ocucania
-      ocucanie
-      ocucania
-      ocucenie
-      ocucenia
       ocucenie
       ocucenia
       ocukrowanie
@@ -48051,38 +43233,26 @@ module GameRoomKrowa
       oczarowanie
       oczarowania
       oczarowate
-      oczarowate
       oczarowywanie
       oczarowywania
       oczekiwania
-      oczekiwania
       oczekiwanie
-      oczekiwania
       oczennica
-      oczennice
-      oczennice
       oczennice
       oczepianie
       oczepiania
       oczepienie
       oczepienia
       oczepiny
-      oczepiny
       oczeret
       oczerety
       oczernianie
       oczerniania
-      oczernianie
-      oczerniania
       oczernienie
       oczernienia
-      oczernienie
-      oczernienia
-      oczęta
       oczęta
       oczko
       oczka
-      oczko
       oczki
       oczkowanie
       oczkowania
@@ -48096,12 +43266,8 @@ module GameRoomKrowa
       oczyszczalnie
       oczyszczanie
       oczyszczania
-      oczyszczanie
-      oczyszczania
       oczyszczarka
       oczyszczarki
-      oczyszczenie
-      oczyszczenia
       oczyszczenie
       oczyszczenia
       oczytanie
@@ -48118,10 +43284,6 @@ module GameRoomKrowa
       odarniowania
       odbarwianie
       odbarwiania
-      odbarwianie
-      odbarwiania
-      odbarwienie
-      odbarwienia
       odbarwienie
       odbarwienia
       odbąknięcie
@@ -48130,8 +43292,6 @@ module GameRoomKrowa
       odbębniania
       odbębnienie
       odbębnienia
-      odbicie
-      odbicia
       odbicie
       odbicia
       odbieganie
@@ -48148,10 +43308,6 @@ module GameRoomKrowa
       odbierania
       odbijacz
       odbijacze
-      odbijacz
-      odbijacze
-      odbijanie
-      odbijania
       odbijanie
       odbijania
       odbijany
@@ -48174,10 +43330,6 @@ module GameRoomKrowa
       odbłyski
       odbłyskiwanie
       odbłyskiwania
-      odbłyskiwanie
-      odbłyskiwania
-      odbłyśnięcie
-      odbłyśnięcia
       odbłyśnięcie
       odbłyśnięcia
       odbłyśnik
@@ -48202,14 +43354,10 @@ module GameRoomKrowa
       odburknięcia
       odbycie
       odbycia
-      odbycie
-      odbycia
       odbyt
       odbyty
       odbytnica
       odbytnice
-      odbywanie
-      odbywania
       odbywanie
       odbywania
       odcedzanie
@@ -48227,7 +43375,6 @@ module GameRoomKrowa
       odchłodzenie
       odchłodzenia
       odchody
-      odchody
       odchodzenie
       odchodzenia
       odchorowanie
@@ -48244,14 +43391,8 @@ module GameRoomKrowa
       odchudzania
       odchudzenie
       odchudzenia
-      odchudzenie
-      odchudzenia
       odchylanie
       odchylania
-      odchylanie
-      odchylania
-      odchylenie
-      odchylenia
       odchylenie
       odchylenia
       odchyłka
@@ -48262,10 +43403,6 @@ module GameRoomKrowa
       odciągacze
       odciąganie
       odciągania
-      odciąganie
-      odciągania
-      odciągnięcie
-      odciągnięcia
       odciągnięcie
       odciągnięcia
       odciążanie
@@ -48282,12 +43419,8 @@ module GameRoomKrowa
       odcierpienia
       odcięcie
       odcięcia
-      odcięcie
-      odcięcia
       odcięta
       odcięte
-      odcinanie
-      odcinania
       odcinanie
       odcinania
       odcinek
@@ -48296,10 +43429,6 @@ module GameRoomKrowa
       odciski
       odciskanie
       odciskania
-      odciskanie
-      odciskania
-      odciśnięcie
-      odciśnięcia
       odciśnięcie
       odciśnięcia
       odcumowanie
@@ -48316,10 +43445,6 @@ module GameRoomKrowa
       odczekiwania
       odczepianie
       odczepiania
-      odczepianie
-      odczepiania
-      odczepienie
-      odczepienia
       odczepienie
       odczepienia
       odczucie
@@ -48350,22 +43475,12 @@ module GameRoomKrowa
       odczytywania
       oddalanie
       oddalania
-      oddalanie
-      oddalania
-      oddalenie
-      oddalenia
       oddalenie
       oddalenia
       oddanie
       oddania
-      oddanie
-      oddania
       oddarcie
       oddarcia
-      oddarcie
-      oddarcia
-      oddawanie
-      oddawania
       oddawanie
       oddawania
       oddawca
@@ -48392,14 +43507,8 @@ module GameRoomKrowa
       oddzielacze
       oddzielanie
       oddzielania
-      oddzielanie
-      oddzielania
       oddzielenie
       oddzielenia
-      oddzielenie
-      oddzielenia
-      oddzieranie
-      oddzierania
       oddzieranie
       oddzierania
       oddźwięk
@@ -48410,18 +43519,12 @@ module GameRoomKrowa
       odegnania
       odegranie
       odegrania
-      odegranie
-      odegrania
       odejmowanie
       odejmowania
       odejście
       odejścia
       odepchnięcie
       odepchnięcia
-      odepchnięcie
-      odepchnięcia
-      oderwanie
-      oderwania
       oderwanie
       oderwania
       oderznięcie
@@ -48440,8 +43543,6 @@ module GameRoomKrowa
       odetchnięcia
       odetkanie
       odetkania
-      odetkanie
-      odetkania
       odezwa
       odezwy
       odezwanie
@@ -48450,12 +43551,8 @@ module GameRoomKrowa
       odębienia
       odęcie
       odęcia
-      odęcie
-      odęcia
       odfajkowanie
       odfajkowania
-      odfiltrowanie
-      odfiltrowania
       odfiltrowanie
       odfiltrowania
       odfrunięcie
@@ -48472,8 +43569,6 @@ module GameRoomKrowa
       odgałęziania
       odgałęzienie
       odgałęzienia
-      odgałęzienie
-      odgałęzienia
       odganianie
       odganiania
       odgarnianie
@@ -48482,18 +43577,10 @@ module GameRoomKrowa
       odgarnięcia
       odgazowanie
       odgazowania
-      odgazowanie
-      odgazowania
-      odgazowywanie
-      odgazowywania
       odgazowywanie
       odgazowywania
       odgięcie
       odgięcia
-      odgięcie
-      odgięcia
-      odginanie
-      odginania
       odginanie
       odginania
       odgławianie
@@ -48506,10 +43593,6 @@ module GameRoomKrowa
       odgłowienia
       odgniatanie
       odgniatania
-      odgniatanie
-      odgniatania
-      odgniecenie
-      odgniecenia
       odgniecenie
       odgniecenia
       odgonienie
@@ -48520,20 +43603,12 @@ module GameRoomKrowa
       odgotowywania
       odgradzanie
       odgradzania
-      odgradzanie
-      odgradzania
       odgraniczanie
       odgraniczania
-      odgraniczanie
-      odgraniczania
-      odgraniczenie
-      odgraniczenia
       odgraniczenie
       odgraniczenia
       odgrażanie
       odgrażania
-      odgrodzenie
-      odgrodzenia
       odgrodzenie
       odgrodzenia
       odgromnik
@@ -48542,14 +43617,8 @@ module GameRoomKrowa
       odgruzowania
       odgrywanie
       odgrywania
-      odgrywanie
-      odgrywania
       odgryzanie
       odgryzania
-      odgryzanie
-      odgryzania
-      odgryzienie
-      odgryzienia
       odgryzienie
       odgryzienia
       odgrzanie
@@ -48558,8 +43627,6 @@ module GameRoomKrowa
       odgrzebania
       odgrzebywanie
       odgrzebywania
-      odgrzewanie
-      odgrzewania
       odgrzewanie
       odgrzewania
       odgrzybianie
@@ -48580,8 +43647,6 @@ module GameRoomKrowa
       odiskrowniki
       odizolowanie
       odizolowania
-      odizolowanie
-      odizolowania
       odjazd
       odjazdy
       odjechanie
@@ -48596,10 +43661,6 @@ module GameRoomKrowa
       odjęcia
       odkarmianie
       odkarmiania
-      odkarmianie
-      odkarmiania
-      odkarmienie
-      odkarmienia
       odkarmienie
       odkarmienia
       odkaszliwanie
@@ -48614,16 +43675,10 @@ module GameRoomKrowa
       odkażenia
       odklejanie
       odklejania
-      odklejanie
-      odklejania
-      odklejenie
-      odklejenia
       odklejenie
       odklejenia
       odkład
       odkłady
-      odkładanie
-      odkładania
       odkładanie
       odkładania
       odkładnica
@@ -48654,20 +43709,12 @@ module GameRoomKrowa
       odkrawania
       odkręcanie
       odkręcania
-      odkręcanie
-      odkręcania
-      odkręcenie
-      odkręcenia
       odkręcenie
       odkręcenia
       odkrojenie
       odkrojenia
       odkrycie
       odkrycia
-      odkrycie
-      odkrycia
-      odkrywanie
-      odkrywania
       odkrywanie
       odkrywania
       odkrywca
@@ -48688,14 +43735,8 @@ module GameRoomKrowa
       odkrzyknięcia
       odkształcanie
       odkształcania
-      odkształcanie
-      odkształcania
       odkształcenie
       odkształcenia
-      odkształcenie
-      odkształcenia
-      odkucie
-      odkucia
       odkucie
       odkucia
       odkup
@@ -48714,16 +43755,12 @@ module GameRoomKrowa
       odkurzenia
       odkuwanie
       odkuwania
-      odkuwanie
-      odkuwania
       odkuwka
       odkuwki
       odkwaszanie
       odkwaszania
       odkwaszenie
       odkwaszenia
-      odlanie
-      odlania
       odlanie
       odlania
       odlatywanie
@@ -48736,18 +43773,12 @@ module GameRoomKrowa
       odległości
       odlepianie
       odlepiania
-      odlepianie
-      odlepiania
-      odlepienie
-      odlepienia
       odlepienie
       odlepienia
       odlew
       odlewy
       odlewacz
       odlewacze
-      odlewanie
-      odlewania
       odlewanie
       odlewania
       odlewarka
@@ -48760,8 +43791,6 @@ module GameRoomKrowa
       odlewnicy
       odlezienie
       odlezienia
-      odleżenie
-      odleżenia
       odleżenie
       odleżenia
       odleżyna
@@ -48780,12 +43809,8 @@ module GameRoomKrowa
       odłamy
       odłamanie
       odłamania
-      odłamanie
-      odłamania
       odłamek
       odłamki
-      odłamywanie
-      odłamywania
       odłamywanie
       odłamywania
       odławianie
@@ -48794,10 +43819,6 @@ module GameRoomKrowa
       odłażenia
       odłączanie
       odłączania
-      odłączanie
-      odłączania
-      odłączenie
-      odłączenia
       odłączenie
       odłączenia
       odłogowanie
@@ -48806,20 +43827,14 @@ module GameRoomKrowa
       odłowienia
       odłożenie
       odłożenia
-      odłożenie
-      odłożenia
       odłóg
       odłogi
       odłów
       odłowy
       odłupanie
       odłupania
-      odłupanie
-      odłupania
       odłupek
       odłupki
-      odłupywanie
-      odłupywania
       odłupywanie
       odłupywania
       odma
@@ -48828,24 +43843,14 @@ module GameRoomKrowa
       odmachania
       odmachiwanie
       odmachiwania
-      odmachiwanie
-      odmachiwania
       odmachnięcie
       odmachnięcia
-      odmachnięcie
-      odmachnięcia
-      odmaczanie
-      odmaczania
       odmaczanie
       odmaczania
       odmakanie
       odmakania
       odmalowanie
       odmalowania
-      odmalowanie
-      odmalowania
-      odmalowywanie
-      odmalowywania
       odmalowywanie
       odmalowywania
       odmarsz
@@ -48870,12 +43875,8 @@ module GameRoomKrowa
       odmiecenia
       odmienianie
       odmieniania
-      odmienianie
-      odmieniania
       odmieniec
       odmieńcy
-      odmienienie
-      odmienienia
       odmienienie
       odmienienia
       odmienność
@@ -48890,24 +43891,16 @@ module GameRoomKrowa
       odmięknięcia
       odmładzanie
       odmładzania
-      odmładzanie
-      odmładzania
       odmłodnienie
       odmłodnienia
       odmłodzenie
       odmłodzenia
       odmoczenie
       odmoczenia
-      odmoczenie
-      odmoczenia
       odmoknięcie
       odmoknięcia
       odmotanie
       odmotania
-      odmotanie
-      odmotania
-      odmotywanie
-      odmotywania
       odmotywanie
       odmotywania
       odmowa
@@ -48918,10 +43911,6 @@ module GameRoomKrowa
       odmrażalnie
       odmrażanie
       odmrażania
-      odmrażanie
-      odmrażania
-      odmrożenie
-      odmrożenia
       odmrożenie
       odmrożenia
       odmrukiwanie
@@ -48942,10 +43931,6 @@ module GameRoomKrowa
       odmywania
       odnajdowanie
       odnajdowania
-      odnajdowanie
-      odnajdowania
-      odnajdywanie
-      odnajdywania
       odnajdywanie
       odnajdywania
       odnajęcie
@@ -48954,14 +43939,8 @@ module GameRoomKrowa
       odnajmowania
       odnalezienie
       odnalezienia
-      odnalezienie
-      odnalezienia
       odnawianie
       odnawiania
-      odnawianie
-      odnawiania
-      odniesienie
-      odniesienia
       odniesienie
       odniesienia
       odnoga
@@ -48970,8 +43949,6 @@ module GameRoomKrowa
       odnosawiania
       odnosowienie
       odnosowienia
-      odnoszenie
-      odnoszenia
       odnoszenie
       odnoszenia
       odnośnik
@@ -48986,20 +43963,14 @@ module GameRoomKrowa
       odnowiciele
       odnowienie
       odnowienia
-      odnowienie
-      odnowienia
-      odnóża
       odnóża
       odnóże
-      odnóża
       odnóżka
       odnóżki
       odontolog
       odontolodzy
       odontologia
       odontologie
-      odosabnianie
-      odosabniania
       odosabnianie
       odosabniania
       odosabnienie
@@ -49011,10 +43982,8 @@ module GameRoomKrowa
       odpadanie
       odpadania
       odpadki
-      odpadki
       odpadnięcie
       odpadnięcia
-      odpady
       odpady
       odpakowanie
       odpakowania
@@ -49032,20 +44001,12 @@ module GameRoomKrowa
       odparowywania
       odparzanie
       odparzania
-      odparzanie
-      odparzania
       odparzelina
       odparzeliny
       odparzenie
       odparzenia
-      odparzenie
-      odparzenia
       odpasanie
       odpasania
-      odpasanie
-      odpasania
-      odpasienie
-      odpasienia
       odpasienie
       odpasienia
       odpasywanie
@@ -49060,10 +44021,6 @@ module GameRoomKrowa
       odpierania
       odpięcie
       odpięcia
-      odpięcie
-      odpięcia
-      odpinanie
-      odpinania
       odpinanie
       odpinania
       odpis
@@ -49072,8 +44029,6 @@ module GameRoomKrowa
       odpisania
       odpisywanie
       odpisywania
-      odplatanie
-      odplatania
       odplatanie
       odplatania
       odplatywanie
@@ -49086,10 +44041,6 @@ module GameRoomKrowa
       odpluwania
       odpłacanie
       odpłacania
-      odpłacanie
-      odpłacania
-      odpłacenie
-      odpłacenia
       odpłacenie
       odpłacenia
       odpłata
@@ -49143,10 +44094,6 @@ module GameRoomKrowa
       odprawienia
       odprężanie
       odprężania
-      odprężanie
-      odprężania
-      odprężenie
-      odprężenia
       odprężenie
       odprężenia
       odprężnik
@@ -49155,18 +44102,10 @@ module GameRoomKrowa
       odproszenia
       odprowadzanie
       odprowadzania
-      odprowadzanie
-      odprowadzania
-      odprowadzenie
-      odprowadzenia
       odprowadzenie
       odprowadzenia
       odprucie
       odprucia
-      odprucie
-      odprucia
-      odpruwanie
-      odpruwania
       odpruwanie
       odpruwania
       odprysk
@@ -49199,8 +44138,6 @@ module GameRoomKrowa
       odpuszczenia
       odpychanie
       odpychania
-      odpychanie
-      odpychania
       odpylacz
       odpylacze
       odpylanie
@@ -49213,8 +44150,6 @@ module GameRoomKrowa
       odrabiania
       odraczanie
       odraczania
-      odradzanie
-      odradzania
       odradzanie
       odradzania
       odradzenie
@@ -49265,8 +44200,6 @@ module GameRoomKrowa
       odroczenia
       odrodzenie
       odrodzenia
-      odrodzenie
-      odrodzenia
       odrost
       odrosty
       odrośl
@@ -49277,10 +44210,6 @@ module GameRoomKrowa
       odróbki
       odróżnianie
       odróżniania
-      odróżnianie
-      odróżniania
-      odróżnienie
-      odróżnienia
       odróżnienie
       odróżnienia
       odruch
@@ -49297,8 +44226,6 @@ module GameRoomKrowa
       odrysowywania
       odrywanie
       odrywania
-      odrywanie
-      odrywania
       odrzeczenie
       odrzeczenia
       odrzekanie
@@ -49312,17 +44239,10 @@ module GameRoomKrowa
       odrzutowiec
       odrzutowce
       odrzwia
-      odrzwia
-      odrzynanie
-      odrzynania
       odrzynanie
       odrzynania
       odsadzanie
       odsadzania
-      odsadzanie
-      odsadzania
-      odsadzenie
-      odsadzenia
       odsadzenie
       odsadzenia
       odsadzka
@@ -49337,10 +44257,6 @@ module GameRoomKrowa
       odsapywania
       odsączanie
       odsączania
-      odsączanie
-      odsączania
-      odsączenie
-      odsączenia
       odsączenie
       odsączenia
       odsądzanie
@@ -49349,11 +44265,7 @@ module GameRoomKrowa
       odsądzenia
       odseparowanie
       odseparowania
-      odseparowanie
-      odseparowania
       odsetek
-      odsetki
-      odsetki
       odsetki
       odsiadka
       odsiadki
@@ -49393,10 +44305,6 @@ module GameRoomKrowa
       odskrobywania
       odsłanianie
       odsłaniania
-      odsłanianie
-      odsłaniania
-      odsłonięcie
-      odsłonięcia
       odsłonięcie
       odsłonięcia
       odsługiwanie
@@ -49415,12 +44323,8 @@ module GameRoomKrowa
       odsprzedaże
       odstanie
       odstania
-      odstanie
-      odstania
       odstawa
       odstawy
-      odstawanie
-      odstawania
       odstawanie
       odstawania
       odstawianie
@@ -49433,7 +44337,6 @@ module GameRoomKrowa
       odstępy
       odstępca
       odstępcy
-      odstępne
       odstępne
       odstępowanie
       odstępowania
@@ -49461,14 +44364,10 @@ module GameRoomKrowa
       odstuknięcia
       odsunięcie
       odsunięcia
-      odsunięcie
-      odsunięcia
       odsupłanie
       odsupłania
       odsupływanie
       odsupływania
-      odsuwanie
-      odsuwania
       odsuwanie
       odsuwania
       odsyłacz
@@ -49483,8 +44382,6 @@ module GameRoomKrowa
       odsypiska
       odsypywanie
       odsypywania
-      odszczekanie
-      odszczekania
       odszczekanie
       odszczekania
       odszczepieńcy
@@ -49504,10 +44401,6 @@ module GameRoomKrowa
       odsznurowania
       odszukanie
       odszukania
-      odszukanie
-      odszukania
-      odszukiwanie
-      odszukiwania
       odszukiwanie
       odszukiwania
       odszycie
@@ -49530,16 +44423,10 @@ module GameRoomKrowa
       odśrubowania
       odświeżanie
       odświeżania
-      odświeżanie
-      odświeżania
-      odświeżenie
-      odświeżenia
       odświeżenie
       odświeżenia
       odświętność
       odświętności
-      odtaczanie
-      odtaczania
       odtaczanie
       odtaczania
       odtajanie
@@ -49548,10 +44435,6 @@ module GameRoomKrowa
       odtańczenia
       odtłuczenie
       odtłuczenia
-      odtłuczenie
-      odtłuczenia
-      odtłukiwanie
-      odtłukiwania
       odtłukiwanie
       odtłukiwania
       odtłuszczacz
@@ -49560,8 +44443,6 @@ module GameRoomKrowa
       odtłuszczania
       odtłuszczenie
       odtłuszczenia
-      odtoczenie
-      odtoczenia
       odtoczenie
       odtoczenia
       odtrąbienie
@@ -49574,10 +44455,6 @@ module GameRoomKrowa
       odtrutki
       odtwarzanie
       odtwarzania
-      odtwarzanie
-      odtwarzania
-      odtworzenie
-      odtworzenia
       odtworzenie
       odtworzenia
       odtwórca
@@ -49588,24 +44465,14 @@ module GameRoomKrowa
       odtwórczynie
       odtykanie
       odtykania
-      odtykanie
-      odtykania
       odtylcówka
       odtylcówki
       oduczanie
       oduczania
-      oduczanie
-      oduczania
-      oduczenie
-      oduczenia
       oduczenie
       oduczenia
       odurzanie
       odurzania
-      odurzanie
-      odurzania
-      odurzenie
-      odurzenia
       odurzenie
       odurzenia
       odwadnianie
@@ -49614,10 +44481,6 @@ module GameRoomKrowa
       odwagi
       odwalanie
       odwalania
-      odwalanie
-      odwalania
-      odwalenie
-      odwalenia
       odwalenie
       odwalenia
       odwaniacz
@@ -49632,23 +44495,14 @@ module GameRoomKrowa
       odwarknięcia
       odwarstwianie
       odwarstwiania
-      odwarstwianie
-      odwarstwiania
-      odwarstwienie
-      odwarstwienia
       odwarstwienie
       odwarstwienia
       odważanie
       odważania
-      odważanie
-      odważania
-      odważenie
-      odważenia
       odważenie
       odważenia
       odważniak
       odważniacy
-      odważniak
       odważniaki
       odważnik
       odważniki
@@ -49664,23 +44518,14 @@ module GameRoomKrowa
       odwiania
       odwiązanie
       odwiązania
-      odwiązanie
-      odwiązania
-      odwiązywanie
-      odwiązywania
       odwiązywanie
       odwiązywania
       odwieczność
       odwieczności
       odwiedzanie
       odwiedzania
-      odwiedzanie
-      odwiedzania
       odwiedzenie
       odwiedzenia
-      odwiedzenie
-      odwiedzenia
-      odwiedziny
       odwiedziny
       odwiercanie
       odwiercania
@@ -49700,8 +44545,6 @@ module GameRoomKrowa
       odwiezienia
       odwijanie
       odwijania
-      odwijanie
-      odwijania
       odwikłanie
       odwikłania
       odwilż
@@ -49710,18 +44553,12 @@ module GameRoomKrowa
       odwilżacze
       odwinięcie
       odwinięcia
-      odwinięcie
-      odwinięcia
       odwirowanie
       odwirowania
       odwirowywanie
       odwirowywania
       odwleczenie
       odwleczenia
-      odwleczenie
-      odwleczenia
-      odwlekanie
-      odwlekania
       odwlekanie
       odwlekania
       odwłaszanie
@@ -49738,10 +44575,6 @@ module GameRoomKrowa
       odwołalności
       odwołanie
       odwołania
-      odwołanie
-      odwołania
-      odwoływanie
-      odwoływania
       odwoływanie
       odwoływania
       odwonienie
@@ -49754,12 +44587,8 @@ module GameRoomKrowa
       odwracalności
       odwracanie
       odwracania
-      odwracanie
-      odwracania
       odwrotność
       odwrotności
-      odwrócenie
-      odwrócenia
       odwrócenie
       odwrócenia
       odwrót
@@ -49782,8 +44611,6 @@ module GameRoomKrowa
       odwzorowania
       odymanie
       odymania
-      odymanie
-      odymania
       odymianie
       odymiania
       odymienie
@@ -49792,8 +44619,6 @@ module GameRoomKrowa
       odyńce
       odzew
       odzewy
-      odzianie
-      odziania
       odzianie
       odziania
       odziarnianie
@@ -49806,8 +44631,6 @@ module GameRoomKrowa
       odzierania
       odziewanie
       odziewania
-      odziewanie
-      odziewania
       odzież
       odzieże
       odzieżowiec
@@ -49818,20 +44641,12 @@ module GameRoomKrowa
       odzipnięcia
       odznaczanie
       odznaczania
-      odznaczanie
-      odznaczania
-      odznaczenie
-      odznaczenia
       odznaczenie
       odznaczenia
       odznaka
       odznaki
       odzwyczajanie
       odzwyczajania
-      odzwyczajanie
-      odzwyczajania
-      odzwyczajenie
-      odzwyczajenia
       odzwyczajenie
       odzwyczajenia
       odzysk
@@ -49854,10 +44669,6 @@ module GameRoomKrowa
       odżałowania
       odżegnanie
       odżegnania
-      odżegnanie
-      odżegnania
-      odżegnywanie
-      odżegnywania
       odżegnywanie
       odżegnywania
       odżelaziacz
@@ -49868,10 +44679,6 @@ module GameRoomKrowa
       odżywania
       odżywianie
       odżywiania
-      odżywianie
-      odżywiania
-      odżywienie
-      odżywienia
       odżywienie
       odżywienia
       odżywka
@@ -49884,8 +44691,6 @@ module GameRoomKrowa
       oferenci
       oferentka
       oferentki
-      oferma
-      ofermy
       oferma
       ofermy
       ofermowatość
@@ -49904,17 +44709,12 @@ module GameRoomKrowa
       ofiarodawcy
       ofiarowanie
       ofiarowania
-      ofiarowanie
-      ofiarowania
-      ofiarowywanie
-      ofiarowywania
       ofiarowywanie
       ofiarowywania
       oficer
       oficerowie
       oficerek
       oficerkowie
-      oficerki
       oficerki
       oficjalność
       oficjalności
@@ -49938,8 +44738,6 @@ module GameRoomKrowa
       ogałacania
       oganianie
       oganiania
-      oganianie
-      oganiania
       ogar
       ogary
       ogarek
@@ -49950,8 +44748,6 @@ module GameRoomKrowa
       ogarnienia
       ogarnięcie
       ogarnięcia
-      ogarnięcie
-      ogarnięcia
       ogieniek
       ogieńki
       ogień
@@ -49960,11 +44756,8 @@ module GameRoomKrowa
       ogiery
       oglądanie
       oglądania
-      oglądanie
-      oglądania
       oględność
       oględności
-      oględziny
       oględziny
       ogłada
       ogłady
@@ -49972,8 +44765,6 @@ module GameRoomKrowa
       ogładzania
       ogładzenie
       ogładzenia
-      ogłaszanie
-      ogłaszania
       ogłaszanie
       ogłaszania
       ogławiacz
@@ -49984,8 +44775,6 @@ module GameRoomKrowa
       ogławienia
       ogłodek
       ogłodki
-      ogłoszenie
-      ogłoszenia
       ogłoszenie
       ogłoszenia
       ogłuchnięcie
@@ -50013,14 +44802,10 @@ module GameRoomKrowa
       ogniskowe
       ogniskowanie
       ogniskowania
-      ogniskowanie
-      ogniskowania
       ognistość
       ognistości
       ogniwo
       ogniwa
-      ogolenie
-      ogolenia
       ogolenie
       ogolenia
       ogołocenie
@@ -50051,8 +44836,6 @@ module GameRoomKrowa
       ogóreczniki
       ogórek
       ogórki
-      ogórki
-      ogórki
       ograbianie
       ograbiania
       ograbienie
@@ -50061,10 +44844,6 @@ module GameRoomKrowa
       ogradzania
       ograniczanie
       ograniczania
-      ograniczanie
-      ograniczania
-      ograniczenie
-      ograniczenia
       ograniczenie
       ograniczenia
       ograniczoność
@@ -50073,8 +44852,6 @@ module GameRoomKrowa
       ogrodnictwo
       ogrodnictwa
       ogrodniczka
-      ogrodniczki
-      ogrodniczki
       ogrodniczki
       ogrodnik
       ogrodnicy
@@ -50098,12 +44875,8 @@ module GameRoomKrowa
       ogryzienia
       ogrzanie
       ogrzania
-      ogrzanie
-      ogrzania
       ogrzewacz
       ogrzewacze
-      ogrzewanie
-      ogrzewania
       ogrzewanie
       ogrzewania
       ogrzewnictwo
@@ -50134,8 +44907,6 @@ module GameRoomKrowa
       ojczymowie
       ojczysko
       ojczyska
-      ojczysko
-      ojczyska
       ojczyzna
       ojczyzny
       okadzanie
@@ -50146,10 +44917,6 @@ module GameRoomKrowa
       okalania
       okaleczanie
       okaleczania
-      okaleczanie
-      okaleczania
-      okaleczenie
-      okaleczenia
       okaleczenie
       okaleczenia
       okantowanie
@@ -50166,8 +44933,6 @@ module GameRoomKrowa
       okazałości
       okazanie
       okazania
-      okazanie
-      okazania
       okaziciel
       okaziciele
       okazja
@@ -50175,8 +44940,6 @@ module GameRoomKrowa
       okazjonalizm
       okazjonalizmy
       okazjonalność
-      okazywanie
-      okazywania
       okazywanie
       okazywania
       okiełznanie
@@ -50191,13 +44954,11 @@ module GameRoomKrowa
       okiennice
       okiść
       okiście
-      okiść
       okiści
       okitowanie
       okitowania
       oklapnięcie
       oklapnięcia
-      oklaski
       oklaski
       oklaskiwanie
       oklaskiwania
@@ -50221,18 +44982,12 @@ module GameRoomKrowa
       okłady
       okładanie
       okładania
-      okładanie
-      okładania
       okładka
       okładki
       okładzina
       okładziny
       okłamanie
       okłamania
-      okłamanie
-      okłamania
-      okłamywanie
-      okłamywania
       okłamywanie
       okłamywania
       okno
@@ -50241,9 +44996,6 @@ module GameRoomKrowa
       oknówki
       oko
       oka
-      oko
-      oczy
-      oko
       oczy
       okocenie
       okocenia
@@ -50260,25 +45012,16 @@ module GameRoomKrowa
       okonek
       okonki
       okoniowate
-      okoniowate
       okoń
       okonie
       okopanie
       okopania
-      okopanie
-      okopania
-      okopcenie
-      okopcenia
       okopcenie
       okopcenia
       okopcowanie
       okopcowania
       okopowe
-      okopowe
       okopy
-      okopy
-      okopywanie
-      okopywania
       okopywanie
       okopywania
       okorek
@@ -50290,17 +45033,12 @@ module GameRoomKrowa
       okostna
       okostne
       okowy
-      okowy
       okólnik
       okólniki
       okółek
       okółki
       okpienie
       okpienia
-      okpienie
-      okpienia
-      okpiwanie
-      okpiwania
       okpiwanie
       okpiwania
       okradanie
@@ -50335,10 +45073,6 @@ module GameRoomKrowa
       okresowości
       określanie
       określania
-      określanie
-      określania
-      określenie
-      określenia
       określenie
       określenia
       określnik
@@ -50347,16 +45081,11 @@ module GameRoomKrowa
       określoności
       okręcanie
       okręcania
-      okręcanie
-      okręcania
-      okręcenie
-      okręcenia
       okręcenie
       okręcenia
       okręcik
       okręciki
       okręg
-      okręgi
       okręt
       okręty
       okrętka
@@ -50367,7 +45096,6 @@ module GameRoomKrowa
       okrętowania
       okrętowiec
       okrętowcy
-      okrętowiec
       okrętowce
       okrętownictwo
       okrętownictwa
@@ -50379,7 +45107,6 @@ module GameRoomKrowa
       okropieństwa
       okropność
       okropności
-      okruchy
       okruchy
       okrucieństwo
       okrucieństwa
@@ -50401,12 +45128,8 @@ module GameRoomKrowa
       okrwawienia
       okrycie
       okrycia
-      okrycie
-      okrycia
       okrywa
       okrywy
-      okrywanie
-      okrywania
       okrywanie
       okrywania
       okrzemka
@@ -50433,10 +45156,6 @@ module GameRoomKrowa
       oksydacje
       oksydaza
       oksydazy
-      oksydazy
-      oksydazy
-      oksydowanie
-      oksydowania
       oksydowanie
       oksydowania
       oksymoron
@@ -50464,15 +45183,9 @@ module GameRoomKrowa
       okular
       okulary
       okularki
-      okularki
       okularnik
       okularnicy
-      okularnik
       okularniki
-      okulary
-      okulary
-      okulawienie
-      okulawienia
       okulawienie
       okulawienia
       okulbaczenie
@@ -50505,16 +45218,10 @@ module GameRoomKrowa
       okupanci
       okupienie
       okupienia
-      okupienie
-      okupienia
       okupowanie
       okupowania
       okupywanie
       okupywania
-      okupywanie
-      okupywania
-      okutanie
-      okutania
       okutanie
       okutania
       okuwanie
@@ -50527,10 +45234,7 @@ module GameRoomKrowa
       okwitnięcia
       olbrzym
       olbrzymy
-      olbrzym
       olbrzymi
-      olbrzym
-      olbrzymy
       olbrzymienie
       olbrzymienia
       olbrzymka
@@ -50543,13 +45247,8 @@ module GameRoomKrowa
       oleandry
       olefina
       olefiny
-      olefiny
-      olefiny
       oleica
       oleice
-      oleice
-      oleice
-      oleicowate
       oleicowate
       oleina
       oleiny
@@ -50561,12 +45260,8 @@ module GameRoomKrowa
       olejarki
       olejarnia
       olejarnie
-      olejarnia
-      olejarnie
       olejarstwo
       olejarstwa
-      oleje
-      oleje
       olejek
       olejki
       olejenie
@@ -50583,8 +45278,6 @@ module GameRoomKrowa
       oleomargaryny
       oleożywica
       oleożywice
-      oleożywice
-      oleożywice
       oleśnik
       oleśniki
       olicowanie
@@ -50597,8 +45290,6 @@ module GameRoomKrowa
       oligoceny
       oligofag
       oligofagi
-      oligofagi
-      oligofagi
       oligofren
       oligofreny
       oligofrenia
@@ -50610,8 +45301,6 @@ module GameRoomKrowa
       oligotrofy
       oligotrofizm
       oligotrofizmy
-      oligotrofy
-      oligotrofy
       oliguria
       oligurie
       olimpiada
@@ -50633,12 +45322,10 @@ module GameRoomKrowa
       oliwka
       oliwki
       oliwkowate
-      oliwkowate
       oliwnik
       oliwniki
       olodzenie
       olodzenia
-      olstry
       olstry
       olsza
       olsze
@@ -50675,19 +45362,12 @@ module GameRoomKrowa
       omacania
       omacnica
       omacnice
-      omacnice
-      omacnice
       omacywanie
       omacywania
       omamianie
       omamiania
-      omamianie
-      omamiania
       omamienie
       omamienia
-      omamienie
-      omamienia
-      omamy
       omamy
       oman
       omany
@@ -50725,8 +45405,6 @@ module GameRoomKrowa
       omiecenia
       omijanie
       omijania
-      omijanie
-      omijania
       ominięcie
       ominięcia
       omlecik
@@ -50741,8 +45419,6 @@ module GameRoomKrowa
       omłócenia
       omnibus
       omnibusy
-      omnibus
-      omnibusy
       omometr
       omometry
       omomierz
@@ -50751,10 +45427,6 @@ module GameRoomKrowa
       omomiłki
       omotanie
       omotania
-      omotanie
-      omotania
-      omotywanie
-      omotywania
       omotywanie
       omotywania
       omówienie
@@ -50775,8 +45447,6 @@ module GameRoomKrowa
       omycia
       omyk
       omyki
-      omylenie
-      omylenia
       omylenie
       omylenia
       omylność
@@ -50825,8 +45495,6 @@ module GameRoomKrowa
       onyksy
       oolit
       oolity
-      oolity
-      oolity
       oologia
       oologie
       ooplazma
@@ -50837,8 +45505,6 @@ module GameRoomKrowa
       opadania
       opadnięcie
       opadnięcia
-      opady
-      opady
       opadzina
       opadziny
       opakowanie
@@ -50851,10 +45517,6 @@ module GameRoomKrowa
       opalacze
       opalanie
       opalania
-      opalanie
-      opalania
-      opalenie
-      opalenia
       opalenie
       opalenia
       opalenizna
@@ -50867,10 +45529,6 @@ module GameRoomKrowa
       opały
       opałka
       opałki
-      opały
-      opały
-      opamiętanie
-      opamiętania
       opamiętanie
       opamiętania
       opamiętywanie
@@ -50881,16 +45539,10 @@ module GameRoomKrowa
       opancerzenia
       opanowanie
       opanowania
-      opanowanie
-      opanowania
-      opanowywanie
-      opanowywania
       opanowywanie
       opanowywania
       opar
       opary
-      oparcie
-      oparcia
       oparcie
       oparcia
       oparzanie
@@ -50903,22 +45555,14 @@ module GameRoomKrowa
       oparzelizny
       oparzenie
       oparzenia
-      oparzenie
-      oparzenia
       opas
       opasy
-      opas
-      opasy
-      opasanie
-      opasania
       opasanie
       opasania
       opasienie
       opasienia
       opaska
       opaski
-      opasywanie
-      opasywania
       opasywanie
       opasywania
       opat
@@ -50929,24 +45573,14 @@ module GameRoomKrowa
       opatrunki
       opatrywanie
       opatrywania
-      opatrywanie
-      opatrywania
-      opatrzenie
-      opatrzenia
       opatrzenie
       opatrzenia
       opatrzność
       opatrzności
       opatulanie
       opatulania
-      opatulanie
-      opatulania
       opatulenie
       opatulenia
-      opatulenie
-      opatulenia
-      opchanie
-      opchania
       opchanie
       opchania
       opchnięcie
@@ -50963,7 +45597,6 @@ module GameRoomKrowa
       operacjonizmy
       operator
       operatorzy
-      operator
       operatory
       operatorka
       operatorki
@@ -50975,10 +45608,6 @@ module GameRoomKrowa
       operowania
       opędzanie
       opędzania
-      opędzanie
-      opędzania
-      opędzenie
-      opędzenia
       opędzenie
       opędzenia
       opędzlowanie
@@ -50995,18 +45624,12 @@ module GameRoomKrowa
       opętywania
       opicie
       opicia
-      opicie
-      opicia
-      opieczenie
-      opieczenia
       opieczenie
       opieczenia
       opieka
       opieki
       opiekacz
       opiekacze
-      opiekanie
-      opiekania
       opiekanie
       opiekania
       opiekowanie
@@ -51025,22 +45648,14 @@ module GameRoomKrowa
       opieńki
       opieprzanie
       opieprzania
-      opieprzanie
-      opieprzania
       opieprzenie
       opieprzenia
-      opieranie
-      opierania
       opieranie
       opierania
       opierunek
       opierunki
       opierzanie
       opierzania
-      opierzanie
-      opierzania
-      opierzenie
-      opierzenia
       opierzenie
       opierzenia
       opieszałość
@@ -51051,8 +45666,6 @@ module GameRoomKrowa
       opięcia
       opijanie
       opijania
-      opijanie
-      opijania
       opilstwo
       opilstwa
       opiłek
@@ -51061,8 +45674,6 @@ module GameRoomKrowa
       opiłowania
       opiłowywanie
       opiłowywania
-      opinanie
-      opinania
       opinanie
       opinania
       opinia
@@ -51085,20 +45696,12 @@ module GameRoomKrowa
       opiumowania
       oplatanie
       oplatania
-      oplatanie
-      oplatania
       opląt
       opląty
       oplątanie
       oplątania
-      oplątanie
-      oplątania
       oplątywanie
       oplątywania
-      oplątywanie
-      oplątywania
-      oplecenie
-      oplecenia
       oplecenie
       oplecenia
       oplewianie
@@ -51113,18 +45716,10 @@ module GameRoomKrowa
       oplotkowania
       oplucie
       oplucia
-      oplucie
-      oplucia
-      opluskanie
-      opluskania
       opluskanie
       opluskania
       opluskiwanie
       opluskiwania
-      opluskiwanie
-      opluskiwania
-      opluwanie
-      opluwania
       opluwanie
       opluwania
       oplwanie
@@ -51133,10 +45728,6 @@ module GameRoomKrowa
       opłacalności
       opłacanie
       opłacania
-      opłacanie
-      opłacania
-      opłacenie
-      opłacenia
       opłacenie
       opłacenia
       opłakanie
@@ -51148,15 +45739,10 @@ module GameRoomKrowa
       opłatek
       opłatki
       opłotki
-      opłotki
       opłucna
       opłucne
       opłukanie
       opłukania
-      opłukanie
-      opłukania
-      opłukiwanie
-      opłukiwania
       opłukiwanie
       opłukiwania
       opłynięcie
@@ -51167,8 +45753,6 @@ module GameRoomKrowa
       opływania
       opocznik
       opoczniki
-      opodatkowanie
-      opodatkowania
       opodatkowanie
       opodatkowania
       opoka
@@ -51205,20 +45789,14 @@ module GameRoomKrowa
       oporządzenia
       opos
       oposy
-      oposy
-      oposy
       opowiadacz
       opowiadacze
-      opowiadanie
-      opowiadania
       opowiadanie
       opowiadania
       opowiadanko
       opowiadanka
       opowiastka
       opowiastki
-      opowiedzenie
-      opowiedzenia
       opowiedzenie
       opowiedzenia
       opowieść
@@ -51235,18 +45813,12 @@ module GameRoomKrowa
       opóźniacze
       opóźnianie
       opóźniania
-      opóźnianie
-      opóźniania
-      opóźnienie
-      opóźnienia
       opóźnienie
       opóźnienia
       opracowanie
       opracowania
       opracowywanie
       opracowywania
-      opranie
-      oprania
       opranie
       oprania
       oprawa
@@ -51279,10 +45851,6 @@ module GameRoomKrowa
       oprószenia
       opróżnianie
       opróżniania
-      opróżnianie
-      opróżniania
-      opróżnienie
-      opróżnienia
       opróżnienie
       opróżnienia
       oprych
@@ -51291,12 +45859,8 @@ module GameRoomKrowa
       oprychówki
       opryskanie
       opryskania
-      opryskanie
-      opryskania
       opryskiwacz
       opryskiwacze
-      opryskiwanie
-      opryskiwania
       opryskiwanie
       opryskiwania
       opryskliwość
@@ -51309,10 +45873,6 @@ module GameRoomKrowa
       oprzędy
       oprzędzanie
       oprzędzania
-      oprzędzanie
-      oprzędzania
-      oprzędzenie
-      oprzędzenia
       oprzędzenie
       oprzędzenia
       optant
@@ -51360,16 +45920,10 @@ module GameRoomKrowa
       opustoszenia
       opuszczanie
       opuszczania
-      opuszczanie
-      opuszczania
-      opuszczenie
-      opuszczenia
       opuszczenie
       opuszczenia
       opuszka
       opuszki
-      opychanie
-      opychania
       opychanie
       opychania
       opylacz
@@ -51456,7 +46010,6 @@ module GameRoomKrowa
       orfizmy
       organ
       organy
-      organ
       organa
       organdyna
       organdyny
@@ -51478,16 +46031,11 @@ module GameRoomKrowa
       organizmy
       organizowanie
       organizowania
-      organizowanie
-      organizowania
-      organki
       organki
       organoleptyka
       organoleptyki
       organoterapia
       organoterapie
-      organy
-      organy
       orgazm
       orgazmy
       orgia
@@ -51504,8 +46052,6 @@ module GameRoomKrowa
       orientalistki
       orientalizm
       orientalizmy
-      orientowanie
-      orientowania
       orientowanie
       orientowania
       orka
@@ -51528,8 +46074,6 @@ module GameRoomKrowa
       orlice
       orliczka
       orliczki
-      orlik
-      orliki
       orlik
       orliki
       orłoryb
@@ -51596,23 +46140,16 @@ module GameRoomKrowa
       ortopedie
       ortyl
       ortyle
-      ortyle
-      ortyle
       ortyt
       ortyty
       oryginalność
       oryginalności
       oryginał
       oryginały
-      oryginał
-      oryginały
       oryl
       oryle
       orzech
       orzechy
-      orzech
-      orzechy
-      orzechowate
       orzechowate
       orzechówka
       orzechówki
@@ -51626,8 +46163,6 @@ module GameRoomKrowa
       orzekania
       orzeł
       orły
-      orzeł
-      orły
       orzełek
       orzełki
       orzeszek
@@ -51638,10 +46173,6 @@ module GameRoomKrowa
       orzeszniki
       orzeźwianie
       orzeźwiania
-      orzeźwianie
-      orzeźwiania
-      orzeźwienie
-      orzeźwienia
       orzeźwienie
       orzeźwienia
       orzęsek
@@ -51663,23 +46194,15 @@ module GameRoomKrowa
       osad
       osady
       osada
-      osady
       osadnictwo
       osadnictwa
       osadnik
       osadnicy
-      osadnik
       osadniki
-      osady
-      osady
-      osadzanie
-      osadzania
       osadzanie
       osadzania
       osadzarka
       osadzarki
-      osadzenie
-      osadzenia
       osadzenie
       osadzenia
       osamotnienie
@@ -51720,8 +46243,6 @@ module GameRoomKrowa
       osełki
       osesek
       oseski
-      osesek
-      oseski
       oset
       osty
       osetnik
@@ -51733,24 +46254,18 @@ module GameRoomKrowa
       osiąganie
       osiągania
       osiągi
-      osiągi
       osiągnięcie
       osiągnięcia
       osiec
       ośce
       osiedlanie
       osiedlania
-      osiedlanie
-      osiedlania
       osiedle
       osiedla
       osiedlenie
       osiedlenia
-      osiedlenie
-      osiedlenia
       osiedleniec
       osiedleńcy
-      osiedliny
       osiedliny
       osiemnastka
       osiemnastki
@@ -51774,18 +46289,13 @@ module GameRoomKrowa
       osiodłania
       osioł
       osły
-      osioł
-      osły
       osiołek
       osiołki
       osiowanie
       osiowania
       osiowce
-      osiowce
-      osiowe
       osiowe
       osiowiec
-      osiowce
       osiowość
       osiowości
       osiwienie
@@ -51802,10 +46312,6 @@ module GameRoomKrowa
       oskardowania
       oskarżanie
       oskarżania
-      oskarżanie
-      oskarżania
-      oskarżenie
-      oskarżenia
       oskarżenie
       oskarżenia
       oskarżona
@@ -51829,8 +46335,6 @@ module GameRoomKrowa
       oskrobywanie
       oskrobywania
       oskrzela
-      oskrzela
-      oskrzeliki
       oskrzeliki
       oskrzydlanie
       oskrzydlania
@@ -51852,8 +46356,6 @@ module GameRoomKrowa
       osładzania
       osłanianie
       osłaniania
-      osłanianie
-      osłaniania
       osłoda
       osłody
       osłodzenie
@@ -51864,16 +46366,10 @@ module GameRoomKrowa
       osłony
       osłonica
       osłonice
-      osłonice
-      osłonice
-      osłonięcie
-      osłonięcia
       osłonięcie
       osłonięcia
       osłonka
       osłonki
-      osłuchanie
-      osłuchania
       osłuchanie
       osłuchania
       osłuchiwanie
@@ -51890,8 +46386,6 @@ module GameRoomKrowa
       osmalenia
       osmarowanie
       osmarowania
-      osmarowywanie
-      osmarowywania
       osmarowywanie
       osmarowywania
       osmolenie
@@ -51926,7 +46420,6 @@ module GameRoomKrowa
       osobliwości
       osobnik
       osobnicy
-      osobnik
       osobniki
       osobodzień
       osobodni
@@ -51938,12 +46431,10 @@ module GameRoomKrowa
       osocze
       osocza
       osoczynowate
-      osoczynowate
       osoka
       osoki
       osolenie
       osolenia
-      osowate
       osowate
       osowienie
       osowienia
@@ -51963,8 +46454,6 @@ module GameRoomKrowa
       ostateczności
       ostatek
       ostatki
-      ostatki
-      ostatki
       ostebnowanie
       ostebnowania
       ostemplowanie
@@ -51973,11 +46462,7 @@ module GameRoomKrowa
       ostentacje
       osteoblast
       osteoblasty
-      osteoblasty
-      osteoblasty
       osteocyt
-      osteocyty
-      osteocyty
       osteocyty
       osteoklast
       osteoklasty
@@ -52034,7 +46519,6 @@ module GameRoomKrowa
       ostrożność
       ostrożności
       ostróg
-      ostrogi
       ostrów
       ostrowy
       ostróżka
@@ -52045,7 +46529,6 @@ module GameRoomKrowa
       ostrugania
       ostrugiwanie
       ostrugiwania
-      ostrużyny
       ostrużyny
       ostryga
       ostrygi
@@ -52061,8 +46544,6 @@ module GameRoomKrowa
       ostrzarki
       ostrzarnia
       ostrzarnie
-      ostrzarnia
-      ostrzarnie
       ostrze
       ostrza
       ostrzegacz
@@ -52071,16 +46552,11 @@ module GameRoomKrowa
       ostrzegania
       ostrzelanie
       ostrzelania
-      ostrzelanie
-      ostrzelania
-      ostrzeliwanie
-      ostrzeliwania
       ostrzeliwanie
       ostrzeliwania
       ostrzenie
       ostrzenia
       ostrzeń
-      ostrzenie
       ostrzew
       ostrzewy
       ostrzeżenie
@@ -52089,14 +46565,10 @@ module GameRoomKrowa
       ostrzyce
       ostrzyżenie
       ostrzyżenia
-      ostrzyżenie
-      ostrzyżenia
       ostuda
       ostudy
       ostudzanie
       ostudzania
-      ostudzenie
-      ostudzenia
       ostudzenie
       ostudzenia
       ostukanie
@@ -52111,10 +46583,6 @@ module GameRoomKrowa
       osuszacze
       osuszanie
       osuszania
-      osuszanie
-      osuszania
-      osuszenie
-      osuszenia
       osuszenie
       osuszenia
       osutka
@@ -52125,19 +46593,11 @@ module GameRoomKrowa
       osuwiska
       oswabadzanie
       oswabadzania
-      oswabadzanie
-      oswabadzania
       oswajanie
       oswajania
-      oswajanie
-      oswajania
-      oswobodzenie
-      oswobodzenia
       oswobodzenie
       oswobodzenia
       oswobodziciel
-      oswojenie
-      oswojenia
       oswojenie
       oswojenia
       osypanie
@@ -52158,8 +46618,6 @@ module GameRoomKrowa
       oszałamiania
       oszańcowanie
       oszańcowania
-      oszańcowanie
-      oszańcowania
       oszczekanie
       oszczekania
       oszczekiwanie
@@ -52178,9 +46636,6 @@ module GameRoomKrowa
       oszczerstwa
       oszczędności
       oszczędność
-      oszczędności
-      oszczędzanie
-      oszczędzania
       oszczędzanie
       oszczędzania
       oszczędzenie
@@ -52195,32 +46650,19 @@ module GameRoomKrowa
       oszołomienia
       oszpecanie
       oszpecania
-      oszpecanie
-      oszpecania
-      oszpecenie
-      oszpecenia
       oszpecenie
       oszpecenia
       oszranianie
       oszraniania
-      oszranianie
-      oszraniania
       oszronienie
       oszronienia
-      oszronienie
-      oszronienia
-      oszukanie
-      oszukania
       oszukanie
       oszukania
       oszukaniec
       oszukańcy
-      oszukaniec
       oszukańce
       oszukaństwo
       oszukaństwa
-      oszukiwanie
-      oszukiwania
       oszukiwanie
       oszukiwania
       oszust
@@ -52262,36 +46704,20 @@ module GameRoomKrowa
       ośliczki
       oślinianie
       ośliniania
-      oślinianie
-      ośliniania
-      oślinienie
-      oślinienia
       oślinienie
       oślinienia
       oślizgłość
       oślizgłości
       oślizgnięcie
       oślizgnięcia
-      oślizgnięcie
-      oślizgnięcia
-      ośliźnięcie
-      ośliźnięcia
       ośliźnięcie
       ośliźnięcia
       ośmielanie
       ośmielania
-      ośmielanie
-      ośmielania
-      ośmielenie
-      ośmielenia
       ośmielenie
       ośmielenia
       ośmieszanie
       ośmieszania
-      ośmieszanie
-      ośmieszania
-      ośmieszenie
-      ośmieszenia
       ośmieszenie
       ośmieszenia
       ośmiobok
@@ -52302,13 +46728,8 @@ module GameRoomKrowa
       ośmioklasiści
       ośmiolatek
       ośmiolatki
-      ośmiolatek
-      ośmiolatki
       ośmiolatka
-      ośmiolatki
       ośmiornica
-      ośmiornice
-      ośmiornice
       ośmiornice
       ośmiościan
       ośmiościany
@@ -52320,13 +46741,8 @@ module GameRoomKrowa
       ośrodki
       oświadczanie
       oświadczania
-      oświadczanie
-      oświadczania
       oświadczenie
       oświadczenia
-      oświadczenie
-      oświadczenia
-      oświadczyny
       oświadczyny
       oświata
       oświaty
@@ -52338,8 +46754,6 @@ module GameRoomKrowa
       oświecenia
       oświetlacz
       oświetlacze
-      oświetlacz
-      oświetlacze
       oświetlanie
       oświetlania
       oświetlenie
@@ -52348,14 +46762,10 @@ module GameRoomKrowa
       oświęcimiacy
       otaczanie
       otaczania
-      otaczanie
-      otaczania
       otaklowanie
       otaklowania
       otaksowanie
       otaksowania
-      otarcie
-      otarcia
       otarcie
       otarcia
       otaria
@@ -52382,8 +46792,6 @@ module GameRoomKrowa
       otoczaki
       otoczenie
       otoczenia
-      otoczenie
-      otoczenia
       otoczka
       otoczki
       otocznia
@@ -52395,18 +46803,12 @@ module GameRoomKrowa
       otolaryngolog
       otolit
       otolity
-      otolity
-      otolity
       otologia
       otologie
       otomana
       otomany
       otorbianie
       otorbiania
-      otorbianie
-      otorbiania
-      otorbienie
-      otorbienia
       otorbienie
       otorbienia
       otoskleroza
@@ -52416,44 +46818,27 @@ module GameRoomKrowa
       otrąbienie
       otrąbienia
       otrąbki
-      otrąbki
       otręby
-      otręby
-      otrucie
-      otrucia
       otrucie
       otrucia
       otrzaskanie
       otrzaskania
       otrząsanie
       otrząsania
-      otrząsanie
-      otrząsania
-      otrząśnięcie
-      otrząśnięcia
       otrząśnięcie
       otrząśnięcia
       otrzepanie
       otrzepania
-      otrzepanie
-      otrzepania
-      otrzepywanie
-      otrzepywania
       otrzepywanie
       otrzepywania
       otrzewna
       otrzewne
       otrzeźwianie
       otrzeźwiania
-      otrzeźwianie
-      otrzeźwiania
-      otrzeźwienie
-      otrzeźwienia
       otrzeźwienie
       otrzeźwienia
       otrzęsienie
       otrzęsienia
-      otrzęsiny
       otrzęsiny
       otrzymanie
       otrzymania
@@ -52463,10 +46848,6 @@ module GameRoomKrowa
       otuchy
       otulanie
       otulania
-      otulanie
-      otulania
-      otulenie
-      otulenia
       otulenie
       otulenia
       otulina
@@ -52479,24 +46860,16 @@ module GameRoomKrowa
       otunity
       otwarcie
       otwarcia
-      otwarcie
-      otwarcia
       otwartość
       otwartości
       otwieracz
       otwieracze
       otwieranie
       otwierania
-      otwieranie
-      otwierania
       otworek
       otworki
       otwornica
       otwornice
-      otwornice
-      otwornice
-      otworzenie
-      otworzenia
       otworzenie
       otworzenia
       otwór
@@ -52518,10 +46891,7 @@ module GameRoomKrowa
       owadoznawstwo
       owadoznawstwa
       owadożerne
-      owadożerne
       owadziarka
-      owadziarki
-      owadziarki
       owadziarki
       owal
       owale
@@ -52529,8 +46899,6 @@ module GameRoomKrowa
       owce
       owczarek
       owczarki
-      owczarnia
-      owczarnie
       owczarnia
       owczarnie
       owczarstwo
@@ -52555,8 +46923,6 @@ module GameRoomKrowa
       owiązywania
       owicyd
       owicydy
-      owicydy
-      owicydy
       owieczka
       owieczki
       owies
@@ -52569,10 +46935,6 @@ module GameRoomKrowa
       owijacze
       owijanie
       owijania
-      owijanie
-      owijania
-      owinięcie
-      owinięcia
       owinięcie
       owinięcia
       owładnięcie
@@ -52600,9 +46962,7 @@ module GameRoomKrowa
       owodnia
       owodnie
       owodniowce
-      owodniowce
       owodniowiec
-      owodniowce
       owrzodzenie
       owrzodzenia
       owsianka
@@ -52611,27 +46971,17 @@ module GameRoomKrowa
       owsice
       owsik
       owsiki
-      owsik
-      owsiki
-      owsiki
-      owsiki
       owulacja
       owulacje
       ozalid
       ozalidy
       ozdabianie
       ozdabiania
-      ozdabianie
-      ozdabiania
       ozdoba
       ozdoby
       ozdobienie
       ozdobienia
-      ozdobienie
-      ozdobienia
       ozdobnik
-      ozdobniki
-      ozdobniki
       ozdobniki
       ozdobność
       ozdobności
@@ -52645,10 +46995,6 @@ module GameRoomKrowa
       ozębne
       oziębianie
       oziębiania
-      oziębianie
-      oziębiania
-      oziębienie
-      oziębienia
       oziębienie
       oziębienia
       oziębłość
@@ -52685,15 +47031,11 @@ module GameRoomKrowa
       ozonizacje
       ozonizator
       ozonizatory
-      ozonki
-      ozonki
       ozonosfera
       ozonosfery
       ozonowanie
       ozonowania
       ozorek
-      ozorki
-      ozorki
       ozorki
       ozór
       ozory
@@ -52707,8 +47049,6 @@ module GameRoomKrowa
       ożenki
       ożenienie
       ożenienia
-      ożenienie
-      ożenienia
       ożóg
       ożogi
       ożycie
@@ -52717,10 +47057,6 @@ module GameRoomKrowa
       ożywania
       ożywianie
       ożywiania
-      ożywianie
-      ożywiania
-      ożywienie
-      ożywienia
       ożywienie
       ożywienia
       ósemka
@@ -52737,10 +47073,6 @@ module GameRoomKrowa
       pachy
       pachoł
       pachoły
-      pachoł
-      pachoły
-      pachołek
-      pachołki
       pachołek
       pachołki
       pachwina
@@ -52752,9 +47084,7 @@ module GameRoomKrowa
       paciorek
       paciorki
       paciorkowce
-      paciorkowce
       paciorkowiec
-      paciorkowce
       pacjent
       pacjenci
       pacjentka
@@ -52781,18 +47111,12 @@ module GameRoomKrowa
       pacykarze
       pacykowanie
       pacykowania
-      pacykowanie
-      pacykowania
       pacynka
       pacynki
       paczenie
       paczenia
-      paczenie
-      paczenia
       paczka
       paczki
-      paczkarnia
-      paczkarnie
       paczkarnia
       paczkarnie
       paczkowanie
@@ -52805,8 +47129,6 @@ module GameRoomKrowa
       paczuszki
       paćka
       paćki
-      paćkanie
-      paćkania
       paćkanie
       paćkania
       pad
@@ -52845,12 +47167,8 @@ module GameRoomKrowa
       pajacowania
       pajacyk
       pajacyki
-      pajacyk
-      pajacyki
       pajączek
       pajączki
-      pająk
-      pająki
       pająk
       pająki
       pajda
@@ -52873,7 +47191,6 @@ module GameRoomKrowa
       pak
       paki
       paka
-      paki
       pakamera
       pakamery
       pakiecik
@@ -52886,8 +47203,6 @@ module GameRoomKrowa
       pakowacze
       pakowaczka
       pakowaczki
-      pakowanie
-      pakowania
       pakowanie
       pakowania
       pakowarka
@@ -52903,7 +47218,6 @@ module GameRoomKrowa
       pakularka
       pakularki
       pakuły
-      pakuły
       pakuneczek
       pakuneczki
       pakunek
@@ -52918,10 +47232,6 @@ module GameRoomKrowa
       paladyni
       palant
       palanty
-      palant
-      palanty
-      palarnia
-      palarnie
       palarnia
       palarnie
       palatalizacja
@@ -52939,10 +47249,8 @@ module GameRoomKrowa
       paląca
       palące
       palący
-      palący
       palba
       palby
-      palcochodne
       palcochodne
       palcowanie
       palcowania
@@ -52954,8 +47262,6 @@ module GameRoomKrowa
       palce
       palemka
       palemki
-      palenie
-      palenia
       palenie
       palenia
       palenisko
@@ -53026,14 +47332,10 @@ module GameRoomKrowa
       palmetki
       palmiarnia
       palmiarnie
-      palmiarnia
-      palmiarnie
       palmiczka
       palmiczki
       palmityna
       palmityny
-      palnięcie
-      palnięcia
       palnięcie
       palnięcia
       palnik
@@ -53044,7 +47346,6 @@ module GameRoomKrowa
       palotyni
       palowanie
       palowania
-      palowe
       palowe
       palpitacja
       palpitacje
@@ -53062,8 +47363,6 @@ module GameRoomKrowa
       paludamenty
       paludologia
       paludologie
-      paluszek
-      paluszki
       paluszek
       paluszki
       palusznik
@@ -53088,13 +47387,10 @@ module GameRoomKrowa
       pałąkowatości
       pałeczka
       pałeczki
-      pałeczki
-      pałeczki
       pałętanie
       pałętania
       pałka
       pałki
-      pałkowate
       pałkowate
       pamflecista
       pamfleciści
@@ -53119,7 +47415,6 @@ module GameRoomKrowa
       pampa
       pampy
       pampasy
-      pampasy
       pan
       panowie
       panaceum
@@ -53133,23 +47428,16 @@ module GameRoomKrowa
       pancerki
       pancernik
       pancerniki
-      pancernik
-      pancerniki
-      pancerniki
-      pancerniki
       pancerz
       pancerze
       pancerzowce
-      pancerzowce
       pancerzowiec
-      pancerzowce
       pancerzownica
       pancerzownice
       panczenista
       panczeniści
       panczenistka
       panczenistki
-      panczeny
       panczeny
       panda
       pandy
@@ -53214,11 +47502,9 @@ module GameRoomKrowa
       pannisko
       panniska
       panofiksy
-      panofiksy
       panoplia
       panoplie
       panoplium
-      panoplia
       panoptikum
       panoptika
       panora
@@ -53233,7 +47519,6 @@ module GameRoomKrowa
       panslawiści
       panslawizm
       panslawizmy
-      pantalony
       pantalony
       pantarka
       pantarki
@@ -53251,18 +47536,12 @@ module GameRoomKrowa
       pantofle
       pantofelek
       pantofelki
-      pantofelek
-      pantofelki
-      pantofelki
-      pantofelki
       pantofelnik
       pantofelniki
       pantoflarstwo
       pantoflarstwa
       pantoflarz
       pantoflarze
-      pantofle
-      pantofle
       pantograf
       pantografy
       pantografia
@@ -53276,22 +47555,18 @@ module GameRoomKrowa
       panująca
       panujące
       panujący
-      panujący
       panzootia
       panzootie
       państewko
       państewka
       państwo
       państwa
-      państwo
-      państwo
       państwowość
       państwowości
       pańszczyzna
       pańszczyzny
       papa
       papowie
-      papa
       papy
       papacha
       papachy
@@ -53305,8 +47580,6 @@ module GameRoomKrowa
       papiery
       papierek
       papierki
-      papiernia
-      papiernie
       papiernia
       papiernie
       papiernica
@@ -53327,15 +47600,12 @@ module GameRoomKrowa
       papierowości
       papierówka
       papierówki
-      papiery
-      papiery
       papierzysko
       papierzyska
       papiestwo
       papiestwa
       papież
       papieże
-      papiloty
       papiloty
       papirolog
       papirolodzy
@@ -53368,10 +47638,7 @@ module GameRoomKrowa
       paprotka
       paprotki
       paprotkowate
-      paprotkowate
       paprotnik
-      paprotniki
-      paprotniki
       paprotniki
       papryka
       papryki
@@ -53380,11 +47647,7 @@ module GameRoomKrowa
       paprykowanie
       paprykowania
       papucie
-      papucie
       papuć
-      papucie
-      papuć
-      papucie
       papuga
       papugi
       papugoryba
@@ -53423,8 +47686,6 @@ module GameRoomKrowa
       parafiny
       parafinowanie
       parafinowania
-      parafiny
-      parafiny
       parafowanie
       parafowania
       parafraza
@@ -53487,8 +47748,6 @@ module GameRoomKrowa
       parazytologie
       parazytoza
       parazytozy
-      parazytozy
-      parazytozy
       parcela
       parcele
       parcelacja
@@ -53511,8 +47770,6 @@ module GameRoomKrowa
       pareczki
       parecznik
       pareczniki
-      pareczniki
-      pareczniki
       paremiograf
       paremiografia
       paremiografie
@@ -53531,19 +47788,14 @@ module GameRoomKrowa
       park
       parki
       parka
-      parki
       parkan
       parkany
       parkanie
       parkania
       parkanik
       parkaniki
-      parkany
-      parkany
       parkieciarka
       parkieciarki
-      parkieciarnia
-      parkieciarnie
       parkieciarnia
       parkieciarnie
       parkiet
@@ -53560,10 +47812,6 @@ module GameRoomKrowa
       parkoty
       parkotanie
       parkotania
-      parkotanie
-      parkotania
-      parkoty
-      parkoty
       parkowanie
       parkowania
       parlament
@@ -53576,14 +47824,10 @@ module GameRoomKrowa
       parmezany
       parnas
       parnasy
-      parnas
-      parnasy
       parnasista
       parnasiści
       parnasizm
       parnasizmy
-      parnia
-      parnie
       parnia
       parnie
       parnik
@@ -53618,8 +47862,6 @@ module GameRoomKrowa
       parostatki
       parostek
       parostki
-      parostki
-      parostki
       parostwo
       parostwa
       parowanie
@@ -53648,8 +47890,6 @@ module GameRoomKrowa
       parsknięcia
       parszenie
       parszenia
-      parszywiec
-      parszywcy
       parszywiec
       parszywcy
       parszywienie
@@ -53711,21 +47951,15 @@ module GameRoomKrowa
       parzenice
       parzenie
       parzenia
-      parzenie
-      parzenia
       parzonka
       parzonki
       parzydełko
       parzydełka
       parzydełkowce
-      parzydełkowce
-      parzydełkowce
       parzydło
       parzydła
       parzystość
       parzystości
-      pas
-      pasy
       pas
       pasy
       pasanie
@@ -53768,17 +48002,12 @@ module GameRoomKrowa
       pasieki
       pasienie
       pasienia
-      pasienie
-      pasienia
       pasierb
       pasierbowie
-      pasierb
       pasierby
       pasierbica
       pasierbice
       pasikonik
-      pasikoniki
-      pasikoniki
       pasikoniki
       pasja
       pasje
@@ -53788,8 +48017,6 @@ module GameRoomKrowa
       pasjonaci
       pasjonatka
       pasjonatki
-      pasjonowanie
-      pasjonowania
       pasjonowanie
       pasjonowania
       paskal
@@ -53806,8 +48033,6 @@ module GameRoomKrowa
       paskówki
       paskudzenie
       paskudzenia
-      paskudzenie
-      paskudzenia
       paskudztwo
       paskudztwa
       pasmanteria
@@ -53816,12 +48041,8 @@ module GameRoomKrowa
       pasma
       pasowanie
       pasowania
-      pasowanie
-      pasowania
       pasowość
       pasowości
-      pasożyt
-      pasożyty
       pasożyt
       pasożyty
       pasożytnictwo
@@ -53831,14 +48052,11 @@ module GameRoomKrowa
       passa
       passy
       passacaglia
-      passacaglia
       passus
       passusy
       pasta
       pasty
       pastel
-      pastele
-      pastele
       pastele
       pastelowość
       pastelowości
@@ -53865,7 +48083,6 @@ module GameRoomKrowa
       pastorałka
       pastorałki
       pastorostwo
-      pastorostwo
       pastowanie
       pastowania
       pastownica
@@ -53889,17 +48106,13 @@ module GameRoomKrowa
       pasynkowanie
       pasynkowania
       pasywa
-      pasywa
       pasywizm
       pasywizmy
       pasywność
       pasywności
       pasza
       paszowie
-      pasza
       pasze
-      paszarnia
-      paszarnie
       paszarnia
       paszarnie
       paszcza
@@ -53918,10 +48131,6 @@ module GameRoomKrowa
       paszporty
       paszteciarnia
       paszteciarnie
-      paszteciarnia
-      paszteciarnie
-      pasztecik
-      paszteciki
       pasztecik
       paszteciki
       pasztet
@@ -53983,18 +48192,15 @@ module GameRoomKrowa
       patriotyzm
       patriotyzmy
       patrochy
-      patrochy
       patrol
       patrole
       patrolowanie
       patrolowania
       patrolowiec
       patrolowcy
-      patrolowiec
       patrolowce
       patron
       patronowie
-      patron
       patrony
       patronat
       patronaty
@@ -54016,8 +48222,6 @@ module GameRoomKrowa
       patrycjuszki
       patrzenie
       patrzenia
-      patrzenie
-      patrzenia
       patyczak
       patyczaki
       patyczek
@@ -54028,8 +48232,6 @@ module GameRoomKrowa
       patyki
       patyna
       patyny
-      patynowanie
-      patynowania
       patynowanie
       patynowania
       paulin
@@ -54050,8 +48252,6 @@ module GameRoomKrowa
       pawiany
       pawica
       pawice
-      pawice
-      pawice
       pawik
       pawiki
       pawilon
@@ -54064,7 +48264,6 @@ module GameRoomKrowa
       pazerności
       pazik
       pazikowie
-      paziowate
       paziowate
       paznokieć
       paznokcie
@@ -54081,15 +48280,10 @@ module GameRoomKrowa
       październik
       październiki
       paździerze
-      paździerze
-      pączek
-      pączki
       pączek
       pączki
       pączkowanie
       pączkowania
-      pączuszek
-      pączuszki
       pączuszek
       pączuszki
       pąk
@@ -54097,25 +48291,18 @@ module GameRoomKrowa
       pąkla
       pąkle
       pąkowie
-      pąkowie
       pąs
       pąsy
       pąsowienie
       pąsowienia
-      pąsy
-      pąsy
       pchacz
       pchacze
-      pchanie
-      pchania
       pchanie
       pchania
       pchełka
       pchełki
       pchła
       pchły
-      pchnięcie
-      pchnięcia
       pchnięcie
       pchnięcia
       pean
@@ -54136,8 +48323,6 @@ module GameRoomKrowa
       pedagogizacje
       pedalizacja
       pedalizacje
-      pedał
-      pedały
       pedał
       pedały
       pedałowanie
@@ -54182,8 +48367,6 @@ module GameRoomKrowa
       peeselowcy
       pegaz
       pegazy
-      pegaz
-      pegazy
       pegeer
       pegeery
       pegeerowiec
@@ -54198,7 +48381,6 @@ module GameRoomKrowa
       pejotl
       pejotle
       pejsy
-      pejsy
       pejzanka
       pejzanki
       pejzaż
@@ -54211,7 +48393,6 @@ module GameRoomKrowa
       pekaesy
       pekińczyk
       pekińczycy
-      pekińczyk
       pekińczyki
       peklowanie
       peklowania
@@ -54222,8 +48403,6 @@ module GameRoomKrowa
       pektorał
       pektorały
       pektyna
-      pektyny
-      pektyny
       pektyny
       pelagial
       pelagiale
@@ -54271,9 +48450,7 @@ module GameRoomKrowa
       pełnorejowiec
       pełnorejowce
       pełnorożce
-      pełnorożce
       pełnorożec
-      pełnorożce
       pełność
       pełności
       pełzacz
@@ -54281,18 +48458,15 @@ module GameRoomKrowa
       pełzak
       pełzaki
       pełzakowce
-      pełzakowce
       pełzakowica
       pełzakowice
       pełzakowiec
-      pełzakowce
       pełzanie
       pełzania
       pełzatka
       pełzatki
       pełznięcie
       pełznięcia
-      penaty
       penaty
       peneplena
       penepleny
@@ -54350,7 +48524,6 @@ module GameRoomKrowa
       pepeesowiec
       pepeesowcy
       pepegi
-      pepegi
       peperment
       pepermenty
       pepesza
@@ -54370,9 +48543,6 @@ module GameRoomKrowa
       peptyd
       peptydy
       peptydazy
-      peptydazy
-      peptydy
-      peptydy
       peptyzacja
       peptyzacje
       percepcja
@@ -54387,8 +48557,6 @@ module GameRoomKrowa
       peregrynacja
       peregrynacje
       perełka
-      perełki
-      perełki
       perełki
       perełkowanie
       perełkowania
@@ -54410,9 +48578,6 @@ module GameRoomKrowa
       perforowania
       perfumowanie
       perfumowania
-      perfumowanie
-      perfumowania
-      perfumy
       perfumy
       pergamin
       pergaminy
@@ -54443,8 +48608,6 @@ module GameRoomKrowa
       perkozy
       perkozek
       perkozki
-      perkozy
-      perkozy
       perkusista
       perkusiści
       perkusja
@@ -54463,20 +48626,14 @@ module GameRoomKrowa
       perlistości
       perlon
       perlony
-      perlony
-      perlony
       perła
       perły
       perłopław
-      perłopławy
-      perłopławy
       perłopławy
       perłowiec
       perłowce
       perłówka
       perłówki
-      perły
-      perły
       perm
       permy
       peron
@@ -54492,13 +48649,11 @@ module GameRoomKrowa
       persona
       persony
       personalia
-      personalia
       personalista
       personaliści
       personalizm
       personalizmy
       personalna
-      personalny
       personalny
       personalni
       personel
@@ -54519,8 +48674,6 @@ module GameRoomKrowa
       pertraktacje
       perturbacja
       perturbacje
-      perturbacje
-      perturbacje
       peruczka
       peruczki
       peruka
@@ -54529,10 +48682,6 @@ module GameRoomKrowa
       perukarki
       perukarnia
       perukarnie
-      perukarnia
-      perukarnie
-      perukarz
-      perukarze
       perukarz
       perukarze
       perukowiec
@@ -54544,7 +48693,6 @@ module GameRoomKrowa
       perycykle
       peryderma
       perydermy
-      peryferie
       peryferie
       peryferyjność
       peryfraza
@@ -54559,7 +48707,6 @@ module GameRoomKrowa
       perypatetycy
       perypatetyka
       perypatetyki
-      perypetie
       perypetie
       peryskop
       peryskopy
@@ -54582,8 +48729,6 @@ module GameRoomKrowa
       pestkówka
       pestkówki
       pestycyd
-      pestycydy
-      pestycydy
       pestycydy
       pesymista
       pesymiści
@@ -54625,10 +48770,6 @@ module GameRoomKrowa
       peugeoty
       pewniak
       pewniaki
-      pewniak
-      pewniaki
-      pewniak
-      pewniaki
       pewnik
       pewniki
       pewność
@@ -54662,12 +48803,8 @@ module GameRoomKrowa
       pędówki
       pędrak
       pędraki
-      pędrak
-      pędraki
       pędzanie
       pędzania
-      pędzarnia
-      pędzarnie
       pędzarnia
       pędzarnie
       pędzel
@@ -54699,13 +48836,10 @@ module GameRoomKrowa
       pęsetka
       pęsetki
       pęta
-      pęta
       pętaczyna
       pętaczyny
       pętak
       pętaki
-      pętanie
-      pętania
       pętanie
       pętania
       pętelka
@@ -54715,7 +48849,6 @@ module GameRoomKrowa
       pętlica
       pętlice
       pęto
-      pęta
       piach
       piachy
       piana
@@ -54752,12 +48885,8 @@ module GameRoomKrowa
       piaskarki
       piaskarnia
       piaskarnie
-      piaskarnia
-      piaskarnie
       piaskarz
       piaskarze
-      piaski
-      piaski
       piaskowanie
       piaskowania
       piaskowiec
@@ -54791,7 +48920,6 @@ module GameRoomKrowa
       piątek
       piątki
       piątka
-      piątki
       piątkowicz
       piątkowicze
       piątoklasista
@@ -54818,8 +48946,6 @@ module GameRoomKrowa
       piecuchy
       piecuszek
       piecuszki
-      piecuszek
-      piecuszki
       piecyk
       piecyki
       piecza
@@ -54828,8 +48954,6 @@ module GameRoomKrowa
       pieczary
       pieczarka
       pieczarki
-      pieczarkarnia
-      pieczarkarnie
       pieczarkarnia
       pieczarkarnie
       pieczarkarz
@@ -54842,28 +48966,21 @@ module GameRoomKrowa
       pieczeniarze
       pieczenie
       pieczenia
-      pieczenie
-      pieczenia
       pieczeń
-      pieczenie
       pieczęć
       pieczęcie
       pieczętowanie
       pieczętowania
-      pieczyste
       pieczyste
       pieczywo
       pieczywa
       piedestał
       piedestały
       piegi
-      piegi
       piegus
       piegusy
       piegża
       piegże
-      piekarnia
-      piekarnie
       piekarnia
       piekarnie
       piekarnictwo
@@ -54887,7 +49004,6 @@ module GameRoomKrowa
       pielenie
       pielenia
       pielesze
-      pielesze
       pielęgnacja
       pielęgnacje
       pielęgniarka
@@ -54907,7 +49023,6 @@ module GameRoomKrowa
       pieluszka
       pieluszki
       pienia
-      pienia
       pieniactwo
       pieniactwa
       pieniacz
@@ -54922,12 +49037,8 @@ module GameRoomKrowa
       pienienia
       pienik
       pieniki
-      pieniki
-      pieniki
       pień
       pnie
-      pieprz
-      pieprze
       pieprz
       pieprze
       pieprzenie
@@ -54936,33 +49047,24 @@ module GameRoomKrowa
       pieprzniczki
       pieprznięcie
       pieprznięcia
-      pieprznięcie
-      pieprznięcia
       pieprznik
       pieprzniki
       pieprzojad
       pieprzojady
       pieprzowate
-      pieprzowate
       pieprzówka
       pieprzówki
-      pieprzyk
-      pieprzyki
       pieprzyk
       pieprzyki
       pierdolenie
       pierdolenia
       pierdoła
       pierdoły
-      pierdoła
-      pierdoły
-      pierdołki
       pierdołki
       pierdzenie
       pierdzenia
       piernacik
       piernaciki
-      piernaty
       piernaty
       pierniczek
       pierniczki
@@ -54970,20 +49072,11 @@ module GameRoomKrowa
       pierniczenia
       piernik
       pierniki
-      piernik
-      pierniki
-      piernik
-      pierniki
       pierog
       pierogi
       pierożek
       pierożki
-      pierożek
-      pierożki
       pieróg
-      pierogi
-      pieróg
-      pierogi
       pierrot
       pierroci
       piersiątko
@@ -54994,8 +49087,6 @@ module GameRoomKrowa
       piersi
       pierścienica
       pierścienice
-      pierścienice
-      pierścienice
       pierścień
       pierścienie
       pierścionek
@@ -55003,16 +49094,11 @@ module GameRoomKrowa
       pierwiastek
       pierwiastki
       pierwiastka
-      pierwiastki
-      pierwiosnek
-      pierwiosnki
       pierwiosnek
       pierwiosnki
       pierwodruk
       pierwodruki
       pierwogonek
-      pierwogonki
-      pierwogonki
       pierwogonki
       pierwokup
       pierwokupy
@@ -55075,21 +49161,15 @@ module GameRoomKrowa
       piestrzenice
       pieszczenie
       pieszczenia
-      pieszczenie
-      pieszczenia
       pieszczoch
       pieszczochy
       pieszczocha
-      pieszczochy
       pieszczoszek
       pieszczoszki
       pieszczoszka
-      pieszczoszki
       pieszczota
       pieszczoty
       pieszczotka
-      pieszczotki
-      pieszczotki
       pieszczotki
       pieszy
       piesi
@@ -55130,15 +49210,11 @@ module GameRoomKrowa
       pięcioksiągi
       pięciolatek
       pięciolatki
-      pięciolatek
-      pięciolatki
       pięciolatka
-      pięciolatki
       pięciolecie
       pięciolecia
       pięciolinia
       pięciolinie
-      pięcioraczki
       pięcioraczki
       pięciornik
       pięciorniki
@@ -55155,7 +49231,6 @@ module GameRoomKrowa
       piękniś
       pięknisie
       piękno
-      piękno
       pięknoduch
       pięknoduchy
       piękność
@@ -55168,7 +49243,6 @@ module GameRoomKrowa
       pięściarze
       pięść
       pięście
-      pięść
       pięści
       pięta
       pięty
@@ -55184,16 +49258,12 @@ module GameRoomKrowa
       piętna
       piętnowanie
       piętnowania
-      piętnowanie
-      piętnowania
       piętro
       piętra
       piętrówka
       piętrówki
       piętrus
       piętrusy
-      piętrzenie
-      piętrzenia
       piętrzenie
       piętrzenia
       pif
@@ -55218,16 +49288,12 @@ module GameRoomKrowa
       pijaczyny
       pijaczysko
       pijaczyska
-      pijaczysko
-      pijaczyska
       pijak
       pijacy
       pijalnia
       pijalnie
       pijana
       pijane
-      pijanica
-      pijanice
       pijanica
       pijanice
       pijanie
@@ -55247,7 +49313,6 @@ module GameRoomKrowa
       pik
       piki
       pika
-      piki
       pikador
       pikadorzy
       pikanie
@@ -55265,7 +49330,6 @@ module GameRoomKrowa
       pikietowanie
       pikietowania
       pikle
-      pikle
       pikling
       piklingi
       piknięcie
@@ -55276,9 +49340,7 @@ module GameRoomKrowa
       pikolaki
       pikolo
       pikolowie
-      pikolo
       pikola
-      pikoty
       pikoty
       pikowanie
       pikowania
@@ -55294,23 +49356,16 @@ module GameRoomKrowa
       pilaki
       pilarz
       pilarze
-      pilarz
-      pilarze
-      pilarze
-      pilarze
-      pilarzowate
       pilarzowate
       pilaster
       pilastry
       pilastr
-      pilastry
       pilastrowanie
       pilastrowania
       pilaw
       pilawy
       pilch
       pilchy
-      pilchowate
       pilchowate
       pilenie
       pilenia
@@ -55322,17 +49377,12 @@ module GameRoomKrowa
       pilności
       pilnowanie
       pilnowania
-      pilnowanie
-      pilnowania
       pilocik
       pilociki
       pilon
       pilony
       pilot
       piloci
-      pilot
-      piloty
-      pilot
       piloty
       pilotaż
       pilotaże
@@ -55363,10 +49413,8 @@ module GameRoomKrowa
       piłkarz
       piłkarze
       piłodziobe
-      piłodziobe
       piłowanie
       piłowania
-      piłowate
       piłowate
       piment
       pimenty
@@ -55382,8 +49430,6 @@ module GameRoomKrowa
       pinczery
       pinczerek
       pinczerki
-      pinczery
-      pinczery
       pinda
       pindy
       pinezka
@@ -55404,17 +49450,11 @@ module GameRoomKrowa
       piołunówki
       pion
       piony
-      pion
-      piony
-      pionek
-      pionki
       pionek
       pionki
       pionier
       pionierzy
       pionierka
-      pionierki
-      pionierki
       pionierki
       pionierskość
       pionierskości
@@ -55451,8 +49491,6 @@ module GameRoomKrowa
       piotrosz
       piotrosze
       piotroszowate
-      piotroszowate
-      pióra
       pióra
       piórko
       piórka
@@ -55461,10 +49499,7 @@ module GameRoomKrowa
       piórnik
       piórniki
       pióro
-      pióra
       piórolotek
-      piórolotki
-      piórolotki
       piórolotki
       pióropusz
       pióropusze
@@ -55531,8 +49566,6 @@ module GameRoomKrowa
       pisaki
       pisanie
       pisania
-      pisanie
-      pisania
       pisanina
       pisaniny
       pisanka
@@ -55558,9 +49591,6 @@ module GameRoomKrowa
       piskorz
       piskorze
       piskorzowate
-      piskorzowate
-      pismak
-      pismaki
       pismak
       pismaki
       pismo
@@ -55585,10 +49615,6 @@ module GameRoomKrowa
       piszczałki
       piszczek
       piszczki
-      piszczek
-      piszczki
-      piszczel
-      piszczele
       piszczel
       piszczele
       piszczenie
@@ -55617,8 +49643,6 @@ module GameRoomKrowa
       piuski
       piwiarnia
       piwiarnie
-      piwiarnia
-      piwiarnie
       piwko
       piwka
       piwnica
@@ -55644,7 +49668,6 @@ module GameRoomKrowa
       piżmaczek
       piżmaczki
       piżmaczkowate
-      piżmaczkowate
       piżmak
       piżmaki
       piżmo
@@ -55652,9 +49675,7 @@ module GameRoomKrowa
       piżmoszczur
       piżmoszczury
       piżmowce
-      piżmowce
       piżmowiec
-      piżmowce
       piżmowół
       piżmowoły
       piżmówka
@@ -55665,11 +49686,7 @@ module GameRoomKrowa
       placki
       placenta
       placenty
-      placki
-      placki
       placowa
-      placowe
-      placowe
       placowe
       placowy
       placowi
@@ -55692,8 +49709,6 @@ module GameRoomKrowa
       plagiatorstwo
       plagiatorstwa
       plagioklaz
-      plagioklazy
-      plagioklazy
       plagioklazy
       plajta
       plajty
@@ -55723,8 +49738,6 @@ module GameRoomKrowa
       plamce
       plamienie
       plamienia
-      plamienie
-      plamienia
       plamistość
       plamistości
       plamka
@@ -55736,7 +49749,6 @@ module GameRoomKrowa
       planet
       planety
       planeta
-      planety
       planetarium
       planetaria
       planetka
@@ -55745,7 +49757,6 @@ module GameRoomKrowa
       planetoidy
       planetowanie
       planetowania
-      planigloby
       planigloby
       planimetr
       planimetry
@@ -55768,13 +49779,10 @@ module GameRoomKrowa
       plantowanie
       plantowania
       planty
-      planty
       plask
       plaski
       plaskanie
       plaskania
-      plasowanie
-      plasowania
       plasowanie
       plasowania
       plastelina
@@ -55787,34 +49795,25 @@ module GameRoomKrowa
       plastiki
       plastomer
       plastomery
-      plastomery
-      plastomery
       plastyczka
       plastyczki
       plastyczność
       plastyczności
       plastyk
       plastycy
-      plastyk
       plastyki
       plastyka
-      plastyki
       plaśnięcie
       plaśnięcia
       platan
       platany
       platanowate
-      platanowate
       plater
       platery
       platerowanie
       platerowania
-      platery
-      platery
       platforma
       platformy
-      platfus
-      platfusy
       platfus
       platfusy
       platonik
@@ -55828,9 +49827,7 @@ module GameRoomKrowa
       platynowanie
       platynowania
       platynowce
-      platynowce
       platynowiec
-      platynowce
       playback
       playbacki
       plazma
@@ -55849,8 +49846,6 @@ module GameRoomKrowa
       plażowiczki
       plażówka
       plażówki
-      plażówki
-      plażówki
       plądrowanie
       plądrowania
       pląsanie
@@ -55858,9 +49853,6 @@ module GameRoomKrowa
       pląsawica
       pląsawice
       pląsy
-      pląsy
-      plątanie
-      plątania
       plątanie
       plątania
       plątanina
@@ -55879,29 +49871,19 @@ module GameRoomKrowa
       plecaki
       plecenie
       plecenia
-      plecenie
-      plecenia
       plecha
       plechy
       plechowce
-      plechowce
       plechowiec
-      plechowce
       plecień
       pletnie
       plecionka
       plecionki
       pleciuch
       pleciuchy
-      pleciuch
-      pleciuchy
-      pleciuga
-      pleciugi
       pleciuga
       pleciugi
       plecki
-      plecki
-      plecy
       plecy
       pled
       pledy
@@ -55941,23 +49923,16 @@ module GameRoomKrowa
       pleszki
       pleśniawka
       pleśniawki
-      pleśniawki
-      pleśniawki
-      pleśnie
       pleśnie
       pleśnienie
       pleśnienia
       pleśń
-      pleśnie
       plewienie
       plewienia
       plewka
       plewki
       plewy
-      plewy
       plezjozaur
-      plezjozaury
-      plezjozaury
       plezjozaury
       plik
       pliki
@@ -55970,8 +49945,6 @@ module GameRoomKrowa
       plisowanie
       plisowania
       pliszka
-      pliszki
-      pliszki
       pliszki
       plomba
       plomby
@@ -56025,12 +49998,8 @@ module GameRoomKrowa
       pluralizmy
       plus
       plusy
-      plus
-      plusy
       plusk
       pluski
-      pluskanie
-      pluskania
       pluskanie
       pluskania
       pluskiewka
@@ -56085,8 +50054,6 @@ module GameRoomKrowa
       płakania
       płaksa
       płaksy
-      płaksa
-      płaksy
       płanetnik
       płanetnicy
       płaskonos
@@ -56107,8 +50074,6 @@ module GameRoomKrowa
       płastugi
       płaszcz
       płaszcze
-      płaszczenie
-      płaszczenia
       płaszczenie
       płaszczenia
       płaszczka
@@ -56143,8 +50108,6 @@ module GameRoomKrowa
       pławy
       pławienie
       pławienia
-      pławienie
-      pławienia
       pławik
       pławiki
       pławikonik
@@ -56155,25 +50118,17 @@ module GameRoomKrowa
       pławnice
       płaz
       płazy
-      płaz
-      płazy
       płaziniec
-      płazińce
-      płazińce
       płazińce
       płazowanie
       płazowania
-      płazy
-      płazy
       płeć
       płcie
-      płeć
       płci
       płetwa
       płetwy
       płetwal
       płetwale
-      płetwonogie
       płetwonogie
       płetwonurek
       płocha
@@ -56216,14 +50171,11 @@ module GameRoomKrowa
       płonności
       płoszenie
       płoszenia
-      płoszenie
-      płoszenia
       płot
       płoty
       płotek
       płotki
       płotka
-      płotki
       płotkarka
       płotkarki
       płotkarz
@@ -56243,27 +50195,19 @@ module GameRoomKrowa
       płótno
       płótna
       płóz
-      płozy
-      płucka
       płucka
       płucko
-      płucka
       płucnica
       płucnice
       płuco
       płuca
       płucodyszne
-      płucodyszne
       płucoserce
       płucoserca
       płucotchawka
       płucotchawki
-      płucotchawki
-      płucotchawki
       płuczka
       płuczki
-      pług
-      pługi
       pług
       pługi
       płukanie
@@ -56275,7 +50219,6 @@ module GameRoomKrowa
       płużenie
       płużenia
       płużka
-      płużki
       płużkowanie
       płużkowania
       płycina
@@ -56302,19 +50245,12 @@ module GameRoomKrowa
       pływy
       pływacz
       pływacze
-      pływacz
-      pływacze
       pływaczka
       pływaczki
       pływaczowate
-      pływaczowate
       pływak
       pływacy
-      pływak
       pływaki
-      pływak
-      pływaki
-      pływakowate
       pływakowate
       pływalnia
       pływalnie
@@ -56326,23 +50262,14 @@ module GameRoomKrowa
       pływki
       pływomierz
       pływomierze
-      pływy
-      pływy
-      pnącza
       pnącza
       pnącze
-      pnącza
       pneumatofor
-      pneumatofory
-      pneumatofory
       pneumatofory
       pneumatyk
       pneumatyki
       pneumatyka
-      pneumatyki
       pneumokok
-      pneumokoki
-      pneumokoki
       pneumokoki
       pneumonika
       pneumoniki
@@ -56350,12 +50277,8 @@ module GameRoomKrowa
       pniaczki
       pniak
       pniaki
-      pniaki
-      pniaki
       poadresowanie
       poadresowania
-      pobawienie
-      pobawienia
       pobawienie
       pobawienia
       pobeczenie
@@ -56370,8 +50293,6 @@ module GameRoomKrowa
       pobiałki
       pobicie
       pobicia
-      pobicie
-      pobicia
       pobieganie
       pobiegania
       pobiegnięcie
@@ -56382,10 +50303,6 @@ module GameRoomKrowa
       pobielania
       pobielenie
       pobielenia
-      pobielenie
-      pobielenia
-      pobieranie
-      pobierania
       pobieranie
       pobierania
       pobieżność
@@ -56418,8 +50335,6 @@ module GameRoomKrowa
       pobocznice
       pobodzenie
       pobodzenia
-      pobodzenie
-      pobodzenia
       pobojowisko
       pobojowiska
       pobolewanie
@@ -56429,29 +50344,20 @@ module GameRoomKrowa
       poborowy
       poborowi
       pobory
-      pobory
       pobożnisia
       pobożnisie
       pobożniś
-      pobożnisie
       pobożność
       pobożności
       pobór
-      pobory
       pobranie
       pobrania
-      pobranie
-      pobrania
-      pobratanie
-      pobratania
       pobratanie
       pobratania
       pobratymiec
       pobratymcy
       pobratymstwo
       pobratymstwa
-      pobrudzenie
-      pobrudzenia
       pobrudzenie
       pobrudzenia
       pobrużdżenie
@@ -56480,18 +50386,10 @@ module GameRoomKrowa
       pobudliwości
       pobudowanie
       pobudowania
-      pobudowanie
-      pobudowania
-      pobudzanie
-      pobudzania
       pobudzanie
       pobudzania
       pobudzenie
       pobudzenia
-      pobudzenie
-      pobudzenia
-      pobujanie
-      pobujania
       pobujanie
       pobujania
       poburzenie
@@ -56504,8 +50402,6 @@ module GameRoomKrowa
       pobyty
       pocałowanie
       pocałowania
-      pocałowanie
-      pocałowania
       pocałunek
       pocałunki
       pocenie
@@ -56514,8 +50410,6 @@ module GameRoomKrowa
       pocerowania
       pochewka
       pochewki
-      pochlapanie
-      pochlapania
       pochlapanie
       pochlapania
       pochlebca
@@ -56552,10 +50446,6 @@ module GameRoomKrowa
       pochopności
       pochorowanie
       pochorowania
-      pochorowanie
-      pochorowania
-      pochowanie
-      pochowania
       pochowanie
       pochowania
       pochód
@@ -56567,13 +50457,10 @@ module GameRoomKrowa
       pochrzyn
       pochrzyny
       pochrzynowate
-      pochrzynowate
       pochwa
       pochwy
       pochwalanie
       pochwalania
-      pochwalenie
-      pochwalenia
       pochwalenie
       pochwalenia
       pochwała
@@ -56586,10 +50473,6 @@ module GameRoomKrowa
       pochwytania
       pochylanie
       pochylania
-      pochylanie
-      pochylania
-      pochylenie
-      pochylenia
       pochylenie
       pochylenia
       pochylnia
@@ -56608,8 +50491,6 @@ module GameRoomKrowa
       pociągania
       pociągnięcie
       pociągnięcia
-      pociągnięcie
-      pociągnięcia
       pocichnięcie
       pocichnięcia
       pociecha
@@ -56620,16 +50501,10 @@ module GameRoomKrowa
       pocieniowania
       pocieranie
       pocierania
-      pocieranie
-      pocierania
       pocierpnięcie
       pocierpnięcia
       pocieszanie
       pocieszania
-      pocieszanie
-      pocieszania
-      pocieszenie
-      pocieszenia
       pocieszenie
       pocieszenia
       pocieszyciel
@@ -56650,18 +50525,11 @@ module GameRoomKrowa
       pocwałowania
       początek
       początki
-      początki
-      początki
-      początkujący
       początkujący
       poczciarz
       poczciarze
       poczciwiec
       poczciwcy
-      poczciwiec
-      poczciwcy
-      poczciwina
-      poczciwiny
       poczciwina
       poczciwiny
       poczciwość
@@ -56674,20 +50542,12 @@ module GameRoomKrowa
       poczernienia
       poczesanie
       poczesania
-      poczesanie
-      poczesania
-      poczesywanie
-      poczesywania
       poczesywanie
       poczesywania
       poczet
       poczty
       poczęcie
       poczęcia
-      poczęcie
-      poczęcia
-      poczęstowanie
-      poczęstowania
       poczęstowanie
       poczęstowania
       poczęstunek
@@ -56696,17 +50556,11 @@ module GameRoomKrowa
       poczłapania
       poczochranie
       poczochrania
-      poczochranie
-      poczochrania
       poczołganie
       poczołgania
       poczta
-      poczty
       pocztowiec
       pocztowcy
-      pocztowiec
-      pocztowce
-      pocztowiec
       pocztowce
       pocztówka
       pocztówki
@@ -56716,18 +50570,12 @@ module GameRoomKrowa
       poczubienia
       poczucie
       poczucia
-      poczucie
-      poczucia
-      poczuwanie
-      poczuwania
       poczuwanie
       poczuwania
       poczwara
       poczwary
       poczwarka
       poczwarki
-      poczynanie
-      poczynania
       poczynanie
       poczynania
       poczynienie
@@ -56738,16 +50586,10 @@ module GameRoomKrowa
       poczytalności
       poczytanie
       poczytania
-      poczytanie
-      poczytania
       poczytność
       poczytności
       poczytywanie
       poczytywania
-      poczytywanie
-      poczytywania
-      poćwiczenie
-      poćwiczenia
       poćwiczenie
       poćwiczenia
       podagra
@@ -56756,12 +50598,8 @@ module GameRoomKrowa
       podajniki
       podanie
       podania
-      podanie
-      podania
       podanko
       podanka
-      podarcie
-      podarcia
       podarcie
       podarcia
       podarek
@@ -56776,8 +50614,6 @@ module GameRoomKrowa
       podatnicy
       podatność
       podatności
-      podawanie
-      podawania
       podawanie
       podawania
       podawarka
@@ -56808,8 +50644,6 @@ module GameRoomKrowa
       podbiegnięcia
       podbieracz
       podbieracze
-      podbieracz
-      podbieracze
       podbierak
       podbieraki
       podbieranie
@@ -56838,15 +50672,10 @@ module GameRoomKrowa
       podbuntowania
       podburzanie
       podburzania
-      podburzanie
-      podburzania
-      podburzenie
-      podburzenia
       podburzenie
       podburzenia
       podchmielenie
       podchmielenia
-      podchody
       podchody
       podchodzenie
       podchodzenia
@@ -56857,7 +50686,6 @@ module GameRoomKrowa
       podchowanie
       podchowania
       podchód
-      podchody
       podchwycenie
       podchwycenia
       podchwyt
@@ -56866,18 +50694,11 @@ module GameRoomKrowa
       podciągi
       podciąganie
       podciągania
-      podciąganie
-      podciągania
-      podciągnięcie
-      podciągnięcia
       podciągnięcie
       podciągnięcia
       podcienie
       podcienia
       podcień
-      podcienie
-      podcieranie
-      podcierania
       podcieranie
       podcierania
       podcięcie
@@ -56886,7 +50707,6 @@ module GameRoomKrowa
       podcinania
       podciśnienie
       podciśnienia
-      podczaszy
       podczaszy
       podczernianie
       podczerniania
@@ -56900,34 +50720,24 @@ module GameRoomKrowa
       poddane
       poddanie
       poddania
-      poddanie
-      poddania
       poddany
       poddani
       poddaństwo
       poddaństwa
       poddarcie
       poddarcia
-      poddarcie
-      poddarcia
       poddasze
       poddasza
-      poddawanie
-      poddawania
       poddawanie
       poddawania
       podduszenie
       podduszenia
       poddzieranie
       poddzierania
-      poddzieranie
-      poddzierania
       podebranie
       podebrania
       podegranie
       podegrania
-      podejmowanie
-      podejmowania
       podejmowanie
       podejmowania
       podejrzana
@@ -56938,8 +50748,6 @@ module GameRoomKrowa
       podejrzenia
       podejrzewanie
       podejrzewania
-      podejrzewanie
-      podejrzewania
       podejrzliwość
       podejście
       podejścia
@@ -56947,8 +50755,6 @@ module GameRoomKrowa
       podepchnięcia
       podeptanie
       podeptania
-      poderwanie
-      poderwania
       poderwanie
       poderwania
       poderznięcie
@@ -56977,10 +50783,6 @@ module GameRoomKrowa
       podfruwania
       podgajanie
       podgajania
-      podgajanie
-      podgajania
-      podgalanie
-      podgalania
       podgalanie
       podgalania
       podganianie
@@ -56997,10 +50799,6 @@ module GameRoomKrowa
       podgatunki
       podgięcie
       podgięcia
-      podgięcie
-      podgięcia
-      podginanie
-      podginania
       podginanie
       podginania
       podglądanie
@@ -57013,18 +50811,12 @@ module GameRoomKrowa
       podgnicia
       podgojenie
       podgojenia
-      podgojenie
-      podgojenia
-      podgolenie
-      podgolenia
       podgolenie
       podgolenia
       podgonienie
       podgonienia
       podgorzałka
       podgorzałki
-      podgotowanie
-      podgotowania
       podgotowanie
       podgotowania
       podgórze
@@ -57035,18 +50827,12 @@ module GameRoomKrowa
       podgrywania
       podgryzanie
       podgryzania
-      podgryzanie
-      podgryzania
       podgryzienie
       podgryzienia
       podgrzanie
       podgrzania
-      podgrzanie
-      podgrzania
       podgrzewacz
       podgrzewacze
-      podgrzewanie
-      podgrzewania
       podgrzewanie
       podgrzewania
       podgrzybek
@@ -57069,8 +50855,6 @@ module GameRoomKrowa
       podjedzenia
       podjeżdżanie
       podjeżdżania
-      podjęcie
-      podjęcia
       podjęcie
       podjęcia
       podjudzanie
@@ -57103,15 +50887,12 @@ module GameRoomKrowa
       podkłady
       podkładanie
       podkładania
-      podkładanie
-      podkładania
       podkładka
       podkładki
       podkochiwanie
       podkochiwania
       podkolan
       podkolany
-      podkolanówki
       podkolanówki
       podkomendny
       podkomendni
@@ -57124,12 +50905,8 @@ module GameRoomKrowa
       podkopy
       podkopanie
       podkopania
-      podkopanie
-      podkopania
       podkopywacz
       podkopywacze
-      podkopywanie
-      podkopywania
       podkopywanie
       podkopywania
       podkoszulek
@@ -57137,11 +50914,9 @@ module GameRoomKrowa
       podkowa
       podkowy
       podkowce
-      podkowce
       podkowiak
       podkowiaki
       podkowiec
-      podkowce
       podkóweczka
       podkóweczki
       podkówka
@@ -57150,10 +50925,6 @@ module GameRoomKrowa
       podkpiwania
       podkradanie
       podkradania
-      podkradanie
-      podkradania
-      podkradzenie
-      podkradzenia
       podkradzenie
       podkradzenia
       podkrążenie
@@ -57170,8 +50941,6 @@ module GameRoomKrowa
       podkrojenia
       podkrzew
       podkrzewy
-      podkucie
-      podkucia
       podkucie
       podkucia
       podkulanie
@@ -57198,8 +50967,6 @@ module GameRoomKrowa
       podkuszenia
       podkuwanie
       podkuwania
-      podkuwanie
-      podkuwania
       podkuwka
       podkuwki
       podkwiatek
@@ -57212,8 +50979,6 @@ module GameRoomKrowa
       podlece
       podlecenie
       podlecenia
-      podleczenie
-      podleczenia
       podleczenie
       podleczenia
       podleganie
@@ -57254,8 +51019,6 @@ module GameRoomKrowa
       podłoża
       podłożenie
       podłożenia
-      podłożenie
-      podłożenia
       podłubanie
       podłubania
       podłużanie
@@ -57265,11 +51028,8 @@ module GameRoomKrowa
       podłużnica
       podłużnice
       podmajstrzy
-      podmajstrzy
       podmakanie
       podmakania
-      podmalowanie
-      podmalowania
       podmalowanie
       podmalowania
       podmawianie
@@ -57298,10 +51058,6 @@ module GameRoomKrowa
       podmurówki
       podmycie
       podmycia
-      podmycie
-      podmycia
-      podmywanie
-      podmywania
       podmywanie
       podmywania
       podnajem
@@ -57318,14 +51074,8 @@ module GameRoomKrowa
       podniebienia
       podniecanie
       podniecania
-      podniecanie
-      podniecania
       podniecenie
       podniecenia
-      podniecenie
-      podniecenia
-      podniesienie
-      podniesienia
       podniesienie
       podniesienia
       podnieta
@@ -57334,10 +51084,6 @@ module GameRoomKrowa
       podniosłości
       podniszczenie
       podniszczenia
-      podniszczenie
-      podniszczenia
-      podnoszenie
-      podnoszenia
       podnoszenie
       podnoszenia
       podnośnik
@@ -57352,8 +51098,6 @@ module GameRoomKrowa
       podobiadki
       podobieństwo
       podobieństwa
-      podobieranie
-      podobierania
       podobieranie
       podobierania
       podobijanie
@@ -57406,8 +51150,6 @@ module GameRoomKrowa
       podopieczni
       podorabianie
       podorabiania
-      podorabianie
-      podorabiania
       podoranie
       podorania
       podorastanie
@@ -57436,20 +51178,12 @@ module GameRoomKrowa
       podpałki
       podparcie
       podparcia
-      podparcie
-      podparcia
       podpasanie
       podpasania
-      podpasanie
-      podpasania
-      podpasienie
-      podpasienia
       podpasienie
       podpasienia
       podpaska
       podpaski
-      podpasywanie
-      podpasywania
       podpasywanie
       podpasywania
       podpatrywanie
@@ -57464,14 +51198,8 @@ module GameRoomKrowa
       podpicia
       podpieczenie
       podpieczenia
-      podpieczenie
-      podpieczenia
       podpiekanie
       podpiekania
-      podpiekanie
-      podpiekania
-      podpieranie
-      podpierania
       podpieranie
       podpierania
       podpięcie
@@ -57488,10 +51216,6 @@ module GameRoomKrowa
       podpisy
       podpisanie
       podpisania
-      podpisanie
-      podpisania
-      podpisywanie
-      podpisywania
       podpisywanie
       podpisywania
       podpiwek
@@ -57509,7 +51233,6 @@ module GameRoomKrowa
       podpowiedź
       podpowiedzi
       podpór
-      podpory
       podpórka
       podpórki
       podprawianie
@@ -57539,8 +51262,6 @@ module GameRoomKrowa
       podrabiania
       podrapanie
       podrapania
-      podrapanie
-      podrapania
       podrastanie
       podrastania
       podratowanie
@@ -57557,13 +51278,10 @@ module GameRoomKrowa
       podreptania
       podręczenie
       podręczenia
-      podręczenie
-      podręczenia
       podręcznik
       podręczniki
       podrobienie
       podrobienia
-      podroby
       podroby
       podroczenie
       podroczenia
@@ -57581,8 +51299,6 @@ module GameRoomKrowa
       podrozdziały
       podrożenie
       podrożenia
-      podrożenie
-      podrożenia
       podróż
       podróże
       podróżna
@@ -57590,7 +51306,6 @@ module GameRoomKrowa
       podróżniczek
       podróżniczki
       podróżniczka
-      podróżniczki
       podróżnik
       podróżnicy
       podróżny
@@ -57602,15 +51317,12 @@ module GameRoomKrowa
       podrwiwanie
       podrwiwania
       podrygi
-      podrygi
       podrygiwanie
       podrygiwania
       podryw
       podrywy
       podrywacz
       podrywacze
-      podrywanie
-      podrywania
       podrywanie
       podrywania
       podrywka
@@ -57633,10 +51345,6 @@ module GameRoomKrowa
       podrzynania
       podsadzanie
       podsadzania
-      podsadzanie
-      podsadzania
-      podsadzenie
-      podsadzenia
       podsadzenie
       podsadzenia
       podsadzka
@@ -57677,10 +51385,6 @@ module GameRoomKrowa
       podsłuchania
       podsmażanie
       podsmażania
-      podsmażanie
-      podsmażania
-      podsmażenie
-      podsmażenia
       podsmażenie
       podsmażenia
       podstacja
@@ -57697,7 +51401,6 @@ module GameRoomKrowa
       podstawienie
       podstawienia
       podstawka
-      podstawki
       podstawówka
       podstawówki
       podsterowność
@@ -57717,10 +51420,6 @@ module GameRoomKrowa
       podstrysza
       podstrzyganie
       podstrzygania
-      podstrzyganie
-      podstrzygania
-      podstrzyżenie
-      podstrzyżenia
       podstrzyżenie
       podstrzyżenia
       podstyczna
@@ -57731,18 +51430,12 @@ module GameRoomKrowa
       podsumowania
       podsunięcie
       podsunięcia
-      podsunięcie
-      podsunięcia
       podsuszanie
       podsuszania
       podsuszarnia
       podsuszarnie
-      podsuszarnia
-      podsuszarnie
       podsuszenie
       podsuszenia
-      podsuwanie
-      podsuwania
       podsuwanie
       podsuwania
       podsycanie
@@ -57773,18 +51466,12 @@ module GameRoomKrowa
       podszewki
       podszkolenie
       podszkolenia
-      podszkolenie
-      podszkolenia
       podszybie
       podszybia
       podszycie
       podszycia
-      podszycie
-      podszycia
       podszyt
       podszyty
-      podszywanie
-      podszywania
       podszywanie
       podszywania
       podścielanie
@@ -57802,10 +51489,6 @@ module GameRoomKrowa
       podświetlenia
       podtaczanie
       podtaczania
-      podtaczanie
-      podtaczania
-      podtarcie
-      podtarcia
       podtarcie
       podtarcia
       podtatusienie
@@ -57814,33 +51497,19 @@ module GameRoomKrowa
       podteksty
       podtlenek
       podtlenki
-      podtlenki
-      podtlenki
-      podtoczenie
-      podtoczenia
       podtoczenie
       podtoczenia
       podtorze
       podtorza
       podtrucie
       podtrucia
-      podtrucie
-      podtrucia
       podtruwanie
       podtruwania
-      podtruwanie
-      podtruwania
-      podtrzymanie
-      podtrzymania
       podtrzymanie
       podtrzymania
       podtrzymywacz
       podtuczanie
       podtuczania
-      podtuczanie
-      podtuczania
-      podtuczenie
-      podtuczenia
       podtuczenie
       podtuczenia
       podtulanie
@@ -57857,10 +51526,6 @@ module GameRoomKrowa
       poduchy
       poduczanie
       poduczania
-      poduczanie
-      poduczania
-      poduczenie
-      poduczenia
       poduczenie
       poduczenia
       podudzie
@@ -57922,7 +51587,6 @@ module GameRoomKrowa
       podwodzie
       podwodzia
       podwoje
-      podwoje
       podwojenie
       podwojenia
       podworzec
@@ -57948,17 +51612,12 @@ module GameRoomKrowa
       podwyżki
       podwyższanie
       podwyższania
-      podwyższanie
-      podwyższania
-      podwyższenie
-      podwyższenia
       podwyższenie
       podwyższenia
       podwzgórze
       podwzgórza
       podyktowanie
       podyktowania
-      podymne
       podymne
       podzamcze
       podzamcza
@@ -57976,14 +51635,10 @@ module GameRoomKrowa
       podziałki
       podzianie
       podziania
-      podzianie
-      podziania
       podziczenie
       podziczenia
       podzielanie
       podzielania
-      podzielenie
-      podzielenia
       podzielenie
       podzielenia
       podzielnik
@@ -57992,8 +51647,6 @@ module GameRoomKrowa
       podzielności
       podziemie
       podziemia
-      podziewanie
-      podziewania
       podziewanie
       podziewania
       podzięka
@@ -58009,17 +51662,12 @@ module GameRoomKrowa
       podzwanianie
       podzwaniania
       podzwonne
-      podzwonne
       podźganie
       podźgania
       podźwięk
       podźwięki
       podźwiganie
       podźwigania
-      podźwiganie
-      podźwigania
-      podźwignięcie
-      podźwignięcia
       podźwignięcie
       podźwignięcia
       podżebrze
@@ -58056,10 +51704,6 @@ module GameRoomKrowa
       poezje
       pofalowanie
       pofalowania
-      pofalowanie
-      pofalowania
-      pofałdowanie
-      pofałdowania
       pofałdowanie
       pofałdowania
       pofarbowanie
@@ -58076,8 +51720,6 @@ module GameRoomKrowa
       pofolgowania
       poformowanie
       poformowania
-      poformowanie
-      poformowania
       pofrunięcie
       pofrunięcia
       pofruwanie
@@ -58088,7 +51730,6 @@ module GameRoomKrowa
       pogadania
       pogadanka
       pogadanki
-      pogaduszki
       pogaduszki
       pogalopowanie
       pogalopowania
@@ -58106,16 +51747,12 @@ module GameRoomKrowa
       pogapienia
       pogarbienie
       pogarbienia
-      pogarbienie
-      pogarbienia
       pogarda
       pogardy
       pogardzanie
       pogardzania
       pogardzenie
       pogardzenia
-      pogarszanie
-      pogarszania
       pogarszanie
       pogarszania
       pogaszenie
@@ -58130,8 +51767,6 @@ module GameRoomKrowa
       pogderania
       pogięcie
       pogięcia
-      pogięcie
-      pogięcia
       poginięcie
       poginięcia
       pogląd
@@ -58140,20 +51775,14 @@ module GameRoomKrowa
       poglądowości
       pogładzenie
       pogładzenia
-      pogładzenie
-      pogładzenia
       pogłaskanie
       pogłaskania
       pogłębiacz
       pogłębiacze
       pogłębianie
       pogłębiania
-      pogłębianie
-      pogłębiania
       pogłębiarka
       pogłębiarki
-      pogłębienie
-      pogłębienia
       pogłębienie
       pogłębienia
       pogłos
@@ -58165,13 +51794,10 @@ module GameRoomKrowa
       pogłowienie
       pogłowienia
       pogłówne
-      pogłówne
       pogłuchnięcie
       pogłuchnięcia
       pogłupienie
       pogłupienia
-      pogmatwanie
-      pogmatwania
       pogmatwanie
       pogmatwania
       pogmeranie
@@ -58186,10 +51812,6 @@ module GameRoomKrowa
       pognicia
       pogniecenie
       pogniecenia
-      pogniecenie
-      pogniecenia
-      pogniewanie
-      pogniewania
       pogniewanie
       pogniewania
       pogoda
@@ -58200,18 +51822,12 @@ module GameRoomKrowa
       pogodynki
       pogodzenie
       pogodzenia
-      pogodzenie
-      pogodzenia
       pogoniec
       pogońce
       pogonienie
       pogonienia
       pogoń
       pogonie
-      pogońce
-      pogońce
-      pogorszenie
-      pogorszenia
       pogorszenie
       pogorszenia
       pogorzelec
@@ -58230,10 +51846,6 @@ module GameRoomKrowa
       pogrania
       pogrążanie
       pogrążania
-      pogrążanie
-      pogrążania
-      pogrążenie
-      pogrążenia
       pogrążenie
       pogrążenia
       pogrobowiec
@@ -58258,20 +51870,14 @@ module GameRoomKrowa
       pogruchotania
       pogrupowanie
       pogrupowania
-      pogrupowanie
-      pogrupowania
       pogrymaszenie
       pogrymaszenia
       pogryzanie
       pogryzania
       pogryzienie
       pogryzienia
-      pogryzienie
-      pogryzienia
       pogryzmolenie
       pogryzmolenia
-      pogrzanie
-      pogrzania
       pogrzanie
       pogrzania
       pogrzeb
@@ -58280,8 +51886,6 @@ module GameRoomKrowa
       pogrzebacze
       pogrzebanie
       pogrzebania
-      pogubienie
-      pogubienia
       pogubienie
       pogubienia
       pogwałcanie
@@ -58300,10 +51904,6 @@ module GameRoomKrowa
       pogwizdywania
       pohamowanie
       pohamowania
-      pohamowanie
-      pohamowania
-      poharatanie
-      poharatania
       poharatanie
       poharatania
       pohodowanie
@@ -58312,8 +51912,6 @@ module GameRoomKrowa
       pohukiwania
       pohulanie
       pohulania
-      pohuśtanie
-      pohuśtania
       pohuśtanie
       pohuśtania
       poidełko
@@ -58334,8 +51932,6 @@ module GameRoomKrowa
       pointylizmy
       poirytowanie
       poirytowania
-      poirytowanie
-      poirytowania
       pojadanie
       pojadania
       pojawianie
@@ -58348,16 +51944,11 @@ module GameRoomKrowa
       pojechania
       pojednanie
       pojednania
-      pojednanie
-      pojednania
-      pojednywanie
-      pojednywania
       pojednywanie
       pojednywania
       pojedynek
       pojedynki
       pojedynka
-      pojedynki
       pojedzenie
       pojedzenia
       pojemnik
@@ -58366,8 +51957,6 @@ module GameRoomKrowa
       pojemnikowce
       pojemność
       pojemności
-      pojenie
-      pojenia
       pojenie
       pojenia
       pojezierze
@@ -58384,10 +51973,6 @@ module GameRoomKrowa
       pojmowania
       pokalanie
       pokalania
-      pokalanie
-      pokalania
-      pokaleczenie
-      pokaleczenia
       pokaleczenie
       pokaleczenia
       pokapanie
@@ -58408,16 +51993,10 @@ module GameRoomKrowa
       pokazy
       pokazanie
       pokazania
-      pokazanie
-      pokazania
-      pokazywanie
-      pokazywania
       pokazywanie
       pokazywania
       pokaźność
       pokaźności
-      pokąpanie
-      pokąpania
       pokąpanie
       pokąpania
       pokąsanie
@@ -58432,8 +52011,6 @@ module GameRoomKrowa
       pokibicowania
       pokierowanie
       pokierowania
-      pokierowanie
-      pokierowania
       pokiwanie
       pokiwania
       poklask
@@ -58444,23 +52021,16 @@ module GameRoomKrowa
       poklejenia
       poklepanie
       poklepania
-      poklepanie
-      poklepania
-      poklepywanie
-      poklepywania
       poklepywanie
       poklepywania
       pokład
       pokłady
       pokładanie
       pokładania
-      pokładanie
-      pokładania
       pokładełko
       pokładełka
       pokładzenie
       pokładzenia
-      pokładziny
       pokładziny
       pokłon
       pokłony
@@ -58470,16 +52040,10 @@ module GameRoomKrowa
       pokłosia
       pokłócenie
       pokłócenia
-      pokłócenie
-      pokłócenia
-      pokłucie
-      pokłucia
       pokłucie
       pokłucia
       pokłusowanie
       pokłusowania
-      pokochanie
-      pokochania
       pokochanie
       pokochania
       pokoiczek
@@ -58500,16 +52064,12 @@ module GameRoomKrowa
       pokolorowania
       pokołysanie
       pokołysania
-      pokołysanie
-      pokołysania
       pokonanie
       pokonania
       pokonywanie
       pokonywania
       pokończenie
       pokończenia
-      pokopanie
-      pokopania
       pokopanie
       pokopania
       pokora
@@ -58532,8 +52092,6 @@ module GameRoomKrowa
       pokoty
       pokój
       pokoje
-      pokój
-      pokoje
       pokpienie
       pokpienia
       pokpiwanie
@@ -58544,10 +52102,6 @@ module GameRoomKrowa
       pokrajania
       pokraka
       pokraki
-      pokraka
-      pokraki
-      pokrapianie
-      pokrapiania
       pokrapianie
       pokrapiania
       pokraśnienie
@@ -58566,8 +52120,6 @@ module GameRoomKrowa
       pokręcania
       pokręcenie
       pokręcenia
-      pokręcenie
-      pokręcenia
       pokrętło
       pokrętła
       pokrętność
@@ -58576,40 +52128,24 @@ module GameRoomKrowa
       pokrojenia
       pokropienie
       pokropienia
-      pokropienie
-      pokropienia
       pokrowiec
       pokrowce
       pokrój
       pokroje
       pokruszenie
       pokruszenia
-      pokruszenie
-      pokruszenia
       pokrwawienie
       pokrwawienia
-      pokrwawienie
-      pokrwawienia
-      pokrycie
-      pokrycia
       pokrycie
       pokrycia
       pokrywa
       pokrywy
       pokrywanie
       pokrywania
-      pokrywanie
-      pokrywania
       pokrywka
       pokrywki
-      pokrywy
-      pokrywy
       pokrzepianie
       pokrzepiania
-      pokrzepianie
-      pokrzepiania
-      pokrzepienie
-      pokrzepienia
       pokrzepienie
       pokrzepienia
       pokrzewka
@@ -58626,18 +52162,12 @@ module GameRoomKrowa
       pokrzywdzenia
       pokrzywienie
       pokrzywienia
-      pokrzywienie
-      pokrzywienia
       pokrzywka
       pokrzywki
       pokrzywnik
       pokrzywniki
       pokrzyżowanie
       pokrzyżowania
-      pokrzyżowanie
-      pokrzyżowania
-      pokształcenie
-      pokształcenia
       pokształcenie
       pokształcenia
       pokucie
@@ -58648,10 +52178,6 @@ module GameRoomKrowa
       pokupowania
       pokurcz
       pokurcze
-      pokurcz
-      pokurcze
-      pokurczenie
-      pokurczenia
       pokurczenie
       pokurczenia
       pokusa
@@ -58674,8 +52200,6 @@ module GameRoomKrowa
       pokwapienia
       pokwaszenie
       pokwaszenia
-      pokwaszenie
-      pokwaszenia
       pokwaśnienie
       pokwaśnienia
       pokwękiwanie
@@ -58694,14 +52218,10 @@ module GameRoomKrowa
       polany
       polanie
       polania
-      polanie
-      polania
       polanka
       polanki
       polanko
-      polanka
       polano
-      polana
       polarnictwo
       polarnictwa
       polarnik
@@ -58714,8 +52234,6 @@ module GameRoomKrowa
       polaryzatory
       polaryzowanie
       polaryzowania
-      polaryzowanie
-      polaryzowania
       polatanie
       polatania
       polatucha
@@ -58724,16 +52242,10 @@ module GameRoomKrowa
       polatywania
       polder
       poldery
-      poldery
-      poldery
       pole
       pola
       polecanie
       polecania
-      polecanie
-      polecania
-      polecenie
-      polecenia
       polecenie
       polecenia
       polecony
@@ -58762,22 +52274,14 @@ module GameRoomKrowa
       polepy
       polepienie
       polepienia
-      polepienie
-      polepienia
       polepszanie
       polepszania
-      polepszanie
-      polepszania
-      polepszenie
-      polepszenia
       polepszenie
       polepszenia
       poler
       polery
       polerka
       polerki
-      polerowanie
-      polerowania
       polerowanie
       polerowania
       polerownia
@@ -58792,8 +52296,6 @@ module GameRoomKrowa
       polewaczki
       polewanie
       polewania
-      polewanie
-      polewania
       polewarka
       polewarki
       polewka
@@ -58805,8 +52307,6 @@ module GameRoomKrowa
       polędwiczka
       polędwiczki
       poliamid
-      poliamidy
-      poliamidy
       poliamidy
       poliandria
       poliandrie
@@ -58824,8 +52324,6 @@ module GameRoomKrowa
       policjanci
       policzek
       policzki
-      policzenie
-      policzenia
       policzenie
       policzenia
       policzkowanie
@@ -58875,8 +52373,6 @@ module GameRoomKrowa
       polikondensat
       polimer
       polimery
-      polimery
-      polimery
       polimeryzacja
       polimeryzacje
       polimorfizm
@@ -58896,8 +52392,6 @@ module GameRoomKrowa
       polisa
       polisy
       polisacharyd
-      polisacharydy
-      polisacharydy
       polisacharydy
       polisemia
       polisemie
@@ -58934,14 +52428,10 @@ module GameRoomKrowa
       politykowania
       poliuretan
       poliuretany
-      poliuretany
-      poliuretany
       poliuria
       poliurie
       polizanie
       polizania
-      polka
-      polki
       polka
       polki
       polokowanie
@@ -58950,7 +52440,6 @@ module GameRoomKrowa
       polony
       polonez
       polonezy
-      polonika
       polonika
       polonista
       poloniści
@@ -58966,8 +52455,6 @@ module GameRoomKrowa
       polonizmy
       polonizowanie
       polonizowania
-      polonizowanie
-      polonizowania
       polonofil
       polonofile
       polonofob
@@ -58976,7 +52463,6 @@ module GameRoomKrowa
       polonofobie
       polonus
       polonusy
-      polonus
       polonusi
       polopiryna
       polopiryny
@@ -58998,12 +52484,8 @@ module GameRoomKrowa
       polskości
       polszczenie
       polszczenia
-      polszczenie
-      polszczenia
       polszczyzna
       polszczyzny
-      polubienie
-      polubienia
       polubienie
       polubienia
       polucja
@@ -59022,14 +52504,9 @@ module GameRoomKrowa
       połakomienia
       połamanie
       połamania
-      połamanie
-      połamania
       połamaniec
       połamańcy
-      połamaniec
       połamańce
-      połapanie
-      połapania
       połapanie
       połapania
       połaskotanie
@@ -59050,8 +52527,6 @@ module GameRoomKrowa
       połażenia
       połączenie
       połączenia
-      połączenie
-      połączenia
       połechtanie
       połechtania
       połeć
@@ -59068,8 +52543,6 @@ module GameRoomKrowa
       połowiczności
       położenie
       położenia
-      położenie
-      położenia
       położna
       położne
       położnica
@@ -59081,12 +52554,9 @@ module GameRoomKrowa
       połóg
       połogi
       połów
-      połowy
       połówka
       połówki
       południca
-      południce
-      południce
       południce
       południe
       południa
@@ -59096,8 +52566,6 @@ module GameRoomKrowa
       południowcy
       połupanie
       połupania
-      połuszczenie
-      połuszczenia
       połuszczenie
       połuszczenia
       połykacz
@@ -59112,8 +52580,6 @@ module GameRoomKrowa
       połyskliwości
       pomacanie
       pomacania
-      pomacanie
-      pomacania
       pomachanie
       pomachania
       pomada
@@ -59124,8 +52590,6 @@ module GameRoomKrowa
       pomagania
       pomagier
       pomagierzy
-      pomalowanie
-      pomalowania
       pomalowanie
       pomalowania
       pomarańcza
@@ -59140,16 +52604,10 @@ module GameRoomKrowa
       pomarnienia
       pomarnowanie
       pomarnowania
-      pomarnowanie
-      pomarnowania
-      pomarszczenie
-      pomarszczenia
       pomarszczenie
       pomarszczenia
       pomarznięcie
       pomarznięcia
-      pomawianie
-      pomawiania
       pomawianie
       pomawiania
       pomazanie
@@ -59158,14 +52616,10 @@ module GameRoomKrowa
       pomazańcy
       pomącenie
       pomącenia
-      pomącenie
-      pomącenia
       pomdlenie
       pomdlenia
       pomedytowanie
       pomedytowania
-      pomęczenie
-      pomęczenia
       pomęczenie
       pomęczenia
       pomiar
@@ -59174,28 +52628,18 @@ module GameRoomKrowa
       pomiatania
       pomidor
       pomidory
-      pomidor
-      pomidory
       pomidorówka
       pomidorówki
       pomierzenie
       pomierzenia
       pomierzwienie
       pomierzwienia
-      pomierzwienie
-      pomierzwienia
       pomieszanie
       pomieszania
-      pomieszanie
-      pomieszania
-      pomieszczenie
-      pomieszczenia
       pomieszczenie
       pomieszczenia
       pomieszkanie
       pomieszkania
-      pomięcie
-      pomięcia
       pomięcie
       pomięcia
       pomijanie
@@ -59216,24 +52660,16 @@ module GameRoomKrowa
       pomłócenia
       pomnażanie
       pomnażania
-      pomnażanie
-      pomnażania
       pomniczek
       pomniczki
       pomniejszanie
       pomniejszania
-      pomniejszanie
-      pomniejszania
-      pomniejszenie
-      pomniejszenia
       pomniejszenie
       pomniejszenia
       pomnik
       pomniki
       pomnikowość
       pomnikowości
-      pomnożenie
-      pomnożenia
       pomnożenie
       pomnożenia
       pomoc
@@ -59246,16 +52682,12 @@ module GameRoomKrowa
       pomocnicy
       pomoczenie
       pomoczenia
-      pomoczenie
-      pomoczenia
       pomodlenie
       pomodlenia
       pomolog
       pomolodzy
       pomologia
       pomologie
-      pomordowanie
-      pomordowania
       pomordowanie
       pomordowania
       pomornik
@@ -59266,8 +52698,6 @@ module GameRoomKrowa
       pomostki
       pomór
       pomory
-      pomówienie
-      pomówienia
       pomówienie
       pomówienia
       pompa
@@ -59304,12 +52734,8 @@ module GameRoomKrowa
       pomstowania
       pomszczenie
       pomszczenia
-      pomszczenie
-      pomszczenia
       pomuchla
       pomuchle
-      pomurnik
-      pomurniki
       pomurnik
       pomurniki
       pomurowanie
@@ -59319,11 +52745,8 @@ module GameRoomKrowa
       pomycie
       pomycia
       pomyje
-      pomyje
       pomykanie
       pomykania
-      pomylenie
-      pomylenia
       pomylenie
       pomylenia
       pomyleniec
@@ -59354,14 +52777,8 @@ module GameRoomKrowa
       ponabierania
       ponabijanie
       ponabijania
-      ponabijanie
-      ponabijania
       ponaciąganie
       ponaciągania
-      ponaciąganie
-      ponaciągania
-      ponacinanie
-      ponacinania
       ponacinanie
       ponacinania
       ponadawanie
@@ -59384,8 +52801,6 @@ module GameRoomKrowa
       ponakręcania
       ponakrywanie
       ponakrywania
-      ponakrywanie
-      ponakrywania
       ponalepianie
       ponalepiania
       ponalewanie
@@ -59396,8 +52811,6 @@ module GameRoomKrowa
       ponaprawiania
       ponapychanie
       ponapychania
-      ponapychanie
-      ponapychania
       ponarzekanie
       ponarzekania
       ponarzucanie
@@ -59406,8 +52819,6 @@ module GameRoomKrowa
       ponastawiania
       ponaszywanie
       ponaszywania
-      ponawianie
-      ponawiania
       ponawianie
       ponawiania
       ponawlekanie
@@ -59421,7 +52832,6 @@ module GameRoomKrowa
       pond
       pondy
       ponderabilia
-      ponderabilia
       ponętność
       ponętności
       poniańczenie
@@ -59434,20 +52844,12 @@ module GameRoomKrowa
       poniesienia
       poniewieranie
       poniewierania
-      poniewieranie
-      poniewierania
       poniewierka
       poniewierki
       poniszczenie
       poniszczenia
-      poniszczenie
-      poniszczenia
       poniżanie
       poniżania
-      poniżanie
-      poniżania
-      poniżenie
-      poniżenia
       poniżenie
       poniżenia
       ponoszenie
@@ -59458,14 +52860,10 @@ module GameRoomKrowa
       ponowy
       ponowienie
       ponowienia
-      ponowienie
-      ponowienia
       ponton
       pontony
       pontonier
       pontonierzy
-      ponudzenie
-      ponudzenia
       ponudzenie
       ponudzenia
       ponumerowanie
@@ -59482,20 +52880,12 @@ module GameRoomKrowa
       pończoszarki
       pończoszarnia
       pończoszarnie
-      pończoszarnia
-      pończoszarnie
       pończoszka
       pończoszki
-      pończoszki
-      pończoszki
-      poobalanie
-      poobalania
       poobalanie
       poobalania
       poobcieranie
       poobcierania
-      poobcinanie
-      poobcinania
       poobcinanie
       poobcinania
       poobdzieranie
@@ -59504,12 +52894,8 @@ module GameRoomKrowa
       poobgryzania
       poobijanie
       poobijania
-      poobijanie
-      poobijania
       pooblepianie
       pooblepiania
-      poobłamywanie
-      poobłamywania
       poobłamywanie
       poobłamywania
       poobłupywanie
@@ -59518,16 +52904,10 @@ module GameRoomKrowa
       poobmiatania
       poobracanie
       poobracania
-      poobracanie
-      poobracania
       poobrastanie
       poobrastania
       poobrywanie
       poobrywania
-      poobrywanie
-      poobrywania
-      poobrzucanie
-      poobrzucania
       poobrzucanie
       poobrzucania
       poobrzynanie
@@ -59540,10 +52920,6 @@ module GameRoomKrowa
       poobszywania
       poobwieszanie
       poobwieszania
-      poobwieszanie
-      poobwieszania
-      poobwijanie
-      poobwijania
       poobwijanie
       poobwijania
       poociosywanie
@@ -59566,30 +52942,20 @@ module GameRoomKrowa
       poodgarniania
       poodginanie
       poodginania
-      poodginanie
-      poodginania
       poodjeżdżanie
       poodjeżdżania
-      poodklejanie
-      poodklejania
       poodklejanie
       poodklejania
       poodkładanie
       poodkładania
       poodkręcanie
       poodkręcania
-      poodkręcanie
-      poodkręcania
-      poodkrywanie
-      poodkrywania
       poodkrywanie
       poodkrywania
       poodlatywanie
       poodlatywania
       poodmrażanie
       poodmrażania
-      poodnawianie
-      poodnawiania
       poodnawianie
       poodnawiania
       poodnoszenie
@@ -59600,12 +52966,8 @@ module GameRoomKrowa
       poodpływania
       poodpruwanie
       poodpruwania
-      poodpruwanie
-      poodpruwania
       poodrąbywanie
       poodrąbywania
-      poodrywanie
-      poodrywania
       poodrywanie
       poodrywania
       poodrzucanie
@@ -59614,18 +52976,12 @@ module GameRoomKrowa
       poodsłaniania
       poodsuwanie
       poodsuwania
-      poodsuwanie
-      poodsuwania
       poodwalanie
       poodwalania
       poodwiedzanie
       poodwiedzania
-      poodwiedzanie
-      poodwiedzania
       poodwożenie
       poodwożenia
-      poodwracanie
-      poodwracania
       poodwracanie
       poodwracania
       pooglądanie
@@ -59636,16 +52992,10 @@ module GameRoomKrowa
       pookrawania
       pookręcanie
       pookręcania
-      pookręcanie
-      pookręcania
-      pookrywanie
-      pookrywania
       pookrywanie
       pookrywania
       poopadanie
       poopadania
-      poopalanie
-      poopalania
       poopalanie
       poopalania
       poopisywanie
@@ -59654,8 +53004,6 @@ module GameRoomKrowa
       pooplatania
       pooprawianie
       pooprawiania
-      poopuszczanie
-      poopuszczania
       poopuszczanie
       poopuszczania
       pooranie
@@ -59672,20 +53020,12 @@ module GameRoomKrowa
       pootaczania
       pootulanie
       pootulania
-      pootulanie
-      pootulania
       pootwieranie
       pootwierania
-      pootwieranie
-      pootwierania
-      poowijanie
-      poowijania
       poowijanie
       poowijania
       pop
       popi
-      popaczenie
-      popaczenia
       popaczenie
       popaczenia
       popadanie
@@ -59696,18 +53036,12 @@ module GameRoomKrowa
       popakowania
       popalenie
       popalenia
-      popalenie
-      popalenia
       popamiętanie
       popamiętania
       poparcie
       poparcia
-      poparcie
-      poparcia
       popart
       poparty
-      poparzenie
-      poparzenia
       poparzenie
       poparzenia
       popas
@@ -59716,16 +53050,10 @@ module GameRoomKrowa
       popasania
       popasienie
       popasienia
-      popasienie
-      popasienia
       popatrywanie
       popatrywania
       popatrzenie
       popatrzenia
-      popatrzenie
-      popatrzenia
-      popchnięcie
-      popchnięcia
       popchnięcie
       popchnięcia
       popelina
@@ -59746,17 +53074,11 @@ module GameRoomKrowa
       popękania
       popicie
       popicia
-      popicie
-      popicia
-      popieczenie
-      popieczenia
       popieczenie
       popieczenia
       popielatość
       popielatości
       popielica
-      popielice
-      popielice
       popielice
       popielisko
       popieliska
@@ -59770,12 +53092,8 @@ module GameRoomKrowa
       popieprzenia
       popieranie
       popierania
-      popieranie
-      popierania
       popiersie
       popiersia
-      popieszczenie
-      popieszczenia
       popieszczenie
       popieszczenia
       popijanie
@@ -59790,8 +53108,6 @@ module GameRoomKrowa
       popisy
       popisanie
       popisania
-      popisanie
-      popisania
       popiskiwanie
       popiskiwania
       popisowość
@@ -59800,10 +53116,6 @@ module GameRoomKrowa
       popisywania
       poplamienie
       poplamienia
-      poplamienie
-      poplamienia
-      poplątanie
-      poplątania
       poplątanie
       poplątania
       poplecenie
@@ -59824,14 +53136,10 @@ module GameRoomKrowa
       poplucia
       popluskanie
       popluskania
-      popluskanie
-      popluskania
       popłacanie
       popłacania
       popłacenie
       popłacenia
-      popłakanie
-      popłakania
       popłakanie
       popłakania
       popłakiwanie
@@ -59841,8 +53149,6 @@ module GameRoomKrowa
       popłoszenie
       popłoszenia
       popłuczki
-      popłuczki
-      popłuczyny
       popłuczyny
       popłukanie
       popłukania
@@ -59858,8 +53164,6 @@ module GameRoomKrowa
       popodginania
       popodlewanie
       popodlewania
-      popodnoszenie
-      popodnoszenia
       popodnoszenie
       popodnoszenia
       popodpieranie
@@ -59890,13 +53194,8 @@ module GameRoomKrowa
       poprawiacze
       poprawianie
       poprawiania
-      poprawianie
-      poprawiania
       poprawienie
       poprawienia
-      poprawienie
-      poprawienia
-      poprawiny
       poprawiny
       poprawka
       poprawki
@@ -59910,10 +53209,6 @@ module GameRoomKrowa
       poproszenia
       poprowadzenie
       poprowadzenia
-      poprowadzenie
-      poprowadzenia
-      popróbowanie
-      popróbowania
       popróbowanie
       popróbowania
       popróchnienie
@@ -59932,14 +53227,11 @@ module GameRoomKrowa
       poprzedniczki
       poprzednik
       poprzednicy
-      poprzednik
       poprzedniki
       poprzedzanie
       poprzedzania
       poprzedzenie
       poprzedzenia
-      poprzerywanie
-      poprzerywania
       poprzerywanie
       poprzerywania
       poprzestanie
@@ -59954,16 +53246,12 @@ module GameRoomKrowa
       poprzypinania
       poprzysuwanie
       poprzysuwania
-      poprzysuwanie
-      poprzysuwania
       poprzywożenie
       poprzywożenia
       popsioczenie
       popsioczenia
       popstrzenie
       popstrzenia
-      popsucie
-      popsucia
       popsucie
       popsucia
       popuchnięcie
@@ -59987,20 +53275,13 @@ module GameRoomKrowa
       popychadła
       popychanie
       popychania
-      popychanie
-      popychania
       popyt
       popyty
-      popytanie
-      popytania
       popytanie
       popytania
       por
       pory
       pora
-      pory
-      porachowanie
-      porachowania
       porachowanie
       porachowania
       porachunek
@@ -60017,16 +53298,10 @@ module GameRoomKrowa
       poradniki
       poradzenie
       poradzenia
-      poradzenie
-      poradzenia
-      poranek
-      poranki
       poranek
       poranki
       poranie
       porania
-      poranienie
-      poranienia
       poranienie
       poranienia
       porastanie
@@ -60048,7 +53323,6 @@ module GameRoomKrowa
       porcelit
       porcelity
       porcięta
-      porcięta
       porcik
       porciki
       porcja
@@ -60067,8 +53341,6 @@ module GameRoomKrowa
       poręcze
       poręczanie
       poręczania
-      poręcze
-      poręcze
       poręczenie
       poręczenia
       poręczność
@@ -60082,13 +53354,10 @@ module GameRoomKrowa
       porfir
       porfiry
       porfira
-      porfiry
       porfiryt
       porfiryty
       pornografia
       pornografie
-      porobienie
-      porobienia
       porobienie
       porobienia
       porodówka
@@ -60096,19 +53365,14 @@ module GameRoomKrowa
       porodzenie
       porodzenia
       porohy
-      porohy
       poronienie
       poronienia
       porost
       porosty
       porostnica
       porostnice
-      porosty
-      porosty
-      porośla
       porośla
       porośle
-      porośla
       porośnięcie
       porośnięcia
       porowatość
@@ -60117,14 +53381,8 @@ module GameRoomKrowa
       porozbiegania
       porozbieranie
       porozbierania
-      porozbieranie
-      porozbierania
       porozbijanie
       porozbijania
-      porozbijanie
-      porozbijania
-      porozciąganie
-      porozciągania
       porozciąganie
       porozciągania
       porozcieranie
@@ -60139,14 +53397,8 @@ module GameRoomKrowa
       porozglądania
       porozklejanie
       porozklejania
-      porozklejanie
-      porozklejania
       porozkładanie
       porozkładania
-      porozkładanie
-      porozkładania
-      porozkręcanie
-      porozkręcania
       porozkręcanie
       porozkręcania
       porozlepianie
@@ -60167,18 +53419,12 @@ module GameRoomKrowa
       porozpędzania
       porozpinanie
       porozpinania
-      porozpinanie
-      porozpinania
       porozplatanie
       porozplatania
       porozpruwanie
       porozpruwania
-      porozpruwanie
-      porozpruwania
       porozrastanie
       porozrastania
-      porozrywanie
-      porozrywania
       porozrywanie
       porozrywania
       porozrzucanie
@@ -60199,14 +53445,8 @@ module GameRoomKrowa
       porozsyłania
       porozumienie
       porozumienia
-      porozumienie
-      porozumienia
       porozwalanie
       porozwalania
-      porozwalanie
-      porozwalania
-      porozwijanie
-      porozwijania
       porozwijanie
       porozwijania
       porozwlekanie
@@ -60219,14 +53459,8 @@ module GameRoomKrowa
       porody
       porównanie
       porównania
-      porównanie
-      porównania
       porównywanie
       porównywania
-      porównywanie
-      porównywania
-      poróżnienie
-      poróżnienia
       poróżnienie
       poróżnienia
       poróżowienie
@@ -60236,10 +53470,7 @@ module GameRoomKrowa
       portal
       portale
       portaski
-      portaski
       portasy
-      portasy
-      porteczki
       porteczki
       porter
       portery
@@ -60259,15 +53490,11 @@ module GameRoomKrowa
       portierki
       portiernia
       portiernie
-      portiernia
-      portiernie
-      portki
       portki
       portmonetka
       portmonetki
       porto
       porta
-      portowe
       portowe
       portowiec
       portowcy
@@ -60281,11 +53508,8 @@ module GameRoomKrowa
       portrety
       portretowanie
       portretowania
-      portretowanie
-      portretowania
       portulaka
       portulaki
-      portulakowate
       portulakowate
       portwajn
       portwajny
@@ -60299,22 +53523,12 @@ module GameRoomKrowa
       porucznicy
       porujnowanie
       porujnowania
-      porujnowanie
-      porujnowania
-      poruszanie
-      poruszania
       poruszanie
       poruszania
       poruszenie
       poruszenia
-      poruszenie
-      poruszenia
       porwanie
       porwania
-      porwanie
-      porwania
-      pory
-      pory
       poryblin
       porybliny
       poryblinowaty
@@ -60325,14 +53539,10 @@ module GameRoomKrowa
       porykiwania
       porysowanie
       porysowania
-      porysowanie
-      porysowania
       poryw
       porywy
       porywacz
       porywacze
-      porywanie
-      porywania
       porywanie
       porywania
       porywczość
@@ -60340,8 +53550,6 @@ module GameRoomKrowa
       porywistość
       porywistości
       porządek
-      porządki
-      porządki
       porządki
       porządkowa
       porządkowe
@@ -60353,8 +53561,6 @@ module GameRoomKrowa
       porządnickie
       porządzenie
       porządzenia
-      porządzenie
-      porządzenia
       porzecze
       porzecza
       porzeczka
@@ -60363,20 +53569,12 @@ module GameRoomKrowa
       porzekadła
       porznięcie
       porznięcia
-      porznięcie
-      porznięcia
-      porzucanie
-      porzucania
       porzucanie
       porzucania
       porzucenie
       porzucenia
       porzyganie
       porzygania
-      porzyganie
-      porzygania
-      porżnięcie
-      porżnięcia
       porżnięcie
       porżnięcia
       posada
@@ -60395,10 +53593,6 @@ module GameRoomKrowa
       posapywania
       posądzanie
       posądzania
-      posądzanie
-      posądzania
-      posądzenie
-      posądzenia
       posądzenie
       posądzenia
       posąg
@@ -60409,8 +53603,6 @@ module GameRoomKrowa
       posążki
       poschnięcie
       poschnięcia
-      poschodzenie
-      poschodzenia
       poschodzenie
       poschodzenia
       poselstwo
@@ -60433,7 +53625,6 @@ module GameRoomKrowa
       posiadania
       posiadłości
       posiadłość
-      posiadłości
       posiadywanie
       posiadywania
       posianie
@@ -60444,22 +53635,14 @@ module GameRoomKrowa
       posiekania
       posiepanie
       posiepania
-      posiepanie
-      posiepania
       posiew
       posiewy
       posilanie
       posilania
-      posilanie
-      posilania
-      posilenie
-      posilenia
       posilenie
       posilenia
       posiłek
       posiłki
-      posiłkowanie
-      posiłkowania
       posiłkowanie
       posiłkowania
       posiniaczenie
@@ -60470,20 +53653,14 @@ module GameRoomKrowa
       posiodłania
       posiusianie
       posiusiania
-      posiusianie
-      posiusiania
       posiwienie
       posiwienia
       poskakanie
       poskakania
       poskarżenie
       poskarżenia
-      poskarżenie
-      poskarżenia
       poskąpienie
       poskąpienia
-      posklejanie
-      posklejania
       posklejanie
       posklejania
       poskładanie
@@ -60498,10 +53675,6 @@ module GameRoomKrowa
       poskreślania
       poskręcanie
       poskręcania
-      poskręcanie
-      poskręcania
-      poskrobanie
-      poskrobania
       poskrobanie
       poskrobania
       poskrom
@@ -60530,7 +53703,6 @@ module GameRoomKrowa
       posłonki
       posłowanie
       posłowania
-      posłowie
       posłowia
       posłuch
       posłuchy
@@ -60542,12 +53714,8 @@ module GameRoomKrowa
       posługaczki
       posługiwanie
       posługiwania
-      posługiwanie
-      posługiwania
       posłuszeństwo
       posłuszeństwa
-      posłużenie
-      posłużenia
       posłużenie
       posłużenia
       posłyszenie
@@ -60558,8 +53726,6 @@ module GameRoomKrowa
       posmaki
       posmakowanie
       posmakowania
-      posmarowanie
-      posmarowania
       posmarowanie
       posmarowania
       posmutnienie
@@ -60578,12 +53744,8 @@ module GameRoomKrowa
       pospajania
       pospanie
       pospania
-      pospanie
-      pospania
       pospawanie
       pospawania
-      pospieranie
-      pospierania
       pospieranie
       pospierania
       pospieszanie
@@ -60614,17 +53776,12 @@ module GameRoomKrowa
       pospuszczania
       posrebrzanie
       posrebrzania
-      posrebrzanie
-      posrebrzania
-      posrebrzenie
-      posrebrzenia
       posrebrzenie
       posrebrzenia
       post
       posty
       postać
       postacie
-      postać
       postaci
       postanawianie
       postanawiania
@@ -60638,12 +53795,8 @@ module GameRoomKrowa
       postarzania
       postarzenie
       postarzenia
-      postarzenie
-      postarzenia
       postawa
       postawy
-      postawienie
-      postawienia
       postawienie
       postawienia
       postąpienie
@@ -60671,7 +53824,6 @@ module GameRoomKrowa
       postglacjał
       postglacjały
       postojowe
-      postojowe
       postój
       postoje
       postponowanie
@@ -60688,8 +53840,6 @@ module GameRoomKrowa
       postrącania
       postrojenie
       postrojenia
-      postrojenie
-      postrojenia
       postronek
       postronki
       postrzał
@@ -60704,14 +53854,10 @@ module GameRoomKrowa
       postrzelania
       postrzelenie
       postrzelenia
-      postrzelenie
-      postrzelenia
       postrzeleniec
       postrzeleńcy
       postrzeżenie
       postrzeżenia
-      postrzępienie
-      postrzępienia
       postrzępienie
       postrzępienia
       postrzygacz
@@ -60725,18 +53871,13 @@ module GameRoomKrowa
       postrzyżenie
       postrzyżenia
       postrzyżyny
-      postrzyżyny
       postsymbolizm
       postudiowanie
       postudiowania
       postukanie
       postukania
-      postukanie
-      postukania
       postukiwanie
       postukiwania
-      postulanie
-      postulania
       postulanie
       postulania
       postulat
@@ -60751,16 +53892,12 @@ module GameRoomKrowa
       posuchy
       posunięcie
       posunięcia
-      posunięcie
-      posunięcia
       posusz
       posusze
       posuszenie
       posuszenia
       posuw
       posuwy
-      posuwanie
-      posuwania
       posuwanie
       posuwania
       posuwistość
@@ -60773,16 +53910,12 @@ module GameRoomKrowa
       posyłania
       posypanie
       posypania
-      posypanie
-      posypania
       posypywanie
       posypywania
       poszalenie
       poszalenia
       poszanowanie
       poszanowania
-      poszarpanie
-      poszarpania
       poszarpanie
       poszarpania
       poszarzenie
@@ -60807,10 +53940,6 @@ module GameRoomKrowa
       poszeptywania
       poszerzanie
       poszerzania
-      poszerzanie
-      poszerzania
-      poszerzenie
-      poszerzenia
       poszerzenie
       poszerzenia
       poszeweczka
@@ -60820,7 +53949,6 @@ module GameRoomKrowa
       poszkodowana
       poszkodowane
       poszkodowany
-      poszkodowany
       poszlaka
       poszlaki
       poszorowanie
@@ -60829,8 +53957,6 @@ module GameRoomKrowa
       poszperania
       posztukowanie
       posztukowania
-      poszturchanie
-      poszturchania
       poszturchanie
       poszturchania
       poszukanie
@@ -60859,22 +53985,16 @@ module GameRoomKrowa
       poszywania
       pościąganie
       pościągania
-      pościąganie
-      pościągania
       pościel
       pościele
       pościelenie
       pościelenia
       pościeranie
       pościerania
-      pościeranie
-      pościerania
       pościg
       pościgi
       pościgowiec
       pościgowce
-      pościnanie
-      pościnania
       pościnanie
       pościnania
       poślad
@@ -60913,10 +54033,6 @@ module GameRoomKrowa
       pośpiechy
       pośpieszanie
       pośpieszania
-      pośpieszanie
-      pośpieszania
-      pośpieszenie
-      pośpieszenia
       pośpieszenie
       pośpieszenia
       pośpieszny
@@ -60941,10 +54057,6 @@ module GameRoomKrowa
       poświecenia
       poświęcanie
       poświęcania
-      poświęcanie
-      poświęcania
-      poświęcenie
-      poświęcenia
       poświęcenie
       poświęcenia
       poświętnik
@@ -60967,10 +54079,6 @@ module GameRoomKrowa
       potańczenia
       potarcie
       potarcia
-      potarcie
-      potarcia
-      potarganie
-      potargania
       potarganie
       potargania
       potargowanie
@@ -60982,9 +54090,7 @@ module GameRoomKrowa
       potasowanie
       potasowania
       potasowce
-      potasowce
       potasowiec
-      potasowce
       potaszczenie
       potaszczenia
       potaż
@@ -61002,8 +54108,6 @@ module GameRoomKrowa
       potęgi
       potęgowanie
       potęgowania
-      potęgowanie
-      potęgowania
       potępianie
       potępiania
       potępienie
@@ -61016,18 +54120,12 @@ module GameRoomKrowa
       potężnienia
       potknięcie
       potknięcia
-      potknięcie
-      potknięcia
       potliwość
       potliwości
       potłuczenie
       potłuczenia
-      potłuczenie
-      potłuczenia
       potłumaczenie
       potłumaczenia
-      potłuszczenie
-      potłuszczenia
       potłuszczenie
       potłuszczenia
       potłuścienie
@@ -61042,8 +54140,6 @@ module GameRoomKrowa
       potoczki
       potoczenie
       potoczenia
-      potoczenie
-      potoczenia
       potoczność
       potoczności
       potoczystość
@@ -61052,7 +54148,6 @@ module GameRoomKrowa
       potoki
       potomek
       potomkowie
-      potomni
       potomni
       potomność
       potomności
@@ -61064,18 +54159,12 @@ module GameRoomKrowa
       potopy
       potopienie
       potopienia
-      potopienie
-      potopienia
       potówka
-      potówki
-      potówki
       potówki
       potracanie
       potracania
       potracenie
       potracenia
-      potrajanie
-      potrajania
       potrajanie
       potrajania
       potraktowanie
@@ -61085,31 +54174,22 @@ module GameRoomKrowa
       potraw
       potrawy
       potrawa
-      potrawy
       potrawka
       potrawki
       potrącanie
       potrącania
       potrącenie
       potrącenia
-      potrącenie
-      potrącenia
       potrenowanie
       potrenowania
       potrojenie
       potrojenia
-      potrojenie
-      potrojenia
-      potrucie
-      potrucia
       potrucie
       potrucia
       potrudzenie
       potrudzenia
       potrzask
       potrzaski
-      potrzaskanie
-      potrzaskania
       potrzaskanie
       potrzaskania
       potrząsanie
@@ -61121,7 +54201,6 @@ module GameRoomKrowa
       potrzebowanie
       potrzebowania
       potrzebujący
-      potrzebujący
       potrzepanie
       potrzepania
       potrzeszcz
@@ -61130,16 +54209,10 @@ module GameRoomKrowa
       potrzosy
       potrzymanie
       potrzymania
-      potrzymanie
-      potrzymania
       potulność
       potulności
       poturbowanie
       poturbowania
-      poturbowanie
-      poturbowania
-      poturlanie
-      poturlania
       poturlanie
       poturlania
       potwal
@@ -61148,28 +54221,17 @@ module GameRoomKrowa
       potwarze
       potwierdzanie
       potwierdzania
-      potwierdzanie
-      potwierdzania
-      potwierdzenie
-      potwierdzenia
       potwierdzenie
       potwierdzenia
       potwora
       potwory
       potworek
       potworki
-      potworek
-      potworki
       potworność
       potworności
       potworzenie
       potworzenia
-      potworzenie
-      potworzenia
       potwór
-      potwory
-      potwór
-      potwory
       potyczka
       potyczki
       potykanie
@@ -61178,8 +54240,6 @@ module GameRoomKrowa
       potylice
       potynkowanie
       potynkowania
-      poubieranie
-      poubierania
       poubieranie
       poubierania
       pouchwalanie
@@ -61194,10 +54254,6 @@ module GameRoomKrowa
       pouczania
       pouczenie
       pouczenia
-      pouczenie
-      pouczenia
-      pouczepianie
-      pouczepiania
       pouczepianie
       pouczepiania
       poufalenie
@@ -61208,12 +54264,8 @@ module GameRoomKrowa
       poufności
       poukładanie
       poukładania
-      poukładanie
-      poukładania
       poukręcanie
       poukręcania
-      poukrywanie
-      poukrywania
       poukrywanie
       poukrywania
       poułamywanie
@@ -61226,20 +54278,12 @@ module GameRoomKrowa
       poupychania
       pourywanie
       pourywania
-      pourywanie
-      pourywania
-      pourządzanie
-      pourządzania
       pourządzanie
       pourządzania
       pousadzanie
       pousadzania
       poustawianie
       poustawiania
-      poustawianie
-      poustawiania
-      pousuwanie
-      pousuwania
       pousuwanie
       pousuwania
       pousychanie
@@ -61254,22 +54298,15 @@ module GameRoomKrowa
       powabnie
       powachlowanie
       powachlowania
-      powachlowanie
-      powachlowania
       powaga
       powagi
       powalanie
       powalania
-      powalanie
-      powalania
-      powalenie
-      powalenia
       powalenie
       powalenia
       pował
       powały
       powała
-      powały
       powałęsanie
       powałęsania
       powariowanie
@@ -61278,30 +54315,20 @@ module GameRoomKrowa
       powarzenia
       poważanie
       poważania
-      poważanie
-      poważania
-      poważenie
-      poważenia
       poważenie
       poważenia
       poważnienie
       poważnienia
       powąchanie
       powąchania
-      powąchanie
-      powąchania
       powątpiewanie
       powątpiewania
-      powbijanie
-      powbijania
       powbijanie
       powbijania
       powchodzenie
       powchodzenia
       powciąganie
       powciągania
-      powciskanie
-      powciskania
       powciskanie
       powciskania
       poweselenie
@@ -61327,9 +54354,6 @@ module GameRoomKrowa
       powicie
       powicia
       powidła
-      powidła
-      powiedzenie
-      powiedzenia
       powiedzenie
       powiedzenia
       powiedzonko
@@ -61340,8 +54364,6 @@ module GameRoomKrowa
       powielacze
       powielanie
       powielania
-      powielarnia
-      powielarnie
       powielarnia
       powielarnie
       powielenie
@@ -61356,18 +54378,12 @@ module GameRoomKrowa
       powiernicy
       powierzanie
       powierzania
-      powierzanie
-      powierzania
       powierzchnia
       powierzchnie
       powierzenie
       powierzenia
-      powierzenie
-      powierzenia
       powieszanie
       powieszania
-      powieszenie
-      powieszenia
       powieszenie
       powieszenia
       powieścidło
@@ -61391,20 +54407,12 @@ module GameRoomKrowa
       powiększalnik
       powiększanie
       powiększania
-      powiększanie
-      powiększania
-      powiększenie
-      powiększenia
       powiększenie
       powiększenia
       powięzi
       powięziach
       powięzie
-      powięzie
       powięź
-      powięzi
-      powikłanie
-      powikłania
       powikłanie
       powikłania
       powinięcie
@@ -61431,14 +54439,8 @@ module GameRoomKrowa
       powkopywania
       powkręcanie
       powkręcania
-      powkręcanie
-      powkręcania
       powleczenie
       powleczenia
-      powleczenie
-      powleczenia
-      powlekanie
-      powlekania
       powlekanie
       powlekania
       powlekarka
@@ -61451,13 +54453,9 @@ module GameRoomKrowa
       powłoki
       powłóczenie
       powłóczenia
-      powłóczenie
-      powłóczenia
       powłóczystość
       pownoszenie
       pownoszenia
-      powodowanie
-      powodowania
       powodowanie
       powodowania
       powodzenie
@@ -61469,15 +54467,10 @@ module GameRoomKrowa
       powojowanie
       powojowania
       powojowate
-      powojowate
       powolność
       powolności
       powołanie
       powołania
-      powołanie
-      powołania
-      powoływanie
-      powoływania
       powoływanie
       powoływania
       powonienie
@@ -61490,7 +54483,6 @@ module GameRoomKrowa
       powożenia
       powód
       powodowie
-      powód
       powody
       powódka
       powódki
@@ -61508,10 +54500,6 @@ module GameRoomKrowa
       powpinania
       powprawianie
       powprawiania
-      powprawianie
-      powprawiania
-      powpychanie
-      powpychania
       powpychanie
       powpychania
       powracanie
@@ -61544,8 +54532,6 @@ module GameRoomKrowa
       powsiadania
       powsinoga
       powsinogi
-      powsinoga
-      powsinogi
       powskakiwanie
       powskakiwania
       powspominanie
@@ -61560,13 +54546,9 @@ module GameRoomKrowa
       powstawiania
       powstrzymanie
       powstrzymania
-      powstrzymanie
-      powstrzymania
       powstydzenie
       powstydzenia
       powszechnik
-      powszechniki
-      powszechniki
       powszechniki
       powszechność
       powszechności
@@ -61576,19 +54558,13 @@ module GameRoomKrowa
       powszedniości
       powściąganie
       powściągania
-      powściąganie
-      powściągania
       powściekanie
       powściekania
       powtarzalność
       powtarzanie
       powtarzania
-      powtarzanie
-      powtarzania
       powtórka
       powtórki
-      powtórzenie
-      powtórzenia
       powtórzenie
       powtórzenia
       powybijanie
@@ -61597,36 +54573,24 @@ module GameRoomKrowa
       powychodzenia
       powyciąganie
       powyciągania
-      powyciąganie
-      powyciągania
       powycieranie
       powycierania
       powycinanie
       powycinania
       powycofywanie
       powycofywania
-      powycofywanie
-      powycofywania
       powydawanie
       powydawania
-      powydawanie
-      powydawania
-      powydzieranie
-      powydzierania
       powydzieranie
       powydzierania
       powyganianie
       powyganiania
       powyginanie
       powyginania
-      powyginanie
-      powyginania
       powygniatanie
       powygniatania
       powyjadanie
       powyjadania
-      powyjaśnianie
-      powyjaśniania
       powyjaśnianie
       powyjaśniania
       powyjeżdżanie
@@ -61653,8 +54617,6 @@ module GameRoomKrowa
       powylewania
       powyłamywanie
       powyłamywania
-      powyłamywanie
-      powyłamywania
       powyłażenie
       powyłażenia
       powymiatanie
@@ -61667,22 +54629,14 @@ module GameRoomKrowa
       powymyślania
       powynoszenie
       powynoszenia
-      powynoszenie
-      powynoszenia
       powypadanie
       powypadania
-      powypalanie
-      powypalania
       powypalanie
       powypalania
       powypędzanie
       powypędzania
       powypieranie
       powypierania
-      powypieranie
-      powypierania
-      powypisywanie
-      powypisywania
       powypisywanie
       powypisywania
       powypłacanie
@@ -61699,22 +54653,16 @@ module GameRoomKrowa
       powyrzucania
       powyrzynanie
       powyrzynania
-      powyrzynanie
-      powyrzynania
       powysadzanie
       powysadzania
       powystawianie
       powystawiania
       powysuwanie
       powysuwania
-      powysuwanie
-      powysuwania
       powysychanie
       powysychania
       powysyłanie
       powysyłania
-      powysypywanie
-      powysypywania
       powysypywanie
       powysypywania
       powyścielanie
@@ -61725,10 +54673,6 @@ module GameRoomKrowa
       powytrząsania
       powyuczanie
       powyuczania
-      powyuczanie
-      powyuczania
-      powywalanie
-      powywalania
       powywalanie
       powywalania
       powywiercanie
@@ -61741,15 +54685,12 @@ module GameRoomKrowa
       powywożenia
       powywracanie
       powywracania
-      powywracanie
-      powywracania
       powyzdychanie
       powyzdychania
       powyznaczanie
       powyznaczania
       powyżeranie
       powyżerania
-      powyższe
       powyższe
       powzdychanie
       powzdychania
@@ -61761,8 +54702,6 @@ module GameRoomKrowa
       pozabierania
       pozabijanie
       pozabijania
-      pozabijanie
-      pozabijania
       pozachodzenie
       pozachodzenia
       pozaciąganie
@@ -61771,10 +54710,6 @@ module GameRoomKrowa
       pozaciekania
       pozacieranie
       pozacierania
-      pozacieranie
-      pozacierania
-      pozaczepianie
-      pozaczepiania
       pozaczepianie
       pozaczepiania
       pozaczynanie
@@ -61809,24 +54744,16 @@ module GameRoomKrowa
       pozalewania
       pozałamywanie
       pozałamywania
-      pozałamywanie
-      pozałamywania
       pozałatwianie
       pozałatwiania
       pozamarzanie
       pozamarzania
       pozamazywanie
       pozamazywania
-      pozamazywanie
-      pozamazywania
       pozamiatanie
       pozamiatania
       pozamienianie
       pozamieniania
-      pozamienianie
-      pozamieniania
-      pozamykanie
-      pozamykania
       pozamykanie
       pozamykania
       pozanikanie
@@ -61835,16 +54762,10 @@ module GameRoomKrowa
       pozanoszenia
       pozapadanie
       pozapadania
-      pozapadanie
-      pozapadania
-      pozapalanie
-      pozapalania
       pozapalanie
       pozapalania
       pozapinanie
       pozapinania
-      pozapisywanie
-      pozapisywania
       pozapisywanie
       pozapisywania
       pozapominanie
@@ -61865,8 +54786,6 @@ module GameRoomKrowa
       pozasiadania
       pozasłanianie
       pozasłaniania
-      pozasłanianie
-      pozasłaniania
       pozastawianie
       pozastawiania
       pozasuwanie
@@ -61875,28 +54794,18 @@ module GameRoomKrowa
       pozasypywania
       pozaszywanie
       pozaszywania
-      pozaszywanie
-      pozaszywania
       pozaścielanie
       pozaścielania
       pozaściełanie
       pozaściełania
       pozaświecanie
       pozaświecania
-      pozaświecanie
-      pozaświecania
       pozatapianie
       pozatapiania
       pozatruwanie
       pozatruwania
-      pozatruwanie
-      pozatruwania
       pozatykanie
       pozatykania
-      pozatykanie
-      pozatykania
-      pozawalanie
-      pozawalania
       pozawalanie
       pozawalania
       pozawieranie
@@ -61907,30 +54816,18 @@ module GameRoomKrowa
       pozawiewania
       pozawijanie
       pozawijania
-      pozawijanie
-      pozawijania
       pozawożenie
       pozawożenia
       pozawracanie
       pozawracania
       pozaziębianie
       pozaziębiania
-      pozaziębianie
-      pozaziębiania
-      pozbawianie
-      pozbawiania
       pozbawianie
       pozbawiania
       pozbawienie
       pozbawienia
-      pozbawienie
-      pozbawienia
       pozbieranie
       pozbierania
-      pozbieranie
-      pozbierania
-      pozbijanie
-      pozbijania
       pozbijanie
       pozbijania
       pozdawanie
@@ -61939,22 +54836,14 @@ module GameRoomKrowa
       pozdejmowania
       pozdobywanie
       pozdobywania
-      pozdobywanie
-      pozdobywania
       pozdrapywanie
       pozdrapywania
       pozdrawianie
       pozdrawiania
-      pozdrawianie
-      pozdrawiania
-      pozdrowienie
-      pozdrowienia
       pozdrowienie
       pozdrowienia
       pozdychanie
       pozdychania
-      pozdzieranie
-      pozdzierania
       pozdzieranie
       pozdzierania
       pozer
@@ -61971,10 +54860,6 @@ module GameRoomKrowa
       pozgarniania
       pozginanie
       pozginania
-      pozginanie
-      pozginania
-      pozgłaszanie
-      pozgłaszania
       pozgłaszanie
       pozgłaszania
       pozielenienie
@@ -61999,20 +54884,12 @@ module GameRoomKrowa
       pozjeżdżania
       pozlatywanie
       pozlatywania
-      pozlatywanie
-      pozlatywania
       pozlepianie
       pozlepiania
-      pozlepianie
-      pozlepiania
-      pozlewanie
-      pozlewania
       pozlewanie
       pozlewania
       pozłacanie
       pozłacania
-      pozłażenie
-      pozłażenia
       pozłażenie
       pozłażenia
       pozłocenie
@@ -62024,11 +54901,8 @@ module GameRoomKrowa
       pozłotka
       pozłotki
       pozłotko
-      pozłotka
       pozmiatanie
       pozmiatania
-      pozmienianie
-      pozmieniania
       pozmienianie
       pozmieniania
       pozmywanie
@@ -62037,18 +54911,12 @@ module GameRoomKrowa
       poznaczenia
       poznajdowanie
       poznajdowania
-      poznajdowanie
-      poznajdowania
       poznakowanie
       poznakowania
       poznanie
       poznania
-      poznanie
-      poznania
       poznawalność
       poznawalności
-      poznawanie
-      poznawania
       poznawanie
       poznawania
       poznikanie
@@ -62075,24 +54943,16 @@ module GameRoomKrowa
       pozory
       pozrażanie
       pozrażania
-      pozrażanie
-      pozrażania
-      pozrywanie
-      pozrywania
       pozrywanie
       pozrywania
       pozrzucanie
       pozrzucania
       pozsiadanie
       pozsiadania
-      pozsiadanie
-      pozsiadania
       pozszywanie
       pozszywania
       pozwalanie
       pozwalania
-      pozwalnianie
-      pozwalniania
       pozwalnianie
       pozwalniania
       pozwana
@@ -62107,14 +54967,10 @@ module GameRoomKrowa
       pozwiązywania
       pozwijanie
       pozwijania
-      pozwijanie
-      pozwijania
       pozwolenie
       pozwolenia
       pozwożenie
       pozwożenia
-      pozwracanie
-      pozwracania
       pozwracanie
       pozwracania
       pozycja
@@ -62149,8 +55005,6 @@ module GameRoomKrowa
       pożary
       pożarcie
       pożarcia
-      pożarcie
-      pożarcia
       pożarnictwo
       pożarnictwa
       pożartowanie
@@ -62163,16 +55017,10 @@ module GameRoomKrowa
       pożeglowania
       pożegnanie
       pożegnania
-      pożegnanie
-      pożegnania
-      pożenienie
-      pożenienia
       pożenienie
       pożenienia
       pożeracz
       pożeracze
-      pożeranie
-      pożerania
       pożeranie
       pożerania
       pożółknięcie
@@ -62195,8 +55043,6 @@ module GameRoomKrowa
       pożywiania
       pożywienie
       pożywienia
-      pożywienie
-      pożywienia
       pożywka
       pożywki
       pożywność
@@ -62211,15 +55057,9 @@ module GameRoomKrowa
       półautomaty
       półbóg
       półbogowie
-      półbóg
-      półbogowie
       półbucik
       półbuciki
-      półbuciki
-      półbuciki
       półbut
-      półbuty
-      półbuty
       półbuty
       półcień
       półcienie
@@ -62281,8 +55121,6 @@ module GameRoomKrowa
       półmat
       półmaty
       półmetal
-      półmetale
-      półmetale
       półmetale
       półmetek
       półmetki
@@ -62348,8 +55186,6 @@ module GameRoomKrowa
       półsieroctwa
       półsierota
       półsieroty
-      półsierota
-      półsieroty
       półskórek
       półskórki
       półsłówko
@@ -62357,9 +55193,7 @@ module GameRoomKrowa
       półsłupek
       półsłupki
       półstrunowce
-      półstrunowce
       półstrunowiec
-      półstrunowce
       półszept
       półszepty
       półszorek
@@ -62453,7 +55287,6 @@ module GameRoomKrowa
       pradziadek
       pradziadkowie
       pradzieje
-      pradzieje
       pragmatyk
       pragmatycy
       pragmatyka
@@ -62489,10 +55322,7 @@ module GameRoomKrowa
       praktykowanie
       praktykowania
       praktykujący
-      praktykujący
       pralinki
-      pralinki
-      praliny
       praliny
       pralka
       pralki
@@ -62500,14 +55330,10 @@ module GameRoomKrowa
       pralnie
       pralnictwo
       pralnictwa
-      praludzie
-      praludzie
       prałat
       prałaci
       pramatka
       pramatki
-      pranie
-      prania
       pranie
       prania
       praojciec
@@ -62562,7 +55388,6 @@ module GameRoomKrowa
       prawiczek
       prawiczki
       prawiczka
-      prawiczki
       prawidłowość
       prawidłowości
       prawiek
@@ -62605,7 +55430,6 @@ module GameRoomKrowa
       prawoznawstwo
       prawoznawstwa
       prawybory
-      prawybory
       prawykonanie
       prawykonania
       praźródło
@@ -62614,9 +55438,6 @@ module GameRoomKrowa
       prażalnie
       prażenie
       prażenia
-      prażenie
-      prażenia
-      prażynki
       prażynki
       prącie
       prącia
@@ -62630,8 +55451,6 @@ module GameRoomKrowa
       prądożercy
       prątek
       prątki
-      prątki
-      prątki
       prątkowanie
       prątkowania
       prątnik
@@ -62644,18 +55463,11 @@ module GameRoomKrowa
       precedensy
       precel
       precle
-      precel
-      precle
       precelek
       precelki
-      precelek
-      precelki
-      precjoza
       precjoza
       precyzja
       precyzje
-      precyzowanie
-      precyzowania
       precyzowanie
       precyzowania
       precyzyjność
@@ -62726,7 +55538,6 @@ module GameRoomKrowa
       premierzy
       premiera
       premiery
-      premierostwo
       premierostwo
       premiowanie
       premiowania
@@ -62803,15 +55614,12 @@ module GameRoomKrowa
       prezenterki
       prezentowanie
       prezentowania
-      prezentowanie
-      prezentowania
       prezerwatywa
       prezerwatywy
       prezes
       prezesi
       prezeska
       prezeski
-      prezesostwo
       prezesostwo
       prezesowanie
       prezesowania
@@ -62835,8 +55643,6 @@ module GameRoomKrowa
       pręty
       prężenie
       prężenia
-      prężenie
-      prężenia
       prężność
       prężności
       primabalerina
@@ -62851,8 +55657,6 @@ module GameRoomKrowa
       probabilizmy
       probierca
       probiercy
-      probiernia
-      probiernie
       probiernia
       probiernie
       probierz
@@ -62901,8 +55705,6 @@ module GameRoomKrowa
       prochowce
       prochownia
       prochownie
-      prochy
-      prochy
       prodiż
       prodiże
       producent
@@ -62911,8 +55713,6 @@ module GameRoomKrowa
       produkcje
       produkcyjniak
       produkcyjność
-      produkowanie
-      produkowania
       produkowanie
       produkowania
       produkt
@@ -62950,8 +55750,6 @@ module GameRoomKrowa
       profetyzmy
       profil
       profile
-      profil
-      profile
       profilaktyka
       profilaktyki
       profilowanie
@@ -62973,7 +55771,6 @@ module GameRoomKrowa
       prognostyk
       prognostyki
       prognostyka
-      prognostyki
       prognoza
       prognozy
       prognozowanie
@@ -63002,7 +55799,6 @@ module GameRoomKrowa
       prohibicja
       prohibicje
       prohibita
-      prohibita
       projekcik
       projekciki
       projekcja
@@ -63021,8 +55817,6 @@ module GameRoomKrowa
       projektowania
       proklamacja
       proklamacje
-      proklamowanie
-      proklamowania
       proklamowanie
       proklamowania
       proklityka
@@ -63046,7 +55840,6 @@ module GameRoomKrowa
       prokurowanie
       prokurowania
       prolegomena
-      prolegomena
       proletariat
       proletariaty
       proletariusz
@@ -63067,12 +55860,8 @@ module GameRoomKrowa
       prometeizmy
       promienica
       promienice
-      promienice
-      promienice
-      promieniowce
       promieniowce
       promieniowiec
-      promieniowce
       promienistość
       promiennik
       promienniki
@@ -63088,7 +55877,6 @@ module GameRoomKrowa
       promocje
       promotor
       promotorzy
-      promotor
       promotory
       promowanie
       promowania
@@ -63163,7 +55951,6 @@ module GameRoomKrowa
       prostaczki
       prostak
       prostacy
-      prostak
       prostaki
       prostata
       prostaty
@@ -63177,8 +55964,6 @@ module GameRoomKrowa
       prostopadłe
       prostota
       prostoty
-      prostowanie
-      prostowania
       prostowanie
       prostowania
       prostowarka
@@ -63199,10 +55984,6 @@ module GameRoomKrowa
       proszące
       proszek
       proszki
-      proszek
-      proszki
-      proszenie
-      proszenia
       proszenie
       proszenia
       proszkowanie
@@ -63223,18 +56004,13 @@ module GameRoomKrowa
       protegowani
       proteid
       proteidy
-      proteidy
-      proteidy
       proteina
-      proteiny
-      proteiny
       proteiny
       protekcja
       protekcje
       protekcjonizm
       protektor
       protektorzy
-      protektor
       protektory
       protektorat
       protektoraty
@@ -63288,18 +56064,11 @@ module GameRoomKrowa
       protozoologie
       protuberancja
       protuberancje
-      protuberancje
-      protuberancje
       proudhonizm
       proudhonizmy
       prowadnica
       prowadnice
       prowadzący
-      prowadzący
-      prowadzący
-      prowadzący
-      prowadzenie
-      prowadzenia
       prowadzenie
       prowadzenia
       proweniencja
@@ -63368,7 +56137,6 @@ module GameRoomKrowa
       prószenie
       prószenia
       próżne
-      próżne
       próżnia
       próżnie
       próżniactwo
@@ -63379,7 +56147,6 @@ module GameRoomKrowa
       próżniaczyska
       próżniak
       próżniacy
-      próżniak
       próżniaki
       próżniomierz
       próżniomierze
@@ -63387,8 +56154,6 @@ module GameRoomKrowa
       próżności
       próżnowanie
       próżnowania
-      prucie
-      prucia
       prucie
       prucia
       pruderia
@@ -63401,7 +56166,6 @@ module GameRoomKrowa
       prusactwa
       prusak
       prusacy
-      prusak
       prusaki
       prusofil
       prusofile
@@ -63424,9 +56188,6 @@ module GameRoomKrowa
       prymat
       prymaty
       prymicje
-      prymicje
-      prymityw
-      prymitywy
       prymityw
       prymitywy
       prymitywista
@@ -63441,21 +56202,17 @@ module GameRoomKrowa
       prymulki
       prymus
       prymusi
-      prymus
       prymusy
       prymuska
       prymuski
       pryncypał
       pryncypałowie
-      pryncypał
       pryncypały
       pryncypializm
       pryncypium
       pryncypia
       pryskanie
       pryskania
-      pryszcz
-      pryszcze
       pryszcz
       pryszcze
       pryszczyca
@@ -63496,8 +56253,6 @@ module GameRoomKrowa
       przebąkiwania
       przebicie
       przebicia
-      przebicie
-      przebicia
       przebieg
       przebiegi
       przebieganie
@@ -63508,14 +56263,10 @@ module GameRoomKrowa
       przebieralnie
       przebieranie
       przebierania
-      przebieranie
-      przebierania
       przebieraniec
       przebierańcy
       przebijak
       przebijaki
-      przebijanie
-      przebijania
       przebijanie
       przebijania
       przebijarka
@@ -63542,8 +56293,6 @@ module GameRoomKrowa
       przeboje
       przebranie
       przebrania
-      przebranie
-      przebrania
       przebrnięcie
       przebrnięcia
       przebrzmienie
@@ -63554,10 +56303,6 @@ module GameRoomKrowa
       przebudowania
       przebudzanie
       przebudzania
-      przebudzanie
-      przebudzania
-      przebudzenie
-      przebudzenia
       przebudzenie
       przebudzenia
       przebycie
@@ -63572,18 +56317,12 @@ module GameRoomKrowa
       przeceny
       przecenianie
       przeceniania
-      przecenianie
-      przeceniania
-      przecenienie
-      przecenienia
       przecenienie
       przecenienia
       przechadzanie
       przechadzania
       przechadzka
       przechadzki
-      przechera
-      przechery
       przechera
       przechery
       przechlanie
@@ -63597,14 +56336,8 @@ module GameRoomKrowa
       przechowalnie
       przechowanie
       przechowania
-      przechowanie
-      przechowania
       przechrzta
       przechrzty
-      przechrzta
-      przechrzty
-      przechwalanie
-      przechwalania
       przechwalanie
       przechwalania
       przechwalenie
@@ -63615,18 +56348,12 @@ module GameRoomKrowa
       przechwycenia
       przechylanie
       przechylania
-      przechylanie
-      przechylania
-      przechylenie
-      przechylenia
       przechylenie
       przechylenia
       przechył
       przechyły
       przeciąg
       przeciągi
-      przeciąganie
-      przeciągania
       przeciąganie
       przeciągania
       przeciągarka
@@ -63651,10 +56378,6 @@ module GameRoomKrowa
       przecieraczki
       przecieranie
       przecierania
-      przecieranie
-      przecierania
-      przecięcie
-      przecięcia
       przecięcie
       przecięcia
       przeciętna
@@ -63665,26 +56388,17 @@ module GameRoomKrowa
       przecinaki
       przecinanie
       przecinania
-      przecinanie
-      przecinania
       przecinarka
       przecinarki
       przecinek
       przecinki
       przecinka
-      przecinki
-      przeciskanie
-      przeciskania
       przeciskanie
       przeciskania
       przeciśnięcie
       przeciśnięcia
-      przeciśnięcie
-      przeciśnięcia
-      przeciwciała
       przeciwciała
       przeciwciało
-      przeciwciała
       przeciwciężar
       przeciwdowód
       przeciwdowody
@@ -63713,8 +56427,6 @@ module GameRoomKrowa
       przeczenia
       przeczesanie
       przeczesania
-      przeczesanie
-      przeczesania
       przecznica
       przecznice
       przeczołganie
@@ -63731,14 +56443,8 @@ module GameRoomKrowa
       przećwiczenia
       przedarcie
       przedarcia
-      przedarcie
-      przedarcia
       przedawnianie
       przedawniania
-      przedawnianie
-      przedawniania
-      przedawnienie
-      przedawnienia
       przedawnienie
       przedawnienia
       przedbieg
@@ -63759,10 +56465,6 @@ module GameRoomKrowa
       przedłużacze
       przedłużanie
       przedłużania
-      przedłużanie
-      przedłużania
-      przedłużenie
-      przedłużenia
       przedłużenie
       przedłużenia
       przedłużka
@@ -63820,8 +56522,6 @@ module GameRoomKrowa
       przedruki
       przedrzemanie
       przedrzemania
-      przedrzemanie
-      przedrzemania
       przedscenie
       przedscenia
       przedsionek
@@ -63833,7 +56533,6 @@ module GameRoomKrowa
       przedstopia
       przedszkolak
       przedszkolacy
-      przedszkolak
       przedszkolaki
       przedszkole
       przedszkola
@@ -63861,12 +56560,8 @@ module GameRoomKrowa
       przedzielenia
       przedzieranie
       przedzierania
-      przedzieranie
-      przedzierania
       przedziwność
       przedziwności
-      przedźwiganie
-      przedźwigania
       przedźwiganie
       przedźwigania
       przedżołądek
@@ -63881,8 +56576,6 @@ module GameRoomKrowa
       przegadywania
       przeganianie
       przeganiania
-      przeganianie
-      przeganiania
       przegapianie
       przegapiania
       przegapienie
@@ -63893,30 +56586,20 @@ module GameRoomKrowa
       przegarnięcia
       przegięcie
       przegięcia
-      przegięcie
-      przegięcia
-      przeginanie
-      przeginania
       przeginanie
       przeginania
       przegląd
       przeglądy
       przeglądanie
       przeglądania
-      przeglądanie
-      przeglądania
       przeglądarka
       przeglądarki
-      przegładzanie
-      przegładzania
       przegładzanie
       przegładzania
       przegłębianie
       przegłębiania
       przegłębienie
       przegłębienia
-      przegłodzenie
-      przegłodzenia
       przegłodzenie
       przegłodzenia
       przegłos
@@ -63929,8 +56612,6 @@ module GameRoomKrowa
       przegony
       przegonienie
       przegonienia
-      przegotowanie
-      przegotowania
       przegotowanie
       przegotowania
       przegradzanie
@@ -63951,18 +56632,10 @@ module GameRoomKrowa
       przegrywania
       przegryzanie
       przegryzania
-      przegryzanie
-      przegryzania
-      przegryzienie
-      przegryzienia
       przegryzienie
       przegryzienia
       przegrzanie
       przegrzania
-      przegrzanie
-      przegrzania
-      przegrzewanie
-      przegrzewania
       przegrzewanie
       przegrzewania
       przegub
@@ -63977,30 +56650,18 @@ module GameRoomKrowa
       przehulania
       przeinaczanie
       przeinaczania
-      przeinaczanie
-      przeinaczania
       przeinaczenie
       przeinaczenia
-      przeinaczenie
-      przeinaczenia
-      przejadanie
-      przejadania
       przejadanie
       przejadania
       przejaśnianie
       przejaśniania
       przejaśnienie
       przejaśnienia
-      przejaśnienie
-      przejaśnienia
       przejaw
       przejawy
       przejawianie
       przejawiania
-      przejawianie
-      przejawiania
-      przejawienie
-      przejawienia
       przejawienie
       przejawienia
       przejazd
@@ -64009,12 +56670,8 @@ module GameRoomKrowa
       przejażdżki
       przejechanie
       przejechania
-      przejechanie
-      przejechania
       przejednanie
       przejednania
-      przejedzenie
-      przejedzenia
       przejedzenie
       przejedzenia
       przejezdność
@@ -64025,25 +56682,17 @@ module GameRoomKrowa
       przejeżdżenia
       przejęcie
       przejęcia
-      przejęcie
-      przejęcia
       przejęczenie
       przejęczenia
-      przejmowanie
-      przejmowania
       przejmowanie
       przejmowania
       przejrzałość
       przejrzałości
       przejrzenie
       przejrzenia
-      przejrzenie
-      przejrzenia
       przejrzewanie
       przejrzewania
       przejrzystość
-      przejście
-      przejścia
       przejście
       przejścia
       przekabacanie
@@ -64090,20 +56739,12 @@ module GameRoomKrowa
       przekłuwania
       przekonanie
       przekonania
-      przekonanie
-      przekonania
-      przekonywanie
-      przekonywania
       przekonywanie
       przekonywania
       przekop
       przekopy
       przekopanie
       przekopania
-      przekopanie
-      przekopania
-      przekopywanie
-      przekopywania
       przekopywanie
       przekopywania
       przekora
@@ -64126,10 +56767,6 @@ module GameRoomKrowa
       przekreślenia
       przekręcanie
       przekręcania
-      przekręcanie
-      przekręcania
-      przekręcenie
-      przekręcenia
       przekręcenie
       przekręcenia
       przekroczenie
@@ -64138,8 +56775,6 @@ module GameRoomKrowa
       przekrojenia
       przekrój
       przekroje
-      przekrwienie
-      przekrwienia
       przekrwienie
       przekrwienia
       przekucie
@@ -64160,18 +56795,12 @@ module GameRoomKrowa
       przekwitania
       przelanie
       przelania
-      przelanie
-      przelania
       przelatywanie
       przelatywania
       przelecenie
       przelecenia
-      przelecenie
-      przelecenia
       przelew
       przelewy
-      przelewanie
-      przelewania
       przelewanie
       przelewania
       przelezienie
@@ -64180,8 +56809,6 @@ module GameRoomKrowa
       przeleżenia
       przeliczanie
       przeliczania
-      przeliczenie
-      przeliczenia
       przeliczenie
       przeliczenia
       przelicznik
@@ -64200,10 +56827,6 @@ module GameRoomKrowa
       przeładunki
       przełamanie
       przełamania
-      przełamanie
-      przełamania
-      przełamywanie
-      przełamywania
       przełamywanie
       przełamywania
       przełaz
@@ -64242,8 +56865,6 @@ module GameRoomKrowa
       przemaczania
       przemaganie
       przemagania
-      przemaganie
-      przemagania
       przemakalność
       przemakanie
       przemakania
@@ -64257,14 +56878,8 @@ module GameRoomKrowa
       przemawiania
       przemądrzalec
       przemądrzalcy
-      przemądrzalec
-      przemądrzalcy
       przemęczanie
       przemęczania
-      przemęczanie
-      przemęczania
-      przemęczenie
-      przemęczenia
       przemęczenie
       przemęczenia
       przemiał
@@ -64275,10 +56890,6 @@ module GameRoomKrowa
       przemielenia
       przemienianie
       przemieniania
-      przemienianie
-      przemieniania
-      przemienienie
-      przemienienia
       przemienienie
       przemienienia
       przemienność
@@ -64302,8 +56913,6 @@ module GameRoomKrowa
       przeminięcia
       przemknięcie
       przemknięcia
-      przemknięcie
-      przemknięcia
       przemnażanie
       przemnażania
       przemnożenie
@@ -64312,14 +56921,10 @@ module GameRoomKrowa
       przemoce
       przemoczenie
       przemoczenia
-      przemoczenie
-      przemoczenia
       przemoknięcie
       przemoknięcia
       przemowa
       przemowy
-      przemożenie
-      przemożenia
       przemożenie
       przemożenia
       przemówienie
@@ -64330,16 +56935,10 @@ module GameRoomKrowa
       przemrożenia
       przemycanie
       przemycania
-      przemycanie
-      przemycania
-      przemycenie
-      przemycenia
       przemycenie
       przemycenia
       przemycie
       przemycia
-      przemykanie
-      przemykania
       przemykanie
       przemykania
       przemysł
@@ -64364,8 +56963,6 @@ module GameRoomKrowa
       przenia
       przeniesienie
       przeniesienia
-      przeniesienie
-      przeniesienia
       przenikalność
       przenikanie
       przenikania
@@ -64377,19 +56974,12 @@ module GameRoomKrowa
       przenosiciel
       przenosiciele
       przenosiny
-      przenosiny
-      przenoszenie
-      przenoszenia
       przenoszenie
       przenoszenia
       przenośnia
       przenośnie
       przeobrażanie
       przeobrażania
-      przeobrażanie
-      przeobrażania
-      przeobrażenie
-      przeobrażenia
       przeobrażenie
       przeobrażenia
       przeoczanie
@@ -64406,8 +56996,6 @@ module GameRoomKrowa
       przeorywania
       przepacanie
       przepacania
-      przepacanie
-      przepacania
       przepadanie
       przepadania
       przepadek
@@ -64420,18 +57008,12 @@ module GameRoomKrowa
       przepakowania
       przepalanie
       przepalania
-      przepalanie
-      przepalania
       przepalanka
       przepalanki
       przepalenie
       przepalenia
-      przepalenie
-      przepalenia
       przepał
       przepały
-      przepasanie
-      przepasania
       przepasanie
       przepasania
       przepasienie
@@ -64440,28 +57022,17 @@ module GameRoomKrowa
       przepaski
       przepasywanie
       przepasywania
-      przepasywanie
-      przepasywania
       przepaść
       przepaście
-      przepaść
       przepaści
       przepatrzenie
       przepatrzenia
       przepchanie
       przepchania
-      przepchanie
-      przepchania
-      przepchnięcie
-      przepchnięcia
       przepchnięcie
       przepchnięcia
       przepełnianie
       przepełniania
-      przepełnianie
-      przepełniania
-      przepełnienie
-      przepełnienia
       przepełnienie
       przepełnienia
       przepełzanie
@@ -64472,14 +57043,8 @@ module GameRoomKrowa
       przepędzenia
       przepicie
       przepicia
-      przepicie
-      przepicia
       przepieczenie
       przepieczenia
-      przepieczenie
-      przepieczenia
-      przepiekanie
-      przepiekania
       przepiekanie
       przepiekania
       przepielenie
@@ -64492,8 +57057,6 @@ module GameRoomKrowa
       przepierzania
       przepierzenie
       przepierzenia
-      przepijanie
-      przepijania
       przepijanie
       przepijania
       przepikowanie
@@ -64528,8 +57091,6 @@ module GameRoomKrowa
       przepłaszania
       przepłoszenie
       przepłoszenia
-      przepłoszenie
-      przepłoszenia
       przepłukanie
       przepłukania
       przepłynięcie
@@ -64540,10 +57101,6 @@ module GameRoomKrowa
       przepływania
       przepocenie
       przepocenia
-      przepocenie
-      przepocenia
-      przepojenie
-      przepojenia
       przepojenie
       przepojenia
       przepompownia
@@ -64556,22 +57113,13 @@ module GameRoomKrowa
       przeprania
       przepraszanie
       przepraszania
-      przepraszanie
-      przepraszania
       przeprawa
       przeprawy
       przeprawianie
       przeprawiania
-      przeprawianie
-      przeprawiania
-      przeprawienie
-      przeprawienia
       przeprawienie
       przeprawienia
       przeprosiny
-      przeprosiny
-      przeproszenie
-      przeproszenia
       przeproszenie
       przeproszenia
       przeprowadzka
@@ -64603,16 +57151,10 @@ module GameRoomKrowa
       przepychacze
       przepychanie
       przepychania
-      przepychanie
-      przepychania
       przepyszlin
       przepyszliny
       przepytanie
       przepytania
-      przepytanie
-      przepytania
-      przepytywanie
-      przepytywania
       przepytywanie
       przepytywania
       przerabianie
@@ -64628,14 +57170,8 @@ module GameRoomKrowa
       przerażania
       przerażenie
       przerażenia
-      przerażenie
-      przerażenia
       przerąbanie
       przerąbania
-      przerąbanie
-      przerąbania
-      przerąbywanie
-      przerąbywania
       przerąbywanie
       przerąbywania
       przerębla
@@ -64656,8 +57192,6 @@ module GameRoomKrowa
       przerwy
       przerwanie
       przerwania
-      przerwanie
-      przerwania
       przerysowanie
       przerysowania
       przerywacz
@@ -64670,22 +57204,12 @@ module GameRoomKrowa
       przerywniki
       przerzedzanie
       przerzedzania
-      przerzedzanie
-      przerzedzania
-      przerzedzenie
-      przerzedzenia
       przerzedzenie
       przerzedzenia
       przerznięcie
       przerznięcia
-      przerznięcie
-      przerznięcia
       przerzucanie
       przerzucania
-      przerzucanie
-      przerzucania
-      przerzucenie
-      przerzucenia
       przerzucenie
       przerzucenia
       przerzut
@@ -64696,10 +57220,6 @@ module GameRoomKrowa
       przerzutnie
       przerzynanie
       przerzynania
-      przerzynanie
-      przerzynania
-      przerżnięcie
-      przerżnięcia
       przerżnięcie
       przerżnięcia
       przesada
@@ -64714,10 +57234,6 @@ module GameRoomKrowa
       przesalania
       przesączanie
       przesączania
-      przesączanie
-      przesączania
-      przesączenie
-      przesączenia
       przesączenie
       przesączenia
       przesąd
@@ -64740,10 +57256,6 @@ module GameRoomKrowa
       przesiąkania
       przesiedlanie
       przesiedlania
-      przesiedlanie
-      przesiedlania
-      przesiedlenie
-      przesiedlenia
       przesiedlenie
       przesiedlenia
       przesiedzenie
@@ -64758,8 +57270,6 @@ module GameRoomKrowa
       przesiewania
       przesięk
       przesięki
-      przesilenie
-      przesilenia
       przesilenie
       przesilenia
       przeskład
@@ -64802,18 +57312,12 @@ module GameRoomKrowa
       przesolenia
       przespanie
       przespania
-      przespanie
-      przespania
       przestanie
       przestania
       przestawanie
       przestawania
       przestawianie
       przestawiania
-      przestawianie
-      przestawiania
-      przestawienie
-      przestawienia
       przestawienie
       przestawienia
       przestawka
@@ -64829,7 +57333,6 @@ module GameRoomKrowa
       przestępczość
       przestępstwo
       przestępstwa
-      przestojowe
       przestojowe
       przestój
       przestoje
@@ -64850,20 +57353,12 @@ module GameRoomKrowa
       przestudzania
       przestudzenie
       przestudzenia
-      przestudzenie
-      przestudzenia
       przestwór
       przestwory
       przesunięcie
       przesunięcia
-      przesunięcie
-      przesunięcia
       przesuszanie
       przesuszania
-      przesuszanie
-      przesuszania
-      przesuszenie
-      przesuszenia
       przesuszenie
       przesuszenia
       przesuw
@@ -64872,16 +57367,10 @@ module GameRoomKrowa
       przesuwaki
       przesuwanie
       przesuwania
-      przesuwanie
-      przesuwania
       przesuwnica
       przesuwnice
       przesycanie
       przesycania
-      przesycanie
-      przesycania
-      przesycenie
-      przesycenia
       przesycenie
       przesycenia
       przesychanie
@@ -64894,14 +57383,8 @@ module GameRoomKrowa
       przesypy
       przesypanie
       przesypania
-      przesypanie
-      przesypania
       przesypianie
       przesypiania
-      przesypianie
-      przesypiania
-      przesypywanie
-      przesypywania
       przesypywanie
       przesypywania
       przesyt
@@ -64916,11 +57399,8 @@ module GameRoomKrowa
       przeszkody
       przeszkolenie
       przeszkolenia
-      przeszkolenie
-      przeszkolenia
       przeszłość
       przeszłości
-      przeszpiegi
       przeszpiegi
       przeszukanie
       przeszukania
@@ -64938,8 +57418,6 @@ module GameRoomKrowa
       prześcieradła
       prześciganie
       prześcigania
-      prześciganie
-      prześcigania
       prześledzenie
       prześledzenia
       prześlęczenie
@@ -64947,8 +57425,6 @@ module GameRoomKrowa
       prześlizganie
       prześlizgania
       prześmiechy
-      prześmiechy
-      prześmieszki
       prześmieszki
       prześmiewanie
       prześmiewania
@@ -64964,18 +57440,12 @@ module GameRoomKrowa
       prześwity
       przetaczanie
       przetaczania
-      przetaczanie
-      przetaczania
       przetak
       przetaki
       przetańczenie
       przetańczenia
       przetapianie
       przetapiania
-      przetapianie
-      przetapiania
-      przetarcie
-      przetarcia
       przetarcie
       przetarcia
       przetarg
@@ -64983,8 +57453,6 @@ module GameRoomKrowa
       przetasowanie
       przetasowania
       przetchlinka
-      przetchlinki
-      przetchlinki
       przetchlinki
       przetkanie
       przetkania
@@ -64998,27 +57466,17 @@ module GameRoomKrowa
       przetłoczenia
       przetoczenie
       przetoczenia
-      przetoczenie
-      przetoczenia
       przetoka
       przetoki
       przetop
       przetopy
       przetopienie
       przetopienia
-      przetopienie
-      przetopienia
       przetrawianie
       przetrawiania
-      przetrawianie
-      przetrawiania
-      przetrawienie
-      przetrawienia
       przetrawienie
       przetrawienia
       przetrwalnik
-      przetrwalniki
-      przetrwalniki
       przetrwalniki
       przetrwanie
       przetrwania
@@ -65050,14 +57508,8 @@ module GameRoomKrowa
       przewagi
       przewalanie
       przewalania
-      przewalanie
-      przewalania
       przewalenie
       przewalenia
-      przewalenie
-      przewalenia
-      przewałęsanie
-      przewałęsania
       przewałęsanie
       przewałęsania
       przeważanie
@@ -65068,16 +57520,10 @@ module GameRoomKrowa
       przewąchania
       przewężanie
       przewężania
-      przewężanie
-      przewężania
-      przewężenie
-      przewężenia
       przewężenie
       przewężenia
       przewianie
       przewiania
-      przewiązanie
-      przewiązania
       przewiązanie
       przewiązania
       przewiązka
@@ -65094,10 +57540,6 @@ module GameRoomKrowa
       przewiertnie
       przewieszanie
       przewieszania
-      przewieszanie
-      przewieszania
-      przewieszenie
-      przewieszenia
       przewieszenie
       przewieszenia
       przewieszka
@@ -65115,32 +57557,20 @@ module GameRoomKrowa
       przewiezienia
       przewijacz
       przewijacze
-      przewijacz
-      przewijacze
       przewijalnia
       przewijalnie
-      przewijanie
-      przewijania
       przewijanie
       przewijania
       przewijarka
       przewijarki
       przewijarnia
       przewijarnie
-      przewijarnia
-      przewijarnie
       przewinienie
       przewinienia
       przewinięcie
       przewinięcia
-      przewinięcie
-      przewinięcia
       przewleczenie
       przewleczenia
-      przewleczenie
-      przewleczenia
-      przewlekanie
-      przewlekania
       przewlekanie
       przewlekania
       przewlekłość
@@ -65151,9 +57581,6 @@ module GameRoomKrowa
       przewodniczki
       przewodnik
       przewodnicy
-      przewodnik
-      przewodniki
-      przewodnik
       przewodniki
       przewodność
       przewodności
@@ -65193,10 +57620,6 @@ module GameRoomKrowa
       przezierania
       przeziębianie
       przeziębiania
-      przeziębianie
-      przeziębiania
-      przeziębienie
-      przeziębienia
       przeziębienie
       przeziębienia
       przezimowanie
@@ -65221,26 +57644,16 @@ module GameRoomKrowa
       przezywania
       przeżarcie
       przeżarcia
-      przeżarcie
-      przeżarcia
       przeżegnanie
       przeżegnania
-      przeżegnanie
-      przeżegnania
-      przeżeranie
-      przeżerania
       przeżeranie
       przeżerania
       przeżucie
       przeżucia
       przeżuwacz
       przeżuwacze
-      przeżuwacze
-      przeżuwacze
       przeżuwanie
       przeżuwania
-      przeżycie
-      przeżycia
       przeżycie
       przeżycia
       przeżytek
@@ -65248,10 +57661,6 @@ module GameRoomKrowa
       przeżywalność
       przeżywanie
       przeżywania
-      przeżywanie
-      przeżywania
-      przeżywienie
-      przeżywienia
       przeżywienie
       przeżywienia
       przędność
@@ -65274,7 +57683,6 @@ module GameRoomKrowa
       przęślice
       przodek
       przodkowie
-      przodek
       przodki
       przodomóżdże
       przodomóżdża
@@ -65310,40 +57718,26 @@ module GameRoomKrowa
       przybiegania
       przybieranie
       przybierania
-      przybieranie
-      przybierania
       przybijanie
       przybijania
       przybitka
       przybitki
       przybliżanie
       przybliżania
-      przybliżanie
-      przybliżania
-      przybliżenie
-      przybliżenia
       przybliżenie
       przybliżenia
       przybłąkanie
       przybłąkania
       przybłęda
       przybłędy
-      przybłęda
-      przybłędy
       przybornik
       przyborniki
-      przybory
       przybory
       przybój
       przyboje
       przybór
-      przybory
       przybranie
       przybrania
-      przybranie
-      przybrania
-      przybrudzenie
-      przybrudzenia
       przybrudzenie
       przybrudzenia
       przybrzeże
@@ -65368,7 +57762,6 @@ module GameRoomKrowa
       przychodzenie
       przychodzenia
       przychodzień
-      przychodnie
       przychód
       przychody
       przychów
@@ -65377,20 +57770,12 @@ module GameRoomKrowa
       przychówki
       przychwycenie
       przychwycenia
-      przychwycenie
-      przychwycenia
       przychylanie
       przychylania
-      przychylanie
-      przychylania
-      przychylenie
-      przychylenia
       przychylenie
       przychylenia
       przychylność
       przychylności
-      przyciąganie
-      przyciągania
       przyciąganie
       przyciągania
       przyciągarka
@@ -65413,14 +57798,10 @@ module GameRoomKrowa
       przyciski
       przyciskanie
       przyciskania
-      przyciskanie
-      przyciskania
       przyciszanie
       przyciszania
       przyciszenie
       przyciszenia
-      przyciśnięcie
-      przyciśnięcia
       przyciśnięcie
       przyciśnięcia
       przycumowanie
@@ -65435,18 +57816,12 @@ module GameRoomKrowa
       przyczepy
       przyczepianie
       przyczepiania
-      przyczepianie
-      przyczepiania
-      przyczepienie
-      przyczepienia
       przyczepienie
       przyczepienia
       przyczepka
       przyczepki
       przyczepność
       przyczepności
-      przyczesanie
-      przyczesania
       przyczesanie
       przyczesania
       przyczłapanie
@@ -65461,10 +57836,6 @@ module GameRoomKrowa
       przyczynki
       przyczynianie
       przyczyniania
-      przyczynianie
-      przyczyniania
-      przyczynienie
-      przyczynienia
       przyczynienie
       przyczynienia
       przyczynkarz
@@ -65472,22 +57843,14 @@ module GameRoomKrowa
       przyczynowość
       przyćmienie
       przyćmienia
-      przyćmienie
-      przyćmienia
       przyćmiewanie
       przyćmiewania
       przydanie
       przydania
-      przydanie
-      przydania
       przydatek
-      przydatki
-      przydatki
       przydatki
       przydatność
       przydatności
-      przydawanie
-      przydawania
       przydawanie
       przydawania
       przydawka
@@ -65541,8 +57904,6 @@ module GameRoomKrowa
       przygarniania
       przygarnięcie
       przygarnięcia
-      przygarnięcie
-      przygarnięcia
       przygasanie
       przygasania
       przygaszanie
@@ -65553,10 +57914,6 @@ module GameRoomKrowa
       przygaśnięcia
       przygięcie
       przygięcia
-      przygięcie
-      przygięcia
-      przyginanie
-      przyginania
       przyginanie
       przyginania
       przyglądanie
@@ -65591,8 +57948,6 @@ module GameRoomKrowa
       przygonienia
       przygotowanie
       przygotowania
-      przygotowanie
-      przygotowania
       przygrywanie
       przygrywania
       przygrywka
@@ -65603,10 +57958,6 @@ module GameRoomKrowa
       przygryzienia
       przygrzanie
       przygrzania
-      przygrzanie
-      przygrzania
-      przygrzewanie
-      przygrzewania
       przygrzewanie
       przygrzewania
       przyhamowanie
@@ -65637,10 +57988,6 @@ module GameRoomKrowa
       przyjeżdżania
       przyjęcie
       przyjęcia
-      przyjęcie
-      przyjęcia
-      przyjmowanie
-      przyjmowania
       przyjmowanie
       przyjmowania
       przyjrzenie
@@ -65653,10 +58000,6 @@ module GameRoomKrowa
       przykazywania
       przyklejanie
       przyklejania
-      przyklejanie
-      przyklejania
-      przyklejenie
-      przyklejenia
       przyklejenie
       przyklejenia
       przyklepanie
@@ -65667,8 +58010,6 @@ module GameRoomKrowa
       przyklękania
       przykład
       przykłady
-      przykładanie
-      przykładania
       przykładanie
       przykładania
       przykładnica
@@ -65687,12 +58028,8 @@ module GameRoomKrowa
       przykrócenia
       przykrycie
       przykrycia
-      przykrycie
-      przykrycia
       przykrywa
       przykrywy
-      przykrywanie
-      przykrywania
       przykrywanie
       przykrywania
       przykrywka
@@ -65723,12 +58060,8 @@ module GameRoomKrowa
       przyległości
       przylepianie
       przylepiania
-      przylepianie
-      przylepiania
       przylepiec
       przylepce
-      przylepienie
-      przylepienia
       przylepienie
       przylepienia
       przylepka
@@ -65747,10 +58080,6 @@ module GameRoomKrowa
       przylistki
       przylizanie
       przylizania
-      przylizanie
-      przylizania
-      przylizywanie
-      przylizywania
       przylizywanie
       przylizywania
       przylot
@@ -65759,14 +58088,8 @@ module GameRoomKrowa
       przylutowania
       przylżeniec
       przylżeńce
-      przylżeńce
-      przylżeńce
       przyłapanie
       przyłapania
-      przyłapanie
-      przyłapania
-      przyłapywanie
-      przyłapywania
       przyłapywanie
       przyłapywania
       przyłatanie
@@ -65775,10 +58098,6 @@ module GameRoomKrowa
       przyłażenia
       przyłączanie
       przyłączania
-      przyłączanie
-      przyłączania
-      przyłączenie
-      przyłączenia
       przyłączenie
       przyłączenia
       przyłbica
@@ -65787,12 +58106,8 @@ module GameRoomKrowa
       przyłojenia
       przyłożenie
       przyłożenia
-      przyłożenie
-      przyłożenia
       przymarzanie
       przymarzania
-      przymawianie
-      przymawiania
       przymawianie
       przymawiania
       przymglenie
@@ -65803,12 +58118,8 @@ module GameRoomKrowa
       przymierania
       przymierzanie
       przymierzania
-      przymierzanie
-      przymierzania
       przymierze
       przymierza
-      przymierzenie
-      przymierzenia
       przymierzenie
       przymierzenia
       przymieszka
@@ -65822,15 +58133,10 @@ module GameRoomKrowa
       przymiotnik
       przymiotniki
       przymioty
-      przymioty
-      przymknięcie
-      przymknięcia
       przymknięcie
       przymknięcia
       przymocowanie
       przymocowania
-      przymówienie
-      przymówienia
       przymówienie
       przymówienia
       przymówka
@@ -65845,14 +58151,8 @@ module GameRoomKrowa
       przymusowości
       przymuszanie
       przymuszania
-      przymuszanie
-      przymuszania
       przymuszenie
       przymuszenia
-      przymuszenie
-      przymuszenia
-      przymykanie
-      przymykania
       przymykanie
       przymykania
       przynaglanie
@@ -65878,10 +58178,6 @@ module GameRoomKrowa
       przyobiecania
       przyoblekanie
       przyoblekania
-      przyoblekanie
-      przyoblekania
-      przyodzianie
-      przyodziania
       przyodzianie
       przyodziania
       przyoranie
@@ -65892,8 +58188,6 @@ module GameRoomKrowa
       przypadania
       przypadek
       przypadki
-      przypadek
-      przypadki
       przypadkowość
       przypadłość
       przypadłości
@@ -65901,10 +58195,6 @@ module GameRoomKrowa
       przypadnięcia
       przypalanie
       przypalania
-      przypalanie
-      przypalania
-      przypalenie
-      przypalenia
       przypalenie
       przypalenia
       przypalenizna
@@ -65913,12 +58203,8 @@ module GameRoomKrowa
       przyparcia
       przypasanie
       przypasania
-      przypasanie
-      przypasania
       przypasowanie
       przypasowania
-      przypasywanie
-      przypasywania
       przypasywanie
       przypasywania
       przypatrzenie
@@ -65935,26 +58221,18 @@ module GameRoomKrowa
       przypiecki
       przypieczenie
       przypieczenia
-      przypieczenie
-      przypieczenia
       przypiek
       przypieki
-      przypiekanie
-      przypiekania
       przypiekanie
       przypiekania
       przypieranie
       przypierania
       przypięcie
       przypięcia
-      przypięcie
-      przypięcia
       przypilanie
       przypilania
       przypilenie
       przypilenia
-      przypinanie
-      przypinania
       przypinanie
       przypinania
       przypis
@@ -65983,10 +58261,6 @@ module GameRoomKrowa
       przypodobania
       przypominanie
       przypominania
-      przypominanie
-      przypominania
-      przypomnienie
-      przypomnienia
       przypomnienie
       przypomnienia
       przypon
@@ -66027,8 +58301,6 @@ module GameRoomKrowa
       przyrośnięcia
       przyrównanie
       przyrównania
-      przyrównanie
-      przyrównania
       przyrząd
       przyrządy
       przyrządzanie
@@ -66045,10 +58317,6 @@ module GameRoomKrowa
       przyrznięcia
       przyrzucanie
       przyrzucania
-      przyrzucanie
-      przyrzucania
-      przyrzucenie
-      przyrzucenia
       przyrzucenie
       przyrzucenia
       przyrzynanie
@@ -66057,8 +58325,6 @@ module GameRoomKrowa
       przyrżnięcia
       przysadka
       przysadki
-      przysadzanie
-      przysadzania
       przysadzanie
       przysadzania
       przysadzenie
@@ -66075,8 +58341,6 @@ module GameRoomKrowa
       przysiady
       przysiadanie
       przysiadania
-      przysiadanie
-      przysiadania
       przysięga
       przysięgi
       przysięganie
@@ -66087,14 +58351,10 @@ module GameRoomKrowa
       przyskoczenia
       przysłanianie
       przysłaniania
-      przysłanianie
-      przysłaniania
       przysłanie
       przysłania
       przysłona
       przysłony
-      przysłonienie
-      przysłonienia
       przysłonienie
       przysłonienia
       przysłowie
@@ -66125,8 +58385,6 @@ module GameRoomKrowa
       przysporzenia
       przyssanie
       przyssania
-      przyssanie
-      przyssania
       przyssawka
       przyssawki
       przystanek
@@ -66136,11 +58394,8 @@ module GameRoomKrowa
       przystanięcie
       przystanięcia
       przystań
-      przystanie
       przystawanie
       przystawania
-      przystawianie
-      przystawiania
       przystawianie
       przystawiania
       przystawienie
@@ -66161,10 +58416,6 @@ module GameRoomKrowa
       przystrojenia
       przysunięcie
       przysunięcia
-      przysunięcie
-      przysunięcia
-      przysuwanie
-      przysuwania
       przysuwanie
       przysuwania
       przyswajanie
@@ -66179,8 +58430,6 @@ module GameRoomKrowa
       przysypania
       przysypywanie
       przysypywania
-      przysysanie
-      przysysania
       przysysanie
       przysysania
       przyszłość
@@ -66199,8 +58448,6 @@ module GameRoomKrowa
       przyścianki
       przyśnienie
       przyśnienia
-      przyśnienie
-      przyśnienia
       przyśpiesznik
       przyśpiew
       przyśpiewy
@@ -66214,8 +58461,6 @@ module GameRoomKrowa
       przytachania
       przytaczanie
       przytaczania
-      przytaczanie
-      przytaczania
       przytakiwanie
       przytakiwania
       przytaknięcie
@@ -66224,18 +58469,12 @@ module GameRoomKrowa
       przytarcia
       przytarczyca
       przytarczyce
-      przytarczyce
-      przytarczyce
       przytarganie
       przytargania
       przytelepanie
       przytelepania
       przytępianie
       przytępiania
-      przytępianie
-      przytępiania
-      przytępienie
-      przytępienia
       przytępienie
       przytępienia
       przytknięcie
@@ -66246,14 +58485,10 @@ module GameRoomKrowa
       przytłoczenia
       przytłuczenie
       przytłuczenia
-      przytłuczenie
-      przytłuczenia
       przytłumianie
       przytłumiania
       przytłumienie
       przytłumienia
-      przytoczenie
-      przytoczenia
       przytoczenie
       przytoczenia
       przytomniak
@@ -66274,16 +58509,10 @@ module GameRoomKrowa
       przytroczenia
       przytrzymanie
       przytrzymania
-      przytrzymanie
-      przytrzymania
-      przytulanie
-      przytulania
       przytulanie
       przytulania
       przytulany
       przytulane
-      przytulenie
-      przytulenia
       przytulenie
       przytulenia
       przytulia
@@ -66310,10 +58539,6 @@ module GameRoomKrowa
       przytykania
       przyuczanie
       przyuczania
-      przyuczanie
-      przyuczania
-      przyuczenie
-      przyuczenia
       przyuczenie
       przyuczenia
       przyusznica
@@ -66340,12 +58565,8 @@ module GameRoomKrowa
       przywiania
       przywiązanie
       przywiązania
-      przywiązanie
-      przywiązania
       przywidywanie
       przywidywania
-      przywidzenie
-      przywidzenia
       przywidzenie
       przywidzenia
       przywiedzenie
@@ -66364,14 +58585,8 @@ module GameRoomKrowa
       przywileje
       przywitanie
       przywitania
-      przywitanie
-      przywitania
       przywleczenie
       przywleczenia
-      przywleczenie
-      przywleczenia
-      przywlekanie
-      przywlekania
       przywlekanie
       przywlekania
       przywłoka
@@ -66416,10 +58631,6 @@ module GameRoomKrowa
       przyziemności
       przyznanie
       przyznania
-      przyznanie
-      przyznania
-      przyznawanie
-      przyznawania
       przyznawanie
       przyznawania
       przyzwalanie
@@ -66464,9 +58675,6 @@ module GameRoomKrowa
       psianka
       psianki
       psiankowate
-      psiankowate
-      psiarnia
-      psiarnie
       psiarnia
       psiarnie
       psikus
@@ -66499,12 +58707,8 @@ module GameRoomKrowa
       pstryknięcia
       pstrzenie
       pstrzenia
-      pstrzenie
-      pstrzenia
       psubrat
       psubraty
-      psucie
-      psucia
       psucie
       psucia
       psychastenia
@@ -66547,8 +58751,6 @@ module GameRoomKrowa
       psyknięcia
       psylofit
       psylofity
-      psylofity
-      psylofity
       pszczelarstwo
       pszczelarstwa
       pszczelarz
@@ -66561,7 +58763,6 @@ module GameRoomKrowa
       pszczoły
       pszczołojad
       pszczołojady
-      pszczołowate
       pszczołowate
       pszczółka
       pszczółki
@@ -66577,12 +58778,6 @@ module GameRoomKrowa
       ptaki
       ptaszarnia
       ptaszarnie
-      ptaszarnia
-      ptaszarnie
-      ptaszek
-      ptaszki
-      ptaszek
-      ptaszki
       ptaszek
       ptaszki
       ptaszę
@@ -66591,12 +58786,9 @@ module GameRoomKrowa
       ptaszkowania
       ptasznik
       ptasznicy
-      ptasznik
       ptaszniki
       ptaszyna
       ptaszyny
-      ptaszyniec
-      ptaszyńce
       ptaszyniec
       ptaszyńce
       ptaszysko
@@ -66605,11 +58797,8 @@ module GameRoomKrowa
       pterodaktyle
       pterozaur
       pterozaury
-      pterozaury
-      pterozaury
       ptialina
       ptialiny
-      ptifurki
       ptifurki
       ptyś
       ptysie
@@ -66628,7 +58817,6 @@ module GameRoomKrowa
       publikacja
       publikacje
       publikatory
-      publikatory
       publikowanie
       publikowania
       puch
@@ -66645,10 +58833,6 @@ module GameRoomKrowa
       puchnięcia
       puchowiec
       puchowce
-      puchy
-      puchy
-      pucowanie
-      pucowania
       pucowanie
       pucowania
       pucybut
@@ -66677,8 +58861,6 @@ module GameRoomKrowa
       pudłowania
       pudrowanie
       pudrowania
-      pudrowanie
-      pudrowania
       puenta
       puenty
       puentowanie
@@ -66695,8 +58877,6 @@ module GameRoomKrowa
       puginały
       pukanie
       pukania
-      pukanie
-      pukania
       pukanina
       pukaniny
       pukawka
@@ -66707,8 +58887,6 @@ module GameRoomKrowa
       pukielki
       puklerz
       puklerze
-      puknięcie
-      puknięcia
       puknięcie
       puknięcia
       pula
@@ -66734,8 +58912,6 @@ module GameRoomKrowa
       pulpecik
       pulpeciki
       pulpet
-      pulpety
-      pulpety
       pulpety
       pulpit
       pulpity
@@ -66765,7 +58941,6 @@ module GameRoomKrowa
       pumy
       pumeks
       pumeksy
-      pumpy
       pumpy
       punca
       punce
@@ -66798,7 +58973,6 @@ module GameRoomKrowa
       pupilek
       pupilki
       pupilka
-      pupilki
       purchawka
       purchawki
       purnonsens
@@ -66823,8 +58997,6 @@ module GameRoomKrowa
       puryzmy
       pustak
       pustaki
-      pustak
-      pustaki
       pustelnia
       pustelnie
       pustelnica
@@ -66838,11 +59010,8 @@ module GameRoomKrowa
       pustkowie
       pustkowia
       pustorogie
-      pustorogie
-      pustorożce
       pustorożce
       pustorożec
-      pustorożce
       pustosłowie
       pustosłowia
       pustoszenie
@@ -66863,22 +59032,15 @@ module GameRoomKrowa
       puszczalskie
       puszczanie
       puszczania
-      puszczanie
-      puszczania
-      puszczenie
-      puszczenia
       puszczenie
       puszczenia
       puszczyk
       puszczyki
       puszek
       puszki
-      puszek
-      puszki
       puszenie
       puszenia
       puszka
-      puszki
       puszkowanie
       puszkowania
       puszta
@@ -66905,20 +59067,14 @@ module GameRoomKrowa
       pyknicy
       pylenie
       pylenia
-      pylenie
-      pylenia
       pylica
       pylice
       pylnik
       pylniki
       pylon
       pylony
-      pylony
-      pylony
       pył
       pyły
-      pyłek
-      pyłki
       pyłek
       pyłki
       pyłochłon
@@ -66952,13 +59108,10 @@ module GameRoomKrowa
       pyszności
       pysznościach
       pyszność
-      pyszności
       pyta
       pyty
       pytajnik
       pytajniki
-      pytanie
-      pytania
       pytanie
       pytania
       pytanko
@@ -66967,15 +59120,11 @@ module GameRoomKrowa
       pytle
       pytia
       pytie
-      pytia
-      pytie
       pytlowanie
       pytlowania
       pyton
       pytony
       pyza
-      pyzy
-      pyzy
       pyzy
       quadrivium
       quadrivia
@@ -66998,7 +59147,6 @@ module GameRoomKrowa
       rabat
       rabaty
       rabata
-      rabaty
       rabatka
       rabatki
       rabbi
@@ -67021,15 +59169,11 @@ module GameRoomKrowa
       rachmistrze
       rachowanie
       rachowania
-      rachowanie
-      rachowania
       rachuba
       rachuby
       rachuneczek
       rachuneczki
       rachunek
-      rachunki
-      rachunki
       rachunki
       rachunkowość
       rachunkowości
@@ -67049,16 +59193,10 @@ module GameRoomKrowa
       racjonowania
       racuch
       racuchy
-      racuchy
-      racuchy
       racuszek
-      racuszki
-      racuszki
       racuszki
       raczek
       raczki
-      raczenie
-      raczenia
       raczenie
       raczenia
       raczkowanie
@@ -67066,7 +59204,6 @@ module GameRoomKrowa
       rad
       rady
       rada
-      rady
       radar
       radary
       radaroskop
@@ -67075,12 +59212,9 @@ module GameRoomKrowa
       radarzyści
       radca
       radcowie
-      radca
       radcy
       radcostwo
       radcostwa
-      radcostwo
-      radcostwo
       radełko
       radełka
       radełkowanie
@@ -67093,8 +59227,6 @@ module GameRoomKrowa
       radiatory
       radiestezja
       radiestezje
-      radio
-      radia
       radio
       radia
       radioabonent
@@ -67121,8 +59253,6 @@ module GameRoomKrowa
       radiole
       radiolaria
       radiolarie
-      radiolatarnia
-      radiolatarnie
       radiolatarnia
       radiolatarnie
       radioliza
@@ -67191,8 +59321,6 @@ module GameRoomKrowa
       radości
       radowanie
       radowania
-      radowanie
-      radowania
       radyjko
       radyjka
       radykalista
@@ -67207,8 +59335,6 @@ module GameRoomKrowa
       radykalności
       radykał
       radykałowie
-      radzenie
-      radzenia
       radzenie
       radzenia
       radża
@@ -67241,7 +59367,6 @@ module GameRoomKrowa
       raje
       rajca
       rajcowie
-      rajca
       rajcy
       rajcowanie
       rajcowania
@@ -67258,14 +59383,11 @@ module GameRoomKrowa
       rajgras
       rajgrasy
       rajstopki
-      rajstopki
-      rajstopy
       rajstopy
       rajtar
       rajtarzy
       rajtaria
       rajtarie
-      rajtuzy
       rajtuzy
       rajzbret
       rajzbrety
@@ -67273,8 +59395,6 @@ module GameRoomKrowa
       raki
       rakarz
       rakarze
-      raki
-      raki
       rakieta
       rakiety
       rakietka
@@ -67294,8 +59414,6 @@ module GameRoomKrowa
       raksy
       rakslot
       raksloty
-      raksloty
-      raksloty
       rama
       ramy
       ramadan
@@ -67310,9 +59428,6 @@ module GameRoomKrowa
       ramiączka
       ramienica
       ramienice
-      ramienice
-      ramienice
-      ramienionogie
       ramienionogie
       ramienionóg
       ramienionogi
@@ -67334,8 +59449,6 @@ module GameRoomKrowa
       ramownice
       rampa
       rampy
-      ramy
-      ramy
       rana
       rany
       rancho
@@ -67355,25 +59468,19 @@ module GameRoomKrowa
       raniuszek
       raniuszki
       ranka
-      ranki
       ranna
       ranne
       ranny
       ranni
       rano
-      rana
       rant
       ranty
-      rap
-      rapy
       rap
       rapy
       rapaport
       rapaporty
       rapcie
-      rapcie
       rapeć
-      rapcie
       rapier
       rapiery
       raporcik
@@ -67386,7 +59493,6 @@ module GameRoomKrowa
       raportówki
       rapsod
       rapsodowie
-      rapsod
       rapsody
       rapsodia
       rapsodie
@@ -67426,8 +59532,6 @@ module GameRoomKrowa
       ratlerki
       ratowanie
       ratowania
-      ratowanie
-      ratowania
       ratownictwo
       ratownictwa
       ratownik
@@ -67450,8 +59554,6 @@ module GameRoomKrowa
       razowce
       razówka
       razówki
-      razy
-      razy
       raźność
       raźności
       rażenie
@@ -67460,17 +59562,12 @@ module GameRoomKrowa
       ręby
       rąbanie
       rąbania
-      rąbanie
-      rąbania
       rąbanka
       rąbanki
       rąbek
       rąbki
       rąbnięcie
       rąbnięcia
-      rąbnięcie
-      rąbnięcia
-      rączęta
       rączęta
       rączka
       rączki
@@ -67480,9 +59577,6 @@ module GameRoomKrowa
       rączości
       rączyca
       rączyce
-      rączyce
-      rączyce
-      rączycowate
       rączycowate
       rączyna
       rączyny
@@ -67491,8 +59585,6 @@ module GameRoomKrowa
       rdestnica
       rdestnice
       rdestnicowate
-      rdestnicowate
-      rdestowate
       rdestowate
       rdza
       rdze
@@ -67502,8 +59594,6 @@ module GameRoomKrowa
       rdzawości
       rdzeniarka
       rdzeniarki
-      rdzeniarnia
-      rdzeniarnie
       rdzeniarnia
       rdzeniarnie
       rdzeniarz
@@ -67537,7 +59627,6 @@ module GameRoomKrowa
       reaktywowanie
       reaktywowania
       realia
-      realia
       realista
       realiści
       realistka
@@ -67550,8 +59639,6 @@ module GameRoomKrowa
       realizatorki
       realizm
       realizmy
-      realizowanie
-      realizowania
       realizowanie
       realizowania
       realnienie
@@ -67592,8 +59679,6 @@ module GameRoomKrowa
       receptariusz
       receptariusze
       receptor
-      receptory
-      receptory
       receptory
       receptura
       receptury
@@ -67649,8 +59734,6 @@ module GameRoomKrowa
       redukcjonizmy
       redukowanie
       redukowania
-      redukowanie
-      redukowania
       reduktor
       reduktory
       redundancja
@@ -67682,7 +59765,6 @@ module GameRoomKrowa
       referat
       referaty
       referencje
-      referencje
       referendarz
       referendarze
       referendum
@@ -67706,8 +59788,6 @@ module GameRoomKrowa
       reflektory
       reflektowanie
       reflektowania
-      reflektowanie
-      reflektowania
       reflina
       refliny
       reforma
@@ -67726,8 +59806,6 @@ module GameRoomKrowa
       reformizmy
       reformowanie
       reformowania
-      reformy
-      reformy
       refowanie
       refowania
       refrakcja
@@ -67747,7 +59825,6 @@ module GameRoomKrowa
       regatowiec
       regatowcy
       regaty
-      regaty
       regencja
       regencje
       regeneracja
@@ -67756,8 +59833,6 @@ module GameRoomKrowa
       regeneraty
       regenerator
       regeneratory
-      regenerowanie
-      regenerowania
       regenerowanie
       regenerowania
       regent
@@ -67830,8 +59905,6 @@ module GameRoomKrowa
       rejestratorki
       rejestrowanie
       rejestrowania
-      rejestrowanie
-      rejestrowania
       rejka
       rejki
       rejon
@@ -67870,11 +59943,8 @@ module GameRoomKrowa
       reklamiarze
       reklamowanie
       reklamowania
-      reklamowanie
-      reklamowania
       reklamówka
       reklamówki
-      rekolekcje
       rekolekcje
       rekomendacja
       rekomendacje
@@ -67900,8 +59970,6 @@ module GameRoomKrowa
       rekruci
       rekrutacja
       rekrutacje
-      rekrutowanie
-      rekrutowania
       rekrutowanie
       rekrutowania
       rektor
@@ -67958,8 +60026,6 @@ module GameRoomKrowa
       relikty
       relikwia
       relikwie
-      relikwie
-      relikwie
       reling
       relingi
       remanent
@@ -67981,7 +60047,6 @@ module GameRoomKrowa
       remiz
       remizy
       remiza
-      remizy
       remizka
       remizki
       remonstrant
@@ -67992,8 +60057,6 @@ module GameRoomKrowa
       remontowania
       remontownia
       remontownie
-      ren
-      reny
       ren
       reny
       rencista
@@ -68036,8 +60099,6 @@ module GameRoomKrowa
       rentowności
       reofil
       reofile
-      reofile
-      reofile
       reologia
       reologie
       reorganizacja
@@ -68047,7 +60108,6 @@ module GameRoomKrowa
       reorientacje
       rep
       repy
-      reparacje
       reparacje
       repartycja
       repartycje
@@ -68065,13 +60125,10 @@ module GameRoomKrowa
       repatriantki
       repatriowanie
       repatriowania
-      repatriowanie
-      repatriowania
       reper
       repery
       reperacja
       reperacje
-      reperkusje
       reperkusje
       reperowanie
       reperowania
@@ -68112,8 +60169,6 @@ module GameRoomKrowa
       reporterstwo
       reporterstwa
       represalia
-      represalia
-      represje
       represje
       reprezentacja
       reprezentacje
@@ -68171,8 +60226,6 @@ module GameRoomKrowa
       restaurowanie
       restaurowania
       restrykcja
-      restrykcje
-      restrykcje
       restrykcje
       restytucja
       restytucje
@@ -68280,7 +60333,6 @@ module GameRoomKrowa
       rezeda
       rezedy
       rezedowate
-      rezedowate
       rezerwa
       rezerwy
       rezerwacja
@@ -68347,8 +60399,6 @@ module GameRoomKrowa
       reżyserki
       reżysernia
       reżysernie
-      reżysernia
-      reżysernie
       reżyserowanie
       reżyserowania
       rębacz
@@ -68367,8 +60417,6 @@ module GameRoomKrowa
       rędziny
       ręka
       ręce
-      ręka
-      ręce
       rękaw
       rękawy
       rękawek
@@ -68376,11 +60424,9 @@ module GameRoomKrowa
       rękawica
       rękawice
       rękawiczki
-      rękawiczki
       rękawicznik
       rękawicznicy
       rękawka
-      rękawki
       rękoczyn
       rękoczyny
       rękodzielnik
@@ -68421,8 +60467,6 @@ module GameRoomKrowa
       robaczki
       robaczyca
       robaczyce
-      robaczyce
-      robaczyce
       robaczywienie
       robaczywienia
       robak
@@ -68431,8 +60475,6 @@ module GameRoomKrowa
       robry
       roberek
       roberki
-      robienie
-      robienia
       robienie
       robienia
       robinia
@@ -68445,10 +60487,7 @@ module GameRoomKrowa
       robocizny
       robot
       roboty
-      robot
-      roboty
       robota
-      roboty
       robotnica
       robotnice
       robotnik
@@ -68475,11 +60514,7 @@ module GameRoomKrowa
       rodacy
       rodanek
       rodanki
-      rodanki
-      rodanki
       rodentycyd
-      rodentycydy
-      rodentycydy
       rodentycydy
       rodnia
       rodnie
@@ -68497,13 +60532,9 @@ module GameRoomKrowa
       rodzajniki
       rodzenie
       rodzenia
-      rodzenie
-      rodzenia
       rodzeństwo
       rodzeństwa
       rodzic
-      rodzice
-      rodzice
       rodzice
       rodzimek
       rodzimki
@@ -68516,19 +60547,10 @@ module GameRoomKrowa
       rodzynek
       rodzynki
       rodzynka
-      rodzynki
-      rodzynki
-      rodzynki
-      rodzynki
-      rodzynki
       rogacizna
       rogacizny
       rogacz
       rogacze
-      rogacz
-      rogacze
-      rogal
-      rogale
       rogal
       rogale
       rogalik
@@ -68536,14 +60558,10 @@ module GameRoomKrowa
       rogatek
       rogatki
       rogatka
-      rogatki
       rogatkowate
-      rogatkowate
-      rogatkowe
       rogatkowe
       rogatywka
       rogatywki
-      rogi
       rogi
       rogowacenie
       rogowacenia
@@ -68551,7 +60569,6 @@ module GameRoomKrowa
       rogozęby
       rogoża
       rogoże
-      rogożowate
       rogożowate
       rogożyna
       rogożyny
@@ -68566,11 +60583,7 @@ module GameRoomKrowa
       rojalista
       rojaliści
       rojenia
-      rojenia
       rojenie
-      rojenia
-      rojenie
-      rojenia
       rojnik
       rojniki
       rojowisko
@@ -68578,9 +60591,6 @@ module GameRoomKrowa
       rojownik
       rojowniki
       rok
-      lata
-      rok
-      lata
       rokada
       rokady
       rokambuł
@@ -68600,9 +60610,7 @@ module GameRoomKrowa
       rokosz
       rokosze
       rokowania
-      rokowania
       rokowanie
-      rokowania
       rola
       role
       rolada
@@ -68639,11 +60647,8 @@ module GameRoomKrowa
       romanizmy
       romanizowanie
       romanizowania
-      romanizowanie
-      romanizowania
       romans
       romansy
-      romans
       romanse
       romansidło
       romansidła
@@ -68696,10 +60701,8 @@ module GameRoomKrowa
       ropucha
       ropuchy
       ropuchowate
-      ropuchowate
       ropuszka
       ropuszki
-      roraty
       roraty
       rosa
       rosy
@@ -68707,7 +60710,6 @@ module GameRoomKrowa
       rosaria
       rosiczka
       rosiczki
-      rosiczkowate
       rosiczkowate
       rosocha
       rosochy
@@ -68723,16 +60725,12 @@ module GameRoomKrowa
       rostbefy
       rostra
       rostry
-      rostry
-      rostry
       rosyjski
       rosyjskie
       rosyjskość
       rosyjskości
       roszada
       roszady
-      roszarnia
-      roszarnie
       roszarnia
       roszarnie
       roszarnictwo
@@ -68783,8 +60781,6 @@ module GameRoomKrowa
       rowkowania
       rozanielenie
       rozanielenia
-      rozanielenie
-      rozanielenia
       rozanilina
       rozaniliny
       rozarium
@@ -68795,10 +60791,6 @@ module GameRoomKrowa
       rozbabrywania
       rozbawianie
       rozbawiania
-      rozbawianie
-      rozbawiania
-      rozbawienie
-      rozbawienia
       rozbawienie
       rozbawienia
       rozbebeszenie
@@ -68811,14 +60803,8 @@ module GameRoomKrowa
       rozbełtywania
       rozbestwianie
       rozbestwiania
-      rozbestwianie
-      rozbestwiania
       rozbestwienie
       rozbestwienia
-      rozbestwienie
-      rozbestwienia
-      rozbicie
-      rozbicia
       rozbicie
       rozbicia
       rozbieg
@@ -68831,12 +60817,8 @@ module GameRoomKrowa
       rozbieralnie
       rozbieranie
       rozbierania
-      rozbieranie
-      rozbierania
       rozbieżność
       rozbieżności
-      rozbijanie
-      rozbijania
       rozbijanie
       rozbijania
       rozbiór
@@ -68857,24 +60839,16 @@ module GameRoomKrowa
       rozbójnicy
       rozbrajanie
       rozbrajania
-      rozbrajanie
-      rozbrajania
       rozbrat
       rozbraty
       rozbratel
       rozbratle
       rozbrojenie
       rozbrojenia
-      rozbrojenie
-      rozbrojenia
       rozbrykanie
       rozbrykania
       rozbryzganie
       rozbryzgania
-      rozbryzganie
-      rozbryzgania
-      rozbryźnięcie
-      rozbryźnięcia
       rozbryźnięcie
       rozbryźnięcia
       rozbrzmienie
@@ -68883,16 +60857,10 @@ module GameRoomKrowa
       rozbudowy
       rozbudowanie
       rozbudowania
-      rozbudowanie
-      rozbudowania
       rozbudzanie
       rozbudzania
       rozbudzenie
       rozbudzenia
-      rozbudzenie
-      rozbudzenia
-      rozbujanie
-      rozbujania
       rozbujanie
       rozbujania
       rozchełstanie
@@ -68901,10 +60869,6 @@ module GameRoomKrowa
       rozchlapania
       rozchmurzanie
       rozchmurzania
-      rozchmurzanie
-      rozchmurzania
-      rozchmurzenie
-      rozchmurzenia
       rozchmurzenie
       rozchmurzenia
       rozchodnik
@@ -68913,37 +60877,23 @@ module GameRoomKrowa
       rozchodowania
       rozchodzenie
       rozchodzenia
-      rozchodzenie
-      rozchodzenia
       rozchorowanie
       rozchorowania
-      rozchwianie
-      rozchwiania
       rozchwianie
       rozchwiania
       rozchwytanie
       rozchwytania
       rozchybotanie
       rozchybotania
-      rozchybotanie
-      rozchybotania
-      rozchylanie
-      rozchylania
       rozchylanie
       rozchylania
       rozchylenie
       rozchylenia
-      rozchylenie
-      rozchylenia
-      rozciąganie
-      rozciągania
       rozciąganie
       rozciągania
       rozciągliwość
       rozciągłość
       rozciągłości
-      rozciągnięcie
-      rozciągnięcia
       rozciągnięcie
       rozciągnięcia
       rozcieńczacz
@@ -68954,8 +60904,6 @@ module GameRoomKrowa
       rozcieńczenia
       rozcieranie
       rozcierania
-      rozcieranie
-      rozcierania
       rozcięcie
       rozcięcia
       rozcinacz
@@ -68964,14 +60912,8 @@ module GameRoomKrowa
       rozcinania
       rozczarowanie
       rozczarowania
-      rozczarowanie
-      rozczarowania
       rozczepianie
       rozczepiania
-      rozczepianie
-      rozczepiania
-      rozczepienie
-      rozczepienia
       rozczepienie
       rozczepienia
       rozczesanie
@@ -68980,15 +60922,9 @@ module GameRoomKrowa
       rozczesywania
       rozczochranie
       rozczochrania
-      rozczochranie
-      rozczochrania
       rozczochrańcy
       rozczulanie
       rozczulania
-      rozczulanie
-      rozczulania
-      rozczulenie
-      rozczulenia
       rozczulenie
       rozczulenia
       rozczyn
@@ -69007,22 +60943,14 @@ module GameRoomKrowa
       rozdania
       rozdarcie
       rozdarcia
-      rozdarcie
-      rozdarcia
       rozdawanie
       rozdawania
       rozdawnictwo
       rozdawnictwa
       rozdeptanie
       rozdeptania
-      rozdeptanie
-      rozdeptania
       rozdeptywanie
       rozdeptywania
-      rozdeptywanie
-      rozdeptywania
-      rozdęcie
-      rozdęcia
       rozdęcie
       rozdęcia
       rozdłubanie
@@ -69037,38 +60965,24 @@ module GameRoomKrowa
       rozdrabniacze
       rozdrabnianie
       rozdrabniania
-      rozdrabnianie
-      rozdrabniania
       rozdrapanie
       rozdrapania
       rozdrapywanie
       rozdrapywania
       rozdrażnianie
       rozdrażniania
-      rozdrażnianie
-      rozdrażniania
-      rozdrażnienie
-      rozdrażnienia
       rozdrażnienie
       rozdrażnienia
       rozdrobienie
       rozdrobienia
       rozdrobnienie
       rozdrobnienia
-      rozdrobnienie
-      rozdrobnienia
       rozdwajanie
       rozdwajania
-      rozdwajanie
-      rozdwajania
-      rozdwojenie
-      rozdwojenia
       rozdwojenie
       rozdwojenia
       rozdygotanie
       rozdygotania
-      rozdymanie
-      rozdymania
       rozdymanie
       rozdymania
       rozdzialik
@@ -69079,20 +60993,12 @@ module GameRoomKrowa
       rozdziałki
       rozdziawianie
       rozdziawiania
-      rozdziawianie
-      rozdziawiania
-      rozdziawienie
-      rozdziawienia
       rozdziawienie
       rozdziawienia
       rozdzielacz
       rozdzielacze
       rozdzielanie
       rozdzielania
-      rozdzielanie
-      rozdzielania
-      rozdzielenie
-      rozdzielenia
       rozdzielenie
       rozdzielenia
       rozdzielnia
@@ -69101,8 +61007,6 @@ module GameRoomKrowa
       rozdzielniki
       rozdzielność
       rozdzielności
-      rozdzieranie
-      rozdzierania
       rozdzieranie
       rozdzierania
       rozdziobanie
@@ -69115,8 +61019,6 @@ module GameRoomKrowa
       rozdźwięki
       rozebranie
       rozebrania
-      rozebranie
-      rozebrania
       rozedma
       rozedmy
       rozednienie
@@ -69127,22 +61029,14 @@ module GameRoomKrowa
       rozegnania
       rozegranie
       rozegrania
-      rozegranie
-      rozegrania
       rozejm
       rozejmy
       rozejrzenie
       rozejrzenia
       rozepchanie
       rozepchania
-      rozepchanie
-      rozepchania
       rozepchnięcie
       rozepchnięcia
-      rozepchnięcie
-      rozepchnięcia
-      rozerwanie
-      rozerwania
       rozerwanie
       rozerwania
       rozerznięcie
@@ -69151,8 +61045,6 @@ module GameRoomKrowa
       rozerżnięcia
       rozeschnięcie
       rozeschnięcia
-      rozesłanie
-      rozesłania
       rozesłanie
       rozesłania
       rozespanie
@@ -69165,34 +61057,20 @@ module GameRoomKrowa
       rozetki
       rozeznanie
       rozeznania
-      rozeznanie
-      rozeznania
       rozeznawanie
       rozeznawania
-      rozeznawanie
-      rozeznawania
-      rozeźlenie
-      rozeźlenia
       rozeźlenie
       rozeźlenia
       rozformowanie
       rozformowania
       rozgadanie
       rozgadania
-      rozgadanie
-      rozgadania
-      rozgadywanie
-      rozgadywania
       rozgadywanie
       rozgadywania
       rozgałęziacz
       rozgałęziacze
       rozgałęzianie
       rozgałęziania
-      rozgałęzianie
-      rozgałęziania
-      rozgałęzienie
-      rozgałęzienia
       rozgałęzienie
       rozgałęzienia
       rozgałęźnik
@@ -69213,10 +61091,6 @@ module GameRoomKrowa
       rozgęgania
       rozgięcie
       rozgięcia
-      rozgięcie
-      rozgięcia
-      rozginanie
-      rozginania
       rozginanie
       rozginania
       rozglądanie
@@ -69237,24 +61111,16 @@ module GameRoomKrowa
       rozgniecenia
       rozgniewanie
       rozgniewania
-      rozgniewanie
-      rozgniewania
       rozgonienie
       rozgonienia
       rozgoryczanie
       rozgoryczania
-      rozgoryczanie
-      rozgoryczania
-      rozgoryczenie
-      rozgoryczenia
       rozgoryczenie
       rozgoryczenia
       rozgorzenie
       rozgorzenia
       rozgoszczenie
       rozgoszczenia
-      rozgotowanie
-      rozgotowania
       rozgotowanie
       rozgotowania
       rozgrabianie
@@ -69271,8 +61137,6 @@ module GameRoomKrowa
       rozgromienia
       rozgrywanie
       rozgrywania
-      rozgrywanie
-      rozgrywania
       rozgrywka
       rozgrywki
       rozgryzanie
@@ -69281,20 +61145,12 @@ module GameRoomKrowa
       rozgryzienia
       rozgrzanie
       rozgrzania
-      rozgrzanie
-      rozgrzania
       rozgrzebanie
       rozgrzebania
       rozgrzeszanie
       rozgrzeszania
-      rozgrzeszanie
-      rozgrzeszania
       rozgrzeszenie
       rozgrzeszenia
-      rozgrzeszenie
-      rozgrzeszenia
-      rozgrzewanie
-      rozgrzewania
       rozgrzewanie
       rozgrzewania
       rozgrzewka
@@ -69306,13 +61162,10 @@ module GameRoomKrowa
       rozhartowanie
       rozhartowania
       rozhowory
-      rozhowory
       rozhukanie
       rozhukania
       rozhulanie
       rozhulania
-      rozhuśtanie
-      rozhuśtania
       rozhuśtanie
       rozhuśtania
       rozigranie
@@ -69321,24 +61174,14 @@ module GameRoomKrowa
       rozindyczenia
       roziskrzanie
       roziskrzania
-      roziskrzanie
-      roziskrzania
-      roziskrzenie
-      roziskrzenia
       roziskrzenie
       roziskrzenia
       rozjarzanie
       rozjarzania
-      rozjarzanie
-      rozjarzania
-      rozjarzenie
-      rozjarzenia
       rozjarzenie
       rozjarzenia
       rozjaśniacz
       rozjaśniacze
-      rozjaśnianie
-      rozjaśniania
       rozjaśnianie
       rozjaśniania
       rozjaśnienie
@@ -69347,14 +61190,8 @@ module GameRoomKrowa
       rozjazdy
       rozjątrzanie
       rozjątrzania
-      rozjątrzanie
-      rozjątrzania
       rozjątrzenie
       rozjątrzenia
-      rozjątrzenie
-      rozjątrzenia
-      rozjechanie
-      rozjechania
       rozjechanie
       rozjechania
       rozjemca
@@ -69363,18 +61200,10 @@ module GameRoomKrowa
       rozjemstwa
       rozjeżdżanie
       rozjeżdżania
-      rozjeżdżanie
-      rozjeżdżania
-      rozjeżdżenie
-      rozjeżdżenia
       rozjeżdżenie
       rozjeżdżenia
       rozjuszanie
       rozjuszania
-      rozjuszanie
-      rozjuszania
-      rozjuszenie
-      rozjuszenia
       rozjuszenie
       rozjuszenia
       rozkasłanie
@@ -69393,26 +61222,14 @@ module GameRoomKrowa
       rozkaźniki
       rozkiełznanie
       rozkiełznania
-      rozkiełznanie
-      rozkiełznania
-      rozklapanie
-      rozklapania
       rozklapanie
       rozklapania
       rozklapywanie
       rozklapywania
-      rozklapywanie
-      rozklapywania
-      rozklejanie
-      rozklejania
       rozklejanie
       rozklejania
       rozklejenie
       rozklejenia
-      rozklejenie
-      rozklejenia
-      rozklekotanie
-      rozklekotania
       rozklekotanie
       rozklekotania
       rozklepanie
@@ -69423,16 +61240,10 @@ module GameRoomKrowa
       rozkłady
       rozkładanie
       rozkładania
-      rozkładanie
-      rozkładania
       rozkładówka
       rozkładówki
       rozkochanie
       rozkochania
-      rozkochanie
-      rozkochania
-      rozkochiwanie
-      rozkochiwania
       rozkochiwanie
       rozkochiwania
       rozkojarzenie
@@ -69441,14 +61252,8 @@ module GameRoomKrowa
       rozkolebania
       rozkołysanie
       rozkołysania
-      rozkołysanie
-      rozkołysania
       rozkopanie
       rozkopania
-      rozkopanie
-      rozkopania
-      rozkopywanie
-      rozkopywania
       rozkopywanie
       rozkopywania
       rozkosz
@@ -69457,10 +61262,6 @@ module GameRoomKrowa
       rozkoszowania
       rozkraczanie
       rozkraczania
-      rozkraczanie
-      rozkraczania
-      rozkraczenie
-      rozkraczenia
       rozkraczenie
       rozkraczenia
       rozkradanie
@@ -69473,10 +61274,6 @@ module GameRoomKrowa
       rozkrawania
       rozkręcanie
       rozkręcania
-      rozkręcanie
-      rozkręcania
-      rozkręcenie
-      rozkręcenia
       rozkręcenie
       rozkręcenia
       rozkrojenie
@@ -69485,20 +61282,12 @@ module GameRoomKrowa
       rozkroki
       rozkruszanie
       rozkruszania
-      rozkruszanie
-      rozkruszania
       rozkruszek
       rozkruszki
       rozkruszenie
       rozkruszenia
-      rozkruszenie
-      rozkruszenia
       rozkrwawianie
       rozkrwawiania
-      rozkrwawianie
-      rozkrwawiania
-      rozkrwawienie
-      rozkrwawienia
       rozkrwawienie
       rozkrwawienia
       rozkrycie
@@ -69507,18 +61296,10 @@ module GameRoomKrowa
       rozkrywania
       rozkrzewianie
       rozkrzewiania
-      rozkrzewianie
-      rozkrzewiania
-      rozkrzewienie
-      rozkrzewienia
       rozkrzewienie
       rozkrzewienia
       rozkrzyczenie
       rozkrzyczenia
-      rozkrzyczenie
-      rozkrzyczenia
-      rozkucie
-      rozkucia
       rozkucie
       rozkucia
       rozkupienie
@@ -69527,16 +61308,10 @@ module GameRoomKrowa
       rozkupywania
       rozkurczanie
       rozkurczania
-      rozkurczanie
-      rozkurczania
-      rozkurczenie
-      rozkurczenia
       rozkurczenie
       rozkurczenia
       rozkurz
       rozkurze
-      rozkuwanie
-      rozkuwania
       rozkuwanie
       rozkuwania
       rozkwaszanie
@@ -69553,8 +61328,6 @@ module GameRoomKrowa
       rozkwitnięcia
       rozlanie
       rozlania
-      rozlanie
-      rozlania
       rozlatanie
       rozlatania
       rozlatywanie
@@ -69569,10 +61342,6 @@ module GameRoomKrowa
       rozlegnięcia
       rozleniwianie
       rozleniwiania
-      rozleniwianie
-      rozleniwiania
-      rozleniwienie
-      rozleniwienia
       rozleniwienie
       rozleniwienia
       rozlepianie
@@ -69581,8 +61350,6 @@ module GameRoomKrowa
       rozlepienia
       rozlew
       rozlewy
-      rozlewanie
-      rozlewania
       rozlewanie
       rozlewania
       rozlewisko
@@ -69595,14 +61362,8 @@ module GameRoomKrowa
       rozlezienia
       rozliczanie
       rozliczania
-      rozliczanie
-      rozliczania
       rozliczenie
       rozliczenia
-      rozliczenie
-      rozliczenia
-      rozlokowanie
-      rozlokowania
       rozlokowanie
       rozlokowania
       rozlosowanie
@@ -69611,14 +61372,8 @@ module GameRoomKrowa
       rozlutowania
       rozluźnianie
       rozluźniania
-      rozluźnianie
-      rozluźniania
       rozluźnienie
       rozluźnienia
-      rozluźnienie
-      rozluźnienia
-      rozładowanie
-      rozładowania
       rozładowanie
       rozładowania
       rozładowywacz
@@ -69630,28 +61385,18 @@ module GameRoomKrowa
       rozłamy
       rozłamanie
       rozłamania
-      rozłamanie
-      rozłamania
       rozłamowiec
       rozłamowcy
-      rozłamywanie
-      rozłamywania
       rozłamywanie
       rozłamywania
       rozłażenie
       rozłażenia
       rozłączanie
       rozłączania
-      rozłączanie
-      rozłączania
-      rozłączenie
-      rozłączenia
       rozłączenie
       rozłączenia
       rozłąka
       rozłąki
-      rozłożenie
-      rozłożenia
       rozłożenie
       rozłożenia
       rozłożystość
@@ -69660,10 +61405,6 @@ module GameRoomKrowa
       rozłogi
       rozłupanie
       rozłupania
-      rozłupanie
-      rozłupania
-      rozłupywanie
-      rozłupywania
       rozłupywanie
       rozłupywania
       rozmach
@@ -69688,10 +61429,6 @@ module GameRoomKrowa
       rozmarynowce
       rozmarzanie
       rozmarzania
-      rozmarzanie
-      rozmarzania
-      rozmarzenie
-      rozmarzenia
       rozmarzenie
       rozmarzenia
       rozmarznięcie
@@ -69704,10 +61441,6 @@ module GameRoomKrowa
       rozmazy
       rozmazanie
       rozmazania
-      rozmazanie
-      rozmazania
-      rozmazywanie
-      rozmazywania
       rozmazywanie
       rozmazywania
       rozmiar
@@ -69740,28 +61473,18 @@ module GameRoomKrowa
       rozmijania
       rozmiłowanie
       rozmiłowania
-      rozmiłowanie
-      rozmiłowania
       rozminięcie
       rozminięcia
-      rozmnażanie
-      rozmnażania
       rozmnażanie
       rozmnażania
       rozmnoża
       rozmnoże
       rozmnożenie
       rozmnożenia
-      rozmnożenie
-      rozmnożenia
       rozmnóżka
-      rozmnóżki
-      rozmnóżki
       rozmnóżki
       rozmoczenie
       rozmoczenia
-      rozmodlenie
-      rozmodlenia
       rozmodlenie
       rozmodlenia
       rozmoknięcie
@@ -69784,18 +61507,12 @@ module GameRoomKrowa
       rozmówienia
       rozmówka
       rozmówki
-      rozmówki
-      rozmówki
       rozmównica
       rozmównice
       rozmrażalnia
       rozmrażalnie
       rozmrażanie
       rozmrażania
-      rozmrażanie
-      rozmrażania
-      rozmrożenie
-      rozmrożenia
       rozmrożenie
       rozmrożenia
       rozmycie
@@ -69808,14 +61525,8 @@ module GameRoomKrowa
       rozmywania
       rozniecanie
       rozniecania
-      rozniecanie
-      rozniecania
       rozniecenie
       rozniecenia
-      rozniecenie
-      rozniecenia
-      rozniesienie
-      rozniesienia
       rozniesienie
       rozniesienia
       roznosiciel
@@ -69824,18 +61535,10 @@ module GameRoomKrowa
       roznosicielki
       roznoszenie
       roznoszenia
-      roznoszenie
-      roznoszenia
-      rozochocenie
-      rozochocenia
       rozochocenie
       rozochocenia
       rozognianie
       rozogniania
-      rozognianie
-      rozogniania
-      rozognienie
-      rozognienia
       rozognienie
       rozognienia
       rozoranie
@@ -69857,14 +61560,8 @@ module GameRoomKrowa
       rozpadnięcia
       rozpakowanie
       rozpakowania
-      rozpakowanie
-      rozpakowania
       rozpalanie
       rozpalania
-      rozpalanie
-      rozpalania
-      rozpalenie
-      rozpalenia
       rozpalenie
       rozpalenia
       rozpałka
@@ -69873,12 +61570,8 @@ module GameRoomKrowa
       rozpanoszenia
       rozpaplanie
       rozpaplania
-      rozpaplanie
-      rozpaplania
       rozpapranie
       rozpaprania
-      rozparcie
-      rozparcia
       rozparcie
       rozparcia
       rozparzanie
@@ -69887,12 +61580,8 @@ module GameRoomKrowa
       rozparzenia
       rozpasanie
       rozpasania
-      rozpasanie
-      rozpasania
       rozpatrywanie
       rozpatrywania
-      rozpatrzenie
-      rozpatrzenia
       rozpatrzenie
       rozpatrzenia
       rozpełzanie
@@ -69903,10 +61592,6 @@ module GameRoomKrowa
       rozpędy
       rozpędzanie
       rozpędzania
-      rozpędzanie
-      rozpędzania
-      rozpędzenie
-      rozpędzenia
       rozpędzenie
       rozpędzenia
       rozpękanie
@@ -69915,36 +61600,22 @@ module GameRoomKrowa
       rozpęknięcia
       rozpętanie
       rozpętania
-      rozpętanie
-      rozpętania
       rozpętywanie
       rozpętywania
-      rozpętywanie
-      rozpętywania
-      rozpicie
-      rozpicia
       rozpicie
       rozpicia
       rozpieprzanie
       rozpieprzania
       rozpieprzenie
       rozpieprzenia
-      rozpieprzenie
-      rozpieprzenia
       rozpieracz
       rozpieracze
       rozpieranie
       rozpierania
-      rozpieranie
-      rozpierania
-      rozpięcie
-      rozpięcia
       rozpięcie
       rozpięcia
       rozpijaczenie
       rozpijaczenia
-      rozpijanie
-      rozpijania
       rozpijanie
       rozpijania
       rozpiłowanie
@@ -69953,40 +61624,22 @@ module GameRoomKrowa
       rozpinacze
       rozpinanie
       rozpinania
-      rozpinanie
-      rozpinania
       rozpisanie
       rozpisania
-      rozpisanie
-      rozpisania
-      rozpisywanie
-      rozpisywania
       rozpisywanie
       rozpisywania
       rozplanowanie
       rozplanowania
       rozplatanie
       rozplatania
-      rozplatanie
-      rozplatania
-      rozplątanie
-      rozplątania
       rozplątanie
       rozplątania
       rozplątywanie
       rozplątywania
-      rozplątywanie
-      rozplątywania
-      rozplecenie
-      rozplecenia
       rozplecenie
       rozplecenia
       rozplenianie
       rozpleniania
-      rozplenianie
-      rozpleniania
-      rozplenienie
-      rozplenienia
       rozplenienie
       rozplenienia
       rozpłakanie
@@ -70005,26 +61658,14 @@ module GameRoomKrowa
       rozpływania
       rozpoczęcie
       rozpoczęcia
-      rozpoczęcie
-      rozpoczęcia
-      rozpoczynanie
-      rozpoczynania
       rozpoczynanie
       rozpoczynania
       rozpogadzanie
       rozpogadzania
-      rozpogadzanie
-      rozpogadzania
-      rozpogodzenie
-      rozpogodzenia
       rozpogodzenie
       rozpogodzenia
       rozpoławianie
       rozpoławiania
-      rozpoławianie
-      rozpoławiania
-      rozpołowienie
-      rozpołowienia
       rozpołowienie
       rozpołowienia
       rozpora
@@ -70033,16 +61674,10 @@ module GameRoomKrowa
       rozporki
       rozpostarcie
       rozpostarcia
-      rozpostarcie
-      rozpostarcia
       rozpowiadanie
       rozpowiadania
       rozpoznanie
       rozpoznania
-      rozpoznanie
-      rozpoznania
-      rozpoznawanie
-      rozpoznawania
       rozpoznawanie
       rozpoznawania
       rozpożyczanie
@@ -70057,8 +61692,6 @@ module GameRoomKrowa
       rozprasowania
       rozpraszanie
       rozpraszania
-      rozpraszanie
-      rozpraszania
       rozprawa
       rozprawy
       rozprawianie
@@ -70069,19 +61702,11 @@ module GameRoomKrowa
       rozprażenia
       rozprątek
       rozprątki
-      rozprątki
-      rozprątki
       rozprężanie
       rozprężania
-      rozprężanie
-      rozprężania
-      rozprężenie
-      rozprężenia
       rozprężenie
       rozprężenia
       rozprężliwość
-      rozproszenie
-      rozproszenia
       rozproszenie
       rozproszenia
       rozprucie
@@ -70092,11 +61717,7 @@ module GameRoomKrowa
       rozpryski
       rozpryskanie
       rozpryskania
-      rozpryskanie
-      rozpryskania
       rozpryskiwacz
-      rozpryśnięcie
-      rozpryśnięcia
       rozpryśnięcie
       rozpryśnięcia
       rozprza
@@ -70107,10 +61728,6 @@ module GameRoomKrowa
       rozprzedaże
       rozprzęganie
       rozprzęgania
-      rozprzęganie
-      rozprzęgania
-      rozprzężenie
-      rozprzężenia
       rozprzężenie
       rozprzężenia
       rozpulchniacz
@@ -70122,32 +61739,18 @@ module GameRoomKrowa
       rozpustnicy
       rozpuszczanie
       rozpuszczania
-      rozpuszczanie
-      rozpuszczania
       rozpuszczenie
       rozpuszczenia
-      rozpuszczenie
-      rozpuszczenia
-      rozpychanie
-      rozpychania
       rozpychanie
       rozpychania
       rozpylacz
       rozpylacze
       rozpylanie
       rozpylania
-      rozpylanie
-      rozpylania
-      rozpylenie
-      rozpylenia
       rozpylenie
       rozpylenia
       rozpytanie
       rozpytania
-      rozpytanie
-      rozpytania
-      rozpytywanie
-      rozpytywania
       rozpytywanie
       rozpytywania
       rozrabiactwo
@@ -70160,8 +61763,6 @@ module GameRoomKrowa
       rozrabiania
       rozrachunek
       rozrachunki
-      rozradowanie
-      rozradowania
       rozradowanie
       rozradowania
       rozradzanie
@@ -70194,10 +61795,6 @@ module GameRoomKrowa
       rozróżnienia
       rozruch
       rozruchy
-      rozruchy
-      rozruchy
-      rozruszanie
-      rozruszania
       rozruszanie
       rozruszania
       rozrusznik
@@ -70206,8 +61803,6 @@ module GameRoomKrowa
       rozrycia
       rozryczenie
       rozryczenia
-      rozrywanie
-      rozrywania
       rozrywanie
       rozrywania
       rozrywka
@@ -70222,16 +61817,10 @@ module GameRoomKrowa
       rozrządzenia
       rozrzedzanie
       rozrzedzania
-      rozrzedzanie
-      rozrzedzania
       rozrzedzenie
       rozrzedzenia
       rozrzewnianie
       rozrzewniania
-      rozrzewnianie
-      rozrzewniania
-      rozrzewnienie
-      rozrzewnienia
       rozrzewnienie
       rozrzewnienia
       rozrzucanie
@@ -70262,22 +61851,14 @@ module GameRoomKrowa
       rozsiadania
       rozsianie
       rozsiania
-      rozsianie
-      rozsiania
       rozsierdzanie
       rozsierdzania
-      rozsierdzenie
-      rozsierdzenia
       rozsierdzenie
       rozsierdzenia
       rozsiew
       rozsiewy
       rozsiewacz
       rozsiewacze
-      rozsiewacz
-      rozsiewacze
-      rozsiewanie
-      rozsiewania
       rozsiewanie
       rozsiewania
       rozsiodłanie
@@ -70292,22 +61873,13 @@ module GameRoomKrowa
       rozsmarowania
       rozsnucie
       rozsnucia
-      rozsnucie
-      rozsnucia
-      rozsnuwanie
-      rozsnuwania
       rozsnuwanie
       rozsnuwania
       rozsortowanie
       rozsortowania
       rozsrożenie
       rozsrożenia
-      rozsrożenie
-      rozsrożenia
       rozstaje
-      rozstaje
-      rozstanie
-      rozstania
       rozstanie
       rozstania
       rozstaw
@@ -70316,10 +61888,6 @@ module GameRoomKrowa
       rozstawania
       rozstawianie
       rozstawiania
-      rozstawianie
-      rozstawiania
-      rozstawienie
-      rozstawienia
       rozstawienie
       rozstawienia
       rozstąpienie
@@ -70330,10 +61898,6 @@ module GameRoomKrowa
       rozstępowania
       rozstrajanie
       rozstrajania
-      rozstrajanie
-      rozstrajania
-      rozstrojenie
-      rozstrojenia
       rozstrojenie
       rozstrojenia
       rozstrój
@@ -70344,18 +61908,12 @@ module GameRoomKrowa
       rozstrzelenia
       rozstrzyganie
       rozstrzygania
-      rozstrzyganie
-      rozstrzygania
-      rozsunięcie
-      rozsunięcia
       rozsunięcie
       rozsunięcia
       rozsupłanie
       rozsupłania
       rozsupływanie
       rozsupływania
-      rozsuwanie
-      rozsuwania
       rozsuwanie
       rozsuwania
       rozswawolenie
@@ -70366,14 +61924,10 @@ module GameRoomKrowa
       rozsyłania
       rozsypanie
       rozsypania
-      rozsypanie
-      rozsypania
       rozsypianie
       rozsypiania
       rozsypywacz
       rozsypywacze
-      rozsypywanie
-      rozsypywania
       rozsypywanie
       rozsypywania
       rozszalenie
@@ -70382,16 +61936,10 @@ module GameRoomKrowa
       rozszarpania
       rozszczekanie
       rozszczekania
-      rozszczekanie
-      rozszczekania
       rozszczep
       rozszczepy
       rozszerzanie
       rozszerzania
-      rozszerzanie
-      rozszerzania
-      rozszerzenie
-      rozszerzenia
       rozszerzenie
       rozszerzenia
       rozszlochanie
@@ -70416,28 +61964,16 @@ module GameRoomKrowa
       rozśmieszenia
       rozśpiewanie
       rozśpiewania
-      rozśpiewanie
-      rozśpiewania
       rozśrubowanie
       rozśrubowania
       rozświecanie
       rozświecania
-      rozświecanie
-      rozświecania
-      rozświecenie
-      rozświecenia
       rozświecenie
       rozświecenia
       rozświetlanie
       rozświetlania
-      rozświetlanie
-      rozświetlania
       rozświetlenie
       rozświetlenia
-      rozświetlenie
-      rozświetlenia
-      roztaczanie
-      roztaczania
       roztaczanie
       roztaczania
       roztajanie
@@ -70446,10 +61982,6 @@ module GameRoomKrowa
       roztańczenia
       roztapianie
       roztapiania
-      roztapianie
-      roztapiania
-      roztarcie
-      roztarcia
       roztarcie
       roztarcia
       roztargnienie
@@ -70462,10 +61994,6 @@ module GameRoomKrowa
       rozterkotania
       roztkliwianie
       roztkliwiania
-      roztkliwianie
-      roztkliwiania
-      roztkliwienie
-      roztkliwienia
       roztkliwienie
       roztkliwienia
       roztlenie
@@ -70474,25 +62002,15 @@ module GameRoomKrowa
       roztłuczenia
       roztocz
       roztocze
-      roztocz
-      roztocze
-      roztocza
-      roztocza
-      roztocze
       roztocza
       roztoczek
       roztoczki
-      roztoczenie
-      roztoczenia
       roztoczenie
       roztoczenia
       roztoka
       roztoki
       roztopienie
       roztopienia
-      roztopienie
-      roztopienia
-      roztopy
       roztopy
       roztratowanie
       roztratowania
@@ -70512,8 +62030,6 @@ module GameRoomKrowa
       roztrwonienia
       roztrzaskanie
       roztrzaskania
-      roztrzaskanie
-      roztrzaskania
       roztrząsacz
       roztrząsacze
       roztrząsanie
@@ -70522,7 +62038,6 @@ module GameRoomKrowa
       roztrzepania
       roztrzepaniec
       roztrzepańcy
-      roztrzepaniec
       roztrzepańce
       roztrzęsienie
       roztrzęsienia
@@ -70534,25 +62049,16 @@ module GameRoomKrowa
       rozumy
       rozumienie
       rozumienia
-      rozumienie
-      rozumienia
       rozumowanie
       rozumowania
-      rozwadnianie
-      rozwadniania
       rozwadnianie
       rozwadniania
       rozwaga
       rozwagi
       rozwalanie
       rozwalania
-      rozwalanie
-      rozwalania
       rozwalenie
       rozwalenia
-      rozwalenie
-      rozwalenia
-      rozwaliny
       rozwaliny
       rozwalnianie
       rozwalniania
@@ -70560,8 +62066,6 @@ module GameRoomKrowa
       rozwałki
       rozwałkowanie
       rozwałkowania
-      rozwarcie
-      rozwarcia
       rozwarcie
       rozwarcia
       rozwarczenie
@@ -70572,33 +62076,19 @@ module GameRoomKrowa
       rozważenia
       rozweselanie
       rozweselania
-      rozweselanie
-      rozweselania
       rozweselenie
       rozweselenia
-      rozweselenie
-      rozweselenia
-      rozwianie
-      rozwiania
       rozwianie
       rozwiania
       rozwiązalność
-      rozwiązanie
-      rozwiązania
       rozwiązanie
       rozwiązania
       rozwiązłość
       rozwiązłości
       rozwiązywanie
       rozwiązywania
-      rozwiązywanie
-      rozwiązywania
       rozwichrzanie
       rozwichrzania
-      rozwichrzanie
-      rozwichrzania
-      rozwichrzenie
-      rozwichrzenia
       rozwichrzenie
       rozwichrzenia
       rozwidlacz
@@ -70607,14 +62097,10 @@ module GameRoomKrowa
       rozwidlania
       rozwidlenie
       rozwidlenia
-      rozwidlenie
-      rozwidlenia
       rozwidnianie
       rozwidniania
       rozwidnienie
       rozwidnienia
-      rozwiedzenie
-      rozwiedzenia
       rozwiedzenie
       rozwiedzenia
       rozwiedziona
@@ -70623,8 +62109,6 @@ module GameRoomKrowa
       rozwielitki
       rozwieracz
       rozwieracze
-      rozwieranie
-      rozwierania
       rozwieranie
       rozwierania
       rozwiercanie
@@ -70641,56 +62125,32 @@ module GameRoomKrowa
       rozwieszenia
       rozwiewanie
       rozwiewania
-      rozwiewanie
-      rozwiewania
       rozwiezienie
       rozwiezienia
       rozwijanie
       rozwijania
-      rozwijanie
-      rozwijania
-      rozwikłanie
-      rozwikłania
       rozwikłanie
       rozwikłania
       rozwikływanie
       rozwikływania
-      rozwikływanie
-      rozwikływania
-      rozwinięcie
-      rozwinięcia
       rozwinięcie
       rozwinięcia
       rozwleczenie
       rozwleczenia
-      rozwleczenie
-      rozwleczenia
-      rozwlekanie
-      rozwlekania
       rozwlekanie
       rozwlekania
       rozwlekłość
       rozwlekłości
       rozwłóczenie
       rozwłóczenia
-      rozwłóczenie
-      rozwłóczenia
-      rozwłóknianie
-      rozwłókniania
       rozwłóknianie
       rozwłókniania
       rozwłóknienie
       rozwłóknienia
-      rozwłóknienie
-      rozwłóknienia
-      rozwodnienie
-      rozwodnienia
       rozwodnienie
       rozwodnienia
       rozwodnik
       rozwodnicy
-      rozwodzenie
-      rozwodzenia
       rozwodzenie
       rozwodzenia
       rozwolnienie
@@ -70707,50 +62167,29 @@ module GameRoomKrowa
       rozwoje
       rozwydrzanie
       rozwydrzania
-      rozwydrzanie
-      rozwydrzania
-      rozwydrzenie
-      rozwydrzenia
       rozwydrzenie
       rozwydrzenia
       rozziew
       rozziewy
       rozzucie
       rozzucia
-      rozzucie
-      rozzucia
-      rozzuwanie
-      rozzuwania
       rozzuwanie
       rozzuwania
       rozżalanie
       rozżalania
-      rozżalanie
-      rozżalania
-      rozżalenie
-      rozżalenia
       rozżalenie
       rozżalenia
       rozżarzanie
       rozżarzania
-      rozżarzanie
-      rozżarzania
       rozżarzenie
       rozżarzenia
-      rozżarzenie
-      rozżarzenia
-      rożek
-      rożki
       rożek
       rożki
       rożen
       rożny
-      rożny
       rożne
       ród
-      rody
       róg
-      rogi
       rój
       roje
       rójka
@@ -70769,12 +62208,8 @@ module GameRoomKrowa
       rówieśnicy
       równanie
       równania
-      równanie
-      równania
       równia
       równie
-      równiacha
-      równiachy
       równiacha
       równiachy
       równiak
@@ -70784,7 +62219,6 @@ module GameRoomKrowa
       równolatek
       równolatki
       równolatka
-      równolatki
       równoległobok
       równoległość
       równoległości
@@ -70803,8 +62237,6 @@ module GameRoomKrowa
       równowartości
       równoważenie
       równoważenia
-      równoważenie
-      równoważenia
       równoważnia
       równoważnie
       równoważnik
@@ -70819,7 +62251,6 @@ module GameRoomKrowa
       róż
       róże
       róża
-      róże
       różanecznik
       różaneczniki
       różaniec
@@ -70836,12 +62267,8 @@ module GameRoomKrowa
       różnice
       różnicowanie
       różnicowania
-      różnicowanie
-      różnicowania
       różniczka
       różniczki
-      różnienie
-      różnienia
       różnienie
       różnienia
       różnobarwność
@@ -70852,15 +62279,9 @@ module GameRoomKrowa
       różności
       różnościach
       różność
-      różności
-      różowanie
-      różowania
       różowanie
       różowania
       różowate
-      różowate
-      różowienie
-      różowienia
       różowienie
       różowienia
       różyca
@@ -70900,12 +62321,10 @@ module GameRoomKrowa
       ruchomości
       ruchomościach
       ruchomość
-      ruchomości
       ruczaj
       ruczaje
       ruda
       rudy
-      ruda
       rude
       rudawka
       rudawki
@@ -70923,13 +62342,11 @@ module GameRoomKrowa
       rudowce
       rudyment
       rudymenty
-      rudyment
       rudymenta
       rudzenie
       rudzenia
       rudzielec
       rudzielcy
-      rudzielec
       rudzielce
       rudzik
       rudziki
@@ -70940,19 +62357,14 @@ module GameRoomKrowa
       rugbista
       rugbiści
       rugi
-      rugi
       rugowanie
       rugowania
       ruina
-      ruiny
-      ruiny
       ruiny
       ruja
       ruje
       rujnacja
       rujnacje
-      rujnowanie
-      rujnowania
       rujnowanie
       rujnowania
       rujowisko
@@ -70974,15 +62386,12 @@ module GameRoomKrowa
       rumb
       rumby
       rumba
-      rumby
       rumian
       rumiany
       rumianek
       rumianki
       rumieniec
       rumieńce
-      rumienienie
-      rumienienia
       rumienienie
       rumienienia
       rumień
@@ -71005,12 +62414,8 @@ module GameRoomKrowa
       runięcia
       runo
       runa
-      runy
-      runy
       rupia
       rupie
-      rupieciarnia
-      rupieciarnie
       rupieciarnia
       rupieciarnie
       ruptura
@@ -71026,10 +62431,7 @@ module GameRoomKrowa
       rurka
       rurki
       rurkokwiatowe
-      rurkokwiatowe
       rurkopław
-      rurkopławy
-      rurkopławy
       rurkopławy
       rurociąg
       rurociągi
@@ -71053,20 +62455,12 @@ module GameRoomKrowa
       rusyfikacje
       rusyfikowanie
       rusyfikowania
-      rusyfikowanie
-      rusyfikowania
       ruszanie
       ruszania
-      ruszanie
-      ruszania
-      ruszenie
-      ruszenia
       ruszenie
       ruszenia
       rusznica
       rusznice
-      rusznikarnia
-      rusznikarnie
       rusznikarnia
       rusznikarnie
       rusznikarstwo
@@ -71092,7 +62486,6 @@ module GameRoomKrowa
       rutka
       rutki
       rutowate
-      rutowate
       rutwica
       rutwice
       rutyna
@@ -71105,8 +62498,6 @@ module GameRoomKrowa
       rwy
       rwanie
       rwania
-      rwanie
-      rwania
       rwetes
       rwetesy
       ryba
@@ -71114,8 +62505,6 @@ module GameRoomKrowa
       rybactwo
       rybactwa
       rybaczka
-      rybaczki
-      rybaczki
       rybaczki
       rybak
       rybacy
@@ -71149,8 +62538,6 @@ module GameRoomKrowa
       rycerze
       rycerzyk
       rycerzyki
-      rycie
-      rycia
       rycie
       rycia
       rycina
@@ -71192,12 +62579,8 @@ module GameRoomKrowa
       ryjek
       ryjki
       ryjkowce
-      ryjkowce
       ryjkowiec
-      ryjkowce
       ryjówka
-      ryjówki
-      ryjówki
       ryjówki
       ryk
       ryki
@@ -71225,8 +62608,6 @@ module GameRoomKrowa
       rymnięcia
       rymowanie
       rymowania
-      rymowanie
-      rymowania
       rymowanka
       rymowanki
       ryneczek
@@ -71238,7 +62619,6 @@ module GameRoomKrowa
       rynienka
       rynienki
       rynka
-      rynki
       rynna
       rynny
       rynnica
@@ -71252,13 +62632,10 @@ module GameRoomKrowa
       rys
       rysy
       rysa
-      rysy
       rysik
       rysiki
       rysopis
       rysopisy
-      rysowanie
-      rysowania
       rysowanie
       rysowania
       rysownica
@@ -71270,8 +62647,6 @@ module GameRoomKrowa
       rysuneczek
       rysuneczki
       rysunek
-      rysunki
-      rysunki
       rysunki
       ryś
       rysie
@@ -71331,18 +62706,12 @@ module GameRoomKrowa
       rzadkości
       rząd
       rządy
-      rząd
       rzędy
       rządca
       rządcy
       rządek
       rządki
       rządzący
-      rządzący
-      rządzący
-      rządzący
-      rządzenie
-      rządzenia
       rządzenie
       rządzenia
       rzecz
@@ -71388,10 +62757,7 @@ module GameRoomKrowa
       rzemyki
       rzep
       rzepy
-      rzep
-      rzepy
       rzepa
-      rzepy
       rzepak
       rzepaki
       rzepakowiec
@@ -71454,8 +62820,6 @@ module GameRoomKrowa
       rzępolenia
       rzępoła
       rzępoły
-      rzępoła
-      rzępoły
       rzęsa
       rzęsy
       rzęsistek
@@ -71464,11 +62828,7 @@ module GameRoomKrowa
       rzęsistkowice
       rzęska
       rzęski
-      rzęski
-      rzęski
       rzęsowate
-      rzęsowate
-      rzęślowate
       rzęślowate
       rzęśnia
       rzęśnie
@@ -71482,12 +62842,8 @@ module GameRoomKrowa
       rzodkiewki
       rzucanie
       rzucania
-      rzucanie
-      rzucania
       rzucawka
       rzucawki
-      rzucenie
-      rzucenia
       rzucenie
       rzucenia
       rzut
@@ -71495,9 +62851,6 @@ module GameRoomKrowa
       rzutek
       rzutki
       rzutka
-      rzutki
-      rzutki
-      rzutki
       rzutkość
       rzutkości
       rzutnia
@@ -71516,14 +62869,11 @@ module GameRoomKrowa
       rżenia
       rżnięcie
       rżnięcia
-      rżnięcie
-      rżnięcia
       rżysko
       rżyska
       sabadyl
       sabadyle
       sabadyla
-      sabadyle
       sabat
       sabaty
       sabot
@@ -71534,13 +62884,9 @@ module GameRoomKrowa
       sabotażystki
       sabotowanie
       sabotowania
-      saboty
-      saboty
       sacharoza
       sacharozy
       sacharyd
-      sacharydy
-      sacharydy
       sacharydy
       sacharymetr
       sacharymetry
@@ -71569,7 +62915,6 @@ module GameRoomKrowa
       sadz
       sadze
       sadza
-      sadze
       sadzanie
       sadzania
       sadzarka
@@ -71578,8 +62923,6 @@ module GameRoomKrowa
       sadzawki
       sadzeniak
       sadzeniaki
-      sadzenie
-      sadzenia
       sadzenie
       sadzenia
       sadzonka
@@ -71599,11 +62942,8 @@ module GameRoomKrowa
       sagan
       sagany
       sago
-      saga
-      sagowce
       sagowce
       sagowiec
-      sagowce
       saintsimonizm
       sajra
       sajry
@@ -71657,8 +62997,6 @@ module GameRoomKrowa
       salmiaki
       salmonella
       salmonelle
-      salmonelle
-      salmonelle
       salon
       salony
       salonik
@@ -71667,7 +63005,6 @@ module GameRoomKrowa
       salonki
       salonowiec
       salonowcy
-      salonowiec
       salonowce
       salopa
       salopy
@@ -71681,8 +63018,6 @@ module GameRoomKrowa
       salutowania
       salwa
       salwy
-      salwowanie
-      salwowania
       salwowanie
       salwowania
       sałata
@@ -71705,8 +63040,6 @@ module GameRoomKrowa
       samiczki
       samiec
       samce
-      samiec
-      samce
       samobójca
       samobójcy
       samobójczyni
@@ -71725,9 +63058,6 @@ module GameRoomKrowa
       samochwał
       samochwały
       samochwała
-      samochwały
-      samochwała
-      samochwały
       samodział
       samodziały
       samodzielność
@@ -71798,7 +63128,6 @@ module GameRoomKrowa
       samotniczki
       samotnik
       samotnicy
-      samotnik
       samotniki
       samotność
       samotności
@@ -71854,14 +63183,10 @@ module GameRoomKrowa
       sandacze
       sandał
       sandały
-      sandał
-      sandały
       sandałek
       sandałki
       sandałowiec
       sandałowce
-      sandały
-      sandały
       sandr
       sandry
       sandwicz
@@ -71873,12 +63198,9 @@ module GameRoomKrowa
       saneczkarz
       saneczkarze
       saneczki
-      saneczki
       sangwinik
       sangwinicy
       sanie
-      sanie
-      sanitaria
       sanitaria
       sanitariat
       sanitariaty
@@ -71890,7 +63212,6 @@ module GameRoomKrowa
       sanitarki
       sankcja
       sankcje
-      sanki
       sanki
       sanktuarium
       sanktuaria
@@ -71909,30 +63230,18 @@ module GameRoomKrowa
       saperzy
       saperka
       saperki
-      saperki
-      saperki
       sapka
       sapki
       sapnięcie
       sapnięcia
       saponina
       saponiny
-      saponiny
-      saponiny
       saprobiont
-      saprobionty
-      saprobionty
       saprobionty
       saprofag
       saprofagi
-      saprofagi
-      saprofagi
       saprofit
       saprofity
-      saprofity
-      saprofity
-      sapy
-      sapy
       sarabanda
       sarabandy
       saracenia
@@ -71977,11 +63286,9 @@ module GameRoomKrowa
       satanizmy
       satelita
       satelici
-      satelita
       satelity
       satrapa
       satrapowie
-      satrapa
       satrapy
       saturacja
       saturacje
@@ -71992,7 +63299,6 @@ module GameRoomKrowa
       satyr
       satyry
       satyra
-      satyry
       satyryczność
       satyryczności
       satyryk
@@ -72009,13 +63315,10 @@ module GameRoomKrowa
       sączki
       sączenie
       sączenia
-      sączenie
-      sączenia
       sączkowanie
       sączkowania
       sączyniec
       sączyńce
-      sączyńcowate
       sączyńcowate
       sąd
       sądy
@@ -72045,8 +63348,6 @@ module GameRoomKrowa
       scałowania
       scedowanie
       scedowania
-      scementowanie
-      scementowania
       scementowanie
       scementowania
       scena
@@ -72113,8 +63414,6 @@ module GameRoomKrowa
       schlania
       schlapanie
       schlapania
-      schlapanie
-      schlapania
       schlastanie
       schlastania
       schlebianie
@@ -72134,9 +63433,6 @@ module GameRoomKrowa
       schodkowanie
       schodkowania
       schody
-      schody
-      schodzenie
-      schodzenia
       schodzenie
       schodzenia
       scholastycyzm
@@ -72148,16 +63444,12 @@ module GameRoomKrowa
       schorzenia
       schowanie
       schowania
-      schowanie
-      schowania
       schowanko
       schowanka
       schowek
       schowki
       schron
       schrony
-      schronienie
-      schronienia
       schronienie
       schronienia
       schronisko
@@ -72170,16 +63462,10 @@ module GameRoomKrowa
       schudnięcia
       schwycenie
       schwycenia
-      schwycenie
-      schwycenia
       schwytanie
       schwytania
       schylanie
       schylania
-      schylanie
-      schylania
-      schylenie
-      schylenia
       schylenie
       schylenia
       schyłkowiec
@@ -72192,10 +63478,6 @@ module GameRoomKrowa
       scukrowania
       scukrzanie
       scukrzania
-      scukrzanie
-      scukrzania
-      scukrzenie
-      scukrzenia
       scukrzenie
       scukrzenia
       scyntygrafia
@@ -72208,10 +63490,6 @@ module GameRoomKrowa
       scyzoryki
       sczepianie
       sczepiania
-      sczepianie
-      sczepiania
-      sczepienie
-      sczepienia
       sczepienie
       sczepienia
       sczernienie
@@ -72371,8 +63649,6 @@ module GameRoomKrowa
       selenonautyki
       seler
       selery
-      seler
-      selery
       semafor
       semafory
       semantyk
@@ -72423,8 +63699,6 @@ module GameRoomKrowa
       sensy
       sensacja
       sensacje
-      sensacje
-      sensacje
       sensacyjność
       sensacyjności
       sensat
@@ -72451,8 +63725,6 @@ module GameRoomKrowa
       separatyści
       separatyzm
       separatyzmy
-      separowanie
-      separowania
       separowanie
       separowania
       sepia
@@ -72487,9 +63759,6 @@ module GameRoomKrowa
       serdaki
       serdeczności
       serdeczność
-      serdeczności
-      serdelek
-      serdelki
       serdelek
       serdelki
       serduszko
@@ -72514,8 +63783,6 @@ module GameRoomKrowa
       serowarzy
       serowarnia
       serowarnie
-      serowarnia
-      serowarnie
       serowarstwo
       serowarstwa
       serowiatka
@@ -72525,7 +63792,6 @@ module GameRoomKrowa
       serpentyn
       serpentyny
       serpentyna
-      serpentyny
       serso
       sersa
       serw
@@ -72574,12 +63840,9 @@ module GameRoomKrowa
       setki
       setnik
       setnicy
-      seksy
       sezam
       sezamy
       sezamki
-      sezamki
-      sezamowate
       sezamowate
       sezon
       sezony
@@ -72589,14 +63852,10 @@ module GameRoomKrowa
       sęczki
       sędzia
       sędziowie
-      sędzia
-      sędziowie
       sędzina
       sędziny
       sędziostwo
       sędziostwa
-      sędziostwo
-      sędziostwo
       sędziowanie
       sędziowania
       sędziwość
@@ -72617,14 +63876,10 @@ module GameRoomKrowa
       sfaleryty
       sfalowanie
       sfalowania
-      sfalowanie
-      sfalowania
       sfałdowanie
       sfałdowania
       sfałszowanie
       sfałszowania
-      sfatygowanie
-      sfatygowania
       sfatygowanie
       sfatygowania
       sfaulowanie
@@ -72635,8 +63890,6 @@ module GameRoomKrowa
       sferoidy
       sfiksowanie
       sfiksowania
-      sfilcowanie
-      sfilcowania
       sfilcowanie
       sfilcowania
       sfilmowanie
@@ -72653,12 +63906,8 @@ module GameRoomKrowa
       sfory
       sformowanie
       sformowania
-      sformowanie
-      sformowania
       sformułowanie
       sformułowania
-      sforsowanie
-      sforsowania
       sforsowanie
       sforsowania
       sfragistyka
@@ -72696,7 +63945,6 @@ module GameRoomKrowa
       siano
       siana
       sianokosy
-      sianokosy
       siara
       siary
       siarczan
@@ -72732,17 +63980,12 @@ module GameRoomKrowa
       siąpienie
       siąpienia
       sidła
-      sidła
       sieciarka
-      sieciarki
-      sieciarki
       sieciarki
       sieczenie
       sieczenia
       sieczka
       sieczki
-      sieczkarnia
-      sieczkarnie
       sieczkarnia
       sieczkarnie
       sieczna
@@ -72757,10 +64000,7 @@ module GameRoomKrowa
       siedmiokropki
       siedmiolatek
       siedmiolatki
-      siedmiolatek
-      siedmiolatki
       siedmiolatka
-      siedmiolatki
       siedmiolecie
       siedmiolecia
       siedzenie
@@ -72771,8 +64011,6 @@ module GameRoomKrowa
       sieje
       siejba
       siejby
-      sieje
-      sieje
       siekacz
       siekacze
       siekanie
@@ -72807,8 +64045,6 @@ module GameRoomKrowa
       siepacze
       siepanie
       siepania
-      siepanie
-      siepania
       siepnięcie
       siepnięcia
       siermięga
@@ -72817,8 +64053,6 @@ module GameRoomKrowa
       sierocińce
       sieroctwo
       sieroctwa
-      sierota
-      sieroty
       sierota
       sieroty
       sierotka
@@ -72856,7 +64090,6 @@ module GameRoomKrowa
       sikawka
       sikawki
       siki
-      siki
       siklawa
       siklawy
       siknięcie
@@ -72865,8 +64098,6 @@ module GameRoomKrowa
       sikory
       sikorka
       sikorki
-      sikory
-      sikory
       silan
       silany
       silenie
@@ -72896,16 +64127,10 @@ module GameRoomKrowa
       siłowania
       siłownia
       siłownie
-      siły
-      siły
       siniak
       siniaki
       sinica
       sinice
-      sinice
-      sinice
-      siniec
-      sińce
       siniec
       sińce
       sinienie
@@ -72958,8 +64183,6 @@ module GameRoomKrowa
       sitarstwa
       sitarz
       sitarze
-      sitarz
-      sitarze
       siteczko
       siteczka
       sitek
@@ -72970,7 +64193,6 @@ module GameRoomKrowa
       sita
       sitodruk
       sitodruki
-      sitowate
       sitowate
       sitowie
       sitowia
@@ -73014,12 +64236,8 @@ module GameRoomKrowa
       skalania
       skalar
       skalary
-      skalar
-      skalary
       skald
       skaldowie
-      skaleczenie
-      skaleczenia
       skaleczenie
       skaleczenia
       skalistość
@@ -73028,7 +64246,6 @@ module GameRoomKrowa
       skalkulowania
       skalnica
       skalnice
-      skalnicowate
       skalnicowate
       skalowanie
       skalowania
@@ -73064,9 +64281,7 @@ module GameRoomKrowa
       skandowanie
       skandowania
       skandowce
-      skandowce
       skandowiec
-      skandowce
       skandynawista
       skandynawiści
       skansen
@@ -73119,20 +64334,10 @@ module GameRoomKrowa
       skarpety
       skarpetka
       skarpetki
-      skarpetki
-      skarpetki
       skarpiowate
-      skarpiowate
-      skarżący
-      skarżący
-      skarżący
       skarżący
       skarżenie
       skarżenia
-      skarżenie
-      skarżenia
-      skarżypyta
-      skarżypyty
       skarżypyta
       skarżypyty
       skasowanie
@@ -73151,24 +64356,14 @@ module GameRoomKrowa
       skazane
       skazanie
       skazania
-      skazanie
-      skazania
       skazany
       skazani
       skazywanie
       skazywania
-      skazywanie
-      skazywania
-      skażanie
-      skażania
       skażanie
       skażania
       skażenie
       skażenia
-      skażenie
-      skażenia
-      skąpanie
-      skąpania
       skąpanie
       skąpania
       skąpiec
@@ -73179,12 +64374,8 @@ module GameRoomKrowa
       skąpomocze
       skąposzczet
       skąposzczety
-      skąposzczety
-      skąposzczety
-      skąpotchawce
       skąpotchawce
       skąpotchawiec
-      skąpotchawce
       skąpstwo
       skąpstwa
       skecz
@@ -73197,10 +64388,6 @@ module GameRoomKrowa
       skiboby
       skierowanie
       skierowania
-      skierowanie
-      skierowania
-      skierowywanie
-      skierowywania
       skierowywanie
       skierowywania
       skif
@@ -73221,18 +64408,12 @@ module GameRoomKrowa
       skiśnięcia
       sklarowanie
       sklarowania
-      sklarowanie
-      sklarowania
       sklecenie
       sklecenia
       sklejanie
       sklejania
-      sklejanie
-      sklejania
       sklejarka
       sklejarki
-      sklejenie
-      sklejenia
       sklejenie
       sklejenia
       sklejka
@@ -73243,10 +64424,6 @@ module GameRoomKrowa
       sklepania
       sklepianie
       sklepiania
-      sklepianie
-      sklepiania
-      sklepienie
-      sklepienia
       sklepienie
       sklepienia
       sklepik
@@ -73296,8 +64473,6 @@ module GameRoomKrowa
       składowe
       składowanie
       składowania
-      składowe
-      składowe
       składowisko
       składowiska
       składownik
@@ -73308,38 +64483,23 @@ module GameRoomKrowa
       skłamania
       skłanianie
       skłaniania
-      skłanianie
-      skłaniania
       skłębianie
       skłębiania
-      skłębianie
-      skłębiania
-      skłębienie
-      skłębienia
       skłębienie
       skłębienia
       skłon
       skłony
       skłonienie
       skłonienia
-      skłonienie
-      skłonienia
       skłonności
       skłonnościach
       skłonność
-      skłonności
       skłócanie
       skłócania
       skłócenie
       skłócenia
-      skłócenie
-      skłócenia
       skłucie
       skłucia
-      skłucie
-      skłucia
-      sknera
-      sknery
       sknera
       sknery
       sknerstwo
@@ -73350,7 +64510,6 @@ module GameRoomKrowa
       skoble
       skoczek
       skoczkowie
-      skoczek
       skoczki
       skoczenie
       skoczenia
@@ -73361,18 +64520,11 @@ module GameRoomKrowa
       skoczogonek
       skoczogonki
       skoczogonka
-      skoczogonki
-      skoczogonki
-      skoczogonki
       skoda
       skody
       skojarzenie
       skojarzenia
-      skojarzenie
-      skojarzenia
       skok
-      skoki
-      skoki
       skoki
       skokietowanie
       skokietowania
@@ -73380,10 +64532,6 @@ module GameRoomKrowa
       skokochrony
       skoksowanie
       skoksowania
-      skoksowanie
-      skoksowania
-      skoligacenie
-      skoligacenia
       skoligacenie
       skoligacenia
       skolioza
@@ -73392,8 +64540,6 @@ module GameRoomKrowa
       skołowacenia
       skołowanie
       skołowania
-      skołtunienie
-      skołtunienia
       skołtunienie
       skołtunienia
       skomasowanie
@@ -73420,8 +64566,6 @@ module GameRoomKrowa
       skontra
       skończenie
       skończenia
-      skończenie
-      skończenia
       skończoność
       skończoności
       skop
@@ -73443,7 +64587,6 @@ module GameRoomKrowa
       skorowidz
       skorowidze
       skorpenowate
-      skorpenowate
       skorpion
       skorpiony
       skorumpowanie
@@ -73464,8 +64607,6 @@ module GameRoomKrowa
       skosy
       skosmacenie
       skosmacenia
-      skosmacenie
-      skosmacenia
       skostniałość
       skostniałości
       skostnienie
@@ -73476,8 +64617,6 @@ module GameRoomKrowa
       skoszenia
       skosztowanie
       skosztowania
-      skotłowanie
-      skotłowania
       skotłowanie
       skotłowania
       skowronek
@@ -73496,9 +64635,7 @@ module GameRoomKrowa
       skórki
       skórnik
       skórnicy
-      skórnik
       skórniki
-      skóroskrzydłe
       skóroskrzydłe
       skórowaczka
       skórowaczki
@@ -73506,8 +64643,6 @@ module GameRoomKrowa
       skórowania
       skra
       skry
-      skracanie
-      skracania
       skracanie
       skracania
       skradanie
@@ -73522,12 +64657,8 @@ module GameRoomKrowa
       skrajności
       skrapianie
       skrapiania
-      skrapianie
-      skrapiania
       skraplacz
       skraplacze
-      skraplanie
-      skraplania
       skraplanie
       skraplania
       skraplarka
@@ -73558,24 +64689,17 @@ module GameRoomKrowa
       skrewienia
       skręcanie
       skręcania
-      skręcanie
-      skręcania
       skręcarka
       skręcarki
-      skręcenie
-      skręcenia
       skręcenie
       skręcenia
       skrępowanie
       skrępowania
       skręt
       skręty
-      skręt
-      skręty
       skrętek
       skrętki
       skrętka
-      skrętki
       skrętoskłon
       skrętoskłony
       skrobaczka
@@ -73584,19 +64708,14 @@ module GameRoomKrowa
       skrobaki
       skrobanie
       skrobania
-      skrobanie
-      skrobania
       skrobanka
       skrobanki
       skrobia
       skrobie
       skrobnięcie
       skrobnięcia
-      skrobnięcie
-      skrobnięcia
       skrofuloza
       skrofulozy
-      skrofuły
       skrofuły
       skrojenie
       skrojenia
@@ -73605,23 +64724,16 @@ module GameRoomKrowa
       skromnisia
       skromnisie
       skromniś
-      skromnisie
       skromność
       skromności
       skroń
       skronie
       skropienie
       skropienia
-      skropienie
-      skropienia
-      skroplenie
-      skroplenia
       skroplenie
       skroplenia
       skroplina
       skropliny
-      skrócenie
-      skrócenia
       skrócenie
       skrócenia
       skrót
@@ -73644,21 +64756,14 @@ module GameRoomKrowa
       skrupulatki
       skrupulatność
       skrupuły
-      skrupuły
       skruszanie
       skruszania
       skruszenie
       skruszenia
-      skruszenie
-      skruszenia
-      skrwawienie
-      skrwawienia
       skrwawienie
       skrwawienia
       skryba
       skryby
-      skrycie
-      skrycia
       skrycie
       skrycia
       skrypt
@@ -73675,10 +64780,6 @@ module GameRoomKrowa
       skrytykowania
       skrywanie
       skrywania
-      skrywanie
-      skrywania
-      skrzat
-      skrzaty
       skrzat
       skrzaty
       skrzeczenie
@@ -73686,9 +64787,7 @@ module GameRoomKrowa
       skrzek
       skrzeki
       skrzela
-      skrzela
       skrzele
-      skrzela
       skrzelonóg
       skrzelonogi
       skrzenie
@@ -73697,10 +64796,6 @@ module GameRoomKrowa
       skrzepy
       skrzepianie
       skrzepiania
-      skrzepianie
-      skrzepiania
-      skrzepienie
-      skrzepienia
       skrzepienie
       skrzepienia
       skrzepnięcie
@@ -73715,13 +64810,10 @@ module GameRoomKrowa
       skrzydełka
       skrzydlak
       skrzydlaki
-      skrzydlak
-      skrzydlaki
       skrzydlisko
       skrzydliska
       skrzydło
       skrzydła
-      skrzydłonogie
       skrzydłonogie
       skrzydłonóg
       skrzydłonogi
@@ -73731,10 +64823,6 @@ module GameRoomKrowa
       skrzydłowi
       skrzykiwanie
       skrzykiwania
-      skrzykiwanie
-      skrzykiwania
-      skrzyknięcie
-      skrzyknięcia
       skrzyknięcie
       skrzyknięcia
       skrzyneczka
@@ -73748,41 +64836,27 @@ module GameRoomKrowa
       skrzypaczka
       skrzypaczki
       skrzypce
-      skrzypce
-      skrzypeczki
       skrzypeczki
       skrzypek
       skrzypkowie
       skrzypienie
       skrzypienia
       skrzypki
-      skrzypki
       skrzypnięcie
       skrzypnięcia
-      skrzypowe
       skrzypowe
       skrzywdzenie
       skrzywdzenia
       skrzywianie
       skrzywiania
-      skrzywianie
-      skrzywiania
-      skrzywienie
-      skrzywienia
       skrzywienie
       skrzywienia
       skrzyżowanie
       skrzyżowania
-      skrzyżowanie
-      skrzyżowania
-      skubanie
-      skubania
       skubanie
       skubania
       skublica
       skublice
-      skubnięcie
-      skubnięcia
       skubnięcie
       skubnięcia
       skucie
@@ -73791,10 +64865,6 @@ module GameRoomKrowa
       skudlenia
       skudłacenie
       skudłacenia
-      skudłacenie
-      skudłacenia
-      skulenie
-      skulenia
       skulenie
       skulenia
       skumanie
@@ -73809,10 +64879,6 @@ module GameRoomKrowa
       skupy
       skupianie
       skupiania
-      skupianie
-      skupiania
-      skupienie
-      skupienia
       skupienie
       skupienia
       skupisko
@@ -73823,16 +64889,10 @@ module GameRoomKrowa
       skurcze
       skurczenie
       skurczenia
-      skurczenie
-      skurczenia
       skurczybyk
       skurczybyki
       skurwysyn
       skurwysyny
-      skurwysyn
-      skurwysyny
-      skuszenie
-      skuszenia
       skuszenie
       skuszenia
       skuteczność
@@ -73854,9 +64914,6 @@ module GameRoomKrowa
       skwarek
       skwarki
       skwarka
-      skwarki
-      skwaszenie
-      skwaszenia
       skwaszenie
       skwaszenia
       skwaśnienie
@@ -73898,12 +64955,10 @@ module GameRoomKrowa
       sliping
       slipingi
       slipy
-      slipy
       slogan
       slogany
       sloganowość
       sloganowości
-      slumsy
       slumsy
       słabeusz
       słabeusze
@@ -73931,13 +64986,10 @@ module GameRoomKrowa
       słodownie
       słodycz
       słodycze
-      słodycze
-      słodycze
       słodyszek
       słodyszki
       słodzenie
       słodzenia
-      słodziny
       słodziny
       słoiczek
       słoiczki
@@ -73972,9 +65024,7 @@ module GameRoomKrowa
       słonka
       słonki
       słonko
-      słonka
       słonorośl
-      słonorośle
       słonorośle
       słonorośla
       słoność
@@ -74019,8 +65069,6 @@ module GameRoomKrowa
       słody
       słój
       słoje
-      słój
-      słoje
       słóweczko
       słóweczka
       słówko
@@ -74039,19 +65087,14 @@ module GameRoomKrowa
       słuchowcy
       słuchowisko
       słuchowiska
-      słuchy
-      słuchy
       sługa
       słudzy
-      sługa
       sługi
       sługus
       sługusy
       słup
       słupy
       słupek
-      słupki
-      słupki
       słupki
       słupołaz
       słupołazy
@@ -74063,7 +65106,6 @@ module GameRoomKrowa
       służalce
       służąca
       służące
-      służący
       służący
       służba
       służby
@@ -74085,12 +65127,8 @@ module GameRoomKrowa
       słyszalności
       słyszenie
       słyszenia
-      słyszenie
-      słyszenia
       smaczek
       smaczki
-      smaganie
-      smagania
       smaganie
       smagania
       smagliczka
@@ -74121,8 +65159,6 @@ module GameRoomKrowa
       smardze
       smark
       smarki
-      smark
-      smarki
       smarkacz
       smarkacze
       smarkanie
@@ -74138,13 +65174,10 @@ module GameRoomKrowa
       smarkul
       smarkule
       smarkula
-      smarkule
       smarność
       smarności
       smarowacz
       smarowacze
-      smarowanie
-      smarowania
       smarowanie
       smarowania
       smarowidło
@@ -74155,8 +65188,6 @@ module GameRoomKrowa
       smarowniczki
       smażalnia
       smażalnie
-      smażenie
-      smażenia
       smażenie
       smażenia
       smażenina
@@ -74172,7 +65203,6 @@ module GameRoomKrowa
       smoczek
       smoczki
       smoczkouste
-      smoczkouste
       smog
       smogi
       smok
@@ -74187,20 +65217,14 @@ module GameRoomKrowa
       smolaki
       smolarnia
       smolarnie
-      smolarnia
-      smolarnie
       smolarstwo
       smolarstwa
       smolarz
       smolarze
       smolenie
       smolenia
-      smolenie
-      smolenia
       smolik
       smoliki
-      smoluch
-      smoluchy
       smoluch
       smoluchy
       smoła
@@ -74217,10 +65241,6 @@ module GameRoomKrowa
       smrodzenia
       smród
       smrody
-      smród
-      smrody
-      smucenie
-      smucenia
       smucenie
       smucenia
       smuga
@@ -74233,8 +65253,6 @@ module GameRoomKrowa
       smukłości
       smutek
       smutki
-      smutki
-      smutki
       smutnienie
       smutnienia
       smużka
@@ -74243,10 +65261,6 @@ module GameRoomKrowa
       smycze
       smyczek
       smyczki
-      smyczki
-      smyczki
-      smyk
-      smyki
       smyk
       smyki
       smykałka
@@ -74283,8 +65297,6 @@ module GameRoomKrowa
       snowalnie
       snowarka
       snowarki
-      snucie
-      snucia
       snucie
       snucia
       snycerka
@@ -74388,7 +65400,6 @@ module GameRoomKrowa
       sol
       sole
       sola
-      sole
       solanina
       solaniny
       solanka
@@ -74399,8 +65410,6 @@ module GameRoomKrowa
       soldy
       soldateska
       soldateski
-      sole
-      sole
       solejka
       solejki
       solenie
@@ -74444,7 +65453,6 @@ module GameRoomKrowa
       solniczka
       solniczki
       solo
-      sola
       solomierz
       solomierze
       solówka
@@ -74457,8 +65465,6 @@ module GameRoomKrowa
       sołtysi
       sołtysostwo
       sołtysostwa
-      sołtysostwo
-      sołtysostwo
       sołtysowanie
       sołtysowania
       sombrero
@@ -74489,8 +65495,6 @@ module GameRoomKrowa
       sople
       sopelek
       sopelki
-      sople
-      sople
       sopran
       soprany
       sopranista
@@ -74534,11 +65538,8 @@ module GameRoomKrowa
       sosna
       sosny
       sosnowate
-      sosnowate
-      sosnowce
       sosnowce
       sosnowiec
-      sosnowce
       sosnóweczka
       sosnóweczki
       sosnówka
@@ -74546,7 +65547,6 @@ module GameRoomKrowa
       sosrąb
       sosręby
       sosręb
-      sosręby
       sośniak
       sośniaki
       sośnica
@@ -74564,11 +65564,9 @@ module GameRoomKrowa
       sozologia
       sozologie
       sód
-      sody
       sójka
       sójki
       sól
-      sole
       sóweczka
       sóweczki
       sówka
@@ -74585,8 +65583,6 @@ module GameRoomKrowa
       spacje
       spacjowanie
       spacjowania
-      spaczenie
-      spaczenia
       spaczenie
       spaczenia
       spad
@@ -74613,23 +65609,14 @@ module GameRoomKrowa
       spadzie
       spajanie
       spajania
-      spajanie
-      spajania
-      spakowanie
-      spakowania
       spakowanie
       spakowania
       spalanie
       spalania
-      spalanie
-      spalania
-      spalenie
-      spalenia
       spalenie
       spalenia
       spalenizna
       spalenizny
-      spaliny
       spaliny
       spałaszowanie
       spałaszowania
@@ -74663,22 +65650,14 @@ module GameRoomKrowa
       spartakiady
       spartanin
       spartanie
-      spartanin
-      spartanie
-      spartanka
-      spartanki
       spartanka
       spartanki
       spartolenie
       spartolenia
       sparzenie
       sparzenia
-      sparzenie
-      sparzenia
       spasanie
       spasania
-      spasienie
-      spasienia
       spasienie
       spasienia
       spaskudzenie
@@ -74687,8 +65666,6 @@ module GameRoomKrowa
       spasowania
       spatałaszenie
       spatałaszenia
-      spatynowanie
-      spatynowania
       spatynowanie
       spatynowania
       spauzowanie
@@ -74711,8 +65688,6 @@ module GameRoomKrowa
       spazmy
       spazmowanie
       spazmowania
-      spazmy
-      spazmy
       spąg
       spągi
       spąsowienie
@@ -74733,7 +65708,6 @@ module GameRoomKrowa
       specyfik
       specyfiki
       specyfika
-      specyfiki
       specyfikacja
       specyfikacje
       spedycja
@@ -74770,10 +65744,6 @@ module GameRoomKrowa
       spelunki
       spełnianie
       spełniania
-      spełnianie
-      spełniania
-      spełnienie
-      spełnienia
       spełnienie
       spełnienia
       spełzanie
@@ -74784,8 +65754,6 @@ module GameRoomKrowa
       spermy
       spermatozoid
       spermatozoidy
-      speszenie
-      speszenia
       speszenie
       speszenia
       spęcznienie
@@ -74806,34 +65774,22 @@ module GameRoomKrowa
       spichrze
       spicie
       spicia
-      spicie
-      spicia
-      spieczenie
-      spieczenia
       spieczenie
       spieczenia
       spiek
       spieki
       spiekanie
       spiekania
-      spiekanie
-      spiekania
       spiekota
       spiekoty
       spienianie
       spieniania
-      spienianie
-      spieniania
-      spienienie
-      spienienia
       spienienie
       spienienia
       spieniężanie
       spieniężania
       spieniężenie
       spieniężenia
-      spieranie
-      spierania
       spieranie
       spierania
       spieszczanie
@@ -74846,22 +65802,14 @@ module GameRoomKrowa
       spięcia
       spiętrzanie
       spiętrzania
-      spiętrzanie
-      spiętrzania
       spiętrzenie
       spiętrzenia
-      spiętrzenie
-      spiętrzenia
-      spijanie
-      spijania
       spijanie
       spijania
       spiker
       spikerzy
       spikerka
       spikerki
-      spiknięcie
-      spiknięcia
       spiknięcie
       spiknięcia
       spilśnianie
@@ -74893,7 +65841,6 @@ module GameRoomKrowa
       spirochet
       spirochety
       spirytualia
-      spirytualia
       spirytualista
       spirytualiści
       spirytualizm
@@ -74909,9 +65856,6 @@ module GameRoomKrowa
       spis
       spisy
       spisa
-      spisy
-      spisanie
-      spisania
       spisanie
       spisania
       spisek
@@ -74922,36 +65866,24 @@ module GameRoomKrowa
       spiskowcy
       spisywanie
       spisywania
-      spisywanie
-      spisywania
       spiż
       spiże
       spiżarka
       spiżarki
       spiżarnia
       spiżarnie
-      spiżarnia
-      spiżarnie
       splajtowanie
       splajtowania
-      splamienie
-      splamienia
       splamienie
       splamienia
       splantowanie
       splantowania
       splatanie
       splatania
-      splatanie
-      splatania
       splądrowanie
       splądrowania
       splątanie
       splątania
-      splątanie
-      splątania
-      splecenie
-      splecenia
       splecenie
       splecenia
       spleen
@@ -74986,10 +65918,6 @@ module GameRoomKrowa
       spłakania
       spłaszczanie
       spłaszczania
-      spłaszczanie
-      spłaszczania
-      spłaszczenie
-      spłaszczenia
       spłaszczenie
       spłaszczenia
       spłata
@@ -75022,18 +65950,10 @@ module GameRoomKrowa
       spłuczki
       spłukanie
       spłukania
-      spłukanie
-      spłukania
-      spłukiwanie
-      spłukiwania
       spłukiwanie
       spłukiwania
       spłycanie
       spłycania
-      spłycanie
-      spłycania
-      spłycenie
-      spłycenia
       spłycenie
       spłycenia
       spłynięcie
@@ -75042,8 +65962,6 @@ module GameRoomKrowa
       spływy
       spływanie
       spływania
-      spocenie
-      spocenia
       spocenie
       spocenia
       spoczęcie
@@ -75057,20 +65975,15 @@ module GameRoomKrowa
       spodek
       spodki
       spodenki
-      spodenki
-      spodlenie
-      spodlenia
       spodlenie
       spodlenia
       spodniarstwo
       spodniarstwa
       spodnie
-      spodnie
       spodnium
       spodniumy
       spodobanie
       spodobania
-      spodouste
       spodouste
       spodziewanie
       spodziewania
@@ -75084,8 +65997,6 @@ module GameRoomKrowa
       spoistości
       spoiwo
       spoiwa
-      spojenie
-      spojenia
       spojenie
       spojenia
       spojówka
@@ -75102,10 +66013,6 @@ module GameRoomKrowa
       spokrewnienia
       spolszczanie
       spolszczania
-      spolszczanie
-      spolszczania
-      spolszczenie
-      spolszczenia
       spolszczenie
       spolszczenia
       społeczeństwo
@@ -75124,10 +66031,6 @@ module GameRoomKrowa
       spondeje
       spopielanie
       spopielania
-      spopielanie
-      spopielania
-      spopielenie
-      spopielenia
       spopielenie
       spopielenia
       spora
@@ -75138,9 +66041,7 @@ module GameRoomKrowa
       sporofit
       sporofity
       sporowce
-      sporowce
       sporowiec
-      sporowce
       sport
       sporty
       sportowiec
@@ -75167,20 +66068,12 @@ module GameRoomKrowa
       spospolicenia
       spostrzeganie
       spostrzegania
-      spostrzeganie
-      spostrzegania
       spostrzeżenie
       spostrzeżenia
-      spostrzeżenie
-      spostrzeżenia
-      spotęgowanie
-      spotęgowania
       spotęgowanie
       spotęgowania
       spotężnienie
       spotężnienia
-      spotkanie
-      spotkania
       spotkanie
       spotkania
       spotnienie
@@ -75193,14 +66086,8 @@ module GameRoomKrowa
       spotwarzenia
       spotykanie
       spotykania
-      spotykanie
-      spotykania
       spoufalanie
       spoufalania
-      spoufalanie
-      spoufalania
-      spoufalenie
-      spoufalenia
       spoufalenie
       spoufalenia
       spowalniacz
@@ -75211,10 +66098,6 @@ module GameRoomKrowa
       spoważnienia
       spowiadanie
       spowiadania
-      spowiadanie
-      spowiadania
-      spowicie
-      spowicia
       spowicie
       spowicia
       spowiednik
@@ -75223,10 +66106,6 @@ module GameRoomKrowa
       spowiedzi
       spowijanie
       spowijania
-      spowijanie
-      spowijania
-      spowinięcie
-      spowinięcia
       spowinięcie
       spowinięcia
       spowodowanie
@@ -75268,7 +66147,6 @@ module GameRoomKrowa
       spółkowanie
       spółkowania
       spór
-      spory
       spóźnialska
       spóźnialskie
       spóźnialski
@@ -75277,12 +66155,8 @@ module GameRoomKrowa
       spóźniania
       spóźnienie
       spóźnienia
-      spóźnienie
-      spóźnienia
       spracowanie
       spracowania
-      spranie
-      sprania
       spranie
       sprania
       sprasowanie
@@ -75300,28 +66174,18 @@ module GameRoomKrowa
       sprawdzalność
       sprawdzanie
       sprawdzania
-      sprawdzanie
-      sprawdzania
-      sprawdzenie
-      sprawdzenia
       sprawdzenie
       sprawdzenia
       sprawdzian
       sprawdziany
       sprawianie
       sprawiania
-      sprawianie
-      sprawiania
-      sprawienie
-      sprawienia
       sprawienie
       sprawienia
       sprawka
       sprawki
       sprawność
       sprawności
-      sprawowanie
-      sprawowania
       sprawowanie
       sprawowania
       sprawozdanie
@@ -75331,24 +66195,17 @@ module GameRoomKrowa
       sprawozdawca
       sprawozdawcy
       sprawunki
-      sprawunki
       sprecyzowanie
       sprecyzowania
       spreparowanie
       spreparowania
       sprężanie
       sprężania
-      sprężanie
-      sprężania
       sprężarka
       sprężarki
       sprężenie
       sprężenia
-      sprężenie
-      sprężenia
       sprężyk
-      sprężyki
-      sprężyki
       sprężyki
       sprężyna
       sprężyny
@@ -75378,16 +66235,10 @@ module GameRoomKrowa
       sproszenia
       sproszkowanie
       sproszkowania
-      sproszkowanie
-      sproszkowania
       sprośność
       sprośności
       sprowadzanie
       sprowadzania
-      sprowadzanie
-      sprowadzania
-      sprowadzenie
-      sprowadzenia
       sprowadzenie
       sprowadzenia
       sprowokowanie
@@ -75404,10 +66255,6 @@ module GameRoomKrowa
       spryciarze
       spryskanie
       spryskania
-      spryskanie
-      spryskania
-      spryskiwanie
-      spryskiwania
       spryskiwanie
       spryskiwania
       spryt
@@ -75438,10 +66285,6 @@ module GameRoomKrowa
       sprzedajności
       sprzedanie
       sprzedania
-      sprzedanie
-      sprzedania
-      sprzedawanie
-      sprzedawania
       sprzedawanie
       sprzedawania
       sprzedawca
@@ -75455,18 +66298,12 @@ module GameRoomKrowa
       sprzędzenia
       sprzęganie
       sprzęgania
-      sprzęganie
-      sprzęgania
       sprzęgło
       sprzęgła
       sprzęgnięcie
       sprzęgnięcia
-      sprzęgnięcie
-      sprzęgnięcia
       sprzęt
       sprzęty
-      sprzężenie
-      sprzężenia
       sprzężenie
       sprzężenia
       sprzyjanie
@@ -75475,8 +66312,6 @@ module GameRoomKrowa
       sprzykrzenia
       sprzysięganie
       sprzysięgania
-      sprzysiężenie
-      sprzysiężenia
       sprzysiężenie
       sprzysiężenia
       spsocenie
@@ -75499,10 +66334,6 @@ module GameRoomKrowa
       spustowi
       spuszczanie
       spuszczania
-      spuszczanie
-      spuszczania
-      spuszczenie
-      spuszczenia
       spuszczenie
       spuszczenia
       spuścizna
@@ -75513,12 +66344,8 @@ module GameRoomKrowa
       spychacze
       spychanie
       spychania
-      spychanie
-      spychania
       spycharka
       spycharki
-      spytanie
-      spytania
       spytanie
       spytania
       spytlowanie
@@ -75535,8 +66362,6 @@ module GameRoomKrowa
       srebrniki
       srebro
       srebra
-      srebrzenie
-      srebrzenia
       srebrzenie
       srebrzenia
       srebrzystość
@@ -75579,8 +66404,6 @@ module GameRoomKrowa
       stacyjki
       staczanie
       staczania
-      staczanie
-      staczania
       stadion
       stadiony
       stadium
@@ -75600,7 +66423,6 @@ module GameRoomKrowa
       stajanie
       stajania
       staje
-      staje
       stajenka
       stajenki
       stajenny
@@ -75619,7 +66441,6 @@ module GameRoomKrowa
       stalaktyty
       staliwo
       staliwa
-      stalle
       stalle
       staloryt
       staloryty
@@ -75654,8 +66475,6 @@ module GameRoomKrowa
       staniczki
       stanie
       stania
-      stanie
-      stania
       stanienie
       stanienia
       stanięcie
@@ -75674,12 +66493,8 @@ module GameRoomKrowa
       stapelie
       stapianie
       stapiania
-      stapianie
-      stapiania
       stara
       stare
-      staranie
-      starania
       staranie
       starania
       staranność
@@ -75688,17 +66503,12 @@ module GameRoomKrowa
       staranowania
       starcie
       starcia
-      starcie
-      starcia
       starczość
       starczości
       starganie
       stargania
-      starganie
-      stargania
       starka
       starki
-      starocie
       starocie
       starodruk
       starodruki
@@ -75714,8 +66524,6 @@ module GameRoomKrowa
       starostowania
       starostwo
       starostwa
-      starostwo
-      starostwo
       starościna
       starościny
       starość
@@ -75725,14 +66533,10 @@ module GameRoomKrowa
       starowin
       starowiny
       starowina
-      starowiny
-      starowina
-      starowiny
       starowinka
       starowinki
       starozakonny
       starozakonni
-      starożytni
       starożytni
       starożytność
       starożytności
@@ -75748,21 +66552,18 @@ module GameRoomKrowa
       starty
       starter
       starterzy
-      starter
       startery
       startowanie
       startowania
       staruch
       staruchy
       starucha
-      staruchy
       staruszek
       staruszkowie
       staruszka
       staruszki
       starzec
       starcy
-      starzec
       starce
       starzenie
       starzenia
@@ -75780,8 +66581,6 @@ module GameRoomKrowa
       statolity
       statoskop
       statoskopy
-      statua
-      statuy
       statua
       statuy
       statuetka
@@ -75810,14 +66609,10 @@ module GameRoomKrowa
       stawy
       stawanie
       stawania
-      stawanie
-      stawania
       stawek
       stawki
       stawiacz
       stawiacze
-      stawianie
-      stawiania
       stawianie
       stawiania
       stawidło
@@ -75827,8 +66622,6 @@ module GameRoomKrowa
       stawiennictwo
       stawiennictwa
       stawka
-      stawki
-      stawonogie
       stawonogie
       stawonóg
       stawonogi
@@ -75857,9 +66650,7 @@ module GameRoomKrowa
       stek
       stki
       stekowce
-      stekowce
       stekowiec
-      stekowce
       stela
       stele
       stelaż
@@ -75931,8 +66722,6 @@ module GameRoomKrowa
       steroidy
       sterol
       sterole
-      sterole
-      sterole
       sterolotka
       sterolotki
       sterowanie
@@ -75947,13 +66736,9 @@ module GameRoomKrowa
       sterowności
       sterówka
       sterówki
-      sterówki
-      sterówki
       sterta
       sterty
       steryd
-      sterydy
-      sterydy
       sterydy
       sterylizacja
       sterylizacje
@@ -75986,15 +66771,10 @@ module GameRoomKrowa
       stęp
       stępy
       stępa
-      stępy
       stępak
       stępaki
       stępianie
       stępiania
-      stępianie
-      stępiania
-      stępienie
-      stępienia
       stępienie
       stępienia
       stępka
@@ -76015,16 +66795,10 @@ module GameRoomKrowa
       stlenia
       stłaczanie
       stłaczania
-      stłaczanie
-      stłaczania
       stłamszenie
       stłamszenia
       stłoczenie
       stłoczenia
-      stłoczenie
-      stłoczenia
-      stłuczenie
-      stłuczenia
       stłuczenie
       stłuczenia
       stłuczka
@@ -76033,8 +66807,6 @@ module GameRoomKrowa
       stłumienia
       stoczek
       stoczki
-      stoczenie
-      stoczenia
       stoczenie
       stoczenia
       stocznia
@@ -76067,8 +66839,6 @@ module GameRoomKrowa
       stolarki
       stolarnia
       stolarnie
-      stolarnia
-      stolarnie
       stolarstwo
       stolarstwa
       stolarz
@@ -76093,8 +66863,6 @@ module GameRoomKrowa
       stołki
       stołowanie
       stołowania
-      stołowanie
-      stołowania
       stołowniczka
       stołowniczki
       stołownik
@@ -76108,7 +66876,6 @@ module GameRoomKrowa
       stonka
       stonki
       stonkowate
-      stonkowate
       stonoga
       stonogi
       stonowanie
@@ -76116,13 +66883,9 @@ module GameRoomKrowa
       stop
       stopy
       stopa
-      stopy
       stoper
       stoperzy
-      stoper
       stopery
-      stopienie
-      stopienia
       stopienie
       stopienia
       stopień
@@ -76139,7 +66902,6 @@ module GameRoomKrowa
       story
       storczyk
       storczyki
-      storczykowate
       storczykowate
       stornia
       stornie
@@ -76159,15 +66921,11 @@ module GameRoomKrowa
       stosiny
       stosowanie
       stosowania
-      stosowanie
-      stosowania
       stosowność
       stosowności
       stosuneczek
       stosuneczki
       stosunek
-      stosunki
-      stosunki
       stosunki
       stotinka
       stotinki
@@ -76189,12 +66947,8 @@ module GameRoomKrowa
       stówki
       stracenie
       stracenia
-      stracenie
-      stracenia
       straceniec
       straceńcy
-      strach
-      strachy
       strach
       strachy
       strachliwość
@@ -76215,12 +66969,8 @@ module GameRoomKrowa
       strajkowania
       strapienie
       strapienia
-      strapienie
-      strapienia
       straszak
       straszaki
-      straszenie
-      straszenia
       straszenie
       straszenia
       straszność
@@ -76266,10 +67016,6 @@ module GameRoomKrowa
       strażnicy
       strącanie
       strącania
-      strącanie
-      strącania
-      strącenie
-      strącenia
       strącenie
       strącenia
       strączek
@@ -76284,8 +67030,6 @@ module GameRoomKrowa
       strelicje
       stremowanie
       stremowania
-      stremowanie
-      stremowania
       streptokok
       streptokoki
       streptomycyna
@@ -76298,10 +67042,6 @@ module GameRoomKrowa
       stresowania
       streszczanie
       streszczania
-      streszczanie
-      streszczania
-      streszczenie
-      streszczenia
       streszczenie
       streszczenia
       stręczenie
@@ -76330,12 +67070,9 @@ module GameRoomKrowa
       stroiki
       strojenie
       strojenia
-      strojenie
-      strojenia
       strojnisia
       strojnisie
       strojniś
-      strojnisie
       strojność
       strojności
       stromizna
@@ -76366,8 +67103,6 @@ module GameRoomKrowa
       stropodachy
       stroszenie
       stroszenia
-      stroszenie
-      stroszenia
       strój
       stroje
       stróż
@@ -76384,20 +67119,15 @@ module GameRoomKrowa
       struchlenia
       strucie
       strucia
-      strucie
-      strucia
       strucla
       strucle
       strudel
       strudle
       strudzenie
       strudzenia
-      strudzenie
-      strudzenia
       strug
       strugi
       struga
-      strugi
       struganie
       strugania
       strugarka
@@ -76422,27 +67152,18 @@ module GameRoomKrowa
       strunowanie
       strunowania
       strunowce
-      strunowce
       strunowiec
-      strunowce
-      strup
-      strupy
       strup
       strupy
       strupek
       strupki
       strusie
-      strusie
       struś
-      strusie
       strużka
       strużki
       strużyny
-      strużyny
       strwonienie
       strwonienia
-      strwożenie
-      strwożenia
       strwożenie
       strwożenia
       strych
@@ -76462,19 +67183,15 @@ module GameRoomKrowa
       stryjenka
       stryjenki
       stryjostwo
-      stryjostwo
       stryszek
       stryszki
       strzał
       strzały
       strzała
-      strzały
       strzałka
       strzałki
       strzałowy
       strzałowi
-      strzaskanie
-      strzaskania
       strzaskanie
       strzaskania
       strząsanie
@@ -76491,8 +67208,6 @@ module GameRoomKrowa
       strzelby
       strzelczyni
       strzelczynie
-      strzelec
-      strzelcy
       strzelec
       strzelcy
       strzelectwo
@@ -76515,18 +67230,13 @@ module GameRoomKrowa
       strzepywania
       strzeżenie
       strzeżenia
-      strzeżenie
-      strzeżenia
       strzęp
       strzępy
       strzępek
       strzępki
       strzępienie
       strzępienia
-      strzępienie
-      strzępienia
       strzępka
-      strzępki
       strzyga
       strzygi
       strzykanie
@@ -76543,11 +67253,7 @@ module GameRoomKrowa
       strzyżarki
       strzyżenie
       strzyżenia
-      strzyżenie
-      strzyżenia
       strzyżyk
-      strzyżyki
-      strzyżyki
       strzyżyki
       studencik
       studenciki
@@ -76560,19 +67266,14 @@ module GameRoomKrowa
       studentka
       studentki
       studia
-      studia
       studio
-      studia
       studiowanie
       studiowania
       studium
-      studia
       studnia
       studnie
       studniówka
       studniówki
-      studzenie
-      studzenia
       studzenie
       studzenia
       studzienka
@@ -76581,10 +67282,6 @@ module GameRoomKrowa
       stuki
       stukanie
       stukania
-      stukanie
-      stukania
-      stuknięcie
-      stuknięcia
       stuknięcie
       stuknięcia
       stukot
@@ -76596,7 +67293,6 @@ module GameRoomKrowa
       stulatek
       stulatki
       stulatka
-      stulatki
       stulecie
       stulecia
       stulejka
@@ -76607,18 +67303,12 @@ module GameRoomKrowa
       stuły
       stułbia
       stułbie
-      stułbie
-      stułbie
       stułbiopław
-      stułbiopławy
-      stułbiopławy
       stułbiopławy
       stumetrówka
       stumetrówki
       stupor
       stupory
-      sturczenie
-      sturczenia
       sturczenie
       sturczenia
       stutysięcznik
@@ -76640,8 +67330,6 @@ module GameRoomKrowa
       stworzyciele
       stwór
       stwory
-      stwór
-      stwory
       stwórca
       stwórcy
       styczeń
@@ -76651,8 +67339,6 @@ module GameRoomKrowa
       styczność
       styczności
       stygmat
-      stygmaty
-      stygmaty
       stygmaty
       stygmatyczka
       stygmatyczki
@@ -76664,8 +67350,6 @@ module GameRoomKrowa
       stygnięcia
       styk
       styki
-      stykanie
-      stykania
       stykanie
       stykania
       styl
@@ -76682,11 +67366,7 @@ module GameRoomKrowa
       stylizacje
       stylizowanie
       stylizowania
-      stylizowanie
-      stylizowania
       stylon
-      stylony
-      stylony
       stylony
       stylowość
       stylowości
@@ -76720,7 +67400,6 @@ module GameRoomKrowa
       subiekcje
       subiekt
       subiekci
-      subiekt
       subiekty
       subiektywizm
       subiektywizmy
@@ -76761,7 +67440,6 @@ module GameRoomKrowa
       substytucje
       substytut
       substytutowie
-      substytut
       substytuty
       subsydiowanie
       subsydiowania
@@ -76773,18 +67451,11 @@ module GameRoomKrowa
       subwencje
       suchar
       suchary
-      suchar
-      suchary
-      sucharek
-      sucharki
       sucharek
       sucharki
       suchodrzew
       suchodrzewy
       suchorośl
-      suchorośle
-      suchorośla
-      suchorośla
       suchorośle
       suchorośla
       suchoryt
@@ -76795,7 +67466,6 @@ module GameRoomKrowa
       suchotnice
       suchotnik
       suchotnicy
-      suchoty
       suchoty
       suczka
       suczki
@@ -76815,8 +67485,6 @@ module GameRoomKrowa
       sufragani
       sufrażystka
       sufrażystki
-      sugerowanie
-      sugerowania
       sugerowanie
       sugerowania
       sugestia
@@ -76846,13 +67514,10 @@ module GameRoomKrowa
       sukienka
       sukienki
       sukiennice
-      sukiennice
       sukinsyn
       sukinsyny
       sukmana
       sukmany
-      suknia
-      suknie
       suknia
       suknie
       sukno
@@ -76865,22 +67530,15 @@ module GameRoomKrowa
       sulfony
       sulfonamid
       sulfonamidy
-      sulfonamidy
-      sulfonamidy
-      sulfony
-      sulfony
-      sulki
       sulki
       sułtan
       sułtani
       sułtanat
       sułtanaty
       sułtanki
-      sułtanki
       sum
       sumy
       suma
-      sumy
       sumak
       sumaki
       sumator
@@ -76891,8 +67549,6 @@ module GameRoomKrowa
       sumienności
       sumka
       sumki
-      sumowanie
-      sumowania
       sumowanie
       sumowania
       sunięcie
@@ -76915,8 +67571,6 @@ module GameRoomKrowa
       superlatiwy
       superlatyw
       superlatywy
-      superlatywy
-      superlatywy
       superrewizja
       superrewizje
       supersam
@@ -76930,8 +67584,6 @@ module GameRoomKrowa
       supletywizm
       supletywizmy
       suplikacja
-      suplikacje
-      suplikacje
       suplikacje
       supłanie
       supłania
@@ -76947,8 +67599,6 @@ module GameRoomKrowa
       surduty
       surdyna
       surdyny
-      surf
-      surfy
       surf
       surfy
       surfing
@@ -76988,22 +67638,15 @@ module GameRoomKrowa
       susz
       susze
       susza
-      susze
       suszarka
       suszarki
-      suszarnia
-      suszarnie
       suszarnia
       suszarnie
       suszarnictwo
       suszarnictwa
       suszenie
       suszenia
-      suszenie
-      suszenia
       suszka
-      suszki
-      suszki
       suszki
       sutanna
       sutanny
@@ -77029,7 +67672,6 @@ module GameRoomKrowa
       suwania
       suweren
       suwereni
-      suweren
       suwereny
       suwerenność
       suwerenności
@@ -77046,7 +67688,6 @@ module GameRoomKrowa
       swarliwość
       swarliwości
       swary
-      swary
       swastyka
       swastyki
       swat
@@ -77055,7 +67696,6 @@ module GameRoomKrowa
       swatania
       swatka
       swatki
-      swaty
       swaty
       swawola
       swawole
@@ -77071,17 +67711,12 @@ module GameRoomKrowa
       swędzenia
       swing
       swingi
-      swing
-      swingi
       swingowanie
       swingowania
       swoboda
       swobody
-      swobody
-      swobody
       swoistość
       swoistości
-      swoje
       swoje
       swojskość
       swojskości
@@ -77093,8 +67728,6 @@ module GameRoomKrowa
       sybarytki
       sybarytyzm
       sybarytyzmy
-      sycenie
-      sycenia
       sycenie
       sycenia
       syciwo
@@ -77115,7 +67748,6 @@ module GameRoomKrowa
       sygnaliści
       sygnalizacja
       sygnalizacje
-      sygnalizator
       sygnalizator
       sygnalizatory
       sygnał
@@ -77293,8 +67925,6 @@ module GameRoomKrowa
       synoptyki
       synostwo
       synostwa
-      synostwo
-      synostwo
       synowa
       synowe
       syntagma
@@ -77305,7 +67935,6 @@ module GameRoomKrowa
       syntetazy
       syntetyk
       syntetycy
-      syntetyk
       syntetyki
       synteza
       syntezy
@@ -77313,8 +67942,6 @@ module GameRoomKrowa
       synulkowie
       synuś
       synusie
-      sypanie
-      sypania
       sypanie
       sypania
       sypialnia
@@ -77325,13 +67952,10 @@ module GameRoomKrowa
       sypkości
       sypnięcie
       sypnięcia
-      sypnięcie
-      sypnięcia
       syrena
       syreny
       syrenka
       syrenki
-      syrenowate
       syrenowate
       syrop
       syropy
@@ -77359,10 +67983,6 @@ module GameRoomKrowa
       szabery
       szabla
       szable
-      szabla
-      szable
-      szable
-      szable
       szablista
       szabliści
       szablodziób
@@ -77381,15 +68001,12 @@ module GameRoomKrowa
       szabrownicy
       szach
       szachowie
-      szach
       szachy
       szachinszach
       szachista
       szachiści
       szachistka
       szachistki
-      szachowanie
-      szachowania
       szachowanie
       szachowania
       szachownica
@@ -77402,8 +68019,6 @@ module GameRoomKrowa
       szachrajstwa
       szachrowanie
       szachrowania
-      szachy
-      szachy
       szacowanie
       szacowania
       szacunek
@@ -77420,10 +68035,6 @@ module GameRoomKrowa
       szafeczki
       szafir
       szafiry
-      szafir
-      szafiry
-      szafirek
-      szafirki
       szafirek
       szafirki
       szafka
@@ -77447,7 +68058,6 @@ module GameRoomKrowa
       szal
       szale
       szala
-      szale
       szalanda
       szalandy
       szalbierstwo
@@ -77484,8 +68094,6 @@ module GameRoomKrowa
       szałasiki
       szaławiła
       szaławiły
-      szaławiła
-      szaławiły
       szałwia
       szałwie
       szaman
@@ -77501,7 +68109,6 @@ module GameRoomKrowa
       szamot
       szamoty
       szamota
-      szamoty
       szamotanie
       szamotania
       szampan
@@ -77514,8 +68121,6 @@ module GameRoomKrowa
       szańce
       szankier
       szankry
-      szanowanie
-      szanowania
       szanowanie
       szanowania
       szansa
@@ -77549,7 +68154,6 @@ module GameRoomKrowa
       szarańczyn
       szarańczyny
       szarawary
-      szarawary
       szarfa
       szarfy
       szarganie
@@ -77567,7 +68171,6 @@ module GameRoomKrowa
       szarłat
       szarłaty
       szarłatowate
-      szarłatowate
       szarogęszenie
       szarogęszenia
       szarość
@@ -77582,16 +68185,11 @@ module GameRoomKrowa
       szarpalnie
       szarpanie
       szarpania
-      szarpanie
-      szarpania
       szarpanina
       szarpaniny
       szarparka
       szarparki
       szarpie
-      szarpie
-      szarpnięcie
-      szarpnięcia
       szarpnięcie
       szarpnięcia
       szaruga
@@ -77610,22 +68208,14 @@ module GameRoomKrowa
       szarżowania
       szastanie
       szastania
-      szastanie
-      szastania
-      szastnięcie
-      szastnięcia
       szastnięcie
       szastnięcia
       szaszłyk
       szaszłyki
       szaszłykarnia
       szaszłykarnie
-      szaszłykarnia
-      szaszłykarnie
       szata
       szaty
-      szatan
-      szatany
       szatan
       szatany
       szatka
@@ -77658,11 +68248,7 @@ module GameRoomKrowa
       szczawiany
       szczawik
       szczawiki
-      szczawik
-      szczawiki
       szczawikowate
-      szczawikowate
-      szczątki
       szczątki
       szczebel
       szczeble
@@ -77680,9 +68266,6 @@ module GameRoomKrowa
       szczecinki
       szczeciogonek
       szczeciogonki
-      szczeciogonki
-      szczeciogonki
-      szczeciowate
       szczeciowate
       szczeć
       szczecie
@@ -77707,8 +68290,6 @@ module GameRoomKrowa
       szczeliny
       szczeliniak
       szczeliniaki
-      szczeliniak
-      szczeliniaki
       szczelinka
       szczelinki
       szczelinowość
@@ -77719,8 +68300,6 @@ module GameRoomKrowa
       szczeniackość
       szczeniactwo
       szczeniactwa
-      szczeniak
-      szczeniaki
       szczeniak
       szczeniaki
       szczeniąca
@@ -77735,8 +68314,6 @@ module GameRoomKrowa
       szczenięctwa
       szczep
       szczepy
-      szczepienie
-      szczepienia
       szczepienie
       szczepienia
       szczepionka
@@ -77768,14 +68345,11 @@ module GameRoomKrowa
       szczęk
       szczęki
       szczęka
-      szczęki
       szczękanie
       szczękania
       szczęknięcie
       szczęknięcia
       szczękoczułek
-      szczękoczułki
-      szczękoczułki
       szczękoczułki
       szczękonóże
       szczękonóża
@@ -77787,8 +68361,6 @@ module GameRoomKrowa
       szczęściarki
       szczęście
       szczęścia
-      szczęśliwiec
-      szczęśliwcy
       szczęśliwiec
       szczęśliwcy
       szczodrość
@@ -77819,8 +68391,6 @@ module GameRoomKrowa
       szczury
       szczurek
       szczurki
-      szczurek
-      szczurki
       szczwół
       szczwoły
       szczycenie
@@ -77831,13 +68401,9 @@ module GameRoomKrowa
       szczygiełki
       szczypanie
       szczypania
-      szczypanie
-      szczypania
       szczypawka
       szczypawki
       szczypce
-      szczypce
-      szczypczyki
       szczypczyki
       szczypior
       szczypiory
@@ -77876,9 +68442,6 @@ module GameRoomKrowa
       szelf
       szelfy
       szelki
-      szelki
-      szelma
-      szelmy
       szelma
       szelmy
       szelmostwo
@@ -77893,13 +68456,10 @@ module GameRoomKrowa
       szeptania
       szereg
       szeregi
-      szeregi
-      szeregi
       szeregowanie
       szeregowania
       szeregowiec
       szeregowcy
-      szeregowiec
       szeregowce
       szeregowy
       szeregowi
@@ -77910,19 +68470,13 @@ module GameRoomKrowa
       szermowanie
       szermowania
       szerokonose
-      szerokonose
       szerokość
       szerokości
       szerszeń
       szerszenie
       szeryf
       szeryfowie
-      szeryf
       szeryfy
-      szeryfy
-      szeryfy
-      szerzenie
-      szerzenia
       szerzenie
       szerzenia
       szerzyciel
@@ -77939,13 +68493,9 @@ module GameRoomKrowa
       sześciokąty
       sześciolatek
       sześciolatki
-      sześciolatek
-      sześciolatki
       sześciolatka
-      sześciolatki
       sześciolecie
       sześciolecia
-      sześcioraczki
       sześcioraczki
       sześciowiersz
       sześćsetka
@@ -77954,8 +68504,6 @@ module GameRoomKrowa
       sześćsetlecia
       szew
       szwy
-      szewc
-      szewcy
       szewc
       szewcy
       szewczyk
@@ -77984,8 +68532,6 @@ module GameRoomKrowa
       szkarłatnice
       szkarłupień
       szkarłupnie
-      szkarłupnie
-      szkarłupnie
       szkatuła
       szkatuły
       szkatułka
@@ -78007,19 +68553,12 @@ module GameRoomKrowa
       szklarka
       szklarki
       szklarkowate
-      szklarkowate
-      szklarnia
-      szklarnie
       szklarnia
       szklarnie
       szklarstwo
       szklarstwa
       szklarz
       szklarze
-      szklarz
-      szklarze
-      szklenie
-      szklenia
       szklenie
       szklenia
       szklistość
@@ -78029,9 +68568,7 @@ module GameRoomKrowa
       szkliwo
       szkliwa
       szkła
-      szkła
       szkło
-      szkła
       szkoda
       szkody
       szkodliwość
@@ -78040,12 +68577,9 @@ module GameRoomKrowa
       szkodnictwa
       szkodnik
       szkodnicy
-      szkodnik
       szkodniki
       szkodzenie
       szkodzenia
-      szkolenie
-      szkolenia
       szkolenie
       szkolenia
       szkolnictwo
@@ -78101,14 +68635,12 @@ module GameRoomKrowa
       szlak
       szlaki
       szlaka
-      szlaki
       szlam
       szlamy
       szlamowanie
       szlamowania
       szlara
       szlary
-      szleje
       szleje
       szlem
       szlemy
@@ -78120,14 +68652,10 @@ module GameRoomKrowa
       szlifierki
       szlifiernia
       szlifiernie
-      szlifiernia
-      szlifiernie
       szlifierz
       szlifierze
       szlifowanie
       szlifowania
-      szlify
-      szlify
       szloch
       szlochy
       szlochanie
@@ -78160,8 +68688,6 @@ module GameRoomKrowa
       szminki
       szminkowanie
       szminkowania
-      szminkowanie
-      szminkowania
       szmira
       szmiry
       szmizjerka
@@ -78192,8 +68718,6 @@ module GameRoomKrowa
       sznycle
       sznycelek
       sznycelki
-      sznycelek
-      sznycelki
       szofer
       szoferzy
       szoferka
@@ -78205,8 +68729,6 @@ module GameRoomKrowa
       szop
       szopy
       szopa
-      szopy
-      szopeniana
       szopeniana
       szopenista
       szopeniści
@@ -78221,14 +68743,11 @@ module GameRoomKrowa
       szopkarz
       szopkarze
       szopowate
-      szopowate
       szorowanie
       szorowania
       szorstkość
       szorstkości
       szorty
-      szorty
-      szory
       szory
       szosa
       szosy
@@ -78282,8 +68801,6 @@ module GameRoomKrowa
       szparki
       szpat
       szpaty
-      szpat
-      szpaty
       szpatułka
       szpatułki
       szpecenie
@@ -78292,20 +68809,13 @@ module GameRoomKrowa
       szperactwa
       szperacz
       szperacze
-      szperacz
-      szperacze
-      szperacz
-      szperacze
       szperanie
       szperania
       szpetota
       szpetoty
       szpic
       szpice
-      szpic
-      szpice
       szpica
-      szpice
       szpicel
       szpicle
       szpiclowanie
@@ -78333,7 +68843,6 @@ module GameRoomKrowa
       szpilkowanie
       szpilkowania
       szpilkowe
-      szpilkowe
       szpinaczek
       szpinaczki
       szpinak
@@ -78360,8 +68869,6 @@ module GameRoomKrowa
       szprychy
       szprycowanie
       szprycowania
-      szprycowanie
-      szprycowania
       szpula
       szpule
       szpuleczka
@@ -78375,7 +68882,6 @@ module GameRoomKrowa
       szrama
       szramy
       szranki
-      szranki
       szrapnel
       szrapnele
       szreń
@@ -78385,7 +68891,6 @@ module GameRoomKrowa
       sztab
       sztaby
       sztaba
-      sztaby
       sztabka
       sztabki
       sztabowiec
@@ -78440,11 +68945,8 @@ module GameRoomKrowa
       sztormtrapy
       sztruks
       sztruksy
-      sztruksy
-      sztruksy
       sztubak
       sztubacy
-      sztubak
       sztubaki
       sztucer
       sztucery
@@ -78454,7 +68956,6 @@ module GameRoomKrowa
       sztuczności
       sztuczydło
       sztuczydła
-      sztućce
       sztućce
       sztufada
       sztufady
@@ -78472,12 +68973,8 @@ module GameRoomKrowa
       sztukowania
       szturchanie
       szturchania
-      szturchanie
-      szturchania
       szturchaniec
       szturchańce
-      szturchnięcie
-      szturchnięcia
       szturchnięcie
       szturchnięcia
       szturm
@@ -78489,8 +68986,6 @@ module GameRoomKrowa
       szturmówka
       szturmówki
       sztyblet
-      sztyblety
-      sztyblety
       sztyblety
       sztych
       sztychy
@@ -78507,10 +69002,8 @@ module GameRoomKrowa
       sztyletowanie
       sztyletowania
       sztylpy
-      sztylpy
       sztywniak
       sztywniacy
-      sztywniak
       sztywniaki
       sztywnienie
       sztywnienia
@@ -78536,18 +69029,12 @@ module GameRoomKrowa
       szuflowania
       szuja
       szuje
-      szuja
-      szuje
-      szukanie
-      szukania
       szukanie
       szukania
       szuler
       szulerzy
       szulerka
       szulerki
-      szulernia
-      szulernie
       szulernia
       szulernie
       szum
@@ -78576,16 +69063,11 @@ module GameRoomKrowa
       szusy
       szusowanie
       szusowania
-      szusy
-      szusy
       szuter
       szutry
       szutrowanie
       szutrowania
       szuwary
-      szuwary
-      szwab
-      szwaby
       szwab
       szwaby
       szwabacha
@@ -78601,10 +69083,8 @@ module GameRoomKrowa
       szwagierka
       szwagierki
       szwagrostwo
-      szwagrostwo
       szwajcar
       szwajcarowie
-      szwajcar
       szwajcarzy
       szwalnia
       szwalnie
@@ -78627,7 +69107,6 @@ module GameRoomKrowa
       szyb
       szyby
       szyba
-      szyby
       szyber
       szybry
       szybka
@@ -78649,7 +69128,6 @@ module GameRoomKrowa
       szych
       szychy
       szycha
-      szychy
       szychta
       szychty
       szycie
@@ -78700,10 +69178,6 @@ module GameRoomKrowa
       szykany
       szykanowanie
       szykanowania
-      szyki
-      szyki
-      szykowanie
-      szykowania
       szykowanie
       szykowania
       szyld
@@ -78729,7 +69203,6 @@ module GameRoomKrowa
       szynk
       szynki
       szynka
-      szynki
       szynkarka
       szynkarki
       szynkarz
@@ -78738,9 +69211,6 @@ module GameRoomKrowa
       szynkwasy
       szynszyla
       szynszyle
-      szynszyle
-      szynszyle
-      szynszylowate
       szynszylowate
       szyper
       szyprowie
@@ -78750,8 +69220,6 @@ module GameRoomKrowa
       szypszyny
       szypułka
       szypułki
-      szyszak
-      szyszaki
       szyszak
       szyszaki
       szyszeczka
@@ -78774,14 +69242,10 @@ module GameRoomKrowa
       ściągaczki
       ściąganie
       ściągania
-      ściąganie
-      ściągania
       ściągarka
       ściągarki
       ściągawka
       ściągawki
-      ściągnięcie
-      ściągnięcia
       ściągnięcie
       ściągnięcia
       ścichapęk
@@ -78796,26 +69260,18 @@ module GameRoomKrowa
       ścieki
       ściekanie
       ściekania
-      ścieki
-      ścieki
       ścieknięcie
       ścieknięcia
       ścielenie
       ścielenia
       ściemnianie
       ściemniania
-      ściemnianie
-      ściemniania
-      ściemnienie
-      ściemnienia
       ściemnienie
       ściemnienia
       ścienienie
       ścienienia
       ściera
       ściery
-      ścieranie
-      ścierania
       ścieranie
       ścierania
       ściereczka
@@ -78832,16 +69288,10 @@ module GameRoomKrowa
       ścierpnięcia
       ścierwnik
       ścierwniki
-      ścierwniki
-      ścierwniki
       ścierwo
       ścierwa
       ścieśnianie
       ścieśniania
-      ścieśnianie
-      ścieśniania
-      ścieśnienie
-      ścieśnienia
       ścieśnienie
       ścieśnienia
       ścieżka
@@ -78852,52 +69302,35 @@ module GameRoomKrowa
       ścieżynki
       ścięcie
       ścięcia
-      ścięcie
-      ścięcia
       ścięgno
       ścięgna
       ścigacz
       ścigacze
       ściganie
       ścigania
-      ściganie
-      ścigania
-      ścinanie
-      ścinania
       ścinanie
       ścinania
       ścinek
       ścinki
       ścinka
-      ścinki
       ściółka
       ściółki
       ścisk
       ściski
       ściskanie
       ściskania
-      ściskanie
-      ściskania
       ścisłość
       ścisłości
       ściszanie
       ściszania
-      ściszanie
-      ściszania
-      ściszenie
-      ściszenia
       ściszenie
       ściszenia
       ściśliwość
       ściśliwości
       ściśnięcie
       ściśnięcia
-      ściśnięcie
-      ściśnięcia
       ślad
       ślady
-      ślamazara
-      ślamazary
       ślamazara
       ślamazary
       ślamazarność
@@ -78905,8 +69338,6 @@ module GameRoomKrowa
       ślaz
       ślazy
       ślazowate
-      ślazowate
-      śledczy
       śledczy
       śledzenie
       śledzenia
@@ -78917,7 +69348,6 @@ module GameRoomKrowa
       śledziona
       śledziony
       śledziowate
-      śledziowate
       śledztwo
       śledztwa
       śledź
@@ -78926,21 +69356,13 @@ module GameRoomKrowa
       ślemiona
       ślepak
       ślepaki
-      ślepak
-      ślepaki
-      ślepak
-      ślepaki
-      ślepia
       ślepia
       ślepiec
       ślepcy
-      ślepiec
       ślepce
       ślepienie
       ślepienia
       ślepka
-      ślepka
-      ślepki
       ślepki
       ślepnięcie
       ślepnięcia
@@ -78955,7 +69377,6 @@ module GameRoomKrowa
       śliczności
       ślicznościach
       śliczność
-      śliczności
       ślicznotka
       ślicznotki
       ślimaczek
@@ -78966,8 +69387,6 @@ module GameRoomKrowa
       ślimacznice
       ślimak
       ślimaki
-      ślimak
-      ślimaki
       ślina
       śliny
       śliniaczek
@@ -78976,8 +69395,6 @@ module GameRoomKrowa
       śliniaki
       ślinianka
       ślinianki
-      ślinienie
-      ślinienia
       ślinienie
       ślinienia
       ślinik
@@ -79002,8 +69419,6 @@ module GameRoomKrowa
       śliwówki
       śliz
       ślizy
-      śliz
-      ślizy
       ślizg
       ślizgi
       ślizganie
@@ -79024,8 +69439,6 @@ module GameRoomKrowa
       ślusarki
       ślusarnia
       ślusarnie
-      ślusarnia
-      ślusarnie
       ślusarstwo
       ślusarstwa
       ślusarz
@@ -79033,16 +69446,12 @@ module GameRoomKrowa
       śluz
       śluzy
       śluza
-      śluzy
-      śluzowce
       śluzowce
       śluzowiec
-      śluzowce
       śluzówka
       śluzówki
       śmiałek
       śmiałkowie
-      śmiałek
       śmiałki
       śmiałość
       śmiałości
@@ -79068,18 +69477,13 @@ module GameRoomKrowa
       śmierdzenia
       śmierdziel
       śmierdziele
-      śmierdziel
-      śmierdziele
       śmiertelnik
       śmiertelnicy
       śmiertelność
       śmiertelności
       śmieszek
       śmieszki
-      śmieszek
-      śmieszki
       śmieszka
-      śmieszki
       śmiesznostka
       śmiesznostki
       śmieszność
@@ -79111,10 +69515,8 @@ module GameRoomKrowa
       śniadość
       śniadości
       śnieciowate
-      śnieciowate
       śnieć
       śniecie
-      śnieć
       śnieci
       śniedzenie
       śniedzenia
@@ -79125,19 +69527,14 @@ module GameRoomKrowa
       śniegołom
       śniegołomy
       śniegowce
-      śniegowce
       śniegowiec
-      śniegowce
       śnieguliczka
       śnieguliczki
-      śnienie
-      śnienia
       śnienie
       śnienia
       śnieżek
       śnieżki
       śnieżka
-      śnieżki
       śnieżyca
       śnieżyce
       śnieżyczka
@@ -79150,17 +69547,13 @@ module GameRoomKrowa
       śpiączki
       śpieszenie
       śpieszenia
-      śpieszenie
-      śpieszenia
       śpiew
       śpiewy
       śpiewaczka
       śpiewaczki
       śpiewające
-      śpiewające
       śpiewak
       śpiewacy
-      śpiewak
       śpiewaki
       śpiewanie
       śpiewania
@@ -79174,19 +69567,12 @@ module GameRoomKrowa
       śpiochy
       śpioszek
       śpioszki
-      śpioszek
-      śpioszki
-      śpioszki
-      śpioszki
       śpiwór
       śpiwory
       średnia
       średnie
       średniak
       średniacy
-      średniak
-      średniaki
-      średniak
       średniaki
       średnian
       średniany
@@ -79206,8 +69592,6 @@ module GameRoomKrowa
       środeczek
       środeczki
       środek
-      środki
-      środki
       środki
       środkowa
       środkowe
@@ -79246,15 +69630,11 @@ module GameRoomKrowa
       śrubowanie
       śrubowania
       śrubowce
-      śrubowce
       śrubowiec
-      śrubowce
-      śruciny
       śruciny
       śrut
       śruty
       śruta
-      śruty
       śrutowanie
       śrutowania
       śrutownica
@@ -79266,9 +69646,7 @@ module GameRoomKrowa
       śryż
       śryże
       świadczenia
-      świadczenia
       świadczenie
-      świadczenia
       świadectwo
       świadectwa
       świadek
@@ -79316,19 +69694,13 @@ module GameRoomKrowa
       świdrowanie
       świdrowania
       świdrowce
-      świdrowce
       świdrowiec
-      świdrowce
       świdrzyk
       świdrzyki
       świdwa
       świdwy
       świeca
       świece
-      świece
-      świece
-      świecenie
-      świecenia
       świecenie
       świecenia
       świecidełko
@@ -79359,11 +69731,7 @@ module GameRoomKrowa
       świergotki
       świerk
       świerki
-      świerk
-      świerki
       świerszcz
-      świerszcze
-      świerszcze
       świerszcze
       świerszczyk
       świerszczyki
@@ -79387,8 +69755,6 @@ module GameRoomKrowa
       świetliczanki
       świetlik
       świetliki
-      świetlik
-      świetliki
       świetlistość
       świetlistości
       świetlówka
@@ -79400,21 +69766,13 @@ module GameRoomKrowa
       świeżość
       świeżości
       święcenia
-      święcenia
       święcenie
-      święcenia
-      święcenie
-      święcenia
-      święcone
       święcone
       święconka
       święconki
       święta
       święte
-      święta
-      święta
       święto
-      święta
       świętokradca
       świętokradcy
       świętopietrze
@@ -79422,7 +69780,6 @@ module GameRoomKrowa
       świętoszek
       świętoszki
       świętoszka
-      świętoszki
       świętość
       świętości
       świętowanie
@@ -79435,16 +69792,10 @@ module GameRoomKrowa
       świniaki
       świniarz
       świniarze
-      świnie
-      świnie
-      świnienie
-      świnienia
       świnienie
       świnienia
       świnka
       świnki
-      świntuch
-      świntuchy
       świntuch
       świntuchy
       świntuszenie
@@ -79452,11 +69803,7 @@ module GameRoomKrowa
       świństewko
       świństewka
       świństwa
-      świństwa
       świństwo
-      świństwa
-      świr
-      świry
       świr
       świry
       świrzepa
@@ -79473,14 +69820,11 @@ module GameRoomKrowa
       świszczenia
       świszczypała
       świszczypały
-      świszczypała
-      świszczypały
       świśnięcie
       świśnięcia
       świt
       świty
       świta
-      świty
       świtanie
       świtania
       świtezianka
@@ -79541,8 +69885,6 @@ module GameRoomKrowa
       tacki
       taczanie
       taczania
-      taczanie
-      taczania
       taczanka
       taczanki
       taczka
@@ -79567,7 +69909,6 @@ module GameRoomKrowa
       tajgi
       tajniak
       tajniacy
-      tajniki
       tajniki
       tajność
       tajności
@@ -79612,8 +69953,6 @@ module GameRoomKrowa
       talent
       talenty
       talerz
-      talerze
-      talerze
       talerze
       talerzowanie
       talerzowania
@@ -79717,8 +70056,6 @@ module GameRoomKrowa
       tapicerki
       tapicernia
       tapicernie
-      tapicernia
-      tapicernie
       tapicerowanie
       tapicerowania
       tapicerstwo
@@ -79727,8 +70064,6 @@ module GameRoomKrowa
       tapioki
       tapir
       tapiry
-      tapirowanie
-      tapirowania
       tapirowanie
       tapirowania
       taplanie
@@ -79748,7 +70083,6 @@ module GameRoomKrowa
       tarantula
       tarantule
       tarapaty
-      tarapaty
       taras
       tarasy
       tarasowanie
@@ -79757,19 +70091,13 @@ module GameRoomKrowa
       tarcice
       tarcie
       tarcia
-      tarcie
-      tarcia
       tarcza
       tarcze
       tarczka
       tarczki
       tarcznik
       tarczniki
-      tarczniki
-      tarczniki
       tarczówka
-      tarczówki
-      tarczówki
       tarczówki
       tarczyca
       tarczyce
@@ -79777,14 +70105,8 @@ module GameRoomKrowa
       targi
       targanie
       targania
-      targanie
-      targania
       targaniec
       targańce
-      targi
-      targi
-      targnięcie
-      targnięcia
       targnięcie
       targnięcia
       targowanie
@@ -79801,8 +70123,6 @@ module GameRoomKrowa
       tarliska
       tarło
       tarła
-      tarmoszenie
-      tarmoszenia
       tarmoszenie
       tarmoszenia
       tarnik
@@ -79831,16 +70151,12 @@ module GameRoomKrowa
       taryfikatory
       tarzanie
       tarzania
-      tarzanie
-      tarzania
       tasak
       tasaki
-      tasiemce
       tasiemce
       tasiemczyca
       tasiemczyce
       tasiemiec
-      tasiemce
       tasiemka
       tasiemki
       tasiemnica
@@ -79853,15 +70169,8 @@ module GameRoomKrowa
       tastrowania
       taszczenie
       taszczenia
-      taszczenie
-      taszczenia
       tasznik
       taszniki
-      tasznik
-      taszniki
-      taszniki
-      taszniki
-      taszowate
       taszowate
       taszysta
       taszyści
@@ -79881,12 +70190,9 @@ module GameRoomKrowa
       tatowie
       tatar
       tatarzy
-      tatar
       tatary
       tatarak
       tataraki
-      tatarka
-      tatarki
       tatarka
       tatarki
       taternictwo
@@ -79898,13 +70204,10 @@ module GameRoomKrowa
       tatko
       tatkowie
       tato
-      tatowie
       tatuaż
       tatuaże
       tatunio
       tatuniowie
-      tatuowanie
-      tatuowania
       tatuowanie
       tatuowania
       tatuś
@@ -79933,20 +70236,13 @@ module GameRoomKrowa
       tchawice
       tchawka
       tchawki
-      tchawki
-      tchawki
-      tchawkodyszce
       tchawkodyszce
       tchawkodyszec
-      tchawkodyszce
-      tchawkodyszne
       tchawkodyszne
       tchnienie
       tchnienia
       tchnięcie
       tchnięcia
-      tchórz
-      tchórze
       tchórz
       tchórze
       tchórzenie
@@ -79959,7 +70255,6 @@ module GameRoomKrowa
       tchórzostwa
       teatr
       teatry
-      teatralia
       teatralia
       teatralizacja
       teatralizacje
@@ -79988,7 +70283,6 @@ module GameRoomKrowa
       technikolor
       technikolory
       technikum
-      technika
       technizacja
       technizacje
       technokracja
@@ -80014,8 +70308,6 @@ module GameRoomKrowa
       teki
       teksas
       teksasy
-      teksasy
-      teksasy
       tekst
       teksty
       tekstolog
@@ -80024,7 +70316,6 @@ module GameRoomKrowa
       tekstologie
       tekstura
       tekstury
-      tekstylia
       tekstylia
       tekścik
       tekściki
@@ -80081,16 +70372,12 @@ module GameRoomKrowa
       telepajęczarz
       telepanie
       telepania
-      telepanie
-      telepania
       telepatia
       telepatie
       telerecording
       telerekording
       telesatelita
       telesatelity
-      teleskop
-      teleskopy
       teleskop
       teleskopy
       teletechnik
@@ -80145,23 +70432,16 @@ module GameRoomKrowa
       tendry
       tenis
       tenisy
-      tenis
-      tenisy
       tenisista
       tenisiści
       tenisistka
       tenisistki
       tenisówka
       tenisówki
-      tenisówki
-      tenisówki
       tenor
       tenorzy
-      tenor
       tenory
       tenorek
-      tenorki
-      tenorki
       tenorki
       tenuta
       tenuty
@@ -80247,7 +70527,6 @@ module GameRoomKrowa
       terminarze
       terminator
       terminatorzy
-      terminator
       terminatory
       terminologia
       terminologie
@@ -80257,15 +70536,11 @@ module GameRoomKrowa
       terminowości
       termit
       termity
-      termit
-      termity
       termitiera
       termitiery
       termodynamika
       termodynamiki
       termofit
-      termofity
-      termofity
       termofity
       termofor
       termofory
@@ -80285,8 +70560,6 @@ module GameRoomKrowa
       termony
       termoplast
       termoplasty
-      termoplasty
-      termoplasty
       termoreceptor
       termos
       termosy
@@ -80302,8 +70575,6 @@ module GameRoomKrowa
       termoterapie
       termotropizm
       termotropizmy
-      termy
-      termy
       terpen
       terpeny
       terpentyna
@@ -80365,7 +70636,6 @@ module GameRoomKrowa
       tęczówka
       tęczówki
       tęgopokrywe
-      tęgopokrywe
       tęgoskór
       tęgoskóry
       tęgość
@@ -80374,8 +70644,6 @@ module GameRoomKrowa
       tępaki
       tępiciel
       tępiciele
-      tępienie
-      tępienia
       tępienie
       tępienia
       tępota
@@ -80422,10 +70690,6 @@ module GameRoomKrowa
       tkactwa
       tkacz
       tkacze
-      tkacz
-      tkacze
-      tkacze
-      tkacze
       tkaczka
       tkaczki
       tkalnia
@@ -80439,13 +70703,9 @@ module GameRoomKrowa
       tkanka
       tkanki
       tkankowce
-      tkankowce
       tkankowiec
-      tkankowce
       tkliwość
       tkliwości
-      tknięcie
-      tknięcia
       tknięcie
       tknięcia
       tkwienie
@@ -80458,18 +70718,8 @@ module GameRoomKrowa
       tlenia
       tlenienie
       tlenienia
-      tlenienie
-      tlenienia
-      tlenki
-      tlenki
-      tlenowce
       tlenowce
       tlenowiec
-      tlenowce
-      tlenowiec
-      tlenowce
-      tłamszenie
-      tłamszenia
       tłamszenie
       tłamszenia
       tło
@@ -80478,32 +70728,23 @@ module GameRoomKrowa
       tłoczarze
       tłoczenie
       tłoczenia
-      tłoczenie
-      tłoczenia
       tłocznia
       tłocznie
       tłoczywo
       tłoczywa
       tłok
       tłoki
-      tłok
-      tłoki
       tłuczek
       tłuczki
-      tłuczenie
-      tłuczenia
       tłuczenie
       tłuczenia
       tłuczeń
       tłucznie
       tłuczka
-      tłuczki
       tłum
       tłumy
       tłumacz
       tłumacze
-      tłumaczenie
-      tłumaczenia
       tłumaczenie
       tłumaczenia
       tłumaczka
@@ -80514,12 +70755,8 @@ module GameRoomKrowa
       tłumienia
       tłumik
       tłumiki
-      tłumik
-      tłumiki
       tłumoczek
       tłumoczki
-      tłumok
-      tłumoki
       tłumok
       tłumoki
       tłustosz
@@ -80529,13 +70766,8 @@ module GameRoomKrowa
       tłuszcz
       tłuszcze
       tłuszcza
-      tłuszcze
       tłuszczak
       tłuszczaki
-      tłuszcze
-      tłuszcze
-      tłuszczenie
-      tłuszczenia
       tłuszczenie
       tłuszczenia
       tłuszczomierz
@@ -80546,11 +70778,9 @@ module GameRoomKrowa
       tłuścioch
       tłuściochy
       tłuściocha
-      tłuściochy
       tłuścioszek
       tłuścioszki
       tłuścioszka
-      tłuścioszki
       toaleta
       toalety
       toaletka
@@ -80569,8 +70799,6 @@ module GameRoomKrowa
       toccaty
       toczek
       toczki
-      toczenie
-      toczenia
       toczenie
       toczenia
       toczeniec
@@ -80593,14 +70821,10 @@ module GameRoomKrowa
       tokarki
       tokarnia
       tokarnie
-      tokarnia
-      tokarnie
       tokarstwo
       tokarstwa
       tokarz
       tokarze
-      toki
-      toki
       tokowanie
       tokowania
       tokowisko
@@ -80640,7 +70864,6 @@ module GameRoomKrowa
       ton
       tony
       tona
-      tony
       tonacja
       tonacje
       tonalit
@@ -80677,7 +70900,6 @@ module GameRoomKrowa
       topiele
       topielec
       topielcy
-      topielec
       topielce
       topielica
       topielice
@@ -80685,10 +70907,6 @@ module GameRoomKrowa
       topieliska
       topienie
       topienia
-      topienie
-      topienia
-      topik
-      topiki
       topik
       topiki
       topinambur
@@ -80733,8 +70951,6 @@ module GameRoomKrowa
       torby
       torbacz
       torbacze
-      torbacze
-      torbacze
       torbiel
       torbiele
       torcik
@@ -80778,7 +70994,6 @@ module GameRoomKrowa
       torpeda
       torpedy
       torpedo
-      torpeda
       torpedowanie
       torpedowania
       torpedowiec
@@ -80787,7 +71002,6 @@ module GameRoomKrowa
       torreadorzy
       tors
       torsy
-      torsje
       torsje
       tort
       torty
@@ -80851,10 +71065,7 @@ module GameRoomKrowa
       tożsamości
       trabant
       trabanci
-      trabant
       trabanty
-      tracenie
-      tracenia
       tracenie
       tracenia
       tracheida
@@ -80867,8 +71078,6 @@ module GameRoomKrowa
       trachomy
       tracz
       tracze
-      tracz
-      tracze
       tradeskancja
       tradeskancje
       tradycja
@@ -80879,10 +71088,6 @@ module GameRoomKrowa
       trafy
       trafianie
       trafiania
-      trafianie
-      trafiania
-      trafienie
-      trafienia
       trafienie
       trafienia
       trafność
@@ -80893,7 +71098,6 @@ module GameRoomKrowa
       tragarze
       tragedia
       tragedie
-      tragi
       tragi
       tragiczka
       tragiczki
@@ -80937,8 +71141,6 @@ module GameRoomKrowa
       traktorzystki
       traktowanie
       traktowania
-      traktowanie
-      traktowania
       tralka
       tralki
       trał
@@ -80951,14 +71153,10 @@ module GameRoomKrowa
       tramy
       tramp
       trampy
-      tramp
-      trampy
       trampek
       trampki
       tramping
       trampingi
-      trampki
-      trampki
       trampolina
       trampoliny
       tramwaj
@@ -80989,7 +71187,6 @@ module GameRoomKrowa
       translacje
       translator
       translatorzy
-      translator
       translatory
       translokacja
       translokacje
@@ -81013,8 +71210,6 @@ module GameRoomKrowa
       transpozycje
       transuran
       transurany
-      transuranowce
-      transuranowce
       transuranowce
       transwestyta
       transwestyci
@@ -81043,8 +71238,6 @@ module GameRoomKrowa
       trapezoidy
       trapienie
       trapienia
-      trapienie
-      trapienia
       trapista
       trapiści
       trasa
@@ -81059,16 +71252,12 @@ module GameRoomKrowa
       traserzy
       trasernia
       trasernie
-      trasernia
-      trasernie
       trasowanie
       trasowania
       traszka
       traszki
       trata
       traty
-      tratowanie
-      tratowania
       tratowanie
       tratowania
       tratwa
@@ -81110,15 +71299,9 @@ module GameRoomKrowa
       trąbka
       trąbki
       trąbowce
-      trąbowce
       trąbowiec
-      trąbowce
       trącanie
       trącania
-      trącanie
-      trącania
-      trącenie
-      trącenia
       trącenie
       trącenia
       trąd
@@ -81142,15 +71325,12 @@ module GameRoomKrowa
       trema
       tremy
       tremo
-      trema
       tremolando
       tremolanda
       tremolo
       tremola
       tremolowanie
       tremolowania
-      tremowanie
-      tremowania
       tremowanie
       tremowania
       tren
@@ -81181,10 +71361,6 @@ module GameRoomKrowa
       trepanowania
       trepek
       trepki
-      trepki
-      trepki
-      trepy
-      trepy
       treser
       treserzy
       treserka
@@ -81242,7 +71418,6 @@ module GameRoomKrowa
       trocinobeton
       trocinobetony
       trociny
-      trociny
       trockista
       trockiści
       trockizm
@@ -81256,14 +71431,10 @@ module GameRoomKrowa
       troglodyta
       troglodyci
       trojaczki
-      trojaczki
       trojak
-      trojaki
-      trojaki
       trojaki
       trojenie
       trojenia
-      trojeściowate
       trojeściowate
       trojeść
       trojeści
@@ -81285,16 +71456,12 @@ module GameRoomKrowa
       trombity
       trombocyt
       trombocyty
-      trombocyty
-      trombocyty
       tromtadracja
       tromtadracje
       tron
       trony
       trop
       tropy
-      tropiciel
-      tropiciele
       tropiciel
       tropiciele
       tropienie
@@ -81307,8 +71474,6 @@ module GameRoomKrowa
       troposfery
       tropowiec
       tropowce
-      tropy
-      tropy
       troska
       troski
       troskanie
@@ -81362,8 +71527,6 @@ module GameRoomKrowa
       trójmiany
       trójmiasto
       trójmiasta
-      trójmiasto
-      trójmiasta
       trójniak
       trójniaki
       trójnik
@@ -81399,8 +71562,6 @@ module GameRoomKrowa
       trucicielstwa
       trucie
       trucia
-      trucie
-      trucia
       trucizna
       trucizny
       trud
@@ -81411,11 +71572,8 @@ module GameRoomKrowa
       trudności
       trudzenie
       trudzenia
-      trudzenie
-      trudzenia
       trufla
       trufle
-      truflowate
       truflowate
       truizm
       truizmy
@@ -81429,14 +71587,9 @@ module GameRoomKrowa
       trunki
       trup
       trupy
-      trup
-      trupy
       trupa
-      trupy
       trupek
       trupki
-      trupiarnia
-      trupiarnie
       trupiarnia
       trupiarnie
       trupojad
@@ -81452,9 +71605,6 @@ module GameRoomKrowa
       trust
       trusty
       truś
-      trusie
-      truteń
-      trutnie
       truteń
       trutnie
       trutka
@@ -81473,14 +71623,11 @@ module GameRoomKrowa
       trwonienia
       trwożenie
       trwożenia
-      trwożenie
-      trwożenia
       trwożliwość
       trwożliwości
       tryb
       tryby
       tryba
-      tryby
       trybik
       trybiki
       trybowanie
@@ -81497,10 +71644,6 @@ module GameRoomKrowa
       trybuny
       trybunał
       trybunały
-      trybuny
-      trybuny
-      tryby
-      tryby
       trychina
       trychiny
       trychinoza
@@ -81523,7 +71666,6 @@ module GameRoomKrowa
       trykoty
       trykotarstwo
       trykotarstwa
-      trykotaże
       trykotaże
       tryl
       tryle
@@ -81551,8 +71693,6 @@ module GameRoomKrowa
       tryśnięcia
       tryton
       trytony
-      tryton
-      trytony
       tryumf
       tryumfy
       tryumfator
@@ -81571,10 +71711,6 @@ module GameRoomKrowa
       trzaski
       trzaskanie
       trzaskania
-      trzaskanie
-      trzaskania
-      trzaśnięcie
-      trzaśnięcia
       trzaśnięcie
       trzaśnięcia
       trzcina
@@ -81597,35 +71733,22 @@ module GameRoomKrowa
       trzepaki
       trzepanie
       trzepania
-      trzepanie
-      trzepania
       trzeparka
       trzeparki
-      trzepnięcie
-      trzepnięcia
       trzepnięcie
       trzepnięcia
       trzepot
       trzepoty
       trzepotanie
       trzepotania
-      trzepotanie
-      trzepotania
       trzeszcz
-      trzeszcze
-      trzeszcze
       trzeszcze
       trzeszczenie
       trzeszczenia
       trzewia
-      trzewia
       trzewiczek
       trzewiczki
-      trzewiczki
-      trzewiczki
       trzewik
-      trzewiki
-      trzewiki
       trzewiki
       trzeźwienie
       trzeźwienia
@@ -81636,9 +71759,6 @@ module GameRoomKrowa
       trzęsidło
       trzęsidła
       trzęsidłowate
-      trzęsidłowate
-      trzęsienie
-      trzęsienia
       trzęsienie
       trzęsienia
       trzęsionka
@@ -81655,7 +71775,6 @@ module GameRoomKrowa
       trzony
       trzonek
       trzonki
-      trzonopłetwe
       trzonopłetwe
       trzódka
       trzódki
@@ -81677,12 +71796,7 @@ module GameRoomKrowa
       trzykrotki
       trzylatek
       trzylatki
-      trzylatek
-      trzylatki
       trzylatka
-      trzylatki
-      trzymanie
-      trzymania
       trzymanie
       trzymania
       trzymasztowce
@@ -81702,16 +71816,10 @@ module GameRoomKrowa
       tubki
       tubylec
       tubylcy
-      tubylec
-      tubylcy
       tucz
       tucze
       tuczarnia
       tuczarnie
-      tuczarnia
-      tuczarnie
-      tuczenie
-      tuczenia
       tuczenie
       tuczenia
       tucznik
@@ -81730,8 +71838,6 @@ module GameRoomKrowa
       tulejki
       tulenie
       tulenia
-      tulenie
-      tulenia
       tulipan
       tulipany
       tułacz
@@ -81746,10 +71852,6 @@ module GameRoomKrowa
       tumy
       tumak
       tumaki
-      tumaki
-      tumaki
-      tuman
-      tumany
       tuman
       tumany
       tumanienie
@@ -81783,7 +71885,6 @@ module GameRoomKrowa
       tur
       tury
       tura
-      tury
       turak
       turaki
       turban
@@ -81796,8 +71897,6 @@ module GameRoomKrowa
       turbulencje
       turcyzm
       turcyzmy
-      turczenie
-      turczenia
       turczenie
       turczenia
       turecczyzna
@@ -81818,18 +71917,10 @@ module GameRoomKrowa
       turkotania
       turkuć
       turkucie
-      turkuć
-      turkucie
-      turkus
-      turkusy
       turkus
       turkusy
       turkusik
       turkusiki
-      turkusik
-      turkusiki
-      turlanie
-      turlania
       turlanie
       turlania
       turmalin
@@ -81859,11 +71950,9 @@ module GameRoomKrowa
       turzyca
       turzyce
       turzycowate
-      turzycowate
       tusz
       tusze
       tusza
-      tusze
       tuszka
       tuszki
       tuszowanie
@@ -81874,8 +71963,6 @@ module GameRoomKrowa
       tutki
       tutkarz
       tutkarze
-      tuz
-      tuzy
       tuz
       tuzy
       tuzin
@@ -81896,8 +71983,6 @@ module GameRoomKrowa
       twardzice
       twardziel
       twardziele
-      twardziel
-      twardziele
       twardzioszek
       twardzioszki
       twarożek
@@ -81916,16 +72001,11 @@ module GameRoomKrowa
       twierdzenia
       twist
       twisty
-      twist
-      twisty
       twoi
       twoich
       twoje
-      twoje
       twornik
       tworniki
-      tworzenie
-      tworzenia
       tworzenie
       tworzenia
       tworzywo
@@ -81942,8 +72022,6 @@ module GameRoomKrowa
       tybety
       tycie
       tycia
-      tyczenie
-      tyczenia
       tyczenie
       tyczenia
       tyczka
@@ -81972,8 +72050,6 @@ module GameRoomKrowa
       tygrysice
       tyka
       tyki
-      tykanie
-      tykania
       tykanie
       tykania
       tyknięcie
@@ -82022,8 +72098,6 @@ module GameRoomKrowa
       tynktury
       typ
       typy
-      typ
-      typy
       typek
       typki
       typizacja
@@ -82032,7 +72106,6 @@ module GameRoomKrowa
       typizowania
       typograf
       typografowie
-      typograf
       typografy
       typografia
       typografie
@@ -82050,8 +72123,6 @@ module GameRoomKrowa
       tyrani
       tyrania
       tyranie
-      tyranie
-      tyrania
       tyranizowanie
       tyranizowania
       tyranozaur
@@ -82062,30 +72133,21 @@ module GameRoomKrowa
       tyrystory
       tysiąc
       tysiące
-      tysiąc
-      tysiące
       tysiąclatka
       tysiąclatki
       tysiąclecie
       tysiąclecia
       tysiączek
       tysiączki
-      tysiączek
-      tysiączki
       tysięcznik
       tysięczniki
       tytan
       tytani
-      tytan
       tytany
       tytanit
       tytanity
       tytanowce
-      tytanowce
       tytanowiec
-      tytanowce
-      tytłanie
-      tytłania
       tytłanie
       tytłania
       tytoń
@@ -82098,26 +72160,14 @@ module GameRoomKrowa
       tytułomanie
       tytułowanie
       tytułowania
-      tytułowanie
-      tytułowania
-      uaktualnianie
-      uaktualniania
       uaktualnianie
       uaktualniania
       uaktualnienie
       uaktualnienia
-      uaktualnienie
-      uaktualnienia
-      uaktywnianie
-      uaktywniania
       uaktywnianie
       uaktywniania
       uaktywnienie
       uaktywnienia
-      uaktywnienie
-      uaktywnienia
-      ubabranie
-      ubabrania
       ubabranie
       ubabrania
       ubarwianie
@@ -82128,42 +72178,26 @@ module GameRoomKrowa
       ubawy
       ubawienie
       ubawienia
-      ubawienie
-      ubawienia
       ubek
       ubecy
       ubezpieczanie
       ubezpieczania
-      ubezpieczanie
-      ubezpieczania
-      ubezpieczenie
-      ubezpieczenia
       ubezpieczenie
       ubezpieczenia
       ubicie
       ubicia
-      ubicie
-      ubicia
-      ubieganie
-      ubiegania
       ubieganie
       ubiegania
       ubiegnięcie
       ubiegnięcia
       ubielenie
       ubielenia
-      ubielenie
-      ubielenia
-      ubieranie
-      ubierania
       ubieranie
       ubierania
       ubijacz
       ubijacze
       ubijak
       ubijaki
-      ubijanie
-      ubijania
       ubijanie
       ubijania
       ubikacja
@@ -82182,8 +72216,6 @@ module GameRoomKrowa
       ubłagiwania
       ubłocenie
       ubłocenia
-      ubłocenie
-      ubłocenia
       ubodzenie
       ubodzenia
       uboga
@@ -82198,20 +72230,14 @@ module GameRoomKrowa
       uboje
       ubóstwianie
       ubóstwiania
-      ubóstwianie
-      ubóstwiania
       ubóstwienie
       ubóstwienia
       ubóstwo
       ubóstwa
       ubranie
       ubrania
-      ubranie
-      ubrania
       ubranko
       ubranka
-      ubrudzenie
-      ubrudzenia
       ubrudzenie
       ubrudzenia
       ubycie
@@ -82224,20 +72250,13 @@ module GameRoomKrowa
       ubzdurania
       ucałowanie
       ucałowania
-      ucałowanie
-      ucałowania
       uchatka
       uchatki
       uchlanie
       uchlania
       ucho
       ucha
-      ucho
       uszy
-      ucho
-      uszy
-      uchodzenie
-      uchodzenia
       uchodzenie
       uchodzenia
       uchodźca
@@ -82246,10 +72265,6 @@ module GameRoomKrowa
       uchodźstwa
       uchowanie
       uchowania
-      uchowanie
-      uchowania
-      uchronienie
-      uchronienia
       uchronienie
       uchronienia
       uchwalanie
@@ -82260,8 +72275,6 @@ module GameRoomKrowa
       uchwały
       uchwycenie
       uchwycenia
-      uchwycenie
-      uchwycenia
       uchwyt
       uchwyty
       uchybianie
@@ -82270,10 +72283,6 @@ module GameRoomKrowa
       uchybienia
       uchylanie
       uchylania
-      uchylanie
-      uchylania
-      uchylenie
-      uchylenia
       uchylenie
       uchylenia
       uchyłek
@@ -82294,18 +72303,12 @@ module GameRoomKrowa
       ucieczki
       uciekanie
       uciekania
-      uciekanie
-      uciekania
       uciekinier
       uciekinierzy
       uciekinierka
       uciekinierki
       ucieleśnianie
       ucieleśniania
-      ucieleśnianie
-      ucieleśniania
-      ucieleśnienie
-      ucieleśnienia
       ucieleśnienie
       ucieleśnienia
       uciemiężanie
@@ -82314,12 +72317,8 @@ module GameRoomKrowa
       uciemiężenia
       ucieranie
       ucierania
-      ucieranie
-      ucierania
       ucierpienie
       ucierpienia
-      ucieszenie
-      ucieszenia
       ucieszenie
       ucieszenia
       ucięcie
@@ -82332,10 +72331,6 @@ module GameRoomKrowa
       uciskania
       uciszanie
       uciszania
-      uciszanie
-      uciszania
-      uciszenie
-      uciszenia
       uciszenie
       uciszenia
       uciśnięcie
@@ -82350,26 +72345,16 @@ module GameRoomKrowa
       uczelnie
       uczenie
       uczenia
-      uczenie
-      uczenia
       uczennica
       uczennice
       uczeń
       uczniowie
       uczepianie
       uczepiania
-      uczepianie
-      uczepiania
-      uczepienie
-      uczepienia
       uczepienie
       uczepienia
       uczernienie
       uczernienia
-      uczernienie
-      uczernienia
-      uczesanie
-      uczesania
       uczesanie
       uczesania
       uczestnictwo
@@ -82400,10 +72385,6 @@ module GameRoomKrowa
       uczuciowości
       uczulanie
       uczulania
-      uczulanie
-      uczulania
-      uczulenie
-      uczulenia
       uczulenie
       uczulenia
       uczuleniowiec
@@ -82414,10 +72395,6 @@ module GameRoomKrowa
       uczynienia
       uczynnianie
       uczynniania
-      uczynnianie
-      uczynniania
-      uczynnienie
-      uczynnienia
       uczynnienie
       uczynnienia
       uczynność
@@ -82426,8 +72403,6 @@ module GameRoomKrowa
       uczytelniania
       uczytelnienie
       uczytelnienia
-      udanie
-      udania
       udanie
       udania
       udar
@@ -82440,8 +72415,6 @@ module GameRoomKrowa
       udaremnienia
       udawanie
       udawania
-      udawanie
-      udawania
       udekorowanie
       udekorowania
       udeptanie
@@ -82450,10 +72423,6 @@ module GameRoomKrowa
       udeptywania
       uderzanie
       uderzania
-      uderzanie
-      uderzania
-      uderzenie
-      uderzenia
       uderzenie
       uderzenia
       udko
@@ -82462,8 +72431,6 @@ module GameRoomKrowa
       udławienia
       udo
       uda
-      udobruchanie
-      udobruchania
       udobruchanie
       udobruchania
       udogadnianie
@@ -82478,10 +72445,6 @@ module GameRoomKrowa
       udomowienia
       udoskonalanie
       udoskonalania
-      udoskonalanie
-      udoskonalania
-      udoskonalenie
-      udoskonalenia
       udoskonalenie
       udoskonalenia
       udostępnianie
@@ -82498,14 +72461,8 @@ module GameRoomKrowa
       udrapnięcia
       udrapowanie
       udrapowania
-      udrapowanie
-      udrapowania
       udręczanie
       udręczania
-      udręczanie
-      udręczania
-      udręczenie
-      udręczenia
       udręczenie
       udręczenia
       udręka
@@ -82514,10 +72471,6 @@ module GameRoomKrowa
       udrożnienia
       uduchowienie
       uduchowienia
-      uduchowienie
-      uduchowienia
-      uduszenie
-      uduszenia
       uduszenie
       uduszenia
       udział
@@ -82528,10 +72481,6 @@ module GameRoomKrowa
       udźce
       udzielanie
       udzielania
-      udzielanie
-      udzielania
-      udzielenie
-      udzielenia
       udzielenie
       udzielenia
       udzieranie
@@ -82550,22 +72499,14 @@ module GameRoomKrowa
       ufania
       ufarbowanie
       ufarbowania
-      ufarbowanie
-      ufarbowania
       ufność
       ufności
       uformowanie
       uformowania
-      uformowanie
-      uformowania
-      ufryzowanie
-      ufryzowania
       ufryzowanie
       ufryzowania
       ufundowanie
       ufundowania
-      ugadanie
-      ugadania
       ugadanie
       ugadania
       ugadywanie
@@ -82584,10 +72525,6 @@ module GameRoomKrowa
       ugry
       ugięcie
       ugięcia
-      ugięcie
-      ugięcia
-      uginanie
-      uginania
       uginanie
       uginania
       ugładzanie
@@ -82610,14 +72547,10 @@ module GameRoomKrowa
       ugodowości
       ugodzenie
       ugodzenia
-      ugodzenie
-      ugodzenia
       ugorowanie
       ugorowania
       ugoszczenie
       ugoszczenia
-      ugotowanie
-      ugotowania
       ugotowanie
       ugotowania
       ugór
@@ -82628,14 +72561,8 @@ module GameRoomKrowa
       ugruntowania
       ugrupowanie
       ugrupowania
-      ugrupowanie
-      ugrupowania
       ugrupowywanie
       ugrupowywania
-      ugrupowywanie
-      ugrupowywania
-      ugryzienie
-      ugryzienia
       ugryzienie
       ugryzienia
       ugrzecznienie
@@ -82656,10 +72583,6 @@ module GameRoomKrowa
       ujarzmienia
       ujawnianie
       ujawniania
-      ujawnianie
-      ujawniania
-      ujawnienie
-      ujawnienia
       ujawnienie
       ujawnienia
       ujechanie
@@ -82678,16 +72601,10 @@ module GameRoomKrowa
       ujeżdżenia
       ujęcie
       ujęcia
-      ujęcie
-      ujęcia
       ujma
       ujmy
       ujmowanie
       ujmowania
-      ujmowanie
-      ujmowania
-      ujrzenie
-      ujrzenia
       ujrzenie
       ujrzenia
       ujście
@@ -82704,16 +72621,10 @@ module GameRoomKrowa
       ukatrupienia
       ukazanie
       ukazania
-      ukazanie
-      ukazania
-      ukazywanie
-      ukazywania
       ukazywanie
       ukazywania
       ukąszenie
       ukąszenia
-      ukiszenie
-      ukiszenia
       ukiszenie
       ukiszenia
       ukleja
@@ -82734,20 +72645,14 @@ module GameRoomKrowa
       układaczki
       układanie
       układania
-      układanie
-      układania
       układanka
       układanki
       układność
       układności
-      układy
-      układy
       ukłon
       ukłony
       ukłonienie
       ukłonienia
-      ukłucie
-      ukłucia
       ukłucie
       ukłucia
       uknucie
@@ -82768,12 +72673,8 @@ module GameRoomKrowa
       ukopania
       ukoronowanie
       ukoronowania
-      ukoronowanie
-      ukoronowania
       ukorzenianie
       ukorzeniania
-      ukorzenie
-      ukorzenia
       ukorzenie
       ukorzenia
       ukorzenienie
@@ -82785,7 +72686,6 @@ module GameRoomKrowa
       ukośnica
       ukośnice
       ukośnicowate
-      ukośnicowate
       ukracanie
       ukracania
       ukradzenie
@@ -82796,8 +72696,6 @@ module GameRoomKrowa
       ukrajania
       ukręcenie
       ukręcenia
-      ukręcenie
-      ukręcenia
       ukrojenie
       ukrojenia
       ukrop
@@ -82806,24 +72704,16 @@ module GameRoomKrowa
       ukrócenia
       ukruszenie
       ukruszenia
-      ukruszenie
-      ukruszenia
       ukrwienie
       ukrwienia
       ukrycie
       ukrycia
-      ukrycie
-      ukrycia
-      ukrywanie
-      ukrywania
       ukrywanie
       ukrywania
       ukrzyżowanie
       ukrzyżowania
       ukucie
       ukucia
-      ukwaszenie
-      ukwaszenia
       ukwaszenie
       ukwaszenia
       ukwiał
@@ -82833,8 +72723,6 @@ module GameRoomKrowa
       ukwiecenie
       ukwiecenia
       ule
-      ulanie
-      ulania
       ulanie
       ulania
       ulatnianie
@@ -82861,20 +72749,12 @@ module GameRoomKrowa
       ulewy
       ulewanie
       ulewania
-      ulewanie
-      ulewania
-      uleżenie
-      uleżenia
       uleżenie
       uleżenia
       ulęgałka
       ulęgałki
       ulęganie
       ulęgania
-      ulęganie
-      ulęgania
-      ulęgnięcie
-      ulęgnięcia
       ulęgnięcie
       ulęgnięcia
       ulęknięcie
@@ -82899,10 +72779,6 @@ module GameRoomKrowa
       ulitowania
       ulizanie
       ulizania
-      ulizanie
-      ulizania
-      ulokowanie
-      ulokowania
       ulokowanie
       ulokowania
       ulotka
@@ -82912,8 +72788,6 @@ module GameRoomKrowa
       ultracyzm
       ultracyzmy
       ultradźwięk
-      ultradźwięki
-      ultradźwięki
       ultradźwięki
       ultrafiltr
       ultrafiltry
@@ -82929,20 +72803,14 @@ module GameRoomKrowa
       ulubieńcy
       ululanie
       ululania
-      ululanie
-      ululania
       ulwa
       ulwy
       ulżenie
       ulżenia
       uładzenie
       uładzenia
-      uładzenie
-      uładzenia
       ułagodzenie
       ułagodzenia
-      ułamanie
-      ułamania
       ułamanie
       ułamania
       ułamek
@@ -82966,9 +72834,6 @@ module GameRoomKrowa
       ułomności
       ułomnościach
       ułomność
-      ułomności
-      ułożenie
-      ułożenia
       ułożenie
       ułożenia
       ułuda
@@ -82983,20 +72848,12 @@ module GameRoomKrowa
       umajania
       umajenie
       umajenia
-      umajenie
-      umajenia
-      umalowanie
-      umalowania
       umalowanie
       umalowania
       umarły
       umarli
       umartwianie
       umartwiania
-      umartwianie
-      umartwiania
-      umartwienie
-      umartwienia
       umartwienie
       umartwienia
       umasawianie
@@ -83007,16 +72864,10 @@ module GameRoomKrowa
       umaszczenia
       umawianie
       umawiania
-      umawianie
-      umawiania
-      umazanie
-      umazania
       umazanie
       umazania
       umeblowanie
       umeblowania
-      umęczenie
-      umęczenia
       umęczenie
       umęczenia
       umiar
@@ -83030,15 +72881,12 @@ module GameRoomKrowa
       umierająca
       umierające
       umierający
-      umierający
       umieralność
       umieralności
       umieranie
       umierania
       umieszczanie
       umieszczania
-      umieszczenie
-      umieszczenia
       umieszczenie
       umieszczenia
       umięśnienie
@@ -83054,7 +72902,6 @@ module GameRoomKrowa
       umizganie
       umizgania
       umizgi
-      umizgi
       umizgiwanie
       umizgiwania
       umizgnięcie
@@ -83066,11 +72913,7 @@ module GameRoomKrowa
       umniejszenie
       umniejszenia
       umocnienia
-      umocnienia
       umocnienie
-      umocnienia
-      umocnienie
-      umocnienia
       umocowanie
       umocowania
       umocowywanie
@@ -83083,10 +72926,6 @@ module GameRoomKrowa
       umoralnienia
       umordowanie
       umordowania
-      umordowanie
-      umordowania
-      umorusanie
-      umorusania
       umorusanie
       umorusania
       umorzenie
@@ -83103,14 +72942,10 @@ module GameRoomKrowa
       umożliwienia
       umówienie
       umówienia
-      umówienie
-      umówienia
       umrzyk
       umrzyki
       umundurowanie
       umundurowania
-      umycie
-      umycia
       umycie
       umycia
       umykanie
@@ -83137,10 +72972,6 @@ module GameRoomKrowa
       unaocznienia
       unaradawianie
       unaradawiania
-      unaradawianie
-      unaradawiania
-      unarodowienie
-      unarodowienia
       unarodowienie
       unarodowienia
       unasiennianie
@@ -83163,14 +72994,8 @@ module GameRoomKrowa
       unicestwienia
       uniesienie
       uniesienia
-      uniesienie
-      uniesienia
       unieważnianie
       unieważniania
-      unieważnianie
-      unieważniania
-      unieważnienie
-      unieważnienia
       unieważnienie
       unieważnienia
       uniewinnianie
@@ -83208,7 +73033,6 @@ module GameRoomKrowa
       unitariusz
       unitariusze
       uniwersalia
-      uniwersalia
       uniwersalista
       uniwersaliści
       uniwersalizm
@@ -83226,8 +73050,6 @@ module GameRoomKrowa
       uniżoności
       unormowanie
       unormowania
-      unormowanie
-      unormowania
       unos
       unosy
       unosawianie
@@ -83236,22 +73058,12 @@ module GameRoomKrowa
       unosowienia
       unoszenie
       unoszenia
-      unoszenie
-      unoszenia
-      unurzanie
-      unurzania
       unurzanie
       unurzania
       uodparnianie
       uodparniania
-      uodparnianie
-      uodparniania
       uodpornianie
       uodporniania
-      uodpornianie
-      uodporniania
-      uodpornienie
-      uodpornienia
       uodpornienie
       uodpornienia
       uogólnianie
@@ -83260,14 +73072,8 @@ module GameRoomKrowa
       uogólnienia
       uosabianie
       uosabiania
-      uosabianie
-      uosabiania
       uosobienie
       uosobienia
-      uosobienie
-      uosobienia
-      upaćkanie
-      upaćkania
       upaćkanie
       upaćkania
       upadanie
@@ -83276,46 +73082,28 @@ module GameRoomKrowa
       upadki
       upadlanie
       upadlania
-      upadlanie
-      upadlania
       upadłość
       upadłości
       upajanie
       upajania
-      upajanie
-      upajania
       upalanie
       upalania
-      upalanie
-      upalania
-      upalenie
-      upalenia
       upalenie
       upalenia
       upał
       upały
       upamiętnianie
       upamiętniania
-      upamiętnianie
-      upamiętniania
-      upamiętnienie
-      upamiętnienia
       upamiętnienie
       upamiętnienia
       upapranie
       upaprania
-      upapranie
-      upaprania
-      uparciuch
-      uparciuchy
       uparciuch
       uparciuchy
       upartyjnianie
       upartyjniania
       upartyjnienie
       upartyjnienia
-      upasienie
-      upasienia
       upasienie
       upasienia
       upatrywanie
@@ -83328,24 +73116,14 @@ module GameRoomKrowa
       upchnięcia
       uperfumowanie
       uperfumowania
-      uperfumowanie
-      uperfumowania
       upewnianie
       upewniania
-      upewnianie
-      upewniania
-      upewnienie
-      upewnienia
       upewnienie
       upewnienia
       upichcenie
       upichcenia
       upicie
       upicia
-      upicie
-      upicia
-      upieczenie
-      upieczenia
       upieczenie
       upieczenia
       upiek
@@ -83358,18 +73136,10 @@ module GameRoomKrowa
       upięcia
       upiększanie
       upiększania
-      upiększanie
-      upiększania
-      upiększenie
-      upiększenia
       upiększenie
       upiększenia
       upijanie
       upijania
-      upijanie
-      upijania
-      upilnowanie
-      upilnowania
       upilnowanie
       upilnowania
       upiłowanie
@@ -83386,15 +73156,12 @@ module GameRoomKrowa
       uplanowania
       uplasowanie
       uplasowania
-      uplasowanie
-      uplasowania
       uplatanie
       uplatania
       uplecenie
       uplecenia
       upłakanie
       upłakania
-      upławy
       upławy
       upłaz
       upłazy
@@ -83408,42 +73175,26 @@ module GameRoomKrowa
       upływania
       upodabnianie
       upodabniania
-      upodabnianie
-      upodabniania
-      upodlenie
-      upodlenia
       upodlenie
       upodlenia
       upodobanie
       upodobania
       upodobnienie
       upodobnienia
-      upodobnienie
-      upodobnienia
       upoetyzowanie
       upoetyzowania
       upojenie
       upojenia
-      upojenie
-      upojenia
       upokarzanie
       upokarzania
-      upokarzanie
-      upokarzania
-      upokorzenie
-      upokorzenia
       upokorzenie
       upokorzenia
       upolowanie
       upolowania
       upominanie
       upominania
-      upominanie
-      upominania
       upominek
       upominki
-      upomnienie
-      upomnienia
       upomnienie
       upomnienia
       uporanie
@@ -83464,10 +73215,6 @@ module GameRoomKrowa
       upozorowania
       upozowanie
       upozowania
-      upozowanie
-      upozowania
-      upozowywanie
-      upozowywania
       upozowywanie
       upozowywania
       upór
@@ -83512,29 +73259,18 @@ module GameRoomKrowa
       uprzedniości
       uprzedzanie
       uprzedzania
-      uprzedzanie
-      uprzedzania
-      uprzedzenie
-      uprzedzenia
       uprzedzenie
       uprzedzenia
       uprzejmości
       uprzejmość
-      uprzejmości
       uprzędzenie
       uprzędzenia
       uprzykrzanie
       uprzykrzania
-      uprzykrzanie
-      uprzykrzania
-      uprzykrzenie
-      uprzykrzenia
       uprzykrzenie
       uprzykrzenia
       upstrzenie
       upstrzenia
-      upudrowanie
-      upudrowania
       upudrowanie
       upudrowania
       upupianie
@@ -83551,14 +73287,8 @@ module GameRoomKrowa
       upychania
       urabianie
       urabiania
-      urabianie
-      urabiania
       uraczenie
       uraczenia
-      uraczenie
-      uraczenia
-      uradowanie
-      uradowania
       uradowanie
       uradowania
       uradzanie
@@ -83568,25 +73298,16 @@ module GameRoomKrowa
       uran
       urany
       uranowce
-      uranowce
       uranowiec
-      uranowce
       urastanie
       urastania
-      uratowanie
-      uratowania
       uratowanie
       uratowania
       uraz
       urazy
       uraza
-      urazy
       urażanie
       urażania
-      urażanie
-      urażania
-      urażenie
-      urażenia
       urażenie
       urażenia
       urąbanie
@@ -83603,16 +73324,10 @@ module GameRoomKrowa
       urbanizacje
       urbanizowanie
       urbanizowania
-      urbanizowanie
-      urbanizowania
       urdzik
       urdziki
       urealnianie
       urealniania
-      urealnianie
-      urealniania
-      urealnienie
-      urealnienia
       urealnienie
       urealnienia
       uregulowanie
@@ -83631,8 +73346,6 @@ module GameRoomKrowa
       urobki
       urobienie
       urobienia
-      urobienie
-      urobienia
       uroczysko
       uroczyska
       uroczystość
@@ -83645,20 +73358,13 @@ module GameRoomKrowa
       urodzajności
       urodzenie
       urodzenia
-      urodzenie
-      urodzenia
-      urodziny
       urodziny
       urografia
       urografie
       urogram
       urogramy
       urojenia
-      urojenia
       urojenie
-      urojenia
-      urojenie
-      urojenia
       urok
       uroki
       urokliwość
@@ -83673,10 +73379,6 @@ module GameRoomKrowa
       urośnięcia
       urozmaicanie
       urozmaicania
-      urozmaicanie
-      urozmaicania
-      urozmaicenie
-      urozmaicenia
       urozmaicenie
       urozmaicenia
       urszulanka
@@ -83685,8 +73387,6 @@ module GameRoomKrowa
       uruchamiania
       uruchomienie
       uruchomienia
-      urwanie
-      urwania
       urwanie
       urwania
       urwipołeć
@@ -83699,18 +73399,12 @@ module GameRoomKrowa
       uryny
       urywanie
       urywania
-      urywanie
-      urywania
       urywek
       urywki
       urząd
       urzędy
       urządzanie
       urządzania
-      urządzanie
-      urządzania
-      urządzenie
-      urządzenia
       urządzenie
       urządzenia
       urzeczenie
@@ -83729,30 +73423,16 @@ module GameRoomKrowa
       urzędowania
       urznięcie
       urznięcia
-      urznięcie
-      urznięcia
-      urzynanie
-      urzynania
       urzynanie
       urzynania
       urżnięcie
       urżnięcia
-      urżnięcie
-      urżnięcia
-      usadawianie
-      usadawiania
       usadawianie
       usadawiania
       usadowienie
       usadowienia
-      usadowienie
-      usadowienia
       usadzanie
       usadzania
-      usadzanie
-      usadzania
-      usadzenie
-      usadzenia
       usadzenie
       usadzenia
       uschnięcie
@@ -83809,26 +73489,16 @@ module GameRoomKrowa
       usłyszenia
       usmarkanie
       usmarkania
-      usmarkanie
-      usmarkania
-      usmarowanie
-      usmarowania
       usmarowanie
       usmarowania
       usmażenie
       usmażenia
       usmolenie
       usmolenia
-      usmolenie
-      usmolenia
       usnucie
       usnucia
       uspokajanie
       uspokajania
-      uspokajanie
-      uspokajania
-      uspokojenie
-      uspokojenia
       uspokojenie
       uspokojenia
       usportowienie
@@ -83842,21 +73512,12 @@ module GameRoomKrowa
       usprawnienie
       usprawnienia
       usta
-      usta
-      ustalanie
-      ustalania
       ustalanie
       ustalania
       ustalenia
-      ustalenia
       ustalenie
-      ustalenia
-      ustalenie
-      ustalenia
       ustanawianie
       ustanawiania
-      ustanie
-      ustania
       ustanie
       ustania
       ustanowienie
@@ -83869,10 +73530,6 @@ module GameRoomKrowa
       ustawania
       ustawianie
       ustawiania
-      ustawianie
-      ustawiania
-      ustawienie
-      ustawienia
       ustawienie
       ustawienia
       ustawność
@@ -83883,7 +73540,6 @@ module GameRoomKrowa
       ustawodawstwa
       ustąpienie
       ustąpienia
-      usteczka
       usteczka
       usterka
       usterki
@@ -83903,10 +73559,6 @@ module GameRoomKrowa
       ustopniowania
       ustrajanie
       ustrajania
-      ustrajanie
-      ustrajania
-      ustrojenie
-      ustrojenia
       ustrojenie
       ustrojenia
       ustronie
@@ -83917,16 +73569,10 @@ module GameRoomKrowa
       ustrzelenia
       ustrzeżenie
       ustrzeżenia
-      ustrzeżenie
-      ustrzeżenia
-      usunięcie
-      usunięcia
       usunięcie
       usunięcia
       ususzenie
       ususzenia
-      usuwanie
-      usuwania
       usuwanie
       usuwania
       usuwisko
@@ -83941,14 +73587,10 @@ module GameRoomKrowa
       usynowienia
       usypanie
       usypania
-      usypanie
-      usypania
       usypianie
       usypiania
       usypisko
       usypiska
-      usypywanie
-      usypywania
       usypywanie
       usypywania
       usytuowanie
@@ -83959,8 +73601,6 @@ module GameRoomKrowa
       uszanki
       uszanowanie
       uszanowania
-      uszarganie
-      uszargania
       uszarganie
       uszargania
       uszarpanie
@@ -83988,36 +73628,21 @@ module GameRoomKrowa
       uszczypliwość
       uszczypnięcie
       uszczypnięcia
-      uszczypnięcie
-      uszczypnięcia
       uszeregowanie
       uszeregowania
       uszka
-      uszka
       uszkadzanie
       uszkadzania
-      uszkadzanie
-      uszkadzania
-      uszko
-      uszka
       uszko
       uszki
       uszkodzenie
       uszkodzenia
-      uszkodzenie
-      uszkodzenia
-      uszminkowanie
-      uszminkowania
       uszminkowanie
       uszminkowania
       usztywniacz
       usztywniacze
       usztywnianie
       usztywniania
-      usztywnianie
-      usztywniania
-      usztywnienie
-      usztywnienia
       usztywnienie
       usztywnienia
       uszycie
@@ -84034,8 +73659,6 @@ module GameRoomKrowa
       uściślania
       uściślenie
       uściślenia
-      uściśnięcie
-      uściśnięcia
       uściśnięcie
       uściśnięcia
       uśmianie
@@ -84082,8 +73705,6 @@ module GameRoomKrowa
       utapirowania
       utarcie
       utarcia
-      utarcie
-      utarcia
       utarczka
       utarczki
       utarg
@@ -84092,9 +73713,6 @@ module GameRoomKrowa
       utargowania
       utemperowanie
       utemperowania
-      utemperowanie
-      utemperowania
-      utensylia
       utensylia
       utkanie
       utkania
@@ -84106,8 +73724,6 @@ module GameRoomKrowa
       utleniacze
       utlenianie
       utleniania
-      utlenienie
-      utlenienia
       utlenienie
       utlenienia
       utłuczenie
@@ -84122,18 +73738,12 @@ module GameRoomKrowa
       utopie
       utopienie
       utopienia
-      utopienie
-      utopienia
       utopista
       utopiści
       utorowanie
       utorowania
       utożsamianie
       utożsamiania
-      utożsamianie
-      utożsamiania
-      utożsamienie
-      utożsamienia
       utożsamienie
       utożsamienia
       utracenie
@@ -84152,8 +73762,6 @@ module GameRoomKrowa
       utrapienia
       utrapieniec
       utrapieńcy
-      utrapieniec
-      utrapieńcy
       utrata
       utraty
       utrącanie
@@ -84166,40 +73774,22 @@ module GameRoomKrowa
       utrudnienia
       utrudzenie
       utrudzenia
-      utrudzenie
-      utrudzenia
-      utrwalacz
-      utrwalacze
       utrwalacz
       utrwalacze
       utrwalanie
       utrwalania
-      utrwalanie
-      utrwalania
-      utrwalenie
-      utrwalenia
       utrwalenie
       utrwalenia
       utrząsanie
       utrząsania
       utrząśnięcie
       utrząśnięcia
-      utrząśnięcie
-      utrząśnięcia
-      utrzęsienie
-      utrzęsienia
       utrzęsienie
       utrzęsienia
       utrzymanie
       utrzymania
-      utrzymanie
-      utrzymania
       utrzymywanie
       utrzymywania
-      utrzymywanie
-      utrzymywania
-      utuczenie
-      utuczenia
       utuczenie
       utuczenia
       utulanie
@@ -84208,22 +73798,12 @@ module GameRoomKrowa
       utulenia
       utwardzanie
       utwardzania
-      utwardzanie
-      utwardzania
-      utwardzenie
-      utwardzenia
       utwardzenie
       utwardzenia
       utwierdzanie
       utwierdzania
-      utwierdzanie
-      utwierdzania
       utwierdzenie
       utwierdzenia
-      utwierdzenie
-      utwierdzenia
-      utworzenie
-      utworzenia
       utworzenie
       utworzenia
       utwór
@@ -84242,18 +73822,12 @@ module GameRoomKrowa
       utyskiwania
       utytłanie
       utytłania
-      utytłanie
-      utytłania
       utytułowanie
       utytułowania
       uwaga
       uwagi
       uwalanie
       uwalania
-      uwalanie
-      uwalania
-      uwalnianie
-      uwalniania
       uwalnianie
       uwalniania
       uwałowanie
@@ -84264,40 +73838,24 @@ module GameRoomKrowa
       uwarunkowania
       uważanie
       uważania
-      uważanie
-      uważania
       uwertura
       uwertury
-      uwędzenie
-      uwędzenia
       uwędzenie
       uwędzenia
       uwiąd
       uwiądy
       uwiązanie
       uwiązania
-      uwiązanie
-      uwiązania
-      uwiązywanie
-      uwiązywania
       uwiązywanie
       uwiązywania
       uwicie
       uwicia
       uwidacznianie
       uwidaczniania
-      uwidacznianie
-      uwidaczniania
-      uwidocznienie
-      uwidocznienia
       uwidocznienie
       uwidocznienia
       uwiecznianie
       uwieczniania
-      uwiecznianie
-      uwieczniania
-      uwiecznienie
-      uwiecznienia
       uwiecznienie
       uwiecznienia
       uwiedzenie
@@ -84314,10 +73872,6 @@ module GameRoomKrowa
       uwierzenia
       uwieszanie
       uwieszania
-      uwieszanie
-      uwieszania
-      uwieszenie
-      uwieszenia
       uwieszenie
       uwieszenia
       uwiezienie
@@ -84334,8 +73888,6 @@ module GameRoomKrowa
       uwijania
       uwikłanie
       uwikłania
-      uwikłanie
-      uwikłania
       uwinięcie
       uwinięcia
       uwłaczanie
@@ -84350,10 +73902,6 @@ module GameRoomKrowa
       uwodnienia
       uwodornianie
       uwodorniania
-      uwodornianie
-      uwodorniania
-      uwodornienie
-      uwodornienia
       uwodornienie
       uwodornienia
       uwodzenie
@@ -84364,34 +73912,20 @@ module GameRoomKrowa
       uwodzicielki
       uwolnienie
       uwolnienia
-      uwolnienie
-      uwolnienia
       uwożenie
       uwożenia
       uwrażliwianie
       uwrażliwiania
-      uwrażliwianie
-      uwrażliwiania
-      uwrażliwienie
-      uwrażliwienia
       uwrażliwienie
       uwrażliwienia
       uwstecznienie
       uwstecznienia
       uwydatnianie
       uwydatniania
-      uwydatnianie
-      uwydatniania
-      uwydatnienie
-      uwydatnienia
       uwydatnienie
       uwydatnienia
       uwypuklanie
       uwypuklania
-      uwypuklanie
-      uwypuklania
-      uwypuklenie
-      uwypuklenia
       uwypuklenie
       uwypuklenia
       uwzględnianie
@@ -84406,10 +73940,6 @@ module GameRoomKrowa
       uwznioślenia
       uzależnianie
       uzależniania
-      uzależnianie
-      uzależniania
-      uzależnienie
-      uzależnienia
       uzależnienie
       uzależnienia
       uzasadnianie
@@ -84418,14 +73948,8 @@ module GameRoomKrowa
       uzasadnienia
       uzbieranie
       uzbierania
-      uzbieranie
-      uzbierania
       uzbrajanie
       uzbrajania
-      uzbrajanie
-      uzbrajania
-      uzbrojenie
-      uzbrojenia
       uzbrojenie
       uzbrojenia
       uzda
@@ -84458,22 +73982,12 @@ module GameRoomKrowa
       uziemienia
       uznanie
       uznania
-      uznanie
-      uznania
-      uznawanie
-      uznawania
       uznawanie
       uznawania
       uznojenie
       uznojenia
-      uznojenie
-      uznojenia
       uzupełnianie
       uzupełniania
-      uzupełnianie
-      uzupełniania
-      uzupełnienie
-      uzupełnienia
       uzupełnienie
       uzupełnienia
       uzurpacja
@@ -84545,8 +74059,6 @@ module GameRoomKrowa
       vacat
       vacaty
       varia
-      varia
-      varsaviana
       varsaviana
       varsavianista
       varsavianiści
@@ -84567,13 +74079,10 @@ module GameRoomKrowa
       volt
       volty
       volta
-      volty
       volvo
       volva
       wab
       wabie
-      wabienie
-      wabienia
       wabienie
       wabienia
       wabik
@@ -84582,8 +74091,6 @@ module GameRoomKrowa
       wachlarze
       wachlarzyk
       wachlarzyki
-      wachlowanie
-      wachlowania
       wachlowanie
       wachlowania
       wachmistrz
@@ -84602,10 +74109,6 @@ module GameRoomKrowa
       wadliwości
       wadzenie
       wadzenia
-      wadzenie
-      wadzenia
-      wafel
-      wafle
       wafel
       wafle
       wafelek
@@ -84621,7 +74124,6 @@ module GameRoomKrowa
       wagarowicz
       wagarowicze
       wagary
-      wagary
       wagon
       wagony
       wagonik
@@ -84629,8 +74131,6 @@ module GameRoomKrowa
       wagonownia
       wagonownie
       wagowa
-      wagowe
-      wagowe
       wagowe
       wagowy
       wagowi
@@ -84642,19 +74142,14 @@ module GameRoomKrowa
       wahadła
       wahanie
       wahania
-      wahanie
-      wahania
       wahnienie
       wahnienia
-      wahnięcie
-      wahnięcia
       wahnięcie
       wahnięcia
       wajdelota
       wajdeloci
       wajgelia
       wajgelie
-      wakacje
       wakacje
       wakat
       wakaty
@@ -84666,8 +74161,6 @@ module GameRoomKrowa
       wakuometry
       wal
       wale
-      walanie
-      walania
       walanie
       walania
       walc
@@ -84691,24 +74184,17 @@ module GameRoomKrowa
       walczyk
       walczyki
       walec
-      walce
       waleczność
       waleczności
       walenie
       walenia
-      walenie
-      walenia
-      walenie
-      walenie
       walenrodyzm
       walenrodyzmy
       waleń
-      walenie
       waleriana
       waleriany
       walet
       waleci
-      walet
       walety
       waligóra
       waligóry
@@ -84730,17 +74216,12 @@ module GameRoomKrowa
       wallenrodyzmy
       walnięcie
       walnięcia
-      walnięcie
-      walnięcia
-      walonki
       walonki
       walor
       walory
       waloryzacja
       waloryzacje
       walterskotyzm
-      waltornia
-      waltornie
       waltornia
       waltornie
       waltornista
@@ -84767,8 +74248,6 @@ module GameRoomKrowa
       wałkonie
       wałkowanie
       wałkowania
-      wałkowanie
-      wałkowania
       wałkownica
       wałkownice
       wałowanie
@@ -84779,19 +74258,14 @@ module GameRoomKrowa
       wampy
       wampir
       wampiry
-      wampir
-      wampiry
       wanad
       wanady
       wanadowce
-      wanadowce
       wanadowiec
-      wanadowce
       wandal
       wandale
       wandalizm
       wandalizmy
-      wandalowie
       wandalowie
       wanienka
       wanienki
@@ -84809,16 +74283,12 @@ module GameRoomKrowa
       wapienie
       wapniak
       wapniaki
-      wapniak
-      wapniaki
       wapnienie
       wapnienia
       wapniowanie
       wapniowania
       wapniowce
-      wapniowce
       wapniowiec
-      wapniowce
       wapno
       wapna
       wapnowanie
@@ -84832,11 +74302,8 @@ module GameRoomKrowa
       warcabista
       warcabiści
       warcaby
-      warcaby
       warchlak
       warchlaki
-      warchlakarnia
-      warchlakarnie
       warchlakarnia
       warchlakarnie
       warcholenie
@@ -84850,10 +74317,7 @@ module GameRoomKrowa
       warga
       wargi
       wargowe
-      wargowe
       wariacja
-      wariacje
-      wariacje
       wariacje
       wariactwo
       wariactwa
@@ -84903,7 +74367,6 @@ module GameRoomKrowa
       warsztaty
       warsztatowiec
       warsztatowcy
-      warsztatowiec
       warsztatowce
       warta
       warty
@@ -84934,24 +74397,18 @@ module GameRoomKrowa
       warzelnicy
       warzenie
       warzenia
-      warzenie
-      warzenia
       warzonka
       warzonki
       warzywnictwo
       warzywnictwa
       warzywnik
       warzywnicy
-      warzywnik
       warzywniki
       warzywo
       warzywa
       wasal
       wasale
       wasi
-      wasi
-      waśnienie
-      waśnienia
       waśnienie
       waśnienia
       waśń
@@ -84959,12 +74416,10 @@ module GameRoomKrowa
       wat
       waty
       wata
-      waty
       wataha
       watahy
       watażka
       watażkowie
-      watażka
       watażki
       waterpolista
       waterpoliści
@@ -84989,8 +74444,6 @@ module GameRoomKrowa
       wawrzynek
       wawrzynki
       wawrzynkowate
-      wawrzynkowate
-      wawrzynowate
       wawrzynowate
       waza
       wazy
@@ -85010,8 +74463,6 @@ module GameRoomKrowa
       wazonkowce
       ważenie
       ważenia
-      ważenie
-      ważenia
       ważka
       ważki
       ważkość
@@ -85020,12 +74471,9 @@ module GameRoomKrowa
       ważniactwa
       ważniak
       ważniacy
-      ważniak
       ważniaki
       ważność
       ważności
-      wąchanie
-      wąchania
       wąchanie
       wąchania
       wądół
@@ -85035,7 +74483,6 @@ module GameRoomKrowa
       wąglik
       wągliki
       wągr
-      wągry
       wągrzyca
       wągrzyce
       wąs
@@ -85053,18 +74500,14 @@ module GameRoomKrowa
       wąskość
       wąskości
       wąsonogie
-      wąsonogie
       wąsonóg
       wąsonogi
-      wąsy
-      wąsy
       wątek
       wątki
       wątlenie
       wątlenia
       wątłość
       wątłości
-      wątpiący
       wątpiący
       wątpienie
       wątpienia
@@ -85077,21 +74520,14 @@ module GameRoomKrowa
       wątrobiarz
       wątrobiarze
       wątrobowce
-      wątrobowce
       wątrobowiec
       wątrobowcy
-      wątrobowiec
-      wątrobowce
       wątróbka
       wątróbki
       wąwóz
       wąwozy
       wąż
       węże
-      wąż
-      węże
-      wbicie
-      wbicia
       wbicie
       wbicia
       wbieganie
@@ -85100,30 +74536,20 @@ module GameRoomKrowa
       wbiegnięcia
       wbijanie
       wbijania
-      wbijanie
-      wbijania
       wbudowanie
       wbudowania
       wbudowywanie
       wbudowywania
       wchłanianie
       wchłaniania
-      wchłanianie
-      wchłaniania
-      wchłonięcie
-      wchłonięcia
       wchłonięcie
       wchłonięcia
       wchodzenie
       wchodzenia
       wciąganie
       wciągania
-      wciąganie
-      wciągania
       wciągarka
       wciągarki
-      wciągnięcie
-      wciągnięcia
       wciągnięcie
       wciągnięcia
       wcieczenie
@@ -85134,22 +74560,12 @@ module GameRoomKrowa
       wcieknięcia
       wcielanie
       wcielania
-      wcielanie
-      wcielania
-      wcielenie
-      wcielenia
       wcielenie
       wcielenia
       wcieranie
       wcierania
-      wcieranie
-      wcierania
       wcięcie
       wcięcia
-      wcięcie
-      wcięcia
-      wcinanie
-      wcinania
       wcinanie
       wcinania
       wciornastek
@@ -85158,10 +74574,6 @@ module GameRoomKrowa
       wciski
       wciskanie
       wciskania
-      wciskanie
-      wciskania
-      wciśnięcie
-      wciśnięcia
       wciśnięcie
       wciśnięcia
       wczasowanie
@@ -85173,17 +74585,12 @@ module GameRoomKrowa
       wczasowisko
       wczasowiska
       wczasy
-      wczasy
       wczep
       wczepy
       wczepianie
       wczepiania
-      wczepianie
-      wczepiania
       wczepiarka
       wczepiarki
-      wczepienie
-      wczepienia
       wczepienie
       wczepienia
       wczesność
@@ -85200,20 +74607,12 @@ module GameRoomKrowa
       wczuwania
       wczytanie
       wczytania
-      wczytanie
-      wczytania
       wczytywanie
       wczytywania
-      wczytywanie
-      wczytywania
-      wdanie
-      wdania
       wdanie
       wdania
       wdarcie
       wdarcia
-      wdawanie
-      wdawania
       wdawanie
       wdawania
       wdech
@@ -85234,8 +74633,6 @@ module GameRoomKrowa
       wdowy
       wdowiec
       wdowcy
-      wdowiec
-      wdowcy
       wdówka
       wdówki
       wdrapanie
@@ -85244,12 +74641,8 @@ module GameRoomKrowa
       wdrapywania
       wdrażanie
       wdrażania
-      wdrażanie
-      wdrażania
       wdrobienie
       wdrobienia
-      wdrożenie
-      wdrożenia
       wdrożenie
       wdrożenia
       wdychanie
@@ -85308,11 +74701,8 @@ module GameRoomKrowa
       welin
       weliny
       wellingtony
-      wellingtony
       welodrom
       welodromy
-      welon
-      welony
       welon
       welony
       welonik
@@ -85353,10 +74743,6 @@ module GameRoomKrowa
       wentylowania
       wepchanie
       wepchania
-      wepchanie
-      wepchania
-      wepchnięcie
-      wepchnięcia
       wepchnięcie
       wepchnięcia
       weranda
@@ -85369,7 +74755,6 @@ module GameRoomKrowa
       werble
       werbena
       werbeny
-      werbenowate
       werbenowate
       werbowanie
       werbowania
@@ -85395,8 +74780,6 @@ module GameRoomKrowa
       wersale
       wersalik
       wersaliki
-      wersaliki
-      wersaliki
       wersalka
       wersalki
       werset
@@ -85407,7 +74790,6 @@ module GameRoomKrowa
       wersologie
       wersyfikacja
       wersyfikacje
-      wertepy
       wertepy
       werteryzm
       werteryzmy
@@ -85431,10 +74813,6 @@ module GameRoomKrowa
       weryzmy
       werznięcie
       werznięcia
-      werznięcie
-      werznięcia
-      werżnięcie
-      werżnięcia
       werżnięcie
       werżnięcia
       wesele
@@ -85449,8 +74827,6 @@ module GameRoomKrowa
       wesołki
       wesołość
       wesołości
-      wessanie
-      wessania
       wessanie
       wessania
       westalka
@@ -85499,8 +74875,6 @@ module GameRoomKrowa
       wędliny
       wędliniarnia
       wędliniarnie
-      wędliniarnia
-      wędliniarnie
       wędliniarstwo
       wędliniarstwa
       wędliniarz
@@ -85511,18 +74885,12 @@ module GameRoomKrowa
       wędrowania
       wędrowiec
       wędrowcy
-      wędrowiec
-      wędrowcy
       wędrownik
       wędrownicy
       wędrówka
       wędrówki
       wędzarnia
       wędzarnie
-      wędzarnia
-      wędzarnie
-      wędzenie
-      wędzenia
       wędzenie
       wędzenia
       wędzidło
@@ -85541,13 +74909,9 @@ module GameRoomKrowa
       węgły
       węgierka
       węgierki
-      węgierka
-      węgierki
       węgierskość
       węgierskości
       węglan
-      węglany
-      węglany
       węglany
       węglarka
       węglarki
@@ -85558,9 +74922,7 @@ module GameRoomKrowa
       węglopochodna
       węglopochodne
       węglowce
-      węglowce
       węglowiec
-      węglowce
       węglowodan
       węglowodany
       węglowodór
@@ -85577,18 +74939,13 @@ module GameRoomKrowa
       węzły
       węzełek
       węzełki
-      węże
-      węże
       wężojad
       wężojady
-      wężowate
       wężowate
       wężowidło
       wężowidła
       wężownica
       wężownice
-      wężyk
-      wężyki
       wężyk
       wężyki
       wężymord
@@ -85597,10 +74954,6 @@ module GameRoomKrowa
       wganiania
       wgięcie
       wgięcia
-      wgięcie
-      wgięcia
-      wginanie
-      wginania
       wginanie
       wginania
       wgląd
@@ -85609,18 +74962,10 @@ module GameRoomKrowa
       wglądania
       wgłębianie
       wgłębiania
-      wgłębianie
-      wgłębiania
-      wgłębienie
-      wgłębienia
       wgłębienie
       wgłębienia
       wgniatanie
       wgniatania
-      wgniatanie
-      wgniatania
-      wgniecenie
-      wgniecenia
       wgniecenie
       wgniecenia
       wgonienie
@@ -85636,7 +74981,6 @@ module GameRoomKrowa
       wiadomości
       wiadomościach
       wiadomość
-      wiadomości
       wiadro
       wiadra
       wiadukt
@@ -85647,8 +74991,6 @@ module GameRoomKrowa
       wianki
       wianie
       wiania
-      wianki
-      wianki
       wiano
       wiana
       wianuszek
@@ -85659,8 +75001,6 @@ module GameRoomKrowa
       wiarogodności
       wiarołomstwo
       wiarołomstwa
-      wiarus
-      wiarusy
       wiarus
       wiarusy
       wiarygodność
@@ -85700,15 +75040,12 @@ module GameRoomKrowa
       wiązadła
       wiązanie
       wiązania
-      wiązanie
-      wiązania
       wiązanka
       wiązanki
       wiązar
       wiązary
       wiązka
       wiązki
-      wiązowate
       wiązowate
       wibracja
       wibracje
@@ -85720,8 +75057,6 @@ module GameRoomKrowa
       wice
       wiceadmirał
       wicedyrektor
-      wicehrabia
-      wicehrabiowie
       wicehrabia
       wicehrabiowie
       wicekanclerz
@@ -85745,8 +75080,6 @@ module GameRoomKrowa
       wichrowania
       wichrzenie
       wichrzenia
-      wichrzenie
-      wichrzenia
       wichrzyciel
       wichrzyciele
       wichrzysko
@@ -85758,16 +75091,13 @@ module GameRoomKrowa
       wiciokrzew
       wiciokrzewy
       wiciowce
-      wiciowce
       wiciowiec
-      wiciowce
       wić
       wici
       widelczyk
       widelczyki
       widelec
       widelce
-      widełki
       widełki
       wideofon
       wideofony
@@ -85783,16 +75113,11 @@ module GameRoomKrowa
       widłak
       widłaki
       widłakowe
-      widłakowe
       widłogonek
       widłogonki
-      widłogonki
-      widłogonki
-      widłonogie
       widłonogie
       widłonóg
       widłonogi
-      widły
       widły
       widmo
       widma
@@ -85815,12 +75140,8 @@ module GameRoomKrowa
       widownie
       widywanie
       widywania
-      widywanie
-      widywania
       widz
       widzowie
-      widzenie
-      widzenia
       widzenie
       widzenia
       widzialność
@@ -85849,12 +75170,8 @@ module GameRoomKrowa
       wieczorynki
       wieczór
       wieczory
-      wieczór
-      wieczory
       wiedza
       wiedze
-      wiedzenie
-      wiedzenia
       wiedzenie
       wiedzenia
       wiedźma
@@ -85875,7 +75192,6 @@ module GameRoomKrowa
       wielbienia
       wielbłąd
       wielbłądy
-      wielbłądowate
       wielbłądowate
       wielbłądzica
       wielbłądzice
@@ -85910,8 +75226,6 @@ module GameRoomKrowa
       wielobóstwa
       wielocukier
       wielocukry
-      wielocukry
-      wielocukry
       wielodrożnica
       wielodrożnice
       wielograniec
@@ -85936,9 +75250,7 @@ module GameRoomKrowa
       wielopłat
       wielopłaty
       wielopłetwce
-      wielopłetwce
       wielopłetwiec
-      wielopłetwce
       wielorakość
       wielorakości
       wieloródka
@@ -85947,11 +75259,8 @@ module GameRoomKrowa
       wieloryby
       wielorybnik
       wielorybnicy
-      wielorybnik
       wielorybniki
       wieloszczet
-      wieloszczety
-      wieloszczety
       wieloszczety
       wielościan
       wielościany
@@ -85976,12 +75285,8 @@ module GameRoomKrowa
       wieprzowiny
       wiercenie
       wiercenia
-      wiercenie
-      wiercenia
       wierch
       wierchy
-      wiercipięta
-      wiercipięty
       wiercipięta
       wiercipięty
       wierność
@@ -85992,7 +75297,6 @@ module GameRoomKrowa
       wiersze
       wierszokleta
       wierszoklety
-      wierszokleta
       wierszokleci
       wierszowanie
       wierszowania
@@ -86013,16 +75317,13 @@ module GameRoomKrowa
       wiertnictwo
       wiertnictwa
       wiertniczy
-      wiertniczy
       wieruszka
       wieruszki
-      wierzący
       wierzący
       wierzba
       wierzby
       wierzbina
       wierzbiny
-      wierzbowate
       wierzbowate
       wierzch
       wierzchy
@@ -86033,11 +75334,8 @@ module GameRoomKrowa
       wierzchowiec
       wierzchowce
       wierzeje
-      wierzeje
-      wierzenia
       wierzenia
       wierzenie
-      wierzenia
       wierzganie
       wierzgania
       wierzgnięcie
@@ -86048,25 +75346,20 @@ module GameRoomKrowa
       wierzycielki
       wierzytelność
       wiesiołkowate
-      wiesiołkowate
       wieszadło
       wieszadła
       wieszak
       wieszaki
       wieszanie
       wieszania
-      wieszanie
-      wieszania
       wieszcz
       wieszczowie
       wieszczek
       wieszczkowie
-      wieszczek
       wieszczki
       wieszczenie
       wieszczenia
       wieszczka
-      wieszczki
       wieś
       wsie
       wieść
@@ -86075,8 +75368,6 @@ module GameRoomKrowa
       wieśniaczki
       wieśniak
       wieśniacy
-      wietrzenie
-      wietrzenia
       wietrzenie
       wietrzenia
       wietrznik
@@ -86091,7 +75382,6 @@ module GameRoomKrowa
       wiewióreczki
       wiewiórka
       wiewiórki
-      wiewiórkowate
       wiewiórkowate
       wiezienie
       wiezienia
@@ -86116,7 +75406,6 @@ module GameRoomKrowa
       więzień
       więźniowie
       więzy
-      więzy
       więź
       więzi
       więźba
@@ -86127,8 +75416,6 @@ module GameRoomKrowa
       więźnięcia
       wigilia
       wigilie
-      wigilia
-      wigilie
       wigor
       wigory
       wigwam
@@ -86136,8 +75423,6 @@ module GameRoomKrowa
       wihajster
       wihajstry
       wij
-      wije
-      wije
       wije
       wikariusz
       wikariusze
@@ -86153,17 +75438,12 @@ module GameRoomKrowa
       wikliniarze
       wikłacz
       wikłacze
-      wikłacze
-      wikłacze
-      wikłanie
-      wikłania
       wikłanie
       wikłania
       wikt
       wikty
       wiktoria
       wiktorie
-      wiktuały
       wiktuały
       wilczek
       wilczki
@@ -86183,7 +75463,6 @@ module GameRoomKrowa
       wilgi
       wilgoć
       wilgocie
-      wilgoć
       wilgoci
       wilgotnienie
       wilgotnienia
@@ -86197,14 +75476,10 @@ module GameRoomKrowa
       wille
       wilżenie
       wilżenia
-      wilżenie
-      wilżenia
       wina
       winy
       winda
       windy
-      windowanie
-      windowania
       windowanie
       windowania
       windykowanie
@@ -86217,8 +75492,6 @@ module GameRoomKrowa
       winegrety
       winiak
       winiaki
-      winiarnia
-      winiarnie
       winiarnia
       winiarnie
       winiarstwo
@@ -86244,7 +75517,6 @@ module GameRoomKrowa
       winny
       winni
       wino
-      wina
       winobluszcz
       winobluszcze
       winobranie
@@ -86253,7 +75525,6 @@ module GameRoomKrowa
       winogrona
       winorośl
       winorośle
-      winoroślowate
       winoroślowate
       winowajca
       winowajcy
@@ -86288,7 +75559,6 @@ module GameRoomKrowa
       wiosło
       wiosła
       wiosłonogie
-      wiosłonogie
       wiosłowanie
       wiosłowania
       wiosna
@@ -86296,8 +75566,6 @@ module GameRoomKrowa
       wioszczyna
       wioszczyny
       wioślarka
-      wioślarki
-      wioślarki
       wioślarki
       wioślarstwo
       wioślarstwa
@@ -86351,8 +75619,6 @@ module GameRoomKrowa
       wirusolodzy
       wirusologia
       wirusologie
-      wirusy
-      wirusy
       wirydarz
       wirydarze
       wirydarzyk
@@ -86373,8 +75639,6 @@ module GameRoomKrowa
       wiskozymetry
       wist
       wisty
-      wist
-      wisty
       wistaria
       wistarie
       wistowanie
@@ -86393,18 +75657,10 @@ module GameRoomKrowa
       witalności
       witamina
       witaminy
-      witaminy
-      witaminy
-      witanie
-      witania
       witanie
       witania
       witezie
-      witezie
       witeź
-      witezie
-      witeź
-      witezie
       witka
       witki
       witlinek
@@ -86487,20 +75743,12 @@ module GameRoomKrowa
       wkładki
       wkłucie
       wkłucia
-      wkłucie
-      wkłucia
-      wkłuwanie
-      wkłuwania
       wkłuwanie
       wkłuwania
       wkomponowanie
       wkomponowania
       wkopanie
       wkopania
-      wkopanie
-      wkopania
-      wkopywanie
-      wkopywania
       wkopywanie
       wkopywania
       wkraczanie
@@ -86521,10 +75769,6 @@ module GameRoomKrowa
       wkrawania
       wkręcanie
       wkręcania
-      wkręcanie
-      wkręcania
-      wkręcenie
-      wkręcenia
       wkręcenie
       wkręcenia
       wkręt
@@ -86543,26 +75787,18 @@ module GameRoomKrowa
       wkroplenia
       wkucie
       wkucia
-      wkucie
-      wkucia
       wkupienie
       wkupienia
       wkupywanie
       wkupywania
       wkuwanie
       wkuwania
-      wkuwanie
-      wkuwania
-      wlanie
-      wlania
       wlanie
       wlania
       wlatywanie
       wlatywania
       wlecenie
       wlecenia
-      wleczenie
-      wleczenia
       wleczenie
       wleczenia
       wlepianie
@@ -86573,18 +75809,12 @@ module GameRoomKrowa
       wlewy
       wlewanie
       wlewania
-      wlewanie
-      wlewania
       wlewek
       wlewki
       wlezienie
       wlezienia
       wliczanie
       wliczania
-      wliczanie
-      wliczania
-      wliczenie
-      wliczenia
       wliczenie
       wliczenia
       wlot
@@ -86599,24 +75829,16 @@ module GameRoomKrowa
       władczynie
       władowanie
       władowania
-      władowanie
-      władowania
-      władowywanie
-      władowywania
       władowywanie
       władowywania
       władza
       władze
       włamanie
       włamania
-      włamanie
-      włamania
       włamywacz
       włamywacze
       włamywaczka
       włamywaczki
-      włamywanie
-      włamywania
       włamywanie
       włamywania
       własność
@@ -86633,10 +75855,6 @@ module GameRoomKrowa
       włażenia
       włączanie
       włączania
-      włączanie
-      włączania
-      włączenie
-      włączenia
       włączenie
       włączenia
       włogacizna
@@ -86654,10 +75872,7 @@ module GameRoomKrowa
       włosień
       włosienie
       włosiny
-      włosiny
       włosiska
-      włosiska
-      włoski
       włoskie
       włoskowatość
       włoskowatości
@@ -86681,13 +75896,8 @@ module GameRoomKrowa
       włożenia
       włóczenie
       włóczenia
-      włóczenie
-      włóczenia
       włóczęga
       włóczędzy
-      włóczęga
-      włóczęgi
-      włóczęga
       włóczęgi
       włóczęgostwo
       włóczęgostwa
@@ -86702,12 +75912,10 @@ module GameRoomKrowa
       włók
       włóki
       włóka
-      włóki
       włókienko
       włókienka
       włókiennictwo
       włókiennictwa
-      włókna
       włókna
       włókniak
       włókniaki
@@ -86722,7 +75930,6 @@ module GameRoomKrowa
       włóknistość
       włóknistości
       włókno
-      włókna
       wmaszerowanie
       wmaszerowania
       wmawianie
@@ -86731,8 +75938,6 @@ module GameRoomKrowa
       wmiatania
       wmiecenie
       wmiecenia
-      wmieszanie
-      wmieszania
       wmieszanie
       wmieszania
       wmontowanie
@@ -86793,12 +75998,9 @@ module GameRoomKrowa
       wnuk
       wnukowie
       wnuki
-      wnuki
       wnusia
       wnusie
       wnuś
-      wnusie
-      wnyki
       wnyki
       woal
       woale
@@ -86849,21 +76051,12 @@ module GameRoomKrowa
       wodorki
       wodorokwas
       wodorokwasy
-      wodorokwasy
-      wodorokwasy
-      wodorosole
       wodorosole
       wodorosól
-      wodorosole
-      wodorosty
       wodorosty
       wodorotlenek
       wodorotlenki
-      wodorotlenki
-      wodorotlenki
       wodorowęglan
-      wodorowęglany
-      wodorowęglany
       wodorowęglany
       wodospad
       wodospady
@@ -86882,9 +76075,6 @@ module GameRoomKrowa
       wodór
       wodory
       wodze
-      wodze
-      wodzenie
-      wodzenia
       wodzenie
       wodzenia
       wodzian
@@ -86947,8 +76137,6 @@ module GameRoomKrowa
       wokalizmy
       wokalizowanie
       wokalizowania
-      wokalizowanie
-      wokalizowania
       wokanda
       wokandy
       wokatiwus
@@ -86959,12 +76147,8 @@ module GameRoomKrowa
       wolaki
       wolant
       wolanty
-      wolant
-      wolanty
       wolapik
       wolapiki
-      wole
-      wola
       wolej
       woleje
       wolfram
@@ -86985,7 +76169,6 @@ module GameRoomKrowa
       wolt
       wolty
       wolta
-      wolty
       woltametr
       woltametry
       woltamper
@@ -87004,10 +76187,8 @@ module GameRoomKrowa
       woltyżerki
       wolumen
       woluminy
-      wolumen
       wolumina
       wolumin
-      woluminy
       woluntaryzm
       woluntaryzmy
       wołacz
@@ -87017,7 +76198,6 @@ module GameRoomKrowa
       wołek
       wołki
       wołowe
-      wołowe
       wołowina
       wołowiny
       wonienie
@@ -87025,13 +76205,10 @@ module GameRoomKrowa
       wonności
       wonnościach
       wonność
-      wonności
       woń
       wonie
       wopista
       wopiści
-      woranie
-      worania
       woranie
       worania
       woreczek
@@ -87041,9 +76218,7 @@ module GameRoomKrowa
       workowanie
       workowania
       workowce
-      workowce
       workowiec
-      workowce
       worywanie
       worywania
       wosk
@@ -87072,8 +76247,6 @@ module GameRoomKrowa
       woźnice
       woźny
       woźni
-      wożenie
-      wożenia
       wożenie
       wożenia
       wóda
@@ -87110,14 +76283,8 @@ module GameRoomKrowa
       wpajania
       wpakowanie
       wpakowania
-      wpakowanie
-      wpakowania
       wpakowywanie
       wpakowywania
-      wpakowywanie
-      wpakowywania
-      wparcie
-      wparcia
       wparcie
       wparcia
       wpatrywanie
@@ -87130,24 +76297,14 @@ module GameRoomKrowa
       wpełznięcia
       wpędzanie
       wpędzania
-      wpędzanie
-      wpędzania
-      wpędzenie
-      wpędzenia
       wpędzenie
       wpędzenia
       wpicie
       wpicia
-      wpicie
-      wpicia
-      wpieranie
-      wpierania
       wpieranie
       wpierania
       wpięcie
       wpięcia
-      wpijanie
-      wpijania
       wpijanie
       wpijania
       wpinanie
@@ -87156,29 +76313,17 @@ module GameRoomKrowa
       wpisy
       wpisanie
       wpisania
-      wpisanie
-      wpisania
-      wpisowe
       wpisowe
       wpisywanie
       wpisywania
-      wpisywanie
-      wpisywania
-      wplatanie
-      wplatania
       wplatanie
       wplatania
       wplątanie
       wplątania
       wplątywanie
       wplątywania
-      wplątywanie
-      wplątywania
       wplecenie
       wplecenia
-      wplecenie
-      wplecenia
-      wpłacający
       wpłacający
       wpłacanie
       wpłacania
@@ -87200,10 +76345,6 @@ module GameRoomKrowa
       wprawy
       wprawianie
       wprawiania
-      wprawianie
-      wprawiania
-      wprawienie
-      wprawienia
       wprawienie
       wprawienia
       wprawka
@@ -87211,27 +76352,14 @@ module GameRoomKrowa
       wproszenie
       wproszenia
       wprowadzający
-      wprowadzający
-      wprowadzający
-      wprowadzający
-      wprowadzanie
-      wprowadzania
       wprowadzanie
       wprowadzania
       wprowadzenie
       wprowadzenia
-      wprowadzenie
-      wprowadzenia
-      wprzęganie
-      wprzęgania
       wprzęganie
       wprzęgania
       wprzęgnięcie
       wprzęgnięcia
-      wprzęgnięcie
-      wprzęgnięcia
-      wprzężenie
-      wprzężenia
       wprzężenie
       wprzężenia
       wpust
@@ -87242,14 +76370,8 @@ module GameRoomKrowa
       wpuszczenia
       wpychanie
       wpychania
-      wpychanie
-      wpychania
       wrabianie
       wrabiania
-      wrabianie
-      wrabiania
-      wracanie
-      wracania
       wracanie
       wracania
       wradzanie
@@ -87260,10 +76382,6 @@ module GameRoomKrowa
       wrastania
       wrażanie
       wrażania
-      wrażanie
-      wrażania
-      wrażenie
-      wrażenia
       wrażenie
       wrażenia
       wrażliwość
@@ -87272,10 +76390,6 @@ module GameRoomKrowa
       wręby
       wrąbanie
       wrąbania
-      wrąbanie
-      wrąbania
-      wrąbywanie
-      wrąbywania
       wrąbywanie
       wrąbywania
       wręczanie
@@ -87285,11 +76399,8 @@ module GameRoomKrowa
       wręg
       wręgi
       wręga
-      wręgi
       wręgownik
       wręgowniki
-      wrobienie
-      wrobienia
       wrobienie
       wrobienia
       wrodzenie
@@ -87300,26 +76411,19 @@ module GameRoomKrowa
       wrony
       wronię
       wronięta
-      wrony
       wrone
       wrostek
-      wrostki
-      wrostki
       wrostki
       wrośnięcie
       wrośnięcia
       wrota
-      wrota
       wrotek
       wrotki
       wrotka
-      wrotki
       wrotkarstwo
       wrotkarstwa
       wrotkarz
       wrotkarze
-      wrotki
-      wrotki
       wróbel
       wróble
       wróbelek
@@ -87329,9 +76433,6 @@ module GameRoomKrowa
       wróbliczka
       wróbliczki
       wróblowate
-      wróblowate
-      wrócenie
-      wrócenia
       wrócenie
       wrócenia
       wróg
@@ -87356,8 +76457,6 @@ module GameRoomKrowa
       wróżki
       wrycie
       wrycia
-      wrycie
-      wrycia
       wrzask
       wrzaski
       wrzaskliwość
@@ -87368,8 +76467,6 @@ module GameRoomKrowa
       wrzawy
       wrzątek
       wrzątki
-      wrzecionkowce
-      wrzecionkowce
       wrzecionkowce
       wrzeciono
       wrzeciona
@@ -87390,7 +76487,6 @@ module GameRoomKrowa
       wrzosiec
       wrzośce
       wrzosowate
-      wrzosowate
       wrzosowisko
       wrzosowiska
       wrzucanie
@@ -87401,8 +76497,6 @@ module GameRoomKrowa
       wrzuty
       wrzynanie
       wrzynania
-      wrzynanie
-      wrzynania
       wsad
       wsady
       wsadzanie
@@ -87411,10 +76505,6 @@ module GameRoomKrowa
       wsadzenia
       wsączanie
       wsączania
-      wsączanie
-      wsączania
-      wsączenie
-      wsączenia
       wsączenie
       wsączenia
       wschodzenie
@@ -87455,10 +76545,6 @@ module GameRoomKrowa
       wskrzeszenia
       wsławianie
       wsławiania
-      wsławianie
-      wsławiania
-      wsławienie
-      wsławienia
       wsławienie
       wsławienia
       wsłuchanie
@@ -87469,10 +76555,6 @@ module GameRoomKrowa
       wspaniałości
       wsparcie
       wsparcia
-      wsparcie
-      wsparcia
-      wspieranie
-      wspierania
       wspieranie
       wspierania
       wspięcie
@@ -87483,16 +76565,11 @@ module GameRoomKrowa
       wspinania
       wspomaganie
       wspomagania
-      wspomaganie
-      wspomagania
       wspominanie
       wspominania
       wspominki
-      wspominki
       wspomnienie
       wspomnienia
-      wspomożenie
-      wspomożenia
       wspomożenie
       wspomożenia
       wspornik
@@ -87548,10 +76625,6 @@ module GameRoomKrowa
       wstawania
       wstawianie
       wstawiania
-      wstawianie
-      wstawiania
-      wstawienie
-      wstawienia
       wstawienie
       wstawienia
       wstawka
@@ -87582,22 +76655,12 @@ module GameRoomKrowa
       wstrząsy
       wstrząsanie
       wstrząsania
-      wstrząsanie
-      wstrząsania
-      wstrząśnienie
-      wstrząśnienia
       wstrząśnienie
       wstrząśnienia
       wstrzelanie
       wstrzelania
-      wstrzelanie
-      wstrzelania
       wstrzelenie
       wstrzelenia
-      wstrzelenie
-      wstrzelenia
-      wstrzeliwanie
-      wstrzeliwania
       wstrzeliwanie
       wstrzeliwania
       wstrzykiwanie
@@ -87606,10 +76669,6 @@ module GameRoomKrowa
       wstrzyknięcia
       wstrzymanie
       wstrzymania
-      wstrzymanie
-      wstrzymania
-      wstrzymywanie
-      wstrzymywania
       wstrzymywanie
       wstrzymywania
       wstyd
@@ -87627,37 +76686,22 @@ module GameRoomKrowa
       wsyp
       wsypy
       wsypa
-      wsypy
-      wsypanie
-      wsypania
       wsypanie
       wsypania
       wsypka
       wsypki
       wsypywanie
       wsypywania
-      wsypywanie
-      wsypywania
-      wsysanie
-      wsysania
       wsysanie
       wsysania
       wszawica
       wszawice
       wszczepianie
       wszczepiania
-      wszczepianie
-      wszczepiania
-      wszczepienie
-      wszczepienia
       wszczepienie
       wszczepienia
       wszczęcie
       wszczęcia
-      wszczęcie
-      wszczęcia
-      wszczynanie
-      wszczynania
       wszczynanie
       wszczynania
       wszechmoc
@@ -87683,8 +76727,6 @@ module GameRoomKrowa
       wszycie
       wszycia
       wszyscy
-      wszyscy
-      wszystko
       wszystko
       wszystkoizm
       wszystkoizmy
@@ -87692,18 +76734,12 @@ module GameRoomKrowa
       wszywania
       wścibianie
       wścibiania
-      wścibianie
-      wścibiania
-      wścibienie
-      wścibienia
       wścibienie
       wścibienia
       wścibstwo
       wścibstwa
       wścieczenie
       wścieczenia
-      wściekanie
-      wściekania
       wściekanie
       wściekania
       wścieklizna
@@ -87726,14 +76762,8 @@ module GameRoomKrowa
       wśrubowywania
       wtaczanie
       wtaczania
-      wtaczanie
-      wtaczania
       wtapianie
       wtapiania
-      wtapianie
-      wtapiania
-      wtarcie
-      wtarcia
       wtarcie
       wtarcia
       wtargnięcie
@@ -87744,18 +76774,10 @@ module GameRoomKrowa
       wtaszczenia
       wtłaczanie
       wtłaczania
-      wtłaczanie
-      wtłaczania
-      wtłoczenie
-      wtłoczenia
       wtłoczenie
       wtłoczenia
       wtoczenie
       wtoczenia
-      wtoczenie
-      wtoczenia
-      wtopienie
-      wtopienia
       wtopienie
       wtopienia
       wtorek
@@ -87768,10 +76790,6 @@ module GameRoomKrowa
       wtórowania
       wtrącanie
       wtrącania
-      wtrącanie
-      wtrącania
-      wtrącenie
-      wtrącenia
       wtrącenie
       wtrącenia
       wtręt
@@ -87784,10 +76802,6 @@ module GameRoomKrowa
       wtryśnięcia
       wtulanie
       wtulania
-      wtulanie
-      wtulania
-      wtulenie
-      wtulenia
       wtulenie
       wtulenia
       wtyczka
@@ -87805,7 +76819,6 @@ module GameRoomKrowa
       wujenka
       wujenki
       wujostwo
-      wujostwo
       wulgarność
       wulgarności
       wulgaryzacja
@@ -87817,7 +76830,6 @@ module GameRoomKrowa
       wulkanizacja
       wulkanizacje
       wulkanizator
-      wulkanizator
       wulkanizatory
       wulkanolog
       wulkanolodzy
@@ -87825,10 +76837,6 @@ module GameRoomKrowa
       wulkanologie
       wwalanie
       wwalania
-      wwalanie
-      wwalania
-      wwalenie
-      wwalenia
       wwalenie
       wwalenia
       wwiedzenie
@@ -87837,16 +76845,12 @@ module GameRoomKrowa
       wwiezienia
       wwindowanie
       wwindowania
-      wwindowanie
-      wwindowania
       wwodzenie
       wwodzenia
       wwożenie
       wwożenia
       wwóz
       wwozy
-      wyalienowanie
-      wyalienowania
       wyalienowanie
       wyalienowania
       wyasygnowanie
@@ -87867,10 +76871,6 @@ module GameRoomKrowa
       wybawczynie
       wybawianie
       wybawiania
-      wybawianie
-      wybawiania
-      wybawienie
-      wybawienia
       wybawienie
       wybawienia
       wybąkanie
@@ -87889,12 +76889,8 @@ module GameRoomKrowa
       wybetonowania
       wybicie
       wybicia
-      wybicie
-      wybicia
       wybieg
       wybiegi
-      wybieganie
-      wybiegania
       wybieganie
       wybiegania
       wybiegnięcie
@@ -87903,10 +76899,6 @@ module GameRoomKrowa
       wybielacze
       wybielanie
       wybielania
-      wybielanie
-      wybielania
-      wybielenie
-      wybielenia
       wybielenie
       wybielenia
       wybierak
@@ -87915,10 +76907,6 @@ module GameRoomKrowa
       wybieralności
       wybieranie
       wybierania
-      wybieranie
-      wybierania
-      wybijanie
-      wybijania
       wybijanie
       wybijania
       wybiorczość
@@ -87950,11 +76938,8 @@ module GameRoomKrowa
       wybrana
       wybrane
       wybrani
-      wybrani
       wybranianie
       wybraniania
-      wybranie
-      wybrania
       wybranie
       wybrania
       wybraniec
@@ -87962,7 +76947,6 @@ module GameRoomKrowa
       wybranka
       wybranki
       wybrany
-      wybrani
       wybredzanie
       wybredzania
       wybrnięcie
@@ -87973,8 +76957,6 @@ module GameRoomKrowa
       wybronienia
       wybrudzenie
       wybrudzenia
-      wybrudzenie
-      wybrudzenia
       wybrukowanie
       wybrukowania
       wybryk
@@ -87983,14 +76965,8 @@ module GameRoomKrowa
       wybrzeża
       wybrzuszanie
       wybrzuszania
-      wybrzuszanie
-      wybrzuszania
       wybrzuszenie
       wybrzuszenia
-      wybrzuszenie
-      wybrzuszenia
-      wybrzydzanie
-      wybrzydzania
       wybrzydzanie
       wybrzydzania
       wybrzydzenie
@@ -88017,8 +76993,6 @@ module GameRoomKrowa
       wyburzenia
       wycałowanie
       wycałowania
-      wycałowanie
-      wycałowania
       wycałowywanie
       wycałowywania
       wycedzenie
@@ -88039,27 +77013,20 @@ module GameRoomKrowa
       wychlania
       wychlapanie
       wychlapania
-      wychlapanie
-      wychlapania
       wychlustanie
       wychlustania
       wychluśnięcie
       wychluśnięcia
       wychładzanie
       wychładzania
-      wychładzanie
-      wychładzania
       wychłeptanie
       wychłeptania
-      wychłodzenie
-      wychłodzenia
       wychłodzenie
       wychłodzenia
       wychłostanie
       wychłostania
       wychodek
       wychodki
-      wychodne
       wychodne
       wychodzenie
       wychodzenia
@@ -88073,8 +77040,6 @@ module GameRoomKrowa
       wychowanice
       wychowanie
       wychowania
-      wychowanie
-      wychowania
       wychowanka
       wychowanki
       wychowawca
@@ -88084,20 +77049,14 @@ module GameRoomKrowa
       wychowawstwa
       wychowywanie
       wychowywania
-      wychowywanie
-      wychowywania
       wychów
       wychowy
-      wychrzta
-      wychrzty
       wychrzta
       wychrzty
       wychuchanie
       wychuchania
       wychudnięcie
       wychudnięcia
-      wychwalanie
-      wychwalania
       wychwalanie
       wychwalania
       wychwycenie
@@ -88110,10 +77069,6 @@ module GameRoomKrowa
       wychwytywania
       wychylanie
       wychylania
-      wychylanie
-      wychylania
-      wychylenie
-      wychylenia
       wychylenie
       wychylenia
       wychynięcie
@@ -88122,12 +77077,8 @@ module GameRoomKrowa
       wyciągi
       wyciąganie
       wyciągania
-      wyciąganie
-      wyciągania
       wyciągarka
       wyciągarki
-      wyciągnięcie
-      wyciągnięcia
       wyciągnięcie
       wyciągnięcia
       wycie
@@ -88149,20 +77100,12 @@ module GameRoomKrowa
       wycieniowania
       wycieńczanie
       wycieńczania
-      wycieńczanie
-      wycieńczania
-      wycieńczenie
-      wycieńczenia
       wycieńczenie
       wycieńczenia
       wycieraczka
       wycieraczki
       wycieranie
       wycierania
-      wycieranie
-      wycierania
-      wycierpienie
-      wycierpienia
       wycierpienie
       wycierpienia
       wycieruch
@@ -88180,7 +77123,6 @@ module GameRoomKrowa
       wycinek
       wycinki
       wycinka
-      wycinki
       wycinkowość
       wycinkowości
       wycior
@@ -88203,10 +77145,6 @@ module GameRoomKrowa
       wyciśnięcia
       wycofanie
       wycofania
-      wycofanie
-      wycofania
-      wycofywanie
-      wycofywania
       wycofywanie
       wycofywania
       wycyganianie
@@ -88219,21 +77157,14 @@ module GameRoomKrowa
       wyczarowania
       wyczekanie
       wyczekania
-      wyczekanie
-      wyczekania
       wyczekiwanie
       wyczekiwania
       wyczerpanie
       wyczerpania
-      wyczerpanie
-      wyczerpania
-      wyczerpywanie
-      wyczerpywania
       wyczerpywanie
       wyczerpywania
       wyczesanie
       wyczesania
-      wyczeski
       wyczeski
       wyczesywanie
       wyczesywania
@@ -88259,18 +77190,12 @@ module GameRoomKrowa
       wyczynowości
       wyczyszczanie
       wyczyszczania
-      wyczyszczanie
-      wyczyszczania
-      wyczyszczenie
-      wyczyszczenia
       wyczyszczenie
       wyczyszczenia
       wyczytanie
       wyczytania
       wyczytywanie
       wyczytywania
-      wyćwiczenie
-      wyćwiczenia
       wyćwiczenie
       wyćwiczenia
       wydajność
@@ -88283,24 +77208,16 @@ module GameRoomKrowa
       wydaliny
       wydanie
       wydania
-      wydanie
-      wydania
-      wydarcie
-      wydarcia
       wydarcie
       wydarcia
       wydarzanie
       wydarzania
       wydarzenie
       wydarzenia
-      wydarzenie
-      wydarzenia
       wydatek
       wydatki
       wydatkowanie
       wydatkowania
-      wydawanie
-      wydawania
       wydawanie
       wydawania
       wydawca
@@ -88325,18 +77242,12 @@ module GameRoomKrowa
       wydębienia
       wydęcie
       wydęcia
-      wydęcie
-      wydęcia
       wydłubanie
       wydłubania
       wydłubywanie
       wydłubywania
       wydłużanie
       wydłużania
-      wydłużanie
-      wydłużania
-      wydłużenie
-      wydłużenia
       wydłużenie
       wydłużenia
       wydma
@@ -88355,10 +77266,6 @@ module GameRoomKrowa
       wydmuszki
       wydobycie
       wydobycia
-      wydobycie
-      wydobycia
-      wydobywanie
-      wydobywania
       wydobywanie
       wydobywania
       wydojenie
@@ -88371,10 +77278,6 @@ module GameRoomKrowa
       wydoroślenia
       wydostanie
       wydostania
-      wydostanie
-      wydostania
-      wydostawanie
-      wydostawania
       wydostawanie
       wydostawania
       wydra
@@ -88411,20 +77314,14 @@ module GameRoomKrowa
       wydychania
       wydymanie
       wydymania
-      wydymanie
-      wydymania
       wydział
       wydziały
-      wydzielanie
-      wydzielania
       wydzielanie
       wydzielania
       wydzielenie
       wydzielenia
       wydzielina
       wydzieliny
-      wydzieranie
-      wydzierania
       wydzieranie
       wydzierania
       wydziobanie
@@ -88445,8 +77342,6 @@ module GameRoomKrowa
       wydźwięki
       wydźwignięcie
       wydźwignięcia
-      wydźwignięcie
-      wydźwignięcia
       wyekwipowanie
       wyekwipowania
       wyemigrowanie
@@ -88459,20 +77354,12 @@ module GameRoomKrowa
       wyfruwania
       wyga
       wygi
-      wyga
-      wygi
-      wygadanie
-      wygadania
       wygadanie
       wygadania
       wygadywanie
       wygadywania
       wygajanie
       wygajania
-      wygajanie
-      wygajania
-      wygalanie
-      wygalania
       wygalanie
       wygalania
       wyganianie
@@ -88492,13 +77379,8 @@ module GameRoomKrowa
       wygaśnięcie
       wygaśnięcia
       wygibasy
-      wygibasy
       wygięcie
       wygięcia
-      wygięcie
-      wygięcia
-      wyginanie
-      wyginania
       wyginanie
       wyginania
       wyginięcie
@@ -88513,20 +77395,14 @@ module GameRoomKrowa
       wyglądnięcia
       wygładzanie
       wygładzania
-      wygładzanie
-      wygładzania
       wygładzarka
       wygładzarki
-      wygładzenie
-      wygładzenia
       wygładzenie
       wygładzenia
       wygłaszanie
       wygłaszania
       wygłodnienie
       wygłodnienia
-      wygłodzenie
-      wygłodzenia
       wygłodzenie
       wygłodzenia
       wygłos
@@ -88543,16 +77419,10 @@ module GameRoomKrowa
       wygnania
       wygnaniec
       wygnańcy
-      wygnaniec
-      wygnańcy
-      wygniatanie
-      wygniatania
       wygniatanie
       wygniatania
       wygnicie
       wygnicia
-      wygniecenie
-      wygniecenia
       wygniecenie
       wygniecenia
       wygoda
@@ -88563,10 +77433,6 @@ module GameRoomKrowa
       wygodnictwa
       wygojenie
       wygojenia
-      wygojenie
-      wygojenia
-      wygolenie
-      wygolenia
       wygolenie
       wygolenia
       wygon
@@ -88575,10 +77441,6 @@ module GameRoomKrowa
       wygonienia
       wygotowanie
       wygotowania
-      wygotowanie
-      wygotowania
-      wygotowywanie
-      wygotowywania
       wygotowywanie
       wygotowywania
       wygódka
@@ -88601,26 +77463,14 @@ module GameRoomKrowa
       wygrywania
       wygryzanie
       wygryzania
-      wygryzanie
-      wygryzania
-      wygryzienie
-      wygryzienia
       wygryzienie
       wygryzienia
       wygrzanie
       wygrzania
-      wygrzanie
-      wygrzania
-      wygrzebanie
-      wygrzebania
       wygrzebanie
       wygrzebania
       wygrzebywanie
       wygrzebywania
-      wygrzebywanie
-      wygrzebywania
-      wygrzewanie
-      wygrzewania
       wygrzewanie
       wygrzewania
       wygubienie
@@ -88643,8 +77493,6 @@ module GameRoomKrowa
       wyhodowania
       wyizolowanie
       wyizolowania
-      wyizolowanie
-      wyizolowania
       wyjadacz
       wyjadacze
       wyjadaczka
@@ -88657,10 +77505,6 @@ module GameRoomKrowa
       wyjałowienia
       wyjaśnianie
       wyjaśniania
-      wyjaśnianie
-      wyjaśniania
-      wyjaśnienie
-      wyjaśnienia
       wyjaśnienie
       wyjaśnienia
       wyjawianie
@@ -88687,8 +77531,6 @@ module GameRoomKrowa
       wyjeżdżania
       wyjeżdżenie
       wyjeżdżenia
-      wyjeżdżenie
-      wyjeżdżenia
       wyjęcie
       wyjęcia
       wyjęzyczanie
@@ -88713,8 +77555,6 @@ module GameRoomKrowa
       wykańczalnie
       wykańczanie
       wykańczania
-      wykańczanie
-      wykańczania
       wykaraskanie
       wykaraskania
       wykarczowanie
@@ -88735,28 +77575,18 @@ module GameRoomKrowa
       wykaszania
       wykaszlenie
       wykaszlenia
-      wykaszlenie
-      wykaszlenia
       wykaszliwanie
       wykaszliwania
       wykaz
       wykazy
       wykazanie
       wykazania
-      wykazanie
-      wykazania
       wykazywanie
       wykazywania
-      wykazywanie
-      wykazywania
-      wykąpanie
-      wykąpania
       wykąpanie
       wykąpania
       wykiełkowanie
       wykiełkowania
-      wykierowanie
-      wykierowania
       wykierowanie
       wykierowania
       wykipienie
@@ -88765,8 +77595,6 @@ module GameRoomKrowa
       wykitowania
       wykiwanie
       wykiwania
-      wyklarowanie
-      wyklarowania
       wyklarowanie
       wyklarowania
       wyklejanie
@@ -88789,18 +77617,12 @@ module GameRoomKrowa
       wyklucia
       wykluczanie
       wykluczania
-      wykluczanie
-      wykluczania
-      wykluczenie
-      wykluczenia
       wykluczenie
       wykluczenia
       wykluwanie
       wykluwania
       wykład
       wykłady
-      wykładanie
-      wykładania
       wykładanie
       wykładania
       wykładnia
@@ -88825,10 +77647,6 @@ module GameRoomKrowa
       wykłuwania
       wykolejanie
       wykolejania
-      wykolejanie
-      wykolejania
-      wykolejenie
-      wykolejenia
       wykolejenie
       wykolejenia
       wykolejeniec
@@ -88851,24 +77669,15 @@ module GameRoomKrowa
       wykonywania
       wykończenie
       wykończenia
-      wykończenie
-      wykończenia
       wykop
       wykopy
       wykopaliska
-      wykopaliska
       wykopalisko
-      wykopaliska
       wykopanie
       wykopania
-      wykopanie
-      wykopania
-      wykopki
       wykopki
       wykopnięcie
       wykopnięcia
-      wykopywanie
-      wykopywania
       wykopywanie
       wykopywania
       wykorbienie
@@ -88885,24 +77694,14 @@ module GameRoomKrowa
       wykosztowania
       wykoślawianie
       wykoślawiania
-      wykoślawianie
-      wykoślawiania
-      wykoślawienie
-      wykoślawienia
       wykoślawienie
       wykoślawienia
       wykpienie
       wykpienia
-      wykpienie
-      wykpienia
-      wykpiwanie
-      wykpiwania
       wykpiwanie
       wykpiwania
       wykraczanie
       wykraczania
-      wykradanie
-      wykradania
       wykradanie
       wykradania
       wykradzenie
@@ -88917,18 +77716,10 @@ module GameRoomKrowa
       wykresy
       wykreślanie
       wykreślania
-      wykreślanie
-      wykreślania
-      wykreślenie
-      wykreślenia
       wykreślenie
       wykreślenia
       wykręcanie
       wykręcania
-      wykręcanie
-      wykręcania
-      wykręcenie
-      wykręcenia
       wykręcenie
       wykręcenia
       wykręt
@@ -88951,10 +77742,6 @@ module GameRoomKrowa
       wykroje
       wykruszanie
       wykruszania
-      wykruszanie
-      wykruszania
-      wykruszenie
-      wykruszenia
       wykruszenie
       wykruszenia
       wykrwawianie
@@ -88963,10 +77750,6 @@ module GameRoomKrowa
       wykrwawienia
       wykrycie
       wykrycia
-      wykrycie
-      wykrycia
-      wykrywacz
-      wykrywacze
       wykrywacz
       wykrywacze
       wykrywalność
@@ -88983,8 +77766,6 @@ module GameRoomKrowa
       wykrztuszenia
       wykrzyczenie
       wykrzyczenia
-      wykrzyczenie
-      wykrzyczenia
       wykrzykiwanie
       wykrzykiwania
       wykrzyknienie
@@ -88995,22 +77776,12 @@ module GameRoomKrowa
       wykrzykniki
       wykrzywianie
       wykrzywiania
-      wykrzywianie
-      wykrzywiania
-      wykrzywienie
-      wykrzywienia
       wykrzywienie
       wykrzywienia
       wykształcanie
       wykształcania
-      wykształcanie
-      wykształcania
       wykształcenie
       wykształcenia
-      wykształcenie
-      wykształcenia
-      wykucie
-      wykucia
       wykucie
       wykucia
       wykukanie
@@ -89021,14 +77792,8 @@ module GameRoomKrowa
       wykupy
       wykupienie
       wykupienia
-      wykupienie
-      wykupienia
       wykupywanie
       wykupywania
-      wykupywanie
-      wykupywania
-      wykurowanie
-      wykurowania
       wykurowanie
       wykurowania
       wykursywianie
@@ -89043,26 +77808,16 @@ module GameRoomKrowa
       wykusze
       wykuwanie
       wykuwania
-      wykuwanie
-      wykuwania
       wykwint
       wykwinty
       wykwintność
       wykwintności
       wykwit
       wykwity
-      wykwity
-      wykwity
-      wylanie
-      wylania
       wylanie
       wylania
       wylansowanie
       wylansowania
-      wylansowanie
-      wylansowania
-      wylatanie
-      wylatania
       wylatanie
       wylatania
       wylatywanie
@@ -89077,12 +77832,8 @@ module GameRoomKrowa
       wylecenia
       wyleczenie
       wyleczenia
-      wyleczenie
-      wyleczenia
       wyleganie
       wylegania
-      wylegiwanie
-      wylegiwania
       wylegiwanie
       wylegiwania
       wylegnięcie
@@ -89095,48 +77846,31 @@ module GameRoomKrowa
       wylewy
       wylewanie
       wylewania
-      wylewanie
-      wylewania
       wylewność
       wylewności
       wylezienie
       wylezienia
       wyleżenie
       wyleżenia
-      wyleżenie
-      wyleżenia
       wylęg
-      wylęgi
-      wylęganie
-      wylęgania
       wylęganie
       wylęgania
       wylęgarka
       wylęgarki
       wylęgarnia
       wylęgarnie
-      wylęgarnia
-      wylęgarnie
       wylęgnięcie
       wylęgnięcia
-      wyliczanie
-      wyliczania
       wyliczanie
       wyliczania
       wyliczanka
       wyliczanki
       wyliczenie
       wyliczenia
-      wyliczenie
-      wyliczenia
       wylinienie
       wylinienia
       wylizanie
       wylizania
-      wylizanie
-      wylizania
-      wylizywanie
-      wylizywania
       wylizywanie
       wylizywania
       wylosowanie
@@ -89147,20 +77881,12 @@ module GameRoomKrowa
       wyloty
       wyludnianie
       wyludniania
-      wyludnianie
-      wyludniania
-      wyludnienie
-      wyludnienia
       wyludnienie
       wyludnienia
       wyładnienie
       wyładnienia
       wyładowanie
       wyładowania
-      wyładowanie
-      wyładowania
-      wyładowywanie
-      wyładowywania
       wyładowywanie
       wyładowywania
       wyładunek
@@ -89169,14 +77895,8 @@ module GameRoomKrowa
       wyłajania
       wyłamanie
       wyłamania
-      wyłamanie
-      wyłamania
       wyłamywanie
       wyłamywania
-      wyłamywanie
-      wyłamywania
-      wyłanianie
-      wyłaniania
       wyłanianie
       wyłaniania
       wyłapanie
@@ -89191,10 +77911,6 @@ module GameRoomKrowa
       wyłażenia
       wyłączanie
       wyłączania
-      wyłączanie
-      wyłączania
-      wyłączenie
-      wyłączenia
       wyłączenie
       wyłączenia
       wyłącznik
@@ -89206,19 +77922,14 @@ module GameRoomKrowa
       wyłgiwanie
       wyłgiwania
       wyłogi
-      wyłogi
       wyłojenie
       wyłojenia
       wyłom
       wyłomy
       wyłonienie
       wyłonienia
-      wyłonienie
-      wyłonienia
       wyłowienie
       wyłowienia
-      wyłożenie
-      wyłożenia
       wyłożenie
       wyłożenia
       wyłudzanie
@@ -89231,14 +77942,10 @@ module GameRoomKrowa
       wyługowywania
       wyłupanie
       wyłupania
-      wyłupanie
-      wyłupania
       wyłupianie
       wyłupiania
       wyłupienie
       wyłupienia
-      wyłupywanie
-      wyłupywania
       wyłupywanie
       wyłupywania
       wyłuskanie
@@ -89247,8 +77954,6 @@ module GameRoomKrowa
       wyłuskiwania
       wyłuszczanie
       wyłuszczania
-      wyłuszczarnia
-      wyłuszczarnie
       wyłuszczarnia
       wyłuszczarnie
       wyłuszczenie
@@ -89264,13 +77969,9 @@ module GameRoomKrowa
       wymacywanie
       wymacywania
       wymagania
-      wymagania
       wymaganie
-      wymagania
       wymaglowanie
       wymaglowania
-      wymalowanie
-      wymalowania
       wymalowanie
       wymalowania
       wymalowywanie
@@ -89285,28 +77986,16 @@ module GameRoomKrowa
       wymarzania
       wymarzenie
       wymarzenia
-      wymarzenie
-      wymarzenia
-      wymarznięcie
-      wymarznięcia
       wymarznięcie
       wymarznięcia
       wymasowanie
       wymasowania
-      wymasowanie
-      wymasowania
-      wymawianie
-      wymawiania
       wymawianie
       wymawiania
       wymaz
       wymazy
       wymazanie
       wymazania
-      wymazanie
-      wymazania
-      wymazywanie
-      wymazywania
       wymazywanie
       wymazywania
       wymądrzanie
@@ -89315,10 +78004,6 @@ module GameRoomKrowa
       wymądrzenia
       wymeldowanie
       wymeldowania
-      wymeldowanie
-      wymeldowania
-      wymęczenie
-      wymęczenia
       wymęczenie
       wymęczenia
       wymiana
@@ -89338,10 +78023,6 @@ module GameRoomKrowa
       wymienialność
       wymienianie
       wymieniania
-      wymienianie
-      wymieniania
-      wymienienie
-      wymienienia
       wymienienie
       wymienienia
       wymiennik
@@ -89356,8 +78037,6 @@ module GameRoomKrowa
       wymierzenia
       wymieszanie
       wymieszania
-      wymieszanie
-      wymieszania
       wymieszenie
       wymieszenia
       wymię
@@ -89366,27 +78045,19 @@ module GameRoomKrowa
       wymięcia
       wymiętoszenie
       wymiętoszenia
-      wymiętoszenie
-      wymiętoszenia
       wymiganie
       wymigania
       wymigiwanie
       wymigiwania
       wymijanie
       wymijania
-      wymijanie
-      wymijania
       wyminięcie
       wyminięcia
-      wyminięcie
-      wyminięcia
-      wymiociny
       wymiociny
       wymiotnica
       wymiotnice
       wymiotowanie
       wymiotowania
-      wymioty
       wymioty
       wymknięcie
       wymknięcia
@@ -89396,10 +78067,6 @@ module GameRoomKrowa
       wymłócenia
       wymoczek
       wymoczki
-      wymoczek
-      wymoczki
-      wymoczenie
-      wymoczenia
       wymoczenie
       wymoczenia
       wymodelowanie
@@ -89410,8 +78077,6 @@ module GameRoomKrowa
       wymoknięcia
       wymontowanie
       wymontowania
-      wymordowanie
-      wymordowania
       wymordowanie
       wymordowania
       wymoszczenie
@@ -89426,14 +78091,10 @@ module GameRoomKrowa
       wymogi
       wymówienie
       wymówienia
-      wymówienie
-      wymówienia
       wymówka
       wymówki
       wymrażanie
       wymrażania
-      wymrożenie
-      wymrożenia
       wymrożenie
       wymrożenia
       wymruczenie
@@ -89450,10 +78111,6 @@ module GameRoomKrowa
       wymuszoności
       wymycie
       wymycia
-      wymycie
-      wymycia
-      wymydlenie
-      wymydlenia
       wymydlenie
       wymydlenia
       wymykanie
@@ -89461,9 +78118,7 @@ module GameRoomKrowa
       wymysł
       wymysły
       wymyślania
-      wymyślania
       wymyślanie
-      wymyślania
       wymyślenie
       wymyślenia
       wymyślność
@@ -89480,10 +78135,6 @@ module GameRoomKrowa
       wynajmy
       wynajęcie
       wynajęcia
-      wynajęcie
-      wynajęcia
-      wynajmowanie
-      wynajmowania
       wynajmowanie
       wynajmowania
       wynalazca
@@ -89496,10 +78147,6 @@ module GameRoomKrowa
       wynalezienia
       wynaturzanie
       wynaturzania
-      wynaturzanie
-      wynaturzania
-      wynaturzenie
-      wynaturzenia
       wynaturzenie
       wynaturzenia
       wynawożenie
@@ -89508,8 +78155,6 @@ module GameRoomKrowa
       wynędznienia
       wyniańczenie
       wyniańczenia
-      wyniesienie
-      wyniesienia
       wyniesienie
       wyniesienia
       wynik
@@ -89522,14 +78167,8 @@ module GameRoomKrowa
       wyniosłości
       wyniszczanie
       wyniszczania
-      wyniszczanie
-      wyniszczania
       wyniszczenie
       wyniszczenia
-      wyniszczenie
-      wyniszczenia
-      wynoszenie
-      wynoszenia
       wynoszenie
       wynoszenia
       wynotowanie
@@ -89540,22 +78179,12 @@ module GameRoomKrowa
       wynudzania
       wynudzenie
       wynudzenia
-      wynudzenie
-      wynudzenia
-      wynurzanie
-      wynurzania
       wynurzanie
       wynurzania
       wynurzenie
       wynurzenia
-      wynurzenie
-      wynurzenia
       wyobcowanie
       wyobcowania
-      wyobcowanie
-      wyobcowania
-      wyobcowywanie
-      wyobcowywania
       wyobcowywanie
       wyobcowywania
       wyobraźnia
@@ -89567,10 +78196,6 @@ module GameRoomKrowa
       wyobrażenia
       wyodrębnianie
       wyodrębniania
-      wyodrębnianie
-      wyodrębniania
-      wyodrębnienie
-      wyodrębnienia
       wyodrębnienie
       wyodrębnienia
       wyoranie
@@ -89579,22 +78204,12 @@ module GameRoomKrowa
       wyorywania
       wyostrzanie
       wyostrzania
-      wyostrzanie
-      wyostrzania
-      wyostrzenie
-      wyostrzenia
       wyostrzenie
       wyostrzenia
       wypacanie
       wypacania
-      wypacanie
-      wypacania
       wypaczanie
       wypaczania
-      wypaczanie
-      wypaczania
-      wypaczenie
-      wypaczenia
       wypaczenie
       wypaczenia
       wypad
@@ -89621,28 +78236,18 @@ module GameRoomKrowa
       wypaplania
       wyparcie
       wyparcia
-      wyparcie
-      wyparcia
       wyparowanie
       wyparowania
       wyparowywanie
       wyparowywania
       wyparzanie
       wyparzania
-      wyparzanie
-      wyparzania
-      wyparzenie
-      wyparzenia
       wyparzenie
       wyparzenia
       wypas
       wypasy
       wypasanie
       wypasania
-      wypasanie
-      wypasania
-      wypasienie
-      wypasienia
       wypasienie
       wypasienia
       wypatroszanie
@@ -89651,26 +78256,14 @@ module GameRoomKrowa
       wypatroszenia
       wypatrywanie
       wypatrywania
-      wypatrywanie
-      wypatrywania
-      wypatrzenie
-      wypatrzenia
       wypatrzenie
       wypatrzenia
       wypchanie
       wypchania
-      wypchanie
-      wypchania
-      wypchnięcie
-      wypchnięcia
       wypchnięcie
       wypchnięcia
       wypełnianie
       wypełniania
-      wypełnianie
-      wypełniania
-      wypełnienie
-      wypełnienia
       wypełnienie
       wypełnienia
       wypełzanie
@@ -89685,12 +78278,8 @@ module GameRoomKrowa
       wypicia
       wypieczenie
       wypieczenia
-      wypieczenie
-      wypieczenia
       wypiek
       wypieki
-      wypiekanie
-      wypiekania
       wypiekanie
       wypiekania
       wypielacz
@@ -89701,42 +78290,24 @@ module GameRoomKrowa
       wypielenia
       wypieranie
       wypierania
-      wypieranie
-      wypierania
       wypieszczenie
       wypieszczenia
-      wypieszczenie
-      wypieszczenia
-      wypięcie
-      wypięcia
       wypięcie
       wypięcia
       wypięknienie
       wypięknienia
       wypiętrzanie
       wypiętrzania
-      wypiętrzanie
-      wypiętrzania
-      wypiętrzenie
-      wypiętrzenia
       wypiętrzenie
       wypiętrzenia
       wypijanie
       wypijania
       wypinanie
       wypinania
-      wypinanie
-      wypinania
       wypis
       wypisy
       wypisanie
       wypisania
-      wypisanie
-      wypisania
-      wypisy
-      wypisy
-      wypisywanie
-      wypisywania
       wypisywanie
       wypisywania
       wypitka
@@ -89745,10 +78316,6 @@ module GameRoomKrowa
       wyplatania
       wyplątanie
       wyplątania
-      wyplątanie
-      wyplątania
-      wyplątywanie
-      wyplątywania
       wyplątywanie
       wyplątywania
       wyplecenie
@@ -89767,14 +78334,8 @@ module GameRoomKrowa
       wyplunięcia
       wypluskanie
       wypluskania
-      wypluskanie
-      wypluskania
       wypluskiwanie
       wypluskiwania
-      wypluskiwanie
-      wypluskiwania
-      wypluśnięcie
-      wypluśnięcia
       wypluśnięcie
       wypluśnięcia
       wypluwanie
@@ -89783,18 +78344,10 @@ module GameRoomKrowa
       wypłacalności
       wypłacanie
       wypłacania
-      wypłacanie
-      wypłacania
-      wypłacenie
-      wypłacenia
       wypłacenie
       wypłacenia
       wypłakanie
       wypłakania
-      wypłakanie
-      wypłakania
-      wypłakiwanie
-      wypłakiwania
       wypłakiwanie
       wypłakiwania
       wypłaszanie
@@ -89807,8 +78360,6 @@ module GameRoomKrowa
       wypławienia
       wypłonienie
       wypłonienia
-      wypłoszenie
-      wypłoszenia
       wypłoszenie
       wypłoszenia
       wypłowienie
@@ -89825,8 +78376,6 @@ module GameRoomKrowa
       wypływania
       wypocenie
       wypocenia
-      wypocenie
-      wypocenia
       wypocina
       wypociny
       wypoczęcie
@@ -89837,21 +78386,14 @@ module GameRoomKrowa
       wypoczywania
       wypogadzanie
       wypogadzania
-      wypogadzanie
-      wypogadzania
       wypogodnienie
       wypogodnienia
       wypogodzenie
       wypogodzenia
-      wypogodzenie
-      wypogodzenia
-      wypolerowanie
-      wypolerowania
       wypolerowanie
       wypolerowania
       wypominanie
       wypominania
-      wypominki
       wypominki
       wypomnienie
       wypomnienia
@@ -89867,14 +78409,8 @@ module GameRoomKrowa
       wyposażenia
       wyposzczenie
       wyposzczenia
-      wyposzczenie
-      wyposzczenia
       wypowiadanie
       wypowiadania
-      wypowiadanie
-      wypowiadania
-      wypowiedzenie
-      wypowiedzenia
       wypowiedzenie
       wypowiedzenia
       wypowiedź
@@ -89891,8 +78427,6 @@ module GameRoomKrowa
       wypracowania
       wypranie
       wyprania
-      wypranie
-      wyprania
       wyprasowanie
       wyprasowania
       wypraszanie
@@ -89901,10 +78435,6 @@ module GameRoomKrowa
       wyprawy
       wyprawianie
       wyprawiania
-      wyprawianie
-      wyprawiania
-      wyprawienie
-      wyprawienia
       wyprawienie
       wyprawienia
       wyprawka
@@ -89913,48 +78443,28 @@ module GameRoomKrowa
       wyprażania
       wyprażenie
       wyprażenia
-      wyprażenie
-      wyprażenia
       wyprężanie
       wyprężania
-      wyprężanie
-      wyprężania
-      wyprężenie
-      wyprężenia
       wyprężenie
       wyprężenia
       wyprost
       wyprosty
       wyprostowanie
       wyprostowania
-      wyprostowanie
-      wyprostowania
       wyproszenie
       wyproszenia
       wyprowadzanie
       wyprowadzania
-      wyprowadzanie
-      wyprowadzania
-      wyprowadzenie
-      wyprowadzenia
       wyprowadzenie
       wyprowadzenia
       wypróbowanie
       wypróbowania
       wypróżnianie
       wypróżniania
-      wypróżnianie
-      wypróżniania
-      wypróżnienie
-      wypróżnienia
       wypróżnienie
       wypróżnienia
       wyprucie
       wyprucia
-      wyprucie
-      wyprucia
-      wypruwanie
-      wypruwania
       wypruwanie
       wypruwania
       wyprysk
@@ -89971,16 +78481,10 @@ module GameRoomKrowa
       wyprzątnięcia
       wyprzedanie
       wyprzedania
-      wyprzedanie
-      wyprzedania
-      wyprzedawanie
-      wyprzedawania
       wyprzedawanie
       wyprzedawania
       wyprzedaż
       wyprzedaże
-      wyprzedzanie
-      wyprzedzania
       wyprzedzanie
       wyprzedzania
       wyprzedzenie
@@ -89989,14 +78493,8 @@ module GameRoomKrowa
       wyprzenia
       wyprzęganie
       wyprzęgania
-      wyprzęganie
-      wyprzęgania
       wyprzęgnięcie
       wyprzęgnięcia
-      wyprzęgnięcie
-      wyprzęgnięcia
-      wyprzężenie
-      wyprzężenia
       wyprzężenie
       wyprzężenia
       wypsnięcie
@@ -90013,26 +78511,14 @@ module GameRoomKrowa
       wypustki
       wypuszczanie
       wypuszczania
-      wypuszczanie
-      wypuszczania
-      wypuszczenie
-      wypuszczenia
       wypuszczenie
       wypuszczenia
       wypychanie
       wypychania
-      wypychanie
-      wypychania
-      wypytanie
-      wypytania
       wypytanie
       wypytania
       wypytywanie
       wypytywania
-      wypytywanie
-      wypytywania
-      wyrabianie
-      wyrabiania
       wyrabianie
       wyrabiania
       wyrachowanie
@@ -90043,12 +78529,8 @@ module GameRoomKrowa
       wyrafinowania
       wyrajanie
       wyrajania
-      wyrajanie
-      wyrajania
       wyrastanie
       wyrastania
-      wyratowanie
-      wyratowania
       wyratowanie
       wyratowania
       wyraz
@@ -90061,10 +78543,6 @@ module GameRoomKrowa
       wyrazistości
       wyrażanie
       wyrażania
-      wyrażanie
-      wyrażania
-      wyrażenie
-      wyrażenia
       wyrażenie
       wyrażenia
       wyrąb
@@ -90080,13 +78558,8 @@ module GameRoomKrowa
       wyreperowanie
       wyreperowania
       wyręba
-      wyręby
       wyręczanie
       wyręczania
-      wyręczanie
-      wyręczania
-      wyręczenie
-      wyręczenia
       wyręczenie
       wyręczenia
       wyręka
@@ -90095,8 +78568,6 @@ module GameRoomKrowa
       wyrka
       wyro
       wyra
-      wyrobienie
-      wyrobienia
       wyrobienie
       wyrobienia
       wyrobisko
@@ -90115,14 +78586,10 @@ module GameRoomKrowa
       wyrodzenia
       wyrojenie
       wyrojenia
-      wyrojenie
-      wyrojenia
       wyrok
       wyroki
       wyrokowanie
       wyrokowania
-      wyrostek
-      wyrostki
       wyrostek
       wyrostki
       wyrośnięcie
@@ -90136,18 +78603,10 @@ module GameRoomKrowa
       wyroje
       wyrównanie
       wyrównania
-      wyrównanie
-      wyrównania
-      wyrównywanie
-      wyrównywania
       wyrównywanie
       wyrównywania
       wyróżnianie
       wyróżniania
-      wyróżnianie
-      wyróżniania
-      wyróżnienie
-      wyróżnienia
       wyróżnienie
       wyróżnienia
       wyrugowanie
@@ -90160,26 +78619,16 @@ module GameRoomKrowa
       wyrwy
       wyrwanie
       wyrwania
-      wyrwanie
-      wyrwania
-      wyrycie
-      wyrycia
       wyrycie
       wyrycia
       wyryczenie
       wyryczenia
-      wyryczenie
-      wyryczenia
-      wyrykiwanie
-      wyrykiwania
       wyrykiwanie
       wyrykiwania
       wyrysowanie
       wyrysowania
       wyrysowywanie
       wyrysowywania
-      wyrywanie
-      wyrywania
       wyrywanie
       wyrywania
       wyrywek
@@ -90190,16 +78639,10 @@ module GameRoomKrowa
       wyrządzenia
       wyrzeczenie
       wyrzeczenia
-      wyrzeczenie
-      wyrzeczenia
-      wyrzekanie
-      wyrzekania
       wyrzekanie
       wyrzekania
       wyrzeźbienie
       wyrzeźbienia
-      wyrznięcie
-      wyrznięcia
       wyrznięcie
       wyrznięcia
       wyrzucanie
@@ -90218,28 +78661,16 @@ module GameRoomKrowa
       wyrzygiwania
       wyrzynanie
       wyrzynania
-      wyrzynanie
-      wyrzynania
       wyrzynarka
       wyrzynarki
       wyrżnięcie
       wyrżnięcia
-      wyrżnięcie
-      wyrżnięcia
-      wysadzanie
-      wysadzania
       wysadzanie
       wysadzania
       wysadzenie
       wysadzenia
-      wysadzenie
-      wysadzenia
       wysączanie
       wysączania
-      wysączanie
-      wysączania
-      wysączenie
-      wysączenia
       wysączenie
       wysączenia
       wyschnięcie
@@ -90256,8 +78687,6 @@ module GameRoomKrowa
       wysiadywania
       wysianie
       wysiania
-      wysianie
-      wysiania
       wysieczenie
       wysieczenia
       wysiedlanie
@@ -90268,22 +78697,14 @@ module GameRoomKrowa
       wysiedleńcy
       wysiedzenie
       wysiedzenia
-      wysiedzenie
-      wysiedzenia
       wysiew
       wysiewy
-      wysiewanie
-      wysiewania
       wysiewanie
       wysiewania
       wysięk
       wysięki
       wysilanie
       wysilania
-      wysilanie
-      wysilania
-      wysilenie
-      wysilenia
       wysilenie
       wysilenia
       wysiłek
@@ -90320,11 +78741,8 @@ module GameRoomKrowa
       wysłannicy
       wysławianie
       wysławiania
-      wysławianie
-      wysławiania
       wysławienie
       wysławienia
-      wysłodki
       wysłodki
       wysłowienie
       wysłowienia
@@ -90336,32 +78754,18 @@ module GameRoomKrowa
       wysługi
       wysługiwanie
       wysługiwania
-      wysługiwanie
-      wysługiwania
-      wysłużenie
-      wysłużenia
       wysłużenie
       wysłużenia
       wysmaganie
       wysmagania
       wysmarkanie
       wysmarkania
-      wysmarkanie
-      wysmarkania
-      wysmarkiwanie
-      wysmarkiwania
       wysmarkiwanie
       wysmarkiwania
       wysmarowanie
       wysmarowania
-      wysmarowanie
-      wysmarowania
       wysmażanie
       wysmażania
-      wysmażanie
-      wysmażania
-      wysmażenie
-      wysmażenia
       wysmażenie
       wysmażenia
       wysmołowanie
@@ -90393,8 +78797,6 @@ module GameRoomKrowa
       wyspiarze
       wyspowiadanie
       wyspowiadania
-      wyspowiadanie
-      wyspowiadania
       wysprzątanie
       wysprzątania
       wysprzedanie
@@ -90403,8 +78805,6 @@ module GameRoomKrowa
       wysprzedaże
       wyssanie
       wyssania
-      wystanie
-      wystania
       wystanie
       wystania
       wystaranie
@@ -90425,10 +78825,6 @@ module GameRoomKrowa
       wystawczynie
       wystawianie
       wystawiania
-      wystawianie
-      wystawiania
-      wystawienie
-      wystawienia
       wystawienie
       wystawienia
       wystawność
@@ -90445,14 +78841,8 @@ module GameRoomKrowa
       wystosowania
       wystraszanie
       wystraszania
-      wystraszanie
-      wystraszania
       wystraszenie
       wystraszenia
-      wystraszenie
-      wystraszenia
-      wystrojenie
-      wystrojenia
       wystrojenie
       wystrojenia
       wystrój
@@ -90467,16 +78857,10 @@ module GameRoomKrowa
       wystrzegania
       wystrzelanie
       wystrzelania
-      wystrzelanie
-      wystrzelania
       wystrzelenie
       wystrzelenia
       wystrzępianie
       wystrzępiania
-      wystrzępianie
-      wystrzępiania
-      wystrzępienie
-      wystrzępienia
       wystrzępienie
       wystrzępienia
       wystrzyganie
@@ -90485,10 +78869,6 @@ module GameRoomKrowa
       wystrzyżenia
       wystudzanie
       wystudzania
-      wystudzanie
-      wystudzania
-      wystudzenie
-      wystudzenia
       wystudzenie
       wystudzenia
       wystukanie
@@ -90499,30 +78879,20 @@ module GameRoomKrowa
       wystygnięcia
       wysunięcie
       wysunięcia
-      wysunięcie
-      wysunięcia
       wysupłanie
       wysupłania
       wysupływanie
       wysupływania
       wysuszanie
       wysuszania
-      wysuszanie
-      wysuszania
       wysuszenie
       wysuszenia
-      wysuszenie
-      wysuszenia
-      wysuwanie
-      wysuwania
       wysuwanie
       wysuwania
       wyswatanie
       wyswatania
       wyswobadzanie
       wyswobadzania
-      wyswobodzenie
-      wyswobodzenia
       wyswobodzenie
       wyswobodzenia
       wysychanie
@@ -90535,16 +78905,12 @@ module GameRoomKrowa
       wysypy
       wysypanie
       wysypania
-      wysypanie
-      wysypania
       wysypianie
       wysypiania
       wysypisko
       wysypiska
       wysypka
       wysypki
-      wysypywanie
-      wysypywania
       wysypywanie
       wysypywania
       wysysanie
@@ -90555,14 +78921,8 @@ module GameRoomKrowa
       wyszalenia
       wyszarpanie
       wyszarpania
-      wyszarpanie
-      wyszarpania
       wyszarpnięcie
       wyszarpnięcia
-      wyszarpnięcie
-      wyszarpnięcia
-      wyszarpywanie
-      wyszarpywania
       wyszarpywanie
       wyszarpywania
       wyszarzenie
@@ -90583,28 +78943,18 @@ module GameRoomKrowa
       wyszeptywania
       wyszkolenie
       wyszkolenia
-      wyszkolenie
-      wyszkolenia
       wyszlamowanie
       wyszlamowania
       wyszlifowanie
       wyszlifowania
       wyszorowanie
       wyszorowania
-      wyszorowanie
-      wyszorowania
       wyszperanie
       wyszperania
       wyszukanie
       wyszukania
-      wyszukanie
-      wyszukania
       wyszukiwanie
       wyszukiwania
-      wyszukiwanie
-      wyszukiwania
-      wyszumienie
-      wyszumienia
       wyszumienie
       wyszumienia
       wyszycie
@@ -90613,8 +78963,6 @@ module GameRoomKrowa
       wyszydzania
       wyszydzenie
       wyszydzenia
-      wyszykowanie
-      wyszykowania
       wyszykowanie
       wyszykowania
       wyszynk
@@ -90629,8 +78977,6 @@ module GameRoomKrowa
       wyściełania
       wyścig
       wyścigi
-      wyścigi
-      wyścigi
       wyścigowiec
       wyścigowce
       wyścigówka
@@ -90639,10 +78985,6 @@ module GameRoomKrowa
       wyśledzenia
       wyślizganie
       wyślizgania
-      wyślizganie
-      wyślizgania
-      wyślizgiwanie
-      wyślizgiwania
       wyślizgiwanie
       wyślizgiwania
       wyślizgnięcie
@@ -90651,14 +78993,8 @@ module GameRoomKrowa
       wyśliźnięcia
       wyśmianie
       wyśmiania
-      wyśmianie
-      wyśmiania
       wyśmiewanie
       wyśmiewania
-      wyśmiewanie
-      wyśmiewania
-      wyśnienie
-      wyśnienia
       wyśnienie
       wyśnienia
       wyśpiewanie
@@ -90673,30 +79009,20 @@ module GameRoomKrowa
       wyświadczenia
       wyświechtanie
       wyświechtania
-      wyświechtanie
-      wyświechtania
       wyświetlacz
       wyświetlacze
-      wyświetlanie
-      wyświetlania
       wyświetlanie
       wyświetlania
       wyświetlarka
       wyświetlarki
       wyświetlenie
       wyświetlenia
-      wyświetlenie
-      wyświetlenia
-      wyświeżenie
-      wyświeżenia
       wyświeżenie
       wyświeżenia
       wyświęcanie
       wyświęcania
       wyświęcenie
       wyświęcenia
-      wytaczanie
-      wytaczania
       wytaczanie
       wytaczania
       wytańczenie
@@ -90707,18 +79033,10 @@ module GameRoomKrowa
       wytapiacze
       wytapianie
       wytapiania
-      wytapianie
-      wytapiania
-      wytarcie
-      wytarcia
       wytarcie
       wytarcia
       wytarganie
       wytargania
-      wytarganie
-      wytargania
-      wytargowanie
-      wytargowania
       wytargowanie
       wytargowania
       wytarmoszenie
@@ -90727,10 +79045,6 @@ module GameRoomKrowa
       wytarowania
       wytarzanie
       wytarzania
-      wytarzanie
-      wytarzania
-      wytatuowanie
-      wytatuowania
       wytatuowanie
       wytatuowania
       wytchnienie
@@ -90739,14 +79053,8 @@ module GameRoomKrowa
       wytchnięcia
       wytępienie
       wytępienia
-      wytępienie
-      wytępienia
       wytężanie
       wytężania
-      wytężanie
-      wytężania
-      wytężenie
-      wytężenia
       wytężenie
       wytężenia
       wytknięcie
@@ -90758,35 +79066,21 @@ module GameRoomKrowa
       wytłoczka
       wytłoczki
       wytłoczyny
-      wytłoczyny
       wytłoki
-      wytłoki
-      wytłuczenie
-      wytłuczenia
       wytłuczenie
       wytłuczenia
       wytłukiwanie
       wytłukiwania
       wytłumaczenie
       wytłumaczenia
-      wytłumaczenie
-      wytłumaczenia
-      wytłuszczanie
-      wytłuszczania
       wytłuszczanie
       wytłuszczania
       wytłuszczenie
       wytłuszczenia
-      wytłuszczenie
-      wytłuszczenia
-      wytoczenie
-      wytoczenia
       wytoczenie
       wytoczenia
       wytop
       wytopy
-      wytopienie
-      wytopienia
       wytopienie
       wytopienia
       wytracanie
@@ -90805,10 +79099,6 @@ module GameRoomKrowa
       wytrącania
       wytrącenie
       wytrącenia
-      wytrącenie
-      wytrącenia
-      wytrenowanie
-      wytrenowania
       wytrenowanie
       wytrenowania
       wytresowanie
@@ -90817,10 +79107,6 @@ module GameRoomKrowa
       wytropienia
       wytrucie
       wytrucia
-      wytrucie
-      wytrucia
-      wytruwanie
-      wytruwania
       wytruwanie
       wytruwania
       wytrwałość
@@ -90851,14 +79137,10 @@ module GameRoomKrowa
       wytrzepywania
       wytrzeszcz
       wytrzeszcze
-      wytrzeszcze
-      wytrzeszcze
       wytrzeźwianie
       wytrzeźwiania
       wytrzeźwienie
       wytrzeźwienia
-      wytrzęsienie
-      wytrzęsienia
       wytrzęsienie
       wytrzęsienia
       wytrzymałość
@@ -90869,12 +79151,8 @@ module GameRoomKrowa
       wytrzymywania
       wytwarzanie
       wytwarzania
-      wytwarzanie
-      wytwarzania
       wytworność
       wytworności
-      wytworzenie
-      wytworzenia
       wytworzenie
       wytworzenia
       wytwór
@@ -90897,10 +79175,6 @@ module GameRoomKrowa
       wytypowania
       wyuczanie
       wyuczania
-      wyuczanie
-      wyuczania
-      wyuczenie
-      wyuczenia
       wyuczenie
       wyuczenia
       wyuzdanie
@@ -90913,10 +79187,6 @@ module GameRoomKrowa
       wywabienia
       wywalanie
       wywalania
-      wywalanie
-      wywalania
-      wywalenie
-      wywalenia
       wywalenie
       wywalenia
       wywar
@@ -90959,8 +79229,6 @@ module GameRoomKrowa
       wywichnięcia
       wywiedzenie
       wywiedzenia
-      wywiedzenie
-      wywiedzenia
       wywieranie
       wywierania
       wywiercanie
@@ -90975,8 +79243,6 @@ module GameRoomKrowa
       wywieszki
       wywietrzenie
       wywietrzenia
-      wywietrzenie
-      wywietrzenia
       wywietrznik
       wywietrzniki
       wywiewanie
@@ -90985,26 +79251,14 @@ module GameRoomKrowa
       wywiezienia
       wywijanie
       wywijania
-      wywijanie
-      wywijania
-      wywikłanie
-      wywikłania
       wywikłanie
       wywikłania
       wywindowanie
       wywindowania
-      wywindowanie
-      wywindowania
-      wywinięcie
-      wywinięcia
       wywinięcie
       wywinięcia
       wywleczenie
       wywleczenia
-      wywleczenie
-      wywleczenia
-      wywlekanie
-      wywlekania
       wywlekanie
       wywlekania
       wywłaszczanie
@@ -91017,8 +79271,6 @@ module GameRoomKrowa
       wywłóczenia
       wywnętrzanie
       wywnętrzania
-      wywodzenie
-      wywodzenia
       wywodzenie
       wywodzenia
       wywołanie
@@ -91037,18 +79289,11 @@ module GameRoomKrowa
       wywózki
       wywracanie
       wywracania
-      wywracanie
-      wywracania
       wywrotek
       wywrotki
       wywrotka
-      wywrotki
-      wywrotki
-      wywrotki
       wywrotowiec
       wywrotowcy
-      wywrócenie
-      wywrócenia
       wywrócenie
       wywrócenia
       wywrót
@@ -91061,10 +79306,6 @@ module GameRoomKrowa
       wywynętrzenia
       wywyższanie
       wywyższania
-      wywyższanie
-      wywyższania
-      wywyższenie
-      wywyższenia
       wywyższenie
       wywyższenia
       wyzbieranie
@@ -91083,10 +79324,6 @@ module GameRoomKrowa
       wyziewy
       wyziębianie
       wyziębiania
-      wyziębianie
-      wyziębiania
-      wyziębienie
-      wyziębienia
       wyziębienie
       wyziębienia
       wyziębnięcie
@@ -91101,10 +79338,6 @@ module GameRoomKrowa
       wyznaczniki
       wyznanie
       wyznania
-      wyznanie
-      wyznania
-      wyznawanie
-      wyznawania
       wyznawanie
       wyznawania
       wyznawca
@@ -91119,18 +79352,11 @@ module GameRoomKrowa
       wyzwalacze
       wyzwalanie
       wyzwalania
-      wyzwalanie
-      wyzwalania
-      wyzwanie
-      wyzwania
       wyzwanie
       wyzwania
       wyzwierzenie
       wyzwierzenia
       wyzwiska
-      wyzwiska
-      wyzwolenie
-      wyzwolenia
       wyzwolenie
       wyzwolenia
       wyzwoliciel
@@ -91143,8 +79369,6 @@ module GameRoomKrowa
       wyzyskiwacze
       wyzyskiwanie
       wyzyskiwania
-      wyzywanie
-      wyzywania
       wyzywanie
       wyzywania
       wyż
@@ -91175,22 +79399,14 @@ module GameRoomKrowa
       wyżłobiania
       wyżłobienie
       wyżłobienia
-      wyżłobienie
-      wyżłobienia
       wyżłopanie
       wyżłopania
       wyższość
       wyższości
       wyżycie
       wyżycia
-      wyżycie
-      wyżycia
       wyżyłowanie
       wyżyłowania
-      wyżyłowanie
-      wyżyłowania
-      wyżyłowywanie
-      wyżyłowywania
       wyżyłowywanie
       wyżyłowywania
       wyżymaczka
@@ -91205,56 +79421,32 @@ module GameRoomKrowa
       wyżywania
       wyżywianie
       wyżywiania
-      wyżywianie
-      wyżywiania
-      wyżywienie
-      wyżywienia
       wyżywienie
       wyżywienia
       wzajemność
       wzajemności
       wzbicie
       wzbicia
-      wzbicie
-      wzbicia
       wzbieranie
       wzbierania
       wzbijanie
       wzbijania
-      wzbijanie
-      wzbijania
-      wzbogacanie
-      wzbogacania
       wzbogacanie
       wzbogacania
       wzbogacenie
       wzbogacenia
-      wzbogacenie
-      wzbogacenia
-      wzbranianie
-      wzbraniania
       wzbranianie
       wzbraniania
       wzbronienie
       wzbronienia
       wzbudzanie
       wzbudzania
-      wzbudzanie
-      wzbudzania
-      wzbudzenie
-      wzbudzenia
       wzbudzenie
       wzbudzenia
       wzburzanie
       wzburzania
-      wzburzanie
-      wzburzania
       wzburzenie
       wzburzenia
-      wzburzenie
-      wzburzenia
-      wzdęcie
-      wzdęcia
       wzdęcie
       wzdęcia
       wzdłużanie
@@ -91273,8 +79465,6 @@ module GameRoomKrowa
       wzdrygnięcia
       wzdychanie
       wzdychania
-      wzdymanie
-      wzdymania
       wzdymanie
       wzdymania
       wzejście
@@ -91297,8 +79487,6 @@ module GameRoomKrowa
       wziewania
       wzięcie
       wzięcia
-      wzięcie
-      wzięcia
       wziętość
       wziętości
       wzionięcie
@@ -91315,38 +79503,24 @@ module GameRoomKrowa
       wzmacniania
       wzmaganie
       wzmagania
-      wzmaganie
-      wzmagania
       wzmianka
       wzmianki
       wzmocnienie
       wzmocnienia
-      wzmocnienie
-      wzmocnienia
-      wzmożenie
-      wzmożenia
       wzmożenie
       wzmożenia
       wznawianie
       wznawiania
       wzniecanie
       wzniecania
-      wzniecanie
-      wzniecania
       wzniecenie
       wzniecenia
-      wzniecenie
-      wzniecenia
-      wzniesienie
-      wzniesienia
       wzniesienie
       wzniesienia
       wzniosłość
       wzniosłości
       wznos
       wznosy
-      wznoszenie
-      wznoszenia
       wznoszenie
       wznoszenia
       wznowienie
@@ -91361,8 +79535,6 @@ module GameRoomKrowa
       wzornictwa
       wzornik
       wzorniki
-      wzorowanie
-      wzorowania
       wzorowanie
       wzorowania
       wzorzec
@@ -91381,10 +79553,6 @@ module GameRoomKrowa
       wzrośnięcia
       wzruszanie
       wzruszania
-      wzruszanie
-      wzruszania
-      wzruszenie
-      wzruszenia
       wzruszenie
       wzruszenia
       wzucie
@@ -91413,8 +79581,6 @@ module GameRoomKrowa
       zaabonowania
       zaadaptowanie
       zaadaptowania
-      zaadaptowanie
-      zaadaptowania
       zaadoptowanie
       zaadoptowania
       zaadresowanie
@@ -91427,10 +79593,6 @@ module GameRoomKrowa
       zaanektowania
       zaangażowanie
       zaangażowania
-      zaangażowanie
-      zaangażowania
-      zaanonsowanie
-      zaanonsowania
       zaanonsowanie
       zaanonsowania
       zaapelowanie
@@ -91447,20 +79609,12 @@ module GameRoomKrowa
       zabałamucenia
       zabarwianie
       zabarwiania
-      zabarwianie
-      zabarwiania
-      zabarwienie
-      zabarwienia
       zabarwienie
       zabarwienia
       zabawa
       zabawy
       zabawianie
       zabawiania
-      zabawianie
-      zabawiania
-      zabawienie
-      zabawienia
       zabawienie
       zabawienia
       zabawka
@@ -91477,44 +79631,28 @@ module GameRoomKrowa
       zabębnienia
       zabicie
       zabicia
-      zabicie
-      zabicia
       zabieg
       zabiegi
       zabieganie
       zabiegania
-      zabiegi
-      zabiegi
       zabiegnięcie
       zabiegnięcia
       zabielanie
       zabielania
-      zabielanie
-      zabielania
-      zabielenie
-      zabielenia
       zabielenie
       zabielenia
       zabierak
       zabieraki
       zabieranie
       zabierania
-      zabieranie
-      zabierania
       zabijaka
       zabijaki
-      zabijanie
-      zabijania
       zabijanie
       zabijania
       zabity
       zabici
       zabliźnianie
       zabliźniania
-      zabliźnianie
-      zabliźniania
-      zabliźnienie
-      zabliźnienia
       zabliźnienie
       zabliźnienia
       zablokowanie
@@ -91523,8 +79661,6 @@ module GameRoomKrowa
       zabłądzenia
       zabłąkanie
       zabłąkania
-      zabłocenie
-      zabłocenia
       zabłocenie
       zabłocenia
       zabłyszczenie
@@ -91551,8 +79687,6 @@ module GameRoomKrowa
       zabraniania
       zabranie
       zabrania
-      zabranie
-      zabrania
       zabrnięcie
       zabrnięcia
       zabronienie
@@ -91563,16 +79697,10 @@ module GameRoomKrowa
       zabrudzania
       zabrudzenie
       zabrudzenia
-      zabrudzenie
-      zabrudzenia
       zabrukowanie
       zabrukowania
       zabryzganie
       zabryzgania
-      zabryzganie
-      zabryzgania
-      zabryzgiwanie
-      zabryzgiwania
       zabryzgiwanie
       zabryzgiwania
       zabrząkanie
@@ -91598,9 +79726,7 @@ module GameRoomKrowa
       zaburzanie
       zaburzania
       zaburzenia
-      zaburzenia
       zaburzenie
-      zaburzenia
       zabytek
       zabytki
       zacerowanie
@@ -91613,10 +79739,6 @@ module GameRoomKrowa
       zachciewajki
       zachęcanie
       zachęcania
-      zachęcanie
-      zachęcania
-      zachęcenie
-      zachęcenia
       zachęcenie
       zachęcenia
       zachęta
@@ -91625,10 +79747,6 @@ module GameRoomKrowa
       zachichotania
       zachlapanie
       zachlapania
-      zachlapanie
-      zachlapania
-      zachlapywanie
-      zachlapywania
       zachlapywanie
       zachlapywania
       zachlupotanie
@@ -91639,10 +79757,6 @@ module GameRoomKrowa
       zachłyśnięcia
       zachmurzanie
       zachmurzania
-      zachmurzanie
-      zachmurzania
-      zachmurzenie
-      zachmurzenia
       zachmurzenie
       zachmurzenia
       zachodzenie
@@ -91651,13 +79765,9 @@ module GameRoomKrowa
       zachorowania
       zachowanie
       zachowania
-      zachowanie
-      zachowania
       zachowawczość
       zachowek
       zachowki
-      zachowywanie
-      zachowywania
       zachowywanie
       zachowywania
       zachód
@@ -91668,24 +79778,14 @@ module GameRoomKrowa
       zachrypnięcia
       zachwalanie
       zachwalania
-      zachwalanie
-      zachwalania
-      zachwianie
-      zachwiania
       zachwianie
       zachwiania
       zachwycanie
       zachwycania
-      zachwycanie
-      zachwycania
-      zachwycenie
-      zachwycenia
       zachwycenie
       zachwycenia
       zachwyt
       zachwyty
-      zachybotanie
-      zachybotania
       zachybotanie
       zachybotania
       zachyłek
@@ -91694,10 +79794,6 @@ module GameRoomKrowa
       zaciągi
       zaciąganie
       zaciągania
-      zaciąganie
-      zaciągania
-      zaciągnięcie
-      zaciągnięcia
       zaciągnięcie
       zaciągnięcia
       zaciążenie
@@ -91710,10 +79806,6 @@ module GameRoomKrowa
       zaciekania
       zaciekawianie
       zaciekawiania
-      zaciekawianie
-      zaciekawiania
-      zaciekawienie
-      zaciekawienia
       zaciekawienie
       zaciekawienia
       zaciekłość
@@ -91722,22 +79814,12 @@ module GameRoomKrowa
       zacieknięcia
       zacielenie
       zacielenia
-      zacielenie
-      zacielenia
-      zaciemnianie
-      zaciemniania
       zaciemnianie
       zaciemniania
       zaciemnienie
       zaciemnienia
-      zaciemnienie
-      zaciemnienia
       zacienianie
       zacieniania
-      zacienianie
-      zacieniania
-      zacienienie
-      zacienienia
       zacienienie
       zacienienia
       zacieniowanie
@@ -91746,26 +79828,16 @@ module GameRoomKrowa
       zaciery
       zacieranie
       zacierania
-      zacieranie
-      zacierania
       zacierka
       zacierki
       zacieśnianie
       zacieśniania
-      zacieśnianie
-      zacieśniania
       zacieśnienie
       zacieśnienia
-      zacieśnienie
-      zacieśnienia
-      zacięcie
-      zacięcia
       zacięcie
       zacięcia
       zaciętość
       zaciętości
-      zacinanie
-      zacinania
       zacinanie
       zacinania
       zaciosanie
@@ -91776,12 +79848,8 @@ module GameRoomKrowa
       zaciski
       zaciskanie
       zaciskania
-      zaciskanie
-      zaciskania
       zacisze
       zacisza
-      zaciśnięcie
-      zaciśnięcia
       zaciśnięcie
       zaciśnięcia
       zacność
@@ -91794,8 +79862,6 @@ module GameRoomKrowa
       zacumowania
       zacytowanie
       zacytowania
-      zaczadzenie
-      zaczadzenia
       zaczadzenie
       zaczadzenia
       zaczajanie
@@ -91812,10 +79878,6 @@ module GameRoomKrowa
       zaczepy
       zaczepianie
       zaczepiania
-      zaczepianie
-      zaczepiania
-      zaczepienie
-      zaczepienia
       zaczepienie
       zaczepienia
       zaczepka
@@ -91824,32 +79886,20 @@ module GameRoomKrowa
       zaczerniania
       zaczernienie
       zaczernienia
-      zaczernienie
-      zaczernienia
       zaczerpnięcie
       zaczerpnięcia
       zaczerpywanie
       zaczerpywania
       zaczesanie
       zaczesania
-      zaczesanie
-      zaczesania
-      zaczesywanie
-      zaczesywania
       zaczesywanie
       zaczesywania
       zaczęcie
       zaczęcia
-      zaczęcie
-      zaczęcia
-      zaczopowanie
-      zaczopowania
       zaczopowanie
       zaczopowania
       zaczyn
       zaczyny
-      zaczynanie
-      zaczynania
       zaczynanie
       zaczynania
       zaczynianie
@@ -91858,20 +79908,12 @@ module GameRoomKrowa
       zaczynienia
       zaczytanie
       zaczytania
-      zaczytanie
-      zaczytania
-      zaczytywanie
-      zaczytywania
       zaczytywanie
       zaczytywania
       zaćma
       zaćmy
       zaćmienie
       zaćmienia
-      zaćmienie
-      zaćmienia
-      zaćmiewanie
-      zaćmiewania
       zaćmiewanie
       zaćmiewania
       zad
@@ -91880,20 +79922,14 @@ module GameRoomKrowa
       zadamawiania
       zadanie
       zadania
-      zadanie
-      zadania
       zadanko
       zadanka
-      zadarcie
-      zadarcia
       zadarcie
       zadarcia
       zadatek
       zadatki
       zadatkowanie
       zadatkowania
-      zadawanie
-      zadawania
       zadawanie
       zadawania
       zadbanie
@@ -91904,8 +79940,6 @@ module GameRoomKrowa
       zadedykowania
       zadek
       zadki
-      zadekowanie
-      zadekowania
       zadekowanie
       zadekowania
       zadeptanie
@@ -91920,10 +79954,6 @@ module GameRoomKrowa
       zadławienia
       zadłużanie
       zadłużania
-      zadłużanie
-      zadłużania
-      zadłużenie
-      zadłużenia
       zadłużenie
       zadłużenia
       zadołowanie
@@ -91934,28 +79964,16 @@ module GameRoomKrowa
       zadomowienia
       zadowalanie
       zadowalania
-      zadowalanie
-      zadowalania
-      zadowolenie
-      zadowolenia
       zadowolenie
       zadowolenia
       zadra
       zadry
       zadrapanie
       zadrapania
-      zadrapanie
-      zadrapania
-      zadrapnięcie
-      zadrapnięcia
       zadrapnięcie
       zadrapnięcia
       zadrapywanie
       zadrapywania
-      zadrapywanie
-      zadrapywania
-      zadraśnięcie
-      zadraśnięcia
       zadraśnięcie
       zadraśnięcia
       zadrażnianie
@@ -91964,10 +79982,6 @@ module GameRoomKrowa
       zadrażnienia
       zadręczanie
       zadręczania
-      zadręczanie
-      zadręczania
-      zadręczenie
-      zadręczenia
       zadręczenie
       zadręczenia
       zadrganie
@@ -92002,18 +80016,11 @@ module GameRoomKrowa
       zadurzenia
       zaduszenie
       zaduszenia
-      zaduszenie
-      zaduszenia
-      zaduszki
       zaduszki
       zadygotanie
       zadygotania
       zadymianie
       zadymiania
-      zadymianie
-      zadymiania
-      zadymienie
-      zadymienia
       zadymienie
       zadymienia
       zadymka
@@ -92022,18 +80029,12 @@ module GameRoomKrowa
       zadyndania
       zadyszenie
       zadyszenia
-      zadyszenie
-      zadyszenia
       zadyszka
       zadyszki
       zadziałanie
       zadziałania
       zadzieranie
       zadzierania
-      zadzieranie
-      zadzierania
-      zadzierzganie
-      zadzierzgania
       zadzierzganie
       zadzierzgania
       zadziobanie
@@ -92044,10 +80045,6 @@ module GameRoomKrowa
       zadziorności
       zadziwianie
       zadziwiania
-      zadziwianie
-      zadziwiania
-      zadziwienie
-      zadziwienia
       zadziwienie
       zadziwienia
       zadzwonienie
@@ -92076,8 +80073,6 @@ module GameRoomKrowa
       zagabnięcia
       zagabywanie
       zagabywania
-      zagadanie
-      zagadania
       zagadanie
       zagadania
       zagadka
@@ -92118,18 +80113,10 @@ module GameRoomKrowa
       zagazowania
       zagęszczanie
       zagęszczania
-      zagęszczanie
-      zagęszczania
-      zagęszczenie
-      zagęszczenia
       zagęszczenie
       zagęszczenia
       zagięcie
       zagięcia
-      zagięcie
-      zagięcia
-      zaginanie
-      zaginania
       zaginanie
       zaginania
       zaginięcie
@@ -92144,10 +80131,6 @@ module GameRoomKrowa
       zagłady
       zagładzanie
       zagładzania
-      zagładzanie
-      zagładzania
-      zagłębianie
-      zagłębiania
       zagłębianie
       zagłębiania
       zagłębie
@@ -92156,26 +80139,16 @@ module GameRoomKrowa
       zagłębienia
       zagłodzenie
       zagłodzenia
-      zagłodzenie
-      zagłodzenia
       zagłówek
       zagłówki
       zagłuszanie
       zagłuszania
-      zagłuszanie
-      zagłuszania
       zagłuszenie
       zagłuszenia
-      zagłuszenie
-      zagłuszenia
-      zagmatwanie
-      zagmatwania
       zagmatwanie
       zagmatwania
       zagnanie
       zagnania
-      zagniatanie
-      zagniatania
       zagniatanie
       zagniatania
       zagniazdownik
@@ -92183,18 +80156,12 @@ module GameRoomKrowa
       zagnicia
       zagniecenie
       zagniecenia
-      zagniecenie
-      zagniecenia
-      zagniewanie
-      zagniewania
       zagniewanie
       zagniewania
       zagnieżdżanie
       zagnieżdżania
       zagnieżdżenie
       zagnieżdżenia
-      zagojenie
-      zagojenia
       zagojenie
       zagojenia
       zagon
@@ -92209,15 +80176,12 @@ module GameRoomKrowa
       zagoszczenia
       zagotowanie
       zagotowania
-      zagotowanie
-      zagotowania
       zagotowywanie
       zagotowywania
       zagrabianie
       zagrabiania
       zagrabienie
       zagrabienia
-      zagrabki
       zagrabki
       zagracanie
       zagracania
@@ -92227,8 +80191,6 @@ module GameRoomKrowa
       zagradzania
       zagranica
       zagranice
-      zagranie
-      zagrania
       zagranie
       zagrania
       zagrażanie
@@ -92251,50 +80213,28 @@ module GameRoomKrowa
       zagrywki
       zagryzanie
       zagryzania
-      zagryzanie
-      zagryzania
-      zagryzienie
-      zagryzienia
       zagryzienie
       zagryzienia
       zagrzanie
       zagrzania
-      zagrzanie
-      zagrzania
-      zagrzebanie
-      zagrzebania
       zagrzebanie
       zagrzebania
       zagrzebywanie
       zagrzebywania
-      zagrzebywanie
-      zagrzebywania
-      zagrzewanie
-      zagrzewania
       zagrzewanie
       zagrzewania
       zagrzmienie
       zagrzmienia
       zagubienie
       zagubienia
-      zagubienie
-      zagubienia
-      zagważdżanie
-      zagważdżania
       zagważdżanie
       zagważdżania
       zagwizdanie
       zagwizdania
       zagwożdżenie
       zagwożdżenia
-      zagwożdżenie
-      zagwożdżenia
       zahaczanie
       zahaczania
-      zahaczanie
-      zahaczania
-      zahaczenie
-      zahaczenia
       zahaczenie
       zahaczenia
       zahamowanie
@@ -92303,8 +80243,6 @@ module GameRoomKrowa
       zaharowania
       zaharowywanie
       zaharowywania
-      zahartowanie
-      zahartowania
       zahartowanie
       zahartowania
       zahuczenie
@@ -92325,14 +80263,10 @@ module GameRoomKrowa
       zaintonowania
       zaiskrzenie
       zaiskrzenia
-      zaiskrzenie
-      zaiskrzenia
       zaistnienie
       zaistnienia
       zajad
       zajady
-      zajadanie
-      zajadania
       zajadanie
       zajadania
       zajadłość
@@ -92345,9 +80279,6 @@ module GameRoomKrowa
       zajazdy
       zając
       zające
-      zające
-      zające
-      zającowate
       zającowate
       zajączek
       zajączki
@@ -92365,10 +80296,6 @@ module GameRoomKrowa
       zajeżdżenia
       zajęcie
       zajęcia
-      zajęcie
-      zajęcia
-      zajmowanie
-      zajmowania
       zajmowanie
       zajmowania
       zajodynowanie
@@ -92379,8 +80306,6 @@ module GameRoomKrowa
       zajścia
       zakalec
       zakalce
-      zakała
-      zakały
       zakała
       zakały
       zakamarek
@@ -92401,8 +80326,6 @@ module GameRoomKrowa
       zakaszlenia
       zakaszlnięcie
       zakaszlnięcia
-      zakatarzenie
-      zakatarzenia
       zakatarzenie
       zakatarzenia
       zakatowanie
@@ -92429,10 +80352,6 @@ module GameRoomKrowa
       zakipienia
       zakiszanie
       zakiszania
-      zakiszanie
-      zakiszania
-      zakiszenie
-      zakiszenia
       zakiszenie
       zakiszenia
       zakiśnięcie
@@ -92441,10 +80360,6 @@ module GameRoomKrowa
       zaklaskania
       zaklejanie
       zaklejania
-      zaklejanie
-      zaklejania
-      zaklejenie
-      zaklejenia
       zaklejenie
       zaklejenia
       zaklepanie
@@ -92453,30 +80368,20 @@ module GameRoomKrowa
       zaklepywania
       zaklęcie
       zaklęcia
-      zaklęcie
-      zaklęcia
-      zaklęsanie
-      zaklęsania
       zaklęsanie
       zaklęsania
       zaklęsłość
       zaklęsłości
       zaklęśnięcie
       zaklęśnięcia
-      zaklęśnięcie
-      zaklęśnięcia
       zaklinacz
       zaklinacze
-      zaklinanie
-      zaklinania
       zaklinanie
       zaklinania
       zaklinowanie
       zaklinowania
       zakład
       zakłady
-      zakładanie
-      zakładania
       zakładanie
       zakładania
       zakładka
@@ -92491,18 +80396,12 @@ module GameRoomKrowa
       zakłamania
       zakłopotanie
       zakłopotania
-      zakłopotanie
-      zakłopotania
       zakłócanie
       zakłócania
       zakłócenie
       zakłócenia
       zakłucie
       zakłucia
-      zakłucie
-      zakłucia
-      zakłuwanie
-      zakłuwania
       zakłuwanie
       zakłuwania
       zakneblowanie
@@ -92521,8 +80420,6 @@ module GameRoomKrowa
       zakołatania
       zakołysanie
       zakołysania
-      zakołysanie
-      zakołysania
       zakon
       zakony
       zakonnica
@@ -92535,28 +80432,18 @@ module GameRoomKrowa
       zakończania
       zakończenie
       zakończenia
-      zakończenie
-      zakończenia
       zakopanie
       zakopania
-      zakopanie
-      zakopania
-      zakopcenie
-      zakopcenia
       zakopcenie
       zakopcenia
       zakopcowanie
       zakopcowania
       zakopywanie
       zakopywania
-      zakopywanie
-      zakopywania
       zakorkowanie
       zakorkowania
       zakorzenianie
       zakorzeniania
-      zakorzenienie
-      zakorzenienia
       zakorzenienie
       zakorzenienia
       zakos
@@ -92567,10 +80454,6 @@ module GameRoomKrowa
       zakotłowania
       zakotwiczanie
       zakotwiczania
-      zakotwiczanie
-      zakotwiczania
-      zakotwiczenie
-      zakotwiczenia
       zakotwiczenie
       zakotwiczenia
       zakpienie
@@ -92597,10 +80480,6 @@ module GameRoomKrowa
       zakreślenia
       zakręcanie
       zakręcania
-      zakręcanie
-      zakręcania
-      zakręcenie
-      zakręcenia
       zakręcenie
       zakręcenia
       zakręt
@@ -92617,22 +80496,14 @@ module GameRoomKrowa
       zakroplenia
       zakrwawianie
       zakrwawiania
-      zakrwawianie
-      zakrwawiania
       zakrwawienie
       zakrwawienia
-      zakrwawienie
-      zakrwawienia
-      zakrycie
-      zakrycia
       zakrycie
       zakrycia
       zakrystia
       zakrystie
       zakrystian
       zakrystiani
-      zakrywanie
-      zakrywania
       zakrywanie
       zakrywania
       zakrzątnięcie
@@ -92651,10 +80522,6 @@ module GameRoomKrowa
       zakrzyknięcia
       zakrzywianie
       zakrzywiania
-      zakrzywianie
-      zakrzywiania
-      zakrzywienie
-      zakrzywienia
       zakrzywienie
       zakrzywienia
       zaksięgowanie
@@ -92671,12 +80538,7 @@ module GameRoomKrowa
       zakupywania
       zakurzenie
       zakurzenia
-      zakurzenie
-      zakurzenia
       zakusy
-      zakusy
-      zakuwanie
-      zakuwania
       zakuwanie
       zakuwania
       zakwakanie
@@ -92685,10 +80547,6 @@ module GameRoomKrowa
       zakwasy
       zakwaszanie
       zakwaszania
-      zakwaszanie
-      zakwaszania
-      zakwaszenie
-      zakwaszenia
       zakwaszenie
       zakwaszenia
       zakwilenie
@@ -92701,16 +80559,12 @@ module GameRoomKrowa
       zalakowania
       zalanie
       zalania
-      zalanie
-      zalania
       zalatywanie
       zalatywania
       zalążek
       zalążki
       zalążnia
       zalążnie
-      zalecanie
-      zalecania
       zalecanie
       zalecania
       zalecenie
@@ -92733,18 +80587,13 @@ module GameRoomKrowa
       zalesienia
       zaleszczotek
       zaleszczotki
-      zaleszczotki
-      zaleszczotki
       zaleta
       zalety
       zalew
       zalewy
       zalewa
-      zalewy
       zalewajka
       zalewajki
-      zalewanie
-      zalewania
       zalewanie
       zalewania
       zalezienie
@@ -92759,10 +80608,6 @@ module GameRoomKrowa
       zalicytowania
       zaliczanie
       zaliczania
-      zaliczanie
-      zaliczania
-      zaliczenie
-      zaliczenia
       zaliczenie
       zaliczenia
       zaliczka
@@ -92772,25 +80617,16 @@ module GameRoomKrowa
       zalotność
       zalotności
       zaloty
-      zaloty
       zalśnienie
       zalśnienia
       zaludnianie
       zaludniania
-      zaludnianie
-      zaludniania
-      zaludnienie
-      zaludnienia
       zaludnienie
       zaludnienia
       zalutowanie
       zalutowania
       załadowanie
       załadowania
-      załadowanie
-      załadowania
-      załadowywanie
-      załadowywania
       załadowywanie
       załadowywania
       załadunek
@@ -92799,16 +80635,10 @@ module GameRoomKrowa
       załagadzania
       załagodzenie
       załagodzenia
-      załagodzenie
-      załagodzenia
-      załamanie
-      załamania
       załamanie
       załamania
       załamek
       załamki
-      załamywanie
-      załamywania
       załamywanie
       załamywania
       załapanie
@@ -92819,10 +80649,6 @@ module GameRoomKrowa
       załatania
       załatwianie
       załatwiania
-      załatwianie
-      załatwiania
-      załatwienie
-      załatwienia
       załatwienie
       załatwienia
       załażenie
@@ -92833,8 +80659,6 @@ module GameRoomKrowa
       załączenia
       załącznik
       załączniki
-      załganie
-      załgania
       załganie
       załgania
       załgiwanie
@@ -92853,8 +80677,6 @@ module GameRoomKrowa
       załopotania
       założenie
       założenia
-      założenie
-      założenia
       założyciel
       założyciele
       założycielka
@@ -92867,8 +80689,6 @@ module GameRoomKrowa
       zamachnięcia
       zamachowiec
       zamachowcy
-      zamaczanie
-      zamaczania
       zamaczanie
       zamaczania
       zamajaczenie
@@ -92895,38 +80715,22 @@ module GameRoomKrowa
       zamarynowania
       zamarzanie
       zamarzania
-      zamarzanie
-      zamarzania
-      zamarzenie
-      zamarzenia
       zamarzenie
       zamarzenia
       zamarznięcie
       zamarznięcia
       zamaskowanie
       zamaskowania
-      zamaskowanie
-      zamaskowania
       zamaszystość
       zamaszystości
       zamawianie
       zamawiania
-      zamawianie
-      zamawiania
-      zamazanie
-      zamazania
       zamazanie
       zamazania
       zamazywanie
       zamazywania
-      zamazywanie
-      zamazywania
       zamącanie
       zamącania
-      zamącanie
-      zamącania
-      zamącenie
-      zamącenia
       zamącenie
       zamącenia
       zamążpójście
@@ -92935,34 +80739,20 @@ module GameRoomKrowa
       zamczyska
       zameczek
       zameczki
-      zameczek
-      zameczki
-      zamek
-      zamki
       zamek
       zamki
       zameldowanie
       zameldowania
-      zameldowanie
-      zameldowania
-      zamelinowanie
-      zamelinowania
       zamelinowanie
       zamelinowania
       zamęczanie
       zamęczania
-      zamęczanie
-      zamęczania
-      zamęczenie
-      zamęczenia
       zamęczenie
       zamęczenia
       zamęt
       zamęty
       zamężna
       zamężne
-      zamglenie
-      zamglenia
       zamglenie
       zamglenia
       zamgławiacz
@@ -92987,10 +80777,6 @@ module GameRoomKrowa
       zamiecie
       zamienianie
       zamieniania
-      zamienianie
-      zamieniania
-      zamienienie
-      zamienienia
       zamienienie
       zamienienia
       zamiennia
@@ -92999,14 +80785,8 @@ module GameRoomKrowa
       zamierania
       zamierzanie
       zamierzania
-      zamierzanie
-      zamierzania
       zamierzenie
       zamierzenia
-      zamierzenie
-      zamierzenia
-      zamieszanie
-      zamieszania
       zamieszanie
       zamieszania
       zamieszczanie
@@ -93015,7 +80795,6 @@ module GameRoomKrowa
       zamieszczenia
       zamieszkanie
       zamieszkania
-      zamieszki
       zamieszki
       zamigotanie
       zamigotania
@@ -93031,14 +80810,10 @@ module GameRoomKrowa
       zaminowania
       zamknięcie
       zamknięcia
-      zamknięcie
-      zamknięcia
       zamocowanie
       zamocowania
       zamocowywanie
       zamocowywania
-      zamoczenie
-      zamoczenia
       zamoczenie
       zamoczenia
       zamoknięcie
@@ -93049,8 +80824,6 @@ module GameRoomKrowa
       zamordowane
       zamordowanie
       zamordowania
-      zamordowanie
-      zamordowania
       zamordowany
       zamordowani
       zamordysta
@@ -93059,14 +80832,8 @@ module GameRoomKrowa
       zamordyzmy
       zamorzenie
       zamorzenia
-      zamorzenie
-      zamorzenia
       zamotanie
       zamotania
-      zamotanie
-      zamotania
-      zamotywanie
-      zamotywania
       zamotywanie
       zamotywania
       zamożnienie
@@ -93075,12 +80842,8 @@ module GameRoomKrowa
       zamożności
       zamówienie
       zamówienia
-      zamówienie
-      zamówienia
       zamózgowie
       zamózgowia
-      zamraczanie
-      zamraczania
       zamraczanie
       zamraczania
       zamrażalnia
@@ -93089,16 +80852,10 @@ module GameRoomKrowa
       zamrażalniki
       zamrażanie
       zamrażania
-      zamrażanie
-      zamrażania
       zamrażarka
       zamrażarki
       zamroczenie
       zamroczenia
-      zamroczenie
-      zamroczenia
-      zamrożenie
-      zamrożenia
       zamrożenie
       zamrożenia
       zamróz
@@ -93111,10 +80868,6 @@ module GameRoomKrowa
       zamsze
       zamulanie
       zamulania
-      zamulanie
-      zamulania
-      zamulenie
-      zamulenia
       zamulenie
       zamulenia
       zamurowanie
@@ -93123,24 +80876,16 @@ module GameRoomKrowa
       zamurowywania
       zamustrowanie
       zamustrowania
-      zamustrowanie
-      zamustrowania
       zamydlanie
       zamydlania
       zamydlenie
       zamydlenia
       zamykanie
       zamykania
-      zamykanie
-      zamykania
       zamysł
       zamysły
       zamyślanie
       zamyślania
-      zamyślanie
-      zamyślania
-      zamyślenie
-      zamyślenia
       zamyślenie
       zamyślenia
       zanalizowanie
@@ -93149,18 +80894,12 @@ module GameRoomKrowa
       zaniechania
       zaniedbanie
       zaniedbania
-      zaniedbanie
-      zaniedbania
-      zaniedbywanie
-      zaniedbywania
       zaniedbywanie
       zaniedbywania
       zaniemożenie
       zaniemożenia
       zaniemówienie
       zaniemówienia
-      zaniesienie
-      zaniesienia
       zaniesienie
       zaniesienia
       zaniewidzenie
@@ -93181,26 +80920,16 @@ module GameRoomKrowa
       zanokcice
       zanoszenie
       zanoszenia
-      zanoszenie
-      zanoszenia
       zanotowanie
       zanotowania
       zanucenie
       zanucenia
       zanudzanie
       zanudzania
-      zanudzanie
-      zanudzania
-      zanudzenie
-      zanudzenia
       zanudzenie
       zanudzenia
       zanurzanie
       zanurzania
-      zanurzanie
-      zanurzania
-      zanurzenie
-      zanurzenia
       zanurzenie
       zanurzenia
       zaobrębianie
@@ -93213,38 +80942,20 @@ module GameRoomKrowa
       zaoferowania
       zaofiarowanie
       zaofiarowania
-      zaofiarowanie
-      zaofiarowania
-      zaognianie
-      zaogniania
       zaognianie
       zaogniania
       zaognienie
       zaognienia
-      zaognienie
-      zaognienia
-      zaokrąglanie
-      zaokrąglania
       zaokrąglanie
       zaokrąglania
       zaokrąglenie
       zaokrąglenia
-      zaokrąglenie
-      zaokrąglenia
-      zaokrętowanie
-      zaokrętowania
       zaokrętowanie
       zaokrętowania
       zaolejenie
       zaolejenia
-      zaolejenie
-      zaolejenia
       zaopatrywanie
       zaopatrywania
-      zaopatrywanie
-      zaopatrywania
-      zaopatrzenie
-      zaopatrzenia
       zaopatrzenie
       zaopatrzenia
       zaopiekowanie
@@ -93253,24 +80964,14 @@ module GameRoomKrowa
       zaopiniowania
       zaoranie
       zaorania
-      zaoranie
-      zaorania
-      zaorywanie
-      zaorywania
       zaorywanie
       zaorywania
       zaostrzanie
       zaostrzania
-      zaostrzanie
-      zaostrzania
-      zaostrzenie
-      zaostrzenia
       zaostrzenie
       zaostrzenia
       zaowocowanie
       zaowocowania
-      zapacanie
-      zapacania
       zapacanie
       zapacania
       zapach
@@ -93283,34 +80984,22 @@ module GameRoomKrowa
       zapaćkania
       zapadanie
       zapadania
-      zapadanie
-      zapadania
       zapadka
       zapadki
       zapadlisko
       zapadliska
       zapadnięcie
       zapadnięcia
-      zapadnięcie
-      zapadnięcia
-      zapakowanie
-      zapakowania
       zapakowanie
       zapakowania
       zapakowywanie
       zapakowywania
-      zapakowywanie
-      zapakowywania
-      zapalanie
-      zapalania
       zapalanie
       zapalania
       zapalarka
       zapalarki
       zapalczywość
       zapalczywości
-      zapalenie
-      zapalenia
       zapalenie
       zapalenia
       zapaleniec
@@ -93329,18 +81018,12 @@ module GameRoomKrowa
       zapałki
       zapamiętanie
       zapamiętania
-      zapamiętanie
-      zapamiętania
       zapanowanie
       zapanowania
       zapanowywanie
       zapanowywania
       zapapranie
       zapaprania
-      zapapranie
-      zapaprania
-      zaparcie
-      zaparcia
       zaparcie
       zaparcia
       zaparkowanie
@@ -93351,20 +81034,12 @@ module GameRoomKrowa
       zaparskania
       zaparzanie
       zaparzania
-      zaparzanie
-      zaparzania
-      zaparzenie
-      zaparzenia
       zaparzenie
       zaparzenia
       zapas
       zapasy
       zapasanie
       zapasania
-      zapasanie
-      zapasania
-      zapasienie
-      zapasienia
       zapasienie
       zapasienia
       zapasik
@@ -93377,8 +81052,6 @@ module GameRoomKrowa
       zapaskudzenia
       zapastowanie
       zapastowania
-      zapasy
-      zapasy
       zapaszek
       zapaszki
       zapaść
@@ -93389,20 +81062,12 @@ module GameRoomKrowa
       zapaśnicy
       zapatrywanie
       zapatrywania
-      zapatrywanie
-      zapatrywania
       zapatrzenie
       zapatrzenia
       zapchanie
       zapchania
-      zapchanie
-      zapchania
       zapełnianie
       zapełniania
-      zapełnianie
-      zapełniania
-      zapełnienie
-      zapełnienia
       zapełnienie
       zapełnienia
       zaperzanie
@@ -93415,38 +81080,22 @@ module GameRoomKrowa
       zapeszenia
       zapewnianie
       zapewniania
-      zapewnianie
-      zapewniania
-      zapewnienie
-      zapewnienia
       zapewnienie
       zapewnienia
       zapęd
       zapędy
-      zapędy
-      zapędy
       zapędzanie
       zapędzania
-      zapędzanie
-      zapędzania
-      zapędzenie
-      zapędzenia
       zapędzenie
       zapędzenia
       zapianie
       zapiania
       zapicie
       zapicia
-      zapicie
-      zapicia
       zapiecek
       zapiecki
       zapieczenie
       zapieczenia
-      zapieczenie
-      zapieczenia
-      zapiekanie
-      zapiekania
       zapiekanie
       zapiekania
       zapiekanka
@@ -93457,18 +81106,10 @@ module GameRoomKrowa
       zapienienia
       zapieranie
       zapierania
-      zapieranie
-      zapierania
-      zapięcie
-      zapięcia
       zapięcie
       zapięcia
       zapijanie
       zapijania
-      zapijanie
-      zapijania
-      zapinanie
-      zapinania
       zapinanie
       zapinania
       zapinka
@@ -93477,36 +81118,22 @@ module GameRoomKrowa
       zapisy
       zapisanie
       zapisania
-      zapisanie
-      zapisania
       zapisek
       zapiski
-      zapisywanie
-      zapisywania
       zapisywanie
       zapisywania
       zapiszczenie
       zapiszczenia
       zaplamienie
       zaplamienia
-      zaplamienie
-      zaplamienia
       zaplanowanie
       zaplanowania
       zaplatanie
       zaplatania
-      zaplatanie
-      zaplatania
-      zaplątanie
-      zaplątania
       zaplątanie
       zaplątania
       zaplątywanie
       zaplątywania
-      zaplątywanie
-      zaplątywania
-      zaplecenie
-      zaplecenia
       zaplecenie
       zaplecenia
       zapleśnienie
@@ -93515,20 +81142,14 @@ module GameRoomKrowa
       zaplombowania
       zaplucie
       zaplucia
-      zaplucie
-      zaplucia
       zapluskwienie
       zapluskwienia
-      zapluwanie
-      zapluwania
       zapluwanie
       zapluwania
       zapłacenie
       zapłacenia
       zapładnianie
       zapładniania
-      zapłakanie
-      zapłakania
       zapłakanie
       zapłakania
       zapłakiwanie
@@ -93551,14 +81172,8 @@ module GameRoomKrowa
       zapobieżenia
       zapocenie
       zapocenia
-      zapocenie
-      zapocenia
       zapodzianie
       zapodziania
-      zapodzianie
-      zapodziania
-      zapodziewanie
-      zapodziewania
       zapodziewanie
       zapodziewania
       zapolowanie
@@ -93569,10 +81184,6 @@ module GameRoomKrowa
       zapominalscy
       zapominanie
       zapominania
-      zapominanie
-      zapominania
-      zapomnienie
-      zapomnienia
       zapomnienie
       zapomnienia
       zapomoga
@@ -93585,38 +81196,22 @@ module GameRoomKrowa
       zapowiadacze
       zapowiadanie
       zapowiadania
-      zapowiadanie
-      zapowiadania
-      zapowiedzenie
-      zapowiedzenia
       zapowiedzenie
       zapowiedzenia
       zapowiedź
       zapowiedzi
       zapoznanie
       zapoznania
-      zapoznanie
-      zapoznania
-      zapoznawanie
-      zapoznawania
       zapoznawanie
       zapoznawania
       zapożyczanie
       zapożyczania
-      zapożyczanie
-      zapożyczania
-      zapożyczenie
-      zapożyczenia
       zapożyczenie
       zapożyczenia
       zapóźnianie
       zapóźniania
       zapóźnienie
       zapóźnienia
-      zapóźnienie
-      zapóźnienia
-      zapracowanie
-      zapracowania
       zapracowanie
       zapracowania
       zapragnięcie
@@ -93627,24 +81222,15 @@ module GameRoomKrowa
       zaprasowania
       zapraszanie
       zapraszania
-      zapraszanie
-      zapraszania
       zaprawa
       zaprawy
       zaprawianie
       zaprawiania
-      zaprawianie
-      zaprawiania
-      zaprawienie
-      zaprawienia
       zaprawienie
       zaprawienia
       zaprażka
       zaprażki
       zaprosiny
-      zaprosiny
-      zaproszenie
-      zaproszenia
       zaproszenie
       zaproszenia
       zaprowadzanie
@@ -93667,10 +81253,6 @@ module GameRoomKrowa
       zaprzeczenia
       zaprzedanie
       zaprzedania
-      zaprzedanie
-      zaprzedania
-      zaprzedawanie
-      zaprzedawania
       zaprzedawanie
       zaprzedawania
       zaprzestanie
@@ -93679,14 +81261,8 @@ module GameRoomKrowa
       zaprzęgi
       zaprzęganie
       zaprzęgania
-      zaprzęganie
-      zaprzęgania
       zaprzęgnięcie
       zaprzęgnięcia
-      zaprzęgnięcie
-      zaprzęgnięcia
-      zaprzężenie
-      zaprzężenia
       zaprzężenie
       zaprzężenia
       zapstrzenie
@@ -93698,33 +81274,18 @@ module GameRoomKrowa
       zapukanie
       zapukania
       zapusty
-      zapusty
-      zapuszczanie
-      zapuszczania
       zapuszczanie
       zapuszczania
       zapuszczenie
       zapuszczenia
-      zapuszczenie
-      zapuszczenia
-      zapychanie
-      zapychania
       zapychanie
       zapychania
       zapylanie
       zapylania
-      zapylanie
-      zapylania
-      zapylenie
-      zapylenia
       zapylenie
       zapylenia
       zapytanie
       zapytania
-      zapytanie
-      zapytania
-      zapytywanie
-      zapytywania
       zapytywanie
       zapytywania
       zarabianie
@@ -93746,11 +81307,8 @@ module GameRoomKrowa
       zarazek
       zarazki
       zarazowate
-      zarazowate
       zarażanie
       zarażania
-      zarażenie
-      zarażenia
       zarażenie
       zarażenia
       zarąbanie
@@ -93763,13 +81321,8 @@ module GameRoomKrowa
       zarepetowania
       zaręczanie
       zaręczania
-      zaręczanie
-      zaręczania
       zaręczenie
       zaręczenia
-      zaręczenie
-      zaręczenia
-      zaręczyny
       zaręczyny
       zarękawek
       zarękawki
@@ -93785,8 +81338,6 @@ module GameRoomKrowa
       zarodnie
       zarodnik
       zarodniki
-      zarodniki
-      zarodniki
       zarodziec
       zarodźce
       zarojenie
@@ -93796,7 +81347,6 @@ module GameRoomKrowa
       zarost
       zarosty
       zarośla
-      zarośla
       zarośnięcie
       zarośnięcia
       zarozumialec
@@ -93804,16 +81354,10 @@ module GameRoomKrowa
       zarozumiałość
       zaróżowienie
       zaróżowienia
-      zaróżowienie
-      zaróżowienia
-      zarumienianie
-      zarumieniania
       zarumienianie
       zarumieniania
       zarumienienie
       zarumienienia
-      zarwanie
-      zarwania
       zarwanie
       zarwania
       zarybianie
@@ -93822,26 +81366,16 @@ module GameRoomKrowa
       zarybienia
       zarycie
       zarycia
-      zarycie
-      zarycia
       zaryczenie
       zaryczenia
-      zaryglowanie
-      zaryglowania
       zaryglowanie
       zaryglowania
       zarys
       zarysy
       zarysowanie
       zarysowania
-      zarysowanie
-      zarysowania
       zarysowywanie
       zarysowywania
-      zarysowywanie
-      zarysowywania
-      zarywanie
-      zarywania
       zarywanie
       zarywania
       zaryzykowanie
@@ -93862,12 +81396,8 @@ module GameRoomKrowa
       zarzewia
       zarznięcie
       zarznięcia
-      zarznięcie
-      zarznięcia
       zarzucanie
       zarzucania
-      zarzucenie
-      zarzucenia
       zarzucenie
       zarzucenia
       zarzut
@@ -93876,12 +81406,8 @@ module GameRoomKrowa
       zarzygania
       zarzynanie
       zarzynania
-      zarzynanie
-      zarzynania
       zarżenie
       zarżenia
-      zarżnięcie
-      zarżnięcia
       zarżnięcie
       zarżnięcia
       zasada
@@ -93890,10 +81416,6 @@ module GameRoomKrowa
       zasadności
       zasadzanie
       zasadzania
-      zasadzanie
-      zasadzania
-      zasadzenie
-      zasadzenia
       zasadzenie
       zasadzenia
       zasadzka
@@ -93902,8 +81424,6 @@ module GameRoomKrowa
       zasalania
       zasalutowanie
       zasalutowania
-      zasapanie
-      zasapania
       zasapanie
       zasapania
       zasądzanie
@@ -93918,18 +81438,12 @@ module GameRoomKrowa
       zaserwowania
       zasępianie
       zasępiania
-      zasępianie
-      zasępiania
-      zasępienie
-      zasępienia
       zasępienie
       zasępienia
       zasiadanie
       zasiadania
       zasiadka
       zasiadki
-      zasianie
-      zasiania
       zasianie
       zasiania
       zasiąg
@@ -93942,16 +81456,10 @@ module GameRoomKrowa
       zasiedlenia
       zasiedzenie
       zasiedzenia
-      zasiedzenie
-      zasiedzenia
       zasiek
-      zasieki
-      zasieki
       zasieki
       zasiew
       zasiewy
-      zasiewanie
-      zasiewania
       zasiewanie
       zasiewania
       zasięg
@@ -93984,10 +81492,6 @@ module GameRoomKrowa
       zaskarżenia
       zasklepianie
       zasklepiania
-      zasklepianie
-      zasklepiania
-      zasklepienie
-      zasklepienia
       zasklepienie
       zasklepienia
       zaskoczenie
@@ -94010,14 +81514,10 @@ module GameRoomKrowa
       zasłabnięcia
       zasłanianie
       zasłaniania
-      zasłanianie
-      zasłaniania
       zasłanie
       zasłania
       zasłona
       zasłony
-      zasłonięcie
-      zasłonięcia
       zasłonięcie
       zasłonięcia
       zasłonka
@@ -94030,16 +81530,12 @@ module GameRoomKrowa
       zasługiwania
       zasłużenie
       zasłużenia
-      zasłużenie
-      zasłużenia
       zasłynięcie
       zasłynięcia
       zasłyszenie
       zasłyszenia
       zasmakowanie
       zasmakowania
-      zasmarkanie
-      zasmarkania
       zasmarkanie
       zasmarkania
       zasmarowanie
@@ -94052,18 +81548,10 @@ module GameRoomKrowa
       zasmażki
       zasmucanie
       zasmucania
-      zasmucanie
-      zasmucania
-      zasmucenie
-      zasmucenia
       zasmucenie
       zasmucenia
       zasnucie
       zasnucia
-      zasnucie
-      zasnucia
-      zasnuwanie
-      zasnuwania
       zasnuwanie
       zasnuwania
       zasobnik
@@ -94084,8 +81572,6 @@ module GameRoomKrowa
       zaspokojenia
       zasranie
       zasrania
-      zasranie
-      zasrania
       zasraniec
       zasrańcy
       zasrywanie
@@ -94098,22 +81584,15 @@ module GameRoomKrowa
       zastania
       zastanowienie
       zastanowienia
-      zastanowienie
-      zastanowienia
       zastaw
       zastawy
       zastawa
-      zastawy
       zastawanie
       zastawania
       zastawca
       zastawcy
       zastawianie
       zastawiania
-      zastawianie
-      zastawiania
-      zastawienie
-      zastawienia
       zastawienie
       zastawienia
       zastawka
@@ -94142,8 +81621,6 @@ module GameRoomKrowa
       zastopowania
       zastosowanie
       zastosowania
-      zastosowanie
-      zastosowania
       zastój
       zastoje
       zastraszanie
@@ -94156,14 +81633,8 @@ module GameRoomKrowa
       zastrzały
       zastrzeganie
       zastrzegania
-      zastrzeganie
-      zastrzegania
       zastrzelenie
       zastrzelenia
-      zastrzelenie
-      zastrzelenia
-      zastrzeżenie
-      zastrzeżenia
       zastrzeżenie
       zastrzeżenia
       zastrzyk
@@ -94176,24 +81647,14 @@ module GameRoomKrowa
       zastygnięcia
       zasugerowanie
       zasugerowania
-      zasugerowanie
-      zasugerowania
-      zasunięcie
-      zasunięcia
       zasunięcie
       zasunięcia
       zasuszanie
       zasuszania
-      zasuszanie
-      zasuszania
-      zasuszenie
-      zasuszenia
       zasuszenie
       zasuszenia
       zasuwa
       zasuwy
-      zasuwanie
-      zasuwania
       zasuwanie
       zasuwania
       zasuwka
@@ -94208,14 +81669,10 @@ module GameRoomKrowa
       zasyłania
       zasypanie
       zasypania
-      zasypanie
-      zasypania
       zasypianie
       zasypiania
       zasypka
       zasypki
-      zasypywanie
-      zasypywania
       zasypywanie
       zasypywania
       zasysanie
@@ -94226,10 +81683,6 @@ module GameRoomKrowa
       zaszczekania
       zaszczepianie
       zaszczepiania
-      zaszczepianie
-      zaszczepiania
-      zaszczepienie
-      zaszczepienia
       zaszczepienie
       zaszczepienia
       zaszczepka
@@ -94243,8 +81696,6 @@ module GameRoomKrowa
       zaszczycenie
       zaszczycenia
       zaszczyt
-      zaszczyty
-      zaszczyty
       zaszczyty
       zaszeptanie
       zaszeptania
@@ -94266,12 +81717,8 @@ module GameRoomKrowa
       zaszurania
       zaszycie
       zaszycia
-      zaszycie
-      zaszycia
       zaszyfrowanie
       zaszyfrowania
-      zaszywanie
-      zaszywania
       zaszywanie
       zaszywania
       zaścianek
@@ -94289,13 +81736,10 @@ module GameRoomKrowa
       zaślepienia
       zaślinienie
       zaślinienia
-      zaślinienie
-      zaślinienia
       zaślubianie
       zaślubiania
       zaślubienie
       zaślubienia
-      zaślubiny
       zaślubiny
       zaśmianie
       zaśmiania
@@ -94303,8 +81747,6 @@ module GameRoomKrowa
       zaśmiecania
       zaśmiecenie
       zaśmiecenia
-      zaśmierdzenie
-      zaśmierdzenia
       zaśmierdzenie
       zaśmierdzenia
       zaśmiewanie
@@ -94322,17 +81764,12 @@ module GameRoomKrowa
       zaświadczenie
       zaświadczenia
       zaświaty
-      zaświaty
       zaświecanie
       zaświecania
       zaświecenie
       zaświecenia
-      zaświecenie
-      zaświecenia
       zaświtanie
       zaświtania
-      zataczanie
-      zataczania
       zataczanie
       zataczania
       zatajanie
@@ -94347,14 +81784,8 @@ module GameRoomKrowa
       zatańczenia
       zatapianie
       zatapiania
-      zatapianie
-      zatapiania
       zatarasowanie
       zatarasowania
-      zatarasowanie
-      zatarasowania
-      zatarcie
-      zatarcia
       zatarcie
       zatarcia
       zatarg
@@ -94369,12 +81800,8 @@ module GameRoomKrowa
       zatęchnięcia
       zatęsknienie
       zatęsknienia
-      zatęsknienie
-      zatęsknienia
       zatętnienie
       zatętnienia
-      zatkanie
-      zatkania
       zatkanie
       zatkania
       zatknięcie
@@ -94383,14 +81810,8 @@ module GameRoomKrowa
       zatłoczenia
       zatłuczenie
       zatłuczenia
-      zatłuczenie
-      zatłuczenia
       zatłuszczenie
       zatłuszczenia
-      zatłuszczenie
-      zatłuszczenia
-      zatoczenie
-      zatoczenia
       zatoczenie
       zatoczenia
       zatoczka
@@ -94401,16 +81822,10 @@ module GameRoomKrowa
       zatonięcia
       zatopienie
       zatopienia
-      zatopienie
-      zatopienia
       zator
       zatory
       zatracanie
       zatracania
-      zatracanie
-      zatracania
-      zatracenie
-      zatracenia
       zatracenie
       zatracenia
       zatratowanie
@@ -94427,52 +81842,31 @@ module GameRoomKrowa
       zatroszczenia
       zatrucie
       zatrucia
-      zatrucie
-      zatrucia
-      zatrudnianie
-      zatrudniania
       zatrudnianie
       zatrudniania
       zatrudnienie
       zatrudnienia
-      zatrudnienie
-      zatrudnienia
-      zatruwanie
-      zatruwania
       zatruwanie
       zatruwania
       zatrważanie
       zatrważania
       zatrwożenie
       zatrwożenia
-      zatrwożenie
-      zatrwożenia
       zatrzask
       zatrzaski
       zatrzaska
-      zatrzaski
-      zatrzaśnięcie
-      zatrzaśnięcia
       zatrzaśnięcie
       zatrzaśnięcia
       zatrzepotanie
       zatrzepotania
-      zatrzepotanie
-      zatrzepotania
-      zatrzęsienie
-      zatrzęsienia
       zatrzęsienie
       zatrzęsienia
       zatrzymana
       zatrzymane
       zatrzymanie
       zatrzymania
-      zatrzymanie
-      zatrzymania
       zatrzymany
       zatrzymani
-      zatrzymywanie
-      zatrzymywania
       zatrzymywanie
       zatrzymywania
       zatupanie
@@ -94489,8 +81883,6 @@ module GameRoomKrowa
       zatwierdzenia
       zatyczka
       zatyczki
-      zatykanie
-      zatykania
       zatykanie
       zatykania
       zatytułowanie
@@ -94515,7 +81907,6 @@ module GameRoomKrowa
       zawadiactwa
       zawadiaka
       zawadiacy
-      zawadiaka
       zawadiaki
       zawadzanie
       zawadzania
@@ -94525,10 +81916,6 @@ module GameRoomKrowa
       zawahania
       zawalanie
       zawalania
-      zawalanie
-      zawalania
-      zawalenie
-      zawalenia
       zawalenie
       zawalenia
       zawalidroga
@@ -94559,10 +81946,6 @@ module GameRoomKrowa
       zawędrowania
       zawężanie
       zawężania
-      zawężanie
-      zawężania
-      zawężenie
-      zawężenia
       zawężenie
       zawężenia
       zawiadamianie
@@ -94585,8 +81968,6 @@ module GameRoomKrowa
       zawiązywania
       zawiedzenie
       zawiedzenia
-      zawiedzenie
-      zawiedzenia
       zawieja
       zawieje
       zawieranie
@@ -94595,10 +81976,6 @@ module GameRoomKrowa
       zawieruchy
       zawieruszanie
       zawieruszania
-      zawieruszanie
-      zawieruszania
-      zawieruszenie
-      zawieruszenia
       zawieruszenie
       zawieruszenia
       zawierzanie
@@ -94623,16 +82000,10 @@ module GameRoomKrowa
       zawiezienia
       zawijanie
       zawijania
-      zawijanie
-      zawijania
       zawijas
       zawijasy
       zawikłanie
       zawikłania
-      zawikłanie
-      zawikłania
-      zawilec
-      zawilce
       zawilec
       zawilce
       zawilgnięcie
@@ -94647,8 +82018,6 @@ module GameRoomKrowa
       zawinienia
       zawinięcie
       zawinięcia
-      zawinięcie
-      zawinięcia
       zawirowanie
       zawirowania
       zawisak
@@ -94661,8 +82030,6 @@ module GameRoomKrowa
       zawiśnięcia
       zawitanie
       zawitania
-      zawleczenie
-      zawleczenia
       zawleczenie
       zawleczenia
       zawleczka
@@ -94687,8 +82054,6 @@ module GameRoomKrowa
       zawodówki
       zawodzenie
       zawodzenia
-      zawodzenie
-      zawodzenia
       zawojowanie
       zawojowania
       zawojowywanie
@@ -94705,20 +82070,12 @@ module GameRoomKrowa
       zawory
       zawracanie
       zawracania
-      zawracanie
-      zawracania
-      zawrócenie
-      zawrócenia
       zawrócenie
       zawrócenia
       zawrót
       zawroty
       zawstydzanie
       zawstydzania
-      zawstydzanie
-      zawstydzania
-      zawstydzenie
-      zawstydzenia
       zawstydzenie
       zawstydzenia
       zawtórowanie
@@ -94743,34 +82100,18 @@ module GameRoomKrowa
       zazgrzytania
       zazielenianie
       zazieleniania
-      zazielenianie
-      zazieleniania
-      zazielenienie
-      zazielenienia
       zazielenienie
       zazielenienia
       zaziębianie
       zaziębiania
-      zaziębianie
-      zaziębiania
-      zaziębienie
-      zaziębienia
       zaziębienie
       zaziębienia
       zaznaczanie
       zaznaczania
-      zaznaczanie
-      zaznaczania
-      zaznaczenie
-      zaznaczenia
       zaznaczenie
       zaznaczenia
       zaznajamianie
       zaznajamiania
-      zaznajamianie
-      zaznajamiania
-      zaznajomienie
-      zaznajomienia
       zaznajomienie
       zaznajomienia
       zaznanie
@@ -94793,16 +82134,10 @@ module GameRoomKrowa
       zażenowania
       zażeranie
       zażerania
-      zażeranie
-      zażerania
       zażganie
       zażgania
       zażółcanie
       zażółcania
-      zażółcanie
-      zażółcania
-      zażółcenie
-      zażółcenia
       zażółcenie
       zażółcenia
       zażycie
@@ -94835,7 +82170,6 @@ module GameRoomKrowa
       zbawiania
       zbawiciel
       zbawiciele
-      zbawiciel
       zbawicielu
       zbawienie
       zbawienia
@@ -94843,7 +82177,6 @@ module GameRoomKrowa
       zbawienności
       zbereźnik
       zbereźnicy
-      zbereźnik
       zbereźniki
       zbesztanie
       zbesztania
@@ -94851,22 +82184,15 @@ module GameRoomKrowa
       zbędności
       zbicie
       zbicia
-      zbicie
-      zbicia
       zbiednienie
       zbiednienia
       zbieg
       zbiegowie
-      zbieg
       zbiegi
-      zbieganie
-      zbiegania
       zbieganie
       zbiegania
       zbiegły
       zbiegli
-      zbiegnięcie
-      zbiegnięcia
       zbiegnięcie
       zbiegnięcia
       zbiegowisko
@@ -94883,18 +82209,12 @@ module GameRoomKrowa
       zbieralniki
       zbieranie
       zbierania
-      zbieranie
-      zbierania
       zbieranina
       zbieraniny
       zbieżność
       zbieżności
       zbijanie
       zbijania
-      zbijanie
-      zbijania
-      zbilansowanie
-      zbilansowania
       zbilansowanie
       zbilansowania
       zbiorek
@@ -94912,9 +82232,7 @@ module GameRoomKrowa
       zbiorowość
       zbiorowości
       zbiory
-      zbiory
       zbiór
-      zbiory
       zbiórka
       zbiórki
       zbir
@@ -94931,10 +82249,6 @@ module GameRoomKrowa
       zblednięcia
       zbliżanie
       zbliżania
-      zbliżanie
-      zbliżania
-      zbliżenie
-      zbliżenia
       zbliżenie
       zbliżenia
       zblokowanie
@@ -94973,8 +82287,6 @@ module GameRoomKrowa
       zbraknięcia
       zbratanie
       zbratania
-      zbratanie
-      zbratania
       zbroczenie
       zbroczenia
       zbrodnia
@@ -94991,8 +82303,6 @@ module GameRoomKrowa
       zbrojarze
       zbrojenie
       zbrojenia
-      zbrojenie
-      zbrojenia
       zbrojmistrz
       zbrojmistrze
       zbrojny
@@ -95001,8 +82311,6 @@ module GameRoomKrowa
       zbrojownie
       zbrojówka
       zbrojówki
-      zbrukanie
-      zbrukania
       zbrukanie
       zbrukania
       zbrylanie
@@ -95017,18 +82325,12 @@ module GameRoomKrowa
       zbudowania
       zbudzenie
       zbudzenia
-      zbudzenie
-      zbudzenia
       zbujanie
       zbujania
       zbuk
       zbuki
       zbuntowanie
       zbuntowania
-      zbuntowanie
-      zbuntowania
-      zburzenie
-      zburzenia
       zburzenie
       zburzenia
       zbutwienie
@@ -95049,24 +82351,14 @@ module GameRoomKrowa
       zbzikowania
       zdanie
       zdania
-      zdanie
-      zdania
       zdanko
       zdanka
       zdarcie
       zdarcia
-      zdarcie
-      zdarcia
-      zdarzanie
-      zdarzania
       zdarzanie
       zdarzania
       zdarzenie
       zdarzenia
-      zdarzenie
-      zdarzenia
-      zdawanie
-      zdawania
       zdawanie
       zdawania
       zdążanie
@@ -95077,8 +82369,6 @@ module GameRoomKrowa
       zdechlaki
       zdechnięcie
       zdechnięcia
-      zdecydowanie
-      zdecydowania
       zdecydowanie
       zdecydowania
       zdefiniowanie
@@ -95093,10 +82383,6 @@ module GameRoomKrowa
       zdeklarowania
       zdeklasowanie
       zdeklasowania
-      zdeklasowanie
-      zdeklasowania
-      zdemaskowanie
-      zdemaskowania
       zdemaskowanie
       zdemaskowania
       zdementowanie
@@ -95107,16 +82393,10 @@ module GameRoomKrowa
       zdemontowania
       zdenerwowanie
       zdenerwowania
-      zdenerwowanie
-      zdenerwowania
       zdeponowanie
       zdeponowania
       zdeprawowanie
       zdeprawowania
-      zdeprawowanie
-      zdeprawowania
-      zdeprymowanie
-      zdeprymowania
       zdeprymowanie
       zdeprymowania
       zdeptanie
@@ -95127,10 +82407,6 @@ module GameRoomKrowa
       zderzania
       zderzenie
       zderzenia
-      zderzenie
-      zderzenia
-      zdewaluowanie
-      zdewaluowania
       zdewaluowanie
       zdewaluowania
       zdewastowanie
@@ -95151,12 +82427,8 @@ module GameRoomKrowa
       zdobnictwa
       zdobycie
       zdobycia
-      zdobycie
-      zdobycia
       zdobycz
       zdobycze
-      zdobywanie
-      zdobywania
       zdobywanie
       zdobywania
       zdobywca
@@ -95175,10 +82447,6 @@ module GameRoomKrowa
       zdrady
       zdradzanie
       zdradzania
-      zdradzanie
-      zdradzania
-      zdradzenie
-      zdradzenia
       zdradzenie
       zdradzenia
       zdrajca
@@ -95198,7 +82466,6 @@ module GameRoomKrowa
       zdrobnienie
       zdrobnienia
       zdrowie
-      zdrowie
       zdrowienie
       zdrowienia
       zdrowotność
@@ -95210,7 +82477,6 @@ module GameRoomKrowa
       zdrożności
       zdrożnościach
       zdrożność
-      zdrożności
       zdrój
       zdroje
       zdróweczko
@@ -95223,10 +82489,6 @@ module GameRoomKrowa
       zdrzemnięcia
       zdumienie
       zdumienia
-      zdumienie
-      zdumienia
-      zdumiewanie
-      zdumiewania
       zdumiewanie
       zdumiewania
       zdun
@@ -95253,14 +82515,10 @@ module GameRoomKrowa
       zdzielenia
       zdzieranie
       zdzierania
-      zdzieranie
-      zdzierania
       zdzierstwo
       zdzierstwa
       zdziwaczenie
       zdziwaczenia
-      zdziwienie
-      zdziwienia
       zdziwienie
       zdziwienia
       zdźwiganie
@@ -95269,14 +82527,10 @@ module GameRoomKrowa
       zebry
       zebranie
       zebrania
-      zebranie
-      zebrania
       zebranko
       zebranka
       zecer
       zecerzy
-      zecernia
-      zecernie
       zecernia
       zecernie
       zecerstwo
@@ -95327,12 +82581,8 @@ module GameRoomKrowa
       zenzy
       zepchnięcie
       zepchnięcia
-      zepchnięcie
-      zepchnięcia
       zeppelin
       zeppeliny
-      zepsucie
-      zepsucia
       zepsucie
       zepsucia
       zerkanie
@@ -95343,24 +82593,16 @@ module GameRoomKrowa
       zera
       zerwanie
       zerwania
-      zerwanie
-      zerwania
       zerznięcie
       zerznięcia
       zerżnięcie
       zerżnięcia
       zeschnięcie
       zeschnięcia
-      zeschnięcie
-      zeschnięcia
       zeskakiwanie
       zeskakiwania
       zeskalanie
       zeskalania
-      zeskalanie
-      zeskalania
-      zeskalenie
-      zeskalenia
       zeskalenie
       zeskalenia
       zeskoczenie
@@ -95377,12 +82619,8 @@ module GameRoomKrowa
       zesłańcy
       zespalanie
       zespalania
-      zespalanie
-      zespalania
       zespawanie
       zespawania
-      zespolenie
-      zespolenia
       zespolenie
       zespolenia
       zespolik
@@ -95401,10 +82639,6 @@ module GameRoomKrowa
       zestawienia
       zestrajanie
       zestrajania
-      zestrajanie
-      zestrajania
-      zestrojenie
-      zestrojenia
       zestrojenie
       zestrojenia
       zestrój
@@ -95439,10 +82673,6 @@ module GameRoomKrowa
       zeszlifowania
       zeszmacenie
       zeszmacenia
-      zeszmacenie
-      zeszmacenia
-      zeszpecenie
-      zeszpecenia
       zeszpecenie
       zeszpecenia
       zesztukowanie
@@ -95455,8 +82685,6 @@ module GameRoomKrowa
       zeszyciki
       zeszyt
       zeszyty
-      zeszyty
-      zeszyty
       zeszywanie
       zeszywania
       ześlizg
@@ -95467,8 +82695,6 @@ module GameRoomKrowa
       ześlizgnięcia
       ześliźnięcie
       ześliźnięcia
-      ześrodkowanie
-      ześrodkowania
       ześrodkowanie
       ześrodkowania
       ześrubowanie
@@ -95483,8 +82709,6 @@ module GameRoomKrowa
       zeteselowcy
       zetknięcie
       zetknięcia
-      zetknięcie
-      zetknięcia
       zetlenie
       zetlenia
       zetwuemowiec
@@ -95493,8 +82717,6 @@ module GameRoomKrowa
       zewy
       zez
       zezy
-      zezłoszczenie
-      zezłoszczenia
       zezłoszczenie
       zezłoszczenia
       zeznanie
@@ -95519,16 +82741,10 @@ module GameRoomKrowa
       zębodoły
       zębokarp
       zębokarpie
-      zębokarpie
-      zębokarpie
-      zębowce
       zębowce
       zębowiec
-      zębowce
       zębowość
       zębowości
-      zęby
-      zęby
       zęza
       zęzy
       zgadnięcie
@@ -95543,14 +82759,10 @@ module GameRoomKrowa
       zgagi
       zganianie
       zganiania
-      zganianie
-      zganiania
       zganienie
       zganienia
       zgapienie
       zgapienia
-      zgarbienie
-      zgarbienia
       zgarbienie
       zgarbienia
       zgarniacz
@@ -95569,10 +82781,6 @@ module GameRoomKrowa
       zgęstnienia
       zgęszczanie
       zgęszczania
-      zgęszczanie
-      zgęszczania
-      zgęszczenie
-      zgęszczenia
       zgęszczenie
       zgęszczenia
       zgiełk
@@ -95581,12 +82789,8 @@ module GameRoomKrowa
       zgiełkliwości
       zgięcie
       zgięcia
-      zgięcie
-      zgięcia
       zginacz
       zginacze
-      zginanie
-      zginania
       zginanie
       zginania
       zginarka
@@ -95594,13 +82798,10 @@ module GameRoomKrowa
       zginięcie
       zginięcia
       zgliszcza
-      zgliszcza
       zgliwienie
       zgliwienia
       zgładzenie
       zgładzenia
-      zgłaszanie
-      zgłaszania
       zgłaszanie
       zgłaszania
       zgłębianie
@@ -95617,8 +82818,6 @@ module GameRoomKrowa
       zgłoskowce
       zgłoszenie
       zgłoszenia
-      zgłoszenie
-      zgłoszenia
       zgłupienie
       zgłupienia
       zgnębienie
@@ -95629,14 +82828,10 @@ module GameRoomKrowa
       zgnicia
       zgniecenie
       zgniecenia
-      zgniecenie
-      zgniecenia
       zgniewanie
       zgniewania
       zgnilizna
       zgnilizny
-      zgniłek
-      zgniłki
       zgniłek
       zgniłki
       zgnojenie
@@ -95649,18 +82844,12 @@ module GameRoomKrowa
       zgodności
       zgodzenie
       zgodzenia
-      zgodzenie
-      zgodzenia
       zgolenie
       zgolenia
       zgon
       zgony
       zgonienie
       zgonienia
-      zgonienie
-      zgonienia
-      zgorszenie
-      zgorszenia
       zgorszenie
       zgorszenia
       zgorzel
@@ -95679,21 +82868,14 @@ module GameRoomKrowa
       zgrabienie
       zgrabienia
       zgrabki
-      zgrabki
       zgraja
       zgraje
       zgramolenie
       zgramolenia
       zgranie
       zgrania
-      zgranie
-      zgrania
       zgromadzanie
       zgromadzania
-      zgromadzanie
-      zgromadzania
-      zgromadzenie
-      zgromadzenia
       zgromadzenie
       zgromadzenia
       zgromienie
@@ -95710,12 +82892,8 @@ module GameRoomKrowa
       zgruntowania
       zgrupowanie
       zgrupowania
-      zgrupowanie
-      zgrupowania
       zgrywa
       zgrywy
-      zgrywanie
-      zgrywania
       zgrywanie
       zgrywania
       zgrywus
@@ -95726,32 +82904,22 @@ module GameRoomKrowa
       zgryzania
       zgryzienie
       zgryzienia
-      zgryzienie
-      zgryzienia
       zgryzota
       zgryzoty
       zgryźliwość
       zgryźliwości
       zgrzanie
       zgrzania
-      zgrzanie
-      zgrzania
       zgrzeblarka
       zgrzeblarki
-      zgrzeblarnia
-      zgrzeblarnie
       zgrzeblarnia
       zgrzeblarnie
       zgrzeblenie
       zgrzeblenia
       zgrzebła
-      zgrzebła
       zgrzebło
-      zgrzebła
       zgrzeszenie
       zgrzeszenia
-      zgrzewanie
-      zgrzewania
       zgrzewanie
       zgrzewania
       zgrzewarka
@@ -95768,12 +82936,8 @@ module GameRoomKrowa
       zguby
       zgubienie
       zgubienia
-      zgubienie
-      zgubienia
       zgwałcenie
       zgwałcenia
-      zhańbienie
-      zhańbienia
       zhańbienie
       zhańbienia
       zhardzenie
@@ -95787,14 +82951,8 @@ module GameRoomKrowa
       ziarenko
       ziarenka
       ziarenkowce
-      ziarenkowce
       ziarenkowiec
-      ziarenkowce
       ziarniak
-      ziarniaki
-      ziarniak
-      ziarniaki
-      ziarniaki
       ziarniaki
       ziarnina
       ziarniny
@@ -95822,12 +82980,8 @@ module GameRoomKrowa
       zieleniarki
       zielenica
       zielenice
-      zielenice
-      zielenice
       zieleniec
       zieleńce
-      zielenienie
-      zielenienia
       zielenienie
       zielenienia
       zielenina
@@ -95838,7 +82992,6 @@ module GameRoomKrowa
       zielistki
       zielnik
       zielniki
-      zielone
       zielone
       zielonka
       zielonki
@@ -95858,8 +83011,6 @@ module GameRoomKrowa
       ziemiopłody
       ziemiórka
       ziemiórki
-      ziemniaczek
-      ziemniaczki
       ziemniaczek
       ziemniaczki
       ziemniak
@@ -95883,14 +83034,11 @@ module GameRoomKrowa
       zima
       zimy
       zimne
-      zimne
       zimnica
       zimnice
       zimno
       zimna
       zimorodek
-      zimorodki
-      zimorodki
       zimorodki
       zimowanie
       zimowania
@@ -95900,10 +83048,7 @@ module GameRoomKrowa
       zimowity
       zintegrowanie
       zintegrowania
-      zintegrowanie
-      zintegrowania
       zioło
-      zioła
       ziomek
       ziomkowie
       ziomkostwo
@@ -95918,14 +83063,8 @@ module GameRoomKrowa
       zipnięcia
       zirytowanie
       zirytowania
-      zirytowanie
-      zirytowania
       ziszczanie
       ziszczania
-      ziszczanie
-      ziszczania
-      ziszczenie
-      ziszczenia
       ziszczenie
       ziszczenia
       zjadacz
@@ -95952,12 +83091,8 @@ module GameRoomKrowa
       zjazdowcy
       zjechanie
       zjechania
-      zjechanie
-      zjechania
       zjednanie
       zjednania
-      zjednoczenie
-      zjednoczenia
       zjednoczenie
       zjednoczenia
       zjednywanie
@@ -95968,18 +83103,12 @@ module GameRoomKrowa
       zjełczenia
       zjeżanie
       zjeżania
-      zjeżanie
-      zjeżania
       zjeżdżalnia
       zjeżdżalnie
       zjeżdżanie
       zjeżdżania
-      zjeżdżanie
-      zjeżdżania
       zjeżdżenie
       zjeżdżenia
-      zjeżenie
-      zjeżenia
       zjeżenie
       zjeżenia
       zjędrnienie
@@ -95988,24 +83117,14 @@ module GameRoomKrowa
       zjonizowania
       zlanie
       zlania
-      zlanie
-      zlania
-      zlasowanie
-      zlasowania
       zlasowanie
       zlasowania
       zlatanie
       zlatania
-      zlatanie
-      zlatania
-      zlatywanie
-      zlatywania
       zlatywanie
       zlatywania
       zlecanie
       zlecania
-      zlecenie
-      zlecenia
       zlecenie
       zlecenia
       zleceniodawca
@@ -96018,18 +83137,12 @@ module GameRoomKrowa
       zlepki
       zlepianie
       zlepiania
-      zlepianie
-      zlepiania
-      zlepienie
-      zlepienia
       zlepienie
       zlepienia
       zlepieniec
       zlepieńce
       zlew
       zlewy
-      zlewanie
-      zlewania
       zlewanie
       zlewania
       zlewisko
@@ -96042,8 +83155,6 @@ module GameRoomKrowa
       zlewozmywaki
       zlezienie
       zlezienia
-      zlezienie
-      zlezienia
       zleżenie
       zleżenia
       zlęknięcie
@@ -96054,8 +83165,6 @@ module GameRoomKrowa
       zliczania
       zliczenie
       zliczenia
-      zlikwidowanie
-      zlikwidowania
       zlikwidowanie
       zlikwidowania
       zlinczowanie
@@ -96074,10 +83183,6 @@ module GameRoomKrowa
       zlustrowania
       zluzowanie
       zluzowania
-      zluzowanie
-      zluzowania
-      zluzowywanie
-      zluzowywania
       zluzowywanie
       zluzowywania
       złagadzanie
@@ -96090,18 +83195,10 @@ module GameRoomKrowa
       złajania
       złakomienie
       złakomienia
-      złakomienie
-      złakomienia
-      złamanie
-      złamania
       złamanie
       złamania
       złapanie
       złapania
-      złapanie
-      złapania
-      złażenie
-      złażenia
       złażenie
       złażenia
       złączanie
@@ -96110,16 +83207,11 @@ module GameRoomKrowa
       złącza
       złączenie
       złączenia
-      złączenie
-      złączenia
       złączka
       złączki
       złe
-      złe
       zło
       zła
-      złocenie
-      złocenia
       złocenie
       złocenia
       złocień
@@ -96146,12 +83238,8 @@ module GameRoomKrowa
       złorzeczenia
       złoszczenie
       złoszczenia
-      złoszczenie
-      złoszczenia
       złość
       złości
-      złośliwiec
-      złośliwcy
       złośliwiec
       złośliwcy
       złośliwość
@@ -96170,7 +83258,6 @@ module GameRoomKrowa
       złota
       złotogłów
       złotogłowy
-      złotogłów
       złotogłowie
       złotook
       złotooki
@@ -96190,9 +83277,6 @@ module GameRoomKrowa
       złoża
       złożenie
       złożenia
-      złożenie
-      złożenia
-      złożone
       złożone
       złożoność
       złożoności
@@ -96208,20 +83292,11 @@ module GameRoomKrowa
       złupienia
       złuszczanie
       złuszczania
-      złuszczanie
-      złuszczania
-      złuszczenie
-      złuszczenia
       złuszczenie
       złuszczenia
       zły
-      złe
       zmachanie
       zmachania
-      zmachanie
-      zmachania
-      zmaganie
-      zmagania
       zmaganie
       zmagania
       zmaglowanie
@@ -96236,8 +83311,6 @@ module GameRoomKrowa
       zmamienia
       zmanierowanie
       zmanierowania
-      zmanierowanie
-      zmanierowania
       zmarkotnienie
       zmarkotnienia
       zmarły
@@ -96246,24 +83319,16 @@ module GameRoomKrowa
       zmarnienia
       zmarnowanie
       zmarnowania
-      zmarnowanie
-      zmarnowania
-      zmarszczenie
-      zmarszczenia
       zmarszczenie
       zmarszczenia
       zmarszczka
       zmarszczki
       zmartwienie
       zmartwienia
-      zmartwienie
-      zmartwienia
       zmarzlak
       zmarzlaki
       zmarzlina
       zmarzliny
-      zmarzluch
-      zmarzluchy
       zmarzluch
       zmarzluchy
       zmarznięcie
@@ -96278,8 +83343,6 @@ module GameRoomKrowa
       zmatowienia
       zmawianie
       zmawiania
-      zmawianie
-      zmawiania
       zmaza
       zmazy
       zmazanie
@@ -96288,22 +83351,14 @@ module GameRoomKrowa
       zmazywania
       zmącanie
       zmącania
-      zmącanie
-      zmącania
-      zmącenie
-      zmącenia
       zmącenie
       zmącenia
       zmądrzenie
       zmądrzenia
       zmechacenie
       zmechacenia
-      zmechacenie
-      zmechacenia
       zmeliorowanie
       zmeliorowania
-      zmęczenie
-      zmęczenia
       zmęczenie
       zmęczenia
       zmętnienie
@@ -96330,10 +83385,6 @@ module GameRoomKrowa
       zmieniacze
       zmienianie
       zmieniania
-      zmienianie
-      zmieniania
-      zmienienie
-      zmienienia
       zmienienie
       zmienienia
       zmienna
@@ -96342,7 +83393,6 @@ module GameRoomKrowa
       zmienniczki
       zmiennik
       zmiennicy
-      zmiennik
       zmienniki
       zmienność
       zmienności
@@ -96354,40 +83404,24 @@ module GameRoomKrowa
       zmierzchania
       zmierzenie
       zmierzenia
-      zmierzenie
-      zmierzenia
       zmierzwianie
       zmierzwiania
-      zmierzwianie
-      zmierzwiania
-      zmierzwienie
-      zmierzwienia
       zmierzwienie
       zmierzwienia
       zmierżenie
       zmierżenia
       zmieszanie
       zmieszania
-      zmieszanie
-      zmieszania
-      zmieszczenie
-      zmieszczenia
       zmieszczenie
       zmieszczenia
       zmięcie
       zmięcia
       zmiękczanie
       zmiękczania
-      zmiękczanie
-      zmiękczania
-      zmiękczenie
-      zmiękczenia
       zmiękczenie
       zmiękczenia
       zmięknięcie
       zmięknięcia
-      zmiętoszenie
-      zmiętoszenia
       zmiętoszenie
       zmiętoszenia
       zmiksowanie
@@ -96398,8 +83432,6 @@ module GameRoomKrowa
       zmilknięcia
       zmiłowanie
       zmiłowania
-      zmiłowanie
-      zmiłowania
       zmiotka
       zmiotki
       zmitrężenie
@@ -96408,14 +83440,8 @@ module GameRoomKrowa
       zmizernienia
       zmniejszanie
       zmniejszania
-      zmniejszanie
-      zmniejszania
       zmniejszenie
       zmniejszenia
-      zmniejszenie
-      zmniejszenia
-      zmoczenie
-      zmoczenia
       zmoczenie
       zmoczenia
       zmoknięcie
@@ -96426,8 +83452,6 @@ module GameRoomKrowa
       zmory
       zmordowanie
       zmordowania
-      zmordowanie
-      zmordowania
       zmorzenie
       zmorzenia
       zmotoryzowany
@@ -96436,8 +83460,6 @@ module GameRoomKrowa
       zmowy
       zmożenie
       zmożenia
-      zmówienie
-      zmówienia
       zmówienie
       zmówienia
       zmrok
@@ -96454,22 +83476,12 @@ module GameRoomKrowa
       zmurszenia
       zmuszanie
       zmuszania
-      zmuszanie
-      zmuszania
-      zmuszenie
-      zmuszenia
       zmuszenie
       zmuszenia
       zmycie
       zmycia
-      zmycie
-      zmycia
       zmydlanie
       zmydlania
-      zmydlanie
-      zmydlania
-      zmydlenie
-      zmydlenia
       zmydlenie
       zmydlenia
       zmykanie
@@ -96488,12 +83500,8 @@ module GameRoomKrowa
       zmyślności
       zmywacz
       zmywacze
-      zmywacz
-      zmywacze
       zmywak
       zmywaki
-      zmywanie
-      zmywania
       zmywanie
       zmywania
       znachor
@@ -96506,20 +83514,12 @@ module GameRoomKrowa
       znaczki
       znaczenie
       znaczenia
-      znaczenie
-      znaczenia
       znacznik
       znaczniki
       znajda
       znajdy
-      znajda
-      znajdy
       znajdowanie
       znajdowania
-      znajdowanie
-      znajdowania
-      znajdywanie
-      znajdywania
       znajdywanie
       znajdywania
       znajoma
@@ -96542,11 +83542,8 @@ module GameRoomKrowa
       znalazczynie
       znalezienie
       znalezienia
-      znalezienie
-      znalezienia
       znalezisko
       znaleziska
-      znaleźne
       znaleźne
       znamię
       znamiona
@@ -96554,10 +83551,6 @@ module GameRoomKrowa
       znamionowania
       znanie
       znania
-      znanie
-      znania
-      znarowienie
-      znarowienia
       znarowienie
       znarowienia
       znawca
@@ -96568,8 +83561,6 @@ module GameRoomKrowa
       znawstwa
       znęcanie
       znęcania
-      znęcanie
-      znęcania
       znęcenie
       znęcenia
       znękanie
@@ -96578,32 +83569,18 @@ module GameRoomKrowa
       znicze
       zniechęcanie
       zniechęcania
-      zniechęcanie
-      zniechęcania
-      zniechęcenie
-      zniechęcenia
       zniechęcenie
       zniechęcenia
       znieczulanie
       znieczulania
-      znieczulanie
-      znieczulania
-      znieczulenie
-      znieczulenia
       znieczulenie
       znieczulenia
       znieczulica
       znieczulice
       zniemczanie
       zniemczania
-      zniemczanie
-      zniemczania
       zniemczenie
       zniemczenia
-      zniemczenie
-      zniemczenia
-      zniesienie
-      zniesienia
       zniesienie
       zniesienia
       zniesławianie
@@ -96616,10 +83593,6 @@ module GameRoomKrowa
       zniewalania
       znieważanie
       znieważania
-      znieważanie
-      znieważania
-      znieważenie
-      znieważenia
       znieważenie
       znieważenia
       zniewolenie
@@ -96633,8 +83606,6 @@ module GameRoomKrowa
       zniszczalność
       zniszczenie
       zniszczenia
-      zniszczenie
-      zniszczenia
       znitowanie
       znitowania
       zniweczenie
@@ -96643,10 +83614,6 @@ module GameRoomKrowa
       zniwelowania
       zniżanie
       zniżania
-      zniżanie
-      zniżania
-      zniżenie
-      zniżenia
       zniżenie
       zniżenia
       zniżka
@@ -96661,34 +83628,20 @@ module GameRoomKrowa
       znosy
       znoszenie
       znoszenia
-      znoszenie
-      znoszenia
       znój
       znoje
       znudzenie
       znudzenia
-      znudzenie
-      znudzenia
       znużenie
       znużenia
-      znużenie
-      znużenia
-      zobaczenie
-      zobaczenia
       zobaczenie
       zobaczenia
       zobligowanie
       zobligowania
       zobojętnianie
       zobojętniania
-      zobojętnianie
-      zobojętniania
       zobojętnienie
       zobojętnienia
-      zobojętnienie
-      zobojętnienia
-      zobowiązanie
-      zobowiązania
       zobowiązanie
       zobowiązania
       zobrazowanie
@@ -96699,27 +83652,19 @@ module GameRoomKrowa
       zodiaki
       zogniskowanie
       zogniskowania
-      zogniskowanie
-      zogniskowania
       zohydzanie
       zohydzania
       zohydzenie
       zohydzenia
       zoil
       zoile
-      zoil
-      zoile
       zol
       zole
       zołza
       zołzy
-      zołzy
-      zołzy
       zona
       zony
       zoofag
-      zoofagi
-      zoofagi
       zoofagi
       zoofilia
       zoofilie
@@ -96738,8 +83683,6 @@ module GameRoomKrowa
       zoomorfizmy
       zoonoza
       zoonozy
-      zoonozy
-      zoonozy
       zooplankton
       zooplanktony
       zoosocjologia
@@ -96754,8 +83697,6 @@ module GameRoomKrowa
       zoperowania
       zoranie
       zorania
-      zorientowanie
-      zorientowania
       zorientowanie
       zorientowania
       zorza
@@ -96776,26 +83717,18 @@ module GameRoomKrowa
       zramolenia
       zranienie
       zranienia
-      zranienie
-      zranienia
       zrastanie
       zrastania
       zraszacz
       zraszacze
       zraszanie
       zraszania
-      zraszanie
-      zraszania
       zraz
       zrazy
       zrazik
       zraziki
-      zrazy
-      zrazy
       zrażanie
       zrażania
-      zrażenie
-      zrażenia
       zrażenie
       zrażenia
       zrąb
@@ -96806,8 +83739,6 @@ module GameRoomKrowa
       zrąbywania
       zrealizowanie
       zrealizowania
-      zrealizowanie
-      zrealizowania
       zreasumowanie
       zreasumowania
       zrecenzowanie
@@ -96816,12 +83747,8 @@ module GameRoomKrowa
       zredagowania
       zredukowanie
       zredukowania
-      zredukowanie
-      zredukowania
       zreferowanie
       zreferowania
-      zreformowanie
-      zreformowania
       zreformowanie
       zreformowania
       zrejterowanie
@@ -96839,15 +83766,10 @@ module GameRoomKrowa
       zręczność
       zręczności
       zrękowiny
-      zrękowiny
       zripostowanie
       zripostowania
       zrobienie
       zrobienia
-      zrobienie
-      zrobienia
-      zrodzenie
-      zrodzenia
       zrodzenie
       zrodzenia
       zrogowacenie
@@ -96860,34 +83782,20 @@ module GameRoomKrowa
       zrostnice
       zroszenie
       zroszenia
-      zroszenie
-      zroszenia
       zrościęcie
       zrościęcia
       zrozumiałość
       zrozumiałości
       zrozumienie
       zrozumienia
-      zrozumienie
-      zrozumienia
-      zrównanie
-      zrównania
       zrównanie
       zrównania
       zrównoważanie
       zrównoważania
-      zrównoważanie
-      zrównoważania
-      zrównoważenie
-      zrównoważenia
       zrównoważenie
       zrównoważenia
       zrównywanie
       zrównywania
-      zrównywanie
-      zrównywania
-      zróżnicowanie
-      zróżnicowania
       zróżnicowanie
       zróżnicowania
       zróżowienie
@@ -96898,10 +83806,6 @@ module GameRoomKrowa
       zrugania
       zrujnowanie
       zrujnowania
-      zrujnowanie
-      zrujnowania
-      zrumienienie
-      zrumienienia
       zrumienienie
       zrumienienia
       zruszanie
@@ -96914,12 +83818,8 @@ module GameRoomKrowa
       zrycia
       zrymowanie
       zrymowania
-      zrymowanie
-      zrymowania
       zryw
       zrywy
-      zrywanie
-      zrywania
       zrywanie
       zrywania
       zrywność
@@ -96938,16 +83838,10 @@ module GameRoomKrowa
       zrzekania
       zrzeszanie
       zrzeszania
-      zrzeszanie
-      zrzeszania
-      zrzeszenie
-      zrzeszenia
       zrzeszenie
       zrzeszenia
       zrzez
       zrzezy
-      zrzęda
-      zrzędy
       zrzęda
       zrzędy
       zrzędność
@@ -96956,10 +83850,6 @@ module GameRoomKrowa
       zrzędzenia
       zrzucanie
       zrzucania
-      zrzucanie
-      zrzucania
-      zrzucenie
-      zrzucenia
       zrzucenie
       zrzucenia
       zrzut
@@ -96982,8 +83872,6 @@ module GameRoomKrowa
       zserowacenia
       zsiadanie
       zsiadania
-      zsiadanie
-      zsiadania
       zsieczenie
       zsieczenia
       zsiekanie
@@ -97004,16 +83892,10 @@ module GameRoomKrowa
       zsumowywania
       zsunięcie
       zsunięcia
-      zsunięcie
-      zsunięcia
-      zsuwanie
-      zsuwania
       zsuwanie
       zsuwania
       zsuwnia
       zsuwnie
-      zsychanie
-      zsychania
       zsychanie
       zsychania
       zsyłanie
@@ -97028,14 +83910,8 @@ module GameRoomKrowa
       zsypywania
       zszarganie
       zszargania
-      zszarganie
-      zszargania
       zszarpanie
       zszarpania
-      zszarpanie
-      zszarpania
-      zszarpywanie
-      zszarpywania
       zszarpywanie
       zszarpywania
       zszarzenie
@@ -97060,12 +83936,8 @@ module GameRoomKrowa
       zubożenia
       zuch
       zuchy
-      zuch
-      zuchy
       zuchowatość
       zuchowatości
-      zuchwalec
-      zuchwalcy
       zuchwalec
       zuchwalcy
       zuchwalstwo
@@ -97082,12 +83954,8 @@ module GameRoomKrowa
       zupki
       zużycie
       zużycia
-      zużycie
-      zużycia
       zużytkowanie
       zużytkowania
-      zużywanie
-      zużywania
       zużywanie
       zużywania
       zwabianie
@@ -97100,22 +83968,14 @@ module GameRoomKrowa
       zwagarowania
       zwalanie
       zwalania
-      zwalanie
-      zwalania
-      zwalczanie
-      zwalczania
       zwalczanie
       zwalczania
       zwalczenie
       zwalczenia
       zwalenie
       zwalenia
-      zwalenie
-      zwalenia
       zwalniacz
       zwalniacze
-      zwalnianie
-      zwalniania
       zwalnianie
       zwalniania
       zwał
@@ -97128,16 +83988,10 @@ module GameRoomKrowa
       zwałowarki
       zwałowisko
       zwałowiska
-      zwały
-      zwały
-      zwanie
-      zwania
       zwanie
       zwania
       zwapnienie
       zwapnienia
-      zwarcie
-      zwarcia
       zwarcie
       zwarcia
       zwariowanie
@@ -97146,20 +84000,14 @@ module GameRoomKrowa
       zwartości
       zwarzenie
       zwarzenia
-      zwarzenie
-      zwarzenia
       zwaśnienie
       zwaśnienia
       zważanie
       zważania
       zważenie
       zważenia
-      zważenie
-      zważenia
       zważnienie
       zważnienia
-      zwąchanie
-      zwąchania
       zwąchanie
       zwąchania
       zwątpienie
@@ -97174,20 +84022,12 @@ module GameRoomKrowa
       zwędzenia
       zwęglanie
       zwęglania
-      zwęglanie
-      zwęglania
-      zwęglenie
-      zwęglenia
       zwęglenie
       zwęglenia
       zwęszenie
       zwęszenia
       zwężanie
       zwężania
-      zwężanie
-      zwężania
-      zwężenie
-      zwężenia
       zwężenie
       zwężenia
       zwężka
@@ -97202,12 +84042,9 @@ module GameRoomKrowa
       zwiastowania
       zwiastun
       zwiastuni
-      zwiastun
       zwiastuny
       zwiastunka
       zwiastunki
-      związanie
-      związania
       związanie
       związania
       związek
@@ -97216,32 +84053,20 @@ module GameRoomKrowa
       związkowcy
       związywanie
       związywania
-      związywanie
-      związywania
       zwichnięcie
       zwichnięcia
       zwichrowanie
       zwichrowania
-      zwichrowanie
-      zwichrowania
       zwichrzanie
       zwichrzania
-      zwichrzanie
-      zwichrzania
-      zwichrzenie
-      zwichrzenia
       zwichrzenie
       zwichrzenia
       zwidywanie
       zwidywania
       zwidzenie
       zwidzenia
-      zwidzenie
-      zwidzenia
       zwiedzanie
       zwiedzania
-      zwiedzenie
-      zwiedzenia
       zwiedzenie
       zwiedzenia
       zwieńczanie
@@ -97250,8 +84075,6 @@ module GameRoomKrowa
       zwieńczenia
       zwieracz
       zwieracze
-      zwieranie
-      zwierania
       zwieranie
       zwierania
       zwierciadło
@@ -97264,16 +84087,12 @@ module GameRoomKrowa
       zwierzaki
       zwierzanie
       zwierzania
-      zwierzanie
-      zwierzania
       zwierzątko
       zwierzątka
       zwierzchnik
       zwierzchnicy
       zwierzchność
       zwierzchności
-      zwierzenie
-      zwierzenia
       zwierzenie
       zwierzenia
       zwierzę
@@ -97288,10 +84107,6 @@ module GameRoomKrowa
       zwierzyńce
       zwieszanie
       zwieszania
-      zwieszanie
-      zwieszania
-      zwieszenie
-      zwieszenia
       zwieszenie
       zwieszenia
       zwietrzelina
@@ -97308,16 +84123,10 @@ module GameRoomKrowa
       zwiędnięcia
       zwiększanie
       zwiększania
-      zwiększanie
-      zwiększania
-      zwiększenie
-      zwiększenia
       zwiększenie
       zwiększenia
       zwięzłość
       zwięzłości
-      zwijanie
-      zwijania
       zwijanie
       zwijania
       zwilgotnienie
@@ -97328,14 +84137,8 @@ module GameRoomKrowa
       zwilżaczki
       zwilżanie
       zwilżania
-      zwilżanie
-      zwilżania
       zwilżenie
       zwilżenia
-      zwilżenie
-      zwilżenia
-      zwinięcie
-      zwinięcia
       zwinięcie
       zwinięcia
       zwinka
@@ -97356,19 +84159,11 @@ module GameRoomKrowa
       zwitki
       zwitnik
       zwitniki
-      zwitniki
-      zwitniki
       zwleczenie
       zwleczenia
-      zwleczenie
-      zwleczenia
-      zwlekanie
-      zwlekania
       zwlekanie
       zwlekania
       zwłoka
-      zwłoki
-      zwłoki
       zwłoki
       zwłóczenie
       zwłóczenia
@@ -97376,8 +84171,6 @@ module GameRoomKrowa
       zwłóknienia
       zwodowanie
       zwodowania
-      zwodzenie
-      zwodzenia
       zwodzenie
       zwodzenia
       zwojowanie
@@ -97388,14 +84181,8 @@ module GameRoomKrowa
       zwolennicy
       zwolnienie
       zwolnienia
-      zwolnienie
-      zwolnienia
       zwołanie
       zwołania
-      zwołanie
-      zwołania
-      zwoływanie
-      zwoływania
       zwoływanie
       zwoływania
       zwornik
@@ -97408,14 +84195,9 @@ module GameRoomKrowa
       zwoje
       zwójka
       zwójki
-      zwójki
-      zwójki
-      zwójkowate
       zwójkowate
       zwózka
       zwózki
-      zwracanie
-      zwracania
       zwracanie
       zwracania
       zwrot
@@ -97425,13 +84207,10 @@ module GameRoomKrowa
       zwrotnica
       zwrotnice
       zwrotniczy
-      zwrotniczy
       zwrotnik
       zwrotniki
       zwrotność
       zwrotności
-      zwrócenie
-      zwrócenia
       zwrócenie
       zwrócenia
       zwulgarnienie
@@ -97458,8 +84237,6 @@ module GameRoomKrowa
       zwymyślania
       zwyradnianie
       zwyradniania
-      zwyrodnialec
-      zwyrodnialcy
       zwyrodnialec
       zwyrodnialcy
       zwyżka
@@ -97516,8 +84293,6 @@ module GameRoomKrowa
       ździebka
       ździeblarz
       ździeblarze
-      ździeblarze
-      ździeblarze
       ździebło
       ździebła
       ździerstwo
@@ -97555,7 +84330,6 @@ module GameRoomKrowa
       żabieniec
       żabieńce
       żabieńcowate
-      żabieńcowate
       żabiściek
       żabiścieki
       żabka
@@ -97583,12 +84357,9 @@ module GameRoomKrowa
       żagnica
       żagnice
       żagnicowate
-      żagnicowate
-      żagwiowate
       żagwiowate
       żak
       żacy
-      żak
       żaki
       żakard
       żakardy
@@ -97608,7 +84379,6 @@ module GameRoomKrowa
       żałoby
       żałobnik
       żałobnicy
-      żałobnik
       żałobniki
       żałość
       żałości
@@ -97622,8 +84392,6 @@ module GameRoomKrowa
       żary
       żarcie
       żarcia
-      żarcie
-      żarcia
       żarcik
       żarciki
       żardyniera
@@ -97634,19 +84402,14 @@ module GameRoomKrowa
       żargony
       żarliwiec
       żarliwcy
-      żarliwiec
-      żarliwcy
       żarliwość
       żarliwości
       żarłacz
-      żarłacze
-      żarłacze
       żarłacze
       żarłoczność
       żarłoczności
       żarłok
       żarłoki
-      żarna
       żarna
       żarnowiec
       żarnowce
@@ -97664,7 +84427,6 @@ module GameRoomKrowa
       żartownisia
       żartownisie
       żartowniś
-      żartownisie
       żarzenie
       żarzenia
       żądanie
@@ -97675,16 +84437,12 @@ module GameRoomKrowa
       żądła
       żądłówka
       żądłówki
-      żądłówki
-      żądłówki
       żądza
       żądze
       żbik
       żbiki
       żeberka
-      żeberka
       żeberko
-      żeberka
       żebractwo
       żebractwa
       żebraczka
@@ -97699,8 +84457,6 @@ module GameRoomKrowa
       żebra
       żebropław
       żebropławy
-      żebropławy
-      żebropławy
       żebrowanie
       żebrowania
       żegadło
@@ -97708,13 +84464,8 @@ module GameRoomKrowa
       żeglarek
       żeglarki
       żeglarka
-      żeglarki
       żeglarstwo
       żeglarstwa
-      żeglarz
-      żeglarze
-      żeglarz
-      żeglarze
       żeglarz
       żeglarze
       żeglowanie
@@ -97723,8 +84474,6 @@ module GameRoomKrowa
       żeglowności
       żegluga
       żeglugi
-      żegnanie
-      żegnania
       żegnanie
       żegnania
       żel
@@ -97751,16 +84500,12 @@ module GameRoomKrowa
       żelazochromy
       żelazocyjanek
       żelazocyjanki
-      żelazocyjanki
-      żelazocyjanki
       żelazomangan
       żelazomangany
       żelazostop
       żelazostopy
       żelazowce
-      żelazowce
       żelazowiec
-      żelazowce
       żelaźniak
       żelaźniaki
       żelbet
@@ -97773,10 +84518,6 @@ module GameRoomKrowa
       żeliwa
       żenienie
       żenienia
-      żenienie
-      żenienia
-      żenowanie
-      żenowania
       żenowanie
       żenowania
       żer
@@ -97821,8 +84562,6 @@ module GameRoomKrowa
       żłopnięcia
       żłób
       żłoby
-      żłób
-      żłoby
       żłóbek
       żłóbki
       żmija
@@ -97859,8 +84598,6 @@ module GameRoomKrowa
       żołnierze
       żołnierzyk
       żołnierzyki
-      żołnierzyk
-      żołnierzyki
       żona
       żony
       żonaty
@@ -97883,10 +84620,6 @@ module GameRoomKrowa
       żorżety
       żółcenie
       żółcenia
-      żółcenie
-      żółcenia
-      żółcień
-      żółcienie
       żółcień
       żółcienie
       żółć
@@ -97901,18 +84634,12 @@ module GameRoomKrowa
       żółtobrzeżki
       żółtodziób
       żółtodzioby
-      żółtodziób
-      żółtodzioby
       żółtość
       żółtości
       żółw
       żółwie
       żółwiak
       żółwiaki
-      żółwiaki
-      żółwiaki
-      żółwie
-      żółwie
       żółwik
       żółwiki
       żubr
@@ -97940,24 +84667,16 @@ module GameRoomKrowa
       żuk
       żuki
       żukowate
-      żukowate
       żuława
-      żuławy
-      żuławy
       żuławy
       żupa
       żupy
       żupan
       żupani
-      żupan
       żupany
       żur
       żury
       żuraw
-      żurawie
-      żuraw
-      żurawie
-      żurawie
       żurawie
       żurawina
       żurawiny
@@ -97965,8 +84684,6 @@ module GameRoomKrowa
       żurki
       żurnal
       żurnale
-      żużel
-      żużle
       żużel
       żużle
       żużlobeton
@@ -98003,21 +84720,14 @@ module GameRoomKrowa
       życzliwości
       żyd
       żydzi
-      żyd
-      żydzi
       żydostwo
       żydostwa
       żydówka
       żydówki
-      żydówka
-      żydówki
-      żyjący
       żyjący
       żyjątko
       żyjątka
       żylak
-      żylaki
-      żylaki
       żylaki
       żyletka
       żyletki
@@ -98025,17 +84735,11 @@ module GameRoomKrowa
       żyły
       żyłka
       żyłki
-      żyłki
-      żyłki
       żyłkowanie
       żyłkowania
       żyłowanie
       żyłowania
-      żyłowanie
-      żyłowania
       żyrafa
-      żyrafy
-      żyrafy
       żyrafy
       żyrandol
       żyrandole
@@ -98068,8 +84772,6 @@ module GameRoomKrowa
       żywice
       żywiciel
       żywiciele
-      żywiciel
-      żywiciele
       żywicielka
       żywicielki
       żywicowanie
@@ -98078,8 +84780,6 @@ module GameRoomKrowa
       żywiczności
       żywiec
       żywce
-      żywienie
-      żywienia
       żywienie
       żywienia
       żywioł
@@ -98098,14 +84798,10 @@ module GameRoomKrowa
       żyworodności
       żyworódka
       żyworódki
-      żyworódki
-      żyworódki
       żyworództwo
       żyworództwa
       żywość
       żywości
-      żywot
-      żywoty
       żywot
       żywoty
       żywotnik
@@ -98160,7 +84856,6 @@ module GameRoomKrowa
       wony
       perseidy
       perseida
-      zoofilia
       mores
       parkomat
       parkomaty
@@ -98251,6 +84946,191 @@ module GameRoomKrowa
       pluszaki
       oscypek
       oscypki
+      wyjec
+      wyjce
+      oktagon
+      oktagony
+      pentagon
+      pentagony
+      żyrantka
+      żyrantki
+      logistyk
+      logistycy
+      meleks
+      meleksy
+      biorytm
+      biorytmy
+      pozorant
+      pozoranci
+      pozorantka
+      pozorantki
+      pangram
+      pangramy
+      kebab
+      kebaby
+      balik
+      baliki
+      kamerka
+      kamerki
+      guru
+      abnegatka
+      abnegatki
+      karpatka
+      karpatki
+      makiełka
+      makiełki
+      woliera
+      woliery
+      frykas
+      okruch
+      kampus
+      kampusy
+      guziec
+      guźce
+      baniak
+      baniaki
+      miruna
+      miruny
+      wątpia
+      marker
+      markery
+      burger
+      burgery
+      granola
+      granole
+      spalarnia
+      spalarnie
+      rolkarz
+      rolkarze
+      rolkarka
+      rolkarki
+      polar
+      polary
+      koran
+      tora
+      lokum
+      login
+      prompter
+      promptery
+      neutrino
+      neutrina
+      limonka
+      limonki
+      elfka
+      elfowie
+      elfki
+      krasnolud
+      krasnoludka
+      krasnoludowie
+      ork
+      orkowie
+      goblin
+      goblinka
+      gobliny
+      goblinki
+      ogr
+      ogrzyca
+      ogry
+      ogrzyce
+      gnomka
+      gnomki
+      niziołek
+      niziołka
+      niziołkowie
+      niziołki
+      satyrowie
+      faunowie
+      wampirzyca
+      wampirzyce
+      żywiołak
+      żywiołaki
+      golem
+      golemy
+      smoczyca
+      smoczyce
+      wiwerna
+      wiwerny
+      piksel
+      piksele
+      klastry
+      parser
+      parsery
+      interpreter
+      interpretery
+      emulator
+      emulatory
+      interfejs
+      interfejsy
+      repozytorium
+      repozytoria
+      hiperłącze
+      hiperłącza
+      aplet
+      aplety
+      widżet
+      widżety
+      enkoder
+      enkodery
+      iterator
+      iteratory
+      rekurencja
+      rekurencje
+      permutacja
+      permutacje
+      kwantyl
+      kwantyle
+      wariancja
+      wariancje
+      fraktal
+      fraktale
+      mikroprocesor
+      regulator
+      regulatory
+      transponder
+      transpondery
+      przekaźnik
+      przekaźniki
+      siłownik
+      siłowniki
+      tomograf
+      tomografy
+      hadron
+      hadrony
+      nukleotyd
+      nukleotydy
+      piroliza
+      pirolizy
+      grafen
+      grafeny
+      synapsa
+      synapsy
+      rybosom
+      rybosomy
+      lizosom
+      lizosomy
+      peroksysom
+      peroksysomy
+      mitochondrium
+      chromatyda
+      chromatydy
+      polipeptyd
+      polipeptydy
+      genom
+      genomy
+      allel
+      allele
+      patogen
+      patogeny
+      mikrobiom
+      mikrobiomy
+      symbiont
+      symbionty
+      supernowa
+      supernowe
+      spektrogram
+      spektrogramy
+      tomogram
+      tomogramy
     KROWA_NOUNS
     WORDS.freeze
   end

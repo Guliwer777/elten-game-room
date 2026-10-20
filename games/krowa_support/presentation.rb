@@ -30,6 +30,7 @@ module GameRoomGames
         parts << part("answer", GameSurfaces::QuestionSpec.new(id: "krowa-answer-#{state[:round]}",
           prompt: _("Answer: %{length} letters") % {length: state[:length]}, mode: :text,
           value: "", required: true, max_length: 64, show_submit_button: false, clear_on_submit: true,
+          clear_on_rejection: %w[wrong_length unknown_noun],
           extra_commands: extra_commands))
       else
         parts << part("status", information("krowa-status", _("Krowa"), status_text(replay, viewer)))

@@ -5,6 +5,7 @@ class Program
 end
 require_relative "../../__app"
 require_relative "../../lib/bot_turn_gate"
+require_relative '../support/catalog_options'
 
 def assert(value, message); raise message unless value; end
 games = EltenGameRoom::GAME_REGISTRY.ids.map { |id| EltenGameRoom::GAME_REGISTRY.build(id) }
@@ -15,10 +16,11 @@ games.each do |game|
     next
   end
   default = %w[uno makao mille_bornes].include?(game.id) ? 1 : 0
+  profile = GameRoomTest::CatalogOptions.for_players(game, bots: true)
   defs = game.effective_option_definitions.select { |d| d.key == "bot_delay" }
   assert(defs.length == 1 && defs.first.default == default, "shared option #{game.id}")
   [0, 1, 5].each do |delay|
-    options = game.default_options.merge("bot_delay" => delay)
+    options = profile.merge("bot_delay" => delay)
     assert(game.validation_error(options).nil?, "valid delay #{game.id}/#{delay}")
     assert(game.options_from_json(JSON.generate(options))["bot_delay"] == delay, "stored delay #{game.id}")
     state = { options: options, current_player: "Alice", phase: :playing }
@@ -28,7 +30,7 @@ games.each do |game|
     state[:turn_deadline] = 101
     assert(game.bot_move_delay(replay, "Alice", context: context) == 0, "deadline guard #{game.id}")
   end
-  [-1, 6].each { |n| assert(game.validation_error(game.default_options.merge("bot_delay" => n)), "invalid delay #{game.id}") }
+  [-1, 6].each { |n| assert(game.validation_error(profile.merge("bot_delay" => n)), "invalid delay #{game.id}") }
 end
 assert(GameRoomGames::Uno.new.validation_error({ "bot_delay" => 5, "thinking_time" => 2 }), "thinking-time validation")
 clock = 0.0

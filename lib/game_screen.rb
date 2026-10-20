@@ -819,6 +819,7 @@ class GameScreen
       context: action_context
     )
     if status != :ok
+      confirm_surface_action(surface, selection, session_id: surface_session, status: status)
       @game_client&.error(status)
       alert(@game.move_error_for(status, selection: selection, replay: replay, actor: Session.name))
       return false
@@ -844,10 +845,11 @@ class GameScreen
     true
   end
 
-  def confirm_surface_action(surface, selection, session_id:)
+  def confirm_surface_action(surface, selection, session_id:, status: :ok)
     return unless surface && @layout&.surface.equal?(surface) && @layout.session_id == session_id &&
       @repository.session_id(@session) == session_id
-    remember_layout_position if surface.action_accepted(selection)
+    changed = status == :ok ? surface.action_accepted(selection) : surface.action_rejected(selection, status)
+    remember_layout_position if changed
   end
 
   def submit_inline_action(replay, selection, title: _("Sending assessment"))
@@ -902,6 +904,7 @@ class GameScreen
   end
 
   def submit_runner_action(replay, selection, actor, title:, intent: nil)
+    surface, surface_session = @layout&.surface, @layout&.session_id
     result = network_task(title) do
       next unless intent == nil || pending_move_current?(intent)
       @session_runner.submit(session: intent ? intent.session : @session, replay: replay, selection: selection,
@@ -914,6 +917,7 @@ class GameScreen
         alert(_("This action contains too much data and was not sent."))
         return nil
       end
+      confirm_surface_action(surface, selection, session_id: surface_session, status: status)
       @game_client&.error(status)
       alert(@game.move_error_for(status, selection: selection, replay: replay, actor: Session.name))
       return nil

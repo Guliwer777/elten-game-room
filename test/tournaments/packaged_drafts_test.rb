@@ -1,66 +1,64 @@
 # encoding: UTF-8
-require_relative '../support/temporary_directory'
-require 'tmpdir'
 require_relative '../support/binary_rules_load'
-require_relative '../../lib/tournaments/draft_workspace'
-require_relative '../../lib/tournaments/draft_screen'
+require_relative '../support/tournament_public_ui'
+require_relative '../../lib/tournaments/tournament_setup_editor'
 
-def assert(condition, message)
-  raise message unless condition
-end
-
-assert(defined?(GameRoomTournaments::DraftWorkspace), 'Paczka nie zawiera modułu szkiców')
-assert(EltenGameRoom::MAIN_OPTIONS.include?('Turnieje'), 'Paczka nie zawiera polskiego wejścia do turniejów')
+# Exercise the current publication editor. The retired local DraftWorkspace is
+# deliberately not a runtime asset and must not be loaded from the checkout.
+Form.prepend(TournamentPublicUI::Script)
+ui = TournamentPublicUI
 registry = EltenGameRoom::GAME_REGISTRY
-# Cały nowy interfejs, nie tylko pierwsze trzy formularze pierwszej paczki.
-sources = %w[draft_editor draft_screen draft_workspace draft_details_editor window_fields draft_preview].map { |name| "lib/tournaments/#{name}.rb" }
-messages = sources.flat_map do |path|
-  BinaryRulesLoad.read(File.join(BinaryRulesLoad::ROOT, path)).scan(/_\("([^"\n]*)"\)/).flatten
-end
-missing = messages.uniq.reject { |message| !RULES_CATALOG[message].to_s.empty? }
-assert(missing.empty?, "Brak polskich tłumaczeń: #{missing.join('; ')}")
-
-module PackagedTournamentForm
-  def wait
-    super
-    $packaged_tournament_driver.call(self)
-  end
-end
-Form.prepend(PackagedTournamentForm)
-
-GameRoomTest::TemporaryDirectory.create('tournament-binary-') do |directory|
-  program = Object.new
-  program.define_singleton_method(:data_path) { directory }
-  store = GameRoomTournaments::Drafts.new(program, owner: 'Tester')
-  %w[en pl].each do |language|
-    GameRoomTestLocalization.use_language(language)
-    registry.ids.each do |id|
-      game = registry.build(id)
-      options = game.default_options
-      saved = store.create('name' => game.name, 'game_id' => id, 'game_options' => options)
-      assert(store.fetch(saved['id'])['game_options'] == options, "Zapis zmienił domyślne opcje #{id}/#{language}")
-    end
-    expected = language == 'pl' ? 'Nazwa turnieju' : 'Tournament name'
-    $packaged_tournament_driver = lambda do |form|
-      assert(form.fields.first.header == expected, "Nieprzetłumaczona nazwa w #{language}")
+label = GameRoomContent.utf8(GameRoomLocalization.translate('Tournaments'))
+assert(EltenGameRoom::MAIN_OPTIONS.map { |value| GameRoomContent.utf8(value) }.include?(label), 'Missing tournament lobby entry')
+assert(defined?(GameRoomTournaments::ServerWorkspace), 'Missing server workspace')
+%w[en pl].each do |language|
+  GameRoomTestLocalization.use_language(language)
+  tr = ->(value) { GameRoomContent.utf8(GameRoomLocalization.translate(value)) }
+  %w[three_five_eight tic_tac_toe mahjong].each do |game_id|
+    published = []
+    configured = []
+    notes = "Żółw — próba.\nAsk the organizer before the final."
+    editor = GameRoomTournaments::TournamentSetupEditor.new(
+      program: Object.new, registry: registry, clock: -> { 1000 },
+      configure: ->(game, values) {
+        values = values.merge('variant' => 'hong_kong') if game.id == 'mahjong'
+        options = game.normalize_options(values)
+        configured << [game.id, Marshal.load(Marshal.dump(options))]
+        options
+      }, alert: ->(message) { raise message },
+      publish_label: tr.call('Publish tournament'),
+      publish: ->(**values) { published << values; {'status' => 'confirmed'} })
+    ui.script(->(form) {
+      list = ui.field(form, tr.call('Game'))
+      assert(list.options.size == registry.ids.size, 'Game chooser omitted a registered game')
+      list.index = registry.ids.index(game_id)
+      list.trigger(:select)
+    }, ->(form) {
       form.fields.each do |control|
         values = []
         values << control.header if control.respond_to?(:header) && control.header
         values << control.label if control.respond_to?(:label)
+        values << control.text if control.respond_to?(:text)
         values.concat(control.options) if control.respond_to?(:options)
-        assert(values.all? { |value| value.valid_encoding? && value.encoding == Encoding::UTF_8 }, 'Kontrolka dostała binarne lub uszkodzone etykiety')
+        invalid = values.reject do |value|
+          value.is_a?(String) && value.valid_encoding? && (value.encoding == Encoding::UTF_8 || value.ascii_only?)
+        end
+        assert(invalid.empty?, "Invalid packaged form text in #{language}/#{game_id}: #{invalid.inspect}")
       end
-      form.fields.first.text = 'Próba — żółty'
-      game_list = form.fields.find { |control| control.respond_to?(:options) && control.options.length == registry.ids.length + 1 }
-      game_list.index = registry.ids.index('three_five_eight') + 1
+      ui.field(form, tr.call('Tournament name')).set_text('Jesienny — Łódź')
+      ui.field(form, tr.call("Organizer's notes (optional)")).set_text(notes)
+      ui.button(form, tr.call('Back')).trigger(:press)
+      assert(published.empty?, 'Back published a tournament')
+      assert(configured.size == 2 && configured.first == configured.last, 'Back lost configured game options')
+      assert(ui.field(form, tr.call('Tournament name')).text == 'Jesienny — Łódź', 'Back lost the name')
+      assert(ui.field(form, tr.call("Organizer's notes (optional)")).text == notes, 'Back lost notes')
       form.accept_button.trigger(:press)
-    end
-    saved = GameRoomTournaments::DraftEditor.new(program: program, registry: registry,
-      configure: ->(*) { nil }, save: ->(attributes) { store.create(attributes) },
-      alert: ->(message) { raise message }).wait
-    assert(saved['name'] == 'Próba — żółty', 'Paczka zgubiła polskie znaki przy zapisie')
+    }) { editor.wait }
+    assert(published.one?, 'Publication was lost or duplicated')
+    draft = published.first.fetch(:draft)
+    assert(draft.fetch('game_id') == game_id && draft.fetch('game_options') == configured.last.last,
+      'Publication changed selected game options')
+    assert(published.first.fetch(:rules) == notes, 'Publication rewrote organizer notes')
   end
-  reopened = GameRoomTournaments::Drafts.new(program, owner: 'tester')
-  assert(reopened.list.length == registry.ids.length * 2 + 2, 'Odtworzenie zgubiło szkice gier')
 end
-puts "PASS binarne źródła: zapis opcji #{registry.ids.length} gier, formularz i polskie znaki w PL/EN"
+puts 'PASS packaged tournament editor: current server entry, localized native forms, game choice, Back, options and author notes'

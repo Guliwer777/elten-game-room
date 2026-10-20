@@ -1,0 +1,44 @@
+{
+  "game": "mahjong",
+  "seed": 137,
+  "players": [
+    "Alice"
+  ],
+  "options": {
+    "variant": "solitaire",
+    "layout": "terraces",
+    "bot_delay": 0,
+    "seats": 1,
+    "match_winds": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "sequence": 1,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":0,\"a\":\"deal\",\"r\":6784195186467229313}"
+    },
+    {
+      "id": 2,
+      "sequence": 2,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":1,\"a\":\"remove\",\"f\":11,\"s\":12}"
+    },
+    {
+      "id": 3,
+      "sequence": 3,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":2,\"a\":\"remove\",\"f\":10,\"s\":35}"
+    },
+    {
+      "id": 4,
+      "sequence": 4,
+      "actor": "Alice",
+      "action": "mahjong",
+      "value": "{\"v\":1,\"t\":3,\"a\":\"remove\",\"f\":0,\"s\":9}"
+    }
+  ]
+}

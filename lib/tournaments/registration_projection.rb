@@ -22,6 +22,26 @@ module GameRoomTournaments
       Data.freeze_tree(join_values(tournament_id: tournament_id, operation_key: operation_key).merge('kind' => 'withdrawal'))
     end
 
+    # Addressing data from the authenticated registration projection, never
+    # part of a schedule/binding digest or a new directory lookup.
+    def self.usernames(members)
+      names = members.to_h do |person|
+        username = Data.account(person.fetch('username'))
+        account = person.fetch('account')
+        raise Invalid, :invalid_account unless account == username.downcase
+        [account, username]
+      end
+      Data.freeze_tree(names)
+    end
+
+    def self.delivery_name(names, account)
+      raise Invalid, :invalid_account unless account.is_a?(String) && account.valid_encoding?
+      account = account.downcase
+      name = names.is_a?(Hash) && names[account]
+      raise Invalid, :missing_participant_name unless name && Data.account(name).downcase == account
+      name
+    end
+
     def self.local_start(row)
       TournamentTiming.starts_at(row)
     rescue LocalRegistrationTime::Invalid => error

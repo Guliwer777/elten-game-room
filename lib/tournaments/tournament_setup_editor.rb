@@ -4,6 +4,7 @@ require_relative 'local_registration_time'
 require_relative 'publication'
 require_relative 'tournament_datetime_field'
 require_relative 'tournament_dates_editor'
+require_relative 'scoring_text'
 
 module GameRoomTournaments
   # Game selection, game options, then tournament rules; no write before publish.
@@ -77,6 +78,8 @@ module GameRoomTournaments
       @games.options=@ids.map{|id|text(@registry.name(id))}
       @games.index=@draft ? (@ids.index(@draft['game_id']) || 0) : 0
       settings = @initial_publication ? JSON.parse(@initial_publication['settings_json']) : {}
+      @organizer_notes = EditBox.new(text(_("Organizer's notes (optional)")),
+        type: EditBox::Flags::MultiLine, text: @initial_publication ? ScoringText.notes(@initial_publication['rules']) : '', max_length: 4000, quiet: true)
       modes=[text(_("No")),text(_("Yes")),text(_("Play until a specified number of wins"))]
       @knockout_rematch = ListBox.new(modes, header: text(_("Return matches in knockout rounds")), index: settings['knockout_wins_to'] ? 2 : settings['knockout_rematch'] ? 1 : 0, quiet: true)
       @final_rematch = ListBox.new(modes.dup, header: text(_("Return match in the final")), index: settings['final_wins_to'] ? 2 : settings['final_rematch'] ? 1 : 0, quiet: true)
@@ -110,8 +113,10 @@ module GameRoomTournaments
       @seats.on(:move) { interaction { update_pairing_field } }
       enrollment=GameRoomUI::HelpText.new(text(_("Organizer")),type:EditBox::Flags::ReadOnly,
         text:text(_("Publishing also enrolls you as a participant. You can withdraw before the tournament starts.")),quiet:true) unless @initial_publication
-      [@name, @format, @rematch, @knockout_rematch, @knockout_target, @final_rematch, @final_target, @count, @seats, @pairing,
-        (@initial_publication ? fields[2] : nil),dates,enrollment,@advancement, @group_count, @group_places, fields[-2], fields[-1]].compact
+      back=Button.new(text(_("Back"))) unless @initial_publication
+      back&.on(:press) { interaction { configure_settings; @form.focus } }
+      [@name, @organizer_notes, @format, @rematch, @knockout_rematch, @knockout_target, @final_rematch, @final_target, @count, @seats, @pairing,
+        (@initial_publication ? fields[2] : nil),dates,enrollment,@advancement, @group_count, @group_places, back, fields[-2], fields[-1]].compact
     end
     def configure_settings
       super
@@ -165,7 +170,8 @@ module GameRoomTournaments
           draft[key]=value.to_i
         end
       end
-      rules = @initial_publication ? @initial_publication['rules'] : text(_("Each match awards 2 tournament points per opponent beaten and 1 per tied opponent. Teams count as single opponents."))
+      rules = text(@organizer_notes.text)
+      rules = ScoringText::DEFAULT if rules.strip.empty?
       Publication.from_draft(draft: draft, registry: @registry, publication_key: 'setup-preflight', rules: rules,
         registration_opens_at: opens, registration_closes_at: closes, timezone: 'UTC')
       @submitted = true

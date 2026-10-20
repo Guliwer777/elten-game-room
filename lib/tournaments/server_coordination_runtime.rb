@@ -28,7 +28,7 @@ module GameRoomTournaments
       @tournament_coordinator=ServerCoordination.new(workspace:workspace,user:-> {Session.name},clock:clock,
         worker:GameRoomBackground::Work.new(runtime:app_runtime),
         wake:->(recipient,reference){send_notification(recipient,type:ServerCoordination::TYPE,
-          metadata:{'version'=>1,'backend_identity'=>workspace.backend_identity,'publication_ref'=>reference,'recipient'=>recipient},expires_in:120)},
+          metadata:{'version'=>1,'backend_identity'=>workspace.backend_identity,'publication_ref'=>reference,'recipient'=>recipient.downcase},expires_in:120)},
         phase_finished:->(reference,phase_id){
           begin
             send_tournament_event(kind:'phase_finished',publication_ref:reference,phase_id:phase_id)

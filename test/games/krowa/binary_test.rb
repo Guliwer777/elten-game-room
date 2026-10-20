@@ -1,4 +1,5 @@
 require_relative "../../support/binary_rule_dictionary"
+require_relative "../../support/krowa_sjp_html"
 require "tmpdir"
 BinaryRulesLoad.load(File.join(BinaryRulesLoad::ROOT, "games/krowa_support/client.rb"))
 
@@ -54,7 +55,7 @@ windows = 0
   end
 end
 repository = GameRoomKrowa::WordRepository.default
-raise "Noun entries lost or duplicated" unless repository.words.length == 98_247 && repository.words.uniq.length == 84_942
+raise "Noun entries lost or duplicated" unless repository.words.length == 85_127 && repository.words.uniq.length == 85_127
 raise "Polish nouns corrupted" unless repository.include?("żółć")
 %w[łam zacios zaciosy prosię silnia silnie afro szmat ksero
   szamanka szamanki sokownik sokowniki geomanta geomantka geomanci geomantki
@@ -68,4 +69,15 @@ raise "Polish nouns corrupted" unless repository.include?("żółć")
 end
 provider = GameRoomKrowa::SjpDefinitionProvider.new(fetcher: ->(_uri) { '<p><b>znaczenie:</b></p></div><p>Żółć &amp; słowo.<br>Drugi wiersz.</p>'.b })
 raise "Binary SJP decoding" unless provider.definition_for("żółć") == "Żółć & słowo.\nDrugi wiersz."
-puts "PASS Krowa binary: #{windows} views PL/EN/fallback, Polish nouns and SJP, original duplicate-preserving database"
+html = KrowaSjpHtml.entry('pić', {'H' => %w[piły piła]}, 'Czasownik.') +
+  KrowaSjpHtml.entry('piła', {'M' => %w[piły pile], 'N' => %w[piłach]}, 'Narzędzie.') +
+  KrowaSjpHtml.entry('Piła', {'M' => %w[Piły Pile]}, 'Miasto.')
+requests = []
+provider = GameRoomKrowa::SjpDefinitionProvider.new(fetcher: ->(uri) { requests << uri.to_s; html.b })
+raise "Binary SJP noun selection" unless provider.definition_for('PIŁY'.b) == "piła\nNarzędzie."
+raise "Binary SJP URL" unless requests == ['https://sjp.pl/pi%C5%82y']
+raise "Binary SJP Unicode suffix rule" unless GameRoomKrowa::SjpNounForms.nominative?(
+  'kości', 'kość', {'M' => %w[kości kością], 'N' => %w[kościach]}
+)
+raise "Binary SJP indeclinable" unless provider.parse(KrowaSjpHtml.entry('menu', {}, 'Spis potraw.').b, word: 'menu') == "menu\nSpis potraw."
+puts "PASS Krowa binary: #{windows} views PL/EN/fallback, Polish nouns and SJP, merged unique noun database"

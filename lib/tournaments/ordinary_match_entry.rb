@@ -24,20 +24,22 @@ module GameRoomTournaments
     def attach_table(table)
       marker=table['tournament_match']
       return false unless marker
-      candidate,id=source!
+      candidate,id,usernames=source!
       raise OrdinaryMatchService::Blocked,:source_changed unless marker['publication_ref']==candidate['publication_ref'] && marker['schedule_id']==candidate['schedule_id']
       match=candidate['matches'].find{|item|item['match_id']==marker['match_id'] && item['leg']==marker['leg']}
       raise OrdinaryMatchService::Blocked,:missing_match unless match
       binding=read_match_binding(candidate,id,match,nil)
       raise OrdinaryMatchService::Blocked,:wrong_match_binding unless binding && binding['table']['__live_session_id']==table['__live_session_id'] && binding['table']['__id']==table['__id']
-      remember_binding(binding,candidate,id,match)
+      remember_binding(binding,candidate,id,match,usernames: usernames)
       true
     end
 
     def invitation_players(table)
-      row=@lock.synchronize{@bindings[table['__id']]}
+      row,usernames=@lock.synchronize{[@bindings[table['__id']],@binding_usernames[table['__id']]]}
       return [] unless row && row[0]['table']['__live_session_id']==table['__live_session_id']
-      row[0]['players'].map{|person|person['username']}.reject{|person|person.downcase==@owner}
+      row[0]['players'].reject{|person|person['account']==@owner}.map do |person|
+        RegistrationProjection.delivery_name(usernames,person['account'])
+      end
     end
 
     private
@@ -111,8 +113,12 @@ module GameRoomTournaments
       binding
     end
 
-    def remember_binding(binding,candidate,id,match)
-      @lock.synchronize{@bindings[binding['table']['__id']]=[Data.freeze_tree(Data.copy(binding)),candidate,id,match]}
+    def remember_binding(binding,candidate,id,match,usernames: nil)
+      @lock.synchronize do
+        table_id=binding['table']['__id']
+        @bindings[table_id]=[Data.freeze_tree(Data.copy(binding)),candidate,id,match]
+        @binding_usernames[table_id]=usernames
+      end
       start_worker
     end
 
@@ -144,8 +150,10 @@ module GameRoomTournaments
         raise OrdinaryMatchService::Blocked,:already_at_another_table unless room['name']==name && room['game']==candidate['game_id'] && room['owner'].downcase==@owner && room['tournament_match']==marker
       else
         raise OrdinaryMatchService::Blocked,:creation_unconfirmed unless record['status']=='prepared' && @journal.claim(record['id'])
+        history_capacity=@registry.build(candidate['game_id']).session_history_capacity(prepared['options'])
         made=@lobby.create_table(name:name,game:candidate['game_id'],owner:@user.call,
-          game_options:JSON.generate(prepared['options']),private_table:false,tournament_match:marker)
+          game_options:JSON.generate(prepared['options']),private_table:false,tournament_match:marker,
+          **(history_capacity ? {history_capacity: history_capacity} : {}))
         raise OrdinaryMatchService::Blocked,:already_at_another_table unless made && made.created?
         room=made.table
       end

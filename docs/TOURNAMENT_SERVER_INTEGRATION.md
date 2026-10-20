@@ -240,9 +240,23 @@ playing-window list for unrestricted hours. Opening, closing, starting and a
 final organizational deadline are independent options. Starting also closes
 registration. Owner actions append authenticated amendments; they do not change
 historical eligibility or silently revive rejected registrations. A final
-deadline is informational and never awards forfeits or blocks a manual start.
+deadline blocks creation and start of new matches, but never awards forfeits or
+interrupts an existing game. Rejoining an already-started bound session remains
+possible after the deadline; starting or replacing an unstarted table does not.
+An expired rejoin may first acquire native membership to inspect history, which
+is unavailable to nonmembers. It must verify the same bound game and release
+that newly acquired membership if the table has never started.
 Sporting results advance phases and complete the tournament. Existing schema-1
 publications retain their recorded dated contract.
+
+Registration projections retain authenticated display names separately from
+canonical account keys. Notice delivery uses those display names without
+rewriting schedule candidates, bindings, operation keys or historical results.
+Organizer notes use the existing publication `rules` field; no schema change is
+needed. Returning to game settings preserves the tournament form. Automatic
+scoring text is rendered in the viewer's language. Exact legacy catalog forms
+are recognized without rewriting publications; custom organizer text is kept
+verbatim, and new empty notes use the English source default on the wire.
 
 The UI has one Current/My tournaments/Completed directory, a contextual
 dashboard, one Matches entry, separate results and optional date settings.

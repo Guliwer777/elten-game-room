@@ -31,11 +31,11 @@ assert_equal(LANGUAGES.length, translations.values.uniq.length, 'A required scor
 LANGUAGES.each do |language|
   GameRoomLocalization.boot(settings: {'interface_language' => language, 'known_languages' => [language]})
   scoring = translations.fetch(language)
-  label = localized('Tournament rules')
+  label = localized("Organizer's notes")
 
   text = render_rules(scoring)
   assert_equal(1, text.scan(scoring).size, "#{language}: default scoring is displayed twice")
-  assert(text.include?("#{label}: #{scoring}"), "#{language}: authored rules heading was removed")
+  assert(!text.include?("#{label}:"), "#{language}: automatic scoring was presented as organizer notes")
 
   # The comparison applies to the entire text, not a sentence or substring.
   # Do not silently edit, strip or collapse the organizer's custom wording.
@@ -49,9 +49,9 @@ LANGUAGES.each do |language|
 
   foreign = translations.fetch(language == 'en' ? 'pl' : 'en')
   text = render_rules(foreign)
-  assert(text.include?("#{label}: #{foreign}"), "#{language}: another language's authored text was removed")
-  assert_equal(1, text.scan(foreign).size)
+  assert(!text.include?("#{label}:"), "#{language}: foreign automatic scoring became organizer notes")
+  assert_equal(0, text.scan(foreign).size)
   assert_equal(1, text.scan(scoring).size, "#{language}: localized scoring explanation is missing")
 end
 
-puts 'PASS exact whole-rule scoring deduplication in five languages, custom and foreign wording preserved, no publication mutation'
+puts 'PASS automatic scoring follows the viewer in five languages; custom wording and immutable publications preserved'

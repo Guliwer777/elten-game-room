@@ -12,11 +12,13 @@ module GameRoomServerRandom
   @payload_integer_seeds = {}
   @payload_inputs = {}
   @prefixes = {}
+  @json_actions = {}
   module_function
 
-  def register(game, actions, prefixes: {})
+  def register(game, actions, prefixes: {}, json_actions: {})
     @actions[game.to_s] = actions.map(&:to_s).freeze
     @prefixes[game.to_s] = prefixes
+    @json_actions[game.to_s] = json_actions
   end
 
   def register_payload(game, actions, integer_seed: false, inputs: {})
@@ -38,9 +40,20 @@ module GameRoomServerRandom
     end
     commands.any? do |command|
       action = GameRoomEventProtocol.command_value(command, 'action')
+      fields = @json_actions.fetch(game, {})[action]
+      next json_action_matches?(command, fields) if fields
       prefixes = @prefixes.fetch(game, {})[action]
       actions(game).include?(action) && (!prefixes || prefixes.any? { |prefix| GameRoomEventProtocol.command_value(command, 'value').to_s.start_with?(prefix) })
     end
+  end
+
+  def json_action_matches?(command, fields)
+    value = GameRoomEventProtocol.command_value(command, 'value')
+    return false unless value.is_a?(String) && value.bytesize <= 64
+    data = JSON.parse(value, max_nesting: 2)
+    data.is_a?(Hash) && fields.all? { |key, expected| data[key] == expected }
+  rescue JSON::ParserError
+    false
   end
 
   def accepts_request?(game, request)

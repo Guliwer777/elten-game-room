@@ -5,6 +5,7 @@ class Program
 end
 require_relative "../../__app"
 require_relative "../support/session_runner"
+require_relative '../support/catalog_options'
 
 $stdout.sync = true
 tested = []
@@ -14,7 +15,7 @@ EltenGameRoom::GAME_REGISTRY.ids.each do |id|
   # Realtime games need their UI physics client to produce points. They are
   # covered together with the runner in realtime_background_progress_test.
   next if game.background_client?
-  options = game.default_options.merge('bot_delay' => 0)
+  options = GameRoomTest::CatalogOptions.for_players(game, bots: true).merge('bot_delay' => 0)
   count = ([game.minimum_players, 2].max..game.maximum_players).find do |size|
     !game.validation_error(options, player_count: size)
   end

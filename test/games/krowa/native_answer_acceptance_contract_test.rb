@@ -57,10 +57,10 @@ end
 
 def Log.warning(_message); end
 
-[:frozen, :success, :invalid, :extra_command, :timeout_before, :timeout_after, :stale].each do |kind|
+[:frozen, :success, :invalid, :wrong_length, :extra_command, :timeout_before, :timeout_after, :stale].each do |kind|
   fixture = KrowaNativeAnswerAcceptance.new
   begin
-    word = [:invalid, :extra_command].include?(kind) ? 'xyz' : 'las'
+    word = [:invalid, :extra_command].include?(kind) ? 'xyz' : kind == :wrong_length ? 'la' : 'las'
     fixture.type(word)
     before = fixture.native.events('Alice').size
     if kind == :frozen
@@ -93,8 +93,9 @@ def Log.warning(_message); end
         assert(fixture.native.events('Alice').none? { |event| event.to_s.include?('_text_input') },
           'Local input generation leaked into the immutable game log')
       else
-        assert(!accepted && fixture.field.text == word, "#{kind}: unconfirmed/stale write lost the answer (accepted=#{accepted.inspect}, text=#{fixture.field.text.inspect}, alerts=#{fixture.alerts.inspect})")
-        assert(fixture.native.events('Alice').size == before, 'An invalid answer was written') if kind == :invalid
+        expected = [:invalid, :wrong_length].include?(kind) ? '' : word
+        assert(!accepted && fixture.field.text == expected, "#{kind}: wrong rejected draft (accepted=#{accepted.inspect}, text=#{fixture.field.text.inspect}, alerts=#{fixture.alerts.inspect})")
+        assert(fixture.native.events('Alice').size == before, 'An invalid answer was written') if [:invalid, :wrong_length].include?(kind)
       end
     end
   ensure

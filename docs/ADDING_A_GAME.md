@@ -24,6 +24,14 @@ Create `games/<id>.rb` and implement at least:
 - `action_for`, which validates turn order, action type and all rules;
 - readable history entries and error messages.
 
+Long matches can declare `session_history_capacity(options)` to request a
+larger native history budget at table creation and saved-game restoration.
+The default is `nil` (4,096 records); explicit requests must be integers from
+4,096 to 32,768. The store closes and rejects a session if the server grants
+less than an explicitly increased budget. This does not compact active games
+or permit unlimited history. Keep this declaration in the game rather than
+adding game IDs to the lobby or transport.
+
 An event should contain the data needed to reproduce a move, but not data
 that can safely be derived from the state. Private information, such as card
 hands or answers before they are revealed, must use the existing

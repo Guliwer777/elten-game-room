@@ -38,6 +38,11 @@ module GameSurfaces
       @surfaces[index].action_accepted(selection) if index != nil
     end
 
+    def action_rejected(selection, status)
+      index = @parts.index { |part| part.id.to_s == selection['source'].to_s }
+      @surfaces[index].action_rejected(selection, status) if index != nil
+    end
+
     def program=(program)
       @surfaces.each { |surface| surface.program = program if surface.respond_to?(:program=) }
     end

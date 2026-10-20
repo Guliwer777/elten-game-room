@@ -517,6 +517,29 @@ module GameRoomChangelog
         "Notification settings now include a blacklist. Add a user name to hide ordinary invitations from that person, or remove it to see them again. Invitations to tournament matches are not blocked.",
         "You can now hear other players' moves from their places around the table. 3D sound (HRTF) can be switched off altogether or for individual games in the sound settings."
       ].freeze
+    ).freeze,
+    Entry.new(
+      version: "2.0.5.2",
+      build: 253,
+      changes: [
+        "Fixed an error that could prevent tournament matches from starting in Axel Pong and Audio Ball."
+      ].freeze
+    ).freeze,
+    Entry.new(
+      version: "2.0.5.3",
+      build: 254,
+      changes: [
+        "Added Mahjong by Guliwer: Solitaire, Hong Kong, Riichi and MCR. The multiplayer variants support computer players and tournaments.",
+        "In Mahjong tournament matches, concealed tiles are private to their owner. Ordinary matches retain computer players, player replacement and saved games.",
+        "Fixed tournament invitations and notifications not reaching some players because of differences in the spelling of their user names.",
+        "Organizers can add their own tournament notes, shown with the rules. A Back button also lets you return to game settings while creating a tournament without losing what you entered.",
+        "After a tournament's deadline, new matches cannot be created or started. Matches already in progress can still be completed, and players can return to them. Existing results are unchanged.",
+        "Tournament tables are now clearly marked as Tournament match in table lists, the widget and the participant heading.",
+        "Automatic tournament rules are displayed in your interface language. Notes written by the organizer remain in their original language.",
+        "Krowa now clears the answer field after rejecting a word with the wrong length or one missing from the dictionary.",
+        "Added 185 nouns to Krowa and removed duplicate dictionary entries. Thanks to paulinux for these additions and the improvements to word definitions.",
+        "Krowa explanations from SJP now choose the appropriate base noun and meaning more accurately when looking up inflected words."
+      ].freeze
     ).freeze
   ].freeze
 

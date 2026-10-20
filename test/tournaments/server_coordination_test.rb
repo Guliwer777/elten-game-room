@@ -47,7 +47,7 @@ sandbox do |c|
   stage='initial-coordination'
   coordinator.coordinate(ref,broadcast:true)
   assert_equal(writes,plans.rows.size,'Coordination wrote readiness or reservations')
-  assert_equal([['secondplayer',ref]],wakes)
+  assert_equal([['SecondPlayer',ref]],wakes)
 
   h=NativeRoomHarness.new(game:GameRoomGames::TicTacToe.new,users:%w[RealOwner SecondPlayer])
   program=ProgramDouble.new(h.broker.endpoint('RealOwner'))

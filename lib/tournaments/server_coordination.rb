@@ -206,7 +206,8 @@ module GameRoomTournaments
       raise ProposalNotice::Stale,'Not a tournament participant' unless eligible.include?(@owner)
       check!
       if broadcast
-        people.reject{|person|person==@owner}.each{|person|@wake.call(person,reference)}
+        names=source['usernames'] || RegistrationProjection.usernames(source.fetch('members'))
+        people.reject{|person|person==@owner}.each{|person|@wake.call(RegistrationProjection.delivery_name(names,person),reference)}
       end
       source
     end

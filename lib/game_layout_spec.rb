@@ -3,10 +3,14 @@ module GameRoomLayout
 
   class ViewSpec
     attr_reader :surface, :sections, :history_header, :history_empty_label,
-      :trailing_parts, :restartable, :restart_label, :finished_text, :status_commands
+      :trailing_parts, :restartable, :restart_label, :finished_text, :status_commands,
+      :decision_focus_part, :decision_focus_key, :decision_focus_index
 
     def initialize(surface: nil, history_header: nil, history_empty_label: nil,
-      trailing_parts: [], restartable: true, restart_label: nil, finished_text: nil, status_commands: [])
+      trailing_parts: [], restartable: true, restart_label: nil, finished_text: nil, status_commands: [],
+      decision_focus_part: nil, decision_focus_key: nil, decision_focus_index: nil)
+      @decision_focus_part, @decision_focus_key = decision_focus_part, decision_focus_key
+      @decision_focus_index = decision_focus_index
       @trailing_parts = trailing_parts.map(&:to_s).freeze
       @sections = @trailing_parts.empty? ? STANDARD_SECTIONS : (STANDARD_SECTIONS + [:game_actions]).freeze
       @restartable = restartable

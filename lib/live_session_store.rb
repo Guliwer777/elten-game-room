@@ -212,7 +212,10 @@ class GameRoomLiveSessionStore
     end
   end
 
-  def create_room(name:, game:, owner:, game_options:, capacity: MAX_CAPACITY, private_table: false, resume_save_id: nil, bot_count: 0, bot_names: nil, tournament_match: nil)
+  def create_room(name:, game:, owner:, game_options:, capacity: MAX_CAPACITY, private_table: false, resume_save_id: nil, bot_count: 0, bot_names: nil, tournament_match: nil, stack_entries: STACK_ENTRIES)
+    unless stack_entries.is_a?(Integer) && stack_entries.between?(STACK_ENTRIES, 32_768)
+      raise ArgumentError, "Invalid session history capacity"
+    end
     start
     table_id = unused_identifier
     maximum = bounded_capacity(capacity)
@@ -250,10 +253,13 @@ class GameRoomLiveSessionStore
       visibility: private_table == true ? :private : :public,
       discovery_metadata: compact_discovery(discovery),
       stack_entry_bytes: STACK_ENTRY_BYTES,
-      stack_entries: STACK_ENTRIES,
+      stack_entries: stack_entries,
       pool_count: metadata['private_cards'] ? GameRoomPrivateCards::MAX_POOLS : 1,
       private_messages: true
     )
+    if stack_entries > STACK_ENTRIES && session.limits.fetch("max_stack_entries", 0).to_i < stack_entries
+      raise ArgumentError, "Requested session history capacity was not granted"
+    end
     attach_session(table_id, session)
     append_record(table_id, "room_created", {
       "name" => name.to_s,

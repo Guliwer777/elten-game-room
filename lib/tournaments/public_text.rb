@@ -5,6 +5,7 @@ require_relative '../game_room_localization'
 require_relative '../game_option_values'
 require_relative 'local_registration_time'
 require_relative 'tournament_lifecycle'
+require_relative 'scoring_text'
 
 module GameRoomTournaments
   # Formatuje wyłącznie zwalidowaną projekcję; bez planowania lub odczytu konta.
@@ -64,7 +65,7 @@ module GameRoomTournaments
       lines=[text(publication['title']),text(@registry.name(publication['game'])),lifecycle_label(state[:state]),
         pair(_("Organizer"),publication['__insertion_user']),pair(_("Participants"),accepted.size)]
       lines << text(_("You are registered")) if registered
-      lines << text(_("The planned deadline has passed. Remaining matches can still be played.")) if state[:overdue]
+      lines << text(_("The tournament deadline has passed. New matches cannot be started; games already in progress may finish.")) if state[:overdue]
       limit=JSON.parse(publication['settings_json'])['participant_limit']
       if !registered
         lines << text(if state[:state]==:soon then _("Registration has not opened yet.")
@@ -99,11 +100,11 @@ module GameRoomTournaments
         pair(_("Players per match"), settings.fetch('players_per_match')),
         pair(_("Multiplayer pairings"), { 'all_combinations' => _("All possible compositions"),
           'balanced_cycle' => _("Rotating compositions; equal appearances") }.fetch(settings.fetch('pairing'))),
-        pair(_("Tournament rules"), publication.fetch('rules')),
         pair(_("Registration opens"), optional_date(publication.fetch('registration_opens_at'))),
         pair(_("Registration closes"), optional_date(publication.fetch('registration_closes_at')))]
-      scoring = text(_("Each match awards 2 tournament points per opponent beaten and 1 per tied opponent. Teams count as single opponents."))
-      lines << scoring unless text(publication.fetch('rules')) == scoring
+      notes = ScoringText.notes(publication.fetch('rules'))
+      lines << pair(_("Organizer's notes"), notes) unless notes.empty?
+      lines << ScoringText.display
       if TournamentTiming.optional?(publication)
         lines << pair(_("Tournament starts"),optional_date(TournamentTiming.starts_at(publication)))
         lines << pair(_("Tournament deadline"),TournamentTiming.deadline_at(publication) ? local_date(TournamentTiming.deadline_at(publication)) : _("Not set"))

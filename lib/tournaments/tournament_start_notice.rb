@@ -1,6 +1,7 @@
 # encoding: UTF-8
 require_relative 'proposal_notice'
 require_relative 'local_registration_time'
+require_relative 'registration_projection'
 
 module GameRoomTournaments
   # Informational event only. No player readiness, reservation or game action.
@@ -39,15 +40,16 @@ module GameRoomTournaments
       @changed=false
     end
 
-    def notices(publication_ref:)
+    def notices(publication_ref:,addressed:false)
       current!
       reference={'author'=>Data.account(publication_ref.fetch('author')).downcase,'publication_key'=>Data.key!(publication_ref.fetch('publication_key'))}
       proof=source!(reference,delivery:true)
       raise ProposalNotice::Stale,'Not tournament organizer' unless proof['sender']==@scope['account']
       proof['participants'].map do |person|
-        self.class.metadata({'version'=>2,'backend_identity'=>@scope['backend_identity'],'publication_ref'=>reference,'recipient'=>person,
+        metadata=self.class.metadata({'version'=>2,'backend_identity'=>@scope['backend_identity'],'publication_ref'=>reference,'recipient'=>person,
           'title'=>proof['title'],'game'=>proof['game'],
           'event_id'=>Digest::SHA256.hexdigest(JSON.generate(['tournament-start-v1',@scope['backend_identity'],reference]))})
+        addressed ? [metadata,RegistrationProjection.delivery_name(proof['usernames'],person)].freeze : metadata
       end.freeze
     end
 
@@ -114,7 +116,7 @@ module GameRoomTournaments
       raise ProposalNotice::Unavailable,'Start notice source is not connected' unless @source
       value=Data.copy(@source.call(reference),max_bytes:262_144,max_nodes:16_384,max_depth:12)
       current!
-      unless value.is_a?(Hash) && value.keys.sort==%w[complete participants publication] && value['complete']==true
+      unless value.is_a?(Hash) && (value.keys-['usernames']).sort==%w[complete participants publication] && value['complete']==true
         raise ProposalNotice::Stale,'Incomplete start evidence'
       end
       publication=Publication.project(rows:[value['publication']],registry:@registry,complete:true)
@@ -135,6 +137,7 @@ module GameRoomTournaments
         raise ProposalNotice::Stale,'Not a current tournament start'
       end
       Data.freeze_tree({'sender'=>sender,'title'=>row['title'],'game'=>row['game'],'participants'=>people,
+        'usernames'=>value['usernames'],
         'starts_at'=>starts,'expires_at'=>expires,'publication_digest'=>Digest::SHA256.hexdigest(JSON.generate(row.slice(*Publication::COLUMNS)))})
     end
 

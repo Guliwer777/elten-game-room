@@ -85,6 +85,7 @@ module GameRoomTournaments
       eligible=data['operations'].select{|operation|operation['status']=='confirmed'}.map{|operation|operation['account']}
       Data.freeze_tree({'publication'=>row,'members'=>data['members'],'pairs'=>data.fetch('pairs',[]),
         'pair_requests'=>data.fetch('pair_requests',[]),'people'=>(members+[author]).uniq,
+        'usernames'=>RegistrationProjection.usernames(data['members']).merge(author=>original['__insertion_user']),
         'senders'=>(eligible+[author]).uniq})
     end
 
@@ -266,6 +267,7 @@ module GameRoomTournaments
         observed=ScheduleSource.build(projection:view.fetch(:model),publication_ref:publication_ref,
           backend_identity:@backend_identity,observed_at:@clock.call)
         Data.freeze_tree({'complete'=>true,'publication'=>observed.fetch(:row),
+          'usernames'=>RegistrationProjection.usernames(observed.fetch(:members)),
           'participants'=>observed.fetch(:members).map{|member|member.fetch('account')}})
       end
     end
@@ -296,7 +298,9 @@ module GameRoomTournaments
           item['publication_key'] == candidate['publication_ref']['publication_key'] &&
             item['__insertion_user'].downcase == candidate['publication_ref']['author']
         end
-        Data.freeze_tree({'tournament_id' => row.fetch('__id'), 'candidate' => candidate})
+        Data.freeze_tree({'tournament_id' => row.fetch('__id'), 'candidate' => candidate,
+          'usernames'=>RegistrationProjection.usernames(observed.fetch(:members)),
+          'deadline_at'=>TournamentTiming.deadline_at(row)})
       end
     end
 

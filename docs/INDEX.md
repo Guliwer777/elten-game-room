@@ -35,6 +35,9 @@ translations must be kept up to date together.
 
 ## Feature contracts
 
+- [Mahjong integration](MAHJONG.md): variant/seat requirements, pure models
+  and remaining client integration; not a playable release.
+
 - [Forms and help](UI.md), [card hands](CARD_HAND.md)
   and the [audio tutorial](AUDIO_TUTORIAL.md).
 - [Background execution and presentation](BACKGROUND_GAME_EXECUTION.md).

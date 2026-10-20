@@ -39,6 +39,61 @@ ui.script(->(form) { form.accept_button.trigger(:press) }) { editor.wait }
 assert_equal(publication.fetch('rules'), published.first.fetch(:rules))
 assert_equal(original, publication)
 
+# Back reopens the selected game's options, without publishing or losing the
+# tournament's text. Notes use the existing rules column, not a new schema.
+published = []
+configured = []
+notes = "Bring your own tea.\nContact the organizer before the final."
+editor = GameRoomTournaments::TournamentSetupEditor.new(program: Object.new, registry: GameRoomGames::CATALOG,
+  configure: ->(game, values) { configured << [game.id, Marshal.load(Marshal.dump(values))]; values }, clock: -> { 1000 },
+  alert: ->(message) { raise message }, publish: ->(**values) { published << values; {'status'=>'confirmed'} })
+ui.script(->(form) {
+  game = ui.field(form, 'Game')
+  game.index = GameRoomGames::CATALOG.ids.index('tic_tac_toe')
+  game.trigger(:select)
+}, ->(form) {
+  ui.field(form, 'Tournament name').text = 'Back preserves this name'
+  ui.field(form, "Organizer's notes (optional)").text = notes
+  form.fields.grep(Button).find { |field| field.label == 'Back' }.trigger(:press)
+  assert_equal([], published)
+  assert_equal('Back preserves this name', ui.field(form, 'Tournament name').text)
+  assert_equal(notes, ui.field(form, "Organizer's notes (optional)").text)
+  assert_equal(2, configured.size)
+  assert_equal(configured.first, configured.last)
+  form.accept_button.trigger(:press)
+}) { editor.wait }
+assert_equal(notes, published.fetch(0).fetch(:rules))
+
+# Automatic text is a language-neutral default on the wire, not a copy of the
+# creator's interface translation. Legacy defaults are not editable author notes.
+%w[en pl cs es ru].each do |language|
+  GameRoomLocalization.boot(settings: {'interface_language'=>language, 'known_languages'=>[]})
+  localized = ->(value) { GameRoomContent.utf8(GameRoomLocalization.translate(value)) }
+  published = []
+  editor = GameRoomTournaments::TournamentSetupEditor.new(program: Object.new, registry: GameRoomGames::CATALOG,
+    configure: ->(_game, values) { values }, clock: -> { 1000 }, alert: ->(message) { raise message },
+    publish: ->(**values) { published << values; {'status'=>'confirmed'} })
+  ui.script(->(form) {
+    game=ui.field(form,localized.call('Game'))
+    game.index=GameRoomGames::CATALOG.ids.index('tic_tac_toe')
+    game.trigger(:select)
+  }, ->(form) {
+    ui.field(form,localized.call('Tournament name')).set_text('Canonical default')
+    form.accept_button.trigger(:press)
+  }) { editor.wait }
+  assert_equal(expected,published.fetch(0).fetch(:rules),"#{language}: new publication stored translated automatic rules")
+  legacy=ui.publication(914).merge('rules'=>localized.call(expected))
+  editor=GameRoomTournaments::TournamentSetupEditor.new(program:Object.new,registry:GameRoomGames::CATALOG,
+    publication:legacy,configure:->(_game,values){values},clock:->{100},alert:->(message){raise message},
+    publish:->(**values){published<<values;{'status'=>'confirmed'}})
+  ui.script(->(form) {
+    assert_equal('',ui.field(form,localized.call("Organizer's notes (optional)")).text,
+      "#{language}: editing exposed automatic rules as organizer-authored notes")
+    form.accept_button.trigger(:press)
+  }) { editor.wait }
+  assert_equal(expected,published.fetch(1).fetch(:rules))
+end
+
 # The wording agrees with the real arithmetic, not a replacement test formula.
 standings = GameRoomTournaments::Standings
 table = standings.calculate(units: %w[a b c], points: standings::MATCH_POINTS,

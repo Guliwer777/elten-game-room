@@ -2,6 +2,8 @@ require_relative 'private_card_ledger'
 
 # Initial hand delivery shared by fixed-deal card games. Models retain their
 # existing deal/turn rules; the session runner executes these ordinary plans.
+# A model storing a round object can supply a stable private_deal_key; numeric
+# round counters keep their original wire value when that optional key is absent.
 module GameRoomPrivateCardDealing
   module_function
 
@@ -62,7 +64,7 @@ module GameRoomPrivateCardDealing
   def command(state, action, actor)
     case action
     when 'private_deal', 'private_recycle'
-      GameRoomPrivateCards.command(action, state[:round].to_s, operation: 'create', size: state[:private_deck].size,
+      GameRoomPrivateCards.command(action, state.fetch(:private_deal_key, state[:round]).to_s, operation: 'create', size: state[:private_deck].size,
         retire: GameRoomPrivateCardLedger.retirable_pools(state, fresh: state[:private_fresh]))
     when 'private_ready'
       GameRoomPrivateCards.command(action, state[:private_pool], operation: 'check', pool_id: state[:private_pool],
@@ -80,7 +82,7 @@ module GameRoomPrivateCardDealing
     case event['action']
     when 'private_deal', 'private_recycle'
       round, pool_id = event['value'].to_s.split('|', -1)
-      return false unless state[:phase] == :private_prepare && round == state[:round].to_s &&
+      return false unless state[:phase] == :private_prepare && round == state.fetch(:private_deal_key, state[:round]).to_s &&
         GameRoomPrivateCards.pool_id?(pool_id) && !state[:private_pools].key?(pool_id) &&
         (event['action'] == 'private_deal') == state[:private_fresh]
       state[:private_pool] = pool_id

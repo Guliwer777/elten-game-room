@@ -25,7 +25,7 @@ module GameRoomTournaments
 
     def build_form
       now=Time.at(@clock.call).getlocal
-      introduction=readonly(_("Dates and playing hours"),_("Dates are optional. Without a date, you open or close registration and start the tournament yourself. The final deadline is a reminder, not an automatic result."))
+      introduction=readonly(_("Dates and playing hours"),_("Dates are optional. Without a date, you open or close registration and start the tournament yourself. The final deadline prevents new matches from starting, but does not stop games already in progress or award results."))
       @opening=ListBox.new([_("Immediately"),_("At a chosen time"),_("Manually by the organizer")].map{|s|text(s)},
         header:text(_("Open registration")),index:@values['opens'].nil? ? 0 : @values['opens']==0 ? 2 : 1,flags:ListBox::Flags::AnyDir,quiet:true)
       @open_date=TournamentDateTimeField.new(time:@values['opens'].to_i>0 ? Time.at(@values['opens']).getlocal : now,label:text(_("Registration opens")))

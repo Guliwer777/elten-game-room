@@ -6,6 +6,7 @@ class Program
 end
 require_relative "../../__app"
 require_relative "../support/private_simulation"
+require_relative '../support/catalog_options'
 
 $stdout.sync = true
 checked = []
@@ -15,7 +16,7 @@ EltenGameRoom::GAME_REGISTRY.ids.each do |id|
   # this pure replay fixture intentionally has no secret-answer vault.
   next if %w[quiz categories battleship krowa].include?(id)
   next unless game.session_runner? && (game.supports_bots? || id == 'scrabble')
-  options = game.default_options.merge('bot_delay' => 0)
+  options = GameRoomTest::CatalogOptions.for_players(game, bots: game.supports_bots?).merge('bot_delay' => 0)
   count = ([game.minimum_players, 2].max..game.maximum_players).find { |n| !game.validation_error(options, player_count: n) }
   players = %w[Alice Bob Carol Dave Eve Frank Grace Heidi].first(count)
   env = GameRoomTest::PrivateSimulation.new_game(game: game, players: players, options: options, seed: 137)

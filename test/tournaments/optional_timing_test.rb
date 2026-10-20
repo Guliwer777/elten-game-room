@@ -47,11 +47,13 @@ sandbox do |c|
   current=row.call
   lifecycle=T::TournamentLifecycle.classify(current,now:c.now)
   assert_equal(:running,lifecycle[:state])
-  assert_equal(true,lifecycle[:overdue],'The deadline should be informative, not a result')
+  assert_equal(true,lifecycle[:overdue],'The deadline must not invent a sporting result')
   reference={'author'=>owner,'publication_key'=>current['publication_key']}
   candidate=service.schedule_candidate(publication_ref:reference).to_h
   assert_equal(2,candidate['roster'].size)
-  assert_equal({'opens'=>400,'closes'=>nil},T::ServerMatchWindow.current(candidate,500))
+  assert_equal(:deadline_passed,assert_raises(T::Publication::Invalid) {
+    T::ServerMatchWindow.current(candidate,500,deadline_at:T::TournamentTiming.deadline_at(current))
+  }.code)
   count=c.inserts.size
   assert_equal('confirmed',service.change_phase(tournament_id:current['__id'],action:'start',intent_id:'start-one',
     expected_generation:T::RegistrationProjection.publication_generation(current))['status'])
@@ -73,4 +75,4 @@ sandbox do |c|
   assert_equal(200,T::TournamentLifecycle.next_change(row,now:199))
   assert_equal(nil,T::TournamentLifecycle.next_change(row,now:200))
 end
-puts 'PASS optional timeline: manual/scheduled phases, historical joins, reopen, overdue play, stable start, cancellation'
+puts 'PASS optional timeline: manual/scheduled phases, historical joins, reopen, expired entry refusal without results, stable start, cancellation'

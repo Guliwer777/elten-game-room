@@ -41,13 +41,27 @@ Es un documento de solo lectura con un encabezado para cada versión. H pasa al 
 
 ## A qué puedes jugar
 
-Power Games incluye actualmente 35 juegos:
+Power Games incluye actualmente 36 juegos:
 
 - Cartas: 3-5-8, 99, 1000 millas, Biblios, Bridge, Makao, Picas, Póker, Rummy, Mil, UNO, War y Scientific War.
 - Tablero y estrategia: Ludo, Cuatro en raya, Tres en raya, Mancala, Monopoly, Reversi, Batalla naval, Ajedrez, Damas y Carrera de patos.
 - Dados y dominó: Cat, head, tail, Dominó, Farkle, Mexican Train y Yahtzee.
 - Palabras y conocimientos: Krowa, Categorías, Quiz Party, Scrabble y Taboo.
 - Acción con audio: Axel Pong y Audio Ball.
+
+Mahjong tiene una sola entrada en la lista de juegos. Elige primero Solitario, Hong Kong, Riichi o MCR; debajo aparecerán las opciones de esa variante. El solitario se juega a solas. Hong Kong y MCR necesitan cuatro jugadores; Riichi necesita cuatro o tres en sanma. En la mesa, usa Ctrl+O para añadir bots a los asientos vacíos. En partidas largas, todos confirman que están listos después de cada mano. Abre las reglas y los controles con Ctrl+F1.
+
+Los sonidos distinguen el reparto, el robo y el descarte de una ficha, la declaración de un grupo y el final de una mano. En Solitario también se oyen la retirada de una pareja y deshacer. Pasar y recorrer las fichas no producen sonidos. La descripción hablada sigue indicando la ficha y el resultado.
+
+Al responder a una ficha, D lee la ficha a la que se refiere Pasar, Chow, Pung, Kong o Mahjong. No cambia ni confirma la elección. En Solitario, D sigue leyendo las coordenadas.
+
+W lee el valor de una victoria válida: fan o han y fu, y los puntos ganados. No estima una mano incompleta. Antes de ganar en Riichi excluye las ura-dora ocultas, por lo que el valor final puede ser mayor. U lee tus grupos expuestos, Mayús+U los de los demás y R el número de mano, los vientos y la situación actual. En Riichi, I lee los indicadores y fichas dora, tu cantidad de dora, las declaraciones de Riichi, los depósitos, honba y tu restricción furiten. Estas teclas solo leen información.
+
+S lee los puntos actuales de todos. M indica cuántas fichas quedan por robar en el muro. Solo informan: no roban, descartan ni pasan ni revelan manos ajenas. En Solitario, S lee parejas retiradas y M fichas restantes del diseño.
+
+El manual enseña Solitario, Hong Kong, Riichi y MCR por separado; cada variante de mesa explica objetivo, términos, preparación, juego, puntuación y duración. Todas las acciones disponibles van tras la descripción y antes de tus fichas. En los campos de juego, tu nuevo turno enfoca robar y después la ficha recién robada. El foco solo no juega.
+
+En el solitario eliges fichas individuales: las flechas recorren filas y columnas, 1–3 cambian de capa y D lee las coordenadas. Enter marca la primera ficha y confirma la segunda coincidente; Escape cancela la selección.
 
 Muchos juegos tienen varias variantes. Las opciones, el número de participantes, la disponibilidad de bots y otros ajustes dependen del título. La sección «Reglas del juego» explica las reglas, la puntuación y los controles en detalle.
 
@@ -389,6 +403,8 @@ En un encuentro de uno contra uno, agotar el plazo da la victoria al rival. Si h
 
 ### Cartas privadas en los torneos
 
+En el Mahjong de torneo, cada jugador recibe solo sus propias fichas. La parte del muro que queda por robar también permanece oculta. Al terminar la mano se revelan las fichas necesarias para comprobar el resultado.
+
 En los torneos de 1000 millas, Picas, Bridge, Mil, 3-5-8, 99, Póker, War, Rummy, Makao, Biblios y UNO, el servidor reparte las cartas a cada jugador de forma privada. Lo mismo ocurre con las fichas de Dominó, Mexican Train y Scrabble. Ni los demás jugadores, ni los espectadores, ni el anfitrión reciben el contenido de tu mano. Las cartas o fichas necesarias se revelan al jugarlas, pasarlas a otro jugador o calcular la puntuación. En bridge, la mano del muerto se descubre tras la salida y las cartas restantes se revelan al terminar el reparto.
 
 Las cartas que se pasan a otro jugador pierden esta protección, aunque la interfaz habitual sigue ocultando las manos ajenas. Esto incluye una mano completa intercambiada en UNO, las cartas ganadas en War y las que se devuelven al mazo. En UNO, quien reparte también conoce los comodines descartados temporalmente al elegir la carta inicial. En Dominó se compara la ficha más alta de cada jugador para decidir quién empieza. Las reglas de los juegos no cambian.
@@ -404,6 +420,7 @@ Las partidas normales siguen permitiendo bots, sustituciones y guardado en los j
 Pulsa Ctrl+N en la lista de torneos. Elige el juego, después la variante y los ajustes habituales de la mesa. Al confirmarlos llegarás al formulario del torneo. Recorre los campos con Tab, cambia las selecciones con las flechas y marca o desmarca casillas con Espacio.
 
 - Nombre del torneo — el nombre que verán los demás jugadores.
+- Notas del organizador — texto opcional que se muestra en las reglas del torneo.
 - Formato — «Todos contra todos» o «Grupos y eliminatorias», explicados más abajo.
 - Límite de participantes — el máximo de personas inscritas, inicialmente 16 y nunca más de 128. También en los torneos por parejas se cuentan personas, no equipos. No hace falta llenar todas las plazas para empezar.
 - Jugadores por encuentro — cuántas personas juegan en una mesa, no en todo el torneo. Esta opción aparece si el juego admite distintos tamaños de encuentro.
@@ -411,6 +428,8 @@ Pulsa Ctrl+N en la lista de torneos. Elige el juego, después la variante y los 
 - «Fechas y horarios de juego» — fechas opcionales de inscripción y comienzo, y periodos permitidos para jugar.
 
 Los demás campos dependen del juego y el formato. Las revanchas están desactivadas inicialmente. Publica el torneo cuando esté listo; rellenar el formulario no lo hace visible a los demás.
+
+Pulsa «Atrás» para volver a los ajustes del juego sin perder lo que hayas escrito en el formulario del torneo.
 
 Al publicarlo también quedas inscrito. Si solo quieres organizarlo, date de baja antes del comienzo: seguirás siendo el organizador.
 
@@ -477,7 +496,7 @@ Abre «Fechas y horarios de juego» en el formulario del torneo. No tienes que p
 - Apertura de inscripciones — al publicar, en una fecha elegida o cuando decidas abrirlas.
 - Cierre de inscripciones — una fecha opcional a partir de la cual nadie más puede apuntarse. Cerrar las inscripciones no inicia por sí solo el torneo.
 - Inicio del torneo — una fecha opcional de comienzo automático. El inicio también cierra las inscripciones.
-- Fecha límite final — indica a los participantes cuándo deberían haber terminado sus encuentros. No resuelve partidas pendientes ni concede victorias por incomparecencia.
+- Fecha límite final — a partir de esa fecha no se pueden iniciar nuevos encuentros. Las partidas en curso pueden terminar; llegar a la fecha límite no determina resultados ni concede victorias por incomparecencia.
 - Horario de juego — una franja diaria opcional, por ejemplo de 18:00 a 22:00. Elige la hora de inicio, la de fin y la zona horaria. Si el fin es anterior al inicio, corresponde al día siguiente, como en 22:00–02:00. El horario limita el inicio de los partidos; las partidas en curso pueden terminarse. La zona elegida usa un desfase fijo respecto a UTC, sin cambiar automáticamente entre horario de verano e invierno.
 
 Llega al campo de fecha con Tab. Izquierda y Derecha eligen año, mes, día, hora o minuto; Arriba y Abajo cambian el valor de esa parte. Los horarios se muestran en la zona horaria local del ordenador.

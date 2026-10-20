@@ -5,15 +5,18 @@ class Program
 end
 require_relative "../../__app"
 require_relative "../support/session_runner"
+require_relative '../support/catalog_options'
+require_relative '../support/contract_values'
 
 $stdout.sync = true
 tested = []
-EltenGameRoom::GAME_REGISTRY.ids.each do |id|
+selected_ids = ENV['GAME_ROOM_TEST_GAME'] ? [ENV.fetch('GAME_ROOM_TEST_GAME')] : EltenGameRoom::GAME_REGISTRY.ids
+selected_ids.each do |id|
   game = EltenGameRoom::GAME_REGISTRY.build(id)
   next unless game.supports_bots? && game.session_runner?
   # This fixture drives model actions, not the separate realtime engine.
   next if game.background_client?
-  options = game.default_options.merge('bot_delay' => 0)
+  options = GameRoomTest::CatalogOptions.for_players(game, bots: true).merge('bot_delay' => 0)
   count = ([game.minimum_players, 2].max..game.maximum_players).find { |size| !game.validation_error(options, player_count: size) }
   h = NativeRoomHarness.new(game: game, users: %w[Alice Bob], bots: count - 2, options: options)
   h.start
@@ -53,12 +56,13 @@ EltenGameRoom::GAME_REGISTRY.ids.each do |id|
   assert(GameRoomParticipants.bot?(replacement) && !snapshot.session['__players'].include?('Alice'), "#{id}: departed place was not physically replaced")
   assert(!snapshot.events.empty? && replay.accepted_events.size == snapshot.events.size, "#{id}: automatic or bot event rejected")
   assert(snapshot.events == other.events, "#{id}: readers diverged")
-  assert(replay.state == game.replay(other.session, other.events, h.repositories['Bob']).state, "#{id}: replay diverged")
+  other_replay = game.replay(other.session, other.events, h.repositories['Bob'])
+  assert(GameRoomTest::ContractValues.canonical(replay.state) == GameRoomTest::ContractValues.canonical(other_replay.state), "#{id}: replay diverged")
   assert(snapshot.events.any? { |e| e['actor'] == replacement }, "#{id}: new named bot never played in the first place")
   tested << id
   master.close
   human.close
   puts "#{id}: observer master, departed first seat, #{snapshot.events.size} accepted events"
 end
-assert(tested.size >= 20, 'Insufficient handover coverage')
+assert(ENV['GAME_ROOM_TEST_GAME'] ? tested == selected_ids : tested.size >= 20, 'Insufficient handover coverage')
 puts "Handover game contracts: #{tested.size} games OK"

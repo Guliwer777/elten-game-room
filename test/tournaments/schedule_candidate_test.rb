@@ -1,5 +1,6 @@
 # encoding: UTF-8
 require_relative '../support/assertions'
+require_relative '../support/catalog_options'
 require_relative '../support/tournament_schedule_candidate'
 source = File.expand_path('../../lib/tournaments/schedule_candidate.rb', __dir__)
 require source if File.file?(source)
@@ -348,7 +349,7 @@ S.test('rzeczywiste modele: pełny łańcuch dla każdej legalnej liczebności 2
   GameRoomGames::CATALOG.ids.each do |id|
     game = GameRoomGames::CATALOG.build(id)
     # Krowa daily jest jednoosobowa; race to jawny legalny wariant wieloosobowy.
-    options = id == 'krowa' ? game.normalize_options('variant' => 'race') : game.default_options
+    options = GameRoomTest::CatalogOptions.for_players(game)
     # Model wybiera legalny wariant; Candidate nie kopiuje jego walidatora.
     sizes = (2..8).select do |size|
       size.between?(game.minimum_players, game.maximum_players) &&

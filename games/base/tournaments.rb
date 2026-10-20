@@ -108,12 +108,12 @@ module GameRoomGames
 
       def tournament_active_players(replay, options:)
         return replay.players.dup unless replay.state
-        tournament_remaining_players(replay.state)
+        tournament_remaining_players(replay.state, players: replay.players)
       end
 
-      def tournament_remaining_players(state)
+      def tournament_remaining_players(state, players: state.fetch(:players))
         removed = state.fetch(:tournament_eliminations, []).flatten
-        state.fetch(:players).reject { |player| GameRoomParticipants.includes?(removed, player) }
+        players.reject { |player| GameRoomParticipants.includes?(removed, player) }
       end
 
       # Called only at a game-owned, fully scored round/deal boundary. Copy the

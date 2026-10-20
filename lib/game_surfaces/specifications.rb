@@ -67,6 +67,10 @@ module GameSurfaces
     keyword_init: true
   )
 
+  LayeredTileCell = Struct.new(:id, :label, :match_key, :selectable, keyword_init: true)
+  LayeredTileLayer = Struct.new(:number, :cells, keyword_init: true)
+  LayeredTileBoardSpec = Struct.new(:header, :layers, :epoch, :question_id, :editable, keyword_init: true)
+
   FleetGridSpec = Struct.new(
     :width,
     :height,
@@ -200,6 +204,7 @@ module GameSurfaces
     :submit_on_select,
     :prompt_in_choices,
     :clear_on_submit,
+    :clear_on_rejection,
     :extra_commands,
     keyword_init: true
   )

@@ -41,13 +41,27 @@ Jde o dokument pouze ke čtení s nadpisem pro každou verzi. H přejde na dalš
 
 ## Co si můžete zahrát
 
-Power Games v současnosti obsahuje 35 her:
+Power Games v současnosti obsahuje 36 her:
 
 - Karetní hry: 3-5-8, 99, 1000 mil, Biblios, Bridž, Makao, Piky, Poker, Rummy, Tisíc, UNO, War a Scientific War.
 - Deskové a strategické hry: Člověče, nezlob se, Čtyři v řadě, Piškvorky, Mankala, Monopoly, Reversi, Lodě, Šachy, Dáma a Závody kachen.
 - Kostky a domino: Cat, head, tail, Domino, Farkle, Mexican Train a Yahtzee.
 - Slova a vědomosti: Krowa, Kategorie, Quiz Party, Scrabble a Taboo.
 - Zvukové akční hry: Axel Pong a Audio Ball.
+
+Mahjong má v seznamu her jednu položku. Nejprve vyber solitaire, Hong Kong, Riichi nebo MCR; pod volbou se zobrazí nastavení dané varianty. Solitaire hraješ sám. Hong Kong a MCR vyžadují čtyři hráče, Riichi čtyři nebo tři v sanmě. Chybějící místa doplníš u stolu boty pomocí Ctrl+O. V delším zápase každý po rozdání potvrdí připravenost k dalšímu. Pravidla a ovládání otevřeš pomocí Ctrl+F1.
+
+Zvuky rozlišují rozdání, dobrání a odhození kamene, vyložení sestavy a konec rozdání. V pasiánsu zazní také odebrání páru a vrácení tahu. Pasování a procházení kamenů jsou tiché. Slovní popis dál uvádí druh kamene a výsledek.
+
+Při odpovědi na kámen klávesa D přečte kámen, kterého se týká Pas, Chow, Pung, Kong nebo Mahjong. Nezmění ani nepotvrdí volbu. V pasiánsu D dál čte souřadnice.
+
+W přečte hodnotu platné výhry: fan nebo han a fu a získané body. Neodhaduje neúplnou ruku. Před výhrou v riichi nezahrnuje skryté ura-dora, takže konečná hodnota může být vyšší. U čte tvé vyložené sestavy, Shift+U sestavy ostatních a R číslo rozdání, větry a aktuální situaci. V riichi I čte ukazatele a kameny dora, počet tvých dora, hlášení riichi, vklady, honba a tvé omezení furiten. Tyto klávesy pouze čtou informace.
+
+S přečte průběžné body všech hráčů. M počet kamenů zbývajících k dobrání ve zdi. Jde jen o oznámení: nedobírají, neodhazují, nedávají pas ani neodhalují cizí ruce. V solitaire S čte odebrané páry a M zbývající kameny rozložení.
+
+Příručka postupně učí solitaire, Hong Kong, Riichi a MCR; každá stolní varianta vysvětluje cíl, pojmy, přípravu, průběh, bodování a délku zápasu. Všechny dostupné akce jsou hned za popisem situace před tvými kameny. V herních polích nový vlastní tah zaměří dobrání, po něm nový kámen. Samotný fokus tah neprovede.
+
+V solitaire vybíráš jednotlivé kameny: šipky mění řádek a sloupec, 1–3 přepínají vrstvy a D přečte souřadnice. Enter označí první kámen a potvrdí druhý do páru; Escape výběr zruší.
 
 Mnoho her nabízí několik variant. Jejich výběr, počet účastníků, dostupnost botů a další nastavení závisejí na konkrétní hře. Podrobná pravidla, bodování a ovládání popisuje část „Pravidla hry“ v programu.
 
@@ -389,6 +403,8 @@ Po vyčerpání limitu v zápase jeden na jednoho vyhraje soupeř. Při větší
 
 ### Soukromé karty v turnajích
 
+V turnajovém Mahjongu dostane každý hráč pouze své kameny. Skrytá zůstává i dosud nedobraná část zdi. Kameny potřebné k ověření výsledku se odhalí po skončení rozdání.
+
 V turnajích her 1000 mil, Piky, Bridž, Tisíc, 3-5-8, 99, Poker, War, Rummy, Makao, Biblios a UNO rozdává server karty každému hráči zvlášť. Stejně se rozdávají kameny v Dominu a Mexican Train i písmena ve Scrabblu. Ostatní hráči, diváci ani hostitel neobdrží obsah vaší ruky. Potřebné karty a kameny se odhalují při zahrání, předání nebo počítání bodů. V bridži se ruka tichého hráče odkryje po úvodním výnosu a ostatní karty po skončení rozdání.
 
 Karty předané jinému hráči tuto ochranu ztrácejí, běžné rozhraní však cizí ruku nadále nezobrazuje. Platí to i pro celou předávanou ruku v UNO, získané karty ve War a karty vracené do balíčku. V UNO rozdávající zná také divoké karty přeskočené při výběru úvodní karty. V Dominu se porovnává nejvyšší kámen každého hráče, aby se určilo, kdo začíná. Pravidla her se nemění.
@@ -404,6 +420,7 @@ V běžných partiích zůstávají boti, náhradníci i ukládání dostupní t
 Na seznamu turnajů stiskněte Ctrl+N. Vyberte hru, poté variantu a obvyklá nastavení stolu. Po jejich potvrzení se otevře formulář turnaje. Mezi poli přecházejte Tabem, na seznamech vybírejte šipkami a zaškrtávací políčka přepínejte mezerníkem.
 
 - Název turnaje — jméno soutěže, které uvidí ostatní hráči.
+- Podrobnosti od pořadatele — nepovinný text, který se zobrazí v pravidlech turnaje.
 - Formát — „Každý s každým“ nebo „Skupiny a vyřazovací část“, popsané níže.
 - Limit účastníků — nejvyšší počet přihlášených osob, standardně 16, nejvýše 128. I v turnaji dvojic se počítají lidé, nikoli týmy. K zahájení není nutné všechna místa obsadit.
 - Hráčů v zápase — počet osob u jednoho stolu, ne v celém turnaji. Volba se zobrazí, pokud hra umožňuje různé počty hráčů.
@@ -411,6 +428,8 @@ Na seznamu turnajů stiskněte Ctrl+N. Vyberte hru, poté variantu a obvyklá na
 - „Termíny a herní časy“ — nepovinné termíny přihlášek, zahájení a povolené doby pro zápasy.
 
 Další pole závisejí na hře a formátu. Odvety jsou ve výchozím stavu vypnuté. Až budete hotovi, turnaj zveřejněte; samotným vyplňováním formuláře ho ostatním nezpřístupníte.
+
+Tlačítkem „Zpět“ se vrátíte k nastavení hry. Údaje vyplněné ve formuláři turnaje zůstanou zachovány.
 
 Zveřejněním se přihlásíte i jako účastník. Chcete-li pouze pořádat, před zahájením se odhlaste. Pořadatelem zůstanete.
 
@@ -477,7 +496,7 @@ Ve formuláři turnaje otevřete „Termíny a herní časy“. Nemusíte nastav
 - Otevření přihlášek — ihned po zveřejnění, ve zvoleném termínu nebo až na váš pokyn.
 - Uzavření přihlášek — nepovinný čas, po kterém už se nikdo další nepřihlásí. Samotné uzavření turnaj nezahájí.
 - Zahájení turnaje — nepovinný čas automatického startu. Zahájením se také uzavřou přihlášky.
-- Konečný termín — informace pro hráče, do kdy by měli odehrát zápasy. Nerozhodne nedohraná utkání ani nepřidělí kontumace.
+- Konečný termín — po tomto datu nelze zahájit nové zápasy. Rozehrané hry lze dokončit; uplynutí termínu samo neurčuje výsledky ani nepřiděluje kontumace.
 - Herní hodiny — nepovinný interval, který platí každý den, například 18:00–22:00. Vyberte začátek, konec a časové pásmo. Konec před začátkem znamená následující den, například 22:00–02:00. Omezení platí pro zahajování zápasů; rozehrané partie můžete dokončit. Zvolené pásmo má pevný posun vůči UTC, který se při přechodu na letní nebo zimní čas automaticky nemění.
 
 Tabem přejděte na pole data. Šipky vlevo a vpravo vybírají rok, měsíc, den, hodinu či minutu; šipky nahoru a dolů mění vybranou hodnotu. Čas se zobrazuje podle místního časového pásma počítače.

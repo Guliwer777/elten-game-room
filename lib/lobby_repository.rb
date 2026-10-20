@@ -91,14 +91,14 @@ class LobbyRepository
     return snapshot == nil ? nil : native_snapshot(snapshot)
   end
 
-  def create_table(name:, game:, owner:, game_options: "{}", private_table: false, resume_save_id: nil, bot_count: 0, bot_names: nil, tournament_match: nil)
+  def create_table(name:, game:, owner:, game_options: "{}", private_table: false, resume_save_id: nil, bot_count: 0, bot_names: nil, tournament_match: nil, history_capacity: nil)
     clean_name = normalized_name(name)
     raise ArgumentError, "Invalid table name" if !valid_table_name?(clean_name)
 
     existing = current_table_for(owner)
     return CreateResult.new(table: existing, created: false) if existing != nil
 
-    table = @transport.create_room(
+    room_arguments = {
       name: clean_name,
       game: game,
       owner: owner,
@@ -106,7 +106,9 @@ class LobbyRepository
       capacity: DEFAULT_ROOM_CAPACITY,
       private_table: private_table, resume_save_id: resume_save_id, bot_count: bot_count, bot_names: bot_names,
       **(tournament_match ? {tournament_match: tournament_match} : {})
-    )
+    }
+    room_arguments[:stack_entries] = history_capacity unless history_capacity.nil?
+    table = @transport.create_room(**room_arguments)
     append_activity(table, "created", actor: owner, table_users: [owner])
     return CreateResult.new(table: table, created: true)
   end

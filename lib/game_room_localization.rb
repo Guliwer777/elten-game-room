@@ -75,6 +75,14 @@ module GameRoomLocalization
       @translator.translate(source, **options)
     end
 
+    # Exact catalog forms, without changing the viewer's language or fallback
+    # settings. Used to recognize automatic text stored by older clients.
+    def translated_variants(source)
+      boot unless @translator
+      source = source.to_s.dup.force_encoding(Encoding::UTF_8)
+      [source, *@catalogs.values.filter_map { |catalog| catalog.translate(source) }].uniq.freeze
+    end
+
     private
 
     def language_code(value)

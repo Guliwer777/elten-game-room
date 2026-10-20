@@ -115,7 +115,11 @@
   Reuse an already checked attachment only for presentation, never to authorize
   entry/start/results. Keep optional discovery metadata within the host limit.
   Registration, start dates and play hours are independently optional; an
-  organizational deadline must never award a forfeit automatically. Preserve
+  organizational deadline blocks new match creation/start, not a return to a
+  running bound game, and must never award a forfeit automatically. Deliver
+  notices using authenticated registration names, outside canonical schedule
+  and binding identities; changing a recipient's spelling must not rehash a match.
+  Preserve
   event-driven view refresh, stable focus and the active-table guard.
   Individual absence uses one cumulative 300-second allowance, ordered native
   boundaries and the same logical clock for live ACK and cold replay. Never
@@ -234,6 +238,8 @@ Details: `docs/UI.md`.
 - `Replay#state` is optional: Tic-tac-toe and Four in a row keep the position
   in `board`/`players` fields and return `state: nil`. Shared hooks must
   not require a state Hash; game options also come from ActionContext.
+  `Replay#players` is the canonical roster even when `state` is a Hash:
+  Pong and Audio Ball do not duplicate it under `state[:players]`.
   When changing them, test real replays from game classes, not just an
   artificially constructed Hash. Bot-delay regression:
   `test/models/bot_delay_replay_test.rb`.

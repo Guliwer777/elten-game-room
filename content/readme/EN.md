@@ -41,13 +41,27 @@ This is a read-only document with a heading for each version. H moves to the nex
 
 ## What you can play
 
-Power Games currently includes 35 games:
+Power Games currently includes 36 games:
 
 - Card games: 3-5-8, 99, 1000 miles, Biblios, Bridge, Makao, Spades, Poker, Rummy, Thousand, UNO, War and Scientific War.
 - Board and strategy games: Ludo, Four in a Row, Tic Tac Toe, Mancala, Monopoly, Reversi, Battleships, Chess, Checkers and Duck Racing.
 - Dice and dominoes: Cat, head, tail, Dominos, Farkle, Mexican Train and Yahtzee.
 - Words and knowledge: Krowa, Categories, Quiz Party, Scrabble and Taboo.
 - Audio action games: Axel Pong and Audio Ball.
+
+Mahjong has one entry in the game list. Choose Solitaire, Hong Kong, Riichi or MCR first; the options for that variant appear below it. Solitaire is solo. Hong Kong and MCR need four players; Riichi needs four or three in sanma. At the table, use Ctrl+O to add bots for missing seats. In a longer match, everyone confirms readiness after each hand. Open the rules and controls with Ctrl+F1.
+
+Sounds distinguish dealing, drawing and discarding a tile, declaring a set and ending a hand. Solitaire also sounds pair removal and undo. Passing and browsing tiles are silent. Spoken descriptions still identify the tile and result.
+
+While responding to a tile, D reads the tile to which Pass, Chow, Pung, Kong or Mahjong applies. It does not change or submit your choice. In Solitaire, D still reads coordinates.
+
+W reads a legal winning hand value: fan or han and fu, and the points gained. It does not estimate an incomplete hand. Before a Riichi win it excludes hidden ura-dora, so the final value may be higher. U reads your exposed sets, Shift+U those of the other players, and R the hand number, winds and current situation. In Riichi, I reads dora indicators and tiles, your dora count, Riichi declarations, deposits, honba and your furiten restriction. These keys only read information.
+
+Press S to hear the current points of every player. Press M to hear how many tiles remain in the wall for drawing. These are read-only announcements: they do not draw, discard or pass, and do not reveal other hands. In Solitaire, S reads removed pairs and M remaining layout tiles.
+
+The book teaches Solitaire, Hong Kong, Riichi and MCR in sequence; each table variant explains its aim, terms, preparation, play, scoring and match length. All available game actions follow the situation description and precede your tiles. In game fields, a new personal turn focuses Draw a tile, then drawing selects the new tile. Focus alone never submits a move.
+
+In Solitaire you choose individual tiles: arrows move between rows and columns, 1–3 switch layers, and D reads coordinates. Enter marks the first tile and confirms a matching second tile; Escape cancels the selection.
 
 Many games have several variants. The choices, player counts, bot support and additional settings depend on the game. Detailed rules, scoring and controls are described in the program's “Game rules” section.
 
@@ -389,6 +403,8 @@ In a one-on-one match, exceeding the allowance gives the opponent the win. With 
 
 ### Private hands in tournaments
 
+In tournament Mahjong, each player receives only their own tiles. The undrawn wall also stays hidden. Tiles needed to verify the result are revealed at the end of the hand.
+
 In tournament Mille Bornes, Spades, Bridge, Thousand, 3-5-8, 99, Poker, War, Rummy, Makao, Biblios and UNO, the server deals cards privately to each player. Domino, Mexican Train and Scrabble tiles are dealt the same way. Other players, spectators and the table host do not receive your hand. Cards or tiles are revealed as needed when played, transferred or scored. In Bridge, dummy is exposed after the opening lead; the remaining cards are revealed when the deal ends.
 
 Cards passed to another player lose this protection, although the ordinary interface still hides other players' hands. This includes an entire transferred UNO hand, captured cards in War and cards returned to the deck. In UNO, the dealer also knows any wild cards skipped while choosing the opening card. Domino compares each player's highest tile to determine who starts. The game rules remain unchanged.
@@ -404,6 +420,7 @@ Ordinary games still support bots, replacements and saved games where the game a
 Press Ctrl+N on the tournament list. Choose the game, then its variant and ordinary table settings. Confirm these to reach the tournament form. Use Tab to move between fields, arrow keys to change list selections and Space to toggle checkboxes.
 
 - Tournament name — the name other players will see.
+- Organizer's notes — optional text shown in the tournament rules.
 - Format — “Round robin” or “Groups and knockout”, explained below.
 - Participant limit — the maximum number of registered people, initially 16 and no more than 128. This counts people, not teams, even in pair tournaments. You do not have to fill every place before starting.
 - Players per match — the number at one table, not in the whole tournament. This choice appears when the game supports more than one match size.
@@ -411,6 +428,8 @@ Press Ctrl+N on the tournament list. Choose the game, then its variant and ordin
 - “Dates and playing hours” — optional registration dates, start time and permitted playing periods.
 
 Additional fields depend on the game and format. Return matches are off by default. Publish the tournament when you are ready; filling in the form alone does not make it public.
+
+Use “Back” to revisit the game settings without losing anything you have entered in the tournament form.
 
 Publishing also registers you as a participant. If you only want to organise, withdraw before the start. You will still be the organiser.
 
@@ -477,7 +496,7 @@ Open “Dates and playing hours” in the tournament form. You do not have to sc
 - Registration opening — immediately after publication, at a chosen time, or only when you open it yourself.
 - Registration closing — an optional time after which no one else can sign up. Closing registration does not itself start the tournament.
 - Tournament start — an optional scheduled start. Starting also closes registration.
-- Final deadline — tells participants when they should have played their matches. It does not settle outstanding matches or award forfeits.
+- Final deadline — no new matches can start after this date. Games already in progress may finish; reaching the deadline does not settle matches or award forfeits.
 - Playing hours — an optional daily window, for example 18:00–22:00. Choose the start and end times and a time zone. An end earlier than the start means the following day, as in 22:00–02:00. The window limits starting matches; games already underway can continue. The chosen zone uses a fixed UTC offset and does not change automatically for daylight saving time.
 
 Tab to a date field to set it. Left and Right select the year, month, day, hour or minute; Up and Down change that part's value. Times are shown in your computer's local time zone.

@@ -40,13 +40,20 @@ catalog.ids.each do |id|
 
   assert_equal(false, game.paced_event_presentation?, "#{id}: inherited Duck pacing")
   assert_equal(false, game.replay_participant_transitions?, "#{id}: inherited Duck seat replay")
-  assert_equal(game, game.build_presentation_game, "#{id}: replaced a custom presentation model")
+  presentation = game.build_presentation_game
+  if !presentation.equal?(game)
+    assert(game.class.instance_methods(false).include?(:build_presentation_game), "#{id}: inherited an unrelated presentation factory")
+    assert_equal(game.class, presentation.class, "#{id}: changed its presentation model type")
+    assert(!presentation.equal?(game.build_presentation_game), "#{id}: reused an independent historical presentation cache")
+  else
+    assert_equal(game, presentation, "#{id}: replaced a custom presentation model")
+  end
 end
 assert_equal(%w[audio_ball axel_pong duck_racing krowa scrabble], client_ids.sort)
 
 cases = JSON.parse(File.read(File.join(__dir__, '../fixtures/contracts/v1/histories.json'), encoding: 'UTF-8')).fetch('cases')
 cases.reject! { |item| item.fetch('game') == 'tysiac' }
-%w[v2/tysiac v1/mille_bornes v2/bridge].each do |name|
+%w[v2/tysiac v1/mille_bornes v2/bridge v1/mahjong].each do |name|
   cases << JSON.parse(File.read(File.join(__dir__, "../fixtures/contracts/#{name}.json"), encoding: 'UTF-8'))
 end
 

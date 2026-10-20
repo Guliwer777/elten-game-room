@@ -79,7 +79,7 @@ end
 
 class GridBox < FakeControl
   attr_accessor :x, :y
-  attr_reader :cells, :last_focus_spoken
+  attr_reader :cells, :last_focus_spoken, :width, :height
 
   def initialize(width, height, header:, x:, y:, quiet:)
     super()
@@ -92,6 +92,14 @@ class GridBox < FakeControl
   def set_cells(cells)
     @cells = cells
   end
+
+  def resize(width, height)
+    @width, @height = width, height
+    @x = [[@x, 0].max, width - 1].min
+    @y = [[@y, 0].max, height - 1].min
+  end
+
+  def cell_label; @cells.to_a[@y].to_a[@x].to_s; end
 
   def move_by(dx, dy)
     @x = [[@x + dx.to_i, 0].max, @width - 1].min

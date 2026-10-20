@@ -417,6 +417,24 @@ assert(entry_252.changes[6].include?('lose this protection') && entry_252.change
 end
 assert(entry_252.changes[6].include?('Tournament matches cannot be saved'),
   'Tournament release notes omit the uniform no-save policy')
+entry_253 = entries.find { |entry| entry.build == 253 }
+assert(entry_253.version == '2.0.5.2' && entry_253.changes.length == 1, 'build 253 has incorrect release metadata')
+assert(entry_253.changes.first.include?('Axel Pong') && entry_253.changes.first.include?('Audio Ball'),
+  'build 253 omits the tournament match start correction')
+assert(GameRoomChangelog.pending_entries(252, 253).map(&:build) == [253], 'build 253 repeats older notes')
+assert(GameRoomChangelog.pending_entries(nil, 253).map(&:build) == [253], 'first build 253 launch repeats history')
+assert(GameRoomChangelog.pending_entries(253, 253).empty?, 'build 253 reopens after being read')
+assert(GameRoomChangelog.list_items([entry_253]).first == 'Version 2.0.5.2, build 253', 'build 253 heading differs')
+entry_254 = entries.find { |entry| entry.build == 254 }
+assert(entry_254.version == '2.0.5.3' && entry_254.changes.length == 10, 'build 254 has incorrect release metadata')
+assert(entry_254.changes.first.include?('Mahjong by Guliwer'), 'build 254 lacks the Mahjong author credit')
+%w[Solitaire Riichi MCR private Back deadline Tournament language Krowa paulinux SJP].each do |topic|
+  assert(entry_254.changes.join(' ').include?(topic), "build 254 lacks #{topic}")
+end
+assert(GameRoomChangelog.pending_entries(253, 254).map(&:build) == [254], 'build 254 repeats older notes')
+assert(GameRoomChangelog.pending_entries(nil, 254).map(&:build) == [254], 'first build 254 launch repeats history')
+assert(GameRoomChangelog.pending_entries(254, 254).empty?, 'build 254 reopens after being read')
+assert(GameRoomChangelog.list_items([entry_254]).first == 'Version 2.0.5.3, build 254', 'build 254 heading differs')
 %w[PL CS ES RU].each do |language|
   bytes = File.binread(File.expand_path("../../locale/#{language}.mo", __dir__))
   total, source_table, target_table = bytes.byteslice(8, 12).unpack('V3')
@@ -436,5 +454,9 @@ assert(entry_252.changes[6].include?('Tournament matches cannot be saved'),
     "build 251 has untranslated #{language} notes")
   assert(entry_252.changes.all? { |source| !release_catalog.fetch(source, '').empty? },
     "build 252 has untranslated #{language} notes")
+  assert(entry_253.changes.all? { |source| !release_catalog.fetch(source, '').empty? },
+    "build 253 has untranslated #{language} notes")
+  assert(entry_254.changes.all? { |source| !release_catalog.fetch(source, '').empty? },
+    "build 254 has untranslated #{language} notes")
 end
-puts "Changelog tests passed: first launch, updates, downgrade, Enter, storage, old notes preserved and multilingual build 252 notes"
+puts "Changelog tests passed: first launch, updates, downgrade, Enter, storage, old notes preserved and multilingual build 254 notes"

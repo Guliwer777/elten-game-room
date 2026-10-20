@@ -3,8 +3,8 @@
   "id": "c24d98cc-9ccd-4d50-b801-459da324ff60",
   "name": "Power Games",
   "description": "Accessible multiplayer games for ELTEN users.",
-  "version": "2.0.5.1",
-  "build_id": "252",
+  "version": "2.0.5.3",
+  "build_id": "254",
   "EltenAPIVersion": "3.0.4",
   "main_language": "en",
   "supported_languages": ["en", "pl", "cs", "es", "ru"],
@@ -192,8 +192,8 @@ class EltenGameRoom < Program
   extend GameRoomTableWatchRuntime
   extend GameRoomContactFiltersRuntime
   extend GameRoomAnalyticsRuntime
-  GAME_ROOM_VERSION = "2.0.5.1".freeze
-  GAME_ROOM_BUILD_ID = 252
+  GAME_ROOM_VERSION = "2.0.5.3".freeze
+  GAME_ROOM_BUILD_ID = 254
   GAME_ROOM_CAPABILITIES = ["invitations", "live_sessions", "live_session_stack"].freeze
   LOBBY_ACTIVITY_POLL_INTERVAL = 5.0
 
@@ -886,7 +886,11 @@ class EltenGameRoom < Program
     alert(message)
   rescue GameRoomTournaments::Publication::Invalid, GameRoomTournaments::OperationJournal::Error, GameRoomTournaments::ServerPlanArchive::Unconfirmed,
       GameRoomTournaments::ServerPlanArchive::ContextChanged => error
-    alert(_("Tournament table or result not confirmed. Check Operations before trying again."))
+    if error.is_a?(GameRoomTournaments::Publication::Invalid) && error.code==:deadline_passed
+      alert(_("The tournament deadline has passed. New matches cannot be started; games already in progress may finish."))
+    else
+      alert(_("Tournament table or result not confirmed. Check Operations before trying again."))
+    end
   end
 
   def award_ordinary_tournament_forfeit(publication,match,loser,schedule_id,names:{})
@@ -1207,7 +1211,8 @@ class EltenGameRoom < Program
         game: game_id,
         owner: Session.name,
         game_options: JSON.generate(game_options),
-        private_table: privacy
+        private_table: privacy,
+        history_capacity: game.session_history_capacity(game_options)
       )
       activate_table_transport(created&.table)
       created
@@ -1421,6 +1426,7 @@ class EltenGameRoom < Program
       next unless allowed.call
       created = @lobby.create_table(name: saved["table_name"], game: saved["game"], owner: actor,
         game_options: saved["options"], private_table: saved["private"], resume_save_id: saved["id"],
+        history_capacity: game.session_history_capacity(game.options_from_json(saved["options"])),
         bot_count: saved["players"].count { |player| GameRoomParticipants.bot?(player) },
         bot_names: saved["players"].select { |player| GameRoomParticipants.bot?(player) }.map { |player| GameRoomParticipants.bot_name_token(player) })
       if created.created?
@@ -3262,14 +3268,19 @@ class EltenGameRoom < Program
     }
     game = game_definition(snapshot.table["game"])
     variant = GameRoomTableVariant.text(game, GameRoomTableVariant.payload(game, snapshot.table["game_options"]))
-    variant.empty? ? label : "#{label}, #{variant}"
+    label = "#{label}, #{variant}" unless variant.empty?
+    snapshot.table["tournament_match"].is_a?(Hash) ? "#{GameRoomContent.utf8(_("Tournament match"))}, #{label}" : label
+  end
+
+  def table_display_name(row)
+    row["tournament_match"].is_a?(Hash) ? _("Tournament match") : row["name"].to_s
   end
 
   def table_header(snapshot)
     row = snapshot.table
     label = _("Users at the table. %{status}; %{name}; %{game}; host: %{owner}; %{count}/%{maximum}") % {
       status: table_status_label(row),
-      name: row["name"].to_s,
+      name: table_display_name(row),
       game: game_name(row["game"]),
       owner: @lobby.owner_of(row),
       count: snapshot.participant_count,
@@ -3420,6 +3431,10 @@ class EltenGameRoom < Program
       options: options, refreshed_room: refreshed_room)
   rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
     alert(_("Tournament table operation blocked: %{reason}")%{reason:error.code})
+    nil
+  rescue GameRoomTournaments::Publication::Invalid => error
+    raise unless error.code==:deadline_passed
+    alert(_("The tournament deadline has passed. New matches cannot be started; games already in progress may finish."))
     nil
   end
 

@@ -20,6 +20,12 @@ module GameRoomServerRandomRendering
         seats.is_a?(Array) && seats.length.between?(1, 8) && seats.uniq == seats &&
         seats.all? { |seat| seat.is_a?(Integer) && seat.between?(0, 7) } &&
         template.gsub('{seed}', '0' * 32).gsub('{dealer}', '0').length <= 64
+    when 'seed_json'
+      data = recipe['data']
+      recipe.keys.sort == %w[data kind] && data.is_a?(Hash) && !data.key?('r') &&
+        data.keys.all? { |key| key.is_a?(String) && key.match?(/\A[a-z]\z/) } &&
+        data.values.all? { |value| value.is_a?(Integer) || (value.is_a?(String) && value.match?(/\A[a-z]+\z/)) } &&
+        JSON.generate(data.merge('r' => (1 << 63) - 1)).bytesize <= 64
     when 'cat_tail', 'monopoly_roll', 'first_server'
       recipe.keys == ['kind']
     when 'payload_seed'
@@ -40,6 +46,8 @@ module GameRoomServerRandomRendering
     case recipe['kind']
     when 'payload_seed'
       recipe['integer_seed'] ? seed.to_i(16) : seed
+    when 'seed_json'
+      JSON.generate(recipe['data'].merge('r' => seed.to_i(16) & ((1 << 63) - 1)))
     when 'seed_text'
       seats = recipe.fetch('seats')
       dealer = seats[seed.to_i(16) % seats.length]

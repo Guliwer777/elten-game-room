@@ -1,5 +1,18 @@
 # Third-party notices
 
+## Krowa: SJP inflection rules
+
+`games/krowa_support/sjp_noun_forms.rb` adapts a small subset of the noun
+inflection rules in SJP.PL's `polish.aff`, version 2026-09-01. The source is
+[sjp-ispell-pl-20260901-src.tar.bz2](https://sjp.pl/sl/ort/sjp-ispell-pl-20260901-src.tar.bz2),
+distributed by [SJP.PL](https://sjp.pl/sl/ort/). We use the offered
+[CC BY 4.0](LICENSES/CC-BY-4.0.txt) license. Contact: sjpslownik@gmail.com.
+
+The adaptation selects noun nominative rules, rewrites suffix conditions
+as Ruby regular expressions and applies them only to forms present in the
+current SJP response. It imports no word list. Unclassified forms retain
+the definition lookup's fallback. SJP.PL does not endorse the application.
+
 ## Polish general-knowledge question set
 
 Since version 2.0.4.4, the “Wiedza ogólna” (General knowledge) set has used

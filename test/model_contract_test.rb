@@ -51,6 +51,7 @@ bridge = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v2/bridge.j
 previous_bridge = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v1/bridge.json'), encoding: 'UTF-8'))
 assert_equal(without_replay_hashes.call(previous_bridge), without_replay_hashes.call(bridge), 'Bridge hand storage must not replace the reference actions or RNG')
 cases << bridge
+cases << JSON.parse(File.read(File.join(__dir__, "fixtures/contracts/v1/mahjong-model.json"), encoding: "UTF-8"))
 duck = JSON.parse(File.read(File.join(__dir__, 'fixtures/contracts/v1/duck_racing.json'), encoding: 'UTF-8'))
 expected_ids = GameRoomGames::CATALOG.ids.reject { |id| %w[axel_pong audio_ball].include?(id) }.sort
 assert_equal(expected_ids, (cases.map { |item| item.fetch('game') } + [duck.fetch('game')]).sort, 'corpus must explicitly cover every turn-based game')

@@ -205,9 +205,10 @@ module GameRoomTournaments
     def authorize_entry_on_worker(candidate,match,binding)
       account!
       ServerReadScope.refresh!
-      current=server_source(candidate.fetch('publication_ref')).fetch('candidate')
+      source=server_source(candidate.fetch('publication_ref'))
+      current=source.fetch('candidate')
       raise OrdinaryMatchService::Blocked,:source_changed unless current==candidate
-      ServerMatchWindow.current(candidate,@readiness_clock.call)
+      ServerMatchWindow.current(candidate,@readiness_clock.call,deadline_at:source['deadline_at'])
       # Consent is the ordinary invitation acceptance. Presence, planned
       # seats/options and the one-game binding are checked by the table service.
       true

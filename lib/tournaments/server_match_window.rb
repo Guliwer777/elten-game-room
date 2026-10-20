@@ -3,8 +3,10 @@ require_relative 'local_registration_time'
 module GameRoomTournaments
   module ServerMatchWindow
     module_function
-    def current(candidate, now)
+    def current(candidate, now, deadline_at: nil)
       raise Publication::Invalid, :invalid_clock unless Publication::Data.integer?(now)
+      raise Publication::Invalid, :invalid_clock if deadline_at && !Publication::Data.integer?(deadline_at,1)
+      raise Publication::Invalid, :deadline_passed if deadline_at && now>=deadline_at
       if candidate.key?('starts_at')
         start=candidate['starts_at']
         raise Publication::Invalid,:tournament_not_started unless Publication::Data.integer?(start,1) && start<=now

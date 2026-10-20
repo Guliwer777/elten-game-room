@@ -44,7 +44,7 @@ module GameRoomTournaments
       super(**arguments)
     end
 
-    def notices(publication_ref:,recipient:nil,phase_id:nil)
+    def notices(publication_ref:,recipient:nil,phase_id:nil,addressed:false)
       current!
       reference=ScheduleSource.reference(publication_ref)
       proof=source!(reference,delivery:true,phase_id:phase_id)
@@ -57,7 +57,9 @@ module GameRoomTournaments
           'event_id'=>nil}
         metadata['phase_id']=phase_id if @kind=='phase_finished'
         metadata['event_id']=self.class.event_id(metadata)
-        self.class.metadata(metadata)
+        metadata=self.class.metadata(metadata)
+        name=@kind=='registration' ? Data.account(recipient) : RegistrationProjection.delivery_name(proof['usernames'],person) if addressed
+        addressed ? [metadata,name].freeze : metadata
       end.freeze
     end
 
@@ -117,6 +119,7 @@ module GameRoomTournaments
       now=now!
       raise ProposalNotice::Stale,'Notice from the future' if issued_at && issued_at>now+5
       proof={'sender'=>reference['author'],'title'=>row['title'],'game'=>row['game'],'participants'=>people,
+        'usernames'=>value['usernames'],
         'publication_digest'=>RegistrationProjection.publication_generation(row)}
       if @kind=='registration'
         raise ProposalNotice::Stale,'Registration not open' unless TournamentTiming.registration_open?(row,now)

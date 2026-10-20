@@ -76,10 +76,10 @@ end
 
 def Log.warning(_message); end
 
-[:unchanged, :new_draft, :retyped_same, :new_native_control, :stale, :invalid].each do |boundary|
+[:unchanged, :new_draft, :retyped_same, :new_native_control, :stale, :invalid, :wrong_length, :invalid_new_draft, :invalid_retyped_same].each do |boundary|
   f = PendingNativeQuestionFixture.new
   begin
-    initial = boundary == :invalid ? 'xyz' : 'las'
+    initial = boundary.to_s.start_with?('invalid') ? 'xyz' : boundary == :wrong_length ? 'la' : 'las'
     f.type(initial)
     before = f.h.events('Alice').length
     operation = f.pending
@@ -91,10 +91,10 @@ def Log.warning(_message); end
     f.enter
     assert(f.screen.instance_variable_get(:@pending_move_intent).equal?(intent), 'Repeated Enter replaced the first intent')
     expected = initial
-    if boundary == :new_draft
+    if [:new_draft, :invalid_new_draft].include?(boundary)
       expected = 'dom'
       f.type(expected)
-    elsif boundary == :retyped_same
+    elsif [:retyped_same, :invalid_retyped_same].include?(boundary)
       f.type(initial)
     elsif boundary == :stale
       f.h.as('Alice') { f.h.transports['Alice'].freeze_game(f.h.session) }
@@ -111,10 +111,11 @@ def Log.warning(_message); end
       assert(f.field.object_id != intent.selection['_text_input'][0], 'Fixture did not rebuild the native input')
     end
     accepted = f.drain
-    if [:stale, :invalid].include?(boundary)
-      assert(!accepted && f.field.text == initial, "#{boundary}: rejected pending answer was erased")
+    if [:stale, :invalid, :wrong_length, :invalid_new_draft, :invalid_retyped_same].include?(boundary)
+      expected = '' if [:invalid, :wrong_length].include?(boundary)
+      assert(!accepted && f.field.text == expected, "#{boundary}: rejection cleared the wrong draft")
       assert(f.h.events('Alice').length == before, "#{boundary}: rejected pending answer entered game history")
-      assert(f.reconstructed_text == initial, "#{boundary}: returning from history would lose the rejected answer")
+      assert(f.reconstructed_text == expected, "#{boundary}: history restored the wrong rejected draft")
     else
       assert(accepted, "#{boundary}: valid captured answer did not pass the real runner")
       expected = '' if boundary == :unchanged
@@ -134,4 +135,4 @@ def Log.warning(_message); end
   end
 end
 
-puts 'PASS independent native question queue: first Enter, duplicate Enter, changed/ABA/rebuilt drafts, stale/invalid rejection, history reconstruction and no raw packet metadata'
+puts 'PASS native question queue: acceptance, declared Krowa validation clearing, preserved stale/new/ABA drafts, history reconstruction and no raw packet metadata'

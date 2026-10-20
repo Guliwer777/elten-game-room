@@ -63,20 +63,23 @@ without fixing any files.
 
 ### Krowa noun source
 
-The first 98 178 lines of `tools/data/krowa_nouns.txt` preserve the exact text of
+The original first 98 178 lines of `tools/data/krowa_nouns.txt` preserved the exact text of
 `GameRoomKrowa::NounData::WORDS` from commit `0c86d03`,
 without sorting, deduplication or word changes. SHA-256 of the UTF-8 text with LF:
 `5e9e97a7681e662e97527a794846f965a0b789e1f47b3c06c5fc8404490d0389`.
 The inputs to the old `generate_noun_data.ps1`, mentioned in the
 original header, could not be established. This preserves the repository state so that
-the Ruby can be reproduced, without reconstructing the former dictionary selection or changing credits and licenses.
+the Ruby could be reproduced, without reconstructing the former dictionary selection or changing credits and licenses.
 The TXT and generator stay outside the installer; the runtime uses the generated Ruby.
 Nine entries approved by the project author were appended to the list:
 łam, zacios, zaciosy, prosię, silnia, silnie, afro, szmat and ksero.
 On 5 October 2026, a further 60 approved entries were appended (34, followed by
-another 26), without changing the previous order. The current file contains
-98 247 lines; the generator
-and its test check this. Adding a noun does not create a local
+another 26), without changing the previous order. That intermediate file had
+98 247 rows. The later word contributions added 185 distinct nouns and removed
+13 305 duplicate rows while preserving the first occurrence of every old word.
+The current source contains 85 127 unique entries; the generator and its test
+check this. Daily assignments do not depend on the dictionary index.
+Adding a noun does not create a local
 definition: explanations are retrieved from SJP on demand through the existing path.
 
 ## Interface translations

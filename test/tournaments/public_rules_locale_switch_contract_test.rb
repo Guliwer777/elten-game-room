@@ -38,12 +38,12 @@ module PublicRulesLocaleSwitchContract
       description = formatter.description(publication, snapshot)
       assert_equal(Encoding::UTF_8, description.encoding, 'Displayed rules are not UTF-8')
       assert(description.valid_encoding?, 'Displayed rules contain invalid bytes')
-      assert(description.include?("#{translated('Tournament rules')}: #{rules}"),
-        'Authored complete rules or their translated heading disappeared')
+      assert(!description.include?("#{translated("Organizer's notes")}:"),
+        'Legacy automatic scoring was presented as organizer-authored notes')
       assert_equal(1, description.scan(scoring).length,
         "#{source_language}->#{viewer_language}: authoritative local scoring is missing or duplicated")
-      assert_equal(1, description.scan(rules).length,
-        "#{source_language}->#{viewer_language}: original authored rules were altered")
+      assert_equal(source_language == viewer_language ? 1 : 0, description.scan(rules).length,
+        "#{source_language}->#{viewer_language}: legacy automatic text leaked its source language")
       assert_equal(bytes, Marshal.dump(snapshot), 'Locale change modified an immutable publication')
       count += 1
     end
@@ -61,11 +61,11 @@ module PublicRulesLocaleSwitchContract
       assert(publication, 'The custom fixture publication failed real validation')
       before = Marshal.dump(snapshot)
       description = formatter.description(publication, snapshot)
-      assert(description.include?("#{translated('Tournament rules')}: #{custom}"), 'Custom text was normalized away')
+      assert(description.include?("#{translated("Organizer's notes")}: #{custom}"), 'Custom text was normalized away')
       assert_equal(2, description.scan(scoring).length, 'A partial match suppressed the authoritative scoring paragraph')
       assert_equal(before, Marshal.dump(snapshot), 'Partial-match handling mutated the source')
       count += 1
     end
   end
-  puts "PASS public rules locale-switch contract: #{count} independent cases, binary strings, immutable sources and exact-only deduplication"
+  puts "PASS public rules locale-switch contract: #{count} cases, localized legacy defaults, binary strings, immutable sources and preserved custom notes"
 end

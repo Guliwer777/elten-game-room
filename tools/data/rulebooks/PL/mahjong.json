@@ -1,0 +1,963 @@
+{
+  "source": "games/mahjong_rules.rb",
+  "sections": [
+    {
+      "id": "table_aim",
+      "title": {
+        "pl": "Mahjong — cel gry"
+      },
+      "paragraphs": [
+        {
+          "pl": "Wybierz część dotyczącą swojej odmiany. Pasjans to usuwanie par w pojedynkę. Hong Kong, Riichi i MCR to budowanie zwycięskiej ręki przeciwko innym graczom. Każda odmiana ma poniżej osobne zasady i punktację; nie trzeba czytać wszystkich, żeby zacząć grać w jedną."
+        },
+        {
+          "pl": "Dźwięki rozróżniają rozdanie, dobranie i odrzucenie kamienia, wyłożenie układu oraz zakończenie rozdania. W pasjansie słychać zdjęcie pary i cofnięcie ruchu. Pas i samo przeglądanie kamieni są ciche. Opis słowny nadal podaje rodzaj kamienia i wynik."
+        },
+        {
+          "pl": "D podczas odpowiedzi na cudzy kamień odczytuje kamień, którego dotyczy Pas, Chow, Pung, Kong lub Mahjong. Nie zmienia wyboru ani nie zatwierdza odpowiedzi. W pasjansie D nadal odczytuje współrzędne."
+        }
+      ]
+    },
+    {
+      "id": "aim",
+      "title": {
+        "pl": "Pasjans — pojęcia i cel"
+      },
+      "paragraphs": [
+        {
+          "pl": "Grasz sam. Usuń wszystkie 144 kamienie, łącząc je w 72 pary."
+        },
+        {
+          "pl": "Układ to cała plansza. Warstwa oznacza wysokość: kamienie mogą leżeć na innych kamieniach. Wiersze biegną poziomo, a kolumny pionowo. Wolny kamień nie ma nic nad sobą i ma wolny lewy lub prawy bok."
+        }
+      ]
+    },
+    {
+      "id": "tiles",
+      "title": {
+        "pl": "Pasjans: Pasujące i wolne kamienie"
+      },
+      "paragraphs": [
+        {
+          "pl": "Parę tworzą dwa identyczne kamienie, na przykład dwie 5 bambusów albo dwa czerwone smoki. Wyjątek: dowolne dwa kwiaty pasują do siebie i dowolne dwie pory roku pasują do siebie. Kwiat nie pasuje do pory roku."
+        },
+        {
+          "pl": "Możesz zdjąć tylko dwa wolne kamienie. Kamień widoczny, ale zablokowany z obu boków, musi najpierw zostać uwolniony. Rodzaju zakrytego kamienia nie poznasz, dopóki go nie odsłonisz."
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": {
+        "pl": "Pasjans: Wybieranie pary"
+      },
+      "paragraphs": [
+        {
+          "pl": "W polu Kamienie w układzie strzałki lewo/prawo zmieniają kolumnę, a góra/dół wiersz. Klawisze 1, 2 i 3 wybierają warstwę od najniższej do najwyższej. D odczytuje warstwę, wiersz i kolumnę. Gra mówi, czy kamień jest zakryty, zablokowany czy dostępny z lewej, prawej lub obu stron."
+        },
+        {
+          "pl": "Znajdź wolny kamień i naciśnij Enter. Potem znajdź drugi wolny kamień do pary i ponownie naciśnij Enter. Znikną obydwa. Na przykład wolna 5 bambusów pasuje do drugiej wolnej 5 bambusów, także z innej warstwy."
+        },
+        {
+          "pl": "Escape lub ponowny Enter na pierwszym kamieniu anuluje zaznaczenie. Wskazanie niepasującego kamienia nie usuwa pierwszego zaznaczenia. Puste pola pozostają na miejscu, więc współrzędne nie zmieniają się."
+        },
+        {
+          "pl": "Wybieraj pary, które odsłaniają kolejne kamienie. Początkowy układ ma rozwiązanie, ale zła kolejność może zablokować dalszą grę. Przycisk Cofnij ostatnią parę pozwala spróbować innego ruchu. Gra nie podaje listy gotowych par."
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "title": {
+        "pl": "Pasjans: Cofanie ruchów i zakończenie"
+      },
+      "paragraphs": [
+        {
+          "pl": "Wygrywasz po zdjęciu wszystkich kamieni. Wynik to liczba usuniętych par, najwyżej 72. S odczytuje wynik, a M liczbę pozostałych kamieni."
+        },
+        {
+          "pl": "Gdy nie znajdujesz pary, użyj Cofnij ostatnią parę. Możesz cofać kolejne ruchy aż do początku. Zakończ ten układ kończy grę wcześniej, bez wygranej."
+        }
+      ]
+    },
+    {
+      "id": "layout",
+      "title": {
+        "pl": "Pasjans: Wybór układu"
+      },
+      "paragraphs": [
+        {
+          "pl": "Domyślny układ Tarasy ma kilka warstw. W układzie Płaskim wszystkie kamienie leżą na jednej warstwie. W obu układach obowiązują te same zasady dobierania par i wymóg wolnego lewego lub prawego boku."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_aim",
+      "title": {
+        "pl": "Hong Kong — Cel i warunki wygranej"
+      },
+      "paragraphs": [
+        {
+          "pl": "Każdy z czterech graczy stara się jako pierwszy ukończyć zwycięską rękę. Zwykły kształt to cztery układy i para, warte co najmniej 3 fan; fan określają wartość punktową ręki. Cały mecz wygrywa osoba z najwyższym łącznym bilansem. Słownik poniżej wyjaśnia układy i jednostki punktacji przed opisem pierwszej tury."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_terms",
+      "title": {
+        "pl": "Hong Kong — Słownik pojęć"
+      },
+      "paragraphs": [
+        {
+          "pl": "Ręka to twoje kamienie. Rozdanie trwa do wygranej lub remisu; mecz składa się z jednego albo kilku rozdań."
+        },
+        {
+          "pl": "- Kolory to bambusy, koła i znaki, każdy z liczbami 1–9. Każdy rodzaj występuje cztery razy. Liczby skrajne to 1 i 9, środkowe to 2–8."
+        },
+        {
+          "pl": "- Honory to cztery wiatry: Wschód, Południe, Zachód i Północ, oraz trzy smoki: biały, zielony i czerwony. Nie mają numerów i nie tworzą chow."
+        },
+        {
+          "pl": "- Chow, inaczej chi, to trzy kolejne liczby jednego koloru, np. 3–4–5 bambusów."
+        },
+        {
+          "pl": "- Pung, także pong lub pon, to trzy identyczne kamienie, np. trzy czerwone smoki."
+        },
+        {
+          "pl": "- Kong, inaczej kan, to cztery identyczne kamienie. Zgłaszasz go osobną opcją i dobierasz kamień uzupełniający. Kong liczy się jako jeden układ."
+        },
+        {
+          "pl": "- Para to dwa identyczne kamienie. Zwykła zwycięska ręka zawiera cztery układy, czyli chow, pungi lub kongi, oraz jedną parę."
+        },
+        {
+          "pl": "- Mur to zakryty zapas kamieni. Dobierasz z niego do ręki. Odrzucony przez ciebie kamień mogą przejąć inni gracze."
+        },
+        {
+          "pl": "- Ręka zamknięta nie ma układów przejętych od przeciwnika. Przejęcie do chow, punga lub konga otwiera rękę. Kong z czterech samodzielnie zebranych kamieni pozostaje ukryty mimo zgłoszenia i nie otwiera ręki."
+        },
+        {
+          "pl": "- Wygrana z dobrania wykorzystuje kamień z muru, a wygrana na odrzuceniu kamień przeciwnika. W obu przypadkach musisz sam zgłosić Mahjong."
+        },
+        {
+          "pl": "- Gotowa ręka, czyli tenpai, potrzebuje jednego kamienia do ukończenia. Np. 4–5 bambusów może czekać na 3 lub 6. Do wygranej trzeba jeszcze spełnić warunki punktowe."
+        },
+        {
+          "pl": "- Wiatr miejsca to rola gracza: rozdający jest Wschodem, następni Południem, Zachodem i Północą. Wiatr rundy jest wspólny dla stołu. Pung własnego wiatru lub wiatru rundy może punktować."
+        },
+        {
+          "pl": "- Fan określają wartość ręki. Potrzebujesz co najmniej 3 fan; gra przelicza je potem na punkty meczu."
+        },
+        {
+          "pl": "- Kwiaty i pory roku to bonusowe kamienie, automatycznie wykładane i zastępowane. Nie należą do czterech układów ani pary. Pory roku nie oznaczają rund wiatrów."
+        },
+        {
+          "pl": "- Ukryty pung to trójka z własnych kamieni, trzymana na ręce do wygranej. Pung dopełniony cudzym odrzuceniem jest odkryty. Jeden kolor bez honorów oznacza wyłącznie bambusy, wyłącznie koła albo wyłącznie znaki, bez wiatrów i smoków."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_start",
+      "title": {
+        "pl": "Hong Kong — Początek rozdania"
+      },
+      "paragraphs": [
+        {
+          "pl": "Bilanse zaczynają się od zera; wypłaty za zwycięskie ręce dodają punkty, a przegrane je odejmują."
+        },
+        {
+          "pl": "Rozdający ma 14 kamieni i zaczyna od odrzucenia. Pozostali mają po 13; w swojej turze najpierw dobierają."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_play",
+      "title": {
+        "pl": "Hong Kong — Pierwsze tury krok po kroku"
+      },
+      "paragraphs": [
+        {
+          "pl": "W swojej turze wybierz Dobierz kamień i naciśnij Enter. Fokus przejdzie na dobrany kamień. Przejrzyj rękę strzałkami góra/dół, wybierz kamień do odrzucenia i naciśnij Enter. Możesz odrzucić nowy albo wcześniejszy kamień."
+        },
+        {
+          "pl": "Zachowuj kamienie pasujące do siebie. Do 4–5 pasuje 3 lub 6, do 4–6 tylko 5. Para może zostać końcową parą albo zmienić się w pung. Układów z własnych kamieni nie musisz wykładać: gra rozpozna je przy wygranej."
+        },
+        {
+          "pl": "Po cudzym odrzuceniu usłyszysz kamień i listę odpowiedzi. Pas znaczy: nie biorę tego kamienia. Jeśli wszyscy spasują, dobiera następny gracz. Inne dostępne odpowiedzi pozwalają przejąć kamień do układu lub wygrać."
+        },
+        {
+          "pl": "Gdy możesz wygrać, pojawi się opcja Zgłoś Mahjong. Wybierz ją przed odrzuceniem lub zamiast Pas. Gra sprawdza kształt ręki i punktację; nie kończy rozdania automatycznie tylko dlatego, że masz komplet. Wyczerpanie muru bez wygranej kończy rozdanie remisem."
+        },
+        {
+          "pl": "Tab i Shift+Tab zmieniają pola. Najpierw jest opis sytuacji, potem dostępne działania i twoje kamienie. Na listach wybierasz strzałkami i zatwierdzasz Enterem. Wyłożone układy pokazują układy wszystkich graczy z nazwami właścicieli, a Odrzucone kamienie ich odrzucenia. S odczytuje punkty, M liczbę kamieni w murze."
+        },
+        {
+          "pl": "W odczytuje wartość legalnej wygranej: fan albo han i fu oraz przyrost punktów. Bez legalnej wygranej nie szacuje wartości niepełnej ręki. Przed wygraną w Riichi pomija ukryte ura-dora, więc końcowa wartość może być wyższa. U odczytuje twoje wyłożone układy, Shift+U układy pozostałych graczy, a R numer rozdania, wiatry i bieżącą sytuację. W Riichi I odczytuje wskaźniki i kamienie dora, liczbę twoich dora, zgłoszenia Riichi, depozyty, honba oraz blokadę furiten. Te klawisze tylko odczytują informacje."
+        }
+      ]
+    },
+    {
+      "id": "table_hand",
+      "title": {
+        "pl": "Hong Kong — Co trzeba ułożyć, żeby wygrać"
+      },
+      "paragraphs": [
+        {
+          "pl": "Przykład czterech układów i pary: 2–3–4 bambusów; 4–5–6 kół; trzy 7 znaków; trzy czerwone smoki; dwa Zachody. Każdy kamień wykorzystujesz tylko raz. Gdy brakuje 4 bambusów, rękę może dokończyć dobrana lub przejęta 4 bambusów, jeśli spełniasz też warunek punktowy."
+        },
+        {
+          "pl": "Sam przykładowy kształt nie gwarantuje 3 fan. Pung czerwonych smoków daje 1. Jeśli nie masz żadnych kwiatów ani pór roku, dochodzi 1, a własne dobranie dodaje jeszcze 1: razem 3. Na cudzym odrzuceniu zabrakłoby jednego fan, chyba że ręka spełnia dodatkowy warunek. Planuj więc jednocześnie kształt i wartość ręki."
+        },
+        {
+          "pl": "Możesz też wygrać siedmioma parami za 4 fan. W tym chińskim profilu cztery jednakowe kamienie, których nie zgłoszono jako kong, mogą utworzyć dwie pary. Trzynaście sierot to jeszcze inny, rzadki kształt. Na początek wystarczy nauczyć się zwykłych czterech układów i pary; specjalne ręce są alternatywą, nie dodatkowym obowiązkiem."
+        },
+        {
+          "pl": "Trzynaście sierot oznacza po jednej 1 i 9 każdego z trzech kolorów, po jednym z czterech wiatrów i trzech smoków oraz drugą sztukę dowolnego z tych trzynastu rodzajów. Nie ma tu chow ani wymogu czterech zwykłych układów. Rękę zachowujesz bez przejmowania układów; ten profil przyznaje za nią 13 fan."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_claims",
+      "title": {
+        "pl": "Hong Kong — Przejmowanie kamieni i zgłaszanie kongów"
+      },
+      "paragraphs": [
+        {
+          "pl": "Po cudzym odrzuceniu wybierz dostępną odpowiedź strzałkami i naciśnij Enter. Chow bierzesz tylko od gracza bezpośrednio przed tobą; pung lub kong od dowolnego przeciwnika. Np. mając dwa czerwone smoki, możesz przejąć trzeciego do punga."
+        },
+        {
+          "pl": "Wygrana ma pierwszeństwo przed układami, a pung i kong przed chow. Gdy kilku graczy może wygrać na tym samym kamieniu, wygrywa pierwszy po odrzucającym. Gra czeka na wymagane odpowiedzi. Po przejęciu do chow lub punga odrzucasz bez dobierania. Wyłożonego układu nie można już rozdzielić."
+        },
+        {
+          "pl": "Kong z czterech samodzielnie zebranych kamieni zgłaszasz z listy kongów ukrytych. Aby rozszerzyć wyłożony pung, po dobraniu czwartego kamienia przejdź Tabem do wyboru punga do rozszerzenia i zatwierdź go Enterem. Taki kong jest odkryty. Przeciwnik może wygrać na dokładanym kamieniu, co nazywamy obrabowaniem konga."
+        },
+        {
+          "pl": "Po zatwierdzeniu konga wybierz Dobierz kamień uzupełniający, dopiero potem odrzuć. Kong ma cztery kamienie, ale zajmuje miejsce jednego układu: pełna ręka z jednym kongiem ma 15 kamieni, z dwoma 16."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_practice",
+      "title": {
+        "pl": "Hong Kong — Planowanie ręki na przykładach"
+      },
+      "paragraphs": [
+        {
+          "pl": "Prosty plan to cztery pungi i para: zapewnia 3 fan. Zachowuj pary, z których możesz zrobić pungi. Druga droga to układy jednego koloru wraz z honorami, także za 3 fan. Wybierz plan pasujący do swoich kamieni."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_sets",
+      "title": {
+        "pl": "Hong Kong: wartości układów i wypłaty"
+      },
+      "paragraphs": [
+        {
+          "pl": "W tym profilu Hong Kong nie ma osobnej tabeli fu ani premii tylko za ukrycie zwykłego punga lub konga. Kong spełnia te same warunki dotyczące rodzaju kamienia co pung. Punkty fan pochodzą z układów całej ręki, honorów oraz sposobu wygranej."
+        },
+        {
+          "pl": "- Wszystkie cztery układy będące chow dają 1 fan. Cztery pungi lub kongi dają 3 fan. Siedem par daje 4 fan."
+        },
+        {
+          "pl": "- Jeden kolor wraz z honorami daje 3 fan; jeden kolor bez honorów 7 fan."
+        },
+        {
+          "pl": "- Pung lub kong każdego rodzaju smoków daje 1 fan. Dwa rodzaje smoków w pungach i trzeci w parze to małe trzy smoki za 5 fan; trzy smocze pungi to duże trzy smoki za 8. Te dwie większe premie zawierają już punkty za składowe smocze pungi."
+        },
+        {
+          "pl": "- Pung lub kong własnego wiatru daje 1 fan, a wiatru rundy kolejny 1. Gdy to ten sam wiatr, dostajesz łącznie 2."
+        },
+        {
+          "pl": "- Własne dobranie daje 1 fan. Wygrana na ostatnim zwykłym dobraniu, na ostatnim odrzuceniu, na kamieniu uzupełniającym albo przez obrabowanie konga daje odpowiednią premię 1 fan."
+        },
+        {
+          "pl": "- Brak kwiatów i pór roku daje 1 fan. W każdej z dwóch rodzin własny bonus daje 1: numer 1 odpowiada Wschodowi, 2 Południu, 3 Zachodowi, 4 Północy. Pełna rodzina czterech daje zamiast tego 2 fan."
+        },
+        {
+          "pl": "Rzadkie ręce mają osobną wartość: trzynaście sierot 13 fan, małe cztery wiatry 10, duże cztery wiatry 15, same honory 10, same skrajne liczby 10, cztery kongi 18, dziewięć bram 15. Małe cztery wiatry to trzy wiatry w pungach i czwarty w parze; duże to wszystkie cztery w pungach. Przy takich rękach gra wybiera najwyższą premię specjalną bez dodawania zwykłych premii."
+        },
+        {
+          "pl": "Przykład prostej drogi do minimum: cztery chow dają 1 fan, brak kwiatów 1, a własne dobranie 1, razem 3. Taki sam kształt na cudzym odrzuceniu może mieć tylko 2 i nie pozwalać na wygraną. Z kolei cztery pungi już same zapewniają wymagane 3 fan."
+        },
+        {
+          "pl": "Do wypłaty używa się podstawy zależnej od sumy fan: 3 fan — 8 punktów; 4 — 16; 5 — 24; 6 — 32; 7 — 48; 8 lub więcej — 64. Gracz, który odrzucił zwycięski kamień, płaci dwukrotność podstawy, pozostali po jednej podstawie. Przy własnym dobraniu wszyscy przeciwnicy płacą po dwie podstawy. Na przykład 5 fan daje 96 punktów z odrzucenia albo 144 z dobrania. Limit 8 fan dotyczy wypłaty, nawet jeśli wartość specjalnej ręki jest wyższa."
+        }
+      ]
+    },
+    {
+      "id": "table_winds",
+      "title": {
+        "pl": "Hong Kong — Rozdania i długość meczu"
+      },
+      "paragraphs": [
+        {
+          "pl": "Domyślnie grasz cztery rundy wiatrów: Wschód, Południe, Zachód, Północ. W każdej wszyscy po kolei kończą swój okres rozdawania. To minimum 16 rozdań. Rozdający powtarza po własnej wygranej i każdym remisie, więc rozdań może być więcej."
+        },
+        {
+          "pl": "Po rozdaniu sprawdź wynik i wybierz Gotowy do następnego rozdania. Remis nie zmienia punktów. Mecz wygrywa najwyższy łączny bilans; równe najwyższe wyniki oznaczają remis."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_variants",
+      "title": {
+        "pl": "Hong Kong — Wybór długości gry"
+      },
+      "paragraphs": [
+        {
+          "pl": "Przed grą możesz zmienić długość meczu w opcjach gry. Jedno rozdanie kończy grę po jednej wygranej lub remisie. Runda wschodnia trwa, aż każdy z czterech graczy skończy rozdawać: co najmniej cztery rozdania. Wspólny wiatr rundy pozostaje wtedy Wschodem; nie chodzi o jedną turę każdego gracza."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_aim",
+      "title": {
+        "pl": "Riichi — Cel i warunki wygranej"
+      },
+      "paragraphs": [
+        {
+          "pl": "W podstawowej grze czteroosobowej starasz się ukończyć rękę przed przeciwnikami. Zwykle ma ona cztery układy i parę, ale potrzebuje też yaku, czyli uznanego warunku wygranej. Sam kompletny kształt bez yaku może nie pozwalać wygrać. Mecz wygrywa najwyższy końcowy bilans; znaczenie tych pojęć wyjaśnia następny rozdział."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_terms",
+      "title": {
+        "pl": "Riichi — Słownik pojęć"
+      },
+      "paragraphs": [
+        {
+          "pl": "Ręka to twoje kamienie. Rozdanie trwa do wygranej lub remisu; mecz składa się z jednego albo kilku rozdań."
+        },
+        {
+          "pl": "- Kolory to bambusy, koła i znaki, każdy z liczbami 1–9. Każdy rodzaj występuje cztery razy. Liczby skrajne to 1 i 9, środkowe to 2–8."
+        },
+        {
+          "pl": "- Honory to cztery wiatry: Wschód, Południe, Zachód i Północ, oraz trzy smoki: biały, zielony i czerwony. Nie mają numerów i nie tworzą chow."
+        },
+        {
+          "pl": "- Chow, inaczej chi, to trzy kolejne liczby jednego koloru, np. 3–4–5 bambusów."
+        },
+        {
+          "pl": "- Pung, także pong lub pon, to trzy identyczne kamienie, np. trzy czerwone smoki."
+        },
+        {
+          "pl": "- Kong, inaczej kan, to cztery identyczne kamienie. Zgłaszasz go osobną opcją i dobierasz kamień uzupełniający. Kong liczy się jako jeden układ."
+        },
+        {
+          "pl": "- Para to dwa identyczne kamienie. Zwykła zwycięska ręka zawiera cztery układy, czyli chow, pungi lub kongi, oraz jedną parę."
+        },
+        {
+          "pl": "- Mur to zakryty zapas kamieni. Dobierasz z niego do ręki. Odrzucony przez ciebie kamień mogą przejąć inni gracze."
+        },
+        {
+          "pl": "- Ręka zamknięta nie ma układów przejętych od przeciwnika. Przejęcie do chow, punga lub konga otwiera rękę. Kong z czterech samodzielnie zebranych kamieni pozostaje ukryty mimo zgłoszenia i nie otwiera ręki."
+        },
+        {
+          "pl": "- Wygrana z dobrania wykorzystuje kamień z muru, a wygrana na odrzuceniu kamień przeciwnika. W obu przypadkach musisz sam zgłosić Mahjong."
+        },
+        {
+          "pl": "- Gotowa ręka, czyli tenpai, potrzebuje jednego kamienia do ukończenia. Np. 4–5 bambusów może czekać na 3 lub 6. Do wygranej trzeba jeszcze spełnić warunki punktowe."
+        },
+        {
+          "pl": "- Wiatr miejsca to rola gracza: rozdający jest Wschodem, następni Południem, Zachodem i Północą. Wiatr rundy jest wspólny dla stołu. Pung własnego wiatru lub wiatru rundy może punktować."
+        },
+        {
+          "pl": "- Yaku to warunek uprawniający rękę do wygranej, np. pung smoków. Potrzebujesz przynajmniej jednego yaku."
+        },
+        {
+          "pl": "- Han mierzą wartość yaku i premii. Fu zależą od budowy ręki. Gra oblicza wypłatę z han i fu; same fu nie zastępują yaku."
+        },
+        {
+          "pl": "- Ron to wygrana na odrzuceniu, tsumo z dobrania, a menzen oznacza rękę zamkniętą. Menzen tsumo daje yaku."
+        },
+        {
+          "pl": "- Riichi to zgłoszenie gotowości zamkniętej ręki. Kosztuje depozyt 1000 punktów i daje yaku, ale ogranicza późniejsze zmiany ręki."
+        },
+        {
+          "pl": "- Dora to bonusowe kamienie wskazane przez wskaźnik. Dodają han, lecz same nie są yaku."
+        },
+        {
+          "pl": "- Furiten blokuje wygraną na cudzym odrzuceniu, ale nie z własnego dobrania. Szczegóły są w rozdziale o Riichi i furiten."
+        },
+        {
+          "pl": "- Honba to premia po remisach i powtórzeniach rozdającego. Mangan i wyższe limity to poziomy wypłaty za cenne ręce."
+        },
+        {
+          "pl": "- Ukryty pung to trójka z własnych kamieni, trzymana na ręce do wygranej. Pung dopełniony cudzym odrzuceniem jest odkryty. Jeden kolor bez honorów oznacza wyłącznie bambusy, wyłącznie koła albo wyłącznie znaki, bez wiatrów i smoków."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_start",
+      "title": {
+        "pl": "Riichi — Początek rozdania"
+      },
+      "paragraphs": [
+        {
+          "pl": "Każdy zaczyna z 30 000 punktów. Wypłaty i przyjęte depozyty Riichi zmieniają ten bilans."
+        },
+        {
+          "pl": "Rozdający ma 14 kamieni i zaczyna od odrzucenia. Pozostali mają po 13; w swojej turze najpierw dobierają."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_play",
+      "title": {
+        "pl": "Riichi — Pierwsze tury krok po kroku"
+      },
+      "paragraphs": [
+        {
+          "pl": "W swojej turze wybierz Dobierz kamień i naciśnij Enter. Fokus przejdzie na dobrany kamień. Przejrzyj rękę strzałkami góra/dół, wybierz kamień do odrzucenia i naciśnij Enter. Możesz odrzucić nowy albo wcześniejszy kamień."
+        },
+        {
+          "pl": "Zachowuj kamienie pasujące do siebie. Do 4–5 pasuje 3 lub 6, do 4–6 tylko 5. Para może zostać końcową parą albo zmienić się w pung. Układów z własnych kamieni nie musisz wykładać: gra rozpozna je przy wygranej."
+        },
+        {
+          "pl": "Po cudzym odrzuceniu usłyszysz kamień i listę odpowiedzi. Pas znaczy: nie biorę tego kamienia. Jeśli wszyscy spasują, dobiera następny gracz. Inne dostępne odpowiedzi pozwalają przejąć kamień do układu lub wygrać."
+        },
+        {
+          "pl": "Gdy możesz wygrać, pojawi się opcja Zgłoś Mahjong. Wybierz ją przed odrzuceniem lub zamiast Pas. Gra sprawdza kształt ręki i punktację; nie kończy rozdania automatycznie tylko dlatego, że masz komplet. Wyczerpanie muru bez wygranej kończy rozdanie remisem."
+        },
+        {
+          "pl": "Tab i Shift+Tab zmieniają pola. Najpierw jest opis sytuacji, potem dostępne działania i twoje kamienie. Na listach wybierasz strzałkami i zatwierdzasz Enterem. Wyłożone układy pokazują układy wszystkich graczy z nazwami właścicieli, a Odrzucone kamienie ich odrzucenia. S odczytuje punkty, M liczbę kamieni w murze."
+        },
+        {
+          "pl": "W odczytuje wartość legalnej wygranej: fan albo han i fu oraz przyrost punktów. Bez legalnej wygranej nie szacuje wartości niepełnej ręki. Przed wygraną w Riichi pomija ukryte ura-dora, więc końcowa wartość może być wyższa. U odczytuje twoje wyłożone układy, Shift+U układy pozostałych graczy, a R numer rozdania, wiatry i bieżącą sytuację. W Riichi I odczytuje wskaźniki i kamienie dora, liczbę twoich dora, zgłoszenia Riichi, depozyty, honba oraz blokadę furiten. Te klawisze tylko odczytują informacje."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_build",
+      "title": {
+        "pl": "Riichi — Co trzeba ułożyć, żeby wygrać"
+      },
+      "paragraphs": [
+        {
+          "pl": "Przykład czterech układów i pary: 2–3–4 bambusów; 4–5–6 kół; trzy 7 znaków; trzy czerwone smoki; dwa Zachody. Każdy kamień wykorzystujesz tylko raz. Gdy brakuje 4 bambusów, rękę może dokończyć dobrana lub przejęta 4 bambusów, jeśli spełniasz też warunek punktowy."
+        },
+        {
+          "pl": "Pung czerwonych smoków w przykładzie daje yaku warte 1 han, niezależnie od tego, czy jest wyłożony, czy w ręce. Gdy ukończysz wszystkie cztery układy i parę, to yaku wystarcza do wygranej, o ile nie blokuje jej na przykład furiten przy cudzym odrzuceniu. Nie każdy układ musi osobno dawać yaku."
+        },
+        {
+          "pl": "Siedem różnych par to osobna ręka i yaku za 2 han. Cztery jednakowe kamienie nie zastępują dwóch różnych par w Riichi. Trzynaście sierot składa się z każdej liczbowej 1 i 9 oraz wszystkich siedmiu honorów, z jednym powtórzeniem i bez przejętych układów. To yakuman, czyli ręka z najwyższego poziomu punktacji. Te kształty zastępują zwykłe cztery układy i parę."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_claims",
+      "title": {
+        "pl": "Riichi — Przejmowanie kamieni i zgłaszanie kongów"
+      },
+      "paragraphs": [
+        {
+          "pl": "Po cudzym odrzuceniu wybierz dostępną odpowiedź strzałkami i naciśnij Enter. Chow bierzesz tylko od gracza bezpośrednio przed tobą; pung lub kong od dowolnego przeciwnika. Np. mając dwa czerwone smoki, możesz przejąć trzeciego do punga."
+        },
+        {
+          "pl": "Wygrana ma pierwszeństwo przed układami, a pung i kong przed chow. Gdy kilku graczy może wygrać na tym samym kamieniu, wygrywa pierwszy po odrzucającym. Gra czeka na wymagane odpowiedzi. Po przejęciu do chow lub punga odrzucasz bez dobierania. Wyłożonego układu nie można już rozdzielić."
+        },
+        {
+          "pl": "Kong z czterech samodzielnie zebranych kamieni zgłaszasz z listy kongów ukrytych. Aby rozszerzyć wyłożony pung, po dobraniu czwartego kamienia przejdź Tabem do wyboru punga do rozszerzenia i zatwierdź go Enterem. Taki kong jest odkryty. Przeciwnik może wygrać na dokładanym kamieniu, co nazywamy obrabowaniem konga."
+        },
+        {
+          "pl": "Po zatwierdzeniu konga wybierz Dobierz kamień uzupełniający, dopiero potem odrzuć. Kong ma cztery kamienie, ale zajmuje miejsce jednego układu: pełna ręka z jednym kongiem ma 15 kamieni, z dwoma 16."
+        },
+        {
+          "pl": "Przejęcie układu może odebrać yaku za zamkniętą rękę. Pung smoków daje yaku również po wyłożeniu; przed przejęciem sprawdź, na czym oprzesz wygraną."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_practice",
+      "title": {
+        "pl": "Riichi — Planowanie ręki na przykładach"
+      },
+      "paragraphs": [
+        {
+          "pl": "Na pierwszą grę możesz przyjąć plan zamkniętej ręki i Riichi. Dobieraj, poprawiaj układy i odrzucaj mniej przydatne kamienie, bez przejmowania układów. Gdy pojawi się lista Riichi, wybierz proponowane odrzucenie. Dostajesz w ten sposób yaku, ale jeszcze nie wygrywasz: nadal czekasz na kamień kończący rękę."
+        },
+        {
+          "pl": "Inna czytelna droga to pung smoków. Możesz przejąć trzeciego smoka i zachować yaku mimo otwarcia ręki. Nadal musisz zbudować pozostałe trzy układy i parę. Nie zakładaj, że każda kompletna ręka wygrywa: otwarta ręka ze zwykłych, niezwiązanych chow może nie mieć żadnego yaku."
+        },
+        {
+          "pl": "Dziewięć bram to zamknięta ręka jednego koloru z podstawą 1–1–1–2–3–4–5–6–7–8–9–9–9 i jednym dodatkowym kamieniem tego koloru. Nie oznacza dziewięciu chow. Same zielone w Riichi oznaczają wyłącznie 2, 3, 4, 6 i 8 bambusów oraz zielone smoki, nadal ułożone w poprawny pełny kształt."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi",
+      "title": {
+        "pl": "Riichi — zgłoszenie gotowości, dora i furiten"
+      },
+      "paragraphs": [
+        {
+          "pl": "Jeśli zamkniętej ręce brakuje jednego kamienia do wygranej, lista Riichi pokaże odrzucenia pozwalające zgłosić gotowość. Wybierz kamień i naciśnij Enter. Przyjęte zgłoszenie odkłada 1000 punktów na stół. Później odrzucasz dobrany kamień, chyba że wygrywasz; kong jest dozwolony tylko wtedy, gdy zachowuje wszystkie wymagane interpretacje ręki. Zwycięzca zbiera depozyty; nieodebrany depozyt przechodzi na kolejne rozdanie."
+        },
+        {
+          "pl": "Furiten blokuje wygraną na odrzuceniu, jeśli któryś z kamieni kończących rękę występuje w twoich własnych odrzuceniach. Pominięcie poprawnej wygranej na cudzym kamieniu również czasowo blokuje takie wygrane; po zgłoszeniu Riichi blokada trwa do końca rozdania. Nadal możesz wygrać z własnego dobrania."
+        },
+        {
+          "pl": "Przykład furiten: czekasz na 3 lub 6 bambusów, ale wcześniej sam odrzuciłeś 3 bambusów. Blokada dotyczy wtedy wygranej na cudzym odrzuceniu także na 6, a nie tylko na odrzuconej wcześniej 3. Samodzielnie dobrana 3 albo 6 nadal może dać wygraną, jeśli ręka spełnia pozostałe warunki."
+        }
+      ]
+    },
+    {
+      "id": "table_yaku",
+      "title": {
+        "pl": "Riichi: yaku i wartość otwartej ręki"
+      },
+      "paragraphs": [
+        {
+          "pl": "Yaku to nazwany warunek wygranej. Han z kilku zgodnych yaku sumują się. Zwykły chow nie daje sam z siebie han, a zwykły pung środkowych liczb też nie. Przejęcie cudzej kości może przyspieszyć rękę, ale odbiera niektóre yaku i obniża inne."
+        },
+        {
+          "pl": "- Tanyao, czyli wyłącznie liczby 2–8 bez honorów: 1 han, także przy otwartej ręce. Pung lub kong smoków: po 1 han za rodzaj. Własny wiatr i wiatr rundy: po 1 han za pung lub kong; wspólny wiatr daje 2 han."
+        },
+        {
+          "pl": "- Riichi: 1 han, tylko zamknięta gotowa ręka i depozyt 1000 punktów. Podwójne Riichi, zadeklarowane w pierwszym obiegu przed przerwaniem go przejęciem: 2 zamiast 1. Ippatsu za wygraną w pierwszym nieprzerwanym obiegu po Riichi dodaje 1."
+        },
+        {
+          "pl": "- Menzen tsumo, czyli własne dobranie przy zamkniętej ręce: 1 han. Pinfu: 1 han tylko zamknięte, cztery chow, niepunktowana para i dwustronne oczekiwanie."
+        },
+        {
+          "pl": "- Dwa identyczne chow jednego koloru: 1 han tylko zamknięte. Dwie takie pary chow: 3 han zamiast 1, również tylko zamknięte. Siedem różnych par: 2 han."
+        },
+        {
+          "pl": "- Cztery pungi lub kongi: 2 han. Trzy ukryte pungi: 2. Trzy kongi: 2. Dwa pungi smoków i para trzeciego smoka: 2, oprócz punktów za smocze pungi."
+        },
+        {
+          "pl": "- Te same chow w trzech kolorach, na przykład 2–3–4 znaków, kół i bambusów: 2 han zamknięte, 1 otwarte. Pełny ciąg 1–2–3, 4–5–6 i 7–8–9 w jednym kolorze: 2 zamknięte, 1 otwarte. Pungi tej samej liczby w trzech kolorach: 2 niezależnie od otwarcia."
+        },
+        {
+          "pl": "- Jeden kolor wraz z honorami: 3 han zamknięte, 2 otwarte. Jeden kolor bez honorów: 6 zamknięte, 5 otwarte."
+        },
+        {
+          "pl": "- Skrajny kamień lub honor w każdej grupie i parze, przy obecności chow: 2 han zamknięte, 1 otwarte. Jeśli nie ma honorów: odpowiednio 3 i 2. Ręka złożona wyłącznie ze skrajnych kamieni i honorów daje 2 han."
+        },
+        {
+          "pl": "- Ostatnie zwykłe dobranie, ostatni odrzucony kamień, dobranie po kongu albo obrabowanie konga: właściwe yaku daje 1 han."
+        },
+        {
+          "pl": "Dora daje po 1 han za posiadany kamień bonusowy, ale dopiero gdy ręka ma prawdziwe yaku. Wskaźnik wskazuje następny kamień w cyklu, na przykład wskaźnik 3 bambusów oznacza dora 4 bambusów; po 9 następuje 1. Przy honorach cykle to Wschód–Południe–Zachód–Północ i biały–zielony–czerwony smok. Dora nie jest osobnym kształtem ręki."
+        },
+        {
+          "pl": "Yakuman zastępuje zwykłą punktację han i fu. W tej grze należą do niego między innymi trzynaście sierot, cztery ukryte pungi, trzy smocze pungi, małe lub duże cztery wiatry, same honory, same skrajne liczby, same zielone kamienie, cztery kongi i dziewięć bram. Zgodne yakumany mogą się sumować. Cztery ukryte pungi przy wygranej na odrzuceniu wymagają zakończenia pary; gdy cudzy kamień dopiero tworzy czwarty pung, nie jest on ukryty."
+        }
+      ]
+    },
+    {
+      "id": "table_fu",
+      "title": {
+        "pl": "Riichi: fu za układy i oczekiwanie"
+      },
+      "paragraphs": [
+        {
+          "pl": "Han określają wartość yaku i premii, a fu są dodatkowymi punktami za budowę ręki. Nie przeliczasz każdego chow na punkty: chow daje 0 fu. Zwykła para też daje 0; para smoków, własnego wiatru lub wiatru rundy daje 2 fu. Jeśli ten sam wiatr jest jednocześnie własny i rundy, w tej grze para nadal daje 2 fu."
+        },
+        {
+          "pl": "Dla pungów i kongów znaczenie mają rodzaj kamienia i sposób utworzenia układu:"
+        },
+        {
+          "pl": "- Pung z kamieni od 2 do 8: odkryty 2 fu, ukryty 4 fu."
+        },
+        {
+          "pl": "- Pung jedynek, dziewiątek, wiatrów lub smoków: odkryty 4 fu, ukryty 8 fu."
+        },
+        {
+          "pl": "- Kong z kamieni od 2 do 8: odkryty 8 fu, ukryty 16 fu."
+        },
+        {
+          "pl": "- Kong jedynek, dziewiątek, wiatrów lub smoków: odkryty 16 fu, ukryty 32 fu."
+        },
+        {
+          "pl": "Pung utworzony dopiero przez zwycięski cudzy kamień ma przy naliczaniu fu wartość odkrytą. Pozostałe pungi trzymane w ręce pozostają ukryte. Kong dołożony do odkrytego punga jest odkryty."
+        },
+        {
+          "pl": "Zwykłe liczenie zaczyna się od 20 fu. Wygrana na cudzym odrzuceniu z zamkniętą ręką dodaje 10 fu, a wygrana z dobrania 2 fu. Oczekiwanie na parę, środek sekwencji albo brzeg sekwencji dodaje 2 fu. Brzeg oznacza 3 do 1–2 albo 7 do 8–9; środek to na przykład 5 do 4–6. Dwustronne oczekiwanie, na przykład 3 lub 6 do 4–5, nie dodaje fu."
+        },
+        {
+          "pl": "Sumę zaokrągla się w górę do pełnych dziesiątek: 32 fu staje się 40. Wyjątki: siedem par ma zawsze 25 fu, a pinfu z własnego dobrania 20 fu bez dodatkowych 2 za dobranie. Pozostała ręka, która miałaby tylko 20 fu, otrzymuje minimum 30."
+        },
+        {
+          "pl": "Przykład samego liczenia fu: 20 podstawy, 10 za zamkniętą wygraną na odrzuceniu, 4 za ukryty pung piątek i 2 za parę smoków daje 36, czyli 40 fu. Nadal potrzebujesz yaku: same fu nie uprawniają do wygranej."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_payments",
+      "title": {
+        "pl": "Riichi: przeliczanie han i fu na punkty"
+      },
+      "paragraphs": [
+        {
+          "pl": "Przy zwykłej wygranej podstawę oblicza się z fu i han: fu razy 2 do potęgi han plus 2, z limitem podstawy 2000. Przy 1 han i 30 fu podstawa to 30 razy 8, czyli 240. Ostateczne płatności zaokrągla się w górę do setek."
+        },
+        {
+          "pl": "Na cudzym odrzuceniu zwycięzca inny niż rozdający otrzymuje cztery podstawy od odrzucającego. Rozdający otrzymuje sześć. Przy własnym dobraniu zwycięzca inny niż rozdający dostaje dwie podstawy od rozdającego i po jednej od pozostałych; jeśli wygra rozdający, każdy płaci dwie."
+        },
+        {
+          "pl": "Przykład 1 han i 30 fu bez premii: wygrana nierozdającego na odrzuceniu to 1000 punktów, a z dobrania 500 od rozdającego i po 300 od dwóch pozostałych, razem 1100. Wygrana rozdającego to 1500 na odrzuceniu albo po 500 od każdego, też 1500."
+        },
+        {
+          "pl": "- Mangan: 5 han lub osiągnięcie limitu podstawy; w tej grze także 3 han 60 fu i 4 han 30 fu. Nierozdający dostaje 8000 na odrzuceniu, rozdający 12 000."
+        },
+        {
+          "pl": "- Haneman: 6–7 han, odpowiednio 12 000 albo 18 000 na odrzuceniu."
+        },
+        {
+          "pl": "- Baiman: 8–10 han, odpowiednio 16 000 albo 24 000."
+        },
+        {
+          "pl": "- Sanbaiman: 11–12 han, odpowiednio 24 000 albo 36 000."
+        },
+        {
+          "pl": "- Yakuman lub co najmniej 13 han: odpowiednio 32 000 albo 48 000. Kilka zgodnych yakumanów mnoży tę wypłatę."
+        },
+        {
+          "pl": "Każde honba dodaje 300 punktów do płatności na odrzuceniu albo po 100 od każdego przeciwnika przy dobraniu. Depozyty Riichi trafiają dodatkowo do zwycięzcy. Honba rośnie po remisie lub powtórzeniu rozdającego, a po wygranej innego gracza wraca do zera."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_match",
+      "title": {
+        "pl": "Riichi — Rozdania i długość meczu"
+      },
+      "paragraphs": [
+        {
+          "pl": "Domyślnie grają cztery osoby, każdy zaczyna z 30 000 punktów, a mecz obejmuje Wschód i Południe. Każdy kończy okres rozdawania najpierw we Wschodzie, potem w Południu: minimum osiem rozdań, więcej przy powtórzeniach rozdającego. Wypłaty i przyjęte depozyty Riichi zmieniają bilans w trakcie meczu."
+        },
+        {
+          "pl": "Rozdający powtarza po własnej wygranej albo remisie z wyczerpania muru, jeśli ma gotową rękę."
+        },
+        {
+          "pl": "Przy remisie z wyczerpania muru 3000 punktów przechodzi od niegotowych do gotowych rąk, chyba że gotowi są wszyscy albo nikt. Po rozdaniu każdy potwierdza gotowość do kolejnego. Mecz trwa wybrane rundy; ujemny wynik ani prowadzenie ostatniego rozdającego nie kończy go tu wcześniej. Wygrywa najwyższy końcowy bilans; równe najwyższe wyniki dają remis."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_variants",
+      "title": {
+        "pl": "Riichi — wariant trzyosobowy i długość gry"
+      },
+      "paragraphs": [
+        {
+          "pl": "Długość gry wybierasz w opcjach gry przed rozpoczęciem. Krótsze ustawienia opisane poniżej zmieniają liczbę rozdań, a nie zasady układania zwycięskiej ręki."
+        },
+        {
+          "pl": "Jedno rozdanie kończy się jedną wygraną albo remisem po wyczerpaniu muru. Runda wschodnia daje każdemu okres rozdawania: minimum cztery rozdania w cztery osoby albo trzy w sanmie. Wschód i Południe to dwie takie rundy: minimum osiem lub sześć rozdań. Rozdający powtarza po swojej wygranej albo remisie z gotową ręką, więc faktyczna liczba może być większa."
+        },
+        {
+          "pl": "Wiatr miejsca wynika z bieżącego rozdającego: Wschód, Południe, Zachód i przy czterech graczach Północ. Wiatr rundy pozostaje Wschodem, aż wszyscy zakończą swój okres rozdawania; w meczu dwurundowym potem staje się Południem. Punktowany wiatr może więc zmienić się w trakcie meczu. W sanmie usuwa się znaki 2–8, a ta wersja nie ma osobnego wykładania Północy."
+        },
+        {
+          "pl": "W sanmie nie wolno przejmować do chow; sekwencje z własnych kamieni nadal można budować."
+        },
+        {
+          "pl": "W sanmie brakujący czwarty gracz nie płaci i jego części nie przenosi się na innych. Dlatego wygrana z dobrania może przynieść mniej niż w grze czteroosobowej. Przy remisie dzieli się 2000 punktów między gotowych i niegotowych, zamiast 3000 w grze czteroosobowej."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_aim",
+      "title": {
+        "pl": "MCR — Cel i warunki wygranej"
+      },
+      "paragraphs": [
+        {
+          "pl": "Każdy z czterech graczy próbuje jako pierwszy ukończyć zwycięską rękę. Zwykły kształt to cztery układy i para, z wartością co najmniej 8 fan bez bonusów za kwiaty. Fan mierzą wartość zgodnych wzorów punktowych. Wygrana rozdania daje wypłatę, a cały mecz wygrywa osoba z najwyższym łącznym bilansem."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_terms",
+      "title": {
+        "pl": "MCR — Słownik pojęć"
+      },
+      "paragraphs": [
+        {
+          "pl": "Ręka to twoje kamienie. Rozdanie trwa do wygranej lub remisu; mecz składa się z jednego albo kilku rozdań."
+        },
+        {
+          "pl": "- Kolory to bambusy, koła i znaki, każdy z liczbami 1–9. Każdy rodzaj występuje cztery razy. Liczby skrajne to 1 i 9, środkowe to 2–8."
+        },
+        {
+          "pl": "- Honory to cztery wiatry: Wschód, Południe, Zachód i Północ, oraz trzy smoki: biały, zielony i czerwony. Nie mają numerów i nie tworzą chow."
+        },
+        {
+          "pl": "- Chow, inaczej chi, to trzy kolejne liczby jednego koloru, np. 3–4–5 bambusów."
+        },
+        {
+          "pl": "- Pung, także pong lub pon, to trzy identyczne kamienie, np. trzy czerwone smoki."
+        },
+        {
+          "pl": "- Kong, inaczej kan, to cztery identyczne kamienie. Zgłaszasz go osobną opcją i dobierasz kamień uzupełniający. Kong liczy się jako jeden układ."
+        },
+        {
+          "pl": "- Para to dwa identyczne kamienie. Zwykła zwycięska ręka zawiera cztery układy, czyli chow, pungi lub kongi, oraz jedną parę."
+        },
+        {
+          "pl": "- Mur to zakryty zapas kamieni. Dobierasz z niego do ręki. Odrzucony przez ciebie kamień mogą przejąć inni gracze."
+        },
+        {
+          "pl": "- Ręka zamknięta nie ma układów przejętych od przeciwnika. Przejęcie do chow, punga lub konga otwiera rękę. Kong z czterech samodzielnie zebranych kamieni pozostaje ukryty mimo zgłoszenia i nie otwiera ręki."
+        },
+        {
+          "pl": "- Wygrana z dobrania wykorzystuje kamień z muru, a wygrana na odrzuceniu kamień przeciwnika. W obu przypadkach musisz sam zgłosić Mahjong."
+        },
+        {
+          "pl": "- Gotowa ręka, czyli tenpai, potrzebuje jednego kamienia do ukończenia. Np. 4–5 bambusów może czekać na 3 lub 6. Do wygranej trzeba jeszcze spełnić warunki punktowe."
+        },
+        {
+          "pl": "- Wiatr miejsca to rola gracza: rozdający jest Wschodem, następni Południem, Zachodem i Północą. Wiatr rundy jest wspólny dla stołu. Pung własnego wiatru lub wiatru rundy może punktować."
+        },
+        {
+          "pl": "- MCR oznacza Mahjong Competition Rules, czyli zasady mahjonga sportowego. Potrzebujesz co najmniej 8 fan za zgodne wzory punktowe. Niektórych premii nie wolno sumować, bo większa zawiera już mniejszą."
+        },
+        {
+          "pl": "- Kwiaty i pory roku są automatycznie wykładane i zastępowane. Każdy dodaje 1 fan do wypłaty, ale nie do minimum 8 fan. Ręka za 7 fan z kwiatem nie wygrywa."
+        },
+        {
+          "pl": "- Ukryty pung to trójka z własnych kamieni, trzymana na ręce do wygranej. Pung dopełniony cudzym odrzuceniem jest odkryty. Jeden kolor bez honorów oznacza wyłącznie bambusy, wyłącznie koła albo wyłącznie znaki, bez wiatrów i smoków."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_start",
+      "title": {
+        "pl": "MCR — Początek rozdania"
+      },
+      "paragraphs": [
+        {
+          "pl": "Bilanse zaczynają się od zera; wypłaty za zwycięskie ręce dodają punkty, a przegrane je odejmują."
+        },
+        {
+          "pl": "Rozdający ma 14 kamieni i zaczyna od odrzucenia. Pozostali mają po 13; w swojej turze najpierw dobierają."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_play",
+      "title": {
+        "pl": "MCR — Pierwsze tury krok po kroku"
+      },
+      "paragraphs": [
+        {
+          "pl": "W swojej turze wybierz Dobierz kamień i naciśnij Enter. Fokus przejdzie na dobrany kamień. Przejrzyj rękę strzałkami góra/dół, wybierz kamień do odrzucenia i naciśnij Enter. Możesz odrzucić nowy albo wcześniejszy kamień."
+        },
+        {
+          "pl": "Zachowuj kamienie pasujące do siebie. Do 4–5 pasuje 3 lub 6, do 4–6 tylko 5. Para może zostać końcową parą albo zmienić się w pung. Układów z własnych kamieni nie musisz wykładać: gra rozpozna je przy wygranej."
+        },
+        {
+          "pl": "Po cudzym odrzuceniu usłyszysz kamień i listę odpowiedzi. Pas znaczy: nie biorę tego kamienia. Jeśli wszyscy spasują, dobiera następny gracz. Inne dostępne odpowiedzi pozwalają przejąć kamień do układu lub wygrać."
+        },
+        {
+          "pl": "Gdy możesz wygrać, pojawi się opcja Zgłoś Mahjong. Wybierz ją przed odrzuceniem lub zamiast Pas. Gra sprawdza kształt ręki i punktację; nie kończy rozdania automatycznie tylko dlatego, że masz komplet. Wyczerpanie muru bez wygranej kończy rozdanie remisem."
+        },
+        {
+          "pl": "Tab i Shift+Tab zmieniają pola. Najpierw jest opis sytuacji, potem dostępne działania i twoje kamienie. Na listach wybierasz strzałkami i zatwierdzasz Enterem. Wyłożone układy pokazują układy wszystkich graczy z nazwami właścicieli, a Odrzucone kamienie ich odrzucenia. S odczytuje punkty, M liczbę kamieni w murze."
+        },
+        {
+          "pl": "W odczytuje wartość legalnej wygranej: fan albo han i fu oraz przyrost punktów. Bez legalnej wygranej nie szacuje wartości niepełnej ręki. Przed wygraną w Riichi pomija ukryte ura-dora, więc końcowa wartość może być wyższa. U odczytuje twoje wyłożone układy, Shift+U układy pozostałych graczy, a R numer rozdania, wiatry i bieżącą sytuację. W Riichi I odczytuje wskaźniki i kamienie dora, liczbę twoich dora, zgłoszenia Riichi, depozyty, honba oraz blokadę furiten. Te klawisze tylko odczytują informacje."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_build",
+      "title": {
+        "pl": "MCR — Co trzeba ułożyć, żeby wygrać"
+      },
+      "paragraphs": [
+        {
+          "pl": "Przykład czterech układów i pary: 2–3–4 bambusów; 4–5–6 kół; trzy 7 znaków; trzy czerwone smoki; dwa Zachody. Każdy kamień wykorzystujesz tylko raz. Gdy brakuje 4 bambusów, rękę może dokończyć dobrana lub przejęta 4 bambusów, jeśli spełniasz też warunek punktowy."
+        },
+        {
+          "pl": "Cztery układy i para to zwykły kształt, ale potrzeba też 8 fan bez kwiatów. Sam pung smoków daje tylko 2, więc nie zapewnia automatycznie wygranej pozostałej zwykłej ręce. Przed otwarciem zaplanuj kilka zgodnych wzorów albo jeden wystarczająco cenny."
+        },
+        {
+          "pl": "Siedem par jest osobnym kształtem wartym 24 fan. Ten chiński profil pozwala potraktować cztery jednakowe, niewyłożone jako kong kamienie jako dwie pary. Trzynaście sierot daje 88 fan. MCR ma też specjalne ręce z przeplatanymi liczbami, ale na początek możesz uczyć się zwykłych czterech układów i pary."
+        },
+        {
+          "pl": "Przeplatana sekwencja to specjalna grupa dziewięciu kamieni: 1–4–7 jednego koloru, 2–5–8 drugiego i 3–6–9 trzeciego. Przykład: 1–4–7 znaków, 2–5–8 kół i 3–6–9 bambusów. Do tych dziewięciu dodajesz jeden zwykły układ oraz parę. Można zamienić kolory, ale każda trójka liczb musi pozostać w osobnym kolorze. Sam wzór przeplatanej sekwencji daje 12 fan."
+        },
+        {
+          "pl": "Inny specjalny kształt ma 14 różnych kamieni, bez pary: bierzesz liczby z jednego takiego dziewięciokamieniowego wzoru i łączysz je z pięcioma, sześcioma lub siedmioma różnymi honorami. Żaden kamień się nie powtarza. Z wszystkimi siedmioma honorami jest to większa przeplatana ręka za 24 fan; z pięcioma lub sześcioma mniejsza za 12. To alternatywy dla zwykłych czterech układów."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_claims",
+      "title": {
+        "pl": "MCR — Przejmowanie kamieni i zgłaszanie kongów"
+      },
+      "paragraphs": [
+        {
+          "pl": "Po cudzym odrzuceniu wybierz dostępną odpowiedź strzałkami i naciśnij Enter. Chow bierzesz tylko od gracza bezpośrednio przed tobą; pung lub kong od dowolnego przeciwnika. Np. mając dwa czerwone smoki, możesz przejąć trzeciego do punga."
+        },
+        {
+          "pl": "Wygrana ma pierwszeństwo przed układami, a pung i kong przed chow. Gdy kilku graczy może wygrać na tym samym kamieniu, wygrywa pierwszy po odrzucającym. Gra czeka na wymagane odpowiedzi. Po przejęciu do chow lub punga odrzucasz bez dobierania. Wyłożonego układu nie można już rozdzielić."
+        },
+        {
+          "pl": "Kong z czterech samodzielnie zebranych kamieni zgłaszasz z listy kongów ukrytych. Aby rozszerzyć wyłożony pung, po dobraniu czwartego kamienia przejdź Tabem do wyboru punga do rozszerzenia i zatwierdź go Enterem. Taki kong jest odkryty. Przeciwnik może wygrać na dokładanym kamieniu, co nazywamy obrabowaniem konga."
+        },
+        {
+          "pl": "Po zatwierdzeniu konga wybierz Dobierz kamień uzupełniający, dopiero potem odrzuć. Kong ma cztery kamienie, ale zajmuje miejsce jednego układu: pełna ręka z jednym kongiem ma 15 kamieni, z dwoma 16."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_practice",
+      "title": {
+        "pl": "MCR — Planowanie ręki na przykładach"
+      },
+      "paragraphs": [
+        {
+          "pl": "Przykład drogi do minimum: pungi 2 znaków, 4 kół, 6 bambusów i białych smoków oraz para 5 znaków. Same pungi dają 6 fan, pung smoków 2: razem co najmniej 8. Mogą być wyłożone. Siedem par daje 24 fan, ale jeden kolor z honorami tylko 6 i sam nie wystarczy."
+        },
+        {
+          "pl": "Każdy przeciwnik płaci podstawowe 8 punktów. Przy wygranej na odrzuceniu odrzucający dopłaca wartość ręki z kwiatami; przy dobraniu dopłacają ją wszyscy. Ręka za 8 fan bez kwiatów przynosi więc 32 punkty z odrzucenia albo 48 z dobrania. Gra liczy wypłatę sama."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_sets",
+      "title": {
+        "pl": "MCR: odkryte i ukryte układy"
+      },
+      "paragraphs": [
+        {
+          "pl": "MCR liczy fan za warunki spełnione przez zwycięską rękę. Nie ma tu riichiowych fu. Samo wyłożenie zwykłego chow albo punga ze środkowych liczb nie daje stałej premii. Chow mogą tworzyć punktowane wzory razem z innymi chow; pung może punktować za swój rodzaj lub jako część większego układu."
+        },
+        {
+          "pl": "- Jeden kong: odkryty 1 fan, ukryty 2 fan."
+        },
+        {
+          "pl": "- Dwa kongi: oba odkryte 4 fan, jeden odkryty i jeden ukryty 6 fan, oba ukryte 8 fan. Te wartości zastępują sumę premii za pojedyncze kongi."
+        },
+        {
+          "pl": "- Trzy kongi dają 32 fan, a cztery 88 fan. Nie dodajesz do tego ponownie premii za mniejszą liczbę kongów."
+        },
+        {
+          "pl": "- Dwa ukryte pungi dają 2 fan, trzy 16 fan, cztery 64 fan. Ukryty kong również zalicza się do liczby ukrytych pungów. Pung zakończony cudzym zwycięskim odrzuceniem nie jest ukryty."
+        },
+        {
+          "pl": "- Pung lub kong smoków daje 2 fan. Pung lub kong własnego wiatru daje 2, a wiatru rundy kolejne 2. Pung skrajnych liczb lub niepunktowanego wiatru daje 1 fan."
+        },
+        {
+          "pl": "- Cztery pungi lub kongi dają 6 fan. Jeden kolor z honorami daje 6, jeden kolor bez honorów 24, siedem par 24, a trzynaście sierot 88 fan."
+        },
+        {
+          "pl": "- Cztery chow z parą liczbową, bez honorów, dają 2 fan. Dwa identyczne chow jednego koloru dają 1 fan; chow 1–2–3 i 7–8–9 w tym samym kolorze również dają 1."
+        },
+        {
+          "pl": "Zamknięta ręka wygrana na odrzuceniu daje 2 fan; całkowicie zamknięta wygrana z dobrania 4. Samo dobranie przy otwartej ręce daje 1. Nie sumuj automatycznie wszystkich opisów: wyższy wzór może zawierać niższy i go wykluczać. Na przykład dwa ukryte kongi za 8 fan nie dostają ponownie 2 fan tylko za te same dwa ukryte pungi."
+        },
+        {
+          "pl": "Kwiaty i pory roku dają po 1 fan za sztukę, ale nie pomagają osiągnąć wymaganych 8 fan. Ręka warta 7 fan i jeden kwiat nadal nie pozwala zgłosić Mahjong. Gra wybiera zgodne połączenie wzorów; szczegóły wyniku pozwalają sprawdzić naliczoną wartość."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_match",
+      "title": {
+        "pl": "MCR — Rozdania i długość meczu"
+      },
+      "paragraphs": [
+        {
+          "pl": "Domyślnie grasz 16 rozdań: po cztery we Wschodzie, Południu, Zachodzie i Północy. Każdy raz rozdaje w każdej rundzie wiatrów. Rozdający zmienia się po każdym rozdaniu, także po własnej wygranej lub remisie. Wraz z nim zmieniają się wiatry miejsca."
+        },
+        {
+          "pl": "Punkty sumują się od zera. Remis nie zmienia bilansów. Przed kolejnym rozdaniem każdy wybiera Gotowy do następnego rozdania. Mecz wygrywa najwyższy bilans; równe najwyższe wyniki dają remis."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_variants",
+      "title": {
+        "pl": "MCR — Wybór długości gry"
+      },
+      "paragraphs": [
+        {
+          "pl": "W opcjach gry przed rozpoczęciem możesz wybrać Jedno rozdanie zamiast domyślnych czterech rund wiatrów. Gra skończy się po jednej wygranej albo remisie z wyczerpania muru. Zasady wygranej i punktacja pozostają takie same."
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "pl": "Skróty i obsługa"
+      },
+      "paragraphs": [
+        {
+          "pl": "Tab: następne pole."
+        },
+        {
+          "pl": "Shift+Tab: poprzednie pole."
+        },
+        {
+          "pl": "Strzałki góra/dół: wybór kamienia lub działania na liście."
+        },
+        {
+          "pl": "Enter: zatwierdzenie działania albo odrzucenia."
+        },
+        {
+          "pl": "S: odczyt bieżących punktów wszystkich graczy."
+        },
+        {
+          "pl": "M: liczba kamieni w murze; w pasjansie liczba kamieni w układzie."
+        },
+        {
+          "pl": "lewo/prawo (pasjans): zmiana kolumny."
+        },
+        {
+          "pl": "góra/dół (pasjans): zmiana wiersza."
+        },
+        {
+          "pl": "1 (pasjans): dolna warstwa."
+        },
+        {
+          "pl": "2 (pasjans): druga warstwa Tarasów."
+        },
+        {
+          "pl": "3 (pasjans): górna warstwa Tarasów."
+        },
+        {
+          "pl": "D (pasjans): odczyt warstwy, wiersza i kolumny."
+        },
+        {
+          "pl": "Enter (pasjans): zaznaczenie pierwszego kamienia albo zdjęcie pasującego drugiego."
+        },
+        {
+          "pl": "Escape (pasjans): anulowanie zaznaczenia."
+        },
+        {
+          "pl": "D (gry przy stole): odczyt kamienia oczekującego na twoją odpowiedź."
+        },
+        {
+          "pl": "W (gry przy stole): wartość legalnej wygranej i przyrost punktów."
+        },
+        {
+          "pl": "U (gry przy stole): twoje wyłożone układy."
+        },
+        {
+          "pl": "Shift+U (gry przy stole): wyłożone układy pozostałych graczy."
+        },
+        {
+          "pl": "R (gry przy stole): numer rozdania, wiatry i bieżąca sytuacja."
+        },
+        {
+          "pl": "I (Riichi): dora, zgłoszenia, depozyty, honba i twoje furiten."
+        }
+      ]
+    }
+  ],
+  "option_chapters": {
+    "variant": "table_aim",
+    "layout": "layout",
+    "riichi_seats": "table_riichi_variants",
+    "hong_kong_winds": "table_hk_variants",
+    "riichi_winds": "table_riichi_variants",
+    "mcr_winds": "table_mcr_variants"
+  }
+}

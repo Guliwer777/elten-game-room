@@ -7,6 +7,7 @@ end
 
 require_relative "../../__app"
 require_relative "../../lib/bot_turn_gate"
+require_relative '../support/catalog_options'
 
 def assert(value, message)
   raise message unless value
@@ -26,9 +27,11 @@ without_state = []
 # Use each game's real replay, rather than manufacturing a state Hash. Simple
 # board games legitimately store everything in Replay's board/player fields.
 games.each do |game|
-  players = ["bot:7:1"] + Array.new(game.minimum_players - 1) { |index| "Player#{index + 1}" }
+  profile = GameRoomTest::CatalogOptions.for_players(game, bots: true)
+  count = (game.minimum_players..game.maximum_players).find { |size| !game.validation_error(profile, player_count: size) }
+  players = ["bot:7:1"] + Array.new(count - 1) { |index| "Player#{index + 1}" }
   [0, 1, 5].each do |delay|
-    options = game.default_options.merge("bot_delay" => delay)
+    options = profile.merge("bot_delay" => delay)
     session = {"__id" => 11, "__players" => players, "options" => JSON.generate(options)}
     replay = game.replay(session, [], repository)
     before = Marshal.dump(replay)

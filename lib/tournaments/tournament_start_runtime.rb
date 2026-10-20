@@ -38,11 +38,11 @@ module GameRoomTournaments
       service=@tournament_event_services&.fetch(kind)
       raise ProposalNotice::Unavailable,'Tournament notices are not connected' unless service
       account=Publication::Data.account(Session.name).downcase
-      service.notices(publication_ref:publication_ref,recipient:recipient,phase_id:phase_id).map do |notice|
+      service.notices(publication_ref:publication_ref,recipient:recipient,phase_id:phase_id,addressed:true).map do |notice,delivery_name|
         scope=Digest::SHA256.hexdigest(JSON.generate([account,notice['backend_identity']]))
         journal=ProposalNoticeJournal.new(program:self,path:"tournament-#{kind}-deliveries-#{scope}.json")
         TournamentStartPublisher.new(service:service,sender:-> {Session.name},transaction:journal.method(:update),
-          send:->(metadata,closes){send_notification(metadata['recipient'],type:TournamentEventNotice::TYPES.fetch(kind),metadata:metadata,
+          send:->(metadata,closes){send_notification(delivery_name,type:TournamentEventNotice::TYPES.fetch(kind),metadata:metadata,
             expires_in:[service.remaining_seconds(closes),TournamentEventNotice::LIFETIME].min)}).deliver(metadata:notice)
       end
     end
@@ -52,13 +52,13 @@ module GameRoomTournaments
       service=@tournament_start_service
       raise ProposalNotice::Unavailable,'Tournament starts are not connected' unless service
       account=Publication::Data.account(Session.name).downcase
-      notices=service.notices(publication_ref:publication_ref)
+      notices=service.notices(publication_ref:publication_ref,addressed:true)
       results={}
-      notices.each do |notice|
+      notices.each do |notice,delivery_name|
         scope=Digest::SHA256.hexdigest(JSON.generate([account,notice['backend_identity']]))
         journal=ProposalNoticeJournal.new(program:self,path:"tournament-start-deliveries-#{scope}.json")
         results[notice['recipient']]=TournamentStartPublisher.new(service:service,sender:-> {Session.name},transaction:journal.method(:update),
-          send:->(metadata,closes){send_notification(metadata['recipient'],type:TournamentStartNotice::TYPE,metadata:metadata,
+          send:->(metadata,closes){send_notification(delivery_name,type:TournamentStartNotice::TYPE,metadata:metadata,
             expires_in:service.remaining_seconds(closes))}).deliver(metadata:notice)
       end
       results.freeze

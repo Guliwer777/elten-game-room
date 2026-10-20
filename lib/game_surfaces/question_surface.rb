@@ -76,6 +76,14 @@ module GameSurfaces
       true
     end
 
+    # Only game-declared validation errors consume the submitted draft. The
+    # same control/generation check protects text typed during a pending write.
+    def action_rejected(selection, status)
+      return false unless @spec.clear_on_rejection.to_a.include?(status.to_s)
+
+      action_accepted(selection)
+    end
+
     private
 
     def bind_immediate_choice

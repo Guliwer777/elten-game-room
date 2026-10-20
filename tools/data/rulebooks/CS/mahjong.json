@@ -1,0 +1,1056 @@
+{
+  "source": "games/mahjong_rules.rb",
+  "sections": [
+    {
+      "id": "table_aim",
+      "title": {
+        "cs": "Mahjong — cíl hry"
+      },
+      "paragraphs": [
+        {
+          "cs": "Ve výchozím solitaire odebíráš odpovídající páry a vyhraješ vyprázdněním rozložení. Hong Kong, Riichi a MCR jsou samostatné hry proti ostatním: sestavuješ vítěznou ruku a získáváš body. Každá má níže vlastní úplnou část od cíle a pojmů."
+        },
+        {
+          "cs": "Zvuky rozlišují rozdání, dobrání a odhození kamene, vyložení sestavy a konec rozdání. V pasiánsu zazní také odebrání páru a vrácení tahu. Pasování a procházení kamenů jsou tiché. Slovní popis dál uvádí druh kamene a výsledek."
+        },
+        {
+          "cs": "Při odpovědi na kámen klávesa D přečte kámen, kterého se týká Pas, Chow, Pung, Kong nebo Mahjong. Nezmění ani nepotvrdí volbu. V pasiánsu D dál čte souřadnice."
+        }
+      ]
+    },
+    {
+      "id": "aim",
+      "title": {
+        "cs": "Solitaire — pojmy a cíl"
+      },
+      "paragraphs": [
+        {
+          "cs": "Odstraň všech 144 kamenů po shodných dvojicích. Hraješ sám a vyhraješ odebráním poslední dvojice."
+        },
+        {
+          "cs": "V solitaire je rozložení celá sestava kamenů na ploše. Pár jsou dva odpovídající kusy, vrstva výšková úroveň, řádky vedou vodorovně a sloupce svisle. Volný kámen nemá nic nad sebou a má alespoň jeden otevřený bok, levý nebo pravý. I viditelný kámen může být z obou boků blokován."
+        },
+        {
+          "cs": "V této variantě netvoříš chow, pungy ani kongy a nepočítáš fan, han či yaku. Tyto pojmy patří hrám proti ostatním. Tady vyhraješ odebráním všech párů z plochy."
+        }
+      ]
+    },
+    {
+      "id": "tiles",
+      "title": {
+        "cs": "Solitaire: Shodné a volné kameny"
+      },
+      "paragraphs": [
+        {
+          "cs": "Dvojici tvoří dva kameny stejné barvy a čísla, dva stejné větry nebo dva stejní draci. Libovolné dvě květiny se shodují, stejně jako libovolná dvě roční období. Květinu nelze spojit s ročním obdobím."
+        },
+        {
+          "cs": "Oba kameny musí být volné: nesmí je překrývat kámen shora a každý musí mít volnou levou nebo pravou stranu. I viditelný kámen může být z obou stran zablokovaný. U zakrytých kamenů se jejich hodnota neprozrazuje."
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": {
+        "cs": "Solitaire: Výběr dvojice"
+      },
+      "paragraphs": [
+        {
+          "cs": "V poli Kameny v rozložení přecházíš šipkami vlevo a vpravo mezi sloupci, nahoru a dolů mezi řádky. Klávesy 1, 2 a 3 přepínají vrstvy Teras; ploché rozložení má jen vrstvu 1. Vrstva určuje výšku, nikoli řádek. Klávesa D přečte vrstvu, řádek a sloupec, počítané zvlášť v každé vrstvě."
+        },
+        {
+          "cs": "U odkrytého kamene uslyšíš, zda je volný zleva, zprava či z obou stran, nebo blokovaný z obou stran. Zakrytý kámen neprozradí svůj druh. Po odebrání zůstávají prázdná pole, takže souřadnice ostatních kamenů se nemění."
+        },
+        {
+          "cs": "Najdi volný kámen a označ jej Enterem. Potom najdi druhý volný kámen, který k němu patří, a Enterem oba odeber. První označení samo nic neodebírá. Pokud druhý kámen nepatří do páru, první zůstane vybraný. Výběr zrušíš dalším Enterem na prvním kameni nebo klávesou Escape. Hra nenabízí hotový seznam párů."
+        },
+        {
+          "cs": "Odebrání páru může uvolnit kameny pod ním či vedle něj. Zvaž, co tvůj tah odkryje. Nové rozložení má řešení, ale některé volby mohou vést k situaci bez dalšího páru."
+        },
+        {
+          "cs": "Příklad: najdi volný bambus 5 a Enterem jej označ. Najdi druhý volný bambus 5, třeba v jiné vrstvě, a stiskni Enter. Oba zmizí. Je-li druhá pětka zakrytá či blokovaná, nejprve ji uvolni odebráním jiných párů."
+        },
+        {
+          "cs": "Je-li stejných kamenů více, zvaž, které kusy odebrat. Krajní kámen může uvolnit souseda, horní odkryje spodní. Ne každý dostupný pár vede k řešení. Vrácení posledního páru umožní zkusit jinou cestu."
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "title": {
+        "cs": "Solitaire: Vrácení tahu a konec hry"
+      },
+      "paragraphs": [
+        {
+          "cs": "Tlačítko pro vrácení poslední dvojice obnoví dva naposledy odebrané kameny. Opakovaně můžeš vracet předchozí tahy až k počátečnímu rozložení."
+        },
+        {
+          "cs": "Průběh ukazuje počet odebraných dvojic a zbývajících kamenů. Skóre je počet odebraných dvojic, nejvýše 72. Pokud žádná dvojice není dostupná, vrať tah a zkus jinou cestu, nebo ukonči hlavolam příslušným tlačítkem. Předčasné ukončení není výhra."
+        },
+        {
+          "cs": "S přečte skóre, tedy počet odebraných párů. M počet zbývajících kamenů. Nové rozložení má 144 kamenů, po odebrání páru 142."
+        }
+      ]
+    },
+    {
+      "id": "layout",
+      "title": {
+        "cs": "Solitaire: Volba rozložení"
+      },
+      "paragraphs": [
+        {
+          "cs": "Výchozí terasové rozložení má několik vrstev. Ploché rozložení má jedinou vrstvu. Pravidla shody i požadavek volné levé nebo pravé strany platí v obou případech."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_aim",
+      "title": {
+        "cs": "Hong Kong — Cíl a podmínky výhry"
+      },
+      "paragraphs": [
+        {
+          "cs": "Čtyři hráči soutěží o první dokončenou vítěznou ruku. Běžný tvar jsou čtyři sestavy a pár nejméně za 3 fan; fan měří bodovou hodnotu ruky. Zápas vyhraje nejvyšší součet bodů. Následující pojmy vysvětlují sestavy i jednotky před prvním tahem."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_terms",
+      "title": {
+        "cs": "Hong Kong — Význam pojmů"
+      },
+      "paragraphs": [
+        {
+          "cs": "Hraješ proti ostatním. Ze svých kamenů sestavuješ vítěznou ruku; neodebíráš páry z rozložení jako v solitaire. Ruka jsou tvoje kameny, rozdání je hra od jejich rozdání po výhru nebo remízu. Zápas může mít více rozdání."
+        },
+        {
+          "cs": "- Kámen je jeden kus, například bambus 5. Druh určuje barva a číslo nebo konkrétní vítr či drak. Od každého běžného druhu jsou čtyři kusy."
+        },
+        {
+          "cs": "- Barvy jsou znaky, bambusy a kruhy, s čísly 1–9. V jedné postupce se barvy nemíchají. Jedničky a devítky jsou krajní kameny, čísla 2–8 prostřední."
+        },
+        {
+          "cs": "- Čestné kameny jsou větry Východ, Jih, Západ a Sever a draci bílý, zelený a červený. Nemají číslo a netvoří postupky."
+        },
+        {
+          "cs": "- Chow neboli chi jsou tři po sobě jdoucí čísla stejné barvy, například bambusy 3, 4 a 5. Bambus 3, kruh 4 a bambus 5 chow netvoří; ani čísla 8, 9 a 1 stejné barvy."
+        },
+        {
+          "cs": "- Pung, také pong či pon, jsou tři stejné kameny, například tři červení draci. Tři pětky různých barev pung netvoří."
+        },
+        {
+          "cs": "- Kong neboli kan jsou čtyři stejné kameny. Musíš jej vyhlásit příslušnou volbou; samotné držení čtyř kusů kong nevyhlásí. Počítá se jako jedna sestava a následuje náhradní dobrání."
+        },
+        {
+          "cs": "- Pár jsou dva stejné kameny. Sestava je chow, pung nebo kong. Běžná vítězná ruka potřebuje čtyři sestavy a jeden pár, ne jen několik párů nebo mnoho kamenů jedné barvy."
+        },
+        {
+          "cs": "- Zeď je zásoba kamenů k dobírání. Dobraný kámen přidáš do ruky; odhozením jeden odevzdáš a soupeři jej mohou převzít."
+        },
+        {
+          "cs": "- Zavřená ruka nemá sestavy získané od soupeře. Převzetí chow, pungu nebo otevřeného kongu ji otevře. Sestavy z vlastních kamenů mohou zůstat v ruce. Skrytý kong ruku neotevírá."
+        },
+        {
+          "cs": "- Výhra z dobrání používá právě dobraný kámen. Výhra na odhoz dokončí ruku soupeřovým kamenem. Vyhraj volbou Vyhlásit Mahjong; vítězný kámen nejprve neodhazuj."
+        },
+        {
+          "cs": "- Čekání je druh kamene, který by ruku dokončil. S bambusy 4–5 můžeš čekat na 3 nebo 6. Tenpai znamená, že k úplnému tvaru chybí jeden kámen. K legální výhře musíš splnit i bodovou podmínku varianty."
+        },
+        {
+          "cs": "- Fan jsou jednotky hodnoty ruky za určité vzory a okolnosti výhry. V tomto profilu potřebuješ alespoň 3 fan. Převádějí se na body zápasu; 3 fan tedy neznamenají zisk pouhých 3 bodů."
+        },
+        {
+          "cs": "- Vlastní vítr je tvoje role v rozdání: rozdávající má Východ, dále Jih, Západ a Sever. Vítr kola platí pro celý stůl. Pung vlastního větru nebo větru kola může bodovat; pouhý pár tuto prémii nedává."
+        },
+        {
+          "cs": "- Květiny a roční období jsou bonusové kameny. Hra je sama vyloží a nahradí. Nenahrazují chow, pung ani závěrečný pár a neurčují kola větrů."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_start",
+      "title": {
+        "cs": "Hong Kong — Začátek rozdání"
+      },
+      "paragraphs": [
+        {
+          "cs": "Účty začínají od nuly; výhry body přidávají a prohry odebírají."
+        },
+        {
+          "cs": "Rozdávající začíná se 14 kameny a nejprve odhazuje, ostatní mají 13. V běžném tahu zvol Dobrat kámen a stiskni Enter. Procházení seznamu nic nedobírá. Rozdávající už má kámen navíc a další dobrání na začátku nehledá."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_play",
+      "title": {
+        "cs": "Hong Kong — První tahy krok za krokem"
+      },
+      "paragraphs": [
+        {
+          "cs": "Před prvním odhozem si ruku projdi šipkami nahoru a dolů. Hledej sousední čísla pro chow, stejné kameny pro pungy a jeden pár na konec. Sestavy ponechané v ruce neoznačuješ zvlášť: hra je pozná při vyhlášení výhry."
+        },
+        {
+          "cs": "Když procházíš herní pole, nový vlastní tah zaměří Dobrat kámen. Po dobrání přejde fokus na nový kámen s příslušným označením. Tím se neodhazuje. Šipkami můžeš přejít jinam, nový kámen si nechat a odhodit starý."
+        },
+        {
+          "cs": "Pro odhoz vyber jeden kámen v seznamu povolených odhozů a stiskni Enter. Odevzdáš jen tento kus. Ze tří stejných kamenů ti po odhozu jednoho zůstanou dva."
+        },
+        {
+          "cs": "Po cizím odhozu uslyšíš kámen a dostaneš seznam odpovědí. Pas znamená jen, že tento kámen nechceš; nevzdáváš rozdání. Když všichni dají pas, dobírá další hráč. Než přijde tvoje dobrání, můžeš několikrát odpovídat Pas."
+        },
+        {
+          "cs": "První pole popisuje situaci. Hned za ním jsou všechny dostupné akce: odpovědi, dobrání, Mahjong, kong či Riichi, pokud je varianta používá. Pak následují tvoje kameny. Tab a Shift+Tab mění pole, šipky položku a Enter potvrzuje. Nedostupná akce se nezobrazuje."
+        },
+        {
+          "cs": "Ve Vyložených sestavách najdeš sestavy všech hráčů se jmény vlastníků. Odhozené kameny ukazují, kdo co odhodil. Pomáhají zjistit, co už bylo použito a co mohou soupeři hledat. Čtení těchto polí neprovádí tah."
+        },
+        {
+          "cs": "Dokončí-li kámen ruku splňující podmínky, zvol Mahjong místo odhozu či pasu. Hra ověří tvar i bodové požadavky. Dojde-li dřív zeď, nastane remíza; nejbližší nedokončená ruka tím automaticky nevyhraje."
+        },
+        {
+          "cs": "S přečte průběžné body všech hráčů. M počet kamenů zbývajících k dobrání ve zdi. Jde jen o oznámení: nedobírají, neodhazují, nedávají pas ani neodhalují cizí ruce."
+        },
+        {
+          "cs": "W přečte hodnotu platné výhry: fan nebo han a fu a získané body. Neodhaduje neúplnou ruku. Před výhrou v riichi nezahrnuje skryté ura-dora, takže konečná hodnota může být vyšší. U čte tvé vyložené sestavy, Shift+U sestavy ostatních a R číslo rozdání, větry a aktuální situaci. V riichi I čte ukazatele a kameny dora, počet tvých dora, hlášení riichi, vklady, honba a tvé omezení furiten. Tyto klávesy pouze čtou informace."
+        }
+      ]
+    },
+    {
+      "id": "table_hand",
+      "title": {
+        "cs": "Hong Kong — Co sestavit pro výhru"
+      },
+      "paragraphs": [
+        {
+          "cs": "Úplný příklad: bambusy 2–3–4; kruhy 4–5–6; tři znaky 7; tři červení draci; dva Západy. První dvě skupiny jsou chow, další dvě pungy a větry pár. Každý kámen patří jen jedné skupině, nesmíš jej použít dvakrát."
+        },
+        {
+          "cs": "Teď z příkladu odeber bambus 4. Máš 13 kamenů a čekáš na dokončení prvního chow. Vlastní dobrání může umožnit Mahjong z dobrání; soupeřův odhoz může nabídnout Mahjong v odpovědích. Vždy ale musíš splnit i níže popsanou bodovou podmínku."
+        },
+        {
+          "cs": "V neúplné ruce si nechávej užitečné vazby. K 4–5 se hodí 3 nebo 6, k 4–6 jedině 5. Pár může zůstat závěrečným párem nebo se třetím kusem změnit na pung. Osamělý kámen bez stejných či sousedních kamenů bývá vhodný k odhozu."
+        },
+        {
+          "cs": "Sestavu z vlastních kamenů nemusíš hned vykládat. Soukromé kameny můžeš ještě přeskupit. Převzatá a vyložená sestava zůstává pohromadě a její kameny už jednotlivě neodhodíš. Přebírej jen to, co pomáhá zamýšlené výhře."
+        },
+        {
+          "cs": "Příklad nemá automaticky 3 fan. Dračí pung dává 1, žádné květiny ani období další 1 a vlastní dobrání 1: celkem 3. Na odhoz potřebuje ještě jinou bodovou podmínku. Sleduj tedy tvar i hodnotu ruky."
+        },
+        {
+          "cs": "Sedm párů je jiný vítězný tvar za 4 fan. V tomto čínském profilu mohou čtyři stejné kameny bez vyhlášení kongu tvořit dva páry. Třináct sirotků je další vzácný tvar. Nejprve se můžeš učit běžné čtyři sestavy s párem; zvláštní ruce jsou alternativy."
+        },
+        {
+          "cs": "Čtyři tříkamenné sestavy a pár mají obvykle 14 kusů. Vyhlášený kong má jeden navíc, ale stále je jednou sestavou: s jedním kongem je úplná ruka 15 kamenů, se dvěma 16. Květiny a období do počtu nepatří. Neodhazuj další kámen jen proto, abys ruku s kongem vrátil na 14."
+        },
+        {
+          "cs": "Třináct sirotků znamená jednu 1 a 9 každé barvy, všechny čtyři větry a tři draky a druhý kus libovolného z těchto třinácti druhů. Neobsahuje chow ani čtyři běžné sestavy. Zůstává bez přebírání sestav a v tomto profilu dává 13 fan."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_claims",
+      "title": {
+        "cs": "Hong Kong — Přebírání kamenů a vyhlašování kongů"
+      },
+      "paragraphs": [
+        {
+          "cs": "Po odhození jiným hráčem seznam odpovědí nabídne jen povolené možnosti. Pokud kámen nechceš, zvol Pass. Jinak vyber Chow, Pung, Kong nebo ohlášení mahjongu a stiskni Enter. Chow lze převzít jen od hráče bezprostředně před tebou. Pung či kong může využít odhození kteréhokoli soupeře."
+        },
+        {
+          "cs": "Výhra má přednost před převzetím do skupiny; pung a kong mají přednost před chow. Pokud na stejný kámen vyhrává více hráčů, vyhraje první v pořadí za odhazujícím. Hra čeká na všechny požadované odpovědi. Po převzetí chow či pungu odhazuješ bez dobírání a skupina zůstává odkrytá."
+        },
+        {
+          "cs": "Po ohlášení kongu dober náhradní kámen a teprve potom odhazuj. Držíš-li všechny čtyři kopie, můžeš je ohlásit v seznamu skrytých kongů. Čtvrtým kamenem lze také rozšířit odkrytý pung. Před dokončením takového kongu mohou soupeři ohlásit výhru na přidávaný kámen."
+        },
+        {
+          "cs": "Máš dva červené draky a někdo odhodí třetího: Pung jej převezme a vyloží všechny tři. Potom odhodíš bez dobrání. S bambusy 4–5 můžeš vzít 3 nebo 6 do chow jen od hráče bezprostředně před tebou, ne od jiného."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_practice",
+      "title": {
+        "cs": "Hong Kong — Plánování ruky na příkladech"
+      },
+      "paragraphs": [
+        {
+          "cs": "Jednodušší cesta k minimu jsou samé pungy. Necháváš si páry, čtyři měníš na pungy a pátý zůstane párem. Čtyři pungy dají potřebné 3 fan. Je to plán, ne povinnost; pár chce přesný třetí kus, sousední čísla mohou přijmout dva druhy."
+        },
+        {
+          "cs": "Jiný plán je jedna barva s čestnými kameny za 3 fan. Máš-li už většinu čísel v jedné barvě, můžeš ji doplnit užitečnými větry či draky. Nemusíš ale vždy hrát jednu barvu ani rozbíjet téměř hotovou ruku kvůli vzdálenému drahému vzoru."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_sets",
+      "title": {
+        "cs": "Hong Kong: hodnoty sestav a platby"
+      },
+      "paragraphs": [
+        {
+          "cs": "Tento profil Hong Kong nemá samostatnou tabulku fu ani prémii jen za skrytí běžného pungu či kongu. Kong splňuje stejné podmínky druhu kamenů jako pung. Fan získáš za vzory celé ruky, čestné kameny a způsob výhry."
+        },
+        {
+          "cs": "- Čtyři chow dávají 1 fan, čtyři pungy či kongy 3, sedm párů 4."
+        },
+        {
+          "cs": "- Jedna barva s čestnými kameny dává 3 fan, bez nich 7."
+        },
+        {
+          "cs": "- Každý pung nebo kong draků dává 1. Dva dračí pungy a pár třetího draka tvoří malé tři draky za 5; všechny tři pungy velké tři draky za 8. Tyto větší odměny již zahrnují dílčí dračí pungy."
+        },
+        {
+          "cs": "- Pung nebo kong vlastního větru dává 1 fan a větru kola další 1. Při shodě dostane stejná sestava 2."
+        },
+        {
+          "cs": "- Vlastní dobrání dává 1 fan. Výhra na posledním běžném dobrání, posledním odhozu, náhradním kameni či uloupeném kongu má příslušnou prémii 1 fan."
+        },
+        {
+          "cs": "- Žádná květina ani roční období dává 1 fan. V každé bonusové rodině dává vlastní kámen 1: číslo 1 patří Východu, 2 Jihu, 3 Západu, 4 Severu. Celá rodina čtyř dává místo toho 2."
+        },
+        {
+          "cs": "Zvláštní ruce mají vlastní hodnotu: třináct sirotků 13 fan, malé čtyři větry 10, velké čtyři větry 15, samé čestné kameny 10, samé krajní číselné kameny 10, čtyři kongy 18 a devět bran 15. Malé čtyři větry tvoří tři větrné pungy a pár čtvrtého větru; velké všechny čtyři pungy. Hra vybere nejvyšší zvláštní odměnu bez běžných prémií."
+        },
+        {
+          "cs": "Jednoduchá cesta k minimu: čtyři chow za 1, žádné květiny za 1 a vlastní dobrání za 1 dávají 3 fan. Stejný tvar na cizí odhoz může mít jen 2 a výhru neumožnit. Čtyři pungy samy splní minimum 3."
+        },
+        {
+          "cs": "Základ platby je 8 bodů za 3 fan, 16 za 4, 24 za 5, 32 za 6, 48 za 7 a 64 za 8 nebo více. Při výhře na odhoz platí odhazující dvojnásobek základu, ostatní po jednom základu. Při vlastním dobrání platí každý soupeř dvojnásobek. Pět fan tak přinese 96 bodů na odhoz nebo 144 z dobrání. Limit 8 fan omezuje platbu i u hodnotnější zvláštní ruky."
+        }
+      ]
+    },
+    {
+      "id": "table_winds",
+      "title": {
+        "cs": "Hong Kong — Rozdání a délka zápasu"
+      },
+      "paragraphs": [
+        {
+          "cs": "Výchozí zápas má čtyři kola větrů: Východ, Jih, Západ a Sever. V každém všichni dokončí své rozdávání, tedy nejméně šestnáct rozdání. Platby se sčítají od nuly; jedno vyhrané rozdání nemusí vyhrát zápas."
+        },
+        {
+          "cs": "Rozdávající opakuje po vlastní výhře i každé remíze. Východ proto trvá nejméně čtyři rozdání, někdy více. Čtyři kola větrů jsou Východ, Jih, Západ a Sever: nejméně 16 rozdání. Roční období jsou bonusové kameny, ne tato kola."
+        },
+        {
+          "cs": "Po rozdání zkontroluj vítěze, hodnotu a změny bodů. V delším zápase všichni potvrdí připravenost k dalšímu rozdání. Remíza v Hong Kong body za rozdání nemění. Po zvolených kolech vyhraje nejvyšší součet; shodná maxima znamenají remízu."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_variants",
+      "title": {
+        "cs": "Hong Kong — Volba délky hry"
+      },
+      "paragraphs": [
+        {
+          "cs": "Délku volíš v nastavení hry před začátkem. Následující kratší nastavení mění počet rozdání, nikoli pravidla vítězné ruky."
+        },
+        {
+          "cs": "Jedno rozdání končí jednou výhrou nebo remízou po vyčerpání zdi. Východní kolo znamená, že všichni čtyři dokončí své období rozdávání. Rozdávající má vlastní Východ a společný vítr kola je během celé této části také Východ. Není to jeden tah."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_aim",
+      "title": {
+        "cs": "Riichi — Cíl a podmínky výhry"
+      },
+      "paragraphs": [
+        {
+          "cs": "V základní hře pro čtyři chceš dokončit ruku dřív než soupeři. Obvykle má čtyři sestavy a pár, potřebuje ale i yaku, uznanou podmínku výhry. Samotný úplný tvar bez yaku nemusí vyhrát. Zápas vyhraje nejvyšší konečný účet; další kapitola pojmy vysvětlí."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_terms",
+      "title": {
+        "cs": "Riichi — Význam pojmů"
+      },
+      "paragraphs": [
+        {
+          "cs": "Hraješ proti ostatním. Ze svých kamenů sestavuješ vítěznou ruku; neodebíráš páry z rozložení jako v solitaire. Ruka jsou tvoje kameny, rozdání je hra od jejich rozdání po výhru nebo remízu. Zápas může mít více rozdání."
+        },
+        {
+          "cs": "- Kámen je jeden kus, například bambus 5. Druh určuje barva a číslo nebo konkrétní vítr či drak. Od každého běžného druhu jsou čtyři kusy."
+        },
+        {
+          "cs": "- Barvy jsou znaky, bambusy a kruhy, s čísly 1–9. V jedné postupce se barvy nemíchají. Jedničky a devítky jsou krajní kameny, čísla 2–8 prostřední."
+        },
+        {
+          "cs": "- Čestné kameny jsou větry Východ, Jih, Západ a Sever a draci bílý, zelený a červený. Nemají číslo a netvoří postupky."
+        },
+        {
+          "cs": "- Chow neboli chi jsou tři po sobě jdoucí čísla stejné barvy, například bambusy 3, 4 a 5. Bambus 3, kruh 4 a bambus 5 chow netvoří; ani čísla 8, 9 a 1 stejné barvy."
+        },
+        {
+          "cs": "- Pung, také pong či pon, jsou tři stejné kameny, například tři červení draci. Tři pětky různých barev pung netvoří."
+        },
+        {
+          "cs": "- Kong neboli kan jsou čtyři stejné kameny. Musíš jej vyhlásit příslušnou volbou; samotné držení čtyř kusů kong nevyhlásí. Počítá se jako jedna sestava a následuje náhradní dobrání."
+        },
+        {
+          "cs": "- Pár jsou dva stejné kameny. Sestava je chow, pung nebo kong. Běžná vítězná ruka potřebuje čtyři sestavy a jeden pár, ne jen několik párů nebo mnoho kamenů jedné barvy."
+        },
+        {
+          "cs": "- Zeď je zásoba kamenů k dobírání. Dobraný kámen přidáš do ruky; odhozením jeden odevzdáš a soupeři jej mohou převzít."
+        },
+        {
+          "cs": "- Zavřená ruka nemá sestavy získané od soupeře. Převzetí chow, pungu nebo otevřeného kongu ji otevře. Sestavy z vlastních kamenů mohou zůstat v ruce. Skrytý kong ruku neotevírá."
+        },
+        {
+          "cs": "- Výhra z dobrání používá právě dobraný kámen. Výhra na odhoz dokončí ruku soupeřovým kamenem. Vyhraj volbou Vyhlásit Mahjong; vítězný kámen nejprve neodhazuj."
+        },
+        {
+          "cs": "- Čekání je druh kamene, který by ruku dokončil. S bambusy 4–5 můžeš čekat na 3 nebo 6. Tenpai znamená, že k úplnému tvaru chybí jeden kámen. K legální výhře musíš splnit i bodovou podmínku varianty."
+        },
+        {
+          "cs": "- Yaku je pojmenovaná podmínka opravňující úplnou ruku k výhře. Potřebuješ alespoň jedno. Například dračí pung je yaku, náhodný úplný tvar jím být nemusí."
+        },
+        {
+          "cs": "- Han měří hodnotu yaku a prémií. Fu jsou menší body za stavbu sestav, páru a čekání. Společně určují platbu. Samotné fu potřebné yaku nenahradí."
+        },
+        {
+          "cs": "- Ron je výhra na cizí odhoz, tsumo z vlastního dobrání. Menzen znamená zavřenou ruku. Menzen tsumo tedy je vlastní dobrání se zavřenou rukou a samo tvoří yaku."
+        },
+        {
+          "cs": "- Riichi je vyhlášení zavřené ruky, které chybí jediný kámen. Odložíš vklad 1000 bodů a získáš yaku, ale později už ruku nemůžeš volně měnit."
+        },
+        {
+          "cs": "- Dora je bonusový druh kamene určený ukazatelem. Každý kus přidává han až při skutečném yaku. Samotné dory výhru neumožňují."
+        },
+        {
+          "cs": "- Furiten zakazuje výhru na cizí odhoz. Vzniká kvůli vlastním odhozům nebo odmítnutí vítězného odhozu. Nebrání výhře z vlastního dobrání."
+        },
+        {
+          "cs": "- Honba je počítadlo prémií po remízách a opakování rozdávajícího. Mangan a vyšší limity jsou platební úrovně cenných rukou, nikoli další povinné sestavy."
+        },
+        {
+          "cs": "- Vlastní vítr je tvoje role vůči rozdávajícímu: Východ pro něj, dále Jih, Západ a Sever. Vítr kola platí pro celý stůl. Pung obou bodovaných větrů může bodovat, při jejich shodě jedna sestava splní obě podmínky."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_start",
+      "title": {
+        "cs": "Riichi — Začátek rozdání"
+      },
+      "paragraphs": [
+        {
+          "cs": "Každý začíná s 30 000 body. Platby a přijaté vklady Riichi tento účet mění."
+        },
+        {
+          "cs": "Rozdávající začíná se 14 kameny a nejprve odhazuje, ostatní mají 13. V běžném tahu zvol Dobrat kámen a stiskni Enter. Procházení seznamu nic nedobírá. Rozdávající už má kámen navíc a další dobrání na začátku nehledá."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_play",
+      "title": {
+        "cs": "Riichi — První tahy krok za krokem"
+      },
+      "paragraphs": [
+        {
+          "cs": "Před prvním odhozem si ruku projdi šipkami nahoru a dolů. Hledej sousední čísla pro chow, stejné kameny pro pungy a jeden pár na konec. Sestavy ponechané v ruce neoznačuješ zvlášť: hra je pozná při vyhlášení výhry."
+        },
+        {
+          "cs": "Když procházíš herní pole, nový vlastní tah zaměří Dobrat kámen. Po dobrání přejde fokus na nový kámen s příslušným označením. Tím se neodhazuje. Šipkami můžeš přejít jinam, nový kámen si nechat a odhodit starý."
+        },
+        {
+          "cs": "Pro odhoz vyber jeden kámen v seznamu povolených odhozů a stiskni Enter. Odevzdáš jen tento kus. Ze tří stejných kamenů ti po odhozu jednoho zůstanou dva."
+        },
+        {
+          "cs": "Po cizím odhozu uslyšíš kámen a dostaneš seznam odpovědí. Pas znamená jen, že tento kámen nechceš; nevzdáváš rozdání. Když všichni dají pas, dobírá další hráč. Než přijde tvoje dobrání, můžeš několikrát odpovídat Pas."
+        },
+        {
+          "cs": "První pole popisuje situaci. Hned za ním jsou všechny dostupné akce: odpovědi, dobrání, Mahjong, kong či Riichi, pokud je varianta používá. Pak následují tvoje kameny. Tab a Shift+Tab mění pole, šipky položku a Enter potvrzuje. Nedostupná akce se nezobrazuje."
+        },
+        {
+          "cs": "Ve Vyložených sestavách najdeš sestavy všech hráčů se jmény vlastníků. Odhozené kameny ukazují, kdo co odhodil. Pomáhají zjistit, co už bylo použito a co mohou soupeři hledat. Čtení těchto polí neprovádí tah."
+        },
+        {
+          "cs": "Dokončí-li kámen ruku splňující podmínky, zvol Mahjong místo odhozu či pasu. Hra ověří tvar i bodové požadavky. Dojde-li dřív zeď, nastane remíza; nejbližší nedokončená ruka tím automaticky nevyhraje."
+        },
+        {
+          "cs": "S přečte průběžné body všech hráčů. M počet kamenů zbývajících k dobrání ve zdi. Jde jen o oznámení: nedobírají, neodhazují, nedávají pas ani neodhalují cizí ruce."
+        },
+        {
+          "cs": "W přečte hodnotu platné výhry: fan nebo han a fu a získané body. Neodhaduje neúplnou ruku. Před výhrou v riichi nezahrnuje skryté ura-dora, takže konečná hodnota může být vyšší. U čte tvé vyložené sestavy, Shift+U sestavy ostatních a R číslo rozdání, větry a aktuální situaci. V riichi I čte ukazatele a kameny dora, počet tvých dora, hlášení riichi, vklady, honba a tvé omezení furiten. Tyto klávesy pouze čtou informace."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_build",
+      "title": {
+        "cs": "Riichi — Co sestavit pro výhru"
+      },
+      "paragraphs": [
+        {
+          "cs": "Úplný příklad: bambusy 2–3–4; kruhy 4–5–6; tři znaky 7; tři červení draci; dva Západy. První dvě skupiny jsou chow, další dvě pungy a větry pár. Každý kámen patří jen jedné skupině, nesmíš jej použít dvakrát."
+        },
+        {
+          "cs": "Teď z příkladu odeber bambus 4. Máš 13 kamenů a čekáš na dokončení prvního chow. Vlastní dobrání může umožnit Mahjong z dobrání; soupeřův odhoz může nabídnout Mahjong v odpovědích. Vždy ale musíš splnit i níže popsanou bodovou podmínku."
+        },
+        {
+          "cs": "V neúplné ruce si nechávej užitečné vazby. K 4–5 se hodí 3 nebo 6, k 4–6 jedině 5. Pár může zůstat závěrečným párem nebo se třetím kusem změnit na pung. Osamělý kámen bez stejných či sousedních kamenů bývá vhodný k odhozu."
+        },
+        {
+          "cs": "Sestavu z vlastních kamenů nemusíš hned vykládat. Soukromé kameny můžeš ještě přeskupit. Převzatá a vyložená sestava zůstává pohromadě a její kameny už jednotlivě neodhodíš. Přebírej jen to, co pomáhá zamýšlené výhře."
+        },
+        {
+          "cs": "Pung červených draků v příkladu tvoří yaku za 1 han otevřený i skrytý. Po dokončení čtyř sestav a páru umožní výhru, pokud ji na odhoz neblokuje například furiten. Každá sestava nemusí mít vlastní yaku."
+        },
+        {
+          "cs": "Sedm různých párů je samostatná ruka a yaku za 2 han. Čtyři stejné kameny v Riichi dva různé páry nenahradí. Třináct sirotků tvoří všechny číselné 1 a 9 a sedm čestných druhů s jedním opakováním, bez převzatých sestav. Je to yakuman. Tyto tvary nahrazují čtyři sestavy s párem."
+        },
+        {
+          "cs": "Čtyři tříkamenné sestavy a pár mají obvykle 14 kusů. Vyhlášený kong má jeden navíc, ale stále je jednou sestavou: s jedním kongem je úplná ruka 15 kamenů, se dvěma 16. Květiny a období do počtu nepatří. Neodhazuj další kámen jen proto, abys ruku s kongem vrátil na 14."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_claims",
+      "title": {
+        "cs": "Riichi — Přebírání kamenů a vyhlašování kongů"
+      },
+      "paragraphs": [
+        {
+          "cs": "Po odhození jiným hráčem seznam odpovědí nabídne jen povolené možnosti. Pokud kámen nechceš, zvol Pass. Jinak vyber Chow, Pung, Kong nebo ohlášení mahjongu a stiskni Enter. Chow lze převzít jen od hráče bezprostředně před tebou. Pung či kong může využít odhození kteréhokoli soupeře."
+        },
+        {
+          "cs": "Výhra má přednost před převzetím do skupiny; pung a kong mají přednost před chow. Pokud na stejný kámen vyhrává více hráčů, vyhraje první v pořadí za odhazujícím. Hra čeká na všechny požadované odpovědi. Po převzetí chow či pungu odhazuješ bez dobírání a skupina zůstává odkrytá."
+        },
+        {
+          "cs": "Po ohlášení kongu dober náhradní kámen a teprve potom odhazuj. Držíš-li všechny čtyři kopie, můžeš je ohlásit v seznamu skrytých kongů. Čtvrtým kamenem lze také rozšířit odkrytý pung. Před dokončením takového kongu mohou soupeři ohlásit výhru na přidávaný kámen."
+        },
+        {
+          "cs": "Otevření může zrušit plánované yaku. Riichi i zavřené vlastní dobrání vyžadují zavřenou ruku, dračí pung boduje i otevřený. Před převzetím si rozmysli zbývající yaku."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_practice",
+      "title": {
+        "cs": "Riichi — Plánování ruky na příkladech"
+      },
+      "paragraphs": [
+        {
+          "cs": "Pro první hru můžeš zkusit zavřenou ruku s Riichi. Dobírej, zlepšuj sestavy a odhazuj méně užitečné kameny bez přebírání sestav. Jakmile se objeví Riichi, vyber nabídnutý odhoz. Tím získáš yaku, nikoli hotovou výhru; vítězný kámen ještě potřebuješ."
+        },
+        {
+          "cs": "Další jasný plán je dračí pung. Třetího draka můžeš převzít a yaku zůstane i po otevření. Stále potřebuješ další tři sestavy a pár. Otevřená ruka z nesouvisejících obyčejných chow nemusí mít žádné yaku."
+        },
+        {
+          "cs": "Devět bran je zavřená ruka jedné barvy se základem 1–1–1–2–3–4–5–6–7–8–9–9–9 a jedním dalším kamenem téže barvy. Neznamená devět chow. Samé zelené v Riichi používají pouze bambusy 2, 3, 4, 6, 8 a zelené draky v platném úplném tvaru."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi",
+      "title": {
+        "cs": "Riichi — vyhlášení připravenosti, dora a furiten"
+      },
+      "paragraphs": [
+        {
+          "cs": "Pokud skryté ruce chybí jediný kámen k výhře, seznam Riichi nabídne odhození pro ohlášení připravenosti. Vyber kámen a stiskni Enter. Přijaté ohlášení vloží na stůl 1 000 bodů. Potom musíš odhodit dobraný kámen, pokud nevyhráváš; kong je dovolen jen při zachování všech požadovaných výkladů ruky. Vítěz získá vklady; nevyzvednutý vklad přechází do dalšího rozdání."
+        },
+        {
+          "cs": "Furiten zakazuje výhru na odhození, jestliže některý z vítězných kamenů leží mezi tvými vlastními odhozenými kameny. Odmítnutí platné výhry na cizí kámen rovněž dočasně blokuje takové výhry; po ohlášení Riichi trvá zákaz do konce rozdání. Stále můžeš vyhrát vlastním dobráním."
+        },
+        {
+          "cs": "Příklad furiten: čekáš na bambus 3 nebo 6, ale dříve jsi odhodil 3. Výhra na cizí odhoz je blokována i na 6, nejen na odhozenou 3. Vlastní dobrání 3 či 6 stále může vyhrát."
+        }
+      ]
+    },
+    {
+      "id": "table_yaku",
+      "title": {
+        "cs": "Riichi: yaku a otevření ruky"
+      },
+      "paragraphs": [
+        {
+          "cs": "Yaku je pojmenovaná podmínka výhry. Han ze slučitelných yaku se sčítají. Běžné chow ani pung prostředních čísel samy han nedávají. Převzetí kamene může ruku urychlit, ale některá yaku zruší a jiná zlevní."
+        },
+        {
+          "cs": "- Tanyao, jen čísla 2–8 bez čestných kamenů: 1 han i otevřené. Každý dračí pung či kong: 1. Vlastní vítr a vítr kola v pungu či kongu: po 1; při shodě 2."
+        },
+        {
+          "cs": "- Riichi: 1 han, zavřená připravená ruka a vklad 1000 bodů. Dvojité Riichi v prvním nepřerušeném oběhu: místo toho 2. Ippatsu za výhru v prvním nepřerušeném oběhu po Riichi přidá 1."
+        },
+        {
+          "cs": "- Menzen tsumo, vlastní dobrání se zavřenou rukou: 1 han. Pinfu: 1, jen zavřené, čtyři chow, nebodovaný pár a oboustranné čekání."
+        },
+        {
+          "cs": "- Dvě stejná chow jedné barvy: 1 han jen zavřené. Dvě takové dvojice: místo toho 3, také jen zavřené. Sedm různých párů: 2."
+        },
+        {
+          "cs": "- Čtyři pungy či kongy: 2 han. Tři skryté pungy: 2. Tři kongy: 2. Dva dračí pungy a pár třetího draka: 2 navíc k bodům za dračí pungy."
+        },
+        {
+          "cs": "- Stejné chow ve všech třech barvách, například 2–3–4: 2 han zavřené, 1 otevřené. Chow 1–2–3, 4–5–6 a 7–8–9 jedné barvy: 2 zavřené, 1 otevřené. Pungy stejného čísla ve třech barvách: 2 bez ohledu na otevření."
+        },
+        {
+          "cs": "- Jedna barva s čestnými kameny: 3 han zavřené, 2 otevřené. Bez čestných kamenů: 6 zavřené, 5 otevřené."
+        },
+        {
+          "cs": "- Krajní nebo čestný kámen v každé sestavě i páru, s alespoň jedním chow: 2 han zavřené, 1 otevřené. Bez čestných kamenů: 3 a 2. Ruka pouze z krajních a čestných kamenů dává 2."
+        },
+        {
+          "cs": "- Poslední běžné dobrání, poslední odhoz, náhradní dobrání po kongu nebo uloupení kongu má příslušné yaku za 1 han."
+        },
+        {
+          "cs": "Každá dora přidá 1 han až tehdy, když máš skutečné yaku. Ukazatel označuje další kámen v cyklu: bambus 3 označuje bambus 4, po 9 následuje 1. Čestné cykly jsou Východ–Jih–Západ–Sever a bílý–zelený–červený drak. Dora je prémie, nikoli samostatný tvar ruky."
+        },
+        {
+          "cs": "Yakuman nahrazuje běžné han a fu. Patří sem například třináct sirotků, čtyři skryté pungy, tři dračí pungy, malé či velké čtyři větry, samé čestné kameny, samé krajní kameny, samé zelené kameny, čtyři kongy a devět bran. Slučitelné yakumany se sčítají. Při výhře čtyř skrytých pungů na odhoz musí kámen dokončit pár; pung dokončený cizím odhozem není skrytý."
+        }
+      ]
+    },
+    {
+      "id": "table_fu",
+      "title": {
+        "cs": "Riichi: fu za sestavy a čekání"
+      },
+      "paragraphs": [
+        {
+          "cs": "Han vyjadřují hodnotu yaku a prémií, fu hodnotí stavbu ruky. Chow dává 0 fu. Běžný pár také 0; pár draků, vlastního větru nebo větru kola dává 2 fu. Pokud je stejný vítr zároveň vlastní i větrem kola, tato hra stále přidá jen 2 fu."
+        },
+        {
+          "cs": "U pungů a kongů záleží na druhu kamenů a na tom, zda jsou otevřené:"
+        },
+        {
+          "cs": "- Pung čísel 2–8: otevřený 2 fu, skrytý 4 fu."
+        },
+        {
+          "cs": "- Pung jedniček, devítek nebo čestných kamenů: otevřený 4 fu, skrytý 8 fu."
+        },
+        {
+          "cs": "- Kong čísel 2–8: otevřený 8 fu, skrytý 16 fu."
+        },
+        {
+          "cs": "- Kong jedniček, devítek nebo čestných kamenů: otevřený 16 fu, skrytý 32 fu."
+        },
+        {
+          "cs": "Pung dokončený vítězným cizím odhozem se pro fu počítá jako otevřený. Ostatní pungy v ruce zůstávají skryté. Přidání čtvrtého kamene k otevřenému pungu vytvoří otevřený kong."
+        },
+        {
+          "cs": "Běžný výpočet začíná na 20 fu. Výhra na odhoz se zavřenou rukou přidává 10, vlastní dobrání 2. Čekání na pár, prostředek nebo okraj postupky přidává 2 fu. Okraj znamená 3 k 1–2 nebo 7 k 8–9; prostředek například 5 k 4–6. Oboustranné čekání, například 3 nebo 6 k 4–5, fu nepřidává."
+        },
+        {
+          "cs": "Součet zaokrouhli nahoru na celé desítky: z 32 je 40 fu. Sedm párů má vždy 25 fu. Pinfu z vlastního dobrání má 20 fu bez dalších 2 za dobrání. Jiná ruka, která by měla jen 20, dostane nejméně 30 fu."
+        },
+        {
+          "cs": "Například základ 20, zavřená výhra na odhoz 10, skrytý pung pětek 4 a pár draků 2 dávají 36, tedy 40 fu. Stále potřebuješ yaku: samotné fu výhru neumožní."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_payments",
+      "title": {
+        "cs": "Riichi: převod han a fu na body"
+      },
+      "paragraphs": [
+        {
+          "cs": "U běžné výhry je základ fu krát 2 umocněné na han plus 2, nejvýše 2000. Při 1 han a 30 fu je to 30 krát 8, tedy 240. Každá konečná platba se zaokrouhluje nahoru na stovky."
+        },
+        {
+          "cs": "Na odhoz dostane nerozdávající čtyřnásobek základu od odhazujícího, rozdávající šestinásobek. Při vlastním dobrání dostane nerozdávající dva základy od rozdávajícího a po jednom od ostatních. Vyhraje-li rozdávající, každý platí dva základy."
+        },
+        {
+          "cs": "Při 1 han 30 fu bez prémií vyhraje nerozdávající 1000 na odhoz, nebo 500 od rozdávajícího a po 300 od ostatních z dobrání, celkem 1100. Rozdávající dostane 1500 na odhoz nebo po 500 od každého, také 1500."
+        },
+        {
+          "cs": "- Mangan: 5 han nebo dosažení limitu základu; zde také 3 han 60 fu a 4 han 30 fu. Na odhoz dostane nerozdávající 8000, rozdávající 12 000."
+        },
+        {
+          "cs": "- Haneman: 6–7 han, na odhoz 12 000 nebo 18 000."
+        },
+        {
+          "cs": "- Baiman: 8–10 han, 16 000 nebo 24 000."
+        },
+        {
+          "cs": "- Sanbaiman: 11–12 han, 24 000 nebo 36 000."
+        },
+        {
+          "cs": "- Yakuman nebo alespoň 13 han: 32 000 nebo 48 000. Více slučitelných yakumanů tuto platbu násobí."
+        },
+        {
+          "cs": "Každé honba přidává 300 k platbě na odhoz nebo po 100 od každého soupeře při dobrání. Vklady Riichi dostane vítěz navíc. Honba roste po remíze nebo opakování rozdávajícího a po výhře jiného hráče se vynuluje."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_match",
+      "title": {
+        "cs": "Riichi — Rozdání a délka zápasu"
+      },
+      "paragraphs": [
+        {
+          "cs": "Výchozí hra je pro čtyři, každý má 30 000 bodů a hrají se Východ a Jih. Každý dokončí rozdávání v obou kolech: nejméně osm rozdání, s opakováním více. Platby i přijaté vklady Riichi mění průběžný účet."
+        },
+        {
+          "cs": "Rozdávající opakuje po vlastní výhře nebo remíze ze zdi, pokud má tenpai."
+        },
+        {
+          "cs": "Při remíze ze zdi se 3000 bodů převádí od nepřipravených k tenpai, pokud nejsou připraveni všichni nebo nikdo. Potom každý potvrdí další rozdání. Zápas trvá vybraná kola; záporný účet ani vedení posledního rozdávajícího jej zde nezkrátí. Nejvyšší konečný účet vítězí, shodná maxima remizují."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_variants",
+      "title": {
+        "cs": "Riichi — hra ve třech a délka zápasu"
+      },
+      "paragraphs": [
+        {
+          "cs": "Délku volíš v nastavení hry před začátkem. Následující kratší nastavení mění počet rozdání, nikoli pravidla vítězné ruky."
+        },
+        {
+          "cs": "Jedno rozdání končí výhrou nebo remízou po zdi. Východní kolo dá každému období rozdávání: nejméně čtyři rozdání ve čtyřech nebo tři v sanmě. Východ a Jih jsou dvě kola: nejméně osm nebo šest. Rozdávající opakuje po výhře či remíze v tenpai, takže může být rozdání více."
+        },
+        {
+          "cs": "Vlastní větry jdou od rozdávajícího Východ, Jih, Západ a ve čtyřech Sever. Vítr kola zůstává Východ, dokud všichni nedokončí rozdávání, pak je v delším zápase Jih. Bodované větry se tak mohou změnit. Sanma odstraňuje znaky 2–8 a zde nemá samostatné vykládání Severu."
+        },
+        {
+          "cs": "V sanmě nelze přebírat chow, ale postupky z vlastních kamenů tvořit můžeš."
+        },
+        {
+          "cs": "V sanmě chybějící čtvrtý hráč neplatí a jeho podíl se nepřenáší na ostatní. Vlastní dobrání tak může přinést méně než ve čtyřech. Při remíze se mezi připravené a nepřipravené dělí 2000 místo 3000 bodů."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_aim",
+      "title": {
+        "cs": "MCR — Cíl a podmínky výhry"
+      },
+      "paragraphs": [
+        {
+          "cs": "Čtyři hráči chtějí jako první dokončit vítěznou ruku. Běžný tvar jsou čtyři sestavy a pár nejméně za 8 fan bez květin. Fan měří slučitelné bodové vzory. Výhra rozdání přinese platbu, zápas vyhraje nejvyšší celkový účet."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_terms",
+      "title": {
+        "cs": "MCR — Význam pojmů"
+      },
+      "paragraphs": [
+        {
+          "cs": "Hraješ proti ostatním. Ze svých kamenů sestavuješ vítěznou ruku; neodebíráš páry z rozložení jako v solitaire. Ruka jsou tvoje kameny, rozdání je hra od jejich rozdání po výhru nebo remízu. Zápas může mít více rozdání."
+        },
+        {
+          "cs": "- Kámen je jeden kus, například bambus 5. Druh určuje barva a číslo nebo konkrétní vítr či drak. Od každého běžného druhu jsou čtyři kusy."
+        },
+        {
+          "cs": "- Barvy jsou znaky, bambusy a kruhy, s čísly 1–9. V jedné postupce se barvy nemíchají. Jedničky a devítky jsou krajní kameny, čísla 2–8 prostřední."
+        },
+        {
+          "cs": "- Čestné kameny jsou větry Východ, Jih, Západ a Sever a draci bílý, zelený a červený. Nemají číslo a netvoří postupky."
+        },
+        {
+          "cs": "- Chow neboli chi jsou tři po sobě jdoucí čísla stejné barvy, například bambusy 3, 4 a 5. Bambus 3, kruh 4 a bambus 5 chow netvoří; ani čísla 8, 9 a 1 stejné barvy."
+        },
+        {
+          "cs": "- Pung, také pong či pon, jsou tři stejné kameny, například tři červení draci. Tři pětky různých barev pung netvoří."
+        },
+        {
+          "cs": "- Kong neboli kan jsou čtyři stejné kameny. Musíš jej vyhlásit příslušnou volbou; samotné držení čtyř kusů kong nevyhlásí. Počítá se jako jedna sestava a následuje náhradní dobrání."
+        },
+        {
+          "cs": "- Pár jsou dva stejné kameny. Sestava je chow, pung nebo kong. Běžná vítězná ruka potřebuje čtyři sestavy a jeden pár, ne jen několik párů nebo mnoho kamenů jedné barvy."
+        },
+        {
+          "cs": "- Zeď je zásoba kamenů k dobírání. Dobraný kámen přidáš do ruky; odhozením jeden odevzdáš a soupeři jej mohou převzít."
+        },
+        {
+          "cs": "- Zavřená ruka nemá sestavy získané od soupeře. Převzetí chow, pungu nebo otevřeného kongu ji otevře. Sestavy z vlastních kamenů mohou zůstat v ruce. Skrytý kong ruku neotevírá."
+        },
+        {
+          "cs": "- Výhra z dobrání používá právě dobraný kámen. Výhra na odhoz dokončí ruku soupeřovým kamenem. Vyhraj volbou Vyhlásit Mahjong; vítězný kámen nejprve neodhazuj."
+        },
+        {
+          "cs": "- Čekání je druh kamene, který by ruku dokončil. S bambusy 4–5 můžeš čekat na 3 nebo 6. Tenpai znamená, že k úplnému tvaru chybí jeden kámen. K legální výhře musíš splnit i bodovou podmínku varianty."
+        },
+        {
+          "cs": "- MCR znamená Mahjong Competition Rules. Fan měří hodnotu bodovaných vzorů. Potřebuješ nejméně 8 fan bez květin. Z fan se počítá platba; nejsou totéž co součet bodů zápasu."
+        },
+        {
+          "cs": "- Bodový vzor popisuje vlastnost celé ruky či sestav. Některé se kombinují, jiné zahrnují menší vzor a jeho další body vylučují. Nesčítej všechny názvy, které zdánlivě sedí."
+        },
+        {
+          "cs": "- Květiny a roční období se automaticky vyloží a nahradí. Každé přidá 1 fan k platné výhře, ale nepomůže dosáhnout povinných 8. Sedm fan s květinou nestačí."
+        },
+        {
+          "cs": "- Vlastní vítr je role vůči rozdávajícímu, vítr kola společný všem. Pung vlastního větru či větru kola je bodový vzor. Roční období jsou bonusové kameny, ne čtyři kola větrů."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_start",
+      "title": {
+        "cs": "MCR — Začátek rozdání"
+      },
+      "paragraphs": [
+        {
+          "cs": "Účty začínají od nuly; výhry body přidávají a prohry odebírají."
+        },
+        {
+          "cs": "Rozdávající začíná se 14 kameny a nejprve odhazuje, ostatní mají 13. V běžném tahu zvol Dobrat kámen a stiskni Enter. Procházení seznamu nic nedobírá. Rozdávající už má kámen navíc a další dobrání na začátku nehledá."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_play",
+      "title": {
+        "cs": "MCR — První tahy krok za krokem"
+      },
+      "paragraphs": [
+        {
+          "cs": "Před prvním odhozem si ruku projdi šipkami nahoru a dolů. Hledej sousední čísla pro chow, stejné kameny pro pungy a jeden pár na konec. Sestavy ponechané v ruce neoznačuješ zvlášť: hra je pozná při vyhlášení výhry."
+        },
+        {
+          "cs": "Když procházíš herní pole, nový vlastní tah zaměří Dobrat kámen. Po dobrání přejde fokus na nový kámen s příslušným označením. Tím se neodhazuje. Šipkami můžeš přejít jinam, nový kámen si nechat a odhodit starý."
+        },
+        {
+          "cs": "Pro odhoz vyber jeden kámen v seznamu povolených odhozů a stiskni Enter. Odevzdáš jen tento kus. Ze tří stejných kamenů ti po odhozu jednoho zůstanou dva."
+        },
+        {
+          "cs": "Po cizím odhozu uslyšíš kámen a dostaneš seznam odpovědí. Pas znamená jen, že tento kámen nechceš; nevzdáváš rozdání. Když všichni dají pas, dobírá další hráč. Než přijde tvoje dobrání, můžeš několikrát odpovídat Pas."
+        },
+        {
+          "cs": "První pole popisuje situaci. Hned za ním jsou všechny dostupné akce: odpovědi, dobrání, Mahjong, kong či Riichi, pokud je varianta používá. Pak následují tvoje kameny. Tab a Shift+Tab mění pole, šipky položku a Enter potvrzuje. Nedostupná akce se nezobrazuje."
+        },
+        {
+          "cs": "Ve Vyložených sestavách najdeš sestavy všech hráčů se jmény vlastníků. Odhozené kameny ukazují, kdo co odhodil. Pomáhají zjistit, co už bylo použito a co mohou soupeři hledat. Čtení těchto polí neprovádí tah."
+        },
+        {
+          "cs": "Dokončí-li kámen ruku splňující podmínky, zvol Mahjong místo odhozu či pasu. Hra ověří tvar i bodové požadavky. Dojde-li dřív zeď, nastane remíza; nejbližší nedokončená ruka tím automaticky nevyhraje."
+        },
+        {
+          "cs": "S přečte průběžné body všech hráčů. M počet kamenů zbývajících k dobrání ve zdi. Jde jen o oznámení: nedobírají, neodhazují, nedávají pas ani neodhalují cizí ruce."
+        },
+        {
+          "cs": "W přečte hodnotu platné výhry: fan nebo han a fu a získané body. Neodhaduje neúplnou ruku. Před výhrou v riichi nezahrnuje skryté ura-dora, takže konečná hodnota může být vyšší. U čte tvé vyložené sestavy, Shift+U sestavy ostatních a R číslo rozdání, větry a aktuální situaci. V riichi I čte ukazatele a kameny dora, počet tvých dora, hlášení riichi, vklady, honba a tvé omezení furiten. Tyto klávesy pouze čtou informace."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_build",
+      "title": {
+        "cs": "MCR — Co sestavit pro výhru"
+      },
+      "paragraphs": [
+        {
+          "cs": "Úplný příklad: bambusy 2–3–4; kruhy 4–5–6; tři znaky 7; tři červení draci; dva Západy. První dvě skupiny jsou chow, další dvě pungy a větry pár. Každý kámen patří jen jedné skupině, nesmíš jej použít dvakrát."
+        },
+        {
+          "cs": "Teď z příkladu odeber bambus 4. Máš 13 kamenů a čekáš na dokončení prvního chow. Vlastní dobrání může umožnit Mahjong z dobrání; soupeřův odhoz může nabídnout Mahjong v odpovědích. Vždy ale musíš splnit i níže popsanou bodovou podmínku."
+        },
+        {
+          "cs": "V neúplné ruce si nechávej užitečné vazby. K 4–5 se hodí 3 nebo 6, k 4–6 jedině 5. Pár může zůstat závěrečným párem nebo se třetím kusem změnit na pung. Osamělý kámen bez stejných či sousedních kamenů bývá vhodný k odhozu."
+        },
+        {
+          "cs": "Sestavu z vlastních kamenů nemusíš hned vykládat. Soukromé kameny můžeš ještě přeskupit. Převzatá a vyložená sestava zůstává pohromadě a její kameny už jednotlivě neodhodíš. Přebírej jen to, co pomáhá zamýšlené výhře."
+        },
+        {
+          "cs": "Čtyři sestavy a pár jsou běžný tvar, potřebuješ ale i 8 fan bez květin. Samotný dračí pung dává jen 2, a běžnou ruku tedy automaticky neopravňuje k výhře. Před otevřením naplánuj slučitelné vzory nebo jeden dost cenný."
+        },
+        {
+          "cs": "Sedm párů je zvláštní tvar za 24 fan. Čtyři stejné kameny bez vyhlášení kongu mohou v tomto čínském profilu být dvěma páry. Třináct sirotků dává 88. MCR má i zvláštní pletené tvary, začít však můžeš běžnými čtyřmi sestavami a párem."
+        },
+        {
+          "cs": "Čtyři tříkamenné sestavy a pár mají obvykle 14 kusů. Vyhlášený kong má jeden navíc, ale stále je jednou sestavou: s jedním kongem je úplná ruka 15 kamenů, se dvěma 16. Květiny a období do počtu nepatří. Neodhazuj další kámen jen proto, abys ruku s kongem vrátil na 14."
+        },
+        {
+          "cs": "Pletená postupka je zvláštní devítice: 1–4–7 jedné barvy, 2–5–8 druhé a 3–6–9 třetí. Například znaky 1–4–7, kruhy 2–5–8 a bambusy 3–6–9. Přidej jednu běžnou sestavu a pár. Barvy lze zaměnit, ale každá číselná trojice patří jiné barvě. Vzor pletené postupky dává 12 fan."
+        },
+        {
+          "cs": "Další zvláštní tvar má 14 různých kamenů bez páru: čísla z jedné takové pletené devítice a pět, šest či sedm různých čestných kamenů. Nic se neopakuje. Se všemi sedmi čestnými kameny jde o větší pletenou ruku za 24 fan, s pěti či šesti o menší za 12. Nahrazují běžné čtyři sestavy."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_claims",
+      "title": {
+        "cs": "MCR — Přebírání kamenů a vyhlašování kongů"
+      },
+      "paragraphs": [
+        {
+          "cs": "Po odhození jiným hráčem seznam odpovědí nabídne jen povolené možnosti. Pokud kámen nechceš, zvol Pass. Jinak vyber Chow, Pung, Kong nebo ohlášení mahjongu a stiskni Enter. Chow lze převzít jen od hráče bezprostředně před tebou. Pung či kong může využít odhození kteréhokoli soupeře."
+        },
+        {
+          "cs": "Výhra má přednost před převzetím do skupiny; pung a kong mají přednost před chow. Pokud na stejný kámen vyhrává více hráčů, vyhraje první v pořadí za odhazujícím. Hra čeká na všechny požadované odpovědi. Po převzetí chow či pungu odhazuješ bez dobírání a skupina zůstává odkrytá."
+        },
+        {
+          "cs": "Po ohlášení kongu dober náhradní kámen a teprve potom odhazuj. Držíš-li všechny čtyři kopie, můžeš je ohlásit v seznamu skrytých kongů. Čtvrtým kamenem lze také rozšířit odkrytý pung. Před dokončením takového kongu mohou soupeři ohlásit výhru na přidávaný kámen."
+        },
+        {
+          "cs": "Máš dva bílé draky a třetí padne: Pung je vyloží a zajistí dračí vzor za 2 fan. Zbytek ruky musí stále pomoci k 8. Převzetí mění i dostupné vzory za zavřenou ruku. Dostupný Pung nezaručuje budoucí minimum."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_practice",
+      "title": {
+        "cs": "MCR — Plánování ruky na příkladech"
+      },
+      "paragraphs": [
+        {
+          "cs": "Konkrétní cesta: samé pungy za 6 fan a dračí pung za 2. Pungy znaků 2, kruhů 4, bambusů 6 a bílých draků s párem znaků 5 splní nejméně 8 i otevřené. Každý pung jsou tři stejné kameny, nikoli směs těchto čísel."
+        },
+        {
+          "cs": "Cennější cesta je sedm párů za 24 fan bez přebírání sestav. Jedna barva s čestnými kameny dává jen 6 a sama nestačí. Bodová tabulka pomáhá vybrat plán místo sbírání sestav bez cesty k výhře."
+        },
+        {
+          "cs": "Každý soupeř platí základních 8 bodů. Při výhře na odhoz odhazující navíc hodnotu ruky včetně květin, z dobrání tuto hodnotu doplatí všichni. Ruka za 8 bez květin tak získá 32 na odhoz nebo 48 z dobrání. Hra to vypočítá."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_sets",
+      "title": {
+        "cs": "MCR: otevřené a skryté sestavy"
+      },
+      "paragraphs": [
+        {
+          "cs": "MCR přiděluje fan za podmínky splněné vítěznou rukou; fu z Riichi se nepoužívají. Samotné běžné chow ani pung prostředních čísel nemají pevnou prémii. Chow mohou bodovat společně s dalšími chow, pung za druh kamenů nebo jako část většího vzoru."
+        },
+        {
+          "cs": "- Jeden kong: otevřený 1 fan, skrytý 2 fan."
+        },
+        {
+          "cs": "- Dva kongy: oba otevřené 4 fan, jeden otevřený a jeden skrytý 6, oba skryté 8. Nahrazují odměny za jednotlivé kongy."
+        },
+        {
+          "cs": "- Tři kongy dávají 32 fan, čtyři 88. Odměny za menší počet kongů se znovu nepřičítají."
+        },
+        {
+          "cs": "- Dva skryté pungy dávají 2 fan, tři 16, čtyři 64. Skrytý kong se také započítává mezi skryté pungy. Pung dokončený vítězným cizím odhozem není skrytý."
+        },
+        {
+          "cs": "- Pung nebo kong draků dává 2 fan. Vlastní vítr dává 2 a vítr kola další 2. Pung krajních čísel nebo nebodovaného větru dává 1."
+        },
+        {
+          "cs": "- Čtyři pungy či kongy dávají 6 fan. Jedna barva s čestnými kameny dává 6, bez čestných kamenů 24, sedm párů 24 a třináct sirotků 88."
+        },
+        {
+          "cs": "- Čtyři chow s číselným párem a bez čestných kamenů dávají 2 fan. Dvě stejná chow jedné barvy dávají 1; chow 1–2–3 a 7–8–9 stejné barvy také 1."
+        },
+        {
+          "cs": "Zavřená výhra na odhoz dává 2 fan, zcela skrytá ruka s vlastním dobráním 4. Samotné vlastní dobrání s otevřenou rukou dává 1. Nesčítej automaticky všechny odpovídající popisy: vyšší vzor může zahrnovat nižší a vyloučit jeho body. Dva skryté kongy za 8 například nedostanou další 2 jen za tytéž dva skryté pungy."
+        },
+        {
+          "cs": "Květiny a roční období dávají po 1 fan, ale nepomáhají dosáhnout požadovaných 8. Ruka za 7 fan s jednou květinou stále neumožní Mahjong. Hra vybírá slučitelné vzory; přiznanou hodnotu najdeš v podrobnostech výsledku."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_match",
+      "title": {
+        "cs": "MCR — Rozdání a délka zápasu"
+      },
+      "paragraphs": [
+        {
+          "cs": "Výchozí zápas má čtyři kola a přesně šestnáct rozdání od nulových účtů. Východ, Jih, Západ i Sever trvají čtyři rozdání. Rozdávající se vždy mění, bez dalšího opakování po výhře či remíze."
+        },
+        {
+          "cs": "Vlastní vítr se mění s rozdávajícím, vítr kola až po čtyřech obdobích rozdávání. To mění bodované větry. Roční období zůstávají bonusy. Po rozdání zkontroluj výsledek a body; další začne po potvrzení všech."
+        },
+        {
+          "cs": "Remíza v MCR body za rozdání nedává. Po šestnácti rozdáních vyhraje nejvyšší účet, shodná maxima remizují. Několik levných výher nemusí vyrovnat jednu drahou prohru. Výhra rozdání a zápasu jsou různé cíle."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_variants",
+      "title": {
+        "cs": "MCR — Volba délky hry"
+      },
+      "paragraphs": [
+        {
+          "cs": "Délku volíš v nastavení hry před začátkem. Následující kratší nastavení mění počet rozdání, nikoli pravidla vítězné ruky."
+        },
+        {
+          "cs": "Jedno rozdání končí výhrou nebo remízou ze zdi. Čtyři kola větrů jsou šestnáct rozdání: čtyři s Východem kola, čtyři s Jihem, čtyři se Západem a čtyři se Severem. V každém kole každý jednou rozdává. Rozdávající se mění i po výhře či remíze, bez prodlužování opakováním."
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": {
+        "cs": "Ovládání klávesnicí"
+      },
+      "paragraphs": [
+        {
+          "cs": "Tab: další pole."
+        },
+        {
+          "cs": "Shift+Tab: předchozí pole."
+        },
+        {
+          "cs": "Nahoru/dolů: výběr kamene či akce v seznamu."
+        },
+        {
+          "cs": "Enter: potvrzení akce nebo odhozu."
+        },
+        {
+          "cs": "S: přečtení bodů všech hráčů."
+        },
+        {
+          "cs": "M: počet kamenů ve zdi; v solitaire počet kamenů v rozložení."
+        },
+        {
+          "cs": "vlevo/vpravo (solitaire): změna sloupce."
+        },
+        {
+          "cs": "nahoru/dolů (solitaire): změna řádku."
+        },
+        {
+          "cs": "1 (solitaire): spodní vrstva."
+        },
+        {
+          "cs": "2 (solitaire): druhá vrstva Teras."
+        },
+        {
+          "cs": "3 (solitaire): horní vrstva Teras."
+        },
+        {
+          "cs": "D (solitaire): vrstva, řádek a sloupec."
+        },
+        {
+          "cs": "Enter (solitaire): označení prvního kamene nebo odebrání druhého do páru."
+        },
+        {
+          "cs": "Escape (solitaire): zrušení označení."
+        },
+        {
+          "cs": "D (hra u stolu): přečtení kamene čekajícího na tvou odpověď."
+        },
+        {
+          "cs": "W (hra u stolu): hodnota platné výhry a získané body."
+        },
+        {
+          "cs": "U (hra u stolu): tvé vyložené sestavy."
+        },
+        {
+          "cs": "Shift+U (hra u stolu): vyložené sestavy ostatních hráčů."
+        },
+        {
+          "cs": "R (hra u stolu): číslo rozdání, větry a aktuální situace."
+        },
+        {
+          "cs": "I (riichi): dora, hlášení, vklady, honba a tvé furiten."
+        }
+      ]
+    }
+  ],
+  "option_chapters": {
+    "variant": "table_aim",
+    "layout": "layout",
+    "riichi_seats": "table_riichi_variants",
+    "hong_kong_winds": "table_hk_variants",
+    "riichi_winds": "table_riichi_variants",
+    "mcr_winds": "table_mcr_variants"
+  }
+}

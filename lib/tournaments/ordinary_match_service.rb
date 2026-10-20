@@ -13,6 +13,7 @@ require_relative 'ordinary_saved_match'
 require_relative 'ordinary_match_entry'
 require_relative 'server_document_rows'
 require_relative 'server_capacity'
+require_relative 'registration_projection'
 
 module GameRoomTournaments
   # Ordinary invitations, one elected creator per table, first native game only.
@@ -35,13 +36,13 @@ module GameRoomTournaments
       @read_scope=read_scope
       @owner = journal.owner
       @changed = false
-      @bindings, @seen, @errors = {}, {}, Queue.new
+      @bindings, @binding_usernames, @seen, @errors = {}, {}, {}, Queue.new
       @jobs, @lock, @closed = Queue.new, Mutex.new, false
       account!
     end
 
     def open_match(match_id:, leg:)
-      candidate, id = source!
+      candidate, id, usernames = source!
       match = candidate.fetch('matches').find { |m| m['match_id'] == match_id && m['leg'] == leg }
       raise Blocked, :missing_match unless match
       documents=match_documents(candidate,id,match)
@@ -68,7 +69,7 @@ module GameRoomTournaments
         binding=create_match_table(candidate,id,match)
       end
       raise Blocked, :wrong_match_binding unless valid_binding?(binding, candidate, match)
-      @entry_guard&.call(candidate,match,binding)
+      entry_authorized=authorize_existing_entry(candidate,match,binding)
       room = binding.fetch('table')
       current_room = @lobby.current_table_for(@user.call)
       if current_room && current_room['__live_session_id'] != room['__live_session_id']
@@ -79,8 +80,16 @@ module GameRoomTournaments
         raise Blocked, :table_join_failed unless joined && [:joined,:already_here].include?(joined.status)
         room = joined.table
       end
+      unless entry_authorized
+        begin
+          authorize_existing_entry(candidate,match,binding,joined:true)
+        rescue Publication::Invalid
+          @lobby.leave_table(room,@user.call) unless current_room
+          raise
+        end
+      end
       account!
-      remember_binding(binding,candidate,id,match)
+      remember_binding(binding,candidate,id,match,usernames: usernames)
       room
     end
 
@@ -444,7 +453,24 @@ module GameRoomTournaments
       account!
       source=@source.call
       account!
-      [Data.freeze_tree(Data.copy(source.fetch('candidate').reject{|k,_|k=='observed_at'},max_bytes:262144,max_nodes:16384,max_depth:12)),source.fetch('tournament_id')]
+      names=source['usernames'] && Data.freeze_tree(Data.copy(source['usernames'],max_bytes:131072,max_nodes:1024))
+      [Data.freeze_tree(Data.copy(source.fetch('candidate').reject{|k,_|k=='observed_at'},max_bytes:262144,max_nodes:16384,max_depth:12)),source.fetch('tournament_id'),names]
+    end
+
+    def authorize_existing_entry(candidate,match,binding,joined:false)
+      @entry_guard&.call(candidate,match,binding)
+      true
+    rescue Publication::Invalid => error
+      # Expiry forbids a new game, not returning to the one already started.
+      # Creation/replacement and start_parameters use the strict guard.
+      raise unless error.code==:deadline_passed && @transport && @games
+      return true if @transport.game_sessions(binding.fetch('table'),force:true).
+        any?{|session|@games.session_id(session)==binding['session_id']}
+      # Native history becomes readable only after membership. This permits
+      # joining the verified table to inspect it, never creating/starting a game.
+      # A failed inspection releases only membership acquired by this call.
+      return false unless joined
+      raise
     end
     def account!
       value=Data.account(@user.call).downcase

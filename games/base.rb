@@ -98,6 +98,7 @@ module GameRoomGames
     # Opt in only when a game can deterministically cancel its own pending
     # private/minigame phase at the accepted seat-change boundary.
     def replay_participant_transitions?; false; end
+    def session_history_capacity(_options); nil; end
     def private_table_required?(_options); false; end
     def table_join_error(_options, viewer:, owner:); nil; end
     def join_as_observer?(_options, viewer:, owner:); false; end
@@ -181,6 +182,9 @@ module GameRoomGames
     def maximum_players
       2
     end
+
+    def maximum_players_for_options(_options); maximum_players; end
+    def supports_bots_for_options?(_options); supports_bots?; end
 
     # Increment when a rules change makes old event archives incompatible.
     def saved_game_schema_version

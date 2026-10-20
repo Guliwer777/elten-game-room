@@ -76,7 +76,7 @@ module PublicationTest
 
   def choice_variants(game)
     definitions = game.effective_option_definitions
-    choices = definitions.select { |definition| definition.kind.to_s == 'choice' }
+    choices = definitions.select { |definition| definition.kind.to_s == 'choice' && !definition.visible_if }
     variants = choices.flat_map do |definition|
       definition.choices.map { |choice| { definition.key.to_s => choice.value } }
     end
@@ -84,8 +84,9 @@ module PublicationTest
     variants.dup.each do |selected|
       game.effective_option_definitions(selected).each do |definition|
         next unless definition.kind.to_s == 'choice'
+        next unless game.option_visible?(definition, selected)
         base = choices.find { |item| item.key == definition.key }
-        next if base && base.choices.map(&:value).eql?(definition.choices.map(&:value))
+        next if base && !definition.visible_if && base.choices.map(&:value).eql?(definition.choices.map(&:value))
         definition.choices.each { |choice| variants << selected.merge(definition.key.to_s => choice.value) }
       end
     end
