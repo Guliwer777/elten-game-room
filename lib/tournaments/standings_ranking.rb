@@ -22,7 +22,9 @@ module GameRoomTournaments
         end
         groups.each do |group|
           place = ranked.size + 1
-          group.sort_by { |row| row['unit'] }.each { |row| ranked << row.merge('place' => place) }
+          # Provisional ties list players with games still in hand first.
+          # This is display order, not an extra qualification criterion.
+          group.sort_by { |row| [row['played'], row['unit']] }.each { |row| ranked << row.merge('place' => place) }
         end
       end
       Publication::Data.freeze_tree(Publication::Data.copy(ranked, max_bytes: 262_144, max_nodes: 16_384, max_depth: 8))

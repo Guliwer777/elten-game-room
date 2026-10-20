@@ -90,3 +90,16 @@ automatically covered by the PolQA/MAUPQA licence.
 The previous 14,887 questions and their identifiers remain unchanged; the set
 now contains 14,894 questions. Private correspondence and editorial notes
 are not included in the installer.
+
+Data version 15 adds one question proposed by turekcom about Hawking radiation,
+with a rewritten prompt and three physics-related distractors. The factual
+reference is H. S. Reall, Part 3 Black Holes (Cambridge, 2020), sections 10.7
+and 10.9: Hawking radiation and the resulting black-hole mass loss.
+https://www.damtp.cam.ac.uk/user/hsr1000/black_holes_lectures_2020.pdf
+The contribution was submitted for inclusion in Power Games, without a
+separate reuse licence. This does not extend the PolQA/MAUPQA licence to it.
+The set now contains 14,895 questions. The wording of the Sasza Zaluska
+occupation question was also corrected following a report from Zuzler;
+its identifier, answer choices and category remain unchanged. The character's
+occupation is confirmed in the Katarzyna Bonda biography for Kryminalna Pila 2014.
+https://sppila.policja.gov.pl/download.php?id=15539&s=301

@@ -426,9 +426,9 @@ assert(GameRoomChangelog.pending_entries(nil, 253).map(&:build) == [253], 'first
 assert(GameRoomChangelog.pending_entries(253, 253).empty?, 'build 253 reopens after being read')
 assert(GameRoomChangelog.list_items([entry_253]).first == 'Version 2.0.5.2, build 253', 'build 253 heading differs')
 entry_254 = entries.find { |entry| entry.build == 254 }
-assert(entry_254.version == '2.0.5.3' && entry_254.changes.length == 10, 'build 254 has incorrect release metadata')
+assert(entry_254.version == '2.0.5.3' && entry_254.changes.length == 13, 'build 254 has incorrect release metadata')
 assert(entry_254.changes.first.include?('Mahjong by Guliwer'), 'build 254 lacks the Mahjong author credit')
-%w[Solitaire Riichi MCR private Back deadline Tournament language Krowa paulinux SJP].each do |topic|
+%w[Solitaire Riichi MCR private Back deadline Tournament language Krowa paulinux SJP turekcom Zuzler Standings].each do |topic|
   assert(entry_254.changes.join(' ').include?(topic), "build 254 lacks #{topic}")
 end
 assert(GameRoomChangelog.pending_entries(253, 254).map(&:build) == [254], 'build 254 repeats older notes')

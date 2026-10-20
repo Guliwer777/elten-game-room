@@ -242,11 +242,15 @@ registration. Owner actions append authenticated amendments; they do not change
 historical eligibility or silently revive rejected registrations. A final
 deadline blocks creation and start of new matches, but never awards forfeits or
 interrupts an existing game. Rejoining an already-started bound session remains
-possible after the deadline; starting or replacing an unstarted table does not.
+possible after the deadline or outside daily playing hours; starting or replacing
+an unstarted table does not.
 An expired rejoin may first acquire native membership to inspect history, which
 is unavailable to nonmembers. It must verify the same bound game and release
 that newly acquired membership if the table has never started.
-Sporting results advance phases and complete the tournament. Existing schema-1
+Sporting results advance phases and complete the tournament. A passed deadline
+is displayed as “Deadline passed” without changing canonical publication or match
+data. Unresolved expired tournaments remain in Current with the usual ordering;
+only sporting completion moves them to Completed. Existing schema-1
 publications retain their recorded dated contract.
 
 Registration projections retain authenticated display names separately from

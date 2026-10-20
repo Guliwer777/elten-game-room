@@ -66201,7 +66201,7 @@ D. Helena
 Poprawna odpowiedź: A. Aleksandra, czyli Oleńka
 
 8276
-Jako co pracuje Aleksandra Sasza Załuska, bohaterka cyklu powieści Katarzyny Bondy?
+Jako kto pracuje Aleksandra „Sasza” Załuska, bohaterka cyklu powieści Katarzyny Bondy?
 A. Jako adwokatka
 B. Jako prokuratorka
 C. Jako profilerka
@@ -119151,4 +119151,12 @@ B. Katarzyna Skrzynecka i Piotr Gąsowski
 C. Natasza Urbańska i Piotr Gąsowski
 D. Katarzyna Skrzynecka i Hubert Urbański
 Poprawna odpowiedź: A. Magda Mołek i Hubert Urbański
+
+14895
+Od nazwiska którego fizyka pochodzi nazwa promieniowania, przez które czarna dziura może tracić masę?
+A. Maxa Plancka
+B. Stephena Hawkinga
+C. Freemana Dysona
+D. Erwina Schrödingera
+Poprawna odpowiedź: B. Stephena Hawkinga
 

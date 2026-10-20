@@ -670,7 +670,7 @@ msgstr "%{piece} z pole %{from} na %{to}."
 msgid "%{piece}; %{cell}"
 msgstr "%{piece}; %{cell}"
 
-#: lib/tournaments/server_schedule_overview.rb:211
+#: lib/tournaments/server_schedule_overview.rb:221
 msgid "%{place}. %{player}; points: %{points}; played: %{played}"
 msgstr "%{place}. %{player}; body: %{points}; odehráno: %{played}"
 
@@ -1353,7 +1353,7 @@ msgstr "Hráč %{player} ztrácí 1 žeton za překročení časového limitu."
 msgid "%{player} loses by forfeit after five minutes of absence."
 msgstr "%{player} po pěti minutách nepřítomnosti prohrává kontumačně."
 
-#: lib/tournaments/server_schedule_overview.rb:269
+#: lib/tournaments/server_schedule_overview.rb:276
 msgid "%{player} loses by forfeit. Organizer: %{organizer}."
 msgstr "%{player} prohrává kontumačně. Pořadatel: %{organizer}."
 
@@ -2758,7 +2758,7 @@ msgstr "Umístěna loď od %{bow} do %{stern}. Počet polí: %{size}."
 msgid "%{stage}: %{cards}."
 msgstr "%{stage}: %{cards}."
 
-#: lib/tournaments/draft_preview.rb:198 lib/tournaments/public_text.rb:139
+#: lib/tournaments/draft_preview.rb:198 lib/tournaments/public_text.rb:141
 msgid "%{start_date} %{start_time} to %{end_date} %{end_time}"
 msgstr "%{start_date} %{start_time} až %{end_date} %{end_time}"
 
@@ -4284,7 +4284,7 @@ msgstr ""
 msgid "Accepted local plan: %{plan}"
 msgstr ""
 
-#: lib/tournaments/public_text.rb:150
+#: lib/tournaments/public_text.rb:152
 msgid "Accepted participants: %{count}"
 msgstr "Přijatých účastníků: %{count}"
 
@@ -4462,7 +4462,7 @@ msgstr "Přidána hra 1000 mil (Mille Bornes) od Patryka (Pates2004): karetní z
 msgid "Added 174 questions to The Witcher - Books set, based on suggestions from balteam. After editing and checking them against the books, the set now contains 1449 questions."
 msgstr "Sada Zaklínač — knihy se rozrostla o 174 otázek vycházejících z návrhů od balteama. Po redakci a ověření v knihách obsahuje celkem 1449 otázek."
 
-#: lib/game_room_changelog.rb:540
+#: lib/game_room_changelog.rb:542
 msgid "Added 185 nouns to Krowa and removed duplicate dictionary entries. Thanks to paulinux for these additions and the improvements to word definitions."
 msgstr "Do slovníku Krowy přibylo 185 podstatných jmen a byly odstraněny duplicitní položky. Děkujeme paulinux za nová slova a vylepšené definice."
 
@@ -4549,6 +4549,10 @@ msgstr ""
 #: lib/game_room_changelog.rb:179
 msgid "Added a Draw another word button to Krowa's Random word variant. It reveals the previous word and resets attempts without recording a win."
 msgstr "Do varianty Náhodné slovo ve hře Krowa bylo přidáno tlačítko Vylosovat jiné slovo. Odhalí předchozí slovo a vynuluje pokusy, aniž by se započítalo vítězství."
+
+#: lib/game_room_changelog.rb:544
+msgid "Added a Polish general-knowledge question proposed by turekcom and improved the wording of another following a report from Zuzler. Thank you!"
+msgstr "Do polské sady všeobecných znalostí přibyla otázka navržená uživatelem turekcom a na základě hlášení od Zuzler bylo upraveno znění jiné otázky. Děkujeme!"
 
 #: lib/game_room_changelog.rb:380
 msgid "Added a Power Games guide under README in the main menu, after Settings and before What's new. It covers the program's features, important shortcuts, the widget, invitations, settings and saved games. It follows your interface language: English, Polish, Czech, Spanish or Russian."
@@ -4666,6 +4670,10 @@ msgstr ""
 #: lib/game_room_changelog.rb:24
 msgid "After a second review, 284 well-supported Quiz Party questions were restored without bringing back ambiguous questions."
 msgstr "Po druhé kontrole bylo obnoveno 284 otázek Quiz Party s dobře doloženými odpověďmi, aniž by se vrátily nejednoznačné otázky."
+
+#: lib/game_room_changelog.rb:536
+msgid "After a tournament's deadline, new matches cannot be created or started. Matches already in progress can still be completed, and players can return to them even outside daily playing hours. Existing results are unchanged."
+msgstr "Po konečném termínu turnaje nelze vytvářet ani zahajovat nové zápasy. Rozehrané partie lze dokončit a vracet se do nich i mimo herní hodiny. Dosavadní výsledky se nemění."
 
 #: lib/game_room_changelog.rb:536
 msgid "After a tournament's deadline, new matches cannot be created or started. Matches already in progress can still be completed, and players can return to them. Existing results are unchanged."
@@ -4895,7 +4903,7 @@ msgstr "Všichni hráči tento návrh přijali."
 msgid "All players accepted. Opening the match table."
 msgstr "Všichni přijali pozvánku. Otevírá se stůl pro zápas."
 
-#: lib/tournaments/draft_details_editor.rb:24 lib/tournaments/draft_preview.rb:187 lib/tournaments/public_text.rb:101 lib/tournaments/tournament_setup_editor.rb:92
+#: lib/tournaments/draft_details_editor.rb:24 lib/tournaments/draft_preview.rb:187 lib/tournaments/public_text.rb:103 lib/tournaments/tournament_setup_editor.rb:92
 msgid "All possible compositions"
 msgstr "Všechny možné sestavy"
 
@@ -5685,7 +5693,7 @@ msgstr ""
 msgid "Automatic matches: %{state}; reason: %{reason}"
 msgstr ""
 
-#: lib/tournaments/draft_preview.rb:181 lib/tournaments/public_text.rb:123
+#: lib/tournaments/draft_preview.rb:181 lib/tournaments/public_text.rb:125
 msgid "Automatic qualification: two groups through 16 participants, four above 16; the largest power of two advances. Cross-pair first with last."
 msgstr "Automatický postup: do 16 účastníků dvě skupiny, nad 16 čtyři. Počet postupujících je nejvyšší možná mocnina dvou. První se utká s posledním z jiné skupiny."
 
@@ -5703,7 +5711,7 @@ msgstr ""
 msgid "Automatic return is a personal setting, off by default. When enabled, your paddle returns a reachable ball automatically near your end. You still position the paddle and serve yourself. Open Pong settings with Ctrl+P to change it; your opponent chooses independently."
 msgstr ""
 
-#: lib/game_room_changelog.rb:538
+#: lib/game_room_changelog.rb:540
 msgid "Automatic tournament rules are displayed in your interface language. Notes written by the organizer remain in their original language."
 msgstr "Automaticky vytvořená pravidla turnaje se zobrazují v jazyce rozhraní. Poznámky pořadatele zůstávají v původním jazyce."
 
@@ -5738,7 +5746,7 @@ msgstr "Dostupné dvojice: vyberte šipkami a odstraňte klávesou Enter"
 msgid "Awaiting review"
 msgstr "Čeká na posouzení"
 
-#: __app.rb:900 __app.rb:905 lib/tournaments/server_schedule_overview.rb:317 lib/tournaments/server_schedule_overview.rb:41
+#: __app.rb:900 __app.rb:905 lib/tournaments/server_schedule_overview.rb:324 lib/tournaments/server_schedule_overview.rb:41
 msgid "Award forfeit"
 msgstr "Přiznat kontumační výhru"
 
@@ -5831,7 +5839,7 @@ msgstr "B: přečtěte aktuální dražbu."
 msgid "B: respond to the buzzer."
 msgstr "B: zareagujte na bzučák."
 
-#: __app.rb:1336 __app.rb:1600 __app.rb:1644 __app.rb:1793 __app.rb:2441 __app.rb:2558 __app.rb:2750 games/krowa_support/leaderboards.rb:39 lib/game_room_presence_screen.rb:16 lib/game_room_screens.rb:686 lib/game_room_screens.rb:703 lib/game_screen.rb:376 lib/game_screen.rb:753 lib/game_statistics_screen.rb:37 lib/game_statistics_screen.rb:75 lib/tournaments/draft_preview.rb:24 lib/tournaments/draft_preview.rb:77 lib/tournaments/draft_screen.rb:26 lib/tournaments/local_fixed_team_execution_details.rb:19 lib/tournaments/local_fixed_team_execution_screen.rb:103 lib/tournaments/local_fixed_team_plan_screen.rb:68 lib/tournaments/local_game_choice_dialog.rb:28 lib/tournaments/local_individual_plan_screen.rb:25 lib/tournaments/local_organizer_decision_screen.rb:28 lib/tournaments/local_participant_manager.rb:16 lib/tournaments/local_realtime_game_dialog.rb:44 lib/tournaments/local_test_hub.rb:58 lib/tournaments/local_tournament_overview.rb:26 lib/tournaments/match_entry_screen.rb:280 lib/tournaments/match_entry_screen.rb:375 lib/tournaments/operations_screen.rb:59 lib/tournaments/participant_manager.rb:16 lib/tournaments/proposal_notice_dialog.rb:27 lib/tournaments/public_preview.rb:120 lib/tournaments/public_preview.rb:175 lib/tournaments/public_preview.rb:198 lib/tournaments/public_preview.rb:360 lib/tournaments/public_screen.rb:73 lib/tournaments/server_proposal_screen.rb:31 lib/tournaments/server_schedule_overview.rb:275 lib/tournaments/server_schedule_overview.rb:38 lib/tournaments/server_trial_hub.rb:32 lib/tournaments/tournament_setup_editor.rb:116
+#: __app.rb:1336 __app.rb:1600 __app.rb:1644 __app.rb:1793 __app.rb:2441 __app.rb:2558 __app.rb:2750 games/krowa_support/leaderboards.rb:39 lib/game_room_presence_screen.rb:16 lib/game_room_screens.rb:686 lib/game_room_screens.rb:703 lib/game_screen.rb:376 lib/game_screen.rb:753 lib/game_statistics_screen.rb:37 lib/game_statistics_screen.rb:75 lib/tournaments/draft_preview.rb:24 lib/tournaments/draft_preview.rb:77 lib/tournaments/draft_screen.rb:26 lib/tournaments/local_fixed_team_execution_details.rb:19 lib/tournaments/local_fixed_team_execution_screen.rb:103 lib/tournaments/local_fixed_team_plan_screen.rb:68 lib/tournaments/local_game_choice_dialog.rb:28 lib/tournaments/local_individual_plan_screen.rb:25 lib/tournaments/local_organizer_decision_screen.rb:28 lib/tournaments/local_participant_manager.rb:16 lib/tournaments/local_realtime_game_dialog.rb:44 lib/tournaments/local_test_hub.rb:58 lib/tournaments/local_tournament_overview.rb:26 lib/tournaments/match_entry_screen.rb:280 lib/tournaments/match_entry_screen.rb:375 lib/tournaments/operations_screen.rb:59 lib/tournaments/participant_manager.rb:16 lib/tournaments/proposal_notice_dialog.rb:27 lib/tournaments/public_preview.rb:120 lib/tournaments/public_preview.rb:175 lib/tournaments/public_preview.rb:198 lib/tournaments/public_preview.rb:360 lib/tournaments/public_screen.rb:73 lib/tournaments/server_proposal_screen.rb:31 lib/tournaments/server_schedule_overview.rb:282 lib/tournaments/server_schedule_overview.rb:38 lib/tournaments/server_trial_hub.rb:32 lib/tournaments/tournament_setup_editor.rb:116
 msgid "Back"
 msgstr "Zpět"
 
@@ -7125,7 +7133,7 @@ msgstr ""
 msgid "Check pays nothing and is available only with nothing to call. Call pays the difference to the current bet, or the rest of your stack if that is smaller. Fold abandons this hand and any chance at its pots. A raise first calls, then increases the bet by at least the previous full raise; the opening minimum is based on the big blind."
 msgstr ""
 
-#: lib/tournaments/public_screen.rb:204
+#: lib/tournaments/public_screen.rb:207
 msgid "Check pending changes"
 msgstr "Zkontrolovat nevyřízené změny"
 
@@ -7310,7 +7318,7 @@ msgstr ""
 msgid "Choose IMP or matchpoint scoring."
 msgstr "Vyber zápis na IMPy nebo na maxima."
 
-#: lib/tournaments/public_text.rb:74
+#: lib/tournaments/public_text.rb:75
 msgid "Choose Join tournament to take part."
 msgstr "Chcete-li se zúčastnit, zvolte Přihlásit se do turnaje."
 
@@ -8114,7 +8122,7 @@ msgstr "Dokončená kola: %{count}. Pokusy v tomto kole: %{used} z %{limit}."
 msgid "Completed tournament matches show the game's score when available. If a scheduled rematch remains, you can invite its players directly from the completed match with Ctrl+G. Forfeit details remain available after the tournament moves to its next phase."
 msgstr "U dokončeného turnajového zápasu se zobrazuje i skóre samotné hry, pokud je dostupné. Pokud ještě zbývá naplánovaná odveta, můžeš na ni hráče pozvat přímo z dokončeného zápasu pomocí Ctrl+G. Podrobnosti o kontumačním výsledku zůstávají dostupné i po přechodu turnaje do další fáze."
 
-#: lib/tournaments/public_text.rb:46 lib/tournaments/server_schedule_overview.rb:173
+#: lib/tournaments/public_text.rb:47 lib/tournaments/server_schedule_overview.rb:173
 msgid "Completed — all required matches have been resolved"
 msgstr "Dokončeno — všechny požadované zápasy jsou rozhodnuty"
 
@@ -8214,7 +8222,7 @@ msgstr ""
 msgid "Conflicting local test operations were found. Check the operations list; do not send again."
 msgstr ""
 
-#: lib/tournaments/server_schedule_overview.rb:286
+#: lib/tournaments/server_schedule_overview.rb:293
 msgid "Conflicting match results were recorded. The first complete result remains in effect."
 msgstr "Byly zapsány rozdílné výsledky zápasu. Platí první úplný výsledek."
 
@@ -8565,7 +8573,7 @@ msgstr "Vytvořit stůl nebo se připojit k tomuto zápasu"
 msgid "Create table"
 msgstr "Vytvořit stůl"
 
-#: lib/tournaments/public_screen.rb:202
+#: lib/tournaments/public_screen.rb:205
 msgid "Create tournament"
 msgstr "Vytvořit turnaj"
 
@@ -8830,7 +8838,7 @@ msgstr "Historie aktuální hry"
 msgid "Current game: North-South %{ns}, East-West %{ew}."
 msgstr "Rozehraná hra: Sever–Jih %{ns}, Východ–Západ %{ew}."
 
-#: lib/tournaments/operations_screen.rb:170 lib/tournaments/public_text.rb:58 lib/tournaments/server_trial_hub.rb:22
+#: lib/tournaments/operations_screen.rb:170 lib/tournaments/public_text.rb:59 lib/tournaments/server_trial_hub.rb:22
 msgid "Current identity: %{actor}"
 msgstr "Aktuální účet: %{actor}"
 
@@ -9080,7 +9088,7 @@ msgstr "Konec hry každý den"
 msgid "Daily play starts"
 msgstr "Začátek hry každý den"
 
-#: lib/tournaments/public_text.rb:113
+#: lib/tournaments/public_text.rb:115
 msgid "Daily playing hours: %{start}–%{end} (%{zone}, fixed offset)."
 msgstr "Zápasy lze každý den zahajovat od %{start} do %{end} (%{zone}, pevný posun vůči UTC)."
 
@@ -9118,6 +9126,10 @@ msgstr "Termíny jsou nepovinné. Bez nich sami otevíráte a uzavíráte přihl
 #: lib/tournaments/tournament_datetime_field.rb:20
 msgid "Day"
 msgstr "Den"
+
+#: lib/tournaments/public_text.rb:46
+msgid "Deadline passed"
+msgstr "Termín uplynul"
 
 #: games/three_five_eight.rb:516
 msgid "Deal %{round} of 18. %{dealer} deals; %{chooser} chooses the contract from the first six cards."
@@ -9638,7 +9650,7 @@ msgstr "Koncept byl uložen na účet."
 msgid "Draft: %{name}; game: %{game}"
 msgstr ""
 
-#: lib/tournaments/local_fixed_team_execution_screen.rb:541 lib/tournaments/local_individual_execution_screen.rb:20 lib/tournaments/local_tournament_overview.rb:109 lib/tournaments/server_schedule_overview.rb:353
+#: lib/tournaments/local_fixed_team_execution_screen.rb:541 lib/tournaments/local_individual_execution_screen.rb:20 lib/tournaments/local_tournament_overview.rb:109 lib/tournaments/server_schedule_overview.rb:360
 msgid "Draw"
 msgstr "Remíza"
 
@@ -11543,7 +11555,7 @@ msgstr "Zakázané knihy"
 msgid "Forest edge"
 msgstr "Okraj lesa"
 
-#: lib/tournaments/server_schedule_overview.rb:346
+#: lib/tournaments/server_schedule_overview.rb:353
 msgid "Forfeit"
 msgstr "Kontumační výhra"
 
@@ -11728,7 +11740,7 @@ msgstr "G: přečtěte své zlato."
 msgid "G: read your best current combination."
 msgstr "G: přečtěte svou aktuálně nejlepší kombinaci."
 
-#: games/mancala.rb:97 lib/game_history_navigation.rb:123 lib/game_statistics_screen.rb:32 lib/tournaments/draft_editor.rb:28 lib/tournaments/draft_preview.rb:169 lib/tournaments/public_text.rb:97 lib/tournaments/tournament_setup_editor.rb:28
+#: games/mancala.rb:97 lib/game_history_navigation.rb:123 lib/game_statistics_screen.rb:32 lib/tournaments/draft_editor.rb:28 lib/tournaments/draft_preview.rb:169 lib/tournaments/public_text.rb:99 lib/tournaments/tournament_setup_editor.rb:28
 msgid "Game"
 msgstr "Hra"
 
@@ -11858,7 +11870,7 @@ msgstr "Pravidla hry"
 msgid "Game rules now have navigable headings and a table of contents. H and Shift+H move between headings, K and Shift+K between links, and Enter on a contents link opens its chapter."
 msgstr "Pravidla her nyní mají nadpisy a obsah, po kterých se lze pohybovat. H a Shift+H přecházejí mezi nadpisy, K a Shift+K mezi odkazy a Enter na odkazu v obsahu otevře příslušnou kapitolu."
 
-#: lib/tournaments/server_schedule_overview.rb:365
+#: lib/tournaments/server_schedule_overview.rb:372
 msgid "Game score: %{score}"
 msgstr "Skóre hry: %{score}"
 
@@ -11870,7 +11882,7 @@ msgstr "Skóre po posledním dokončeném kole: %{scores}"
 msgid "Game selection lists now include a short description of each game. In the tables widget, press Ctrl+O or choose Game description from the context menu to hear it."
 msgstr "Seznamy pro výběr hry při vytváření stolu a připojování nyní obsahují krátké popisy her. Ve widgetu si popis přečtete přes Ctrl+O nebo položku „Popis hry“ v kontextovém menu."
 
-#: lib/tournaments/draft_editor.rb:39 lib/tournaments/draft_preview.rb:205 lib/tournaments/public_text.rb:143
+#: lib/tournaments/draft_editor.rb:39 lib/tournaments/draft_preview.rb:205 lib/tournaments/public_text.rb:145
 msgid "Game settings"
 msgstr "Nastavení hry"
 
@@ -11946,7 +11958,7 @@ msgstr "Palivo"
 msgid "General"
 msgstr ""
 
-#: content/quiz_general_en.rb:12 content/quiz_general_ru.rb:11 content/quiz_pl_wikidata.rb:12
+#: content/quiz_general_en.rb:12 content/quiz_general_ru.rb:11 content/quiz_pl_wikidata.rb:11
 msgid "General knowledge"
 msgstr "Všeobecné znalosti"
 
@@ -12027,7 +12039,7 @@ msgstr "Zelený drak"
 msgid "Green light"
 msgstr "Zelená"
 
-#: lib/tournaments/local_tournament_overview.rb:102 lib/tournaments/local_tournament_overview.rb:132 lib/tournaments/local_tournament_overview.rb:78 lib/tournaments/server_schedule_overview.rb:210
+#: lib/tournaments/local_tournament_overview.rb:102 lib/tournaments/local_tournament_overview.rb:132 lib/tournaments/local_tournament_overview.rb:78 lib/tournaments/server_schedule_overview.rb:220
 msgid "Group"
 msgstr "Skupina"
 
@@ -12067,7 +12079,7 @@ msgstr "Skupinová fáze"
 msgid "Group stage: %{state}"
 msgstr ""
 
-#: lib/tournaments/draft_editor.rb:64 lib/tournaments/draft_preview.rb:170 lib/tournaments/public_text.rb:98 lib/tournaments/tournament_setup_editor.rb:62
+#: lib/tournaments/draft_editor.rb:64 lib/tournaments/draft_preview.rb:170 lib/tournaments/public_text.rb:100 lib/tournaments/tournament_setup_editor.rb:62
 msgid "Groups and knockout"
 msgstr "Skupiny a vyřazovací část"
 
@@ -12079,11 +12091,11 @@ msgstr "Skupiny a vyřazovací část nyní vyžadují dva jednotlivce nebo dvě
 msgid "Groups follow the participant list in rotation. This is not a draw or ranking-based seeding."
 msgstr ""
 
-#: lib/tournaments/draft_preview.rb:179 lib/tournaments/public_text.rb:121
+#: lib/tournaments/draft_preview.rb:179 lib/tournaments/public_text.rb:123
 msgid "Groups of three or four; four preferred. Extra qualifying places compare results without matches against the last player of a larger group."
 msgstr "Skupiny po třech nebo čtyřech, přednostně po čtyřech. Při porovnávání dalších postupujících se nezapočítají zápasy s posledním hráčem větší skupiny."
 
-#: lib/tournaments/public_text.rb:127
+#: lib/tournaments/public_text.rb:129
 msgid "Groups use the confirmed roster order. Group results and qualification must be completed before knockout matches are planned."
 msgstr "Skupiny vycházejí z potvrzeného pořadí účastníků. Před naplánováním vyřazovacích zápasů musí být dohrány skupiny a rozhodnuto o postupu."
 
@@ -13258,7 +13270,7 @@ msgstr "Připojit se"
 msgid "Join a table"
 msgstr "Připojte se ke stolu"
 
-#: lib/tournaments/public_preview.rb:324 lib/tournaments/public_preview.rb:96 lib/tournaments/public_screen.rb:216
+#: lib/tournaments/public_preview.rb:324 lib/tournaments/public_preview.rb:96 lib/tournaments/public_screen.rb:219
 msgid "Join tournament"
 msgstr "Přihlásit se do turnaje"
 
@@ -13494,7 +13506,7 @@ msgstr ""
 msgid "Krowa"
 msgstr "Krowa"
 
-#: lib/game_room_changelog.rb:541
+#: lib/game_room_changelog.rb:543
 msgid "Krowa explanations from SJP now choose the appropriate base noun and meaning more accurately when looking up inflected words."
 msgstr "Vysvětlivky ze SJP v Krowě nyní při hledání ohýbaných slov přesněji vybírají základní tvar podstatného jména a jeho význam."
 
@@ -13518,7 +13530,7 @@ msgstr "Žebříčky hry Krowa"
 msgid "Krowa leaderboards are temporarily unavailable."
 msgstr "Žebříčky hry Krowa jsou dočasně nedostupné."
 
-#: lib/game_room_changelog.rb:539
+#: lib/game_room_changelog.rb:541
 msgid "Krowa now clears the answer field after rejecting a word with the wrong length or one missing from the dictionary."
 msgstr "V Krowě se nyní pole odpovědi vymaže po odmítnutí slova s nesprávnou délkou nebo slova, které není ve slovníku."
 
@@ -13751,7 +13763,7 @@ msgstr "Polož ji na své pole. Až na něj vstoupí kachna, každý hráč si d
 msgid "Leave this card on your square. It affects the next duck to stop there."
 msgstr "Nechte kartu na svém políčku. Zapůsobí na další kachnu, která se tam zastaví."
 
-#: lib/tournaments/public_preview.rb:331 lib/tournaments/public_screen.rb:222
+#: lib/tournaments/public_preview.rb:331 lib/tournaments/public_screen.rb:225
 msgid "Leave tournament"
 msgstr "Odhlásit se z turnaje"
 
@@ -14338,7 +14350,7 @@ msgstr "Spravovat účastníky"
 msgid "Manage properties on your own turn before rolling, or when resolving your debt. Build only in a complete colour group without mortgages. Construction must be even: add to a street with the fewest buildings in its group. Four houses can become one hotel, represented as the fifth building level. You cannot pile hotels onto one street while its neighbours remain undeveloped."
 msgstr ""
 
-#: lib/tournaments/public_preview.rb:197 lib/tournaments/public_preview.rb:330 lib/tournaments/public_screen.rb:220
+#: lib/tournaments/public_preview.rb:197 lib/tournaments/public_preview.rb:330 lib/tournaments/public_screen.rb:223
 msgid "Manage tournament"
 msgstr "Spravovat turnaj"
 
@@ -14518,7 +14530,7 @@ msgstr "Zápasy"
 msgid "Matches are created after registration closes. Open the tournament as its test organizer to prepare them automatically."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:117
+#: lib/tournaments/public_text.rb:119
 msgid "Matches may be played at any time after the tournament starts."
 msgstr "Po zahájení turnaje lze zápasy hrát kdykoli."
 
@@ -14580,7 +14592,7 @@ msgstr "Maximální počet zvýšení v jednom sázkovém kole"
 msgid "Maximum simultaneous tables"
 msgstr ""
 
-#: lib/tournaments/public_text.rb:148
+#: lib/tournaments/public_text.rb:150
 msgid "Maximum tournament participants"
 msgstr "Nejvyšší počet účastníků turnaje"
 
@@ -14918,7 +14930,7 @@ msgstr "Pod nohama ti čvachtá bláto."
 msgid "Multiplayer pairing"
 msgstr "Sestavení zápasů pro více hráčů"
 
-#: lib/tournaments/draft_details_editor.rb:25 lib/tournaments/draft_preview.rb:189 lib/tournaments/public_text.rb:101 lib/tournaments/tournament_setup_editor.rb:93
+#: lib/tournaments/draft_details_editor.rb:25 lib/tournaments/draft_preview.rb:189 lib/tournaments/public_text.rb:103 lib/tournaments/tournament_setup_editor.rb:93
 msgid "Multiplayer pairings"
 msgstr "Sestavy zápasů pro více hráčů"
 
@@ -15121,7 +15133,7 @@ msgstr ""
 msgid "Ninoy Aquino International Airport"
 msgstr "Mezinárodní letiště Ninoye Aquina"
 
-#: games/mille_bornes.rb:137 lib/game_option_values.rb:78 lib/game_surfaces/card_actions.rb:49 lib/game_surfaces/taboo_surface.rb:82 lib/game_surfaces/word_board.rb:106 lib/quiz_contributions/views.rb:24 lib/tournaments/draft_editor.rb:66 lib/tournaments/draft_preview.rb:171 lib/tournaments/draft_preview.rb:172 lib/tournaments/public_text.rb:130 lib/tournaments/public_text.rb:131 lib/tournaments/public_text.rb:99 lib/tournaments/tournament_setup_editor.rb:64 lib/tournaments/tournament_setup_editor.rb:83
+#: games/mille_bornes.rb:137 lib/game_option_values.rb:78 lib/game_surfaces/card_actions.rb:49 lib/game_surfaces/taboo_surface.rb:82 lib/game_surfaces/word_board.rb:106 lib/quiz_contributions/views.rb:24 lib/tournaments/draft_editor.rb:66 lib/tournaments/draft_preview.rb:171 lib/tournaments/draft_preview.rb:172 lib/tournaments/public_text.rb:101 lib/tournaments/public_text.rb:132 lib/tournaments/public_text.rb:133 lib/tournaments/tournament_setup_editor.rb:64 lib/tournaments/tournament_setup_editor.rb:83
 msgid "No"
 msgstr "Ne"
 
@@ -15739,7 +15751,7 @@ msgstr "Nepřiřazeno"
 msgid "Not now"
 msgstr "Teď ne"
 
-#: lib/tournaments/public_text.rb:110
+#: lib/tournaments/public_text.rb:112
 msgid "Not set"
 msgstr "Nenastaveno"
 
@@ -15795,7 +15807,7 @@ msgstr "Počet pokusů"
 msgid "Number of boards"
 msgstr "Počet rozdání"
 
-#: lib/tournaments/draft_editor.rb:34 lib/tournaments/draft_preview.rb:184 lib/tournaments/public_text.rb:125
+#: lib/tournaments/draft_editor.rb:34 lib/tournaments/draft_preview.rb:184 lib/tournaments/public_text.rb:127
 msgid "Number of groups"
 msgstr "Počet skupin"
 
@@ -16105,7 +16117,7 @@ msgstr "Otevřít stůl zápasu"
 msgid "Open registration"
 msgstr "Otevřít přihlašování"
 
-#: lib/tournaments/public_screen.rb:215 lib/tournaments/public_screen.rb:71
+#: lib/tournaments/public_screen.rb:218 lib/tournaments/public_screen.rb:71
 msgid "Open tournament"
 msgstr "Otevřít turnaj"
 
@@ -16242,7 +16254,7 @@ msgstr "Seřaď zvuky."
 msgid "Ordinary drawing takes one card. If afterwards you still have no playable card, your turn ends automatically. Otherwise you may play. Allow drawing with a playable card is on by default. Maximum cards drawn voluntarily in one turn is 3 by default (1–20); at the limit another draw is refused rather than silently ending the turn. With optional drawing disabled, you cannot draw while already holding a legal card."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:149 lib/tournaments/public_text.rb:66 lib/tournaments/tournament_setup_editor.rb:114
+#: lib/tournaments/public_text.rb:151 lib/tournaments/public_text.rb:67 lib/tournaments/tournament_setup_editor.rb:114
 msgid "Organizer"
 msgstr "Pořadatel"
 
@@ -16250,7 +16262,7 @@ msgstr "Pořadatel"
 msgid "Organizer dates and times, without time zone conversion."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:164
+#: lib/tournaments/public_text.rb:166
 msgid "Organizer decides"
 msgstr "Rozhodne pořadatel"
 
@@ -16258,7 +16270,7 @@ msgstr "Rozhodne pořadatel"
 msgid "Organizer decisions — forfeits"
 msgstr ""
 
-#: lib/tournaments/public_text.rb:106
+#: lib/tournaments/public_text.rb:108
 msgid "Organizer's notes"
 msgstr "Podrobnosti od pořadatele"
 
@@ -16297,7 +16309,7 @@ msgstr "Jiný problém"
 msgid "Out of gas"
 msgstr "Nedostatek paliva"
 
-#: lib/tournaments/public_preview.rb:309 lib/tournaments/public_screen.rb:231
+#: lib/tournaments/public_preview.rb:309 lib/tournaments/public_screen.rb:234
 msgid "Outdated preview — the announcement is missing or conflicting. Joining is unavailable."
 msgstr "Zastaralý přehled — oznámení chybí nebo je v konfliktu. Přihlášení není dostupné."
 
@@ -16489,7 +16501,7 @@ msgstr "Odebrání účastníka potvrzeno."
 msgid "Participant removal not confirmed. Check Operations before trying again."
 msgstr "Odebrání účastníka nebylo potvrzeno. Před dalším pokusem zkontrolujte Operace."
 
-#: games/krowa_support/leaderboards.rb:263 lib/tournaments/public_preview.rb:166 lib/tournaments/public_preview.rb:327 lib/tournaments/public_text.rb:66
+#: games/krowa_support/leaderboards.rb:263 lib/tournaments/public_preview.rb:166 lib/tournaments/public_preview.rb:327 lib/tournaments/public_text.rb:67
 msgid "Participants"
 msgstr "Účastníci"
 
@@ -16783,7 +16795,7 @@ msgstr ""
 msgid "Plant"
 msgstr "Rostlina"
 
-#: lib/tournaments/local_dispatch_screen.rb:16 lib/tournaments/proposal_notice_dialog.rb:24 lib/tournaments/server_proposal_screen.rb:28 lib/tournaments/server_schedule_overview.rb:26 lib/tournaments/server_schedule_overview.rb:316
+#: lib/tournaments/local_dispatch_screen.rb:16 lib/tournaments/proposal_notice_dialog.rb:24 lib/tournaments/server_proposal_screen.rb:28 lib/tournaments/server_schedule_overview.rb:26 lib/tournaments/server_schedule_overview.rb:323
 msgid "Play"
 msgstr "Hrát"
 
@@ -16883,7 +16895,7 @@ msgstr ""
 msgid "Play one tile at either end of the chain, matching the touching numbers. Tiles are turned automatically. Doubles do not branch or grant another move. The highest dealt double chooses the starting player, but that player may open with any tile. Each round uses this selection again; ties rotate by round. Without a dealt double, the highest total tile chooses the starter, with the same tie-break."
 msgstr ""
 
-#: lib/tournaments/server_schedule_overview.rb:307
+#: lib/tournaments/server_schedule_overview.rb:314
 msgid "Play return match"
 msgstr "Hrát odvetu"
 
@@ -16895,7 +16907,7 @@ msgstr "Přehrát vybraný zvuk"
 msgid "Play tournament matches"
 msgstr ""
 
-#: lib/tournaments/public_text.rb:130 lib/tournaments/public_text.rb:131 lib/tournaments/tournament_setup_editor.rb:83
+#: lib/tournaments/public_text.rb:132 lib/tournaments/public_text.rb:133 lib/tournaments/tournament_setup_editor.rb:83
 msgid "Play until a specified number of wins"
 msgstr "Do stanoveného počtu výher"
 
@@ -16950,7 +16962,7 @@ msgstr "V turnaji se soukromými kartami nelze nahrazovat hráče. Stejný hrá�
 msgid "Players may look at the cards in their own hands at any time, but not at the hands of others. Only the cards taken from the public space and won at auction are seen by everyone."
 msgstr ""
 
-#: lib/tournaments/draft_details_editor.rb:22 lib/tournaments/draft_preview.rb:188 lib/tournaments/public_text.rb:100 lib/tournaments/tournament_setup_editor.rb:91
+#: lib/tournaments/draft_details_editor.rb:22 lib/tournaments/draft_preview.rb:188 lib/tournaments/public_text.rb:102 lib/tournaments/tournament_setup_editor.rb:91
 msgid "Players per match"
 msgstr "Hráčů v zápase"
 
@@ -17798,7 +17810,7 @@ msgstr ""
 msgid "Qualified: %{players}"
 msgstr ""
 
-#: lib/tournaments/draft_editor.rb:36 lib/tournaments/draft_preview.rb:140 lib/tournaments/draft_preview.rb:185 lib/tournaments/public_text.rb:126
+#: lib/tournaments/draft_editor.rb:36 lib/tournaments/draft_preview.rb:140 lib/tournaments/draft_preview.rb:185 lib/tournaments/public_text.rb:128
 msgid "Qualifying places per group"
 msgstr "Postupujících z každé skupiny"
 
@@ -18263,7 +18275,7 @@ msgstr "Zkrátilo se čekání během výzev v Kachních závodech, zejména u d
 msgid "Reed path"
 msgstr "Stezka v rákosí"
 
-#: lib/game_room_presence_screen.rb:15 lib/game_statistics_screen.rb:36 lib/quiz_contributions/views.rb:46 lib/tournaments/draft_screen.rb:25 lib/tournaments/local_participant_manager.rb:15 lib/tournaments/local_tournament_overview.rb:17 lib/tournaments/operations_screen.rb:58 lib/tournaments/participant_manager.rb:15 lib/tournaments/public_preview.rb:333 lib/tournaments/public_screen.rb:203 lib/tournaments/public_screen.rb:72 lib/tournaments/server_proposal_screen.rb:30 lib/tournaments/server_schedule_overview.rb:21
+#: lib/game_room_presence_screen.rb:15 lib/game_statistics_screen.rb:36 lib/quiz_contributions/views.rb:46 lib/tournaments/draft_screen.rb:25 lib/tournaments/local_participant_manager.rb:15 lib/tournaments/local_tournament_overview.rb:17 lib/tournaments/operations_screen.rb:58 lib/tournaments/participant_manager.rb:15 lib/tournaments/public_preview.rb:333 lib/tournaments/public_screen.rb:206 lib/tournaments/public_screen.rb:72 lib/tournaments/server_proposal_screen.rb:30 lib/tournaments/server_schedule_overview.rb:21
 msgid "Refresh"
 msgstr "Obnovit"
 
@@ -18291,7 +18303,7 @@ msgstr ""
 msgid "Registration cannot close before it opens."
 msgstr "Přihlašování nemůže skončit dříve, než začne."
 
-#: lib/tournaments/public_text.rb:104 lib/tournaments/tournament_dates_editor.rb:34
+#: lib/tournaments/public_text.rb:106 lib/tournaments/tournament_dates_editor.rb:34
 msgid "Registration closes"
 msgstr "Konec přihlašování"
 
@@ -18331,7 +18343,7 @@ msgstr "Přihlášení do turnaje %{id}"
 msgid "Registration has not opened according to the local computer clock. This is not a server confirmation."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:71 lib/tournaments/server_workspace.rb:741
+#: lib/tournaments/public_text.rb:72 lib/tournaments/server_workspace.rb:741
 msgid "Registration has not opened yet."
 msgstr "Přihlašování ještě nezačalo."
 
@@ -18343,7 +18355,7 @@ msgstr ""
 msgid "Registration is closed, the tournament is full, or this player has already joined."
 msgstr "Přihlašování je uzavřené, turnaj je plný nebo je tento hráč již přihlášen."
 
-#: lib/tournaments/public_text.rb:72 lib/tournaments/server_workspace.rb:742
+#: lib/tournaments/public_text.rb:73 lib/tournaments/server_workspace.rb:742
 msgid "Registration is closed."
 msgstr "Přihlašování je uzavřeno."
 
@@ -18371,15 +18383,15 @@ msgstr "Přihlášení nebylo potvrzeno. Nebude automaticky opakováno."
 msgid "Registration not confirmed. The request was cancelled or failed. No automatic retry."
 msgstr "Přihlášení nebylo potvrzeno. Požadavek byl zrušen nebo selhal. Nebude automaticky opakován."
 
-#: lib/tournaments/public_text.rb:42
+#: lib/tournaments/public_text.rb:43
 msgid "Registration not open yet"
 msgstr "Registrace ještě nezačala"
 
-#: lib/tournaments/public_text.rb:41
+#: lib/tournaments/public_text.rb:42
 msgid "Registration open"
 msgstr "Registrace otevřena"
 
-#: lib/tournaments/public_text.rb:103 lib/tournaments/tournament_dates_editor.rb:31
+#: lib/tournaments/public_text.rb:105 lib/tournaments/tournament_dates_editor.rb:31
 msgid "Registration opens"
 msgstr "Začátek přihlašování"
 
@@ -18407,7 +18419,7 @@ msgstr "Odmítnout navrženou výměnu"
 msgid "Rejected"
 msgstr "Zamítnuto"
 
-#: lib/tournaments/public_text.rb:53
+#: lib/tournaments/public_text.rb:54
 msgid "Rejected or conflicting entry reports — announcements: %{announcements}; registrations: %{registrations}. These are not accepted entries."
 msgstr "Odmítnuté nebo konfliktní záznamy: oznámení %{announcements}, přihlášky %{registrations}. Nejsou započítány mezi přijaté záznamy."
 
@@ -18686,7 +18698,7 @@ msgstr "Výsledek"
 msgid "Result already recorded. It cannot be overwritten."
 msgstr ""
 
-#: lib/tournaments/server_schedule_overview.rb:274 lib/tournaments/server_schedule_overview.rb:305
+#: lib/tournaments/server_schedule_overview.rb:281 lib/tournaments/server_schedule_overview.rb:312
 msgid "Result details"
 msgstr "Podrobnosti výsledku"
 
@@ -18729,7 +18741,7 @@ msgstr "Při obnovení se zachová průběh hry, nastavení, boti i zbývající
 msgid "Resupplying area"
 msgstr "Zásobovací místo"
 
-#: lib/tournaments/local_dispatch_screen.rb:18 lib/tournaments/proposal_notice_dialog.rb:24 lib/tournaments/server_schedule_overview.rb:348
+#: lib/tournaments/local_dispatch_screen.rb:18 lib/tournaments/proposal_notice_dialog.rb:24 lib/tournaments/server_schedule_overview.rb:355
 msgid "Return match"
 msgstr "Odveta"
 
@@ -18740,15 +18752,15 @@ msgstr "Odveta je dostupná. Všichni účastníci ji musí přijmout; Teď ne j
 msgid "Return match available. Both players must accept; Not now keeps it pending."
 msgstr "Odveta je dostupná. Oba hráči ji musí přijmout; Teď ne ji ponechá na později."
 
-#: lib/tournaments/public_text.rb:131 lib/tournaments/tournament_setup_editor.rb:85
+#: lib/tournaments/public_text.rb:133 lib/tournaments/tournament_setup_editor.rb:85
 msgid "Return match in the final"
 msgstr "Odveta ve finále"
 
-#: lib/tournaments/draft_editor.rb:32 lib/tournaments/draft_preview.rb:174 lib/tournaments/public_text.rb:99
+#: lib/tournaments/draft_editor.rb:32 lib/tournaments/draft_preview.rb:174 lib/tournaments/public_text.rb:101
 msgid "Return matches"
 msgstr "Odvety"
 
-#: lib/tournaments/public_text.rb:130 lib/tournaments/tournament_setup_editor.rb:84
+#: lib/tournaments/public_text.rb:132 lib/tournaments/tournament_setup_editor.rb:84
 msgid "Return matches in knockout rounds"
 msgstr "Odvety ve vyřazovací části"
 
@@ -19045,7 +19057,7 @@ msgstr "Historie událostí místnosti"
 msgid "Room events"
 msgstr "Události místnosti"
 
-#: lib/tournaments/draft_details_editor.rb:24 lib/tournaments/draft_preview.rb:187 lib/tournaments/public_text.rb:102 lib/tournaments/tournament_setup_editor.rb:92
+#: lib/tournaments/draft_details_editor.rb:24 lib/tournaments/draft_preview.rb:187 lib/tournaments/public_text.rb:104 lib/tournaments/tournament_setup_editor.rb:92
 msgid "Rotating compositions; equal appearances"
 msgstr "Střídání sestav; stejný počet zápasů"
 
@@ -19155,7 +19167,7 @@ msgstr "Zaokrouhlovat hodnoty karet na násobky pěti bodů"
 msgid "Round of 16"
 msgstr "Osmifinále"
 
-#: lib/tournaments/draft_editor.rb:64 lib/tournaments/draft_preview.rb:170 lib/tournaments/local_match_labels.rb:23 lib/tournaments/phase_description.rb:20 lib/tournaments/public_text.rb:98 lib/tournaments/tournament_setup_editor.rb:62
+#: lib/tournaments/draft_editor.rb:64 lib/tournaments/draft_preview.rb:170 lib/tournaments/local_match_labels.rb:23 lib/tournaments/phase_description.rb:20 lib/tournaments/public_text.rb:100 lib/tournaments/tournament_setup_editor.rb:62
 msgid "Round robin"
 msgstr "Každý s každým"
 
@@ -20534,7 +20546,7 @@ msgstr ""
 msgid "Small points: lower is better."
 msgstr ""
 
-#: lib/tournaments/local_tournament_overview.rb:137
+#: lib/tournaments/local_tournament_overview.rb:137 lib/tournaments/server_schedule_overview.rb:224
 msgid "Small points: scored %{scored}, conceded %{conceded}, difference %{difference}"
 msgstr ""
 
@@ -20598,7 +20610,7 @@ msgstr "Někteří účastníci ještě nemají partnera. Před vytvořením zá
 msgid "Some questions are missing. The proposal has not been accepted."
 msgstr "Některé otázky chybí. Návrh nebyl přijat."
 
-#: lib/tournaments/public_screen.rb:192
+#: lib/tournaments/public_screen.rb:195
 msgid "Some tournament information could not be read. Refresh before making changes."
 msgstr "Některé údaje o turnajích se nepodařilo načíst. Před provedením změn seznam obnovte."
 
@@ -20808,9 +20820,13 @@ msgstr ""
 msgid "Standard"
 msgstr ""
 
-#: lib/tournaments/public_preview.rb:326 lib/tournaments/public_screen.rb:218 lib/tournaments/server_schedule_overview.rb:23
+#: lib/tournaments/public_preview.rb:326 lib/tournaments/public_screen.rb:221 lib/tournaments/server_schedule_overview.rb:23
 msgid "Standings"
 msgstr "Tabulka výsledků"
+
+#: lib/game_room_changelog.rb:538
+msgid "Standings now show game points scored, conceded and their difference when complete scores are available. Participants still tied are listed with fewer matches played first; this does not decide qualification."
+msgstr "Tabulka výsledků nyní uvádí získané a ztracené body ve hře a jejich rozdíl, pokud jsou k dispozici úplná skóre. Účastníci na stejném místě se zobrazí od nejmenšího počtu odehraných zápasů; toto pořadí nerozhoduje o postupu."
 
 #: lib/tournaments/server_schedule_overview.rb:208
 msgid "Standings — %{phase}"
@@ -23561,7 +23577,7 @@ msgstr "Turnaj se změnil. Obnovte zobrazení a vyberte akci znovu."
 msgid "The tournament changed. Refresh its view before changing it again."
 msgstr "Turnaj se změnil. Před další úpravou obnov jeho zobrazení."
 
-#: __app.rb:3437 __app.rb:890 lib/tournaments/public_text.rb:68
+#: __app.rb:3437 __app.rb:890 lib/tournaments/public_text.rb:69
 msgid "The tournament deadline has passed. New matches cannot be started; games already in progress may finish."
 msgstr "Konečný termín turnaje uplynul. Nové zápasy nelze zahájit; rozehrané hry lze dokončit."
 
@@ -23573,7 +23589,7 @@ msgstr ""
 msgid "The tournament has started. Withdrawal is no longer available."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:73 lib/tournaments/public_text.rb:89 lib/tournaments/server_workspace.rb:743
+#: lib/tournaments/public_text.rb:74 lib/tournaments/public_text.rb:91 lib/tournaments/server_workspace.rb:743
 msgid "The tournament is full."
 msgstr "Turnaj je již plný."
 
@@ -23909,7 +23925,7 @@ msgstr ""
 msgid "These counts come from recent reports by updated clients. Reports expire after about two minutes; rooms without an updated client reporting them may be missing."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:115
+#: lib/tournaments/public_text.rb:117
 msgid "These hours limit starting matches, not finishing games already in progress."
 msgstr "Tyto hodiny omezují zahajování zápasů. Rozehrané partie mohou pokračovat."
 
@@ -24702,7 +24718,7 @@ msgstr "Malý ústup"
 msgid "To be decided"
 msgstr "Zatím neurčeno"
 
-#: lib/tournaments/server_schedule_overview.rb:345
+#: lib/tournaments/server_schedule_overview.rb:352
 msgid "To be played"
 msgstr "Čeká na odehrání"
 
@@ -24721,7 +24737,7 @@ msgstr ""
 msgid "To castle, move the king two fields toward its rook. The rook moves to the field the king passed. Neither piece may have moved before, the fields between them must be empty, and the king must not be in check, pass through check or finish in check. Both short and long castling are supported."
 msgstr ""
 
-#: lib/tournaments/server_schedule_overview.rb:289
+#: lib/tournaments/server_schedule_overview.rb:296
 msgid "To decide a match in progress, join its table as an observer. A match with unavailable history cannot be decided here."
 msgstr "Chceš-li rozhodnout probíhající zápas, připoj se k jeho stolu jako divák. Bez historie hry zde zápas nelze rozhodnout."
 
@@ -24838,7 +24854,7 @@ msgstr "Datum turnaje / první den"
 msgid "Tournament dates are optional. The organizer can manage registration and start the tournament manually or schedule these steps. Unfinished matches are not decided automatically when a deadline passes; the organizer can award a forfeit."
 msgstr "Termíny turnaje jsou volitelné. Pořadatel může přihlášky a zahájení řídit ručně nebo je naplánovat. Po uplynutí termínu se nedohrané zápasy nerozhodnou automaticky; pořadatel může přiznat kontumační výhru."
 
-#: lib/tournaments/public_text.rb:110 lib/tournaments/tournament_dates_editor.rb:36
+#: lib/tournaments/public_text.rb:112 lib/tournaments/tournament_dates_editor.rb:36
 msgid "Tournament deadline"
 msgstr "Konečný termín turnaje"
 
@@ -24882,7 +24898,7 @@ msgstr "Pole turnaje mají limit 2048 bajtů. Zkraťte pravidla nebo nastavení.
 msgid "Tournament finished"
 msgstr "Turnaj skončil"
 
-#: lib/tournaments/draft_editor.rb:30 lib/tournaments/draft_preview.rb:173 lib/tournaments/public_text.rb:98
+#: lib/tournaments/draft_editor.rb:30 lib/tournaments/draft_preview.rb:173 lib/tournaments/public_text.rb:100
 msgid "Tournament format"
 msgstr "Formát turnaje"
 
@@ -24894,7 +24910,7 @@ msgstr "Výsledek hry: turnaj %{id}"
 msgid "Tournament games cannot be saved or resumed from a saved game."
 msgstr "Turnajové hry nelze ukládat ani obnovovat z uložené hry."
 
-#: lib/tournaments/local_fixed_team_execution_screen.rb:565 lib/tournaments/public_text.rb:44
+#: lib/tournaments/local_fixed_team_execution_screen.rb:565 lib/tournaments/public_text.rb:45
 msgid "Tournament in progress"
 msgstr "Turnaj probíhá"
 
@@ -24921,11 +24937,11 @@ msgstr "Turnajový zápas: %{players}"
 msgid "Tournament match: %{players}; invited by %{sender}"
 msgstr "Turnajový zápas: %{players}; zve %{sender}"
 
-#: lib/tournaments/public_preview.rb:325 lib/tournaments/public_screen.rb:217 lib/tournaments/server_schedule_overview.rb:22
+#: lib/tournaments/public_preview.rb:325 lib/tournaments/public_screen.rb:220 lib/tournaments/server_schedule_overview.rb:22
 msgid "Tournament matches"
 msgstr "Zápasy turnaje"
 
-#: lib/tournaments/draft_editor.rb:26 lib/tournaments/draft_preview.rb:168 lib/tournaments/public_text.rb:96
+#: lib/tournaments/draft_editor.rb:26 lib/tournaments/draft_preview.rb:168 lib/tournaments/public_text.rb:98
 msgid "Tournament name"
 msgstr "Název turnaje"
 
@@ -24949,7 +24965,7 @@ msgstr "Pořadatel může nastavit denní dobu pro hraní zápasů, a to i přes
 msgid "Tournament pair: %{players}"
 msgstr "Turnajová dvojice: %{players}"
 
-#: lib/tournaments/local_participant_manager.rb:22 lib/tournaments/participant_manager.rb:22 lib/tournaments/public_text.rb:155
+#: lib/tournaments/local_participant_manager.rb:22 lib/tournaments/participant_manager.rb:22 lib/tournaments/public_text.rb:157
 msgid "Tournament pairs"
 msgstr "Turnajové dvojice"
 
@@ -24993,11 +25009,11 @@ msgstr ""
 msgid "Tournament started"
 msgstr "Turnaj začal"
 
-#: lib/tournaments/public_text.rb:109 lib/tournaments/tournament_dates_editor.rb:35
+#: lib/tournaments/public_text.rb:111 lib/tournaments/tournament_dates_editor.rb:35
 msgid "Tournament starts"
 msgstr "Začátek turnaje"
 
-#: lib/tournaments/public_text.rb:47
+#: lib/tournaments/public_text.rb:48
 msgid "Tournament status unavailable"
 msgstr "Stav turnaje není dostupný"
 
@@ -25017,7 +25033,7 @@ msgstr "Operace turnajového stolu zablokována: %{reason}"
 msgid "Tournament table or result not confirmed. Check Operations before trying again."
 msgstr "Turnajový stůl nebo výsledek není potvrzen. Před dalším pokusem zkontrolujte Operace."
 
-#: lib/game_room_changelog.rb:537
+#: lib/game_room_changelog.rb:539
 msgid "Tournament tables are now clearly marked as Tournament match in table lists, the widget and the participant heading."
 msgstr "Turnajové stoly jsou nyní v seznamech stolů, widgetu a záhlaví účastníků jasně označeny jako turnajový zápas."
 
@@ -25029,7 +25045,7 @@ msgstr ""
 msgid "Tournament updated."
 msgstr "Turnaj byl aktualizován."
 
-#: lib/tournaments/local_fixed_team_execution_screen.rb:157 lib/tournaments/local_tournament_overview.rb:74 lib/tournaments/server_schedule_overview.rb:182 lib/tournaments/server_schedule_overview.rb:216
+#: lib/tournaments/local_fixed_team_execution_screen.rb:157 lib/tournaments/local_tournament_overview.rb:74 lib/tournaments/server_schedule_overview.rb:182 lib/tournaments/server_schedule_overview.rb:212
 msgid "Tournament winner: %{player}"
 msgstr "Vítěz turnaje: %{player}"
 
@@ -25040,6 +25056,10 @@ msgstr "Turnaje"
 #: __app.rb:210
 msgid "Tournaments - local drafts"
 msgstr ""
+
+#: lib/game_room_changelog.rb:537
+msgid "Tournaments whose deadline has passed stay in Current, in the same order, with the status Deadline passed. Only tournaments with all required matches resolved move to Completed."
+msgstr "Turnaje po termínu zůstávají mezi aktuálními ve stejném pořadí se stavem „Termín uplynul“. Mezi ukončené se přesunou až po rozhodnutí všech požadovaných zápasů."
 
 #: games/monopoly/presentation.rb:189
 msgid "Trade"
@@ -25315,7 +25335,7 @@ msgstr ""
 msgid "Two to four players have four pawns each. Win by bringing all four to the finish first. Pawns start in the base, where they do not occupy the track. The players enter the shared track at fields 1, 14, 27 and 40 in seating order. The 52-field track wraps from 52 to 1, so a later starting number does not shorten a player's route."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:132
+#: lib/tournaments/public_text.rb:134
 msgid "Two-leg knockout ties use match points, then complete game scores. If still tied, an additional single game is played."
 msgstr "V dvojzápase vyřazovací části rozhodují body za zápasy, potom úplné skóre her. Při další shodě se hraje jedna dodatečná hra."
 
@@ -26151,7 +26171,7 @@ msgstr "Čekání na soukromé předání řešení."
 msgid "Waiting for these players: %{players}."
 msgstr "Čeká se na tyto hráče: %{players}."
 
-#: lib/tournaments/public_text.rb:43
+#: lib/tournaments/public_text.rb:44
 msgid "Waiting for tournament start"
 msgstr "Čeká se na začátek turnaje"
 
@@ -26567,7 +26587,7 @@ msgstr ""
 msgid "Winner by forfeit"
 msgstr "Vítěz kontumací"
 
-#: lib/tournaments/local_fixed_team_execution_screen.rb:541 lib/tournaments/local_individual_execution_screen.rb:20 lib/tournaments/local_tournament_overview.rb:110 lib/tournaments/server_schedule_overview.rb:353 lib/tournaments/tournament_start_runtime.rb:129
+#: lib/tournaments/local_fixed_team_execution_screen.rb:541 lib/tournaments/local_individual_execution_screen.rb:20 lib/tournaments/local_tournament_overview.rb:110 lib/tournaments/server_schedule_overview.rb:360 lib/tournaments/tournament_start_runtime.rb:129
 msgid "Winner: %{players}"
 msgstr "Vítěz: %{players}"
 
@@ -26605,11 +26625,11 @@ msgstr ""
 msgid "Winning, draws and square names"
 msgstr ""
 
-#: lib/tournaments/public_text.rb:134 lib/tournaments/tournament_setup_editor.rb:86
+#: lib/tournaments/public_text.rb:136 lib/tournaments/tournament_setup_editor.rb:86
 msgid "Wins required in knockout rounds"
 msgstr "Počet výher ve vyřazovacích kolech"
 
-#: lib/tournaments/public_text.rb:134 lib/tournaments/tournament_setup_editor.rb:87
+#: lib/tournaments/public_text.rb:136 lib/tournaments/tournament_setup_editor.rb:87
 msgid "Wins required in the final"
 msgstr "Počet výher ve finále"
 
@@ -26848,7 +26868,7 @@ msgstr "Rok"
 msgid "Yellowbelly die"
 msgstr "Zbabělá kostka"
 
-#: lib/game_option_values.rb:78 lib/game_surfaces/card_actions.rb:49 lib/game_surfaces/taboo_surface.rb:82 lib/game_surfaces/word_board.rb:106 lib/quiz_contributions/views.rb:24 lib/tournaments/draft_editor.rb:66 lib/tournaments/draft_preview.rb:171 lib/tournaments/public_text.rb:130 lib/tournaments/public_text.rb:131 lib/tournaments/public_text.rb:99 lib/tournaments/tournament_setup_editor.rb:64 lib/tournaments/tournament_setup_editor.rb:83
+#: lib/game_option_values.rb:78 lib/game_surfaces/card_actions.rb:49 lib/game_surfaces/taboo_surface.rb:82 lib/game_surfaces/word_board.rb:106 lib/quiz_contributions/views.rb:24 lib/tournaments/draft_editor.rb:66 lib/tournaments/draft_preview.rb:171 lib/tournaments/public_text.rb:101 lib/tournaments/public_text.rb:132 lib/tournaments/public_text.rb:133 lib/tournaments/tournament_setup_editor.rb:64 lib/tournaments/tournament_setup_editor.rb:83
 msgid "Yes"
 msgstr "Ano"
 
@@ -26928,7 +26948,7 @@ msgstr "Pozorujete hru. Karta je skrytá."
 msgid "You are out of the game."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:34 lib/tournaments/public_text.rb:67
+#: lib/tournaments/public_text.rb:34 lib/tournaments/public_text.rb:68
 msgid "You are registered"
 msgstr "Jste přihlášeni"
 

@@ -533,12 +533,15 @@ module GameRoomChangelog
         "In Mahjong tournament matches, concealed tiles are private to their owner. Ordinary matches retain computer players, player replacement and saved games.",
         "Fixed tournament invitations and notifications not reaching some players because of differences in the spelling of their user names.",
         "Organizers can add their own tournament notes, shown with the rules. A Back button also lets you return to game settings while creating a tournament without losing what you entered.",
-        "After a tournament's deadline, new matches cannot be created or started. Matches already in progress can still be completed, and players can return to them. Existing results are unchanged.",
+        "After a tournament's deadline, new matches cannot be created or started. Matches already in progress can still be completed, and players can return to them even outside daily playing hours. Existing results are unchanged.",
+        "Tournaments whose deadline has passed stay in Current, in the same order, with the status Deadline passed. Only tournaments with all required matches resolved move to Completed.",
+        "Standings now show game points scored, conceded and their difference when complete scores are available. Participants still tied are listed with fewer matches played first; this does not decide qualification.",
         "Tournament tables are now clearly marked as Tournament match in table lists, the widget and the participant heading.",
         "Automatic tournament rules are displayed in your interface language. Notes written by the organizer remain in their original language.",
         "Krowa now clears the answer field after rejecting a word with the wrong length or one missing from the dictionary.",
         "Added 185 nouns to Krowa and removed duplicate dictionary entries. Thanks to paulinux for these additions and the improvements to word definitions.",
-        "Krowa explanations from SJP now choose the appropriate base noun and meaning more accurately when looking up inflected words."
+        "Krowa explanations from SJP now choose the appropriate base noun and meaning more accurately when looking up inflected words.",
+        "Added a Polish general-knowledge question proposed by turekcom and improved the wording of another following a report from Zuzler. Thank you!"
       ].freeze
     ).freeze
   ].freeze

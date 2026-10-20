@@ -206,11 +206,7 @@ module GameRoomTournaments
       teams=(phase['candidate'].dig('membership','units') || []).to_h{|unit|[unit['unit_id'],unit['accounts'].join(' + ')]}
       rows=phase['view']['standings'] || []
       @standings_list.header=text(_("Standings — %{phase}"))%{phase:phase_label(phase['candidate'])}
-      @standings_list.update_options(rows.map do |row|
-        prefix=row['group'] ? text(_("Group"))+" #{row['group']}; " : ''
-        prefix+(text(_("%{place}. %{player}; points: %{points}; played: %{played}"))%{
-          place:row.fetch('place'),player:teams.fetch(row['unit'],row['unit']),points:row['points'],played:row['played']})
-      end,keys:rows.map{|row|[row['group'],row['unit']]})
+      @standings_list.update_options(rows.map{|row|standings_row_label(row,teams)},keys:rows.map{|row|[row['group'],row['unit']]})
       lines=[]
       if (winner=phase['view']['champion'])
         lines << text(_("Tournament winner: %{player}"))%{player:teams.fetch(winner,winner)}
@@ -218,6 +214,17 @@ module GameRoomTournaments
       lines.concat(forfeit_diagnostics(phase['view']))
       @details.set_text(lines.join("\n"))
       lines.empty? ? @form.hide(@details) : @form.show(@details)
+    end
+
+    def standings_row_label(row,teams)
+      prefix=row['group'] ? text(_("Group"))+" #{row['group']}; " : ''
+      label=prefix+(text(_("%{place}. %{player}; points: %{points}; played: %{played}"))%{
+        place:row.fetch('place'),player:teams.fetch(row['unit'],row['unit']),points:row['points'],played:row['played']})
+      if row['score_for'] && row['score_against'] && row['played'].positive? && row['scored_matches']==row['played']
+        label+='; '+(text(_("Small points: scored %{scored}, conceded %{conceded}, difference %{difference}"))%{
+          scored:row['score_for'],conceded:row['score_against'],difference:row['score_for']-row['score_against']})
+      end
+      label
     end
 
     def render_phase

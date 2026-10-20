@@ -3,7 +3,7 @@ require 'json'
 module GameRoomContent
   module Packa0830f585cc4689a1e2a6335
     def self.load
-      JSON.parse(<<'QUIZ_DATA_d6d7653da970a1d351f18acf0bce2cf54ed8e2fc01901ebbe2277c7cf37733f1')
+      JSON.parse(<<'QUIZ_DATA_cdfb3efbe7c08e05e150f9e18b1f2212a0e36a524b4c173c7aef3f6404264d5f')
 {
   "questions": [
     {
@@ -132410,7 +132410,7 @@ module GameRoomContent
       "id": "1z10_9853d8cf4752e84f",
       "category": "Literatura",
       "level": "medium",
-      "prompt": "Jako co pracuje Aleksandra Sasza Załuska, bohaterka cyklu powieści Katarzyny Bondy?",
+      "prompt": "Jako kto pracuje Aleksandra „Sasza” Załuska, bohaterka cyklu powieści Katarzyny Bondy?",
       "correct": "Jako profilerka",
       "wrong": [
         "Jako prokuratorka",
@@ -238316,11 +238316,28 @@ module GameRoomContent
       "source_license": "Submitted by the contributor for inclusion in Power Games; no separate reuse license specified",
       "author": "bratczyk96",
       "review_required": false
+    },
+    {
+      "id": "community_tc_20261021_01",
+      "category": "Nauka",
+      "level": "medium",
+      "prompt": "Od nazwiska którego fizyka pochodzi nazwa promieniowania, przez które czarna dziura może tracić masę?",
+      "correct": "Stephena Hawkinga",
+      "wrong": [
+        "Maxa Plancka",
+        "Erwina Schrödingera",
+        "Freemana Dysona"
+      ],
+      "source": "https://www.damtp.cam.ac.uk/user/hsr1000/black_holes_lectures_2020.pdf",
+      "source_dataset": "Power Games community",
+      "source_license": "Submitted by the contributor for inclusion in Power Games; no separate reuse license specified",
+      "author": "turekcom",
+      "review_required": false
     }
   ],
   "source": "content/QUIZ_PL_GENERAL_SOURCES.txt"
 }
-QUIZ_DATA_d6d7653da970a1d351f18acf0bce2cf54ed8e2fc01901ebbe2277c7cf37733f1
+QUIZ_DATA_cdfb3efbe7c08e05e150f9e18b1f2212a0e36a524b4c173c7aef3f6404264d5f
     end
   end
 end

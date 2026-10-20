@@ -43,7 +43,7 @@ sandbox do |c|
   assert_equal(2,joined['directory']['members'].size)
   assert_raises(T::ProposalNotice::Stale){co.coordinate(ref,sender:'unrelated')}
   co.coordinate(ref,broadcast:true)
-  assert_equal([['secondplayer',ref]],wakes)
+  assert_equal([['SecondPlayer',ref]],wakes,'Broadcast must use the authenticated delivery name, not its canonical key')
   c.user='SecondPlayer'
   assert_equal('confirmed',guest.withdraw(id)['status'])
   c.user='RealOwner'

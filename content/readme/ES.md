@@ -326,6 +326,8 @@ Elige «Torneos» en el vestíbulo. Selecciona uno con las flechas y pulsa Intro
 
 En los torneos actuales aparecen primero aquellos en los que participas o que organizas, después los que admiten tu inscripción y, por último, los demás.
 
+Al vencer el plazo, el torneo conserva su lugar en la lista de torneos actuales, con el estado «Plazo vencido». Solo pasa a los terminados cuando se resuelven todos los encuentros necesarios.
+
 Un torneo abandonado desaparece tras 14 días sin actividad antes de empezar, o tras 30 días sin avances una vez iniciado. Las inscripciones y los cambios del organizador renuevan ese plazo antes del inicio; después lo renuevan los resultados de los encuentros. Consultar el torneo no lo prolonga. Si la apertura de inscripciones o el inicio están previstos para más adelante, el torneo no desaparecerá antes de esa fecha. Los resultados de los torneos terminados siguen disponibles.
 
 Cada entrada indica el juego, el número de participantes y el estado del torneo. También dispones de estos atajos:
@@ -394,6 +396,8 @@ Intro sobre un encuentro terminado indica que ya se ha jugado. Abre su resultado
 Las entradas de partidos terminados incluyen el marcador del juego cuando está disponible. Si queda una revancha programada contra los mismos rivales, el menú contextual ofrece «Jugar la revancha» con Ctrl+G. Envía las invitaciones habituales sin iniciar la partida automáticamente.
 
 «Clasificación» muestra el puesto, el participante, los puntos de torneo y las partidas jugadas. Con Tab pasas al selector de fase. Los resultados se registran automáticamente; no tienes que copiarlos del historial del juego.
+
+Si hay marcadores completos, la tabla también muestra los puntos a favor, en contra y su diferencia. Entre quienes siguen compartiendo puesto, aparecen primero los que han jugado menos encuentros. Ese orden de presentación no decide la clasificación a la siguiente fase.
 
 Ninguna partida de torneo se puede guardar ni reanudar desde un archivo. La orden de guardar y Ctrl+S no están disponibles, pero Ctrl+Shift+S sigue permitiendo exportar el historial como texto.
 
@@ -502,6 +506,8 @@ Abre «Fechas y horarios de juego» en el formulario del torneo. No tienes que p
 Llega al campo de fecha con Tab. Izquierda y Derecha eligen año, mes, día, hora o minuto; Arriba y Abajo cambian el valor de esa parte. Los horarios se muestran en la zona horaria local del ordenador.
 
 Confirma las fechas para volver al formulario y publica el torneo o guarda los cambios para aplicarlas. Puedes combinar fechas programadas y control manual: por ejemplo, abrir las inscripciones inmediatamente y programar solo el inicio. El torneo acaba al resolverse los encuentros necesarios, no simplemente al llegar la fecha límite.
+
+Puedes volver a una partida en curso desde la lista de mesas, incluso fuera del horario de juego o después de la fecha límite del torneo. Esos límites se aplican al inicio de nuevos encuentros.
 
 ### Opciones del organizador
 

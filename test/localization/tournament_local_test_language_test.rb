@@ -168,9 +168,11 @@ driver.step(information_label, [27]) do |form|
   text = form.fields.first.text
   %w[18:00 21:00].each { |value| T.check(text.include?(value), 'Brak okien rozgrywek') }
   [GameRoomContent.utf8(GameRoomLocalization.translate('Registration opens')),
-    GameRoomContent.utf8(GameRoomLocalization.translate('Registration closes')), rules_label].each do |label|
+    GameRoomContent.utf8(GameRoomLocalization.translate('Registration closes')),
+    GameRoomContent.utf8(GameRoomLocalization.translate("Organizer's notes"))].each do |label|
     T.check(text.include?(label), "Podgląd zgubił #{label}")
   end
+  T.check(text.include?('Graj uczciwie. Żółć.'), 'Podgląd zmienił oryginalny tekst organizatora')
 end
 driver.step(preview, [27])
 driver.step(list, [27])

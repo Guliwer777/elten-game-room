@@ -461,9 +461,9 @@ module GameRoomTournaments
       @entry_guard&.call(candidate,match,binding)
       true
     rescue Publication::Invalid => error
-      # Expiry forbids a new game, not returning to the one already started.
+      # Timing limits forbid a new game, not returning to one already started.
       # Creation/replacement and start_parameters use the strict guard.
-      raise unless error.code==:deadline_passed && @transport && @games
+      raise unless %i[deadline_passed outside_window].include?(error.code) && @transport && @games
       return true if @transport.game_sessions(binding.fetch('table'),force:true).
         any?{|session|@games.session_id(session)==binding['session_id']}
       # Native history becomes readable only after membership. This permits

@@ -326,6 +326,8 @@ Choose “Tournaments” in the lobby. Select an event with the arrow keys and p
 
 Current tournaments put the ones you have joined or organise first, followed by those you can join, then all the others.
 
+A tournament whose deadline has passed stays in the same place in “Current”, labelled “Deadline passed”. It moves to “Completed” only when all required matches have been resolved.
+
 An abandoned tournament disappears after 14 days without activity before it starts, or 30 days without progress once it has started. Registrations and organiser changes renew that period before the start; match results renew it afterwards. Simply viewing a tournament does not. A future registration opening or start date is respected, so the tournament will not disappear before then. Completed tournaments keep their results.
 
 Each entry includes the game, participant count and tournament status. These shortcuts are also available:
@@ -394,6 +396,8 @@ Enter on a completed match tells you it has already been played. Open its result
 Completed match entries also show the game score when available. If a return match with the same opponents is still scheduled, the context menu offers “Play return match” on Ctrl+G. It sends the usual invitations without starting play automatically.
 
 “Standings” opens directly on a standings list showing place, participant, tournament points and matches played. Tab moves to the phase selector. Completed game results are recorded automatically; you do not need to copy them from the game history.
+
+When complete game scores are available, the table also shows points scored, conceded and their difference. Participants still sharing a place are listed with fewer matches played first. This display order does not decide qualification.
 
 No tournament game can be saved or resumed from a file. The save command and Ctrl+S are unavailable, but Ctrl+Shift+S still exports the history as text.
 
@@ -502,6 +506,8 @@ Open “Dates and playing hours” in the tournament form. You do not have to sc
 Tab to a date field to set it. Left and Right select the year, month, day, hour or minute; Up and Down change that part's value. Times are shown in your computer's local time zone.
 
 Confirm the dates to return to the tournament form, then publish or save your changes to apply them. Scheduled dates can be combined with manual control: for example, open registration immediately and schedule only the start. The tournament finishes when its required matches are decided, not simply when the final deadline arrives.
+
+You can return to a game in progress through the table list, even outside playing hours or after the tournament deadline. Those limits apply to starting new matches.
 
 ### Organiser controls
 

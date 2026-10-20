@@ -168,7 +168,7 @@ module GameRoomTournaments
       now = @clock.call
       states = @snapshot.fetch('announcements').to_h { |row| [row['__id'], TournamentLifecycle.classify(row, now: now)] }
       rows=@snapshot.fetch('announcements').select do |row|
-        completed=[:ended,:completed].include?(states.fetch(row['__id'])[:state])
+        completed=states.fetch(row['__id'])[:state]==:completed
         mine=row['__insertion_user'].downcase==@actor.downcase ||
           @text.members(row,@snapshot).any?{|person|person['account'].downcase==@actor.downcase}
         @filter.index==1 ? completed : !completed && (!@mine || mine)
@@ -187,7 +187,10 @@ module GameRoomTournaments
       end
       @rows_by_list[@current_list]=rows
       @current_list.empty_label=text(@filter.index==1 ? _("No completed tournaments.") : _("No current tournaments."))
-      @current_list.update_options(rows.map{|row|@text.row_label(row,@snapshot)+'; '+@text.lifecycle_label(states.fetch(row['__id'])[:state])},keys:rows.map{|row|row['__id']})
+      @current_list.update_options(rows.map do |row|
+        state=states.fetch(row['__id'])
+        @text.row_label(row,@snapshot)+'; '+@text.lifecycle_label(state[:state],overdue:state[:overdue])
+      end,keys:rows.map{|row|row['__id']})
       reports=@snapshot.fetch('diagnostics')
       value=reports.values.any?{|items|!items.empty?} ? text(_("Some tournament information could not be read. Refresh before making changes.")) : ''
       @status.set_text(value) if @status.text != value

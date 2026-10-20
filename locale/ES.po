@@ -656,7 +656,7 @@ msgstr "%{piece} de %{from} a %{to}."
 msgid "%{piece}; %{cell}"
 msgstr "%{piece}; %{cell}"
 
-#: lib/tournaments/server_schedule_overview.rb:211
+#: lib/tournaments/server_schedule_overview.rb:221
 msgid "%{place}. %{player}; points: %{points}; played: %{played}"
 msgstr "%{place}. %{player}; puntos: %{points}; jugados: %{played}"
 
@@ -1325,7 +1325,7 @@ msgstr "%{player} pierde 1 ficha por agotar el tiempo."
 msgid "%{player} loses by forfeit after five minutes of absence."
 msgstr "%{player} pierde por incomparecencia tras cinco minutos de ausencia."
 
-#: lib/tournaments/server_schedule_overview.rb:269
+#: lib/tournaments/server_schedule_overview.rb:276
 msgid "%{player} loses by forfeit. Organizer: %{organizer}."
 msgstr "%{player} pierde por incomparecencia. Organizador: %{organizer}."
 
@@ -2711,7 +2711,7 @@ msgstr "Barco de %{size} casillas colocado de %{bow} a %{stern}."
 msgid "%{stage}: %{cards}."
 msgstr "%{stage}: %{cards}."
 
-#: lib/tournaments/draft_preview.rb:198 lib/tournaments/public_text.rb:139
+#: lib/tournaments/draft_preview.rb:198 lib/tournaments/public_text.rb:141
 msgid "%{start_date} %{start_time} to %{end_date} %{end_time}"
 msgstr "De %{start_date} %{start_time} a %{end_date} %{end_time}"
 
@@ -4235,7 +4235,7 @@ msgstr ""
 msgid "Accepted local plan: %{plan}"
 msgstr ""
 
-#: lib/tournaments/public_text.rb:150
+#: lib/tournaments/public_text.rb:152
 msgid "Accepted participants: %{count}"
 msgstr "Participantes aceptados: %{count}"
 
@@ -4413,7 +4413,7 @@ msgstr "Se ha añadido 1000 millas (Mille Bornes), de Patryk (Pates2004): una ca
 msgid "Added 174 questions to The Witcher - Books set, based on suggestions from balteam. After editing and checking them against the books, the set now contains 1449 questions."
 msgstr "El conjunto The Witcher — Libros incorpora 174 preguntas basadas en las propuestas de balteam. Tras revisarlas y comprobarlas en los libros, el conjunto cuenta ahora con 1449 preguntas."
 
-#: lib/game_room_changelog.rb:540
+#: lib/game_room_changelog.rb:542
 msgid "Added 185 nouns to Krowa and removed duplicate dictionary entries. Thanks to paulinux for these additions and the improvements to word definitions."
 msgstr "Se han añadido 185 sustantivos a Krowa y eliminado las entradas duplicadas del diccionario. Gracias a paulinux por las nuevas palabras y las mejoras en las definiciones."
 
@@ -4503,6 +4503,10 @@ msgstr ""
 #: lib/game_room_changelog.rb:179
 msgid "Added a Draw another word button to Krowa's Random word variant. It reveals the previous word and resets attempts without recording a win."
 msgstr "Se ha añadido el botón Elegir otra palabra al azar a la variante Palabra aleatoria de Krowa. Revela la palabra anterior y reinicia los intentos sin registrar una victoria."
+
+#: lib/game_room_changelog.rb:544
+msgid "Added a Polish general-knowledge question proposed by turekcom and improved the wording of another following a report from Zuzler. Thank you!"
+msgstr "Se ha añadido a la colección polaca de cultura general una pregunta propuesta por turekcom y se ha mejorado la redacción de otra gracias a un aviso de Zuzler. ¡Gracias!"
 
 #: lib/game_room_changelog.rb:380
 msgid "Added a Power Games guide under README in the main menu, after Settings and before What's new. It covers the program's features, important shortcuts, the widget, invitations, settings and saved games. It follows your interface language: English, Polish, Czech, Spanish or Russian."
@@ -4620,6 +4624,10 @@ msgstr ""
 #: lib/game_room_changelog.rb:24
 msgid "After a second review, 284 well-supported Quiz Party questions were restored without bringing back ambiguous questions."
 msgstr "Tras una segunda revisión, se han recuperado 284 preguntas de Quiz Party bien documentadas, sin volver a incluir preguntas ambiguas."
+
+#: lib/game_room_changelog.rb:536
+msgid "After a tournament's deadline, new matches cannot be created or started. Matches already in progress can still be completed, and players can return to them even outside daily playing hours. Existing results are unchanged."
+msgstr "Tras la fecha límite del torneo no se pueden crear ni iniciar nuevos encuentros. Las partidas en curso pueden completarse y se puede volver a ellas incluso fuera del horario de juego. Los resultados anteriores no cambian."
 
 #: lib/game_room_changelog.rb:536
 msgid "After a tournament's deadline, new matches cannot be created or started. Matches already in progress can still be completed, and players can return to them. Existing results are unchanged."
@@ -4849,7 +4857,7 @@ msgstr "Todos los jugadores aceptaron esta propuesta."
 msgid "All players accepted. Opening the match table."
 msgstr "Todos han aceptado. Abriendo la mesa de la partida."
 
-#: lib/tournaments/draft_details_editor.rb:24 lib/tournaments/draft_preview.rb:187 lib/tournaments/public_text.rb:101 lib/tournaments/tournament_setup_editor.rb:92
+#: lib/tournaments/draft_details_editor.rb:24 lib/tournaments/draft_preview.rb:187 lib/tournaments/public_text.rb:103 lib/tournaments/tournament_setup_editor.rb:92
 msgid "All possible compositions"
 msgstr "Todas las combinaciones posibles"
 
@@ -5638,7 +5646,7 @@ msgstr ""
 msgid "Automatic matches: %{state}; reason: %{reason}"
 msgstr ""
 
-#: lib/tournaments/draft_preview.rb:181 lib/tournaments/public_text.rb:123
+#: lib/tournaments/draft_preview.rb:181 lib/tournaments/public_text.rb:125
 msgid "Automatic qualification: two groups through 16 participants, four above 16; the largest power of two advances. Cross-pair first with last."
 msgstr "Clasificación automática: dos grupos hasta 16 participantes y cuatro a partir de 17. Avanza el mayor número posible que sea potencia de dos. Se cruza al primero con el último."
 
@@ -5656,7 +5664,7 @@ msgstr ""
 msgid "Automatic return is a personal setting, off by default. When enabled, your paddle returns a reachable ball automatically near your end. You still position the paddle and serve yourself. Open Pong settings with Ctrl+P to change it; your opponent chooses independently."
 msgstr ""
 
-#: lib/game_room_changelog.rb:538
+#: lib/game_room_changelog.rb:540
 msgid "Automatic tournament rules are displayed in your interface language. Notes written by the organizer remain in their original language."
 msgstr "Las reglas generadas automáticamente para el torneo se muestran en el idioma de la interfaz. Las notas del organizador conservan su idioma original."
 
@@ -5691,7 +5699,7 @@ msgstr "Parejas disponibles: elige con las flechas y pulsa Intro para retirar"
 msgid "Awaiting review"
 msgstr "Pendiente de revisión"
 
-#: __app.rb:900 __app.rb:905 lib/tournaments/server_schedule_overview.rb:317 lib/tournaments/server_schedule_overview.rb:41
+#: __app.rb:900 __app.rb:905 lib/tournaments/server_schedule_overview.rb:324 lib/tournaments/server_schedule_overview.rb:41
 msgid "Award forfeit"
 msgstr "Conceder victoria por incomparecencia"
 
@@ -5784,7 +5792,7 @@ msgstr "B: leer la subasta actual."
 msgid "B: respond to the buzzer."
 msgstr "B: responde al pulsador."
 
-#: __app.rb:1336 __app.rb:1600 __app.rb:1644 __app.rb:1793 __app.rb:2441 __app.rb:2558 __app.rb:2750 games/krowa_support/leaderboards.rb:39 lib/game_room_presence_screen.rb:16 lib/game_room_screens.rb:686 lib/game_room_screens.rb:703 lib/game_screen.rb:376 lib/game_screen.rb:753 lib/game_statistics_screen.rb:37 lib/game_statistics_screen.rb:75 lib/tournaments/draft_preview.rb:24 lib/tournaments/draft_preview.rb:77 lib/tournaments/draft_screen.rb:26 lib/tournaments/local_fixed_team_execution_details.rb:19 lib/tournaments/local_fixed_team_execution_screen.rb:103 lib/tournaments/local_fixed_team_plan_screen.rb:68 lib/tournaments/local_game_choice_dialog.rb:28 lib/tournaments/local_individual_plan_screen.rb:25 lib/tournaments/local_organizer_decision_screen.rb:28 lib/tournaments/local_participant_manager.rb:16 lib/tournaments/local_realtime_game_dialog.rb:44 lib/tournaments/local_test_hub.rb:58 lib/tournaments/local_tournament_overview.rb:26 lib/tournaments/match_entry_screen.rb:280 lib/tournaments/match_entry_screen.rb:375 lib/tournaments/operations_screen.rb:59 lib/tournaments/participant_manager.rb:16 lib/tournaments/proposal_notice_dialog.rb:27 lib/tournaments/public_preview.rb:120 lib/tournaments/public_preview.rb:175 lib/tournaments/public_preview.rb:198 lib/tournaments/public_preview.rb:360 lib/tournaments/public_screen.rb:73 lib/tournaments/server_proposal_screen.rb:31 lib/tournaments/server_schedule_overview.rb:275 lib/tournaments/server_schedule_overview.rb:38 lib/tournaments/server_trial_hub.rb:32 lib/tournaments/tournament_setup_editor.rb:116
+#: __app.rb:1336 __app.rb:1600 __app.rb:1644 __app.rb:1793 __app.rb:2441 __app.rb:2558 __app.rb:2750 games/krowa_support/leaderboards.rb:39 lib/game_room_presence_screen.rb:16 lib/game_room_screens.rb:686 lib/game_room_screens.rb:703 lib/game_screen.rb:376 lib/game_screen.rb:753 lib/game_statistics_screen.rb:37 lib/game_statistics_screen.rb:75 lib/tournaments/draft_preview.rb:24 lib/tournaments/draft_preview.rb:77 lib/tournaments/draft_screen.rb:26 lib/tournaments/local_fixed_team_execution_details.rb:19 lib/tournaments/local_fixed_team_execution_screen.rb:103 lib/tournaments/local_fixed_team_plan_screen.rb:68 lib/tournaments/local_game_choice_dialog.rb:28 lib/tournaments/local_individual_plan_screen.rb:25 lib/tournaments/local_organizer_decision_screen.rb:28 lib/tournaments/local_participant_manager.rb:16 lib/tournaments/local_realtime_game_dialog.rb:44 lib/tournaments/local_test_hub.rb:58 lib/tournaments/local_tournament_overview.rb:26 lib/tournaments/match_entry_screen.rb:280 lib/tournaments/match_entry_screen.rb:375 lib/tournaments/operations_screen.rb:59 lib/tournaments/participant_manager.rb:16 lib/tournaments/proposal_notice_dialog.rb:27 lib/tournaments/public_preview.rb:120 lib/tournaments/public_preview.rb:175 lib/tournaments/public_preview.rb:198 lib/tournaments/public_preview.rb:360 lib/tournaments/public_screen.rb:73 lib/tournaments/server_proposal_screen.rb:31 lib/tournaments/server_schedule_overview.rb:282 lib/tournaments/server_schedule_overview.rb:38 lib/tournaments/server_trial_hub.rb:32 lib/tournaments/tournament_setup_editor.rb:116
 msgid "Back"
 msgstr "Volver"
 
@@ -7076,7 +7084,7 @@ msgstr ""
 msgid "Check pays nothing and is available only with nothing to call. Call pays the difference to the current bet, or the rest of your stack if that is smaller. Fold abandons this hand and any chance at its pots. A raise first calls, then increases the bet by at least the previous full raise; the opening minimum is based on the big blind."
 msgstr ""
 
-#: lib/tournaments/public_screen.rb:204
+#: lib/tournaments/public_screen.rb:207
 msgid "Check pending changes"
 msgstr "Comprobar cambios pendientes"
 
@@ -7261,7 +7269,7 @@ msgstr ""
 msgid "Choose IMP or matchpoint scoring."
 msgstr "Elige puntuación por IMP o por porcentaje."
 
-#: lib/tournaments/public_text.rb:74
+#: lib/tournaments/public_text.rb:75
 msgid "Choose Join tournament to take part."
 msgstr "Para participar, elige Inscribirse en el torneo."
 
@@ -8064,7 +8072,7 @@ msgstr "Rondas completadas: %{count}. Intentos en esta ronda: %{used} de %{limit
 msgid "Completed tournament matches show the game's score when available. If a scheduled rematch remains, you can invite its players directly from the completed match with Ctrl+G. Forfeit details remain available after the tournament moves to its next phase."
 msgstr "Las partidas de torneo terminadas muestran también la puntuación de la propia partida, si está disponible. Si queda una revancha programada, puedes invitar a sus jugadores directamente desde la partida terminada con Ctrl+G. Los detalles de una derrota por incomparecencia siguen disponibles cuando el torneo pasa a la siguiente fase."
 
-#: lib/tournaments/public_text.rb:46 lib/tournaments/server_schedule_overview.rb:173
+#: lib/tournaments/public_text.rb:47 lib/tournaments/server_schedule_overview.rb:173
 msgid "Completed — all required matches have been resolved"
 msgstr "Finalizado — todas las partidas necesarias están resueltas"
 
@@ -8164,7 +8172,7 @@ msgstr ""
 msgid "Conflicting local test operations were found. Check the operations list; do not send again."
 msgstr ""
 
-#: lib/tournaments/server_schedule_overview.rb:286
+#: lib/tournaments/server_schedule_overview.rb:293
 msgid "Conflicting match results were recorded. The first complete result remains in effect."
 msgstr "Se han registrado resultados contradictorios. Se mantiene el primer resultado completo."
 
@@ -8514,7 +8522,7 @@ msgstr "Crear mesa o unirse a este partido"
 msgid "Create table"
 msgstr "Crear mesa"
 
-#: lib/tournaments/public_screen.rb:202
+#: lib/tournaments/public_screen.rb:205
 msgid "Create tournament"
 msgstr "Crear torneo"
 
@@ -8779,7 +8787,7 @@ msgstr "Historial de la partida actual"
 msgid "Current game: North-South %{ns}, East-West %{ew}."
 msgstr "Manga en curso: Norte-Sur %{ns}, Este-Oeste %{ew}."
 
-#: lib/tournaments/operations_screen.rb:170 lib/tournaments/public_text.rb:58 lib/tournaments/server_trial_hub.rb:22
+#: lib/tournaments/operations_screen.rb:170 lib/tournaments/public_text.rb:59 lib/tournaments/server_trial_hub.rb:22
 msgid "Current identity: %{actor}"
 msgstr "Identidad actual: %{actor}"
 
@@ -9029,7 +9037,7 @@ msgstr "Fin del juego cada día"
 msgid "Daily play starts"
 msgstr "Inicio del juego cada día"
 
-#: lib/tournaments/public_text.rb:113
+#: lib/tournaments/public_text.rb:115
 msgid "Daily playing hours: %{start}–%{end} (%{zone}, fixed offset)."
 msgstr "Los partidos pueden iniciarse cada día de %{start} a %{end} (%{zone}, desfase fijo)."
 
@@ -9067,6 +9075,10 @@ msgstr "Las fechas son opcionales. Si no las fijas, tú abres y cierras las insc
 #: lib/tournaments/tournament_datetime_field.rb:20
 msgid "Day"
 msgstr "Día"
+
+#: lib/tournaments/public_text.rb:46
+msgid "Deadline passed"
+msgstr "Plazo vencido"
 
 #: games/three_five_eight.rb:516
 msgid "Deal %{round} of 18. %{dealer} deals; %{chooser} chooses the contract from the first six cards."
@@ -9586,7 +9598,7 @@ msgstr "Borrador guardado en tu cuenta."
 msgid "Draft: %{name}; game: %{game}"
 msgstr ""
 
-#: lib/tournaments/local_fixed_team_execution_screen.rb:541 lib/tournaments/local_individual_execution_screen.rb:20 lib/tournaments/local_tournament_overview.rb:109 lib/tournaments/server_schedule_overview.rb:353
+#: lib/tournaments/local_fixed_team_execution_screen.rb:541 lib/tournaments/local_individual_execution_screen.rb:20 lib/tournaments/local_tournament_overview.rb:109 lib/tournaments/server_schedule_overview.rb:360
 msgid "Draw"
 msgstr "Empate"
 
@@ -11489,7 +11501,7 @@ msgstr "Tomos prohibidos"
 msgid "Forest edge"
 msgstr "Borde del bosque"
 
-#: lib/tournaments/server_schedule_overview.rb:346
+#: lib/tournaments/server_schedule_overview.rb:353
 msgid "Forfeit"
 msgstr "Victoria por incomparecencia"
 
@@ -11673,7 +11685,7 @@ msgstr "G: leer tu oro."
 msgid "G: read your best current combination."
 msgstr "G: leer tu mejor combinación actual."
 
-#: games/mancala.rb:97 lib/game_history_navigation.rb:123 lib/game_statistics_screen.rb:32 lib/tournaments/draft_editor.rb:28 lib/tournaments/draft_preview.rb:169 lib/tournaments/public_text.rb:97 lib/tournaments/tournament_setup_editor.rb:28
+#: games/mancala.rb:97 lib/game_history_navigation.rb:123 lib/game_statistics_screen.rb:32 lib/tournaments/draft_editor.rb:28 lib/tournaments/draft_preview.rb:169 lib/tournaments/public_text.rb:99 lib/tournaments/tournament_setup_editor.rb:28
 msgid "Game"
 msgstr "Juego"
 
@@ -11803,7 +11815,7 @@ msgstr "Reglas del juego"
 msgid "Game rules now have navigable headings and a table of contents. H and Shift+H move between headings, K and Shift+K between links, and Enter on a contents link opens its chapter."
 msgstr "Las reglas de los juegos ahora tienen encabezados y un índice navegables. H y Shift+H recorren los encabezados, K y Shift+K los enlaces, y Enter sobre un enlace del índice abre el capítulo."
 
-#: lib/tournaments/server_schedule_overview.rb:365
+#: lib/tournaments/server_schedule_overview.rb:372
 msgid "Game score: %{score}"
 msgstr "Puntuación de la partida: %{score}"
 
@@ -11815,7 +11827,7 @@ msgstr "Puntuación de la partida tras la última ronda terminada: %{scores}"
 msgid "Game selection lists now include a short description of each game. In the tables widget, press Ctrl+O or choose Game description from the context menu to hear it."
 msgstr "Las listas de juegos al crear una mesa o unirse a ella incluyen ahora una breve descripción de cada juego. En el widget de mesas, pulsa Ctrl+O o elige «Descripción del juego» en el menú contextual para escucharla."
 
-#: lib/tournaments/draft_editor.rb:39 lib/tournaments/draft_preview.rb:205 lib/tournaments/public_text.rb:143
+#: lib/tournaments/draft_editor.rb:39 lib/tournaments/draft_preview.rb:205 lib/tournaments/public_text.rb:145
 msgid "Game settings"
 msgstr "Ajustes del juego"
 
@@ -11891,7 +11903,7 @@ msgstr "Combustible"
 msgid "General"
 msgstr ""
 
-#: content/quiz_general_en.rb:12 content/quiz_general_ru.rb:11 content/quiz_pl_wikidata.rb:12
+#: content/quiz_general_en.rb:12 content/quiz_general_ru.rb:11 content/quiz_pl_wikidata.rb:11
 msgid "General knowledge"
 msgstr "Cultura general"
 
@@ -11972,7 +11984,7 @@ msgstr "Dragón verde"
 msgid "Green light"
 msgstr "Semáforo verde"
 
-#: lib/tournaments/local_tournament_overview.rb:102 lib/tournaments/local_tournament_overview.rb:132 lib/tournaments/local_tournament_overview.rb:78 lib/tournaments/server_schedule_overview.rb:210
+#: lib/tournaments/local_tournament_overview.rb:102 lib/tournaments/local_tournament_overview.rb:132 lib/tournaments/local_tournament_overview.rb:78 lib/tournaments/server_schedule_overview.rb:220
 msgid "Group"
 msgstr "Grupo"
 
@@ -12012,7 +12024,7 @@ msgstr "Fase de grupos"
 msgid "Group stage: %{state}"
 msgstr ""
 
-#: lib/tournaments/draft_editor.rb:64 lib/tournaments/draft_preview.rb:170 lib/tournaments/public_text.rb:98 lib/tournaments/tournament_setup_editor.rb:62
+#: lib/tournaments/draft_editor.rb:64 lib/tournaments/draft_preview.rb:170 lib/tournaments/public_text.rb:100 lib/tournaments/tournament_setup_editor.rb:62
 msgid "Groups and knockout"
 msgstr "Grupos y eliminatorias"
 
@@ -12024,11 +12036,11 @@ msgstr "Los grupos y eliminatorias requieren actualmente dos jugadores individua
 msgid "Groups follow the participant list in rotation. This is not a draw or ranking-based seeding."
 msgstr ""
 
-#: lib/tournaments/draft_preview.rb:179 lib/tournaments/public_text.rb:121
+#: lib/tournaments/draft_preview.rb:179 lib/tournaments/public_text.rb:123
 msgid "Groups of three or four; four preferred. Extra qualifying places compare results without matches against the last player of a larger group."
 msgstr "Grupos de tres o cuatro, preferiblemente cuatro. Para las plazas adicionales se comparan los resultados sin los encuentros contra el último de los grupos más grandes."
 
-#: lib/tournaments/public_text.rb:127
+#: lib/tournaments/public_text.rb:129
 msgid "Groups use the confirmed roster order. Group results and qualification must be completed before knockout matches are planned."
 msgstr "Los grupos siguen el orden confirmado de participantes. Antes de planificar las eliminatorias deben quedar resueltos los resultados de los grupos y la clasificación."
 
@@ -13203,7 +13215,7 @@ msgstr "Unirse"
 msgid "Join a table"
 msgstr "Unirse a una mesa"
 
-#: lib/tournaments/public_preview.rb:324 lib/tournaments/public_preview.rb:96 lib/tournaments/public_screen.rb:216
+#: lib/tournaments/public_preview.rb:324 lib/tournaments/public_preview.rb:96 lib/tournaments/public_screen.rb:219
 msgid "Join tournament"
 msgstr "Inscribirse en el torneo"
 
@@ -13439,7 +13451,7 @@ msgstr ""
 msgid "Krowa"
 msgstr "Krowa"
 
-#: lib/game_room_changelog.rb:541
+#: lib/game_room_changelog.rb:543
 msgid "Krowa explanations from SJP now choose the appropriate base noun and meaning more accurately when looking up inflected words."
 msgstr "Las explicaciones de SJP en Krowa seleccionan con mayor precisión la forma base del sustantivo y su significado al buscar palabras flexionadas."
 
@@ -13463,7 +13475,7 @@ msgstr "Clasificaciones de Krowa"
 msgid "Krowa leaderboards are temporarily unavailable."
 msgstr "Las clasificaciones de Krowa no están disponibles temporalmente."
 
-#: lib/game_room_changelog.rb:539
+#: lib/game_room_changelog.rb:541
 msgid "Krowa now clears the answer field after rejecting a word with the wrong length or one missing from the dictionary."
 msgstr "En Krowa, el campo de respuesta se vacía tras rechazar una palabra de longitud incorrecta o que no figura en el diccionario."
 
@@ -13696,7 +13708,7 @@ msgstr "Déjala en tu casilla. Cuando un pato caiga allí, todos robarán una ca
 msgid "Leave this card on your square. It affects the next duck to stop there."
 msgstr "Deja esta carta en tu casilla. Afectará al siguiente pato que se detenga allí."
 
-#: lib/tournaments/public_preview.rb:331 lib/tournaments/public_screen.rb:222
+#: lib/tournaments/public_preview.rb:331 lib/tournaments/public_screen.rb:225
 msgid "Leave tournament"
 msgstr "Darse de baja del torneo"
 
@@ -14282,7 +14294,7 @@ msgstr "Gestionar participantes"
 msgid "Manage properties on your own turn before rolling, or when resolving your debt. Build only in a complete colour group without mortgages. Construction must be even: add to a street with the fewest buildings in its group. Four houses can become one hotel, represented as the fifth building level. You cannot pile hotels onto one street while its neighbours remain undeveloped."
 msgstr ""
 
-#: lib/tournaments/public_preview.rb:197 lib/tournaments/public_preview.rb:330 lib/tournaments/public_screen.rb:220
+#: lib/tournaments/public_preview.rb:197 lib/tournaments/public_preview.rb:330 lib/tournaments/public_screen.rb:223
 msgid "Manage tournament"
 msgstr "Administrar torneo"
 
@@ -14462,7 +14474,7 @@ msgstr "Encuentros"
 msgid "Matches are created after registration closes. Open the tournament as its test organizer to prepare them automatically."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:117
+#: lib/tournaments/public_text.rb:119
 msgid "Matches may be played at any time after the tournament starts."
 msgstr "Las partidas pueden jugarse a cualquier hora una vez iniciado el torneo."
 
@@ -14524,7 +14536,7 @@ msgstr "Máximo de subidas por ronda de apuestas"
 msgid "Maximum simultaneous tables"
 msgstr ""
 
-#: lib/tournaments/public_text.rb:148
+#: lib/tournaments/public_text.rb:150
 msgid "Maximum tournament participants"
 msgstr "Límite de participantes del torneo"
 
@@ -14860,7 +14872,7 @@ msgstr "El barro chapotea bajo tus patas."
 msgid "Multiplayer pairing"
 msgstr "Emparejamientos para partidas multijugador"
 
-#: lib/tournaments/draft_details_editor.rb:25 lib/tournaments/draft_preview.rb:189 lib/tournaments/public_text.rb:101 lib/tournaments/tournament_setup_editor.rb:93
+#: lib/tournaments/draft_details_editor.rb:25 lib/tournaments/draft_preview.rb:189 lib/tournaments/public_text.rb:103 lib/tournaments/tournament_setup_editor.rb:93
 msgid "Multiplayer pairings"
 msgstr "Emparejamientos para varios jugadores"
 
@@ -15063,7 +15075,7 @@ msgstr ""
 msgid "Ninoy Aquino International Airport"
 msgstr "Aeropuerto Internacional Ninoy Aquino"
 
-#: games/mille_bornes.rb:137 lib/game_option_values.rb:78 lib/game_surfaces/card_actions.rb:49 lib/game_surfaces/taboo_surface.rb:82 lib/game_surfaces/word_board.rb:106 lib/quiz_contributions/views.rb:24 lib/tournaments/draft_editor.rb:66 lib/tournaments/draft_preview.rb:171 lib/tournaments/draft_preview.rb:172 lib/tournaments/public_text.rb:130 lib/tournaments/public_text.rb:131 lib/tournaments/public_text.rb:99 lib/tournaments/tournament_setup_editor.rb:64 lib/tournaments/tournament_setup_editor.rb:83
+#: games/mille_bornes.rb:137 lib/game_option_values.rb:78 lib/game_surfaces/card_actions.rb:49 lib/game_surfaces/taboo_surface.rb:82 lib/game_surfaces/word_board.rb:106 lib/quiz_contributions/views.rb:24 lib/tournaments/draft_editor.rb:66 lib/tournaments/draft_preview.rb:171 lib/tournaments/draft_preview.rb:172 lib/tournaments/public_text.rb:101 lib/tournaments/public_text.rb:132 lib/tournaments/public_text.rb:133 lib/tournaments/tournament_setup_editor.rb:64 lib/tournaments/tournament_setup_editor.rb:83
 msgid "No"
 msgstr "No"
 
@@ -15680,7 +15692,7 @@ msgstr "Sin asignar"
 msgid "Not now"
 msgstr "Ahora no"
 
-#: lib/tournaments/public_text.rb:110
+#: lib/tournaments/public_text.rb:112
 msgid "Not set"
 msgstr "Sin establecer"
 
@@ -15736,7 +15748,7 @@ msgstr "Número de intentos"
 msgid "Number of boards"
 msgstr "Número de manos"
 
-#: lib/tournaments/draft_editor.rb:34 lib/tournaments/draft_preview.rb:184 lib/tournaments/public_text.rb:125
+#: lib/tournaments/draft_editor.rb:34 lib/tournaments/draft_preview.rb:184 lib/tournaments/public_text.rb:127
 msgid "Number of groups"
 msgstr "Número de grupos"
 
@@ -16046,7 +16058,7 @@ msgstr "Abrir mesa del encuentro"
 msgid "Open registration"
 msgstr "Abrir inscripciones"
 
-#: lib/tournaments/public_screen.rb:215 lib/tournaments/public_screen.rb:71
+#: lib/tournaments/public_screen.rb:218 lib/tournaments/public_screen.rb:71
 msgid "Open tournament"
 msgstr "Abrir torneo"
 
@@ -16183,7 +16195,7 @@ msgstr "Ordena los sonidos."
 msgid "Ordinary drawing takes one card. If afterwards you still have no playable card, your turn ends automatically. Otherwise you may play. Allow drawing with a playable card is on by default. Maximum cards drawn voluntarily in one turn is 3 by default (1–20); at the limit another draw is refused rather than silently ending the turn. With optional drawing disabled, you cannot draw while already holding a legal card."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:149 lib/tournaments/public_text.rb:66 lib/tournaments/tournament_setup_editor.rb:114
+#: lib/tournaments/public_text.rb:151 lib/tournaments/public_text.rb:67 lib/tournaments/tournament_setup_editor.rb:114
 msgid "Organizer"
 msgstr "Organizador"
 
@@ -16191,7 +16203,7 @@ msgstr "Organizador"
 msgid "Organizer dates and times, without time zone conversion."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:164
+#: lib/tournaments/public_text.rb:166
 msgid "Organizer decides"
 msgstr "Lo decide el organizador"
 
@@ -16199,7 +16211,7 @@ msgstr "Lo decide el organizador"
 msgid "Organizer decisions — forfeits"
 msgstr ""
 
-#: lib/tournaments/public_text.rb:106
+#: lib/tournaments/public_text.rb:108
 msgid "Organizer's notes"
 msgstr "Notas del organizador"
 
@@ -16238,7 +16250,7 @@ msgstr "Otro problema"
 msgid "Out of gas"
 msgstr "Sin combustible"
 
-#: lib/tournaments/public_preview.rb:309 lib/tournaments/public_screen.rb:231
+#: lib/tournaments/public_preview.rb:309 lib/tournaments/public_screen.rb:234
 msgid "Outdated preview — the announcement is missing or conflicting. Joining is unavailable."
 msgstr "Vista desactualizada: el anuncio falta o presenta un conflicto. No se puede solicitar la inscripción."
 
@@ -16430,7 +16442,7 @@ msgstr "Retirada del participante confirmada."
 msgid "Participant removal not confirmed. Check Operations before trying again."
 msgstr "La retirada no se ha confirmado. Consulta Operaciones antes de intentarlo de nuevo."
 
-#: games/krowa_support/leaderboards.rb:263 lib/tournaments/public_preview.rb:166 lib/tournaments/public_preview.rb:327 lib/tournaments/public_text.rb:66
+#: games/krowa_support/leaderboards.rb:263 lib/tournaments/public_preview.rb:166 lib/tournaments/public_preview.rb:327 lib/tournaments/public_text.rb:67
 msgid "Participants"
 msgstr "Participantes"
 
@@ -16724,7 +16736,7 @@ msgstr ""
 msgid "Plant"
 msgstr "Planta"
 
-#: lib/tournaments/local_dispatch_screen.rb:16 lib/tournaments/proposal_notice_dialog.rb:24 lib/tournaments/server_proposal_screen.rb:28 lib/tournaments/server_schedule_overview.rb:26 lib/tournaments/server_schedule_overview.rb:316
+#: lib/tournaments/local_dispatch_screen.rb:16 lib/tournaments/proposal_notice_dialog.rb:24 lib/tournaments/server_proposal_screen.rb:28 lib/tournaments/server_schedule_overview.rb:26 lib/tournaments/server_schedule_overview.rb:323
 msgid "Play"
 msgstr "Jugar"
 
@@ -16824,7 +16836,7 @@ msgstr ""
 msgid "Play one tile at either end of the chain, matching the touching numbers. Tiles are turned automatically. Doubles do not branch or grant another move. The highest dealt double chooses the starting player, but that player may open with any tile. Each round uses this selection again; ties rotate by round. Without a dealt double, the highest total tile chooses the starter, with the same tie-break."
 msgstr ""
 
-#: lib/tournaments/server_schedule_overview.rb:307
+#: lib/tournaments/server_schedule_overview.rb:314
 msgid "Play return match"
 msgstr "Jugar la revancha"
 
@@ -16836,7 +16848,7 @@ msgstr "Reproducir el sonido seleccionado"
 msgid "Play tournament matches"
 msgstr ""
 
-#: lib/tournaments/public_text.rb:130 lib/tournaments/public_text.rb:131 lib/tournaments/tournament_setup_editor.rb:83
+#: lib/tournaments/public_text.rb:132 lib/tournaments/public_text.rb:133 lib/tournaments/tournament_setup_editor.rb:83
 msgid "Play until a specified number of wins"
 msgstr "Hasta un número de victorias"
 
@@ -16891,7 +16903,7 @@ msgstr "No se pueden sustituir jugadores en un torneo con cartas privadas. El mi
 msgid "Players may look at the cards in their own hands at any time, but not at the hands of others. Only the cards taken from the public space and won at auction are seen by everyone."
 msgstr ""
 
-#: lib/tournaments/draft_details_editor.rb:22 lib/tournaments/draft_preview.rb:188 lib/tournaments/public_text.rb:100 lib/tournaments/tournament_setup_editor.rb:91
+#: lib/tournaments/draft_details_editor.rb:22 lib/tournaments/draft_preview.rb:188 lib/tournaments/public_text.rb:102 lib/tournaments/tournament_setup_editor.rb:91
 msgid "Players per match"
 msgstr "Jugadores por encuentro"
 
@@ -17739,7 +17751,7 @@ msgstr ""
 msgid "Qualified: %{players}"
 msgstr ""
 
-#: lib/tournaments/draft_editor.rb:36 lib/tournaments/draft_preview.rb:140 lib/tournaments/draft_preview.rb:185 lib/tournaments/public_text.rb:126
+#: lib/tournaments/draft_editor.rb:36 lib/tournaments/draft_preview.rb:140 lib/tournaments/draft_preview.rb:185 lib/tournaments/public_text.rb:128
 msgid "Qualifying places per group"
 msgstr "Plazas de clasificación por grupo"
 
@@ -18203,7 +18215,7 @@ msgstr "Se ha reducido la espera durante los desafíos de Carreras de patos, esp
 msgid "Reed path"
 msgstr "Sendero entre juncos"
 
-#: lib/game_room_presence_screen.rb:15 lib/game_statistics_screen.rb:36 lib/quiz_contributions/views.rb:46 lib/tournaments/draft_screen.rb:25 lib/tournaments/local_participant_manager.rb:15 lib/tournaments/local_tournament_overview.rb:17 lib/tournaments/operations_screen.rb:58 lib/tournaments/participant_manager.rb:15 lib/tournaments/public_preview.rb:333 lib/tournaments/public_screen.rb:203 lib/tournaments/public_screen.rb:72 lib/tournaments/server_proposal_screen.rb:30 lib/tournaments/server_schedule_overview.rb:21
+#: lib/game_room_presence_screen.rb:15 lib/game_statistics_screen.rb:36 lib/quiz_contributions/views.rb:46 lib/tournaments/draft_screen.rb:25 lib/tournaments/local_participant_manager.rb:15 lib/tournaments/local_tournament_overview.rb:17 lib/tournaments/operations_screen.rb:58 lib/tournaments/participant_manager.rb:15 lib/tournaments/public_preview.rb:333 lib/tournaments/public_screen.rb:206 lib/tournaments/public_screen.rb:72 lib/tournaments/server_proposal_screen.rb:30 lib/tournaments/server_schedule_overview.rb:21
 msgid "Refresh"
 msgstr "Actualizar"
 
@@ -18231,7 +18243,7 @@ msgstr ""
 msgid "Registration cannot close before it opens."
 msgstr "Las inscripciones no pueden cerrarse antes de abrirse."
 
-#: lib/tournaments/public_text.rb:104 lib/tournaments/tournament_dates_editor.rb:34
+#: lib/tournaments/public_text.rb:106 lib/tournaments/tournament_dates_editor.rb:34
 msgid "Registration closes"
 msgstr "Cierre de inscripciones"
 
@@ -18271,7 +18283,7 @@ msgstr "Inscripción en el torneo %{id}"
 msgid "Registration has not opened according to the local computer clock. This is not a server confirmation."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:71 lib/tournaments/server_workspace.rb:741
+#: lib/tournaments/public_text.rb:72 lib/tournaments/server_workspace.rb:741
 msgid "Registration has not opened yet."
 msgstr "Las inscripciones aún no se han abierto."
 
@@ -18283,7 +18295,7 @@ msgstr ""
 msgid "Registration is closed, the tournament is full, or this player has already joined."
 msgstr "Las inscripciones están cerradas, no quedan plazas o este jugador ya está inscrito."
 
-#: lib/tournaments/public_text.rb:72 lib/tournaments/server_workspace.rb:742
+#: lib/tournaments/public_text.rb:73 lib/tournaments/server_workspace.rb:742
 msgid "Registration is closed."
 msgstr "Las inscripciones están cerradas."
 
@@ -18311,15 +18323,15 @@ msgstr "Inscripción sin confirmar. No se repetirá automáticamente."
 msgid "Registration not confirmed. The request was cancelled or failed. No automatic retry."
 msgstr "Inscripción sin confirmar. La solicitud se canceló o falló. No se repetirá automáticamente."
 
-#: lib/tournaments/public_text.rb:42
+#: lib/tournaments/public_text.rb:43
 msgid "Registration not open yet"
 msgstr "Las inscripciones aún no han comenzado"
 
-#: lib/tournaments/public_text.rb:41
+#: lib/tournaments/public_text.rb:42
 msgid "Registration open"
 msgstr "Inscripciones abiertas"
 
-#: lib/tournaments/public_text.rb:103 lib/tournaments/tournament_dates_editor.rb:31
+#: lib/tournaments/public_text.rb:105 lib/tournaments/tournament_dates_editor.rb:31
 msgid "Registration opens"
 msgstr "Inicio de inscripciones"
 
@@ -18347,7 +18359,7 @@ msgstr "Rechazar el intercambio propuesto"
 msgid "Rejected"
 msgstr "Rechazada"
 
-#: lib/tournaments/public_text.rb:53
+#: lib/tournaments/public_text.rb:54
 msgid "Rejected or conflicting entry reports — announcements: %{announcements}; registrations: %{registrations}. These are not accepted entries."
 msgstr "Registros rechazados o en conflicto: anuncios %{announcements}; inscripciones %{registrations}. No se cuentan como registros aceptados."
 
@@ -18626,7 +18638,7 @@ msgstr "Resultado"
 msgid "Result already recorded. It cannot be overwritten."
 msgstr ""
 
-#: lib/tournaments/server_schedule_overview.rb:274 lib/tournaments/server_schedule_overview.rb:305
+#: lib/tournaments/server_schedule_overview.rb:281 lib/tournaments/server_schedule_overview.rb:312
 msgid "Result details"
 msgstr "Detalles del resultado"
 
@@ -18669,7 +18681,7 @@ msgstr "Al reanudar, se conservan la partida, los ajustes, los bots y el tiempo 
 msgid "Resupplying area"
 msgstr "Punto de abastecimiento"
 
-#: lib/tournaments/local_dispatch_screen.rb:18 lib/tournaments/proposal_notice_dialog.rb:24 lib/tournaments/server_schedule_overview.rb:348
+#: lib/tournaments/local_dispatch_screen.rb:18 lib/tournaments/proposal_notice_dialog.rb:24 lib/tournaments/server_schedule_overview.rb:355
 msgid "Return match"
 msgstr "Revancha"
 
@@ -18680,15 +18692,15 @@ msgstr "Revancha disponible. Todos deben aceptar; Ahora no la deja pendiente."
 msgid "Return match available. Both players must accept; Not now keeps it pending."
 msgstr "Revancha disponible. Ambos deben aceptar; Ahora no la deja pendiente."
 
-#: lib/tournaments/public_text.rb:131 lib/tournaments/tournament_setup_editor.rb:85
+#: lib/tournaments/public_text.rb:133 lib/tournaments/tournament_setup_editor.rb:85
 msgid "Return match in the final"
 msgstr "Revancha en la final"
 
-#: lib/tournaments/draft_editor.rb:32 lib/tournaments/draft_preview.rb:174 lib/tournaments/public_text.rb:99
+#: lib/tournaments/draft_editor.rb:32 lib/tournaments/draft_preview.rb:174 lib/tournaments/public_text.rb:101
 msgid "Return matches"
 msgstr "Revanchas"
 
-#: lib/tournaments/public_text.rb:130 lib/tournaments/tournament_setup_editor.rb:84
+#: lib/tournaments/public_text.rb:132 lib/tournaments/tournament_setup_editor.rb:84
 msgid "Return matches in knockout rounds"
 msgstr "Revanchas en las eliminatorias"
 
@@ -18985,7 +18997,7 @@ msgstr "Historial de eventos de la sala"
 msgid "Room events"
 msgstr "Eventos de la sala"
 
-#: lib/tournaments/draft_details_editor.rb:24 lib/tournaments/draft_preview.rb:187 lib/tournaments/public_text.rb:102 lib/tournaments/tournament_setup_editor.rb:92
+#: lib/tournaments/draft_details_editor.rb:24 lib/tournaments/draft_preview.rb:187 lib/tournaments/public_text.rb:104 lib/tournaments/tournament_setup_editor.rb:92
 msgid "Rotating compositions; equal appearances"
 msgstr "Combinaciones rotativas; igual número de encuentros"
 
@@ -19095,7 +19107,7 @@ msgstr "Redondear el valor de las cartas a múltiplos de cinco puntos"
 msgid "Round of 16"
 msgstr "Octavos de final"
 
-#: lib/tournaments/draft_editor.rb:64 lib/tournaments/draft_preview.rb:170 lib/tournaments/local_match_labels.rb:23 lib/tournaments/phase_description.rb:20 lib/tournaments/public_text.rb:98 lib/tournaments/tournament_setup_editor.rb:62
+#: lib/tournaments/draft_editor.rb:64 lib/tournaments/draft_preview.rb:170 lib/tournaments/local_match_labels.rb:23 lib/tournaments/phase_description.rb:20 lib/tournaments/public_text.rb:100 lib/tournaments/tournament_setup_editor.rb:62
 msgid "Round robin"
 msgstr "Todos contra todos"
 
@@ -20472,7 +20484,7 @@ msgstr ""
 msgid "Small points: lower is better."
 msgstr ""
 
-#: lib/tournaments/local_tournament_overview.rb:137
+#: lib/tournaments/local_tournament_overview.rb:137 lib/tournaments/server_schedule_overview.rb:224
 msgid "Small points: scored %{scored}, conceded %{conceded}, difference %{difference}"
 msgstr ""
 
@@ -20536,7 +20548,7 @@ msgstr "Hay participantes sin compañero. Completa las parejas antes de crear lo
 msgid "Some questions are missing. The proposal has not been accepted."
 msgstr "Faltan algunas preguntas. La propuesta no se ha aceptado."
 
-#: lib/tournaments/public_screen.rb:192
+#: lib/tournaments/public_screen.rb:195
 msgid "Some tournament information could not be read. Refresh before making changes."
 msgstr "No se ha podido leer parte de la información de los torneos. Actualiza antes de hacer cambios."
 
@@ -20746,9 +20758,13 @@ msgstr ""
 msgid "Standard"
 msgstr ""
 
-#: lib/tournaments/public_preview.rb:326 lib/tournaments/public_screen.rb:218 lib/tournaments/server_schedule_overview.rb:23
+#: lib/tournaments/public_preview.rb:326 lib/tournaments/public_screen.rb:221 lib/tournaments/server_schedule_overview.rb:23
 msgid "Standings"
 msgstr "Clasificación"
+
+#: lib/game_room_changelog.rb:538
+msgid "Standings now show game points scored, conceded and their difference when complete scores are available. Participants still tied are listed with fewer matches played first; this does not decide qualification."
+msgstr "La clasificación muestra los puntos a favor, en contra y su diferencia cuando hay marcadores completos. Entre quienes siguen empatados, aparecen primero los que han jugado menos encuentros; ese orden no decide quién pasa a la siguiente fase."
 
 #: lib/tournaments/server_schedule_overview.rb:208
 msgid "Standings — %{phase}"
@@ -23495,7 +23511,7 @@ msgstr "El torneo ha cambiado. Actualiza y vuelve a elegir la acción."
 msgid "The tournament changed. Refresh its view before changing it again."
 msgstr "El torneo ha cambiado. Actualiza la vista antes de volver a modificarlo."
 
-#: __app.rb:3437 __app.rb:890 lib/tournaments/public_text.rb:68
+#: __app.rb:3437 __app.rb:890 lib/tournaments/public_text.rb:69
 msgid "The tournament deadline has passed. New matches cannot be started; games already in progress may finish."
 msgstr "Ha pasado la fecha límite del torneo. No se pueden iniciar nuevos encuentros; las partidas en curso pueden terminar."
 
@@ -23507,7 +23523,7 @@ msgstr ""
 msgid "The tournament has started. Withdrawal is no longer available."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:73 lib/tournaments/public_text.rb:89 lib/tournaments/server_workspace.rb:743
+#: lib/tournaments/public_text.rb:74 lib/tournaments/public_text.rb:91 lib/tournaments/server_workspace.rb:743
 msgid "The tournament is full."
 msgstr "No quedan plazas en el torneo."
 
@@ -23842,7 +23858,7 @@ msgstr ""
 msgid "These counts come from recent reports by updated clients. Reports expire after about two minutes; rooms without an updated client reporting them may be missing."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:115
+#: lib/tournaments/public_text.rb:117
 msgid "These hours limit starting matches, not finishing games already in progress."
 msgstr "Este horario limita el inicio de los partidos. Las partidas en curso pueden terminarse."
 
@@ -24635,7 +24651,7 @@ msgstr "Pequeño retroceso"
 msgid "To be decided"
 msgstr "Por decidir"
 
-#: lib/tournaments/server_schedule_overview.rb:345
+#: lib/tournaments/server_schedule_overview.rb:352
 msgid "To be played"
 msgstr "Pendiente"
 
@@ -24654,7 +24670,7 @@ msgstr ""
 msgid "To castle, move the king two fields toward its rook. The rook moves to the field the king passed. Neither piece may have moved before, the fields between them must be empty, and the king must not be in check, pass through check or finish in check. Both short and long castling are supported."
 msgstr ""
 
-#: lib/tournaments/server_schedule_overview.rb:289
+#: lib/tournaments/server_schedule_overview.rb:296
 msgid "To decide a match in progress, join its table as an observer. A match with unavailable history cannot be decided here."
 msgstr "Para resolver una partida en curso, entra en su mesa como espectador. Si su historial no está disponible, no podrás resolverla aquí."
 
@@ -24771,7 +24787,7 @@ msgstr "Fecha del torneo / primer día"
 msgid "Tournament dates are optional. The organizer can manage registration and start the tournament manually or schedule these steps. Unfinished matches are not decided automatically when a deadline passes; the organizer can award a forfeit."
 msgstr "Las fechas del torneo son opcionales. El organizador puede gestionar las inscripciones y el inicio de forma manual o programarlos. Al vencer un plazo, los encuentros pendientes no se resuelven automáticamente; el organizador puede conceder una victoria por incomparecencia."
 
-#: lib/tournaments/public_text.rb:110 lib/tournaments/tournament_dates_editor.rb:36
+#: lib/tournaments/public_text.rb:112 lib/tournaments/tournament_dates_editor.rb:36
 msgid "Tournament deadline"
 msgstr "Fecha límite del torneo"
 
@@ -24815,7 +24831,7 @@ msgstr "Los campos del torneo tienen un límite de 2048 bytes. Acorta las reglas
 msgid "Tournament finished"
 msgstr "Torneo finalizado"
 
-#: lib/tournaments/draft_editor.rb:30 lib/tournaments/draft_preview.rb:173 lib/tournaments/public_text.rb:98
+#: lib/tournaments/draft_editor.rb:30 lib/tournaments/draft_preview.rb:173 lib/tournaments/public_text.rb:100
 msgid "Tournament format"
 msgstr "Formato del torneo"
 
@@ -24827,7 +24843,7 @@ msgstr "Resultado de partida: torneo %{id}"
 msgid "Tournament games cannot be saved or resumed from a saved game."
 msgstr "Las partidas de torneo no se pueden guardar ni reanudar desde una partida guardada."
 
-#: lib/tournaments/local_fixed_team_execution_screen.rb:565 lib/tournaments/public_text.rb:44
+#: lib/tournaments/local_fixed_team_execution_screen.rb:565 lib/tournaments/public_text.rb:45
 msgid "Tournament in progress"
 msgstr "Torneo en curso"
 
@@ -24854,11 +24870,11 @@ msgstr "Partida de torneo: %{players}"
 msgid "Tournament match: %{players}; invited by %{sender}"
 msgstr "Partida de torneo: %{players}; invitación de %{sender}"
 
-#: lib/tournaments/public_preview.rb:325 lib/tournaments/public_screen.rb:217 lib/tournaments/server_schedule_overview.rb:22
+#: lib/tournaments/public_preview.rb:325 lib/tournaments/public_screen.rb:220 lib/tournaments/server_schedule_overview.rb:22
 msgid "Tournament matches"
 msgstr "Partidos del torneo"
 
-#: lib/tournaments/draft_editor.rb:26 lib/tournaments/draft_preview.rb:168 lib/tournaments/public_text.rb:96
+#: lib/tournaments/draft_editor.rb:26 lib/tournaments/draft_preview.rb:168 lib/tournaments/public_text.rb:98
 msgid "Tournament name"
 msgstr "Nombre del torneo"
 
@@ -24882,7 +24898,7 @@ msgstr "El organizador puede establecer un horario diario para las partidas, inc
 msgid "Tournament pair: %{players}"
 msgstr "Pareja del torneo: %{players}"
 
-#: lib/tournaments/local_participant_manager.rb:22 lib/tournaments/participant_manager.rb:22 lib/tournaments/public_text.rb:155
+#: lib/tournaments/local_participant_manager.rb:22 lib/tournaments/participant_manager.rb:22 lib/tournaments/public_text.rb:157
 msgid "Tournament pairs"
 msgstr "Parejas del torneo"
 
@@ -24926,11 +24942,11 @@ msgstr ""
 msgid "Tournament started"
 msgstr "El torneo ha comenzado"
 
-#: lib/tournaments/public_text.rb:109 lib/tournaments/tournament_dates_editor.rb:35
+#: lib/tournaments/public_text.rb:111 lib/tournaments/tournament_dates_editor.rb:35
 msgid "Tournament starts"
 msgstr "Inicio del torneo"
 
-#: lib/tournaments/public_text.rb:47
+#: lib/tournaments/public_text.rb:48
 msgid "Tournament status unavailable"
 msgstr "Estado del torneo no disponible"
 
@@ -24950,7 +24966,7 @@ msgstr "Operación de mesa del torneo bloqueada: %{reason}"
 msgid "Tournament table or result not confirmed. Check Operations before trying again."
 msgstr "La mesa o el resultado del torneo no está confirmado. Revisa Operaciones antes de intentarlo otra vez."
 
-#: lib/game_room_changelog.rb:537
+#: lib/game_room_changelog.rb:539
 msgid "Tournament tables are now clearly marked as Tournament match in table lists, the widget and the participant heading."
 msgstr "Las mesas de torneo se identifican como Encuentro de torneo en las listas de mesas, el widget y el encabezado de participantes."
 
@@ -24962,7 +24978,7 @@ msgstr ""
 msgid "Tournament updated."
 msgstr "Torneo actualizado."
 
-#: lib/tournaments/local_fixed_team_execution_screen.rb:157 lib/tournaments/local_tournament_overview.rb:74 lib/tournaments/server_schedule_overview.rb:182 lib/tournaments/server_schedule_overview.rb:216
+#: lib/tournaments/local_fixed_team_execution_screen.rb:157 lib/tournaments/local_tournament_overview.rb:74 lib/tournaments/server_schedule_overview.rb:182 lib/tournaments/server_schedule_overview.rb:212
 msgid "Tournament winner: %{player}"
 msgstr "Ganador del torneo: %{player}"
 
@@ -24973,6 +24989,10 @@ msgstr "Torneos"
 #: __app.rb:210
 msgid "Tournaments - local drafts"
 msgstr ""
+
+#: lib/game_room_changelog.rb:537
+msgid "Tournaments whose deadline has passed stay in Current, in the same order, with the status Deadline passed. Only tournaments with all required matches resolved move to Completed."
+msgstr "Los torneos cuyo plazo ha vencido conservan su lugar entre los actuales, con el estado «Plazo vencido». Solo pasan a los terminados cuando se resuelven todos los encuentros necesarios."
 
 #: games/monopoly/presentation.rb:189
 msgid "Trade"
@@ -25248,7 +25268,7 @@ msgstr ""
 msgid "Two to four players have four pawns each. Win by bringing all four to the finish first. Pawns start in the base, where they do not occupy the track. The players enter the shared track at fields 1, 14, 27 and 40 in seating order. The 52-field track wraps from 52 to 1, so a later starting number does not shorten a player's route."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:132
+#: lib/tournaments/public_text.rb:134
 msgid "Two-leg knockout ties use match points, then complete game scores. If still tied, an additional single game is played."
 msgstr "En una eliminatoria a dos encuentros cuentan primero los puntos de encuentro y después las puntuaciones completas de las partidas. Si persiste el empate, se juega una partida adicional."
 
@@ -26089,7 +26109,7 @@ msgstr "Esperando la solución por vía privada."
 msgid "Waiting for these players: %{players}."
 msgstr "Esperando a estos jugadores: %{players}."
 
-#: lib/tournaments/public_text.rb:43
+#: lib/tournaments/public_text.rb:44
 msgid "Waiting for tournament start"
 msgstr "Esperando el inicio del torneo"
 
@@ -26504,7 +26524,7 @@ msgstr ""
 msgid "Winner by forfeit"
 msgstr "Ganador por incomparecencia"
 
-#: lib/tournaments/local_fixed_team_execution_screen.rb:541 lib/tournaments/local_individual_execution_screen.rb:20 lib/tournaments/local_tournament_overview.rb:110 lib/tournaments/server_schedule_overview.rb:353 lib/tournaments/tournament_start_runtime.rb:129
+#: lib/tournaments/local_fixed_team_execution_screen.rb:541 lib/tournaments/local_individual_execution_screen.rb:20 lib/tournaments/local_tournament_overview.rb:110 lib/tournaments/server_schedule_overview.rb:360 lib/tournaments/tournament_start_runtime.rb:129
 msgid "Winner: %{players}"
 msgstr "Ganador: %{players}"
 
@@ -26542,11 +26562,11 @@ msgstr ""
 msgid "Winning, draws and square names"
 msgstr ""
 
-#: lib/tournaments/public_text.rb:134 lib/tournaments/tournament_setup_editor.rb:86
+#: lib/tournaments/public_text.rb:136 lib/tournaments/tournament_setup_editor.rb:86
 msgid "Wins required in knockout rounds"
 msgstr "Victorias necesarias en eliminatorias"
 
-#: lib/tournaments/public_text.rb:134 lib/tournaments/tournament_setup_editor.rb:87
+#: lib/tournaments/public_text.rb:136 lib/tournaments/tournament_setup_editor.rb:87
 msgid "Wins required in the final"
 msgstr "Victorias necesarias en la final"
 
@@ -26785,7 +26805,7 @@ msgstr "Año"
 msgid "Yellowbelly die"
 msgstr "Dado cobarde"
 
-#: lib/game_option_values.rb:78 lib/game_surfaces/card_actions.rb:49 lib/game_surfaces/taboo_surface.rb:82 lib/game_surfaces/word_board.rb:106 lib/quiz_contributions/views.rb:24 lib/tournaments/draft_editor.rb:66 lib/tournaments/draft_preview.rb:171 lib/tournaments/public_text.rb:130 lib/tournaments/public_text.rb:131 lib/tournaments/public_text.rb:99 lib/tournaments/tournament_setup_editor.rb:64 lib/tournaments/tournament_setup_editor.rb:83
+#: lib/game_option_values.rb:78 lib/game_surfaces/card_actions.rb:49 lib/game_surfaces/taboo_surface.rb:82 lib/game_surfaces/word_board.rb:106 lib/quiz_contributions/views.rb:24 lib/tournaments/draft_editor.rb:66 lib/tournaments/draft_preview.rb:171 lib/tournaments/public_text.rb:101 lib/tournaments/public_text.rb:132 lib/tournaments/public_text.rb:133 lib/tournaments/tournament_setup_editor.rb:64 lib/tournaments/tournament_setup_editor.rb:83
 msgid "Yes"
 msgstr "Sí"
 
@@ -26865,7 +26885,7 @@ msgstr "Estás como espectador. La carta está oculta."
 msgid "You are out of the game."
 msgstr ""
 
-#: lib/tournaments/public_text.rb:34 lib/tournaments/public_text.rb:67
+#: lib/tournaments/public_text.rb:34 lib/tournaments/public_text.rb:68
 msgid "You are registered"
 msgstr "Estás inscrito"
 

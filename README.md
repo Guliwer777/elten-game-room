@@ -506,6 +506,8 @@ W lobby wybierz „Turnieje”. Strzałkami wybierz turniej, a Enterem otwórz l
 
 W bieżących turniejach najpierw zobaczysz te, w których uczestniczysz lub które organizujesz, potem te, do których możesz się zapisać, a na końcu pozostałe.
 
+Po upływie terminu turniej pozostaje w tym samym miejscu w „Bieżących”, ze statusem „Termin minął”. Do „Zakończonych” trafia dopiero po rozstrzygnięciu wszystkich wymaganych meczów.
+
 Porzucony turniej znika po 14 dniach bez aktywności przed rozpoczęciem lub po 30 dniach bez postępu po rozpoczęciu. Zapisy i zmiany organizatora przedłużają ważność przed startem, a wyniki meczów — po starcie. Samo przeglądanie jej nie przedłuża. Jeśli zapisy lub start zaplanowano na przyszłość, turniej nie zniknie przed tym terminem. Wyniki ukończonych turniejów pozostają dostępne.
 
 Przy nazwie turnieju znajdziesz grę, liczbę uczestników i stan rozgrywek. Na liście dostępne są też skróty:
@@ -574,6 +576,8 @@ Enter na zakończonym meczu informuje, że został już rozegrany. Jego wynik ot
 Wpis zakończonego meczu zawiera też wynik samej gry, jeśli gra go udostępnia. Jeśli masz jeszcze zaplanowany rewanż z tymi przeciwnikami, w menu tego meczu pojawi się „Zagraj rewanż” pod Ctrl+G. Wysyła zwykłe zaproszenia i nie rozpoczyna partii automatycznie.
 
 „Tabela wyników” pokazuje od razu miejsce, uczestnika, punkty turniejowe i liczbę rozegranych meczów. Tabem przejdziesz do wyboru fazy. Wyniki zapisują się automatycznie; nie musisz przepisywać ich z historii gry.
+
+Jeśli gra udostępnia kompletne wyniki punktowe, tabela pokazuje też małe punkty zdobyte i stracone oraz ich różnicę. Uczestnicy, którzy nadal dzielą miejsce, są wyświetlani od najmniejszej liczby rozegranych meczów. Ta kolejność nie rozstrzyga awansu.
 
 Żadnej partii turniejowej nie można zapisać ani wznowić z pliku. Polecenie zapisu i Ctrl+S nie są tu dostępne, ale Ctrl+Shift+S nadal pozwala zachować historię w pliku tekstowym.
 
@@ -682,6 +686,8 @@ W formularzu turnieju otwórz „Daty i godziny gry”. Nie musisz planować ża
 Aby ustawić datę, Tabem przejdź do jej pola. Strzałki w lewo i w prawo wybierają rok, miesiąc, dzień, godzinę lub minutę; góra i dół zmieniają wartość wybranej części. Program pokazuje czas lokalny Twojego komputera.
 
 Po ustawieniu terminów zatwierdź je i wróć do formularza turnieju. Całość zapiszesz dopiero przez publikację lub zapis zmian. Terminy można łączyć z ręcznym sterowaniem, np. otworzyć zapisy od razu i zaplanować tylko start. Turniej kończy się po rozstrzygnięciu wymaganych spotkań, nie przez samo osiągnięcie daty końcowej.
+
+Do rozpoczętej partii wrócisz z listy stołów, również poza godzinami rozgrywek lub po końcowym terminie turnieju. Te ograniczenia dotyczą rozpoczynania nowych meczów.
 
 ### Działania organizatora
 

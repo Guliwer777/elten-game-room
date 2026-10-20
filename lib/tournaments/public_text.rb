@@ -36,13 +36,14 @@ module GameRoomTournaments
       label
     end
 
-    def lifecycle_label(state)
+    def lifecycle_label(state, overdue: false)
+      state = :ended if overdue && state != :completed
       text(case state
       when :registration then _("Registration open")
       when :soon then _("Registration not open yet")
       when :waiting then _("Waiting for tournament start")
       when :running then _("Tournament in progress")
-      when :ended then _("Ended — scheduled time has passed")
+      when :ended then _("Deadline passed")
       when :completed then _("Completed — all required matches have been resolved")
       else _("Tournament status unavailable")
       end)
@@ -62,10 +63,10 @@ module GameRoomTournaments
       state=TournamentLifecycle.classify(publication,now:now)
       accepted=members(publication,snapshot)
       registered=accepted.any?{|person|person['account']==@actor.downcase}
-      lines=[text(publication['title']),text(@registry.name(publication['game'])),lifecycle_label(state[:state]),
+      lines=[text(publication['title']),text(@registry.name(publication['game'])),lifecycle_label(state[:state],overdue:state[:overdue]),
         pair(_("Organizer"),publication['__insertion_user']),pair(_("Participants"),accepted.size)]
       lines << text(_("You are registered")) if registered
-      lines << text(_("The tournament deadline has passed. New matches cannot be started; games already in progress may finish.")) if state[:overdue]
+      lines << text(_("The tournament deadline has passed. New matches cannot be started; games already in progress may finish.")) if state[:overdue] || state[:state]==:ended
       limit=JSON.parse(publication['settings_json'])['participant_limit']
       if !registered
         lines << text(if state[:state]==:soon then _("Registration has not opened yet.")
@@ -84,9 +85,10 @@ module GameRoomTournaments
     end
 
     def action_header(publication,snapshot,now:Time.now.to_i)
-      state=TournamentLifecycle.classify(publication,now:now)[:state]
-      status=lifecycle_label(state)
-      status=text(_("The tournament is full.")) if state==:registration && !can_join?(publication,snapshot,now:now)
+      lifecycle=TournamentLifecycle.classify(publication,now:now)
+      state=lifecycle[:state]
+      status=lifecycle_label(state,overdue:lifecycle[:overdue])
+      status=text(_("The tournament is full.")) if !lifecycle[:overdue] && state==:registration && !can_join?(publication,snapshot,now:now)
       text(publication['title'])+text(' — ')+status
     end
 

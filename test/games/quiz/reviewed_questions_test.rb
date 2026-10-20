@@ -58,6 +58,17 @@ reviewed_general = {
     'correct' => 'Pink Floyd',
     'wrong' => ['The Who', 'Genesis', 'Yes']
   },
+  '1z10_9853d8cf4752e84f' => {
+    'prompt' => 'Jako kto pracuje Aleksandra „Sasza” Załuska, bohaterka cyklu powieści Katarzyny Bondy?',
+    'correct' => 'Jako profilerka',
+    'wrong' => ['Jako prokuratorka', 'Jako dziennikarka', 'Jako adwokatka']
+  },
+  'community_tc_20261021_01' => {
+    'source_dataset' => 'Power Games community', 'category' => 'Nauka', 'author' => 'turekcom',
+    'prompt' => 'Od nazwiska którego fizyka pochodzi nazwa promieniowania, przez które czarna dziura może tracić masę?',
+    'correct' => 'Stephena Hawkinga',
+    'wrong' => ['Maxa Plancka', 'Erwina Schrödingera', 'Freemana Dysona']
+  },
   '1z10_dad26f6ca36159da' => {
     'source_dataset' => '1z10/MAUPQA', 'category' => 'Geografia',
     'prompt' => 'Ile gwiazd widnieje na fladze Panamy?',

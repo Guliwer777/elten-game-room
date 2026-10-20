@@ -326,6 +326,8 @@ V hlavní nabídce zvolte „Turnaje“. Šipkami vyberte turnaj a Enterem otev�
 
 V aktuálních turnajích jsou nejprve ty, kterých se účastníte nebo je pořádáte, potom ty, do kterých se můžete přihlásit, a nakonec ostatní.
 
+Po uplynutí termínu zůstane turnaj na stejném místě mezi aktuálními se stavem „Termín uplynul“. Mezi ukončené se přesune až po rozhodnutí všech požadovaných zápasů.
+
 Opuštěný turnaj zmizí po 14 dnech nečinnosti před zahájením nebo po 30 dnech bez postupu po zahájení. Před startem se tato lhůta obnovuje přihláškami a změnami pořadatele, po startu výsledky zápasů. Samotné prohlížení ji neprodlužuje. Pokud mají přihlášky nebo turnaj začít až později, turnaj před tímto datem nezmizí. Výsledky dokončených turnajů zůstávají dostupné.
 
 U názvu najdete hru, počet účastníků a stav turnaje. K dispozici jsou také tyto zkratky:
@@ -394,6 +396,8 @@ Enter na dokončeném zápase oznámí, že už byl odehrán. Výsledek otevřet
 U dokončeného zápasu najdete také skóre samotné hry, pokud je k dispozici. Je-li naplánována dosud neodehraná odveta proti stejným soupeřům, kontextová nabídka obsahuje „Hrát odvetu“ se zkratkou Ctrl+G. Rozešle běžné pozvánky, ale partii sama nezahájí.
 
 „Tabulka výsledků“ rovnou zobrazí umístění, jméno účastníka, turnajové body a počet odehraných zápasů. Tabem přejdete k výběru fáze. Výsledky dokončených partií se zapisují automaticky; nemusíte je opisovat z historie hry.
+
+Pokud jsou k dispozici úplná skóre, tabulka uvádí také získané a ztracené body ve hře a jejich rozdíl. Účastníci, kteří stále sdílejí místo, se zobrazí od nejmenšího počtu odehraných zápasů. Toto pořadí nerozhoduje o postupu.
 
 Žádnou turnajovou partii nelze uložit ani obnovit ze souboru. Příkaz k uložení ani Ctrl+S nejsou dostupné, ale Ctrl+Shift+S nadále umožňuje exportovat historii jako text.
 
@@ -502,6 +506,8 @@ Ve formuláři turnaje otevřete „Termíny a herní časy“. Nemusíte nastav
 Tabem přejděte na pole data. Šipky vlevo a vpravo vybírají rok, měsíc, den, hodinu či minutu; šipky nahoru a dolů mění vybranou hodnotu. Čas se zobrazuje podle místního časového pásma počítače.
 
 Termíny potvrďte a vraťte se do formuláře turnaje. Vše se uloží až zveřejněním turnaje nebo uložením změn. Naplánované termíny lze kombinovat s ručním ovládáním: například otevřít přihlášky hned a naplánovat jen start. Turnaj končí rozhodnutím potřebných zápasů, nikoli samotným dosažením konečného termínu.
+
+Do rozehrané partie se vrátíte přes seznam stolů, i mimo herní hodiny nebo po konečném termínu turnaje. Tato omezení platí pro zahájení nových zápasů.
 
 ### Možnosti pořadatele
 
