@@ -11,6 +11,7 @@ module GameRoomSounds
     notice
     table_notice
     invitation_rejected
+    conference_created
     buzzer
     buzzer2
     quiz_wrong_answer
@@ -132,6 +133,7 @@ module GameRoomSounds
 
   def table_activity(program, entry, viewer:)
     return play(program, "chatmsg") if entry.kind == "chat" && !GameRoomParticipants.same?(entry.actor, viewer)
+    return play(program, "conference_created") if entry.kind == "voice_started"
     if entry.kind == "invitation_rejected" && GameRoomParticipants.same?(entry.actor, viewer)
       play(program, "invitation_rejected")
     end
@@ -163,7 +165,7 @@ module GameRoomSounds
   end
 
   def play_asset(program, name, volume, spatial: nil)
-    if %w[connect disconnect chatmsg notice table_notice invitation_rejected ding].include?(name)
+    if %w[connect disconnect chatmsg notice table_notice invitation_rejected conference_created ding].include?(name)
       program.play_sound_from_asset(name, volume: volume)
     elsif spatial
       # The host returns nil when the 3D voice cannot start; stay audible.

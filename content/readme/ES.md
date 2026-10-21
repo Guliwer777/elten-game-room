@@ -93,9 +93,9 @@ En la lista de usuarios, Enter abre el menú habitual de usuarios de ELTEN. Desd
 
 ### Conversación de voz
 
-El botón «Conversación de voz» de la mesa permite crear un canal de conferencia de ELTEN. Elige un nombre, si será público u oculto y, si quieres, una contraseña. Un canal oculto no aparece en la lista habitual, pero ocultarlo no sustituye a protegerlo con contraseña.
+El botón «Crear conversación de voz» de la mesa permite crear un canal de conferencia de ELTEN. Elige un nombre, si será público u oculto y, si quieres, una contraseña. Un canal oculto no aparece en la lista habitual, pero ocultarlo no sustituye a protegerlo con contraseña.
 
-Los demás oyen una invitación breve y ven «Unirse a la conversación» en la mesa. No se abre ningún diálogo por sí solo durante la partida. Si ya estás en otra conferencia, tendrás que confirmar el cambio. No se modifican tus ajustes de micrófono ni de pulsar para hablar.
+Los demás oyen una invitación breve y ven «Unirse a la conversación de voz» en la mesa. Al unirte, el botón cambia a «Desconectar conversación de voz». Puedes salir de la conferencia y volver a unirte después. Cuando se desconecta quien la creó, también se retira la invitación de la mesa; quienes ya se hayan unido pueden seguir hablando. No se abre ningún diálogo por sí solo durante la partida. Si ya estás en otra conferencia, tendrás que confirmar el cambio. No se modifican tus ajustes de micrófono ni de pulsar para hablar.
 
 ### El anfitrión y la gestión de bots y equipos
 
@@ -137,6 +137,8 @@ La lista de juegos de la biblioteca de reglas también incluye una breve descrip
 En el texto de las reglas, H y Shift+H recorren los encabezados, K y Shift+K los enlaces, y Enter sobre un enlace del índice lleva al capítulo.
 
 Algunos juegos también tienen ajustes personales bajo Ctrl+P, accesibles desde el menú de la mesa. Entre ellos están Axel Pong, Audio Ball y Krowa. Afectan a tu forma de usar el juego y son independientes de la variante común elegida por el anfitrión.
+
+Krowa tiene los efectos de sonido activados y la música desactivada de forma predeterminada. Puedes cambiarlos en sus ajustes personales con Ctrl+P.
 
 ## Widget y creación rápida de mesas
 
@@ -279,7 +281,7 @@ Esta lista cubre los controles comunes del programa. Para las órdenes de un jue
 - F1 — ayuda del lugar activo.
 - Ctrl+F1 — reglas del juego de la mesa.
 - Ctrl+J — aceptar invitaciones en Power Games y en el widget.
-- Ctrl+Shift+T — acceso rápido a tus torneos desde el menú principal o el widget.
+- Ctrl+T — torneos; Ctrl+Shift+T — solo tus torneos. Ambos funcionan en el menú principal y en el widget.
 - F2 — bajar el volumen del grupo de sonidos seleccionado.
 - F3 — subir el volumen del grupo de sonidos seleccionado.
 - Shift+F2 — seleccionar el grupo de sonidos anterior.
@@ -341,7 +343,8 @@ Cada entrada indica el juego, el número de participantes y el estado del torneo
 - Ctrl+N — crear un torneo.
 - Ctrl+R — actualizar la lista de torneos.
 - Ctrl+O — abrir torneo; Ctrl+D — inscribirse; Ctrl+M — partidos; Ctrl+W — clasificación; Ctrl+E — administrar; Ctrl+L — retirarse. El menú contextual también muestra las acciones disponibles y sus atajos.
-- Ctrl+Shift+T — abrir tus torneos actuales desde el menú principal o el widget. Si solo tienes uno, se abre directamente su lista de acciones.
+- Ctrl+T — abrir los torneos desde el menú principal o el widget.
+- Ctrl+Shift+T — abrir tu lista de torneos. Solo muestra los tuyos, aunque la lista esté vacía.
 - Ctrl+J — abrir la lista habitual de invitaciones, que incluye las de encuentros de torneo.
 
 F1 recuerda los controles de la ventana actual y Escape vuelve atrás. Cerrar la ventana no te da de baja del torneo.
@@ -357,6 +360,21 @@ Al abrir un torneo accedes directamente a sus acciones. Elige una con las flecha
 - «Administrar torneo» — las acciones del organizador. Los demás participantes no tienen esta opción.
 
 Las opciones para inscribirse, retirarse o elegir compañero aparecen cuando se pueden utilizar.
+
+### Lista de participantes
+
+Elige «Participantes» para ver a los jugadores inscritos y sus compañeros. Enter sobre una persona abre el menú habitual de usuario de ELTEN. Ctrl+R actualiza la lista.
+
+El organizador dispone de estas acciones en el menú contextual:
+
+- Ctrl+I — invitar desde una lista conjunta de usuarios conectados y contactos. Espacio marca personas y Enter envía las invitaciones a todas las seleccionadas. No aparecen quienes ya están inscritos o fueron invitados antes.
+- Ctrl+P — elegir o cambiar al compañero del participante seleccionado en un torneo de parejas, o elegir «Sin compañero». Cambiar parejas existentes requiere confirmación.
+- Delete — retirar al participante seleccionado tras confirmar.
+- Ctrl+L — consultar las personas invitadas y los estados «Pendiente» o «Rechazada». Esta lista no permite reenviar invitaciones.
+
+Para invitar, la inscripción debe estar abierta. Solo se pueden retirar participantes y cambiar parejas antes de comenzar el torneo.
+
+Puedes rechazar una nueva invitación desde las acciones del torneo. Sigue siendo válida mientras la inscripción esté abierta, sin un plazo adicional en días. No se puede volver a invitar a la misma persona a ese torneo, aunque haya rechazado la invitación. Rechazarla no impide inscribirse por cuenta propia.
 
 ### Inscribirse y elegir compañero
 
@@ -520,8 +538,6 @@ Puedes volver a una partida en curso desde la lista de mesas, incluso fuera del 
 Abre tu torneo y elige «Administrar torneo». Antes del comienzo puedes:
 
 - editar el nombre, los ajustes de competición y las fechas;
-- invitar a un jugador con «Invitar al torneo» mientras las inscripciones estén abiertas y queden plazas;
-- usar «Gestionar participantes» para retirar a alguien o asignar compañeros en un torneo de parejas;
 - abrir o cerrar las inscripciones;
 - elegir «Iniciar torneo» en lugar de esperar al comienzo programado.
 

@@ -29,7 +29,7 @@ module GameRoomTournaments
     end
     private_constant :Form
 
-    def initialize(program:, registry:, load:, join:, alert:, mode_label:, actor:, join_virtual: nil, overview: nil, withdraw: nil, manage_participants: nil, set_partner: nil, edit_tournament: nil, delete_tournament: nil, create: nil, recover: nil, mine: false, results:nil,phase:nil,invite:nil,reference:nil,initial_action:nil,clock: -> { Time.now.to_i })
+    def initialize(program:, registry:, load:, join:, alert:, mode_label:, actor:, join_virtual: nil, overview: nil, withdraw: nil, manage_participants: nil, set_partner: nil, edit_tournament: nil, delete_tournament: nil, create: nil, recover: nil, mine: false, results:nil,phase:nil,invite:nil,decline_invitation:nil,reference:nil,initial_action:nil,clock: -> { Time.now.to_i })
       @program, @registry, @load, @join, @alert = program, registry, load, join, alert
       @mode_label, @actor = mode_label, actor
       @join_virtual, @overview = join_virtual, overview
@@ -40,6 +40,7 @@ module GameRoomTournaments
       @create, @recover, @mine = create, recover, mine
       @results,@phase=results,phase
       @invite,@reference,@initial_action=invite,reference,initial_action
+      @decline_invitation=decline_invitation
       @clock = clock
       @text = PublicText.new(registry: registry, mode_label: mode_label, actor: actor)
     end
@@ -75,7 +76,7 @@ module GameRoomTournaments
       @form.game_room_invitation_context_field = @current_list
       @form.hide(view)
       @form.hide(back)
-      @filter.on(:move){interaction(focus:false){@mine=false;render}}
+      @filter.on(:move){interaction(focus:false){render}}
       @lists.each do |list|
         list.on(:focus){@current_list=list unless (@rows_by_list[list] || []).empty?}
         list.bind_context{|menu|context_actions(menu,list)}
@@ -108,16 +109,6 @@ module GameRoomTournaments
         end
         return
       end
-      if @mine && @rows_by_list[@current_list].empty?
-        @alert.call(text(_("You have no active tournaments. The current tournaments are shown instead.")))
-        @filter.index=0
-        @mine=false
-        interaction{render}
-      end
-      if @mine && @rows_by_list[@current_list].size==1
-        interaction{preview}
-        return
-      end
       @form.wait_without_announcement
     end
 
@@ -148,7 +139,7 @@ module GameRoomTournaments
       dialog = PublicPreview.new(program: @program, registry: @registry, publication: row,
         snapshot: @snapshot, load: @load, join: @join, alert: @alert, mode_label: @mode_label, actor: @actor,
         join_virtual: @join_virtual, overview: @overview, withdraw: @withdraw, manage_participants: @manage_participants, set_partner: @set_partner, edit_tournament: @edit_tournament, delete_tournament: @delete_tournament,initial_action:initial_action,
-        results:@results,phase:@phase,invite:@invite,clock:@clock)
+        results:@results,phase:@phase,invite:@invite,decline_invitation:@decline_invitation,clock:@clock)
       initial_action ? dialog.perform(initial_action) : dialog.wait
       unless dialog.snapshot.equal?(@snapshot)
         @snapshot = dialog.snapshot
@@ -171,7 +162,7 @@ module GameRoomTournaments
         completed=states.fetch(row['__id'])[:state]==:completed
         mine=row['__insertion_user'].downcase==@actor.downcase ||
           @text.members(row,@snapshot).any?{|person|person['account'].downcase==@actor.downcase}
-        @filter.index==1 ? completed : !completed && (!@mine || mine)
+        (!@mine || mine) && (@filter.index==1 ? completed : !completed)
       end
       if @filter.index==0
         groups=[[],[],[]]
@@ -186,7 +177,8 @@ module GameRoomTournaments
         rows.sort_by!{|row|[-(TournamentLifecycle.ending_at(row) || row['__insertion_time']),-row['__id']]}
       end
       @rows_by_list[@current_list]=rows
-      @current_list.empty_label=text(@filter.index==1 ? _("No completed tournaments.") : _("No current tournaments."))
+      @current_list.header=text(@mine ? _("My tournaments") : _("Tournaments"))
+      @current_list.empty_label=text(@mine ? _("You have no tournaments in this view.") : @filter.index==1 ? _("No completed tournaments.") : _("No current tournaments."))
       @current_list.update_options(rows.map do |row|
         state=states.fetch(row['__id'])
         @text.row_label(row,@snapshot)+'; '+@text.lifecycle_label(state[:state],overdue:state[:overdue])

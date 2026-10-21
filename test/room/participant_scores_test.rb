@@ -65,9 +65,13 @@ replay.winner = "Alice"
 finished_rows = RoomPresentation.game_users(room: room, game: spades, replay: replay, players: players, owner: "Alice", options: options)
 assert(finished_rows.find { |row| row.participant == "Alice" }.label.include?("-20 points"), "finished game lost its final scores")
 
-unscored = GameRoomGames::NinetyNine.new
-assert(unscored.participant_scores(replay) == nil, "remaining tokens became fabricated point scores")
-rows = RoomPresentation.game_users(room: room, game: unscored, replay: nil, players: [], owner: "Alice")
+tokens_game = GameRoomGames::NinetyNine.new
+tokens_replay = tokens_game.replay({"options" => JSON.generate(tokens_game.default_options)}, [], ScoreRepository.new(players))
+tokens = tokens_game.participant_scores(tokens_replay)
+assert(tokens == tokens_replay.state.fetch(:tokens), "99 omitted its actual remaining tokens")
+tokens[players.first] = 999
+assert(tokens_replay.state.fetch(:tokens).fetch(players.first) != 999, "99 exposed mutable token scores")
+rows = RoomPresentation.game_users(room: room, game: tokens_game, replay: nil, players: [], owner: "Alice")
 assert(rows.none? { |row| row.label.include?("points") }, "a waiting room has fabricated scores")
 labels = RoomPresentation.user_labels(["alice", "Observer"], owner: "Alice", players: ["Alice"], active: true, scores: { "Alice" => 0 })
 assert(labels.first.include?("0 points") && !labels.last.include?("points"), "zero score or case-insensitive participant mapping is wrong")

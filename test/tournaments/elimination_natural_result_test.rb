@@ -6,6 +6,9 @@ options = game.normalize_options('score_limit'=>50, 'entry_minimum'=>0, 'turn_mi
 TournamentForfeitNative.with_fixture(game: game, users: %w[Alice Bob Carol Dave], options: options) do |f|
   f.start
   h = f.h
+  clock = [0.0]
+  runner = P.runner(f, 'Alice', clock)
+  step(h, runner)
   context = GameRoomGames::ActionContext.new(random_source: GameRoomRandom::LocalSecureSource.new)
   roll = lambda do |actor, values|
     h.view(actor).next_random_values = values
@@ -18,8 +21,14 @@ TournamentForfeitNative.with_fixture(game: game, users: %w[Alice Bob Carol Dave]
   h.submit('Bob', {'kind'=>'command', 'action'=>'keep', 'indices'=>'0,1,2,3,4,5'})
   h.submit('Bob', {'kind'=>'dice', 'action'=>'bank'})
   assert_equal(625, h.replay('Alice').state[:scores]['Bob'])
-  f.confirm(f.preview(loser: 'bob'))
-  f.confirm(f.preview(loser: 'carol'))
+  # Current eliminations come only from the native cumulative absence limit,
+  # not the removed organizer action that could interrupt an active game.
+  %w[Bob Carol].each do |user|
+    h.as(user) { h.view(user).leave }
+    step(h, runner)
+    20.times { clock[0] += 15; step(h, runner) }
+    assert(h.game.eliminated_from_game?(h.replay('Alice'), user))
+  end
   assert_equal('Dave', h.replay('Alice').current_player)
   roll.call('Dave', [1, 2, 3, 4, 6, 2])
   h.submit('Dave', {'kind'=>'command', 'action'=>'keep', 'indices'=>'0'})
@@ -45,5 +54,7 @@ TournamentForfeitNative.with_fixture(game: game, users: %w[Alice Bob Carol Dave]
   ensure
     cold.close
   end
+ensure
+  runner&.close
 end
 puts 'PASS continued native game: real rolls and natural finish, preserved scores, eliminated leader last, one cold-readable result'

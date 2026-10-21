@@ -3,9 +3,51 @@ require_relative "context_help"
 require_relative "table_activity_repository"
 
 require_relative "game_room_localization"
+require_relative "table_voice_protocol"
 
 module GameRoomLayout
   using GameRoomLocalization::Translations
+  def self.voice_button_label(table, viewer: Session.name, conference: (Conference if defined?(Conference)))
+    voice = table['voice']
+    return _("Create voice conversation") unless voice && voice['status'] == 'ready'
+
+    disconnect = GameRoomParticipants.same?(voice['creator'], viewer) || GameRoomTableVoice.connected?(voice,conference)
+    disconnect ? _("Disconnect voice conversation") : _("Join voice conversation")
+  end
+
+  # Native Conference updates its local state asynchronously. Resolve the label
+  # when this control is read/focused, without a table refresh or network poll.
+  module VoiceButton
+    def voice_table=(table)
+      previous=@voice_table
+      @connected_voice=nil unless previous && previous['__id']==table['__id']
+      conference=Conference if defined?(Conference)
+      if previous && GameRoomTableVoice.connected?(previous['voice'],conference)
+        @connected_voice=previous['voice']
+      end
+      @voice_table=table
+    end
+    def voice_table
+      conference=Conference if defined?(Conference)
+      if @voice_table && GameRoomTableVoice.connected?(@connected_voice,conference)
+        @voice_table.merge('voice'=>@connected_voice)
+      else
+        @voice_table
+      end
+    end
+    def label
+      GameRoomLayout.voice_button_label(voice_table || {})
+    end
+    def focus(*arguments)
+      @label=label
+      super
+    end
+    def update
+      @label=label
+      super
+    end
+  end
+
   module ShortcutFormBehavior
     def game_shortcut_keys=(keys)
       @game_shortcut_keys = keys.to_a.map do |key|
@@ -139,7 +181,7 @@ module GameRoomLayout
       )
       @chat.restore_selection(index: chat_index, check: chat_check) if chat_control == nil
       @primary_button = Button.new(_("Start game"))
-      @voice_button = Button.new(_("Voice conversation"))
+      @voice_button = Button.new(GameRoomLayout.voice_button_label({})).extend(VoiceButton)
       @restart_button = Button.new(_("Restart game"))
       @waiting_status = GameSurfaces::RefreshAwareListBox.new([], header: "", quiet: true)
       @status_command_buttons = {}

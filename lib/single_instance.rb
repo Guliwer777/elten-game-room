@@ -123,7 +123,7 @@ module GameRoomSingleInstance
       GameRoomSingleInstance.enter(self, :program_main, []) { super }
     end
 
-    [:notification_action, :open_widget_table, :create_table_from_widget, :accept_invitation_from_widget, :open_tournaments_from_widget].each do |entry|
+    [:notification_action, :open_widget_table, :create_table_from_widget, :accept_invitation_from_widget, :open_tournaments_from_widget, :open_tournament_browser_from_widget].each do |entry|
       define_method(entry) do |*arguments|
         GameRoomSingleInstance.enter(self, entry, arguments) { super(*arguments) }
       end

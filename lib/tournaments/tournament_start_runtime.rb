@@ -34,16 +34,18 @@ module GameRoomTournaments
       end
     end
 
-    def send_tournament_event(kind:,publication_ref:,recipient:nil,phase_id:nil)
+    def send_tournament_event(kind:,publication_ref:,recipient:nil,phase_id:nil,invitation_key:nil)
       service=@tournament_event_services&.fetch(kind)
       raise ProposalNotice::Unavailable,'Tournament notices are not connected' unless service
       account=Publication::Data.account(Session.name).downcase
-      service.notices(publication_ref:publication_ref,recipient:recipient,phase_id:phase_id,addressed:true).map do |notice,delivery_name|
-        scope=Digest::SHA256.hexdigest(JSON.generate([account,notice['backend_identity']]))
+      service.notices(publication_ref:publication_ref,recipient:recipient,phase_id:phase_id,addressed:true,invitation_key:invitation_key).map do |notice,delivery_name|
+        identity=[account,notice['backend_identity']]
+        identity << notice['publication_ref'] if notice['version']==2
+        scope=Digest::SHA256.hexdigest(JSON.generate(identity))
         journal=ProposalNoticeJournal.new(program:self,path:"tournament-#{kind}-deliveries-#{scope}.json")
         TournamentStartPublisher.new(service:service,sender:-> {Session.name},transaction:journal.method(:update),
           send:->(metadata,closes){send_notification(delivery_name,type:TournamentEventNotice::TYPES.fetch(kind),metadata:metadata,
-            expires_in:[service.remaining_seconds(closes),TournamentEventNotice::LIFETIME].min)}).deliver(metadata:notice)
+            expires_in:service.remaining_seconds(closes))}).deliver(metadata:notice)
       end
     end
 

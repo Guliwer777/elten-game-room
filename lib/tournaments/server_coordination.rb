@@ -154,7 +154,7 @@ module GameRoomTournaments
 
     private def coordinate_current(reference,broadcast:,sender:,timed:)
       context=notification_context!(reference,broadcast:broadcast,sender:sender)
-      visible={'directory'=>context.slice('publication','members','pairs','pair_requests')}
+      visible={'directory'=>context.slice('publication','members','pairs','pair_requests','invitations')}
       row=context['publication']
       if !row || !TournamentTiming.started?(row,@clock.call)
         deadline=row && TournamentLifecycle.next_change(row,now:@clock.call)

@@ -396,7 +396,7 @@ PublicationTest.test('duplikaty identyczne, różne i escapowane w poprawnych do
   row = PublicationTest.row
   assert_equal(1, PublicationTest.project([row])['announcements'].length)
   {
-    'settings_json' => ['"rematch":false', '"bot_delay":0'],
+    'settings_json' => ['"rematch":false', '"bot_delay":1'],
     'schedule_json' => ['"start":"12:00"']
   }.each do |field, tokens|
     tokens.each do |token|

@@ -196,7 +196,7 @@ S.test('integration payload preserves options windows and choices, never implies
   assert_equal(200, first.fetch('registration_closes_at'))
   assert_equal('unassigned', first.fetch('roles_teams'))
   variants = [draft.merge('rematch' => false), draft.merge('pairing' => 'all_combinations'),
-    draft.merge('game_options' => draft.fetch('game_options').merge('bot_delay' => 1)),
+    draft.merge('game_options' => draft.fetch('game_options').merge('bot_delay' => 2)),
     draft.merge('windows' => [draft.fetch('windows').first.merge('start' => '13:00')])]
   variants.each do |value|
     row = F.announcement(draft: value)
@@ -394,7 +394,9 @@ S.test('otwarty kontrakt opcji przepuszcza legalny Float bez udawania wsparcia k
 end
 
 S.test('przypięte istniejące ID pozostają stałe; uporządkowany skład i leg pozostają w tożsamości') do
-  result = F.build.to_h
+  historical = F.draft
+  historical['game_options'] = historical.fetch('game_options').merge('bot_delay' => 0)
+  result = F.build(projection: F.projection(announcements: [F.announcement(draft: historical)])).to_h
   assert_equal('0b17d2bf763ce270595c33eba72b83031d685f82580bb1a4061f9b93b13f7f24', result.fetch('roster_generation'))
   assert_equal('0a28499835a200c9e8ec539901cdd9de91e66a17cde6ce847dc02fa1d5a337bc', result.fetch('schedule_id'))
   assert_equal('8205df30fbfdf5da93dc92a31119892fbf94504d19935546b26236ea66e549df', result.fetch('publication_digest'))

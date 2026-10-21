@@ -13,8 +13,10 @@ questions = pack.data.fetch('questions')
 # player reports, covered individually by reviewed_questions_test.rb.
 # It also includes the three approved prompt-only corrections reported by
 # Zuzler on 2026-10-18; answers, order and all other fields remain unchanged.
+# The 2026-10-21 review corrected the Sasza Zaluska item, with its complete
+# approved wording and choices checked in reviewed_questions_test.rb.
 assert(Digest::SHA256.hexdigest(JSON.generate(questions.first(14887))) ==
-  '79bdbd20be0498de01eb042c8b55f6baec7952c818b93d32d79c67b1f8bff086',
+  '639d17ef7b739a09851cd50ad19b636eb5df0663a777e24b93e5520900656aa4',
   'The existing Polish set changed while importing a community proposal')
 
 expected = {

@@ -93,9 +93,9 @@ On the user list, Enter opens ELTEN's usual user menu. From there you can, for e
 
 ### Voice conversation
 
-Use the table's “Voice conversation” button to create an ELTEN conference channel. Choose a name, public or hidden visibility and an optional password. A hidden channel stays off the ordinary channel list; hiding it does not replace password protection.
+Use the table's “Create voice conversation” button to create an ELTEN conference channel. Choose a name, public or hidden visibility and an optional password. A hidden channel stays off the ordinary channel list; hiding it does not replace password protection.
 
-The others hear a short invitation and get a “Join conversation” button at the table. No dialog opens on its own during play. If you are already in another conference, switching requires confirmation. Your microphone and push-to-talk settings stay unchanged.
+The others hear a short invitation and get a “Join voice conversation” button at the table. Once you join, it changes to “Disconnect voice conversation”. You can leave the conference and join again later. When the creator disconnects, the table invitation is removed too; people who have already joined can keep talking. No dialog opens on its own during play. If you are already in another conference, switching requires confirmation. Your microphone and push-to-talk settings stay unchanged.
 
 ### The host and managing bots and teams
 
@@ -137,6 +137,8 @@ The game list in the rules library includes a short description of each game.
 In the rules text, H and Shift+H move between headings, K and Shift+K between links, and Enter on a contents link takes you to the chapter.
 
 Some games also have personal settings under Ctrl+P, available in the table menu. These include Axel Pong, Audio Ball and Krowa. They control your own experience and are separate from the shared variant chosen by the host.
+
+Krowa starts with sound effects on and music off. You can change this in its personal settings with Ctrl+P.
 
 ## The widget and quick table creation
 
@@ -279,7 +281,7 @@ This list covers the program's common controls. Use F1 for a specific game's com
 - F1 — help for the current location.
 - Ctrl+F1 — rules for the game at the table.
 - Ctrl+J — accept invitations in Power Games and the widget.
-- Ctrl+Shift+T — quick access to your tournaments from the lobby or widget.
+- Ctrl+T — tournaments; Ctrl+Shift+T — your tournaments only. Both work in the lobby and widget.
 - F2 — lower the selected sound group's volume.
 - F3 — raise the selected sound group's volume.
 - Shift+F2 — select the previous sound group.
@@ -341,7 +343,8 @@ Each entry includes the game, participant count and tournament status. These sho
 - Ctrl+N — create a tournament.
 - Ctrl+R — refresh the tournament list.
 - Ctrl+O — open tournament; Ctrl+D — join; Ctrl+M — matches; Ctrl+W — standings; Ctrl+E — manage; Ctrl+L — leave. Available actions and their shortcuts also appear in the context menu.
-- Ctrl+Shift+T — open your current tournaments from the lobby or widget. If there is only one, its action list opens straight away.
+- Ctrl+T — open tournaments from the lobby or widget.
+- Ctrl+Shift+T — open your tournament list. It keeps that scope even when the list is empty.
 - Ctrl+J — open the usual invitation list, which also includes tournament match invitations.
 
 F1 explains the controls in the current window; Escape goes back. Closing a window does not withdraw you from a tournament.
@@ -358,11 +361,26 @@ Opening a tournament takes you straight to its actions. Choose one with the arro
 
 Joining, withdrawing and choosing a partner are offered when those actions are available.
 
+### Participant list
+
+Choose “Participants” to see registered players and their partners. Enter on a person opens ELTEN's usual user menu. Ctrl+R refreshes the list.
+
+The organiser has these additional context-menu actions:
+
+- Ctrl+I — invite people from the combined online and contacts list. Space selects people; Enter sends invitations to everyone selected. Registered and previously invited people are excluded.
+- Ctrl+P — choose or change the selected participant's partner in a pairs tournament, or choose “Without a partner”. Replacing existing pairs asks for confirmation.
+- Delete — remove the selected participant after confirmation.
+- Ctrl+L — view invited people with “Pending” or “Declined” status. This list does not resend invitations.
+
+Inviting requires open registration. Removing participants and changing pairs are available before the tournament starts.
+
 ### Signing up and choosing a partner
 
 Choose “Join tournament” to register. If the option is unavailable, check the status in the heading: registration may not have opened, may have closed, or the tournament may be full. If you are already registered, you do not need to join again. Before the tournament starts, you can withdraw with “Leave tournament”.
 
 An organiser can invite you to register. This opens the tournament action list; you still choose “Join tournament” to sign up. It is not an invitation to a specific match.
+
+You can also choose “Decline invitation”. New invitations remain valid while registration is open, without a separate expiry in days. An organiser cannot invite the same person again to that tournament, even after a decline. Declining does not prevent you from signing up yourself.
 
 In a fixed-pair tournament, both players register individually first. Then:
 
@@ -520,8 +538,6 @@ You can return to a game in progress through the table list, even outside playin
 Open your tournament and choose “Manage tournament”. Before the start, you can:
 
 - edit the name, competition settings and dates;
-- invite a player with “Invite to tournament” while registration is open and places are available;
-- use “Manage participants” to remove someone or assign partners in a pair tournament;
 - open or close registration;
 - choose “Start tournament” instead of waiting for a scheduled start.
 

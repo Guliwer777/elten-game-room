@@ -322,7 +322,7 @@ class GameScreen
         submit_chat
         @suppress_surface_focus = true
       when :voice
-        @program.show_table_voice(@table)
+        @program.show_table_voice(@layout&.voice_button&.voice_table || @table)
         @suppress_surface_focus = true
       when :back
         # The confirmation is a covered view, not a departure. Keep the
@@ -1089,6 +1089,7 @@ class GameScreen
     @room_snapshot = snapshot
     @table = snapshot.table
     @table_owner = @table["owner"] || @table["__insertion_user"]
+    @layout.voice_button.voice_table = @table
     @activity_entries = activity_entries.to_a
     process_new_table_activity(replay)
     @layout.update_users(room_user_items(replay), header: users_header)

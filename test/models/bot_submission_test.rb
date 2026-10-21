@@ -6,7 +6,7 @@ require_relative "../support/session_runner"
   bot = h.transports['Alice'].room_snapshot(h.table)[:bots].first
   session = h.as('Alice') do
     h.repositories['Alice'].start_session(table: h.table, game: h.game.id,
-      players: ['Alice', bot], options: JSON.generate(h.game.default_options))
+      players: ['Alice', bot], options: JSON.generate(h.game.default_options.merge('bot_delay' => 0)))
   end
   h.instance_variable_set(:@session, session)
   r = runner_for(h)

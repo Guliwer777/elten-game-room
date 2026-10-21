@@ -5,6 +5,7 @@ require_relative 'tables_gateway'
 require_relative 'operation_journal'
 require_relative 'schedule_candidate'
 require_relative 'fixed_team_schedule_candidate'
+require_relative 'public_invitation_operations'
 
 module GameRoomTournaments
   # Synchroniczny przypadek użycia: wywołujący uruchamia go poza wątkiem UI.
@@ -38,6 +39,7 @@ module GameRoomTournaments
   # StrictJson::IncompatibleRuntime i TablesGateway::Error przechodzą bez
   # udawania pustej listy. Wyjątki programistyczne nie stają się rozłączeniem.
   class PublicService
+    include PublicInvitationOperations
     Data = Publication::Data
 
     class Error < StandardError
@@ -86,7 +88,7 @@ module GameRoomTournaments
       Data.freeze_tree({'publication'=>row,'members'=>data['members'],'pairs'=>data.fetch('pairs',[]),
         'pair_requests'=>data.fetch('pair_requests',[]),'people'=>(members+[author]).uniq,
         'usernames'=>RegistrationProjection.usernames(data['members']).merge(author=>original['__insertion_user']),
-        'senders'=>(eligible+[author]).uniq})
+        'senders'=>(eligible+[author]).uniq,'invitations'=>data.fetch('invitations',[])})
     end
 
     def publication(publication_ref:)

@@ -110,7 +110,7 @@ class GameScreen
       layout = @layout
       layout.begin_bindings
       layout.back_button.label = _("Leave")
-      layout.voice_button.label = @table.dig('voice','status')=='ready' ? _("Join conversation") : _("Voice conversation")
+      layout.voice_button.voice_table = @room_snapshot ? @room_snapshot.table : @table
       layout.activity_cursor = event_presenter.last_seen_activity_id
       @chat_control = layout.chat
       # New decision controls and Restart/Waiting must follow the event speech.

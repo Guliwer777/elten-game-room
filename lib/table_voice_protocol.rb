@@ -3,6 +3,11 @@ module GameRoomTableVoice
   CLAIM_SECONDS = 30
   module_function
   def empty; {'head'=>'','status'=>'none'}; end
+  def connected?(voice, conference)
+    return false unless voice.is_a?(Hash) && voice['status']=='ready' && conference && conference.opened?
+    channel=conference.channel
+    channel && channel.id==voice['channel_id'] && channel.name==voice['name']
+  end
   def valid?(value)
     return false unless value.is_a?(Hash) && value['head'].is_a?(String) && value['head'].bytesize <= 128
     case value['status']

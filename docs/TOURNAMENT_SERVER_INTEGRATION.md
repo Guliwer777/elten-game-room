@@ -10,7 +10,8 @@ modules. Server refusal never selects a local-storage fallback.
 `ServerSchema::PROPOSED_TABLES` declares three append-only tables:
 
 - `tournament_announcements`: publication identity, game, rules, settings and dates.
-- `tournament_registrations`: enrollment, withdrawal, pairing, amendments and cancellation.
+- `tournament_registrations`: enrollment, withdrawal, pairing, amendments,
+  cancellation, registration invitations and their explicit declines.
 - `tournament_plan_documents`: schedules, phases, elected table creators,
   native-table bindings, start intents, continuations and results. Older
   availability/consent/participant-lease records remain readable for recovery;
@@ -20,6 +21,17 @@ The SDK insertion author, ordered server IDs and timestamps authenticate events.
 Names inside JSON are not authentication. Publication-specific projections
 reject conflicting evidence without letting an unrelated malformed tournament
 break the directory. Protected tables still require the official launcher stamp.
+
+The organizer alone appends an `invitation`; only its recipient can append
+`invite_declined` for the same operation key. These records use existing
+nullable columns, preserve delivery-name spelling, never join or pair anyone,
+and do not renew abandoned-tournament retention. A recipient can be invited
+only once per tournament, including after decline, joining or withdrawal.
+Version 2 registration notices refer to that persistent key and remain valid
+while registration is open, without a separate seven-day lifetime. Version 1
+notices retain their original lifetime and metadata contract. A confirmed
+invitation row is not proof of notification delivery; delivery keeps its
+separate durable attempt journal and never retries uncertain sends.
 
 `ServerDocumentRows` reads by ordered ID in pages of at most 1,000 rows. A short
 page is not EOF. The initial upper ID bounds each snapshot; repeated IDs, no

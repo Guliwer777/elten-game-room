@@ -23,7 +23,7 @@
   },
   "required_assets": {
     "sounds": [
-      "connect", "disconnect", "chatmsg", "notice", "table_notice", "invitation_rejected", "buzzer", "buzzer2", "quiz_wrong_answer", "duck_challenge", "duck_question", "duck_correct", "duck_frozen",
+      "connect", "disconnect", "chatmsg", "notice", "table_notice", "invitation_rejected", "conference_created", "buzzer", "buzzer2", "quiz_wrong_answer", "duck_challenge", "duck_question", "duck_correct", "duck_frozen",
       "duck_final_lap", "duck_shot", "duck_note_c", "duck_memory_bark", "duck_memory_bell", "duck_memory_drop", "duck_memory_clap", "duck_memory_zip",
       "duck_rhythm_f", "duck_rhythm_j", "war_open", "ding", "shuffle", "draw", "draw2",
       "farkle", "cht-roll-dice", "cht-bank", "cht-lost-points", "cht-cat-minus-8", "cht-cat-plus-8",
@@ -843,6 +843,10 @@ class EltenGameRoom < Program
 
   def open_tournaments_from_widget
     show_my_tournaments
+  end
+
+  def open_tournament_browser_from_widget
+    show_tournaments
   end
 
   def ordinary_tournament_service(publication, worker: false)
@@ -1998,7 +2002,7 @@ class EltenGameRoom < Program
     @table_network_view = {layout: layout, table_id: table_id, synchronizer: synchronizer, chat_sends: chat_sends}
     layout.activity_cursor = activity_cursor
     layout.primary_button.label = table_start_label(state)
-    layout.voice_button.label = row.dig('voice','status')=='ready' ? _("Join conversation") : _("Voice conversation")
+    layout.voice_button.voice_table = row
     layout
   end
 
@@ -2016,6 +2020,8 @@ class EltenGameRoom < Program
 
   def show_table_voice(table)
     require_relative 'lib/table_voice_screen'
+    local=@table_layouts.to_h[table['__id']]&.voice_button&.voice_table
+    table=local if local
     GameRoomTableVoiceScreen.new(program:self,transport:@transport,table:table).run
   end
   public :show_table_voice
@@ -2130,7 +2136,7 @@ class EltenGameRoom < Program
     action, participant = selection.values_at(:action, :participant)
     case action
     when :voice
-      show_table_voice(row)
+      show_table_voice(layout.voice_button.voice_table || row)
     when :closed
       forget_room_membership(row)
       return :exit
@@ -2927,6 +2933,7 @@ class EltenGameRoom < Program
       presets: -> { game_room_settings["table_presets"] },
       invitations: -> { launch_game_room_entry(:accept_invitation_from_widget) },
       tournaments: -> { launch_game_room_entry(:open_tournaments_from_widget) },
+      tournament_browser: -> { launch_game_room_entry(:open_tournament_browser_from_widget) },
       roster: ->(snapshot) { @lobby.discovered_roster(snapshot) },
       table_options: ->(snapshot) { @lobby.discovered_options(snapshot) },
       description: ->(snapshot) { game_lobby_label(snapshot.table["game"]) },

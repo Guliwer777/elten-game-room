@@ -13,7 +13,8 @@ begin
     assert_equal('completed', progress['knockout_state'])
     assert_equal(progress['qualified'].first, progress['champion'])
     assert_equal([2, 0], progress['standings'].map { |unit| unit['points'] }.sort.reverse)
-    assert_equal([size, 0], progress['standings'].map { |unit| unit['score_for'] }.sort.reverse)
+    assert(progress['standings'].all? { |unit| unit.values_at('score_for', 'score_against') == [nil, nil] },
+      'Cold Taboo standings restored unsupported small points')
   end
   state = generic_team_state(fixture)
   assert_equal({}, state['busy'])

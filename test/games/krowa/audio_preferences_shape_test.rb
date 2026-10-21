@@ -28,6 +28,12 @@ Dir.mktmpdir('krowa-audio-preferences-') do |directory|
 
   game = KrowaTestGame.new.game
   name = 'game_audio/krowa.json'
+  fresh = GameRoomGames::KrowaClient.new(runtime, game)
+  fresh_audio = fresh.instance_variable_get(:@audio)
+  assert(fresh_audio.settings['effects'] == true, 'new Krowa profile disables sound effects')
+  assert(fresh_audio.settings['music'] == false, 'enabling effects also enabled music')
+  assert(!File.exist?(runtime.data_path(name)) && writes.zero?, 'reading defaults created a preference file')
+  fresh.close
   cases = 0
   check = lambda do |stored, expected|
     assert(runtime.write_json(name, stored), 'fixture JSON write failed')
@@ -48,7 +54,7 @@ Dir.mktmpdir('krowa-audio-preferences-') do |directory|
     other = key == 'music_volume' ? 'effects_volume' : 'music_volume'
     [false, true, [], {}, ['40'], {'value' => 40}].each do |raw|
       check.call({'music' => true, 'effects' => false, key => raw, other => 23},
-        GameRoomAudio::DEFAULTS.merge('music' => true, key => GameRoomAudio::DEFAULTS.fetch(key), other => 23))
+        GameRoomAudio::DEFAULTS.merge('music' => true, 'effects' => false, key => GameRoomAudio::DEFAULTS.fetch(key), other => 23))
     end
     [nil, -100, -1, 0, 1, 40, 100, 101, 1_000, -1.8, 39.8, 100.8,
       '', '70', ' 42 ', '12.9', 'garbage', '99tail'].each do |raw|
@@ -65,6 +71,7 @@ Dir.mktmpdir('krowa-audio-preferences-') do |directory|
       GameRoomAudio::DEFAULTS.merge('music' => raw == true, 'effects' => raw == true))
   end
   check.call({}, GameRoomAudio::DEFAULTS)
+  check.call({'effects' => false}, GameRoomAudio::DEFAULTS.merge('effects' => false))
 
   audio = check.call({'music_volume' => 61, 'effects_volume' => 22},
     GameRoomAudio::DEFAULTS.merge('music_volume' => 61, 'effects_volume' => 22))

@@ -30,7 +30,9 @@ assert_equal(ranked,t::StandingsRanking.calculate(units:%w[z y c b a],results:re
   assert(label.include?('Alice + Bob') && !label.include?('team-red'),'Internal team identity leaked')
   assert(label.end_with?(small),'Zero or negative small points are absent from the actual row formatter')
   assert_equal(original,Marshal.dump(row),'Rendering changed score direction or result data')
-  [row.merge('scored_matches'=>1),row.merge('score_for'=>nil),row.merge('score_against'=>nil),
+  partial=row.merge('scored_matches'=>1)
+  assert(view.send(:standings_row_label,partial,names).end_with?(small), 'Available partial totals were hidden')
+  [row.merge('score_for'=>nil),row.merge('score_against'=>nil),
     row.merge('played'=>0,'scored_matches'=>0)].each do |incomplete|
     label=view.send(:standings_row_label,incomplete,names)
     assert(!label.include?(small),'Missing/partial score was displayed as complete')

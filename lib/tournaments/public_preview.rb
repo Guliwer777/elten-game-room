@@ -30,7 +30,7 @@ module GameRoomTournaments
     end
     private_constant :Form
 
-    def initialize(program:, registry:, publication:, snapshot:, load:, join:, alert:, mode_label:, actor:, join_virtual: nil, overview: nil, withdraw: nil, manage_participants: nil, set_partner: nil, edit_tournament: nil, delete_tournament: nil,initial_action:nil,results:nil,phase:nil,invite:nil,clock:-> {Time.now.to_i})
+    def initialize(program:, registry:, publication:, snapshot:, load:, join:, alert:, mode_label:, actor:, join_virtual: nil, overview: nil, withdraw: nil, manage_participants: nil, set_partner: nil, edit_tournament: nil, delete_tournament: nil,initial_action:nil,results:nil,phase:nil,invite:nil,decline_invitation:nil,clock:-> {Time.now.to_i})
       @initial_action=initial_action
       @program, @publication, @snapshot = program, publication, snapshot
       @load, @join, @alert = load, join, alert
@@ -41,6 +41,7 @@ module GameRoomTournaments
       @edit_tournament, @delete_tournament = edit_tournament, delete_tournament
       @results,@phase,@clock=results,phase,clock
       @invite=invite
+      @decline_invitation=decline_invitation
       settings = JSON.parse(publication['settings_json'])
       @pair_game = registry.build(publication['game']).team_size(settings['game_options'], player_count: settings['players_per_match']) == 2
       @text = PublicText.new(registry: registry, mode_label: mode_label, actor: actor)
@@ -162,8 +163,11 @@ module GameRoomTournaments
       when :results then @results.call(@publication);refresh_snapshot
       when :partner then choose_partner
       when :participants
-        value=@text.members(@publication,@snapshot).map{|person|person['username']}.join("\r\n")
-        show_document(_("Participants"),value)
+        @manage_participants.call(@publication) if @manage_participants
+        refresh_snapshot
+      when :decline_invitation
+        @decline_invitation.call(@publication) if @decline_invitation && pending_invitation?
+        refresh_snapshot
       when :rules then show_document(_("Information and rules"),@text.description(@publication,@snapshot))
       when :manage then manage_tournament
       when :refresh then refresh_snapshot
@@ -186,8 +190,6 @@ module GameRoomTournaments
       options=[]
       before_start=[:soon,:registration,:waiting].include?(state)
       if before_start
-        options << [:invite,_("Invite to tournament")] if @invite && state==:registration && @text.can_join?(@publication,@snapshot,now:@clock.call)
-        options << [:manage,_("Manage participants")] if @manage_participants
         options << [:edit,_("Edit tournament")] if @edit_tournament
         options << [:open,_("Open registration")] if @phase && state!=:registration
         options << [:close,_("Close registration")] if @phase && state==:registration
@@ -322,6 +324,7 @@ module GameRoomTournaments
       actions=[]
       unless @stale
         actions << [:join,_("Join tournament")] if @join && !registered? && !@join_requested && @text.can_join?(@publication,@snapshot,now:@clock.call)
+        actions << [:decline_invitation,_("Decline invitation")] if @decline_invitation && !registered? && pending_invitation?
         actions << [:overview,_("Tournament matches")] if @overview
         actions << [:results,_("Standings")] if @results
         actions << [:participants,_("Participants")]
@@ -379,6 +382,12 @@ module GameRoomTournaments
       back.on(:press){form.resume}
       form.wait
       refresh_snapshot
+    end
+
+    def pending_invitation?
+      TournamentTiming.registration_open?(@publication,@clock.call) && @snapshot.fetch('invitations',[]).any? do |entry|
+        entry['tournament_id']==@publication['__id'] && entry['account']==@actor.downcase && entry['status']=='pending' && !entry['resolved']
+      end
     end
 
     def text(value)

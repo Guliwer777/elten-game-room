@@ -97,23 +97,24 @@ end
   driver.step(l.call('Result details'),[27]){|form|assert_equal(l.call('Draw'),form.fields.first.text)}
   driver.step(l.call('Tournament matches')){|form|form.fields.first.index=1}
   driver.step(l.call('Tournament matches'),[17,70])
-  driver.step(l.call('Who loses by forfeit?'),[27])
   driver.step(l.call('Tournament matches')) do |form|
-    assert(!actions.any?{|item|item.first==:forfeit},'Cancelling the forfeit recorded a result')
+    forwarded=actions.select{|item|item.first==:forfeit}
+    assert_equal(1,forwarded.size,'Ctrl+F did not open the shared settlement entry exactly once')
+    assert_equal([own,nil,'current'],forwarded.first[1].drop(1))
     form.fields.first.index=2
     GlobalMenu.control=form.fields.first
     assert_equal([[l.call('Award forfeit'),'f']],GlobalMenu.ctitems.map{|item|[item[0],item[3]]})
   end
   driver.step(l.call('Tournament matches'),[17,70])
-  driver.step(l.call('Who loses by forfeit?'),[27])
   driver.step(l.call('Tournament matches')) do |form|
+    assert_equal([own,other],actions.select{|item|item.first==:forfeit}.map{|item|item[1][1]})
     form.fields.first.index=1
     after_confirm=-> {screen.instance_variable_set(:@current_schedule_id,'new-phase')}
   end
   driver.step(l.call('Tournament matches'),[13])
   driver.step(l.call('Tournament matches'),[27]) do
     assert_equal(3,confirmations.size)
-    assert_equal([:play],actions.map(&:first),'A phase change during confirmation opened a stale match')
+    assert_equal([:play,:forfeit,:forfeit],actions.map(&:first),'A phase change during confirmation opened a stale match')
     assert_equal([l.call('This match has already been played.')],alerts)
   end
   begin

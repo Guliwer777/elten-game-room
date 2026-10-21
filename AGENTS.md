@@ -101,8 +101,17 @@
   reset use ordered authenticated room records; record native host handover
   through the existing control ledger before a new owner's reset. Passwords
   belong only to the member projection, never activity or discovery.
-  Join the creator to the native channel before publishing a ready invitation;
-  a rejected creator join clears its claim without announcing a conversation.
+  Native Conference creation already joins its creator. Observe its new channel
+  update before publishing a ready invitation; never issue a redundant join
+  while the local channel cache is stale. Release the previous native membership
+  before creation, and clear an unconfirmed creation claim without announcing it.
+  The creator's Disconnect leaves only that conference and clears the exact
+  table invitation head; it must not leave an unrelated native conference.
+  A connected guest also gets Disconnect, but leaves locally without clearing
+  the table invitation. Resolve this button's label from the current native
+  membership when read/focused; local joins/leaves need no table/game refresh.
+  Retain a matching local target while still connected after its creator clears
+  the invitation, so remaining guests can leave without altering a newer offer.
 - The shared replay cache owns sealed authenticated records and copied
   checkpoints. Recheck actors and IDs, all earlier changed records, resource
   identities and session context; retain bounded memory and generation guards.
@@ -115,6 +124,12 @@
   diagnostic UUIDs must not enter the player UI. Do not silently fall back to
   local storage after server refusal. Keep complete bounded keyset reads,
   operation-scoped caches and write invalidation; a short page is not EOF.
+  Authenticated invitation/decline records do
+  not enroll participants or change match identities/retention. Keep original
+  delivery-name case and exclude all previously invited recipients, including
+  declines, from new sends in that tournament. Preserve legacy notice versions.
+  Participant and invitation lists observe local view revisions without polling,
+  focus changes or repeated speech. Ordinary table invites remain single-user.
   Own append acknowledgements preserve only provably unrelated immutable ID
   partitions when the server ID is contiguous; gaps and uncertain writes
   invalidate the affected table. Nested freshness checks may be shared only
@@ -426,6 +441,14 @@ and `docs/PRIVATE_STATE.md`:
   implement `restored_event_value` for those specific fields. Do not replace
   players or close the table before the account archive write is confirmed.
 
+- Update affected tests in the same change as the behavior they verify, not
+  after a failed GitHub run. Search existing tests, shared fixtures, snapshots
+  and binary/native checks for dependent assumptions, including defaults,
+  timing, UI controls, result policies and saved historical inputs. Run that
+  affected scope before pushing; adding a new regression alone is not enough.
+  First establish whether a failure is a product defect or an approved contract
+  change. Never replace expected values merely to make a test pass. Historical
+  corpora keep their explicit original inputs and compatibility guarantees.
 - Run targeted tests during development.
 - Before a pull request, run `ruby test/run.rb`.
 - Transport changes require `live_sessions_*`, `test/transport/transport_test.rb`,

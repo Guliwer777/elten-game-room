@@ -548,7 +548,9 @@ module GameRoomChangelog
       version: "2.0.5.4",
       build: 255,
       changes: [
-        "You can create or join an ELTEN voice conference directly from a game table. The table button shows when a conversation is available; joining remains your choice and does not interrupt the game.",
+        "You can create or join an ELTEN voice conference directly from a game table. Joining remains your choice and does not interrupt the game. After joining, use Disconnect voice conversation to leave; other participants can keep talking.",
+        "Tournament participants and invitations are now managed from the participant list. Organizers can invite several online users or contacts at once; Ctrl+L shows pending and declined invitations.",
+        "Ctrl+T opens Tournaments from the lobby or widget. Ctrl+Shift+T opens a list of your own tournaments.",
         "Tournament organizers can now set all final places, including shared places and multiple forfeits, or award zero points to everyone. The result is shown for confirmation before it is saved. Manual settlement does not interrupt an active game.",
         "Tournament small points are enabled only in games with an agreed scoring method. UNO, elimination Rummy, Domino and Mexican Train use penalty points, where fewer is better. Audio Ball adds points from all sets.",
         "Forfeits use technical small-point scores based on the game's target and variant. A participant losing by forfeit receives zero tournament points, including when several participants share last place.",
@@ -556,7 +558,9 @@ module GameRoomChangelog
         "In knockout tournaments, awarding zero points to everyone resolves that pairing without advancing a winner. The rest of the bracket continues normally.",
         "Computer players now default to a one-second decision delay in every turn-based game. Your explicitly chosen delay is kept; realtime games keep their existing pace.",
         "New Countries and Cities games have Drink, Tool, Known athlete, Known actor and Known writer instead of Surname, Chemical element, Building, Invention and Famous person. Existing and saved games keep their categories.",
-        "Reduced repeated calculations in Mahjong and Duck Racing to improve responsiveness during longer games."
+        "Reduced repeated calculations in Mahjong and Duck Racing to improve responsiveness during longer games.",
+        "Fixed restoring custom Makao settings when creating another table.",
+        "Krowa sound effects are enabled by default. Your saved personal settings are preserved."
       ].freeze
     ).freeze
   ].freeze

@@ -67,7 +67,11 @@ TournamentForfeitNative.with_fixture(game: game, users: %w[Alice Bob Carol],
   assert_equal(replay.state[:scores], TrickGameCheckpointTest.checkpoint(h)['scores'])
   assert(replay.state[:hands].values.any? { |cards| cards.any? { |card| GameRoomPrivateCardLedger.hidden?(card) } },
     'Surrender exposed all private hands')
-  assert_equal('scored_round', f.preview['decision']['basis'])
+  # Current manual settlement cannot interrupt play. The old read-only
+  # receipt projection still verifies already-published scored checkpoints.
+  assert_equal('scored_round', f.legacy_preview['decision']['basis'])
+  error = assert_raises(GameRoomTournaments::OrdinaryMatchService::Blocked) { f.preview }
+  assert_equal(:match_in_progress, error.code)
 ensure
   runners&.each_value(&:close)
 end

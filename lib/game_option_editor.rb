@@ -43,8 +43,10 @@ class GameRoomOptionEditor
     # Keep canonical non-control values (for example a category-pool version
     # or team seats). Content-pack identity is derived again from the visible
     # language/set controls, as before, so changing them cannot keep a stale pack.
-    selected = game.normalize_options(selected)
-    base_options = selected.reject do |key, _value|
+    # Remembered hidden controls may belong to a custom profile. Normalize the
+    # non-control metadata, not those raw control values: a default preset would
+    # otherwise overwrite them before the user switches back to Custom.
+    base_options = game.normalize_options(selected).reject do |key, _value|
       [GameRoomContent::PACK_OPTION_KEY, GameRoomContent::PACK_VERSION_KEY,
         GameRoomContent::PACK_CHECKSUM_KEY].include?(key)
     end

@@ -5,7 +5,7 @@ module GameRoomPreferences
   using GameRoomLocalization::Translations
 
   INVITATION_POLICIES = %w[contacts nobody everyone].freeze
-  ROOM_SOUND_NAMES = %w[connect disconnect].freeze
+  ROOM_SOUND_NAMES = %w[connect disconnect conference_created].freeze
   SOUND_GROUPS = %w[all game room chat notifications].freeze
   LEGACY_SOUND_KEYS = {
     "game" => "game_sounds", "room" => "room_membership_sounds",
