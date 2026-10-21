@@ -24,6 +24,9 @@ module GameRoomGames
         OptionDefinition.new(key: 'riichi_seats', label: _('Occupied seats, including bots'), kind: :choice, default: '4',
           choices: [OptionChoice.new(value: '4', label: _('Four players')),
             OptionChoice.new(value: '3', label: _('Three players (sanma)'))], visible_if: {'variant'=>'riichi'}),
+        OptionDefinition.new(key: 'fan_progress', label: _('Basic scoring preview under W'), kind: :choice, default: 'yes',
+          choices: [OptionChoice.new(value: 'yes', label: _('Yes')), OptionChoice.new(value: 'no', label: _('No'))],
+          visible_if: {'variant'=>TABLE_VARIANTS}),
         mahjong_length_option('hong_kong', '4', %w[0 1 4]),
         mahjong_length_option('riichi', '2', %w[0 1 2]),
         mahjong_length_option('mcr', '4', %w[0 4])
@@ -42,6 +45,7 @@ module GameRoomGames
       variant = result.fetch('variant')
       # Ignore options from inactive variants, including old derived values
       # supplied by a saved preference. Replay uses only this selected profile.
+      result.delete('fan_progress') if variant == 'solitaire'
       result.delete('layout') unless variant == 'solitaire'
       result.delete('riichi_seats') unless variant == 'riichi'
       LENGTH_KEYS.each { |profile, key| result.delete(key) unless profile == variant }

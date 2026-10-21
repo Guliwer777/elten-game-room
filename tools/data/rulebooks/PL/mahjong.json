@@ -15,6 +15,9 @@
         },
         {
           "pl": "D podczas odpowiedzi na cudzy kamień odczytuje kamień, którego dotyczy Pas, Chow, Pung, Kong lub Mahjong. Nie zmienia wyboru ani nie zatwierdza odpowiedzi. W pasjansie D nadal odczytuje współrzędne."
+        },
+        {
+          "pl": "W Hongkongu, Riichi i MCR klawisz W odczytuje też sumę podstawowych premii, które już masz: pungów smoków i punktowanych wiatrów oraz odpowiednich bonusów lub przyjętego zgłoszenia Riichi. Pungi na ręce liczą się, dopóki zachowasz je jako trójki. To nie jest wartość niepełnej ręki: większy układ może zastąpić podstawowe premie. W MCR kwiaty są podawane osobno i nie pomagają osiągnąć 8 fan; w Riichi widoczne dora również są osobno, bo wymagają yaku. Hongkong osobno przypomina o możliwym punkcie za brak bonusów, który znika po dobraniu kwiatu lub pory roku. Przy tworzeniu stołu opcja Podgląd podstawowej punktacji pod W ma domyślnie wartość Tak. Wybierz Nie, jeśli chcesz odczytywać tylko wartość legalnej wygranej. Ustawienie nie zmienia punktacji ani warunków wygranej."
         }
       ]
     },
@@ -77,6 +80,17 @@
         },
         {
           "pl": "Gdy nie znajdujesz pary, użyj Cofnij ostatnią parę. Możesz cofać kolejne ruchy aż do początku. Zakończ ten układ kończy grę wcześniej, bez wygranej."
+        }
+      ]
+    },
+    {
+      "id": "solitaire_points",
+      "title": {
+        "pl": "Pasjans — punkty za usuwanie par"
+      },
+      "paragraphs": [
+        {
+          "pl": "Pasjans nie używa fan, han ani fu. Wynik to liczba usuniętych par: każda para daje 1 punkt, a cofnięcie jej usunięcia odbiera ten punkt. Wygrywasz po usunięciu wszystkich 144 kamieni, czyli 72 par."
         }
       ]
     },
@@ -191,7 +205,7 @@
           "pl": "Tab i Shift+Tab zmieniają pola. Najpierw jest opis sytuacji, potem dostępne działania i twoje kamienie. Na listach wybierasz strzałkami i zatwierdzasz Enterem. Wyłożone układy pokazują układy wszystkich graczy z nazwami właścicieli, a Odrzucone kamienie ich odrzucenia. S odczytuje punkty, M liczbę kamieni w murze."
         },
         {
-          "pl": "W odczytuje wartość legalnej wygranej: fan albo han i fu oraz przyrost punktów. Bez legalnej wygranej nie szacuje wartości niepełnej ręki. Przed wygraną w Riichi pomija ukryte ura-dora, więc końcowa wartość może być wyższa. U odczytuje twoje wyłożone układy, Shift+U układy pozostałych graczy, a R numer rozdania, wiatry i bieżącą sytuację. W Riichi I odczytuje wskaźniki i kamienie dora, liczbę twoich dora, zgłoszenia Riichi, depozyty, honba oraz blokadę furiten. Te klawisze tylko odczytują informacje."
+          "pl": "W odczytuje wartość legalnej wygranej: fan albo han i fu oraz przyrost punktów. Bez legalnej wygranej nie podaje końcowej wartości ręki. Przed wygraną w Riichi pomija ukryte ura-dora, więc końcowa wartość może być wyższa. U odczytuje twoje wyłożone układy, Shift+U układy pozostałych graczy, a R numer rozdania, wiatry i bieżącą sytuację. W Riichi I odczytuje wskaźniki i kamienie dora, liczbę twoich dora, zgłoszenia Riichi, depozyty, honba oraz blokadę furiten. Te klawisze tylko odczytują informacje."
         }
       ]
     },
@@ -202,16 +216,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Przykład czterech układów i pary: 2–3–4 bambusów; 4–5–6 kół; trzy 7 znaków; trzy czerwone smoki; dwa Zachody. Każdy kamień wykorzystujesz tylko raz. Gdy brakuje 4 bambusów, rękę może dokończyć dobrana lub przejęta 4 bambusów, jeśli spełniasz też warunek punktowy."
-        },
-        {
-          "pl": "Sam przykładowy kształt nie gwarantuje 3 fan. Pung czerwonych smoków daje 1. Jeśli nie masz żadnych kwiatów ani pór roku, dochodzi 1, a własne dobranie dodaje jeszcze 1: razem 3. Na cudzym odrzuceniu zabrakłoby jednego fan, chyba że ręka spełnia dodatkowy warunek. Planuj więc jednocześnie kształt i wartość ręki."
-        },
-        {
-          "pl": "Możesz też wygrać siedmioma parami za 4 fan. W tym chińskim profilu cztery jednakowe kamienie, których nie zgłoszono jako kong, mogą utworzyć dwie pary. Trzynaście sierot to jeszcze inny, rzadki kształt. Na początek wystarczy nauczyć się zwykłych czterech układów i pary; specjalne ręce są alternatywą, nie dodatkowym obowiązkiem."
-        },
-        {
-          "pl": "Trzynaście sierot oznacza po jednej 1 i 9 każdego z trzech kolorów, po jednym z czterech wiatrów i trzech smoków oraz drugą sztukę dowolnego z tych trzynastu rodzajów. Nie ma tu chow ani wymogu czterech zwykłych układów. Rękę zachowujesz bez przejmowania układów; ten profil przyznaje za nią 13 fan."
+          "pl": "Ułóż łącznie cztery chow, pungi lub kongi i jedną parę; liczą się układy na stole i na ręce. Chow to trzy kolejne liczby jednego koloru, pung trzy jednakowe kamienie, kong cztery, para dwa. Dodatkowo potrzebujesz 3 fan. Gdy ręka spełnia oba warunki, wybierz Zgłoś Mahjong i naciśnij Enter. Pełny katalog punktacji jest dalej; samo dobranie pasującego kamienia nie kończy rozdania automatycznie."
         }
       ]
     },
@@ -236,51 +241,175 @@
       ]
     },
     {
-      "id": "table_hk_practice",
+      "id": "table_hk_sets",
       "title": {
-        "pl": "Hong Kong — Planowanie ręki na przykładach"
+        "pl": "Hongkong — pełny katalog punktacji"
       },
       "paragraphs": [
         {
-          "pl": "Prosty plan to cztery pungi i para: zapewnia 3 fan. Zachowuj pary, z których możesz zrobić pungi. Druga droga to układy jednego koloru wraz z honorami, także za 3 fan. Wybierz plan pasujący do swoich kamieni."
+          "pl": "Zwykła wygrana wymaga czterech układów i pary oraz co najmniej 3 fan. Siedem par i trzynaście sierot mają osobne kształty. Poniżej jest pełny katalog premii tego wydania; wpis bez ograniczenia dopuszcza rękę odkrytą i zakrytą. Pojedynczy zwykły chow, pung liczbowy albo para nie dają osobnej premii."
+        },
+        {
+          "pl": "Zgodne zwykłe premie sumują się. Małe i wielkie trzy smoki zastępują punkty za składowe smocze pungi. Ręce specjalne od 10 fan wzwyż są oceniane inaczej: gra wybiera najwyższą pasującą premię specjalną i nie dodaje do niej zwykłych premii. Samo ukrycie ręki lub czterech pungów nie daje osobnej premii. Zebranie wszystkich ośmiu bonusów daje 4 fan, a siedem par 4 fan."
         }
       ]
     },
     {
-      "id": "table_hk_sets",
+      "id": "table_hk_fan_1",
       "title": {
-        "pl": "Hong Kong: wartości układów i wypłaty"
+        "pl": "Hong Kong: 1 fan"
       },
       "paragraphs": [
         {
-          "pl": "W tym profilu Hong Kong nie ma osobnej tabeli fu ani premii tylko za ukrycie zwykłego punga lub konga. Kong spełnia te same warunki dotyczące rodzaju kamienia co pung. Punkty fan pochodzą z układów całej ręki, honorów oraz sposobu wygranej."
+          "pl": "- 1 fan — Samodobór — samodzielnie dobierz zwycięski kamień."
         },
         {
-          "pl": "- Wszystkie cztery układy będące chow dają 1 fan. Cztery pungi lub kongi dają 3 fan. Siedem par daje 4 fan."
+          "pl": "- 1 fan — Same chow — cztery sekwensy i para; para może być z honorów."
         },
         {
-          "pl": "- Jeden kolor wraz z honorami daje 3 fan; jeden kolor bez honorów 7 fan."
+          "pl": "- 1 fan — Pung lub kong czerwonych smoków."
         },
         {
-          "pl": "- Pung lub kong każdego rodzaju smoków daje 1 fan. Dwa rodzaje smoków w pungach i trzeci w parze to małe trzy smoki za 5 fan; trzy smocze pungi to duże trzy smoki za 8. Te dwie większe premie zawierają już punkty za składowe smocze pungi."
+          "pl": "- 1 fan — Pung lub kong zielonych smoków."
         },
         {
-          "pl": "- Pung lub kong własnego wiatru daje 1 fan, a wiatru rundy kolejny 1. Gdy to ten sam wiatr, dostajesz łącznie 2."
+          "pl": "- 1 fan — Pung lub kong białych smoków."
         },
         {
-          "pl": "- Własne dobranie daje 1 fan. Wygrana na ostatnim zwykłym dobraniu, na ostatnim odrzuceniu, na kamieniu uzupełniającym albo przez obrabowanie konga daje odpowiednią premię 1 fan."
+          "pl": "- 1 fan — Pung lub kong własnego wiatru."
         },
         {
-          "pl": "- Brak kwiatów i pór roku daje 1 fan. W każdej z dwóch rodzin własny bonus daje 1: numer 1 odpowiada Wschodowi, 2 Południu, 3 Zachodowi, 4 Północy. Pełna rodzina czterech daje zamiast tego 2 fan."
+          "pl": "- 1 fan — Pung lub kong wiatru rundy; ten sam wiatr własny i rundy daje razem 2 fan."
         },
         {
-          "pl": "Rzadkie ręce mają osobną wartość: trzynaście sierot 13 fan, małe cztery wiatry 10, duże cztery wiatry 15, same honory 10, same skrajne liczby 10, cztery kongi 18, dziewięć bram 15. Małe cztery wiatry to trzy wiatry w pungach i czwarty w parze; duże to wszystkie cztery w pungach. Przy takich rękach gra wybiera najwyższą premię specjalną bez dodawania zwykłych premii."
+          "pl": "- 1 fan — Wygrana kamieniem uzupełniającym po kongu; dodatkowo liczy się samodobór."
         },
         {
-          "pl": "Przykład prostej drogi do minimum: cztery chow dają 1 fan, brak kwiatów 1, a własne dobranie 1, razem 3. Taki sam kształt na cudzym odrzuceniu może mieć tylko 2 i nie pozwalać na wygraną. Z kolei cztery pungi już same zapewniają wymagane 3 fan."
+          "pl": "- 1 fan — Obrabowanie konga — wygraj kamieniem dodawanym do odkrytego punga."
         },
         {
-          "pl": "Do wypłaty używa się podstawy zależnej od sumy fan: 3 fan — 8 punktów; 4 — 16; 5 — 24; 6 — 32; 7 — 48; 8 lub więcej — 64. Gracz, który odrzucił zwycięski kamień, płaci dwukrotność podstawy, pozostali po jednej podstawie. Przy własnym dobraniu wszyscy przeciwnicy płacą po dwie podstawy. Na przykład 5 fan daje 96 punktów z odrzucenia albo 144 z dobrania. Limit 8 fan dotyczy wypłaty, nawet jeśli wartość specjalnej ręki jest wyższa."
+          "pl": "- 1 fan — Ostatnie zwykłe dobranie z muru; dodatkowo liczy się samodobór."
+        },
+        {
+          "pl": "- 1 fan — Wygrana na ostatnim odrzuceniu, po opróżnieniu zwykłego muru."
+        },
+        {
+          "pl": "- 1 fan — Brak wszystkich bonusów — ani jednego kwiatu i ani jednej pory roku."
+        },
+        {
+          "pl": "- 1 fan — Własny kwiat — numer kwiatu odpowiada twojemu wiatrowi."
+        },
+        {
+          "pl": "- 1 fan — Własna pora roku — numer pory roku odpowiada twojemu wiatrowi."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_fan_2",
+      "title": {
+        "pl": "Hong Kong: 2 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- 2 fan — Komplet czterech kwiatów — zastępuje 1 fan za własny kwiat."
+        },
+        {
+          "pl": "- 2 fan — Komplet czterech pór roku — zastępuje 1 fan za własną porę roku."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_fan_3_8",
+      "title": {
+        "pl": "Hong Kong: 3–8 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- 3 fan — Same pungi — cztery pungi lub kongi i para."
+        },
+        {
+          "pl": "- 3 fan — Jeden kolor z honorami — jeden kolor liczbowy oraz wiatry lub smoki, oba rodzaje obecne."
+        },
+        {
+          "pl": "- 4 fan — Siedem par — cztery jednakowe kamienie bez zgłoszenia konga mogą tworzyć dwie pary."
+        },
+        {
+          "pl": "- 5 fan — Małe trzy smoki — dwa smocze pungi lub kongi i para trzeciego smoka; zawiera premie za smocze pungi."
+        },
+        {
+          "pl": "- 7 fan — Jeden kolor bez honorów — wyłącznie bambusy, koła albo znaki."
+        },
+        {
+          "pl": "- 8 fan — Wielkie trzy smoki — pungi lub kongi wszystkich trzech smoków; zawiera premie za smocze pungi."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_fan_special",
+      "title": {
+        "pl": "Hong Kong: 10–18 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- 10 fan — Małe cztery wiatry — trzy pungi lub kongi wiatrów i para czwartego."
+        },
+        {
+          "pl": "- 10 fan — Same honory — wyłącznie wiatry i smoki w poprawnej zwycięskiej ręce."
+        },
+        {
+          "pl": "- 10 fan — Same skrajne liczby — wyłącznie jedynki i dziewiątki, bez honorów."
+        },
+        {
+          "pl": "- 13 fan — Trzynaście sierot — po jednej 1 i 9 każdego koloru, wszystkie cztery wiatry i trzy smoki, jeden z tych kamieni powtórzony do pary; ręka zakryta."
+        },
+        {
+          "pl": "- 15 fan — Wielkie cztery wiatry — cztery pungi lub kongi wiatrów i para."
+        },
+        {
+          "pl": "- 15 fan — Dziewięć bram — na zakrytej ręce dokładna baza 1112345678999 jednego koloru przed dobraniem lub przejęciem dodatkowego kamienia tego koloru."
+        },
+        {
+          "pl": "- 18 fan — Cztery kongi i para."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_bonus",
+      "title": {
+        "pl": "Hongkong — kwiaty i pory roku według wiatru"
+      },
+      "paragraphs": [
+        {
+          "pl": "Własny kwiat i własna pora roku zależą od twojego wiatru, a nie od wiatru rundy. Numer 1 oznacza Wschód, 2 Południe, 3 Zachód, 4 Północ. Komplet jednej rodziny zastępuje jej premię za własny kamień; obie rodziny liczą się osobno."
+        },
+        {
+          "pl": "- Wschód: Kwiat śliwy i Wiosna."
+        },
+        {
+          "pl": "- Południe: Kwiat orchidei i Lato."
+        },
+        {
+          "pl": "- Zachód: Kwiat chryzantemy i Jesień."
+        },
+        {
+          "pl": "- Północ: Kwiat bambusa i Zima."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_payments",
+      "title": {
+        "pl": "Hong Kong — Punktacja i wypłaty"
+      },
+      "paragraphs": [
+        {
+          "pl": "Do wypłaty używa się podstawy: 3 fan — 8 punktów; 4 — 16; 5 — 24; 6 — 32; 7 — 48; 8 i więcej — 64. Wartość ręki może przekroczyć 8 fan, ale nie zwiększa to podstawy wypłaty."
+        },
+        {
+          "pl": "Przy wygranej na odrzuceniu odrzucający płaci dwie podstawy, pozostali przeciwnicy po jednej. Przy własnym dobraniu każdy przeciwnik płaci dwie podstawy."
+        },
+        {
+          "pl": "Niebiańska i ziemska ręka nie są obecnie przyznawane podczas rozgrywki. Nie doliczaj za nie premii za wygraną na początku rozdania."
         }
       ]
     },
@@ -424,7 +553,7 @@
           "pl": "Tab i Shift+Tab zmieniają pola. Najpierw jest opis sytuacji, potem dostępne działania i twoje kamienie. Na listach wybierasz strzałkami i zatwierdzasz Enterem. Wyłożone układy pokazują układy wszystkich graczy z nazwami właścicieli, a Odrzucone kamienie ich odrzucenia. S odczytuje punkty, M liczbę kamieni w murze."
         },
         {
-          "pl": "W odczytuje wartość legalnej wygranej: fan albo han i fu oraz przyrost punktów. Bez legalnej wygranej nie szacuje wartości niepełnej ręki. Przed wygraną w Riichi pomija ukryte ura-dora, więc końcowa wartość może być wyższa. U odczytuje twoje wyłożone układy, Shift+U układy pozostałych graczy, a R numer rozdania, wiatry i bieżącą sytuację. W Riichi I odczytuje wskaźniki i kamienie dora, liczbę twoich dora, zgłoszenia Riichi, depozyty, honba oraz blokadę furiten. Te klawisze tylko odczytują informacje."
+          "pl": "W odczytuje wartość legalnej wygranej: fan albo han i fu oraz przyrost punktów. Bez legalnej wygranej nie podaje końcowej wartości ręki. Przed wygraną w Riichi pomija ukryte ura-dora, więc końcowa wartość może być wyższa. U odczytuje twoje wyłożone układy, Shift+U układy pozostałych graczy, a R numer rozdania, wiatry i bieżącą sytuację. W Riichi I odczytuje wskaźniki i kamienie dora, liczbę twoich dora, zgłoszenia Riichi, depozyty, honba oraz blokadę furiten. Te klawisze tylko odczytują informacje."
         }
       ]
     },
@@ -435,13 +564,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Przykład czterech układów i pary: 2–3–4 bambusów; 4–5–6 kół; trzy 7 znaków; trzy czerwone smoki; dwa Zachody. Każdy kamień wykorzystujesz tylko raz. Gdy brakuje 4 bambusów, rękę może dokończyć dobrana lub przejęta 4 bambusów, jeśli spełniasz też warunek punktowy."
-        },
-        {
-          "pl": "Pung czerwonych smoków w przykładzie daje yaku warte 1 han, niezależnie od tego, czy jest wyłożony, czy w ręce. Gdy ukończysz wszystkie cztery układy i parę, to yaku wystarcza do wygranej, o ile nie blokuje jej na przykład furiten przy cudzym odrzuceniu. Nie każdy układ musi osobno dawać yaku."
-        },
-        {
-          "pl": "Siedem różnych par to osobna ręka i yaku za 2 han. Cztery jednakowe kamienie nie zastępują dwóch różnych par w Riichi. Trzynaście sierot składa się z każdej liczbowej 1 i 9 oraz wszystkich siedmiu honorów, z jednym powtórzeniem i bez przejętych układów. To yakuman, czyli ręka z najwyższego poziomu punktacji. Te kształty zastępują zwykłe cztery układy i parę."
+          "pl": "Zwykła ręka ma cztery układy i parę. Alternatywy to siedem różnych par oraz trzynaście sierot. Do wygranej potrzebujesz yaku; same dora i fu nie wystarczą. Gdy pojawi się legalna wygrana, wybierz Zgłoś Mahjong i naciśnij Enter. Tabele dalej podają wartości wszystkich przyznawanych yaku oraz fu."
         }
       ]
     },
@@ -469,23 +592,6 @@
       ]
     },
     {
-      "id": "table_riichi_practice",
-      "title": {
-        "pl": "Riichi — Planowanie ręki na przykładach"
-      },
-      "paragraphs": [
-        {
-          "pl": "Na pierwszą grę możesz przyjąć plan zamkniętej ręki i Riichi. Dobieraj, poprawiaj układy i odrzucaj mniej przydatne kamienie, bez przejmowania układów. Gdy pojawi się lista Riichi, wybierz proponowane odrzucenie. Dostajesz w ten sposób yaku, ale jeszcze nie wygrywasz: nadal czekasz na kamień kończący rękę."
-        },
-        {
-          "pl": "Inna czytelna droga to pung smoków. Możesz przejąć trzeciego smoka i zachować yaku mimo otwarcia ręki. Nadal musisz zbudować pozostałe trzy układy i parę. Nie zakładaj, że każda kompletna ręka wygrywa: otwarta ręka ze zwykłych, niezwiązanych chow może nie mieć żadnego yaku."
-        },
-        {
-          "pl": "Dziewięć bram to zamknięta ręka jednego koloru z podstawą 1–1–1–2–3–4–5–6–7–8–9–9–9 i jednym dodatkowym kamieniem tego koloru. Nie oznacza dziewięciu chow. Same zielone w Riichi oznaczają wyłącznie 2, 3, 4, 6 i 8 bambusów oraz zielone smoki, nadal ułożone w poprawny pełny kształt."
-        }
-      ]
-    },
-    {
       "id": "table_riichi",
       "title": {
         "pl": "Riichi — zgłoszenie gotowości, dora i furiten"
@@ -505,44 +611,150 @@
     {
       "id": "table_yaku",
       "title": {
-        "pl": "Riichi: yaku i wartość otwartej ręki"
+        "pl": "Riichi — pełny katalog yaku i han"
       },
       "paragraphs": [
         {
-          "pl": "Yaku to nazwany warunek wygranej. Han z kilku zgodnych yaku sumują się. Zwykły chow nie daje sam z siebie han, a zwykły pung środkowych liczb też nie. Przejęcie cudzej kości może przyspieszyć rękę, ale odbiera niektóre yaku i obniża inne."
+          "pl": "Riichi wymaga poprawnej ręki i przynajmniej jednego yaku. Poniżej podano wszystkie zwykłe yaku przyznawane w tym wydaniu, z wartością zakrytej i odkrytej ręki. Zakryty kong nie otwiera ręki. Cudzy kamień kończący pung sprawia, że ten pung nie jest ukryty przy ocenie wygranej."
         },
         {
-          "pl": "- Tanyao, czyli wyłącznie liczby 2–8 bez honorów: 1 han, także przy otwartej ręce. Pung lub kong smoków: po 1 han za rodzaj. Własny wiatr i wiatr rundy: po 1 han za pung lub kong; wspólny wiatr daje 2 han."
+          "pl": "- Riichi — zakryta gotowa ręka i przyjęta deklaracja z depozytem 1000 punktów. Tylko zakryta: 1 han."
         },
         {
-          "pl": "- Riichi: 1 han, tylko zamknięta gotowa ręka i depozyt 1000 punktów. Podwójne Riichi, zadeklarowane w pierwszym obiegu przed przerwaniem go przejęciem: 2 zamiast 1. Ippatsu za wygraną w pierwszym nieprzerwanym obiegu po Riichi dodaje 1."
+          "pl": "- Podwójne Riichi — deklaracja w pierwszym nieprzerwanym obiegu; zastępuje zwykłe Riichi. Tylko zakryta: 2 han."
         },
         {
-          "pl": "- Menzen tsumo, czyli własne dobranie przy zamkniętej ręce: 1 han. Pinfu: 1 han tylko zamknięte, cztery chow, niepunktowana para i dwustronne oczekiwanie."
+          "pl": "- Ippatsu — wygrana w pierwszym nieprzerwanym obiegu po Riichi. Tylko zakryta: 1 han."
         },
         {
-          "pl": "- Dwa identyczne chow jednego koloru: 1 han tylko zamknięte. Dwie takie pary chow: 3 han zamiast 1, również tylko zamknięte. Siedem różnych par: 2 han."
+          "pl": "- Menzen tsumo — zakryta ręka wygrana własnym dobraniem. Tylko zakryta: 1 han."
         },
         {
-          "pl": "- Cztery pungi lub kongi: 2 han. Trzy ukryte pungi: 2. Trzy kongi: 2. Dwa pungi smoków i para trzeciego smoka: 2, oprócz punktów za smocze pungi."
+          "pl": "- Tanyao — wyłącznie liczby 2–8, bez honorów. Zakryta: 1 han; odkryta: 1 han."
         },
         {
-          "pl": "- Te same chow w trzech kolorach, na przykład 2–3–4 znaków, kół i bambusów: 2 han zamknięte, 1 otwarte. Pełny ciąg 1–2–3, 4–5–6 i 7–8–9 w jednym kolorze: 2 zamknięte, 1 otwarte. Pungi tej samej liczby w trzech kolorach: 2 niezależnie od otwarcia."
+          "pl": "- Yakuhai — za każdy pung lub kong smoków osobno. Zakryta: 1 han; odkryta: 1 han."
         },
         {
-          "pl": "- Jeden kolor wraz z honorami: 3 han zamknięte, 2 otwarte. Jeden kolor bez honorów: 6 zamknięte, 5 otwarte."
+          "pl": "- Pung lub kong własnego wiatru. Zakryta: 1 han; odkryta: 1 han."
         },
         {
-          "pl": "- Skrajny kamień lub honor w każdej grupie i parze, przy obecności chow: 2 han zamknięte, 1 otwarte. Jeśli nie ma honorów: odpowiednio 3 i 2. Ręka złożona wyłącznie ze skrajnych kamieni i honorów daje 2 han."
+          "pl": "- Pung lub kong wiatru rundy; ten sam wiatr co własny daje łącznie 2 han. Zakryta: 1 han; odkryta: 1 han."
         },
         {
-          "pl": "- Ostatnie zwykłe dobranie, ostatni odrzucony kamień, dobranie po kongu albo obrabowanie konga: właściwe yaku daje 1 han."
+          "pl": "- Haitei — wygrana ostatnim zwykłym dobraniem z muru. Zakryta: 1 han; odkryta: 1 han."
         },
         {
-          "pl": "Dora daje po 1 han za posiadany kamień bonusowy, ale dopiero gdy ręka ma prawdziwe yaku. Wskaźnik wskazuje następny kamień w cyklu, na przykład wskaźnik 3 bambusów oznacza dora 4 bambusów; po 9 następuje 1. Przy honorach cykle to Wschód–Południe–Zachód–Północ i biały–zielony–czerwony smok. Dora nie jest osobnym kształtem ręki."
+          "pl": "- Houtei — wygrana ostatnim odrzutem. Zakryta: 1 han; odkryta: 1 han."
         },
         {
-          "pl": "Yakuman zastępuje zwykłą punktację han i fu. W tej grze należą do niego między innymi trzynaście sierot, cztery ukryte pungi, trzy smocze pungi, małe lub duże cztery wiatry, same honory, same skrajne liczby, same zielone kamienie, cztery kongi i dziewięć bram. Zgodne yakumany mogą się sumować. Cztery ukryte pungi przy wygranej na odrzuceniu wymagają zakończenia pary; gdy cudzy kamień dopiero tworzy czwarty pung, nie jest on ukryty."
+          "pl": "- Rinshan — wygrana kamieniem uzupełniającym po kongu. Zakryta: 1 han; odkryta: 1 han."
+        },
+        {
+          "pl": "- Chankan — obrabowanie konga. Zakryta: 1 han; odkryta: 1 han."
+        },
+        {
+          "pl": "- Pinfu — cztery chow, niepunktowana para i dwustronne oczekiwanie. Tylko zakryta: 1 han."
+        },
+        {
+          "pl": "- Iipeikou — dwa identyczne chow jednego koloru. Tylko zakryta: 1 han."
+        },
+        {
+          "pl": "- Ryanpeikou — dwie pary identycznych chow; zastępuje Iipeikou. Tylko zakryta: 3 han."
+        },
+        {
+          "pl": "- Chiitoitsu — siedem różnych par; cztery identyczne kamienie nie tworzą dwóch par. Tylko zakryta: 2 han."
+        },
+        {
+          "pl": "- Toitoi — cztery pungi lub kongi i para. Zakryta: 2 han; odkryta: 2 han."
+        },
+        {
+          "pl": "- Sanankou — trzy ukryte pungi lub kongi; czwarty układ może być odkryty. Zakryta: 2 han; odkryta: 2 han."
+        },
+        {
+          "pl": "- Sankantsu — trzy kongi. Zakryta: 2 han; odkryta: 2 han."
+        },
+        {
+          "pl": "- Shousangen — dwa smocze pungi lub kongi i para trzeciego smoka; doliczane są też Yakuhai za oba pungi. Zakryta: 2 han; odkryta: 2 han."
+        },
+        {
+          "pl": "- Sanshoku doujun — identyczny chow w każdym z trzech kolorów. Zakryta: 2 han; odkryta: 1 han."
+        },
+        {
+          "pl": "- Sanshoku doukou — pungi tej samej liczby w trzech kolorach. Zakryta: 2 han; odkryta: 2 han."
+        },
+        {
+          "pl": "- Ittsu — chow 123, 456 i 789 jednego koloru. Zakryta: 2 han; odkryta: 1 han."
+        },
+        {
+          "pl": "- Chanta — każdy układ i para zawierają skrajny kamień lub honor; są zarówno chow, jak i honory. Zakryta: 2 han; odkryta: 1 han."
+        },
+        {
+          "pl": "- Junchan — każdy układ i para zawierają 1 lub 9; są chow, nie ma honorów. Zakryta: 3 han; odkryta: 2 han."
+        },
+        {
+          "pl": "- Honroutou — wyłącznie skrajne kamienie i honory. Zakryta: 2 han; odkryta: 2 han."
+        },
+        {
+          "pl": "- Honitsu — jeden kolor liczbowy oraz honory. Zakryta: 3 han; odkryta: 2 han."
+        },
+        {
+          "pl": "- Chinitsu — jeden kolor liczbowy bez honorów. Zakryta: 6 han; odkryta: 5 han."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_dora",
+      "title": {
+        "pl": "Riichi — dodatkowe han za dora"
+      },
+      "paragraphs": [
+        {
+          "pl": "Dora — po 1 han za każdy posiadany kamień dora, ale tylko przy ręce z prawdziwym yaku. Dora nie jest yaku. Wskaźnik wskazuje następny kamień w cyklu; liczy się każda jego kopia w ręce lub własnych układach. Po przyjętym Riichi przy końcowej wygranej mogą dojść ukryte ura-dora. Podgląd przed wygraną ich nie ujawnia."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_yakuman",
+      "title": {
+        "pl": "Riichi — pełny katalog yakumanów"
+      },
+      "paragraphs": [
+        {
+          "pl": "Każda poniższa pozycja daje 1 yakuman i zastępuje zwykłe han oraz fu. Zgodne różne yakumany mogą się sumować. W tym wydaniu nie ma podwojenia yakumana za szczególny rodzaj oczekiwania ani za wielkie cztery wiatry."
+        },
+        {
+          "pl": "- 1 yakuman — Trzynaście sierot — wszystkie skrajne i honorowe oraz jeden powtórzony kamień; ręka zakryta."
+        },
+        {
+          "pl": "- 1 yakuman — Cztery ukryte pungi lub kongi — na cudzym odrzuceniu zwycięski kamień musi kończyć parę."
+        },
+        {
+          "pl": "- 1 yakuman — Wielkie trzy smoki — pungi lub kongi trzech rodzajów smoków."
+        },
+        {
+          "pl": "- 1 yakuman — Wielkie cztery wiatry — cztery pungi lub kongi wiatrów."
+        },
+        {
+          "pl": "- 1 yakuman — Małe cztery wiatry — trzy pungi lub kongi wiatrów i para czwartego."
+        },
+        {
+          "pl": "- 1 yakuman — Same honory — wyłącznie wiatry i smoki."
+        },
+        {
+          "pl": "- 1 yakuman — Same skrajne — wyłącznie jedynki i dziewiątki."
+        },
+        {
+          "pl": "- 1 yakuman — Same zielone — wyłącznie bambusy 2, 3, 4, 6, 8 i zielone smoki."
+        },
+        {
+          "pl": "- 1 yakuman — Cztery kongi i para."
+        },
+        {
+          "pl": "- 1 yakuman — Dziewięć bram — zakryta ręka jednego koloru: 1112345678999 i jeden dodatkowy kamień tego koloru."
+        },
+        {
+          "pl": "Niebiańska i ziemska ręka nie są obecnie przyznawane podczas rozgrywki. Nie doliczaj za nie premii za wygraną na początku rozdania."
         }
       ]
     },
@@ -578,9 +790,6 @@
         },
         {
           "pl": "Sumę zaokrągla się w górę do pełnych dziesiątek: 32 fu staje się 40. Wyjątki: siedem par ma zawsze 25 fu, a pinfu z własnego dobrania 20 fu bez dodatkowych 2 za dobranie. Pozostała ręka, która miałaby tylko 20 fu, otrzymuje minimum 30."
-        },
-        {
-          "pl": "Przykład samego liczenia fu: 20 podstawy, 10 za zamkniętą wygraną na odrzuceniu, 4 za ukryty pung piątek i 2 za parę smoków daje 36, czyli 40 fu. Nadal potrzebujesz yaku: same fu nie uprawniają do wygranej."
         }
       ]
     },
@@ -595,9 +804,6 @@
         },
         {
           "pl": "Na cudzym odrzuceniu zwycięzca inny niż rozdający otrzymuje cztery podstawy od odrzucającego. Rozdający otrzymuje sześć. Przy własnym dobraniu zwycięzca inny niż rozdający dostaje dwie podstawy od rozdającego i po jednej od pozostałych; jeśli wygra rozdający, każdy płaci dwie."
-        },
-        {
-          "pl": "Przykład 1 han i 30 fu bez premii: wygrana nierozdającego na odrzuceniu to 1000 punktów, a z dobrania 500 od rozdającego i po 300 od dwóch pozostałych, razem 1100. Wygrana rozdającego to 1500 na odrzuceniu albo po 500 od każdego, też 1500."
         },
         {
           "pl": "- Mangan: 5 han lub osiągnięcie limitu podstawy; w tej grze także 3 han 60 fu i 4 han 30 fu. Nierozdający dostaje 8000 na odrzuceniu, rozdający 12 000."
@@ -759,7 +965,7 @@
           "pl": "Tab i Shift+Tab zmieniają pola. Najpierw jest opis sytuacji, potem dostępne działania i twoje kamienie. Na listach wybierasz strzałkami i zatwierdzasz Enterem. Wyłożone układy pokazują układy wszystkich graczy z nazwami właścicieli, a Odrzucone kamienie ich odrzucenia. S odczytuje punkty, M liczbę kamieni w murze."
         },
         {
-          "pl": "W odczytuje wartość legalnej wygranej: fan albo han i fu oraz przyrost punktów. Bez legalnej wygranej nie szacuje wartości niepełnej ręki. Przed wygraną w Riichi pomija ukryte ura-dora, więc końcowa wartość może być wyższa. U odczytuje twoje wyłożone układy, Shift+U układy pozostałych graczy, a R numer rozdania, wiatry i bieżącą sytuację. W Riichi I odczytuje wskaźniki i kamienie dora, liczbę twoich dora, zgłoszenia Riichi, depozyty, honba oraz blokadę furiten. Te klawisze tylko odczytują informacje."
+          "pl": "W odczytuje wartość legalnej wygranej: fan albo han i fu oraz przyrost punktów. Bez legalnej wygranej nie podaje końcowej wartości ręki. Przed wygraną w Riichi pomija ukryte ura-dora, więc końcowa wartość może być wyższa. U odczytuje twoje wyłożone układy, Shift+U układy pozostałych graczy, a R numer rozdania, wiatry i bieżącą sytuację. W Riichi I odczytuje wskaźniki i kamienie dora, liczbę twoich dora, zgłoszenia Riichi, depozyty, honba oraz blokadę furiten. Te klawisze tylko odczytują informacje."
         }
       ]
     },
@@ -770,19 +976,7 @@
       },
       "paragraphs": [
         {
-          "pl": "Przykład czterech układów i pary: 2–3–4 bambusów; 4–5–6 kół; trzy 7 znaków; trzy czerwone smoki; dwa Zachody. Każdy kamień wykorzystujesz tylko raz. Gdy brakuje 4 bambusów, rękę może dokończyć dobrana lub przejęta 4 bambusów, jeśli spełniasz też warunek punktowy."
-        },
-        {
-          "pl": "Cztery układy i para to zwykły kształt, ale potrzeba też 8 fan bez kwiatów. Sam pung smoków daje tylko 2, więc nie zapewnia automatycznie wygranej pozostałej zwykłej ręce. Przed otwarciem zaplanuj kilka zgodnych wzorów albo jeden wystarczająco cenny."
-        },
-        {
-          "pl": "Siedem par jest osobnym kształtem wartym 24 fan. Ten chiński profil pozwala potraktować cztery jednakowe, niewyłożone jako kong kamienie jako dwie pary. Trzynaście sierot daje 88 fan. MCR ma też specjalne ręce z przeplatanymi liczbami, ale na początek możesz uczyć się zwykłych czterech układów i pary."
-        },
-        {
-          "pl": "Przeplatana sekwencja to specjalna grupa dziewięciu kamieni: 1–4–7 jednego koloru, 2–5–8 drugiego i 3–6–9 trzeciego. Przykład: 1–4–7 znaków, 2–5–8 kół i 3–6–9 bambusów. Do tych dziewięciu dodajesz jeden zwykły układ oraz parę. Można zamienić kolory, ale każda trójka liczb musi pozostać w osobnym kolorze. Sam wzór przeplatanej sekwencji daje 12 fan."
-        },
-        {
-          "pl": "Inny specjalny kształt ma 14 różnych kamieni, bez pary: bierzesz liczby z jednego takiego dziewięciokamieniowego wzoru i łączysz je z pięcioma, sześcioma lub siedmioma różnymi honorami. Żaden kamień się nie powtarza. Z wszystkimi siedmioma honorami jest to większa przeplatana ręka za 24 fan; z pięcioma lub sześcioma mniejsza za 12. To alternatywy dla zwykłych czterech układów."
+          "pl": "Zwykła ręka ma cztery układy i parę, ale MCR dopuszcza także siedem par, trzynaście sierot i ręce plecione opisane w katalogu. Potrzebujesz co najmniej 8 fan bez kwiatów. Gdy ręka spełnia warunki, wybierz Zgłoś Mahjong i naciśnij Enter. W katalogu każda pozycja ma nazwę, wartość i warunek odkrycia."
         }
       ]
     },
@@ -807,54 +1001,520 @@
       ]
     },
     {
-      "id": "table_mcr_practice",
+      "id": "table_mcr_sets",
       "title": {
-        "pl": "MCR — Planowanie ręki na przykładach"
+        "pl": "MCR — jak czytać katalog 81 pozycji"
       },
       "paragraphs": [
         {
-          "pl": "Przykład drogi do minimum: pungi 2 znaków, 4 kół, 6 bambusów i białych smoków oraz para 5 znaków. Same pungi dają 6 fan, pung smoków 2: razem co najmniej 8. Mogą być wyłożone. Siedem par daje 24 fan, ale jeden kolor z honorami tylko 6 i sam nie wystarczy."
+          "pl": "Poniższe 81 pozycji opisuje punktowane elementy MCR. Ręka musi mieć poprawny kształt i co najmniej 8 fan bez kwiatów. W opisie punga kong tego samego rodzaju również spełnia warunek. Kamienie liczbowe mają trzy kolory: znaki, koła i bambusy; honory to wiatry i smoki."
         },
         {
-          "pl": "Każdy przeciwnik płaci podstawowe 8 punktów. Przy wygranej na odrzuceniu odrzucający dopłaca wartość ręki z kwiatami; przy dobraniu dopłacają ją wszyscy. Ręka za 8 fan bez kwiatów przynosi więc 32 punkty z odrzucenia albo 48 z dobrania. Gra liczy wypłatę sama."
+          "pl": "Ręka zakryta nie ma układów przejętych z odrzutów; zgłoszony ukryty kong jej nie otwiera. Pung ukończony zwycięskim cudzym odrzuceniem liczy się jako odkryty. Inne pungi zachowane na ręce nadal są ukryte. W rękach plecionych podstawę tworzą 147 jednego koloru, 258 drugiego i 369 trzeciego; kolory można zamienić."
+        },
+        {
+          "pl": "Nie sumuj wszystkich pasujących nazw bez sprawdzenia wykluczeń. Wyższy wzór może zawierać niższy, a tych samych układów nie wolno dowolnie używać ponownie do premii złożonych. Gra wybiera zgodne połączenie. W wykazie wykluczeń numery oznaczają pozycje katalogu MCR, nie kolejność ruchów."
         }
       ]
     },
     {
-      "id": "table_mcr_sets",
+      "id": "table_mcr_fan_88",
       "title": {
-        "pl": "MCR: odkryte i ukryte układy"
+        "pl": "MCR: 88 fan"
       },
       "paragraphs": [
         {
-          "pl": "MCR liczy fan za warunki spełnione przez zwycięską rękę. Nie ma tu riichiowych fu. Samo wyłożenie zwykłego chow albo punga ze środkowych liczb nie daje stałej premii. Chow mogą tworzyć punktowane wzory razem z innymi chow; pung może punktować za swój rodzaj lub jako część większego układu."
+          "pl": "- MCR 1: 88 fan — Wielkie cztery wiatry — cztery pungi wiatrów. Ręka odkryta lub zakryta."
         },
         {
-          "pl": "- Jeden kong: odkryty 1 fan, ukryty 2 fan."
+          "pl": "- MCR 2: 88 fan — Wielkie trzy smoki — trzy pungi smoków. Ręka odkryta lub zakryta."
         },
         {
-          "pl": "- Dwa kongi: oba odkryte 4 fan, jeden odkryty i jeden ukryty 6 fan, oba ukryte 8 fan. Te wartości zastępują sumę premii za pojedyncze kongi."
+          "pl": "- MCR 3: 88 fan — Wszystko zielone — wyłącznie bambusy 2, 3, 4, 6, 8 i zielony smok. Ręka odkryta lub zakryta."
         },
         {
-          "pl": "- Trzy kongi dają 32 fan, a cztery 88 fan. Nie dodajesz do tego ponownie premii za mniejszą liczbę kongów."
+          "pl": "- MCR 4: 88 fan — Dziewięć bram — zakryta baza 1112345678999 jednego koloru, uzupełniona kamieniem tego koloru. Tylko ręka zakryta."
         },
         {
-          "pl": "- Dwa ukryte pungi dają 2 fan, trzy 16 fan, cztery 64 fan. Ukryty kong również zalicza się do liczby ukrytych pungów. Pung zakończony cudzym zwycięskim odrzuceniem nie jest ukryty."
+          "pl": "- MCR 5: 88 fan — Cztery kongi. Ręka odkryta lub zakryta."
         },
         {
-          "pl": "- Pung lub kong smoków daje 2 fan. Pung lub kong własnego wiatru daje 2, a wiatru rundy kolejne 2. Pung skrajnych liczb lub niepunktowanego wiatru daje 1 fan."
+          "pl": "- MCR 6: 88 fan — Siedem kolejnych par jednego koloru. Tylko ręka zakryta."
         },
         {
-          "pl": "- Cztery pungi lub kongi dają 6 fan. Jeden kolor z honorami daje 6, jeden kolor bez honorów 24, siedem par 24, a trzynaście sierot 88 fan."
+          "pl": "- MCR 7: 88 fan — Trzynaście sierot — wszystkie różne skrajne i honorowe oraz dodatkowy kamień tworzący parę. Tylko ręka zakryta."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_64",
+      "title": {
+        "pl": "MCR: 64 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- MCR 8: 64 fan — Wyłącznie kamienie skrajne — jedynki i dziewiątki. Ręka odkryta lub zakryta."
         },
         {
-          "pl": "- Cztery chow z parą liczbową, bez honorów, dają 2 fan. Dwa identyczne chow jednego koloru dają 1 fan; chow 1–2–3 i 7–8–9 w tym samym kolorze również dają 1."
+          "pl": "- MCR 9: 64 fan — Małe cztery wiatry — trzy pungi wiatrów i para czwartego. Ręka odkryta lub zakryta."
         },
         {
-          "pl": "Zamknięta ręka wygrana na odrzuceniu daje 2 fan; całkowicie zamknięta wygrana z dobrania 4. Samo dobranie przy otwartej ręce daje 1. Nie sumuj automatycznie wszystkich opisów: wyższy wzór może zawierać niższy i go wykluczać. Na przykład dwa ukryte kongi za 8 fan nie dostają ponownie 2 fan tylko za te same dwa ukryte pungi."
+          "pl": "- MCR 10: 64 fan — Małe trzy smoki — dwa pungi smoków i para trzeciego. Ręka odkryta lub zakryta."
         },
         {
-          "pl": "Kwiaty i pory roku dają po 1 fan za sztukę, ale nie pomagają osiągnąć wymaganych 8 fan. Ręka warta 7 fan i jeden kwiat nadal nie pozwala zgłosić Mahjong. Gra wybiera zgodne połączenie wzorów; szczegóły wyniku pozwalają sprawdzić naliczoną wartość."
+          "pl": "- MCR 11: 64 fan — Wyłącznie kamienie honorowe — wiatry i smoki. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 12: 64 fan — Cztery zakryte pungi. Wszystkie cztery pungi muszą być zakryte."
+        },
+        {
+          "pl": "- MCR 13: 64 fan — Czyste skrajne sekwensy — 123, 123, 789, 789 i para 55 jednego koloru. Ręka odkryta lub zakryta."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_48",
+      "title": {
+        "pl": "MCR: 48 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- MCR 14: 48 fan — Cztery identyczne sekwensy jednego koloru. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 15: 48 fan — Cztery kolejne pungi jednego koloru. Ręka odkryta lub zakryta."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_32",
+      "title": {
+        "pl": "MCR: 32 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- MCR 16: 32 fan — Cztery przesunięte sekwensy jednego koloru — przesunięcie zawsze o 1 albo zawsze o 2. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 17: 32 fan — Trzy kongi. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 18: 32 fan — Wyłącznie kamienie skrajne i honorowe — oba rodzaje obecne. Ręka odkryta lub zakryta."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_24",
+      "title": {
+        "pl": "MCR: 24 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- MCR 19: 24 fan — Siedem par. Tylko ręka zakryta."
+        },
+        {
+          "pl": "- MCR 20: 24 fan — Większy układ honorowych i plecionych — siedem różnych honorowych i siedem różnych plecionych. Tylko ręka zakryta."
+        },
+        {
+          "pl": "- MCR 21: 24 fan — Wyłącznie parzyste pungi — pungi/kongi i para z liczb 2, 4, 6, 8. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 22: 24 fan — Czysty kolor — wszystkie kamienie jednego koloru, bez honorowych. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 23: 24 fan — Trzy identyczne sekwensy jednego koloru. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 24: 24 fan — Trzy kolejne pungi jednego koloru. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 25: 24 fan — Wyłącznie liczby 7–9. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 26: 24 fan — Wyłącznie liczby 4–6. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 27: 24 fan — Wyłącznie liczby 1–3. Ręka odkryta lub zakryta."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_16",
+      "title": {
+        "pl": "MCR: 16 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- MCR 28: 16 fan — Czysty strit — 123, 456, 789 jednego koloru. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 29: 16 fan — Skrajne sekwensy trzech kolorów — 123 i 789 w każdym z dwóch kolorów, para 55 w trzecim. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 30: 16 fan — Trzy przesunięte sekwensy jednego koloru — przesunięcie zawsze o 1 albo zawsze o 2. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 31: 16 fan — Piątka w każdym zestawie i w parze. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 32: 16 fan — Trzy pungi tej samej liczby, po jednym z każdego koloru. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 33: 16 fan — Trzy zakryte pungi. Te trzy pungi zakryte; czwarty układ może być odkryty."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_12",
+      "title": {
+        "pl": "MCR: 12 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- MCR 34: 12 fan — Mniejszy układ honorowych i plecionych — 14 różnych kamieni z siedmiu honorowych i dziewięciu plecionych. Tylko ręka zakryta."
+        },
+        {
+          "pl": "- MCR 35: 12 fan — Pleciony strit — 147, 258 i 369, każda grupa w innym kolorze, oraz dodatkowy układ i para. Dziewięć plecionych kamieni zakrytych; dodatkowy układ może być odkryty."
+        },
+        {
+          "pl": "- MCR 36: 12 fan — Wyłącznie liczby 6–9. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 37: 12 fan — Wyłącznie liczby 1–4. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 38: 12 fan — Trzy pungi różnych wiatrów. Ręka odkryta lub zakryta."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_8",
+      "title": {
+        "pl": "MCR: 8 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- MCR 39: 8 fan — Mieszany strit — 123, 456 i 789, każdy sekwens w innym kolorze. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 40: 8 fan — Kamienie odwracalne — kółka 1–5, 8, 9; bambusy 2, 4, 5, 6, 8, 9; biały smok. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 41: 8 fan — Trzy identyczne sekwensy, po jednym w każdym kolorze. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 42: 8 fan — Trzy kolejne pungi, każdy w innym kolorze. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 43: 8 fan — Kurza ręka — brak innych elementów punktowanych, poza kwiatami. Ręka odkryta; wygrana z odrzutu."
+        },
+        {
+          "pl": "- MCR 44: 8 fan — Wygrana ostatnim doborem z muru. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 45: 8 fan — Wygrana odrzutem po ostatnim doborze z muru. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 46: 8 fan — Wygrana kamieniem uzupełniającym po kongu, nie po kwiecie. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 47: 8 fan — Obrabowanie konga — wygrana na kamieniu dodawanym do odkrytego punga. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 48: 8 fan — Dwa zakryte kongi. Oba kongi zakryte; pozostałe układy mogą być odkryte."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_6",
+      "title": {
+        "pl": "MCR: 6 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- MCR 49: 6 fan — Same pungi — cztery pungi/kongi i para. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 50: 6 fan — Półczysty kolor — jeden kolor oraz honorowe, oba rodzaje obecne. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 51: 6 fan — Trzy sekwensy przesunięte kolejno o 1, każdy w innym kolorze. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 52: 6 fan — Wszystkie rodzaje — obecne trzy kolory, co najmniej jeden wiatr i jeden smok. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 53: 6 fan — Całkowicie odkryta ręka — cztery zestawy z odrzutów, para ukończona odrzutem. Ręka odkryta; wygrana z odrzutu."
+        },
+        {
+          "pl": "- MCR 54: 6 fan — Dwa pungi smoków. Ręka odkryta lub zakryta."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_4",
+      "title": {
+        "pl": "MCR: 4 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- MCR 55: 4 fan — Zewnętrzna ręka — każdy zestaw i para zawierają kamień skrajny lub honorowy. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 56: 4 fan — Całkowicie zakryta ręka zakończona samodoborem. Tylko ręka zakryta."
+        },
+        {
+          "pl": "- MCR 57: 4 fan — Dwa odkryte kongi. Oba kongi odkryte."
+        },
+        {
+          "pl": "- MCR 58: 4 fan — Ostatni egzemplarz — trzy pozostałe identyczne kamienie są już widoczne na stole. Ręka odkryta lub zakryta."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_2",
+      "title": {
+        "pl": "MCR: 2 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- MCR 59: 2 fan — Pung smoka. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 60: 2 fan — Pung wiatru rundy. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 61: 2 fan — Pung własnego wiatru. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 62: 2 fan — Zakryta ręka zakończona odrzutem przeciwnika. Tylko ręka zakryta."
+        },
+        {
+          "pl": "- MCR 63: 2 fan — Same sekwensy — cztery chow i para liczbowa, bez honorów. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 64: 2 fan — Cztery identyczne kamienie wykorzystane poza kongiem. Ręka odkryta lub zakryta. Za każdy rodzaj osobno."
+        },
+        {
+          "pl": "- MCR 65: 2 fan — Dwa pungi tej samej liczby w różnych kolorach. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 66: 2 fan — Dwa zakryte pungi. Te dwa pungi zakryte; pozostałe układy mogą być odkryte."
+        },
+        {
+          "pl": "- MCR 67: 2 fan — Zakryty kong. Ten kong zakryty; pozostałe układy mogą być odkryte."
+        },
+        {
+          "pl": "- MCR 68: 2 fan — Same środkowe — wyłącznie liczby 2–8, bez honorowych. Ręka odkryta lub zakryta."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_1",
+      "title": {
+        "pl": "MCR: 1 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "- MCR 69: 1 fan — Dwa identyczne sekwensy jednego koloru. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 70: 1 fan — Dwa identyczne sekwensy różnych kolorów. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 71: 1 fan — Krótki strit — dwa sekwensy tworzące sześć kolejnych liczb jednego koloru. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 72: 1 fan — Dwa skrajne sekwensy — 123 i 789 jednego koloru. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 73: 1 fan — Pung jedynek, dziewiątek lub wiatru, który nie jest własnym ani wiatrem rundy. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 74: 1 fan — Odkryty kong. Ten kong odkryty."
+        },
+        {
+          "pl": "- MCR 75: 1 fan — Brak jednego koloru — obecne dokładnie dwa kolory liczbowe, trzeci nie występuje; honory są dozwolone. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 76: 1 fan — Brak kamieni honorowych. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 77: 1 fan — Oczekiwanie skrajne — 12 na 3 albo 89 na 7. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 78: 1 fan — Oczekiwanie środkowe — np. 24 na 3. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 79: 1 fan — Oczekiwanie na uzupełnienie pary. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 80: 1 fan — Samodobór — wygrywający kamień dobrany samodzielnie. Ręka odkryta lub zakryta."
+        },
+        {
+          "pl": "- MCR 81: 1 fan — Każdy kwiat lub pora roku. Ręka odkryta lub zakryta."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_mixed_kongs",
+      "title": {
+        "pl": "MCR — dwa mieszane kongi: 6 fan"
+      },
+      "paragraphs": [
+        {
+          "pl": "Dwa kongi mieszane — 6 fan: jeden kong odkryty i jeden ukryty. Ta wartość zastępuje premie za pojedyncze kongi. To dodatkowe rozróżnienie w tej wersji; nie jest osobną pozycją pośród standardowych 81 nazw."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_exclusions",
+      "title": {
+        "pl": "MCR — premie zawarte w większych układach"
+      },
+      "paragraphs": [
+        {
+          "pl": "Nie sumuj wszystkich pasujących nazw bez sprawdzenia wykluczeń. Wyższy wzór może zawierać niższy, a tych samych układów nie wolno dowolnie używać ponownie do premii złożonych. Gra wybiera zgodne połączenie. W wykazie wykluczeń numery oznaczają pozycje katalogu MCR, nie kolejność ruchów."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 1: 9, 38, 49, 60, 61, 73."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 2: 10, 54, 59."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 4: 22, 62, 73, 76."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 5: 17, 48, 49, 57, 67, 74, 79."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 6: 19, 22, 62, 76, 79."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 7: 18, 52, 62, 79."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 8: 18, 49, 55, 73, 76."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 9: 38, 73."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 10: 54, 59."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 11: 18, 49, 55, 73."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 12: 33, 49, 62, 66."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 13: 19, 22, 63, 69, 72, 76."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 14: 23, 64, 69."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 15: 24, 49."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 16: 30, 71."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 17: 48, 57, 67, 74."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 18: 49, 55, 73."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 19: 62, 79."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 20: 34, 52, 62."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 21: 49, 68, 76."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 22: 76."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 23: 69."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 25: 36, 76."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 26: 68, 76."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 27: 37, 76."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 29: 63, 69, 70, 72, 76."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 31: 68, 76."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 33: 66."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 34: 52, 62."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 36: 76."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 37: 76."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 40: 75."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 44: 80."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 46: 80."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 47: 58."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 48: 57, 66, 67, 74."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 53: 62, 79."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 54: 59."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 56: 62, 80."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 57: 67, 74."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 63: 76."
+        },
+        {
+          "pl": "- Nie doliczaj do pozycji 68: 76."
+        },
+        {
+          "pl": "Trzy pungi wiatrów (38) wykluczają 1 fan za niepunktowany wiatr (73) tylko dla tych samych pungów. Inne niezależne pungi mogą nadal punktować."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_payments",
+      "title": {
+        "pl": "MCR — Punktacja i wypłaty"
+      },
+      "paragraphs": [
+        {
+          "pl": "Każdy przeciwnik płaci podstawowe 8 punktów. Przy wygranej na odrzuceniu odrzucający dodatkowo płaci wartość ręki wraz z kwiatami; przy własnym dobraniu tę wartość dopłacają wszyscy przeciwnicy. Kwiaty i pory roku dają po 1 fan do wypłaty, ale nie do minimum 8 fan."
         }
       ]
     },
@@ -958,6 +1618,7 @@
     "riichi_seats": "table_riichi_variants",
     "hong_kong_winds": "table_hk_variants",
     "riichi_winds": "table_riichi_variants",
-    "mcr_winds": "table_mcr_variants"
+    "mcr_winds": "table_mcr_variants",
+    "fan_progress": "table_aim"
   }
 }

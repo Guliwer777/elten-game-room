@@ -51,10 +51,11 @@ end
     others=info_key(game,meld_replay,'Bob','u',[:shift]).message
     assert(others.include?('Alice') && !others.include?('Bob'))
 
-    # Incomplete hands report no legal win, rather than a fabricated fan count.
+    # Incomplete hands provide only the labelled basic subtotal, never a payout.
     empty_round=GameRoomMahjong::TableRound.new(flow:ready_flow('123456m23455p67s','1z',self_draw:true),variant:variant,dealer:0)
     no_win=info_key(game,info_replay(empty_round),'Alice','w')
-    assert(no_win && !no_win.message.match?(/\d/))
+    assert(no_win && no_win.message != '')
+    assert(!no_win.message.include?('Points gained:'))
     ron_flow=ready_flow('123456789m1115z','5z')
     ron_round=GameRoomMahjong::TableRound.new(flow:ron_flow,variant:variant,dealer:0)
     ron_round=ron_round.with(window:GameRoomMahjong::ClaimOffers.for_discard(ron_flow,

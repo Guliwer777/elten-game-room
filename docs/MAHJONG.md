@@ -384,3 +384,19 @@ No private tile identity is encoded in audio and no audio loop is added.
 - [Hong Kong no-reserved-wall convention](https://mahjong-planet.com/rules/hong-kong/). Its scoring preset differs from the one selected here.
 
 Targeted checks: `ruby test/run.rb test/games/mahjong`.
+
+
+## Basic scoring progress under W
+
+The optional `fan_progress` table setting defaults to yes in HK, MCR and Riichi.
+W keeps its existing exact legal-win readout and adds a separately labelled
+subtotal from owned dragon/wind triplets and accepted bonus facts. Concealed
+triplets are counted only while retained, and no future tile, closed-hand win,
+complete-hand pattern or speculative payment is inferred. This subtotal is not
+an additive breakdown of the final score: complete-hand exclusion rules remain
+in the actual scorer. MCR flowers never enter its qualifying subtotal; Riichi
+visible dora are separate and cannot supply yaku. HK no-bonus fan is explicitly
+provisional and excluded from the subtotal. Spectators receive no W shortcut.
+Disabling the setting restores the previous exact-win-only output and does not
+change any legal action, event, score, bot or result. This is a table setting,
+not a private preference; all participants use the same configured readout.

@@ -237,7 +237,9 @@ module GameRoomGames
       options = options_from_json(session['options'])
       winds = options.fetch('match_winds', 0)
       raise ArgumentError, 'Invalid mahjong match length' unless winds.is_a?(Integer) && winds.between?(0, 4)
-      GameRoomMahjong::Rules.normalize(options).merge('match_winds'=>winds).freeze
+      profile = GameRoomMahjong::Rules.normalize(options).merge('match_winds'=>winds)
+      profile['fan_progress'] = 'no' if options['fan_progress'] == 'no'
+      profile.freeze
     end
 
     def mahjong_ready_selection(state, seat)

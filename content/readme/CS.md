@@ -55,7 +55,11 @@ Zvuky rozlišují rozdání, dobrání a odhození kamene, vyložení sestavy a 
 
 Při odpovědi na kámen klávesa D přečte kámen, kterého se týká Pas, Chow, Pung, Kong nebo Mahjong. Nezmění ani nepotvrdí volbu. V pasiánsu D dál čte souřadnice.
 
-W přečte hodnotu platné výhry: fan nebo han a fu a získané body. Neodhaduje neúplnou ruku. Před výhrou v riichi nezahrnuje skryté ura-dora, takže konečná hodnota může být vyšší. U čte tvé vyložené sestavy, Shift+U sestavy ostatních a R číslo rozdání, větry a aktuální situaci. V riichi I čte ukazatele a kameny dora, počet tvých dora, hlášení riichi, vklady, honba a tvé omezení furiten. Tyto klávesy pouze čtou informace.
+W přečte hodnotu platné výhry: fan nebo han a fu a získané body. Bez platné výhry neuvádí konečnou hodnotu ruky. Před výhrou v riichi nezahrnuje skryté ura-dora, takže konečná hodnota může být vyšší. U čte tvé vyložené sestavy, Shift+U sestavy ostatních a R číslo rozdání, větry a aktuální situaci. V riichi I čte ukazatele a kameny dora, počet tvých dora, hlášení riichi, vklady, honba a tvé omezení furiten. Tyto klávesy pouze čtou informace.
+
+V Hongkongu, Riichi a MCR klávesa W přečte také součet základních bonusů, které už máš: pungy draků a bodovaných větrů, příslušné bonusové kameny nebo přijaté vyhlášení Riichi. Skryté trojice se počítají, dokud je ponecháš pohromadě. Nejde o hodnotu nedokončené ruky: vzory celé ruky mohou základní bonusy nahradit. MCR uvádí květiny zvlášť, protože nepomáhají dosáhnout 8 fan; Riichi uvádí zvlášť viditelné dora, které vyžadují jaku. Hongkong samostatně připomene možný bod za nepřítomnost bonusů, který po dobrání bonusového kamene zanikne. Při vytváření stolu je Základní bodový přehled pod W nastaven na Ano. Zvol Ne, pokud chceš pouze hodnotu platné výhry. Nastavení nemění bodování ani podmínky výhry.
+
+Každá varianta má vlastní přehled bodování: Hongkong uvádí všechny přiznávané fan a bonusy podle větru, MCR všech 81 položek podle hodnoty a Riichi hodnoty otevřených i zavřených jaku, yakumany a fu. MCR vysvětluje také výluky a smíšené kongy za 6 fan. V pasijánsu se počítají odstraněné páry, ne fan.
 
 S přečte průběžné body všech hráčů. M počet kamenů zbývajících k dobrání ve zdi. Jde jen o oznámení: nedobírají, neodhazují, nedávají pas ani neodhalují cizí ruce. V solitaire S čte odebrané páry a M zbývající kameny rozložení.
 

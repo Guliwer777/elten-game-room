@@ -5,9 +5,9 @@ include GameRoomTest::Assertions
 game = MahjongOptionsTest::Game.new
 expected = {
   'solitaire'=>[%w[variant layout], 1, 0],
-  'hong_kong'=>[%w[variant hong_kong_winds bot_delay], 4, 4],
-  'riichi'=>[%w[variant riichi_seats riichi_winds bot_delay], 4, 2],
-  'mcr'=>[%w[variant mcr_winds bot_delay], 4, 4]
+  'hong_kong'=>[%w[variant fan_progress hong_kong_winds bot_delay], 4, 4],
+  'riichi'=>[%w[variant riichi_seats fan_progress riichi_winds bot_delay], 4, 2],
+  'mcr'=>[%w[variant fan_progress mcr_winds bot_delay], 4, 4]
 }
 expected.each do |variant, (keys, seats, winds)|
   values = game.normalize_options('variant'=>variant, 'seats'=>8, 'match_winds'=>99, 'layout'=>'flat', 'riichi_seats'=>'4')

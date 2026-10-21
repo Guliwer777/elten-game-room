@@ -222,9 +222,10 @@
   "mahjong": {
     "variant": "table_aim",
     "layout": "layout",
-    "riichi_seats": "table_riichi",
-    "hong_kong_winds": "table_options",
-    "riichi_winds": "table_options",
-    "mcr_winds": "table_options"
+    "riichi_seats": "table_riichi_variants",
+    "hong_kong_winds": "table_hk_variants",
+    "riichi_winds": "table_riichi_variants",
+    "mcr_winds": "table_mcr_variants",
+    "fan_progress": "table_aim"
   }
 }

@@ -1,8 +1,10 @@
 # frozen_string_literal: true
+require_relative 'fan_announcements'
 module GameRoomGames
   using GameRoomLocalization::Translations
 
   module MahjongInformationShortcuts
+    include MahjongFanAnnouncements
     private
 
     def mahjong_information_shortcuts(replay, viewer)
@@ -15,14 +17,21 @@ module GameRoomGames
       if own
         shortcuts << announcement_shortcut(key: 'u', label: _('read your exposed sets'),
           message: mahjong_melds_text(replay, own, others: false))
-        shortcuts << announcement_shortcut(key: 'w', label: _('read your winning hand value'),
-          message: mahjong_value_text(round, own))
+        shortcuts << announcement_shortcut(key: 'w', label: _('read your hand value and basic bonuses'),
+          message: mahjong_hand_value_text(replay, own))
         if round.riichi_state
           shortcuts << announcement_shortcut(key: 'i', label: _('read dora and your Riichi status'),
             message: mahjong_riichi_text(replay, own))
         end
       end
       shortcuts
+    end
+
+    def mahjong_hand_value_text(replay, own)
+      round = replay.state.fetch(:round)
+      value = mahjong_value_text(round, own)
+      return value if round.finished? || replay.state.fetch(:profile).fetch('fan_progress', 'yes') == 'no'
+      value + ' ' + mahjong_progress_text(round, own)
     end
 
     def mahjong_melds_text(replay, own, others:)

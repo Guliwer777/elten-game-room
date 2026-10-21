@@ -15,6 +15,9 @@
         },
         {
           "es": "Al responder a una ficha, D lee la ficha a la que se refiere Pasar, Chow, Pung, Kong o Mahjong. No cambia ni confirma la elección. En Solitario, D sigue leyendo las coordenadas."
+        },
+        {
+          "es": "En Hong Kong, Riichi y MCR, W también lee un subtotal de los bonos básicos que ya tienes: tríos de dragones y vientos puntuables, además de las fichas de bonificación correspondientes o una declaración de Riichi aceptada. Los tríos ocultos cuentan mientras los conserves juntos. No es el valor de una mano incompleta: los patrones de la mano completa pueden sustituir esos bonos. MCR indica las flores por separado, pues no ayudan a alcanzar 8 fan; Riichi separa las dora visibles porque requieren yaku. Hong Kong menciona aparte el posible punto por no tener flores ni estaciones, que desaparece si robas una de esas fichas. Al crear la mesa, Vista previa de puntuación básica con W está en Sí. Elige No para oír solo el valor de una victoria válida. La opción no cambia la puntuación ni las condiciones para ganar."
         }
       ]
     },
@@ -89,6 +92,17 @@
         },
         {
           "es": "S lee la puntuación, las parejas retiradas. M las fichas que quedan. Un diseño nuevo tiene 144; al retirar una pareja quedan 142."
+        }
+      ]
+    },
+    {
+      "id": "solitaire_points",
+      "title": {
+        "es": "Solitario — puntos por retirar parejas"
+      },
+      "paragraphs": [
+        {
+          "es": "El solitario no usa fan, han ni fu. La puntuación es el número de parejas retiradas: cada una da 1 punto y deshacerla lo resta. Ganas al retirar las 144 fichas, es decir, 72 parejas."
         }
       ]
     },
@@ -212,7 +226,7 @@
           "es": "S lee los puntos actuales de todos. M indica cuántas fichas quedan por robar en el muro. Solo informan: no roban, descartan ni pasan ni revelan manos ajenas."
         },
         {
-          "es": "W lee el valor de una victoria válida: fan o han y fu, y los puntos ganados. No estima una mano incompleta. Antes de ganar en Riichi excluye las ura-dora ocultas, por lo que el valor final puede ser mayor. U lee tus grupos expuestos, Mayús+U los de los demás y R el número de mano, los vientos y la situación actual. En Riichi, I lee los indicadores y fichas dora, tu cantidad de dora, las declaraciones de Riichi, los depósitos, honba y tu restricción furiten. Estas teclas solo leen información."
+          "es": "W lee el valor de una victoria válida: fan o han y fu, y los puntos ganados. Sin una victoria válida no indica el valor final de la mano. Antes de ganar en Riichi excluye las ura-dora ocultas, por lo que el valor final puede ser mayor. U lee tus grupos expuestos, Mayús+U los de los demás y R el número de mano, los vientos y la situación actual. En Riichi, I lee los indicadores y fichas dora, tu cantidad de dora, las declaraciones de Riichi, los depósitos, honba y tu restricción furiten. Estas teclas solo leen información."
         }
       ]
     },
@@ -223,28 +237,7 @@
       },
       "paragraphs": [
         {
-          "es": "Ejemplo completo: bambúes 2–3–4; círculos 4–5–6; tres caracteres 7; tres dragones rojos; dos Oestes. Los dos primeros grupos son chows, los siguientes pungs y los vientos la pareja. Cada ficha pertenece a un solo grupo y no puede usarse dos veces."
-        },
-        {
-          "es": "Quita ahora bambú 4 del ejemplo. Tienes 13 fichas y esperas esa ficha para completar el primer chow. Si la robas puedes ganar por robo propio; si la descarta un rival puede aparecer Mahjong entre las respuestas. Siempre debes cumplir también el requisito de puntuación explicado después."
-        },
-        {
-          "es": "Conserva conexiones útiles: 4–5 admite 3 o 6, mientras que 4–6 necesita un 5. Una pareja puede seguir como pareja final o convertirse en pung con la tercera copia. Una ficha aislada sin iguales ni números vecinos suele ser candidata a descarte."
-        },
-        {
-          "es": "No tienes que declarar enseguida un grupo formado con fichas propias: puedes reorganizar tu mano. Un grupo reclamado y expuesto queda unido; ya no puedes descartar sus fichas por separado. Reclama cuando ayude a la mano ganadora que planeas."
-        },
-        {
-          "es": "La forma del ejemplo no vale automáticamente 3 fan. El pung de dragones da 1; no tener flores ni estaciones añade 1 y el robo propio otro 1: total 3. Por descarte haría falta otra condición. Planea tanto la forma como su valor."
-        },
-        {
-          "es": "Siete parejas es otra forma ganadora por 4 fan. En este perfil chino, cuatro fichas idénticas sin declarar kong pueden contar como dos parejas. Trece huérfanos es otra forma especial. Puedes aprender primero cuatro grupos y pareja: las formas especiales son alternativas, no requisitos adicionales."
-        },
-        {
-          "es": "Cuatro grupos de tres y una pareja normalmente son 14 fichas físicas. Un kong declarado tiene una extra pero sigue siendo un grupo: con uno la mano completa tiene 15, con dos 16. Flores y estaciones no cuentan. No descartes otra ficha solo para obligar a volver a 14 con un kong."
-        },
-        {
-          "es": "Trece huérfanos reúne un 1 y un 9 de cada palo, cada uno de los cuatro vientos y tres dragones, más otra copia de cualquiera de esos trece tipos. No tiene chows ni cuatro grupos normales. Se conserva sin reclamar grupos y este perfil da 13 fan."
+          "es": "Forma cuatro chows, pungs o kongs y una pareja, contando grupos declarados y conservados. Un chow son tres números consecutivos de un palo, un pung tres fichas iguales, un kong cuatro y una pareja dos. También necesitas 3 fan. Al cumplir ambas condiciones elige Declarar Mahjong y pulsa Enter. El catálogo de puntuación aparece después; robar una ficha adecuada no termina la mano automáticamente."
         }
       ]
     },
@@ -269,54 +262,175 @@
       ]
     },
     {
-      "id": "table_hk_practice",
+      "id": "table_hk_sets",
       "title": {
-        "es": "Hong Kong — Planificar la mano con ejemplos"
+        "es": "Hong Kong — catálogo completo de puntuación"
       },
       "paragraphs": [
         {
-          "es": "Un plan sencillo es Todo Pungs: conserva parejas, convierte cuatro en pungs y deja la quinta como pareja. Cuatro pungs ya dan los 3 fan exigidos. Es un plan, no una obligación: una pareja necesita su tercera copia exacta, mientras dos números vecinos pueden aceptar dos tipos."
+          "es": "Una victoria normal requiere cuatro grupos y pareja y al menos 3 fan. Siete parejas y trece huérfanos usan otras formas. El catálogo completo de esta versión aparece a continuación; salvo restricción, admite manos abiertas y cerradas. Un chow normal aislado, pung numérico o pareja no da un bono propio."
         },
         {
-          "es": "Otro plan es un palo con honores por 3 fan. Si la mayoría de tus números ya son de un palo, puedes conservarlo junto a vientos o dragones útiles. No es obligatorio jugar siempre un palo ni destruir una mano casi lista por un patrón lejano y caro."
+          "es": "Los bonos normales compatibles se suman. Los tres pequeños y grandes dragones sustituyen los bonos de sus pungs. Las manos especiales de 10 fan o más reciben solo el mayor premio especial aplicable, sin bonos normales. Una mano cerrada o cuatro pungs ocultos no tienen premio aparte. Las ocho fichas de bonificación dan 4 fan; siete parejas dan 4 fan."
         }
       ]
     },
     {
-      "id": "table_hk_sets",
+      "id": "table_hk_fan_1",
       "title": {
-        "es": "Hong Kong: patrones y pagos"
+        "es": "Hong Kong: 1 fan"
       },
       "paragraphs": [
         {
-          "es": "Este perfil Hong Kong no usa una tabla de fu ni premia solo por ocultar un pung o kong normal. Un kong cumple las mismas condiciones de tipo de ficha que un pung. Los fan proceden de patrones de la mano, honores y circunstancias de victoria."
+          "es": "- 1 fan — Robo propio: roba la ficha ganadora."
         },
         {
-          "es": "- Cuatro chows dan 1 fan; cuatro pungs o kongs, 3; siete parejas, 4."
+          "es": "- 1 fan — Todo chows: cuatro secuencias y una pareja, que puede ser de honores."
         },
         {
-          "es": "- Un palo con honores da 3 fan; un palo sin honores, 7."
+          "es": "- 1 fan — Pung o kong de dragones rojos."
         },
         {
-          "es": "- Cada pung o kong de dragones da 1. Dos pungs de dragones y una pareja del tercero forman los tres pequeños dragones por 5; los tres pungs forman los tres grandes dragones por 8. Estos premios mayores ya incluyen los pungs de dragones que los componen."
+          "es": "- 1 fan — Pung o kong de dragones verdes."
         },
         {
-          "es": "- Un pung o kong del viento propio da 1 fan y del viento de ronda otro 1. Si coinciden, el mismo grupo da 2."
+          "es": "- 1 fan — Pung o kong de dragones blancos."
         },
         {
-          "es": "- El robo propio da 1 fan. Ganar con el último robo normal, el último descarte, un robo de reposición o al robar un kong tiene la correspondiente bonificación de 1 fan."
+          "es": "- 1 fan — Pung o kong del viento propio."
         },
         {
-          "es": "- No tener flores ni estaciones da 1 fan. En cada familia de bonos tu ficha propia da 1: número 1 Este, 2 Sur, 3 Oeste, 4 Norte. La familia completa de cuatro da 2 en su lugar."
+          "es": "- 1 fan — Pung o kong del viento de la ronda; si coincide con el propio, suma 2 fan en total."
         },
         {
-          "es": "Las manos especiales tienen valor propio: trece huérfanos 13 fan, cuatro pequeños vientos 10, cuatro grandes vientos 15, solo honores 10, solo terminales 10, cuatro kongs 18 y nueve puertas 15. Los cuatro pequeños vientos son tres pungs de vientos y pareja del cuarto; los grandes son los cuatro pungs. El juego elige el mayor premio especial sin añadir bonos normales."
+          "es": "- 1 fan — Ganar con la reposición de un kong; también cuenta el robo propio."
         },
         {
-          "es": "Una ruta sencilla al mínimo: cuatro chows por 1, ninguna flor por 1 y robo propio por 1 suman 3 fan. La misma forma por descarte puede tener solo 2 y no permitir ganar. Cuatro pungs ya cumplen por sí solos el mínimo de 3."
+          "es": "- 1 fan — Robar un kong: ganar con la ficha añadida a un pung expuesto."
         },
         {
-          "es": "La base del pago es 8 puntos con 3 fan, 16 con 4, 24 con 5, 32 con 6, 48 con 7 y 64 con 8 o más. Por descarte, quien descarta paga el doble de la base y los demás una base cada uno. Por robo propio todos pagan el doble. Así, 5 fan gana 96 por descarte o 144 por robo propio. El límite de 8 fan se aplica al pago aunque una mano especial valga más."
+          "es": "- 1 fan — Último robo normal del muro; también cuenta el robo propio."
+        },
+        {
+          "es": "- 1 fan — Ganar con el último descarte tras agotarse el muro normal."
+        },
+        {
+          "es": "- 1 fan — Sin fichas de bonificación: ninguna flor ni estación."
+        },
+        {
+          "es": "- 1 fan — Tu flor: su número corresponde al viento propio."
+        },
+        {
+          "es": "- 1 fan — Tu estación: su número corresponde al viento propio."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_fan_2",
+      "title": {
+        "es": "Hong Kong: 2 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- 2 fan — Las cuatro flores: sustituye el fan por tu flor."
+        },
+        {
+          "es": "- 2 fan — Las cuatro estaciones: sustituye el fan por tu estación."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_fan_3_8",
+      "title": {
+        "es": "Hong Kong: 3–8 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- 3 fan — Todo pungs: cuatro pungs o kongs y una pareja."
+        },
+        {
+          "es": "- 3 fan — Palo mixto: un palo numérico y honores, ambos presentes."
+        },
+        {
+          "es": "- 4 fan — Siete parejas: cuatro fichas idénticas sin declarar kong pueden formar dos parejas."
+        },
+        {
+          "es": "- 5 fan — Tres pequeños dragones: dos pungs o kongs de dragones y pareja del tercero; incluye los bonos por pungs de dragones."
+        },
+        {
+          "es": "- 7 fan — Palo puro: solo bambúes, círculos o caracteres, sin honores."
+        },
+        {
+          "es": "- 8 fan — Tres grandes dragones: pungs o kongs de los tres dragones; incluye los bonos por sus pungs."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_fan_special",
+      "title": {
+        "es": "Hong Kong: 10–18 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- 10 fan — Cuatro pequeños vientos: tres pungs o kongs de vientos y pareja del cuarto."
+        },
+        {
+          "es": "- 10 fan — Todo honores: mano ganadora válida formada solo por vientos y dragones."
+        },
+        {
+          "es": "- 10 fan — Todo terminales: solo unos y nueves, sin honores."
+        },
+        {
+          "es": "- 13 fan — Trece huérfanos: cada 1 y 9, los cuatro vientos y tres dragones, más una repetida para la pareja; mano cerrada."
+        },
+        {
+          "es": "- 15 fan — Cuatro grandes vientos: cuatro pungs o kongs de vientos y pareja."
+        },
+        {
+          "es": "- 15 fan — Nueve puertas: base oculta exacta 1112345678999 de un palo antes de robar o reclamar otra ficha de ese palo."
+        },
+        {
+          "es": "- 18 fan — Cuatro kongs y una pareja."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_bonus",
+      "title": {
+        "es": "Hong Kong — flores y estaciones según el viento"
+      },
+      "paragraphs": [
+        {
+          "es": "Tu flor y estación dependen del viento propio, no del de la ronda. El 1 es Este, 2 Sur, 3 Oeste y 4 Norte. Una familia completa sustituye su bono por ficha propia; las dos familias puntúan por separado."
+        },
+        {
+          "es": "- Este: flor de ciruelo y primavera."
+        },
+        {
+          "es": "- Sur: flor de orquídea y verano."
+        },
+        {
+          "es": "- Oeste: flor de crisantemo y otoño."
+        },
+        {
+          "es": "- Norte: flor de bambú y invierno."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_payments",
+      "title": {
+        "es": "Hong Kong — Puntuación y pagos"
+      },
+      "paragraphs": [
+        {
+          "es": "Bases de pago: 3 fan — 8 puntos; 4 — 16; 5 — 24; 6 — 32; 7 — 48; 8 o más — 64. Una mano puede superar 8 fan, pero no aumenta su base de pago."
+        },
+        {
+          "es": "Con descarte, quien descarta paga dos bases y los otros rivales una cada uno. Con robo propio, cada rival paga dos bases."
+        },
+        {
+          "es": "Las manos celestial y terrenal no se premian actualmente durante la partida. No añadas por ellas un bono de victoria inicial."
         }
       ]
     },
@@ -475,7 +589,7 @@
           "es": "S lee los puntos actuales de todos. M indica cuántas fichas quedan por robar en el muro. Solo informan: no roban, descartan ni pasan ni revelan manos ajenas."
         },
         {
-          "es": "W lee el valor de una victoria válida: fan o han y fu, y los puntos ganados. No estima una mano incompleta. Antes de ganar en Riichi excluye las ura-dora ocultas, por lo que el valor final puede ser mayor. U lee tus grupos expuestos, Mayús+U los de los demás y R el número de mano, los vientos y la situación actual. En Riichi, I lee los indicadores y fichas dora, tu cantidad de dora, las declaraciones de Riichi, los depósitos, honba y tu restricción furiten. Estas teclas solo leen información."
+          "es": "W lee el valor de una victoria válida: fan o han y fu, y los puntos ganados. Sin una victoria válida no indica el valor final de la mano. Antes de ganar en Riichi excluye las ura-dora ocultas, por lo que el valor final puede ser mayor. U lee tus grupos expuestos, Mayús+U los de los demás y R el número de mano, los vientos y la situación actual. En Riichi, I lee los indicadores y fichas dora, tu cantidad de dora, las declaraciones de Riichi, los depósitos, honba y tu restricción furiten. Estas teclas solo leen información."
         }
       ]
     },
@@ -486,25 +600,7 @@
       },
       "paragraphs": [
         {
-          "es": "Ejemplo completo: bambúes 2–3–4; círculos 4–5–6; tres caracteres 7; tres dragones rojos; dos Oestes. Los dos primeros grupos son chows, los siguientes pungs y los vientos la pareja. Cada ficha pertenece a un solo grupo y no puede usarse dos veces."
-        },
-        {
-          "es": "Quita ahora bambú 4 del ejemplo. Tienes 13 fichas y esperas esa ficha para completar el primer chow. Si la robas puedes ganar por robo propio; si la descarta un rival puede aparecer Mahjong entre las respuestas. Siempre debes cumplir también el requisito de puntuación explicado después."
-        },
-        {
-          "es": "Conserva conexiones útiles: 4–5 admite 3 o 6, mientras que 4–6 necesita un 5. Una pareja puede seguir como pareja final o convertirse en pung con la tercera copia. Una ficha aislada sin iguales ni números vecinos suele ser candidata a descarte."
-        },
-        {
-          "es": "No tienes que declarar enseguida un grupo formado con fichas propias: puedes reorganizar tu mano. Un grupo reclamado y expuesto queda unido; ya no puedes descartar sus fichas por separado. Reclama cuando ayude a la mano ganadora que planeas."
-        },
-        {
-          "es": "El pung de dragones rojos del ejemplo da un yaku de 1 han abierto u oculto. Al completar los cuatro grupos y pareja permite ganar si no lo impide una restricción como furiten por descarte. No cada grupo necesita su propio yaku."
-        },
-        {
-          "es": "Siete parejas distintas es una mano separada y yaku de 2 han; cuatro iguales no cuentan como dos parejas distintas. Trece huérfanos usa todos los unos y nueves y los siete honores, más una repetición, sin grupos reclamados. Es yakuman, una mano de límite alto. Estas formas sustituyen cuatro grupos y pareja."
-        },
-        {
-          "es": "Cuatro grupos de tres y una pareja normalmente son 14 fichas físicas. Un kong declarado tiene una extra pero sigue siendo un grupo: con uno la mano completa tiene 15, con dos 16. Flores y estaciones no cuentan. No descartes otra ficha solo para obligar a volver a 14 con un kong."
+          "es": "La forma normal es cuatro grupos y una pareja. Las alternativas son siete parejas distintas y trece huérfanos. Para ganar necesitas yaku; solo dora y fu no bastan. Cuando haya victoria válida elige Declarar Mahjong y pulsa Enter. Los catálogos siguientes incluyen todos los yaku premiados y los valores de fu."
         }
       ]
     },
@@ -529,23 +625,6 @@
       ]
     },
     {
-      "id": "table_riichi_practice",
-      "title": {
-        "es": "Riichi — Planificar la mano con ejemplos"
-      },
-      "paragraphs": [
-        {
-          "es": "Para empezar puedes mantener la mano cerrada buscando Riichi. Roba, mejora grupos y descarta lo menos útil sin reclamar. Cuando aparezca Riichi, elige un descarte ofrecido. Obtienes yaku, pero todavía no ganas: aún necesitas la ficha final."
-        },
-        {
-          "es": "Otra ruta clara es un pung de dragones: puedes reclamar el tercero y conservar su yaku con la mano abierta. Aún debes completar otros tres grupos y pareja. Una mano abierta de chows normales sin relación puede no tener ningún yaku."
-        },
-        {
-          "es": "Nueve puertas es una mano cerrada de un palo con base 1–1–1–2–3–4–5–6–7–8–9–9–9 y otra ficha de ese palo. No son nueve chows. Todo verde en Riichi usa solo bambúes 2, 3, 4, 6, 8 y dragones verdes, manteniendo una forma completa válida."
-        }
-      ]
-    },
-    {
       "id": "table_riichi",
       "title": {
         "es": "Riichi — declarar tenpai, dora y furiten"
@@ -565,44 +644,150 @@
     {
       "id": "table_yaku",
       "title": {
-        "es": "Riichi: yaku y apertura de la mano"
+        "es": "Riichi — catálogo completo de yaku y han"
       },
       "paragraphs": [
         {
-          "es": "Un yaku es una condición de victoria con nombre. Los han de yaku compatibles se suman. Un chow o pung de simples normal no da han por sí solo. Reclamar puede acelerar la mano, pero elimina algunos yaku y reduce otros."
+          "es": "Riichi requiere una mano válida y al menos un yaku. Se indican todos los yaku normales premiados en esta versión, con sus valores para mano cerrada y abierta. Un kong oculto no abre la mano. Un pung completado por el descarte ganador no se considera oculto al puntuar."
         },
         {
-          "es": "- Tanyao, solo números 2–8 sin honores: 1 han incluso abierto. Cada pung o kong de dragones: 1. Viento propio y viento de ronda en pung o kong: 1 cada uno; si coinciden, 2."
+          "es": "- Riichi: mano cerrada preparada y declaración aceptada con depósito de 1000 puntos. Solo cerrada: 1 han."
         },
         {
-          "es": "- Riichi: 1 han, mano cerrada en tenpai y depósito de 1000 puntos. Doble riichi en el primer ciclo sin interrupciones: 2 en su lugar. Ippatsu por ganar en el primer ciclo no interrumpido tras riichi añade 1."
+          "es": "- Doble riichi: declaración en la primera vuelta sin interrupciones; sustituye al riichi normal. Solo cerrada: 2 han."
         },
         {
-          "es": "- Menzen tsumo, robo propio con mano cerrada: 1 han. Pinfu: 1, solo cerrado, cuatro chows, pareja sin valor y espera por dos lados."
+          "es": "- Ippatsu: ganar en la primera vuelta sin interrupciones tras riichi. Solo cerrada: 1 han."
         },
         {
-          "es": "- Dos chows idénticos del mismo palo: 1 han solo cerrado. Dos pares de esos chows: 3 en su lugar, también cerrado. Siete parejas distintas: 2."
+          "es": "- Menzen tsumo: robo propio con mano cerrada. Solo cerrada: 1 han."
         },
         {
-          "es": "- Cuatro pungs o kongs: 2 han. Tres pungs ocultos: 2. Tres kongs: 2. Dos pungs de dragones y pareja del tercero: 2 además de los premios de los pungs de dragones."
+          "es": "- Tanyao: solo números del 2 al 8, sin honores. Cerrada: 1 han; abierta: 1 han."
         },
         {
-          "es": "- El mismo chow en los tres palos, como 2–3–4: 2 han cerrado, 1 abierto. Chows 1–2–3, 4–5–6 y 7–8–9 del mismo palo: 2 cerrado, 1 abierto. Pungs del mismo número en los tres palos: 2 abierto o cerrado."
+          "es": "- Yakuhai: cada pung o kong de dragones por separado. Cerrada: 1 han; abierta: 1 han."
         },
         {
-          "es": "- Un palo con honores: 3 han cerrado, 2 abierto. Sin honores: 6 cerrado, 5 abierto."
+          "es": "- Pung o kong del viento propio. Cerrada: 1 han; abierta: 1 han."
         },
         {
-          "es": "- Un terminal u honor en cada grupo y la pareja, con al menos un chow: 2 han cerrado, 1 abierto. Sin honores: 3 y 2 respectivamente. Una mano solo de terminales y honores da 2."
+          "es": "- Pung o kong del viento de la ronda; si coincide con el propio, 2 han en total. Cerrada: 1 han; abierta: 1 han."
         },
         {
-          "es": "- El último robo normal, último descarte, robo de reposición de kong o robo de un kong tiene el correspondiente yaku de 1 han."
+          "es": "- Haitei: ganar con el último robo normal del muro. Cerrada: 1 han; abierta: 1 han."
         },
         {
-          "es": "Cada dora añade 1 han solo después de existir un yaku verdadero. El indicador señala la siguiente ficha del ciclo: bambú 3 indica bambú 4 y tras 9 viene 1. Los ciclos de honores son Este–Sur–Oeste–Norte y dragón blanco–verde–rojo. Dora es un bono, no una forma de mano."
+          "es": "- Houtei: ganar con el último descarte. Cerrada: 1 han; abierta: 1 han."
         },
         {
-          "es": "Yakuman sustituye los han y fu normales. Incluye, entre otros, trece huérfanos, cuatro pungs ocultos, tres pungs de dragones, cuatro pequeños o grandes vientos, solo honores, solo terminales, todo verde, cuatro kongs y nueve puertas. Los yakuman compatibles se acumulan. Para ganar cuatro pungs ocultos por descarte, este debe completar la pareja; un pung completado con un descarte no está oculto."
+          "es": "- Rinshan: ganar con la reposición de un kong. Cerrada: 1 han; abierta: 1 han."
+        },
+        {
+          "es": "- Chankan: robar un kong. Cerrada: 1 han; abierta: 1 han."
+        },
+        {
+          "es": "- Pinfu: cuatro chows, pareja sin valor y espera de dos lados. Solo cerrada: 1 han."
+        },
+        {
+          "es": "- Iipeikou: dos chows idénticos de un palo. Solo cerrada: 1 han."
+        },
+        {
+          "es": "- Ryanpeikou: dos parejas de chows idénticos; sustituye a iipeikou. Solo cerrada: 3 han."
+        },
+        {
+          "es": "- Chiitoitsu: siete parejas distintas; cuatro fichas idénticas no forman dos parejas. Solo cerrada: 2 han."
+        },
+        {
+          "es": "- Toitoi: cuatro pungs o kongs y pareja. Cerrada: 2 han; abierta: 2 han."
+        },
+        {
+          "es": "- Sanankou: tres pungs o kongs ocultos; el cuarto grupo puede estar expuesto. Cerrada: 2 han; abierta: 2 han."
+        },
+        {
+          "es": "- Sankantsu: tres kongs. Cerrada: 2 han; abierta: 2 han."
+        },
+        {
+          "es": "- Shousangen: dos pungs o kongs de dragones y pareja del tercero; también cuentan ambos yakuhai. Cerrada: 2 han; abierta: 2 han."
+        },
+        {
+          "es": "- Sanshoku doujun: el mismo chow en los tres palos. Cerrada: 2 han; abierta: 1 han."
+        },
+        {
+          "es": "- Sanshoku doukou: pungs del mismo número en los tres palos. Cerrada: 2 han; abierta: 2 han."
+        },
+        {
+          "es": "- Ittsu: chows 123, 456 y 789 de un palo. Cerrada: 2 han; abierta: 1 han."
+        },
+        {
+          "es": "- Chanta: cada grupo y pareja contiene un terminal u honor, con chows y honores presentes. Cerrada: 2 han; abierta: 1 han."
+        },
+        {
+          "es": "- Junchan: cada grupo y pareja contiene un 1 o 9; hay chows y no hay honores. Cerrada: 3 han; abierta: 2 han."
+        },
+        {
+          "es": "- Honroutou: solo terminales y honores. Cerrada: 2 han; abierta: 2 han."
+        },
+        {
+          "es": "- Honitsu: un palo numérico y honores. Cerrada: 3 han; abierta: 2 han."
+        },
+        {
+          "es": "- Chinitsu: un palo numérico sin honores. Cerrada: 6 han; abierta: 5 han."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_dora",
+      "title": {
+        "es": "Riichi — han adicionales por dora"
+      },
+      "paragraphs": [
+        {
+          "es": "Las dora suman 1 han por cada ficha dora propia, solo si la mano tiene un yaku real. No son yaku. El indicador señala la siguiente ficha de su ciclo; cuenta cada copia en la mano o grupos propios. Tras un riichi aceptado, las ura-dora ocultas pueden sumarse a la victoria final; la vista previa no las revela."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_yakuman",
+      "title": {
+        "es": "Riichi — catálogo completo de yakuman"
+      },
+      "paragraphs": [
+        {
+          "es": "Cada entrada da 1 yakuman y sustituye los han y fu normales. Distintos yakuman compatibles pueden sumarse. Esta versión no duplica un yakuman por una espera especial ni por cuatro grandes vientos."
+        },
+        {
+          "es": "- 1 yakuman — Trece huérfanos: todos los terminales y honores y una ficha repetida; mano cerrada."
+        },
+        {
+          "es": "- 1 yakuman — Cuatro pungs o kongs ocultos: al ganar con descarte, este debe completar la pareja."
+        },
+        {
+          "es": "- 1 yakuman — Tres grandes dragones: pungs o kongs de los tres dragones."
+        },
+        {
+          "es": "- 1 yakuman — Cuatro grandes vientos: cuatro pungs o kongs de vientos."
+        },
+        {
+          "es": "- 1 yakuman — Cuatro pequeños vientos: tres pungs o kongs de vientos y pareja del cuarto."
+        },
+        {
+          "es": "- 1 yakuman — Todo honores: solo vientos y dragones."
+        },
+        {
+          "es": "- 1 yakuman — Todo terminales: solo unos y nueves."
+        },
+        {
+          "es": "- 1 yakuman — Todo verde: solo bambúes 2, 3, 4, 6, 8 y dragones verdes."
+        },
+        {
+          "es": "- 1 yakuman — Cuatro kongs y pareja."
+        },
+        {
+          "es": "- 1 yakuman — Nueve puertas: mano cerrada de un palo, 1112345678999 y una ficha adicional de ese palo."
+        },
+        {
+          "es": "Las manos celestial y terrenal no se premian actualmente durante la partida. No añadas por ellas un bono de victoria inicial."
         }
       ]
     },
@@ -831,7 +1016,7 @@
           "es": "S lee los puntos actuales de todos. M indica cuántas fichas quedan por robar en el muro. Solo informan: no roban, descartan ni pasan ni revelan manos ajenas."
         },
         {
-          "es": "W lee el valor de una victoria válida: fan o han y fu, y los puntos ganados. No estima una mano incompleta. Antes de ganar en Riichi excluye las ura-dora ocultas, por lo que el valor final puede ser mayor. U lee tus grupos expuestos, Mayús+U los de los demás y R el número de mano, los vientos y la situación actual. En Riichi, I lee los indicadores y fichas dora, tu cantidad de dora, las declaraciones de Riichi, los depósitos, honba y tu restricción furiten. Estas teclas solo leen información."
+          "es": "W lee el valor de una victoria válida: fan o han y fu, y los puntos ganados. Sin una victoria válida no indica el valor final de la mano. Antes de ganar en Riichi excluye las ura-dora ocultas, por lo que el valor final puede ser mayor. U lee tus grupos expuestos, Mayús+U los de los demás y R el número de mano, los vientos y la situación actual. En Riichi, I lee los indicadores y fichas dora, tu cantidad de dora, las declaraciones de Riichi, los depósitos, honba y tu restricción furiten. Estas teclas solo leen información."
         }
       ]
     },
@@ -842,31 +1027,7 @@
       },
       "paragraphs": [
         {
-          "es": "Ejemplo completo: bambúes 2–3–4; círculos 4–5–6; tres caracteres 7; tres dragones rojos; dos Oestes. Los dos primeros grupos son chows, los siguientes pungs y los vientos la pareja. Cada ficha pertenece a un solo grupo y no puede usarse dos veces."
-        },
-        {
-          "es": "Quita ahora bambú 4 del ejemplo. Tienes 13 fichas y esperas esa ficha para completar el primer chow. Si la robas puedes ganar por robo propio; si la descarta un rival puede aparecer Mahjong entre las respuestas. Siempre debes cumplir también el requisito de puntuación explicado después."
-        },
-        {
-          "es": "Conserva conexiones útiles: 4–5 admite 3 o 6, mientras que 4–6 necesita un 5. Una pareja puede seguir como pareja final o convertirse en pung con la tercera copia. Una ficha aislada sin iguales ni números vecinos suele ser candidata a descarte."
-        },
-        {
-          "es": "No tienes que declarar enseguida un grupo formado con fichas propias: puedes reorganizar tu mano. Un grupo reclamado y expuesto queda unido; ya no puedes descartar sus fichas por separado. Reclama cuando ayude a la mano ganadora que planeas."
-        },
-        {
-          "es": "Cuatro grupos y pareja son la forma normal, pero también necesitas 8 fan sin flores. Un pung de dragones solo da 2 y no basta para una mano por lo demás normal. Planea patrones compatibles antes de abrir."
-        },
-        {
-          "es": "Siete parejas es una forma aparte por 24 fan. Este perfil chino permite cuatro fichas iguales sin declarar kong como dos parejas. Trece huérfanos vale 88. MCR también tiene formas especiales entrelazadas, pero puedes empezar con cuatro grupos normales y pareja."
-        },
-        {
-          "es": "Cuatro grupos de tres y una pareja normalmente son 14 fichas físicas. Un kong declarado tiene una extra pero sigue siendo un grupo: con uno la mano completa tiene 15, con dos 16. Flores y estaciones no cuentan. No descartes otra ficha solo para obligar a volver a 14 con un kong."
-        },
-        {
-          "es": "Una escalera entrelazada es un grupo especial de nueve fichas: 1–4–7 de un palo, 2–5–8 de otro y 3–6–9 del tercero. Por ejemplo caracteres 1–4–7, círculos 2–5–8 y bambúes 3–6–9. Añade un grupo normal y una pareja. Puedes intercambiar palos, pero cada terna numérica permanece en un palo distinto. El patrón vale 12 fan."
-        },
-        {
-          "es": "Otra forma especial contiene 14 fichas diferentes sin pareja: números de uno de esos patrones de nueve combinados con cinco, seis o siete honores distintos. Nada se repite. Con los siete honores es Honores Mayores y Fichas Entrelazadas por 24 fan; con cinco o seis, Honores Menores por 12. Sustituyen los cuatro grupos normales."
+          "es": "La forma normal es cuatro grupos y una pareja; MCR también permite siete parejas, trece huérfanos y las manos tejidas del catálogo. Necesitas al menos 8 fan sin flores. Al cumplir las condiciones elige Declarar Mahjong y pulsa Enter. Cada entrada indica nombre, valor y condición de exposición."
         }
       ]
     },
@@ -891,57 +1052,520 @@
       ]
     },
     {
-      "id": "table_mcr_practice",
+      "id": "table_mcr_sets",
       "title": {
-        "es": "MCR — Planificar la mano con ejemplos"
+        "es": "MCR — cómo leer el catálogo de 81 entradas"
       },
       "paragraphs": [
         {
-          "es": "Ruta concreta: Todo Pungs por 6 fan más pung de dragones por 2. Pungs de caracteres 2, círculos 4, bambúes 6 y dragones blancos, con pareja de caracteres 5, llegan al menos a 8 incluso expuestos. Cada pung contiene tres iguales, no una mezcla de esos números."
+          "es": "Las siguientes 81 entradas describen los elementos puntuables de MCR. Necesitas una forma válida y al menos 8 fan sin flores. Un kong también cumple un requisito de pung del mismo tipo. Los palos numéricos son caracteres, círculos y bambúes; los honores son vientos y dragones."
         },
         {
-          "es": "Siete parejas por 24 fan es otra ruta, sin reclamar grupos. En cambio, un palo con honores solo da 6 y no basta por sí solo. La tabla sirve para elegir un plan en vez de reunir grupos sin saber cómo ganarían."
+          "es": "Una mano cerrada no tiene grupos reclamados de descartes; declarar un kong oculto no la abre. Un pung completado por el descarte ganador se considera expuesto; los demás pungs conservados siguen ocultos. La base tejida usa 147 de un palo, 258 de otro y 369 del tercero, con cualquier asignación de palos."
         },
         {
-          "es": "Cada rival paga una base de 8 puntos. Por descarte, quien descarta añade el valor de la mano con flores; por robo propio lo añaden todos. Una mano de 8 fan sin flores gana 32 por descarte o 48 por robo propio. El juego lo calcula."
+          "es": "No sumes todos los nombres coincidentes sin comprobar las exclusiones. Un patrón mayor puede incluir otro menor y no se pueden reutilizar libremente los mismos grupos para bonos compuestos. El juego selecciona patrones compatibles. Los números de las exclusiones remiten al catálogo MCR, no a una secuencia de jugadas."
         }
       ]
     },
     {
-      "id": "table_mcr_sets",
+      "id": "table_mcr_fan_88",
       "title": {
-        "es": "MCR: grupos expuestos y ocultos"
+        "es": "MCR: 88 fan"
       },
       "paragraphs": [
         {
-          "es": "MCR concede fan por condiciones de la mano ganadora, sin los fu de Riichi. Un chow normal o un pung de simples no tiene un premio fijo por sí solo. Los chows pueden formar patrones entre sí; un pung puede puntuar por sus fichas o como parte de un patrón mayor."
+          "es": "- MCR 1: 88 fan — Cuatro grandes vientos: cuatro pungs de vientos. Mano abierta o cerrada."
         },
         {
-          "es": "- Un kong: expuesto 1 fan, oculto 2 fan."
+          "es": "- MCR 2: 88 fan — Tres grandes dragones: tres pungs de dragones. Mano abierta o cerrada."
         },
         {
-          "es": "- Dos kongs: ambos expuestos 4 fan, uno expuesto y otro oculto 6, ambos ocultos 8. Estos valores sustituyen los premios individuales."
+          "es": "- MCR 3: 88 fan — Todo verde: solo bambúes 2, 3, 4, 6, 8 y dragones verdes. Mano abierta o cerrada."
         },
         {
-          "es": "- Tres kongs dan 32 fan; cuatro dan 88. No añadas también los premios por menos kongs."
+          "es": "- MCR 4: 88 fan — Nueve puertas: base oculta 1112345678999 de un palo, completada con otra ficha de ese palo. Solo mano cerrada."
         },
         {
-          "es": "- Dos pungs ocultos dan 2 fan, tres dan 16 y cuatro 64. Un kong oculto también cuenta entre los pungs ocultos. Un pung completado con el descarte ganador no está oculto."
+          "es": "- MCR 5: 88 fan — Cuatro kongs. Mano abierta o cerrada."
         },
         {
-          "es": "- Un pung o kong de dragones da 2 fan. El viento propio da 2 y el de ronda otros 2. Un pung de terminales o de un viento sin valor da 1."
+          "es": "- MCR 6: 88 fan — Siete parejas consecutivas de un palo. Solo mano cerrada."
         },
         {
-          "es": "- Cuatro pungs o kongs dan 6 fan. Un solo palo con honores da 6; sin honores, 24. Siete parejas da 24 y trece huérfanos 88."
+          "es": "- MCR 7: 88 fan — Trece huérfanos: todos los terminales y honores distintos y una ficha repetida para la pareja. Solo mano cerrada."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_64",
+      "title": {
+        "es": "MCR: 64 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- MCR 8: 64 fan — Todo terminales: solo unos y nueves. Mano abierta o cerrada."
         },
         {
-          "es": "- Cuatro chows con pareja numerada y sin honores dan 2 fan. Dos chows idénticos del mismo palo dan 1; los chows 1–2–3 y 7–8–9 del mismo palo también dan 1."
+          "es": "- MCR 9: 64 fan — Cuatro pequeños vientos: tres pungs de vientos y pareja del cuarto. Mano abierta o cerrada."
         },
         {
-          "es": "Una victoria cerrada por descarte da 2 fan; una mano completamente oculta por robo propio da 4. Robar la ganadora con mano abierta da 1. No sumes automáticamente todas las descripciones: un patrón mayor puede incluir y excluir otro menor. Por ejemplo, dos kongs ocultos por 8 no reciben otros 2 solo por esos mismos dos pungs ocultos."
+          "es": "- MCR 10: 64 fan — Tres pequeños dragones: dos pungs de dragones y pareja del tercero. Mano abierta o cerrada."
         },
         {
-          "es": "Cada flor o estación da 1 fan, pero no ayuda a alcanzar los 8 exigidos. Una mano de 7 fan con una flor sigue sin permitir Mahjong. El juego selecciona patrones compatibles; consulta el valor concedido en los detalles del resultado."
+          "es": "- MCR 11: 64 fan — Todo honores: solo vientos y dragones. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 12: 64 fan — Cuatro pungs ocultos. Los cuatro pungs deben estar ocultos."
+        },
+        {
+          "es": "- MCR 13: 64 fan — Chows terminales puros: 123, 123, 789, 789 y pareja 55 del mismo palo. Mano abierta o cerrada."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_48",
+      "title": {
+        "es": "MCR: 48 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- MCR 14: 48 fan — Cuatro chows idénticos de un palo. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 15: 48 fan — Cuatro pungs numéricos consecutivos de un palo. Mano abierta o cerrada."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_32",
+      "title": {
+        "es": "MCR: 32 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- MCR 16: 32 fan — Cuatro chows desplazados de un palo: todos los saltos de 1 o todos de 2. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 17: 32 fan — Tres kongs. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 18: 32 fan — Solo terminales y honores, con ambos tipos presentes. Mano abierta o cerrada."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_24",
+      "title": {
+        "es": "MCR: 24 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- MCR 19: 24 fan — Siete parejas. Solo mano cerrada."
+        },
+        {
+          "es": "- MCR 20: 24 fan — Honores y fichas tejidas mayores: los siete honores y siete fichas distintas de una serie tejida. Solo mano cerrada."
+        },
+        {
+          "es": "- MCR 21: 24 fan — Todo pungs pares: pungs o kongs y pareja, solo con 2, 4, 6 y 8. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 22: 24 fan — Palo puro: un solo palo sin honores. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 23: 24 fan — Tres chows idénticos de un palo. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 24: 24 fan — Tres pungs numéricos consecutivos de un palo. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 25: 24 fan — Solo números del 7 al 9. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 26: 24 fan — Solo números del 4 al 6. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 27: 24 fan — Solo números del 1 al 3. Mano abierta o cerrada."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_16",
+      "title": {
+        "es": "MCR: 16 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- MCR 28: 16 fan — Escalera pura: 123, 456 y 789 de un palo. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 29: 16 fan — Chows terminales de tres palos: 123 y 789 en cada uno de dos palos, pareja 55 en el tercero. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 30: 16 fan — Tres chows desplazados de un palo, con saltos iguales de 1 o 2. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 31: 16 fan — Cada grupo y la pareja contienen un cinco. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 32: 16 fan — Tres pungs del mismo número, uno de cada palo. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 33: 16 fan — Tres pungs ocultos. Estos tres pungs ocultos; el cuarto grupo puede estar expuesto."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_12",
+      "title": {
+        "es": "MCR: 12 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- MCR 34: 12 fan — Honores y fichas tejidas menores: 14 fichas distintas elegidas entre los siete honores y nueve fichas tejidas. Solo mano cerrada."
+        },
+        {
+          "es": "- MCR 35: 12 fan — Escalera tejida: 147, 258 y 369, cada grupo de un palo distinto, más un grupo y una pareja. Las nueve fichas tejidas ocultas; el grupo adicional puede estar expuesto."
+        },
+        {
+          "es": "- MCR 36: 12 fan — Solo números del 6 al 9. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 37: 12 fan — Solo números del 1 al 4. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 38: 12 fan — Tres pungs de vientos distintos. Mano abierta o cerrada."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_8",
+      "title": {
+        "es": "MCR: 8 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- MCR 39: 8 fan — Escalera mixta: 123, 456 y 789, cada chow de un palo distinto. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 40: 8 fan — Fichas reversibles: círculos 1 a 5, 8, 9; bambúes 2, 4, 5, 6, 8, 9; dragón blanco. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 41: 8 fan — Tres chows idénticos, uno de cada palo. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 42: 8 fan — Tres pungs numéricos consecutivos, cada uno de un palo distinto. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 43: 8 fan — Mano de pollo: ningún otro elemento puntuable salvo flores; mano abierta ganada con descarte. Mano abierta; victoria con descarte."
+        },
+        {
+          "es": "- MCR 44: 8 fan — Ganar con el último robo normal del muro. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 45: 8 fan — Ganar con el descarte posterior al último robo normal del muro. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 46: 8 fan — Ganar con la ficha de reposición de un kong, no de una flor. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 47: 8 fan — Robar un kong: ganar con la ficha añadida a un pung expuesto. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 48: 8 fan — Dos kongs ocultos. Ambos kongs ocultos; los demás grupos pueden estar expuestos."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_6",
+      "title": {
+        "es": "MCR: 6 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- MCR 49: 6 fan — Todo pungs: cuatro pungs o kongs y una pareja. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 50: 6 fan — Palo mixto: un palo numérico y honores, ambos presentes. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 51: 6 fan — Tres chows desplazados sucesivamente en 1, cada uno de un palo distinto. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 52: 6 fan — Todos los tipos: los tres palos, al menos un viento y un dragón. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 53: 6 fan — Mano expuesta: cuatro grupos tomados de descartes y pareja completada con descarte; sin kong oculto. Mano abierta; victoria con descarte."
+        },
+        {
+          "es": "- MCR 54: 6 fan — Dos pungs de dragones. Mano abierta o cerrada."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_4",
+      "title": {
+        "es": "MCR: 4 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- MCR 55: 4 fan — Mano exterior: cada grupo y la pareja contienen un terminal o un honor. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 56: 4 fan — Mano completamente oculta ganada por robo propio. Solo mano cerrada."
+        },
+        {
+          "es": "- MCR 57: 4 fan — Dos kongs expuestos. Ambos kongs expuestos."
+        },
+        {
+          "es": "- MCR 58: 4 fan — Último ejemplar: las otras tres fichas idénticas ya están visibles públicamente. Mano abierta o cerrada."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_2",
+      "title": {
+        "es": "MCR: 2 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- MCR 59: 2 fan — Pung de dragones. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 60: 2 fan — Pung del viento de la ronda. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 61: 2 fan — Pung del viento propio. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 62: 2 fan — Mano oculta ganada con descarte; se permiten kongs ocultos. Solo mano cerrada."
+        },
+        {
+          "es": "- MCR 63: 2 fan — Todo chows: cuatro chows y una pareja numérica, sin honores. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 64: 2 fan — Cuatro fichas idénticas usadas fuera de un kong declarado. Mano abierta o cerrada. Por cada tipo de ficha por separado."
+        },
+        {
+          "es": "- MCR 65: 2 fan — Dos pungs del mismo número en palos distintos. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 66: 2 fan — Dos pungs ocultos. Estos dos pungs ocultos; los demás grupos pueden estar expuestos."
+        },
+        {
+          "es": "- MCR 67: 2 fan — Un kong oculto. Este kong oculto; los demás grupos pueden estar expuestos."
+        },
+        {
+          "es": "- MCR 68: 2 fan — Todo simples: solo números del 2 al 8, sin honores. Mano abierta o cerrada."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_1",
+      "title": {
+        "es": "MCR: 1 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "- MCR 69: 1 fan — Dos chows idénticos de un palo. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 70: 1 fan — Dos chows iguales en palos distintos. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 71: 1 fan — Escalera corta: dos chows que forman seis números consecutivos de un palo. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 72: 1 fan — Dos chows terminales: 123 y 789 de un palo. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 73: 1 fan — Pung de unos, nueves o un viento que no sea el propio ni el de la ronda. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 74: 1 fan — Un kong expuesto. Este kong expuesto."
+        },
+        {
+          "es": "- MCR 75: 1 fan — Falta un palo: hay exactamente dos palos numéricos y el tercero está ausente; se permiten honores. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 76: 1 fan — Sin honores. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 77: 1 fan — Espera de borde: 12 para 3 u 89 para 7; único tipo de ficha ganadora. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 78: 1 fan — Espera cerrada: ficha central, como 24 para 3; único tipo de ficha ganadora. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 79: 1 fan — Espera de pareja: el único tipo de ficha ganadora completa la pareja. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 80: 1 fan — Robo propio: robar la ficha ganadora. Mano abierta o cerrada."
+        },
+        {
+          "es": "- MCR 81: 1 fan — Cada flor o estación: un punto adicional, fuera del mínimo de ocho fan. Mano abierta o cerrada."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_mixed_kongs",
+      "title": {
+        "es": "MCR — dos kongs mixtos: 6 fan"
+      },
+      "paragraphs": [
+        {
+          "es": "Dos kongs mixtos — 6 fan: uno expuesto y uno oculto. Sustituye los bonos individuales de kong. Esta versión distingue esa combinación además de las 81 entradas habituales."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_exclusions",
+      "title": {
+        "es": "MCR — bonos incluidos en patrones mayores"
+      },
+      "paragraphs": [
+        {
+          "es": "No sumes todos los nombres coincidentes sin comprobar las exclusiones. Un patrón mayor puede incluir otro menor y no se pueden reutilizar libremente los mismos grupos para bonos compuestos. El juego selecciona patrones compatibles. Los números de las exclusiones remiten al catálogo MCR, no a una secuencia de jugadas."
+        },
+        {
+          "es": "- No añadas a la entrada 1: 9, 38, 49, 60, 61, 73."
+        },
+        {
+          "es": "- No añadas a la entrada 2: 10, 54, 59."
+        },
+        {
+          "es": "- No añadas a la entrada 4: 22, 62, 73, 76."
+        },
+        {
+          "es": "- No añadas a la entrada 5: 17, 48, 49, 57, 67, 74, 79."
+        },
+        {
+          "es": "- No añadas a la entrada 6: 19, 22, 62, 76, 79."
+        },
+        {
+          "es": "- No añadas a la entrada 7: 18, 52, 62, 79."
+        },
+        {
+          "es": "- No añadas a la entrada 8: 18, 49, 55, 73, 76."
+        },
+        {
+          "es": "- No añadas a la entrada 9: 38, 73."
+        },
+        {
+          "es": "- No añadas a la entrada 10: 54, 59."
+        },
+        {
+          "es": "- No añadas a la entrada 11: 18, 49, 55, 73."
+        },
+        {
+          "es": "- No añadas a la entrada 12: 33, 49, 62, 66."
+        },
+        {
+          "es": "- No añadas a la entrada 13: 19, 22, 63, 69, 72, 76."
+        },
+        {
+          "es": "- No añadas a la entrada 14: 23, 64, 69."
+        },
+        {
+          "es": "- No añadas a la entrada 15: 24, 49."
+        },
+        {
+          "es": "- No añadas a la entrada 16: 30, 71."
+        },
+        {
+          "es": "- No añadas a la entrada 17: 48, 57, 67, 74."
+        },
+        {
+          "es": "- No añadas a la entrada 18: 49, 55, 73."
+        },
+        {
+          "es": "- No añadas a la entrada 19: 62, 79."
+        },
+        {
+          "es": "- No añadas a la entrada 20: 34, 52, 62."
+        },
+        {
+          "es": "- No añadas a la entrada 21: 49, 68, 76."
+        },
+        {
+          "es": "- No añadas a la entrada 22: 76."
+        },
+        {
+          "es": "- No añadas a la entrada 23: 69."
+        },
+        {
+          "es": "- No añadas a la entrada 25: 36, 76."
+        },
+        {
+          "es": "- No añadas a la entrada 26: 68, 76."
+        },
+        {
+          "es": "- No añadas a la entrada 27: 37, 76."
+        },
+        {
+          "es": "- No añadas a la entrada 29: 63, 69, 70, 72, 76."
+        },
+        {
+          "es": "- No añadas a la entrada 31: 68, 76."
+        },
+        {
+          "es": "- No añadas a la entrada 33: 66."
+        },
+        {
+          "es": "- No añadas a la entrada 34: 52, 62."
+        },
+        {
+          "es": "- No añadas a la entrada 36: 76."
+        },
+        {
+          "es": "- No añadas a la entrada 37: 76."
+        },
+        {
+          "es": "- No añadas a la entrada 40: 75."
+        },
+        {
+          "es": "- No añadas a la entrada 44: 80."
+        },
+        {
+          "es": "- No añadas a la entrada 46: 80."
+        },
+        {
+          "es": "- No añadas a la entrada 47: 58."
+        },
+        {
+          "es": "- No añadas a la entrada 48: 57, 66, 67, 74."
+        },
+        {
+          "es": "- No añadas a la entrada 53: 62, 79."
+        },
+        {
+          "es": "- No añadas a la entrada 54: 59."
+        },
+        {
+          "es": "- No añadas a la entrada 56: 62, 80."
+        },
+        {
+          "es": "- No añadas a la entrada 57: 67, 74."
+        },
+        {
+          "es": "- No añadas a la entrada 63: 76."
+        },
+        {
+          "es": "- No añadas a la entrada 68: 76."
+        },
+        {
+          "es": "Tres pungs de vientos (38) excluyen el punto por viento sin valor (73) solo para esos mismos pungs. Otros pungs independientes pueden puntuar."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_payments",
+      "title": {
+        "es": "MCR — Puntuación y pagos"
+      },
+      "paragraphs": [
+        {
+          "es": "Cada rival paga 8 puntos de base. Con descarte, quien descarta añade el valor de la mano con flores; con robo propio lo añaden todos los rivales. Cada flor o estación suma 1 fan al pago, no al mínimo necesario de 8 fan."
         }
       ]
     },
@@ -1051,6 +1675,7 @@
     "riichi_seats": "table_riichi_variants",
     "hong_kong_winds": "table_hk_variants",
     "riichi_winds": "table_riichi_variants",
-    "mcr_winds": "table_mcr_variants"
+    "mcr_winds": "table_mcr_variants",
+    "fan_progress": "table_aim"
   }
 }

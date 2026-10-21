@@ -15,6 +15,9 @@
         },
         {
           "en": "While responding to a tile, D reads the tile to which Pass, Chow, Pung, Kong or Mahjong applies. It does not change or submit your choice. In Solitaire, D still reads coordinates."
+        },
+        {
+          "en": "In Hong Kong, Riichi and MCR, W also reads a subtotal of basic bonuses already present: dragon and scoring-wind triplets, plus the applicable bonus tiles or an accepted Riichi declaration. Concealed triplets count while you keep them together. This is not the value of an unfinished hand: whole-hand patterns may replace basic bonuses. In MCR, flowers are listed separately and do not help reach 8 fan; Riichi lists visible dora separately because dora require yaku. Hong Kong mentions the possible no-flower point separately, since a later bonus draw removes it. When creating a table, Basic scoring preview under W defaults to Yes; choose No to keep only the legal-win readout. The setting never changes scoring or permission to win."
         }
       ]
     },
@@ -89,6 +92,17 @@
         },
         {
           "en": "S reads your removed-pair score. M reads how many tiles remain in the layout. A new puzzle has 144 tiles; removing one pair leaves 142."
+        }
+      ]
+    },
+    {
+      "id": "solitaire_points",
+      "title": {
+        "en": "Solitaire — points for removing pairs"
+      },
+      "paragraphs": [
+        {
+          "en": "Solitaire uses no fan, han or fu. The score is the number of removed pairs: each pair scores 1, and undoing its removal subtracts that point. Clear all 144 tiles, or 72 pairs, to win."
         }
       ]
     },
@@ -212,7 +226,7 @@
           "en": "Press S to hear the current points of every player. Press M to hear how many tiles remain in the wall for drawing. These are read-only announcements: they do not draw, discard or pass, and do not reveal other hands."
         },
         {
-          "en": "W reads a legal winning hand value: fan or han and fu, and the points gained. It does not estimate an incomplete hand. Before a Riichi win it excludes hidden ura-dora, so the final value may be higher. U reads your exposed sets, Shift+U those of the other players, and R the hand number, winds and current situation. In Riichi, I reads dora indicators and tiles, your dora count, Riichi declarations, deposits, honba and your furiten restriction. These keys only read information."
+          "en": "W reads a legal winning hand value: fan or han and fu, and the points gained. Without a legal win it does not give a final hand value. Before a Riichi win it excludes hidden ura-dora, so the final value may be higher. U reads your exposed sets, Shift+U those of the other players, and R the hand number, winds and current situation. In Riichi, I reads dora indicators and tiles, your dora count, Riichi declarations, deposits, honba and your furiten restriction. These keys only read information."
         }
       ]
     },
@@ -223,28 +237,7 @@
       },
       "paragraphs": [
         {
-          "en": "Consider this complete shape: bamboo 2–3–4; circles 4–5–6; three characters 7; three red dragons; two West winds. The first two sets are chows, the next two are pungs, and the winds are the pair. Each tile belongs to only one of these groups."
-        },
-        {
-          "en": "Now remove bamboo 4 from that example. You hold 13 tiles and need bamboo 4 to complete the first chow. If you draw it, it may allow self-draw Mahjong. If an opponent discards it, Mahjong may appear in your responses. In either case you must also meet the scoring requirement below."
-        },
-        {
-          "en": "To improve an incomplete hand, keep useful links. With 4–5 you can use 3 or 6; with 4–6 only 5 joins those two into a chow. A pair can become a pung if you find its third copy, or remain the pair of your final hand. An isolated tile with no matching or neighbouring tiles is often a candidate to discard."
-        },
-        {
-          "en": "You do not have to declare a set formed in your own hand as soon as it appears. Keep your private tiles flexible. Once you claim and expose a set, those tiles stay together and cannot later be discarded separately. Claim only when it helps your intended winning hand."
-        },
-        {
-          "en": "The example shape is not automatically worth 3 fan. It has a dragon pung worth 1. If you have no flowers or seasons, that adds 1; self-draw adds 1, reaching 3. On a discard it would need another scoring condition. Always consider both completion and fan."
-        },
-        {
-          "en": "Seven pairs is another winning shape worth 4 fan. In this Chinese profile, four identical tiles kept undeclared may count as two pairs. Thirteen orphans is a rarer special hand. You can learn ordinary four-set hands first; the special shapes are alternatives, not additions required for every win."
-        },
-        {
-          "en": "Four three-tile sets plus a pair normally make 14 physical tiles. A declared kong has one extra tile but still counts as one set: one kong makes the complete hand 15 tiles, two make 16. Flowers and seasons do not belong to that count. You do not discard an extra tile merely to force a kong hand back to 14."
-        },
-        {
-          "en": "Thirteen orphans means one 1 and one 9 from each of the three suits, one of each of the four winds and three dragons, plus a second copy of any one of those thirteen kinds. It has no chows and needs no four ordinary sets. Keep it closed; this profile awards 13 fan."
+          "en": "Build four chows, pungs or kongs and a pair, counting both declared and retained sets. A chow has three consecutive numbers in one suit, a pung three identical tiles, a kong four and a pair two. You also need 3 fan. When both conditions hold, choose Declare Mahjong and press Enter. The full scoring reference follows; drawing a matching tile does not end the hand automatically."
         }
       ]
     },
@@ -269,54 +262,175 @@
       ]
     },
     {
-      "id": "table_hk_practice",
+      "id": "table_hk_sets",
       "title": {
-        "en": "Hong Kong — Planning your hand"
+        "en": "Hong Kong — complete scoring reference"
       },
       "paragraphs": [
         {
-          "en": "One straightforward plan is All Pungs: keep pairs and try to turn four of them into pungs, leaving a fifth pair. Four pungs already provide the required 3 fan. The cost is flexibility: a lone pair needs its exact third copy, while two adjacent numbers may accept two different tile kinds."
+          "en": "A normal win needs four sets and a pair and at least 3 fan. Seven pairs and thirteen orphans use different shapes. The complete scoring reference for this version follows; entries allow open and closed hands unless restricted. An ordinary single chow, numbered pung or pair has no separate bonus."
         },
         {
-          "en": "Another plan is one suit with honors for 3 fan. If most of your numbered tiles already share a suit, you can keep that suit and useful winds or dragons. Do not discard a nearly complete good hand merely to force a much more distant high-value pattern."
+          "en": "Compatible ordinary bonuses add together. Little and big three dragons replace the component dragon-pung bonuses. Special hands worth 10 fan or more use only the highest applicable special award, without ordinary bonuses. A concealed hand or four concealed pungs has no separate award. All eight bonus tiles give 4 fan; seven pairs give 4 fan."
         }
       ]
     },
     {
-      "id": "table_hk_sets",
+      "id": "table_hk_fan_1",
       "title": {
-        "en": "Hong Kong: pattern values and payments"
+        "en": "Hong Kong: 1 fan"
       },
       "paragraphs": [
         {
-          "en": "This Hong Kong profile has no separate fu table and no award merely for concealing an ordinary pung or kong. A kong meets the same tile-type conditions as a pung. Fan come from whole-hand patterns, honors and the winning circumstances."
+          "en": "- 1 fan — Self-draw: draw the winning tile yourself."
         },
         {
-          "en": "- Four chows give 1 fan; four pungs or kongs give 3; seven pairs give 4."
+          "en": "- 1 fan — All chows: four sequences and a pair, which may be honours."
         },
         {
-          "en": "- One suit with honors gives 3 fan; one suit without honors gives 7."
+          "en": "- 1 fan — Pung or kong of red dragons."
         },
         {
-          "en": "- Each dragon pung or kong gives 1. Two dragon pungs and a pair of the third dragon make small three dragons for 5; all three dragon pungs make big three dragons for 8. These larger awards already include their component dragon-pung awards."
+          "en": "- 1 fan — Pung or kong of green dragons."
         },
         {
-          "en": "- Your seat-wind pung or kong gives 1 fan and the round wind another 1. When they coincide, the same set gives 2."
+          "en": "- 1 fan — Pung or kong of white dragons."
         },
         {
-          "en": "- Self-draw gives 1 fan. Winning on the final ordinary draw, the final discard, a replacement draw or a robbed kong has a corresponding 1-fan bonus."
+          "en": "- 1 fan — Pung or kong of your seat wind."
         },
         {
-          "en": "- No flowers or seasons gives 1 fan. In each bonus family your own tile gives 1: number 1 is East, 2 South, 3 West, 4 North. A complete family of four gives 2 instead."
+          "en": "- 1 fan — Pung or kong of the round wind; matching seat and round wind scores 2 fan in total."
         },
         {
-          "en": "Special hands have separate values: thirteen orphans 13 fan, small four winds 10, big four winds 15, all honors 10, all terminals 10, four kongs 18, nine gates 15. Small four winds has three wind pungs and a pair of the fourth; big four winds has all four pungs. For such hands the game chooses the highest special award without ordinary bonuses."
+          "en": "- 1 fan — Win on a kong replacement tile; self-draw also counts."
         },
         {
-          "en": "A simple route to the minimum is four chows for 1, no flowers for 1 and self-draw for 1: total 3 fan. The same shape won on a discard may have only 2 and be ineligible. Four pungs alone already supply the required 3."
+          "en": "- 1 fan — Robbing a kong: win on the tile being added to an exposed pung."
         },
         {
-          "en": "The payment base is 8 points at 3 fan, 16 at 4, 24 at 5, 32 at 6, 48 at 7 and 64 at 8 or more. On a discard win the discarder pays twice the base and the others pay it once. On self-draw every opponent pays twice the base. Thus 5 fan wins 96 on a discard or 144 on self-draw. The 8-fan cap applies to payments even when a special hand’s fan value is higher."
+          "en": "- 1 fan — Last ordinary wall draw; self-draw also counts."
+        },
+        {
+          "en": "- 1 fan — Win on the last discard after the ordinary wall is empty."
+        },
+        {
+          "en": "- 1 fan — No bonus tiles: neither flowers nor seasons."
+        },
+        {
+          "en": "- 1 fan — Your flower: its number matches your seat wind."
+        },
+        {
+          "en": "- 1 fan — Your season: its number matches your seat wind."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_fan_2",
+      "title": {
+        "en": "Hong Kong: 2 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- 2 fan — All four flowers: replaces the 1 fan for your flower."
+        },
+        {
+          "en": "- 2 fan — All four seasons: replaces the 1 fan for your season."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_fan_3_8",
+      "title": {
+        "en": "Hong Kong: 3–8 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- 3 fan — All pungs: four pungs or kongs and a pair."
+        },
+        {
+          "en": "- 3 fan — Half flush: one numbered suit and honours, both present."
+        },
+        {
+          "en": "- 4 fan — Seven pairs: four identical tiles not declared as a kong may count as two pairs."
+        },
+        {
+          "en": "- 5 fan — Little three dragons: two dragon pungs or kongs and a pair of the third; includes dragon-pung bonuses."
+        },
+        {
+          "en": "- 7 fan — Full flush: only Bamboo, only Dots or only Characters, no honours."
+        },
+        {
+          "en": "- 8 fan — Big three dragons: pungs or kongs of all three dragons; includes dragon-pung bonuses."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_fan_special",
+      "title": {
+        "en": "Hong Kong: 10–18 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- 10 fan — Little four winds: three wind pungs or kongs and a pair of the fourth."
+        },
+        {
+          "en": "- 10 fan — All honours: a valid winning hand using only winds and dragons."
+        },
+        {
+          "en": "- 10 fan — All terminals: only numbered 1s and 9s, no honours."
+        },
+        {
+          "en": "- 13 fan — Thirteen orphans: every suited 1 and 9, all four winds and three dragons, plus one duplicate for a pair; closed hand."
+        },
+        {
+          "en": "- 15 fan — Big four winds: four wind pungs or kongs and a pair."
+        },
+        {
+          "en": "- 15 fan — Nine gates: concealed exact base 1112345678999 in one suit before the winning draw or claim of another tile of that suit."
+        },
+        {
+          "en": "- 18 fan — Four kongs and a pair."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_bonus",
+      "title": {
+        "en": "Hong Kong — flowers and seasons by seat wind"
+      },
+      "paragraphs": [
+        {
+          "en": "Your flower and season follow your seat wind, not the round wind. Number 1 is East, 2 South, 3 West, 4 North. A complete family replaces its own-tile bonus; the two families score separately."
+        },
+        {
+          "en": "- East: Plum flower and Spring."
+        },
+        {
+          "en": "- South: Orchid flower and Summer."
+        },
+        {
+          "en": "- West: Chrysanthemum flower and Autumn."
+        },
+        {
+          "en": "- North: Bamboo flower and Winter."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_payments",
+      "title": {
+        "en": "Hong Kong — Scoring and payments"
+      },
+      "paragraphs": [
+        {
+          "en": "Payment bases are: 3 fan — 8 points; 4 — 16; 5 — 24; 6 — 32; 7 — 48; 8 or more — 64. A hand may exceed 8 fan, but its payment base does not increase."
+        },
+        {
+          "en": "On a discard win, the discarder pays two bases and the other opponents one each. On self-draw, every opponent pays two bases."
+        },
+        {
+          "en": "Heavenly and earthly hands are not currently awarded during play. Do not add a special opening-win bonus for them."
         }
       ]
     },
@@ -475,7 +589,7 @@
           "en": "Press S to hear the current points of every player. Press M to hear how many tiles remain in the wall for drawing. These are read-only announcements: they do not draw, discard or pass, and do not reveal other hands."
         },
         {
-          "en": "W reads a legal winning hand value: fan or han and fu, and the points gained. It does not estimate an incomplete hand. Before a Riichi win it excludes hidden ura-dora, so the final value may be higher. U reads your exposed sets, Shift+U those of the other players, and R the hand number, winds and current situation. In Riichi, I reads dora indicators and tiles, your dora count, Riichi declarations, deposits, honba and your furiten restriction. These keys only read information."
+          "en": "W reads a legal winning hand value: fan or han and fu, and the points gained. Without a legal win it does not give a final hand value. Before a Riichi win it excludes hidden ura-dora, so the final value may be higher. U reads your exposed sets, Shift+U those of the other players, and R the hand number, winds and current situation. In Riichi, I reads dora indicators and tiles, your dora count, Riichi declarations, deposits, honba and your furiten restriction. These keys only read information."
         }
       ]
     },
@@ -486,25 +600,7 @@
       },
       "paragraphs": [
         {
-          "en": "Consider this complete shape: bamboo 2–3–4; circles 4–5–6; three characters 7; three red dragons; two West winds. The first two sets are chows, the next two are pungs, and the winds are the pair. Each tile belongs to only one of these groups."
-        },
-        {
-          "en": "Now remove bamboo 4 from that example. You hold 13 tiles and need bamboo 4 to complete the first chow. If you draw it, it may allow self-draw Mahjong. If an opponent discards it, Mahjong may appear in your responses. In either case you must also meet the scoring requirement below."
-        },
-        {
-          "en": "To improve an incomplete hand, keep useful links. With 4–5 you can use 3 or 6; with 4–6 only 5 joins those two into a chow. A pair can become a pung if you find its third copy, or remain the pair of your final hand. An isolated tile with no matching or neighbouring tiles is often a candidate to discard."
-        },
-        {
-          "en": "You do not have to declare a set formed in your own hand as soon as it appears. Keep your private tiles flexible. Once you claim and expose a set, those tiles stay together and cannot later be discarded separately. Claim only when it helps your intended winning hand."
-        },
-        {
-          "en": "The red-dragon pung in the example supplies a yaku worth 1 han, whether exposed or concealed. Once all four sets and the pair are complete, that yaku permits a win if no discard restriction such as furiten applies. The other sets need not each supply a yaku."
-        },
-        {
-          "en": "Seven distinct pairs is a separate 2-han yaku: four identical tiles do not count as two of those pairs in Riichi. Thirteen orphans uses each suited 1 and 9 and all seven honors, plus one duplicate, with no claimed sets. It is a yakuman, a high-limit hand. These shapes replace the normal four-set structure."
-        },
-        {
-          "en": "Four three-tile sets plus a pair normally make 14 physical tiles. A declared kong has one extra tile but still counts as one set: one kong makes the complete hand 15 tiles, two make 16. Flowers and seasons do not belong to that count. You do not discard an extra tile merely to force a kong hand back to 14."
+          "en": "The ordinary shape is four sets and a pair. Seven distinct pairs and thirteen orphans are alternatives. A win requires yaku; dora and fu alone do not qualify. When a legal win is available, choose Declare Mahjong and press Enter. The references below give every awarded yaku and the fu values."
         }
       ]
     },
@@ -529,23 +625,6 @@
       ]
     },
     {
-      "id": "table_riichi_practice",
-      "title": {
-        "en": "Riichi — Planning your hand"
-      },
-      "paragraphs": [
-        {
-          "en": "For a first game, one workable plan is a closed hand aiming for Riichi. Draw, improve your sets and discard an unhelpful tile without claiming sets. When the Riichi list appears, choose an offered discard. This supplies a yaku but does not finish the hand: you still need a winning tile afterwards."
-        },
-        {
-          "en": "Another clear plan is a dragon pung. You may claim its third tile and keep its yaku even with an open hand. Still build the other three sets and a pair. Do not assume every completed hand wins: an open hand made of unrelated ordinary chows may have no yaku at all."
-        },
-        {
-          "en": "Nine gates uses the closed one-suit base 1–1–1–2–3–4–5–6–7–8–9–9–9 plus one more tile of that suit. It is a rare special hand, not nine chows. All green, in Riichi, means only bamboo 2, 3, 4, 6, 8 and green dragons; you must still make a valid complete shape."
-        }
-      ]
-    },
-    {
       "id": "table_riichi",
       "title": {
         "en": "Riichi — declaring readiness, dora and furiten"
@@ -565,44 +644,150 @@
     {
       "id": "table_yaku",
       "title": {
-        "en": "Riichi: yaku and opening your hand"
+        "en": "Riichi — complete yaku and han reference"
       },
       "paragraphs": [
         {
-          "en": "A yaku is a named winning condition. Han from compatible yaku add together. An ordinary chow or pung of simples gives no han by itself. Claiming a tile can speed up your hand but removes some yaku and reduces others."
+          "en": "Riichi needs a valid hand and at least one yaku. Below are all ordinary yaku awarded in this version, with closed and open values. A concealed kong does not open the hand. A pung completed by the winning discard is not concealed when scoring that win."
         },
         {
-          "en": "- Tanyao, only numbers 2–8 without honors: 1 han, even open. Each dragon pung or kong: 1. Seat-wind and round-wind pungs or kongs: 1 each; a shared wind gives 2."
+          "en": "- Riichi: a closed ready hand and accepted declaration with a 1000-point deposit. Closed only: 1 han."
         },
         {
-          "en": "- Riichi: 1 han, requiring a closed tenpai hand and a 1000-point deposit. Double riichi, declared in the first uninterrupted turn cycle: 2 instead. Ippatsu, winning within the first uninterrupted cycle after riichi, adds 1."
+          "en": "- Double riichi: declaration in the first uninterrupted circuit; replaces ordinary riichi. Closed only: 2 han."
         },
         {
-          "en": "- Menzen tsumo, closed self-draw: 1 han. Pinfu: 1, closed only, with four chows, a non-value pair and a two-sided wait."
+          "en": "- Ippatsu: win in the first uninterrupted circuit after riichi. Closed only: 1 han."
         },
         {
-          "en": "- Two identical chows in one suit: 1 han, closed only. Two such pairs: 3 instead, also closed only. Seven distinct pairs: 2."
+          "en": "- Menzen tsumo: closed-hand self-draw. Closed only: 1 han."
         },
         {
-          "en": "- Four pungs or kongs: 2 han. Three concealed pungs: 2. Three kongs: 2. Two dragon pungs and a pair of the third dragon: 2, in addition to the dragon-pung awards."
+          "en": "- Tanyao: only numbered 2 to 8, without honours. Closed: 1 han; open: 1 han."
         },
         {
-          "en": "- The same chow in all three suits, such as 2–3–4: 2 han closed, 1 open. Chows 1–2–3, 4–5–6 and 7–8–9 in one suit: 2 closed, 1 open. Same-number pungs in all three suits: 2 whether open or closed."
+          "en": "- Yakuhai: each dragon pung or kong separately. Closed: 1 han; open: 1 han."
         },
         {
-          "en": "- One suit with honors: 3 han closed, 2 open. One suit without honors: 6 closed, 5 open."
+          "en": "- Seat wind pung or kong. Closed: 1 han; open: 1 han."
         },
         {
-          "en": "- A terminal or honor in every set and the pair, with at least one chow: 2 han closed, 1 open. Without honors: 3 and 2 respectively. A hand entirely of terminals and honors gives 2."
+          "en": "- Round wind pung or kong; matching seat wind gives 2 han in total. Closed: 1 han; open: 1 han."
         },
         {
-          "en": "- The final ordinary draw, final discard, a kong replacement draw or robbing a kong has a corresponding 1-han yaku."
+          "en": "- Haitei: win on the last ordinary wall draw. Closed: 1 han; open: 1 han."
         },
         {
-          "en": "Each dora tile adds 1 han only after a genuine yaku exists. An indicator points to the next tile in its cycle: bamboo 3 indicates bamboo 4, and 9 wraps to 1. Honor cycles are East–South–West–North and white–green–red dragon. Dora is a bonus, not a separate hand shape."
+          "en": "- Houtei: win on the last discard. Closed: 1 han; open: 1 han."
         },
         {
-          "en": "Yakuman replaces ordinary han and fu. Supported examples include thirteen orphans, four concealed pungs, three dragon pungs, small or big four winds, all honors, all terminals, all green, four kongs and nine gates. Compatible yakuman can stack. To win four concealed pungs on a discard, the discard must complete the pair; a fourth pung completed by a discard is not concealed."
+          "en": "- Rinshan: win on the replacement draw after a kong. Closed: 1 han; open: 1 han."
+        },
+        {
+          "en": "- Chankan: robbing a kong. Closed: 1 han; open: 1 han."
+        },
+        {
+          "en": "- Pinfu: four chows, a non-value pair and a two-sided wait. Closed only: 1 han."
+        },
+        {
+          "en": "- Iipeikou: two identical chows in one suit. Closed only: 1 han."
+        },
+        {
+          "en": "- Ryanpeikou: two pairs of identical chows; replaces iipeikou. Closed only: 3 han."
+        },
+        {
+          "en": "- Chiitoitsu: seven distinct pairs; four identical tiles cannot count as two pairs. Closed only: 2 han."
+        },
+        {
+          "en": "- Toitoi: four pungs or kongs and a pair. Closed: 2 han; open: 2 han."
+        },
+        {
+          "en": "- Sanankou: three concealed pungs or kongs; the fourth set may be open. Closed: 2 han; open: 2 han."
+        },
+        {
+          "en": "- Sankantsu: three kongs. Closed: 2 han; open: 2 han."
+        },
+        {
+          "en": "- Shousangen: two dragon pungs or kongs and a pair of the third; both dragon yakuhai also count. Closed: 2 han; open: 2 han."
+        },
+        {
+          "en": "- Sanshoku doujun: the same chow in all three suits. Closed: 2 han; open: 1 han."
+        },
+        {
+          "en": "- Sanshoku doukou: pungs of the same number in all three suits. Closed: 2 han; open: 2 han."
+        },
+        {
+          "en": "- Ittsu: chows 123, 456 and 789 in one suit. Closed: 2 han; open: 1 han."
+        },
+        {
+          "en": "- Chanta: every set and pair contains a terminal or honour, with both chows and honours present. Closed: 2 han; open: 1 han."
+        },
+        {
+          "en": "- Junchan: every set and pair contains a 1 or 9, with chows and no honours. Closed: 3 han; open: 2 han."
+        },
+        {
+          "en": "- Honroutou: only terminals and honours. Closed: 2 han; open: 2 han."
+        },
+        {
+          "en": "- Honitsu: one numbered suit and honours. Closed: 3 han; open: 2 han."
+        },
+        {
+          "en": "- Chinitsu: one numbered suit without honours. Closed: 6 han; open: 5 han."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_dora",
+      "title": {
+        "en": "Riichi — bonus han from dora"
+      },
+      "paragraphs": [
+        {
+          "en": "Dora add 1 han for each owned dora tile, but only to a hand with a real yaku. Dora are not yaku. An indicator points to the next tile in its cycle; every copy in the hand or own sets counts. After accepted riichi, hidden ura-dora may add to the final win; the pre-win preview does not reveal them."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_yakuman",
+      "title": {
+        "en": "Riichi — complete yakuman reference"
+      },
+      "paragraphs": [
+        {
+          "en": "Each entry below awards 1 yakuman and replaces ordinary han and fu. Different compatible yakuman can stack. This version does not double a yakuman for a special wait or for big four winds."
+        },
+        {
+          "en": "- 1 yakuman — Thirteen orphans: all terminals and honours plus one duplicate; closed hand."
+        },
+        {
+          "en": "- 1 yakuman — Four concealed pungs or kongs: a discard win must complete the pair."
+        },
+        {
+          "en": "- 1 yakuman — Big three dragons: pungs or kongs of all three dragons."
+        },
+        {
+          "en": "- 1 yakuman — Big four winds: four wind pungs or kongs."
+        },
+        {
+          "en": "- 1 yakuman — Little four winds: three wind pungs or kongs and a pair of the fourth."
+        },
+        {
+          "en": "- 1 yakuman — All honours: only winds and dragons."
+        },
+        {
+          "en": "- 1 yakuman — All terminals: only 1s and 9s."
+        },
+        {
+          "en": "- 1 yakuman — All green: only Bamboo 2, 3, 4, 6, 8 and green dragons."
+        },
+        {
+          "en": "- 1 yakuman — Four kongs and a pair."
+        },
+        {
+          "en": "- 1 yakuman — Nine gates: closed single-suit hand, 1112345678999 plus one extra tile of that suit."
+        },
+        {
+          "en": "Heavenly and earthly hands are not currently awarded during play. Do not add a special opening-win bonus for them."
         }
       ]
     },
@@ -831,7 +1016,7 @@
           "en": "Press S to hear the current points of every player. Press M to hear how many tiles remain in the wall for drawing. These are read-only announcements: they do not draw, discard or pass, and do not reveal other hands."
         },
         {
-          "en": "W reads a legal winning hand value: fan or han and fu, and the points gained. It does not estimate an incomplete hand. Before a Riichi win it excludes hidden ura-dora, so the final value may be higher. U reads your exposed sets, Shift+U those of the other players, and R the hand number, winds and current situation. In Riichi, I reads dora indicators and tiles, your dora count, Riichi declarations, deposits, honba and your furiten restriction. These keys only read information."
+          "en": "W reads a legal winning hand value: fan or han and fu, and the points gained. Without a legal win it does not give a final hand value. Before a Riichi win it excludes hidden ura-dora, so the final value may be higher. U reads your exposed sets, Shift+U those of the other players, and R the hand number, winds and current situation. In Riichi, I reads dora indicators and tiles, your dora count, Riichi declarations, deposits, honba and your furiten restriction. These keys only read information."
         }
       ]
     },
@@ -842,31 +1027,7 @@
       },
       "paragraphs": [
         {
-          "en": "Consider this complete shape: bamboo 2–3–4; circles 4–5–6; three characters 7; three red dragons; two West winds. The first two sets are chows, the next two are pungs, and the winds are the pair. Each tile belongs to only one of these groups."
-        },
-        {
-          "en": "Now remove bamboo 4 from that example. You hold 13 tiles and need bamboo 4 to complete the first chow. If you draw it, it may allow self-draw Mahjong. If an opponent discards it, Mahjong may appear in your responses. In either case you must also meet the scoring requirement below."
-        },
-        {
-          "en": "To improve an incomplete hand, keep useful links. With 4–5 you can use 3 or 6; with 4–6 only 5 joins those two into a chow. A pair can become a pung if you find its third copy, or remain the pair of your final hand. An isolated tile with no matching or neighbouring tiles is often a candidate to discard."
-        },
-        {
-          "en": "You do not have to declare a set formed in your own hand as soon as it appears. Keep your private tiles flexible. Once you claim and expose a set, those tiles stay together and cannot later be discarded separately. Claim only when it helps your intended winning hand."
-        },
-        {
-          "en": "Four sets and a pair are the normal shape, but you must also reach 8 fan without flowers. A dragon pung alone gives only 2, so it does not automatically make an otherwise ordinary hand eligible. Plan a combination of compatible patterns before opening your hand."
-        },
-        {
-          "en": "Seven pairs is a separate shape worth 24 fan. This Chinese profile permits four identical undeclared tiles as two pairs. Thirteen orphans is worth 88. MCR also has knitted special shapes, so ordinary sets are not its only possible winning form; you can begin with the normal four-set shape."
-        },
-        {
-          "en": "Four three-tile sets plus a pair normally make 14 physical tiles. A declared kong has one extra tile but still counts as one set: one kong makes the complete hand 15 tiles, two make 16. Flowers and seasons do not belong to that count. You do not discard an extra tile merely to force a kong hand back to 14."
-        },
-        {
-          "en": "A knitted straight is a special nine-tile group: 1–4–7 of one suit, 2–5–8 of a second and 3–6–9 of the third. For example characters 1–4–7, circles 2–5–8 and bamboo 3–6–9. Add one ordinary set and one pair to finish the hand. The suit assignments can be exchanged, but each number group stays in a single different suit. The knitted straight pattern is worth 12 fan."
-        },
-        {
-          "en": "Another special shape uses 14 different tiles, without a pair: take numbers from one such knitted nine-tile pattern and combine them with five, six or seven different honors. No tile repeats. With all seven honors it is Greater Honors and Knitted Tiles for 24 fan; with five or six it is Lesser Honors and Knitted Tiles for 12. These are alternatives to ordinary four-set hands."
+          "en": "The normal shape is four sets and a pair; MCR also allows seven pairs, thirteen orphans and the knitted hands defined in the reference. You need at least 8 fan without flowers. When eligible, choose Declare Mahjong and press Enter. Each catalog entry gives its name, value and exposure requirement."
         }
       ]
     },
@@ -891,57 +1052,520 @@
       ]
     },
     {
-      "id": "table_mcr_practice",
+      "id": "table_mcr_sets",
       "title": {
-        "en": "MCR — Planning your hand"
+        "en": "MCR — using the 81-entry reference"
       },
       "paragraphs": [
         {
-          "en": "A concrete route is All Pungs for 6 fan plus a dragon pung for 2. For example, pungs of characters 2, circles 4, bamboo 6 and white dragons, with a pair of characters 5, meet at least 8 fan even when the pungs are exposed. Those are four different pungs, not one mixed set of numbers."
+          "en": "The following 81 entries describe MCR scoring elements. A valid hand shape and at least 8 fan excluding flowers are required. A kong also qualifies wherever a pung of that kind is required. The three numbered suits are Characters, Dots and Bamboo; honours are winds and dragons."
         },
         {
-          "en": "A high-value route is Seven Pairs for 24 fan, keeping your hand unclaimed. By contrast, one suit with honors gives only 6 fan, so that pattern alone is below the minimum. The score table helps you choose a plan, rather than collect sets without knowing how they could win."
+          "en": "A closed hand has no sets claimed from discards; a declared concealed kong does not open it. A pung completed by the winning discard counts as exposed; other retained pungs remain concealed. A knitted set uses 147 in one suit, 258 in another and 369 in the third, in any suit assignment."
         },
         {
-          "en": "For payment, every opponent pays a base 8 points. On a discard win, the discarder also pays the hand’s fan including flowers; on self-draw everyone pays that extra value. An 8-fan hand with no flowers therefore wins 32 on a discard or 48 on self-draw. The game performs this calculation."
+          "en": "Do not add every matching name without checking exclusions. A larger pattern can include a smaller one, and the same sets cannot be freely reused for compound bonuses. The game selects compatible patterns. Numbers in the exclusion list refer to MCR catalog entries, not a sequence of moves."
         }
       ]
     },
     {
-      "id": "table_mcr_sets",
+      "id": "table_mcr_fan_88",
       "title": {
-        "en": "MCR: exposed and concealed sets"
+        "en": "MCR: 88 fan"
       },
       "paragraphs": [
         {
-          "en": "MCR awards fan for conditions met by the winning hand, without Riichi fu. An ordinary chow or pung of simples has no fixed award by itself. Chows can form scoring patterns together, while a pung can score for its tile type or as part of a larger pattern."
+          "en": "- MCR 1: 88 fan — Big four winds: four wind pungs. Open or closed hand."
         },
         {
-          "en": "- One kong: exposed 1 fan, concealed 2 fan."
+          "en": "- MCR 2: 88 fan — Big three dragons: three dragon pungs. Open or closed hand."
         },
         {
-          "en": "- Two kongs: both exposed 4 fan, one exposed and one concealed 6, both concealed 8. These replace the individual kong awards."
+          "en": "- MCR 3: 88 fan — All green: only Bamboo 2, 3, 4, 6, 8 and green dragons. Open or closed hand."
         },
         {
-          "en": "- Three kongs give 32 fan and four give 88. Do not also add awards for fewer kongs."
+          "en": "- MCR 4: 88 fan — Nine gates: concealed 1112345678999 in one suit, completed with another tile of that suit. Closed hand only."
         },
         {
-          "en": "- Two concealed pungs give 2 fan, three give 16, four give 64. A concealed kong also counts towards concealed pungs. A pung completed by the winning discard is not concealed."
+          "en": "- MCR 5: 88 fan — Four kongs. Open or closed hand."
         },
         {
-          "en": "- A dragon pung or kong gives 2 fan. Your seat-wind pung or kong gives 2 and the round wind another 2. A pung of terminals or a non-value wind gives 1."
+          "en": "- MCR 6: 88 fan — Seven consecutive pairs in one suit. Closed hand only."
         },
         {
-          "en": "- Four pungs or kongs give 6 fan. One suit with honors gives 6, one suit without honors 24, seven pairs 24 and thirteen orphans 88."
+          "en": "- MCR 7: 88 fan — Thirteen orphans: all different terminals and honours, plus one duplicate forming a pair. Closed hand only."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_64",
+      "title": {
+        "en": "MCR: 64 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- MCR 8: 64 fan — All terminals: only numbered 1s and 9s. Open or closed hand."
         },
         {
-          "en": "- Four chows with a numbered pair and no honors give 2 fan. Two identical chows in one suit give 1; chows 1–2–3 and 7–8–9 in the same suit also give 1."
+          "en": "- MCR 9: 64 fan — Little four winds: three wind pungs and a pair of the fourth wind. Open or closed hand."
         },
         {
-          "en": "A closed discard win gives 2 fan; a fully concealed self-draw gives 4. Self-draw with an open hand gives 1. Do not automatically add every matching description: a higher pattern can include and exclude a lower one. For example, two concealed kongs worth 8 do not receive another 2 merely for those same two concealed pungs."
+          "en": "- MCR 10: 64 fan — Little three dragons: two dragon pungs and a pair of the third dragon. Open or closed hand."
         },
         {
-          "en": "Flowers and seasons each give 1 fan but cannot help reach the required 8. A 7-fan hand plus one flower still cannot claim Mahjong. The game selects compatible patterns; inspect the result details to see the awarded value."
+          "en": "- MCR 11: 64 fan — All honours: only winds and dragons. Open or closed hand."
+        },
+        {
+          "en": "- MCR 12: 64 fan — Four concealed pungs. All four pungs concealed."
+        },
+        {
+          "en": "- MCR 13: 64 fan — Pure terminal chows: 123, 123, 789, 789 and pair 55, all in one suit. Open or closed hand."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_48",
+      "title": {
+        "en": "MCR: 48 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- MCR 14: 48 fan — Four identical chows in one suit. Open or closed hand."
+        },
+        {
+          "en": "- MCR 15: 48 fan — Four consecutive numbered pungs in one suit. Open or closed hand."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_32",
+      "title": {
+        "en": "MCR: 32 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- MCR 16: 32 fan — Four shifted chows in one suit: every shift is 1, or every shift is 2. Open or closed hand."
+        },
+        {
+          "en": "- MCR 17: 32 fan — Three kongs. Open or closed hand."
+        },
+        {
+          "en": "- MCR 18: 32 fan — All terminals and honours, with both types present. Open or closed hand."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_24",
+      "title": {
+        "en": "MCR: 24 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- MCR 19: 24 fan — Seven pairs. Closed hand only."
+        },
+        {
+          "en": "- MCR 20: 24 fan — Greater honours and knitted tiles: all seven honours and seven different tiles from a knitted set. Closed hand only."
+        },
+        {
+          "en": "- MCR 21: 24 fan — All even pungs: pungs or kongs and a pair, using only 2, 4, 6 and 8. Open or closed hand."
+        },
+        {
+          "en": "- MCR 22: 24 fan — Full flush: one numbered suit without honours. Open or closed hand."
+        },
+        {
+          "en": "- MCR 23: 24 fan — Three identical chows in one suit. Open or closed hand."
+        },
+        {
+          "en": "- MCR 24: 24 fan — Three consecutive numbered pungs in one suit. Open or closed hand."
+        },
+        {
+          "en": "- MCR 25: 24 fan — Only numbers 7 to 9. Open or closed hand."
+        },
+        {
+          "en": "- MCR 26: 24 fan — Only numbers 4 to 6. Open or closed hand."
+        },
+        {
+          "en": "- MCR 27: 24 fan — Only numbers 1 to 3. Open or closed hand."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_16",
+      "title": {
+        "en": "MCR: 16 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- MCR 28: 16 fan — Pure straight: 123, 456 and 789 in one suit. Open or closed hand."
+        },
+        {
+          "en": "- MCR 29: 16 fan — Three-suited terminal chows: 123 and 789 in each of two suits, pair 55 in the third. Open or closed hand."
+        },
+        {
+          "en": "- MCR 30: 16 fan — Three shifted chows in one suit, with equal steps of 1 or 2. Open or closed hand."
+        },
+        {
+          "en": "- MCR 31: 16 fan — Every set and the pair contain a numbered 5. Open or closed hand."
+        },
+        {
+          "en": "- MCR 32: 16 fan — Three pungs of the same number, one in each suit. Open or closed hand."
+        },
+        {
+          "en": "- MCR 33: 16 fan — Three concealed pungs. These three pungs concealed; the fourth set may be exposed."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_12",
+      "title": {
+        "en": "MCR: 12 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- MCR 34: 12 fan — Lesser honours and knitted tiles: 14 different tiles chosen from all seven honours and a nine-tile knitted set. Closed hand only."
+        },
+        {
+          "en": "- MCR 35: 12 fan — Knitted straight: 147, 258 and 369, each group in a different suit, plus a set and a pair. The nine knitted tiles concealed; the additional set may be exposed."
+        },
+        {
+          "en": "- MCR 36: 12 fan — Only numbers 6 to 9. Open or closed hand."
+        },
+        {
+          "en": "- MCR 37: 12 fan — Only numbers 1 to 4. Open or closed hand."
+        },
+        {
+          "en": "- MCR 38: 12 fan — Three pungs of different winds. Open or closed hand."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_8",
+      "title": {
+        "en": "MCR: 8 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- MCR 39: 8 fan — Mixed straight: 123, 456 and 789, each chow in a different suit. Open or closed hand."
+        },
+        {
+          "en": "- MCR 40: 8 fan — Reversible tiles: Dots 1 to 5, 8, 9; Bamboo 2, 4, 5, 6, 8, 9; white dragon. Open or closed hand."
+        },
+        {
+          "en": "- MCR 41: 8 fan — Three identical chows, one in each suit. Open or closed hand."
+        },
+        {
+          "en": "- MCR 42: 8 fan — Three consecutive numbered pungs, each in a different suit. Open or closed hand."
+        },
+        {
+          "en": "- MCR 43: 8 fan — Chicken hand: no other scoring element, disregarding flowers; open hand won on a discard. Open hand; win on a discard."
+        },
+        {
+          "en": "- MCR 44: 8 fan — Win on the last ordinary wall draw. Open or closed hand."
+        },
+        {
+          "en": "- MCR 45: 8 fan — Win on the discard following the last ordinary wall draw. Open or closed hand."
+        },
+        {
+          "en": "- MCR 46: 8 fan — Win on a replacement tile drawn after a kong, not a flower replacement. Open or closed hand."
+        },
+        {
+          "en": "- MCR 47: 8 fan — Robbing a kong: win on the tile added to an exposed pung. Open or closed hand."
+        },
+        {
+          "en": "- MCR 48: 8 fan — Two concealed kongs. Both kongs concealed; other sets may be exposed."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_6",
+      "title": {
+        "en": "MCR: 6 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- MCR 49: 6 fan — All pungs: four pungs or kongs and a pair. Open or closed hand."
+        },
+        {
+          "en": "- MCR 50: 6 fan — Half flush: one numbered suit and honours, both present. Open or closed hand."
+        },
+        {
+          "en": "- MCR 51: 6 fan — Three chows shifted by 1 each time, each in a different suit. Open or closed hand."
+        },
+        {
+          "en": "- MCR 52: 6 fan — All types: all three suits, at least one wind and one dragon. Open or closed hand."
+        },
+        {
+          "en": "- MCR 53: 6 fan — Melded hand: all four sets claimed from discards, pair completed on a discard; no concealed kong. Open hand; win on a discard."
+        },
+        {
+          "en": "- MCR 54: 6 fan — Two dragon pungs. Open or closed hand."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_4",
+      "title": {
+        "en": "MCR: 4 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- MCR 55: 4 fan — Outside hand: every set and the pair contain a terminal or honour. Open or closed hand."
+        },
+        {
+          "en": "- MCR 56: 4 fan — Fully concealed hand won by self-draw. Closed hand only."
+        },
+        {
+          "en": "- MCR 57: 4 fan — Two exposed kongs. Both kongs exposed."
+        },
+        {
+          "en": "- MCR 58: 4 fan — Last of its kind: the other three identical tiles are already publicly visible. Open or closed hand."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_2",
+      "title": {
+        "en": "MCR: 2 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- MCR 59: 2 fan — Dragon pung. Open or closed hand."
+        },
+        {
+          "en": "- MCR 60: 2 fan — Round wind pung. Open or closed hand."
+        },
+        {
+          "en": "- MCR 61: 2 fan — Seat wind pung. Open or closed hand."
+        },
+        {
+          "en": "- MCR 62: 2 fan — Concealed hand won on a discard; concealed kongs are allowed. Closed hand only."
+        },
+        {
+          "en": "- MCR 63: 2 fan — All chows: four chows and a numbered pair, without honours. Open or closed hand."
+        },
+        {
+          "en": "- MCR 64: 2 fan — Four identical tiles used outside a declared kong. Open or closed hand. For each tile kind separately."
+        },
+        {
+          "en": "- MCR 65: 2 fan — Two pungs of the same number in different suits. Open or closed hand."
+        },
+        {
+          "en": "- MCR 66: 2 fan — Two concealed pungs. These two pungs concealed; other sets may be exposed."
+        },
+        {
+          "en": "- MCR 67: 2 fan — One concealed kong. This kong concealed; other sets may be exposed."
+        },
+        {
+          "en": "- MCR 68: 2 fan — All simples: only numbers 2 to 8, without honours. Open or closed hand."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_1",
+      "title": {
+        "en": "MCR: 1 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "- MCR 69: 1 fan — Two identical chows in one suit. Open or closed hand."
+        },
+        {
+          "en": "- MCR 70: 1 fan — Two matching chows in different suits. Open or closed hand."
+        },
+        {
+          "en": "- MCR 71: 1 fan — Short straight: two chows making six consecutive numbers in one suit. Open or closed hand."
+        },
+        {
+          "en": "- MCR 72: 1 fan — Two terminal chows: 123 and 789 in one suit. Open or closed hand."
+        },
+        {
+          "en": "- MCR 73: 1 fan — Pung of 1s, 9s or a wind that is neither seat nor round wind. Open or closed hand."
+        },
+        {
+          "en": "- MCR 74: 1 fan — One exposed kong. This kong exposed."
+        },
+        {
+          "en": "- MCR 75: 1 fan — One voided suit: exactly two numbered suits are present and the third is absent; honours are allowed. Open or closed hand."
+        },
+        {
+          "en": "- MCR 76: 1 fan — No honours. Open or closed hand."
+        },
+        {
+          "en": "- MCR 77: 1 fan — Edge wait: 12 waiting for 3, or 89 waiting for 7; the only winning tile kind. Open or closed hand."
+        },
+        {
+          "en": "- MCR 78: 1 fan — Closed wait: a middle tile, such as 24 waiting for 3; the only winning tile kind. Open or closed hand."
+        },
+        {
+          "en": "- MCR 79: 1 fan — Pair wait: the only winning tile kind completes the pair. Open or closed hand."
+        },
+        {
+          "en": "- MCR 80: 1 fan — Self-draw: draw the winning tile yourself. Open or closed hand."
+        },
+        {
+          "en": "- MCR 81: 1 fan — Each flower or season: one extra point, excluded from the eight-fan minimum. Open or closed hand."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_mixed_kongs",
+      "title": {
+        "en": "MCR — two mixed kongs: 6 fan"
+      },
+      "paragraphs": [
+        {
+          "en": "Two mixed kongs — 6 fan: one exposed and one concealed kong. This replaces the individual kong bonuses. This version distinguishes that combination in addition to the standard 81 named entries."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_exclusions",
+      "title": {
+        "en": "MCR — bonuses included in larger patterns"
+      },
+      "paragraphs": [
+        {
+          "en": "Do not add every matching name without checking exclusions. A larger pattern can include a smaller one, and the same sets cannot be freely reused for compound bonuses. The game selects compatible patterns. Numbers in the exclusion list refer to MCR catalog entries, not a sequence of moves."
+        },
+        {
+          "en": "- Do not add to entry 1: 9, 38, 49, 60, 61, 73."
+        },
+        {
+          "en": "- Do not add to entry 2: 10, 54, 59."
+        },
+        {
+          "en": "- Do not add to entry 4: 22, 62, 73, 76."
+        },
+        {
+          "en": "- Do not add to entry 5: 17, 48, 49, 57, 67, 74, 79."
+        },
+        {
+          "en": "- Do not add to entry 6: 19, 22, 62, 76, 79."
+        },
+        {
+          "en": "- Do not add to entry 7: 18, 52, 62, 79."
+        },
+        {
+          "en": "- Do not add to entry 8: 18, 49, 55, 73, 76."
+        },
+        {
+          "en": "- Do not add to entry 9: 38, 73."
+        },
+        {
+          "en": "- Do not add to entry 10: 54, 59."
+        },
+        {
+          "en": "- Do not add to entry 11: 18, 49, 55, 73."
+        },
+        {
+          "en": "- Do not add to entry 12: 33, 49, 62, 66."
+        },
+        {
+          "en": "- Do not add to entry 13: 19, 22, 63, 69, 72, 76."
+        },
+        {
+          "en": "- Do not add to entry 14: 23, 64, 69."
+        },
+        {
+          "en": "- Do not add to entry 15: 24, 49."
+        },
+        {
+          "en": "- Do not add to entry 16: 30, 71."
+        },
+        {
+          "en": "- Do not add to entry 17: 48, 57, 67, 74."
+        },
+        {
+          "en": "- Do not add to entry 18: 49, 55, 73."
+        },
+        {
+          "en": "- Do not add to entry 19: 62, 79."
+        },
+        {
+          "en": "- Do not add to entry 20: 34, 52, 62."
+        },
+        {
+          "en": "- Do not add to entry 21: 49, 68, 76."
+        },
+        {
+          "en": "- Do not add to entry 22: 76."
+        },
+        {
+          "en": "- Do not add to entry 23: 69."
+        },
+        {
+          "en": "- Do not add to entry 25: 36, 76."
+        },
+        {
+          "en": "- Do not add to entry 26: 68, 76."
+        },
+        {
+          "en": "- Do not add to entry 27: 37, 76."
+        },
+        {
+          "en": "- Do not add to entry 29: 63, 69, 70, 72, 76."
+        },
+        {
+          "en": "- Do not add to entry 31: 68, 76."
+        },
+        {
+          "en": "- Do not add to entry 33: 66."
+        },
+        {
+          "en": "- Do not add to entry 34: 52, 62."
+        },
+        {
+          "en": "- Do not add to entry 36: 76."
+        },
+        {
+          "en": "- Do not add to entry 37: 76."
+        },
+        {
+          "en": "- Do not add to entry 40: 75."
+        },
+        {
+          "en": "- Do not add to entry 44: 80."
+        },
+        {
+          "en": "- Do not add to entry 46: 80."
+        },
+        {
+          "en": "- Do not add to entry 47: 58."
+        },
+        {
+          "en": "- Do not add to entry 48: 57, 66, 67, 74."
+        },
+        {
+          "en": "- Do not add to entry 53: 62, 79."
+        },
+        {
+          "en": "- Do not add to entry 54: 59."
+        },
+        {
+          "en": "- Do not add to entry 56: 62, 80."
+        },
+        {
+          "en": "- Do not add to entry 57: 67, 74."
+        },
+        {
+          "en": "- Do not add to entry 63: 76."
+        },
+        {
+          "en": "- Do not add to entry 68: 76."
+        },
+        {
+          "en": "Three wind pungs (38) exclude the non-value wind pung point (73) only for those same pungs. Other independent pungs may still score."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_payments",
+      "title": {
+        "en": "MCR — Scoring and payments"
+      },
+      "paragraphs": [
+        {
+          "en": "Every opponent pays a base 8 points. On a discard win the discarder additionally pays the hand value including flowers; on self-draw every opponent adds that value. Each flower and season adds 1 fan to payment, but not to the 8-fan qualifying minimum."
         }
       ]
     },
@@ -1051,6 +1675,7 @@
     "riichi_seats": "table_riichi_variants",
     "hong_kong_winds": "table_hk_variants",
     "riichi_winds": "table_riichi_variants",
-    "mcr_winds": "table_mcr_variants"
+    "mcr_winds": "table_mcr_variants",
+    "fan_progress": "table_aim"
   }
 }

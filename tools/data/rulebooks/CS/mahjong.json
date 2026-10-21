@@ -15,6 +15,9 @@
         },
         {
           "cs": "Při odpovědi na kámen klávesa D přečte kámen, kterého se týká Pas, Chow, Pung, Kong nebo Mahjong. Nezmění ani nepotvrdí volbu. V pasiánsu D dál čte souřadnice."
+        },
+        {
+          "cs": "V Hongkongu, Riichi a MCR klávesa W přečte také součet základních bonusů, které už máš: pungy draků a bodovaných větrů, příslušné bonusové kameny nebo přijaté vyhlášení Riichi. Skryté trojice se počítají, dokud je ponecháš pohromadě. Nejde o hodnotu nedokončené ruky: vzory celé ruky mohou základní bonusy nahradit. MCR uvádí květiny zvlášť, protože nepomáhají dosáhnout 8 fan; Riichi uvádí zvlášť viditelné dora, které vyžadují jaku. Hongkong samostatně připomene možný bod za nepřítomnost bonusů, který po dobrání bonusového kamene zanikne. Při vytváření stolu je Základní bodový přehled pod W nastaven na Ano. Zvol Ne, pokud chceš pouze hodnotu platné výhry. Nastavení nemění bodování ani podmínky výhry."
         }
       ]
     },
@@ -89,6 +92,17 @@
         },
         {
           "cs": "S přečte skóre, tedy počet odebraných párů. M počet zbývajících kamenů. Nové rozložení má 144 kamenů, po odebrání páru 142."
+        }
+      ]
+    },
+    {
+      "id": "solitaire_points",
+      "title": {
+        "cs": "Pasijáns — body za odstraněné páry"
+      },
+      "paragraphs": [
+        {
+          "cs": "Pasijáns nepoužívá fan, han ani fu. Skóre je počet odstraněných párů: každý dává 1 bod a vrácení tahu tento bod odebere. Vyhraješ odstraněním všech 144 kamenů, tedy 72 párů."
         }
       ]
     },
@@ -212,7 +226,7 @@
           "cs": "S přečte průběžné body všech hráčů. M počet kamenů zbývajících k dobrání ve zdi. Jde jen o oznámení: nedobírají, neodhazují, nedávají pas ani neodhalují cizí ruce."
         },
         {
-          "cs": "W přečte hodnotu platné výhry: fan nebo han a fu a získané body. Neodhaduje neúplnou ruku. Před výhrou v riichi nezahrnuje skryté ura-dora, takže konečná hodnota může být vyšší. U čte tvé vyložené sestavy, Shift+U sestavy ostatních a R číslo rozdání, větry a aktuální situaci. V riichi I čte ukazatele a kameny dora, počet tvých dora, hlášení riichi, vklady, honba a tvé omezení furiten. Tyto klávesy pouze čtou informace."
+          "cs": "W přečte hodnotu platné výhry: fan nebo han a fu a získané body. Bez platné výhry neuvádí konečnou hodnotu ruky. Před výhrou v riichi nezahrnuje skryté ura-dora, takže konečná hodnota může být vyšší. U čte tvé vyložené sestavy, Shift+U sestavy ostatních a R číslo rozdání, větry a aktuální situaci. V riichi I čte ukazatele a kameny dora, počet tvých dora, hlášení riichi, vklady, honba a tvé omezení furiten. Tyto klávesy pouze čtou informace."
         }
       ]
     },
@@ -223,28 +237,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Úplný příklad: bambusy 2–3–4; kruhy 4–5–6; tři znaky 7; tři červení draci; dva Západy. První dvě skupiny jsou chow, další dvě pungy a větry pár. Každý kámen patří jen jedné skupině, nesmíš jej použít dvakrát."
-        },
-        {
-          "cs": "Teď z příkladu odeber bambus 4. Máš 13 kamenů a čekáš na dokončení prvního chow. Vlastní dobrání může umožnit Mahjong z dobrání; soupeřův odhoz může nabídnout Mahjong v odpovědích. Vždy ale musíš splnit i níže popsanou bodovou podmínku."
-        },
-        {
-          "cs": "V neúplné ruce si nechávej užitečné vazby. K 4–5 se hodí 3 nebo 6, k 4–6 jedině 5. Pár může zůstat závěrečným párem nebo se třetím kusem změnit na pung. Osamělý kámen bez stejných či sousedních kamenů bývá vhodný k odhozu."
-        },
-        {
-          "cs": "Sestavu z vlastních kamenů nemusíš hned vykládat. Soukromé kameny můžeš ještě přeskupit. Převzatá a vyložená sestava zůstává pohromadě a její kameny už jednotlivě neodhodíš. Přebírej jen to, co pomáhá zamýšlené výhře."
-        },
-        {
-          "cs": "Příklad nemá automaticky 3 fan. Dračí pung dává 1, žádné květiny ani období další 1 a vlastní dobrání 1: celkem 3. Na odhoz potřebuje ještě jinou bodovou podmínku. Sleduj tedy tvar i hodnotu ruky."
-        },
-        {
-          "cs": "Sedm párů je jiný vítězný tvar za 4 fan. V tomto čínském profilu mohou čtyři stejné kameny bez vyhlášení kongu tvořit dva páry. Třináct sirotků je další vzácný tvar. Nejprve se můžeš učit běžné čtyři sestavy s párem; zvláštní ruce jsou alternativy."
-        },
-        {
-          "cs": "Čtyři tříkamenné sestavy a pár mají obvykle 14 kusů. Vyhlášený kong má jeden navíc, ale stále je jednou sestavou: s jedním kongem je úplná ruka 15 kamenů, se dvěma 16. Květiny a období do počtu nepatří. Neodhazuj další kámen jen proto, abys ruku s kongem vrátil na 14."
-        },
-        {
-          "cs": "Třináct sirotků znamená jednu 1 a 9 každé barvy, všechny čtyři větry a tři draky a druhý kus libovolného z těchto třinácti druhů. Neobsahuje chow ani čtyři běžné sestavy. Zůstává bez přebírání sestav a v tomto profilu dává 13 fan."
+          "cs": "Sestav čtyři čou, pungy nebo kongy a pár, včetně vyložených i ponechaných sestav. Čou jsou tři po sobě jdoucí čísla jedné barvy, pung tři stejné kameny, kong čtyři a pár dva. Potřebuješ také 3 fan. Při splnění obou podmínek zvol Vyhlásit Mahjong a stiskni Enter. Úplný přehled bodování je dále; dobrání vhodného kamene rozdání samo neukončí."
         }
       ]
     },
@@ -269,54 +262,175 @@
       ]
     },
     {
-      "id": "table_hk_practice",
+      "id": "table_hk_sets",
       "title": {
-        "cs": "Hong Kong — Plánování ruky na příkladech"
+        "cs": "Hongkong — úplný přehled bodování"
       },
       "paragraphs": [
         {
-          "cs": "Jednodušší cesta k minimu jsou samé pungy. Necháváš si páry, čtyři měníš na pungy a pátý zůstane párem. Čtyři pungy dají potřebné 3 fan. Je to plán, ne povinnost; pár chce přesný třetí kus, sousední čísla mohou přijmout dva druhy."
+          "cs": "Běžná výhra vyžaduje čtyři sestavy a pár a alespoň 3 fan. Sedm párů a třináct sirotků mají jiný tvar. Následuje úplný přehled prémií tohoto vydání; bez uvedeného omezení platí pro otevřenou i zavřenou ruku. Samotné běžné čou, číselný pung ani pár nemají zvláštní prémii."
         },
         {
-          "cs": "Jiný plán je jedna barva s čestnými kameny za 3 fan. Máš-li už většinu čísel v jedné barvě, můžeš ji doplnit užitečnými větry či draky. Nemusíš ale vždy hrát jednu barvu ani rozbíjet téměř hotovou ruku kvůli vzdálenému drahému vzoru."
+          "cs": "Slučitelné běžné prémie se sčítají. Malí a velcí tři draci nahrazují body za jednotlivé dračí pungy. U zvláštních rukou od 10 fan se použije jen nejvyšší odpovídající zvláštní prémie, bez běžných bonusů. Zavřená ruka ani čtyři skryté pungy nemají zvláštní prémii. Všech osm bonusových kamenů dává 4 fan a sedm párů 4 fan."
         }
       ]
     },
     {
-      "id": "table_hk_sets",
+      "id": "table_hk_fan_1",
       "title": {
-        "cs": "Hong Kong: hodnoty sestav a platby"
+        "cs": "Hong Kong: 1 fan"
       },
       "paragraphs": [
         {
-          "cs": "Tento profil Hong Kong nemá samostatnou tabulku fu ani prémii jen za skrytí běžného pungu či kongu. Kong splňuje stejné podmínky druhu kamenů jako pung. Fan získáš za vzory celé ruky, čestné kameny a způsob výhry."
+          "cs": "- 1 fan — Vlastní dobrání výherního kamene."
         },
         {
-          "cs": "- Čtyři chow dávají 1 fan, čtyři pungy či kongy 3, sedm párů 4."
+          "cs": "- 1 fan — Samá čou: čtyři postupky a pár, který může být čestný."
         },
         {
-          "cs": "- Jedna barva s čestnými kameny dává 3 fan, bez nich 7."
+          "cs": "- 1 fan — Pung nebo kong červených draků."
         },
         {
-          "cs": "- Každý pung nebo kong draků dává 1. Dva dračí pungy a pár třetího draka tvoří malé tři draky za 5; všechny tři pungy velké tři draky za 8. Tyto větší odměny již zahrnují dílčí dračí pungy."
+          "cs": "- 1 fan — Pung nebo kong zelených draků."
         },
         {
-          "cs": "- Pung nebo kong vlastního větru dává 1 fan a větru kola další 1. Při shodě dostane stejná sestava 2."
+          "cs": "- 1 fan — Pung nebo kong bílých draků."
         },
         {
-          "cs": "- Vlastní dobrání dává 1 fan. Výhra na posledním běžném dobrání, posledním odhozu, náhradním kameni či uloupeném kongu má příslušnou prémii 1 fan."
+          "cs": "- 1 fan — Pung nebo kong vlastního větru."
         },
         {
-          "cs": "- Žádná květina ani roční období dává 1 fan. V každé bonusové rodině dává vlastní kámen 1: číslo 1 patří Východu, 2 Jihu, 3 Západu, 4 Severu. Celá rodina čtyř dává místo toho 2."
+          "cs": "- 1 fan — Pung nebo kong větru kola; shodný vlastní vítr a vítr kola dávají celkem 2 fan."
         },
         {
-          "cs": "Zvláštní ruce mají vlastní hodnotu: třináct sirotků 13 fan, malé čtyři větry 10, velké čtyři větry 15, samé čestné kameny 10, samé krajní číselné kameny 10, čtyři kongy 18 a devět bran 15. Malé čtyři větry tvoří tři větrné pungy a pár čtvrtého větru; velké všechny čtyři pungy. Hra vybere nejvyšší zvláštní odměnu bez běžných prémií."
+          "cs": "- 1 fan — Výhra náhradním kamenem po kongu; počítá se i vlastní dobrání."
         },
         {
-          "cs": "Jednoduchá cesta k minimu: čtyři chow za 1, žádné květiny za 1 a vlastní dobrání za 1 dávají 3 fan. Stejný tvar na cizí odhoz může mít jen 2 a výhru neumožnit. Čtyři pungy samy splní minimum 3."
+          "cs": "- 1 fan — Okradení kongu: výhra na kameni přidávaném k odkrytému pungu."
         },
         {
-          "cs": "Základ platby je 8 bodů za 3 fan, 16 za 4, 24 za 5, 32 za 6, 48 za 7 a 64 za 8 nebo více. Při výhře na odhoz platí odhazující dvojnásobek základu, ostatní po jednom základu. Při vlastním dobrání platí každý soupeř dvojnásobek. Pět fan tak přinese 96 bodů na odhoz nebo 144 z dobrání. Limit 8 fan omezuje platbu i u hodnotnější zvláštní ruky."
+          "cs": "- 1 fan — Poslední běžné dobrání ze zdi; počítá se i vlastní dobrání."
+        },
+        {
+          "cs": "- 1 fan — Výhra na posledním odhozu po vyčerpání běžné zdi."
+        },
+        {
+          "cs": "- 1 fan — Žádné bonusy: ani květina, ani roční období."
+        },
+        {
+          "cs": "- 1 fan — Vlastní květina: její číslo odpovídá tvému větru."
+        },
+        {
+          "cs": "- 1 fan — Vlastní roční období: jeho číslo odpovídá tvému větru."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_fan_2",
+      "title": {
+        "cs": "Hong Kong: 2 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- 2 fan — Všechny čtyři květiny: nahrazují 1 fan za vlastní květinu."
+        },
+        {
+          "cs": "- 2 fan — Všechna čtyři roční období: nahrazují 1 fan za vlastní období."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_fan_3_8",
+      "title": {
+        "cs": "Hong Kong: 3–8 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- 3 fan — Samé pungy: čtyři pungy nebo kongy a pár."
+        },
+        {
+          "cs": "- 3 fan — Poloviční barva: jedna číselná barva a čestné kameny, obojí přítomno."
+        },
+        {
+          "cs": "- 4 fan — Sedm párů: čtyři stejné kameny bez vyhlášeného kongu mohou tvořit dva páry."
+        },
+        {
+          "cs": "- 5 fan — Malí tři draci: dva pungy nebo kongy draků a pár třetího; zahrnuje bonusy za pungy draků."
+        },
+        {
+          "cs": "- 7 fan — Čistá barva: jen bambusy, kruhy nebo znaky, bez čestných kamenů."
+        },
+        {
+          "cs": "- 8 fan — Velcí tři draci: pungy nebo kongy všech tří draků; zahrnuje bonusy za pungy draků."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_fan_special",
+      "title": {
+        "cs": "Hong Kong: 10–18 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- 10 fan — Malé čtyři větry: tři pungy nebo kongy větrů a pár čtvrtého."
+        },
+        {
+          "cs": "- 10 fan — Samé čestné kameny: platná vítězná ruka pouze z větrů a draků."
+        },
+        {
+          "cs": "- 10 fan — Samé krajní kameny: pouze jedničky a devítky, bez čestných."
+        },
+        {
+          "cs": "- 13 fan — Třináct sirotků: každá jednička a devítka, čtyři větry, tři draci a jeden stejný kámen do páru; zavřená ruka."
+        },
+        {
+          "cs": "- 15 fan — Velké čtyři větry: čtyři pungy nebo kongy větrů a pár."
+        },
+        {
+          "cs": "- 15 fan — Devět bran: skrytý přesný základ 1112345678999 jedné barvy před dobráním nebo převzetím dalšího kamene té barvy."
+        },
+        {
+          "cs": "- 18 fan — Čtyři kongy a pár."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_bonus",
+      "title": {
+        "cs": "Hongkong — květiny a období podle větru"
+      },
+      "paragraphs": [
+        {
+          "cs": "Vlastní květina a období se řídí tvým větrem, ne větrem kola. Číslo 1 je Východ, 2 Jih, 3 Západ, 4 Sever. Celá rodina nahrazuje prémii za vlastní kámen; obě rodiny se bodují zvlášť."
+        },
+        {
+          "cs": "- Východ: květ švestky a jaro."
+        },
+        {
+          "cs": "- Jih: květ orchideje a léto."
+        },
+        {
+          "cs": "- Západ: květ chryzantémy a podzim."
+        },
+        {
+          "cs": "- Sever: květ bambusu a zima."
+        }
+      ]
+    },
+    {
+      "id": "table_hk_payments",
+      "title": {
+        "cs": "Hong Kong — Bodování a výplaty"
+      },
+      "paragraphs": [
+        {
+          "cs": "Základy výplaty: 3 fan — 8 bodů; 4 — 16; 5 — 24; 6 — 32; 7 — 48; 8 a více — 64. Ruka může přesáhnout 8 fan, ale základ výplaty už neroste."
+        },
+        {
+          "cs": "Při výhře z odhozu platí odhazující dva základy, ostatní soupeři po jednom. Při vlastním dobrání platí každý soupeř dva základy."
+        },
+        {
+          "cs": "Nebeská ani pozemská ruka se při hře nyní nepřiznávají. Nepřidávej za ně prémii za výhru na začátku rozdání."
         }
       ]
     },
@@ -475,7 +589,7 @@
           "cs": "S přečte průběžné body všech hráčů. M počet kamenů zbývajících k dobrání ve zdi. Jde jen o oznámení: nedobírají, neodhazují, nedávají pas ani neodhalují cizí ruce."
         },
         {
-          "cs": "W přečte hodnotu platné výhry: fan nebo han a fu a získané body. Neodhaduje neúplnou ruku. Před výhrou v riichi nezahrnuje skryté ura-dora, takže konečná hodnota může být vyšší. U čte tvé vyložené sestavy, Shift+U sestavy ostatních a R číslo rozdání, větry a aktuální situaci. V riichi I čte ukazatele a kameny dora, počet tvých dora, hlášení riichi, vklady, honba a tvé omezení furiten. Tyto klávesy pouze čtou informace."
+          "cs": "W přečte hodnotu platné výhry: fan nebo han a fu a získané body. Bez platné výhry neuvádí konečnou hodnotu ruky. Před výhrou v riichi nezahrnuje skryté ura-dora, takže konečná hodnota může být vyšší. U čte tvé vyložené sestavy, Shift+U sestavy ostatních a R číslo rozdání, větry a aktuální situaci. V riichi I čte ukazatele a kameny dora, počet tvých dora, hlášení riichi, vklady, honba a tvé omezení furiten. Tyto klávesy pouze čtou informace."
         }
       ]
     },
@@ -486,25 +600,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Úplný příklad: bambusy 2–3–4; kruhy 4–5–6; tři znaky 7; tři červení draci; dva Západy. První dvě skupiny jsou chow, další dvě pungy a větry pár. Každý kámen patří jen jedné skupině, nesmíš jej použít dvakrát."
-        },
-        {
-          "cs": "Teď z příkladu odeber bambus 4. Máš 13 kamenů a čekáš na dokončení prvního chow. Vlastní dobrání může umožnit Mahjong z dobrání; soupeřův odhoz může nabídnout Mahjong v odpovědích. Vždy ale musíš splnit i níže popsanou bodovou podmínku."
-        },
-        {
-          "cs": "V neúplné ruce si nechávej užitečné vazby. K 4–5 se hodí 3 nebo 6, k 4–6 jedině 5. Pár může zůstat závěrečným párem nebo se třetím kusem změnit na pung. Osamělý kámen bez stejných či sousedních kamenů bývá vhodný k odhozu."
-        },
-        {
-          "cs": "Sestavu z vlastních kamenů nemusíš hned vykládat. Soukromé kameny můžeš ještě přeskupit. Převzatá a vyložená sestava zůstává pohromadě a její kameny už jednotlivě neodhodíš. Přebírej jen to, co pomáhá zamýšlené výhře."
-        },
-        {
-          "cs": "Pung červených draků v příkladu tvoří yaku za 1 han otevřený i skrytý. Po dokončení čtyř sestav a páru umožní výhru, pokud ji na odhoz neblokuje například furiten. Každá sestava nemusí mít vlastní yaku."
-        },
-        {
-          "cs": "Sedm různých párů je samostatná ruka a yaku za 2 han. Čtyři stejné kameny v Riichi dva různé páry nenahradí. Třináct sirotků tvoří všechny číselné 1 a 9 a sedm čestných druhů s jedním opakováním, bez převzatých sestav. Je to yakuman. Tyto tvary nahrazují čtyři sestavy s párem."
-        },
-        {
-          "cs": "Čtyři tříkamenné sestavy a pár mají obvykle 14 kusů. Vyhlášený kong má jeden navíc, ale stále je jednou sestavou: s jedním kongem je úplná ruka 15 kamenů, se dvěma 16. Květiny a období do počtu nepatří. Neodhazuj další kámen jen proto, abys ruku s kongem vrátil na 14."
+          "cs": "Běžný tvar jsou čtyři sestavy a pár. Alternativami jsou sedm různých párů a třináct sirotků. Výhra vyžaduje jaku; samotné dora a fu nestačí. Při platné výhře zvol Vyhlásit Mahjong a stiskni Enter. Přehledy dále uvádějí všechna přiznávaná jaku a hodnoty fu."
         }
       ]
     },
@@ -529,23 +625,6 @@
       ]
     },
     {
-      "id": "table_riichi_practice",
-      "title": {
-        "cs": "Riichi — Plánování ruky na příkladech"
-      },
-      "paragraphs": [
-        {
-          "cs": "Pro první hru můžeš zkusit zavřenou ruku s Riichi. Dobírej, zlepšuj sestavy a odhazuj méně užitečné kameny bez přebírání sestav. Jakmile se objeví Riichi, vyber nabídnutý odhoz. Tím získáš yaku, nikoli hotovou výhru; vítězný kámen ještě potřebuješ."
-        },
-        {
-          "cs": "Další jasný plán je dračí pung. Třetího draka můžeš převzít a yaku zůstane i po otevření. Stále potřebuješ další tři sestavy a pár. Otevřená ruka z nesouvisejících obyčejných chow nemusí mít žádné yaku."
-        },
-        {
-          "cs": "Devět bran je zavřená ruka jedné barvy se základem 1–1–1–2–3–4–5–6–7–8–9–9–9 a jedním dalším kamenem téže barvy. Neznamená devět chow. Samé zelené v Riichi používají pouze bambusy 2, 3, 4, 6, 8 a zelené draky v platném úplném tvaru."
-        }
-      ]
-    },
-    {
       "id": "table_riichi",
       "title": {
         "cs": "Riichi — vyhlášení připravenosti, dora a furiten"
@@ -565,44 +644,150 @@
     {
       "id": "table_yaku",
       "title": {
-        "cs": "Riichi: yaku a otevření ruky"
+        "cs": "Riichi — úplný přehled jaku a han"
       },
       "paragraphs": [
         {
-          "cs": "Yaku je pojmenovaná podmínka výhry. Han ze slučitelných yaku se sčítají. Běžné chow ani pung prostředních čísel samy han nedávají. Převzetí kamene může ruku urychlit, ale některá yaku zruší a jiná zlevní."
+          "cs": "Riichi vyžaduje platnou ruku a alespoň jedno jaku. Níže jsou všechna běžná jaku přiznávaná v tomto vydání s hodnotami zavřené a otevřené ruky. Skrytý kong ruku neotevírá. Pung dokončený výherním cizím odhozem není při hodnocení skrytý."
         },
         {
-          "cs": "- Tanyao, jen čísla 2–8 bez čestných kamenů: 1 han i otevřené. Každý dračí pung či kong: 1. Vlastní vítr a vítr kola v pungu či kongu: po 1; při shodě 2."
+          "cs": "- Riichi: zavřená připravená ruka a přijaté vyhlášení s vkladem 1000 bodů. Pouze zavřená: 1 han."
         },
         {
-          "cs": "- Riichi: 1 han, zavřená připravená ruka a vklad 1000 bodů. Dvojité Riichi v prvním nepřerušeném oběhu: místo toho 2. Ippatsu za výhru v prvním nepřerušeném oběhu po Riichi přidá 1."
+          "cs": "- Dvojité riichi: vyhlášení v prvním nepřerušeném oběhu; nahrazuje běžné riichi. Pouze zavřená: 2 han."
         },
         {
-          "cs": "- Menzen tsumo, vlastní dobrání se zavřenou rukou: 1 han. Pinfu: 1, jen zavřené, čtyři chow, nebodovaný pár a oboustranné čekání."
+          "cs": "- Ippatsu: výhra v prvním nepřerušeném oběhu po riichi. Pouze zavřená: 1 han."
         },
         {
-          "cs": "- Dvě stejná chow jedné barvy: 1 han jen zavřené. Dvě takové dvojice: místo toho 3, také jen zavřené. Sedm různých párů: 2."
+          "cs": "- Menzen tsumo: vlastní dobrání se zavřenou rukou. Pouze zavřená: 1 han."
         },
         {
-          "cs": "- Čtyři pungy či kongy: 2 han. Tři skryté pungy: 2. Tři kongy: 2. Dva dračí pungy a pár třetího draka: 2 navíc k bodům za dračí pungy."
+          "cs": "- Tanyao: pouze čísla 2 až 8, bez čestných kamenů. Zavřená: 1 han; otevřená: 1 han."
         },
         {
-          "cs": "- Stejné chow ve všech třech barvách, například 2–3–4: 2 han zavřené, 1 otevřené. Chow 1–2–3, 4–5–6 a 7–8–9 jedné barvy: 2 zavřené, 1 otevřené. Pungy stejného čísla ve třech barvách: 2 bez ohledu na otevření."
+          "cs": "- Yakuhai: za každý pung nebo kong draků zvlášť. Zavřená: 1 han; otevřená: 1 han."
         },
         {
-          "cs": "- Jedna barva s čestnými kameny: 3 han zavřené, 2 otevřené. Bez čestných kamenů: 6 zavřené, 5 otevřené."
+          "cs": "- Pung nebo kong vlastního větru. Zavřená: 1 han; otevřená: 1 han."
         },
         {
-          "cs": "- Krajní nebo čestný kámen v každé sestavě i páru, s alespoň jedním chow: 2 han zavřené, 1 otevřené. Bez čestných kamenů: 3 a 2. Ruka pouze z krajních a čestných kamenů dává 2."
+          "cs": "- Pung nebo kong větru kola; při shodě s vlastním větrem celkem 2 han. Zavřená: 1 han; otevřená: 1 han."
         },
         {
-          "cs": "- Poslední běžné dobrání, poslední odhoz, náhradní dobrání po kongu nebo uloupení kongu má příslušné yaku za 1 han."
+          "cs": "- Haitei: výhra posledním běžným dobráním ze zdi. Zavřená: 1 han; otevřená: 1 han."
         },
         {
-          "cs": "Každá dora přidá 1 han až tehdy, když máš skutečné yaku. Ukazatel označuje další kámen v cyklu: bambus 3 označuje bambus 4, po 9 následuje 1. Čestné cykly jsou Východ–Jih–Západ–Sever a bílý–zelený–červený drak. Dora je prémie, nikoli samostatný tvar ruky."
+          "cs": "- Houtei: výhra na posledním odhozu. Zavřená: 1 han; otevřená: 1 han."
         },
         {
-          "cs": "Yakuman nahrazuje běžné han a fu. Patří sem například třináct sirotků, čtyři skryté pungy, tři dračí pungy, malé či velké čtyři větry, samé čestné kameny, samé krajní kameny, samé zelené kameny, čtyři kongy a devět bran. Slučitelné yakumany se sčítají. Při výhře čtyř skrytých pungů na odhoz musí kámen dokončit pár; pung dokončený cizím odhozem není skrytý."
+          "cs": "- Rinshan: výhra náhradním kamenem po kongu. Zavřená: 1 han; otevřená: 1 han."
+        },
+        {
+          "cs": "- Chankan: okradení kongu. Zavřená: 1 han; otevřená: 1 han."
+        },
+        {
+          "cs": "- Pinfu: čtyři čou, nebodovaný pár a oboustranné čekání. Pouze zavřená: 1 han."
+        },
+        {
+          "cs": "- Iipeikou: dvě totožná čou jedné barvy. Pouze zavřená: 1 han."
+        },
+        {
+          "cs": "- Ryanpeikou: dva páry totožných čou; nahrazuje iipeikou. Pouze zavřená: 3 han."
+        },
+        {
+          "cs": "- Chiitoitsu: sedm různých párů; čtyři stejné kameny netvoří dva páry. Pouze zavřená: 2 han."
+        },
+        {
+          "cs": "- Toitoi: čtyři pungy nebo kongy a pár. Zavřená: 2 han; otevřená: 2 han."
+        },
+        {
+          "cs": "- Sanankou: tři skryté pungy nebo kongy; čtvrtá sestava může být odkrytá. Zavřená: 2 han; otevřená: 2 han."
+        },
+        {
+          "cs": "- Sankantsu: tři kongy. Zavřená: 2 han; otevřená: 2 han."
+        },
+        {
+          "cs": "- Shousangen: dva pungy nebo kongy draků a pár třetího; počítají se i obě dračí yakuhai. Zavřená: 2 han; otevřená: 2 han."
+        },
+        {
+          "cs": "- Sanshoku doujun: stejné čou ve všech třech barvách. Zavřená: 2 han; otevřená: 1 han."
+        },
+        {
+          "cs": "- Sanshoku doukou: pungy stejného čísla ve třech barvách. Zavřená: 2 han; otevřená: 2 han."
+        },
+        {
+          "cs": "- Ittsu: čou 123, 456 a 789 jedné barvy. Zavřená: 2 han; otevřená: 1 han."
+        },
+        {
+          "cs": "- Chanta: každá sestava i pár obsahují krajní nebo čestný kámen; přítomna čou i čestné kameny. Zavřená: 2 han; otevřená: 1 han."
+        },
+        {
+          "cs": "- Junchan: každá sestava i pár obsahují 1 nebo 9; jsou čou, nejsou čestné kameny. Zavřená: 3 han; otevřená: 2 han."
+        },
+        {
+          "cs": "- Honroutou: pouze krajní a čestné kameny. Zavřená: 2 han; otevřená: 2 han."
+        },
+        {
+          "cs": "- Honitsu: jedna číselná barva a čestné kameny. Zavřená: 3 han; otevřená: 2 han."
+        },
+        {
+          "cs": "- Chinitsu: jedna číselná barva bez čestných kamenů. Zavřená: 6 han; otevřená: 5 han."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_dora",
+      "title": {
+        "cs": "Riichi — další han za dora"
+      },
+      "paragraphs": [
+        {
+          "cs": "Dora přidávají 1 han za každý vlastní kámen dora, ale pouze ruce se skutečným jaku. Dora nejsou jaku. Ukazatel určuje další kámen v cyklu; počítá se každá kopie v ruce i vlastních sestavách. Po přijatém riichi mohou při konečné výhře přibýt skryté ura-dora; náhled před výhrou je neodhaluje."
+        }
+      ]
+    },
+    {
+      "id": "table_riichi_yakuman",
+      "title": {
+        "cs": "Riichi — úplný přehled yakumanů"
+      },
+      "paragraphs": [
+        {
+          "cs": "Každá položka níže dává 1 yakuman místo běžných han a fu. Různé slučitelné yakumany se mohou sčítat. Toto vydání nezdvojuje yakuman za zvláštní čekání ani za velké čtyři větry."
+        },
+        {
+          "cs": "- 1 yakuman — Třináct sirotků: všechny krajní a čestné kameny a jeden navíc; zavřená ruka."
+        },
+        {
+          "cs": "- 1 yakuman — Čtyři skryté pungy nebo kongy: výhra z odhozu musí doplnit pár."
+        },
+        {
+          "cs": "- 1 yakuman — Velcí tři draci: pungy nebo kongy všech tří draků."
+        },
+        {
+          "cs": "- 1 yakuman — Velké čtyři větry: čtyři pungy nebo kongy větrů."
+        },
+        {
+          "cs": "- 1 yakuman — Malé čtyři větry: tři pungy nebo kongy větrů a pár čtvrtého."
+        },
+        {
+          "cs": "- 1 yakuman — Samé čestné kameny: pouze větry a draci."
+        },
+        {
+          "cs": "- 1 yakuman — Samé krajní kameny: pouze jedničky a devítky."
+        },
+        {
+          "cs": "- 1 yakuman — Samé zelené: pouze bambusy 2, 3, 4, 6, 8 a zelení draci."
+        },
+        {
+          "cs": "- 1 yakuman — Čtyři kongy a pár."
+        },
+        {
+          "cs": "- 1 yakuman — Devět bran: zavřená jednobarevná ruka, 1112345678999 a další kámen té barvy."
+        },
+        {
+          "cs": "Nebeská ani pozemská ruka se při hře nyní nepřiznávají. Nepřidávej za ně prémii za výhru na začátku rozdání."
         }
       ]
     },
@@ -831,7 +1016,7 @@
           "cs": "S přečte průběžné body všech hráčů. M počet kamenů zbývajících k dobrání ve zdi. Jde jen o oznámení: nedobírají, neodhazují, nedávají pas ani neodhalují cizí ruce."
         },
         {
-          "cs": "W přečte hodnotu platné výhry: fan nebo han a fu a získané body. Neodhaduje neúplnou ruku. Před výhrou v riichi nezahrnuje skryté ura-dora, takže konečná hodnota může být vyšší. U čte tvé vyložené sestavy, Shift+U sestavy ostatních a R číslo rozdání, větry a aktuální situaci. V riichi I čte ukazatele a kameny dora, počet tvých dora, hlášení riichi, vklady, honba a tvé omezení furiten. Tyto klávesy pouze čtou informace."
+          "cs": "W přečte hodnotu platné výhry: fan nebo han a fu a získané body. Bez platné výhry neuvádí konečnou hodnotu ruky. Před výhrou v riichi nezahrnuje skryté ura-dora, takže konečná hodnota může být vyšší. U čte tvé vyložené sestavy, Shift+U sestavy ostatních a R číslo rozdání, větry a aktuální situaci. V riichi I čte ukazatele a kameny dora, počet tvých dora, hlášení riichi, vklady, honba a tvé omezení furiten. Tyto klávesy pouze čtou informace."
         }
       ]
     },
@@ -842,31 +1027,7 @@
       },
       "paragraphs": [
         {
-          "cs": "Úplný příklad: bambusy 2–3–4; kruhy 4–5–6; tři znaky 7; tři červení draci; dva Západy. První dvě skupiny jsou chow, další dvě pungy a větry pár. Každý kámen patří jen jedné skupině, nesmíš jej použít dvakrát."
-        },
-        {
-          "cs": "Teď z příkladu odeber bambus 4. Máš 13 kamenů a čekáš na dokončení prvního chow. Vlastní dobrání může umožnit Mahjong z dobrání; soupeřův odhoz může nabídnout Mahjong v odpovědích. Vždy ale musíš splnit i níže popsanou bodovou podmínku."
-        },
-        {
-          "cs": "V neúplné ruce si nechávej užitečné vazby. K 4–5 se hodí 3 nebo 6, k 4–6 jedině 5. Pár může zůstat závěrečným párem nebo se třetím kusem změnit na pung. Osamělý kámen bez stejných či sousedních kamenů bývá vhodný k odhozu."
-        },
-        {
-          "cs": "Sestavu z vlastních kamenů nemusíš hned vykládat. Soukromé kameny můžeš ještě přeskupit. Převzatá a vyložená sestava zůstává pohromadě a její kameny už jednotlivě neodhodíš. Přebírej jen to, co pomáhá zamýšlené výhře."
-        },
-        {
-          "cs": "Čtyři sestavy a pár jsou běžný tvar, potřebuješ ale i 8 fan bez květin. Samotný dračí pung dává jen 2, a běžnou ruku tedy automaticky neopravňuje k výhře. Před otevřením naplánuj slučitelné vzory nebo jeden dost cenný."
-        },
-        {
-          "cs": "Sedm párů je zvláštní tvar za 24 fan. Čtyři stejné kameny bez vyhlášení kongu mohou v tomto čínském profilu být dvěma páry. Třináct sirotků dává 88. MCR má i zvláštní pletené tvary, začít však můžeš běžnými čtyřmi sestavami a párem."
-        },
-        {
-          "cs": "Čtyři tříkamenné sestavy a pár mají obvykle 14 kusů. Vyhlášený kong má jeden navíc, ale stále je jednou sestavou: s jedním kongem je úplná ruka 15 kamenů, se dvěma 16. Květiny a období do počtu nepatří. Neodhazuj další kámen jen proto, abys ruku s kongem vrátil na 14."
-        },
-        {
-          "cs": "Pletená postupka je zvláštní devítice: 1–4–7 jedné barvy, 2–5–8 druhé a 3–6–9 třetí. Například znaky 1–4–7, kruhy 2–5–8 a bambusy 3–6–9. Přidej jednu běžnou sestavu a pár. Barvy lze zaměnit, ale každá číselná trojice patří jiné barvě. Vzor pletené postupky dává 12 fan."
-        },
-        {
-          "cs": "Další zvláštní tvar má 14 různých kamenů bez páru: čísla z jedné takové pletené devítice a pět, šest či sedm různých čestných kamenů. Nic se neopakuje. Se všemi sedmi čestnými kameny jde o větší pletenou ruku za 24 fan, s pěti či šesti o menší za 12. Nahrazují běžné čtyři sestavy."
+          "cs": "Běžná ruka má čtyři sestavy a pár; MCR dovoluje také sedm párů, třináct sirotků a pletené ruce popsané v přehledu. Potřebuješ alespoň 8 fan bez květin. Při splnění podmínek zvol Vyhlásit Mahjong a stiskni Enter. Každá položka má název, hodnotu a podmínku odkrytí."
         }
       ]
     },
@@ -891,57 +1052,520 @@
       ]
     },
     {
-      "id": "table_mcr_practice",
+      "id": "table_mcr_sets",
       "title": {
-        "cs": "MCR — Plánování ruky na příkladech"
+        "cs": "MCR — jak číst přehled 81 položek"
       },
       "paragraphs": [
         {
-          "cs": "Konkrétní cesta: samé pungy za 6 fan a dračí pung za 2. Pungy znaků 2, kruhů 4, bambusů 6 a bílých draků s párem znaků 5 splní nejméně 8 i otevřené. Každý pung jsou tři stejné kameny, nikoli směs těchto čísel."
+          "cs": "Následujících 81 položek popisuje bodované prvky MCR. Potřebuješ platný tvar ruky a alespoň 8 fan bez květin. Kong stejného druhu splňuje i požadavek na pung. Číselné barvy jsou znaky, kruhy a bambusy; čestné kameny jsou větry a draci."
         },
         {
-          "cs": "Cennější cesta je sedm párů za 24 fan bez přebírání sestav. Jedna barva s čestnými kameny dává jen 6 a sama nestačí. Bodová tabulka pomáhá vybrat plán místo sbírání sestav bez cesty k výhře."
+          "cs": "Zavřená ruka nemá sestavy převzaté z odhozů; vyhlášený skrytý kong ji neotevře. Pung doplněný výherním cizím odhozem je odkrytý, ostatní ponechané pungy zůstávají skryté. Pletený základ tvoří 147 jedné barvy, 258 druhé a 369 třetí; barvy lze prohodit."
         },
         {
-          "cs": "Každý soupeř platí základních 8 bodů. Při výhře na odhoz odhazující navíc hodnotu ruky včetně květin, z dobrání tuto hodnotu doplatí všichni. Ruka za 8 bez květin tak získá 32 na odhoz nebo 48 z dobrání. Hra to vypočítá."
+          "cs": "Nesčítej všechny odpovídající názvy bez kontroly výluk. Vyšší vzor může zahrnovat nižší a stejné sestavy nelze libovolně opakovaně použít pro složené prémie. Hra vybírá slučitelné vzory. Čísla ve výlukách odkazují na položky MCR, ne na pořadí tahů."
         }
       ]
     },
     {
-      "id": "table_mcr_sets",
+      "id": "table_mcr_fan_88",
       "title": {
-        "cs": "MCR: otevřené a skryté sestavy"
+        "cs": "MCR: 88 fan"
       },
       "paragraphs": [
         {
-          "cs": "MCR přiděluje fan za podmínky splněné vítěznou rukou; fu z Riichi se nepoužívají. Samotné běžné chow ani pung prostředních čísel nemají pevnou prémii. Chow mohou bodovat společně s dalšími chow, pung za druh kamenů nebo jako část většího vzoru."
+          "cs": "- MCR 1: 88 fan — Velké čtyři větry: čtyři pungy větrů. Otevřená i zavřená ruka."
         },
         {
-          "cs": "- Jeden kong: otevřený 1 fan, skrytý 2 fan."
+          "cs": "- MCR 2: 88 fan — Velcí tři draci: tři pungy draků. Otevřená i zavřená ruka."
         },
         {
-          "cs": "- Dva kongy: oba otevřené 4 fan, jeden otevřený a jeden skrytý 6, oba skryté 8. Nahrazují odměny za jednotlivé kongy."
+          "cs": "- MCR 3: 88 fan — Samé zelené: pouze bambusy 2, 3, 4, 6, 8 a zelení draci. Otevřená i zavřená ruka."
         },
         {
-          "cs": "- Tři kongy dávají 32 fan, čtyři 88. Odměny za menší počet kongů se znovu nepřičítají."
+          "cs": "- MCR 4: 88 fan — Devět bran: skrytý základ 1112345678999 jedné barvy a další kámen stejné barvy. Pouze zavřená ruka."
         },
         {
-          "cs": "- Dva skryté pungy dávají 2 fan, tři 16, čtyři 64. Skrytý kong se také započítává mezi skryté pungy. Pung dokončený vítězným cizím odhozem není skrytý."
+          "cs": "- MCR 5: 88 fan — Čtyři kongy. Otevřená i zavřená ruka."
         },
         {
-          "cs": "- Pung nebo kong draků dává 2 fan. Vlastní vítr dává 2 a vítr kola další 2. Pung krajních čísel nebo nebodovaného větru dává 1."
+          "cs": "- MCR 6: 88 fan — Sedm po sobě jdoucích párů jedné barvy. Pouze zavřená ruka."
         },
         {
-          "cs": "- Čtyři pungy či kongy dávají 6 fan. Jedna barva s čestnými kameny dává 6, bez čestných kamenů 24, sedm párů 24 a třináct sirotků 88."
+          "cs": "- MCR 7: 88 fan — Třináct sirotků: všechny různé krajní a čestné kameny a jeden navíc do páru. Pouze zavřená ruka."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_64",
+      "title": {
+        "cs": "MCR: 64 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- MCR 8: 64 fan — Samé krajní kameny: pouze jedničky a devítky. Otevřená i zavřená ruka."
         },
         {
-          "cs": "- Čtyři chow s číselným párem a bez čestných kamenů dávají 2 fan. Dvě stejná chow jedné barvy dávají 1; chow 1–2–3 a 7–8–9 stejné barvy také 1."
+          "cs": "- MCR 9: 64 fan — Malé čtyři větry: tři pungy větrů a pár čtvrtého větru. Otevřená i zavřená ruka."
         },
         {
-          "cs": "Zavřená výhra na odhoz dává 2 fan, zcela skrytá ruka s vlastním dobráním 4. Samotné vlastní dobrání s otevřenou rukou dává 1. Nesčítej automaticky všechny odpovídající popisy: vyšší vzor může zahrnovat nižší a vyloučit jeho body. Dva skryté kongy za 8 například nedostanou další 2 jen za tytéž dva skryté pungy."
+          "cs": "- MCR 10: 64 fan — Malí tři draci: dva pungy draků a pár třetího draka. Otevřená i zavřená ruka."
         },
         {
-          "cs": "Květiny a roční období dávají po 1 fan, ale nepomáhají dosáhnout požadovaných 8. Ruka za 7 fan s jednou květinou stále neumožní Mahjong. Hra vybírá slučitelné vzory; přiznanou hodnotu najdeš v podrobnostech výsledku."
+          "cs": "- MCR 11: 64 fan — Samé čestné kameny: pouze větry a draci. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 12: 64 fan — Čtyři skryté pungy. Všechny čtyři pungy skryté."
+        },
+        {
+          "cs": "- MCR 13: 64 fan — Čisté krajní čou: 123, 123, 789, 789 a pár 55, vše jedné barvy. Otevřená i zavřená ruka."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_48",
+      "title": {
+        "cs": "MCR: 48 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- MCR 14: 48 fan — Čtyři totožná čou jedné barvy. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 15: 48 fan — Čtyři po sobě jdoucí číselné pungy jedné barvy. Otevřená i zavřená ruka."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_32",
+      "title": {
+        "cs": "MCR: 32 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- MCR 16: 32 fan — Čtyři posunutá čou jedné barvy: vždy o 1 nebo vždy o 2. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 17: 32 fan — Tři kongy. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 18: 32 fan — Pouze krajní a čestné kameny, oba druhy přítomny. Otevřená i zavřená ruka."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_24",
+      "title": {
+        "cs": "MCR: 24 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- MCR 19: 24 fan — Sedm párů. Pouze zavřená ruka."
+        },
+        {
+          "cs": "- MCR 20: 24 fan — Větší čestné a pletené kameny: všech sedm čestných a sedm různých kamenů z pletené řady. Pouze zavřená ruka."
+        },
+        {
+          "cs": "- MCR 21: 24 fan — Samé sudé pungy: pungy nebo kongy a pár pouze z 2, 4, 6 a 8. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 22: 24 fan — Čistá barva: jedna číselná barva bez čestných kamenů. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 23: 24 fan — Tři totožná čou jedné barvy. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 24: 24 fan — Tři po sobě jdoucí číselné pungy jedné barvy. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 25: 24 fan — Pouze čísla 7 až 9. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 26: 24 fan — Pouze čísla 4 až 6. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 27: 24 fan — Pouze čísla 1 až 3. Otevřená i zavřená ruka."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_16",
+      "title": {
+        "cs": "MCR: 16 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- MCR 28: 16 fan — Čistá řada: 123, 456 a 789 jedné barvy. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 29: 16 fan — Krajní čou tří barev: 123 a 789 ve dvou barvách, pár 55 ve třetí. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 30: 16 fan — Tři posunutá čou jedné barvy, vždy o 1 nebo vždy o 2. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 31: 16 fan — Každá sestava i pár obsahují číselnou pětku. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 32: 16 fan — Tři pungy stejného čísla, po jednom v každé barvě. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 33: 16 fan — Tři skryté pungy. Tyto tři pungy skryté; čtvrtá sestava může být odkrytá."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_12",
+      "title": {
+        "cs": "MCR: 12 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- MCR 34: 12 fan — Menší čestné a pletené kameny: 14 různých kamenů ze sedmi čestných a devíti pletených. Pouze zavřená ruka."
+        },
+        {
+          "cs": "- MCR 35: 12 fan — Pletená řada: 147, 258 a 369, každá skupina jiné barvy, plus sestava a pár. Devět pletených kamenů skrytých; další sestava může být odkrytá."
+        },
+        {
+          "cs": "- MCR 36: 12 fan — Pouze čísla 6 až 9. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 37: 12 fan — Pouze čísla 1 až 4. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 38: 12 fan — Tři pungy různých větrů. Otevřená i zavřená ruka."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_8",
+      "title": {
+        "cs": "MCR: 8 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- MCR 39: 8 fan — Smíšená řada: 123, 456 a 789, každé čou jiné barvy. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 40: 8 fan — Oboustranné kameny: kruhy 1 až 5, 8, 9; bambusy 2, 4, 5, 6, 8, 9; bílý drak. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 41: 8 fan — Tři totožná čou, po jednom v každé barvě. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 42: 8 fan — Tři po sobě jdoucí číselné pungy, každý jiné barvy. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 43: 8 fan — Kuřecí ruka: žádný jiný bodovaný prvek kromě květin; otevřená výhra z odhozu. Otevřená ruka; výhra z odhozu."
+        },
+        {
+          "cs": "- MCR 44: 8 fan — Výhra posledním běžně dobraným kamenem ze zdi. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 45: 8 fan — Výhra na odhozu po posledním běžném dobrání ze zdi. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 46: 8 fan — Výhra náhradním kamenem po kongu, ne po květině. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 47: 8 fan — Okradení kongu: výhra na kameni přidávaném k odkrytému pungu. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 48: 8 fan — Dva skryté kongy. Oba kongy skryté; ostatní sestavy mohou být odkryté."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_6",
+      "title": {
+        "cs": "MCR: 6 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- MCR 49: 6 fan — Samé pungy: čtyři pungy nebo kongy a pár. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 50: 6 fan — Poloviční barva: jedna číselná barva i čestné kameny. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 51: 6 fan — Tři čou posunutá vždy o 1, každé jiné barvy. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 52: 6 fan — Všechny druhy: tři barvy, alespoň jeden vítr a jeden drak. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 53: 6 fan — Odkrytá ruka: všechny čtyři sestavy z odhozů, pár dokončený odhozem; bez skrytého kongu. Otevřená ruka; výhra z odhozu."
+        },
+        {
+          "cs": "- MCR 54: 6 fan — Dva pungy draků. Otevřená i zavřená ruka."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_4",
+      "title": {
+        "cs": "MCR: 4 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- MCR 55: 4 fan — Vnější ruka: každá sestava i pár obsahují krajní nebo čestný kámen. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 56: 4 fan — Zcela skrytá ruka vyhraná vlastním dobráním. Pouze zavřená ruka."
+        },
+        {
+          "cs": "- MCR 57: 4 fan — Dva odkryté kongy. Oba kongy odkryté."
+        },
+        {
+          "cs": "- MCR 58: 4 fan — Poslední exemplář: ostatní tři stejné kameny jsou již veřejně viditelné. Otevřená i zavřená ruka."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_2",
+      "title": {
+        "cs": "MCR: 2 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- MCR 59: 2 fan — Pung draků. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 60: 2 fan — Pung větru kola. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 61: 2 fan — Pung vlastního větru. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 62: 2 fan — Skrytá ruka vyhraná z odhozu; skryté kongy jsou dovoleny. Pouze zavřená ruka."
+        },
+        {
+          "cs": "- MCR 63: 2 fan — Samá čou: čtyři čou a číselný pár, bez čestných kamenů. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 64: 2 fan — Čtyři stejné kameny použité mimo vyhlášený kong. Otevřená i zavřená ruka. Za každý druh kamene zvlášť."
+        },
+        {
+          "cs": "- MCR 65: 2 fan — Dva pungy stejného čísla v různých barvách. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 66: 2 fan — Dva skryté pungy. Tyto dva pungy skryté; ostatní sestavy mohou být odkryté."
+        },
+        {
+          "cs": "- MCR 67: 2 fan — Jeden skrytý kong. Tento kong skrytý; ostatní sestavy mohou být odkryté."
+        },
+        {
+          "cs": "- MCR 68: 2 fan — Samé střední kameny: pouze čísla 2 až 8, bez čestných. Otevřená i zavřená ruka."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_fan_1",
+      "title": {
+        "cs": "MCR: 1 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "- MCR 69: 1 fan — Dvě totožná čou jedné barvy. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 70: 1 fan — Dvě odpovídající čou v různých barvách. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 71: 1 fan — Krátká řada: dvě čou tvořící šest po sobě jdoucích čísel jedné barvy. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 72: 1 fan — Dvě krajní čou: 123 a 789 jedné barvy. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 73: 1 fan — Pung jedniček, devítek nebo větru, který není vlastním větrem ani větrem kola. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 74: 1 fan — Jeden odkrytý kong. Tento kong odkrytý."
+        },
+        {
+          "cs": "- MCR 75: 1 fan — Chybějící barva: přítomny přesně dvě číselné barvy, třetí chybí; čestné kameny jsou dovoleny. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 76: 1 fan — Bez čestných kamenů. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 77: 1 fan — Krajní čekání: 12 na 3 nebo 89 na 7; jediný možný druh výherního kamene. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 78: 1 fan — Vnitřní čekání: prostřední kámen, třeba 24 na 3; jediný možný výherní druh. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 79: 1 fan — Čekání na pár: jediný možný výherní druh doplní pár. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 80: 1 fan — Vlastní dobrání výherního kamene. Otevřená i zavřená ruka."
+        },
+        {
+          "cs": "- MCR 81: 1 fan — Každá květina nebo roční období: jeden bod navíc, mimo minimum osmi fan. Otevřená i zavřená ruka."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_mixed_kongs",
+      "title": {
+        "cs": "MCR — dva smíšené kongy: 6 fan"
+      },
+      "paragraphs": [
+        {
+          "cs": "Dva smíšené kongy — 6 fan: jeden odkrytý a jeden skrytý. Nahrazují prémie za jednotlivé kongy. Toto vydání rozlišuje tuto kombinaci navíc ke standardním 81 položkám."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_exclusions",
+      "title": {
+        "cs": "MCR — prémie zahrnuté ve vyšších vzorech"
+      },
+      "paragraphs": [
+        {
+          "cs": "Nesčítej všechny odpovídající názvy bez kontroly výluk. Vyšší vzor může zahrnovat nižší a stejné sestavy nelze libovolně opakovaně použít pro složené prémie. Hra vybírá slučitelné vzory. Čísla ve výlukách odkazují na položky MCR, ne na pořadí tahů."
+        },
+        {
+          "cs": "- K položce nepřičítej 1: 9, 38, 49, 60, 61, 73."
+        },
+        {
+          "cs": "- K položce nepřičítej 2: 10, 54, 59."
+        },
+        {
+          "cs": "- K položce nepřičítej 4: 22, 62, 73, 76."
+        },
+        {
+          "cs": "- K položce nepřičítej 5: 17, 48, 49, 57, 67, 74, 79."
+        },
+        {
+          "cs": "- K položce nepřičítej 6: 19, 22, 62, 76, 79."
+        },
+        {
+          "cs": "- K položce nepřičítej 7: 18, 52, 62, 79."
+        },
+        {
+          "cs": "- K položce nepřičítej 8: 18, 49, 55, 73, 76."
+        },
+        {
+          "cs": "- K položce nepřičítej 9: 38, 73."
+        },
+        {
+          "cs": "- K položce nepřičítej 10: 54, 59."
+        },
+        {
+          "cs": "- K položce nepřičítej 11: 18, 49, 55, 73."
+        },
+        {
+          "cs": "- K položce nepřičítej 12: 33, 49, 62, 66."
+        },
+        {
+          "cs": "- K položce nepřičítej 13: 19, 22, 63, 69, 72, 76."
+        },
+        {
+          "cs": "- K položce nepřičítej 14: 23, 64, 69."
+        },
+        {
+          "cs": "- K položce nepřičítej 15: 24, 49."
+        },
+        {
+          "cs": "- K položce nepřičítej 16: 30, 71."
+        },
+        {
+          "cs": "- K položce nepřičítej 17: 48, 57, 67, 74."
+        },
+        {
+          "cs": "- K položce nepřičítej 18: 49, 55, 73."
+        },
+        {
+          "cs": "- K položce nepřičítej 19: 62, 79."
+        },
+        {
+          "cs": "- K položce nepřičítej 20: 34, 52, 62."
+        },
+        {
+          "cs": "- K položce nepřičítej 21: 49, 68, 76."
+        },
+        {
+          "cs": "- K položce nepřičítej 22: 76."
+        },
+        {
+          "cs": "- K položce nepřičítej 23: 69."
+        },
+        {
+          "cs": "- K položce nepřičítej 25: 36, 76."
+        },
+        {
+          "cs": "- K položce nepřičítej 26: 68, 76."
+        },
+        {
+          "cs": "- K položce nepřičítej 27: 37, 76."
+        },
+        {
+          "cs": "- K položce nepřičítej 29: 63, 69, 70, 72, 76."
+        },
+        {
+          "cs": "- K položce nepřičítej 31: 68, 76."
+        },
+        {
+          "cs": "- K položce nepřičítej 33: 66."
+        },
+        {
+          "cs": "- K položce nepřičítej 34: 52, 62."
+        },
+        {
+          "cs": "- K položce nepřičítej 36: 76."
+        },
+        {
+          "cs": "- K položce nepřičítej 37: 76."
+        },
+        {
+          "cs": "- K položce nepřičítej 40: 75."
+        },
+        {
+          "cs": "- K položce nepřičítej 44: 80."
+        },
+        {
+          "cs": "- K položce nepřičítej 46: 80."
+        },
+        {
+          "cs": "- K položce nepřičítej 47: 58."
+        },
+        {
+          "cs": "- K položce nepřičítej 48: 57, 66, 67, 74."
+        },
+        {
+          "cs": "- K položce nepřičítej 53: 62, 79."
+        },
+        {
+          "cs": "- K položce nepřičítej 54: 59."
+        },
+        {
+          "cs": "- K položce nepřičítej 56: 62, 80."
+        },
+        {
+          "cs": "- K položce nepřičítej 57: 67, 74."
+        },
+        {
+          "cs": "- K položce nepřičítej 63: 76."
+        },
+        {
+          "cs": "- K položce nepřičítej 68: 76."
+        },
+        {
+          "cs": "Tři pungy větrů (38) vylučují bod za nebodovaný vítr (73) jen u těchto pungů. Jiné nezávislé pungy mohou bodovat."
+        }
+      ]
+    },
+    {
+      "id": "table_mcr_payments",
+      "title": {
+        "cs": "MCR — Bodování a výplaty"
+      },
+      "paragraphs": [
+        {
+          "cs": "Každý soupeř platí základních 8 bodů. Při výhře z odhozu odhazující připlatí hodnotu ruky včetně květin; při vlastním dobrání ji připlatí všichni soupeři. Každá květina a období přidají 1 fan k výplatě, ne k minimu 8 fan."
         }
       ]
     },
@@ -1051,6 +1675,7 @@
     "riichi_seats": "table_riichi_variants",
     "hong_kong_winds": "table_hk_variants",
     "riichi_winds": "table_riichi_variants",
-    "mcr_winds": "table_mcr_variants"
+    "mcr_winds": "table_mcr_variants",
+    "fan_progress": "table_aim"
   }
 }
