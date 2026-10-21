@@ -36,18 +36,19 @@ driver.step('Tournaments') do |form|
   timer.instance_variable_set(:@monotonic_starttime,Process.clock_gettime(Process::CLOCK_MONOTONIC)-2)
 end
 driver.press('Tournaments',9) do |form|
-  assert_equal([11,22],form.fields[0].instance_variable_get(:@item_keys))
+  assert_equal([11,22,33],form.fields[0].instance_variable_get(:@item_keys),'A passed deadline must not move an unresolved tournament to Completed')
+  assert(form.fields[0].options.last.include?('Deadline passed'),'Passed deadline is not labelled in Current')
   assert_equal(1,reads,'Deadline event polled the backend')
   assert_equal(1,form.instance_variable_get(:@timers).size,'Deadline event accumulated timers')
 end
 driver.press('Tournaments',39){|form|assert_equal(1,form.index)}
 driver.step('Tournaments',[13]) do |form|
-  assert_equal([33,44],form.fields[0].instance_variable_get(:@item_keys))
-  form.fields[0].index=1
+  assert_equal([44],form.fields[0].instance_variable_get(:@item_keys),'Only verified sporting completion belongs in Completed')
+  form.fields[0].index=0
   form.index=0
 end
 driver.step(/\APróba 44 — Łódź — /,[27]){|form|assert(form.fields.first.header.include?('Próba 44'),'Ended Enter lost the previously selected completed tournament')}
-driver.step('Tournaments',[27]){|form|assert_equal(0,form.index);assert_equal(1,form.fields[0].index);assert_equal([],joins)}
+driver.step('Tournaments',[27]){|form|assert_equal(0,form.index);assert_equal(0,form.fields[0].index);assert_equal([],joins)}
 args=u.arguments(snapshot,load:->{reads+=1;snapshot},join:->(id){joins<<id;u.record('confirmed')}).reject{|key,_|[:publication,:snapshot].include?(key)}
 GameRoomTournaments::PublicScreen.new(**args,clock:->{now}).run
 driver.finish

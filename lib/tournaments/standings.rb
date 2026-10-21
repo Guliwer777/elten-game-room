@@ -23,7 +23,7 @@ module GameRoomTournaments
       rows = Data.copy(results, max_bytes: 262_144, max_nodes: 16_384, max_depth: 8)
       ids = []
       rows.each do |result|
-        unless result.is_a?(Hash) && (result.keys - %w[id participants winners scores score_order places]).empty? &&
+        unless result.is_a?(Hash) && (result.keys - %w[id participants winners scores score_order places forfeits resolution]).empty? &&
             (!result.key?('score_order') || %w[higher lower].include?(result['score_order']))
           raise Publication::Invalid, :invalid_standings
         end
@@ -38,7 +38,21 @@ module GameRoomTournaments
         if result.key?('places')
           places=result['places']
           unless places.is_a?(Array) && !places.empty? && places.all? { |group| group.is_a?(Array) && !group.empty? && group.all? { |unit| people.include?(unit) } } &&
-              places.flatten.size==people.size && places.flatten.sort==people.sort && places.first==winners
+              places.flatten.size==people.size && places.flatten.sort==people.sort &&
+              (places.first==winners || winners.empty? && result['resolution']=='administrative' && places.first.sort==people.sort)
+            raise Publication::Invalid, :invalid_standings
+          end
+        end
+        if result.key?('resolution')
+          unless %w[all_zero administrative].include?(result['resolution']) &&
+              (result['resolution'] != 'all_zero' || winners.empty? && scores.nil? && !result.key?('places') && !result.key?('forfeits'))
+            raise Publication::Invalid, :invalid_standings
+          end
+        end
+        if result.key?('forfeits')
+          forfeits = result['forfeits']
+          unless forfeits.is_a?(Array) && forfeits.uniq == forfeits && (forfeits - people).empty? &&
+              (forfeits & winners).empty? && result.key?('places')
             raise Publication::Invalid, :invalid_standings
           end
         end
@@ -50,9 +64,10 @@ module GameRoomTournaments
       table = units.sort.map do |unit|
         own = rows.select { |result| result['participants'].include?(unit) }
         scored = own.select { |result| result['scores'] }
-        {'unit' => unit, 'played' => own.size, 'wins' => own.count { |r| r['winners'].include?(unit) },
-          'losses' => own.count { |r| !r['winners'].empty? && !r['winners'].include?(unit) },
-          'draws' => own.count { |r| r['winners'].empty? }, 'scored_matches' => scored.size,
+        sporting = own.reject { |r| r['resolution'] == 'all_zero' }
+        {'unit' => unit, 'played' => own.size, 'wins' => sporting.count { |r| r['winners'].include?(unit) },
+          'losses' => sporting.count { |r| !r['winners'].empty? && !r['winners'].include?(unit) },
+          'draws' => sporting.count { |r| r['winners'].empty? }, 'scored_matches' => scored.size,
           'score_for' => scored.empty? ? nil : scored.sum { |r| r['scores'].fetch(unit) },
           'score_against' => scored.empty? ? nil : scored.sum { |r| r['scores'].reject { |id, _| id == unit }.values.sum }}
       end
@@ -60,6 +75,7 @@ module GameRoomTournaments
         table.each do |row|
           unit=row['unit']
           row['points'] = rows.select{|result|result['participants'].include?(unit)}.sum do |result|
+            next 0 if result['resolution'] == 'all_zero' || result.fetch('forfeits', []).include?(unit)
             (result['participants']-[unit]).sum{|opponent|points.fetch(comparison(result,unit,opponent))}
           end
         end

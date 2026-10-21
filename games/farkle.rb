@@ -9,6 +9,10 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Farkle < Base
+    def tournament_small_point_policy(options:)
+      tournament_target_small_points(normalize_options(options).fetch('score_limit'))
+    end
+
     def player_spatial_audio?; true; end
     GameRoomServerRandom.register('farkle', ['roll'])
     DIE_COUNT = 6

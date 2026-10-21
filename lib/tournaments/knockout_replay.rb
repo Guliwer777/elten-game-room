@@ -7,13 +7,13 @@ module GameRoomTournaments
     module_function
     def build(base:, resolved:, attempt:)
       raise Publication::Invalid, :invalid_knockout_configuration unless base.is_a?(Hash)
-      expected = KnockoutRound.build(seeds: base['seeds'], players_per_match: base['players_per_match'], round_number: base['round'])
+      expected = KnockoutRound.from_metadata(base)
       unless expected.eql?(base) && Publication::Data.integer?(attempt, 1) && attempt <= 255
         raise Publication::Invalid, :invalid_knockout_configuration
       end
       Standings.calculate(units: base['seeds'], results: resolved)
       index = base['matches'].to_h { |match| [match['id'], match['participants']] }
-      unless resolved.all? { |result| index[result['id']] == result['participants'] && result['winners'].size == 1 }
+      unless resolved.all? { |result| index[result['id']] == result['participants'] && (result['winners'].size == 1 || result['resolution']=='all_zero') }
         raise Publication::Invalid, :invalid_phase_results
       end
       resolved = resolved.sort_by { |result| result['id'] }
@@ -30,7 +30,7 @@ module GameRoomTournaments
       replay = metadata['replay']
       CoordinationRequest.fields!(replay, %w[attempt base_plan resolved_results])
       plan = build(base: replay['base_plan'], resolved: replay['resolved_results'], attempt: replay['attempt'])
-      unless plan.slice('round', 'seeds', 'players_per_match', 'generation').eql?(metadata.slice('round', 'seeds', 'players_per_match', 'generation'))
+      unless plan.slice('round', 'seeds', 'players_per_match', 'generation','bracket_groups').eql?(metadata.slice('round', 'seeds', 'players_per_match', 'generation','bracket_groups'))
         raise Publication::Invalid, :phase_changed
       end
       plan

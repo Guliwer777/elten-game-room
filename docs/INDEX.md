@@ -16,6 +16,14 @@ translations must be kept up to date together.
 
 ## Planned fixes
 
+- [Power Games fixes — 21 October 2026](FIXES_PLAN_2026_10_21.md):
+  selected game declarations, technical scores, an all-participants-zero
+  decision, small-point visibility and a table voice-chat button with
+  in-app invitations and no unsolicited dialogs, plus a one-second default
+  bot delay in every game and category changes in Countries and Cities
+  (Drink, Tool, Known actor, Known writer and Known athlete), plus investigation
+  of reported Mahjong slowdown over successive hands; implementation started,
+  with local and live-account verification required for every change.
 - [New Game Room fixes plan](NEXT_FIXES_PLAN.md):
   implementation scope and explicitly marked questions still to be settled.
 - [Duck Racing implementation plan](DUCK_RACING_PLAN.md):

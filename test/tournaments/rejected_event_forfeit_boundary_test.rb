@@ -1,32 +1,28 @@
 require_relative '../support/tournament_forfeit_native'
-T = GameRoomTournaments
-
-TournamentForfeitNative.with_fixture do |fixture|
-  fixture.start
-  h = fixture.h
-  first = h.game.legal_actions(h.replay('Alice'),'Alice').first
-  _, plan = h.game.action_for(first,h.replay('Alice'),'Alice')
-  h.submit('Alice',first)
-  h.write('Alice',plan.events)
-  assert_equal(2,h.events('Alice').size)
-  assert_equal(1,h.replay('Alice').accepted_events.size)
-  before = fixture.documents.insert_count
-  preview = fixture.preview(loser:'bob')
-  assert_equal(before,fixture.documents.insert_count)
-  assert_equal(2,preview.fetch('cancelled_game').fetch('event_count'))
-  assert_equal(Digest::SHA256.hexdigest(JSON.generate(h.events('Alice'))),preview['cancelled_game']['history_digest'])
-  assert_raises(T::OrdinaryMatchService::Blocked) {fixture.confirm(preview,user:'Bob')}
-  # Even an ignored but authenticated new packet invalidates old consent;
-  # the full snapshot boundary is never reduced to just accepted moves.
+T=GameRoomTournaments
+TournamentForfeitNative.with_fixture do |f|
+  f.start
+  h=f.h
+  12.times do
+    replay=h.replay('Alice')
+    break if replay.finished?
+    h.submit(replay.current_player,h.game.legal_actions(replay,replay.current_player).first)
+  end
+  assert(h.replay('Alice').finished?,'Fixture is still active')
+  accepted=h.replay('Alice').accepted_events.size
+  h.write('Alice',[GameRoomGames::EventCommand.new(action:'place',value:'99,99')])
+  before=f.documents.insert_count
+  preview=f.preview(loser:'bob')
+  assert_equal(accepted+1,preview.fetch('boundary').fetch('event_count'))
   h.write('Bob',[GameRoomGames::EventCommand.new(action:'place',value:'99,99')])
-  error = assert_raises(T::OrdinaryMatchService::Blocked) {fixture.confirm(preview)}
+  error=assert_raises(T::OrdinaryMatchService::Blocked) {f.confirm(preview)}
   assert_equal(:forfeit_preview_changed,error.code)
-  assert_equal(before,fixture.documents.insert_count)
-  fresh = fixture.preview(loser:'bob')
-  assert_equal(3,fresh['cancelled_game']['event_count'])
-  result = fixture.confirm(fresh)
+  assert_equal(before,f.documents.insert_count)
+  fresh=f.preview(loser:'bob')
+  assert_equal(accepted+2,fresh['boundary']['event_count'])
+  assert_equal(accepted,h.replay('Alice').accepted_events.size)
+  result=f.confirm(fresh)
   assert_equal(['alice'],result['results'].first['summary']['winners'])
-  assert_equal(result,fixture.services['Bob'].result_view)
+  assert_equal(result,f.services['Bob'].result_view)
 end
-
-puts 'PASS native forfeit after rejected action: full immutable boundary, explicit fresh consent, no foreign organizer and both-client result'
+puts 'PASS completed-game administrative boundary includes ignored authenticated packets and requires fresh consent'

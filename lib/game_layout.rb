@@ -115,7 +115,7 @@ module GameRoomLayout
     attr_accessor :activity_cursor, :session_id, :game_client
     attr_reader :binding_generation
     attr_reader :surface, :history, :users, :chat, :back_button, :form,
-      :primary_button, :restart_button, :waiting_status, :phase
+      :primary_button, :restart_button, :waiting_status, :phase, :voice_button
 
     def computer_changes
       @computer_changes ||= GameRoomUI::ComputerChangeBuffer.new
@@ -139,6 +139,7 @@ module GameRoomLayout
       )
       @chat.restore_selection(index: chat_index, check: chat_check) if chat_control == nil
       @primary_button = Button.new(_("Start game"))
+      @voice_button = Button.new(_("Voice conversation"))
       @restart_button = Button.new(_("Restart game"))
       @waiting_status = GameSurfaces::RefreshAwareListBox.new([], header: "", quiet: true)
       @status_command_buttons = {}
@@ -266,7 +267,7 @@ module GameRoomLayout
         status: status_fields,
         game: game_fields - trailing_fields,
         game_actions: trailing_fields,
-        users: [@users],
+        users: [@users,@voice_button],
         chat: [@chat], history: [@history]
       }
       @content_fields = []
@@ -393,7 +394,7 @@ module GameRoomLayout
     private
 
     def binding_controls
-      [@form, @users, @history, @primary_button, @restart_button, @waiting_status,
+      [@form, @users, @history, @primary_button, @restart_button, @waiting_status, @voice_button,
         *@status_command_buttons.values, @back_button]
     end
 

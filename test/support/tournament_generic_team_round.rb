@@ -49,7 +49,11 @@ module TournamentGenericTeamRoundSupport
           result = execution.local_game(action: :finalize_local_game, revision: status['revision'])
           assert_equal(:confirmed, result[:state], result.inspect)
           summary = result[:effect]['summary']
-          assert_equal([0, people.size / 2], summary['scores'].values.sort)
+          if record['evidence']['source']['result_policy'] == T::GameResult::CURRENT_RESULT_POLICY
+            assert_equal(nil, summary['scores'],'Taboo is outside the selected small-point policy')
+          else
+            assert_equal([0, people.size / 2], summary['scores'].values.sort)
+          end
         end
         finished = true
         break

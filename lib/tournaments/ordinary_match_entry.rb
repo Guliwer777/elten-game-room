@@ -162,7 +162,7 @@ module GameRoomTournaments
       binding={'kind'=>'ordinary-match-binding-v1','entry_version'=>ENTRY_VERSION,'schedule_id'=>candidate['schedule_id'],
         'publication_ref'=>candidate['publication_ref'],'match_id'=>match['match_id'],'leg'=>match['leg'],
         'session_id'=>SecureRandom.random_number(2_000_000_000)+1,'creator'=>creator,'game_id'=>candidate['game_id'],
-        'options'=>prepared['options'],'players'=>prepared['players'],
+        'options'=>prepared['options'],'players'=>prepared['players'],'result_policy'=>GameResult::CURRENT_RESULT_POLICY,
         'table'=>room.slice('__id','__live_session_id','name','game','owner','game_options','tournament_match')}
       document=previous ? {'kind'=>'ordinary-match-replacement-v1','publication_ref'=>candidate['publication_ref'],
         'schedule_id'=>candidate['schedule_id'],'match_id'=>match['match_id'],'leg'=>match['leg'],

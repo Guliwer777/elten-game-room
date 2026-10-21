@@ -9,6 +9,10 @@ GameRoomServerRandom.register('uno', ['deal'])
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Uno < CardGame
+    def tournament_small_point_policy(options:)
+      tournament_target_small_points(normalize_options(options).fetch('score_limit'), order: 'lower')
+    end
+
     def player_spatial_audio?; true; end
     COLORS = %w[R Y G B].freeze
     DARK_COLORS = %w[O P T U].freeze
@@ -159,7 +163,6 @@ module GameRoomGames
       true
     end
 
-    def default_bot_move_delay; 1; end
     def thinking_time_range; 1..300; end
 
     def bot_delay_revision(replay, _revision)

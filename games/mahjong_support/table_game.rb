@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require_relative '../base'
 require_relative '../../lib/game_bots'
+require_relative '../../lib/game_replay_cache'
 require_relative 'table_events'
 require_relative 'table_presentation'
 require_relative 'mcr_deal'
@@ -44,10 +45,30 @@ module GameRoomGames
       identity_supplied = repository.respond_to?(:session_id) || session.key?('__id') || session.key?('id')
       raise ArgumentError, 'Invalid mahjong session' if identity_supplied && !(session_id.is_a?(Integer) && session_id.positive?)
       @mahjong_table_repository = repository
-      match = profile['match_winds'].positive? ? GameRoomMahjong::MatchState.new(variant: profile['variant'], seats: profile['seats'], winds: profile['match_winds']) : nil
-      state = {session_id: session_id, players: players, profile: profile, phase: :awaiting_deal, round: nil,
-        match: match, hand_number: 0, ready_seats: [].freeze}.freeze
-      reduce_mahjong_table(state, [], [starting_history(players)], events, session, repository)
+      # The CAS token changes after every write, but is not game semantics.
+      # The cache still authenticates the complete event prefix and actors.
+      source_events = events.to_a
+      input = GameRoomReplayCache::Input.new(session.reject { |key, _| key == '__game_revision' }, source_events, repository,
+        previous: @mahjong_table_input)
+      @mahjong_table_input = input.retained_bytes <= GameRoomReplayCache::MAX_BYTES ? input : nil
+      @mahjong_table_cache ||= GameRoomReplayCache.new
+      checkpoint = @mahjong_table_cache.reduce(input, context: [profile, session_id],
+        identities: [repository, GameRoomLocalization.cache_token]) do |previous, prefix|
+        unless previous
+          match = profile['match_winds'].positive? ? GameRoomMahjong::MatchState.new(variant: profile['variant'], seats: profile['seats'], winds: profile['match_winds']) : nil
+          state = {session_id: session_id, players: input.players, profile: profile, phase: :awaiting_deal, round: nil,
+            match: match, hand_number: 0, ready_seats: [].freeze}.freeze
+          previous = [state, [], [starting_history(input.players)]]
+        end
+        state, accepted_positions, history = previous
+        accepted = accepted_positions.map { |position| input.events.fetch(position) }
+        current = reduce_mahjong_table(state, accepted, history, input.events.drop(prefix), input.session, input)
+        [current.state, current.accepted_events.map { |event| input.index_of(event) }, current.history]
+      end
+      state, accepted_positions, history = checkpoint
+      # Preserve the original replay contract and alias to this owned snapshot's
+      # events. The private checkpoint contains positions, never these objects.
+      mahjong_table_replay(state, accepted_positions.map { |position| source_events.fetch(position) }, history)
     end
 
     def incremental_replay(previous, session, events, repository)

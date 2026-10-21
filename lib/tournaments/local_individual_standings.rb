@@ -21,7 +21,7 @@ module GameRoomTournaments
         results[key] = receipt
       end
       normalized = results.map do |key, receipt|
-        receipt['summary'].slice('participants', 'winners', 'scores', 'score_order').merge('id' => JSON.generate(key))
+        receipt['summary'].slice('participants', 'winners', 'scores', 'score_order', 'places').merge('id' => JSON.generate(key))
       end
       units = record['evidence']['source']['roster'].map { |p| p['account'] }
       group_summary = {}

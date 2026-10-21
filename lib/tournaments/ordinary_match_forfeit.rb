@@ -1,17 +1,27 @@
 # encoding: UTF-8
 require_relative 'interrupted_outcome'
+require_relative 'ordinary_match_administration'
 module GameRoomTournaments
   module OrdinaryMatchForfeit
+    include OrdinaryMatchAdministration
     Data = Publication::Data
     # Read-only proposal. The returned immutable document is the exact intent
     # confirmed by the organizer; committing a changed projection needs consent
     # again, not a silent recomputation of the winner or places.
-    def forfeit_preview(match_id:, leg:, loser:, expected_schedule_id:)
+    def forfeit_preview(match_id:, leg:, expected_schedule_id:, loser: nil, places: nil, forfeits: nil, scores: nil, all_zero: false)
       candidate,id=source!
       match=forfeit_match!(candidate,match_id,leg,expected_schedule_id)
       raise OrdinaryMatchService::Blocked,:result_already_recorded if forfeit_document(candidate,id,match) ||
         read_result_document(candidate,id,match)
-      build_forfeit_preview(candidate,id,match,loser)
+      units = (match['unit_ids'] || match['players']).sort
+      if loser && !all_zero && places.nil?
+        raise OrdinaryMatchService::Blocked, :invalid_forfeit_loser unless units.include?(loser)
+        places = [units - [loser], [loser]]
+        forfeits = [loser]
+        policy = @registry.build(candidate['game_id']).tournament_small_point_policy(options: candidate['game_options'])
+        scores ||= AdministrativeResult.suggestions(units: units, forfeits: forfeits, policy: policy)
+      end
+      build_administrative_preview(candidate, id, match, places: places, forfeits: forfeits || [], scores: scores, all_zero: all_zero)
     end
 
     def confirm_forfeit(preview:)
@@ -19,9 +29,9 @@ module GameRoomTournaments
       raise OrdinaryMatchService::Blocked,:invalid_forfeit_receipt unless preview.is_a?(Hash)
       match=forfeit_match!(candidate,preview['match_id'],preview['leg'],preview['schedule_id'])
       document=Data.freeze_tree(ServerPlanDocument.copy_document(preview))
-      return confirm_continuing_forfeit(document,candidate,id,match) if document['kind']=='ordinary-match-elimination-v1'
-      validate_forfeit_v2!(document,candidate,match)
-      verify_forfeit_v2_intent!(document,candidate,id,match)
+      raise OrdinaryMatchService::Blocked, :legacy_forfeit_write_disabled unless document['kind'] == 'ordinary-match-forfeit-v3'
+      validate_administrative_receipt!(document,candidate,match)
+      verify_administrative_intent!(document,candidate,id,match)
       key=anchor(candidate,id,match,'forfeit')
       digest=Digest::SHA256.hexdigest(JSON.generate(document))
       forfeit_archive(document,candidate,id,match).publish(
@@ -94,64 +104,6 @@ module GameRoomTournaments
       raise OrdinaryMatchService::Blocked,error.code
     end
 
-    def confirm_continuing_forfeit(document,candidate,id,match)
-      binding=read_match_binding(candidate,id,match,nil)
-      validate_continuing_forfeit!(document,candidate,match,binding)
-      session=@games.session_by_id(binding['session_id'],table:binding['table'])
-      raise OrdinaryMatchService::Blocked,:game_state_unavailable unless session
-      guard=lambda do |_current|
-        account!
-        current,current_id=source!
-        raise OrdinaryMatchService::Blocked,:source_changed unless current==candidate && current_id==id
-        raise OrdinaryMatchService::Blocked,:result_already_recorded if forfeit_document(candidate,id,match) || read_result_document(candidate,id,match)
-        fresh=build_forfeit_preview(candidate,id,match,document['decision']['loser'])
-        raise OrdinaryMatchService::Blocked,:forfeit_preview_changed unless fresh==document
-        true
-      end
-      record=@transport.append_tournament_presence(session,data:document['native_boundary'],
-        message_id:Digest::SHA256.hexdigest(JSON.generate(document)),write_guard:guard)
-      raise OrdinaryMatchService::Blocked,:forfeit_preview_changed unless record
-      # A native receipt confirms storage, not acceptance of its CAS. Inspect
-      # this exact decision in history; later accepted decisions do not undo it.
-      snapshot=@games.snapshot_for(session,force_events:true)
-      raise OrdinaryMatchService::Blocked,:game_state_unavailable unless snapshot
-      replay=@registry.build(binding['game_id']).replay(snapshot.session,snapshot.events,@games)
-      account!
-      unless replay.accepted_events.any? { |event| event['__tournament_elimination']==true && event['move_id']==record.message_id }
-        raise OrdinaryMatchService::Blocked,:forfeit_preview_changed
-      end
-      @result_changed.call(candidate.fetch('publication_ref'))
-      result_view
-    end
-
-    def validate_continuing_forfeit!(document,candidate,match,binding)
-      keys=%w[continued_game decision kind leg match_id native_boundary organizer publication_ref schedule_id]
-      decision=document['decision']
-      unless document.keys.sort==keys && document['schedule_id']==candidate['schedule_id'] &&
-          document['match_id']==match['match_id'] && document['leg']==match['leg'] &&
-          document['publication_ref']==candidate['publication_ref'] && document['organizer']==@owner &&
-          binding && valid_binding?(binding,candidate,match) && !match.key?('unit_ids') && decision.is_a?(Hash)
-        raise OrdinaryMatchService::Blocked,:invalid_forfeit_receipt
-      end
-      boundary=document['continued_game']
-      validate_cancellation_boundary!(boundary)
-      expected=InterruptedOutcome.build(units:match['players'].sort,loser:decision['loser'],started:true,
-        checkpoint:decision['checkpoint'],continuation:{'status'=>'continue'},event_count:boundary['event_count'],
-        eliminations:decision.fetch('eliminations',[]))
-      value=document['native_boundary']
-      unless expected=={'decision'=>decision} && boundary['session_id']==binding['session_id'] &&
-          boundary['binding_digest']==Digest::SHA256.hexdigest(JSON.generate(binding)) && value.is_a?(Hash) &&
-          value['session_id']==binding['session_id'] && value['tournament_presence'].is_a?(Hash) &&
-          value['tournament_presence'].slice('binding_digest','fixture','origin','mode','elapsed_ms')=={
-            'binding_digest'=>boundary['binding_digest'],'fixture'=>binding['table']['tournament_match'],
-            'origin'=>'organizer','mode'=>'continue','elapsed_ms'=>0} &&
-          value['tournament_presence']['loser'].is_a?(String) && value['tournament_presence']['loser'].downcase==decision['loser']
-        raise OrdinaryMatchService::Blocked,:invalid_forfeit_receipt
-      end
-    rescue Publication::Invalid
-      raise OrdinaryMatchService::Blocked,:invalid_forfeit_receipt
-    end
-
     def map_forfeit_checkpoint(checkpoint,game,replay,binding,candidate,match)
       assignment=game.prepared_team_assignment(game.normalize_options(binding['options']),players:replay.players)
       units=assignment ? assignment.team_ids.to_h { |unit| [unit,assignment.members_for(unit)] } :
@@ -164,26 +116,6 @@ module GameRoomTournaments
       checkpoint.merge('scores'=>scores.to_h { |unit,score| [mapping.fetch(unit),score] })
     rescue Publication::Invalid
       raise OrdinaryMatchService::Blocked,:invalid_forfeit_checkpoint
-    end
-
-    def verify_forfeit_v2_intent!(document,candidate,id,match)
-      current,current_id=source!
-      raise OrdinaryMatchService::Blocked,:source_changed unless current==candidate && current_id==id
-      forfeit_match!(current,match['match_id'],match['leg'],candidate['schedule_id'])
-      validate_forfeit_v2!(document,candidate,match)
-      accepted=forfeit_document(candidate,id,match)
-      if accepted
-        raise OrdinaryMatchService::Blocked,:conflicting_document unless accepted==document
-        if document['cancelled_game']
-          binding=read_match_binding(candidate,id,match,nil)
-          raise OrdinaryMatchService::Blocked,:wrong_match_binding unless cancellation_valid_binding?(document,binding,candidate,match)
-        end
-        return true # Already accepted cutoff: later gameplay cannot undo it.
-      end
-      raise OrdinaryMatchService::Blocked,:result_already_recorded if read_result_document(candidate,id,match)
-      fresh=build_forfeit_preview(candidate,id,match,document.fetch('decision').fetch('loser'))
-      raise OrdinaryMatchService::Blocked,:forfeit_preview_changed unless fresh==document
-      true
     end
 
     def validate_forfeit_v2!(value,candidate,match)
@@ -323,10 +255,11 @@ module GameRoomTournaments
       digest=Digest::SHA256.hexdigest(JSON.generate(ServerPlanDocument.copy_document(document)))
       ServerPlanArchive.new(table:@table,journal:@journal,user:-> {account!; @user.call},document_digest:digest,
         verify:->(value,retained) do
-          retained==expected && value==document && verify_forfeit_v2_intent!(value,candidate,id,match)
+          retained==expected && value==document && verify_administrative_intent!(value,candidate,id,match)
         end)
     end
     def validate_forfeit!(value,candidate,match)
+      return validate_administrative_receipt!(value,candidate,match) if value['kind']=='ordinary-match-forfeit-v3'
       return validate_forfeit_v2!(value,candidate,match) if value['kind']=='ordinary-match-forfeit-v2'
       units=(match['unit_ids'] || match['players']).sort
       summary=value['summary']

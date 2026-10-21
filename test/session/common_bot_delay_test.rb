@@ -15,10 +15,14 @@ games.each do |game|
     assert(game.effective_option_definitions.none? { |d| d.key == 'bot_delay' }, "continuous bot has turn delay #{game.id}")
     next
   end
-  default = %w[uno makao mille_bornes].include?(game.id) ? 1 : 0
+  default = 1
   profile = GameRoomTest::CatalogOptions.for_players(game, bots: true)
   defs = game.effective_option_definitions.select { |d| d.key == "bot_delay" }
   assert(defs.length == 1 && defs.first.default == default, "shared option #{game.id}")
+  assert(game.normalize_options(profile.reject { |key, _| key == 'bot_delay' })['bot_delay'] == default,
+    "missing delay did not use the shared default #{game.id}")
+  assert(game.table_creation_options(profile.reject { |key, _| key == 'bot_delay' })['bot_delay'] == default,
+    "new table lost default bot delay #{game.id}")
   [0, 1, 5].each do |delay|
     options = profile.merge("bot_delay" => delay)
     assert(game.validation_error(options).nil?, "valid delay #{game.id}/#{delay}")

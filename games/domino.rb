@@ -8,6 +8,10 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Domino < TileGame
+    def tournament_small_point_policy(options:)
+      tournament_target_small_points(normalize_options(options).fetch('score_limit'), order: 'lower')
+    end
+
     SETS = {
       "d6" => [6, 1, 7, 4], "d9" => [9, 1, 10, 5], "d12" => [12, 1, 10, 8],
       "2d6" => [6, 2, 10, 5], "2d9" => [9, 2, 10, 8], "2d12" => [12, 2, 10, 8],

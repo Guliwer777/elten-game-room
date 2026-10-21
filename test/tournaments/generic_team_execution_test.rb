@@ -152,7 +152,12 @@ scenario = lambda do |fixture|
             assert_equal(nil, summary['scores'])
           end
         else
-          assert_equal([0, 2], summary['scores'].values.sort)
+          if record['evidence']['source']['result_policy'] == T::GameResult::CURRENT_RESULT_POLICY
+            assert_equal(nil, summary['scores'],'Taboo is outside the selected small-point policy')
+            assert(!summary.key?('score_order'),'Disabled small points must not expose an order')
+          else
+            assert_equal([0, 2], summary['scores'].values.sort)
+          end
           assert_equal(1, summary['winners'].size)
         end
         e.progress['standings'].each do |row|

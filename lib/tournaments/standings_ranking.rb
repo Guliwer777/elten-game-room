@@ -43,7 +43,10 @@ module GameRoomTournaments
       else
         # Compare small points only if every tied unit has numeric scores for
         # every played match. Missing scores are not treated as zero.
-        return nil unless group.all? { |row| row['played'].positive? && row['scored_matches'] == row['played'] }
+        return nil unless group.all? do |row|
+          eligible=results.count { |result|result['participants'].include?(row['unit']) && result['resolution']!='all_zero' }
+          eligible.positive? && row['scored_matches']==eligible
+        end
         group.to_h do |row|
           value = criterion == 'difference' ? row['score_for'] - row['score_against'] : row['score_for']
           [row['unit'], row['score_order'] == 'lower' ? -value : value]

@@ -12,7 +12,7 @@ module GameRoomTournaments
       end
       Standings.calculate(units: units, results: results)
       plan = metadata.key?('series') ? KnockoutWinSeries.from_metadata(metadata) : metadata.key?('qualification') ? GroupTiebreak.from_metadata(metadata) : metadata.key?('replay') ? KnockoutReplay.from_metadata(metadata) :
-        KnockoutRound.build(seeds: metadata['seeds'], players_per_match: metadata['players_per_match'], round_number: metadata['round'])
+        KnockoutRound.from_metadata(metadata)
       base = metadata.dig('series','base_plan') || metadata.dig('replay', 'base_plan') || plan
       mapped = candidate['matches'].each_with_index.to_h do |match, index|
         logical = base['matches'].find { |fixture| fixture['participants'].sort == match.fetch(unit_key).sort }
@@ -51,9 +51,9 @@ module GameRoomTournaments
       end
       combined = (metadata.dig('replay', 'resolved_results') || []) + normalized
       progress = KnockoutRound.progress(seeds: base['seeds'], players_per_match: base['players_per_match'],
-        round_number: base['round'], results: combined)
+        round_number: base['round'], results: combined, bracket_groups:base['bracket_groups'])
       {'knockout_state' => progress['state'], 'knockout_progress' => progress, 'champion' => progress['champion'],
-        'qualified' => progress['next_seeds'], 'knockout_resolved_results' => combined.select { |result| result['winners'].size == 1 },
+        'qualified' => progress['next_seeds'], 'knockout_resolved_results' => combined.select { |result| result['winners'].size == 1 || result['resolution'] == 'all_zero' },
         'standings' => StandingsRanking.calculate(units: units, results: results,
           points: Standings::MATCH_POINTS, criteria: StandingsRanking::CRITERIA)}
     end

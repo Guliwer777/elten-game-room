@@ -29,7 +29,7 @@ class TableActivityRepository
   )
 
   TABLE_NAME = "table_activity".freeze
-  KINDS = %w[created joined left bot_added bot_removed chat invited invitation_rejected game_aborted tournament_elimination options_changed role_changed owner_changed seat_control_changed player_replaced].freeze
+  KINDS = %w[created joined left bot_added bot_removed chat invited invitation_rejected game_aborted tournament_elimination options_changed role_changed owner_changed seat_control_changed player_replaced voice_started].freeze
   GLOBAL_KINDS = %w[created joined left bot_added bot_removed].freeze
   BOT_KINDS = %w[bot_added bot_removed].freeze
   TABLE_LIMIT = 2_000
@@ -211,6 +211,8 @@ class TableActivityRepository
         _("%{player} removed a computer.") % { player: player }
       when "chat"
         _("%{player}: %{message}") % { player: player, message: entry.message }
+      when "voice_started"
+        _("%{player} invites you to a voice conversation.") % { player: player }
       when "invited"
         _("%{player} invited %{user}.") % { player: player, user: GameRoomParticipants.display_name(entry.subject) }
       when "invitation_rejected"

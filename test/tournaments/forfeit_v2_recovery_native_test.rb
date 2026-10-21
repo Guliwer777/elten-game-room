@@ -3,14 +3,13 @@ T=GameRoomTournaments
 F=TournamentForfeitNative
 
 F.with_fixture do |f|
-  f.start
   stale=f.preview
   f.documents.on_insert=->(row) {raise IOError,'lost header ACK' if row['part_index']==0}
   assert_raises(IOError) {f.confirm(stale)}
   f.documents.on_insert=nil
-  old=f.services['Alice'].operations.find { |row| JSON.parse(row['values']['document_json'])['kind']=='ordinary-match-forfeit-v2' }
+  old=f.services['Alice'].operations.find { |row| JSON.parse(row['values']['document_json'])['kind']=='ordinary-match-forfeit-v3' }
   original=f.documents.rows.map(&:dup)
-  f.h.submit('Alice',f.h.game.legal_actions(f.h.replay('Alice'),'Alice').first)
+  f.h.as('Alice') { f.services['Alice'].open_match(match_id:f.match['match_id'],leg:1) }
   writes=f.documents.insert_count
   error=assert_raises(T::OrdinaryMatchService::Blocked) {f.services['Alice'].reconcile(old['id'])}
   assert_equal(:forfeit_preview_changed,error.code)
@@ -54,7 +53,7 @@ F.with_fixture do |f|
   view=f.confirm(preview)
   assert_equal(preview,view['results'].first)
   assert_equal(first,f.documents.rows.first)
-  assert_equal(1,f.services['Alice'].operations.count { |row| JSON.parse(row['values']['document_json'])['kind']=='ordinary-match-forfeit-v2' })
+  assert_equal(1,f.services['Alice'].operations.count { |row| JSON.parse(row['values']['document_json'])['kind']=='ordinary-match-forfeit-v3' })
 end
 
 F.with_fixture do |f|
@@ -94,11 +93,11 @@ F.with_fixture do |f|
 end
 
 F.with_fixture do |f|
-  f.start
   preview=f.preview
   f.documents.on_insert=->(row) {raise IOError,'partial before ordinary result' if row['part_index']==0}
   assert_raises(IOError) {f.confirm(preview)}
   f.documents.on_insert=nil
+  f.start
   12.times do
     replay=f.h.replay('Alice')
     break if replay.finished?

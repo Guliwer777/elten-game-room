@@ -292,16 +292,8 @@ class GameScreen
         end
         return :saved if @save_game&.call(@table, @session, @game)
         @suppress_surface_focus = true
-      when :edit_options
-        @edit_options&.call(@table)
-        @room_snapshot = nil
-        @activity_entries = nil
-        @suppress_surface_focus = true
-      when :edit_teams
-        @manage_teams&.call(@table)
-        @room_snapshot = nil
-        @activity_entries = nil
-        @suppress_surface_focus = true
+      when :edit_options, :edit_teams
+        edit_table_configuration(action)
       when :abort_game
         return :game_aborted if @abort_game&.call(@table, @session)
         @suppress_surface_focus = true
@@ -328,6 +320,9 @@ class GameScreen
         return :restart
       when :chat
         submit_chat
+        @suppress_surface_focus = true
+      when :voice
+        @program.show_table_voice(@table)
         @suppress_surface_focus = true
       when :back
         # The confirmation is a covered view, not a departure. Keep the
@@ -390,6 +385,14 @@ class GameScreen
   end
 
   private
+
+  def edit_table_configuration(action)
+    callback = action == :edit_options ? @edit_options : @manage_teams
+    callback&.call(@table)
+    @room_snapshot = nil
+    @activity_entries = nil
+    @suppress_surface_focus = true
+  end
 
   def start_sound_output
     return if @sound_output && GameRoomSoundOutput.current(@program).equal?(@sound_output)

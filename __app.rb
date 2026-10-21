@@ -3,8 +3,8 @@
   "id": "c24d98cc-9ccd-4d50-b801-459da324ff60",
   "name": "Power Games",
   "description": "Accessible multiplayer games for ELTEN users.",
-  "version": "2.0.5.3",
-  "build_id": "254",
+  "version": "2.0.5.4",
+  "build_id": "255",
   "EltenAPIVersion": "3.0.4",
   "main_language": "en",
   "supported_languages": ["en", "pl", "cs", "es", "ru"],
@@ -192,8 +192,8 @@ class EltenGameRoom < Program
   extend GameRoomTableWatchRuntime
   extend GameRoomContactFiltersRuntime
   extend GameRoomAnalyticsRuntime
-  GAME_ROOM_VERSION = "2.0.5.3".freeze
-  GAME_ROOM_BUILD_ID = 254
+  GAME_ROOM_VERSION = "2.0.5.4".freeze
+  GAME_ROOM_BUILD_ID = 255
   GAME_ROOM_CAPABILITIES = ["invitations", "live_sessions", "live_session_stack"].freeze
   LOBBY_ACTIVITY_POLL_INTERVAL = 5.0
 
@@ -893,12 +893,21 @@ class EltenGameRoom < Program
     end
   end
 
-  def award_ordinary_tournament_forfeit(publication,match,loser,schedule_id,names:{})
+  def award_ordinary_tournament_forfeit(publication,match,loser,schedule_id,names:{},game_id:nil,options:{})
     service=ordinary_tournament_service(publication)
     return unless service
+    decision = if loser
+      {loser: loser}
+    else
+      game = GAME_REGISTRY.build(game_id)
+      units = match['unit_ids'] || match['players']
+      GameRoomTournaments::ServerForfeitScreen.new(program:self,names:names,units:units,
+        policy:game.tournament_small_point_policy(options:options)).run
+    end
+    return unless decision
     loop do
       preview=run_network_task(_("Award forfeit"),ui: :none) do
-        service.forfeit_preview(match_id:match['match_id'],leg:match['leg'],loser:loser,expected_schedule_id:schedule_id)
+        service.forfeit_preview(match_id:match['match_id'],leg:match['leg'],expected_schedule_id:schedule_id,**decision)
       end
       return unless preview && GameRoomTournaments::ServerForfeitScreen::Confirmation.new(program:self,preview:preview,names:names).run
       begin
@@ -910,6 +919,7 @@ class EltenGameRoom < Program
     end
   rescue GameRoomTournaments::OrdinaryMatchService::Blocked => error
     message=case error.code
+    when :match_in_progress then _("This match is still being played. A manual forfeit cannot interrupt it.")
     when :tournament_continuation_unsupported then _("This game does not yet support removing a participant from a tournament match in progress. No result was recorded.")
     when :tournament_checkpoint_unsupported then _("The scores from a completed round are unavailable. No forfeit was recorded.")
     when :game_state_unavailable then _("The current game history is unavailable. Join the table as an observer and try again. No forfeit was recorded.")
@@ -1988,6 +1998,7 @@ class EltenGameRoom < Program
     @table_network_view = {layout: layout, table_id: table_id, synchronizer: synchronizer, chat_sends: chat_sends}
     layout.activity_cursor = activity_cursor
     layout.primary_button.label = table_start_label(state)
+    layout.voice_button.label = row.dig('voice','status')=='ready' ? _("Join conversation") : _("Voice conversation")
     layout
   end
 
@@ -2002,6 +2013,12 @@ class EltenGameRoom < Program
     return :exit if result == :back && leave_table_from_screen(row)
     :continue
   end
+
+  def show_table_voice(table)
+    require_relative 'lib/table_voice_screen'
+    GameRoomTableVoiceScreen.new(program:self,transport:@transport,table:table).run
+  end
+  public :show_table_voice
 
   def waiting_computer_context(row, chat_context)
     chat_context.call.merge(owner: @lobby.owner_of(row),
@@ -2042,6 +2059,7 @@ class EltenGameRoom < Program
     layout.bind_status_commands { |command| dispatch.call(:local_game_command, command) }
     bind_game_room_shortcuts(form, state.game) { |command| dispatch.call(:local_game_command, command) }
     layout.back_button.on(:press) { dispatch.call(:leave) }
+    layout.voice_button.on(:press) { dispatch.call(:voice) }
     bind_waiting_table_chat(layout, row, selection, chat_sends, chat_context, dispatch)
     bind_waiting_table_participants(layout, state, row, selection, dispatch, pending_computer: pending_computer)
     form.add_timer(FormTimer.new(GameScreen::TIMER_INTERVAL, repeat: true) do
@@ -2111,6 +2129,8 @@ class EltenGameRoom < Program
   def execute_waiting_table_action(selection, state, row, layout, chat_sends, chat_context, synchronizer)
     action, participant = selection.values_at(:action, :participant)
     case action
+    when :voice
+      show_table_voice(row)
     when :closed
       forget_room_membership(row)
       return :exit

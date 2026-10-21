@@ -38,6 +38,6 @@ F.with_fixture do |f|
   table=f.h.as('Alice') {service.open_match(match_id:f.match['match_id'],leg:1)}
   f.h.as('Alice') {service.instance_variable_get(:@lobby).close_table(table)}
   preview=f.preview
-  assert_equal('unstarted',preview['decision']['basis'],'A confirmed never-started table was incorrectly treated as lost game history')
+  assert_equal('unstarted',preview['boundary']['status'],'A confirmed never-started table was incorrectly treated as lost game history')
 end
 puts 'PASS missing native history: accepted start and uncertain start cannot become unstarted forfeit; genuinely never-started table remains supported'

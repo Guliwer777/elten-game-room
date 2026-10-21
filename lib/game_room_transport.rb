@@ -166,6 +166,9 @@ class GameRoomTransport
     @live_store.update_room(table_or_id, changes, actor: actor)
   end
 
+  def table_voice(table, **options); @live_store.table_voice(table, **options); end
+  def change_table_voice(table, data, actor:); @live_store.change_table_voice(table,data,actor:actor); end
+
   def change_game_options(**arguments)
     @live_store.change_game_options(**arguments)
   end

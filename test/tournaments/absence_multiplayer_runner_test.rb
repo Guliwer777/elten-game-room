@@ -47,6 +47,10 @@ P = TournamentPresenceNative
     captured = GameRoomTournaments::OrdinaryMatchResults.capture(registry: GameRoomGames::CATALOG,
       binding: row.first, session: snapshot.session, replay: h.replay('Alice'), events: snapshot.events)
     assert_equal([['alice'], ['carol'], ['bob']], captured.fetch('summary').fetch('places'))
+    assert(f.services.fetch('Alice').send(:valid_summary?,captured.fetch('summary'),f.match),
+      "#{game.id}: invalid captured absence summary #{captured.fetch('summary').inspect}")
+    invalid=captured.fetch('summary').merge('forfeits'=>['alice'])
+    assert(!f.services.fetch('Alice').send(:valid_summary?,invalid,f.match),'A winner could also lose by forfeit')
     h.as('Alice') { f.services.fetch('Alice').collect(row + [captured]) }
     count = f.documents.insert_count
     h.as('Alice') { f.services.fetch('Alice').collect(row + [captured]) }

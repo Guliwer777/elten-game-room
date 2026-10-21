@@ -91,6 +91,12 @@ Este atajo cambia tu propio papel. Para cambiar el de otra persona, el anfitrió
 
 En la lista de usuarios, Enter abre el menú habitual de usuarios de ELTEN. Desde allí puedes, entre otras cosas, enviar un mensaje, añadir a alguien a tus contactos o llamarle.
 
+### Conversación de voz
+
+El botón «Conversación de voz» de la mesa permite crear un canal de conferencia de ELTEN. Elige un nombre, si será público u oculto y, si quieres, una contraseña. Un canal oculto no aparece en la lista habitual, pero ocultarlo no sustituye a protegerlo con contraseña.
+
+Los demás oyen una invitación breve y ven «Unirse a la conversación» en la mesa. No se abre ningún diálogo por sí solo durante la partida. Si ya estás en otra conferencia, tendrás que confirmar el cambio. No se modifican tus ajustes de micrófono ni de pulsar para hablar.
+
 ### El anfitrión y la gestión de bots y equipos
 
 El anfitrión prepara la mesa, inicia la partida y gestiona a los participantes. En juegos con bots puede añadir un rival controlado por el ordenador con Ctrl+O. El bot recibe un nombre y aparece en la misma lista que los demás jugadores.
@@ -108,7 +114,7 @@ Los equipos se eligen en una ventana independiente. Puedes sortearlos, cambiar l
 
 Tampoco hay que cerrar la mesa para volver a jugar. El anfitrión puede terminar la partida actual con Ctrl+Q y cambiar los ajustes de la siguiente con Ctrl+X entre partidas. Estas órdenes también están en el menú de la mesa.
 
-Muchos juegos permiten establecer un límite de tiempo por turno y una pausa para los movimientos de los bots. Esa pausa regula el ritmo, no la dificultad del bot. La consecuencia de agotar el tiempo depende de las reglas y se explica en la ayuda de cada juego, en lugar de imponer la misma penalización a todos.
+Muchos juegos permiten establecer un límite de tiempo por turno y una pausa para los movimientos de los bots. La pausa predeterminada de los bots es de un segundo. Esa pausa regula el ritmo, no la dificultad del bot. La consecuencia de agotar el tiempo depende de las reglas y se explica en la ayuda de cada juego, en lugar de imponer la misma penalización a todos.
 
 Salir de una mesa y cerrarla para todos son acciones distintas. La primera solo supone tu salida; la segunda cierra toda la mesa y corresponde al anfitrión. Abrir la ayuda, un menú o una confirmación de salida no detiene la partida.
 
@@ -391,13 +397,13 @@ Sal de cualquier otra partida antes de entrar. No puedes ocupar una plaza en dos
 
 Con Tab puedes seleccionar la fase, incluidas las anteriores. Si estás viendo la fase actual, la lista pasa automáticamente a la siguiente cuando comienza. La actualización conserva el encuentro seleccionado mientras siga visible.
 
-Intro sobre un encuentro terminado indica que ya se ha jugado. Abre su resultado con Ctrl+W o con «Detalles del resultado» en el menú contextual. Este menú muestra las acciones disponibles y sus atajos: Ctrl+G para jugar y Ctrl+F para conceder una victoria por incomparecencia. El organizador usa Ctrl+F tanto antes del inicio como durante el encuentro: elige a quien pierde y confirma las consecuencias que se muestran.
+Intro sobre un encuentro terminado indica que ya se ha jugado. Abre su resultado con Ctrl+W o con «Detalles del resultado» en el menú contextual. Este menú muestra las acciones disponibles y sus atajos: Ctrl+G para jugar y Ctrl+F para conceder una victoria por incomparecencia. Ctrl+F abre el formulario del organizador para resolver un encuentro que no esté en juego.
 
 Las entradas de partidos terminados incluyen el marcador del juego cuando está disponible. Si queda una revancha programada contra los mismos rivales, el menú contextual ofrece «Jugar la revancha» con Ctrl+G. Envía las invitaciones habituales sin iniciar la partida automáticamente.
 
 «Clasificación» muestra el puesto, el participante, los puntos de torneo y las partidas jugadas. Con Tab pasas al selector de fase. Los resultados se registran automáticamente; no tienes que copiarlos del historial del juego.
 
-Si hay marcadores completos, la tabla también muestra los puntos a favor, en contra y su diferencia. Entre quienes siguen compartiendo puesto, aparecen primero los que han jugado menos encuentros. Ese orden de presentación no decide la clasificación a la siguiente fase.
+En los juegos que admiten puntos de juego, la tabla muestra las sumas disponibles a favor y en contra, y su diferencia. Que falte el marcador de un encuentro no oculta las demás sumas ni se cuenta como cero. En UNO, Dominó, Mexican Train y Remik eliminatorio es mejor una puntuación menor. Audio Ball suma los puntos de todos los sets. Entre quienes siguen compartiendo puesto aparecen primero los que han jugado menos encuentros; ese orden no decide el pase a la siguiente fase.
 
 Ninguna partida de torneo se puede guardar ni reanudar desde un archivo. La orden de guardar y Ctrl+S no están disponibles, pero Ctrl+Shift+S sigue permitiendo exportar el historial como texto.
 
@@ -519,13 +525,13 @@ Abre tu torneo y elige «Administrar torneo». Antes del comienzo puedes:
 - abrir o cerrar las inscripciones;
 - elegir «Iniciar torneo» en lugar de esperar al comienzo programado.
 
-Para resolver un encuentro por incomparecencia, selecciónalo en «Partidos del torneo» y pulsa Ctrl+F o elige «Conceder victoria por incomparecencia» en el menú contextual. Elige al jugador o equipo que pierde y continúa. Es la misma acción antes de empezar y durante la partida.
+Selecciona un encuentro sin resolver en «Partidos del torneo» y usa Ctrl+F o «Conceder victoria por incomparecencia» en el menú contextual. Esta acción no puede interrumpir una partida en curso. Las desconexiones durante el juego se rigen por el plazo de cinco minutos para volver descrito antes.
 
-En un encuentro de uno contra uno gana el rival de quien pierde por incomparecencia. Si hay más participantes, el perdedor ocupa el último puesto. Si la partida en curso puede continuar sin él, los demás siguen jugando para decidir sus puestos. De lo contrario, se ordenan según el marcador tras la última mano o ronda completada. Una mano o ronda sin terminar no cuenta. Los marcadores iguales dan puestos compartidos, teniendo en cuenta si en ese juego es mejor un resultado mayor o menor. Si el encuentro aún no ha empezado o no se ha completado ninguna ronda puntuable, los demás comparten el primer puesto.
+En un duelo, elige quién pierde. Con más participantes, asigna los puestos en una sola lista y marca las derrotas por incomparecencia. Cada equipo ocupa una fila. Se permiten puestos compartidos, como 1, 1, 3. Los juegos compatibles muestran también campos de puntos de juego con valores sugeridos que puedes modificar.
 
-Antes de confirmar, lee la vista previa: indica quién pierde y explica si el encuentro terminará o los demás seguirán jugando. Si va a terminar, muestra también los puestos, los puntos de torneo y los marcadores utilizados. Solo «Confirmar victoria por incomparecencia» aplica la decisión. Si la situación cambia mientras decides, tendrás que revisar y confirmar una nueva vista previa. Si no se pueden leer los datos necesarios o el juego no los proporciona, el programa no resolverá el encuentro con un resultado supuesto.
+«Revisar resultado» muestra los puestos, los puntos de torneo calculados y los puntos de juego disponibles. Cada participante marcado como perdedor por incomparecencia recibe 0 puntos de torneo. La opción independiente «Asignar 0 puntos a todos» no registra ganador, empate ni puntos de juego; nadie avanza desde ese cruce eliminatorio. Solo «Confirmar resultado» guarda la decisión. Si cambia el encuentro, revisa una nueva vista previa.
 
-También puedes cancelar un torneo que no haya terminado. Hazlo para anular toda la competición, no una invitación concreta. Superar una fecha no concede una victoria por incomparecencia. Puedes tomar una decisión manual con Ctrl+F sin esperar a que se agoten los cinco minutos para volver.
+También puedes cancelar un torneo sin terminar. Esto anula toda la competición, no una invitación concreta. Superar una fecha no concede una victoria por incomparecencia.
 
 ### Si un cambio no se confirma
 

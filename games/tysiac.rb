@@ -13,6 +13,10 @@ module GameRoomGames
   # The private-hand adapter preserves the same rules and presentation.
   # The interface never announces cards passed to the other defenders.
   class Tysiac < Base
+    def tournament_small_point_policy(options:)
+      tournament_target_small_points(normalize_options(options).fetch('score_limit'))
+    end
+
     def player_spatial_audio?; true; end
     RANKS = %w[9 J Q K T A].freeze
     SUITS = %w[H S D C].freeze

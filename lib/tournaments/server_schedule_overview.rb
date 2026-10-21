@@ -44,11 +44,10 @@ module GameRoomTournaments
           schedule_id=@candidate['schedule_id']
           units=match['unit_ids'] || match['players']
           teams=(@candidate.dig('membership','units') || []).to_h{|unit|[unit['unit_id'],unit['accounts'].join(' + ')]}
-          loser=ServerForfeitScreen.new(program:@program,names:units.map{|unit|teams.fetch(unit,unit)}).run
-          next if loser.nil? || !current?
           selected=@matches && @matches[@match_list.index]
           next unless selected && @candidate['schedule_id']==schedule_id && selected['match_id']==match['match_id'] && selected['leg']==match['leg']
-          @program.award_ordinary_tournament_forfeit(@publication,match,units.fetch(loser),schedule_id,names:teams)
+          @program.award_ordinary_tournament_forfeit(@publication,match,nil,schedule_id,names:teams,
+            game_id:@candidate['game_id'],options:@candidate['game_options'])
           refresh_schedule if current?
         end
       end
@@ -220,7 +219,7 @@ module GameRoomTournaments
       prefix=row['group'] ? text(_("Group"))+" #{row['group']}; " : ''
       label=prefix+(text(_("%{place}. %{player}; points: %{points}; played: %{played}"))%{
         place:row.fetch('place'),player:teams.fetch(row['unit'],row['unit']),points:row['points'],played:row['played']})
-      if row['score_for'] && row['score_against'] && row['played'].positive? && row['scored_matches']==row['played']
+      if row['score_for'] && row['score_against'] && row['scored_matches'].positive?
         label+='; '+(text(_("Small points: scored %{scored}, conceded %{conceded}, difference %{difference}"))%{
           scored:row['score_for'],conceded:row['score_against'],difference:row['score_for']-row['score_against']})
       end
@@ -251,7 +250,14 @@ module GameRoomTournaments
     end
 
     def completed_match?(match)
-      @result_view && @result_view['results'].any?{|receipt|receipt['match_id']==match['match_id'] && receipt['leg']==match['leg']}
+      !!receipt_for(match)
+    end
+
+    def receipt_for(match)
+      return unless @result_view
+      source=@result_view.fetch('settled_without_play',[]).find { |row|row.values_at('match_id','leg')==match.values_at('match_id','leg') }
+      identity=source ? source.fetch('source').values_at('match_id','leg') : match.values_at('match_id','leg')
+      @result_view['results'].find { |receipt|receipt.values_at('match_id','leg')==identity }
     end
 
     def forfeit_available?
@@ -269,9 +275,11 @@ module GameRoomTournaments
     def show_match_result
       return unless current? && completed_match_selected?
       match=@matches[@match_list.index]
-      receipt=@result_view['results'].find{|row|row['match_id']==match['match_id'] && row['leg']==match['leg']}
+      receipt=receipt_for(match)
       value=result_label(receipt.fetch('summary'),team_names)
-      if receipt['kind']=='ordinary-match-forfeit-v2'
+      if receipt['kind']=='ordinary-match-forfeit-v3'
+        value += "\n"+text(_("Administrative result. Organizer: %{organizer}."))%{organizer:receipt.fetch('organizer')}
+      elsif receipt['kind']=='ordinary-match-forfeit-v2'
         loser=receipt.fetch('decision').fetch('loser')
         value += "\n"+text(_("%{player} loses by forfeit. Organizer: %{organizer}."))%{
           player:team_names.fetch(loser,loser),organizer:receipt.fetch('organizer')}
@@ -293,7 +301,7 @@ module GameRoomTournaments
         lines << text(_("Conflicting match results were recorded. The first complete result remains in effect."))
       end
       if view && !view.fetch('forfeit_unavailable_matches',[]).empty?
-        lines << text(_("To decide a match in progress, join its table as an observer. A match with unavailable history cannot be decided here."))
+        lines << text(_("The current game history is unavailable. Join the table as an observer and try again. No forfeit was recorded."))
       end
       lines
     end
@@ -348,20 +356,24 @@ module GameRoomTournaments
 
     def match_label(match)
       names=match['unit_ids'] ? MatchOrder.players(@candidate['matches'],match,key:'unit_ids').map{|id|team_names.fetch(id)} : MatchOrder.players(@candidate['matches'],match)
-      result=@result_view && @result_view['results'].find{|receipt|receipt['match_id']==match['match_id'] && receipt['leg']==match['leg']}
+      result=receipt_for(match)
       status=result ? result_label(result['summary'],team_names).lines.map(&:strip).join('; ') : text(_("To be played"))
-      status=text(_("Forfeit"))+"; "+status if result && %w[ordinary-match-forfeit-v1 ordinary-match-cancel-forfeit-v1 ordinary-match-forfeit-v2].include?(result['kind'])
+      status=text(_("Forfeit"))+"; "+status if result && %w[ordinary-match-forfeit-v1 ordinary-match-cancel-forfeit-v1 ordinary-match-forfeit-v2 ordinary-match-forfeit-v3].include?(result['kind'])
       label=names.join(' — ')
       label+="; "+text(_("Return match")) if match['leg']==2
       label+"; "+status
     end
 
     def result_label(summary,teams={})
+      return text(_("Everyone receives zero tournament points.")) if summary['resolution']=='all_zero'
       outcome=summary['draw'] ? text(_("Draw")) : text(_("Winner: %{players}"))%{players:summary.fetch('winners').map{|unit|teams.fetch(unit,unit)}.join(', ')}
       if summary['places']
         place=1
         outcome=summary['places'].map do |group|
-          line="#{place}. "+group.map { |unit| teams.fetch(unit,unit) }.join(', ')
+          line="#{place}. "+group.map do |unit|
+            name=teams.fetch(unit,unit)
+            summary.fetch('forfeits',[]).include?(unit) ? name+"; "+text(_("Forfeit")) : name
+          end.join(', ')
           place+=group.size
           line
         end.join("\n")
@@ -369,7 +381,8 @@ module GameRoomTournaments
       scores=summary['scores']
       return outcome unless scores && !scores.empty?
       score=summary.fetch('participants').map{|player|"#{teams.fetch(player,player)}: #{scores.fetch(player)}"}.join('; ')
-      outcome+"\n"+text(_("Game score: %{score}"))%{score:score}
+      label=summary['resolution']=='administrative' ? text(_("Administrative small points"))+": "+score : text(_("Game score: %{score}"))%{score:score}
+      outcome+"\n"+label
     end
   end
 end

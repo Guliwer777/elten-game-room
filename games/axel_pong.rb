@@ -8,6 +8,10 @@ require_relative "../lib/game_room_localization"
 module GameRoomGames
   using GameRoomLocalization::Translations
   class AxelPong < Base
+    def tournament_small_point_policy(options:)
+      tournament_target_small_points(points_to_win(options) || 11)
+    end
+
     include PublicHistoryAnnouncements
     include GameRoomRealtime::P2POptions::GameOptions
 

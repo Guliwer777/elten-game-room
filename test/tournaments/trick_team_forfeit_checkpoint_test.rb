@@ -14,10 +14,10 @@ require_relative '../support/trick_game_checkpoint'
     f.start
     h = f.h
     runners = users.to_h { |user| [user, runner_for(h, user)] }
-    assert_equal('opponent', f.preview(loser: 'red')['decision']['basis'])
+    assert_equal('opponent', f.legacy_preview(loser: 'red')['decision']['basis'])
     expected = TrickGameCheckpointTest.verify_boundary(h, runners)
     before = f.documents.insert_count
-    preview = f.preview(loser: 'red')
+    preview = f.legacy_preview(loser: 'red')
     assert_equal(before, f.documents.insert_count, 'Team preview wrote a result')
     assignment = game.prepared_team_assignment(h.replay('Alice').state[:options], players: h.replay('Alice').players)
     mapped = expected['scores'].to_h do |native, points|
@@ -29,7 +29,7 @@ require_relative '../support/trick_game_checkpoint'
     assert_equal(mapped, preview['summary']['scores'], 'Team score was duplicated or assigned by native side number')
     assert_equal([['blue'], ['red']], preview['summary']['places'])
     assert_raises(GameRoomTournaments::OrdinaryMatchService::Blocked) { f.preview(loser: 'bob') }
-    view = f.confirm(preview)
+    view = f.insert_historical(preview)
     assert_equal({'blue'=>2, 'red'=>0}, view['standings'].to_h { |row| [row['unit'], row['points']] })
     assert_equal(view, f.services.fetch('Dave').result_view)
   ensure

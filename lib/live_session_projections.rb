@@ -31,6 +31,8 @@ class GameRoomLiveSessionStore
           lifecycle.call(record, "options_changed") if option_changes.include?(record.sequence)
         elsif record.packet["kind"] == "room_activity"
           activity_record(record, ledger: ledger)
+        elsif record.packet['kind']=='room_voice' && record.packet.dig('data','operation')=='publish'
+          lifecycle.call(record,'voice_started')
         elsif record.packet["kind"] == "room_role" && record.packet.dig("data", "subject")
           lifecycle.call(record, "role_changed")
         elsif record.packet["kind"] == GameRoomTableControl::KIND
@@ -265,6 +267,8 @@ class GameRoomLiveSessionStore
           row.merge!(data.reject { |key, _| %w[options_changed expected_options expected_session_id].include?(key) })
         when "game_started"
           current_game_id = record.packet.dig("data", "session_id").to_i
+        when "room_voice"
+          row['voice'] = GameRoomTableVoice.transition(row['voice'],record,owner:control_ledger(table_id).owner_at(record.sequence))
         when GameRoomTableControl::KIND
           data = record.packet['data']
           if data['session_id'] == current_game_id && data['players']

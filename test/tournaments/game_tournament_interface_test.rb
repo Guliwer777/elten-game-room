@@ -54,14 +54,14 @@ modern = GameRoomTournaments::GameResult.from_replay(game: game, replay: win, pl
 assert_equal({'ala' => 1, 'bartek' => 0}, legacy['scores'])
 assert_equal({'ala' => 10, 'bartek' => 3}, modern['scores'])
 ordered = GameRoomTournaments::GameResult.from_replay(game: game, replay: win, players: people, options: {}, event_count: 5,
-  result_policy: GameRoomTournaments::GameResult::CURRENT_RESULT_POLICY)
+  result_policy: GameRoomTournaments::GameResult::RANKING_RESULT_POLICY)
 assert_equal('higher', ordered['score_order'])
 assert_equal(modern['scores'], ordered['scores'])
 ['ascending', nil, 1, :lower].each do |order|
   game.define_singleton_method(:tournament_export_small_scores) { |_replay, options:| {scores: {'Ala' => 10, 'Bartek' => 3}, order: order} }
   assert_raises(GameRoomTournaments::Publication::Invalid) do
     GameRoomTournaments::GameResult.from_replay(game: game, replay: win, players: people, options: {}, event_count: 5,
-      result_policy: GameRoomTournaments::GameResult::CURRENT_RESULT_POLICY)
+      result_policy: GameRoomTournaments::GameResult::RANKING_RESULT_POLICY)
   end
 end
 game.singleton_class.remove_method(:tournament_export_small_scores)

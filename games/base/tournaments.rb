@@ -154,6 +154,24 @@ module GameRoomGames
         tournament_export_small_scores(replay, options: options)
       end
 
+      # Opt-in for new tournament receipts. Legacy score hooks above are kept
+      # unchanged so published results remain verifiable under their policy.
+      def tournament_small_point_policy(options:); nil; end
+
+      def tournament_target_small_points(target, order: 'higher')
+        unless target.is_a?(Integer) && target.positive? && %w[higher lower].include?(order)
+          raise InvalidResult, 'Invalid technical score target'
+        end
+        {order: order, winner: order == 'higher' ? target : 0,
+          loser: order == 'higher' ? 0 : target}.freeze
+      end
+
+      def tournament_selected_small_scores(replay, options:)
+        policy = tournament_small_point_policy(options: options)
+        return {scores: nil, order: 'higher'} unless policy
+        {scores: tournament_public_unit_scores(replay, options: options), order: policy.fetch(:order)}
+      end
+
       # Opt-in for games that publicly name all winning people, rather than
       # a team id. Require whole confirmed teams; never infer private winners.
       def tournament_result_from_public_winners(replay, options:, winners:)

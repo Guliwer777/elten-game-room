@@ -33,6 +33,7 @@ module GameRoomTournaments
         display['knockout']['qualification']=true if candidate.dig('knockout','qualification')
         history << {'candidate'=>display,'view'=>{'standings'=>view['standings'],
           'results'=>view['results'].map{|receipt|receipt.slice('kind','match_id','leg','summary','decision','organizer')}}}
+        history.last['view']['settled_without_play']=view['settled_without_play'] if view['settled_without_play']
         history.last['view']['progress_times']=view['progress_times'] if view['progress_times']
         raise Publication::Invalid,:phase_read_limit if JSON.generate(history).bytesize>1_048_576
         candidate=stored.fetch('candidate')

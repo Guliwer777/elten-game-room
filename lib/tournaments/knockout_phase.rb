@@ -54,7 +54,9 @@ module GameRoomTournaments
         else
         ordered = summary.fetch('knockout_progress').fetch('next_seeds')
         raise Publication::Invalid, :invalid_qualification_seeding if seeds && seeds != ordered
-        plan = KnockoutRound.build(seeds: ordered, players_per_match: count, round_number: candidate['knockout']['round'] + 1)
+        progress=summary.fetch('knockout_progress')
+        plan = KnockoutRound.build(seeds: ordered, players_per_match: count,
+          round_number:progress.fetch('next_round',candidate['knockout']['round'] + 1),bracket_groups:progress['next_bracket_groups'])
         end
       else
         if summary['complete'] && %w[tie_requires_resolution seeding_tie_requires_resolution].include?(summary['group_state']) &&
@@ -102,6 +104,7 @@ module GameRoomTournaments
       fields += ['rematch'] if shown['plan'].key?('rematch')
       fields += ['qualification'] if shown['plan'].key?('qualification')
       fields += ['series'] if shown['plan'].key?('series')
+      fields += ['bracket_groups'] if shown['plan'].key?('bracket_groups')
       CoordinationRequest.fields!(shown['plan'], fields)
       raise Publication::Invalid, :phase_changed unless shown['version'].eql?(1) && shown['dispatch_allowed'].equal?(false)
     end

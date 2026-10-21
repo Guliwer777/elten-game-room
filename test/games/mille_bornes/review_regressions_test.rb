@@ -50,12 +50,12 @@ test("disconnected status preserves game information and observer semantics") do
   equal("disconnected", fixture.game.participant_status(replay, "Observer", connected: false), "disconnected observer")
 end
 
-test("eight-player limit and one-second default are specific to Mille Bornes") do
+test("eight-player limit and shared one-second default preserve explicit choices") do
   game = Fixture.new.game
   equal(8, game.maximum_players, "native capacity")
   equal(nil, game.options_error({}, player_count: 8), "eighth player supported")
   assert(game.options_error({}, player_count: 9), "ninth player rejected")
   equal(1, game.default_options.fetch("bot_delay"), "bot delay default")
   equal(0, game.normalize_options("bot_delay" => 0).fetch("bot_delay"), "explicit zero retained")
-  equal(0, GameRoomGames::Base.new.default_bot_move_delay, "shared default unchanged")
+  equal(1, GameRoomGames::Base.new.default_bot_move_delay, "shared default follows the approved one-second policy")
 end

@@ -317,7 +317,10 @@ class GameRoomLiveSessionStore
 
       found[table_id] = row
     end
-    found.values.select { |row| %w[waiting playing].include?(row["status"].to_s) }
+    # Membership can enrich a local row with the voice join secret. Discovery
+    # consumers never need that member-scoped data, even for our current room.
+    found.values.map { |row|row.reject { |key,_|key=='voice' } }
+      .select { |row| %w[waiting playing].include?(row["status"].to_s) }
       .sort_by { |row| [row["status"].to_s == "waiting" ? 0 : 1, -row["updated_at"].to_i, -row["__id"].to_i] }
   end
 
@@ -813,7 +816,7 @@ class GameRoomLiveSessionStore
     # Keep one complete room-state record before the new game. The immutable
     # room identity remains in native session metadata. No current-game replay
     # is truncated, and chat already received by this client stays local.
-    checkpoint_state = state.slice("status", "bot_count", "bot_names", "bot_players", "game_options", "updated_at")
+    checkpoint_state = state.slice("status", "bot_count", "bot_names", "bot_players", "game_options", "updated_at", "voice")
     checkpoint_state["observers"] = observer_users(table_id)
     checkpoint = append_record(table_id, "room_state", checkpoint_state, actor: actor)
     if restore != nil
@@ -1440,3 +1443,4 @@ require_relative "live_session_private_cards"
 require_relative "live_session_invitations"
 
 require_relative "live_session_archive"
+require_relative "live_session_voice"

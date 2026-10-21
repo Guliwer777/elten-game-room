@@ -14,7 +14,7 @@ end
 F.with_fixture do |f|
   f.start
   service=f.services['Alice']
-  stale=f.preview(loser:'alice')
+  stale=f.legacy_preview(loser:'alice')
   forfeit_key=service.send(:anchor,f.candidate,5,f.match,'forfeit')
   parts=T::ServerPlanDocument.encode(stale,anchor:forfeit_key)
   f.documents.insert(parts.first)
@@ -33,7 +33,7 @@ F.with_fixture do |f|
   assert_equal(nil,service.send(:forfeit_document,f.candidate,5,f.match))
   writes=f.documents.insert_count
   error=assert_raises(T::OrdinaryMatchService::Blocked) {f.confirm(stale)}
-  assert_equal(:result_already_recorded,error.code)
+  assert_equal(:legacy_forfeit_write_disabled,error.code)
   assert_equal(writes,f.documents.insert_count)
   assert_raises(T::OrdinaryMatchService::Blocked) {f.services['Bob'].entry_status(match_id:f.match['match_id'],leg:1)}
   # Other authorized accounts may confirm the same genuine result. Their
@@ -54,8 +54,8 @@ end
 F.with_fixture do |f|
   f.start
   service=f.services['Alice']
-  preview=f.preview(loser:'alice')
-  accepted=f.confirm(preview)
+  preview=f.legacy_preview(loser:'alice')
+  accepted=f.insert_historical(preview)
   complete_native_game(f)
   binding=service.send(:read_match_binding,f.candidate,5,f.match,nil)
   ordinary=f.h.as('Alice') do
@@ -77,7 +77,7 @@ F.with_fixture do |f|
   assert_equal('ordinary-match-result-v1',conflict['later_attempts'].first['kind'])
   assert_equal(preview,service.send(:forfeit_document,f.candidate,5,f.match))
   writes=f.documents.insert_count
-  assert_equal(preview,f.confirm(preview)['results'].first)
+  assert_raises(T::OrdinaryMatchService::Blocked) {f.confirm(preview)}
   assert_equal(writes,f.documents.insert_count,'Accepted cutoff retry duplicated the immutable document')
 end
 

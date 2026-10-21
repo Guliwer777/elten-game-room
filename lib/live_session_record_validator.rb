@@ -6,6 +6,7 @@ require_relative 'game_session_clock'
 require_relative 'tournament_marker'
 require_relative 'tournament_presence'
 require_relative 'game_option_values'
+require_relative 'table_voice_protocol'
 
 # Pure stack validation. Only earlier accepted starts enter the index; neither
 # future starts nor rejected authors can grant permission to a game action.
@@ -19,7 +20,9 @@ class GameRoomLiveSessionStore
     end
 
     def accept(record, owner:, ledger:)
-      valid = if record.packet['kind'] == GameRoomTableControl::KIND
+      valid = if record.packet['kind'] == 'room_voice'
+        !!GameRoomTableVoice.transition(@voice,record,owner:owner)
+      elsif record.packet['kind'] == GameRoomTableControl::KIND
         ledger.authoritative_record?(record)
       else
         valid_record?(record.sender, record.packet, owner: owner, ledger: ledger, sequence: record.sequence,
@@ -32,6 +35,11 @@ class GameRoomLiveSessionStore
     private
 
     def remember(record)
+      if record.packet['kind']=='room_voice'
+        @voice=GameRoomTableVoice.transition(@voice,record,owner:record.sender)
+      elsif record.packet['kind']=='room_state' && record.packet['data'].key?('voice')
+        @voice=record.packet['data']['voice']
+      end
       if record.packet['kind'] == 'game_started'
         @latest_start = record.packet.dig('data', 'session_id')
         @starts[@latest_start] = record
@@ -78,7 +86,8 @@ class GameRoomLiveSessionStore
       when "room_state"
         return false if !same_user?(sender, owner) || !same_user?(actor, owner)
 
-        (data.keys - %w[status bot_count bot_names bot_players game_options updated_at observers options_changed expected_options expected_session_id]).empty? &&
+        (data.keys - %w[status bot_count bot_names bot_players game_options updated_at observers options_changed expected_options expected_session_id voice]).empty? &&
+          (!data.key?('voice') || GameRoomTableVoice.valid?(data['voice'])) &&
           (!data.key?("options_changed") || (data["options_changed"] == true && data.key?("game_options") &&
             json_object_text?(data["expected_options"]) && data["expected_session_id"].is_a?(Integer) && data["expected_session_id"] >= 0)) && room_fields_valid?(data)
       when "room_role"

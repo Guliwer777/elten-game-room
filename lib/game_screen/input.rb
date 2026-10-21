@@ -22,6 +22,12 @@ class GameScreen
       bind_wait_history(wait, layout, remember_position)
       bind_wait_participants(wait, layout, remember_position)
       bind_wait_restart(wait, layout, remember_position)
+      layout.voice_button.on(:press) do
+        next if wait.action
+        remember_position.call
+        wait.action = :voice
+        form.resume
+      end
       bind_wait_surface(wait, layout, remember_position)
       bind_wait_chat(wait, layout, remember_position)
       bind_wait_timer(wait, layout, remember_position)
@@ -104,6 +110,7 @@ class GameScreen
       layout = @layout
       layout.begin_bindings
       layout.back_button.label = _("Leave")
+      layout.voice_button.label = @table.dig('voice','status')=='ready' ? _("Join conversation") : _("Voice conversation")
       layout.activity_cursor = event_presenter.last_seen_activity_id
       @chat_control = layout.chat
       # New decision controls and Restart/Waiting must follow the event speech.

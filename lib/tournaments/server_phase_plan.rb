@@ -17,8 +17,9 @@ module GameRoomTournaments
       expected=candidate.fetch('matches').map{|match|[match['match_id'],match['leg']]}.sort
       actual=results.map{|receipt|[receipt['match_id'],receipt['leg']]}.sort
       raise Publication::Invalid,:invalid_phase_results unless actual.uniq==actual && (actual-expected).empty?
-      raise Publication::Invalid,:phase_results_incomplete unless actual==expected && !expected.empty?
-      normalized=results.map{|receipt|receipt.fetch('summary').slice('participants','winners','scores','score_order').merge('id'=>JSON.generate([receipt['match_id'],receipt['leg']]))}
+      settled=KnockoutSeries.voided_matches(candidate:candidate,receipts:results).map { |row|[row['match_id'],row['leg']] }
+      raise Publication::Invalid,:phase_results_incomplete unless (actual+settled).sort==expected && !expected.empty?
+      normalized=results.map{|receipt|receipt.fetch('summary').slice('participants','winners','scores','score_order','places','forfeits','resolution').merge('id'=>JSON.generate([receipt['match_id'],receipt['leg']]))}
       if candidate['format']=='groups_knockout'
         view=GroupStandings.calculate(candidate:candidate,units:units,results:normalized,unit_key:key,players_per_match:2)
         if view['group_state']=='ready_knockout'
@@ -43,7 +44,9 @@ module GameRoomTournaments
         when 'completed'
           raise Publication::Invalid,:tournament_completed
         when 'ready_next_round'
-          plan=KnockoutRound.build(seeds:view['qualified'],players_per_match:2,round_number:candidate['knockout']['round']+1)
+          progress=view.fetch('knockout_progress')
+          plan=KnockoutRound.build(seeds:view['qualified'],players_per_match:2,
+            round_number:progress.fetch('next_round',candidate['knockout']['round']+1),bracket_groups:progress['next_bracket_groups'])
         when 'tie_requires_resolution'
           plan=KnockoutReplay.build(base:view['knockout_progress']['plan'],resolved:Data.copy(view['knockout_resolved_results']),attempt:candidate['knockout'].dig('replay','attempt').to_i+1)
         when 'awaiting_series'
@@ -63,7 +66,7 @@ module GameRoomTournaments
       end
       parent=digest(candidate)
       evidence=digest(results.sort_by{|receipt|[receipt['match_id'],receipt['leg']]})
-      metadata=plan.slice('round','seeds','players_per_match','generation','replay','rematch','series','qualification').merge(
+      metadata=plan.slice('round','seeds','players_per_match','generation','replay','rematch','series','qualification','bracket_groups').merge(
         'phase_digest'=>digest(['server-sporting-phase-v1',parent,evidence,plan]),'parent_plan_digest'=>parent)
       next_candidate=Data.copy(candidate,max_bytes:262144,max_nodes:16384,max_depth:16)
       next_candidate.delete('groups')

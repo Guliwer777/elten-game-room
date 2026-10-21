@@ -6,7 +6,7 @@ module GameRoomTournaments
     module_function
     def progress(base:, history:, target:)
       raise Publication::Invalid, :invalid_knockout_configuration unless base.is_a?(Hash)
-      expected=KnockoutRound.build(seeds:base['seeds'],players_per_match:base['players_per_match'],round_number:base['round'])
+      expected=KnockoutRound.from_metadata(base)
       raise Publication::Invalid,:invalid_knockout_configuration unless base==expected && base['players_per_match']==2
       raise Publication::Invalid,:invalid_phase_results unless history.is_a?(Array) && history.size<=4096
       Standings.calculate(units:base['seeds'],results:history)
@@ -16,7 +16,7 @@ module GameRoomTournaments
         KnockoutSeries.wins_projection(units:match['participants'],results:history.select{|row|row['participants'].sort==match['participants'].sort},id:match['id'],target:target)
       end
       summaries=series.filter_map{|row|row['summary']}
-      sports=KnockoutRound.progress(seeds:base['seeds'],players_per_match:2,round_number:base['round'],results:summaries)
+      sports=KnockoutRound.progress(seeds:base['seeds'],players_per_match:2,round_number:base['round'],results:summaries,bracket_groups:base['bracket_groups'])
       Publication::Data.freeze_tree(Publication::Data.copy({'series'=>series,'sports'=>sports,'summaries'=>summaries}))
     end
     def build(base:,history:,target:,attempt:)
@@ -33,7 +33,7 @@ module GameRoomTournaments
       series=metadata['series']
       CoordinationRequest.fields!(series,%w[base_plan history target attempt])
       plan=build(base:series['base_plan'],history:series['history'],target:series['target'],attempt:series['attempt'])
-      raise Publication::Invalid,:phase_changed unless plan.slice('round','seeds','players_per_match','generation')==metadata.slice('round','seeds','players_per_match','generation')
+      raise Publication::Invalid,:phase_changed unless plan.slice('round','seeds','players_per_match','generation','bracket_groups')==metadata.slice('round','seeds','players_per_match','generation','bracket_groups')
       plan
     end
   end

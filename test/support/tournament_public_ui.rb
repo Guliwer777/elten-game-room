@@ -29,8 +29,14 @@ module TournamentPublicUI
   end
 
   def snapshot(rows = [publication], registrations = [])
-    GameRoomTournaments::RegistrationProjection.build(announcements: rows, registrations: registrations,
+    result = GameRoomTournaments::RegistrationProjection.build(announcements: rows, registrations: registrations,
       registry: GameRoomGames::CATALOG, complete: true).to_h
+    # ServerWorkspace adds verified sporting completion after registration
+    # projection. A date boundary alone is not a completed competition.
+    result.merge('announcements'=>result.fetch('announcements').map do |row|
+      original=rows.find { |source| source['__id']==row['__id'] }
+      row.merge(original.slice('sporting_completed','sporting_completed_at'))
+    end)
   end
 
   # Atrapa wyniku callbacku dziennika, bez dysku i bez wymyślonego serwera.

@@ -13,7 +13,7 @@ before = core.entries.length
 assert(!app.send(:change_table_game_options, table) && core.entries.length == before, "Cancel must not write anything")
 app.form_answer = { "bot_delay" => 2 }
 assert(app.send(:change_table_game_options, table), "settings before start")
-assert(app.form_initial[1]["bot_delay"] == 0 && app.form_initial[2] == "Save changes", "prefill and save label")
+assert(app.form_initial[1]["bot_delay"] == 1 && app.form_initial[2] == "Save changes", "prefill and save label")
 assert(core.entries.length == before + 1, "settings and history must use one record")
 room = app.lobby.snapshot_for(table)
 assert(JSON.parse(room.table["game_options"])["bot_delay"] == 2, "new settings not projected")

@@ -1,4 +1,4 @@
-require_relative '../support/tournament_native'
+require_relative '../support/tournament_control_callbacks'
 require_relative '../support/tournament_entry_context'
 require_relative '../../lib/tournaments/server_schedule_overview'
 require_relative '../../lib/tournaments/interrupted_outcome'
@@ -16,9 +16,10 @@ scored={'status'=>'scored','kind'=>'deal','index'=>1,'event_id'=>42,'order'=>'hi
   program=TournamentEntryContextTest::Program.new
   preview=T::InterruptedOutcome.build(units:%w[alpha beta gamma],loser:'gamma',started:started,
     checkpoint:checkpoint,continuation:{'status'=>'cannot_continue'},event_count:42)
-  driver=TournamentNativeDriver.new
-  driver.step('Forfeit consequences',[27]) do |form|
+  driver=TournamentControlCallbacks.new
+  driver.step('Forfeit consequences') do |form|
     assert(form.fields.first.text.include?(explanation),'Native confirmation omitted the basis of places')
+    form.cancel_button.press
   end
   T::ServerForfeitScreen::Confirmation.new(program:program,preview:preview).run
   driver.finish
@@ -33,11 +34,11 @@ scored={'status'=>'scored','kind'=>'deal','index'=>1,'event_id'=>42,'order'=>'hi
   owner=T::Dialogs::Owner.new(-> {'alpha'},->(message) {raise message})
   screen=T::ServerScheduleOverview.new(program:program,workspace:workspace,owner:owner,
     publication:{'title'=>'Explanation','__insertion_user'=>'alpha','publication_key'=>'explanation'})
-  driver=TournamentNativeDriver.new
+  driver=TournamentControlCallbacks.new
   driver.step('Tournament matches') do |form|
     details=form.fields.find { |field| field.is_a?(EditBox) }
     assert(details.text.include?('Conflicting match results were recorded.'),'Conflicting complete receipts were not visible')
-    assert(details.text.include?('join its table as an observer'),'Unavailable native history lacked an explanation')
+    assert(details.text.include?('Join the table as an observer'),'Unavailable native history lacked an explanation')
     form.fields.first.index=1
     actions={}
     menu=Object.new
@@ -45,10 +46,11 @@ scored={'status'=>'scored','kind'=>'deal','index'=>1,'event_id'=>42,'order'=>'hi
     form.fields.first.context(menu,false)
     actions.fetch('Result details').call
   end
-  driver.step('Result details',[27]) do |form|
+  driver.step('Result details') do |form|
     assert(form.fields.first.text.include?(explanation),'Result details differed from the confirmed basis of places')
+    form.cancel_button.press
   end
-  driver.step('Tournament matches',[27])
+  driver.step('Tournament matches') { |form| form.cancel_button.press }
   screen.run
   driver.finish
 ensure

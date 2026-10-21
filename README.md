@@ -132,6 +132,12 @@ Na liście użytkowników Enter otwiera zwykłe menu użytkownika ELTEN-a.
 Stamtąd możesz między innymi wysłać wiadomość, dodać osobę do kontaktów
 lub do niej zadzwonić.
 
+### Rozmowa głosowa
+
+Przycisk „Rozmowa głosowa” przy stole pozwala utworzyć kanał konferencji ELTEN-a. Wpisz nazwę, wybierz kanał publiczny lub ukryty i opcjonalnie ustaw hasło. Ukryty kanał nie pojawia się na zwykłej liście, ale sam ten wybór nie zastępuje hasła.
+
+Pozostali usłyszą krótkie zaproszenie, a przy stole pojawi się „Dołącz do rozmowy”. Nic nie otwiera się samo w trakcie partii. Dołączenie do innej rozmowy wymaga potwierdzenia, jeśli jesteś już na konferencji. Twoje ustawienia mikrofonu i push-to-talk pozostają bez zmian.
+
 ### Gospodarz, boty i drużyny
 
 Gospodarz przygotowuje stół, rozpoczyna partię i zarządza obsadą.
@@ -167,7 +173,7 @@ może zakończyć bieżącą partię pod Ctrl+Q, a w przerwie zmienić ustawieni
 następnej pod Ctrl+X. Te same polecenia są dostępne w menu stołu.
 
 W ustawieniach wielu gier można określić limit czasu na ruch oraz opóźnienie
-ruchów botów. Opóźnienie bota reguluje tempo, nie jest wyborem jego poziomu
+ruchów botów. Domyślne opóźnienie ruchu bota wynosi 1 sekundę. Opóźnienie bota reguluje tempo, nie jest wyborem jego poziomu
 trudności. Skutek przekroczenia czasu zależy od zasad gry, dlatego opisano
 go w jej pomocy, zamiast stosować jedną karę do wszystkich tytułów.
 
@@ -571,13 +577,13 @@ Zanim wejdziesz do meczu, opuść inną partię. Nie możesz jednocześnie zają
 
 Tabem przechodzisz do listy faz. Możesz tam przejrzeć wcześniejsze etapy. Gdy oglądasz bieżącą fazę, lista automatycznie przejdzie do następnej po jej rozpoczęciu. Odświeżenie zachowuje wybrany mecz, jeśli nadal jest widoczny.
 
-Enter na zakończonym meczu informuje, że został już rozegrany. Jego wynik otworzysz przez Ctrl+W lub opcję „Szczegóły wyniku” w menu kontekstowym. To samo menu pokazuje dostępne działania i ich skróty: Ctrl+G — zagraj, Ctrl+F — przyznaj walkower. Ctrl+F służy organizatorowi do rozstrzygnięcia zarówno nierozpoczętego, jak i trwającego meczu: wskazuje się przegranego, a następnie potwierdza pokazane konsekwencje.
+Enter na zakończonym meczu informuje, że został już rozegrany. Jego wynik otworzysz przez Ctrl+W lub opcję „Szczegóły wyniku” w menu kontekstowym. To samo menu pokazuje dostępne działania i ich skróty: Ctrl+G — zagraj, Ctrl+F — przyznaj walkower. Ctrl+F otwiera rozliczenie organizatora, gdy mecz nie jest w trakcie gry.
 
 Wpis zakończonego meczu zawiera też wynik samej gry, jeśli gra go udostępnia. Jeśli masz jeszcze zaplanowany rewanż z tymi przeciwnikami, w menu tego meczu pojawi się „Zagraj rewanż” pod Ctrl+G. Wysyła zwykłe zaproszenia i nie rozpoczyna partii automatycznie.
 
 „Tabela wyników” pokazuje od razu miejsce, uczestnika, punkty turniejowe i liczbę rozegranych meczów. Tabem przejdziesz do wyboru fazy. Wyniki zapisują się automatycznie; nie musisz przepisywać ich z historii gry.
 
-Jeśli gra udostępnia kompletne wyniki punktowe, tabela pokazuje też małe punkty zdobyte i stracone oraz ich różnicę. Uczestnicy, którzy nadal dzielą miejsce, są wyświetlani od najmniejszej liczby rozegranych meczów. Ta kolejność nie rozstrzyga awansu.
+W grach obsługujących małe punkty tabela pokazuje dostępne sumy zdobyte i stracone oraz ich różnicę. Brak wyniku z jednego meczu nie ukrywa pozostałych sum i nie jest liczony jako zero. W UNO, Domino, Mexican Train i eliminacyjnym Remiku lepszy jest niższy wynik. W Audio Ballu sumowane są punkty ze wszystkich setów. Uczestnicy nadal dzielący miejsce są wyświetlani od najmniejszej liczby rozegranych meczów; ta kolejność nie rozstrzyga awansu.
 
 Żadnej partii turniejowej nie można zapisać ani wznowić z pliku. Polecenie zapisu i Ctrl+S nie są tu dostępne, ale Ctrl+Shift+S nadal pozwala zachować historię w pliku tekstowym.
 
@@ -699,13 +705,13 @@ Otwórz swój turniej i wybierz „Zarządzaj turniejem”. Przed rozpoczęciem 
 - otworzyć albo zamknąć zapisy;
 - wybrać „Rozpocznij turniej”, jeśli nie chcesz korzystać z zaplanowanego startu.
 
-Walkower przyznaje się na liście „Mecze turnieju”. Zaznacz nierozstrzygnięty mecz i naciśnij Ctrl+F albo wybierz „Przyznaj walkower” w menu kontekstowym. Wskaż osobę lub drużynę, która przegrywa, i przejdź dalej. To jedno polecenie działa przed rozpoczęciem meczu i w trakcie gry.
+Organizator rozlicza walkower na liście „Mecze turnieju”: zaznacza nierozstrzygnięty mecz i wybiera Ctrl+F albo „Przyznaj walkower” z menu kontekstowego. To polecenie nie przerywa trwającej gry. Rozłączenie podczas meczu obsługuje opisany wcześniej pięciominutowy limit powrotu.
 
-W meczu jeden na jednego wygrywa przeciwnik wskazanego przegranego. Przy większej obsadzie przegrany zajmuje ostatnie miejsce. Jeżeli rozpoczęta gra może trwać bez niego, pozostali grają dalej i dopiero rozgrywka ustala ich miejsca. W przeciwnym razie kolejność pozostałych wynika z punktów po ostatnim ukończonym rozdaniu lub rundzie. Niedokończonego rozdania lub rundy nie wlicza się. Równe wyniki dają wspólne miejsce; gra uwzględnia, czy lepszy jest wynik wyższy, czy niższy. Jeśli mecz nie ruszył albo nie ukończono jeszcze żadnej rundy z punktacją, pozostali dzielą pierwsze miejsce.
+W pojedynku wybierz przegranego. Przy większej obsadzie określ miejsca na jednej liście i zaznacz osoby przegrywające walkowerem. Drużyna zajmuje jedną pozycję. Możesz ustawić wspólne miejsce, np. 1, 1, 3. W obsługiwanych grach pola małych punktów mają już proponowane wartości, które możesz poprawić.
 
-Przed zatwierdzeniem przeczytaj podgląd: pokazuje przegranego i wyjaśnia, czy mecz się zakończy, czy pozostali będą grać dalej. Przy zakończeniu podaje miejsca, punkty turniejowe i wykorzystane wyniki gry. Dopiero „Potwierdź walkower” wykonuje tę decyzję. Jeśli sytuacja zmieniła się podczas podejmowania decyzji, trzeba sprawdzić i zatwierdzić nowy podgląd. Gdy nie można odczytać danych potrzebnych do rozstrzygnięcia lub gra ich nie udostępnia, program nie przyzna walkowera na podstawie zgadywanego wyniku.
+„Podsumowanie wyniku” pokazuje miejsca, wyliczone punkty turniejowe i małe punkty, jeśli gra je obsługuje. Każdy oznaczony jako przegrywający walkowerem otrzymuje 0 punktów turniejowych. Osobny przycisk „Przyznaj wszystkim 0 punktów” rozlicza mecz bez zwycięzcy, remisu i małych punktów. W drabince nikt z takiej pary nie awansuje. Dopiero „Zatwierdź wynik” zapisuje decyzję. Jeśli stan meczu się zmieni, trzeba sprawdzić nowy podgląd.
 
-Organizator może też anulować niezakończony turniej. Zrób to tylko wtedy, gdy chcesz odwołać całe rozgrywki, a nie pojedyncze zaproszenie. Samo przekroczenie terminu nie przyznaje walkowera. Ręczną decyzję przez Ctrl+F możesz podjąć bez czekania na pięciominutowy limit powrotu.
+Organizator może też anulować niezakończony turniej. To odwołuje całe rozgrywki, a nie pojedyncze zaproszenie. Samo przekroczenie terminu nie przyznaje walkowera.
 
 ### Gdy zmiana nie została potwierdzona
 

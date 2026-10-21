@@ -209,7 +209,7 @@ module GameRoomGames
         _("Thinking time must be zero or from %{minimum} to %{maximum} seconds.") % { minimum: range.min, maximum: range.max }
       end
 
-      def default_bot_move_delay; 0; end
+      def default_bot_move_delay; 1; end
 
       def bot_delay_options_error(options)
         return nil unless supports_bot_move_delay?

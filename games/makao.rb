@@ -203,7 +203,6 @@ module GameRoomGames
       super
     end
 
-    def default_bot_move_delay; 1; end
     def thinking_time_range; 1..600; end
 
     def automatic_action_due?(replay, actor, context: nil)

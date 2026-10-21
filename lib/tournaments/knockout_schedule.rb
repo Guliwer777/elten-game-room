@@ -23,7 +23,7 @@ module GameRoomTournaments
 
     def metadata(approval)
       phase = approval.fetch('preview')
-      phase.fetch('plan').slice('round', 'seeds', 'players_per_match', 'generation', 'replay', 'rematch', 'qualification','series').merge(
+      phase.fetch('plan').slice('round', 'seeds', 'players_per_match', 'generation', 'replay', 'rematch', 'qualification','series','bracket_groups').merge(
         'phase_digest' => phase.fetch('digest'), 'parent_plan_digest' => phase.fetch('parent').fetch('plan_digest'))
     end
 
@@ -44,13 +44,14 @@ module GameRoomTournaments
         fields += ['rematch'] if metadata.key?('rematch')
         fields += ['qualification'] if metadata.key?('qualification')
         fields += ['series'] if metadata.key?('series')
+        fields += ['bracket_groups'] if metadata.key?('bracket_groups')
         raise Publication::Invalid, :invalid_rematch if metadata.key?('rematch') && (metadata['rematch'] != true || metadata.key?('replay') || metadata.key?('qualification'))
         CoordinationRequest.fields!(metadata, fields)
         ExecutionPlanContract.digest!(metadata['parent_plan_digest'])
       end
       ExecutionPlanContract.digest!(metadata['phase_digest'])
       plan = metadata.key?('series') ? KnockoutWinSeries.from_metadata(metadata) : metadata.key?('qualification') ? GroupTiebreak.from_metadata(metadata) : metadata.key?('replay') ? KnockoutReplay.from_metadata(metadata) :
-        KnockoutRound.build(seeds: metadata['seeds'], players_per_match: metadata['players_per_match'], round_number: metadata['round'])
+        KnockoutRound.from_metadata(metadata)
       raise Publication::Invalid, :phase_changed unless plan['generation'] == metadata['generation']
       units = membership && membership['units'].to_h { |unit| [unit['unit_id'], unit['accounts']] }
       if units && units.keys.sort != metadata['seeds'].sort

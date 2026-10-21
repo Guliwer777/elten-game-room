@@ -53,8 +53,11 @@ module GameRoomTournaments
       raise Publication::Invalid, :wrong_bound_session unless groups == projected_groups
       return capture_absence(binding, session, replay, events, game: game, options: options, groups: groups) if GameRoomTournamentPresence.ended?(session)
       summary = GameResult.from_replay(game: game, replay: replay, players: players, options: options,
-        event_count: events.size, events: events, result_policy: GameResult::CURRENT_RESULT_POLICY)
+        event_count: events.size, events: events, result_policy: binding.fetch('result_policy', GameResult::RANKING_RESULT_POLICY))
       summary = GameResult.with_eliminations(summary, groups)
+      if binding['result_policy'] == GameResult::CURRENT_RESULT_POLICY
+        summary = GameResult.with_technical_forfeits(summary, groups.flatten.sort, game: game, options: options)
+      end
       Publication::Data.freeze_tree({'kind' => 'ordinary-match-result-v1', 'binding_digest' => Digest::SHA256.hexdigest(JSON.generate(binding)),
         'match_id' => binding['match_id'], 'leg' => binding['leg'], 'session_id' => binding['session_id'],
         'history_digest' => Digest::SHA256.hexdigest(JSON.generate(events)), 'summary' => summary})
@@ -81,7 +84,14 @@ module GameRoomTournaments
       raise Publication::Invalid, :wrong_bound_session unless outcome.dig('decision', 'mode') == 'terminal'
       summary = outcome.fetch('summary')
       # Preserve the already published two-seat automatic result shape.
-      summary = summary.reject { |key, _| %w[places score_order].include?(key) }.merge('scores'=>nil) if accounts.size == 2
+      if binding['result_policy'] == GameResult::CURRENT_RESULT_POLICY
+        if accounts.size>2 && summary['scores'].nil?
+          summary=summary.merge(GameResult.selected_small_scores(game:game,replay:replay,options:options,players:players))
+        end
+        summary = GameResult.with_technical_forfeits(summary, (groups.flatten + [loser]).sort, game: game, options: options)
+      elsif accounts.size == 2
+        summary = summary.reject { |key, _| %w[places score_order].include?(key) }.merge('scores'=>nil)
+      end
       Publication::Data.freeze_tree({'kind'=>'ordinary-match-result-v1', 'binding_digest'=>presence['binding_digest'],
         'match_id'=>binding['match_id'], 'leg'=>binding['leg'], 'session_id'=>binding['session_id'],
         'history_digest'=>Digest::SHA256.hexdigest(JSON.generate([events, presence])), 'summary'=>summary,

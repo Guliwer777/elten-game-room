@@ -40,11 +40,12 @@ end
 saved = []
 T.script(choose_game('tic_tac_toe'), lambda do |form|
   headers = form.fields.map { |field| field.is_a?(Button) ? field.label : field.respond_to?(:header) ? field.header : nil }
-  assert(headers.take(3) == ['Tournament name', 'Tournament format', 'Return matches'], 'Tournament choices follow the separate game settings')
+  assert(headers.take(4) == ['Tournament name', "Organizer's notes (optional)", 'Tournament format', 'Return matches'], 'Tournament choices and optional organizer notes follow the separate game settings')
   assert(!headers.include?('Participants and playing windows'), 'No nested tournament details dialog')
   assert(!headers.include?('Game settings'), 'New tournament repeats the already completed game settings')
   assert(headers.none? { |header| header == 'Information and rules' }, 'No redundant free-form rules field')
   T.field(form, 'Tournament name').text = 'Simple league'
+  T.field(form, "Organizer's notes (optional)").text = 'Organizer note retained unchanged.'
   T.field(form, 'Return matches').index = 1
   form.accept_button.trigger(:press)
 end) do
@@ -54,6 +55,7 @@ end) do
 end
 assert(saved.length == 1, 'Single configuration publishes once')
 values = saved.first
+assert(values.fetch(:rules).include?('Organizer note retained unchanged.'), 'Publication lost the organizer notes')
 assert(values[:draft]['rematch'] && values[:draft]['participant_limit'] == 16 && values[:draft]['windows'].empty?,
   'Publication includes return matches and capacity without compulsory playing hours')
 assert(values[:registration_closes_at]==0 && values[:draft]['starts_at']==0, 'Default registration close and start must be manual')

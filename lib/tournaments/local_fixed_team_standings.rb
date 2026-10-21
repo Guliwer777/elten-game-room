@@ -13,19 +13,24 @@ module GameRoomTournaments
       matches = record['evidence']['plan']['matches']
       planned = matches.to_h { |match| [[match['match_id'], match['leg']], match] }
       results = {}
-      modern = GameResult::RESULT_POLICIES.include?(record['evidence']['source']['result_policy'])
+      policy = record['evidence']['source']['result_policy']
+      modern = GameResult::RESULT_POLICIES.include?(policy)
       executions.select { |row| row['record_intent'] == intent && row['result'] }.each do |execution|
         receipt = execution['result']
         key = [receipt['match_id'], receipt['leg']]
         match = planned[key]
         summary = receipt['summary']
         teams = match && match['players'].map { |person| person['team'] }.uniq.sort
+        valid_order = if summary.is_a?(Hash)
+          ordered = receipt['kind'] != 'forfeit' && GameResult::ORDERED_POLICIES.include?(policy) &&
+            !(policy == GameResult::CURRENT_RESULT_POLICY && summary['scores'].nil?)
+          ordered ? %w[higher lower].include?(summary['score_order']) : !summary.key?('score_order')
+        end
         valid_summary = if !match
           false
         elsif modern || receipt['kind'] == 'forfeit'
           summary.is_a?(Hash) && summary['participants'] == teams && summary['winners'].is_a?(Array) &&
-            (receipt['kind'] == 'forfeit' ? !summary.key?('score_order') : GameResult::ORDERED_POLICIES.include?(record['evidence']['source']['result_policy']) ?
-              %w[higher lower].include?(summary['score_order']) : !summary.key?('score_order')) &&
+            valid_order &&
             summary['winners'].uniq == summary['winners'] && summary['winners'].all? { |winner| teams.include?(winner) } &&
             [true, false].include?(summary['draw']) && (summary['draw'] ? summary['winners'].empty? : summary['winners'].any?) &&
             (summary['scores'].nil? || (summary['scores'].is_a?(Hash) && summary['scores'].keys.sort == teams &&
@@ -43,7 +48,7 @@ module GameRoomTournaments
       normalized = results.map do |key, receipt|
         summary = receipt['summary']
         if modern || receipt['kind'] == 'forfeit'
-          summary.slice('participants', 'winners', 'scores', 'score_order').merge('id' => JSON.generate(key))
+          summary.slice('participants', 'winners', 'scores', 'score_order', 'places').merge('id' => JSON.generate(key))
         else
           {'id' => JSON.generate(key), 'participants' => summary['scores'].keys,
             'winners' => [summary['winner']], 'scores' => summary['scores']}

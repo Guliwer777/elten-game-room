@@ -47,6 +47,19 @@ module TournamentForfeitNative
     def confirm(preview,user:h.users.first)
       h.as(user) {services.fetch(user).confirm_forfeit(preview:preview)}
     end
+    # Read-only historical fixture construction. Do not re-enable the removed
+    # production v2 writer merely to keep testing old accepted receipts.
+    def legacy_preview(loser:h.users.last.downcase, user:h.users.first)
+      h.as(user) {services.fetch(user).send(:build_forfeit_preview,candidate,5,match,loser)}
+    end
+    def insert_historical(document,user:h.users.first)
+      service=services.fetch(user)
+      key=service.send(:anchor,candidate,5,match,'forfeit')
+      GameRoomTournaments::ServerPlanDocument.encode(document,anchor:key).each do |part|
+        documents.insert_as(part,user)
+      end
+      services.fetch(h.users.last).result_view
+    end
     def close
       services.each_value(&:close)
     end

@@ -12,8 +12,9 @@ module GameRoomTournaments
     RESULT_EXPORT_POLICY = 'game-owned-result-v2'.freeze
     DRAW_RESULT_POLICY = 'game-owned-result-v3'.freeze
     SCORE_ORDER_POLICY = 'game-owned-result-v4'.freeze
-    CURRENT_RESULT_POLICY = 'game-owned-result-v5'.freeze
-    ORDERED_POLICIES = [SCORE_ORDER_POLICY, CURRENT_RESULT_POLICY].freeze
+    RANKING_RESULT_POLICY = 'game-owned-result-v5'.freeze
+    CURRENT_RESULT_POLICY = 'game-owned-result-v6'.freeze
+    ORDERED_POLICIES = [SCORE_ORDER_POLICY, RANKING_RESULT_POLICY, CURRENT_RESULT_POLICY].freeze
     RESULT_POLICIES = [RESULT_EXPORT_POLICY, DRAW_RESULT_POLICY, *ORDERED_POLICIES].freeze
     EXPORT_POLICIES = [SCORE_EXPORT_POLICY, *RESULT_POLICIES].freeze
     # Native history is a log of authenticated attempts, not only successful
@@ -54,7 +55,7 @@ module GameRoomTournaments
           replay.players.map { |name| Data.account(name).downcase }.sort == players.map { |p| p['account'] }.sort
         raise Publication::Invalid, :invalid_game_result
       end
-      outcome = if result_policy==CURRENT_RESULT_POLICY
+      outcome = if [RANKING_RESULT_POLICY, CURRENT_RESULT_POLICY].include?(result_policy)
         game.tournament_ranking_result(replay,options:options)
       elsif RESULT_POLICIES.include?(result_policy)
         game.tournament_export_result(replay, options: options)
@@ -72,11 +73,23 @@ module GameRoomTournaments
       score_order = nil
       unless result_policy.nil?
         if ORDERED_POLICIES.include?(result_policy)
-          small = result_policy==CURRENT_RESULT_POLICY ? game.tournament_ranking_scores(replay,options:options) : game.tournament_export_small_scores(replay, options: options)
+          small = if result_policy == CURRENT_RESULT_POLICY
+            game.tournament_selected_small_scores(replay, options: options)
+          elsif result_policy == RANKING_RESULT_POLICY
+            game.tournament_ranking_scores(replay, options: options)
+          else
+            game.tournament_export_small_scores(replay, options: options)
+          end
           unless small.is_a?(Hash) && small.keys.sort == [:order, :scores] && %w[higher lower].include?(small[:order])
             raise Publication::Invalid, :invalid_game_result
           end
           scores, score_order = small.values_at(:scores, :order)
+          if result_policy == CURRENT_RESULT_POLICY
+            policy = game.tournament_small_point_policy(options: options)
+            raise Publication::Invalid, :invalid_game_result if policy && (scores.nil? || score_order != policy[:order])
+            raise Publication::Invalid, :invalid_game_result if !policy && scores
+            score_order = nil unless scores
+          end
         else
           scores = game.tournament_export_scores(replay, options: options)
         end
@@ -95,8 +108,34 @@ module GameRoomTournaments
         'scores' => scores && scores.to_h { |native, score| [mapping.fetch(native), score] },
         'event_count' => event_count}
       result['score_order'] = score_order if score_order
+      if result_policy == CURRENT_RESULT_POLICY && scores.nil? && !draw && mapping.size > 2
+        places = ranking_places(game: game, replay: replay, options: options, outcome: outcome, mapping: mapping)
+        result['places'] = places if places
+      end
       Data.freeze_tree(Data.copy(result))
     end
+
+    # Disabling numeric small points must not merge distinct finishing places.
+    # Use the existing game-owned ranking export only to project places; never
+    # publish its numbers or use them as a cross-match small-point tie-break.
+    def self.ranking_places(game:, replay:, options:, outcome:, mapping:)
+      ranked = game.tournament_ranking_scores(replay, options: options)
+      unless ranked.is_a?(Hash) && ranked.keys.sort == [:order, :scores] && %w[higher lower].include?(ranked[:order])
+        raise Publication::Invalid, :invalid_game_result
+      end
+      scores = ranked[:scores]
+      return nil unless scores
+      unless scores.is_a?(Hash) && scores.keys.sort == mapping.keys.sort &&
+          scores.values.all? { |score| score.is_a?(Integer) || score.is_a?(Float) && score.finite? }
+        raise Publication::Invalid, :invalid_game_result
+      end
+      winners = outcome.fetch(:winners)
+      remaining = mapping.keys - winners
+      groups = remaining.sort_by { |unit| ranked[:order] == 'lower' ? scores.fetch(unit) : -scores.fetch(unit) }.
+        chunk_while { |left, right| scores.fetch(left) == scores.fetch(right) }.to_a
+      [winners.map { |unit| mapping.fetch(unit) }, *groups.map { |group| group.map { |unit| mapping.fetch(unit) }.sort }]
+    end
+    private_class_method :ranking_places
 
     # The same complete-roster mapping applies to a finished result and to a
     # game-owned scored checkpoint. Native side numbers are not plan unit IDs.
@@ -148,7 +187,9 @@ module GameRoomTournaments
       raise Publication::Invalid, :invalid_game_result if winners.empty? || !(winners - active).empty?
       remaining = active - winners
       places = [winners.sort]
-      if summary['scores']
+      if summary['places']
+        places.concat(summary['places'].map { |group| (group & remaining).sort }.reject(&:empty?))
+      elsif summary['scores']
         scores, order = summary.values_at('scores', 'score_order')
         places.concat(remaining.sort_by { |unit| order == 'lower' ? scores.fetch(unit) : -scores.fetch(unit) }.
           chunk_while { |left, right| scores.fetch(left) == scores.fetch(right) }.map(&:sort))
@@ -156,6 +197,42 @@ module GameRoomTournaments
         places << remaining.sort
       end
       Data.freeze_tree(Data.copy(summary.merge('winners'=>winners.sort, 'draw'=>false, 'places'=>places + groups.reverse)))
+    end
+
+    # The automatic five-minute boundary owns elimination. Technical points
+    # replace the forfeiter's partial score; they are not added on top of it.
+    def self.selected_small_scores(game:, replay:, options:, players:)
+      policy=game.tournament_small_point_policy(options:options)
+      return {'scores'=>nil} unless policy
+      small=game.tournament_selected_small_scores(replay,options:options)
+      mapping=roster_mapping(game:game,replay:replay,options:options,players:players)
+      scores=small.is_a?(Hash) && small[:scores]
+      unless small.is_a?(Hash) && small[:order]==policy[:order] && scores.is_a?(Hash) && scores.keys.sort==mapping.keys.sort &&
+          scores.values.all? { |value|value.is_a?(Integer) || value.is_a?(Float) && value.finite? }
+        raise Publication::Invalid,:invalid_game_result
+      end
+      {'scores'=>scores.to_h { |unit,score|[mapping.fetch(unit),score] },'score_order'=>policy[:order]}
+    end
+
+    def self.with_technical_forfeits(summary, forfeits, game:, options:)
+      return summary if forfeits.empty?
+      unless forfeits.uniq == forfeits && (forfeits - summary['participants']).empty? &&
+          (forfeits & summary['winners']).empty? && summary.key?('places')
+        raise Publication::Invalid, :invalid_game_result
+      end
+      policy = game.tournament_small_point_policy(options: options)
+      scores = if policy
+        if summary['participants'].size == 2
+          summary['participants'].to_h { |unit| [unit, policy.fetch(forfeits.include?(unit) ? :loser : :winner)] }
+        else
+          actual = summary['scores']
+          raise Publication::Invalid, :invalid_game_result unless actual.is_a?(Hash) && actual.keys.sort == summary['participants'].sort
+          actual.merge(forfeits.to_h { |unit| [unit, policy.fetch(:loser)] })
+        end
+      end
+      value = summary.reject { |key,_| key == 'score_order' }.merge('scores'=>scores,'forfeits'=>forfeits.sort)
+      value['score_order'] = policy.fetch(:order) if policy
+      Data.freeze_tree(Data.copy(value))
     end
   end
 end

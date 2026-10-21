@@ -45,6 +45,7 @@ module GameRoomTournaments
       candidate, id, usernames = source!
       match = candidate.fetch('matches').find { |m| m['match_id'] == match_id && m['leg'] == leg }
       raise Blocked, :missing_match unless match
+      reject_voided_return!(candidate,id,match)
       documents=match_documents(candidate,id,match)
       raise Blocked,:result_already_recorded if forfeit_document(candidate,id,match,rows:documents['forfeit'],result_rows:documents['result']) ||
         read_result_document(candidate,id,match,rows:documents['result'])
@@ -100,6 +101,7 @@ module GameRoomTournaments
       return {} unless row && row[0]['table']['__live_session_id']==table['__live_session_id']
       account!
       binding,candidate,id,match=row
+      reject_voided_return!(candidate,id,match)
       documents=match_documents(candidate,id,match)
       raise Blocked,:result_already_recorded if forfeit_document(candidate,id,match,rows:documents['forfeit'],result_rows:documents['result']) ||
         read_result_document(candidate,id,match,rows:documents['result'])
@@ -138,6 +140,7 @@ module GameRoomTournaments
       candidate,id=source!
       match=candidate.fetch('matches').find{|row|row['match_id']==match_id && row['leg']==leg}
       raise Blocked,:missing_match unless match && supported_match?(candidate,match)
+      reject_voided_return!(candidate,id,match)
       documents=match_documents(candidate,id,match)
       raise Blocked,:result_already_recorded if forfeit_document(candidate,id,match,rows:documents['forfeit'],result_rows:documents['result']) ||
         read_result_document(candidate,id,match,rows:documents['result'])
@@ -251,12 +254,10 @@ module GameRoomTournaments
 
     private def unfinished_result_status(candidate,id,match,binding,starts)
       start_key=entry_anchor(candidate,id,match,'start',binding)['operation_key']
-      return :forfeitable if forfeit_native_sessions(candidate,id,match,binding,start_rows:starts.fetch(start_key,[])).empty?
-      return unless @games
-      cancellation_boundary(binding)
-      :cancellable
+      administrative_boundary(candidate,id,match,start_rows:starts.fetch(start_key,[]),binding:binding)
+      :forfeitable
     rescue Blocked=>error
-      raise unless [:result_already_recorded,:game_state_unavailable].include?(error.code)
+      raise unless [:result_already_recorded,:game_state_unavailable,:match_in_progress].include?(error.code)
       :unavailable if error.code==:game_state_unavailable
     end
 
@@ -309,7 +310,7 @@ module GameRoomTournaments
     end
 
     private def result_summary(candidate, id, results, result_times, forfeitable, cancellable, include_match_status:,forfeit_conflicts:,unavailable:)
-      normalized = results.map { |r| r['summary'].slice('participants','winners','scores','score_order','places').merge('id'=>JSON.generate([r['match_id'],r['leg']])) }
+      normalized = results.map { |r| r['summary'].slice('participants','winners','scores','score_order','places','forfeits','resolution').merge('id'=>JSON.generate([r['match_id'],r['leg']])) }
       team=candidate.key?('membership')
       units=team ? candidate['membership']['units'].map{|unit|unit['unit_id']} : candidate.fetch('roster')
       knockout=nil
@@ -324,7 +325,14 @@ module GameRoomTournaments
       current,current_id=source!
       raise Blocked,:source_changed unless current==candidate && current_id==id
       value={'results'=>results,'standings'=>standings,'schedule_id'=>candidate['schedule_id']}
-      completed=candidate['format']=='knockout' ? !!knockout['champion'] : candidate['format']=='round_robin' && !candidate['matches'].empty? && results.size==candidate['matches'].size
+      voided=KnockoutSeries.voided_matches(candidate:candidate,receipts:results)
+      unless voided.empty?
+        value['settled_without_play']=voided
+        keys=voided.map { |row|row.values_at('match_id','leg') }
+        forfeitable.reject! { |row|keys.include?(row.values_at('match_id','leg')) }
+        cancellable.reject! { |row|keys.include?(row.values_at('match_id','leg')) }
+      end
+      completed=candidate['format']=='knockout' ? knockout['knockout_state']=='completed' : candidate['format']=='round_robin' && !candidate['matches'].empty? && results.size==candidate['matches'].size
       value['completed']=completed
       if result_times.size==results.size && !result_times.empty?
         value['completed_at']=result_times.max if completed
@@ -347,7 +355,7 @@ module GameRoomTournaments
       candidate,tournament_id=source!
       document=StrictJson.parse(record['values']['document_json'],max_nesting:12)
       raise Blocked,:tournament_saved_game_disabled if document['kind']=='ordinary-match-continuation-v1'
-      raise Blocked,:legacy_forfeit_write_disabled if %w[ordinary-match-forfeit-v1 ordinary-match-cancel-forfeit-v1].include?(document['kind'])
+      raise Blocked,:legacy_forfeit_write_disabled if %w[ordinary-match-forfeit-v1 ordinary-match-cancel-forfeit-v1 ordinary-match-forfeit-v2 ordinary-match-elimination-v1].include?(document['kind'])
       match=candidate['matches'].find{|m|m['match_id']==document['match_id'] && m['leg']==document['leg']}
       if match && document['kind']=='ordinary-match-result-v1'
         binding=read_match_binding(candidate,tournament_id,match,nil,stop_at:document['binding_digest'])
@@ -357,7 +365,7 @@ module GameRoomTournaments
       if match && entry_operation?(document)
         return reconcile_entry_operation(record,document,candidate,tournament_id,match)
       end
-      is_forfeit=document['kind']=='ordinary-match-forfeit-v2'
+      is_forfeit=document['kind']=='ordinary-match-forfeit-v3'
       author=is_forfeit ? candidate.fetch('publication_ref').fetch('author').downcase : match && prepared_match(candidate,match)['players'].first['account']
       authorized = author == @owner || document['kind'] == 'ordinary-match-result-v1' && match && match['players'].include?(@owner)
       raise Blocked,:source_changed unless match && candidate['schedule_id']==document.fetch('schedule_id',candidate['schedule_id']) && authorized
@@ -557,6 +565,7 @@ module GameRoomTournaments
         binding['table'].is_a?(Hash) && binding['table']['owner'].is_a?(String) && Data.integer?(binding['table']['__id'],1) &&
         binding['table']['__live_session_id'].is_a?(String) && !binding['table']['__live_session_id'].empty?
       return false if binding.key?('entry_version') && binding['entry_version']!=ENTRY_VERSION
+      return false if binding.key?('result_policy') && ![GameResult::RANKING_RESULT_POLICY, GameResult::CURRENT_RESULT_POLICY].include?(binding['result_policy'])
       if binding['entry_version']==ENTRY_VERSION
         marker=candidate.slice('publication_ref','schedule_id').merge(match.slice('match_id','leg'))
         return false unless binding['table']['tournament_match']==marker ||
@@ -588,7 +597,7 @@ module GameRoomTournaments
     end
 
     def valid_summary?(summary,match)
-      return false unless summary.is_a?(Hash) && (summary.keys-%w[participants winners draw scores event_count score_order places]).empty? &&
+      return false unless summary.is_a?(Hash) && (summary.keys-%w[participants winners draw scores event_count score_order places forfeits]).empty? &&
         summary['participants']==(match['unit_ids'] || match['players']).sort && summary['winners'].is_a?(Array) && summary['winners'].uniq==summary['winners'] &&
         (summary['winners']-summary['participants']).empty? && [true,false].include?(summary['draw']) &&
         (summary['draw'] ? summary['winners'].empty? : !summary['winners'].empty?) && Data.integer?(summary['event_count']) &&
@@ -597,6 +606,11 @@ module GameRoomTournaments
         groups=summary['places']
         return false unless groups.is_a?(Array) && !groups.empty? && groups.all? { |group| group.is_a?(Array) && !group.empty? && group.all? { |unit| unit.is_a?(String) } } &&
           groups.flatten.sort==summary['participants'] && groups.first.sort==summary['winners'].sort && summary['draw']==false
+      end
+      if summary.key?('forfeits')
+        forfeits=summary['forfeits']
+        return false unless forfeits.is_a?(Array) && forfeits.uniq==forfeits && (forfeits-summary['participants']).empty? &&
+          (forfeits & summary['winners']).empty? && summary.key?('places')
       end
       scores=summary['scores']
       scores.nil? || (scores.is_a?(Hash) && scores.keys.sort==summary['participants'] &&

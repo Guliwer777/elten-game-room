@@ -8,22 +8,40 @@ GameRoomServerRandom.register('categories', %w[category_round])
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Categories < Base
+    def tournament_small_point_policy(options:)
+      tournament_target_small_points(normalize_options(options).fetch('target_score'))
+    end
+
     include HiddenSubmissions::Cleanup
     def tournament_private_protocol?; true; end
-    EASY_CATEGORY_IDS = %w[
+    LEGACY_EASY_CATEGORY_IDS = %w[
       country city name animal plant thing profession food color
     ].freeze
-    MEDIUM_CATEGORY_IDS = (EASY_CATEGORY_IDS + %w[
+    LEGACY_MEDIUM_CATEGORY_IDS = (LEGACY_EASY_CATEGORY_IDS + %w[
       surname famous_person sport vehicle clothing body_part building musical_instrument book
     ]).freeze
-    HARD_CATEGORY_IDS = (MEDIUM_CATEGORY_IDS + %w[
+    LEGACY_HARD_CATEGORY_IDS = (LEGACY_MEDIUM_CATEGORY_IDS + %w[
       film song music_group river mountain island language invention chemical_element
     ]).freeze
-    CATEGORY_IDS = HARD_CATEGORY_IDS
+    EASY_CATEGORY_IDS = LEGACY_EASY_CATEGORY_IDS
+    MEDIUM_CATEGORY_IDS = (EASY_CATEGORY_IDS + %w[
+      drink known_athlete sport vehicle clothing body_part tool musical_instrument book
+    ]).freeze
+    HARD_CATEGORY_IDS = (MEDIUM_CATEGORY_IDS + %w[
+      film song music_group river mountain island language known_actor known_writer
+    ]).freeze
+    # Append-only wire positions. Old round masks must keep their meaning.
+    CATEGORY_IDS = (LEGACY_HARD_CATEGORY_IDS + %w[drink known_athlete tool known_actor known_writer]).freeze
+    CATEGORY_VERSION_KEY = 'category_version'.freeze
     CATEGORY_SETS = {
       "easy" => EASY_CATEGORY_IDS,
       "medium" => MEDIUM_CATEGORY_IDS,
       "hard" => HARD_CATEGORY_IDS
+    }.freeze
+    LEGACY_CATEGORY_SETS = {
+      'easy' => LEGACY_EASY_CATEGORY_IDS,
+      'medium' => LEGACY_MEDIUM_CATEGORY_IDS,
+      'hard' => LEGACY_HARD_CATEGORY_IDS
     }.freeze
     CATEGORY_SET_CUSTOM = "custom".freeze
     ROUND_CATEGORY_ENCODING_PREFIX = "m:".freeze
@@ -87,6 +105,52 @@ module GameRoomGames
       _("Think of answers that fit the chosen letter and categories.")
     end
 
+    def default_options
+      normalize_options(CATEGORY_VERSION_KEY => 2)
+    end
+
+    # Only a new table opts in. Existing options and their tournament hashes
+    # remain in the original dialect, including the order of custom-mask bits.
+    def table_creation_options(values = {})
+      source = values.dup
+      unless category_pool_version(source) == 2
+        raw = source['custom_categories'] || source[:custom_categories]
+        if raw.is_a?(Integer)
+          source['custom_categories'] = LEGACY_HARD_CATEGORY_IDS.each_with_index.filter_map do |category, index|
+            category if (raw & (1 << index)) != 0 && HARD_CATEGORY_IDS.include?(category)
+          end
+        elsif raw.is_a?(Array)
+          source['custom_categories'] = raw.select { |category| HARD_CATEGORY_IDS.include?(category) }
+        end
+      end
+      super(source.merge(CATEGORY_VERSION_KEY => 2))
+    end
+
+    def normalize_options(values)
+      source = values.is_a?(Hash) ? values : {}
+      result = super
+      version = category_pool_version(source)
+      result[CATEGORY_VERSION_KEY] = version if source.key?(CATEGORY_VERSION_KEY) || source.key?(:category_version)
+      if version == 1
+        definition = option_definitions.find { |item| item.key == 'custom_categories' }.dup
+        definition.choices = LEGACY_HARD_CATEGORY_IDS.map { |category| OptionChoice.new(value: category, label: category_label(category)) }
+        raw = source.fetch('custom_categories') { source.fetch(:custom_categories, DEFAULT_CUSTOM_CATEGORY_MASK) }
+        result['custom_categories'] = normalize_option_value(definition, raw)
+      end
+      result
+    end
+
+    def effective_option_definitions(selected = {})
+      definitions = super
+      return definitions if selected.empty? || category_pool_version(selected) == 2
+      definitions.map do |definition|
+        next definition unless definition.key == 'custom_categories'
+        definition.dup.tap do |copy|
+          copy.choices = LEGACY_HARD_CATEGORY_IDS.map { |category| OptionChoice.new(value: category, label: category_label(category)) }
+        end
+      end
+    end
+
     def minimum_players
       2
     end
@@ -139,7 +203,7 @@ module GameRoomGames
           kind: :multiple_choice,
           default: DEFAULT_CUSTOM_CATEGORY_MASK,
           visible_if: { "category_set" => CATEGORY_SET_CUSTOM },
-          choices: CATEGORY_IDS.map do |category|
+          choices: HARD_CATEGORY_IDS.map do |category|
             OptionChoice.new(value: category, label: category_label(category))
           end
         ),
@@ -178,6 +242,7 @@ module GameRoomGames
     end
 
     def options_error(options, player_count: nil)
+      return _("The selected category pool is not supported.") unless [1, 2].include?(category_pool_version(options))
       return _("The target score must be between 10 and 1000 points.") if !options["target_score"].to_i.between?(10, 1_000)
       duration = options["round_time"].to_i
       if duration != 0 && !duration.between?(MINIMUM_ROUND_TIME, MAXIMUM_ROUND_TIME)
@@ -1098,13 +1163,19 @@ module GameRoomGames
 
     def selected_category_pool(options)
       set = options["category_set"].to_s
-      return CATEGORY_SETS.fetch(set) if CATEGORY_SETS.key?(set)
+      sets = category_pool_version(options) == 2 ? CATEGORY_SETS : LEGACY_CATEGORY_SETS
+      return sets.fetch(set) if sets.key?(set)
       return [] if set != CATEGORY_SET_CUSTOM
 
       mask = options["custom_categories"].to_i
-      CATEGORY_IDS.each_with_index.filter_map do |category, index|
+      ids = category_pool_version(options) == 2 ? HARD_CATEGORY_IDS : LEGACY_HARD_CATEGORY_IDS
+      ids.each_with_index.filter_map do |category, index|
         category if (mask & (1 << index)) != 0
       end
+    end
+
+    def category_pool_version(options)
+      options.fetch(CATEGORY_VERSION_KEY) { options.fetch(:category_version, 1) }
     end
 
     def draw_categories(options, random_value, round)
@@ -1234,6 +1305,11 @@ module GameRoomGames
       when "language" then _("Language")
       when "invention" then _("Invention")
       when "chemical_element" then _("Chemical element")
+      when "drink" then _("Drink")
+      when "tool" then _("Tool")
+      when "known_athlete" then _("Famous athlete")
+      when "known_actor" then _("Famous actor")
+      when "known_writer" then _("Famous writer")
       else category.to_s
       end
     end

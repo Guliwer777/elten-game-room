@@ -12,6 +12,10 @@ GameRoomServerRandom.register('spades', ['deal'])
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Spades < Base
+    def tournament_small_point_policy(options:)
+      tournament_target_small_points(normalize_options(options).fetch('score_limit'))
+    end
+
     def player_spatial_audio?; true; end
     RANKS = %w[2 3 4 5 6 7 8 9 T J Q K A].freeze
     SUITS = %w[C D H S].freeze

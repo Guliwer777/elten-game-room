@@ -91,6 +91,12 @@ This shortcut changes your own role. To change someone else's role, the host use
 
 On the user list, Enter opens ELTEN's usual user menu. From there you can, for example, send a message, add someone to your contacts or call them.
 
+### Voice conversation
+
+Use the table's “Voice conversation” button to create an ELTEN conference channel. Choose a name, public or hidden visibility and an optional password. A hidden channel stays off the ordinary channel list; hiding it does not replace password protection.
+
+The others hear a short invitation and get a “Join conversation” button at the table. No dialog opens on its own during play. If you are already in another conference, switching requires confirmation. Your microphone and push-to-talk settings stay unchanged.
+
 ### The host and managing bots and teams
 
 The host prepares the table, starts games and manages the participants. In games with bots, the host can add a computer opponent with Ctrl+O. The bot receives a name and appears on the same list as the other players.
@@ -108,7 +114,7 @@ Teams are selected in a separate window. You can randomise them, change a person
 
 Nor do you have to close the table just to play again. The host can end the current game with Ctrl+Q and change the next game's settings with Ctrl+X between games. These commands are also in the table menu.
 
-Many games let you set a turn time limit and a delay for bot moves. The bot delay controls the pace; it does not select a difficulty level. The consequence of running out of time depends on the game's rules and is explained in its help, rather than applying one penalty to every title.
+Many games let you set a turn time limit and a delay for bot moves. The default bot delay is one second. The bot delay controls the pace; it does not select a difficulty level. The consequence of running out of time depends on the game's rules and is explained in its help, rather than applying one penalty to every title.
 
 “Leave” and “Close the table for everyone” are different actions. The first means that you leave; the second closes the entire table and is a host command. Simply opening help, a menu or a leave confirmation does not pause play.
 
@@ -391,13 +397,13 @@ Leave any other game before entering the match. You cannot take a seat at two ta
 
 Press Tab to select a phase. You can browse earlier phases here. If you are viewing the current phase, the list follows the next one when it begins. Refreshing keeps the selected match as long as it is still visible.
 
-Enter on a completed match tells you it has already been played. Open its result with Ctrl+W or “Result details” in the context menu. The same menu shows the available actions and their shortcuts: Ctrl+G to play and Ctrl+F to award a forfeit. The organiser uses Ctrl+F for both unstarted and ongoing matches: choose the losing participant, then confirm the displayed consequences.
+Enter on a completed match tells you it has already been played. Open its result with Ctrl+W or “Result details” in the context menu. The same menu shows the available actions and their shortcuts: Ctrl+G to play and Ctrl+F to award a forfeit. Ctrl+F opens the organiser's settlement form when the match is not being played.
 
 Completed match entries also show the game score when available. If a return match with the same opponents is still scheduled, the context menu offers “Play return match” on Ctrl+G. It sends the usual invitations without starting play automatically.
 
 “Standings” opens directly on a standings list showing place, participant, tournament points and matches played. Tab moves to the phase selector. Completed game results are recorded automatically; you do not need to copy them from the game history.
 
-When complete game scores are available, the table also shows points scored, conceded and their difference. Participants still sharing a place are listed with fewer matches played first. This display order does not decide qualification.
+Games supporting small points show the available totals scored and conceded, and their difference. A missing score from one match neither hides the other totals nor counts as zero. Lower scores are better in UNO, Domino, Mexican Train and elimination Rummy. Audio Ball counts points across all sets. Participants still sharing a place are listed with fewer matches played first; this display order does not decide qualification.
 
 No tournament game can be saved or resumed from a file. The save command and Ctrl+S are unavailable, but Ctrl+Shift+S still exports the history as text.
 
@@ -519,13 +525,13 @@ Open your tournament and choose “Manage tournament”. Before the start, you c
 - open or close registration;
 - choose “Start tournament” instead of waiting for a scheduled start.
 
-Award forfeits from “Tournament matches”. Select an unresolved match and press Ctrl+F or choose “Award forfeit” in its context menu. Select the player or team that loses and continue. The same action works before play begins and during the game.
+To settle a forfeit, select an unresolved fixture in “Tournament matches” and use Ctrl+F or “Award forfeit” in its context menu. This action cannot interrupt a game in progress. Disconnections during play use the five-minute return allowance described above.
 
-In a one-on-one match, the selected loser's opponent wins. With more participants, the loser places last. If a game in progress can continue without them, the others play on to decide their places. Otherwise they are ranked by the scores after the last completed deal or round. An unfinished deal or round does not count. Equal scores produce tied places, taking account of whether higher or lower scores are better in that game. If play has not begun or no scoring round has been completed, the remaining participants share first place.
+For a duel, choose the losing side. With more participants, set their places on one list and mark those losing by forfeit. A team has one row. Shared places are allowed, such as 1, 1, 3. Supported games also offer small-point fields with suggested values that you can edit.
 
-Read the preview before confirming: it names the loser and explains whether the match will end or the others will continue. For a match that ends, it also shows the places, tournament points and any game scores used. Only “Confirm forfeit” applies that decision. If the situation changes while you are deciding, you must review and confirm a new preview. If the necessary data cannot be read or the game does not provide it, the program will not award a forfeit using a guessed result.
+“Review result” shows places, calculated tournament points and any supported small points. Each side marked as losing by forfeit gets zero tournament points. The separate “Award zero points to everyone” option records no winner, draw or small points; neither side advances from that knockout pairing. Only “Confirm result” saves the decision. If the match changes, review a new preview.
 
-You can also cancel an unfinished tournament. Use this to call off the whole competition, not a single invitation. Missing a deadline does not award a forfeit. You can make a manual decision with Ctrl+F without waiting for the five-minute return allowance to expire.
+You can also cancel an unfinished tournament. This calls off the whole competition, not a single invitation. Missing a deadline does not award a forfeit.
 
 ### When a change is not confirmed
 

@@ -6,6 +6,10 @@ module GameRoomGames
   using GameRoomLocalization::Translations
 
   class MilleBornes < Base
+    def tournament_small_point_policy(options:)
+      tournament_target_small_points(normalize_options(options).fetch('target_score'))
+    end
+
     def player_spatial_audio?; true; end
     def tournament_export_scores(replay, options:)
       tournament_public_unit_scores(replay, options: options)
@@ -59,10 +63,6 @@ module GameRoomGames
 
     def supports_bots?
       true
-    end
-
-    def default_bot_move_delay
-      1
     end
 
     def perfect_information?

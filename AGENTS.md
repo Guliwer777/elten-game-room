@@ -65,6 +65,9 @@
   `GameRoomOptionValues` to read, validate and display declared values; preserve
   explicit false/zero and language-dependent choices. Do not expand stored
   tournament settings or change match hashes to repair a settings document.
+  The editor must retain game-normalized non-control metadata, such as pool
+  versions and team seats. Recompute derived content-pack identity from the
+  selected language/set; do not merge arbitrary unnormalized input.
 - Realtime clients reset their own fields; shared code manages channel
   lifetime, ping and announcement sequencing, not shared physics. Test player
   replacement, a spectator acting as host, stale-channel closure and ping re-registration.
@@ -83,6 +86,30 @@
   again as independent additional coverage. Preserve initial failures separately.
 
 ## Working practices
+
+- Tournament result policy v6 uses explicit game-owned small-point support;
+  the base policy is disabled. Keep finishing places separate from numeric
+  small-point exports, and preserve all earlier policies when verifying old
+  receipts. A team is one unit. Do not turn missing scores into zeros.
+- New organizer settlements use v3 receipts and complete place groups outside
+  active play only. A waiting table is not a start; unavailable native history
+  is not proof of an unstarted match. All-zero is a resolved fixture, not a
+  draw, and advances nobody from its knockout pairing. Preserve empty bracket
+  positions and the original automatic cumulative 300-second absence boundary.
+- Table voice uses native Conference channels, not voice calls. The shared
+  Program entry point must be public to GameScreen. Claims, publication and
+  reset use ordered authenticated room records; record native host handover
+  through the existing control ledger before a new owner's reset. Passwords
+  belong only to the member projection, never activity or discovery.
+  Join the creator to the native channel before publishing a ready invitation;
+  a rejected creator join clears its claim without announcing a conversation.
+- The shared replay cache owns sealed authenticated records and copied
+  checkpoints. Recheck actors and IDs, all earlier changed records, resource
+  identities and session context; retain bounded memory and generation guards.
+  Never let a shorter historical view evict the latest checkpoint.
+- The default paced bot delay is one second; retain explicit choices and do
+  not apply sleeps or turn pacing to realtime physics. Categories use append-only
+  wire IDs and versioned pools: old masks/options/rounds keep their old meanings.
 
 - Tournaments use the official `ServerWorkspace`; local trial adapters and
   diagnostic UUIDs must not enter the player UI. Do not silently fall back to

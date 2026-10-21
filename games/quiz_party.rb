@@ -14,6 +14,10 @@ GameRoomServerRandom.register('quiz', %w[round_draw question])
 module GameRoomGames
   using GameRoomLocalization::Translations
   class QuizParty < Base
+    def tournament_small_point_policy(options:)
+      tournament_target_small_points(normalize_options(options).fetch('target_score'))
+    end
+
     include HiddenSubmissions::Cleanup
     def tournament_private_protocol?; true; end
     QUESTIONS_PER_ROUND = 3

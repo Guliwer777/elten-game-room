@@ -40,6 +40,14 @@ class GameRoomOptionEditor
     else
       game.normalize_options(initial_options)
     end
+    # Keep canonical non-control values (for example a category-pool version
+    # or team seats). Content-pack identity is derived again from the visible
+    # language/set controls, as before, so changing them cannot keep a stale pack.
+    selected = game.normalize_options(selected)
+    base_options = selected.reject do |key, _value|
+      [GameRoomContent::PACK_OPTION_KEY, GameRoomContent::PACK_VERSION_KEY,
+        GameRoomContent::PACK_CHECKSUM_KEY].include?(key)
+    end
     definitions = game.effective_option_definitions(selected).to_a
     return selected if definitions.empty? && !creating_table && !require_confirmation
     built_language = selected[GameRoomContent::LANGUAGE_OPTION_KEY].to_s
@@ -108,9 +116,9 @@ class GameRoomOptionEditor
       form = GameRoomUI::Form.new(controls + [save_button, cancel_button], program: @program, index: 0, quiet: true)
       form.accept_button = save_button
       form.cancel_button = cancel_button
-      previous_options = game.normalize_options(game_option_values(bindings))
+      previous_options = game.normalize_options(game_option_values(bindings, base_options))
       refresh_visibility = lambda do
-        previous_options = refresh_option_controls(game, bindings, previous_options, form)
+        previous_options = refresh_option_controls(game, bindings, previous_options, form, base_options)
       end
       bindings.each do |definition, control|
         event = definition.kind.to_s == "boolean" ? :change : :move
@@ -132,7 +140,7 @@ class GameRoomOptionEditor
         language_binding[1].on(:move) do
           # Replace only the dependent choices. Recreating the form here
           # steals focus (and speech) from the language being browsed.
-          options = game.normalize_options(game_option_values(bindings))
+          options = game.normalize_options(game_option_values(bindings, base_options))
           definitions = game.effective_option_definitions(options).to_a
           set_binding = bindings.find { |definition, _control| definition.key.to_s == GameRoomContent::SET_OPTION_KEY }
           set_definition = definitions.find { |definition| definition.key.to_s == GameRoomContent::SET_OPTION_KEY }
@@ -153,7 +161,7 @@ class GameRoomOptionEditor
         return nil if action != :save
 
         private_table = privacy_control.checked == true if creating_table
-        raw = game_option_values(bindings)
+        raw = game_option_values(bindings, base_options)
         options = game.normalize_options(raw)
         chosen_language = options[GameRoomContent::LANGUAGE_OPTION_KEY].to_s
         if chosen_language != built_language
@@ -192,8 +200,8 @@ class GameRoomOptionEditor
     control.choice_descriptions = descriptions if control.is_a?(ChoiceDescriptions)
   end
 
-  def refresh_option_controls(game, bindings, previous_options, form)
-    raw_values = game_option_values(bindings)
+  def refresh_option_controls(game, bindings, previous_options, form, base_options)
+    raw_values = game_option_values(bindings, base_options)
     values = game.normalize_options(raw_values)
     changes = game.option_editor_changes(previous_options, values)
     changes.each do |key, value|
@@ -226,7 +234,7 @@ class GameRoomOptionEditor
         binding[0] = replacement
       end
     end
-    values = game.normalize_options(game_option_values(bindings))
+    values = game.normalize_options(game_option_values(bindings, base_options))
     bindings.each do |definition, control|
       if game.option_visible?(definition, values)
         form.show(control)
@@ -253,8 +261,8 @@ class GameRoomOptionEditor
     copy
   end
 
-  def game_option_values(bindings)
-    bindings.each_with_object({}) do |(definition, control), raw|
+  def game_option_values(bindings, base_options = {})
+    bindings.each_with_object(base_options.dup) do |(definition, control), raw|
       key = definition.key.to_s
       raw[key] = if definition.kind.to_s == "boolean"
         control.checked == true

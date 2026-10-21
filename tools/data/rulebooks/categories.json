@@ -47,8 +47,8 @@
           "pl": ""
         },
         {
-          "en": "The Easy pool contains country, city, first name, animal, plant, thing, profession, food and colour. Medium adds surname, famous person, sport, vehicle, clothing, body part, building, musical instrument and book. Hard adds film, song, music group, river, mountain, island, language, invention and chemical element. These names describe the pool, not a different scoring system.",
-          "pl": "Łatwa pula zawiera państwo, miasto, imię, zwierzę, roślinę, rzecz, zawód, jedzenie i kolor. Średnia dodaje nazwisko, znaną osobę, sport, pojazd, ubranie, część ciała, budynek, instrument muzyczny i książkę. Trudna dodaje film, piosenkę, zespół muzyczny, rzekę, górę, wyspę, język, wynalazek i pierwiastek chemiczny. Są to nazwy pul, a nie odmiennych systemów punktowania."
+          "en": "Easy has nine categories, including country, city, first name and animal. Medium expands the pool to eighteen, adding drinks, tools and famous athletes, among others. Hard has twenty-seven categories, including rivers, famous actors and famous writers.",
+          "pl": "Łatwa pula zawiera dziewięć kategorii, między innymi państwo, miasto, imię i zwierzę. Średnia rozszerza ją do osiemnastu kategorii, dodając na przykład napoje, narzędzia i znanych sportowców. Trudna ma dwadzieścia siedem kategorii, w tym rzeki, znanych aktorów i znanych pisarzy."
         },
         {
           "en": "Custom lets you select your own pool from those 27 categories, and remembers the last custom choice locally. Categories shown in each round chooses how many are drawn from the pool: one to nine, default six. It cannot exceed the size of your pool. For example, choosing all nine Easy categories with six per round still draws only six, and the selection may differ next round.",

@@ -5,7 +5,7 @@ T=GameRoomTournaments
 TournamentForfeitNative.with_fixture(game:GameRoomGames::ThreeFiveEight.new,users:%w[Alice Bob Carol]) do |f|
   f.start
   h=f.h
-  before=f.preview(loser:'bob')
+  before=f.legacy_preview(loser:'bob')
   assert_equal('no_scored_round',before['decision']['basis'])
   assert_equal([%w[alice carol],['bob']],before['summary']['places'])
   runners=h.users.to_h { |user| [user,runner_for(h,user)] }
@@ -33,50 +33,26 @@ TournamentForfeitNative.with_fixture(game:GameRoomGames::ThreeFiveEight.new,user
   # Preserve the original full roster; selecting even the score leader as the
   # loser cannot improve their administrative place by keeping their score.
   loser=r.state[:scores].max_by { |_name,score| score }.first.downcase
-  preview=f.preview(loser:loser)
+  preview=f.legacy_preview(loser:loser)
   assert_equal('scored_round',preview['decision']['basis'])
   assert_equal(r.players.map(&:downcase).sort,preview['summary']['participants'])
   assert_equal(r.state[:scores].transform_keys(&:downcase),preview['summary']['scores'])
   assert_equal([loser],preview['summary']['places'].last)
   assert_equal('Carol',h.transports['Carol'].room_snapshot(h.table)[:table]['owner'])
-  view=f.confirm(preview) # Organizer Alice is deliberately not the native host.
+  view=f.insert_historical(preview) # Immutable historical fixture; no new active cancellation.
   assert_equal(0,view['standings'].find { |row| row['unit']==loser }['points'])
   assert_equal(preview['summary'],f.services['Bob'].result_view['results'].first['summary'])
 ensure
   runners&.each_value(&:close)
 end
 
-# Categories now owns a supported 3-to-2 continuation. A preview must not
-# invent a final result; success requires the exact accepted native event.
+# A supported automatic continuation is not an organizer interruption option.
 TournamentForfeitNative.with_fixture(game:GameRoomGames::Categories.new,users:%w[Alice Bob Carol]) do |f|
   f.start
-  h=f.h
-  count=f.documents.insert_count
-  entries=h.core.entries.size
-  before=h.replay('Alice')
-  preview=f.preview
-  assert_equal('ordinary-match-elimination-v1',preview['kind'])
-  assert_equal({'loser'=>'carol','mode'=>'continue','basis'=>'continued','checkpoint'=>{'status'=>'none'}},preview['decision'])
-  assert(preview.key?('continued_game') && !preview.key?('cancelled_game') && !preview.key?('summary'),
-    'Continuing preview invented a terminal result')
-  assert_equal(entries,h.core.entries.size,'Read-only continuation preview changed native history')
-  assert_equal(count,f.documents.insert_count,'Read-only continuation preview wrote a result')
-  view=f.confirm(preview)
-  assert(view['results'].empty?,'Continuation ended the tournament match')
-  h.users.each do |user|
-    replay=h.replay(user)
-    assert_equal(before.players,replay.players,'Continuation changed the original result roster')
-    assert_equal(before.state[:scores],replay.state[:scores],'Continuation changed completed scores')
-    assert_equal([['Carol']],replay.state[:tournament_eliminations])
-    assert_equal(%w[Alice Bob],h.game.tournament_active_players(replay,options:f.candidate['game_options']))
-    assert_equal(1,replay.accepted_events.count { |event| event['__tournament_elimination']==true },
-      'Confirmation did not produce exactly one accepted elimination')
-    assert(!replay.finished?,'Continuation fabricated a normal game winner')
-  end
-  accepted_entries=h.core.entries.size
-  f.confirm(preview)
-  assert_equal(accepted_entries,h.core.entries.size,'Repeated confirmation duplicated the elimination')
-  assert_equal(count,f.documents.insert_count,'Continuation wrote a terminal result document')
+  before=f.h.core.entries.size
+  error=assert_raises(T::OrdinaryMatchService::Blocked) {f.preview}
+  assert_equal(:match_in_progress,error.code)
+  assert_equal(before,f.h.core.entries.size)
 end
 
 # Preserve the original refusal contract with a real game that has no
@@ -86,7 +62,7 @@ TournamentForfeitNative.with_fixture(game:GameRoomGames::ScientificWar.new,users
   count=f.documents.insert_count
   entries=f.h.core.entries.size
   error=assert_raises(T::OrdinaryMatchService::Blocked) {f.preview}
-  assert_equal(:tournament_continuation_unsupported,error.code)
+  assert_equal(:match_in_progress,error.code)
   assert_equal(count,f.documents.insert_count,'Unsupported continuation wrote a terminal result')
   assert_equal(entries,f.h.core.entries.size,'Unsupported preview changed native history')
 end
@@ -127,11 +103,11 @@ TournamentForfeitNative.with_fixture(game:GameRoomGames::ThreeFiveEight.new,user
       'Rejected private deal exposed its pre-audit scoring checkpoint')
   end
   count=f.documents.insert_count
-  error=assert_raises(T::OrdinaryMatchService::Blocked) {f.preview}
+  error=assert_raises(T::OrdinaryMatchService::Blocked) {f.legacy_preview}
   # An inconsistent private round fails before interpreting its checkpoint.
   assert_equal(:game_state_unavailable,error.code)
   assert_equal(count,f.documents.insert_count)
 ensure
   runners&.each_value(&:close)
 end
-puts 'PASS native 3-5-8 scored forfeit: private deal/audit, new host, original roster/scores, loser last, organizer independent from host; Categories continues, unsupported continuation and invalid private deals fail closed'
+puts 'PASS native 3-5-8 scored forfeit: private deal/audit, new host, original roster/scores, loser last, organizer independent from host; current active interruption disabled; old invalid private deals fail closed'

@@ -11,6 +11,10 @@ GameRoomServerRandom.register('audio_ball', ['audio_ball_start'])
 module GameRoomGames
   using GameRoomLocalization::Translations
   class AudioBall < Base
+    def tournament_small_point_policy(options:)
+      tournament_target_small_points(normalize_options(options).fetch('sets_to_win') * POINTS_TO_WIN)
+    end
+
     include PublicHistoryAnnouncements
     include GameRoomRealtime::P2POptions::GameOptions
 
@@ -200,6 +204,10 @@ module GameRoomGames
         scores[side[1].to_i] += 1
       end
       {scores: replay.players.each_with_index.to_h { |player, index| [player, scores[index]] }, order: 'higher'}
+    end
+
+    def tournament_selected_small_scores(replay, options:)
+      tournament_export_small_scores(replay, options: options)
     end
 
     def surface_spec(replay, viewer)

@@ -14,6 +14,10 @@ GameRoomServerRandom.register('ninety_nine', ['deal'])
 module GameRoomGames
   using GameRoomLocalization::Translations
   class NinetyNine < Base
+    def tournament_small_point_policy(options:)
+      tournament_target_small_points(normalize_options(options).fetch('starting_tokens'))
+    end
+
     def player_spatial_audio?; true; end
     include GameRoomCardDeckHistory
     RANKS = %w[2 3 4 5 6 7 8 9 T J Q K A].freeze
@@ -103,6 +107,8 @@ module GameRoomGames
     end
 
     def thinking_time_range; 1..600; end
+
+    def participant_scores(replay); replay.state.fetch(:tokens).dup; end
 
     def bot_strategy
       @bot_strategy ||= NinetyNinePlanning::Strategy.new

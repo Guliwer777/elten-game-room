@@ -12,6 +12,11 @@ GameRoomServerRandom.register_payload('rummy', ['deal'])
 module GameRoomGames
   using GameRoomLocalization::Translations
   class Rummy < CardGame
+    def tournament_small_point_policy(options:)
+      values = normalize_options(options)
+      tournament_target_small_points(values.fetch('score_limit'), order: values['elimination'] ? 'lower' : 'higher')
+    end
+
     def player_spatial_audio?; true; end
     include PublicHistoryAnnouncements
     Rules = GameRoomRummyRules

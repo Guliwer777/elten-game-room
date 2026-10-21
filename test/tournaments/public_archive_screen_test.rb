@@ -5,9 +5,9 @@ require_relative '../../lib/tournaments/public_screen'
 GameRoomLocalization.boot(settings: {'interface_language'=>'en','known_languages'=>['en']})
 T = TournamentPublicUI
 Form.prepend(T::Script)
-old = T.publication(11).merge('timezone'=>'UTC')
+old = T.publication(11).merge('timezone'=>'UTC','sporting_completed'=>true,'sporting_completed_at'=>Time.utc(2026,10,15,20).to_i)
 recent = T.publication(22).merge('timezone'=>'UTC', 'schedule_json'=>JSON.generate({'windows'=>[{'date'=>'2026-10-25','start'=>'18:00','end_date'=>'2026-10-25','end'=>'21:00'}]}))
-latest=T.publication(33).merge('timezone'=>'UTC','schedule_json'=>JSON.generate({'windows'=>[{'date'=>'2026-10-20','start'=>'18:00','end_date'=>'2026-10-20','end'=>'20:00'}]}))
+latest=T.publication(33).merge('timezone'=>'UTC','sporting_completed'=>true,'sporting_completed_at'=>Time.utc(2026,10,20,20).to_i,'schedule_json'=>JSON.generate({'windows'=>[{'date'=>'2026-10-20','start'=>'18:00','end_date'=>'2026-10-20','end'=>'20:00'}]}))
 snapshot=T.snapshot([old,recent,latest])
 T.script(->(form) {
   list=form.fields.first
@@ -17,7 +17,7 @@ T.script(->(form) {
   filter.trigger(:move)
   ended=list
   assert_equal([33,11],ended.instance_variable_get(:@item_keys))
-  assert(ended.options.first.include?('Ended'),'Missing ended label')
+  assert(ended.options.first.include?('Completed'),'Missing sporting-completion label')
   ended.index=1
   form.index=form.fields.index(ended)
   form.accept_button.trigger(:press)

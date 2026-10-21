@@ -5,7 +5,7 @@ T=GameRoomTournaments
   TournamentForfeitNative.with_fixture do |f|
     f.start if kind.include?('cancel')
     service=f.services['Alice']
-    preview=f.preview(loser:'alice')
+    preview=f.h.as('Alice') {service.send(:build_forfeit_preview,f.candidate,5,f.match,'alice')}
     doc=preview.slice('schedule_id','match_id','leg','publication_ref','cancelled_game').merge(
       'kind'=>kind,'summary'=>{'participants'=>%w[alice bob],'winners'=>['bob'],'draw'=>false,'scores'=>nil,'event_count'=>0})
     anchor=service.send(:anchor,f.candidate,5,f.match,'forfeit')

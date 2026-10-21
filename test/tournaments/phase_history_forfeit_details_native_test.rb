@@ -1,5 +1,5 @@
 require_relative '../support/tournament_forfeit_native'
-require_relative '../support/tournament_native'
+require_relative '../support/tournament_control_callbacks'
 require_relative '../support/tournament_entry_context'
 require_relative '../../lib/tournaments/server_phase_store'
 require_relative '../../lib/tournaments/server_schedule_overview'
@@ -12,7 +12,7 @@ def show_forfeit_details(program, response, publication, phase_id: nil)
   workspace = Object.new
   workspace.define_singleton_method(:actor) { 'alice' }
   owner = T::Dialogs::Owner.new(-> { 'alice' }, ->(message) { raise message })
-  driver = TournamentNativeDriver.new
+  driver = TournamentControlCallbacks.new
   driver.step('Tournament matches') do |form|
     form.fields.first.index = 1
     actions = {}
@@ -21,13 +21,14 @@ def show_forfeit_details(program, response, publication, phase_id: nil)
     form.fields.first.context(menu, false)
     actions.fetch('Result details').call
   end
-  driver.step('Result details', [27]) do |form|
+  driver.step('Result details') do |form|
     details = form.fields.first.text
-    assert(details.include?('loses by forfeit'), 'Missing public forfeit decision')
+    assert(details.include?('Administrative result.'), 'Missing public forfeit decision')
     assert(details.include?('Organizer: alice'), 'Missing authenticated organizer')
-    assert(details.include?('Forfeit before the match started.'), 'Missing basis of places')
+    assert(details.include?('1.'), 'Missing final places')
+    form.cancel_button.press
   end
-  driver.step('Tournament matches', [27])
+  driver.step('Tournament matches') { |form| form.cancel_button.press }
   T::ServerScheduleOverview.new(program: program, workspace: workspace, owner: owner,
     publication: publication, initial_phase_id: phase_id).run
   driver.finish
@@ -48,8 +49,8 @@ TournamentForfeitNative.with_fixture(users: %w[Alice Bob Carol Dave]) do |fixtur
   end
   validated = fixture.services.fetch('Alice').result_view
   assert_equal(2, validated['results'].size)
-  assert(validated['results'].all? { |receipt| receipt['kind'] == 'ordinary-match-forfeit-v2' &&
-    receipt['decision'] && receipt['organizer'] == 'alice' }, 'Fixture lacks validated v2 public decisions')
+  assert(validated['results'].all? { |receipt| receipt['kind'] == 'ordinary-match-forfeit-v3' &&
+    receipt['boundary'] && receipt['organizer'] == 'alice' }, 'Fixture lacks validated v3 public decisions')
   original = Marshal.dump(validated)
   root = {'candidate' => candidate, 'tournament_id' => 5}
   reader = ->(phase, _) { phase['schedule_id'] == candidate['schedule_id'] ?
@@ -68,7 +69,7 @@ TournamentForfeitNative.with_fixture(users: %w[Alice Bob Carol Dave]) do |fixtur
   compact = observed.fetch('phase_history').first.fetch('view').fetch('results')
   assert_equal(validated['results'].map { |row| row.slice('kind', 'match_id', 'leg', 'summary', 'decision', 'organizer') },
     compact, 'History dropped already validated public forfeit fields')
-  assert(compact.all? { |row| row.frozen? && row['decision'].frozen? }, 'History is not an immutable projection')
+  assert(compact.all? { |row| row.frozen? && row['summary'].frozen? }, 'History is not an immutable projection')
   response = observed.merge('storage' => 'confirmed', 'results' => reader.call(observed['candidate'], root))
   show_forfeit_details(program, response, publication, phase_id: candidate['schedule_id'])
   assert_equal(original, Marshal.dump(validated), 'History projection mutated validated receipts')
@@ -76,4 +77,4 @@ ensure
   program&.finalize
   program&.class&.app_runtime&.close
 end
-puts 'PASS validated current and cold historical v2 forfeit details: decision, organizer and unchanged receipts'
+puts 'PASS validated current and cold historical v3 forfeit details: decision, organizer and unchanged receipts'

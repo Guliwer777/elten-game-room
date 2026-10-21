@@ -91,6 +91,12 @@ Tato zkratka mění vaši vlastní roli. Hostitel může změnit roli jiného ú
 
 Enter v seznamu uživatelů otevře běžné uživatelské menu ELTENu. Odtud můžete například poslat zprávu, přidat člověka do kontaktů nebo mu zavolat.
 
+### Hlasový hovor
+
+Tlačítkem „Hlasový hovor“ u stolu vytvoříte konferenční kanál ELTENu. Zadejte název, zvolte veřejný nebo skrytý kanál a případně heslo. Skrytý kanál není v běžném seznamu, ale samotné skrytí nenahrazuje ochranu heslem.
+
+Ostatní uslyší krátkou pozvánku a u stolu najdou „Připojit se k hovoru“. Během hry se samo neotevře žádné okno. Pokud už jste v jiné konferenci, přechod musíte potvrdit. Nastavení mikrofonu a push-to-talk se nemění.
+
 ### Hostitel a správa botů a týmů
 
 Hostitel připravuje stůl, zahajuje partie a spravuje účastníky. Ve hrách s boty může přes Ctrl+O přidat počítačového soupeře. Bot dostane jméno a objeví se ve stejném seznamu jako ostatní hráči.
@@ -108,7 +114,7 @@ Týmy se vybírají v samostatném okně. Můžete je rozlosovat, změnit přiř
 
 Ani kvůli další partii není třeba stůl zavírat. Hostitel může aktuální partii ukončit pomocí Ctrl+Q a mezi partiemi změnit nastavení té další přes Ctrl+X. Stejné příkazy najdete v menu stolu.
 
-V nastavení mnoha her lze určit časový limit tahu a prodlevu tahů botů. Prodleva bota upravuje tempo, nikoli obtížnost. Následek vypršení času závisí na pravidlech hry, a proto je popsán v její nápovědě; pro všechny hry neplatí jeden společný trest.
+V nastavení mnoha her lze určit časový limit tahu a prodlevu tahů botů. Výchozí prodleva tahu bota je jedna sekunda. Prodleva bota upravuje tempo, nikoli obtížnost. Následek vypršení času závisí na pravidlech hry, a proto je popsán v její nápovědě; pro všechny hry neplatí jeden společný trest.
 
 Opuštění stolu a uzavření stolu pro všechny jsou dvě různé věci. První znamená váš odchod, druhá zavře celý stůl a je vyhrazena hostiteli. Pouhé otevření nápovědy, menu nebo potvrzení odchodu hru nezastaví.
 
@@ -391,13 +397,13 @@ Před vstupem do zápasu opusťte jinou partii. Nemůžete mít hráčské míst
 
 Tabem přejdete k výběru fáze. Můžete si prohlédnout i dřívější fáze. Pokud sledujete aktuální fázi, seznam po zahájení další přejde na ni automaticky. Obnovení zachová vybraný zápas, pokud je stále viditelný.
 
-Enter na dokončeném zápase oznámí, že už byl odehrán. Výsledek otevřete pomocí Ctrl+W nebo položky „Podrobnosti výsledku“ v kontextové nabídce. Nabídka ukazuje dostupné akce i jejich zkratky: Ctrl+G pro hraní a Ctrl+F pro přiznání kontumace. Pořadatel používá Ctrl+F před začátkem zápasu i během něj: vybere poraženého a potvrdí zobrazené důsledky.
+Enter na dokončeném zápase oznámí, že už byl odehrán. Výsledek otevřete pomocí Ctrl+W nebo položky „Podrobnosti výsledku“ v kontextové nabídce. Nabídka ukazuje dostupné akce i jejich zkratky: Ctrl+G pro hraní a Ctrl+F pro přiznání kontumace. Ctrl+F otevře pořadateli vypořádání výsledku, pokud zápas právě neprobíhá.
 
 U dokončeného zápasu najdete také skóre samotné hry, pokud je k dispozici. Je-li naplánována dosud neodehraná odveta proti stejným soupeřům, kontextová nabídka obsahuje „Hrát odvetu“ se zkratkou Ctrl+G. Rozešle běžné pozvánky, ale partii sama nezahájí.
 
 „Tabulka výsledků“ rovnou zobrazí umístění, jméno účastníka, turnajové body a počet odehraných zápasů. Tabem přejdete k výběru fáze. Výsledky dokončených partií se zapisují automaticky; nemusíte je opisovat z historie hry.
 
-Pokud jsou k dispozici úplná skóre, tabulka uvádí také získané a ztracené body ve hře a jejich rozdíl. Účastníci, kteří stále sdílejí místo, se zobrazí od nejmenšího počtu odehraných zápasů. Toto pořadí nerozhoduje o postupu.
+U her s pomocnými body tabulka ukazuje dostupné součty získaných a ztracených bodů i jejich rozdíl. Chybějící skóre jednoho zápasu neskryje ostatní součty a nepočítá se jako nula. V UNO, Dominu, Mexican Train a vyřazovacím Remiku je lepší nižší skóre. Audio Ball sčítá body ze všech setů. Účastníci, kteří stále sdílejí místo, se zobrazují od nejmenšího počtu odehraných zápasů; toto pořadí nerozhoduje o postupu.
 
 Žádnou turnajovou partii nelze uložit ani obnovit ze souboru. Příkaz k uložení ani Ctrl+S nejsou dostupné, ale Ctrl+Shift+S nadále umožňuje exportovat historii jako text.
 
@@ -519,13 +525,13 @@ Otevřete svůj turnaj a zvolte „Spravovat turnaj“. Před zahájením může
 - otevřít či uzavřít přihlášky;
 - zvolit „Zahájit turnaj“ místo čekání na naplánovaný start.
 
-Kontumace se přidělují v seznamu „Zápasy turnaje“. Vyberte nerozhodnutý zápas a stiskněte Ctrl+F nebo v kontextové nabídce zvolte „Přiznat kontumační výhru“. Vyberte hráče či tým, který prohrává, a pokračujte. Tentýž příkaz slouží před začátkem zápasu i během hry.
+Kontumaci vyřídíte v seznamu „Zápasy turnaje“. Vyberte nerozhodnutý zápas a použijte Ctrl+F nebo položku „Přiznat kontumační výhru“ v kontextové nabídce. Tento příkaz nepřeruší probíhající hru. Odpojení během zápasu řeší výše popsaná pětiminutová lhůta pro návrat.
 
-V zápase jeden na jednoho vyhraje soupeř vybraného poraženého. Při větším počtu účastníků poražený obsadí poslední místo. Lze-li v rozehrané hře pokračovat bez něj, ostatní hrají dál a o jejich pořadí rozhodne hra. Jinak se seřadí podle skóre po posledním dokončeném rozdání nebo kole. Nedokončené rozdání či kolo se nepočítá. Shodné skóre znamená společné místo; zohledňuje se, zda je v dané hře lepší vyšší, nebo nižší výsledek. Pokud zápas ještě nezačal nebo nebylo dokončeno žádné bodované kolo, zbývající účastníci sdílejí první místo.
+V zápase jeden na jednoho vyberte poraženého. Při větším počtu účastníků nastavte umístění v jednom seznamu a označte kontumačně poražené. Tým má jeden řádek. Místa lze sdílet, například 1, 1, 3. Podporované hry nabídnou i pomocné body s navrženými hodnotami, které můžete změnit.
 
-Před potvrzením si přečtěte náhled: uvádí poraženého a vysvětluje, zda zápas skončí, nebo ostatní budou pokračovat. Při ukončení zápasu ukáže také umístění, turnajové body a použité skóre. Rozhodnutí provede až „Potvrdit kontumaci“. Změní-li se situace během rozhodování, je nutné zkontrolovat a potvrdit nový náhled. Nelze-li potřebné údaje načíst nebo je hra neposkytuje, program kontumaci nepřizná podle odhadnutého výsledku.
+„Souhrn výsledku“ ukáže místa, vypočtené turnajové body a případné pomocné body. Kontumačně poražený dostane 0 turnajových bodů. Samostatné tlačítko „Přidělit všem 0 bodů“ nevyhlásí vítěze ani remízu a nepřidá pomocné body; z takové vyřazovací dvojice nikdo nepostoupí. Rozhodnutí uloží až „Potvrdit výsledek“. Pokud se zápas změnil, zkontrolujte nový náhled.
 
-Můžete také zrušit nedokončený turnaj. Tím odvoláte celou soutěž, nikoli jen jednu pozvánku. Samotné překročení termínu neznamená kontumaci. Ručně můžete rozhodnout pomocí Ctrl+F, aniž byste čekali na vyčerpání pěti minut pro návrat.
+Nedokončený turnaj můžete také zrušit. Tím odvoláte celou soutěž, nikoli jednu pozvánku. Samotné překročení termínu neznamená kontumaci.
 
 ### Když se změna nepotvrdí
 

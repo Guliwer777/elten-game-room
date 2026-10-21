@@ -17,8 +17,8 @@ make=->(id,date,start,ending,opens,closes){u.publication(id).merge('timezone'=>'
 running=make.call(11,'2026-10-13','10:00','14:00',now-3*86400,now-3*3600).merge('__insertion_user'=>u::ACTOR)
 registration=make.call(22,'2026-10-14','10:00','14:00',now-3*3600,now+21*3600).merge('__insertion_user'=>u::ACTOR)
 waiting=make.call(33,'2026-10-14','10:00','14:00',now-3*86400,now-3600)
-old=make.call(44,'2026-10-10','10:00','14:00',100,200)
-recent=make.call(55,'2026-10-12','10:00','14:00',100,200)
+old=make.call(44,'2026-10-10','10:00','14:00',100,200).merge('sporting_completed'=>true,'sporting_completed_at'=>Time.utc(2026,10,10,13).to_i)
+recent=make.call(55,'2026-10-12','10:00','14:00',100,200).merge('sporting_completed'=>true,'sporting_completed_at'=>Time.utc(2026,10,12,13).to_i)
 rows=[running,registration,waiting,old,recent]
 members=[u.registration(77,tournament_id:33,time:waiting['registration_opens_at']+60)]
 current=u.snapshot(rows,members)
@@ -53,10 +53,10 @@ u.script(->(form){
   assert_equal(1,alerts.size)
   now+=3*3600
   u.button(form,'Refresh').trigger(:press)
-  assert_equal([22,33],lists[0].instance_variable_get(:@item_keys))
+  assert_equal([11,22,33],lists[0].instance_variable_get(:@item_keys),'A deadline does not settle the running tournament')
   lists[1].index=1
   lists[1].trigger(:move)
-  assert_equal([11,55,44],lists[0].instance_variable_get(:@item_keys),'Finished tournament did not move to the completed filter')
+  assert_equal([55,44],lists[0].instance_variable_get(:@item_keys),'Sporting completions are ordered newest first, separately from deadlines')
   form.cancel_button.trigger(:press)
 },->(form){
   list=form.fields.first

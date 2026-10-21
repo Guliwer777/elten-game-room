@@ -19,16 +19,16 @@ blacklist_exception_text = {
   'ru' => 'Чёрный список не блокирует приглашения на турнирные матчи.'
 }.freeze
 tournament_contract_text = {
-  'pl' => ['wskazuje się przegranego', 'ostatnim ukończonym rozdaniu lub rundzie',
-    'pozostali dzielą pierwsze miejsce', 'nie można zapisać ani wznowić z pliku'],
-  'en' => ['choose the losing participant', 'last completed deal or round',
-    'remaining participants share first place', 'No tournament game can be saved or resumed from a file'],
-  'cs' => ['vybere poraženého', 'posledním dokončeném rozdání nebo kole',
-    'zbývající účastníci sdílejí první místo', 'Žádnou turnajovou partii nelze uložit ani obnovit ze souboru'],
-  'es' => ['elige a quien pierde', 'última mano o ronda completada',
-    'los demás comparten el primer puesto', 'Ninguna partida de torneo se puede guardar ni reanudar desde un archivo'],
-  'ru' => ['выбирает проигравшего', 'последней завершённой сдачи или раунда',
-    'остальные участники делят первое место', 'Ни одну турнирную партию нельзя сохранить или возобновить из файла']
+  'pl' => ['W pojedynku wybierz przegranego', 'Możesz ustawić wspólne miejsce',
+    'Przyznaj wszystkim 0 punktów', 'nie można zapisać ani wznowić z pliku'],
+  'en' => ['For a duel, choose the losing side', 'Shared places are allowed',
+    'Award zero points to everyone', 'No tournament game can be saved or resumed from a file'],
+  'cs' => ['V zápase jeden na jednoho vyberte poraženého', 'Místa lze sdílet',
+    'Přidělit všem 0 bodů', 'Žádnou turnajovou partii nelze uložit ani obnovit ze souboru'],
+  'es' => ['En un duelo, elige quién pierde', 'Se permiten puestos compartidos',
+    'Asignar 0 puntos a todos', 'Ninguna partida de torneo se puede guardar ni reanudar desde un archivo'],
+  'ru' => ['В матче один на один выберите проигравшего', 'Места можно делить',
+    'Назначить всем 0 очков', 'Ни одну турнирную партию нельзя сохранить или возобновить из файла']
 }.freeze
 assert(paths.keys.sort == manifest.fetch("supported_languages").sort, "Every interface language needs a complete README")
 assert(paths.values.sort == (["README.md"] + GameRoomReleaseFiles::README_TRANSLATIONS).sort, "README runtime and installer lists differ")
