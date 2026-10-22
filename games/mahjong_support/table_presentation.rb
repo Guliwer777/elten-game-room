@@ -2,11 +2,13 @@
 require_relative '../base'
 require_relative 'table_round'
 require_relative 'tile_labels'
+require_relative 'score_breakdown'
 
 module GameRoomGames
   using GameRoomLocalization::Translations
 
   module MahjongTablePresentation
+    include MahjongScoreBreakdown
     def table_surface_spec(round, players:, viewer:)
       unless players.is_a?(Array) && players.length == round.flow.hands.length
         raise ArgumentError, 'Mahjong presentation roster mismatch'
@@ -50,6 +52,8 @@ module GameRoomGames
           else
             _('%{han} han, %{fu} fu') % {han: score.han, fu: score.fu}
           end
+          breakdown = mahjong_score_breakdown(round)
+          value = round.variant == 'mcr' ? breakdown : value + "\n" + breakdown
           parts << mahjong_table_part('value', mahjong_table_info('mahjong-hand-value', _('Hand value'), value))
         end
         payments = settlement.payments.each_with_index.map do |points, seat|

@@ -41,7 +41,7 @@ NativeOptionTest.language = 'en'
   before = Marshal.dump(round)
   text = progress_key(game, progress_replay(round)).message
   assert(text.include?('5 fan') && text.include?('Red dragon') && text.include?('Autumn'))
-  assert(text.include?('No legal win') && !text.include?('Points gained:'))
+  assert(!text.include?('No legal win') && !text.include?('Points gained:'))
   assert_equal(before, Marshal.dump(round))
   assert_equal(nil, progress_key(game, progress_replay(round), 'Observer'))
 end
@@ -51,18 +51,18 @@ full = GameRoomMahjong::FanProgress.items(progress_round('hong_kong', flowers: (
 assert_equal(7, full.sum(&:points), 'Full families counted their own-seat bonus twice')
 round = progress_round('hong_kong')
 assert_equal(3, GameRoomMahjong::FanProgress.items(round, 0).sum(&:points), 'Provisional no-flower point counted as certain')
-assert(progress_key(game, progress_replay(round)).message.include?('possible extra 1 fan'))
+assert(!progress_key(game, progress_replay(round)).message.include?('possible extra 1 fan'))
 assert(!progress_key(game, progress_replay(round, enabled: false)).message.include?('subtotal'))
 
 mcr = progress_round('mcr', flowers: [138, 142])
 items = GameRoomMahjong::FanProgress.items(mcr, 0)
-assert_equal(6, items.reject { |item| item.type == :extra_flower }.sum(&:points))
+assert_equal(70, items.reject { |item| item.type == :extra_flower }.sum(&:points))
 assert_equal(2, items.count { |item| item.type == :extra_flower })
-assert(progress_key(game, progress_replay(mcr)).message.include?('do not count towards the minimum of 8'))
+assert(progress_key(game, progress_replay(mcr)).message.include?('outside the minimum of 8'))
 riichi = progress_round('riichi')
 assert_equal(3, GameRoomMahjong::FanProgress.items(riichi, 0).sum(&:points))
 assert(progress_key(game, progress_replay(riichi)).message.include?('3 han'))
-assert(progress_key(game, progress_replay(riichi)).message.include?('Dora require'))
+assert(progress_key(game, progress_replay(riichi)).message.include?('separate from yaku'))
 
 # Discarding one of the held dragon tiles immediately removes that triplet.
 flow = round.flow
@@ -115,3 +115,12 @@ end
   end
 end
 puts 'PASS scoring progress: actual hidden/exposed triplets, own winds/bonuses, full-family replacement, conditional absence, MCR flower separation, Riichi han/dora, discard update, privacy, native W and setting persistence in five languages'
+
+# Replace, never accumulate the two/three/four concealed-pung awards.
+{2 => ['111555m123p123s1z', 2], 3 => ['111555999m123p1z', 16], 4 => ['111555999m333p1z', 64]}.each do |count, (hand, points)|
+  flow = ready_flow(hand, '2z', self_draw: true)
+  sample = GameRoomMahjong::TableRound.new(flow: flow, variant: 'mcr', dealer: 0)
+  award = GameRoomMahjong::FanProgress.items(sample, 0).select { |item| item.type == :concealed_pungs }
+  assert_equal([points], award.map(&:points))
+  assert(award.first.conditional)
+end

@@ -17,7 +17,10 @@
           "es": "Al responder a una ficha, D lee la ficha a la que se refiere Pasar, Chow, Pung, Kong o Mahjong. No cambia ni confirma la elección. En Solitario, D sigue leyendo las coordenadas."
         },
         {
-          "es": "En Hong Kong, Riichi y MCR, W también lee un subtotal de los bonos básicos que ya tienes: tríos de dragones y vientos puntuables, además de las fichas de bonificación correspondientes o una declaración de Riichi aceptada. Los tríos ocultos cuentan mientras los conserves juntos. No es el valor de una mano incompleta: los patrones de la mano completa pueden sustituir esos bonos. MCR indica las flores por separado, pues no ayudan a alcanzar 8 fan; Riichi separa las dora visibles porque requieren yaku. Hong Kong menciona aparte el posible punto por no tener flores ni estaciones, que desaparece si robas una de esas fichas. Al crear la mesa, Vista previa de puntuación básica con W está en Sí. Elige No para oír solo el valor de una victoria válida. La opción no cambia la puntuación ni las condiciones para ganar."
+          "es": "W lee brevemente el total actual de bonificaciones reconocidas y sus motivos. Si dependen de conjuntos ocultos, indica que debes conservarlos ocultos. En MCR, dos, tres y cuatro pungs ocultos valen 2, 16 y 64 fan; estas bonificaciones se sustituyen, no se suman. No es el valor completo de una mano incompleta. Las flores de MCR y las dora de Riichi se anuncian aparte. Cuando es posible declarar Mahjong, W da el valor completo de la victoria. La opción de vista previa bajo W está activada por defecto; No conserva solo el valor de una victoria legal. No cambia la puntuación."
+        },
+        {
+          "es": "Tras una victoria, Valor de la mano enumera las bonificaciones realmente concedidas, sin patrones sustituidos. En MCR separa los fan de la mano de los extras por flores y estaciones e indica el total para el pago. Los extras no cuentan para el mínimo de 8 fan."
         }
       ]
     },

@@ -17,7 +17,10 @@
           "en": "While responding to a tile, D reads the tile to which Pass, Chow, Pung, Kong or Mahjong applies. It does not change or submit your choice. In Solitaire, D still reads coordinates."
         },
         {
-          "en": "In Hong Kong, Riichi and MCR, W also reads a subtotal of basic bonuses already present: dragon and scoring-wind triplets, plus the applicable bonus tiles or an accepted Riichi declaration. Concealed triplets count while you keep them together. This is not the value of an unfinished hand: whole-hand patterns may replace basic bonuses. In MCR, flowers are listed separately and do not help reach 8 fan; Riichi lists visible dora separately because dora require yaku. Hong Kong mentions the possible no-flower point separately, since a later bonus draw removes it. When creating a table, Basic scoring preview under W defaults to Yes; choose No to keep only the legal-win readout. The setting never changes scoring or permission to win."
+          "en": "In Hong Kong, Riichi and MCR, W also reads a subtotal of basic bonuses already present: dragon and scoring-wind triplets, plus the applicable bonus tiles or an accepted Riichi declaration. Concealed triplets count while you keep them together. This is not the value of an unfinished hand: whole-hand patterns may replace basic bonuses. In MCR, flowers are listed separately and do not help reach 8 fan; Riichi lists visible dora separately because dora require yaku. When creating a table, Basic scoring preview under W defaults to Yes; choose No to keep only the legal-win readout. The setting never changes scoring or permission to win. MCR: 2/3/4 concealed pungs = 2/16/64 fan; these awards replace one another. W uses a concise subtotal while incomplete and the full legal-win value when available."
+        },
+        {
+          "en": "After a win, Hand value lists the scoring components actually awarded, excluding replaced patterns. In MCR it separates the hand fan from flower/season extras and states their total for payment; extras never count towards the 8-fan qualifying minimum."
         }
       ]
     },

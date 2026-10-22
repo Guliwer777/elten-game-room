@@ -31,7 +31,8 @@ module GameRoomGames
       round = replay.state.fetch(:round)
       value = mahjong_value_text(round, own)
       return value if round.finished? || replay.state.fetch(:profile).fetch('fan_progress', 'yes') == 'no'
-      value + ' ' + mahjong_progress_text(round, own)
+      return value unless value == _('No legal win is available for your hand now; no final value can be given.')
+      mahjong_progress_text(round, own)
     end
 
     def mahjong_melds_text(replay, own, others:)

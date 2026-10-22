@@ -389,14 +389,24 @@ Targeted checks: `ruby test/run.rb test/games/mahjong`.
 ## Basic scoring progress under W
 
 The optional `fan_progress` table setting defaults to yes in HK, MCR and Riichi.
-W keeps its existing exact legal-win readout and adds a separately labelled
-subtotal from owned dragon/wind triplets and accepted bonus facts. Concealed
+W uses the exact legal-win readout when available; otherwise it reads a concise
+subtotal from owned dragon/wind triplets and accepted bonus facts. MCR also
+recognizes 2/3/4 concealed pungs for 2/16/64 fan, replacing smaller awards. Concealed
 triplets are counted only while retained, and no future tile, closed-hand win,
 complete-hand pattern or speculative payment is inferred. This subtotal is not
 an additive breakdown of the final score: complete-hand exclusion rules remain
 in the actual scorer. MCR flowers never enter its qualifying subtotal; Riichi
-visible dora are separate and cannot supply yaku. HK no-bonus fan is explicitly
-provisional and excluded from the subtotal. Spectators receive no W shortcut.
+visible dora are separate and cannot supply yaku. HK no-bonus fan is omitted while the hand is incomplete. Spectators receive no W shortcut.
 Disabling the setting restores the previous exact-win-only output and does not
 change any legal action, event, score, bot or result. This is a table setting,
 not a private preference; all participants use the same configured readout.
+
+
+## Accepted score explanation
+
+The finished-hand value lists only selected scorer components, with their actual
+awarded values and localized descriptions from the existing rulebook. It does
+not rescore the hand or list excluded candidates. MCR explicitly separates the
+qualifying hand fan, flower extras and their payment total. The completed hand
+and explanation remain public to participants and observers; no unfinished
+opponent concealed tiles are revealed.

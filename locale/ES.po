@@ -35,7 +35,7 @@ msgstr "%: conserva un dado seleccionado con el valor 5."
 msgid "%{accuracy}%% accuracy"
 msgstr "Precisión: %{accuracy}%%"
 
-#: games/mahjong_support/information_shortcuts.rb:44 games/mahjong_support/table_presentation.rb:203
+#: games/mahjong_support/information_shortcuts.rb:45 games/mahjong_support/table_presentation.rb:207
 msgid "%{action}: %{tiles}"
 msgstr "%{action}: %{tiles}"
 
@@ -250,6 +250,10 @@ msgid_plural "%{count} cards left from the previous war"
 msgstr[0] ""
 msgstr[1] ""
 
+#: games/mahjong_support/fan_announcements.rb:29
+msgid "%{count} concealed pungs"
+msgstr "Pungs ocultos: %{count}"
+
 #: games/war.rb:415
 msgid "%{count} hidden card"
 msgid_plural "%{count} hidden cards"
@@ -300,7 +304,7 @@ msgstr "%{count} fichas iniciales"
 msgid "%{count} tokens"
 msgstr "%{count} fichas"
 
-#: games/mahjong_support/information_shortcuts.rb:85 games/mahjong_support/table_presentation.rb:49
+#: games/mahjong_support/information_shortcuts.rb:86 games/mahjong_support/table_presentation.rb:51
 msgid "%{count} yakuman"
 msgstr "%{count} yakuman"
 
@@ -327,11 +331,11 @@ msgstr "%{distance} millas"
 msgid "%{exchange}; 18 deals"
 msgstr ""
 
-#: games/mahjong_support/information_shortcuts.rb:81 games/mahjong_support/table_presentation.rb:47
+#: games/mahjong_support/information_shortcuts.rb:82 games/mahjong_support/table_presentation.rb:49
 msgid "%{fan} fan"
 msgstr "%{fan} fan"
 
-#: games/mahjong_support/information_shortcuts.rb:83 games/mahjong_support/table_presentation.rb:45
+#: games/mahjong_support/information_shortcuts.rb:84 games/mahjong_support/table_presentation.rb:47
 msgid "%{fan} fan; flower points: %{flowers}"
 msgstr "%{fan} fan; puntos por flores: %{flowers}"
 
@@ -434,7 +438,7 @@ msgstr "%{hand}: %{values}"
 msgid "%{hand}: %{values}."
 msgstr "%{hand}: %{values}."
 
-#: games/mahjong_support/information_shortcuts.rb:87 games/mahjong_support/table_presentation.rb:51
+#: games/mahjong_support/information_shortcuts.rb:88 games/mahjong_support/table_presentation.rb:53
 msgid "%{han} han, %{fu} fu"
 msgstr "%{han} han, %{fu} fu"
 
@@ -1223,7 +1227,7 @@ msgstr "%{player} está listo para la siguiente mano."
 msgid "%{player} is reviewing the answers."
 msgstr "%{player} está evaluando las respuestas."
 
-#: games/mahjong_support/information_shortcuts.rb:65 games/mahjong_support/table_presentation.rb:22
+#: games/mahjong_support/information_shortcuts.rb:66 games/mahjong_support/table_presentation.rb:24
 msgid "%{player} is taking a turn."
 msgstr "Es el turno de %{player}."
 
@@ -2325,7 +2329,7 @@ msgstr "%{player}: %{miles} millas; %{status}; protecciones: %{safeties}; cartas
 msgid "%{player}: %{pieces}"
 msgstr "%{player}: %{pieces}"
 
-#: games/categories.rb:1364 games/mahjong.rb:162 games/mahjong_support/table_game.rb:198 games/mahjong_support/table_presentation.rb:56 games/quiz_party.rb:1212
+#: games/categories.rb:1364 games/mahjong.rb:162 games/mahjong_support/table_game.rb:198 games/mahjong_support/table_presentation.rb:60 games/quiz_party.rb:1212
 msgid "%{player}: %{points}"
 msgstr "%{player}: %{points}"
 
@@ -2394,7 +2398,7 @@ msgstr "%{player}: %{status}"
 msgid "%{player}: %{tax}, charged %{amount}. Cash: %{cash}."
 msgstr "%{player}: %{tax}, se han cobrado %{amount}. Efectivo: %{cash}."
 
-#: games/mahjong_support/information_shortcuts.rb:47 games/mahjong_support/table_presentation.rb:145 games/mahjong_support/table_presentation.rb:154 games/mahjong_support/table_presentation.rb:165
+#: games/mahjong_support/information_shortcuts.rb:48 games/mahjong_support/table_presentation.rb:149 games/mahjong_support/table_presentation.rb:158 games/mahjong_support/table_presentation.rb:169
 msgid "%{player}: %{tiles}"
 msgstr "%{player}: %{tiles}"
 
@@ -2421,7 +2425,7 @@ msgstr "%{player}: efectivo %{cash}, patrimonio neto %{value}"
 msgid "%{player}: cash %{cash}, value %{value}"
 msgstr "%{player}: efectivo %{cash}, valor %{value}"
 
-#: games/mahjong_support/information_shortcuts.rb:111 games/mahjong_support/table_presentation.rb:177
+#: games/mahjong_support/information_shortcuts.rb:112 games/mahjong_support/table_presentation.rb:181
 msgid "%{player}: double riichi"
 msgstr "%{player}: doble riichi"
 
@@ -2461,7 +2465,7 @@ msgstr "%{player}: palabra sin adivinar, %{attempts} intentos"
 msgid "%{player}: out"
 msgstr ""
 
-#: games/mahjong_support/information_shortcuts.rb:111 games/mahjong_support/table_presentation.rb:177
+#: games/mahjong_support/information_shortcuts.rb:112 games/mahjong_support/table_presentation.rb:181
 msgid "%{player}: riichi"
 msgstr "%{player}: riichi"
 
@@ -2561,7 +2565,11 @@ msgstr "%{property}; propiedades del grupo en posesión: %{owned} de %{total}."
 msgid "%{rank} of %{suit}"
 msgstr "%{rank} de %{suit}"
 
-#: games/mahjong_support/fan_announcements.rb:42
+#: games/mahjong_support/fan_announcements.rb:39
+msgid "%{reason}: %{count} %{unit}, if you retain the concealed set."
+msgstr "%{reason}: %{count} %{unit}, si conservas el conjunto oculto."
+
+#: games/mahjong_support/fan_announcements.rb:39 games/mahjong_support/score_breakdown.rb:35 games/mahjong_support/score_breakdown.rb:41
 msgid "%{reason}: %{count} %{unit}."
 msgstr "%{reason}: %{count} %{unit}."
 
@@ -2763,11 +2771,11 @@ msgstr "%{text} Coronación como dama."
 msgid "%{text} The piece was promoted to a king."
 msgstr "%{text} El peón se ha coronado como dama."
 
-#: games/mahjong_support/table_presentation.rb:164
+#: games/mahjong_support/table_presentation.rb:168
 msgid "%{tile} (claimed)"
 msgstr "%{tile} (reclamada)"
 
-#: games/mahjong_support/table_presentation.rb:78
+#: games/mahjong_support/table_presentation.rb:82
 msgid "%{tile} (just drawn)"
 msgstr "%{tile} (recién robada)"
 
@@ -2852,7 +2860,7 @@ msgstr "%{value}, no hay ningún dado seleccionado."
 msgid "%{value}, selected."
 msgstr "%{value}, seleccionado."
 
-#: games/mahjong_support/information_shortcuts.rb:91
+#: games/mahjong_support/information_shortcuts.rb:92
 msgid "%{value}. Points gained: %{points}."
 msgstr "%{value}. Puntos ganados: %{points}."
 
@@ -5791,7 +5799,7 @@ msgstr "Todas las combinaciones"
 msgid "All four answers must be different."
 msgstr "Las cuatro respuestas deben ser distintas."
 
-#: games/mahjong_support/fan_announcements.rb:38
+#: games/mahjong_support/fan_announcements.rb:35
 msgid "All four flowers"
 msgstr "Las cuatro flores"
 
@@ -5799,7 +5807,7 @@ msgstr "Las cuatro flores"
 msgid "All four players passed. The deal is thrown in."
 msgstr "Han pasado los cuatro jugadores. La mano no se juega."
 
-#: games/mahjong_support/fan_announcements.rb:39
+#: games/mahjong_support/fan_announcements.rb:36
 msgid "All four seasons"
 msgstr "Las cuatro estaciones"
 
@@ -7167,7 +7175,7 @@ msgstr "Bonificación por Yahtzees adicionales"
 msgid "Bonus for additional Yahtzees is on by default. After scoring 50 in Yahtzee, each later five-of-a-kind scored in another category adds 100 bonus points. A zero in Yahtzee does not qualify. This bonus can be enabled without the Joker rule."
 msgstr ""
 
-#: games/mahjong_support/fan_announcements.rb:37
+#: games/mahjong_support/fan_announcements.rb:34
 msgid "Bonus tile: %{tile}"
 msgstr "Ficha de bonificación: %{tile}"
 
@@ -8385,7 +8393,7 @@ msgstr "Elige un color."
 msgid "Choose a column and press Enter. Your piece falls to the lowest empty field in that column, regardless of which row you were inspecting."
 msgstr ""
 
-#: games/mahjong_support/table_presentation.rb:115
+#: games/mahjong_support/table_presentation.rb:119
 msgid "Choose a concealed kong"
 msgstr "Elige un kong oculto"
 
@@ -8463,7 +8471,7 @@ msgstr "Elige una propiedad de la que vender un edificio"
 msgid "Choose a property to unmortgage"
 msgstr "Elige una propiedad cuya hipoteca quieras cancelar"
 
-#: games/mahjong_support/table_presentation.rb:124
+#: games/mahjong_support/table_presentation.rb:128
 msgid "Choose a pung to upgrade to a kong"
 msgstr "Elige un pung para ampliarlo a kong"
 
@@ -8474,7 +8482,7 @@ msgstr "Elige un conjunto de preguntas."
 msgid "Choose a raise"
 msgstr "Elige una subida"
 
-#: games/mahjong_support/table_presentation.rb:96
+#: games/mahjong_support/table_presentation.rb:100
 msgid "Choose a response to the discard"
 msgstr "Elige una respuesta al descarte"
 
@@ -8868,7 +8876,7 @@ msgstr ""
 msgid "Chosen cards: %{cards}."
 msgstr ""
 
-#: games/mahjong_support/information_shortcuts.rb:42 games/mahjong_support/table_presentation.rb:196
+#: games/mahjong_support/information_shortcuts.rb:43 games/mahjong_support/table_presentation.rb:200
 msgid "Chow"
 msgstr "Chow"
 
@@ -9856,6 +9864,10 @@ msgctxt "cat_head_tail"
 msgid "Current turn: %{points} points."
 msgstr "Turno actual: %{points} puntos."
 
+#: games/mahjong_support/fan_announcements.rb:14
+msgid "Current value: %{count} %{unit}."
+msgstr "Valor actual: %{count} %{unit}."
+
 #: games/categories.rb:197
 msgid "Custom"
 msgstr "Personalizado"
@@ -10163,7 +10175,7 @@ msgstr ""
 msgid "Declarations and partnerships"
 msgstr ""
 
-#: games/mahjong_support/table_presentation.rb:105 games/mahjong_support/table_presentation.rb:195
+#: games/mahjong_support/table_presentation.rb:109 games/mahjong_support/table_presentation.rb:199
 msgid "Declare Mahjong"
 msgstr "Declarar Mahjong"
 
@@ -10178,7 +10190,7 @@ msgstr "Declararse en bancarrota"
 msgid "Declare readiness"
 msgstr ""
 
-#: games/mahjong_support/table_presentation.rb:133
+#: games/mahjong_support/table_presentation.rb:137
 msgid "Declare riichi by choosing a tile to discard"
 msgstr "Declara riichi eligiendo una ficha para descartar"
 
@@ -10275,7 +10287,7 @@ msgstr ""
 msgid "Depending on the card, raise one die, lower one, raise two different dice, lower two different dice, or choose either direction for one die. Every change is by one point and must stay within 1–6. A two-die card cannot move the same die twice, and cannot be used on just one die. You may decline the whole effect instead. Raising a category you expect to win or lowering a rival's prize can change the final result."
 msgstr ""
 
-#: games/mahjong_support/information_shortcuts.rb:115 games/mahjong_support/table_presentation.rb:181
+#: games/mahjong_support/information_shortcuts.rb:116 games/mahjong_support/table_presentation.rb:185
 msgid "Deposits on the table: %{count}."
 msgstr "Depósitos en la mesa: %{count}."
 
@@ -10439,7 +10451,7 @@ msgstr "El reciclaje de descartes repone el mazo de robo agotado barajando las c
 msgid "Discard unsaved changes"
 msgstr "Descartar cambios sin guardar"
 
-#: games/mahjong_support/information_shortcuts.rb:132
+#: games/mahjong_support/information_shortcuts.rb:133
 msgid "Discard-based furiten can be checked after your discard."
 msgstr "El furiten por tus propios descartes se puede comprobar después de descartar."
 
@@ -10451,7 +10463,7 @@ msgstr "Descartando cambios sin guardar"
 msgid "Discarding without taking discards"
 msgstr "Descartar sin tomar cartas de la pila de descartes"
 
-#: games/mahjong_support/table_presentation.rb:167
+#: games/mahjong_support/table_presentation.rb:171
 msgid "Discards"
 msgstr "Descartes"
 
@@ -10548,21 +10560,29 @@ msgstr "Dominó ofrece once conjuntos de fichas, juego individual o por equipos,
 msgid "Domino set"
 msgstr "Juego de fichas de dominó"
 
+#: games/mahjong_support/score_breakdown.rb:58
+msgid "Dora"
+msgstr ""
+
 #: games/generated/rulebooks/mahjong.rb:205
 msgid "Dora add 1 han for each owned dora tile, but only to a hand with a real yaku. Dora are not yaku. An indicator points to the next tile in its cycle; every copy in the hand or own sets counts. After accepted riichi, hidden ura-dora may add to the final win; the pre-win preview does not reveal them."
 msgstr ""
 
-#: games/mahjong_support/table_presentation.rb:172
+#: games/mahjong_support/table_presentation.rb:176
 msgid "Dora indicators"
 msgstr "Indicadores de dora"
 
-#: games/mahjong_support/information_shortcuts.rb:106
+#: games/mahjong_support/information_shortcuts.rb:107
 msgid "Dora indicators: %{tiles}."
 msgstr "Indicadores dora: %{tiles}."
 
-#: games/mahjong_support/information_shortcuts.rb:107
+#: games/mahjong_support/information_shortcuts.rb:108
 msgid "Dora tiles: %{tiles}."
 msgstr "Fichas dora: %{tiles}."
+
+#: games/mahjong_support/fan_announcements.rb:21
+msgid "Dora: %{count}, separate from yaku."
+msgstr "Dora: %{count}, aparte de los yaku."
 
 #: games/mahjong_support/tile_labels.rb:14
 msgid "Dots"
@@ -10596,7 +10616,7 @@ msgstr ""
 msgid "Double 9"
 msgstr "Doble 9"
 
-#: games/mahjong_support/fan_announcements.rb:40
+#: games/mahjong_support/fan_announcements.rb:37
 msgid "Double riichi"
 msgstr "Doble riichi"
 
@@ -10658,7 +10678,7 @@ msgstr "Borrador guardado en tu cuenta."
 msgid "Draft: %{name}; game: %{game}"
 msgstr ""
 
-#: games/mahjong_support/fan_announcements.rb:33
+#: games/mahjong_support/fan_announcements.rb:30
 msgid "Dragon pung or kong: %{tile}"
 msgstr "Pung o kong de dragones: %{tile}"
 
@@ -10694,11 +10714,11 @@ msgstr "Robar una carta de reposición"
 msgid "Draw a replacement card or continue without drawing."
 msgstr "Roba una carta de sustitución o continúa sin robar."
 
-#: games/mahjong_support/table_presentation.rb:102
+#: games/mahjong_support/table_presentation.rb:106
 msgid "Draw a replacement tile"
 msgstr "Robar una ficha de reemplazo"
 
-#: games/mahjong_support/table_presentation.rb:102
+#: games/mahjong_support/table_presentation.rb:106
 msgid "Draw a tile"
 msgstr "Robar una ficha"
 
@@ -11963,7 +11983,7 @@ msgstr "Exportación guardada en %{path}."
 msgid "Exporting question submissions"
 msgstr "Exportando los envíos de preguntas"
 
-#: games/mahjong_support/table_presentation.rb:150
+#: games/mahjong_support/table_presentation.rb:154
 msgid "Exposed sets"
 msgstr "Combinaciones expuestas"
 
@@ -12501,13 +12521,17 @@ msgstr "Flip: %{side}. %{top}"
 msgid "Flop"
 msgstr "Flop"
 
-#: games/mahjong_support/table_presentation.rb:158
+#: games/mahjong_support/table_presentation.rb:162
 msgid "Flowers and seasons"
 msgstr "Flores y estaciones"
 
 #: games/mahjong_support/fan_announcements.rb:18
 msgid "Flowers and seasons: %{count} extra fan; these do not count towards the minimum of 8."
 msgstr "Flores y estaciones: %{count} fan adicionales; no cuentan para el mínimo de 8."
+
+#: games/mahjong_support/fan_announcements.rb:18
+msgid "Flowers: %{count} extra fan, outside the minimum of 8."
+msgstr "Flores: %{count} fan extra, fuera del mínimo de 8."
 
 #: games/poker.rb:1313
 msgid "Fold"
@@ -12806,7 +12830,7 @@ msgstr ""
 msgid "Full: every other player takes a card"
 msgstr "Completa: cada uno de los demás jugadores toma una carta"
 
-#: games/mahjong_support/information_shortcuts.rb:127
+#: games/mahjong_support/information_shortcuts.rb:128
 msgid "Furiten is not blocking a discard win; a complete hand with yaku is still required."
 msgstr "Furiten no bloquea la victoria con descarte; aún necesitas una mano completa con yaku."
 
@@ -12818,7 +12842,7 @@ msgstr ""
 msgid "Furiten prevents winning on a discard when one of your winning tiles appears among your own discards. Passing a legal winning discard also blocks discard wins temporarily; after declaring Riichi, this block lasts for the rest of the hand. You can still win by drawing the tile yourself. In sanma, characters 2 through 8 are removed; North stays an ordinary honor tile, with no separate North-extraction action."
 msgstr ""
 
-#: games/mahjong_support/information_shortcuts.rb:121 games/mahjong_support/information_shortcuts.rb:129
+#: games/mahjong_support/information_shortcuts.rb:122 games/mahjong_support/information_shortcuts.rb:130
 msgid "Furiten: winning on a discard is blocked; self-draw is still possible."
 msgstr "Furiten: no puedes ganar con un descarte; todavía puedes ganar robando tú la ficha."
 
@@ -13314,7 +13338,7 @@ msgstr "Mano y reacciones"
 msgid "Hand mix"
 msgstr "Cambio de manos"
 
-#: games/mahjong_support/information_shortcuts.rb:54
+#: games/mahjong_support/information_shortcuts.rb:55
 msgid "Hand number: %{number}."
 msgstr "Mano número %{number}."
 
@@ -13322,12 +13346,16 @@ msgstr "Mano número %{number}."
 msgid "Hand switch"
 msgstr "Intercambio de manos"
 
-#: games/mahjong_support/table_presentation.rb:53
+#: games/mahjong_support/table_presentation.rb:57
 msgid "Hand value"
 msgstr "Valor de la mano"
 
 msgid "Hand, prepared melds and table controls"
 msgstr "Mano, combinaciones preparadas y controles de la mesa"
+
+#: games/mahjong_support/score_breakdown.rb:29
+msgid "Hand: %{fan} fan. Flowers and seasons: %{flowers} extra fan. Total for payment: %{total} fan."
+msgstr "Mano: %{fan} fan. Flores y estaciones: %{flowers} fan extra. Total para el pago: %{total} fan."
 
 msgid "Hands continue with a rotating dealer until only one player has chips."
 msgstr ""
@@ -13403,7 +13431,7 @@ msgstr "Libros sagrados"
 msgid "Home made bomb"
 msgstr "Bomba casera"
 
-#: games/mahjong_support/information_shortcuts.rb:116
+#: games/mahjong_support/information_shortcuts.rb:117
 msgid "Honba: %{count}."
 msgstr "Honba: %{count}."
 
@@ -13861,6 +13889,10 @@ msgstr ""
 
 #: games/generated/rulebooks/mahjong.rb:13
 msgid "In Hong Kong, Riichi and MCR, W also reads a subtotal of basic bonuses already present: dragon and scoring-wind triplets, plus the applicable bonus tiles or an accepted Riichi declaration. Concealed triplets count while you keep them together. This is not the value of an unfinished hand: whole-hand patterns may replace basic bonuses. In MCR, flowers are listed separately and do not help reach 8 fan; Riichi lists visible dora separately because dora require yaku. Hong Kong mentions the possible no-flower point separately, since a later bonus draw removes it. When creating a table, Basic scoring preview under W defaults to Yes; choose No to keep only the legal-win readout. The setting never changes scoring or permission to win."
+msgstr ""
+
+#: games/generated/rulebooks/mahjong.rb:13
+msgid "In Hong Kong, Riichi and MCR, W also reads a subtotal of basic bonuses already present: dragon and scoring-wind triplets, plus the applicable bonus tiles or an accepted Riichi declaration. Concealed triplets count while you keep them together. This is not the value of an unfinished hand: whole-hand patterns may replace basic bonuses. In MCR, flowers are listed separately and do not help reach 8 fan; Riichi lists visible dora separately because dora require yaku. When creating a table, Basic scoring preview under W defaults to Yes; choose No to keep only the legal-win readout. The setting never changes scoring or permission to win. MCR: 2/3/4 concealed pungs = 2/16/64 fan; these awards replace one another. W uses a concise subtotal while incomplete and the full legal-win value when available."
 msgstr ""
 
 #: games/generated/rulebooks/mancala.rb:27
@@ -14715,7 +14747,7 @@ msgstr "Idiomas conocidos"
 msgid "Known languages are now all unchecked by default, independently of the main interface language. Your saved choices are preserved. Fixed mixed-language labels in Cat, head, tail; the game's name stays the same in every language."
 msgstr ""
 
-#: games/mahjong_support/information_shortcuts.rb:42 games/mahjong_support/table_presentation.rb:198
+#: games/mahjong_support/information_shortcuts.rb:43 games/mahjong_support/table_presentation.rb:202
 msgid "Kong"
 msgstr "Kong"
 
@@ -15564,7 +15596,7 @@ msgstr ""
 msgid "MCR: 88 fan"
 msgstr ""
 
-#: games/mahjong.rb:24 games/mahjong_support/private_table.rb:129 games/mahjong_support/solitaire_presentation.rb:12 games/mahjong_support/solitaire_presentation.rb:36 games/mahjong_support/table_game.rb:210 games/mahjong_support/table_presentation.rb:19 games/mahjong_support/table_presentation.rb:23
+#: games/mahjong.rb:24 games/mahjong_support/private_table.rb:129 games/mahjong_support/solitaire_presentation.rb:12 games/mahjong_support/solitaire_presentation.rb:36 games/mahjong_support/table_game.rb:210 games/mahjong_support/table_presentation.rb:21 games/mahjong_support/table_presentation.rb:25
 msgid "Mahjong"
 msgstr "Mahjong"
 
@@ -16059,6 +16091,10 @@ msgstr "Las respuestas no reveladas se cuentan como respuestas en blanco: %{play
 msgid "Missing translations use other known languages, then English. Restart ELTEN to apply language changes."
 msgstr "Si falta una traducción, se utilizan otros idiomas conocidos y, por último, el inglés. Reinicia ELTEN para aplicar los cambios de idioma."
 
+#: games/mahjong_support/score_breakdown.rb:33
+msgid "Mixed exposed and concealed kongs"
+msgstr "Kong expuesto y oculto"
+
 #: games/monopoly/presentation.rb:218
 msgid "Money you offer"
 msgstr "Dinero que ofreces"
@@ -16524,7 +16560,7 @@ msgstr ""
 msgid "No Mercy card limit; zero disables it"
 msgstr "Límite de cartas de No Mercy; cero lo desactiva"
 
-#: games/mahjong_support/information_shortcuts.rb:114
+#: games/mahjong_support/information_shortcuts.rb:115
 msgid "No Riichi declarations."
 msgstr "Nadie ha declarado Riichi."
 
@@ -16698,11 +16734,11 @@ msgstr ""
 msgid "No discard pile"
 msgstr "Sin pila de descartes"
 
-#: games/mahjong_support/information_shortcuts.rb:105
+#: games/mahjong_support/information_shortcuts.rb:106
 msgid "No dora indicators."
 msgstr "No hay indicadores dora."
 
-#: games/mahjong_support/information_shortcuts.rb:46 games/mahjong_support/information_shortcuts.rb:49
+#: games/mahjong_support/information_shortcuts.rb:47 games/mahjong_support/information_shortcuts.rb:50
 msgid "No exposed sets."
 msgstr "No hay grupos expuestos."
 
@@ -16744,7 +16780,7 @@ msgstr "No hay elementos."
 msgid "No leaderboards are available in this version."
 msgstr "No hay clasificaciones disponibles en esta versión."
 
-#: games/mahjong_support/information_shortcuts.rb:78
+#: games/mahjong_support/information_shortcuts.rb:34 games/mahjong_support/information_shortcuts.rb:79
 msgid "No legal win is available for your hand now; no final value can be given."
 msgstr "Ahora no tienes una victoria válida; no se puede dar el valor final de la mano."
 
@@ -17902,7 +17938,7 @@ msgstr "Se ha guardado la elección de compañero."
 msgid "Partners and the deal"
 msgstr ""
 
-#: games/biblios.rb:1100 games/mahjong_support/table_presentation.rb:194 games/tysiac.rb:1459 games/tysiac.rb:1596
+#: games/biblios.rb:1100 games/mahjong_support/table_presentation.rb:198 games/tysiac.rb:1459 games/tysiac.rb:1596
 msgid "Pass"
 msgstr "Pasar"
 
@@ -18444,7 +18480,7 @@ msgstr "Plzeň hlavní nádraží"
 msgid "Podolská vodárna"
 msgstr "Podolská vodárna"
 
-#: games/mahjong_support/table_presentation.rb:58
+#: games/mahjong_support/table_presentation.rb:62
 msgid "Point changes"
 msgstr "Cambios de puntos"
 
@@ -18935,7 +18971,7 @@ msgstr ""
 msgid "Pressing an assigned widget shortcut creates a table with those settings without reopening the setup form. It does not start the match automatically or replace a table you are already at. Empty slots only report that nothing is assigned. Presets are local to this computer; an outdated preset asks you to review it before creating a table."
 msgstr "Al pulsar un atajo asignado en el widget, se crea una mesa con esos ajustes sin volver a abrir el formulario de configuración. No inicia la partida automáticamente ni sustituye una mesa en la que ya estés. Los atajos vacíos solo indican que no tienen nada asignado. Las configuraciones predefinidas se guardan únicamente en este ordenador; si una está desactualizada, se te pide que la revises antes de crear la mesa."
 
-#: games/mahjong_support/information_shortcuts.rb:93
+#: games/mahjong_support/information_shortcuts.rb:94
 msgid "Preview excludes hidden ura-dora; the final value may be higher."
 msgstr "La vista previa excluye las ura-dora ocultas; el valor final puede ser mayor."
 
@@ -19160,7 +19196,7 @@ msgstr "Charco"
 msgid "Puncture-proof"
 msgstr "Neumáticos antipinchazos"
 
-#: games/mahjong_support/information_shortcuts.rb:42 games/mahjong_support/table_presentation.rb:197
+#: games/mahjong_support/information_shortcuts.rb:43 games/mahjong_support/table_presentation.rb:201
 msgid "Pung"
 msgstr "Pung"
 
@@ -20279,7 +20315,7 @@ msgstr "Orilla derecha"
 msgid "Right of way"
 msgstr "Prioridad de paso"
 
-#: games/mahjong_support/fan_announcements.rb:40 games/mahjong_support/options.rb:19
+#: games/mahjong_support/fan_announcements.rb:37 games/mahjong_support/options.rb:19
 msgid "Riichi"
 msgstr "Riichi"
 
@@ -20287,7 +20323,7 @@ msgstr "Riichi"
 msgid "Riichi and sanma"
 msgstr ""
 
-#: games/mahjong_support/table_presentation.rb:182
+#: games/mahjong_support/table_presentation.rb:186
 msgid "Riichi declarations"
 msgstr "Declaraciones de riichi"
 
@@ -20655,11 +20691,11 @@ msgstr "Todos contra todos"
 msgid "Round the total up to a multiple of ten: 32 becomes 40. Seven pairs is always 25 fu. Pinfu self-draw is 20 fu without the extra 2 for self-draw. Any other hand that would have only 20 receives a minimum of 30."
 msgstr ""
 
-#: games/mahjong_support/fan_announcements.rb:35
+#: games/mahjong_support/fan_announcements.rb:32
 msgid "Round wind pung or kong: %{tile}"
 msgstr "Pung o kong del viento de la ronda: %{tile}"
 
-#: games/mahjong_support/information_shortcuts.rb:55
+#: games/mahjong_support/information_shortcuts.rb:56
 msgid "Round wind: %{wind}."
 msgstr "Viento de ronda: %{wind}."
 
@@ -24077,11 +24113,11 @@ msgstr ""
 msgid "The grant is no longer current. New consent and entry are blocked."
 msgstr ""
 
-#: games/mahjong_support/information_shortcuts.rb:61 games/mahjong_support/table_presentation.rb:18
+#: games/mahjong_support/information_shortcuts.rb:62 games/mahjong_support/table_presentation.rb:20
 msgid "The hand ended in a draw."
 msgstr "La mano terminó en empate."
 
-#: games/mahjong_support/information_shortcuts.rb:119
+#: games/mahjong_support/information_shortcuts.rb:120
 msgid "The hand has ended."
 msgstr "La mano ha terminado."
 
@@ -26273,7 +26309,7 @@ msgstr "Selección de ficha cancelada."
 msgid "Tiles and sets"
 msgstr ""
 
-#: games/mahjong_support/table_presentation.rb:82
+#: games/mahjong_support/table_presentation.rb:86
 msgid "Tiles available to discard: choose with arrows and press Enter"
 msgstr "Fichas que puedes descartar: elige con las flechas y pulsa Intro"
 
@@ -26281,7 +26317,7 @@ msgstr "Fichas que puedes descartar: elige con las flechas y pulsa Intro"
 msgid "Tiles in the layout"
 msgstr "Fichas del tablero"
 
-#: games/mahjong.rb:167 games/mahjong_support/table_presentation.rb:169
+#: games/mahjong.rb:167 games/mahjong_support/table_presentation.rb:173
 msgid "Tiles left: %{count}."
 msgstr "Fichas restantes: %{count}."
 
@@ -27745,11 +27781,11 @@ msgstr "Esperando las respuestas de: %{players}."
 msgid "Waiting for both players to accept the match"
 msgstr "Esperando la aceptación de ambos jugadores"
 
-#: games/mahjong_support/table_presentation.rb:21
+#: games/mahjong_support/table_presentation.rb:23
 msgid "Waiting for claims on %{tile}."
 msgstr "Esperando reclamaciones de la ficha: %{tile}."
 
-#: games/mahjong_support/table_presentation.rb:21
+#: games/mahjong_support/table_presentation.rb:23
 msgid "Waiting for claims on a kong: %{tile}."
 msgstr "Esperando reclamaciones sobre el kong: %{tile}."
 
@@ -27777,7 +27813,7 @@ msgstr "Esperando a que los jugadores muestren sus cartas."
 msgid "Waiting for players."
 msgstr "Esperando a los jugadores."
 
-#: games/mahjong_support/information_shortcuts.rb:63
+#: games/mahjong_support/information_shortcuts.rb:64
 msgid "Waiting for responses from: %{players}."
 msgstr "Esperando respuestas de: %{players}."
 
@@ -27865,7 +27901,7 @@ msgstr "Esperando tu turno."
 msgid "Waiting for: %{players}"
 msgstr "Esperando a: %{players}"
 
-#: games/mahjong.rb:167 games/mahjong_support/table_presentation.rb:169
+#: games/mahjong.rb:167 games/mahjong_support/table_presentation.rb:173
 msgid "Wall"
 msgstr "Muro"
 
@@ -28284,7 +28320,7 @@ msgstr "Ganador por incomparecencia"
 msgid "Winner: %{players}"
 msgstr "Ganador: %{players}"
 
-#: games/mahjong_support/information_shortcuts.rb:61 games/mahjong_support/table_presentation.rb:18
+#: games/mahjong_support/information_shortcuts.rb:62 games/mahjong_support/table_presentation.rb:20
 msgid "Winner: %{player}"
 msgstr "Ganador: %{player}"
 
@@ -28303,7 +28339,7 @@ msgstr ""
 msgid "Winning die"
 msgstr "Dado ganador"
 
-#: games/mahjong_support/table_presentation.rb:42
+#: games/mahjong_support/table_presentation.rb:44
 msgid "Winning hand"
 msgstr "Mano ganadora"
 
@@ -29300,7 +29336,7 @@ msgstr "Tu puja:"
 msgid "Your availability changed in another client. Enable it again if you want to participate."
 msgstr ""
 
-#: games/mahjong_support/fan_announcements.rb:36
+#: games/mahjong_support/fan_announcements.rb:33
 msgid "Your bonus tile: %{tile}"
 msgstr "Tu ficha de bonificación: %{tile}"
 
@@ -29360,7 +29396,7 @@ msgstr ""
 msgid "Your dictionary is empty."
 msgstr "Tu diccionario está vacío."
 
-#: games/mahjong_support/information_shortcuts.rb:108
+#: games/mahjong_support/information_shortcuts.rb:109
 msgid "Your dora: %{count}."
 msgstr "Tus dora: %{count}."
 
@@ -29590,7 +29626,7 @@ msgstr "Tus fichas: %{chips}."
 msgid "Your task is to guess a Polish noun. After each attempt, Krowa tells you how many letters occupy the correct positions, but does not identify them. If the secret is kot and you enter sok, you receive 1 of 3: only the middle letter matches. A letter in a different position gives no credit. Use several such clues to narrow down the word."
 msgstr ""
 
-#: games/mahjong_support/table_presentation.rb:73 games/mahjong_support/table_presentation.rb:82 games/tile_game.rb:139
+#: games/mahjong_support/table_presentation.rb:77 games/mahjong_support/table_presentation.rb:86 games/tile_game.rb:139
 msgid "Your tiles"
 msgstr "Tus fichas"
 
@@ -29621,11 +29657,11 @@ msgstr ""
 msgid "Your waters. %{left} of %{total} squares afloat."
 msgstr "Tus aguas. %{left} de %{total} casillas a flote."
 
-#: games/mahjong_support/fan_announcements.rb:34
+#: games/mahjong_support/fan_announcements.rb:31
 msgid "Your wind pung or kong: %{tile}"
 msgstr "Pung o kong de tu viento: %{tile}"
 
-#: games/mahjong_support/information_shortcuts.rb:58
+#: games/mahjong_support/information_shortcuts.rb:59
 msgid "Your wind: %{wind}."
 msgstr "Tu viento: %{wind}."
 
@@ -30289,7 +30325,7 @@ msgstr "superar 99"
 msgid "exchange tiles"
 msgstr "intercambiar fichas"
 
-#: games/mahjong_support/fan_announcements.rb:13 games/mahjong_support/fan_announcements.rb:19
+#: games/mahjong_support/fan_announcements.rb:13 games/mahjong_support/score_breakdown.rb:35 games/mahjong_support/score_breakdown.rb:38
 msgid "fan"
 msgstr "fan"
 
@@ -30395,7 +30431,7 @@ msgstr "grupo verde"
 msgid "guessed"
 msgstr "adivinada"
 
-#: games/mahjong_support/fan_announcements.rb:13
+#: games/mahjong_support/fan_announcements.rb:13 games/mahjong_support/score_breakdown.rb:38
 msgid "han"
 msgstr "han"
 
@@ -31787,6 +31823,10 @@ msgstr "escribir en vertical"
 #: games/categories.rb:471
 msgid "writing"
 msgstr "escribiendo"
+
+#: games/mahjong_support/score_breakdown.rb:38
+msgid "yakuman"
+msgstr "yakuman"
 
 #: games/ludo.rb:334 games/uno.rb:23
 msgid "yellow"
