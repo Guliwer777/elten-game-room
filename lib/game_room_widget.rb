@@ -15,7 +15,7 @@ module GameRoomWidget
     include GameRoomUI::PingControl
     attr_reader :snapshots
 
-    def initialize(loader:, opener:, labeler:, id_for:, active: -> { true }, clock: -> { Process.clock_gettime(Process::CLOCK_MONOTONIC) }, worker: nil, foreground: nil, manual_refresh: -> {}, creator: nil, invitations: nil, program: nil, on_visit: nil, roster: nil, table_options: nil, game_for: nil, description: nil, presets: -> { [] },tournaments:nil)
+    def initialize(loader:, opener:, labeler:, id_for:, active: -> { true }, clock: -> { Process.clock_gettime(Process::CLOCK_MONOTONIC) }, worker: nil, foreground: nil, manual_refresh: -> {}, creator: nil, invitations: nil, program: nil, on_visit: nil, roster: nil, table_options: nil, game_for: nil, description: nil, presets: -> { [] },tournaments:nil,tournament_browser:nil)
       @game_room_program = program
       @on_visit = on_visit
       @loader = loader
@@ -29,6 +29,7 @@ module GameRoomWidget
       @presets = presets
       @invitations = invitations
       @tournaments=tournaments
+      @tournament_browser=tournament_browser
       @description = description
       @foreground = foreground || ->(&operation) { operation.call }
       @load_mutex = Mutex.new
@@ -61,7 +62,7 @@ module GameRoomWidget
         on(:move) { @options_reader.invalidate }
         on(:blur) { @options_reader.invalidate }
       end
-      bind_widget_actions if @creator || @invitations || @roster_reader || @options_reader || @description || @tournaments
+      bind_widget_actions if @creator || @invitations || @roster_reader || @options_reader || @description || @tournaments || @tournament_browser
     end
 
     def focus(*arguments)
@@ -89,6 +90,11 @@ module GameRoomWidget
         if @tournaments && keyboard_binding_pressed?([0x54,:control,:shift],first:true)
           GameRoomTablePresets.consume_key(self)
           open_my_tournaments
+          return
+        end
+        if @tournament_browser && GameRoomTablePresets.pressed?(self, 't', :control)
+          GameRoomTablePresets.consume_key(self)
+          open_tournament_browser
           return
         end
         if @description && GameRoomTablePresets.pressed?(self, 'o', :control)
@@ -188,11 +194,13 @@ module GameRoomWidget
         end
         menu.option(GameRoomContent.utf8(_("Accept invitation")), nil, "j") { accept_invitation } if @invitations
         menu.option(GameRoomContent.utf8(_("My tournaments")),nil,"T"){open_my_tournaments} if @tournaments
+        menu.option(GameRoomContent.utf8(_("Tournaments")),nil,"t"){open_tournament_browser} if @tournament_browser
       end
       tips = (@creator ? creation_actions : []).map { |_key, slot, label| GameRoomContextHelp.shortcut_tip(slot == nil ? 'Ctrl+N' : GameRoomTablePresets.shortcut(slot), label) }
       tips.unshift(GameRoomContextHelp.shortcut_tip('Ctrl+O', _("Game description"))) if @description
       tips.unshift(GameRoomContextHelp.shortcut_tip('Ctrl+J', _("Accept invitation"))) if @invitations
       tips.unshift(GameRoomContextHelp.shortcut_tip('Ctrl+Shift+T',_("My tournaments"))) if @tournaments
+      tips.unshift(GameRoomContextHelp.shortcut_tip('Ctrl+T',_("Tournaments"))) if @tournament_browser
       tips.unshift(GameRoomContextHelp.shortcut_tip('Ctrl+W', _("Read the table participants"))) if @roster_reader
       tips.unshift(GameRoomContextHelp.shortcut_tip('Ctrl+R', _("Read the table variant and settings"))) if @options_reader
       tips << GameRoomContent.utf8(_("Ctrl+F4: read HTTP ping and available Communications relay or P2P ping.")) if @game_room_program
@@ -213,6 +221,16 @@ module GameRoomWidget
       @creating=true
       begin
         @tournaments.call
+      ensure
+        @creating=false
+      end
+    end
+
+    def open_tournament_browser
+      return unless @tournament_browser && active? && !@creating && !@entry_refresh
+      @creating=true
+      begin
+        @tournament_browser.call
       ensure
         @creating=false
       end

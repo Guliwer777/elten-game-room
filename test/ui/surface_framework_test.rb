@@ -37,11 +37,13 @@ layout = GameRoomLayout::Screen.new(
   users_header: "Users at the table (2)"
 )
 assert(layout_spec.sections == [:status, :game, :chat, :history, :users], "the shared game layout has the wrong section order")
-assert(layout.shortcut_fields.length == 3, "the shared game layout did not expose all non-chat content fields")
+assert(layout.shortcut_fields == [*layout.surface.fields, layout.history, layout.users, layout.voice_button],
+  "the shared game layout did not expose all non-chat content fields")
 assert(layout.form.controls[0] == layout.surface.fields[0], "the game field is not first in the shared layout")
 assert(layout.form.controls[1] == layout.chat, "chat is not directly after the game")
 assert(layout.form.controls[2] == layout.history, "history is not directly after chat")
 assert(layout.form.controls[3] == layout.users, "users are not last")
+assert(layout.form.controls[4] == layout.voice_button, "the table Conference action is missing after users")
 assert(layout.form.hidden_controls == [layout.back_button], "the back action became a visible tab stop")
 assert(layout.form.controls.none? { |control| control.is_a?(Button) && control.label == "Game rules" }, "rules remained a visible tab stop")
 layout.form.instance_variable_set(:@updated, true)
@@ -961,7 +963,7 @@ empty_view = GameRoomLayout::ViewSpec.new
 room_layout = GameRoomLayout::Screen.new(
   view_spec: empty_view, user_items: room_rows, phase: :waiting, own_table: true
 )
-assert(room_layout.form.fields == [room_layout.primary_button, room_layout.chat, room_layout.history, room_layout.users, room_layout.back_button], "waiting room order or optional board is wrong")
+assert(room_layout.form.fields == [room_layout.primary_button, room_layout.chat, room_layout.history, room_layout.users, room_layout.voice_button, room_layout.back_button], "waiting room order or optional board is wrong")
 assert(room_layout.form.fields[room_layout.form.index] == room_layout.primary_button, "entering an owned room did not focus Start game")
 room_layout.users.index = 2
 room_layout.chat.text = "unfinished message"
@@ -980,7 +982,7 @@ assert(original_controls == [room_layout.form, room_layout.users, room_layout.ch
 assert([room_layout.chat.text, room_layout.chat.index, room_layout.chat.check] == ["unfinished message", 7, 3], "starting a game lost the chat draft or caret")
 assert(!room_layout.form.fields.include?(room_layout.primary_button) && !room_layout.form.fields.include?(room_layout.restart_button), "active game exposed start/restart")
 room_layout.update(view_spec: layout_spec, history_items: ["finished"], user_items: room_rows, users_header: "Players", phase: :finished, own_table: true)
-assert(room_layout.form.fields == [room_layout.restart_button, room_layout.surface.fields.first, room_layout.chat, room_layout.history, room_layout.users, room_layout.back_button], "finished game order is wrong")
+assert(room_layout.form.fields == [room_layout.restart_button, room_layout.surface.fields.first, room_layout.chat, room_layout.history, room_layout.users, room_layout.voice_button, room_layout.back_button], "finished game order is wrong")
 assert(room_layout.focus_location == [:chat, 0], "ending a game interrupted chat")
 room_layout.form.index = room_layout.form.fields.index(room_layout.restart_button)
 room_layout.form.index += 1
@@ -994,7 +996,7 @@ room_layout.update(view_spec: empty_view, history_items: [], user_items: room_ro
 assert(room_layout.form.fields.first == room_layout.waiting_status, "a guest did not receive the waiting status")
 assert(room_layout.waiting_status.options == ["Waiting for the game to start"], "the initial waiting status is wrong")
 room_layout.update(view_spec: layout_spec, history_items: [], user_items: room_rows, users_header: "Players", phase: :finished, own_table: false)
-assert(room_layout.form.fields == [room_layout.waiting_status, room_layout.surface.fields.first, room_layout.chat, room_layout.history, room_layout.users, room_layout.back_button], "guest final-position controls are wrong")
+assert(room_layout.form.fields == [room_layout.waiting_status, room_layout.surface.fields.first, room_layout.chat, room_layout.history, room_layout.users, room_layout.voice_button, room_layout.back_button], "guest final-position controls are wrong")
 assert(room_layout.waiting_status.options == ["Waiting for a new game to start"], "the finished waiting status is wrong")
 
 calls = []

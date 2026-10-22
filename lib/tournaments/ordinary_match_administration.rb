@@ -36,10 +36,14 @@ module GameRoomTournaments
       game = @registry.build(binding['game_id'])
       replay = game.replay(snapshot.session, snapshot.events, @games)
       unless snapshot.session['__id'] == binding['session_id'] && snapshot.session['table_id'] == binding['table']['__id'] &&
-          snapshot.session['game'] == binding['game_id'] && GameResult.valid_replay_history?(replay, snapshot.events) &&
+          snapshot.session['game'] == binding['game_id'] &&
           replay.players.map { |name| Data.account(name).downcase }.sort == binding['players'].map { |p| p['account'] }.sort
         raise OrdinaryMatchService::Blocked, :wrong_bound_session
       end
+      # An invalid private reveal makes this game's history unavailable for
+      # settlement, not a different native session. Keep the binding guard
+      # distinct so the result view can report the unavailable match safely.
+      raise OrdinaryMatchService::Blocked, :game_state_unavailable unless GameResult.valid_replay_history?(replay, snapshot.events)
       unless replay.finished? || snapshot.session['__aborted'] || GameRoomTournamentPresence.ended?(snapshot.session)
         raise OrdinaryMatchService::Blocked, :match_in_progress
       end

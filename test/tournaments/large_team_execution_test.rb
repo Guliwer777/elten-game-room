@@ -52,7 +52,8 @@ with_fixture(game: 'taboo', names: names, players_per_match: size * 2, rematch: 
     progress = execution.progress
     assert_equal('completed', progress['knockout_state'])
     assert_equal([2, 0], progress['standings'].map { |unit| unit['points'] }.sort.reverse)
-    assert_equal([size, 0], progress['standings'].map { |unit| unit['score_for'] }.sort.reverse)
+    assert(progress['standings'].all? { |unit| unit.values_at('score_for', 'score_against') == [nil, nil] },
+      'Taboo exported unsupported small points')
   end
   probe = File.expand_path('../support/tournament_large_team_finish_probe.rb', __dir__)
   assert(system(RbConfig.ruby, probe, fixture.directory, size.to_s), 'The actual larger-team game must survive restart')

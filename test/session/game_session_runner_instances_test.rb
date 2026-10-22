@@ -2,7 +2,7 @@ require_relative "../support/session_runner"
 
 # An old covered window must not play past a newer visible window's serial
 # presentation. This failed with independent per-screen background executors.
-h = NativeRoomHarness.new(game: GameRoomGames::TicTacToe.new, users: ['Alice'], bots: 1)
+h = NativeRoomHarness.new(game: GameRoomGames::TicTacToe.new, users: ['Alice'], bots: 1, options: {'bot_delay' => 0})
 h.start
 old_covered, new_covered = true, false
 old = runner_for(h, covered: -> { old_covered })

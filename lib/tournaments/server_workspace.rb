@@ -69,6 +69,18 @@ module GameRoomTournaments
       end
     end
 
+    def invite_to_tournament(id, recipient, intent)
+      membership_change(id, input: [id, recipient, intent]) do |copy|
+        @service.invite(tournament_id: copy[0], recipient: copy[1], intent_id: copy[2])
+      end
+    end
+
+    def decline_tournament_invitation(id, key, intent)
+      membership_change(id, input: [id, key, intent]) do |copy|
+        @service.decline_invitation(tournament_id: copy[0], invitation_key: copy[1], intent_id: copy[2])
+      end
+    end
+
     private def retained_directory(directory, progress: false)
       now=@clock.call
       model=directory.fetch(:model)

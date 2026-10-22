@@ -9,7 +9,9 @@ module GameRoomTest
     # The race starts through its host executor, not a player's legal action.
     # Capture that public protocol explicitly instead of an empty simulation.
     def capture(legacy: false)
-      h = DuckGameAdapterTest::Harness.new(kind: 'dice_duel', count: 3)
+      # Both immutable corpora predate the one-second default. Their options
+      # remain explicit historical inputs, just like their recorded actions.
+      h = DuckGameAdapterTest::Harness.new(kind: 'dice_duel', count: 3, options: {'bot_delay' => 0})
       random = Random.new(137)
       original_hex = SecureRandom.method(:hex)
       SecureRandom.define_singleton_method(:hex) { |n = 16| Array.new(n) { random.rand(256).to_s(16).rjust(2, '0') }.join }

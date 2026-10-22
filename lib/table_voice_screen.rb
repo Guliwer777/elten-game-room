@@ -12,7 +12,14 @@ class GameRoomTableVoiceScreen
   def run
     current=network { @transport.table_voice(@table,force:true) }
     return unless current && same_account?
-    return join(current) if current['status']=='ready'
+    previous=@table['voice']
+    if GameRoomTableVoice.connected?(previous,@conference) && previous['head']!=current['head']
+      return disconnect_native(previous)
+    end
+    if current['status']=='ready'
+      leaving = GameRoomParticipants.same?(@actor,current['creator']) || GameRoomTableVoice.connected?(current,@conference)
+      return leaving ? disconnect(current) : join(current)
+    end
     values=Creation.new(program:@program,table_name:@table['name']).run
     return unless values && same_account? && switch_allowed?
     claimed=network { @transport.change_table_voice(@table,{'operation'=>'claim','previous'=>current['head']},actor:@actor) }
@@ -23,6 +30,16 @@ class GameRoomTableVoiceScreen
       return
     end
     claim=claimed.fetch(:voice)
+    # Clear the previous native membership before allocating a temporary
+    # channel. Native create already joins its creator; joining a second time
+    # can discard the channel while its asynchronous local view is still old.
+    if @conference.opened? && !@conference.leave
+      network { @transport.change_table_voice(@table,{'operation'=>'clear','previous'=>claim['head']},actor:@actor) }
+      alert(_("The voice channel could not be created."))
+      return
+    end
+    observed=nil
+    conference_hook=@conference.on(:update) { observed=@conference.channel }
     channel=@conference.create(values[:name],values[:public],64,60,1,0,false,false,values[:password])
     unless channel.is_a?(Integer) && channel.positive?
       network { @transport.change_table_voice(@table,{'operation'=>'clear','previous'=>claim['head']},actor:@actor) }
@@ -30,10 +47,12 @@ class GameRoomTableVoiceScreen
       return
     end
     return unless same_account?
-    # An empty, nonpermanent native channel may disappear, and the native
-    # server may refuse its creator's join. Do not announce a usable table
-    # invitation before that join has actually been accepted.
-    unless @conference.join(channel,values[:password])
+    # Confirm a new native update, not an old cached channel with a reused ID.
+    # The existing native update loop owns I/O; this wait only observes it.
+    ready=-> { observed && observed.id==channel && observed.name==values[:name] &&
+      observed.users.any? { |person|GameRoomParticipants.same?(person.name,@actor) } }
+    unless AwaitConnection.new(program:@program,ready:ready,current:method(:same_account?)).run
+      return unless same_account?
       network { @transport.change_table_voice(@table,{'operation'=>'clear','previous'=>claim['head']},actor:@actor) }
       JoinFailed.new(program:@program,can_reset:false).run if same_account?
       return
@@ -55,6 +74,8 @@ class GameRoomTableVoiceScreen
   rescue StandardError => error
     raise unless GameRoomNetworkErrors.expected?(error) || GameRoomNetworkErrors.cancelled?(error)
     alert(_("The voice conversation is temporarily unavailable."))
+  ensure
+    @conference.remove_hook(conference_hook) if conference_hook
   end
 
   private
@@ -71,6 +92,20 @@ class GameRoomTableVoiceScreen
     return true unless channel && channel.id.to_i.positive? && channel.id != target
     @program.send(:confirm,_("Leave your current conference and join this conversation?"))
   end
+  def disconnect(voice)
+    return false unless disconnect_native(voice)
+    return unless same_account?
+    return true unless GameRoomParticipants.same?(@actor,voice['creator'])
+    cleared=network { @transport.change_table_voice(@table,{'operation'=>'clear','previous'=>voice['head']},actor:@actor) }
+    cleared && cleared[:accepted]
+  end
+  def disconnect_native(voice)
+    if GameRoomTableVoice.connected?(voice,@conference) && !@conference.leave
+      alert(_("The voice conversation could not be disconnected."))
+      return false
+    end
+    true
+  end
   def join(voice,confirmed:false)
     return unless voice && voice['status']=='ready' && same_account?
     return unless confirmed || switch_allowed?(voice['channel_id'])
@@ -83,6 +118,31 @@ class GameRoomTableVoiceScreen
       end
     end
     success
+  end
+
+  class AwaitConnection < GameRoomTournaments::Dialogs::Window
+    using GameRoomLocalization::Translations
+    def initialize(program:,ready:,current:)
+      @program,@ready,@current=program,ready,current
+    end
+    def run
+      return true if @current.call && @ready.call
+      super
+    ensure
+      @form.delete_timer(@deadline) if @form && @deadline
+    end
+    private
+    def build_form
+      status=readonly(_("Voice conversation"),_("Connecting to the voice conversation..."))
+      back=button(_("Back"))
+      make_form([status,back],cancel:back)
+      @form.hub_update=-> do
+        finish(false) unless @current.call
+        finish(true) if !@finished && @ready.call
+      end
+      @deadline=FormTimer.new(5) { finish(false) }
+      @form.add_timer(@deadline)
+    end
   end
 
   class JoinFailed < GameRoomTournaments::Dialogs::Window

@@ -142,8 +142,9 @@ and the tests for the relevant surface and game.
 ## Tournament shortcuts and context menus
 
 Only the main lobby opts into `game_room_tournament_shortcut_enabled`.
-Ctrl+Shift+T and its menu/help entry must not appear in game, tournament or
-settings forms. The widget keeps its own single-instance launch callback.
+Ctrl+T opens the tournament browser; Ctrl+Shift+T keeps the My tournaments
+scope even when no matching row exists. Neither shortcut's menu/help entry appears in game, tournament or
+settings forms. The widget keeps its own single-instance launch callbacks.
 The form handles the key before updating the focused control; at this point
 ELTEN has already cleared `$activecontrols` for the new frame, so that list
 cannot be used to decide whether to dispatch this shortcut.

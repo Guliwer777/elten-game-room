@@ -5,6 +5,7 @@ game = GameRoomGames::Domino.new
   $rules_english = english
   GameRoomTestLocalization.use_language(english ? :en : :pl)
   defaults = game.default_options
+  raise "Default bot delay is not one second" unless defaults.fetch('bot_delay') == 1
   GameRoomGames::Domino::SETS.each_key do |key|
     definition = game.effective_option_definitions.find { |d| d.key == "tile_set" }
     label = definition.choices.find { |c| c.value == key }.label
@@ -13,7 +14,7 @@ game = GameRoomGames::Domino.new
     text = game.table_options_announcement(defaults.merge("tile_set" => key))
     raise "Choice and announcement disagree" unless text.include?(label)
   end
-  text = game.table_options_announcement(defaults)
+  text = game.table_options_announcement(defaults.merge('bot_delay' => 0))
   raise "Double separators" if text.include?(". .")
   raise "Disabled timers announced" if text.match?(/Thinking time|Czas na ruch|Bot move delay|Opóźnienie bota/)
   text = game.table_options_announcement(defaults.merge("thinking_time" => 20, "bot_delay" => 2))

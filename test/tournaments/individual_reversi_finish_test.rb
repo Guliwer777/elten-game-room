@@ -40,13 +40,9 @@ with_fixture(game: 'reversi', names: %w[Alpha Beta], rematch: false) do |fixture
     assert_equal(:confirmed, effect[:state], effect.inspect)
     summary = effect[:effect]['summary']
     assert(summary['draw'] || summary['winners'].size == 1)
-    assert_equal(people.map { |person| person['account'] }.sort, summary['scores'].keys.sort)
-    assert(summary['scores'].values.sum.between?(4, 64))
-    if summary['draw']
-      assert_equal(1, summary['scores'].values.uniq.size)
-    else
-      assert_equal(summary['scores'].values.max, summary['scores'].fetch(summary['winners'].first))
-    end
+    assert_equal(nil, summary['scores'], 'Reversi exported unsupported tournament small points')
+    assert_equal(people.map { |person| person['account'] }.sort, summary.fetch('participants').sort)
+    assert(summary['winners'].all? { |name| summary.fetch('participants').include?(name) }, 'Winner is outside the completed game')
     winner_seats = people.each_index.select { |seat| summary['winners'].include?(people[seat]['account']) }.join(',')
     assert_equal(true, execution.progress['complete'])
   end

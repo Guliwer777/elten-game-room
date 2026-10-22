@@ -2,6 +2,7 @@ require_relative '../support/tournament_forfeit_native'
 T = GameRoomTournaments
 
 TournamentForfeitNative.with_fixture do |fixture|
+  stale_forfeit = fixture.preview(loser: 'alice')
   fixture.start
   h = fixture.h
   alice, bob = fixture.services.values_at('Alice', 'Bob')
@@ -27,8 +28,8 @@ TournamentForfeitNative.with_fixture do |fixture|
   h.broker.deliver
   assert_equal(2, h.events('Alice').size)
   assert_equal(1, h.replay('Alice').accepted_events.size)
-  stale_forfeit = fixture.preview(loser: 'alice')
-  assert_equal(2, stale_forfeit.fetch('cancelled_game').fetch('event_count'))
+  error = assert_raises(T::OrdinaryMatchService::Blocked) { fixture.preview(loser: 'alice') }
+  assert_equal(:match_in_progress, error.code, 'An active game allowed a new manual cutoff')
 
   12.times do
     replay = h.replay('Alice')

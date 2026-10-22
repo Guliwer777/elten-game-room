@@ -479,6 +479,14 @@ include recording license information, but the mapping between original
 names and these six renamed files has not been unambiguously confirmed.
 No single common license is assigned to them on that basis.
 
+### Table conference notification
+
+`Audio/conference_created.opus` uses [Message Notification 3](https://freesound.org/s/740422/)
+by **AnthonyRox**, released under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+The user supplied the Freesound `preview-hq-ogg` recording and its license notice.
+On 21 October 2026 it was converted to Opus 144 kb/s VBR, 48 kHz,
+20 ms frames, preserving channels, level and the full recording.
+
 ### Krowa — dictionary and recordings
 
 Krowa was supplied by **paulinux** in PR #10 from the GitHub account

@@ -74,7 +74,8 @@ assert(GameRoomGames::KrowaProfile.new(run.program, user: "Bob").data["dictionar
 program = KrowaAudioProgram.new
 audio = GameRoomAudio.new(program, game_id: "krowa")
 audio.update("krowa-single"); audio.play("krowa-success")
-assert(program.sounds.empty? && program.effects.empty?, "optional audio default on")
+assert(program.sounds.empty? && program.effects.length == 1, "Krowa defaults must enable effects but not music")
+assert((program.effects.first[1][:volume] - 0.7).abs < 0.00001, "default effect volume changed")
 audio.save("music" => true, "effects" => true, "music_volume" => 40, "effects_volume" => 70)
 program.level = 0.2
 audio.update("krowa-single"); audio.play("krowa-success")
@@ -82,9 +83,13 @@ assert((program.sounds.last.volume - 0.08).abs < 0.00001, "music ignores shared 
 assert((program.effects.last[1][:volume] - 0.14).abs < 0.00001, "effect ignores shared volume")
 program.enabled = false
 audio.update("krowa-single"); audio.play("krowa-success")
-assert(program.sounds.last.closed && program.effects.length == 1, "shared mute ignored")
+assert(program.sounds.last.closed && program.effects.length == 2, "shared mute ignored")
 program.enabled = true; program.level = 0
 audio.update("krowa-single"); audio.play("krowa-success")
-assert(program.effects.length == 1, "zero volume still plays")
+assert(program.effects.length == 2, "zero volume still plays")
+program.level = 1.0
+audio.save("effects" => false)
+audio.play("krowa-success")
+assert(program.effects.length == 2, "explicitly disabled Krowa effects still play")
 audio.close
 puts "Krowa: daily account claim/date, partial ranking/retry/pagination, dictionary removal, shared audio controls OK"

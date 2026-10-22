@@ -1,6 +1,7 @@
 # encoding: UTF-8
 require_relative 'publication'
 require_relative 'local_registration_time'
+require_relative 'registration_invitations'
 
 module GameRoomTournaments
   # Projekcja dopisywanych join. Nie wykonuje sieci ani nie wymaga organizatora online.
@@ -72,7 +73,7 @@ module GameRoomTournaments
       operations, accepted = reduce_groups(groups, diagnostics)
       # Retention uses authenticated accepted operations, not arbitrary writes
       # or the time at which somebody happens to open a tournament.
-      @activity = accepted.group_by { |row| [row['canonical_tournament_id'], row['__insertion_user'].downcase, row['operation_key']] }.
+      @activity = accepted.reject { |row| %w[invitation invite_declined].include?(row['kind']) }.group_by { |row| [row['canonical_tournament_id'], row['__insertion_user'].downcase, row['operation_key']] }.
         values.map { |rows| rows.min_by { |row| row['__id'] } }.group_by { |row| row['canonical_tournament_id'] }
       Data.freeze_tree(@activity)
       Data.freeze_tree(@versions)
@@ -81,6 +82,8 @@ module GameRoomTournaments
         'members' => members(accepted), 'operations' => operations,
         'diagnostics' => { 'announcements' => publications['diagnostics'],
           'registrations' => diagnostics.uniq.sort_by { |item| JSON.generate(item) } } }
+      invitations = RegistrationInvitations.project(accepted)
+      data['invitations'] = invitations unless invitations.empty?
       @applied_pairings = {}
       unless @pairing_ids.empty?
         @pair_requests=[]
@@ -145,7 +148,7 @@ module GameRoomTournaments
     def with_retained_announcements(rows)
       ids = rows.to_h { |row| [row.fetch('__id'), true] }
       data = @data.merge('announcements' => rows)
-      %w[members pairs pair_requests].each do |key|
+      %w[members pairs pair_requests invitations].each do |key|
         data[key] = data[key].select { |row| ids[row['tournament_id']] } if data[key]
       end
       copy = dup
@@ -157,10 +160,16 @@ module GameRoomTournaments
 
     def decode(row)
       metadata = Data.metadata(row)
-      raise Invalid, :unsupported_kind unless %w[join withdrawal removal pairing amendment cancellation].include?(row['kind'])
+      raise Invalid, :unsupported_kind unless %w[join withdrawal removal pairing amendment cancellation invitation invite_declined].include?(row['kind'])
       values = self.class.join_values(tournament_id: row['tournament_id'], operation_key: row['operation_key']).merge('kind' => row['kind'])
       tournament = @by_id[row['tournament_id']]
       raise Invalid, :unknown_tournament unless tournament
+      if %w[invitation invite_declined].include?(row['kind'])
+        values['account'] = Data.account(row['account'])
+        actor = metadata['__insertion_user'].downcase
+        allowed = row['kind'] == 'invitation' ? actor == tournament['__insertion_user'].downcase : actor == values['account'].downcase
+        raise Invalid, :not_invitation_author unless allowed
+      end
       if row['kind'] == 'removal'
         raise Invalid, :not_organizer unless metadata['__insertion_user'].downcase == tournament['__insertion_user'].downcase
         values['account'] = Data.account(row['account']).downcase
@@ -206,6 +215,8 @@ module GameRoomTournaments
           creator = row['__insertion_user'].downcase == tournament['__insertion_user'].downcase && time >= tournament['__insertion_time']
           if %w[amendment cancellation].include?(row['kind'])
             @applied_changes.include?(row['__id'])
+          elsif %w[invitation invite_declined].include?(row['kind'])
+            TournamentTiming.registration_open?(tournament,time) && !TournamentTiming.started?(tournament,time) && !cancelled_at?(row)
           elsif %w[withdrawal removal pairing].include?(row['kind'])
             (TournamentTiming.registration_open?(tournament,time) || creator || TournamentTiming.registration_closed?(tournament,time)) && !TournamentTiming.started?(tournament,time) && !cancelled_at?(row)
           else

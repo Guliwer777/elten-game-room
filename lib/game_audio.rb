@@ -2,7 +2,7 @@ require_relative 'game_sound_output'
 # Optional per-game audio, using the program's normal ELTEN output device.
 # This class owns streams, not game state or keyboard bindings.
 class GameRoomAudio
-  DEFAULTS = {"music" => false, "effects" => false, "music_volume" => 40, "effects_volume" => 70}.freeze
+  DEFAULTS = {"music" => false, "effects" => true, "music_volume" => 40, "effects_volume" => 70}.freeze
   attr_reader :settings
 
   def initialize(program, game_id:)

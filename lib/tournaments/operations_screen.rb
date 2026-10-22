@@ -138,6 +138,10 @@ module GameRoomTournaments
         text(_("Tournament edit: %{id}")) % {id: row['values']['tournament_id']}
       when 'cancellation'
         text(_("Tournament deletion: %{id}")) % {id: row['values']['tournament_id']}
+      when 'invitation'
+        text(_("Tournament invitation: %{player}, %{id}")) % {player: text(row['values']['account']), id: row['values']['tournament_id']}
+      when 'invite_declined'
+        text(_("Declined tournament invitation: %{id}")) % {id: row['values']['tournament_id']}
       when 'plan_document'
         kind=row['values']['document_json'] && StrictJson.parse(row['values']['document_json'],max_nesting:12)['kind']
         label=case kind

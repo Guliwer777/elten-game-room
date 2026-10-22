@@ -36,6 +36,7 @@
       "notice",
       "table_notice",
       "invitation_rejected",
+      "conference_created",
       "buzzer",
       "buzzer2",
       "quiz_wrong_answer",

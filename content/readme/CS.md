@@ -97,9 +97,9 @@ Enter v seznamu uživatelů otevře běžné uživatelské menu ELTENu. Odtud m�
 
 ### Hlasový hovor
 
-Tlačítkem „Hlasový hovor“ u stolu vytvoříte konferenční kanál ELTENu. Zadejte název, zvolte veřejný nebo skrytý kanál a případně heslo. Skrytý kanál není v běžném seznamu, ale samotné skrytí nenahrazuje ochranu heslem.
+Tlačítkem „Vytvořit hlasový hovor“ u stolu vytvoříte konferenční kanál ELTENu. Zadejte název, zvolte veřejný nebo skrytý kanál a případně heslo. Skrytý kanál není v běžném seznamu, ale samotné skrytí nenahrazuje ochranu heslem.
 
-Ostatní uslyší krátkou pozvánku a u stolu najdou „Připojit se k hovoru“. Během hry se samo neotevře žádné okno. Pokud už jste v jiné konferenci, přechod musíte potvrdit. Nastavení mikrofonu a push-to-talk se nemění.
+Ostatní uslyší krátkou pozvánku a u stolu najdou „Připojit se k hlasovému hovoru“. Po připojení se tlačítko změní na „Odpojit hlasový hovor“. Můžete konferenci opustit a později se znovu připojit. Když se odpojí tvůrce, zmizí i pozvánka u stolu; lidé, kteří se už připojili, mohou dál hovořit. Během hry se samo neotevře žádné okno. Pokud už jste v jiné konferenci, přechod musíte potvrdit. Nastavení mikrofonu a push-to-talk se nemění.
 
 ### Hostitel a správa botů a týmů
 
@@ -141,6 +141,8 @@ Seznam her v knihovně pravidel obsahuje i krátký popis každé hry.
 V textu pravidel přecházejí H a Shift+H mezi nadpisy, K a Shift+K mezi odkazy a Enter na odkazu v obsahu přesune kurzor do kapitoly.
 
 Některé hry mají i osobní nastavení pod Ctrl+P, dostupné z menu stolu. Patří mezi ně Axel Pong, Audio Ball a Krowa. Tato nastavení se týkají vašeho způsobu používání hry a jsou oddělena od společné varianty zvolené hostitelem.
+
+Ve hře Krowa jsou ve výchozím stavu zvukové efekty zapnuté a hudba vypnutá. Změnit to můžete v jejím osobním nastavení pod Ctrl+P.
 
 ## Widget a rychlé vytváření stolů
 
@@ -283,7 +285,7 @@ Následující přehled se týká společného ovládání programu. Příkazy k
 - F1 — nápověda k aktivnímu místu.
 - Ctrl+F1 — pravidla hry u stolu.
 - Ctrl+J — přijímání pozvánek v Power Games i ve widgetu.
-- Ctrl+Shift+T — rychlý přístup ke svým turnajům z hlavní nabídky nebo widgetu.
+- Ctrl+T — turnaje; Ctrl+Shift+T — pouze vaše turnaje. Obě zkratky fungují v hlavní nabídce i ve widgetu.
 - F2 — snížení hlasitosti vybrané skupiny zvuků.
 - F3 — zvýšení hlasitosti vybrané skupiny zvuků.
 - Shift+F2 — předchozí skupina zvuků.
@@ -345,7 +347,8 @@ U názvu najdete hru, počet účastníků a stav turnaje. K dispozici jsou tak�
 - Ctrl+N — vytvořit turnaj.
 - Ctrl+R — obnovit seznam turnajů.
 - Ctrl+O — otevřít turnaj; Ctrl+D — přihlásit se; Ctrl+M — zápasy; Ctrl+W — tabulka výsledků; Ctrl+E — správa; Ctrl+L — odhlásit se. Dostupné akce i zkratky najdete také v kontextové nabídce.
-- Ctrl+Shift+T — otevřít své aktuální turnaje z hlavní nabídky nebo widgetu. Pokud máte jen jeden, rovnou se otevře seznam jeho akcí.
+- Ctrl+T — otevřít turnaje z hlavní nabídky nebo widgetu.
+- Ctrl+Shift+T — otevřít seznam vlastních turnajů. Toto omezení zůstává i tehdy, když je seznam prázdný.
 - Ctrl+J — otevřít běžný seznam pozvánek, který obsahuje i pozvánky k turnajovým zápasům.
 
 F1 připomene ovládání aktuálního okna, Escape se vrátí zpět. Zavřením okna se z turnaje neodhlásíte.
@@ -361,6 +364,21 @@ Po otevření turnaje se rovnou zobrazí seznam akcí. Šipkami vyberte položku
 - „Spravovat turnaj“ — možnosti pořadatele. Ostatním účastníkům se tato položka nezobrazuje.
 
 Přihlášení, odhlášení a výběr spoluhráče se nabízejí tehdy, když je lze použít.
+
+### Seznam účastníků
+
+V položce „Účastníci“ najdete přihlášené hráče i jejich spoluhráče. Enter na osobě otevře běžnou nabídku uživatele ELTENu. Ctrl+R seznam obnoví.
+
+Pořadatel má v kontextové nabídce další akce:
+
+- Ctrl+I — pozvat osoby ze společného seznamu online uživatelů a kontaktů. Mezerník osoby označí, Enter odešle pozvánky všem označeným. Přihlášení a dříve pozvaní se nezobrazují.
+- Ctrl+P — vybrat nebo změnit spoluhráče označeného účastníka v turnaji dvojic, případně zvolit „Bez spoluhráče“. Změnu existujících dvojic je třeba potvrdit.
+- Delete — po potvrzení odebrat označeného účastníka.
+- Ctrl+L — zobrazit pozvané osoby se stavem „Čeká se“ nebo „Odmítnuto“. Tento seznam neslouží k opětovnému odesílání pozvánek.
+
+Zvát lze při otevřených přihláškách. Odebírat účastníky a měnit dvojice lze před zahájením turnaje.
+
+Novou pozvánku lze odmítnout v akcích turnaje. Platí, dokud jsou přihlášky otevřené, bez samostatné lhůty ve dnech. Stejnou osobu nelze pozvat znovu, ani po odmítnutí. Odmítnutí nebrání samostatnému přihlášení.
 
 ### Přihlášení a výběr spoluhráče
 
@@ -524,8 +542,6 @@ Do rozehrané partie se vrátíte přes seznam stolů, i mimo herní hodiny nebo
 Otevřete svůj turnaj a zvolte „Spravovat turnaj“. Před zahájením můžete:
 
 - upravit název, nastavení soutěže a termíny;
-- pozvat hráče přes „Pozvat do turnaje“, pokud jsou přihlášky otevřené a zbývají volná místa;
-- přes „Spravovat účastníky“ někoho odebrat nebo přiřadit spoluhráče v turnaji dvojic;
 - otevřít či uzavřít přihlášky;
 - zvolit „Zahájit turnaj“ místo čekání na naplánovaný start.
 

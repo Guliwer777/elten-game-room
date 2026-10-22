@@ -95,7 +95,16 @@ class DuckPresentationCacheTest
               value.history.clear
               value.state.dig(:race, :racers, 0, :hand)&.clear
               value.state.dig(:race, :random)&.rand
-              value.accepted_events.first&.fetch('value')&.replace('caller-only edit')
+              # Authenticated event records are sealed even in returned
+              # snapshots. Mutable presentation fields above remain detached.
+              wire_value = value.accepted_events.first&.fetch('value')
+              if wire_value
+                if wire_value.frozen?
+                  assert_raises(FrozenError) { wire_value.replace('caller-only edit') }
+                else
+                  wire_value.replace('caller-only edit')
+                end
+              end
             end
           end
           assert_equal(semantic(full), semantic(final))

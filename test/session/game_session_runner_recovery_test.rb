@@ -31,7 +31,7 @@ require_relative "../support/session_runner"
   runner.close
 end
 
-h = NativeRoomHarness.new(game: GameRoomGames::TicTacToe.new, users: ['Alice'], bots: 1)
+h = NativeRoomHarness.new(game: GameRoomGames::TicTacToe.new, users: ['Alice'], bots: 1, options: {'bot_delay' => 0})
 h.start
 r = runner_for(h)
 submit(h, r)

@@ -121,6 +121,7 @@ module GameRoomUI
       return if submenu && !contextinglobal_enabled?
       return unless game_room_invitation_context?
       menu.option(GameRoomContent.utf8(_("My tournaments")),nil,"T"){open_my_tournaments} if game_room_tournament_shortcut?
+      menu.option(GameRoomContent.utf8(_("Tournaments")),nil,"t"){open_tournaments} if game_room_tournament_shortcut? && @game_room_program.respond_to?(:show_tournaments,true)
       return if game_room_invitation_context_field && fields[index.to_i].equal?(game_room_invitation_context_field)
 
       append_game_room_invitation(menu)
@@ -161,6 +162,16 @@ module GameRoomUI
       clear_game_room_key
     end
 
+    def open_tournaments
+      return unless game_room_tournament_shortcut? && @game_room_program.respond_to?(:show_tournaments,true)
+      operation=game_room_pending_operation || @game_room_help_owner&.game_room_pending_operation
+      return operation.reject_action if operation
+      clear_game_room_key
+      @game_room_program.__send__(:show_tournaments)
+    ensure
+      clear_game_room_key
+    end
+
     def wait
       GameRoomUI.install_hotkeys
       @game_room_waiting = true
@@ -174,6 +185,9 @@ module GameRoomUI
       if game_room_tournament_shortcut? && game_room_hotkeys_active? && !game_room_background_help? &&
           keyboard_binding_pressed?([0x54,:control,:shift],first:true)
         open_my_tournaments
+      elsif game_room_tournament_shortcut? && game_room_hotkeys_active? && !game_room_background_help? &&
+          keyboard_binding_pressed?([0x54,:control],first:true)
+        open_tournaments
       end
       if game_room_hotkeys_active? && @game_room_program&.respond_to?(:switch_to_invited_table, true) &&
           main_shortcut_pressed?('j', first: true)
@@ -298,6 +312,7 @@ module GameRoomUI
         global_tips.unshift(GameRoomContextHelp.shortcut_tip('Ctrl+J', _("Accept invitation")))
       end
       global_tips.unshift(GameRoomContextHelp.shortcut_tip('Ctrl+Shift+T',_("My tournaments"))) if game_room_tournament_shortcut?
+      global_tips.unshift(GameRoomContextHelp.shortcut_tip('Ctrl+T',_("Tournaments"))) if game_room_tournament_shortcut?
       items = GameRoomContextHelp.clean_tips(tips + form_tips + history_tips + global_tips)
       items = [_("No shortcuts are available on this screen.")] if items.empty?
       @game_room_help_open = true

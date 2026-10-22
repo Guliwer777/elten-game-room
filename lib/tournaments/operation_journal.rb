@@ -36,7 +36,7 @@ module GameRoomTournaments
   # sprzętu na zanik zasilania. Awaria PO rename może oznaczać dokonany zapis:
   # trzeba odczytać stan, nigdy powtarzać wysyłki po niepewnym claim.
   class OperationJournal
-    TABLES = {'publication' => 'tournament_announcements', 'join' => 'tournament_registrations', 'withdrawal' => 'tournament_registrations', 'removal' => 'tournament_registrations', 'pairing' => 'tournament_registrations', 'amendment' => 'tournament_registrations', 'cancellation' => 'tournament_registrations', 'plan_document' => 'tournament_plan_documents'}.freeze
+    TABLES = {'publication' => 'tournament_announcements', 'join' => 'tournament_registrations', 'withdrawal' => 'tournament_registrations', 'removal' => 'tournament_registrations', 'pairing' => 'tournament_registrations', 'amendment' => 'tournament_registrations', 'cancellation' => 'tournament_registrations', 'plan_document' => 'tournament_plan_documents', 'invitation' => 'tournament_registrations', 'invite_declined' => 'tournament_registrations'}.freeze
     PUBLICATION_FIELDS = %w[publication_key schema_version title game rules settings_json schedule_json
       registration_opens_at registration_closes_at timezone].freeze
     MAX_INTEGER = (2**63) - 1
@@ -228,7 +228,7 @@ module GameRoomTournaments
         return
       end
       fields = kind == 'publication' ? PUBLICATION_FIELDS : %w[tournament_id operation_key kind]
-      fields += ['account'] if kind == 'removal'
+      fields += ['account'] if %w[removal invitation invite_declined].include?(kind)
       fields += %w[account partner pairing_generation] if kind == 'pairing'
       fields += ['publication_generation'] if %w[amendment cancellation].include?(kind)
       fields += ['amendment_json'] if kind == 'amendment'
@@ -241,6 +241,9 @@ module GameRoomTournaments
         end
         if kind == 'removal'
           raise Invalid, :invalid_values unless text?(values['account']) && values['account'] == values['account'].downcase
+        end
+        if %w[invitation invite_declined].include?(kind)
+          raise Invalid, :invalid_values unless owner?(values['account'])
         end
         if kind == 'pairing'
           unless owner?(values['account']) && values['account'] == values['account'].downcase &&

@@ -18,6 +18,24 @@ program = EltenGameRoom.allocate
 transport = Object.new
 program.instance_variable_set(:@transport, transport)
 table = {'__id'=>7, 'owner'=>'Alice', 'game'=>'four_in_a_row', 'status'=>'playing'}
+assert(GameRoomLayout.voice_button_label(table,viewer:'Alice')=='Create voice conversation',
+  'An empty table does not offer creation')
+voice_table=table.merge('voice'=>{'status'=>'ready','creator'=>'ALICE'})
+assert(GameRoomLayout.voice_button_label(voice_table,viewer:'Alice')=='Disconnect voice conversation',
+  'The creator does not get Disconnect')
+assert(GameRoomLayout.voice_button_label(voice_table,viewer:'Bob')=='Join voice conversation',
+  'Other members do not get Join')
+device=Struct.new(:channel).new(nil)
+device.define_singleton_method(:opened?) { !channel.nil? }
+local_voice=voice_table.merge('voice'=>voice_table['voice'].merge('channel_id'=>246,'name'=>'Native voice'))
+assert(GameRoomLayout.voice_button_label(local_voice,viewer:'Bob',conference:device)=='Join voice conversation',
+  'A disconnected guest was offered Disconnect')
+device.channel=Struct.new(:id,:name).new(246,'Native voice')
+assert(GameRoomLayout.voice_button_label(local_voice,viewer:'Bob',conference:device)=='Disconnect voice conversation',
+  'A connected guest was offered Join')
+device.channel=Struct.new(:id,:name).new(246,'Different channel with reused ID')
+assert(GameRoomLayout.voice_button_label(local_voice,viewer:'Bob',conference:device)=='Join voice conversation',
+  'An unrelated native channel was treated as this table conversation')
 calls = []
 factory = GameRoomTableVoiceScreen.method(:new)
 begin

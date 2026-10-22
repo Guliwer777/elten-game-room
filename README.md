@@ -138,9 +138,9 @@ lub do niej zadzwonić.
 
 ### Rozmowa głosowa
 
-Przycisk „Rozmowa głosowa” przy stole pozwala utworzyć kanał konferencji ELTEN-a. Wpisz nazwę, wybierz kanał publiczny lub ukryty i opcjonalnie ustaw hasło. Ukryty kanał nie pojawia się na zwykłej liście, ale sam ten wybór nie zastępuje hasła.
+Przycisk „Utwórz rozmowę głosową” przy stole pozwala utworzyć kanał konferencji ELTEN-a. Wpisz nazwę, wybierz kanał publiczny lub ukryty i opcjonalnie ustaw hasło. Ukryty kanał nie pojawia się na zwykłej liście, ale sam ten wybór nie zastępuje hasła.
 
-Pozostali usłyszą krótkie zaproszenie, a przy stole pojawi się „Dołącz do rozmowy”. Nic nie otwiera się samo w trakcie partii. Dołączenie do innej rozmowy wymaga potwierdzenia, jeśli jesteś już na konferencji. Twoje ustawienia mikrofonu i push-to-talk pozostają bez zmian.
+Pozostali usłyszą krótkie zaproszenie, a przy stole pojawi się „Dołącz do rozmowy głosowej”. Po dołączeniu przycisk zmienia się na „Rozłącz rozmowę głosową”. Możesz nim wyjść z konferencji i później dołączyć ponownie. Gdy rozłącza się twórca, usuwa też zaproszenie przy stole; osoby, które już dołączyły, mogą nadal rozmawiać. Nic nie otwiera się samo w trakcie partii. Dołączenie do innej rozmowy wymaga potwierdzenia, jeśli jesteś już na konferencji. Twoje ustawienia mikrofonu i push-to-talk pozostają bez zmian.
 
 ### Gospodarz, boty i drużyny
 
@@ -215,6 +215,8 @@ Niektóre gry mają także osobiste ustawienia pod Ctrl+P, dostępne z menu
 stołu. Dotyczy to między innymi Axel Ponga, Audio Balla i Krowy.
 Są to ustawienia Twojego sposobu korzystania z gry, odrębne od wspólnego
 wariantu wybranego przez gospodarza.
+
+Efekty dźwiękowe Krowy są domyślnie włączone, a muzyka wyłączona. Możesz to zmienić w jej ustawieniach pod Ctrl+P.
 
 ## Widget i szybkie tworzenie stołów
 
@@ -463,7 +465,7 @@ do wskazanej listy lub pola gry, nie do wpisywania wiadomości.
 - F1 — pomoc dla aktywnego miejsca.
 - Ctrl+F1 — zasady gry przy stole.
 - Ctrl+J — przyjmowanie zaproszeń w Power Games i w widgecie.
-- Ctrl+Shift+T — szybki dostęp do własnych turniejów z lobby i widgetu.
+- Ctrl+T — turnieje; Ctrl+Shift+T — tylko Twoje turnieje. Oba skróty działają w lobby i w widgecie.
 - F2 — zmniejszenie głośności wybranej grupy dźwięków.
 - F3 — zwiększenie głośności wybranej grupy dźwięków.
 - Shift+F2 — wybór poprzedniej grupy dźwięków.
@@ -525,7 +527,8 @@ Przy nazwie turnieju znajdziesz grę, liczbę uczestników i stan rozgrywek. Na 
 - Ctrl+N — utwórz turniej.
 - Ctrl+R — odśwież listę turniejów.
 - Ctrl+O — otwórz turniej; Ctrl+D — dołącz; Ctrl+M — mecze; Ctrl+W — tabela wyników; Ctrl+E — zarządzanie; Ctrl+L — wypisz się. Dostępne działania wraz ze skrótami znajdziesz również w menu kontekstowym.
-- Ctrl+Shift+T — otwórz swoje bieżące turnieje z lobby lub widgetu. Jeśli masz tylko jeden taki turniej, od razu otworzy się lista jego działań.
+- Ctrl+T — otwórz moduł turniejów z lobby lub widgetu.
+- Ctrl+Shift+T — otwórz listę własnych turniejów. Lista pozostaje ograniczona do Twoich turniejów także wtedy, gdy jest pusta.
 - Ctrl+J — otwórz zwykłą listę zaproszeń, również tych do meczów turniejowych.
 
 F1 przypomina obsługę bieżącego okna, a Escape wraca do poprzedniego. Samo zamknięcie okna nie wypisuje Cię z turnieju.
@@ -542,11 +545,26 @@ Po otwarciu turnieju od razu trafiasz na listę działań. Wybierz pozycję strz
 
 Opcje dołączenia, wypisania się i wyboru partnera pojawiają się wtedy, kiedy można z nich skorzystać.
 
+### Lista uczestników
+
+Wybierz „Uczestnicy”, aby przejrzeć zapisane osoby i ich partnerów. Enter na osobie otwiera zwykłe menu użytkownika ELTEN-a. Ctrl+R odświeża listę.
+
+Organizator ma w menu kontekstowym dodatkowe działania:
+
+- Ctrl+I — zaproś osoby z listy online i kontaktów. Spacją zaznaczasz osoby, a Enterem wysyłasz zaproszenia wszystkim zaznaczonym. Na liście nie ma już zapisanych ani wcześniej zaproszonych osób.
+- Ctrl+P — wybierz lub zmień partnera zaznaczonego uczestnika w turnieju par. Możesz też wybrać „Bez partnera”. Zmiana istniejących par wymaga potwierdzenia.
+- Delete — usuń zaznaczonego uczestnika po potwierdzeniu.
+- Ctrl+L — sprawdź zaproszone osoby i statusy „Oczekujące” lub „Odrzucono”. Ta lista nie służy do ponownego wysyłania zaproszeń.
+
+Zapraszanie wymaga otwartych zapisów; usuwanie uczestników i zmiana par są dostępne przed startem turnieju.
+
 ### Zapisy i wybór partnera
 
 Aby się zapisać, wybierz „Dołącz do turnieju”. Jeśli ta opcja nie jest dostępna, sprawdź stan w nagłówku: zapisy mogą jeszcze się nie rozpocząć, być już zamknięte albo może brakować miejsc. Jeśli jesteś już uczestnikiem, nie musisz zapisywać się ponownie. Przed rozpoczęciem możesz zrezygnować przez „Wypisz się z turnieju”.
 
 Organizator może też wysłać Ci zaproszenie do turnieju. Otwiera ono jego listę działań; dopiero wybór „Dołącz do turnieju” zapisuje Cię na rozgrywki. To nie jest zaproszenie do konkretnego meczu.
+
+Możesz też wybrać „Odrzuć zaproszenie”. Nowe zaproszenia są ważne, dopóki zapisy pozostają otwarte, bez osobnego limitu dni. Organizator nie może ponownie zaprosić tej samej osoby do tego turnieju, również po odmowie. Odmowa nie blokuje samodzielnego zapisania się.
 
 W turnieju dla stałych par obie osoby najpierw zapisują się osobno. Następnie:
 
@@ -704,8 +722,6 @@ Do rozpoczętej partii wrócisz z listy stołów, również poza godzinami rozgr
 Otwórz swój turniej i wybierz „Zarządzaj turniejem”. Przed rozpoczęciem możesz:
 
 - edytować nazwę, ustawienia rozgrywek i terminy;
-- zaprosić gracza do zapisów przez „Zaproś do turnieju”, jeśli zapisy są otwarte i są wolne miejsca;
-- przez „Zarządzaj uczestnikami” usunąć wybraną osobę lub ustawić partnerów w turnieju par;
 - otworzyć albo zamknąć zapisy;
 - wybrać „Rozpocznij turniej”, jeśli nie chcesz korzystać z zaplanowanego startu.
 
